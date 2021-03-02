@@ -14,17 +14,6 @@ exports[`Fallbacks for state.chat, state.scenario, state.cohort (missing) 1`] = 
       >
         <div
           class=\\"column\\"
-        >
-          <p>
-            There are no participants in the scenario yet.
-          </p>
-        </div>
-      </div>
-      <div
-        class=\\"row\\"
-      >
-        <div
-          class=\\"column\\"
         />
       </div>
     </div>
@@ -41,17 +30,6 @@ exports[`Fallbacks for state.chat, state.scenario, state.cohort (unloaded) 1`] =
     <div
       class=\\"ui padded grid l__waiting not-modal\\"
     >
-      <div
-        class=\\"row\\"
-      >
-        <div
-          class=\\"column\\"
-        >
-          <p>
-            There are no participants in the scenario yet.
-          </p>
-        </div>
-      </div>
       <div
         class=\\"row\\"
       >
@@ -78,17 +56,6 @@ exports[`Render 1 1 1`] = `
       >
         <div
           class=\\"column\\"
-        >
-          <p>
-            There are no participants in the scenario yet.
-          </p>
-        </div>
-      </div>
-      <div
-        class=\\"row\\"
-      >
-        <div
-          class=\\"column\\"
         />
       </div>
     </div>
@@ -105,17 +72,6 @@ exports[`Render 2 1 1`] = `
     <div
       class=\\"ui padded grid l__waiting not-modal\\"
     >
-      <div
-        class=\\"row\\"
-      >
-        <div
-          class=\\"column\\"
-        >
-          <p>
-            There are no participants in the scenario yet.
-          </p>
-        </div>
-      </div>
       <div
         class=\\"row\\"
       >
@@ -142,17 +98,6 @@ exports[`With cohort Has users that are assigned personas 1`] = `
       >
         <div
           class=\\"column\\"
-        >
-          <p>
-            There are no participants in the scenario yet.
-          </p>
-        </div>
-      </div>
-      <div
-        class=\\"row\\"
-      >
-        <div
-          class=\\"column\\"
         />
       </div>
     </div>
@@ -169,17 +114,6 @@ exports[`With cohort Has users that are no longer present 1`] = `
     <div
       class=\\"ui padded grid l__waiting not-modal\\"
     >
-      <div
-        class=\\"row\\"
-      >
-        <div
-          class=\\"column\\"
-        >
-          <p>
-            There are no participants in the scenario yet.
-          </p>
-        </div>
-      </div>
       <div
         class=\\"row\\"
       >
@@ -206,17 +140,6 @@ exports[`Without cohort Has users that are assigned personas 1`] = `
       >
         <div
           class=\\"column\\"
-        >
-          <p>
-            There are no participants in the scenario yet.
-          </p>
-        </div>
-      </div>
-      <div
-        class=\\"row\\"
-      >
-        <div
-          class=\\"column\\"
         />
       </div>
     </div>
@@ -238,11 +161,7 @@ exports[`Without cohort Has users that are no longer present 1`] = `
       >
         <div
           class=\\"column\\"
-        >
-          <p>
-            There are no participants in the scenario yet.
-          </p>
-        </div>
+        />
       </div>
       <div
         class=\\"row\\"
@@ -286,6 +205,7 @@ exports[`Without cohort Has users that are no longer present 1`] = `
                     >
                       Facilitator User
                     </span>
+                    
                      
                     <i
                       aria-hidden=\\"true\\"
@@ -310,6 +230,7 @@ exports[`Without cohort Has users that are no longer present 1`] = `
                     >
                       Researcher User
                     </span>
+                    
                      
                     <i
                       aria-hidden=\\"true\\"

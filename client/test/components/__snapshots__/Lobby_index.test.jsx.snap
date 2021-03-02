@@ -109,6 +109,7 @@ exports[`Fallback: chat missing, use scenario and cohort to request chat 1`] = `
               >
                 Super User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -133,6 +134,7 @@ exports[`Fallback: chat missing, use scenario and cohort to request chat 1`] = `
               >
                 Facilitator User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -157,6 +159,7 @@ exports[`Fallback: chat missing, use scenario and cohort to request chat 1`] = `
               >
                 Researcher User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -181,6 +184,7 @@ exports[`Fallback: chat missing, use scenario and cohort to request chat 1`] = `
               >
                 Participant User
               </span>
+              
                
               <span
                 class=\\"l__hidden\\"
@@ -199,6 +203,7 @@ exports[`Fallback: chat missing, use scenario and cohort to request chat 1`] = `
               >
                 anonymous
               </span>
+              
                
               <span
                 class=\\"l__hidden\\"
@@ -319,6 +324,7 @@ exports[`Fallback: chat missing, use scenario and cohort to request chat 1`] = `
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -361,17 +367,6 @@ exports[`Fallback: chat missing, use scenario and cohort to request chat 1`] = `
     <div
       class=\\"ui padded grid l__waiting not-modal\\"
     >
-      <div
-        class=\\"row\\"
-      >
-        <div
-          class=\\"column\\"
-        >
-          <p>
-            There are no participants in the scenario yet.
-          </p>
-        </div>
-      </div>
       <div
         class=\\"row\\"
       >
@@ -496,6 +491,7 @@ exports[`Fallback: chat missing, use scenario and cohort to request chat 4`] = `
               >
                 Super User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -520,6 +516,7 @@ exports[`Fallback: chat missing, use scenario and cohort to request chat 4`] = `
               >
                 Facilitator User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -544,6 +541,7 @@ exports[`Fallback: chat missing, use scenario and cohort to request chat 4`] = `
               >
                 Researcher User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -568,6 +566,7 @@ exports[`Fallback: chat missing, use scenario and cohort to request chat 4`] = `
               >
                 Participant User
               </span>
+              
                
               <span
                 class=\\"l__hidden\\"
@@ -586,6 +585,7 @@ exports[`Fallback: chat missing, use scenario and cohort to request chat 4`] = `
               >
                 anonymous
               </span>
+              
                
               <span
                 class=\\"l__hidden\\"
@@ -706,6 +706,7 @@ exports[`Fallback: chat missing, use scenario and cohort to request chat 4`] = `
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -748,17 +749,6 @@ exports[`Fallback: chat missing, use scenario and cohort to request chat 4`] = `
     <div
       class=\\"ui padded grid l__waiting not-modal\\"
     >
-      <div
-        class=\\"row\\"
-      >
-        <div
-          class=\\"column\\"
-        >
-          <p>
-            There are no participants in the scenario yet.
-          </p>
-        </div>
-      </div>
       <div
         class=\\"row\\"
       >
@@ -883,6 +873,7 @@ exports[`Fallback: chat missing, use scenario to request chat 1`] = `
               >
                 Super User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -907,6 +898,7 @@ exports[`Fallback: chat missing, use scenario to request chat 1`] = `
               >
                 Facilitator User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -931,6 +923,7 @@ exports[`Fallback: chat missing, use scenario to request chat 1`] = `
               >
                 Researcher User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -955,6 +948,7 @@ exports[`Fallback: chat missing, use scenario to request chat 1`] = `
               >
                 Participant User
               </span>
+              
                
               <span
                 class=\\"l__hidden\\"
@@ -973,6 +967,7 @@ exports[`Fallback: chat missing, use scenario to request chat 1`] = `
               >
                 anonymous
               </span>
+              
                
               <span
                 class=\\"l__hidden\\"
@@ -1093,6 +1088,7 @@ exports[`Fallback: chat missing, use scenario to request chat 1`] = `
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -1135,17 +1131,6 @@ exports[`Fallback: chat missing, use scenario to request chat 1`] = `
     <div
       class=\\"ui padded grid l__waiting not-modal\\"
     >
-      <div
-        class=\\"row\\"
-      >
-        <div
-          class=\\"column\\"
-        >
-          <p>
-            There are no participants in the scenario yet.
-          </p>
-        </div>
-      </div>
       <div
         class=\\"row\\"
       >
@@ -1270,6 +1255,7 @@ exports[`Fallback: chat missing, use scenario to request chat 4`] = `
               >
                 Super User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -1294,6 +1280,7 @@ exports[`Fallback: chat missing, use scenario to request chat 4`] = `
               >
                 Facilitator User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -1318,6 +1305,7 @@ exports[`Fallback: chat missing, use scenario to request chat 4`] = `
               >
                 Researcher User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -1342,6 +1330,7 @@ exports[`Fallback: chat missing, use scenario to request chat 4`] = `
               >
                 Participant User
               </span>
+              
                
               <span
                 class=\\"l__hidden\\"
@@ -1360,6 +1349,7 @@ exports[`Fallback: chat missing, use scenario to request chat 4`] = `
               >
                 anonymous
               </span>
+              
                
               <span
                 class=\\"l__hidden\\"
@@ -1480,6 +1470,7 @@ exports[`Fallback: chat missing, use scenario to request chat 4`] = `
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -1522,17 +1513,6 @@ exports[`Fallback: chat missing, use scenario to request chat 4`] = `
     <div
       class=\\"ui padded grid l__waiting not-modal\\"
     >
-      <div
-        class=\\"row\\"
-      >
-        <div
-          class=\\"column\\"
-        >
-          <p>
-            There are no participants in the scenario yet.
-          </p>
-        </div>
-      </div>
       <div
         class=\\"row\\"
       >
@@ -1657,6 +1637,7 @@ exports[`Fallback: chat, scenario, cohort are not yet loaded, use provided props
               >
                 Super User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -1681,6 +1662,7 @@ exports[`Fallback: chat, scenario, cohort are not yet loaded, use provided props
               >
                 Facilitator User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -1705,6 +1687,7 @@ exports[`Fallback: chat, scenario, cohort are not yet loaded, use provided props
               >
                 Researcher User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -1729,6 +1712,7 @@ exports[`Fallback: chat, scenario, cohort are not yet loaded, use provided props
               >
                 Participant User
               </span>
+              
                
               <span
                 class=\\"l__hidden\\"
@@ -1747,6 +1731,7 @@ exports[`Fallback: chat, scenario, cohort are not yet loaded, use provided props
               >
                 anonymous
               </span>
+              
                
               <span
                 class=\\"l__hidden\\"
@@ -1867,6 +1852,7 @@ exports[`Fallback: chat, scenario, cohort are not yet loaded, use provided props
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -1909,17 +1895,6 @@ exports[`Fallback: chat, scenario, cohort are not yet loaded, use provided props
     <div
       class=\\"ui padded grid l__waiting not-modal\\"
     >
-      <div
-        class=\\"row\\"
-      >
-        <div
-          class=\\"column\\"
-        >
-          <p>
-            There are no participants in the scenario yet.
-          </p>
-        </div>
-      </div>
       <div
         class=\\"row\\"
       >
@@ -2044,6 +2019,7 @@ exports[`Fallback: chat, scenario, cohort are not yet loaded, use provided props
               >
                 Super User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -2068,6 +2044,7 @@ exports[`Fallback: chat, scenario, cohort are not yet loaded, use provided props
               >
                 Facilitator User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -2092,6 +2069,7 @@ exports[`Fallback: chat, scenario, cohort are not yet loaded, use provided props
               >
                 Researcher User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -2116,6 +2094,7 @@ exports[`Fallback: chat, scenario, cohort are not yet loaded, use provided props
               >
                 Participant User
               </span>
+              
                
               <span
                 class=\\"l__hidden\\"
@@ -2134,6 +2113,7 @@ exports[`Fallback: chat, scenario, cohort are not yet loaded, use provided props
               >
                 anonymous
               </span>
+              
                
               <span
                 class=\\"l__hidden\\"
@@ -2254,6 +2234,7 @@ exports[`Fallback: chat, scenario, cohort are not yet loaded, use provided props
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -2296,17 +2277,6 @@ exports[`Fallback: chat, scenario, cohort are not yet loaded, use provided props
     <div
       class=\\"ui padded grid l__waiting not-modal\\"
     >
-      <div
-        class=\\"row\\"
-      >
-        <div
-          class=\\"column\\"
-        >
-          <p>
-            There are no participants in the scenario yet.
-          </p>
-        </div>
-      </div>
       <div
         class=\\"row\\"
       >
@@ -2431,6 +2401,7 @@ exports[`Fallback: cohort expected, but not yet loaded 1`] = `
               >
                 Super User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -2455,6 +2426,7 @@ exports[`Fallback: cohort expected, but not yet loaded 1`] = `
               >
                 Facilitator User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -2479,6 +2451,7 @@ exports[`Fallback: cohort expected, but not yet loaded 1`] = `
               >
                 Researcher User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -2503,6 +2476,7 @@ exports[`Fallback: cohort expected, but not yet loaded 1`] = `
               >
                 Participant User
               </span>
+              
                
               <span
                 class=\\"l__hidden\\"
@@ -2521,6 +2495,7 @@ exports[`Fallback: cohort expected, but not yet loaded 1`] = `
               >
                 anonymous
               </span>
+              
                
               <span
                 class=\\"l__hidden\\"
@@ -2603,6 +2578,7 @@ exports[`Fallback: cohort expected, but not yet loaded 1`] = `
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -2645,17 +2621,6 @@ exports[`Fallback: cohort expected, but not yet loaded 1`] = `
     <div
       class=\\"ui padded grid l__waiting not-modal\\"
     >
-      <div
-        class=\\"row\\"
-      >
-        <div
-          class=\\"column\\"
-        >
-          <p>
-            There are no participants in the scenario yet.
-          </p>
-        </div>
-      </div>
       <div
         class=\\"row\\"
       >
@@ -2780,6 +2745,7 @@ exports[`Fallback: cohort expected, but not yet loaded 4`] = `
               >
                 Super User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -2804,6 +2770,7 @@ exports[`Fallback: cohort expected, but not yet loaded 4`] = `
               >
                 Facilitator User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -2828,6 +2795,7 @@ exports[`Fallback: cohort expected, but not yet loaded 4`] = `
               >
                 Researcher User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -2852,6 +2820,7 @@ exports[`Fallback: cohort expected, but not yet loaded 4`] = `
               >
                 Participant User
               </span>
+              
                
               <span
                 class=\\"l__hidden\\"
@@ -2870,6 +2839,7 @@ exports[`Fallback: cohort expected, but not yet loaded 4`] = `
               >
                 anonymous
               </span>
+              
                
               <span
                 class=\\"l__hidden\\"
@@ -2952,6 +2922,7 @@ exports[`Fallback: cohort expected, but not yet loaded 4`] = `
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -2999,12 +2970,689 @@ exports[`Fallback: cohort expected, but not yet loaded 4`] = `
       >
         <div
           class=\\"column\\"
+        />
+      </div>
+    </div>
+    <div
+      data-testid=\\"lobby-main\\"
+    />
+  </div>
+</body>"
+`;
+
+exports[`Fallback: cohort expected, but not yet loaded 5`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <div
+      class=\\"ui padded grid l__invite not-modal\\"
+    >
+      <div
+        class=\\"row\\"
+      >
+        <div
+          class=\\"column\\"
         >
-          <p>
-            There are no participants in the scenario yet.
-          </p>
+          <div
+            class=\\"ui message\\"
+            data-testid=\\"lobby-user-select-instructions\\"
+          >
+            <i
+              aria-hidden=\\"true\\"
+              class=\\"close icon\\"
+            />
+            <p>
+              This scenario has 
+              <strong>
+                0
+              </strong>
+               roles. As host, you will participate in the scenario by filling one of the available roles.
+            </p>
+            <ol>
+              <li>
+                Choose your role first.
+              </li>
+              <li>
+                Search and select participants that you want to invite, and assign their roles as you go.
+              </li>
+              <li>
+                Once all of the available roles are filled, click the
+                 
+                <button
+                  class=\\"ui mini compact disabled button primary\\"
+                  disabled=\\"\\"
+                  tabindex=\\"-1\\"
+                >
+                  Send invites
+                </button>
+                 button to invite your selected participants.
+              </li>
+            </ol>
+            <p>
+              There are 
+              <strong>
+                4
+              </strong>
+               other 
+              participants
+               
+              available to fill the other 
+              <strong>
+                -1
+              </strong>
+               
+              roles
+              . 
+              You must select at least 
+              <strong>
+                1
+              </strong>
+               other participant and assign them a role to continue.
+            </p>
+          </div>
         </div>
       </div>
+      <div
+        class=\\"row\\"
+      >
+        <div
+          class=\\"ui fluid search grid__menu-search l__search-input primary\\"
+        >
+          <div
+            class=\\"ui icon input\\"
+          >
+            <input
+              autocomplete=\\"off\\"
+              class=\\"prompt\\"
+              tabindex=\\"0\\"
+              type=\\"text\\"
+              value=\\" \\"
+            />
+            <i
+              aria-hidden=\\"true\\"
+              class=\\"search icon\\"
+            />
+          </div>
+          <div
+            class=\\"results transition\\"
+          >
+            <div
+              class=\\"result\\"
+              searchable=\\"  Super User  super  super  super@email.com  participant super_admin  \\"
+            >
+              <span
+                aria-label=\\"Super User (super)\\"
+                class=\\"ui medium text\\"
+                title=\\"Super User (super)\\"
+              >
+                Super User
+              </span>
+              
+               
+              <i
+                aria-hidden=\\"true\\"
+                class=\\"small icon chess queen\\"
+                style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                title=\\"Super\\"
+              />
+              <span
+                class=\\"l__hidden\\"
+              >
+                (Select to invite)
+              </span>
+            </div>
+            <div
+              class=\\"result\\"
+              searchable=\\"  Facilitator User  facilitator  facilitator  facilitator@email.com  participant facilitator researcher owner  \\"
+            >
+              <span
+                aria-label=\\"Facilitator User (facilitator)\\"
+                class=\\"ui medium text\\"
+                title=\\"Facilitator User (facilitator)\\"
+              >
+                Facilitator User
+              </span>
+              
+               
+              <i
+                aria-hidden=\\"true\\"
+                class=\\"small icon chalkboard teacher\\"
+                style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                title=\\"Facilitator\\"
+              />
+              <span
+                class=\\"l__hidden\\"
+              >
+                (Select to invite)
+              </span>
+            </div>
+            <div
+              class=\\"result\\"
+              searchable=\\"  Researcher User  researcher  researcher  researcher@email.com  participant researcher  \\"
+            >
+              <span
+                aria-label=\\"Researcher User (researcher)\\"
+                class=\\"ui medium text\\"
+                title=\\"Researcher User (researcher)\\"
+              >
+                Researcher User
+              </span>
+              
+               
+              <i
+                aria-hidden=\\"true\\"
+                class=\\"small icon user graduate\\"
+                style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                title=\\"Researcher\\"
+              />
+              <span
+                class=\\"l__hidden\\"
+              >
+                (Select to invite)
+              </span>
+            </div>
+            <div
+              class=\\"result\\"
+              searchable=\\"  Participant User  participant  participant  participant@email.com  participant  \\"
+            >
+              <span
+                aria-label=\\"Participant User (participant)\\"
+                class=\\"ui medium text\\"
+                title=\\"Participant User (participant)\\"
+              >
+                Participant User
+              </span>
+              
+               
+              <span
+                class=\\"l__hidden\\"
+              >
+                (Select to invite)
+              </span>
+            </div>
+            <div
+              class=\\"result\\"
+              searchable=\\"  anonymous  anonymous  participant  \\"
+            >
+              <span
+                aria-label=\\"anonymous\\"
+                class=\\"ui medium text\\"
+                title=\\"anonymous\\"
+              >
+                anonymous
+              </span>
+              
+               
+              <span
+                class=\\"l__hidden\\"
+              >
+                (Select to invite)
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class=\\"row\\"
+      >
+        <div
+          class=\\"column\\"
+        >
+          <div
+            class=\\"ui fluid card\\"
+          >
+            <div
+              class=\\"content\\"
+            >
+              <div
+                class=\\"ui divided selection list\\"
+                data-testid=\\"lobby-user-select-invitees\\"
+                role=\\"list\\"
+              >
+                <div
+                  class=\\"item\\"
+                  role=\\"listitem\\"
+                >
+                  <div
+                    class=\\"right floated content\\"
+                  >
+                    <div
+                      aria-expanded=\\"false\\"
+                      class=\\"ui selection dropdown\\"
+                      id=\\"999\\"
+                      name=\\"0\\"
+                      role=\\"listbox\\"
+                      tabindex=\\"0\\"
+                    >
+                      <div
+                        aria-atomic=\\"true\\"
+                        aria-live=\\"polite\\"
+                        class=\\"divider default text\\"
+                        role=\\"alert\\"
+                      >
+                        Choose your role
+                      </div>
+                      <i
+                        aria-hidden=\\"true\\"
+                        class=\\"dropdown icon\\"
+                      />
+                      <div
+                        class=\\"menu transition\\"
+                      >
+                        <div
+                          aria-checked=\\"true\\"
+                          aria-selected=\\"true\\"
+                          class=\\"active selected item\\"
+                          role=\\"option\\"
+                          style=\\"pointer-events: all;\\"
+                        >
+                          <span
+                            class=\\"text\\"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class=\\"content\\"
+                  >
+                    <span>
+                      <span
+                        aria-label=\\"Super User (super)\\"
+                        class=\\"ui medium text\\"
+                        title=\\"Super User (super)\\"
+                      >
+                        Super User
+                      </span>
+                      
+                       
+                      <i
+                        aria-hidden=\\"true\\"
+                        class=\\"small icon chess queen\\"
+                        style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                        title=\\"Super\\"
+                      />
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class=\\"extra content\\"
+            >
+              <span
+                class=\\"ui error medium text\\"
+              >
+                1
+                 
+                participant
+                , 
+                remove 1 to continue.
+              </span>
+              <button
+                class=\\"ui disabled right floated button primary\\"
+                disabled=\\"\\"
+                tabindex=\\"-1\\"
+              >
+                Set roles & send invites
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      data-testid=\\"lobby-user-select\\"
+    />
+    <div
+      class=\\"ui padded grid l__waiting not-modal\\"
+    >
+      <div
+        class=\\"row\\"
+      >
+        <div
+          class=\\"column\\"
+        />
+      </div>
+    </div>
+    <div
+      data-testid=\\"lobby-main\\"
+    />
+  </div>
+</body>"
+`;
+
+exports[`Fallback: cohort expected, but not yet loaded 8`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <div
+      class=\\"ui padded grid l__invite not-modal\\"
+    >
+      <div
+        class=\\"row\\"
+      >
+        <div
+          class=\\"column\\"
+        >
+          <div
+            class=\\"ui message\\"
+            data-testid=\\"lobby-user-select-instructions\\"
+          >
+            <i
+              aria-hidden=\\"true\\"
+              class=\\"close icon\\"
+            />
+            <p>
+              This scenario has 
+              <strong>
+                0
+              </strong>
+               roles. As host, you will participate in the scenario by filling one of the available roles.
+            </p>
+            <ol>
+              <li>
+                Choose your role first.
+              </li>
+              <li>
+                Search and select participants that you want to invite, and assign their roles as you go.
+              </li>
+              <li>
+                Once all of the available roles are filled, click the
+                 
+                <button
+                  class=\\"ui mini compact disabled button primary\\"
+                  disabled=\\"\\"
+                  tabindex=\\"-1\\"
+                >
+                  Send invites
+                </button>
+                 button to invite your selected participants.
+              </li>
+            </ol>
+            <p>
+              There are 
+              <strong>
+                4
+              </strong>
+               other 
+              participants
+               
+              available to fill the other 
+              <strong>
+                -1
+              </strong>
+               
+              roles
+              . 
+              You must select at least 
+              <strong>
+                1
+              </strong>
+               other participant and assign them a role to continue.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div
+        class=\\"row\\"
+      >
+        <div
+          class=\\"ui fluid search grid__menu-search l__search-input primary\\"
+        >
+          <div
+            class=\\"ui icon input\\"
+          >
+            <input
+              autocomplete=\\"off\\"
+              class=\\"prompt\\"
+              tabindex=\\"0\\"
+              type=\\"text\\"
+              value=\\" \\"
+            />
+            <i
+              aria-hidden=\\"true\\"
+              class=\\"search icon\\"
+            />
+          </div>
+          <div
+            class=\\"results transition\\"
+          >
+            <div
+              class=\\"result\\"
+              searchable=\\"  Super User  super  super  super@email.com  participant super_admin  \\"
+            >
+              <span
+                aria-label=\\"Super User (super)\\"
+                class=\\"ui medium text\\"
+                title=\\"Super User (super)\\"
+              >
+                Super User
+              </span>
+              
+               
+              <i
+                aria-hidden=\\"true\\"
+                class=\\"small icon chess queen\\"
+                style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                title=\\"Super\\"
+              />
+              <span
+                class=\\"l__hidden\\"
+              >
+                (Select to invite)
+              </span>
+            </div>
+            <div
+              class=\\"result\\"
+              searchable=\\"  Facilitator User  facilitator  facilitator  facilitator@email.com  participant facilitator researcher owner  \\"
+            >
+              <span
+                aria-label=\\"Facilitator User (facilitator)\\"
+                class=\\"ui medium text\\"
+                title=\\"Facilitator User (facilitator)\\"
+              >
+                Facilitator User
+              </span>
+              
+               
+              <i
+                aria-hidden=\\"true\\"
+                class=\\"small icon chalkboard teacher\\"
+                style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                title=\\"Facilitator\\"
+              />
+              <span
+                class=\\"l__hidden\\"
+              >
+                (Select to invite)
+              </span>
+            </div>
+            <div
+              class=\\"result\\"
+              searchable=\\"  Researcher User  researcher  researcher  researcher@email.com  participant researcher  \\"
+            >
+              <span
+                aria-label=\\"Researcher User (researcher)\\"
+                class=\\"ui medium text\\"
+                title=\\"Researcher User (researcher)\\"
+              >
+                Researcher User
+              </span>
+              
+               
+              <i
+                aria-hidden=\\"true\\"
+                class=\\"small icon user graduate\\"
+                style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                title=\\"Researcher\\"
+              />
+              <span
+                class=\\"l__hidden\\"
+              >
+                (Select to invite)
+              </span>
+            </div>
+            <div
+              class=\\"result\\"
+              searchable=\\"  Participant User  participant  participant  participant@email.com  participant  \\"
+            >
+              <span
+                aria-label=\\"Participant User (participant)\\"
+                class=\\"ui medium text\\"
+                title=\\"Participant User (participant)\\"
+              >
+                Participant User
+              </span>
+              
+               
+              <span
+                class=\\"l__hidden\\"
+              >
+                (Select to invite)
+              </span>
+            </div>
+            <div
+              class=\\"result\\"
+              searchable=\\"  anonymous  anonymous  participant  \\"
+            >
+              <span
+                aria-label=\\"anonymous\\"
+                class=\\"ui medium text\\"
+                title=\\"anonymous\\"
+              >
+                anonymous
+              </span>
+              
+               
+              <span
+                class=\\"l__hidden\\"
+              >
+                (Select to invite)
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class=\\"row\\"
+      >
+        <div
+          class=\\"column\\"
+        >
+          <div
+            class=\\"ui fluid card\\"
+          >
+            <div
+              class=\\"content\\"
+            >
+              <div
+                class=\\"ui divided selection list\\"
+                data-testid=\\"lobby-user-select-invitees\\"
+                role=\\"list\\"
+              >
+                <div
+                  class=\\"item\\"
+                  role=\\"listitem\\"
+                >
+                  <div
+                    class=\\"right floated content\\"
+                  >
+                    <div
+                      aria-expanded=\\"false\\"
+                      class=\\"ui selection dropdown\\"
+                      id=\\"999\\"
+                      name=\\"0\\"
+                      role=\\"listbox\\"
+                      tabindex=\\"0\\"
+                    >
+                      <div
+                        aria-atomic=\\"true\\"
+                        aria-live=\\"polite\\"
+                        class=\\"divider default text\\"
+                        role=\\"alert\\"
+                      >
+                        Choose your role
+                      </div>
+                      <i
+                        aria-hidden=\\"true\\"
+                        class=\\"dropdown icon\\"
+                      />
+                      <div
+                        class=\\"menu transition\\"
+                      >
+                        <div
+                          aria-checked=\\"true\\"
+                          aria-selected=\\"true\\"
+                          class=\\"active selected item\\"
+                          role=\\"option\\"
+                          style=\\"pointer-events: all;\\"
+                        >
+                          <span
+                            class=\\"text\\"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class=\\"content\\"
+                  >
+                    <span>
+                      <span
+                        aria-label=\\"Super User (super)\\"
+                        class=\\"ui medium text\\"
+                        title=\\"Super User (super)\\"
+                      >
+                        Super User
+                      </span>
+                      
+                       
+                      <i
+                        aria-hidden=\\"true\\"
+                        class=\\"small icon chess queen\\"
+                        style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                        title=\\"Super\\"
+                      />
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class=\\"extra content\\"
+            >
+              <span
+                class=\\"ui error medium text\\"
+              >
+                1
+                 
+                participant
+                , 
+                remove 1 to continue.
+              </span>
+              <button
+                class=\\"ui disabled right floated button primary\\"
+                disabled=\\"\\"
+                tabindex=\\"-1\\"
+              >
+                Set roles & send invites
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      data-testid=\\"lobby-user-select\\"
+    />
+    <div
+      class=\\"ui padded grid l__waiting not-modal\\"
+    >
       <div
         class=\\"row\\"
       >
@@ -3129,6 +3777,7 @@ exports[`Fallback: scenario missing 1`] = `
               >
                 Super User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -3153,6 +3802,7 @@ exports[`Fallback: scenario missing 1`] = `
               >
                 Facilitator User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -3177,6 +3827,7 @@ exports[`Fallback: scenario missing 1`] = `
               >
                 Researcher User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -3201,6 +3852,7 @@ exports[`Fallback: scenario missing 1`] = `
               >
                 Participant User
               </span>
+              
                
               <span
                 class=\\"l__hidden\\"
@@ -3219,6 +3871,7 @@ exports[`Fallback: scenario missing 1`] = `
               >
                 anonymous
               </span>
+              
                
               <span
                 class=\\"l__hidden\\"
@@ -3339,6 +3992,7 @@ exports[`Fallback: scenario missing 1`] = `
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -3381,17 +4035,6 @@ exports[`Fallback: scenario missing 1`] = `
     <div
       class=\\"ui padded grid l__waiting not-modal\\"
     >
-      <div
-        class=\\"row\\"
-      >
-        <div
-          class=\\"column\\"
-        >
-          <p>
-            There are no participants in the scenario yet.
-          </p>
-        </div>
-      </div>
       <div
         class=\\"row\\"
       >
@@ -3516,6 +4159,7 @@ exports[`Fallback: scenario missing 4`] = `
               >
                 Super User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -3540,6 +4184,7 @@ exports[`Fallback: scenario missing 4`] = `
               >
                 Facilitator User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -3564,6 +4209,7 @@ exports[`Fallback: scenario missing 4`] = `
               >
                 Researcher User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -3588,6 +4234,7 @@ exports[`Fallback: scenario missing 4`] = `
               >
                 Participant User
               </span>
+              
                
               <span
                 class=\\"l__hidden\\"
@@ -3606,6 +4253,7 @@ exports[`Fallback: scenario missing 4`] = `
               >
                 anonymous
               </span>
+              
                
               <span
                 class=\\"l__hidden\\"
@@ -3726,6 +4374,7 @@ exports[`Fallback: scenario missing 4`] = `
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -3768,17 +4417,6 @@ exports[`Fallback: scenario missing 4`] = `
     <div
       class=\\"ui padded grid l__waiting not-modal\\"
     >
-      <div
-        class=\\"row\\"
-      >
-        <div
-          class=\\"column\\"
-        >
-          <p>
-            There are no participants in the scenario yet.
-          </p>
-        </div>
-      </div>
       <div
         class=\\"row\\"
       >
@@ -3903,6 +4541,7 @@ exports[`Fallback: scenario object present, unloaded 1`] = `
               >
                 Super User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -3927,6 +4566,7 @@ exports[`Fallback: scenario object present, unloaded 1`] = `
               >
                 Facilitator User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -3951,6 +4591,7 @@ exports[`Fallback: scenario object present, unloaded 1`] = `
               >
                 Researcher User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -3975,6 +4616,7 @@ exports[`Fallback: scenario object present, unloaded 1`] = `
               >
                 Participant User
               </span>
+              
                
               <span
                 class=\\"l__hidden\\"
@@ -3993,6 +4635,7 @@ exports[`Fallback: scenario object present, unloaded 1`] = `
               >
                 anonymous
               </span>
+              
                
               <span
                 class=\\"l__hidden\\"
@@ -4113,6 +4756,7 @@ exports[`Fallback: scenario object present, unloaded 1`] = `
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -4155,17 +4799,6 @@ exports[`Fallback: scenario object present, unloaded 1`] = `
     <div
       class=\\"ui padded grid l__waiting not-modal\\"
     >
-      <div
-        class=\\"row\\"
-      >
-        <div
-          class=\\"column\\"
-        >
-          <p>
-            There are no participants in the scenario yet.
-          </p>
-        </div>
-      </div>
       <div
         class=\\"row\\"
       >
@@ -4290,6 +4923,7 @@ exports[`Fallback: scenario object present, unloaded 4`] = `
               >
                 Super User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -4314,6 +4948,7 @@ exports[`Fallback: scenario object present, unloaded 4`] = `
               >
                 Facilitator User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -4338,6 +4973,7 @@ exports[`Fallback: scenario object present, unloaded 4`] = `
               >
                 Researcher User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -4362,6 +4998,7 @@ exports[`Fallback: scenario object present, unloaded 4`] = `
               >
                 Participant User
               </span>
+              
                
               <span
                 class=\\"l__hidden\\"
@@ -4380,6 +5017,7 @@ exports[`Fallback: scenario object present, unloaded 4`] = `
               >
                 anonymous
               </span>
+              
                
               <span
                 class=\\"l__hidden\\"
@@ -4500,6 +5138,7 @@ exports[`Fallback: scenario object present, unloaded 4`] = `
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -4542,17 +5181,6 @@ exports[`Fallback: scenario object present, unloaded 4`] = `
     <div
       class=\\"ui padded grid l__waiting not-modal\\"
     >
-      <div
-        class=\\"row\\"
-      >
-        <div
-          class=\\"column\\"
-        >
-          <p>
-            There are no participants in the scenario yet.
-          </p>
-        </div>
-      </div>
       <div
         class=\\"row\\"
       >
@@ -4677,6 +5305,7 @@ exports[`Lobby visited by a non-facilitator user 1`] = `
               >
                 Super User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -4701,6 +5330,7 @@ exports[`Lobby visited by a non-facilitator user 1`] = `
               >
                 Facilitator User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -4725,6 +5355,7 @@ exports[`Lobby visited by a non-facilitator user 1`] = `
               >
                 Researcher User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -4749,6 +5380,7 @@ exports[`Lobby visited by a non-facilitator user 1`] = `
               >
                 Participant User
               </span>
+              
                
               <span
                 class=\\"l__hidden\\"
@@ -4767,6 +5399,7 @@ exports[`Lobby visited by a non-facilitator user 1`] = `
               >
                 anonymous
               </span>
+              
                
               <span
                 class=\\"l__hidden\\"
@@ -4849,6 +5482,7 @@ exports[`Lobby visited by a non-facilitator user 1`] = `
                       >
                         Participant User
                       </span>
+                      
                        
                     </span>
                   </div>
@@ -4885,17 +5519,6 @@ exports[`Lobby visited by a non-facilitator user 1`] = `
     <div
       class=\\"ui padded grid l__waiting not-modal\\"
     >
-      <div
-        class=\\"row\\"
-      >
-        <div
-          class=\\"column\\"
-        >
-          <p>
-            There are no participants in the scenario yet.
-          </p>
-        </div>
-      </div>
       <div
         class=\\"row\\"
       >
@@ -5020,6 +5643,7 @@ exports[`Lobby visited by a non-facilitator user 4`] = `
               >
                 Super User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -5044,6 +5668,7 @@ exports[`Lobby visited by a non-facilitator user 4`] = `
               >
                 Facilitator User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -5068,6 +5693,7 @@ exports[`Lobby visited by a non-facilitator user 4`] = `
               >
                 Researcher User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -5092,6 +5718,7 @@ exports[`Lobby visited by a non-facilitator user 4`] = `
               >
                 Participant User
               </span>
+              
                
               <span
                 class=\\"l__hidden\\"
@@ -5110,6 +5737,7 @@ exports[`Lobby visited by a non-facilitator user 4`] = `
               >
                 anonymous
               </span>
+              
                
               <span
                 class=\\"l__hidden\\"
@@ -5192,6 +5820,7 @@ exports[`Lobby visited by a non-facilitator user 4`] = `
                       >
                         Participant User
                       </span>
+                      
                        
                     </span>
                   </div>
@@ -5228,17 +5857,6 @@ exports[`Lobby visited by a non-facilitator user 4`] = `
     <div
       class=\\"ui padded grid l__waiting not-modal\\"
     >
-      <div
-        class=\\"row\\"
-      >
-        <div
-          class=\\"column\\"
-        >
-          <p>
-            There are no participants in the scenario yet.
-          </p>
-        </div>
-      </div>
       <div
         class=\\"row\\"
       >
@@ -5363,6 +5981,7 @@ exports[`With cohort, Receives RUN_CHAT_LINK, calls getChatUsersByChatId 1`] = `
               >
                 Super User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -5387,6 +6006,7 @@ exports[`With cohort, Receives RUN_CHAT_LINK, calls getChatUsersByChatId 1`] = `
               >
                 Facilitator User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -5411,6 +6031,7 @@ exports[`With cohort, Receives RUN_CHAT_LINK, calls getChatUsersByChatId 1`] = `
               >
                 Researcher User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -5435,6 +6056,7 @@ exports[`With cohort, Receives RUN_CHAT_LINK, calls getChatUsersByChatId 1`] = `
               >
                 Participant User
               </span>
+              
                
               <span
                 class=\\"l__hidden\\"
@@ -5453,6 +6075,7 @@ exports[`With cohort, Receives RUN_CHAT_LINK, calls getChatUsersByChatId 1`] = `
               >
                 anonymous
               </span>
+              
                
               <span
                 class=\\"l__hidden\\"
@@ -5573,6 +6196,7 @@ exports[`With cohort, Receives RUN_CHAT_LINK, calls getChatUsersByChatId 1`] = `
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -5622,7 +6246,11 @@ exports[`With cohort, Receives RUN_CHAT_LINK, calls getChatUsersByChatId 1`] = `
           class=\\"column\\"
         >
           <p>
-            Who is in the scenario?
+            Who is in 
+            <strong>
+              this
+            </strong>
+             scenario room?
           </p>
         </div>
       </div>
@@ -5657,6 +6285,7 @@ exports[`With cohort, Receives RUN_CHAT_LINK, calls getChatUsersByChatId 1`] = `
                     >
                       Facilitator User
                     </span>
+                    
                      
                     <i
                       aria-hidden=\\"true\\"
@@ -5673,13 +6302,6 @@ exports[`With cohort, Receives RUN_CHAT_LINK, calls getChatUsersByChatId 1`] = `
             </div>
           </div>
         </div>
-      </div>
-      <div
-        class=\\"row\\"
-      >
-        <div
-          class=\\"column\\"
-        />
       </div>
     </div>
     <div
@@ -5798,6 +6420,7 @@ exports[`With cohort, Receives RUN_CHAT_LINK, calls getChatUsersByChatId 4`] = `
               >
                 Super User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -5822,6 +6445,7 @@ exports[`With cohort, Receives RUN_CHAT_LINK, calls getChatUsersByChatId 4`] = `
               >
                 Facilitator User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -5846,6 +6470,7 @@ exports[`With cohort, Receives RUN_CHAT_LINK, calls getChatUsersByChatId 4`] = `
               >
                 Researcher User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -5870,6 +6495,7 @@ exports[`With cohort, Receives RUN_CHAT_LINK, calls getChatUsersByChatId 4`] = `
               >
                 Participant User
               </span>
+              
                
               <span
                 class=\\"l__hidden\\"
@@ -5888,6 +6514,7 @@ exports[`With cohort, Receives RUN_CHAT_LINK, calls getChatUsersByChatId 4`] = `
               >
                 anonymous
               </span>
+              
                
               <span
                 class=\\"l__hidden\\"
@@ -6008,6 +6635,7 @@ exports[`With cohort, Receives RUN_CHAT_LINK, calls getChatUsersByChatId 4`] = `
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -6057,7 +6685,11 @@ exports[`With cohort, Receives RUN_CHAT_LINK, calls getChatUsersByChatId 4`] = `
           class=\\"column\\"
         >
           <p>
-            Who is in the scenario?
+            Who is in 
+            <strong>
+              this
+            </strong>
+             scenario room?
           </p>
         </div>
       </div>
@@ -6092,6 +6724,7 @@ exports[`With cohort, Receives RUN_CHAT_LINK, calls getChatUsersByChatId 4`] = `
                     >
                       Facilitator User
                     </span>
+                    
                      
                     <i
                       aria-hidden=\\"true\\"
@@ -6109,12 +6742,883 @@ exports[`With cohort, Receives RUN_CHAT_LINK, calls getChatUsersByChatId 4`] = `
           </div>
         </div>
       </div>
+    </div>
+    <div
+      data-testid=\\"lobby-main\\"
+    />
+  </div>
+</body>"
+`;
+
+exports[`With cohort, Receives RUN_CHAT_LINK, calls getChatUsersByChatId 5`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <div
+      class=\\"ui padded grid l__invite not-modal\\"
+    >
       <div
         class=\\"row\\"
       >
         <div
           class=\\"column\\"
-        />
+        >
+          <div
+            class=\\"ui message\\"
+            data-testid=\\"lobby-user-select-instructions\\"
+          >
+            <i
+              aria-hidden=\\"true\\"
+              class=\\"close icon\\"
+            />
+            <p>
+              This scenario has 
+              <strong>
+                2
+              </strong>
+               roles. As host, you will participate in the scenario by filling one of the available roles.
+            </p>
+            <ol>
+              <li>
+                Choose your role first.
+              </li>
+              <li>
+                Search and select participants that you want to invite, and assign their roles as you go.
+              </li>
+              <li>
+                Once all of the available roles are filled, click the
+                 
+                <button
+                  class=\\"ui mini compact disabled button primary\\"
+                  disabled=\\"\\"
+                  tabindex=\\"-1\\"
+                >
+                  Send invites
+                </button>
+                 button to invite your selected participants.
+              </li>
+            </ol>
+            <p>
+              There are 
+              <strong>
+                4
+              </strong>
+               other 
+              participants
+               
+              available to fill the other 
+              <strong>
+                1
+              </strong>
+               
+              role
+              . 
+              You must select at least 
+              <strong>
+                1
+              </strong>
+               other participant and assign them a role to continue.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div
+        class=\\"row\\"
+      >
+        <div
+          class=\\"ui fluid search grid__menu-search l__search-input primary\\"
+        >
+          <div
+            class=\\"ui icon input\\"
+          >
+            <input
+              autocomplete=\\"off\\"
+              class=\\"prompt\\"
+              tabindex=\\"0\\"
+              type=\\"text\\"
+              value=\\" \\"
+            />
+            <i
+              aria-hidden=\\"true\\"
+              class=\\"search icon\\"
+            />
+          </div>
+          <div
+            class=\\"results transition\\"
+          >
+            <div
+              class=\\"result\\"
+              searchable=\\"  Super User  super  super  super@email.com  participant super_admin  \\"
+            >
+              <span
+                aria-label=\\"Super User (super)\\"
+                class=\\"ui medium text\\"
+                title=\\"Super User (super)\\"
+              >
+                Super User
+              </span>
+              
+               
+              <i
+                aria-hidden=\\"true\\"
+                class=\\"small icon chess queen\\"
+                style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                title=\\"Super\\"
+              />
+              <span
+                class=\\"l__hidden\\"
+              >
+                (Select to invite)
+              </span>
+            </div>
+            <div
+              class=\\"result\\"
+              searchable=\\"  Facilitator User  facilitator  facilitator  facilitator@email.com  participant facilitator researcher owner  \\"
+            >
+              <span
+                aria-label=\\"Facilitator User (facilitator)\\"
+                class=\\"ui medium text\\"
+                title=\\"Facilitator User (facilitator)\\"
+              >
+                Facilitator User
+              </span>
+              
+               
+              <i
+                aria-hidden=\\"true\\"
+                class=\\"small icon chalkboard teacher\\"
+                style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                title=\\"Facilitator\\"
+              />
+              <span
+                class=\\"l__hidden\\"
+              >
+                (Select to invite)
+              </span>
+            </div>
+            <div
+              class=\\"result\\"
+              searchable=\\"  Researcher User  researcher  researcher  researcher@email.com  participant researcher  \\"
+            >
+              <span
+                aria-label=\\"Researcher User (researcher)\\"
+                class=\\"ui medium text\\"
+                title=\\"Researcher User (researcher)\\"
+              >
+                Researcher User
+              </span>
+              
+               
+              <i
+                aria-hidden=\\"true\\"
+                class=\\"small icon user graduate\\"
+                style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                title=\\"Researcher\\"
+              />
+              <span
+                class=\\"l__hidden\\"
+              >
+                (Select to invite)
+              </span>
+            </div>
+            <div
+              class=\\"result\\"
+              searchable=\\"  Participant User  participant  participant  participant@email.com  participant  \\"
+            >
+              <span
+                aria-label=\\"Participant User (participant)\\"
+                class=\\"ui medium text\\"
+                title=\\"Participant User (participant)\\"
+              >
+                Participant User
+              </span>
+              
+               
+              <span
+                class=\\"l__hidden\\"
+              >
+                (Select to invite)
+              </span>
+            </div>
+            <div
+              class=\\"result\\"
+              searchable=\\"  anonymous  anonymous  participant  \\"
+            >
+              <span
+                aria-label=\\"anonymous\\"
+                class=\\"ui medium text\\"
+                title=\\"anonymous\\"
+              >
+                anonymous
+              </span>
+              
+               
+              <span
+                class=\\"l__hidden\\"
+              >
+                (Select to invite)
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class=\\"row\\"
+      >
+        <div
+          class=\\"column\\"
+        >
+          <div
+            class=\\"ui fluid card\\"
+          >
+            <div
+              class=\\"content\\"
+            >
+              <div
+                class=\\"ui divided selection list\\"
+                data-testid=\\"lobby-user-select-invitees\\"
+                role=\\"list\\"
+              >
+                <div
+                  class=\\"item\\"
+                  role=\\"listitem\\"
+                >
+                  <div
+                    class=\\"right floated content\\"
+                  >
+                    <div
+                      aria-expanded=\\"false\\"
+                      class=\\"ui selection dropdown\\"
+                      id=\\"999\\"
+                      name=\\"0\\"
+                      role=\\"listbox\\"
+                      tabindex=\\"0\\"
+                    >
+                      <div
+                        aria-atomic=\\"true\\"
+                        aria-live=\\"polite\\"
+                        class=\\"divider default text\\"
+                        role=\\"alert\\"
+                      >
+                        Choose your role
+                      </div>
+                      <i
+                        aria-hidden=\\"true\\"
+                        class=\\"dropdown icon\\"
+                      />
+                      <div
+                        class=\\"menu transition\\"
+                      >
+                        <div
+                          aria-checked=\\"true\\"
+                          aria-selected=\\"true\\"
+                          class=\\"active selected item\\"
+                          role=\\"option\\"
+                          style=\\"pointer-events: all;\\"
+                        >
+                          <span
+                            class=\\"text\\"
+                          />
+                        </div>
+                        <div
+                          aria-checked=\\"false\\"
+                          aria-selected=\\"false\\"
+                          class=\\"item\\"
+                          role=\\"option\\"
+                          style=\\"pointer-events: all;\\"
+                        >
+                          <span
+                            class=\\"ui medium text\\"
+                          >
+                            Teacher
+                          </span>
+                          <br />
+                          <span
+                            class=\\"ui small text\\"
+                          >
+                            A non-specific teacher, participating in a multi person scenario.
+                          </span>
+                        </div>
+                        <div
+                          aria-checked=\\"false\\"
+                          aria-selected=\\"false\\"
+                          class=\\"item\\"
+                          role=\\"option\\"
+                          style=\\"pointer-events: all;\\"
+                        >
+                          <span
+                            class=\\"ui medium text\\"
+                          >
+                            Student
+                          </span>
+                          <br />
+                          <span
+                            class=\\"ui small text\\"
+                          >
+                            A non-specific student, participating in a multi person scenario.
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class=\\"content\\"
+                  >
+                    <span>
+                      <span
+                        aria-label=\\"Super User (super)\\"
+                        class=\\"ui medium text\\"
+                        title=\\"Super User (super)\\"
+                      >
+                        Super User
+                      </span>
+                      
+                       
+                      <i
+                        aria-hidden=\\"true\\"
+                        class=\\"small icon chess queen\\"
+                        style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                        title=\\"Super\\"
+                      />
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class=\\"extra content\\"
+            >
+              <span
+                class=\\"ui medium text\\"
+              >
+                1
+                 
+                participant
+                , 
+                2 roles unassigned.
+              </span>
+              <button
+                class=\\"ui disabled right floated button primary\\"
+                disabled=\\"\\"
+                tabindex=\\"-1\\"
+              >
+                Set roles & send invites
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      data-testid=\\"lobby-user-select\\"
+    />
+    <div
+      class=\\"ui padded grid l__waiting not-modal\\"
+    >
+      <div
+        class=\\"row\\"
+      >
+        <div
+          class=\\"column\\"
+        >
+          <p>
+            Who is in 
+            <strong>
+              this
+            </strong>
+             scenario room?
+          </p>
+        </div>
+      </div>
+      <div
+        class=\\"row\\"
+      >
+        <div
+          class=\\"column\\"
+        >
+          <div
+            class=\\"ui fluid card\\"
+          >
+            <div
+              class=\\"content\\"
+            >
+              <div
+                class=\\"ui divided selection list\\"
+                data-testid=\\"lobby-user-waiting-invitees\\"
+                role=\\"list\\"
+              >
+                <div
+                  class=\\"item\\"
+                  role=\\"listitem\\"
+                >
+                  <div
+                    class=\\"content\\"
+                  >
+                    <span
+                      aria-label=\\"Facilitator User (facilitator)\\"
+                      class=\\"ui medium text\\"
+                      title=\\"Facilitator User (facilitator)\\"
+                    >
+                      Facilitator User
+                    </span>
+                    
+                     
+                    <i
+                      aria-hidden=\\"true\\"
+                      class=\\"small icon chalkboard teacher\\"
+                      style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                      title=\\"Facilitator\\"
+                    />
+                     
+                    as 
+                    Teacher
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      data-testid=\\"lobby-main\\"
+    />
+  </div>
+</body>"
+`;
+
+exports[`With cohort, Receives RUN_CHAT_LINK, calls getChatUsersByChatId 8`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <div
+      class=\\"ui padded grid l__invite not-modal\\"
+    >
+      <div
+        class=\\"row\\"
+      >
+        <div
+          class=\\"column\\"
+        >
+          <div
+            class=\\"ui message\\"
+            data-testid=\\"lobby-user-select-instructions\\"
+          >
+            <i
+              aria-hidden=\\"true\\"
+              class=\\"close icon\\"
+            />
+            <p>
+              This scenario has 
+              <strong>
+                2
+              </strong>
+               roles. As host, you will participate in the scenario by filling one of the available roles.
+            </p>
+            <ol>
+              <li>
+                Choose your role first.
+              </li>
+              <li>
+                Search and select participants that you want to invite, and assign their roles as you go.
+              </li>
+              <li>
+                Once all of the available roles are filled, click the
+                 
+                <button
+                  class=\\"ui mini compact disabled button primary\\"
+                  disabled=\\"\\"
+                  tabindex=\\"-1\\"
+                >
+                  Send invites
+                </button>
+                 button to invite your selected participants.
+              </li>
+            </ol>
+            <p>
+              There are 
+              <strong>
+                4
+              </strong>
+               other 
+              participants
+               
+              available to fill the other 
+              <strong>
+                1
+              </strong>
+               
+              role
+              . 
+              You must select at least 
+              <strong>
+                1
+              </strong>
+               other participant and assign them a role to continue.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div
+        class=\\"row\\"
+      >
+        <div
+          class=\\"ui fluid search grid__menu-search l__search-input primary\\"
+        >
+          <div
+            class=\\"ui icon input\\"
+          >
+            <input
+              autocomplete=\\"off\\"
+              class=\\"prompt\\"
+              tabindex=\\"0\\"
+              type=\\"text\\"
+              value=\\" \\"
+            />
+            <i
+              aria-hidden=\\"true\\"
+              class=\\"search icon\\"
+            />
+          </div>
+          <div
+            class=\\"results transition\\"
+          >
+            <div
+              class=\\"result\\"
+              searchable=\\"  Super User  super  super  super@email.com  participant super_admin  \\"
+            >
+              <span
+                aria-label=\\"Super User (super)\\"
+                class=\\"ui medium text\\"
+                title=\\"Super User (super)\\"
+              >
+                Super User
+              </span>
+              
+               
+              <i
+                aria-hidden=\\"true\\"
+                class=\\"small icon chess queen\\"
+                style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                title=\\"Super\\"
+              />
+              <span
+                class=\\"l__hidden\\"
+              >
+                (Select to invite)
+              </span>
+            </div>
+            <div
+              class=\\"result\\"
+              searchable=\\"  Facilitator User  facilitator  facilitator  facilitator@email.com  participant facilitator researcher owner  \\"
+            >
+              <span
+                aria-label=\\"Facilitator User (facilitator)\\"
+                class=\\"ui medium text\\"
+                title=\\"Facilitator User (facilitator)\\"
+              >
+                Facilitator User
+              </span>
+              
+               
+              <i
+                aria-hidden=\\"true\\"
+                class=\\"small icon chalkboard teacher\\"
+                style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                title=\\"Facilitator\\"
+              />
+              <span
+                class=\\"l__hidden\\"
+              >
+                (Select to invite)
+              </span>
+            </div>
+            <div
+              class=\\"result\\"
+              searchable=\\"  Researcher User  researcher  researcher  researcher@email.com  participant researcher  \\"
+            >
+              <span
+                aria-label=\\"Researcher User (researcher)\\"
+                class=\\"ui medium text\\"
+                title=\\"Researcher User (researcher)\\"
+              >
+                Researcher User
+              </span>
+              
+               
+              <i
+                aria-hidden=\\"true\\"
+                class=\\"small icon user graduate\\"
+                style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                title=\\"Researcher\\"
+              />
+              <span
+                class=\\"l__hidden\\"
+              >
+                (Select to invite)
+              </span>
+            </div>
+            <div
+              class=\\"result\\"
+              searchable=\\"  Participant User  participant  participant  participant@email.com  participant  \\"
+            >
+              <span
+                aria-label=\\"Participant User (participant)\\"
+                class=\\"ui medium text\\"
+                title=\\"Participant User (participant)\\"
+              >
+                Participant User
+              </span>
+              
+               
+              <span
+                class=\\"l__hidden\\"
+              >
+                (Select to invite)
+              </span>
+            </div>
+            <div
+              class=\\"result\\"
+              searchable=\\"  anonymous  anonymous  participant  \\"
+            >
+              <span
+                aria-label=\\"anonymous\\"
+                class=\\"ui medium text\\"
+                title=\\"anonymous\\"
+              >
+                anonymous
+              </span>
+              
+               
+              <span
+                class=\\"l__hidden\\"
+              >
+                (Select to invite)
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class=\\"row\\"
+      >
+        <div
+          class=\\"column\\"
+        >
+          <div
+            class=\\"ui fluid card\\"
+          >
+            <div
+              class=\\"content\\"
+            >
+              <div
+                class=\\"ui divided selection list\\"
+                data-testid=\\"lobby-user-select-invitees\\"
+                role=\\"list\\"
+              >
+                <div
+                  class=\\"item\\"
+                  role=\\"listitem\\"
+                >
+                  <div
+                    class=\\"right floated content\\"
+                  >
+                    <div
+                      aria-expanded=\\"false\\"
+                      class=\\"ui selection dropdown\\"
+                      id=\\"999\\"
+                      name=\\"0\\"
+                      role=\\"listbox\\"
+                      tabindex=\\"0\\"
+                    >
+                      <div
+                        aria-atomic=\\"true\\"
+                        aria-live=\\"polite\\"
+                        class=\\"divider default text\\"
+                        role=\\"alert\\"
+                      >
+                        Choose your role
+                      </div>
+                      <i
+                        aria-hidden=\\"true\\"
+                        class=\\"dropdown icon\\"
+                      />
+                      <div
+                        class=\\"menu transition\\"
+                      >
+                        <div
+                          aria-checked=\\"true\\"
+                          aria-selected=\\"true\\"
+                          class=\\"active selected item\\"
+                          role=\\"option\\"
+                          style=\\"pointer-events: all;\\"
+                        >
+                          <span
+                            class=\\"text\\"
+                          />
+                        </div>
+                        <div
+                          aria-checked=\\"false\\"
+                          aria-selected=\\"false\\"
+                          class=\\"item\\"
+                          role=\\"option\\"
+                          style=\\"pointer-events: all;\\"
+                        >
+                          <span
+                            class=\\"ui medium text\\"
+                          >
+                            Teacher
+                          </span>
+                          <br />
+                          <span
+                            class=\\"ui small text\\"
+                          >
+                            A non-specific teacher, participating in a multi person scenario.
+                          </span>
+                        </div>
+                        <div
+                          aria-checked=\\"false\\"
+                          aria-selected=\\"false\\"
+                          class=\\"item\\"
+                          role=\\"option\\"
+                          style=\\"pointer-events: all;\\"
+                        >
+                          <span
+                            class=\\"ui medium text\\"
+                          >
+                            Student
+                          </span>
+                          <br />
+                          <span
+                            class=\\"ui small text\\"
+                          >
+                            A non-specific student, participating in a multi person scenario.
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class=\\"content\\"
+                  >
+                    <span>
+                      <span
+                        aria-label=\\"Super User (super)\\"
+                        class=\\"ui medium text\\"
+                        title=\\"Super User (super)\\"
+                      >
+                        Super User
+                      </span>
+                      
+                       
+                      <i
+                        aria-hidden=\\"true\\"
+                        class=\\"small icon chess queen\\"
+                        style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                        title=\\"Super\\"
+                      />
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class=\\"extra content\\"
+            >
+              <span
+                class=\\"ui medium text\\"
+              >
+                1
+                 
+                participant
+                , 
+                2 roles unassigned.
+              </span>
+              <button
+                class=\\"ui disabled right floated button primary\\"
+                disabled=\\"\\"
+                tabindex=\\"-1\\"
+              >
+                Set roles & send invites
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      data-testid=\\"lobby-user-select\\"
+    />
+    <div
+      class=\\"ui padded grid l__waiting not-modal\\"
+    >
+      <div
+        class=\\"row\\"
+      >
+        <div
+          class=\\"column\\"
+        >
+          <p>
+            Who is in 
+            <strong>
+              this
+            </strong>
+             scenario room?
+          </p>
+        </div>
+      </div>
+      <div
+        class=\\"row\\"
+      >
+        <div
+          class=\\"column\\"
+        >
+          <div
+            class=\\"ui fluid card\\"
+          >
+            <div
+              class=\\"content\\"
+            >
+              <div
+                class=\\"ui divided selection list\\"
+                data-testid=\\"lobby-user-waiting-invitees\\"
+                role=\\"list\\"
+              >
+                <div
+                  class=\\"item\\"
+                  role=\\"listitem\\"
+                >
+                  <div
+                    class=\\"content\\"
+                  >
+                    <span
+                      aria-label=\\"Facilitator User (facilitator)\\"
+                      class=\\"ui medium text\\"
+                      title=\\"Facilitator User (facilitator)\\"
+                    >
+                      Facilitator User
+                    </span>
+                    
+                     
+                    <i
+                      aria-hidden=\\"true\\"
+                      class=\\"small icon chalkboard teacher\\"
+                      style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                      title=\\"Facilitator\\"
+                    />
+                     
+                    as 
+                    Teacher
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <div
@@ -6233,6 +7737,7 @@ exports[`Without cohort, Receives RUN_CHAT_LINK, calls getLinkedChatUsersByChatI
               >
                 Super User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -6257,6 +7762,7 @@ exports[`Without cohort, Receives RUN_CHAT_LINK, calls getLinkedChatUsersByChatI
               >
                 credible-lyrebird
               </span>
+              
                
               <span
                 class=\\"l__hidden\\"
@@ -6275,6 +7781,7 @@ exports[`Without cohort, Receives RUN_CHAT_LINK, calls getLinkedChatUsersByChatI
               >
                 Heartfull Cougar
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -6299,6 +7806,7 @@ exports[`Without cohort, Receives RUN_CHAT_LINK, calls getLinkedChatUsersByChatI
               >
                 Perfect Oryx
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -6323,6 +7831,7 @@ exports[`Without cohort, Receives RUN_CHAT_LINK, calls getLinkedChatUsersByChatI
               >
                 Facilitator User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -6347,6 +7856,7 @@ exports[`Without cohort, Receives RUN_CHAT_LINK, calls getLinkedChatUsersByChatI
               >
                 Researcher User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -6371,6 +7881,7 @@ exports[`Without cohort, Receives RUN_CHAT_LINK, calls getLinkedChatUsersByChatI
               >
                 Participant User
               </span>
+              
                
               <span
                 class=\\"l__hidden\\"
@@ -6389,6 +7900,7 @@ exports[`Without cohort, Receives RUN_CHAT_LINK, calls getLinkedChatUsersByChatI
               >
                 anonymous
               </span>
+              
                
               <span
                 class=\\"l__hidden\\"
@@ -6509,6 +8021,7 @@ exports[`Without cohort, Receives RUN_CHAT_LINK, calls getLinkedChatUsersByChatI
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -6551,17 +8064,6 @@ exports[`Without cohort, Receives RUN_CHAT_LINK, calls getLinkedChatUsersByChatI
     <div
       class=\\"ui padded grid l__waiting not-modal\\"
     >
-      <div
-        class=\\"row\\"
-      >
-        <div
-          class=\\"column\\"
-        >
-          <p>
-            There are no participants in the scenario yet.
-          </p>
-        </div>
-      </div>
       <div
         class=\\"row\\"
       >
@@ -6686,6 +8188,7 @@ exports[`Without cohort, Receives RUN_CHAT_LINK, calls getLinkedChatUsersByChatI
               >
                 Super User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -6710,6 +8213,7 @@ exports[`Without cohort, Receives RUN_CHAT_LINK, calls getLinkedChatUsersByChatI
               >
                 credible-lyrebird
               </span>
+              
                
               <span
                 class=\\"l__hidden\\"
@@ -6728,6 +8232,7 @@ exports[`Without cohort, Receives RUN_CHAT_LINK, calls getLinkedChatUsersByChatI
               >
                 Heartfull Cougar
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -6752,6 +8257,7 @@ exports[`Without cohort, Receives RUN_CHAT_LINK, calls getLinkedChatUsersByChatI
               >
                 Perfect Oryx
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -6776,6 +8282,7 @@ exports[`Without cohort, Receives RUN_CHAT_LINK, calls getLinkedChatUsersByChatI
               >
                 Facilitator User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -6800,6 +8307,7 @@ exports[`Without cohort, Receives RUN_CHAT_LINK, calls getLinkedChatUsersByChatI
               >
                 Researcher User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -6824,6 +8332,7 @@ exports[`Without cohort, Receives RUN_CHAT_LINK, calls getLinkedChatUsersByChatI
               >
                 Participant User
               </span>
+              
                
               <span
                 class=\\"l__hidden\\"
@@ -6842,6 +8351,7 @@ exports[`Without cohort, Receives RUN_CHAT_LINK, calls getLinkedChatUsersByChatI
               >
                 anonymous
               </span>
+              
                
               <span
                 class=\\"l__hidden\\"
@@ -6962,6 +8472,7 @@ exports[`Without cohort, Receives RUN_CHAT_LINK, calls getLinkedChatUsersByChatI
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -7009,17 +8520,6 @@ exports[`Without cohort, Receives RUN_CHAT_LINK, calls getLinkedChatUsersByChatI
       >
         <div
           class=\\"column\\"
-        >
-          <p>
-            There are no participants in the scenario yet.
-          </p>
-        </div>
-      </div>
-      <div
-        class=\\"row\\"
-      >
-        <div
-          class=\\"column\\"
         />
       </div>
     </div>
@@ -7056,7 +8556,7 @@ exports[`props.asCard 1`] = `
             </div>
           </div>
           <div
-            class=\\"content\\"
+            class=\\"content scenario__slide-card-content\\"
           >
             <div
               class=\\"ui padded grid l__invite not-modal\\"
@@ -7161,6 +8661,7 @@ exports[`props.asCard 1`] = `
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -7185,6 +8686,7 @@ exports[`props.asCard 1`] = `
                       >
                         Facilitator User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -7209,6 +8711,7 @@ exports[`props.asCard 1`] = `
                       >
                         Researcher User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -7233,6 +8736,7 @@ exports[`props.asCard 1`] = `
                       >
                         Participant User
                       </span>
+                      
                        
                       <span
                         class=\\"l__hidden\\"
@@ -7251,6 +8755,7 @@ exports[`props.asCard 1`] = `
                       >
                         anonymous
                       </span>
+                      
                        
                       <span
                         class=\\"l__hidden\\"
@@ -7371,6 +8876,7 @@ exports[`props.asCard 1`] = `
                               >
                                 Super User
                               </span>
+                              
                                
                               <i
                                 aria-hidden=\\"true\\"
@@ -7413,17 +8919,6 @@ exports[`props.asCard 1`] = `
             <div
               class=\\"ui padded grid l__waiting not-modal\\"
             >
-              <div
-                class=\\"row\\"
-              >
-                <div
-                  class=\\"column\\"
-                >
-                  <p>
-                    There are no participants in the scenario yet.
-                  </p>
-                </div>
-              </div>
               <div
                 class=\\"row\\"
               >
@@ -7484,7 +8979,7 @@ exports[`props.asCard 4`] = `
             </div>
           </div>
           <div
-            class=\\"content\\"
+            class=\\"content scenario__slide-card-content\\"
           >
             <div
               class=\\"ui padded grid l__invite not-modal\\"
@@ -7589,6 +9084,7 @@ exports[`props.asCard 4`] = `
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -7613,6 +9109,7 @@ exports[`props.asCard 4`] = `
                       >
                         Facilitator User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -7637,6 +9134,7 @@ exports[`props.asCard 4`] = `
                       >
                         Researcher User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -7661,6 +9159,7 @@ exports[`props.asCard 4`] = `
                       >
                         Participant User
                       </span>
+                      
                        
                       <span
                         class=\\"l__hidden\\"
@@ -7679,6 +9178,7 @@ exports[`props.asCard 4`] = `
                       >
                         anonymous
                       </span>
+                      
                        
                       <span
                         class=\\"l__hidden\\"
@@ -7799,6 +9299,7 @@ exports[`props.asCard 4`] = `
                               >
                                 Super User
                               </span>
+                              
                                
                               <i
                                 aria-hidden=\\"true\\"
@@ -7846,12 +9347,1693 @@ exports[`props.asCard 4`] = `
               >
                 <div
                   class=\\"column\\"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"extra content\\"
+          >
+            <div
+              class=\\"ui fluid buttons\\"
+            >
+              <button
+                class=\\"ui disabled button\\"
+                disabled=\\"\\"
+                tabindex=\\"-1\\"
+              >
+                Continue to scenario
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      data-testid=\\"lobby-main\\"
+    />
+  </div>
+</body>"
+`;
+
+exports[`props.asCard 5`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <div
+      class=\\"ui one column grid\\"
+    >
+      <div
+        class=\\"column scenario__slide-column\\"
+      >
+        <div
+          class=\\"ui centered card scenario__slide-card\\"
+        >
+          <div
+            class=\\"content scenario__slide-card-header\\"
+          >
+            <div
+              class=\\"header l__waitingroom-header\\"
+              tabindex=\\"0\\"
+            >
+              Some Other Scenario in A New Cohort That Exists Within Inline Props Lobby
+            </div>
+          </div>
+          <div
+            class=\\"content scenario__slide-card-content\\"
+          >
+            <div
+              class=\\"ui padded grid l__invite not-modal\\"
+            >
+              <div
+                class=\\"row\\"
+              >
+                <div
+                  class=\\"column\\"
                 >
-                  <p>
-                    There are no participants in the scenario yet.
-                  </p>
+                  <div
+                    class=\\"ui message\\"
+                    data-testid=\\"lobby-user-select-instructions\\"
+                  >
+                    <i
+                      aria-hidden=\\"true\\"
+                      class=\\"close icon\\"
+                    />
+                    <p>
+                      This scenario has 
+                      <strong>
+                        2
+                      </strong>
+                       roles. As host, you will participate in the scenario by filling one of the available roles.
+                    </p>
+                    <ol>
+                      <li>
+                        Choose your role first.
+                      </li>
+                      <li>
+                        Search and select participants that you want to invite, and assign their roles as you go.
+                      </li>
+                      <li>
+                        Once all of the available roles are filled, click the
+                         
+                        <button
+                          class=\\"ui mini compact disabled button primary\\"
+                          disabled=\\"\\"
+                          tabindex=\\"-1\\"
+                        >
+                          Send invites
+                        </button>
+                         button to invite your selected participants.
+                      </li>
+                    </ol>
+                    <p>
+                      There are 
+                      <strong>
+                        4
+                      </strong>
+                       other 
+                      participants
+                       
+                      available to fill the other 
+                      <strong>
+                        1
+                      </strong>
+                       
+                      role
+                      . 
+                      You must select at least 
+                      <strong>
+                        1
+                      </strong>
+                       other participant and assign them a role to continue.
+                    </p>
+                  </div>
                 </div>
               </div>
+              <div
+                class=\\"row\\"
+              >
+                <div
+                  class=\\"ui fluid search grid__menu-search l__search-input primary\\"
+                >
+                  <div
+                    class=\\"ui icon input\\"
+                  >
+                    <input
+                      autocomplete=\\"off\\"
+                      class=\\"prompt\\"
+                      tabindex=\\"0\\"
+                      type=\\"text\\"
+                      value=\\" \\"
+                    />
+                    <i
+                      aria-hidden=\\"true\\"
+                      class=\\"search icon\\"
+                    />
+                  </div>
+                  <div
+                    class=\\"results transition\\"
+                  >
+                    <div
+                      class=\\"result\\"
+                      searchable=\\"  Super User  super  super  super@email.com  participant super_admin  \\"
+                    >
+                      <span
+                        aria-label=\\"Super User (super)\\"
+                        class=\\"ui medium text\\"
+                        title=\\"Super User (super)\\"
+                      >
+                        Super User
+                      </span>
+                      
+                       
+                      <i
+                        aria-hidden=\\"true\\"
+                        class=\\"small icon chess queen\\"
+                        style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                        title=\\"Super\\"
+                      />
+                      <span
+                        class=\\"l__hidden\\"
+                      >
+                        (Select to invite)
+                      </span>
+                    </div>
+                    <div
+                      class=\\"result\\"
+                      searchable=\\"  Facilitator User  facilitator  facilitator  facilitator@email.com  participant facilitator researcher owner  \\"
+                    >
+                      <span
+                        aria-label=\\"Facilitator User (facilitator)\\"
+                        class=\\"ui medium text\\"
+                        title=\\"Facilitator User (facilitator)\\"
+                      >
+                        Facilitator User
+                      </span>
+                      
+                       
+                      <i
+                        aria-hidden=\\"true\\"
+                        class=\\"small icon chalkboard teacher\\"
+                        style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                        title=\\"Facilitator\\"
+                      />
+                      <span
+                        class=\\"l__hidden\\"
+                      >
+                        (Select to invite)
+                      </span>
+                    </div>
+                    <div
+                      class=\\"result\\"
+                      searchable=\\"  Researcher User  researcher  researcher  researcher@email.com  participant researcher  \\"
+                    >
+                      <span
+                        aria-label=\\"Researcher User (researcher)\\"
+                        class=\\"ui medium text\\"
+                        title=\\"Researcher User (researcher)\\"
+                      >
+                        Researcher User
+                      </span>
+                      
+                       
+                      <i
+                        aria-hidden=\\"true\\"
+                        class=\\"small icon user graduate\\"
+                        style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                        title=\\"Researcher\\"
+                      />
+                      <span
+                        class=\\"l__hidden\\"
+                      >
+                        (Select to invite)
+                      </span>
+                    </div>
+                    <div
+                      class=\\"result\\"
+                      searchable=\\"  Participant User  participant  participant  participant@email.com  participant  \\"
+                    >
+                      <span
+                        aria-label=\\"Participant User (participant)\\"
+                        class=\\"ui medium text\\"
+                        title=\\"Participant User (participant)\\"
+                      >
+                        Participant User
+                      </span>
+                      
+                       
+                      <span
+                        class=\\"l__hidden\\"
+                      >
+                        (Select to invite)
+                      </span>
+                    </div>
+                    <div
+                      class=\\"result\\"
+                      searchable=\\"  anonymous  anonymous  participant  \\"
+                    >
+                      <span
+                        aria-label=\\"anonymous\\"
+                        class=\\"ui medium text\\"
+                        title=\\"anonymous\\"
+                      >
+                        anonymous
+                      </span>
+                      
+                       
+                      <span
+                        class=\\"l__hidden\\"
+                      >
+                        (Select to invite)
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class=\\"row\\"
+              >
+                <div
+                  class=\\"column\\"
+                >
+                  <div
+                    class=\\"ui fluid card\\"
+                  >
+                    <div
+                      class=\\"content\\"
+                    >
+                      <div
+                        class=\\"ui divided selection list\\"
+                        data-testid=\\"lobby-user-select-invitees\\"
+                        role=\\"list\\"
+                      >
+                        <div
+                          class=\\"item\\"
+                          role=\\"listitem\\"
+                        >
+                          <div
+                            class=\\"right floated content\\"
+                          >
+                            <div
+                              aria-expanded=\\"false\\"
+                              class=\\"ui selection dropdown\\"
+                              id=\\"999\\"
+                              name=\\"0\\"
+                              role=\\"listbox\\"
+                              tabindex=\\"0\\"
+                            >
+                              <div
+                                aria-atomic=\\"true\\"
+                                aria-live=\\"polite\\"
+                                class=\\"divider default text\\"
+                                role=\\"alert\\"
+                              >
+                                Choose your role
+                              </div>
+                              <i
+                                aria-hidden=\\"true\\"
+                                class=\\"dropdown icon\\"
+                              />
+                              <div
+                                class=\\"menu transition\\"
+                              >
+                                <div
+                                  aria-checked=\\"true\\"
+                                  aria-selected=\\"true\\"
+                                  class=\\"active selected item\\"
+                                  role=\\"option\\"
+                                  style=\\"pointer-events: all;\\"
+                                >
+                                  <span
+                                    class=\\"text\\"
+                                  />
+                                </div>
+                                <div
+                                  aria-checked=\\"false\\"
+                                  aria-selected=\\"false\\"
+                                  class=\\"item\\"
+                                  role=\\"option\\"
+                                  style=\\"pointer-events: all;\\"
+                                >
+                                  <span
+                                    class=\\"ui medium text\\"
+                                  >
+                                    Teacher
+                                  </span>
+                                  <br />
+                                  <span
+                                    class=\\"ui small text\\"
+                                  >
+                                    A non-specific teacher, participating in a multi person scenario.
+                                  </span>
+                                </div>
+                                <div
+                                  aria-checked=\\"false\\"
+                                  aria-selected=\\"false\\"
+                                  class=\\"item\\"
+                                  role=\\"option\\"
+                                  style=\\"pointer-events: all;\\"
+                                >
+                                  <span
+                                    class=\\"ui medium text\\"
+                                  >
+                                    Student
+                                  </span>
+                                  <br />
+                                  <span
+                                    class=\\"ui small text\\"
+                                  >
+                                    A non-specific student, participating in a multi person scenario.
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div
+                            class=\\"content\\"
+                          >
+                            <span>
+                              <span
+                                aria-label=\\"Super User (super)\\"
+                                class=\\"ui medium text\\"
+                                title=\\"Super User (super)\\"
+                              >
+                                Super User
+                              </span>
+                              
+                               
+                              <i
+                                aria-hidden=\\"true\\"
+                                class=\\"small icon chess queen\\"
+                                style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                                title=\\"Super\\"
+                              />
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class=\\"extra content\\"
+                    >
+                      <span
+                        class=\\"ui medium text\\"
+                      >
+                        1
+                         
+                        participant
+                        , 
+                        2 roles unassigned.
+                      </span>
+                      <button
+                        class=\\"ui disabled right floated button primary\\"
+                        disabled=\\"\\"
+                        tabindex=\\"-1\\"
+                      >
+                        Set roles & send invites
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              data-testid=\\"lobby-user-select\\"
+            />
+            <div
+              class=\\"ui padded grid l__waiting not-modal\\"
+            >
+              <div
+                class=\\"row\\"
+              >
+                <div
+                  class=\\"column\\"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"extra content\\"
+          >
+            <div
+              class=\\"ui fluid buttons\\"
+            >
+              <button
+                class=\\"ui disabled button\\"
+                disabled=\\"\\"
+                tabindex=\\"-1\\"
+              >
+                Continue to scenario
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      data-testid=\\"lobby-main\\"
+    />
+  </div>
+</body>"
+`;
+
+exports[`props.asCard 8`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <div
+      class=\\"ui one column grid\\"
+    >
+      <div
+        class=\\"column scenario__slide-column\\"
+      >
+        <div
+          class=\\"ui centered card scenario__slide-card\\"
+        >
+          <div
+            class=\\"content scenario__slide-card-header\\"
+          >
+            <div
+              class=\\"header l__waitingroom-header\\"
+              tabindex=\\"0\\"
+            >
+              Some Other Scenario in A New Cohort That Exists Within Inline Props Lobby
+            </div>
+          </div>
+          <div
+            class=\\"content scenario__slide-card-content\\"
+          >
+            <div
+              class=\\"ui padded grid l__invite not-modal\\"
+            >
+              <div
+                class=\\"row\\"
+              >
+                <div
+                  class=\\"column\\"
+                >
+                  <div
+                    class=\\"ui message\\"
+                    data-testid=\\"lobby-user-select-instructions\\"
+                  >
+                    <i
+                      aria-hidden=\\"true\\"
+                      class=\\"close icon\\"
+                    />
+                    <p>
+                      This scenario has 
+                      <strong>
+                        2
+                      </strong>
+                       roles. As host, you will participate in the scenario by filling one of the available roles.
+                    </p>
+                    <ol>
+                      <li>
+                        Choose your role first.
+                      </li>
+                      <li>
+                        Search and select participants that you want to invite, and assign their roles as you go.
+                      </li>
+                      <li>
+                        Once all of the available roles are filled, click the
+                         
+                        <button
+                          class=\\"ui mini compact disabled button primary\\"
+                          disabled=\\"\\"
+                          tabindex=\\"-1\\"
+                        >
+                          Send invites
+                        </button>
+                         button to invite your selected participants.
+                      </li>
+                    </ol>
+                    <p>
+                      There are 
+                      <strong>
+                        4
+                      </strong>
+                       other 
+                      participants
+                       
+                      available to fill the other 
+                      <strong>
+                        1
+                      </strong>
+                       
+                      role
+                      . 
+                      You must select at least 
+                      <strong>
+                        1
+                      </strong>
+                       other participant and assign them a role to continue.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div
+                class=\\"row\\"
+              >
+                <div
+                  class=\\"ui fluid search grid__menu-search l__search-input primary\\"
+                >
+                  <div
+                    class=\\"ui icon input\\"
+                  >
+                    <input
+                      autocomplete=\\"off\\"
+                      class=\\"prompt\\"
+                      tabindex=\\"0\\"
+                      type=\\"text\\"
+                      value=\\" \\"
+                    />
+                    <i
+                      aria-hidden=\\"true\\"
+                      class=\\"search icon\\"
+                    />
+                  </div>
+                  <div
+                    class=\\"results transition\\"
+                  >
+                    <div
+                      class=\\"result\\"
+                      searchable=\\"  Super User  super  super  super@email.com  participant super_admin  \\"
+                    >
+                      <span
+                        aria-label=\\"Super User (super)\\"
+                        class=\\"ui medium text\\"
+                        title=\\"Super User (super)\\"
+                      >
+                        Super User
+                      </span>
+                      
+                       
+                      <i
+                        aria-hidden=\\"true\\"
+                        class=\\"small icon chess queen\\"
+                        style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                        title=\\"Super\\"
+                      />
+                      <span
+                        class=\\"l__hidden\\"
+                      >
+                        (Select to invite)
+                      </span>
+                    </div>
+                    <div
+                      class=\\"result\\"
+                      searchable=\\"  Facilitator User  facilitator  facilitator  facilitator@email.com  participant facilitator researcher owner  \\"
+                    >
+                      <span
+                        aria-label=\\"Facilitator User (facilitator)\\"
+                        class=\\"ui medium text\\"
+                        title=\\"Facilitator User (facilitator)\\"
+                      >
+                        Facilitator User
+                      </span>
+                      
+                       
+                      <i
+                        aria-hidden=\\"true\\"
+                        class=\\"small icon chalkboard teacher\\"
+                        style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                        title=\\"Facilitator\\"
+                      />
+                      <span
+                        class=\\"l__hidden\\"
+                      >
+                        (Select to invite)
+                      </span>
+                    </div>
+                    <div
+                      class=\\"result\\"
+                      searchable=\\"  Researcher User  researcher  researcher  researcher@email.com  participant researcher  \\"
+                    >
+                      <span
+                        aria-label=\\"Researcher User (researcher)\\"
+                        class=\\"ui medium text\\"
+                        title=\\"Researcher User (researcher)\\"
+                      >
+                        Researcher User
+                      </span>
+                      
+                       
+                      <i
+                        aria-hidden=\\"true\\"
+                        class=\\"small icon user graduate\\"
+                        style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                        title=\\"Researcher\\"
+                      />
+                      <span
+                        class=\\"l__hidden\\"
+                      >
+                        (Select to invite)
+                      </span>
+                    </div>
+                    <div
+                      class=\\"result\\"
+                      searchable=\\"  Participant User  participant  participant  participant@email.com  participant  \\"
+                    >
+                      <span
+                        aria-label=\\"Participant User (participant)\\"
+                        class=\\"ui medium text\\"
+                        title=\\"Participant User (participant)\\"
+                      >
+                        Participant User
+                      </span>
+                      
+                       
+                      <span
+                        class=\\"l__hidden\\"
+                      >
+                        (Select to invite)
+                      </span>
+                    </div>
+                    <div
+                      class=\\"result\\"
+                      searchable=\\"  anonymous  anonymous  participant  \\"
+                    >
+                      <span
+                        aria-label=\\"anonymous\\"
+                        class=\\"ui medium text\\"
+                        title=\\"anonymous\\"
+                      >
+                        anonymous
+                      </span>
+                      
+                       
+                      <span
+                        class=\\"l__hidden\\"
+                      >
+                        (Select to invite)
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class=\\"row\\"
+              >
+                <div
+                  class=\\"column\\"
+                >
+                  <div
+                    class=\\"ui fluid card\\"
+                  >
+                    <div
+                      class=\\"content\\"
+                    >
+                      <div
+                        class=\\"ui divided selection list\\"
+                        data-testid=\\"lobby-user-select-invitees\\"
+                        role=\\"list\\"
+                      >
+                        <div
+                          class=\\"item\\"
+                          role=\\"listitem\\"
+                        >
+                          <div
+                            class=\\"right floated content\\"
+                          >
+                            <div
+                              aria-expanded=\\"false\\"
+                              class=\\"ui selection dropdown\\"
+                              id=\\"999\\"
+                              name=\\"0\\"
+                              role=\\"listbox\\"
+                              tabindex=\\"0\\"
+                            >
+                              <div
+                                aria-atomic=\\"true\\"
+                                aria-live=\\"polite\\"
+                                class=\\"divider default text\\"
+                                role=\\"alert\\"
+                              >
+                                Choose your role
+                              </div>
+                              <i
+                                aria-hidden=\\"true\\"
+                                class=\\"dropdown icon\\"
+                              />
+                              <div
+                                class=\\"menu transition\\"
+                              >
+                                <div
+                                  aria-checked=\\"true\\"
+                                  aria-selected=\\"true\\"
+                                  class=\\"active selected item\\"
+                                  role=\\"option\\"
+                                  style=\\"pointer-events: all;\\"
+                                >
+                                  <span
+                                    class=\\"text\\"
+                                  />
+                                </div>
+                                <div
+                                  aria-checked=\\"false\\"
+                                  aria-selected=\\"false\\"
+                                  class=\\"item\\"
+                                  role=\\"option\\"
+                                  style=\\"pointer-events: all;\\"
+                                >
+                                  <span
+                                    class=\\"ui medium text\\"
+                                  >
+                                    Teacher
+                                  </span>
+                                  <br />
+                                  <span
+                                    class=\\"ui small text\\"
+                                  >
+                                    A non-specific teacher, participating in a multi person scenario.
+                                  </span>
+                                </div>
+                                <div
+                                  aria-checked=\\"false\\"
+                                  aria-selected=\\"false\\"
+                                  class=\\"item\\"
+                                  role=\\"option\\"
+                                  style=\\"pointer-events: all;\\"
+                                >
+                                  <span
+                                    class=\\"ui medium text\\"
+                                  >
+                                    Student
+                                  </span>
+                                  <br />
+                                  <span
+                                    class=\\"ui small text\\"
+                                  >
+                                    A non-specific student, participating in a multi person scenario.
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div
+                            class=\\"content\\"
+                          >
+                            <span>
+                              <span
+                                aria-label=\\"Super User (super)\\"
+                                class=\\"ui medium text\\"
+                                title=\\"Super User (super)\\"
+                              >
+                                Super User
+                              </span>
+                              
+                               
+                              <i
+                                aria-hidden=\\"true\\"
+                                class=\\"small icon chess queen\\"
+                                style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                                title=\\"Super\\"
+                              />
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class=\\"extra content\\"
+                    >
+                      <span
+                        class=\\"ui medium text\\"
+                      >
+                        1
+                         
+                        participant
+                        , 
+                        2 roles unassigned.
+                      </span>
+                      <button
+                        class=\\"ui disabled right floated button primary\\"
+                        disabled=\\"\\"
+                        tabindex=\\"-1\\"
+                      >
+                        Set roles & send invites
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              data-testid=\\"lobby-user-select\\"
+            />
+            <div
+              class=\\"ui padded grid l__waiting not-modal\\"
+            >
+              <div
+                class=\\"row\\"
+              >
+                <div
+                  class=\\"column\\"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"extra content\\"
+          >
+            <div
+              class=\\"ui fluid buttons\\"
+            >
+              <button
+                class=\\"ui disabled button\\"
+                disabled=\\"\\"
+                tabindex=\\"-1\\"
+              >
+                Continue to scenario
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      data-testid=\\"lobby-main\\"
+    />
+  </div>
+</body>"
+`;
+
+exports[`props.asCard 9`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <div
+      class=\\"ui one column grid\\"
+    >
+      <div
+        class=\\"column scenario__slide-column\\"
+      >
+        <div
+          class=\\"ui centered card scenario__slide-card\\"
+        >
+          <div
+            class=\\"content scenario__slide-card-header\\"
+          >
+            <div
+              class=\\"header l__waitingroom-header\\"
+              tabindex=\\"0\\"
+            >
+              Some Other Scenario in A New Cohort That Exists Within Inline Props Lobby
+            </div>
+          </div>
+          <div
+            class=\\"content scenario__slide-card-content\\"
+          >
+            <div
+              class=\\"ui padded grid l__invite not-modal\\"
+            >
+              <div
+                class=\\"row\\"
+              >
+                <div
+                  class=\\"column\\"
+                >
+                  <div
+                    class=\\"ui message\\"
+                    data-testid=\\"lobby-user-select-instructions\\"
+                  >
+                    <i
+                      aria-hidden=\\"true\\"
+                      class=\\"close icon\\"
+                    />
+                    <p>
+                      This scenario has 
+                      <strong>
+                        2
+                      </strong>
+                       roles. As host, you will participate in the scenario by filling one of the available roles.
+                    </p>
+                    <ol>
+                      <li>
+                        Choose your role first.
+                      </li>
+                      <li>
+                        Search and select participants that you want to invite, and assign their roles as you go.
+                      </li>
+                      <li>
+                        Once all of the available roles are filled, click the
+                         
+                        <button
+                          class=\\"ui mini compact disabled button primary\\"
+                          disabled=\\"\\"
+                          tabindex=\\"-1\\"
+                        >
+                          Send invites
+                        </button>
+                         button to invite your selected participants.
+                      </li>
+                    </ol>
+                    <p>
+                      There are 
+                      <strong>
+                        4
+                      </strong>
+                       other 
+                      participants
+                       
+                      available to fill the other 
+                      <strong>
+                        1
+                      </strong>
+                       
+                      role
+                      . 
+                      You must select at least 
+                      <strong>
+                        1
+                      </strong>
+                       other participant and assign them a role to continue.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div
+                class=\\"row\\"
+              >
+                <div
+                  class=\\"ui fluid search grid__menu-search l__search-input primary\\"
+                >
+                  <div
+                    class=\\"ui icon input\\"
+                  >
+                    <input
+                      autocomplete=\\"off\\"
+                      class=\\"prompt\\"
+                      tabindex=\\"0\\"
+                      type=\\"text\\"
+                      value=\\" \\"
+                    />
+                    <i
+                      aria-hidden=\\"true\\"
+                      class=\\"search icon\\"
+                    />
+                  </div>
+                  <div
+                    class=\\"results transition\\"
+                  >
+                    <div
+                      class=\\"result\\"
+                      searchable=\\"  Super User  super  super  super@email.com  participant super_admin  \\"
+                    >
+                      <span
+                        aria-label=\\"Super User (super)\\"
+                        class=\\"ui medium text\\"
+                        title=\\"Super User (super)\\"
+                      >
+                        Super User
+                      </span>
+                      
+                       
+                      <i
+                        aria-hidden=\\"true\\"
+                        class=\\"small icon chess queen\\"
+                        style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                        title=\\"Super\\"
+                      />
+                      <span
+                        class=\\"l__hidden\\"
+                      >
+                        (Select to invite)
+                      </span>
+                    </div>
+                    <div
+                      class=\\"result\\"
+                      searchable=\\"  Facilitator User  facilitator  facilitator  facilitator@email.com  participant facilitator researcher owner  \\"
+                    >
+                      <span
+                        aria-label=\\"Facilitator User (facilitator)\\"
+                        class=\\"ui medium text\\"
+                        title=\\"Facilitator User (facilitator)\\"
+                      >
+                        Facilitator User
+                      </span>
+                      
+                       
+                      <i
+                        aria-hidden=\\"true\\"
+                        class=\\"small icon chalkboard teacher\\"
+                        style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                        title=\\"Facilitator\\"
+                      />
+                      <span
+                        class=\\"l__hidden\\"
+                      >
+                        (Select to invite)
+                      </span>
+                    </div>
+                    <div
+                      class=\\"result\\"
+                      searchable=\\"  Researcher User  researcher  researcher  researcher@email.com  participant researcher  \\"
+                    >
+                      <span
+                        aria-label=\\"Researcher User (researcher)\\"
+                        class=\\"ui medium text\\"
+                        title=\\"Researcher User (researcher)\\"
+                      >
+                        Researcher User
+                      </span>
+                      
+                       
+                      <i
+                        aria-hidden=\\"true\\"
+                        class=\\"small icon user graduate\\"
+                        style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                        title=\\"Researcher\\"
+                      />
+                      <span
+                        class=\\"l__hidden\\"
+                      >
+                        (Select to invite)
+                      </span>
+                    </div>
+                    <div
+                      class=\\"result\\"
+                      searchable=\\"  Participant User  participant  participant  participant@email.com  participant  \\"
+                    >
+                      <span
+                        aria-label=\\"Participant User (participant)\\"
+                        class=\\"ui medium text\\"
+                        title=\\"Participant User (participant)\\"
+                      >
+                        Participant User
+                      </span>
+                      
+                       
+                      <span
+                        class=\\"l__hidden\\"
+                      >
+                        (Select to invite)
+                      </span>
+                    </div>
+                    <div
+                      class=\\"result\\"
+                      searchable=\\"  anonymous  anonymous  participant  \\"
+                    >
+                      <span
+                        aria-label=\\"anonymous\\"
+                        class=\\"ui medium text\\"
+                        title=\\"anonymous\\"
+                      >
+                        anonymous
+                      </span>
+                      
+                       
+                      <span
+                        class=\\"l__hidden\\"
+                      >
+                        (Select to invite)
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class=\\"row\\"
+              >
+                <div
+                  class=\\"column\\"
+                >
+                  <div
+                    class=\\"ui fluid card\\"
+                  >
+                    <div
+                      class=\\"content\\"
+                    >
+                      <div
+                        class=\\"ui divided selection list\\"
+                        data-testid=\\"lobby-user-select-invitees\\"
+                        role=\\"list\\"
+                      >
+                        <div
+                          class=\\"item\\"
+                          role=\\"listitem\\"
+                        >
+                          <div
+                            class=\\"right floated content\\"
+                          >
+                            <div
+                              aria-expanded=\\"false\\"
+                              class=\\"ui selection dropdown\\"
+                              id=\\"999\\"
+                              name=\\"0\\"
+                              role=\\"listbox\\"
+                              tabindex=\\"0\\"
+                            >
+                              <div
+                                aria-atomic=\\"true\\"
+                                aria-live=\\"polite\\"
+                                class=\\"divider default text\\"
+                                role=\\"alert\\"
+                              >
+                                Choose your role
+                              </div>
+                              <i
+                                aria-hidden=\\"true\\"
+                                class=\\"dropdown icon\\"
+                              />
+                              <div
+                                class=\\"menu transition\\"
+                              >
+                                <div
+                                  aria-checked=\\"true\\"
+                                  aria-selected=\\"true\\"
+                                  class=\\"active selected item\\"
+                                  role=\\"option\\"
+                                  style=\\"pointer-events: all;\\"
+                                >
+                                  <span
+                                    class=\\"text\\"
+                                  />
+                                </div>
+                                <div
+                                  aria-checked=\\"false\\"
+                                  aria-selected=\\"false\\"
+                                  class=\\"item\\"
+                                  role=\\"option\\"
+                                  style=\\"pointer-events: all;\\"
+                                >
+                                  <span
+                                    class=\\"ui medium text\\"
+                                  >
+                                    Teacher
+                                  </span>
+                                  <br />
+                                  <span
+                                    class=\\"ui small text\\"
+                                  >
+                                    A non-specific teacher, participating in a multi person scenario.
+                                  </span>
+                                </div>
+                                <div
+                                  aria-checked=\\"false\\"
+                                  aria-selected=\\"false\\"
+                                  class=\\"item\\"
+                                  role=\\"option\\"
+                                  style=\\"pointer-events: all;\\"
+                                >
+                                  <span
+                                    class=\\"ui medium text\\"
+                                  >
+                                    Student
+                                  </span>
+                                  <br />
+                                  <span
+                                    class=\\"ui small text\\"
+                                  >
+                                    A non-specific student, participating in a multi person scenario.
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div
+                            class=\\"content\\"
+                          >
+                            <span>
+                              <span
+                                aria-label=\\"Super User (super)\\"
+                                class=\\"ui medium text\\"
+                                title=\\"Super User (super)\\"
+                              >
+                                Super User
+                              </span>
+                              
+                               
+                              <i
+                                aria-hidden=\\"true\\"
+                                class=\\"small icon chess queen\\"
+                                style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                                title=\\"Super\\"
+                              />
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class=\\"extra content\\"
+                    >
+                      <span
+                        class=\\"ui medium text\\"
+                      >
+                        1
+                         
+                        participant
+                        , 
+                        2 roles unassigned.
+                      </span>
+                      <button
+                        class=\\"ui disabled right floated button primary\\"
+                        disabled=\\"\\"
+                        tabindex=\\"-1\\"
+                      >
+                        Set roles & send invites
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              data-testid=\\"lobby-user-select\\"
+            />
+            <div
+              class=\\"ui padded grid l__waiting not-modal\\"
+            >
+              <div
+                class=\\"row\\"
+              >
+                <div
+                  class=\\"column\\"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"extra content\\"
+          >
+            <div
+              class=\\"ui fluid buttons\\"
+            >
+              <button
+                class=\\"ui disabled button\\"
+                disabled=\\"\\"
+                tabindex=\\"-1\\"
+              >
+                Continue to scenario
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      data-testid=\\"lobby-main\\"
+    />
+  </div>
+</body>"
+`;
+
+exports[`props.asCard 12`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <div
+      class=\\"ui one column grid\\"
+    >
+      <div
+        class=\\"column scenario__slide-column\\"
+      >
+        <div
+          class=\\"ui centered card scenario__slide-card\\"
+        >
+          <div
+            class=\\"content scenario__slide-card-header\\"
+          >
+            <div
+              class=\\"header l__waitingroom-header\\"
+              tabindex=\\"0\\"
+            >
+              Some Other Scenario in A New Cohort That Exists Within Inline Props Lobby
+            </div>
+          </div>
+          <div
+            class=\\"content scenario__slide-card-content\\"
+          >
+            <div
+              class=\\"ui padded grid l__invite not-modal\\"
+            >
+              <div
+                class=\\"row\\"
+              >
+                <div
+                  class=\\"column\\"
+                >
+                  <div
+                    class=\\"ui message\\"
+                    data-testid=\\"lobby-user-select-instructions\\"
+                  >
+                    <i
+                      aria-hidden=\\"true\\"
+                      class=\\"close icon\\"
+                    />
+                    <p>
+                      This scenario has 
+                      <strong>
+                        2
+                      </strong>
+                       roles. As host, you will participate in the scenario by filling one of the available roles.
+                    </p>
+                    <ol>
+                      <li>
+                        Choose your role first.
+                      </li>
+                      <li>
+                        Search and select participants that you want to invite, and assign their roles as you go.
+                      </li>
+                      <li>
+                        Once all of the available roles are filled, click the
+                         
+                        <button
+                          class=\\"ui mini compact disabled button primary\\"
+                          disabled=\\"\\"
+                          tabindex=\\"-1\\"
+                        >
+                          Send invites
+                        </button>
+                         button to invite your selected participants.
+                      </li>
+                    </ol>
+                    <p>
+                      There are 
+                      <strong>
+                        4
+                      </strong>
+                       other 
+                      participants
+                       
+                      available to fill the other 
+                      <strong>
+                        1
+                      </strong>
+                       
+                      role
+                      . 
+                      You must select at least 
+                      <strong>
+                        1
+                      </strong>
+                       other participant and assign them a role to continue.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div
+                class=\\"row\\"
+              >
+                <div
+                  class=\\"ui fluid search grid__menu-search l__search-input primary\\"
+                >
+                  <div
+                    class=\\"ui icon input\\"
+                  >
+                    <input
+                      autocomplete=\\"off\\"
+                      class=\\"prompt\\"
+                      tabindex=\\"0\\"
+                      type=\\"text\\"
+                      value=\\" \\"
+                    />
+                    <i
+                      aria-hidden=\\"true\\"
+                      class=\\"search icon\\"
+                    />
+                  </div>
+                  <div
+                    class=\\"results transition\\"
+                  >
+                    <div
+                      class=\\"result\\"
+                      searchable=\\"  Super User  super  super  super@email.com  participant super_admin  \\"
+                    >
+                      <span
+                        aria-label=\\"Super User (super)\\"
+                        class=\\"ui medium text\\"
+                        title=\\"Super User (super)\\"
+                      >
+                        Super User
+                      </span>
+                      
+                       
+                      <i
+                        aria-hidden=\\"true\\"
+                        class=\\"small icon chess queen\\"
+                        style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                        title=\\"Super\\"
+                      />
+                      <span
+                        class=\\"l__hidden\\"
+                      >
+                        (Select to invite)
+                      </span>
+                    </div>
+                    <div
+                      class=\\"result\\"
+                      searchable=\\"  Facilitator User  facilitator  facilitator  facilitator@email.com  participant facilitator researcher owner  \\"
+                    >
+                      <span
+                        aria-label=\\"Facilitator User (facilitator)\\"
+                        class=\\"ui medium text\\"
+                        title=\\"Facilitator User (facilitator)\\"
+                      >
+                        Facilitator User
+                      </span>
+                      
+                       
+                      <i
+                        aria-hidden=\\"true\\"
+                        class=\\"small icon chalkboard teacher\\"
+                        style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                        title=\\"Facilitator\\"
+                      />
+                      <span
+                        class=\\"l__hidden\\"
+                      >
+                        (Select to invite)
+                      </span>
+                    </div>
+                    <div
+                      class=\\"result\\"
+                      searchable=\\"  Researcher User  researcher  researcher  researcher@email.com  participant researcher  \\"
+                    >
+                      <span
+                        aria-label=\\"Researcher User (researcher)\\"
+                        class=\\"ui medium text\\"
+                        title=\\"Researcher User (researcher)\\"
+                      >
+                        Researcher User
+                      </span>
+                      
+                       
+                      <i
+                        aria-hidden=\\"true\\"
+                        class=\\"small icon user graduate\\"
+                        style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                        title=\\"Researcher\\"
+                      />
+                      <span
+                        class=\\"l__hidden\\"
+                      >
+                        (Select to invite)
+                      </span>
+                    </div>
+                    <div
+                      class=\\"result\\"
+                      searchable=\\"  Participant User  participant  participant  participant@email.com  participant  \\"
+                    >
+                      <span
+                        aria-label=\\"Participant User (participant)\\"
+                        class=\\"ui medium text\\"
+                        title=\\"Participant User (participant)\\"
+                      >
+                        Participant User
+                      </span>
+                      
+                       
+                      <span
+                        class=\\"l__hidden\\"
+                      >
+                        (Select to invite)
+                      </span>
+                    </div>
+                    <div
+                      class=\\"result\\"
+                      searchable=\\"  anonymous  anonymous  participant  \\"
+                    >
+                      <span
+                        aria-label=\\"anonymous\\"
+                        class=\\"ui medium text\\"
+                        title=\\"anonymous\\"
+                      >
+                        anonymous
+                      </span>
+                      
+                       
+                      <span
+                        class=\\"l__hidden\\"
+                      >
+                        (Select to invite)
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class=\\"row\\"
+              >
+                <div
+                  class=\\"column\\"
+                >
+                  <div
+                    class=\\"ui fluid card\\"
+                  >
+                    <div
+                      class=\\"content\\"
+                    >
+                      <div
+                        class=\\"ui divided selection list\\"
+                        data-testid=\\"lobby-user-select-invitees\\"
+                        role=\\"list\\"
+                      >
+                        <div
+                          class=\\"item\\"
+                          role=\\"listitem\\"
+                        >
+                          <div
+                            class=\\"right floated content\\"
+                          >
+                            <div
+                              aria-expanded=\\"false\\"
+                              class=\\"ui selection dropdown\\"
+                              id=\\"999\\"
+                              name=\\"0\\"
+                              role=\\"listbox\\"
+                              tabindex=\\"0\\"
+                            >
+                              <div
+                                aria-atomic=\\"true\\"
+                                aria-live=\\"polite\\"
+                                class=\\"divider default text\\"
+                                role=\\"alert\\"
+                              >
+                                Choose your role
+                              </div>
+                              <i
+                                aria-hidden=\\"true\\"
+                                class=\\"dropdown icon\\"
+                              />
+                              <div
+                                class=\\"menu transition\\"
+                              >
+                                <div
+                                  aria-checked=\\"true\\"
+                                  aria-selected=\\"true\\"
+                                  class=\\"active selected item\\"
+                                  role=\\"option\\"
+                                  style=\\"pointer-events: all;\\"
+                                >
+                                  <span
+                                    class=\\"text\\"
+                                  />
+                                </div>
+                                <div
+                                  aria-checked=\\"false\\"
+                                  aria-selected=\\"false\\"
+                                  class=\\"item\\"
+                                  role=\\"option\\"
+                                  style=\\"pointer-events: all;\\"
+                                >
+                                  <span
+                                    class=\\"ui medium text\\"
+                                  >
+                                    Teacher
+                                  </span>
+                                  <br />
+                                  <span
+                                    class=\\"ui small text\\"
+                                  >
+                                    A non-specific teacher, participating in a multi person scenario.
+                                  </span>
+                                </div>
+                                <div
+                                  aria-checked=\\"false\\"
+                                  aria-selected=\\"false\\"
+                                  class=\\"item\\"
+                                  role=\\"option\\"
+                                  style=\\"pointer-events: all;\\"
+                                >
+                                  <span
+                                    class=\\"ui medium text\\"
+                                  >
+                                    Student
+                                  </span>
+                                  <br />
+                                  <span
+                                    class=\\"ui small text\\"
+                                  >
+                                    A non-specific student, participating in a multi person scenario.
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div
+                            class=\\"content\\"
+                          >
+                            <span>
+                              <span
+                                aria-label=\\"Super User (super)\\"
+                                class=\\"ui medium text\\"
+                                title=\\"Super User (super)\\"
+                              >
+                                Super User
+                              </span>
+                              
+                               
+                              <i
+                                aria-hidden=\\"true\\"
+                                class=\\"small icon chess queen\\"
+                                style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                                title=\\"Super\\"
+                              />
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class=\\"extra content\\"
+                    >
+                      <span
+                        class=\\"ui medium text\\"
+                      >
+                        1
+                         
+                        participant
+                        , 
+                        2 roles unassigned.
+                      </span>
+                      <button
+                        class=\\"ui disabled right floated button primary\\"
+                        disabled=\\"\\"
+                        tabindex=\\"-1\\"
+                      >
+                        Set roles & send invites
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              data-testid=\\"lobby-user-select\\"
+            />
+            <div
+              class=\\"ui padded grid l__waiting not-modal\\"
+            >
               <div
                 class=\\"row\\"
               >

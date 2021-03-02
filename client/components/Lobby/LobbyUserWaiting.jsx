@@ -8,6 +8,11 @@ import Identity from '@utils/Identity';
 import './Lobby.css';
 
 class LobbyUserWaiting extends Component {
+  constructor(props) {
+    super(props);
+    this.renderListItems = this.renderListItems.bind(this);
+  }
+
   renderListItems(list) {
     const { scenario, usersById } = this.props;
 
@@ -49,10 +54,10 @@ class LobbyUserWaiting extends Component {
           <Grid.Row>
             <Grid.Column>
               {totalPresent ? (
-                <p>Who is in the scenario?</p>
-              ) : (
-                <p>There are no participants in the scenario yet.</p>
-              )}
+                <p>
+                  Who is in <strong>this</strong> scenario room?
+                </p>
+              ) : null}
             </Grid.Column>
           </Grid.Row>
           {totalPresent ? (
@@ -72,27 +77,29 @@ class LobbyUserWaiting extends Component {
               </Grid.Column>
             </Grid.Row>
           ) : null}
-          <Grid.Row>
-            <Grid.Column>
-              {totalAbsent ? <p>Who has left the scenario?</p> : null}
-            </Grid.Column>
-          </Grid.Row>
           {totalAbsent ? (
-            <Grid.Row>
-              <Grid.Column>
-                <Card fluid>
-                  <Card.Content>
-                    <List
-                      divided
-                      selection
-                      data-testid="lobby-user-absent-invitees"
-                    >
-                      {this.renderListItems(usersAbsent)}
-                    </List>
-                  </Card.Content>
-                </Card>
-              </Grid.Column>
-            </Grid.Row>
+            <Fragment>
+              <Grid.Row>
+                <Grid.Column>
+                  <p>Who has left the scenario?</p>
+                </Grid.Column>
+              </Grid.Row>
+              <Grid.Row>
+                <Grid.Column>
+                  <Card fluid>
+                    <Card.Content>
+                      <List
+                        divided
+                        selection
+                        data-testid="lobby-user-absent-invitees"
+                      >
+                        {this.renderListItems(usersAbsent)}
+                      </List>
+                    </Card.Content>
+                  </Card>
+                </Grid.Column>
+              </Grid.Row>
+            </Fragment>
           ) : null}
         </Grid>
       </Fragment>

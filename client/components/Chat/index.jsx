@@ -21,7 +21,7 @@ import withSocket, {
 //   CHAT_MESSAGE
 // } from '@hoc/withRunEventCapturing';
 import {
-  getChatById,
+  getChat,
   getChatUsersByChatId,
   setChatUsersByChatId
 } from '@actions/chat';
@@ -160,7 +160,7 @@ class Chat extends Component {
 
   async componentDidMount() {
     if (this.props.chat.id && !this.props.chat.created_at) {
-      await this.props.getChatById(this.props.chat.id);
+      await this.props.getChat(this.props.chat.id);
     }
 
     const { chat, user } = this.props;
@@ -529,7 +529,7 @@ class Chat extends Component {
 Chat.propTypes = {
   chat: PropTypes.object,
   cohort: PropTypes.object,
-  getChatById: PropTypes.func,
+  getChat: PropTypes.func,
   getChatUsersByChatId: PropTypes.func,
   setChatUsersByChatId: PropTypes.func,
   header: PropTypes.node,
@@ -557,7 +557,7 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  getChatById: id => dispatch(getChatById(id)),
+  getChat: id => dispatch(getChat(id)),
   getChatUsersByChatId: id => dispatch(getChatUsersByChatId(id)),
   setChatUsersByChatId: (id, users) => dispatch(setChatUsersByChatId(id, users))
 });

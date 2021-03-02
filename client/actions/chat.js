@@ -52,7 +52,10 @@ export let createChat = (
   }
 };
 
-export let getChat = (scenario, cohort = null) => async dispatch => {
+export let getChatByIdentifiers = (
+  scenario,
+  cohort = null
+) => async dispatch => {
   try {
     const url = cohort
       ? `/api/chats/new-or-existing/scenario/${scenario.id}/cohort/${cohort.id}`
@@ -97,7 +100,7 @@ export let createChatInvite = (id, selection) => async dispatch => {
   }
 };
 
-export let getChatById = id => async dispatch => {
+export let getChat = id => async dispatch => {
   try {
     const res = await (await fetch(`/api/chats/${id}`)).json();
 

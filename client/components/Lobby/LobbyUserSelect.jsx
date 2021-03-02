@@ -274,20 +274,23 @@ class LobbyUserSelect extends Component {
           );
 
           const assignedRole = selection.assigned ? (
-            <div style={{ padding: '0.7em 0.5em 0 0' }}>
+            <div style={{ padding: '0.7em 0.25em 0 0' }}>
               {selection.assigned.name}
             </div>
           ) : null;
 
           const rightFloatedContents = assignedRole || dropdown;
+          const listContentClassName = assignedRole
+            ? 'l__contentnoremoval'
+            : '';
 
           return (
             <List.Item key={key}>
               <List.Content floated="right">
                 {rightFloatedContents}
               </List.Content>
-              <List.Content>
-                {isSelectedNotHost ? (
+              <List.Content className={listContentClassName}>
+                {isSelectedNotHost && !assignedRole ? (
                   <Button
                     className="icon-primary"
                     icon="x"

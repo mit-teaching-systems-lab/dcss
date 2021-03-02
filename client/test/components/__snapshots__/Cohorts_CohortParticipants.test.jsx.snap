@@ -93,6 +93,7 @@ exports[`Modal close 1`] = `
                 >
                   Facilitator User
                 </span>
+                
                  
                 <i
                   aria-hidden=\\"true\\"
@@ -152,6 +153,7 @@ exports[`Modal close 1`] = `
                 >
                   Super User
                 </span>
+                
                  
                 <i
                   aria-hidden=\\"true\\"
@@ -473,6 +475,7 @@ exports[`Modal close 2`] = `
                 >
                   Facilitator User
                 </span>
+                
                  
                 <i
                   aria-hidden=\\"true\\"
@@ -532,6 +535,7 @@ exports[`Modal close 2`] = `
                 >
                   Super User
                 </span>
+                
                  
                 <i
                   aria-hidden=\\"true\\"
@@ -853,6 +857,7 @@ exports[`Pagination 1`] = `
                 >
                   Facilitator User
                 </span>
+                
                  
                 <i
                   aria-hidden=\\"true\\"
@@ -912,6 +917,7 @@ exports[`Pagination 1`] = `
                 >
                   Super User
                 </span>
+                
                  
                 <i
                   aria-hidden=\\"true\\"
@@ -1233,6 +1239,7 @@ exports[`Pagination 2`] = `
                 >
                   Facilitator User
                 </span>
+                
                  
                 <i
                   aria-hidden=\\"true\\"
@@ -1292,6 +1299,7 @@ exports[`Pagination 2`] = `
                 >
                   Super User
                 </span>
+                
                  
                 <i
                   aria-hidden=\\"true\\"
@@ -1613,6 +1621,7 @@ exports[`Pagination 3`] = `
                 >
                   Participant User
                 </span>
+                
                  
               </td>
               <td
@@ -1663,6 +1672,7 @@ exports[`Pagination 3`] = `
                 >
                   Researcher User
                 </span>
+                
                  
                 <i
                   aria-hidden=\\"true\\"
@@ -1985,6 +1995,7 @@ exports[`Pagination 4`] = `
                 >
                   anonymous
                 </span>
+                
                  
               </td>
               <td
@@ -2313,6 +2324,7 @@ exports[`Pagination 5`] = `
                 >
                   Facilitator User
                 </span>
+                
                  
                 <i
                   aria-hidden=\\"true\\"
@@ -2372,6 +2384,7 @@ exports[`Pagination 5`] = `
                 >
                   Super User
                 </span>
+                
                  
                 <i
                   aria-hidden=\\"true\\"
@@ -2687,6 +2700,7 @@ exports[`Participant only 1`] = `
                 >
                   anonymous
                 </span>
+                
                  
               </td>
             </tr>
@@ -2703,6 +2717,7 @@ exports[`Participant only 1`] = `
                 >
                   Participant User
                 </span>
+                
                  
               </td>
             </tr>
@@ -2719,6 +2734,7 @@ exports[`Participant only 1`] = `
                 >
                   Researcher User
                 </span>
+                
                  
                 <i
                   aria-hidden=\\"true\\"
@@ -2741,6 +2757,7 @@ exports[`Participant only 1`] = `
                 >
                   Facilitator User
                 </span>
+                
                  
                 <i
                   aria-hidden=\\"true\\"
@@ -2764,6 +2781,7 @@ exports[`Participant only 1`] = `
                 >
                   Super User
                 </span>
+                
                  
                 <i
                   aria-hidden=\\"true\\"
@@ -2999,6 +3017,7 @@ exports[`Researcher only 1`] = `
                 >
                   anonymous
                 </span>
+                
                  
               </td>
               <td
@@ -3033,6 +3052,7 @@ exports[`Researcher only 1`] = `
                 >
                   Participant User
                 </span>
+                
                  
               </td>
               <td
@@ -3066,6 +3086,7 @@ exports[`Researcher only 1`] = `
                 >
                   Researcher User
                 </span>
+                
                  
                 <i
                   aria-hidden=\\"true\\"
@@ -3107,6 +3128,7 @@ exports[`Researcher only 1`] = `
                 >
                   Facilitator User
                 </span>
+                
                  
                 <i
                   aria-hidden=\\"true\\"
@@ -3148,6 +3170,7 @@ exports[`Researcher only 1`] = `
                 >
                   Super User
                 </span>
+                
                  
                 <i
                   aria-hidden=\\"true\\"
@@ -3400,6 +3423,7 @@ exports[`Search participants 1`] = `
                 >
                   anonymous
                 </span>
+                
                  
               </td>
               <td
@@ -3452,6 +3476,7 @@ exports[`Search participants 1`] = `
                 >
                   Participant User
                 </span>
+                
                  
               </td>
               <td
@@ -3502,6 +3527,7 @@ exports[`Search participants 1`] = `
                 >
                   Researcher User
                 </span>
+                
                  
                 <i
                   aria-hidden=\\"true\\"
@@ -3559,6 +3585,7 @@ exports[`Search participants 1`] = `
                 >
                   Facilitator User
                 </span>
+                
                  
                 <i
                   aria-hidden=\\"true\\"
@@ -3618,6 +3645,7 @@ exports[`Search participants 1`] = `
                 >
                   Super User
                 </span>
+                
                  
                 <i
                   aria-hidden=\\"true\\"
@@ -3886,6 +3914,7 @@ exports[`Search participants 2`] = `
                 >
                   anonymous
                 </span>
+                
                  
               </td>
               <td
@@ -3938,6 +3967,7 @@ exports[`Search participants 2`] = `
                 >
                   Participant User
                 </span>
+                
                  
               </td>
               <td
@@ -3988,6 +4018,7 @@ exports[`Search participants 2`] = `
                 >
                   Researcher User
                 </span>
+                
                  
                 <i
                   aria-hidden=\\"true\\"
@@ -4045,6 +4076,7 @@ exports[`Search participants 2`] = `
                 >
                   Facilitator User
                 </span>
+                
                  
                 <i
                   aria-hidden=\\"true\\"
@@ -4104,6 +4136,7 @@ exports[`Search participants 2`] = `
                 >
                   Super User
                 </span>
+                
                  
                 <i
                   aria-hidden=\\"true\\"
@@ -4372,6 +4405,7 @@ exports[`Search participants 3`] = `
                 >
                   anonymous
                 </span>
+                
                  
               </td>
               <td
@@ -4424,6 +4458,7 @@ exports[`Search participants 3`] = `
                 >
                   Participant User
                 </span>
+                
                  
               </td>
               <td
@@ -4474,6 +4509,7 @@ exports[`Search participants 3`] = `
                 >
                   Researcher User
                 </span>
+                
                  
                 <i
                   aria-hidden=\\"true\\"
@@ -4531,6 +4567,7 @@ exports[`Search participants 3`] = `
                 >
                   Facilitator User
                 </span>
+                
                  
                 <i
                   aria-hidden=\\"true\\"
@@ -4590,6 +4627,7 @@ exports[`Search participants 3`] = `
                 >
                   Super User
                 </span>
+                
                  
                 <i
                   aria-hidden=\\"true\\"
@@ -4858,6 +4896,7 @@ exports[`Search participants 4`] = `
                 >
                   Researcher User
                 </span>
+                
                  
                 <i
                   aria-hidden=\\"true\\"
@@ -4915,6 +4954,7 @@ exports[`Search participants 4`] = `
                 >
                   Facilitator User
                 </span>
+                
                  
                 <i
                   aria-hidden=\\"true\\"
@@ -5219,6 +5259,7 @@ exports[`Search participants 5`] = `
                 >
                   Researcher User
                 </span>
+                
                  
                 <i
                   aria-hidden=\\"true\\"
@@ -5276,6 +5317,7 @@ exports[`Search participants 5`] = `
                 >
                   Facilitator User
                 </span>
+                
                  
                 <i
                   aria-hidden=\\"true\\"
@@ -5580,6 +5622,7 @@ exports[`Search participants 6`] = `
                 >
                   anonymous
                 </span>
+                
                  
               </td>
               <td
@@ -5632,6 +5675,7 @@ exports[`Search participants 6`] = `
                 >
                   Participant User
                 </span>
+                
                  
               </td>
               <td
@@ -5682,6 +5726,7 @@ exports[`Search participants 6`] = `
                 >
                   Researcher User
                 </span>
+                
                  
                 <i
                   aria-hidden=\\"true\\"
@@ -5739,6 +5784,7 @@ exports[`Search participants 6`] = `
                 >
                   Facilitator User
                 </span>
+                
                  
                 <i
                   aria-hidden=\\"true\\"
@@ -5798,6 +5844,7 @@ exports[`Search participants 6`] = `
                 >
                   Super User
                 </span>
+                
                  
                 <i
                   aria-hidden=\\"true\\"
@@ -6066,6 +6113,7 @@ exports[`Search participants 7`] = `
                 >
                   Facilitator User
                 </span>
+                
                  
                 <i
                   aria-hidden=\\"true\\"
@@ -6381,6 +6429,7 @@ exports[`Search participants 8`] = `
                 >
                   Facilitator User
                 </span>
+                
                  
                 <i
                   aria-hidden=\\"true\\"
@@ -6696,6 +6745,7 @@ exports[`Search participants 9`] = `
                 >
                   Researcher User
                 </span>
+                
                  
                 <i
                   aria-hidden=\\"true\\"
@@ -7009,6 +7059,7 @@ exports[`Search participants 10`] = `
                 >
                   Researcher User
                 </span>
+                
                  
                 <i
                   aria-hidden=\\"true\\"
@@ -7322,6 +7373,7 @@ exports[`Search participants 11`] = `
                 >
                   anonymous
                 </span>
+                
                  
               </td>
               <td
@@ -7374,6 +7426,7 @@ exports[`Search participants 11`] = `
                 >
                   Participant User
                 </span>
+                
                  
               </td>
               <td
@@ -7424,6 +7477,7 @@ exports[`Search participants 11`] = `
                 >
                   Researcher User
                 </span>
+                
                  
                 <i
                   aria-hidden=\\"true\\"
@@ -7481,6 +7535,7 @@ exports[`Search participants 11`] = `
                 >
                   Facilitator User
                 </span>
+                
                  
                 <i
                   aria-hidden=\\"true\\"
@@ -7540,6 +7595,7 @@ exports[`Search participants 11`] = `
                 >
                   Super User
                 </span>
+                
                  
                 <i
                   aria-hidden=\\"true\\"
@@ -7808,6 +7864,7 @@ exports[`Search participants 12`] = `
                 >
                   anonymous
                 </span>
+                
                  
               </td>
               <td
@@ -7860,6 +7917,7 @@ exports[`Search participants 12`] = `
                 >
                   Participant User
                 </span>
+                
                  
               </td>
               <td
@@ -7910,6 +7968,7 @@ exports[`Search participants 12`] = `
                 >
                   Researcher User
                 </span>
+                
                  
                 <i
                   aria-hidden=\\"true\\"
@@ -7967,6 +8026,7 @@ exports[`Search participants 12`] = `
                 >
                   Facilitator User
                 </span>
+                
                  
                 <i
                   aria-hidden=\\"true\\"
@@ -8026,6 +8086,7 @@ exports[`Search participants 12`] = `
                 >
                   Super User
                 </span>
+                
                  
                 <i
                   aria-hidden=\\"true\\"
@@ -8294,6 +8355,7 @@ exports[`Search participants 13`] = `
                 >
                   anonymous
                 </span>
+                
                  
               </td>
               <td
@@ -8346,6 +8408,7 @@ exports[`Search participants 13`] = `
                 >
                   Participant User
                 </span>
+                
                  
               </td>
               <td
@@ -8396,6 +8459,7 @@ exports[`Search participants 13`] = `
                 >
                   Researcher User
                 </span>
+                
                  
                 <i
                   aria-hidden=\\"true\\"
@@ -8453,6 +8517,7 @@ exports[`Search participants 13`] = `
                 >
                   Facilitator User
                 </span>
+                
                  
                 <i
                   aria-hidden=\\"true\\"
@@ -8512,6 +8577,7 @@ exports[`Search participants 13`] = `
                 >
                   Super User
                 </span>
+                
                  
                 <i
                   aria-hidden=\\"true\\"
@@ -8780,6 +8846,7 @@ exports[`Super admin 1`] = `
                 >
                   anonymous
                 </span>
+                
                  
               </td>
               <td
@@ -8832,6 +8899,7 @@ exports[`Super admin 1`] = `
                 >
                   Participant User
                 </span>
+                
                  
               </td>
               <td
@@ -8882,6 +8950,7 @@ exports[`Super admin 1`] = `
                 >
                   Researcher User
                 </span>
+                
                  
                 <i
                   aria-hidden=\\"true\\"
@@ -8939,6 +9008,7 @@ exports[`Super admin 1`] = `
                 >
                   Facilitator User
                 </span>
+                
                  
                 <i
                   aria-hidden=\\"true\\"
@@ -8998,6 +9068,7 @@ exports[`Super admin 1`] = `
                 >
                   Super User
                 </span>
+                
                  
                 <i
                   aria-hidden=\\"true\\"
@@ -9266,6 +9337,7 @@ exports[`Super admin 2`] = `
                 >
                   anonymous
                 </span>
+                
                  
               </td>
               <td
@@ -9318,6 +9390,7 @@ exports[`Super admin 2`] = `
                 >
                   Participant User
                 </span>
+                
                  
               </td>
               <td
@@ -9368,6 +9441,7 @@ exports[`Super admin 2`] = `
                 >
                   Researcher User
                 </span>
+                
                  
                 <i
                   aria-hidden=\\"true\\"
@@ -9425,6 +9499,7 @@ exports[`Super admin 2`] = `
                 >
                   Facilitator User
                 </span>
+                
                  
                 <i
                   aria-hidden=\\"true\\"
@@ -9484,6 +9559,7 @@ exports[`Super admin 2`] = `
                 >
                   Super User
                 </span>
+                
                  
                 <i
                   aria-hidden=\\"true\\"

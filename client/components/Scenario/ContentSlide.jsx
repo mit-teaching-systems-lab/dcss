@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { getChatById, getLinkedChatUsersByChatId } from '@actions/chat';
+import { getChat, getLinkedChatUsersByChatId } from '@actions/chat';
 import { getResponse } from '@actions/response';
 import SlideComponents from '@components/SlideComponents';
 import { Button, Card, Icon, Popup } from '@components/UI';
@@ -121,7 +121,7 @@ class ContentSlide extends React.Component {
     );
 
     if (this.isMultiparticipant) {
-      await this.props.getChatById(this.props.chat.id);
+      await this.props.getChat(this.props.chat.id);
       await this.props.getLinkedChatUsersByChatId(this.props.chat.id);
     }
 
@@ -423,7 +423,7 @@ class ContentSlide extends React.Component {
 
 ContentSlide.propTypes = {
   chat: PropTypes.object,
-  getChatById: PropTypes.func,
+  getChat: PropTypes.func,
   getLinkedChatUsersByChatId: PropTypes.func,
   getResponse: PropTypes.func,
   isContextual: PropTypes.bool,
@@ -448,7 +448,7 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  getChatById: id => dispatch(getChatById(id)),
+  getChat: id => dispatch(getChat(id)),
   getLinkedChatUsersByChatId: id => dispatch(getLinkedChatUsersByChatId(id)),
   getResponse: params => dispatch(getResponse(params))
 });

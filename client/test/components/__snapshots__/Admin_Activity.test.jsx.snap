@@ -477,6 +477,7 @@ exports[`Render 2 1 2`] = `
                   >
                     Super User
                   </span>
+                  
                    
                   <i
                     aria-hidden=\\"true\\"
@@ -516,6 +517,7 @@ exports[`Render 2 1 2`] = `
                   >
                     Super User
                   </span>
+                  
                    
                   <i
                     aria-hidden=\\"true\\"

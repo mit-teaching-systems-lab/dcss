@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import {
   getChat,
-  getChatById,
+  getChatByIdentifiers,
   // This is used for cohort scenario runs
   getChatUsersByChatId,
   // This is used for standalone scenario runs
@@ -14,6 +14,7 @@ import { getCohort } from '@actions/cohort';
 import { getScenario } from '@actions/scenario';
 import { getUsers } from '@actions/users';
 import Loading from '@components/Loading';
+import LobbyUserOverview from '@components/Lobby/LobbyUserOverview';
 import LobbyUserSelect from '@components/Lobby/LobbyUserSelect';
 import LobbyUserWaiting from '@components/Lobby/LobbyUserWaiting';
 import { Button, Card, Grid } from '@components/UI';
@@ -51,6 +52,14 @@ class Lobby extends Component {
     this.onRunChatLink = this.onRunChatLink.bind(this);
   }
 
+  get isScenarioRun() {
+    return window.location.pathname.includes('/run/');
+  }
+
+  get isCohortScenarioRun() {
+    return window.location.pathname.includes('/cohort/');
+  }
+
   async componentDidMount() {
     const { user } = this.props;
 
@@ -64,10 +73,10 @@ class Lobby extends Component {
 
     /* istanbul ignore if */
     if (this.props.__UNSAFE_OVERRIDE_ID__) {
-      await this.props.getChatById(this.props.__UNSAFE_OVERRIDE_ID__);
+      await this.props.getChat(this.props.__UNSAFE_OVERRIDE_ID__);
     } else {
       if (isNotLoaded(this.props.chat)) {
-        await this.props.getChatById(this.props.chat.id);
+        await this.props.getChat(this.props.chat.id);
       }
     }
 
@@ -85,7 +94,7 @@ class Lobby extends Component {
       // scenario, in this cohort.
       /* istanbul ignore else */
       if (scenario) {
-        await this.props.getChat(scenario, cohort);
+        await this.props.getChatByIdentifiers(scenario, cohort);
       }
     }
 
@@ -218,12 +227,15 @@ class Lobby extends Component {
                     {title}
                   </Card.Header>
                 </Card.Content>
-                <Card.Content>
+                <Card.Content className="scenario__slide-card-content">
                   <LobbyUserSelect
                     {...lobbyUserViewsProps}
                     onSelect={onSelect}
                   />
                   <LobbyUserWaiting {...lobbyUserViewsProps} />
+                  {this.isCohortScenarioRun ? (
+                    <LobbyUserOverview {...lobbyUserViewsProps} />
+                  ) : null}
                 </Card.Content>
                 <Card.Content extra>
                   <Button.Group fluid>
@@ -237,6 +249,9 @@ class Lobby extends Component {
           <Fragment>
             <LobbyUserSelect {...lobbyUserViewsProps} />
             <LobbyUserWaiting {...lobbyUserViewsProps} />
+            {this.isCohortScenarioRun ? (
+              <LobbyUserOverview {...lobbyUserViewsProps} />
+            ) : null}
           </Fragment>
         )}
         <div data-testid="lobby-main" />
@@ -254,7 +269,7 @@ Lobby.propTypes = {
     push: PropTypes.func.isRequired
   }).isRequired,
   getChat: PropTypes.func,
-  getChatById: PropTypes.func,
+  getChatByIdentifiers: PropTypes.func,
   getChatUsersByChatId: PropTypes.func,
   getCohort: PropTypes.func,
   getLinkedChatUsersByChatId: PropTypes.func,
@@ -285,8 +300,8 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  getChat: (...args) => dispatch(getChat(...args)),
-  getChatById: id => dispatch(getChatById(id)),
+  getChat: id => dispatch(getChat(id)),
+  getChatByIdentifiers: (...args) => dispatch(getChatByIdentifiers(...args)),
   getChatUsersByChatId: id => dispatch(getChatUsersByChatId(id)),
   getLinkedChatUsersByChatId: id => dispatch(getLinkedChatUsersByChatId(id)),
   getCohort: id => dispatch(getCohort(id)),

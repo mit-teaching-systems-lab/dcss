@@ -33,7 +33,9 @@ export class CohortScenarios extends React.Component {
         isOpen: false
       },
       room: {
-        isOpen: false
+        isOpen: false,
+        scenario: null,
+        lobby: null
       },
       visibleCount: 4
     };
@@ -97,7 +99,7 @@ export class CohortScenarios extends React.Component {
       onEditScenariosClick,
       onSortableChange /*, onSortableScroll */
     } = this;
-    const { authority, cohort, onClick, runs } = this.props;
+    const { authority, chats, cohort, onClick, runs, user } = this.props;
     const { isReady } = this.state;
     const { isFacilitator } = authority;
 
@@ -155,7 +157,9 @@ export class CohortScenarios extends React.Component {
     const onCohortRoomSelectorClose = () => {
       this.setState({
         room: {
-          isOpen: false
+          isOpen: false,
+          scenario: null,
+          lobby: null
         }
       });
     };
@@ -199,13 +203,13 @@ export class CohortScenarios extends React.Component {
               const storageKey = `cohort/${cohort.id}/run/${scenario.id}`;
 
               const progress = Storage.get(storageKey);
-              const slideIndex = progress
-                ? progress.activeRunSlideIndex
-                : 0;
+              const slideIndex = progress ? progress.activeRunSlideIndex : 0;
 
               const hashCohortId = Identity.toHash(cohort.id);
               const hashScenarioId = Identity.toHash(scenario.id);
-              const hashChatId = run.chat_id ? Identity.toHash(run.chat_id) : null;
+              const hashChatId = run.chat_id
+                ? Identity.toHash(run.chat_id)
+                : null;
 
               let pathname = `/cohort/${hashCohortId}/run/${hashScenarioId}`;
 
@@ -329,6 +333,14 @@ export class CohortScenarios extends React.Component {
                 runStartedMaybeFinished = `Finished ${endedAtDisplay}.`;
               }
 
+              const existingChat = chats.find(
+                chat =>
+                  chat.scenario_id === scenario.id &&
+                  chat.host_id === user.id &&
+                  chat.cohort_id === cohort.id &&
+                  chat.ended_at === null
+              );
+
               return (
                 <Card
                   className="c__scenario-card"
@@ -363,6 +375,7 @@ export class CohortScenarios extends React.Component {
                               this.setState({
                                 room: {
                                   isOpen: true,
+                                  lobby: null,
                                   scenario
                                 }
                               });
@@ -375,6 +388,26 @@ export class CohortScenarios extends React.Component {
                         <Icon className="primary" name="play" />
                         {runScenarioDisplay}
                       </Button>
+                      {isMultiParticipantScenario && existingChat ? (
+                        <Button
+                          size="tiny"
+                          data-testid="see-my-room-lobby"
+                          onClick={() => {
+                            this.setState({
+                              room: {
+                                isOpen: true,
+                                lobby: {
+                                  isOpen: true
+                                },
+                                scenario
+                              }
+                            });
+                          }}
+                        >
+                          <Icon className="primary" name="group" />
+                          Go to my room&apos;s lobby
+                        </Button>
+                      ) : null}
                       {/*isFacilitator ? (
                         <Button
                           size="tiny"
@@ -420,6 +453,7 @@ export class CohortScenarios extends React.Component {
         {this.state.room.isOpen ? (
           <CohortRoomSelector
             {...cohortScenarioRoomProps}
+            lobby={this.state.room.lobby}
             scenario={this.state.room.scenario}
           />
         ) : null}
@@ -433,6 +467,7 @@ export class CohortScenarios extends React.Component {
 CohortScenarios.propTypes = {
   authority: PropTypes.object,
   id: PropTypes.any,
+  chats: PropTypes.array,
   cohort: PropTypes.shape({
     id: PropTypes.any,
     name: PropTypes.string,
@@ -454,12 +489,12 @@ CohortScenarios.propTypes = {
 };
 
 const mapStateToProps = (state, ownProps) => {
-  const { cohort, cohorts, user, usersById } = state;
+  const { chats, cohort, cohorts, user, usersById } = state;
   const scenarios = state.scenarios.filter(
     ({ deleted_at, status }) => deleted_at === null && status !== 1
   );
   const runs = state.runs.filter(run => run.cohort_id === ownProps.id);
-  return { cohort, cohorts, scenarios, runs, user, usersById };
+  return { chats, cohort, cohorts, scenarios, runs, user, usersById };
 };
 
 const mapDispatchToProps = dispatch => ({

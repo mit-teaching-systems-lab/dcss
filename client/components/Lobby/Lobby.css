@@ -51,7 +51,8 @@
 }
 
 .l__invite .card > .content:last-child {
-  padding: .50em .75em !important;
+  /*padding: .50em .75em !important;*/
+  padding: .5em .5em !important;
   font-size: 1em !important;
   line-height: 1.7em;
 }
@@ -67,13 +68,13 @@
   /*padding: 0.585714em 3.2em 0.585714em 1em !important;*/
 }
 
-.l__invite.not-modal .ui.divided.selection.list > .item:first-child > .content:last-child {
+/*.l__invite.not-modal .ui.divided.selection.list > .item:first-child > .content:last-child {
   padding-left: 0.25em;
 }
-
 .l__waiting.not-modal .ui.divided.selection.list > .item > .content:last-child {
   padding-left: 0.25em;
 }
+*/
 
 .l__invite .ui.divided.selection.list > .item > .content:last-child,
 .l__waiting .ui.divided.selection.list > .item > .content:last-child {
@@ -94,3 +95,19 @@
 .modal > .content > .l__invite.l__confirmation .card > .content {
   padding: unset !important;
 }
+
+.l__overviewcards .card > .content:first-child {
+  padding: 0.8em 0.5em !important;
+}
+
+.l__overviewcards .card > .content:last-child {
+  padding: .5em .5em !important;
+  font-size: 1em !important;
+  line-height: 1.7em;
+}
+
+.l__contentnoremoval {
+  /*padding-left: 5px;*/
+}
+
+

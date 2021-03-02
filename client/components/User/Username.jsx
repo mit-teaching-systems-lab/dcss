@@ -53,6 +53,7 @@ class Username extends Component {
     return this.displayableName;
   }
   render() {
+    const { possessive } = this.props;
     const { displayableName, id, icon, roles, title } = makeDisplayables(
       this.props.user
     );
@@ -70,7 +71,8 @@ class Username extends Component {
       <Fragment>
         <Text key={key} title={title}>
           {displayableName}
-        </Text>{' '}
+        </Text>
+        {possessive ? "'s" : ''}{' '}
         {this.icon ? (
           <Icon
             size="small"
@@ -89,7 +91,12 @@ class Username extends Component {
 }
 
 Username.propTypes = {
+  possessive: PropTypes.bool,
   user: PropTypes.object
+};
+
+Username.defaultProps = {
+  possessive: false
 };
 
 const mapStateToProps = (state, ownProps) => {

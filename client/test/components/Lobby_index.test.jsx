@@ -82,6 +82,7 @@ import {
   GET_CHAT_SUCCESS,
   GET_CHAT_USERS_SUCCESS,
   GET_COHORT_SUCCESS,
+  GET_COHORT_CHATS_OVERVIEW_SUCCESS,
   GET_INVITES_SUCCESS,
   GET_SCENARIO_SUCCESS,
   GET_USERS_COUNT_SUCCESS,
@@ -705,12 +706,12 @@ beforeEach(() => {
     return accum;
   }, {});
 
-  chatActions.getChat.mockImplementation(() => async dispatch => {
+  chatActions.getChatByIdentifiers.mockImplementation(() => async dispatch => {
     dispatch({ type: GET_CHAT_SUCCESS, chat });
     return chat;
   });
 
-  chatActions.getChatById.mockImplementation(() => async dispatch => {
+  chatActions.getChatByIdentifiers.mockImplementation(() => async dispatch => {
     dispatch({ type: GET_CHAT_SUCCESS, chat });
     return chat;
   });
@@ -747,6 +748,13 @@ beforeEach(() => {
     dispatch({ type: GET_COHORT_SUCCESS, cohort });
     return cohort;
   });
+
+  cohortActions.getCohortChatsOverview.mockImplementation(
+    () => async dispatch => {
+      dispatch({ type: GET_COHORT_CHATS_OVERVIEW_SUCCESS, chats });
+      return chats;
+    }
+  );
 
   scenarioActions.getScenario.mockImplementation(() => async dispatch => {
     dispatch({ type: GET_SCENARIO_SUCCESS, scenario });
@@ -900,7 +908,7 @@ test('Fallback: chat, scenario, cohort are not yet loaded, use provided props', 
     usersById
   };
 
-  chatActions.getChatById.mockImplementation(() => async dispatch => {
+  chatActions.getChatByIdentifiers.mockImplementation(() => async dispatch => {
     chat = {
       ...chat,
       created_at
@@ -957,7 +965,7 @@ test('Fallback: chat, scenario, cohort are not yet loaded, use provided props', 
   await waitFor(() => {
     expect(chatActions.getChatById).toHaveBeenCalled();
   });
-  expect(chatActions.getChatById.mock.calls).toMatchInlineSnapshot(`
+  expect(chatActions.getChatByIdentifiers.mock.calls).toMatchInlineSnapshot(`
     Array [
       Array [
         1,
@@ -1196,12 +1204,12 @@ test('Fallback: chat missing, use scenario and cohort to request chat', async do
     usersById
   };
 
-  chatActions.getChat.mockImplementation(() => async dispatch => {
+  chatActions.getChatByIdentifiers.mockImplementation(() => async dispatch => {
     dispatch({ type: GET_CHAT_SUCCESS, chat });
     return chat;
   });
 
-  chatActions.getChatById.mockImplementation(() => async dispatch => {
+  chatActions.getChatByIdentifiers.mockImplementation(() => async dispatch => {
     const chat = null;
     dispatch({ type: GET_CHAT_SUCCESS, chat });
     return chat;
@@ -1284,12 +1292,12 @@ test('Fallback: chat missing, use scenario to request chat', async done => {
     usersById
   };
 
-  chatActions.getChat.mockImplementation(() => async dispatch => {
+  chatActions.getChatByIdentifiers.mockImplementation(() => async dispatch => {
     dispatch({ type: GET_CHAT_SUCCESS, chat });
     return chat;
   });
 
-  chatActions.getChatById.mockImplementation(() => async dispatch => {
+  chatActions.getChatByIdentifiers.mockImplementation(() => async dispatch => {
     const chat = null;
     dispatch({ type: GET_CHAT_SUCCESS, chat });
     return chat;
@@ -1441,7 +1449,7 @@ test('Without cohort, Receives RUN_CHAT_LINK, calls getLinkedChatUsersByChatId',
     user
   };
 
-  chatActions.getChatById.mockImplementation(() => async dispatch => {
+  chatActions.getChatByIdentifiers.mockImplementation(() => async dispatch => {
     dispatch({ type: GET_CHAT_SUCCESS, chat });
     return chat;
   });

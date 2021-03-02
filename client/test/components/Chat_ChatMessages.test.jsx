@@ -266,12 +266,12 @@ beforeEach(() => {
 
   messages = [message1, message2, message3, message4, message5];
 
-  chatActions.getChat.mockImplementation(() => async dispatch => {
+  chatActions.getChatByIdentifiers.mockImplementation(() => async dispatch => {
     dispatch({ type: GET_CHAT_SUCCESS, chat });
     return chat;
   });
 
-  chatActions.getChatById.mockImplementation(() => async dispatch => {
+  chatActions.getChatByIdentifiers.mockImplementation(() => async dispatch => {
     dispatch({ type: GET_CHAT_SUCCESS, chat });
     return chat;
   });

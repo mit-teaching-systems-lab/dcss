@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import pluralize from 'pluralize';
 import {
   createChat,
-  getChatById,
+  setChat,
   getChatsByCohortId,
   getChatUsersByChatId,
   joinChat
@@ -52,15 +52,17 @@ export class CohortRoomSelector extends React.Component {
   constructor(props) {
     super(props);
 
+    const lobby = this.props.lobby || {
+      isOpen: false
+    };
+
     this.state = {
       isReady: false,
       isOpenToCohort: false,
       create: {
         isOpen: false
       },
-      lobby: {
-        isOpen: false
-      }
+      lobby
     };
     this.createChat = this.createChat.bind(this);
     this.fetchChats = this.fetchChats.bind(this);
@@ -189,9 +191,25 @@ export class CohortRoomSelector extends React.Component {
         </Button>
       );
 
-      const miniJoinScenarioButton = (
+      const miniCloseChatButton = (
         <Button
           compact
+          onClick={async () => {
+            const time = new Date().toISOString();
+            await this.props.setChat(memoChatId, {
+              deleted_at: time,
+              ended_at: time
+            });
+            await this.fetchChats({ chat });
+          }}
+        >
+          Close room
+        </Button>
+      );
+
+      const miniJoinScenarioButton = (
+        <Button
+          fluid
           className="primary"
           onClick={() => {
             location.href = makeCohortScenarioChatJoinPath(
@@ -213,38 +231,26 @@ export class CohortRoomSelector extends React.Component {
 
       const userRoleDisplay = isUserRoleAssigned ? (
         <Fragment>
-          You are participating as <strong>{userPersona.name}</strong>. Click <strong>Join Room</strong> to run the scenario.
+          You are participating as <strong>{userPersona.name}</strong>. Click{' '}
+          <strong>Join Room</strong> to run the scenario.
           <br />
           <br />
           The following roles are not yet assigned.
         </Fragment>
       ) : (
-        'You must select a role to join this chat. To select a role, click on one of these roles:'
+        'Click on one of those roles to join the scenario room:'
       );
 
-      const { displayableName } = Username.getDisplayables(host);
-
       const whoseRoom = isUserNotHost ? (
-        <Fragment>{displayableName}&apos;s room</Fragment>
-      ) : null;
-
-      const showOrButton = isUserHost && isUserRoleAssigned;
+        <Fragment>{<Username user={host} possessive />} room</Fragment>
+      ) : (
+        <Fragment>This is your room</Fragment>
+      );
 
       accum.push(
         <Card key={key}>
           <Card.Content className="c__chat-card">
             {whoseRoom ? <Card.Header>{whoseRoom}</Card.Header> : null}
-            <Card.Meta>
-              <Button.Group
-                fluid
-                widths={showOrButton ? 2 : 1}
-                style={{ width: '97%' }}
-              >
-                {isUserHost ? miniSendInvitesButton : null}
-                {showOrButton ? <Button.Or /> : null}
-                {isUserRoleAssigned ? miniJoinScenarioButton : null}
-              </Button.Group>
-            </Card.Meta>
             <Card.Description className="c__chat-card__meta">
               <p>{userRoleDisplay}</p>
               <Label.Group>
@@ -271,8 +277,27 @@ export class CohortRoomSelector extends React.Component {
               </Label.Group>
             </Card.Description>
           </Card.Content>
+          {isUserRoleAssigned ? (
+            <Card.Content extra>{miniJoinScenarioButton}</Card.Content>
+          ) : null}
+          {isUserHost ? (
+            <Card.Content extra>
+              <Button.Group fluid widths={2}>
+                {miniSendInvitesButton}
+                <Button.Or />
+                {miniCloseChatButton}
+              </Button.Group>
+            </Card.Content>
+          ) : null}
         </Card>
       );
+      // {isUserHost ? (
+      //   <Card.Content extra>
+      //     <Button.Group>
+      //       {miniCloseChatButton}
+      //     </Button.Group>
+      //   </Card.Content>
+      // ) : null}
 
       if (!isUserCurrentlyHosting && isUserHost) {
         isUserCurrentlyHosting = isUserHost;
@@ -412,7 +437,7 @@ export class CohortRoomSelector extends React.Component {
           onClose={secondaryButtonProps.onClick}
         >
           <Header icon="group" tabIndex="0" content={headerContent} />
-          <Modal.Content style={{ height: '80vh' }}>
+          <Modal.Content scrolling style={{ height: 'calc(100vh - 10rem)' }}>
             {createOrLobbyIsOpen ? (
               <Fragment>
                 {this.state.create.isOpen ? (
@@ -488,17 +513,26 @@ export class CohortRoomSelector extends React.Component {
                   <Grid.Row>
                     <Grid.Column className="c__grid-single-col-padding">
                       <p>
-                        This is a multi-participant scenario and requires at least <strong>2</strong> participants to commence.
+                        This scenario requires multiple particpants in order to
+                        complete. Runs of the scenario are completed in{' '}
+                        <strong>Rooms</strong>. <strong>Rooms</strong> shown
+                        here are open for you to join.
                       </p>
-                      <p>
-                        This view shows chat rooms that are open for you to join. If there are no rooms here, you can click <strong>Create a room for this scenario</strong> to host your own room. You will be able to invite other participants directly, or allow all members of this cohort to join freely.
-                      </p>
-
+                      {!isUserCurrentlyHosting ? (
+                        <p>
+                          If there are no rooms here, and you can click{' '}
+                          <strong>Create a room for this scenario</strong> to
+                          host your own room. You will be able to invite other
+                          participants directly, or allow all members of this
+                          cohort to join freely.
+                        </p>
+                      ) : null}
 
                       {availableDisplay}
-                      <Card.Group className="c__chat-cards" itemsPerRow={3}>
-                        {cards}
-                      </Card.Group>
+                      {/* PREVIOUSLY
+                        <Card.Group className="c__chat-cards" itemsPerRow={3}>
+                      */}
+                      <Card.Group itemsPerRow={3}>{cards}</Card.Group>
                     </Grid.Column>
                   </Grid.Row>
                 </Grid>
@@ -543,6 +577,8 @@ CohortRoomSelector.propTypes = {
     users: PropTypes.array
   }),
   createChat: PropTypes.func,
+  lobby: PropTypes.object,
+  setChat: PropTypes.func,
   getChatsByCohortId: PropTypes.func,
   getChatUsersByChatId: PropTypes.func,
   header: PropTypes.any,
@@ -553,7 +589,7 @@ CohortRoomSelector.propTypes = {
   user: PropTypes.object
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
   const { chat, cohort, chatsById, user } = state;
   let chats = [];
 
@@ -570,13 +606,28 @@ const mapStateToProps = state => {
     );
   }
 
-  return { chat, cohort, chats, chatsById, user };
+  const lobby = ownProps.lobby || null;
+
+  if (lobby && !lobby.chat) {
+    lobby.chat = chats.find(
+      chat =>
+        chat.scenario_id === ownProps.scenario.id &&
+        chat.host_id === user.id &&
+        chat.cohort_id === cohort.id
+    );
+
+    if (!lobby.chat) {
+      lobby.isOpen = false;
+    }
+  }
+
+  return { chat, cohort, chats, chatsById, lobby, user };
 };
 
 const mapDispatchToProps = dispatch => ({
   joinChat: (...params) => dispatch(joinChat(...params)),
   createChat: (...params) => dispatch(createChat(...params)),
-  getChatById: id => dispatch(getChatById(id)),
+  setChat: (id, params) => dispatch(setChat(id, params)),
   getChatsByCohortId: id => dispatch(getChatsByCohortId(id)),
   getChatUsersByChatId: id => dispatch(getChatUsersByChatId(id))
 });

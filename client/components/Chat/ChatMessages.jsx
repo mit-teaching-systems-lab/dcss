@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import md5 from 'md5';
 // import { generateAvatar } from 'robohash-avatars';
 import { connect } from 'react-redux';
 import withSocket, {
@@ -26,6 +25,7 @@ import ChatMessageDeleteButton from '@components/Chat/ChatMessageDeleteButton';
 import { RichTextRenderer } from '@components/RichTextEditor';
 import Username from '@components/User/Username';
 
+import Avatar from '@utils/Avatar';
 import Identity from '@utils/Identity';
 import Layout from '@utils/Layout';
 import Moment from '@utils/Moment';
@@ -334,13 +334,7 @@ class ChatMessages extends Component {
 
                     const key = Identity.key(message);
                     const defaultValue = message.content;
-                    const avatarKey = user.email
-                      ? md5(user.email.trim().toLowerCase())
-                      : user.username;
-
-                    const avatarUrl = user.email
-                      ? `https://www.gravatar.com/avatar/${avatarKey}?d=robohash`
-                      : `https://robohash.org/${avatarKey}?bgset=bg1&size=50x50`;
+                    const avatar = new Avatar(user);
 
                     const rteProps = {
                       defaultValue,
@@ -385,7 +379,7 @@ class ChatMessages extends Component {
                     //
                     accum.push(
                       <Comment data-testid="comment" key={key}>
-                        <Comment.Avatar src={avatarUrl} />
+                        <Comment.Avatar src={avatar.src} />
                         <Comment.Content className="cmm__content">
                           <Comment.Author as="span" tabIndex="0">
                             <Username user={user} />

@@ -698,12 +698,12 @@ beforeEach(() => {
     return accum;
   }, {});
 
-  chatActions.getChat.mockImplementation(() => async dispatch => {
+  chatActions.getChatByIdentifiers.mockImplementation(() => async dispatch => {
     dispatch({ type: GET_CHAT_SUCCESS, chat });
     return chat;
   });
 
-  chatActions.getChatById.mockImplementation(() => async dispatch => {
+  chatActions.getChatByIdentifiers.mockImplementation(() => async dispatch => {
     dispatch({ type: GET_CHAT_SUCCESS, chat });
     return chat;
   });
@@ -900,7 +900,7 @@ describe('With cohort', () => {
       user
     };
 
-    chatActions.getChatById.mockImplementation(() => async dispatch => {
+    chatActions.getChat.mockImplementation(() => async dispatch => {
       dispatch({ type: GET_CHAT_SUCCESS, chat });
       return chat;
     });
@@ -948,7 +948,7 @@ describe('With cohort', () => {
       user
     };
 
-    chatActions.getChatById.mockImplementation(() => async dispatch => {
+    chatActions.getChat.mockImplementation(() => async dispatch => {
       dispatch({ type: GET_CHAT_SUCCESS, chat });
       return chat;
     });
@@ -999,7 +999,7 @@ describe('Without cohort', () => {
       user
     };
 
-    chatActions.getChatById.mockImplementation(() => async dispatch => {
+    chatActions.getChat.mockImplementation(() => async dispatch => {
       dispatch({ type: GET_CHAT_SUCCESS, chat });
       return chat;
     });

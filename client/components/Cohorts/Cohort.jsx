@@ -16,6 +16,7 @@ import {
 } from '@components/UI';
 import copy from 'copy-text-to-clipboard';
 import Storage from '@utils/Storage';
+import { getChatsByCohortId } from '@actions/chat';
 import {
   copyCohort,
   getCohort,
@@ -90,6 +91,8 @@ export class Cohort extends React.Component {
       if (authority.isFacilitator) {
         await this.props.getUsers();
       }
+
+      await this.props.getChatsByCohortId(cohort.id);
 
       const notInCohort =
         cohort.users.find(({ id }) => id === user.id) === undefined;
@@ -424,6 +427,7 @@ export class Cohort extends React.Component {
 Cohort.propTypes = {
   activeTabKey: PropTypes.string,
   authority: PropTypes.object,
+  chats: PropTypes.array,
   copyCohort: PropTypes.func,
   cohort: PropTypes.shape({
     id: PropTypes.node,
@@ -438,6 +442,7 @@ Cohort.propTypes = {
     users: PropTypes.array,
     usersById: PropTypes.object
   }),
+  getChatsByCohortId: PropTypes.func,
   getCohort: PropTypes.func,
   getUser: PropTypes.func,
   getUsers: PropTypes.func,
@@ -463,7 +468,7 @@ Cohort.propTypes = {
 
 const mapStateToProps = (state, ownProps) => {
   const id = Identity.fromHashOrId(ownProps.match.params.id || ownProps.id);
-  const { cohort, user } = state;
+  const { chats, cohort, user } = state;
   const participant = cohort
     ? cohort.users.find(participant => participant.id === user.id)
     : null;
@@ -485,7 +490,7 @@ const mapStateToProps = (state, ownProps) => {
     authority.isParticipant = true;
   }
 
-  return { authority, cohort, id, user };
+  return { authority, chats, cohort, id, user };
 };
 
 const mapDispatchToProps = dispatch => ({
@@ -494,7 +499,8 @@ const mapDispatchToProps = dispatch => ({
   setCohort: (id, params) => dispatch(setCohort(id, params)),
   getUser: () => dispatch(getUser()),
   getUsers: () => dispatch(getUsers()),
-  linkUserToCohort: (...params) => dispatch(linkUserToCohort(...params))
+  linkUserToCohort: (...params) => dispatch(linkUserToCohort(...params)),
+  getChatsByCohortId: id => dispatch(getChatsByCohortId(id))
 });
 
 export default withRouter(

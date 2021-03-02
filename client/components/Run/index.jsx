@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {
   getChat,
-  getChatById,
+  getChatByIdentifiers,
   getLinkedChatUsersByChatId,
   joinChat,
   linkRunToChat
@@ -62,7 +62,7 @@ class Run extends Component {
   }
 
   get isCohortScenarioRun() {
-    return location.pathname.includes('/cohort/');
+    return window.location.pathname.includes('/cohort/');
   }
 
   get isMultiparticipant() {
@@ -97,7 +97,7 @@ class Run extends Component {
       // chat has ended, then we send the user to an appropriate
       // destination, which is either back to the cohort, or
       // reloading this scenario run without an existing chat.
-      await this.props.getChatById(chatId);
+      await this.props.getChat(chatId);
 
       if (this.props.chat.ended_at) {
         const run = await this.props.getRunByIdentifiers(
@@ -132,15 +132,25 @@ class Run extends Component {
       // to function properly. A scenario that has greater
       // than one persona definition MUST have chat room.
       //
+      // TODO: determine if the following still holds true:
       // This path MUST NOT be taken if the scenario run is
       // for a cohort. Multi-participant scenario runs that
       // originate in a cohort are limited to that cohort's
       // participant roster.
-      if (this.props.scenario.personas.length > 1 && !cohortId) {
+
+      if (this.isMultiparticipant) {
+        const cohort = this.props.cohortId
+          ? {
+              id: this.props.cohortId
+            }
+          : null;
         // Use `getChat` which will look for an existing chat
         // for this user (as host), running this scenario; and
         // will create one if necessary.
-        const chat = await this.props.getChat(this.props.scenario);
+        const chat = await this.props.getChatByIdentifiers(
+          this.props.scenario,
+          cohort
+        );
         // Assigning the new chat.id to chatId ensures that
         // linkRunToChat is called.
         chatId = chat.id;
@@ -298,7 +308,8 @@ class Run extends Component {
       />
     );
 
-    if (!this.isCohortScenarioRun && this.isMultiparticipant && lobby.isOpen) {
+    // if (!this.isCohortScenarioRun && this.isMultiparticipant && lobby.isOpen) {
+    if (this.isMultiparticipant && lobby.isOpen) {
       const onRoleSelect = async selected => {
         if (selected.user.id === user.id) {
           await this.props.joinChat(this.props.chat.id, selected.persona);
@@ -331,7 +342,7 @@ class Run extends Component {
         />
       );
     }
-
+    console.log('lobby', lobby.isOpen);
     return (
       <Fragment>
         <Title content={runViewTitle} />
@@ -360,7 +371,7 @@ Run.propTypes = {
   cohort: PropTypes.object,
   cohortId: PropTypes.node,
   getChat: PropTypes.func,
-  getChatById: PropTypes.func,
+  getChatByIdentifiers: PropTypes.func,
   getLinkedChatUsersByChatId: PropTypes.func,
   getInvites: PropTypes.func,
   getRun: PropTypes.func,
@@ -443,8 +454,9 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  getChat: (...params) => dispatch(getChat(...params)),
-  getChatById: id => dispatch(getChatById(id)),
+  getChat: id => dispatch(getChat(id)),
+  getChatByIdentifiers: (...params) =>
+    dispatch(getChatByIdentifiers(...params)),
   getInvites: () => dispatch(getInvites()),
   getLinkedChatUsersByChatId: id => dispatch(getLinkedChatUsersByChatId(id)),
   setResponses: (...params) => dispatch(setResponses(...params)),

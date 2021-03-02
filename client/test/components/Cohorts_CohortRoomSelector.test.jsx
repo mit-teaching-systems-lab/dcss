@@ -705,12 +705,12 @@ beforeEach(() => {
     return chat;
   });
 
-  chatActions.getChat.mockImplementation(() => async dispatch => {
+  chatActions.getChatByIdentifiers.mockImplementation(() => async dispatch => {
     dispatch({ type: GET_CHAT_SUCCESS, chat });
     return chat;
   });
 
-  chatActions.getChatById.mockImplementation(() => async dispatch => {
+  chatActions.getChatByIdentifiers.mockImplementation(() => async dispatch => {
     dispatch({ type: GET_CHAT_SUCCESS, chat });
     return chat;
   });
@@ -1125,7 +1125,7 @@ test('Has chats in state', async done => {
 //     globalThis.mockSocket.on.mockImplementation(emitter.on);
 //     globalThis.mockSocket.off.mockImplementation(emitter.off);
 
-//     chatActions.getChatById.mockImplementation(() => async dispatch => {
+//     chatActions.getChat.mockImplementation(() => async dispatch => {
 //       dispatch({ type: GET_CHAT_SUCCESS, chat });
 //       return chat;
 //     });
@@ -1271,7 +1271,7 @@ test('Has chats in state', async done => {
 //     expect(serialize()).toMatchSnapshot();
 
 //     await waitFor(() => expect(chatActions.getChatById).toHaveBeenCalled());
-//     expect(chatActions.getChatById.mock.calls).toMatchInlineSnapshot(`
+//     expect(chatActions.getChat.mock.calls).toMatchInlineSnapshot(`
 //       Array [
 //         Array [
 //           1,
@@ -1491,7 +1491,7 @@ test('Has chats in state', async done => {
 //     globalThis.mockSocket.on.mockImplementation(emitter.on);
 //     globalThis.mockSocket.off.mockImplementation(emitter.off);
 
-//     chatActions.getChatById.mockImplementation(() => async dispatch => {
+//     chatActions.getChat.mockImplementation(() => async dispatch => {
 //       dispatch({ type: GET_CHAT_SUCCESS, chat });
 //       return chat;
 //     });
@@ -1637,7 +1637,7 @@ test('Has chats in state', async done => {
 //     expect(serialize()).toMatchSnapshot();
 
 //     await waitFor(() => expect(chatActions.getChatById).toHaveBeenCalled());
-//     expect(chatActions.getChatById.mock.calls).toMatchInlineSnapshot(`
+//     expect(chatActions.getChat.mock.calls).toMatchInlineSnapshot(`
 //       Array [
 //         Array [
 //           1,

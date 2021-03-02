@@ -36,8 +36,8 @@ exports[`Has chats in state 1`] = `
         </div>
       </div>
       <div
-        class=\\"content\\"
-        style=\\"height: 80vh;\\"
+        class=\\"scrolling content\\"
+        style=\\"height: calc(100vh - 10rem);\\"
       >
         <button
           class=\\"ui large button\\"
@@ -67,14 +67,20 @@ exports[`Has chats in state 1`] = `
               class=\\"column c__grid-single-col-padding\\"
             >
               <p>
-                This is a multi-participant scenario and requires at least 
+                This scenario requires multiple particpants in order to complete. Runs of the scenario are completed in
+                 
                 <strong>
-                  2
+                  Rooms
                 </strong>
-                 participants to commence.
+                . 
+                <strong>
+                  Rooms
+                </strong>
+                 shown here are open for you to join.
               </p>
               <p>
-                This view shows chat rooms that are open for you to join. If there are no rooms here, you can click 
+                If there are no rooms here, and you can click
+                 
                 <strong>
                   Create a room for this scenario
                 </strong>
@@ -95,7 +101,7 @@ exports[`Has chats in state 1`] = `
                 available.
               </p>
               <div
-                class=\\"ui three cards c__chat-cards\\"
+                class=\\"ui three cards\\"
               />
             </div>
           </div>
@@ -159,8 +165,8 @@ exports[`Render 1 1 1`] = `
         </div>
       </div>
       <div
-        class=\\"content\\"
-        style=\\"height: 80vh;\\"
+        class=\\"scrolling content\\"
+        style=\\"height: calc(100vh - 10rem);\\"
       >
         <button
           class=\\"ui large button\\"
@@ -190,14 +196,20 @@ exports[`Render 1 1 1`] = `
               class=\\"column c__grid-single-col-padding\\"
             >
               <p>
-                This is a multi-participant scenario and requires at least 
+                This scenario requires multiple particpants in order to complete. Runs of the scenario are completed in
+                 
                 <strong>
-                  2
+                  Rooms
                 </strong>
-                 participants to commence.
+                . 
+                <strong>
+                  Rooms
+                </strong>
+                 shown here are open for you to join.
               </p>
               <p>
-                This view shows chat rooms that are open for you to join. If there are no rooms here, you can click 
+                If there are no rooms here, and you can click
+                 
                 <strong>
                   Create a room for this scenario
                 </strong>
@@ -218,7 +230,7 @@ exports[`Render 1 1 1`] = `
                 available.
               </p>
               <div
-                class=\\"ui three cards c__chat-cards\\"
+                class=\\"ui three cards\\"
               />
             </div>
           </div>
@@ -281,8 +293,8 @@ exports[`Render 2 1 1`] = `
         </div>
       </div>
       <div
-        class=\\"content\\"
-        style=\\"height: 80vh;\\"
+        class=\\"scrolling content\\"
+        style=\\"height: calc(100vh - 10rem);\\"
       >
         <button
           class=\\"ui large button\\"
@@ -312,14 +324,20 @@ exports[`Render 2 1 1`] = `
               class=\\"column c__grid-single-col-padding\\"
             >
               <p>
-                This is a multi-participant scenario and requires at least 
+                This scenario requires multiple particpants in order to complete. Runs of the scenario are completed in
+                 
                 <strong>
-                  2
+                  Rooms
                 </strong>
-                 participants to commence.
+                . 
+                <strong>
+                  Rooms
+                </strong>
+                 shown here are open for you to join.
               </p>
               <p>
-                This view shows chat rooms that are open for you to join. If there are no rooms here, you can click 
+                If there are no rooms here, and you can click
+                 
                 <strong>
                   Create a room for this scenario
                 </strong>
@@ -340,7 +358,7 @@ exports[`Render 2 1 1`] = `
                 available.
               </p>
               <div
-                class=\\"ui three cards c__chat-cards\\"
+                class=\\"ui three cards\\"
               />
             </div>
           </div>

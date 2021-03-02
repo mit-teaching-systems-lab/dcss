@@ -1,6 +1,8 @@
 import {
   CREATE_COHORT_ERROR,
   CREATE_COHORT_SUCCESS,
+  GET_COHORT_CHATS_OVERVIEW_ERROR,
+  GET_COHORT_CHATS_OVERVIEW_SUCCESS,
   GET_COHORT_ERROR,
   GET_COHORT_PARTICIPANTS_ERROR,
   GET_COHORT_PARTICIPANTS_SUCCESS,
@@ -157,6 +159,21 @@ export let getCohort = id => async dispatch => {
     return cohort;
   } catch (error) {
     dispatch({ type: GET_COHORT_ERROR, error });
+    return null;
+  }
+};
+
+export let getCohortChatsOverview = id => async dispatch => {
+  try {
+    const res = await (await fetch(`/api/cohorts/${id}/overview`)).json();
+    if (res.error) {
+      throw res;
+    }
+    const { chats } = res;
+    dispatch({ type: GET_COHORT_CHATS_OVERVIEW_SUCCESS, chats });
+    return chats;
+  } catch (error) {
+    dispatch({ type: GET_COHORT_CHATS_OVERVIEW_ERROR, error });
     return null;
   }
 };

@@ -167,6 +167,7 @@ exports[`With cohort Assign & unassign roles 2`] = `
               >
                 Super User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -191,6 +192,7 @@ exports[`With cohort Assign & unassign roles 2`] = `
               >
                 Facilitator User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -215,6 +217,7 @@ exports[`With cohort Assign & unassign roles 2`] = `
               >
                 Researcher User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -239,6 +242,7 @@ exports[`With cohort Assign & unassign roles 2`] = `
               >
                 Participant User
               </span>
+              
                
               <span
                 class=\\"l__hidden\\"
@@ -257,6 +261,7 @@ exports[`With cohort Assign & unassign roles 2`] = `
               >
                 anonymous
               </span>
+              
                
               <span
                 class=\\"l__hidden\\"
@@ -377,6 +382,7 @@ exports[`With cohort Assign & unassign roles 2`] = `
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -637,6 +643,7 @@ exports[`With cohort Assign & unassign roles 3`] = `
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -750,6 +757,7 @@ exports[`With cohort Assign & unassign roles 3`] = `
                       >
                         Facilitator User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -1010,6 +1018,7 @@ exports[`With cohort Assign & unassign roles 4`] = `
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -1104,6 +1113,7 @@ exports[`With cohort Assign & unassign roles 4`] = `
                       >
                         Facilitator User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -1364,6 +1374,7 @@ exports[`With cohort Assign & unassign roles 5`] = `
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -1477,6 +1488,7 @@ exports[`With cohort Assign & unassign roles 5`] = `
                       >
                         Facilitator User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -1642,6 +1654,7 @@ exports[`With cohort Assigning roles enables Send Invites button 2`] = `
               >
                 Super User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -1666,6 +1679,7 @@ exports[`With cohort Assigning roles enables Send Invites button 2`] = `
               >
                 Facilitator User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -1690,6 +1704,7 @@ exports[`With cohort Assigning roles enables Send Invites button 2`] = `
               >
                 Researcher User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -1714,6 +1729,7 @@ exports[`With cohort Assigning roles enables Send Invites button 2`] = `
               >
                 Participant User
               </span>
+              
                
               <span
                 class=\\"l__hidden\\"
@@ -1732,6 +1748,7 @@ exports[`With cohort Assigning roles enables Send Invites button 2`] = `
               >
                 anonymous
               </span>
+              
                
               <span
                 class=\\"l__hidden\\"
@@ -1852,6 +1869,7 @@ exports[`With cohort Assigning roles enables Send Invites button 2`] = `
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -2112,6 +2130,7 @@ exports[`With cohort Assigning roles enables Send Invites button 3`] = `
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -2225,6 +2244,7 @@ exports[`With cohort Assigning roles enables Send Invites button 3`] = `
                       >
                         Facilitator User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -2485,6 +2505,7 @@ exports[`With cohort Assigning roles enables Send Invites button 4`] = `
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -2579,6 +2600,7 @@ exports[`With cohort Assigning roles enables Send Invites button 4`] = `
                       >
                         Facilitator User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -2839,6 +2861,7 @@ exports[`With cohort Assigning roles enables Send Invites button 5`] = `
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -2933,6 +2956,7 @@ exports[`With cohort Assigning roles enables Send Invites button 5`] = `
                       >
                         Facilitator User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -3172,6 +3196,7 @@ exports[`With cohort Assigning roles enables Send Invites button 6`] = `
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -3266,6 +3291,7 @@ exports[`With cohort Assigning roles enables Send Invites button 6`] = `
                       >
                         Facilitator User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -3425,6 +3451,7 @@ exports[`With cohort Both Send Invites buttons are disabled 2`] = `
               >
                 Super User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -3449,6 +3476,7 @@ exports[`With cohort Both Send Invites buttons are disabled 2`] = `
               >
                 Facilitator User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -3473,6 +3501,7 @@ exports[`With cohort Both Send Invites buttons are disabled 2`] = `
               >
                 Researcher User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -3497,6 +3526,7 @@ exports[`With cohort Both Send Invites buttons are disabled 2`] = `
               >
                 Participant User
               </span>
+              
                
               <span
                 class=\\"l__hidden\\"
@@ -3515,6 +3545,7 @@ exports[`With cohort Both Send Invites buttons are disabled 2`] = `
               >
                 anonymous
               </span>
+              
                
               <span
                 class=\\"l__hidden\\"
@@ -3635,6 +3666,7 @@ exports[`With cohort Both Send Invites buttons are disabled 2`] = `
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -3796,6 +3828,7 @@ exports[`With cohort Click in search shows default list of available users 2`] =
               >
                 Super User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -3820,6 +3853,7 @@ exports[`With cohort Click in search shows default list of available users 2`] =
               >
                 Facilitator User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -3844,6 +3878,7 @@ exports[`With cohort Click in search shows default list of available users 2`] =
               >
                 Researcher User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -3868,6 +3903,7 @@ exports[`With cohort Click in search shows default list of available users 2`] =
               >
                 Participant User
               </span>
+              
                
               <span
                 class=\\"l__hidden\\"
@@ -3886,6 +3922,7 @@ exports[`With cohort Click in search shows default list of available users 2`] =
               >
                 anonymous
               </span>
+              
                
               <span
                 class=\\"l__hidden\\"
@@ -4006,6 +4043,7 @@ exports[`With cohort Click in search shows default list of available users 2`] =
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -4158,6 +4196,7 @@ exports[`With cohort Click in search shows default list of available users 3`] =
               >
                 Facilitator User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -4182,6 +4221,7 @@ exports[`With cohort Click in search shows default list of available users 3`] =
               >
                 Researcher User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -4206,6 +4246,7 @@ exports[`With cohort Click in search shows default list of available users 3`] =
               >
                 Participant User
               </span>
+              
                
               <span
                 class=\\"l__hidden\\"
@@ -4224,6 +4265,7 @@ exports[`With cohort Click in search shows default list of available users 3`] =
               >
                 anonymous
               </span>
+              
                
               <span
                 class=\\"l__hidden\\"
@@ -4344,6 +4386,7 @@ exports[`With cohort Click in search shows default list of available users 3`] =
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -4509,6 +4552,7 @@ exports[`With cohort Dismiss instructions 2`] = `
               >
                 Super User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -4533,6 +4577,7 @@ exports[`With cohort Dismiss instructions 2`] = `
               >
                 Facilitator User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -4557,6 +4602,7 @@ exports[`With cohort Dismiss instructions 2`] = `
               >
                 Researcher User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -4581,6 +4627,7 @@ exports[`With cohort Dismiss instructions 2`] = `
               >
                 Participant User
               </span>
+              
                
               <span
                 class=\\"l__hidden\\"
@@ -4599,6 +4646,7 @@ exports[`With cohort Dismiss instructions 2`] = `
               >
                 anonymous
               </span>
+              
                
               <span
                 class=\\"l__hidden\\"
@@ -4719,6 +4767,7 @@ exports[`With cohort Dismiss instructions 2`] = `
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -4844,6 +4893,7 @@ exports[`With cohort Dismiss instructions 3`] = `
               >
                 Super User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -4868,6 +4918,7 @@ exports[`With cohort Dismiss instructions 3`] = `
               >
                 Facilitator User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -4892,6 +4943,7 @@ exports[`With cohort Dismiss instructions 3`] = `
               >
                 Researcher User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -4916,6 +4968,7 @@ exports[`With cohort Dismiss instructions 3`] = `
               >
                 Participant User
               </span>
+              
                
               <span
                 class=\\"l__hidden\\"
@@ -4934,6 +4987,7 @@ exports[`With cohort Dismiss instructions 3`] = `
               >
                 anonymous
               </span>
+              
                
               <span
                 class=\\"l__hidden\\"
@@ -5054,6 +5108,7 @@ exports[`With cohort Dismiss instructions 3`] = `
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -5219,6 +5274,7 @@ exports[`With cohort Select & unselect participant 2`] = `
               >
                 Super User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -5243,6 +5299,7 @@ exports[`With cohort Select & unselect participant 2`] = `
               >
                 Facilitator User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -5267,6 +5324,7 @@ exports[`With cohort Select & unselect participant 2`] = `
               >
                 Researcher User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -5291,6 +5349,7 @@ exports[`With cohort Select & unselect participant 2`] = `
               >
                 Participant User
               </span>
+              
                
               <span
                 class=\\"l__hidden\\"
@@ -5309,6 +5368,7 @@ exports[`With cohort Select & unselect participant 2`] = `
               >
                 anonymous
               </span>
+              
                
               <span
                 class=\\"l__hidden\\"
@@ -5429,6 +5489,7 @@ exports[`With cohort Select & unselect participant 2`] = `
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -5689,6 +5750,7 @@ exports[`With cohort Select & unselect participant 3`] = `
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -5802,6 +5864,7 @@ exports[`With cohort Select & unselect participant 3`] = `
                       >
                         Facilitator User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -6067,6 +6130,7 @@ exports[`With cohort Select & unselect participant 4`] = `
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -6232,6 +6296,7 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 2`] = 
               >
                 Super User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -6256,6 +6321,7 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 2`] = 
               >
                 Facilitator User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -6280,6 +6346,7 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 2`] = 
               >
                 Researcher User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -6304,6 +6371,7 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 2`] = 
               >
                 Participant User
               </span>
+              
                
               <span
                 class=\\"l__hidden\\"
@@ -6322,6 +6390,7 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 2`] = 
               >
                 anonymous
               </span>
+              
                
               <span
                 class=\\"l__hidden\\"
@@ -6442,6 +6511,7 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 2`] = 
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -6702,6 +6772,7 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 3`] = 
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -6815,6 +6886,7 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 3`] = 
                       >
                         Facilitator User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -7075,6 +7147,7 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 4`] = 
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -7188,6 +7261,7 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 4`] = 
                       >
                         Facilitator User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -7448,6 +7522,7 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 5`] = 
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -7542,6 +7617,7 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 5`] = 
                       >
                         Facilitator User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -7802,6 +7878,7 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 6`] = 
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -7896,6 +7973,7 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 6`] = 
                       >
                         Facilitator User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -8156,6 +8234,7 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 7`] = 
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -8250,6 +8329,7 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 7`] = 
                       >
                         Facilitator User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -8489,6 +8569,7 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 8`] = 
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -8583,6 +8664,7 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 8`] = 
                       >
                         Facilitator User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -8820,6 +8902,7 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 9`] = 
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -8914,6 +8997,7 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 9`] = 
                       >
                         Facilitator User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -9151,6 +9235,7 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 10`] =
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -9245,6 +9330,7 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 10`] =
                       >
                         Facilitator User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -9355,6 +9441,7 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 10`] =
                           >
                             Super User
                           </span>
+                          
                            
                           <i
                             aria-hidden=\\"true\\"
@@ -9419,6 +9506,7 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 10`] =
                           >
                             Facilitator User
                           </span>
+                          
                            
                           <i
                             aria-hidden=\\"true\\"
@@ -9686,6 +9774,7 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 11`] =
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -9780,6 +9869,7 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 11`] =
                       >
                         Facilitator User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -10017,6 +10107,7 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 12`] =
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -10111,6 +10202,7 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 12`] =
                       >
                         Facilitator User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -10348,6 +10440,7 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 13`] =
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -10442,6 +10535,7 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 13`] =
                       >
                         Facilitator User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -10552,6 +10646,7 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 13`] =
                           >
                             Super User
                           </span>
+                          
                            
                           <i
                             aria-hidden=\\"true\\"
@@ -10616,6 +10711,7 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 13`] =
                           >
                             Facilitator User
                           </span>
+                          
                            
                           <i
                             aria-hidden=\\"true\\"
@@ -10883,6 +10979,7 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 14`] =
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -10977,6 +11074,7 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 14`] =
                       >
                         Facilitator User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -11087,6 +11185,7 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 14`] =
                           >
                             Super User
                           </span>
+                          
                            
                           <i
                             aria-hidden=\\"true\\"
@@ -11151,6 +11250,7 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 14`] =
                           >
                             Facilitator User
                           </span>
+                          
                            
                           <i
                             aria-hidden=\\"true\\"
@@ -11340,6 +11440,7 @@ exports[`With cohort Selecting from search results adds a participant 2`] = `
               >
                 Super User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -11364,6 +11465,7 @@ exports[`With cohort Selecting from search results adds a participant 2`] = `
               >
                 Facilitator User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -11388,6 +11490,7 @@ exports[`With cohort Selecting from search results adds a participant 2`] = `
               >
                 Researcher User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -11412,6 +11515,7 @@ exports[`With cohort Selecting from search results adds a participant 2`] = `
               >
                 Participant User
               </span>
+              
                
               <span
                 class=\\"l__hidden\\"
@@ -11430,6 +11534,7 @@ exports[`With cohort Selecting from search results adds a participant 2`] = `
               >
                 anonymous
               </span>
+              
                
               <span
                 class=\\"l__hidden\\"
@@ -11550,6 +11655,7 @@ exports[`With cohort Selecting from search results adds a participant 2`] = `
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -11808,6 +11914,7 @@ exports[`With cohort Selecting from search results adds a participant 3`] = `
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -11921,6 +12028,7 @@ exports[`With cohort Selecting from search results adds a participant 3`] = `
                       >
                         Facilitator User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -12086,6 +12194,7 @@ exports[`With cohort Selecting too many shows a warning, discard selection 2`] =
               >
                 Super User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -12110,6 +12219,7 @@ exports[`With cohort Selecting too many shows a warning, discard selection 2`] =
               >
                 Facilitator User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -12134,6 +12244,7 @@ exports[`With cohort Selecting too many shows a warning, discard selection 2`] =
               >
                 Researcher User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -12158,6 +12269,7 @@ exports[`With cohort Selecting too many shows a warning, discard selection 2`] =
               >
                 Participant User
               </span>
+              
                
               <span
                 class=\\"l__hidden\\"
@@ -12176,6 +12288,7 @@ exports[`With cohort Selecting too many shows a warning, discard selection 2`] =
               >
                 anonymous
               </span>
+              
                
               <span
                 class=\\"l__hidden\\"
@@ -12296,6 +12409,7 @@ exports[`With cohort Selecting too many shows a warning, discard selection 2`] =
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -12450,6 +12564,7 @@ exports[`With cohort Selecting too many shows a warning, discard selection 3`] =
               >
                 Facilitator User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -12576,6 +12691,7 @@ exports[`With cohort Selecting too many shows a warning, discard selection 3`] =
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -12836,6 +12952,7 @@ exports[`With cohort Selecting too many shows a warning, discard selection 4`] =
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -12949,6 +13066,7 @@ exports[`With cohort Selecting too many shows a warning, discard selection 4`] =
                       >
                         Facilitator User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -13098,6 +13216,7 @@ exports[`With cohort Selecting too many shows a warning, discard selection 5`] =
               >
                 Researcher User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -13224,6 +13343,7 @@ exports[`With cohort Selecting too many shows a warning, discard selection 5`] =
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -13337,6 +13457,7 @@ exports[`With cohort Selecting too many shows a warning, discard selection 5`] =
                       >
                         Facilitator User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -13486,6 +13607,7 @@ exports[`With cohort Selecting too many shows a warning, discard selection 6`] =
               >
                 Researcher User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -13612,6 +13734,7 @@ exports[`With cohort Selecting too many shows a warning, discard selection 6`] =
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -13725,6 +13848,7 @@ exports[`With cohort Selecting too many shows a warning, discard selection 6`] =
                       >
                         Facilitator User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -13955,6 +14079,7 @@ exports[`With cohort Selecting too many shows a warning, discard selection 7`] =
               >
                 Researcher User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -14081,6 +14206,7 @@ exports[`With cohort Selecting too many shows a warning, discard selection 7`] =
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -14194,6 +14320,7 @@ exports[`With cohort Selecting too many shows a warning, discard selection 7`] =
                       >
                         Facilitator User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -14355,6 +14482,7 @@ exports[`With cohort Selecting too many shows a warning, remove an invite 2`] = 
               >
                 Super User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -14379,6 +14507,7 @@ exports[`With cohort Selecting too many shows a warning, remove an invite 2`] = 
               >
                 Facilitator User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -14403,6 +14532,7 @@ exports[`With cohort Selecting too many shows a warning, remove an invite 2`] = 
               >
                 Researcher User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -14427,6 +14557,7 @@ exports[`With cohort Selecting too many shows a warning, remove an invite 2`] = 
               >
                 Participant User
               </span>
+              
                
               <span
                 class=\\"l__hidden\\"
@@ -14445,6 +14576,7 @@ exports[`With cohort Selecting too many shows a warning, remove an invite 2`] = 
               >
                 anonymous
               </span>
+              
                
               <span
                 class=\\"l__hidden\\"
@@ -14565,6 +14697,7 @@ exports[`With cohort Selecting too many shows a warning, remove an invite 2`] = 
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -14717,6 +14850,7 @@ exports[`With cohort Selecting too many shows a warning, remove an invite 3`] = 
               >
                 Facilitator User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -14843,6 +14977,7 @@ exports[`With cohort Selecting too many shows a warning, remove an invite 3`] = 
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -15101,6 +15236,7 @@ exports[`With cohort Selecting too many shows a warning, remove an invite 4`] = 
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -15214,6 +15350,7 @@ exports[`With cohort Selecting too many shows a warning, remove an invite 4`] = 
                       >
                         Facilitator User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -15361,6 +15498,7 @@ exports[`With cohort Selecting too many shows a warning, remove an invite 5`] = 
               >
                 Researcher User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -15487,6 +15625,7 @@ exports[`With cohort Selecting too many shows a warning, remove an invite 5`] = 
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -15600,6 +15739,7 @@ exports[`With cohort Selecting too many shows a warning, remove an invite 5`] = 
                       >
                         Facilitator User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -15750,6 +15890,7 @@ exports[`With cohort Selecting too many shows a warning, remove an invite 6`] = 
               >
                 Researcher User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -15876,6 +16017,7 @@ exports[`With cohort Selecting too many shows a warning, remove an invite 6`] = 
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -15989,6 +16131,7 @@ exports[`With cohort Selecting too many shows a warning, remove an invite 6`] = 
                       >
                         Facilitator User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -16220,6 +16363,7 @@ exports[`With cohort Selecting too many shows a warning, remove an invite 7`] = 
               >
                 Researcher User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -16346,6 +16490,7 @@ exports[`With cohort Selecting too many shows a warning, remove an invite 7`] = 
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -16459,6 +16604,7 @@ exports[`With cohort Selecting too many shows a warning, remove an invite 7`] = 
                       >
                         Facilitator User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -16572,6 +16718,7 @@ exports[`With cohort Selecting too many shows a warning, remove an invite 7`] = 
                       >
                         Researcher User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -16733,6 +16880,7 @@ exports[`With cohort Typing in search shows filtered list of available users 2`]
               >
                 Super User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -16757,6 +16905,7 @@ exports[`With cohort Typing in search shows filtered list of available users 2`]
               >
                 Facilitator User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -16781,6 +16930,7 @@ exports[`With cohort Typing in search shows filtered list of available users 2`]
               >
                 Researcher User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -16805,6 +16955,7 @@ exports[`With cohort Typing in search shows filtered list of available users 2`]
               >
                 Participant User
               </span>
+              
                
               <span
                 class=\\"l__hidden\\"
@@ -16823,6 +16974,7 @@ exports[`With cohort Typing in search shows filtered list of available users 2`]
               >
                 anonymous
               </span>
+              
                
               <span
                 class=\\"l__hidden\\"
@@ -16943,6 +17095,7 @@ exports[`With cohort Typing in search shows filtered list of available users 2`]
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -17095,6 +17248,7 @@ exports[`With cohort Typing in search shows filtered list of available users 3`]
               >
                 Facilitator User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -17221,6 +17375,7 @@ exports[`With cohort Typing in search shows filtered list of available users 3`]
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -17386,6 +17541,7 @@ exports[`Without cohort Assign & unassign roles 2`] = `
               >
                 Super User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -17410,6 +17566,7 @@ exports[`Without cohort Assign & unassign roles 2`] = `
               >
                 Facilitator User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -17434,6 +17591,7 @@ exports[`Without cohort Assign & unassign roles 2`] = `
               >
                 Researcher User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -17458,6 +17616,7 @@ exports[`Without cohort Assign & unassign roles 2`] = `
               >
                 Participant User
               </span>
+              
                
               <span
                 class=\\"l__hidden\\"
@@ -17476,6 +17635,7 @@ exports[`Without cohort Assign & unassign roles 2`] = `
               >
                 anonymous
               </span>
+              
                
               <span
                 class=\\"l__hidden\\"
@@ -17596,6 +17756,7 @@ exports[`Without cohort Assign & unassign roles 2`] = `
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -17856,6 +18017,7 @@ exports[`Without cohort Assign & unassign roles 3`] = `
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -17969,6 +18131,7 @@ exports[`Without cohort Assign & unassign roles 3`] = `
                       >
                         Facilitator User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -18229,6 +18392,7 @@ exports[`Without cohort Assign & unassign roles 4`] = `
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -18323,6 +18487,7 @@ exports[`Without cohort Assign & unassign roles 4`] = `
                       >
                         Facilitator User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -18583,6 +18748,7 @@ exports[`Without cohort Assign & unassign roles 5`] = `
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -18696,6 +18862,7 @@ exports[`Without cohort Assign & unassign roles 5`] = `
                       >
                         Facilitator User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -18861,6 +19028,7 @@ exports[`Without cohort Assigning roles enables Send Invites button 2`] = `
               >
                 Super User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -18885,6 +19053,7 @@ exports[`Without cohort Assigning roles enables Send Invites button 2`] = `
               >
                 Facilitator User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -18909,6 +19078,7 @@ exports[`Without cohort Assigning roles enables Send Invites button 2`] = `
               >
                 Researcher User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -18933,6 +19103,7 @@ exports[`Without cohort Assigning roles enables Send Invites button 2`] = `
               >
                 Participant User
               </span>
+              
                
               <span
                 class=\\"l__hidden\\"
@@ -18951,6 +19122,7 @@ exports[`Without cohort Assigning roles enables Send Invites button 2`] = `
               >
                 anonymous
               </span>
+              
                
               <span
                 class=\\"l__hidden\\"
@@ -19071,6 +19243,7 @@ exports[`Without cohort Assigning roles enables Send Invites button 2`] = `
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -19331,6 +19504,7 @@ exports[`Without cohort Assigning roles enables Send Invites button 3`] = `
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -19444,6 +19618,7 @@ exports[`Without cohort Assigning roles enables Send Invites button 3`] = `
                       >
                         Facilitator User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -19704,6 +19879,7 @@ exports[`Without cohort Assigning roles enables Send Invites button 4`] = `
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -19798,6 +19974,7 @@ exports[`Without cohort Assigning roles enables Send Invites button 4`] = `
                       >
                         Facilitator User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -20058,6 +20235,7 @@ exports[`Without cohort Assigning roles enables Send Invites button 5`] = `
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -20152,6 +20330,7 @@ exports[`Without cohort Assigning roles enables Send Invites button 5`] = `
                       >
                         Facilitator User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -20391,6 +20570,7 @@ exports[`Without cohort Assigning roles enables Send Invites button 6`] = `
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -20485,6 +20665,7 @@ exports[`Without cohort Assigning roles enables Send Invites button 6`] = `
                       >
                         Facilitator User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -20648,6 +20829,7 @@ exports[`Without cohort Both Send Invites buttons are disabled 2`] = `
               >
                 Super User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -20672,6 +20854,7 @@ exports[`Without cohort Both Send Invites buttons are disabled 2`] = `
               >
                 Facilitator User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -20696,6 +20879,7 @@ exports[`Without cohort Both Send Invites buttons are disabled 2`] = `
               >
                 Researcher User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -20720,6 +20904,7 @@ exports[`Without cohort Both Send Invites buttons are disabled 2`] = `
               >
                 Participant User
               </span>
+              
                
               <span
                 class=\\"l__hidden\\"
@@ -20738,6 +20923,7 @@ exports[`Without cohort Both Send Invites buttons are disabled 2`] = `
               >
                 anonymous
               </span>
+              
                
               <span
                 class=\\"l__hidden\\"
@@ -20858,6 +21044,7 @@ exports[`Without cohort Both Send Invites buttons are disabled 2`] = `
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -21023,6 +21210,7 @@ exports[`Without cohort Click in search shows default list of available users 2`
               >
                 Super User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -21047,6 +21235,7 @@ exports[`Without cohort Click in search shows default list of available users 2`
               >
                 Facilitator User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -21071,6 +21260,7 @@ exports[`Without cohort Click in search shows default list of available users 2`
               >
                 Researcher User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -21095,6 +21285,7 @@ exports[`Without cohort Click in search shows default list of available users 2`
               >
                 Participant User
               </span>
+              
                
               <span
                 class=\\"l__hidden\\"
@@ -21113,6 +21304,7 @@ exports[`Without cohort Click in search shows default list of available users 2`
               >
                 anonymous
               </span>
+              
                
               <span
                 class=\\"l__hidden\\"
@@ -21233,6 +21425,7 @@ exports[`Without cohort Click in search shows default list of available users 2`
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -21387,6 +21580,7 @@ exports[`Without cohort Click in search shows default list of available users 3`
               >
                 Facilitator User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -21411,6 +21605,7 @@ exports[`Without cohort Click in search shows default list of available users 3`
               >
                 Researcher User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -21435,6 +21630,7 @@ exports[`Without cohort Click in search shows default list of available users 3`
               >
                 Participant User
               </span>
+              
                
               <span
                 class=\\"l__hidden\\"
@@ -21453,6 +21649,7 @@ exports[`Without cohort Click in search shows default list of available users 3`
               >
                 anonymous
               </span>
+              
                
               <span
                 class=\\"l__hidden\\"
@@ -21573,6 +21770,7 @@ exports[`Without cohort Click in search shows default list of available users 3`
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -21738,6 +21936,7 @@ exports[`Without cohort Dismiss instructions 2`] = `
               >
                 Super User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -21762,6 +21961,7 @@ exports[`Without cohort Dismiss instructions 2`] = `
               >
                 Facilitator User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -21786,6 +21986,7 @@ exports[`Without cohort Dismiss instructions 2`] = `
               >
                 Researcher User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -21810,6 +22011,7 @@ exports[`Without cohort Dismiss instructions 2`] = `
               >
                 Participant User
               </span>
+              
                
               <span
                 class=\\"l__hidden\\"
@@ -21828,6 +22030,7 @@ exports[`Without cohort Dismiss instructions 2`] = `
               >
                 anonymous
               </span>
+              
                
               <span
                 class=\\"l__hidden\\"
@@ -21948,6 +22151,7 @@ exports[`Without cohort Dismiss instructions 2`] = `
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -22073,6 +22277,7 @@ exports[`Without cohort Dismiss instructions 3`] = `
               >
                 Super User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -22097,6 +22302,7 @@ exports[`Without cohort Dismiss instructions 3`] = `
               >
                 Facilitator User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -22121,6 +22327,7 @@ exports[`Without cohort Dismiss instructions 3`] = `
               >
                 Researcher User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -22145,6 +22352,7 @@ exports[`Without cohort Dismiss instructions 3`] = `
               >
                 Participant User
               </span>
+              
                
               <span
                 class=\\"l__hidden\\"
@@ -22163,6 +22371,7 @@ exports[`Without cohort Dismiss instructions 3`] = `
               >
                 anonymous
               </span>
+              
                
               <span
                 class=\\"l__hidden\\"
@@ -22283,6 +22492,7 @@ exports[`Without cohort Dismiss instructions 3`] = `
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -22448,6 +22658,7 @@ exports[`Without cohort Select & unselect participant 2`] = `
               >
                 Super User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -22472,6 +22683,7 @@ exports[`Without cohort Select & unselect participant 2`] = `
               >
                 Facilitator User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -22496,6 +22708,7 @@ exports[`Without cohort Select & unselect participant 2`] = `
               >
                 Researcher User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -22520,6 +22733,7 @@ exports[`Without cohort Select & unselect participant 2`] = `
               >
                 Participant User
               </span>
+              
                
               <span
                 class=\\"l__hidden\\"
@@ -22538,6 +22752,7 @@ exports[`Without cohort Select & unselect participant 2`] = `
               >
                 anonymous
               </span>
+              
                
               <span
                 class=\\"l__hidden\\"
@@ -22658,6 +22873,7 @@ exports[`Without cohort Select & unselect participant 2`] = `
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -22918,6 +23134,7 @@ exports[`Without cohort Select & unselect participant 3`] = `
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -23031,6 +23248,7 @@ exports[`Without cohort Select & unselect participant 3`] = `
                       >
                         Facilitator User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -23296,6 +23514,7 @@ exports[`Without cohort Select & unselect participant 4`] = `
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -23461,6 +23680,7 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 2`]
               >
                 Super User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -23485,6 +23705,7 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 2`]
               >
                 Facilitator User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -23509,6 +23730,7 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 2`]
               >
                 Researcher User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -23533,6 +23755,7 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 2`]
               >
                 Participant User
               </span>
+              
                
               <span
                 class=\\"l__hidden\\"
@@ -23551,6 +23774,7 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 2`]
               >
                 anonymous
               </span>
+              
                
               <span
                 class=\\"l__hidden\\"
@@ -23671,6 +23895,7 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 2`]
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -23931,6 +24156,7 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 3`]
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -24044,6 +24270,7 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 3`]
                       >
                         Facilitator User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -24304,6 +24531,7 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 4`]
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -24417,6 +24645,7 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 4`]
                       >
                         Facilitator User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -24677,6 +24906,7 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 5`]
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -24771,6 +25001,7 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 5`]
                       >
                         Facilitator User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -25031,6 +25262,7 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 6`]
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -25125,6 +25357,7 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 6`]
                       >
                         Facilitator User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -25385,6 +25618,7 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 7`]
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -25479,6 +25713,7 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 7`]
                       >
                         Facilitator User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -25718,6 +25953,7 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 8`]
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -25812,6 +26048,7 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 8`]
                       >
                         Facilitator User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -26049,6 +26286,7 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 9`]
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -26143,6 +26381,7 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 9`]
                       >
                         Facilitator User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -26380,6 +26619,7 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 10`
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -26474,6 +26714,7 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 10`
                       >
                         Facilitator User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -26584,6 +26825,7 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 10`
                           >
                             Super User
                           </span>
+                          
                            
                           <i
                             aria-hidden=\\"true\\"
@@ -26648,6 +26890,7 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 10`
                           >
                             Facilitator User
                           </span>
+                          
                            
                           <i
                             aria-hidden=\\"true\\"
@@ -26915,6 +27158,7 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 11`
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -27009,6 +27253,7 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 11`
                       >
                         Facilitator User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -27246,6 +27491,7 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 12`
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -27340,6 +27586,7 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 12`
                       >
                         Facilitator User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -27577,6 +27824,7 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 13`
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -27671,6 +27919,7 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 13`
                       >
                         Facilitator User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -27781,6 +28030,7 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 13`
                           >
                             Super User
                           </span>
+                          
                            
                           <i
                             aria-hidden=\\"true\\"
@@ -27845,6 +28095,7 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 13`
                           >
                             Facilitator User
                           </span>
+                          
                            
                           <i
                             aria-hidden=\\"true\\"
@@ -28112,6 +28363,7 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 14`
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -28206,6 +28458,7 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 14`
                       >
                         Facilitator User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -28316,6 +28569,7 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 14`
                           >
                             Super User
                           </span>
+                          
                            
                           <i
                             aria-hidden=\\"true\\"
@@ -28380,6 +28634,7 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 14`
                           >
                             Facilitator User
                           </span>
+                          
                            
                           <i
                             aria-hidden=\\"true\\"
@@ -28573,6 +28828,7 @@ exports[`Without cohort Selecting from search results adds a participant 2`] = `
               >
                 Super User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -28597,6 +28853,7 @@ exports[`Without cohort Selecting from search results adds a participant 2`] = `
               >
                 Facilitator User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -28621,6 +28878,7 @@ exports[`Without cohort Selecting from search results adds a participant 2`] = `
               >
                 Researcher User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -28645,6 +28903,7 @@ exports[`Without cohort Selecting from search results adds a participant 2`] = `
               >
                 Participant User
               </span>
+              
                
               <span
                 class=\\"l__hidden\\"
@@ -28663,6 +28922,7 @@ exports[`Without cohort Selecting from search results adds a participant 2`] = `
               >
                 anonymous
               </span>
+              
                
               <span
                 class=\\"l__hidden\\"
@@ -28783,6 +29043,7 @@ exports[`Without cohort Selecting from search results adds a participant 2`] = `
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -29043,6 +29304,7 @@ exports[`Without cohort Selecting from search results adds a participant 3`] = `
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -29156,6 +29418,7 @@ exports[`Without cohort Selecting from search results adds a participant 3`] = `
                       >
                         Facilitator User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -29321,6 +29584,7 @@ exports[`Without cohort Selecting too many shows a warning, discard selection 2`
               >
                 Super User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -29345,6 +29609,7 @@ exports[`Without cohort Selecting too many shows a warning, discard selection 2`
               >
                 Facilitator User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -29369,6 +29634,7 @@ exports[`Without cohort Selecting too many shows a warning, discard selection 2`
               >
                 Researcher User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -29393,6 +29659,7 @@ exports[`Without cohort Selecting too many shows a warning, discard selection 2`
               >
                 Participant User
               </span>
+              
                
               <span
                 class=\\"l__hidden\\"
@@ -29411,6 +29678,7 @@ exports[`Without cohort Selecting too many shows a warning, discard selection 2`
               >
                 anonymous
               </span>
+              
                
               <span
                 class=\\"l__hidden\\"
@@ -29531,6 +29799,7 @@ exports[`Without cohort Selecting too many shows a warning, discard selection 2`
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -29685,6 +29954,7 @@ exports[`Without cohort Selecting too many shows a warning, discard selection 3`
               >
                 Facilitator User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -29811,6 +30081,7 @@ exports[`Without cohort Selecting too many shows a warning, discard selection 3`
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -30071,6 +30342,7 @@ exports[`Without cohort Selecting too many shows a warning, discard selection 4`
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -30184,6 +30456,7 @@ exports[`Without cohort Selecting too many shows a warning, discard selection 4`
                       >
                         Facilitator User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -30333,6 +30606,7 @@ exports[`Without cohort Selecting too many shows a warning, discard selection 5`
               >
                 Researcher User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -30459,6 +30733,7 @@ exports[`Without cohort Selecting too many shows a warning, discard selection 5`
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -30572,6 +30847,7 @@ exports[`Without cohort Selecting too many shows a warning, discard selection 5`
                       >
                         Facilitator User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -30721,6 +30997,7 @@ exports[`Without cohort Selecting too many shows a warning, discard selection 6`
               >
                 Researcher User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -30847,6 +31124,7 @@ exports[`Without cohort Selecting too many shows a warning, discard selection 6`
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -30960,6 +31238,7 @@ exports[`Without cohort Selecting too many shows a warning, discard selection 6`
                       >
                         Facilitator User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -31190,6 +31469,7 @@ exports[`Without cohort Selecting too many shows a warning, discard selection 7`
               >
                 Researcher User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -31316,6 +31596,7 @@ exports[`Without cohort Selecting too many shows a warning, discard selection 7`
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -31429,6 +31710,7 @@ exports[`Without cohort Selecting too many shows a warning, discard selection 7`
                       >
                         Facilitator User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -31594,6 +31876,7 @@ exports[`Without cohort Selecting too many shows a warning, remove an invite 2`]
               >
                 Super User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -31618,6 +31901,7 @@ exports[`Without cohort Selecting too many shows a warning, remove an invite 2`]
               >
                 Facilitator User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -31642,6 +31926,7 @@ exports[`Without cohort Selecting too many shows a warning, remove an invite 2`]
               >
                 Researcher User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -31666,6 +31951,7 @@ exports[`Without cohort Selecting too many shows a warning, remove an invite 2`]
               >
                 Participant User
               </span>
+              
                
               <span
                 class=\\"l__hidden\\"
@@ -31684,6 +31970,7 @@ exports[`Without cohort Selecting too many shows a warning, remove an invite 2`]
               >
                 anonymous
               </span>
+              
                
               <span
                 class=\\"l__hidden\\"
@@ -31804,6 +32091,7 @@ exports[`Without cohort Selecting too many shows a warning, remove an invite 2`]
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -31958,6 +32246,7 @@ exports[`Without cohort Selecting too many shows a warning, remove an invite 3`]
               >
                 Facilitator User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -32084,6 +32373,7 @@ exports[`Without cohort Selecting too many shows a warning, remove an invite 3`]
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -32344,6 +32634,7 @@ exports[`Without cohort Selecting too many shows a warning, remove an invite 4`]
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -32457,6 +32748,7 @@ exports[`Without cohort Selecting too many shows a warning, remove an invite 4`]
                       >
                         Facilitator User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -32606,6 +32898,7 @@ exports[`Without cohort Selecting too many shows a warning, remove an invite 5`]
               >
                 Researcher User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -32732,6 +33025,7 @@ exports[`Without cohort Selecting too many shows a warning, remove an invite 5`]
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -32845,6 +33139,7 @@ exports[`Without cohort Selecting too many shows a warning, remove an invite 5`]
                       >
                         Facilitator User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -32994,6 +33289,7 @@ exports[`Without cohort Selecting too many shows a warning, remove an invite 6`]
               >
                 Researcher User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -33120,6 +33416,7 @@ exports[`Without cohort Selecting too many shows a warning, remove an invite 6`]
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -33233,6 +33530,7 @@ exports[`Without cohort Selecting too many shows a warning, remove an invite 6`]
                       >
                         Facilitator User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -33463,6 +33761,7 @@ exports[`Without cohort Selecting too many shows a warning, remove an invite 7`]
               >
                 Researcher User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -33589,6 +33888,7 @@ exports[`Without cohort Selecting too many shows a warning, remove an invite 7`]
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -33702,6 +34002,7 @@ exports[`Without cohort Selecting too many shows a warning, remove an invite 7`]
                       >
                         Facilitator User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -33815,6 +34116,7 @@ exports[`Without cohort Selecting too many shows a warning, remove an invite 7`]
                       >
                         Researcher User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -33980,6 +34282,7 @@ exports[`Without cohort Typing in search shows filtered list of available users 
               >
                 Super User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -34004,6 +34307,7 @@ exports[`Without cohort Typing in search shows filtered list of available users 
               >
                 Facilitator User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -34028,6 +34332,7 @@ exports[`Without cohort Typing in search shows filtered list of available users 
               >
                 Researcher User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -34052,6 +34357,7 @@ exports[`Without cohort Typing in search shows filtered list of available users 
               >
                 Participant User
               </span>
+              
                
               <span
                 class=\\"l__hidden\\"
@@ -34070,6 +34376,7 @@ exports[`Without cohort Typing in search shows filtered list of available users 
               >
                 anonymous
               </span>
+              
                
               <span
                 class=\\"l__hidden\\"
@@ -34190,6 +34497,7 @@ exports[`Without cohort Typing in search shows filtered list of available users 
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"
@@ -34344,6 +34652,7 @@ exports[`Without cohort Typing in search shows filtered list of available users 
               >
                 Facilitator User
               </span>
+              
                
               <i
                 aria-hidden=\\"true\\"
@@ -34470,6 +34779,7 @@ exports[`Without cohort Typing in search shows filtered list of available users 
                       >
                         Super User
                       </span>
+                      
                        
                       <i
                         aria-hidden=\\"true\\"

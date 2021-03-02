@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from 'react';
-import md5 from 'md5';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
@@ -9,6 +8,7 @@ import { SCENARIO_IS_PUBLIC } from '@components/Scenario/constants';
 import { Button, Comment, Text } from '@components/UI';
 import Username from '@components/User/Username';
 
+import Avatar from '@utils/Avatar';
 import Identity from '@utils/Identity';
 import Moment from '@utils/Moment';
 
@@ -161,14 +161,7 @@ class UserInvitesList extends Component {
             const other = isRecipient
               ? usersById[invite.sender_id]
               : usersById[invite.receiver_id];
-
-            const avatarKey = other.email
-              ? md5(other.email.trim().toLowerCase())
-              : other.username;
-
-            const avatarUrl = other.email
-              ? `https://www.gravatar.com/avatar/${avatarKey}?d=robohash`
-              : `https://robohash.org/${avatarKey}?bgset=bg1&size=50x50`;
+            const avatar = new Avatar(other);
 
             const createdAgo = Moment(invite.created_at).fromNow();
             const cohort = cohortsById[invite.cohort_id];
@@ -250,7 +243,7 @@ class UserInvitesList extends Component {
 
             accum.push(
               <Invite data-testid="comment" key={key}>
-                <Invite.Avatar src={avatarUrl} />
+                <Invite.Avatar src={avatar.src} />
                 <Invite.Content>
                   <Invite.Text>
                     {explanation}{' '}

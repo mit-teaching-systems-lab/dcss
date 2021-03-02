@@ -45,12 +45,12 @@ afterEach(() => {
 });
 
 describe('GET_CHAT_SUCCESS', () => {
-  describe('getChatById', () => {
+  describe('getChat', () => {
     let chat = { ...state.chats[0] };
 
     test('Receives a chat', async () => {
       fetchImplementation(fetch, 200, { chat });
-      const returnValue = await store.dispatch(actions.getChatById(1));
+      const returnValue = await store.dispatch(actions.getChat(1));
       expect(fetch.mock.calls.length).toBe(1);
       expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
         Array [
@@ -59,7 +59,7 @@ describe('GET_CHAT_SUCCESS', () => {
       `);
       expect(returnValue).toEqual(chat);
 
-      await mockStore.dispatch(actions.getChatById(1));
+      await mockStore.dispatch(actions.getChat(1));
       expect(mockStore.getActions()).toMatchSnapshot();
     });
   });
@@ -104,10 +104,10 @@ describe('GET_CHAT_SUCCESS', () => {
 describe('GET_CHAT_ERROR', () => {
   let chat = { ...state.chats[0] };
 
-  describe('getChatById', () => {
+  describe('getChat', () => {
     test('Receives an error', async () => {
       fetchImplementation(fetch, 200, { error });
-      const returnValue = await store.dispatch(actions.getChatById(1));
+      const returnValue = await store.dispatch(actions.getChat(1));
       expect(fetch.mock.calls.length).toBe(1);
       expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
         Array [
@@ -116,7 +116,7 @@ describe('GET_CHAT_ERROR', () => {
       `);
       expect(returnValue).toEqual(null);
 
-      await mockStore.dispatch(actions.getChatById(1));
+      await mockStore.dispatch(actions.getChat(1));
       expect(mockStore.getActions()).toMatchSnapshot();
     });
   });
