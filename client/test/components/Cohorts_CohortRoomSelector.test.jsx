@@ -705,7 +705,7 @@ beforeEach(() => {
     return chat;
   });
 
-  chatActions.getChatByIdentifiers.mockImplementation(() => async dispatch => {
+  chatActions.getChat.mockImplementation(() => async dispatch => {
     dispatch({ type: GET_CHAT_SUCCESS, chat });
     return chat;
   });

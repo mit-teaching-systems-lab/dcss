@@ -266,7 +266,7 @@ beforeEach(() => {
 
   messages = [message1, message2, message3, message4, message5];
 
-  chatActions.getChatByIdentifiers.mockImplementation(() => async dispatch => {
+  chatActions.getChat.mockImplementation(() => async dispatch => {
     dispatch({ type: GET_CHAT_SUCCESS, chat });
     return chat;
   });

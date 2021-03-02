@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Button, Card, Header, Message, Modal } from '@components/UI';
+import { Button, Card, Header, Icon, Message, Modal } from '@components/UI';
+import Lobby from '@components/Lobby';
 import Identity from '@utils/Identity';
 import { IS_FIREFOX, IS_AUDIO_RECORDING_SUPPORTED } from '@utils/Media';
 import {
@@ -40,7 +41,10 @@ class EntrySlide extends React.Component {
         These values start off as boolean: true or false. That value is
         used to indicate to which permissions need to be queried.
        */
-      permissions
+      permissions,
+      lobby: {
+        isOpen: false
+      }
     };
 
     this.onClick = this.onClick.bind(this);
@@ -114,7 +118,7 @@ class EntrySlide extends React.Component {
   }
 
   render() {
-    const { run, scenario } = this.props;
+    const { chat, cohort, run, scenario } = this.props;
     const { isReady, permissions, showPermissionConfirmation } = this.state;
     const { title, description, consent } = scenario;
     const cardClass = this.isScenarioRun
@@ -259,61 +263,111 @@ class EntrySlide extends React.Component {
       });
     }
 
-    //
-    //
-    //
-    //
-    // TODO: Integrate "Lobby"
-    //
-    //
-    //
-    //
+    const onLobbyCloseClick = this.state.lobby.isOpen ? () => {
+      this.setState({
+        lobby: {
+          isOpen: false
+        }
+      })
+    } : null;
 
     return (
-      <Card id="entry" key="entry" centered className={cardClass}>
-        <Card.Content className="scenario__slide-card-header">
-          <Card.Header tabIndex="0">{title}</Card.Header>
-        </Card.Content>
-        <Card.Content>
-          <p tabIndex="0" className="entryslide__description-inner-container">
-            {description}
-          </p>
+      <Fragment>
+        <Card id="entry" key="entry" centered className={cardClass}>
+          <Card.Content className="scenario__slide-card-header">
+            <Card.Header tabIndex="0">
+              {this.isCohortScenarioRun && this.isMultiparticipant ? (
+                <Button
+                  floated="right"
+                  tabIndex="0"
+                  onClick={() => {
+                    this.setState({
+                      lobby: {
+                        isOpen: true
+                      }
+                    });
+                  }}
+                >
+                  <Icon name="group" />
+                  Lobby
+                </Button>
+              ) : null}
+              {title}
+            </Card.Header>
+          </Card.Content>
+          <Card.Content>
+            <p tabIndex="0" className="entryslide__description-inner-container">
+              {description}
+            </p>
 
-          {run && run.updated_at !== null ? (
-            <Message
-              tabIndex="0"
-              size="large"
-              color="olive"
-              header="In Progress"
-              content="This scenario is currently in progress"
-            />
-          ) : null}
-          {consent ? (
-            <Message
-              tabIndex="0"
-              size="large"
-              color="yellow"
-              header="Consent Agreement"
-              content={consentAgreement}
-            />
-          ) : null}
-        </Card.Content>
-        <Card.Content extra>
-          {!isConsentAgreementAcknowledged ? (
-            <Button.Group fluid>
-              <Button onClick={this.onClick} positive>
-                Yes, I consent
-              </Button>
-              <Button.Or />
-              <Button onClick={this.onClick} negative>
-                No, I do not consent
-              </Button>
-            </Button.Group>
-          ) : (
-            postConsentAcknowledgement
-          )}
-        </Card.Content>
-      </Card>
+            {run && run.updated_at !== null ? (
+              <Message
+                tabIndex="0"
+                size="large"
+                color="olive"
+                header="In Progress"
+                content="This scenario is currently in progress"
+              />
+            ) : null}
+            {consent ? (
+              <Message
+                tabIndex="0"
+                size="large"
+                color="yellow"
+                header="Consent Agreement"
+                content={consentAgreement}
+              />
+            ) : null}
+          </Card.Content>
+          <Card.Content extra>
+            {!isConsentAgreementAcknowledged ? (
+              <Button.Group fluid>
+                <Button onClick={this.onClick} positive>
+                  Yes, I consent
+                </Button>
+                <Button.Or />
+                <Button onClick={this.onClick} negative>
+                  No, I do not consent
+                </Button>
+              </Button.Group>
+            ) : (
+              postConsentAcknowledgement
+            )}
+          </Card.Content>
+        </Card>
+        {this.state.lobby.isOpen ? (
+          <Modal.Accessible open>
+            <Modal
+              closeIcon
+              open
+              aria-modal="true"
+              role="dialog"
+              centered={false}
+              onClose={onLobbyCloseClick}
+            >
+              <Header
+                icon="group"
+                content="Lobby"
+              />
+              <Modal.Content scrolling style={{ height: 'calc(100vh - 10rem)' }}>
+                <Lobby
+                  chat={chat}
+                  cohort={cohort}
+                  scenario={scenario}
+                />
+              </Modal.Content>
+              <Modal.Actions>
+                <Button.Group fluid>
+                  <Button aria-label="Close" onClick={onLobbyCloseClick}>
+                    Close
+                  </Button>
+                </Button.Group>
+              </Modal.Actions>
+              <div data-testid="lobby-modal" />
+            </Modal>
+          </Modal.Accessible>
+        ) : null}
+      </Fragment>
     );
   }
 }
@@ -328,8 +382,8 @@ EntrySlide.propTypes = {
 };
 
 const mapStateToProps = state => {
-  const { chat, run } = state;
-  return { chat, run };
+  const { chat, cohort, run } = state;
+  return { chat, cohort, run };
 };
 
 export default connect(mapStateToProps)(EntrySlide);
