@@ -213,7 +213,7 @@ export class CohortScenarios extends React.Component {
                 pathname += `/chat/${hashChatId}`;
               }
 
-              pathname += `/${slideIndex}`;
+              pathname += `/slide/${slideIndex}`;
 
               const url = `${location.origin}${pathname}`;
 
