@@ -37,7 +37,8 @@ const {
   quitCohort,
   doneCohort,
   addCohortUserRole,
-  deleteCohortUserRole
+  deleteCohortUserRole,
+  getCohortChatsOverview
 } = require('./endpoints');
 
 const requiredSiteRoles = ['super_admin', 'admin', 'researcher', 'facilitator'];
@@ -67,6 +68,7 @@ router.post('/:id/roles/add', [
   validateRequestBody,
   addCohortUserRole
 ]);
+router.get('/:id/overview', [requireUser, getCohortChatsOverview]);
 router.get('/:id/scenarios', [requireUser, getCohortScenarios]);
 router.put('/:id/scenarios', [
   requireUser,

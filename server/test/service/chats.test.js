@@ -78,14 +78,14 @@ jest.mock('../../service/chats/db', () => {
     ...jest.requireActual('../../service/chats/db'),
     createChat: jest.fn(),
     linkRunToChat: jest.fn(),
-    getChatById: jest.fn(),
+    getChat: jest.fn(),
     getChatUsersByChatId: jest.fn(),
     getChatMessagesByChatId: jest.fn(),
     getChatMessagesCountByChatId: jest.fn(),
     getChatsByUserId: jest.fn(),
     getChats: jest.fn(),
     deleteChatById: jest.fn(),
-    setChatById: jest.fn(),
+    setChat: jest.fn(),
     getMessageById: jest.fn(),
     setMessageById: jest.fn()
   };
@@ -112,7 +112,7 @@ describe('/api/chats/*', () => {
     });
 
     db.createChat.mockImplementation(async props => props);
-    db.setChatById.mockImplementation(async () => chat);
+    db.setChat.mockImplementation(async () => chat);
     db.getMessageById.mockImplementation(async id => {
       return {
         message: {
@@ -128,7 +128,7 @@ describe('/api/chats/*', () => {
         }
       };
     });
-    db.getChatById.mockImplementation(async id => {
+    db.getChat.mockImplementation(async id => {
       return chatsById[id];
     });
     db.deleteChatById.mockImplementation(async () => chat);
@@ -435,8 +435,8 @@ describe('/api/chats/*', () => {
           },
         }
       `);
-      expect(db.getChatById.mock.calls.length).toBe(1);
-      expect(db.getChatById.mock.calls[0]).toMatchInlineSnapshot(`
+      expect(db.getChat.mock.calls.length).toBe(1);
+      expect(db.getChat.mock.calls[0]).toMatchInlineSnapshot(`
         Array [
           1,
         ]
@@ -467,8 +467,8 @@ describe('/api/chats/*', () => {
           },
         }
       `);
-      expect(db.setChatById.mock.calls.length).toBe(1);
-      expect(db.setChatById.mock.calls[0]).toMatchInlineSnapshot(`
+      expect(db.setChat.mock.calls.length).toBe(1);
+      expect(db.setChat.mock.calls[0]).toMatchInlineSnapshot(`
         Array [
           2,
           Object {
@@ -488,7 +488,7 @@ describe('/api/chats/*', () => {
       const response = await request({ path, method, body });
 
       expect(await response.json()).toMatchInlineSnapshot(`Object {}`);
-      expect(db.setChatById.mock.calls.length).toBe(0);
+      expect(db.setChat.mock.calls.length).toBe(0);
     });
 
     test('put failure', async () => {
@@ -502,7 +502,7 @@ describe('/api/chats/*', () => {
           "message": "No request body!",
         }
       `);
-      expect(db.setChatById.mock.calls.length).toBe(0);
+      expect(db.setChat.mock.calls.length).toBe(0);
     });
   });
 
@@ -621,11 +621,11 @@ describe('/api/chats/*', () => {
         }
       `);
       expect(db.linkRunToChat.mock.calls.length).toBe(1);
-      expect(db.getChatById.mock.calls.length).toBe(0);
+      expect(db.getChat.mock.calls.length).toBe(0);
     });
 
-    test('get failure: getChatById', async () => {
-      db.getChatById.mockImplementation(async () => {
+    test('get failure: getChat', async () => {
+      db.getChat.mockImplementation(async () => {
         throw error;
       });
 
@@ -638,7 +638,7 @@ describe('/api/chats/*', () => {
         }
       `);
       expect(db.linkRunToChat.mock.calls.length).toBe(1);
-      expect(db.getChatById.mock.calls.length).toBe(1);
+      expect(db.getChat.mock.calls.length).toBe(1);
     });
   });
 

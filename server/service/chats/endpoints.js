@@ -54,13 +54,13 @@ async function newOrExistingChat(req, res) {
     identifiers.cohort_id = cohort_id;
   }
 
-  let chat = await db.getChatByIdentifiers(host_id, identifiers);
+  let chat = await db.getChatentifiers(host_id, identifiers);
 
   if (!chat) {
     chat = await db.createChat(host_id, scenario_id, cohort_id, is_open);
   } else {
     if (chat.is_open !== is_open) {
-      chat = await db.setChatById(chat.id, { is_open });
+      chat = await db.setChat(chat.id, { is_open });
     }
   }
 
@@ -178,8 +178,8 @@ async function linkRunToChat(req, res) {
     }
     await db.linkRunToChat(id, run_id, user_id);
 
-    // TODO: Consolidate the calls to getChatById && getChatUsersByChatId
-    const result = await db.getChatById(id);
+    // TODO: Consolidate the calls to getChat && getChatUsersByChatId
+    const result = await db.getChat(id);
     const users = await db.getChatUsersByChatId(result.id);
     const usersById = users.reduce(
       (accum, user) => ({
@@ -202,9 +202,9 @@ async function linkRunToChat(req, res) {
   }
 }
 
-async function getChatById(req, res) {
+async function getChat(req, res) {
   const id = Number(req.params.id);
-  const chat = await db.getChatById(id);
+  const chat = await db.getChat(id);
   res.json({ chat });
 }
 
@@ -232,9 +232,9 @@ async function getChatMessagesCountByChatId(req, res) {
   res.json({ count });
 }
 
-async function setChatById(req, res) {
+async function setChat(req, res) {
   const id = Number(req.params.id);
-  const { deleted_at = null } = req.body;
+  const { ended_at = null, deleted_at = null } = req.body;
 
   const updates = {};
 
@@ -242,12 +242,16 @@ async function setChatById(req, res) {
     updates.deleted_at = deleted_at;
   }
 
+  if (ended_at) {
+    updates.ended_at = ended_at;
+  }
+
   let chat;
 
   if (Object.entries(updates).length) {
-    chat = await db.setChatById(id, updates);
+    chat = await db.setChat(id, updates);
   } else {
-    chat = await db.getChatById(id);
+    chat = await db.getChat(id);
   }
 
   res.json({ chat });
@@ -309,8 +313,8 @@ exports.getLinkedChatUsersByChatId = asyncMiddleware(
 exports.newOrExistingChat = asyncMiddleware(newOrExistingChat);
 exports.createChat = asyncMiddleware(createChat);
 exports.createChatInvite = asyncMiddleware(createChatInvite);
-exports.getChatById = asyncMiddleware(getChatById);
+exports.getChat = asyncMiddleware(getChat);
 exports.linkRunToChat = asyncMiddleware(linkRunToChat);
-exports.setChatById = asyncMiddleware(setChatById);
+exports.setChat = asyncMiddleware(setChat);
 exports.getMessageById = asyncMiddleware(getMessageById);
 exports.setMessageById = asyncMiddleware(setMessageById);

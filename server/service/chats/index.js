@@ -8,7 +8,7 @@ const { validateRequestBody } = require('../../util/requestValidation');
 const {
   createChat,
   createChatInvite,
-  getChatById,
+  getChat,
   getChatMessagesByChatId,
   getChatMessagesCountByChatId,
   getChats,
@@ -20,7 +20,7 @@ const {
   joinChat,
   linkRunToChat,
   newOrExistingChat,
-  setChatById,
+  setChat,
   // setChatInviteById,
   setMessageById
 } = require('./endpoints');
@@ -50,8 +50,8 @@ router.get('/:id/messages/count', [requireUser, getChatMessagesCountByChatId]);
 router.get('/:id/messages', [requireUser, getChatMessagesByChatId]);
 router.get('/:id/users/linked', [requireUser, getLinkedChatUsersByChatId]);
 router.get('/:id/users', [requireUser, getChatUsersByChatId]);
-router.get('/:id', [requireUser, getChatById]);
-router.put('/:id', [requireUser, validateRequestBody, setChatById]);
+router.get('/:id', [requireUser, getChat]);
+router.put('/:id', [requireUser, validateRequestBody, setChat]);
 
 router.get('/link/:id/run/:run_id', [requireUser, linkRunToChat]);
 

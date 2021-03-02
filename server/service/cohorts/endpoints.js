@@ -55,6 +55,11 @@ async function getCohortsSlice(req, res) {
   }
 }
 
+async function getCohortChatsOverview(req, res) {
+  const chats = await db.getCohortChatsOverview(Number(req.params.id));
+  res.send({ chats });
+}
+
 // async function getMyCohorts(req, res) {
 //   const user_id = req.session.user.id;
 //   const cohorts = await db.getMyCohorts(user_id);
@@ -253,3 +258,4 @@ exports.getCohortData = asyncMiddleware(getCohortData);
 exports.getCohortParticipantData = asyncMiddleware(getCohortParticipantData);
 exports.addCohortUserRole = asyncMiddleware(addCohortUserRole);
 exports.deleteCohortUserRole = asyncMiddleware(deleteCohortUserRole);
+exports.getCohortChatsOverview = asyncMiddleware(getCohortChatsOverview);

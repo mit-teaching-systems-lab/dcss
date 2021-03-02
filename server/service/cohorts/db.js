@@ -642,6 +642,39 @@ async function deleteCohortUserRole(cohort_id, user_id, roles) {
   });
 }
 
+async function getCohortChatsOverview(id) {
+  const result = await query(sql`
+    WITH ccu AS (
+      WITH cu AS (
+        SELECT
+          user_role_detail.*,
+          chat_user.chat_id,
+          chat_user.updated_at,
+          chat_user.persona_id,
+          chat_user.is_muted,
+          chat_user.is_present
+        FROM chat_user
+        JOIN user_role_detail ON user_role_detail.id = chat_user.user_id
+        AND chat_user.ended_at IS NULL
+      )
+      SELECT
+        cu.chat_id AS id,
+        JSONB_AGG(TO_JSONB(cu)) AS users
+      FROM cu
+      GROUP BY cu.chat_id
+    )
+    SELECT
+      chat.*,
+      ccu.users
+    FROM chat
+    JOIN ccu ON ccu.id = chat.id
+    WHERE chat.cohort_id = ${id}
+    AND chat.ended_at IS NULL
+  `);
+
+  return result.rowCount ? result.rows : [];
+}
+
 exports.createCohort = createCohort;
 exports.getCohort = getCohort;
 exports.getCohortById = getCohort;
@@ -661,3 +694,4 @@ exports.getCohortUserRoles = getCohortUserRoles;
 exports.linkUserToCohort = linkUserToCohort;
 exports.addCohortUserRole = addCohortUserRole;
 exports.deleteCohortUserRole = deleteCohortUserRole;
+exports.getCohortChatsOverview = getCohortChatsOverview;

@@ -158,7 +158,7 @@ class SocketManager {
       if (!notifier.listenerCount('run_chat_link')) {
         notifier.on('run_chat_link', async data => {
           console.log('run_chat_link', data);
-          const chat = await chatdb.getChatById(data.chat_id);
+          const chat = await chatdb.getChat(data.chat_id);
           const user = await chatdb.getChatUserByChatId(
             data.chat_id,
             data.user_id

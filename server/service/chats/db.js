@@ -2,7 +2,7 @@ const { sql, updateQuery } = require('../../util/sqlHelpers');
 const { query, withClientTransaction } = require('../../util/db');
 const { INVITE_STATUS } = require('../invites/db');
 
-exports.getChatByIdentifiers = async (host_id, identifiers) => {
+exports.getChatentifiers = async (host_id, identifiers) => {
   const { scenario_id, cohort_id = null } = identifiers;
 
   let lookup = `
@@ -116,7 +116,7 @@ exports.linkRunToChat = async (chat_id, run_id, user_id) => {
   });
 };
 
-exports.getChatById = async id => {
+exports.getChat = async id => {
   const result = await query(sql`
     SELECT *
     FROM chat
@@ -203,7 +203,7 @@ exports.joinChat = async (chat_id, user_id, persona_id = null) => {
     `);
 
     if (result.rowCount) {
-      return this.getChatById(chat_id);
+      return this.getChat(chat_id);
     }
     return null;
   });
@@ -326,7 +326,7 @@ exports.getChats = async () => {
   return result.rows;
 };
 
-exports.setChatById = async (id, updates) => {
+exports.setChat = async (id, updates) => {
   return await withClientTransaction(async client => {
     const result = await client.query(updateQuery('chat', { id }, updates));
     return result.rows[0];

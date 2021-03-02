@@ -7,7 +7,7 @@ const scenariodb = require('../scenarios/db');
 
 exports.makeChatInviteNotification = async invite => {
   const host = await authdb.getUserById(invite.sender_id);
-  const chat = await db.getChatById(invite.chat_id);
+  const chat = await db.getChat(invite.chat_id);
   const scenario = await scenariodb.getScenarioById(chat.scenario_id);
   const cohort = chat.cohort_id
     ? await cohortdb.getCohortById(chat.cohort_id)
