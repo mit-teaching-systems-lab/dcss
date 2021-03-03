@@ -1,8 +1,8 @@
 import assert from 'assert';
 import { state } from '../bootstrap';
 
-import { agentInitialState } from '../../reducers/initial-states';
-import * as reducer from '../../reducers/agent';
+import { interactionInitialState } from '../../reducers/initial-states';
+import * as reducer from '../../reducers/interaction';
 import * as types from '../../actions/types';
 
 const initialState = [];
@@ -10,21 +10,21 @@ const initialStateById = {};
 const error = new Error('something unexpected happened on the server');
 const original = JSON.parse(JSON.stringify(state));
 
-describe('agents', () => {
+describe('interactions', () => {
   let state;
-  let agent;
-  let agents;
-  let agentsById;
+  let interaction;
+  let interactions;
+  let interactionsById;
 
   beforeEach(() => {
     state = [];
-    agent = {
+    interaction = {
       id: 1,
       name: 'ABC',
       description: 'This is a bot',
       endpoint: 'ws://'
     };
-    agents = [
+    interactions = [
       { id: 1, name: 'ABC', endpoint: 'ws://', description: 'This is a bot' },
       { id: 1, name: 'ABC', endpoint: 'ws://', description: 'This is a bot' }, // this is intentional
       {
@@ -40,7 +40,7 @@ describe('agents', () => {
         description: 'This is a third bot'
       }
     ];
-    agentsById = {
+    interactionsById = {
       ABC: {
         id: 1,
         name: 'ABC',
@@ -63,21 +63,21 @@ describe('agents', () => {
   });
 
   test('initial state', () => {
-    expect(reducer.agent(undefined, {})).toEqual(agentInitialState);
-    expect(reducer.agent(undefined, {})).toEqual(agentInitialState);
-    expect(reducer.agents(undefined, {})).toEqual(initialState);
-    expect(reducer.agents(undefined, {})).toEqual(initialState);
-    expect(reducer.agentsById(undefined, {})).toEqual(initialStateById);
-    expect(reducer.agentsById(undefined, {})).toEqual(initialStateById);
+    expect(reducer.interaction(undefined, {})).toEqual(interactionInitialState);
+    expect(reducer.interaction(undefined, {})).toEqual(interactionInitialState);
+    expect(reducer.interactions(undefined, {})).toEqual(initialState);
+    expect(reducer.interactions(undefined, {})).toEqual(initialState);
+    expect(reducer.interactionsById(undefined, {})).toEqual(initialStateById);
+    expect(reducer.interactionsById(undefined, {})).toEqual(initialStateById);
   });
 
   test('GET_AGENT_SUCCESS 1', () => {
     const action = {
       type: types.GET_AGENT_SUCCESS,
-      agent
+      interaction
     };
-    const first = reducer.agent(undefined, action);
-    const second = reducer.agent(undefined, action);
+    const first = reducer.interaction(undefined, action);
+    const second = reducer.interaction(undefined, action);
     expect(first).toMatchInlineSnapshot(`
       Object {
         "configuration": Object {},
@@ -124,9 +124,9 @@ describe('agents', () => {
   test('GET_AGENT_SUCCESS 2', () => {
     const action = {
       type: types.GET_AGENT_SUCCESS,
-      agent
+      interaction
     };
-    expect(reducer.agents(state, action)).toMatchInlineSnapshot(`
+    expect(reducer.interactions(state, action)).toMatchInlineSnapshot(`
       Array [
         Object {
           "description": "This is a bot",
@@ -141,12 +141,12 @@ describe('agents', () => {
   test('GET_AGENT_SUCCESS 3', () => {
     const action = {
       type: types.GET_AGENT_SUCCESS,
-      agent
+      interaction
     };
     expect(
-      reducer.agentsById(
+      reducer.interactionsById(
         {
-          [agent.id]: agent
+          [interaction.id]: interaction
         },
         action
       )
@@ -163,16 +163,16 @@ describe('agents', () => {
   });
 
   test('GET_AGENT_SUCCESS 4', () => {
-    const different = JSON.parse(JSON.stringify(agent));
+    const different = JSON.parse(JSON.stringify(interaction));
     different.id = 2;
     const action = {
       type: types.SET_AGENT_SUCCESS,
-      agent: different
+      interaction: different
     };
     expect(
-      reducer.agentsById(
+      reducer.interactionsById(
         {
-          [agent.id]: agent
+          [interaction.id]: interaction
         },
         action
       )
@@ -197,10 +197,10 @@ describe('agents', () => {
   test('SET_AGENT_SUCCESS 1', () => {
     const action = {
       type: types.SET_AGENT_SUCCESS,
-      agent
+      interaction
     };
-    const first = reducer.agent(undefined, action);
-    const second = reducer.agent(undefined, action);
+    const first = reducer.interaction(undefined, action);
+    const second = reducer.interaction(undefined, action);
     expect(first).toMatchInlineSnapshot(`
       Object {
         "configuration": Object {},
@@ -245,15 +245,15 @@ describe('agents', () => {
   });
 
   test('SET_AGENT_SUCCESS 2', () => {
-    const different = JSON.parse(JSON.stringify(agent));
+    const different = JSON.parse(JSON.stringify(interaction));
     different.id = 2;
 
     const action = {
       type: types.SET_AGENT_SUCCESS,
-      agent: different
+      interaction: different
     };
 
-    expect(reducer.agents([agent], action)).toMatchInlineSnapshot(`
+    expect(reducer.interactions([interaction], action)).toMatchInlineSnapshot(`
       Array [
         Object {
           "description": "This is a bot",
@@ -274,10 +274,10 @@ describe('agents', () => {
   test('SET_AGENT_SUCCESS 3', () => {
     const action = {
       type: types.SET_AGENT_SUCCESS,
-      agent
+      interaction
     };
 
-    expect(reducer.agents([agent], action)).toMatchInlineSnapshot(`
+    expect(reducer.interactions([interaction], action)).toMatchInlineSnapshot(`
       Array [
         Object {
           "description": "This is a bot",
@@ -292,12 +292,12 @@ describe('agents', () => {
   test('SET_AGENT_SUCCESS 4', () => {
     const action = {
       type: types.SET_AGENT_SUCCESS,
-      agent
+      interaction
     };
     expect(
-      reducer.agentsById(
+      reducer.interactionsById(
         {
-          [agent.id]: agent
+          [interaction.id]: interaction
         },
         action
       )
@@ -314,16 +314,16 @@ describe('agents', () => {
   });
 
   test('SET_AGENT_SUCCESS 5', () => {
-    const different = JSON.parse(JSON.stringify(agent));
+    const different = JSON.parse(JSON.stringify(interaction));
     different.id = 2;
     const action = {
       type: types.SET_AGENT_SUCCESS,
-      agent: different
+      interaction: different
     };
     expect(
-      reducer.agentsById(
+      reducer.interactionsById(
         {
-          [agent.id]: agent
+          [interaction.id]: interaction
         },
         action
       )
@@ -348,9 +348,9 @@ describe('agents', () => {
   test('GET_AGENTS_SUCCESS 1', () => {
     const action = {
       type: types.GET_AGENTS_SUCCESS,
-      agents
+      interactions
     };
-    expect(reducer.agents(state, action)).toMatchInlineSnapshot(`
+    expect(reducer.interactions(state, action)).toMatchInlineSnapshot(`
       Array [
         Object {
           "description": "This is a bot",
@@ -372,7 +372,7 @@ describe('agents', () => {
         },
       ]
     `);
-    expect(reducer.agentsById(state, action)).toMatchInlineSnapshot(`
+    expect(reducer.interactionsById(state, action)).toMatchInlineSnapshot(`
       Object {
         "1": Object {
           "description": "This is a bot",
@@ -399,9 +399,9 @@ describe('agents', () => {
   test('GET_AGENTS_SUCCESS 2', () => {
     const action = {
       type: types.GET_AGENTS_SUCCESS,
-      agents
+      interactions
     };
-    expect(reducer.agentsById(state, action)).toMatchInlineSnapshot(`
+    expect(reducer.interactionsById(state, action)).toMatchInlineSnapshot(`
       Object {
         "1": Object {
           "description": "This is a bot",
@@ -428,7 +428,7 @@ describe('agents', () => {
   test('GET_AGENTS_SUCCESS 3', () => {
     const action = {
       type: types.GET_AGENTS_SUCCESS,
-      agents: [
+      interactions: [
         { id: 1, endpoint: 'ws://', description: 'This is a bot' },
         { id: 1, endpoint: 'ws://', description: 'This is a bot' }, // this is intentional
         {
@@ -445,7 +445,7 @@ describe('agents', () => {
         }
       ]
     };
-    expect(reducer.agents(state, action)).toMatchInlineSnapshot(`
+    expect(reducer.interactions(state, action)).toMatchInlineSnapshot(`
       Array [
         Object {
           "description": "This is a bot",
@@ -466,7 +466,7 @@ describe('agents', () => {
         },
       ]
     `);
-    expect(reducer.agentsById(state, action)).toMatchInlineSnapshot(`
+    expect(reducer.interactionsById(state, action)).toMatchInlineSnapshot(`
       Object {
         "1": Object {
           "description": "This is a bot",
