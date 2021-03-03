@@ -4,13 +4,9 @@ import { withRouter } from 'react-router-dom';
 import escapeRegExp from 'lodash.escaperegexp';
 import PropTypes from 'prop-types';
 import { sentenceCase } from 'change-case';
-import {
-  createAgent,
-  getAgent,
-  getAgents,
-  setAgent,
-  getInteractions
-} from '@actions/agent';
+import { createAgent, getAgent, getAgents, setAgent } from '@actions/agent';
+import { getInteractions, getInteractionsTypes } from '@actions/interaction';
+import AgentInteractionEditor from './AgentInteractionEditor';
 import AgentInteractionSelect from './AgentInteractionSelect';
 import EditorMenu from '@components/EditorMenu';
 import Loading from '@components/Loading';
@@ -18,6 +14,7 @@ import { notify } from '@components/Notification';
 import {
   Button,
   Checkbox,
+  Container,
   Divider,
   Grid,
   Form,
@@ -127,6 +124,9 @@ class Agent extends Component {
         field: '',
         message: ''
       },
+      interaction: {
+        isOpen: false
+      },
       activePage,
       isReady: false,
       id: null,
@@ -151,6 +151,10 @@ class Agent extends Component {
 
     if (!this.props.interactions.length) {
       await this.props.getInteractions();
+    }
+
+    if (!this.props.interactionsTypes.length) {
+      await this.props.getInteractionsTypes();
     }
 
     const id = this.props.id;
@@ -178,8 +182,18 @@ class Agent extends Component {
 
     if (agent.id) {
       await this.props.setAgent(agent.id, agent);
+      notify({
+        color: 'green',
+        message: 'Agent updated',
+        time: 3000
+      });
     } else {
       await this.props.createAgent(agent);
+      notify({
+        color: 'green',
+        message: 'Agent created',
+        time: 3000
+      });
       this.props.history.push(
         makeHistoryEntry(this.props.location, {
           id: this.props.agent.id
@@ -408,7 +422,7 @@ class Agent extends Component {
       });
     };
 
-    const addAgentButton = (
+    const createAgentButton = (
       <Menu.Item.Tabbable
         key="menu-item-agents-add"
         onClick={() => {
@@ -426,8 +440,44 @@ class Agent extends Component {
         <Icon.Group className="em__icon-group-margin">
           <Icon name="plus" className="primary" />
         </Icon.Group>
-        Add an agent
+        Create a new agent
       </Menu.Item.Tabbable>
+    );
+
+    // const addInteractionButton = (
+    //   <Menu.Item.Tabbable
+    //     key="menu-item-interaction-add"
+    //     onClick={() => {
+    //       this.setState({
+    //         interaction: {
+    //           isOpen: true
+    //         }
+    //       });
+    //     }}
+    //   >
+    //     <Icon.Group className="em__icon-group-margin">
+    //       <Icon name="plus" className="primary" />
+    //     </Icon.Group>
+    //     Add an interaction
+    //   </Menu.Item.Tabbable>
+    // );
+
+    const defineNewInteractionButton = (
+      <Button
+        size="mini"
+        icon="plus"
+        floated="right"
+        labelPosition="left"
+        className="icon-primary"
+        content="Define a new interaction"
+        onClick={() => {
+          this.setState({
+            interaction: {
+              isOpen: true
+            }
+          });
+        }}
+      />
     );
 
     const resultsDisplay = this.state.results.length
@@ -498,6 +548,11 @@ class Agent extends Component {
                 this.props.setAgent(agent.id, {
                   ...agent,
                   deleted_at: new Date().toISOString()
+                });
+                notify({
+                  color: 'green',
+                  message: 'Agent deleted',
+                  time: 3000
                 });
               }
             }
@@ -584,7 +639,7 @@ class Agent extends Component {
         <EditorMenu
           type="agents"
           items={{
-            left: [agentIcon, addAgentButton],
+            left: [agentIcon, createAgentButton],
             right: [agentSearchInput]
           }}
         />
@@ -700,10 +755,13 @@ class Agent extends Component {
                         <AgentInteractionSelect
                           {...agentInteractionSelectProps}
                         />
-                        <Text color="grey" className="a__textpadding">
-                          This is how the agent will interact with participant
-                          input.
-                        </Text>
+                        <Container style={{marginTop: '0.5em'}}>
+                          {defineNewInteractionButton}
+                          <Text color="grey" className="a__textpadding">
+                            This is how the agent will interact with participant
+                            input.
+                          </Text>
+                        </Container>
                       </Form.Field>
 
                       {/* AGENT CONFIGURATION */}
@@ -1042,7 +1100,7 @@ class Agent extends Component {
                           });
                         }}
                       >
-                        Cancel
+                        Close
                       </Button>
                     </Button.Group>
                   </Form.Field>
@@ -1065,7 +1123,7 @@ class Agent extends Component {
           totalPages={pages}
         />
 
-        {confirmDelete.isOpen ? (
+        {this.state.confirmDelete.isOpen ? (
           <Modal.Accessible open>
             <Modal
               closeIcon
@@ -1105,6 +1163,18 @@ class Agent extends Component {
             </Modal>
           </Modal.Accessible>
         ) : null}
+
+        {this.state.interaction.isOpen ? (
+          <AgentInteractionEditor
+            onCancel={() => {
+              this.setState({
+                interaction: {
+                  isOpen: false
+                }
+              });
+            }}
+          />
+        ) : null}
         <div data-testid="agents-main" />
       </Fragment>
     );
@@ -1124,10 +1194,12 @@ Agent.propTypes = {
   agentsById: PropTypes.object,
   interactions: PropTypes.array,
   interactionsById: PropTypes.object,
+  interactionsTypes: PropTypes.array,
   setAgent: PropTypes.func,
   getAgent: PropTypes.func,
   getAgents: PropTypes.func,
   getInteractions: PropTypes.func,
+  getInteractionsTypes: PropTypes.func,
   user: PropTypes.object
 };
 
@@ -1138,7 +1210,8 @@ const mapStateToProps = (state, ownProps) => {
     agents,
     agentsById,
     interactions,
-    interactionsById
+    interactionsById,
+    interactionsTypes
   } = state;
 
   const activePage = ownProps.activePage || 1;
@@ -1149,6 +1222,7 @@ const mapStateToProps = (state, ownProps) => {
     agentsById,
     interactions,
     interactionsById,
+    interactionsTypes,
     user
   };
 };
@@ -1158,6 +1232,7 @@ const mapDispatchToProps = dispatch => ({
   getAgent: id => dispatch(getAgent(id)),
   getAgents: params => dispatch(getAgents(params)),
   getInteractions: () => dispatch(getInteractions()),
+  getInteractionsTypes: () => dispatch(getInteractionsTypes()),
   setAgent: (id, params) => dispatch(setAgent(id, params))
 });
 

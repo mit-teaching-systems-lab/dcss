@@ -3,15 +3,25 @@ const db = require('./db');
 const { getUserById } = require('../session/db');
 
 async function createInteraction(req, res) {
-  if (!req.body.name || !req.body.description || !req.body.owner) {
+  const owner = {
+    id: req.session.user.id
+  };
+  if (!req.body.name ||
+      !req.body.description ||
+      !req.body.types.length
+    ) {
     const error = new Error(
-      'Creating an interaction requires an owner, name and description.'
+      'Creating an interaction requires an owner, name, description and list of prompts.'
     );
     error.status = 500;
     throw error;
   }
 
-  const interaction = await db.createInteraction(req.body);
+  const interaction = await db.createInteraction({
+    ...req.body,
+    owner
+  });
+
   res.json({ interaction });
 }
 
@@ -26,8 +36,8 @@ async function getInteractions(req, res) {
 }
 
 async function getInteractionsTypes(req, res) {
-  const interactions = await db.getInteractionsTypes();
-  res.json({ interactions });
+  const types = await db.getInteractionsTypes();
+  res.json({ types });
 }
 
 async function setInteraction(req, res) {

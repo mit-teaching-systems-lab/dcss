@@ -12,16 +12,29 @@ async function setInteraction(id, updates) {
 }
 
 async function createInteraction(params) {
-  const { name, description, owner } = params;
+  const { name, description, owner, types } = params;
 
   const interactionCreated = await withClientTransaction(async client => {
-    const result = await client.query(sql`
+
+    const typesAsPGArray = `{"${types.join('","')}"}`;
+
+console.log(sql`
       INSERT INTO interaction
-        (name, description, owner_id)
+        (name, description, owner_id, types)
       VALUES
-        (${name}, ${description}, ${owner.id})
+        (${name}, ${description}, ${owner.id}, ${typesAsPGArray})
       RETURNING *
     `);
+
+    const result = await client.query(sql`
+      INSERT INTO interaction
+        (name, description, owner_id, types)
+      VALUES
+        (${name}, ${description}, ${owner.id}, ${typesAsPGArray})
+      RETURNING *
+    `);
+
+
     return result.rows[0] || null;
   });
 

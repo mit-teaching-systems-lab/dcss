@@ -4,7 +4,9 @@ import {
   GET_INTERACTIONS_ERROR,
   GET_INTERACTIONS_SUCCESS,
   SET_INTERACTION_ERROR,
-  SET_INTERACTION_SUCCESS
+  SET_INTERACTION_SUCCESS,
+GET_INTERACTIONS_TYPES_SUCCESS,
+GET_INTERACTIONS_TYPES_ERROR,
 } from './types';
 
 export let getInteraction = id => async dispatch => {
@@ -14,10 +16,10 @@ export let getInteraction = id => async dispatch => {
     if (res.error) {
       throw res;
     }
-    const { agent } = res;
+    const { interaction } = res;
 
-    dispatch({ type: GET_INTERACTION_SUCCESS, agent });
-    return agent;
+    dispatch({ type: GET_INTERACTION_SUCCESS, interaction });
+    return interaction;
   } catch (error) {
     dispatch({ type: GET_INTERACTION_ERROR, error });
     return null;
@@ -39,9 +41,9 @@ export let setInteraction = (id, params) => async dispatch => {
       if (res.error) {
         throw res;
       }
-      const { agent } = res;
-      dispatch({ type: SET_INTERACTION_SUCCESS, agent });
-      return agent;
+      const { interaction } = res;
+      dispatch({ type: SET_INTERACTION_SUCCESS, interaction });
+      return interaction;
     }
     return null;
   } catch (error) {
@@ -65,9 +67,9 @@ export let createInteraction = params => async dispatch => {
       if (res.error) {
         throw res;
       }
-      const { agent } = res;
-      dispatch({ type: GET_INTERACTION_SUCCESS, agent });
-      return agent;
+      const { interaction } = res;
+      dispatch({ type: GET_INTERACTION_SUCCESS, interaction });
+      return interaction;
     }
     return null;
   } catch (error) {
@@ -89,6 +91,23 @@ export let getInteractions = () => async dispatch => {
     return interactions;
   } catch (error) {
     dispatch({ type: GET_INTERACTIONS_ERROR, error });
+    return null;
+  }
+};
+
+export let getInteractionsTypes = () => async dispatch => {
+  try {
+    const res = await (await fetch(`/api/interactions/types`)).json();
+
+    if (res.error) {
+      throw res;
+    }
+    const { types } = res;
+
+    dispatch({ type: GET_INTERACTIONS_TYPES_SUCCESS, types });
+    return types;
+  } catch (error) {
+    dispatch({ type: GET_INTERACTIONS_TYPES_ERROR, error });
     return null;
   }
 };

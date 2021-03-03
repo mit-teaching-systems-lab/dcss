@@ -794,7 +794,7 @@ describe('/api/interactions/*', () => {
       const response = await request({ path });
       expect(await response.json()).toMatchInlineSnapshot(`
         Object {
-          "interactions": Array [
+          "types": Array [
             Object {
               "id": 1,
               "name": "AudioPrompt",

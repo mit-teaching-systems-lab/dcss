@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Dropdown, Table } from '@components/UI';
+import { getInteractions } from '@actions/interaction';
 
 const AgentInteractionSelectItem = ({ name, description }) => {
   return (
@@ -33,12 +34,22 @@ class AgentInteractionSelect extends Component {
     this.onChange = this.onChange.bind(this);
   }
 
+  async componentDidMount() {
+    if (!this.props.interactions.length) {
+      await this.props.getInteractions();
+    }
+  }
+
   onChange(e, { value }) {
     const selected = value ? this.props.interactionsById[value] : null;
     this.props.onSelect(selected);
   }
 
   render() {
+    if (!this.props.interactions.length) {
+      return null;
+    }
+
     const { onChange } = this;
     const {
       emptyText = 'No selection',
@@ -111,10 +122,16 @@ AgentInteractionSelect.propTypes = {
 const mapStateToProps = (state, ownProps) => {
   const sourceInteractions = state.interactions.length
     ? state.interactions
-    : ownProps.interactions;
+    : ownProps.interactions || null;
 
   const interactions = sourceInteractions.slice();
-  const interactionsById = state.interactionsById;
+  const interactionsById = interactions.reduce(
+    (accum, interaction) => ({
+      ...accum,
+      [interaction.id]: interaction
+    }),
+    {}
+  );
 
   return {
     interactions,
@@ -122,7 +139,11 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
+const mapDispatchToProps = dispatch => ({
+  getInteractions: () => dispatch(getInteractions())
+});
+
 export default connect(
   mapStateToProps,
-  null
+  mapDispatchToProps
 )(AgentInteractionSelect);
