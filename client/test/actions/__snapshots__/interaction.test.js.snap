@@ -24,6 +24,66 @@ Array [
 
 exports[`GET_INTERACTION_SUCCESS createInteraction Empty params 1`] = `Array []`;
 
+exports[`GET_INTERACTION_SUCCESS createInteraction Receives a interaction 2`] = `
+Array [
+  Object {
+    "interaction": Object {
+      "created_at": "2021-02-25T17:31:33.826Z",
+      "deleted_at": null,
+      "description": "It will appear as an option for scenario authors to include in chat discussions within multi-participant scenarios. It receives participant chat messages.",
+      "id": 1,
+      "name": "Fake Interaction",
+      "owner": Object {
+        "email": "super@email.com",
+        "id": 999,
+        "is_anonymous": false,
+        "is_super": true,
+        "personalname": "Super User",
+        "roles": Array [
+          "participant",
+          "super_admin",
+          "facilitator",
+          "researcher",
+        ],
+        "username": "superuser",
+      },
+      "updated_at": "2021-02-27T20:38:53.774Z",
+    },
+    "type": "GET_INTERACTION_SUCCESS",
+  },
+]
+`;
+
+exports[`GET_INTERACTION_SUCCESS getInteraction Receives a interaction 2`] = `
+Array [
+  Object {
+    "interaction": Object {
+      "created_at": "2021-02-25T17:31:33.826Z",
+      "deleted_at": null,
+      "description": "It will appear as an option for scenario authors to include in chat discussions within multi-participant scenarios. It receives participant chat messages.",
+      "id": 1,
+      "name": "Fake Interaction",
+      "owner": Object {
+        "email": "super@email.com",
+        "id": 999,
+        "is_anonymous": false,
+        "is_super": true,
+        "personalname": "Super User",
+        "roles": Array [
+          "participant",
+          "super_admin",
+          "facilitator",
+          "researcher",
+        ],
+        "username": "superuser",
+      },
+      "updated_at": "2021-02-27T20:38:53.774Z",
+    },
+    "type": "GET_INTERACTION_SUCCESS",
+  },
+]
+`;
+
 exports[`GET_INTERACTIONS_ERROR getInteractions Receives error 1`] = `
 Array [
   Object {
@@ -132,3 +192,63 @@ Array [
 `;
 
 exports[`SET_INTERACTION_SUCCESS setInteraction Empty params 1`] = `Array []`;
+
+exports[`SET_INTERACTION_SUCCESS setInteraction Receives a interaction 2`] = `
+Array [
+  Object {
+    "interaction": Object {
+      "created_at": "2021-02-25T17:31:33.826Z",
+      "deleted_at": null,
+      "description": "It will appear as an option for scenario authors to include in chat discussions within multi-participant scenarios. It receives participant chat messages.",
+      "id": 1,
+      "name": "Fake Interaction",
+      "owner": Object {
+        "email": "super@email.com",
+        "id": 999,
+        "is_anonymous": false,
+        "is_super": true,
+        "personalname": "Super User",
+        "roles": Array [
+          "participant",
+          "super_admin",
+          "facilitator",
+          "researcher",
+        ],
+        "username": "superuser",
+      },
+      "updated_at": "2021-02-27T20:38:53.774Z",
+    },
+    "type": "SET_INTERACTION_SUCCESS",
+  },
+]
+`;
+
+exports[`SET_INTERACTION_SUCCESS setInteraction Receives a interaction, updates scenario 2`] = `
+Array [
+  Object {
+    "interaction": Object {
+      "created_at": "2021-02-25T17:31:33.826Z",
+      "deleted_at": null,
+      "description": "It will appear as an option for scenario authors to include in chat discussions within multi-participant scenarios. It receives participant chat messages.",
+      "id": 1,
+      "name": "Fake Interaction",
+      "owner": Object {
+        "email": "super@email.com",
+        "id": 999,
+        "is_anonymous": false,
+        "is_super": true,
+        "personalname": "Super User",
+        "roles": Array [
+          "participant",
+          "super_admin",
+          "facilitator",
+          "researcher",
+        ],
+        "username": "superuser",
+      },
+      "updated_at": "2021-02-27T20:38:53.774Z",
+    },
+    "type": "SET_INTERACTION_SUCCESS",
+  },
+]
+`;

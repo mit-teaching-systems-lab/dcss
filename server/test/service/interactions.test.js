@@ -143,7 +143,10 @@ describe('/api/interactions/*', () => {
     db.getInteractionsTypes.mockImplementation(async () => types);
 
     rolesmw.requireUserRole.mockImplementation(() => [
-      (req, res, next) => next()
+      (req, res, next) => {
+        req.session.user = user;
+        next();
+      }
     ]);
   });
 
@@ -252,6 +255,7 @@ describe('/api/interactions/*', () => {
         name: 'secret-interaction'
       };
       const response = await request({ path, method, body });
+
       expect(await response.json()).toMatchInlineSnapshot(`
         Object {
           "interaction": Object {
@@ -260,20 +264,7 @@ describe('/api/interactions/*', () => {
             "description": "It will appear as an option for scenario authors to include in chat discussions within multi-participant scenarios. It receives participant chat messages.",
             "id": 1,
             "name": "secret-interaction",
-            "owner": Object {
-              "email": "super@email.com",
-              "id": 999,
-              "is_anonymous": false,
-              "is_super": true,
-              "personalname": "Super User",
-              "roles": Array [
-                "participant",
-                "super_admin",
-                "facilitator",
-                "researcher",
-              ],
-              "username": "superuser",
-            },
+            "owner": Object {},
             "types": Array [
               "ChatPrompt",
             ],
@@ -291,18 +282,7 @@ describe('/api/interactions/*', () => {
             "id": 1,
             "name": "secret-interaction",
             "owner": Object {
-              "email": "super@email.com",
-              "id": 999,
-              "is_anonymous": false,
-              "is_super": true,
-              "personalname": "Super User",
-              "roles": Array [
-                "participant",
-                "super_admin",
-                "facilitator",
-                "researcher",
-              ],
-              "username": "superuser",
+              "id": undefined,
             },
             "types": Array [
               "ChatPrompt",
@@ -313,18 +293,18 @@ describe('/api/interactions/*', () => {
       `);
     });
 
-    test('post failure, missing requirements (title)', async () => {
+    test('post failure, missing requirements (types)', async () => {
       db.createInteraction.mockImplementation(async props => null);
 
       const method = 'post';
       const body = {
-        title: ''
+        types: []
       };
       const response = await request({ path, method, body, status: 500 });
       expect(await response.json()).toMatchInlineSnapshot(`
         Object {
           "error": true,
-          "message": "Creating an interaction requires an owner, name and description.",
+          "message": "Creating an interaction requires a name, description and list of prompts.",
         }
       `);
       expect(db.createInteraction.mock.calls.length).toBe(0);
@@ -342,27 +322,7 @@ describe('/api/interactions/*', () => {
       expect(await response.json()).toMatchInlineSnapshot(`
         Object {
           "error": true,
-          "message": "Creating an interaction requires an owner, name and description.",
-        }
-      `);
-      expect(db.createInteraction.mock.calls.length).toBe(0);
-    });
-
-    test('post failure', async () => {
-      db.createInteraction.mockImplementation(async props => null);
-
-      const method = 'post';
-      const body = {
-        ...interaction,
-        title: 'Secret Interaction',
-        name: 'secret-interaction',
-        owner: null
-      };
-      const response = await request({ path, method, body, status: 500 });
-      expect(await response.json()).toMatchInlineSnapshot(`
-        Object {
-          "error": true,
-          "message": "Creating an interaction requires an owner, name and description.",
+          "message": "Creating an interaction requires a name, description and list of prompts.",
         }
       `);
       expect(db.createInteraction.mock.calls.length).toBe(0);

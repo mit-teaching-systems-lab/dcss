@@ -15,17 +15,7 @@ async function createInteraction(params) {
   const { name, description, owner, types } = params;
 
   const interactionCreated = await withClientTransaction(async client => {
-
     const typesAsPGArray = `{"${types.join('","')}"}`;
-
-console.log(sql`
-      INSERT INTO interaction
-        (name, description, owner_id, types)
-      VALUES
-        (${name}, ${description}, ${owner.id}, ${typesAsPGArray})
-      RETURNING *
-    `);
-
     const result = await client.query(sql`
       INSERT INTO interaction
         (name, description, owner_id, types)
@@ -33,8 +23,6 @@ console.log(sql`
         (${name}, ${description}, ${owner.id}, ${typesAsPGArray})
       RETURNING *
     `);
-
-
     return result.rows[0] || null;
   });
 

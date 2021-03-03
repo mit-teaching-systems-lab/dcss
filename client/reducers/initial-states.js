@@ -54,6 +54,7 @@ export const interactionInitialState = {
   name: null,
   description: null,
   owner: null,
+  types: [],
   created_at: null,
   updated_at: null,
   deleted_at: null

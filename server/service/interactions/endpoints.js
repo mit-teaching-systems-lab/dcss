@@ -4,14 +4,16 @@ const { getUserById } = require('../session/db');
 
 async function createInteraction(req, res) {
   const owner = {
-    id: req.session.user.id
+    id: req.session?.user?.id
   };
+
   if (!req.body.name ||
       !req.body.description ||
       !req.body.types.length
     ) {
+
     const error = new Error(
-      'Creating an interaction requires an owner, name, description and list of prompts.'
+      'Creating an interaction requires a name, description and list of prompts.'
     );
     error.status = 500;
     throw error;

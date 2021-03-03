@@ -6,7 +6,7 @@ import { cohort, cohorts, cohortsById } from './cohort';
 import errors from './errors';
 import filters from './filters';
 import { history } from './history';
-import { interaction, interactions, interactionsById } from './interaction';
+import { interaction, interactions, interactionsById, interactionsTypes } from './interaction';
 import { invites, invitesById } from './invite';
 import { session } from './session';
 import { logs, logsById } from './logs';
@@ -35,6 +35,7 @@ export default combineReducers({
   interaction,
   interactions,
   interactionsById,
+  interactionsTypes,
   invites,
   invitesById,
   logs,

@@ -16,13 +16,14 @@ const {
 const router = Router();
 
 router.get('/', [requireUser, getInteractions]);
-router.get('/types', [requireUser, getInteractionsTypes]);
 
 router.post('/', [
   requireUserRole(['admin', 'super_admin', 'facilitator']),
   validateRequestBody,
   createInteraction
 ]);
+
+router.get('/types', [requireUser, getInteractionsTypes]);
 
 router.put('/:id', [
   requireUserRole(['admin', 'super_admin', 'facilitator']),
