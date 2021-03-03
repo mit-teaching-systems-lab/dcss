@@ -436,9 +436,6 @@ exports[`Render 3 1 6`] = `
         </div>
       </div>
     </div>
-    <div>
-      @components/Slide/Components/AudioPrompt/Transcript
-    </div>
   </div>
 </body>"
 `;

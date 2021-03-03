@@ -24,6 +24,12 @@ import {
   waitFor
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+
+async function waitForPopper() {
+  // Popper update() - https://github.com/popperjs/react-popper/issues/350
+  await act(async () => await null);
+}
+
 /** @TEMPLATE: END **/
 
 /** @GENERATED: BEGIN **/
@@ -148,6 +154,7 @@ test('Render 2 1', async done => {
       name: /super user made a post request to \/runs\/116\/update 12\/31\/2019/i
     })
   );
+  await waitForPopper();
 
   expect(serialize()).toMatchSnapshot();
 

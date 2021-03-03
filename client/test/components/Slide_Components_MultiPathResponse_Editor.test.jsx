@@ -24,6 +24,12 @@ import {
   waitFor
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+
+async function waitForPopper() {
+  // Popper update() - https://github.com/popperjs/react-popper/issues/350
+  await act(async () => await null);
+}
+
 /** @TEMPLATE: END **/
 
 /** @GENERATED: BEGIN **/
@@ -324,11 +330,11 @@ test('Missing props', async done => {
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
 
-  const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
-  expect(asFragment()).toMatchSnapshot();
+  await render(<ConnectedRoutedComponent {...props} />);
+  expect(serialize()).toMatchSnapshot();
 
   await waitFor(() => expect(fetch).toHaveBeenCalledTimes(1));
-  expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
 
   done();
 });
@@ -352,11 +358,11 @@ test('Paths empty', async done => {
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
 
-  const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
-  expect(asFragment()).toMatchSnapshot();
+  await render(<ConnectedRoutedComponent {...props} />);
+  expect(serialize()).toMatchSnapshot();
 
   await waitFor(() => expect(fetch).toHaveBeenCalledTimes(1));
-  expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
 
   done();
 });
@@ -382,11 +388,11 @@ test('Slides empty', async done => {
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
 
-  const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
-  expect(asFragment()).toMatchSnapshot();
+  await render(<ConnectedRoutedComponent {...props} />);
+  expect(serialize()).toMatchSnapshot();
 
   await waitFor(() => expect(fetch).toHaveBeenCalledTimes(1));
-  expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
 
   done();
 });
@@ -415,11 +421,11 @@ test('Slide has title', async done => {
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
 
-  const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
-  expect(asFragment()).toMatchSnapshot();
+  await render(<ConnectedRoutedComponent {...props} />);
+  expect(serialize()).toMatchSnapshot();
 
   await waitFor(() => expect(fetch).toHaveBeenCalledTimes(1));
-  expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
 
   done();
 });
@@ -441,19 +447,19 @@ test('Add prompt', async done => {
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
 
-  const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
-  expect(asFragment()).toMatchSnapshot();
+  await render(<ConnectedRoutedComponent {...props} />);
+  expect(serialize()).toMatchSnapshot();
 
   const prompt = await screen.findByLabelText(
     'Optional prompt to display before the navigation buttons:'
   );
-  expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
 
   userEvent.type(prompt, 'A prompt');
 
   jest.advanceTimersByTime(1000);
 
-  expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
   expect(props.onChange).toHaveBeenCalledTimes(1);
   expect(props.onChange.mock.calls[0]).toMatchInlineSnapshot(`
     Array [
@@ -499,17 +505,19 @@ test('Save choice', async done => {
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
 
-  const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
-  expect(asFragment()).toMatchSnapshot();
+  await render(<ConnectedRoutedComponent {...props} />);
+  expect(serialize()).toMatchSnapshot();
 
   const savePaths = await screen.findAllByLabelText('Save choice');
-  expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
 
   userEvent.click(savePaths[0]);
 
+  await waitForPopper();
+
   jest.advanceTimersByTime(1000);
 
-  expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
   expect(props.onChange).toHaveBeenCalledTimes(1);
   expect(props.onChange.mock.calls[0]).toMatchInlineSnapshot(`
     Array [
@@ -555,21 +563,23 @@ test('Delete choice', async done => {
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
 
-  const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
-  expect(asFragment()).toMatchSnapshot();
+  await render(<ConnectedRoutedComponent {...props} />);
+  expect(serialize()).toMatchSnapshot();
 
   const deletePaths = await screen.findAllByLabelText('Delete this choice');
-  expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
 
   userEvent.click(deletePaths[0]);
-  expect(asFragment()).toMatchSnapshot();
+  await waitForPopper();
+  expect(serialize()).toMatchSnapshot();
 
   userEvent.click(await screen.findByRole('button', { name: /Yes/ }));
-  expect(asFragment()).toMatchSnapshot();
+  await waitForPopper();
+  expect(serialize()).toMatchSnapshot();
 
   jest.advanceTimersByTime(1000);
 
-  expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
   expect(props.onChange).toHaveBeenCalledTimes(1);
   expect(props.onChange.mock.calls[0]).toMatchInlineSnapshot(`
     Array [
@@ -612,14 +622,15 @@ test('Add another slide choice empty fields', async done => {
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
 
-  const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
-  expect(asFragment()).toMatchSnapshot();
+  await render(<ConnectedRoutedComponent {...props} />);
+  expect(serialize()).toMatchSnapshot();
 
   const add = await screen.findByLabelText('Add another slide choice');
-  expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
 
   userEvent.click(add);
-  expect(asFragment()).toMatchSnapshot();
+  await waitForPopper();
+  expect(serialize()).toMatchSnapshot();
   expect(props.onChange).toHaveBeenCalledTimes(1);
   expect(props.onChange.mock.calls[0]).toMatchInlineSnapshot(`
     Array [
@@ -651,10 +662,12 @@ test('Add another slide choice empty fields', async done => {
   expect(options.length).toBe(3);
 
   userEvent.click(dropdown);
-  expect(asFragment()).toMatchSnapshot();
+  await waitForPopper();
+  expect(serialize()).toMatchSnapshot();
 
   userEvent.click(options[1]);
-  expect(asFragment()).toMatchSnapshot();
+  await waitForPopper();
+  expect(serialize()).toMatchSnapshot();
   expect(props.onChange).toHaveBeenCalledTimes(1);
   expect(props.onChange.mock.calls[0]).toMatchInlineSnapshot(`
     Array [
@@ -675,10 +688,11 @@ test('Add another slide choice empty fields', async done => {
   `);
 
   userEvent.click(displayInput);
-  expect(asFragment()).toMatchSnapshot();
+  await waitForPopper();
+  expect(serialize()).toMatchSnapshot();
 
   userEvent.type(displayInput, 'A new display');
-  expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
 
   jest.advanceTimersByTime(1000);
 
@@ -723,14 +737,15 @@ test('Prevent empty fields', async done => {
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
 
-  const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
-  expect(asFragment()).toMatchSnapshot();
+  await render(<ConnectedRoutedComponent {...props} />);
+  expect(serialize()).toMatchSnapshot();
 
   const add = await screen.findByLabelText('Add another slide choice');
-  expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
 
   userEvent.click(add);
-  expect(asFragment()).toMatchSnapshot();
+  await waitForPopper();
+  expect(serialize()).toMatchSnapshot();
   expect(props.onChange).toHaveBeenCalledTimes(1);
   expect(props.onChange.mock.calls[0]).toMatchInlineSnapshot(`
     Array [
@@ -762,10 +777,12 @@ test('Prevent empty fields', async done => {
   expect(options.length).toBe(3);
 
   userEvent.click(dropdown);
-  expect(asFragment()).toMatchSnapshot();
+  await waitForPopper();
+  expect(serialize()).toMatchSnapshot();
 
   userEvent.click(options[1]);
-  expect(asFragment()).toMatchSnapshot();
+  await waitForPopper();
+  expect(serialize()).toMatchSnapshot();
   expect(props.onChange).toHaveBeenCalledTimes(1);
   expect(props.onChange.mock.calls[0]).toMatchInlineSnapshot(`
     Array [
@@ -786,10 +803,11 @@ test('Prevent empty fields', async done => {
   `);
 
   userEvent.click(displayInput);
-  expect(asFragment()).toMatchSnapshot();
+  await waitForPopper();
+  expect(serialize()).toMatchSnapshot();
 
   userEvent.type(displayInput, 'A new display');
-  expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
 
   jest.advanceTimersByTime(1000);
 
@@ -813,10 +831,11 @@ test('Prevent empty fields', async done => {
   `);
 
   userEvent.clear(displayInput);
-  expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
 
   userEvent.click(displayInput);
-  expect(asFragment()).toMatchSnapshot();
+  await waitForPopper();
+  expect(serialize()).toMatchSnapshot();
 
   jest.advanceTimersByTime(1000);
 
@@ -861,14 +880,15 @@ test('Search for slide', async done => {
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
 
-  const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
-  expect(asFragment()).toMatchSnapshot();
+  await render(<ConnectedRoutedComponent {...props} />);
+  expect(serialize()).toMatchSnapshot();
 
   const add = await screen.findByLabelText('Add another slide choice');
-  expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
 
   userEvent.click(add);
-  expect(asFragment()).toMatchSnapshot();
+  await waitForPopper();
+  expect(serialize()).toMatchSnapshot();
   expect(props.onChange).toHaveBeenCalledTimes(1);
   expect(props.onChange.mock.calls[0]).toMatchInlineSnapshot(`
     Array [
@@ -896,12 +916,14 @@ test('Search for slide', async done => {
   expect(input.length).toBe(3);
 
   userEvent.click(dropdown);
-  expect(asFragment()).toMatchSnapshot();
+  await waitForPopper();
+  expect(serialize()).toMatchSnapshot();
 
   userEvent.click(input[0]);
+  await waitForPopper();
   userEvent.type(input[0], 'Slide');
   userEvent.type(input[0], '{enter}');
-  expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
   expect(props.onChange).toHaveBeenCalledTimes(1);
   expect(props.onChange.mock.calls[0]).toMatchInlineSnapshot(`
     Array [
@@ -943,14 +965,15 @@ test('View Graph', async done => {
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
 
-  const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
-  expect(asFragment()).toMatchSnapshot();
+  await render(<ConnectedRoutedComponent {...props} />);
+  expect(serialize()).toMatchSnapshot();
 
   const view = await screen.findByLabelText('View slides sequence graph');
-  expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
 
   userEvent.click(view);
-  expect(asFragment()).toMatchSnapshot();
+  await waitForPopper();
+  expect(serialize()).toMatchSnapshot();
 
   done();
 });

@@ -24,6 +24,12 @@ import {
   waitFor
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+
+async function waitForPopper() {
+  // Popper update() - https://github.com/popperjs/react-popper/issues/350
+  await act(async () => await null);
+}
+
 /** @TEMPLATE: END **/
 
 /** @GENERATED: BEGIN **/
@@ -232,6 +238,7 @@ test('Render 1 1', async done => {
   const saveButton = await screen.findByRole('button', { name: /save/i });
 
   userEvent.click(saveButton);
+  await waitForPopper();
 
   await waitFor(() => {
     expect(userActions.setUser.mock.calls.length).toBe(1);
@@ -322,6 +329,7 @@ test('Render 2 1', async done => {
   const saveButton = await screen.findByRole('button', { name: /save/i });
 
   userEvent.click(saveButton);
+  await waitForPopper();
 
   await waitFor(() => {
     expect(userActions.setUser.mock.calls.length).toBe(1);
@@ -383,6 +391,7 @@ test('Render 3 1', async done => {
   const saveButton = await screen.findByRole('button', { name: /save/i });
 
   userEvent.click(saveButton);
+  await waitForPopper();
 
   expect(userActions.setUser.mock.calls.length).toBe(0);
   expect(serialize()).toMatchSnapshot();
@@ -435,6 +444,7 @@ test('Render 4 1', async done => {
   const saveButton = await screen.findByRole('button', { name: /save/i });
 
   userEvent.click(saveButton);
+  await waitForPopper();
 
   expect(userActions.setUser.mock.calls.length).toBe(0);
   expect(serialize()).toMatchSnapshot();
@@ -499,6 +509,7 @@ test('Render 5 1', async done => {
   const saveButton = await screen.findByRole('button', { name: /save/i });
 
   userEvent.click(saveButton);
+  await waitForPopper();
 
   await waitFor(() => {
     expect(userActions.setUser.mock.calls.length).toBe(1);
@@ -555,6 +566,7 @@ test('Render 6 1', async done => {
   const saveButton = await screen.findByRole('button', { name: /save/i });
 
   userEvent.click(saveButton);
+  await waitForPopper();
 
   await waitFor(() => {
     expect(userActions.setUser.mock.calls.length).toBe(1);
@@ -608,6 +620,7 @@ test('Render 7 1', async done => {
   const saveButton = await screen.findByRole('button', { name: /save/i });
 
   userEvent.click(saveButton);
+  await waitForPopper();
 
   expect(userActions.setUser.mock.calls.length).toBe(1);
   expect(userActions.setUser.mock.calls[0]).toMatchSnapshot();
@@ -616,6 +629,7 @@ test('Render 7 1', async done => {
 
   const closeButton = await screen.findByRole('button', { name: /close/i });
   userEvent.click(closeButton);
+  await waitForPopper();
   expect(props.onCancel.mock.calls.length).toBe(1);
   expect(asFragment()).toMatchSnapshot();
 
@@ -666,6 +680,7 @@ test('Render 8 1', async done => {
   const saveButton = await screen.findByRole('button', { name: /save/i });
 
   userEvent.click(saveButton);
+  await waitForPopper();
 
   expect(userActions.setUser.mock.calls.length).toBe(0);
   expect(serialize()).toMatchSnapshot();
@@ -749,6 +764,7 @@ test('Render 9 1', async done => {
   const saveButton = await screen.findByRole('button', { name: /save/i });
 
   userEvent.click(saveButton);
+  await waitForPopper();
 
   expect(userActions.setUser.mock.calls.length).toBe(0);
   expect(serialize()).toMatchSnapshot();

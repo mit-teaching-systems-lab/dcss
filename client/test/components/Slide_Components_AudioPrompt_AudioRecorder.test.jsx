@@ -24,6 +24,12 @@ import {
   waitFor
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+
+async function waitForPopper() {
+  // Popper update() - https://github.com/popperjs/react-popper/issues/350
+  await act(async () => await null);
+}
+
 /** @TEMPLATE: END **/
 
 /** @GENERATED: BEGIN **/
@@ -334,6 +340,7 @@ test('Render 3 1', async done => {
   expect(serialize()).toMatchSnapshot();
 
   userEvent.click(screen.getByRole('button', { name: /start recording/i }));
+  await waitForPopper();
 
   await waitFor(() => typeof audioNode.onpause === 'function');
 
@@ -349,6 +356,7 @@ test('Render 3 1', async done => {
   expect(serialize()).toMatchSnapshot();
 
   userEvent.click(screen.getByRole('button', { name: /stop recording/i }));
+  await waitForPopper();
 
   expect(serialize()).toMatchSnapshot();
 

@@ -34,7 +34,7 @@ async function waitForPopper() {
 
 /** @GENERATED: BEGIN **/
 
-import CardGroupStackable from '../../components/UI/CardGroupStackable/index.jsx';
+import AgentInteractionSelect from '../../components/Admin/AgentInteractionSelect.jsx';
 /** @GENERATED: END **/
 
 /** @TEMPLATE: BEGIN **/
@@ -89,16 +89,15 @@ afterEach(() => {
   /** @TEMPLATE: END **/
 });
 
-test('CardGroupStackable', () => {
-  expect(CardGroupStackable).toBeDefined();
+test('AgentInteractionSelect', () => {
+  expect(AgentInteractionSelect).toBeDefined();
 });
 
 /** @GENERATED: BEGIN **/
 test('Render 1 1', async done => {
-  const Component = CardGroupStackable;
+  const Component = AgentInteractionSelect;
   const props = {
-    ...commonProps,
-    children: []
+    ...commonProps
   };
 
   const state = {

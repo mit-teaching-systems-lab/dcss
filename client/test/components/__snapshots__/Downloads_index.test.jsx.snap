@@ -488,7 +488,7 @@ exports[`Render 1 1 2`] = `
     </div>
   </div>
   <div
-    style=\\"display: flex; position: absolute; left: 0px; top: 0px;\\"
+    style=\\"display: flex; position: absolute; left: 0px; top: 0px; bottom: 0px; transform: translate(0px, 0px);\\"
   >
     <div
       class=\\"ui top left tiny inverted popup transition visible\\"

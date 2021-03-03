@@ -24,6 +24,12 @@ import {
   waitFor
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+
+async function waitForPopper() {
+  // Popper update() - https://github.com/popperjs/react-popper/issues/350
+  await act(async () => await null);
+}
+
 /** @TEMPLATE: END **/
 
 /** @GENERATED: BEGIN **/
@@ -521,6 +527,7 @@ test('Click a button', async done => {
   expect(asFragment()).toMatchSnapshot();
 
   userEvent.click(await screen.findByRole('button', { name: /Yes/ }));
+  await waitForPopper();
 
   expect(asFragment()).toMatchSnapshot();
 
@@ -583,6 +590,7 @@ test('Click a button, not in run', async done => {
   expect(asFragment()).toMatchSnapshot();
 
   userEvent.click(await screen.findByRole('button', { name: /Yes/ }));
+  await waitForPopper();
   expect(asFragment()).toMatchSnapshot();
 
   done();

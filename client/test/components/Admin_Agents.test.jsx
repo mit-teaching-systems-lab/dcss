@@ -24,6 +24,12 @@ import {
   waitFor
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+
+async function waitForPopper() {
+  // Popper update() - https://github.com/popperjs/react-popper/issues/350
+  await act(async () => await null);
+}
+
 /** @TEMPLATE: END **/
 
 /** @GENERATED: BEGIN **/
@@ -84,6 +90,7 @@ import {
   GET_INTERACTIONS_SUCCESS
 } from '../../actions/types';
 import * as agentActions from '../../actions/agent';
+import * as interactionActions from '../../actions/interaction';
 jest.mock('../../actions/agent');
 
 let user;
@@ -273,10 +280,12 @@ beforeEach(() => {
     return agents;
   });
 
-  agentActions.getInteractions.mockImplementation(() => async dispatch => {
-    dispatch({ type: GET_INTERACTIONS_SUCCESS, interactions });
-    return interactions;
-  });
+  interactionActions.getInteractions.mockImplementation(
+    () => async dispatch => {
+      dispatch({ type: GET_INTERACTIONS_SUCCESS, interactions });
+      return interactions;
+    }
+  );
 
   Storage.get.mockImplementation((key, defaultValue) => defaultValue);
   Storage.merge.mockImplementation((key, defaultValue) => defaultValue);
@@ -494,9 +503,9 @@ test('Select an agent', async done => {
   );
   expect(serialize()).toMatchSnapshot();
 
-  const cancelButton = await screen.findByRole('button', { name: /cancel/i });
+  const closeButton = await screen.findByRole('button', { name: /close/i });
 
-  userEvent.click(cancelButton);
+  userEvent.click(closeButton);
   expect(serialize()).toMatchSnapshot();
   done();
 });
@@ -1108,25 +1117,25 @@ test('Search agents', async done => {
 
   // "emoji"
   userEvent.type(searchInput, 'emoji{enter}');
-  await act(async () => await null); // Popper update() - https://github.com/popperjs/react-popper/issues/350
+  await waitForPopper();
   expect(serialize()).toMatchSnapshot();
 
   userEvent.clear(searchInput);
 
   // "emoji analysis"
   userEvent.type(searchInput, ' analysis{enter}');
-  await act(async () => await null); // Popper update() - https://github.com/popperjs/react-popper/issues/350
+  await waitForPopper();
   expect(serialize()).toMatchSnapshot();
 
   userEvent.clear(searchInput);
   userEvent.type(searchInput, '{enter}');
-  await act(async () => await null); // Popper update() - https://github.com/popperjs/react-popper/issues/350
+  await waitForPopper();
   expect(serialize()).toMatchSnapshot();
 
   userEvent.clear(searchInput);
   // "analysis"
   userEvent.type(searchInput, 'analysis{enter}');
-  await act(async () => await null); // Popper update() - https://github.com/popperjs/react-popper/issues/350
+  await waitForPopper();
   expect(serialize()).toMatchSnapshot();
 
   done();
@@ -1166,7 +1175,7 @@ test('Delete an agent', async done => {
   expect(serialize()).toMatchSnapshot();
 
   userEvent.click(await screen.findByLabelText('Delete this agent'));
-  await act(async () => await null); // Popper update() - https://github.com/popperjs/react-popper/issues/350
+  await waitForPopper();
   await waitFor(() =>
     expect(screen.getByTestId('agent-confirm-delete')).toBeInTheDocument()
   );
@@ -1176,7 +1185,7 @@ test('Delete an agent', async done => {
   expect(serialize()).toMatchSnapshot();
 
   userEvent.click(await screen.findByLabelText('Delete this agent'));
-  await act(async () => await null); // Popper update() - https://github.com/popperjs/react-popper/issues/350
+  await waitForPopper();
   await waitFor(() =>
     expect(screen.getByTestId('agent-confirm-delete')).toBeInTheDocument()
   );
@@ -1278,7 +1287,7 @@ test('Duplicate an agent', async done => {
   expect(serialize()).toMatchSnapshot();
 
   userEvent.click(await screen.findByLabelText('Duplicate this agent'));
-  await act(async () => await null); // Popper update() - https://github.com/popperjs/react-popper/issues/350
+  await waitForPopper();
   await waitFor(() =>
     expect(screen.getByTestId('agents-detail')).toBeInTheDocument()
   );
@@ -1400,7 +1409,7 @@ test('Change a socket configuration', async done => {
 
   userEvent.click(configDeleteButtons[0]);
 
-  await act(async () => await null); // Popper update() - https://github.com/popperjs/react-popper/issues/350
+  await waitForPopper();
   await waitFor(() =>
     expect(screen.getByTestId('agent-confirm-delete')).toBeInTheDocument()
   );
@@ -1410,7 +1419,7 @@ test('Change a socket configuration', async done => {
   expect(serialize()).toMatchSnapshot();
 
   userEvent.click(configDeleteButtons[0]);
-  await act(async () => await null); // Popper update() - https://github.com/popperjs/react-popper/issues/350
+  await waitForPopper();
   await waitFor(() =>
     expect(screen.getByTestId('agent-confirm-delete')).toBeInTheDocument()
   );
@@ -1764,7 +1773,7 @@ test('Change an agent configuration', async done => {
 
   userEvent.click(configDeleteButtons[0]);
 
-  await act(async () => await null); // Popper update() - https://github.com/popperjs/react-popper/issues/350
+  await waitForPopper();
   await waitFor(() =>
     expect(screen.getByTestId('agent-confirm-delete')).toBeInTheDocument()
   );
@@ -1774,7 +1783,7 @@ test('Change an agent configuration', async done => {
   expect(serialize()).toMatchSnapshot();
 
   userEvent.click(configDeleteButtons[0]);
-  await act(async () => await null); // Popper update() - https://github.com/popperjs/react-popper/issues/350
+  await waitForPopper();
   await waitFor(() =>
     expect(screen.getByTestId('agent-confirm-delete')).toBeInTheDocument()
   );

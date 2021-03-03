@@ -24,6 +24,12 @@ import {
   waitFor
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+
+async function waitForPopper() {
+  // Popper update() - https://github.com/popperjs/react-popper/issues/350
+  await act(async () => await null);
+}
+
 /** @TEMPLATE: END **/
 
 /** @GENERATED: BEGIN **/
@@ -581,6 +587,7 @@ test('Render 1 1', async done => {
   await render(<ConnectedRoutedComponent {...props} />);
   expect(serialize()).toMatchSnapshot();
   userEvent.click(await screen.findByRole('button', { name: /Close/ }));
+  await waitForPopper();
   expect(serialize()).toMatchSnapshot();
 
   done();

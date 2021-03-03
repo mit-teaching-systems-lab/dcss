@@ -843,7 +843,7 @@ exports[`Add a new agent 2`] = `
                 <button
                   class=\\"ui button\\"
                 >
-                  Cancel
+                  Close
                 </button>
               </div>
             </div>
@@ -1571,7 +1571,7 @@ exports[`Add a new agent 3`] = `
                 <button
                   class=\\"ui button\\"
                 >
-                  Cancel
+                  Close
                 </button>
               </div>
             </div>
@@ -2299,7 +2299,7 @@ exports[`Add a new agent 4`] = `
                 <button
                   class=\\"ui button\\"
                 >
-                  Cancel
+                  Close
                 </button>
               </div>
             </div>
@@ -3029,7 +3029,7 @@ exports[`Add a new agent 5`] = `
                 <button
                   class=\\"ui button\\"
                 >
-                  Cancel
+                  Close
                 </button>
               </div>
             </div>
@@ -3759,7 +3759,7 @@ exports[`Add a new agent 6`] = `
                 <button
                   class=\\"ui button\\"
                 >
-                  Cancel
+                  Close
                 </button>
               </div>
             </div>
@@ -4516,7 +4516,7 @@ exports[`Add a new agent 8`] = `
                 <button
                   class=\\"ui button\\"
                 >
-                  Cancel
+                  Close
                 </button>
               </div>
             </div>
@@ -5727,7 +5727,7 @@ exports[`Add a socket configuration 2`] = `
                 <button
                   class=\\"ui button\\"
                 >
-                  Cancel
+                  Close
                 </button>
               </div>
             </div>
@@ -6827,7 +6827,7 @@ exports[`Add a socket configuration 4`] = `
                 <button
                   class=\\"ui button\\"
                 >
-                  Cancel
+                  Close
                 </button>
               </div>
             </div>
@@ -8038,7 +8038,7 @@ exports[`Add an agent configuration 2`] = `
                 <button
                   class=\\"ui button\\"
                 >
-                  Cancel
+                  Close
                 </button>
               </div>
             </div>
@@ -9139,7 +9139,7 @@ exports[`Add an agent configuration 4`] = `
                 <button
                   class=\\"ui button\\"
                 >
-                  Cancel
+                  Close
                 </button>
               </div>
             </div>
@@ -10350,7 +10350,7 @@ exports[`Change a socket configuration 2`] = `
                 <button
                   class=\\"ui button\\"
                 >
-                  Cancel
+                  Close
                 </button>
               </div>
             </div>
@@ -11382,7 +11382,7 @@ exports[`Change a socket configuration 3`] = `
                 <button
                   class=\\"ui button\\"
                 >
-                  Cancel
+                  Close
                 </button>
               </div>
             </div>
@@ -12482,7 +12482,7 @@ exports[`Change a socket configuration 4`] = `
                 <button
                   class=\\"ui button\\"
                 >
-                  Cancel
+                  Close
                 </button>
               </div>
             </div>
@@ -13514,7 +13514,7 @@ exports[`Change a socket configuration 5`] = `
                 <button
                   class=\\"ui button\\"
                 >
-                  Cancel
+                  Close
                 </button>
               </div>
             </div>
@@ -14546,7 +14546,7 @@ exports[`Change a socket configuration 6`] = `
                 <button
                   class=\\"ui button\\"
                 >
-                  Cancel
+                  Close
                 </button>
               </div>
             </div>
@@ -15757,7 +15757,7 @@ exports[`Change an agent configuration 2`] = `
                 <button
                   class=\\"ui button\\"
                 >
-                  Cancel
+                  Close
                 </button>
               </div>
             </div>
@@ -16789,7 +16789,7 @@ exports[`Change an agent configuration 3`] = `
                 <button
                   class=\\"ui button\\"
                 >
-                  Cancel
+                  Close
                 </button>
               </div>
             </div>
@@ -17889,7 +17889,7 @@ exports[`Change an agent configuration 4`] = `
                 <button
                   class=\\"ui button\\"
                 >
-                  Cancel
+                  Close
                 </button>
               </div>
             </div>
@@ -18921,7 +18921,7 @@ exports[`Change an agent configuration 5`] = `
                 <button
                   class=\\"ui button\\"
                 >
-                  Cancel
+                  Close
                 </button>
               </div>
             </div>
@@ -19952,7 +19952,7 @@ exports[`Change an agent configuration 6`] = `
                 <button
                   class=\\"ui button\\"
                 >
-                  Cancel
+                  Close
                 </button>
               </div>
             </div>
@@ -21159,7 +21159,7 @@ exports[`Delete an agent 2`] = `
                 <button
                   class=\\"ui button\\"
                 >
-                  Cancel
+                  Close
                 </button>
               </div>
             </div>
@@ -22192,7 +22192,7 @@ exports[`Delete an agent 3`] = `
                 <button
                   class=\\"ui button\\"
                 >
-                  Cancel
+                  Close
                 </button>
               </div>
             </div>
@@ -23289,7 +23289,7 @@ exports[`Delete an agent 4`] = `
                 <button
                   class=\\"ui button\\"
                 >
-                  Cancel
+                  Close
                 </button>
               </div>
             </div>
@@ -24322,7 +24322,7 @@ exports[`Delete an agent 5`] = `
                 <button
                   class=\\"ui button\\"
                 >
-                  Cancel
+                  Close
                 </button>
               </div>
             </div>
@@ -25419,7 +25419,7 @@ exports[`Delete an agent 6`] = `
                 <button
                   class=\\"ui button\\"
                 >
-                  Cancel
+                  Close
                 </button>
               </div>
             </div>
@@ -26630,7 +26630,7 @@ exports[`Duplicate an agent 2`] = `
                 <button
                   class=\\"ui button\\"
                 >
-                  Cancel
+                  Close
                 </button>
               </div>
             </div>
@@ -27837,7 +27837,7 @@ exports[`Load with an activePage and id 1`] = `
                 <button
                   class=\\"ui button\\"
                 >
-                  Cancel
+                  Close
                 </button>
               </div>
             </div>
@@ -29221,7 +29221,7 @@ exports[`Load without correct agents 1`] = `
                 <button
                   class=\\"ui button\\"
                 >
-                  Cancel
+                  Close
                 </button>
               </div>
             </div>
@@ -29279,6 +29279,183 @@ exports[`Load without correct agents 1`] = `
 `;
 
 exports[`Load without interactions 1`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <div
+      class=\\"ui borderless icon em__height menu\\"
+    >
+      <div
+        class=\\"item\\"
+        tabindex=\\"0\\"
+      >
+        <i
+          class=\\"icons em__icon-group-margin\\"
+        >
+          <i
+            aria-hidden=\\"true\\"
+            class=\\"icon robot\\"
+          />
+        </i>
+        Agents
+      </div>
+      <a
+        class=\\"item\\"
+        tabindex=\\"0\\"
+      >
+        <i
+          class=\\"icons em__icon-group-margin\\"
+        >
+          <i
+            aria-hidden=\\"true\\"
+            class=\\"plus icon primary\\"
+          />
+        </i>
+        Add an agent
+      </a>
+      <div
+        class=\\"right menu\\"
+        name=\\"Search agents\\"
+      >
+        <div
+          class=\\"item\\"
+          tabindex=\\"0\\"
+        >
+          <div
+            class=\\"ui icon input\\"
+          >
+            <input
+              aria-label=\\"Search agents\\"
+              placeholder=\\"Search...\\"
+              type=\\"text\\"
+            />
+            <i
+              aria-hidden=\\"true\\"
+              class=\\"search icon\\"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class=\\"ui celled grid a__agentviewer-outer\\"
+    >
+      <div
+        class=\\"row\\"
+      >
+        <div
+          class=\\"four wide column\\"
+        >
+          <div
+            class=\\"ui divided selection relaxed list\\"
+            role=\\"list\\"
+          >
+            <a
+              aria-label=\\"Emoji Analysis\\"
+              class=\\"item\\"
+              id=\\"1\\"
+              role=\\"listitem\\"
+            >
+              <div
+                class=\\"content\\"
+              >
+                <div
+                  class=\\"header\\"
+                >
+                  Emoji Analysis
+                </div>
+                <div
+                  class=\\"description\\"
+                >
+                  Detects the presense of an emoji character in your text
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div
+          class=\\"twelve wide column a__agentviewer-inner\\"
+        >
+          <div
+            class=\\"row\\"
+          >
+            <div
+              class=\\"column\\"
+            >
+              <div
+                class=\\"ui icon message\\"
+              >
+                <i
+                  aria-hidden=\\"true\\"
+                  class=\\"arrow left icon\\"
+                />
+                <div
+                  class=\\"content\\"
+                >
+                  <div
+                    class=\\"header\\"
+                  >
+                    Agent viewer
+                  </div>
+                  <p>
+                    Select an agent to view and edit
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      aria-label=\\"Pagination Navigation\\"
+      class=\\"ui borderless pagination menu\\"
+      name=\\"agents\\"
+      role=\\"navigation\\"
+    >
+      <a
+        aria-current=\\"false\\"
+        aria-disabled=\\"false\\"
+        aria-label=\\"Previous item\\"
+        class=\\"item\\"
+        tabindex=\\"0\\"
+        type=\\"prevItem\\"
+        value=\\"1\\"
+      >
+        ⟨
+      </a>
+      <a
+        aria-current=\\"true\\"
+        aria-disabled=\\"false\\"
+        class=\\"active item\\"
+        tabindex=\\"0\\"
+        type=\\"pageItem\\"
+        value=\\"1\\"
+      >
+        1
+      </a>
+      <a
+        aria-current=\\"false\\"
+        aria-disabled=\\"false\\"
+        aria-label=\\"Next item\\"
+        class=\\"item\\"
+        tabindex=\\"0\\"
+        type=\\"nextItem\\"
+        value=\\"1\\"
+      >
+        ⟩
+      </a>
+    </div>
+    <div
+      data-testid=\\"agents-main\\"
+    />
+  </div>
+</body>"
+`;
+
+exports[`Load without interactions 2`] = `
 "<body>
   <div
     id=\\"root\\"
@@ -30215,7 +30392,7 @@ exports[`Search agents 4`] = `
     />
   </div>
   <div
-    style=\\"display: flex; position: absolute; left: 0px; top: 0px; bottom: 0px; transform: translate(0px, 0px);\\"
+    style=\\"display: flex; position: absolute; left: 0px; top: 0px;\\"
   >
     <div
       class=\\"ui top left tiny inverted popup transition visible\\"
@@ -31585,7 +31762,7 @@ exports[`Select an agent 2`] = `
                 <button
                   class=\\"ui button\\"
                 >
-                  Cancel
+                  Close
                 </button>
               </div>
             </div>
@@ -32969,7 +33146,7 @@ exports[`Select and edit an agent 2`] = `
                 <button
                   class=\\"ui button\\"
                 >
-                  Cancel
+                  Close
                 </button>
               </div>
             </div>
@@ -33999,7 +34176,7 @@ exports[`Select and edit an agent 4`] = `
                 <button
                   class=\\"ui button\\"
                 >
-                  Cancel
+                  Close
                 </button>
               </div>
             </div>
@@ -35035,7 +35212,7 @@ exports[`Select and edit an agent 5`] = `
                 <button
                   class=\\"ui button\\"
                 >
-                  Cancel
+                  Close
                 </button>
               </div>
             </div>
@@ -36071,7 +36248,7 @@ exports[`Select and edit an agent 7`] = `
                 <button
                   class=\\"ui button\\"
                 >
-                  Cancel
+                  Close
                 </button>
               </div>
             </div>
@@ -37108,7 +37285,7 @@ exports[`Select and edit an agent 8`] = `
                 <button
                   class=\\"ui button\\"
                 >
-                  Cancel
+                  Close
                 </button>
               </div>
             </div>
@@ -38147,7 +38324,7 @@ exports[`Select and edit an agent 10`] = `
                 <button
                   class=\\"ui button\\"
                 >
-                  Cancel
+                  Close
                 </button>
               </div>
             </div>
@@ -39182,7 +39359,7 @@ exports[`Select and edit an agent 11`] = `
                 <button
                   class=\\"ui button\\"
                 >
-                  Cancel
+                  Close
                 </button>
               </div>
             </div>
@@ -40217,7 +40394,7 @@ exports[`Select and edit an agent 13`] = `
                 <button
                   class=\\"ui button\\"
                 >
-                  Cancel
+                  Close
                 </button>
               </div>
             </div>
@@ -41252,7 +41429,7 @@ exports[`Select and edit an agent 15`] = `
                 <button
                   class=\\"ui button\\"
                 >
-                  Cancel
+                  Close
                 </button>
               </div>
             </div>
@@ -42287,7 +42464,7 @@ exports[`Select and edit an agent 17`] = `
                 <button
                   class=\\"ui button\\"
                 >
-                  Cancel
+                  Close
                 </button>
               </div>
             </div>

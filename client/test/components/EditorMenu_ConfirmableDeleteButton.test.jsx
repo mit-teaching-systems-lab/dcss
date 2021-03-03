@@ -24,6 +24,12 @@ import {
   waitFor
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+
+async function waitForPopper() {
+  // Popper update() - https://github.com/popperjs/react-popper/issues/350
+  await act(async () => await null);
+}
+
 /** @TEMPLATE: END **/
 
 /** @GENERATED: BEGIN **/
@@ -107,18 +113,22 @@ test('Render 1 1', async done => {
   expect(asFragment()).toMatchSnapshot();
 
   userEvent.click(await screen.findByLabelText('Delete this disabled-false'));
+  await waitForPopper();
   expect(asFragment()).toMatchSnapshot();
 
   userEvent.click(await screen.findByRole('button', { name: /Yes/ }));
+  await waitForPopper();
   expect(asFragment()).toMatchSnapshot();
 
   expect(props.onConfirm.mock.calls.length).toBe(1);
   expect(props.onConfirm.mock.calls[0]).toMatchInlineSnapshot(`Array []`);
 
   userEvent.click(await screen.findByLabelText('Delete this disabled-false'));
+  await waitForPopper();
   expect(asFragment()).toMatchSnapshot();
 
   userEvent.click(await screen.findByRole('button', { name: /No/ }));
+  await waitForPopper();
   expect(asFragment()).toMatchSnapshot();
 
   done();
@@ -145,6 +155,7 @@ test('Render 2 1', async done => {
   expect(asFragment()).toMatchSnapshot();
 
   userEvent.click(await screen.findByLabelText('Delete this disabled-true'));
+  await waitForPopper();
   expect(asFragment()).toMatchSnapshot();
 
   done();

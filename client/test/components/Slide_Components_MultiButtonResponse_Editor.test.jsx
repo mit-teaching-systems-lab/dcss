@@ -24,6 +24,12 @@ import {
   waitFor
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+
+async function waitForPopper() {
+  // Popper update() - https://github.com/popperjs/react-popper/issues/350
+  await act(async () => await null);
+}
+
 /** @TEMPLATE: END **/
 
 /** @GENERATED: BEGIN **/
@@ -310,6 +316,7 @@ test('Save single button', async done => {
   expect(asFragment()).toMatchSnapshot();
 
   userEvent.click(saveButtons[0]);
+  await waitForPopper();
 
   jest.advanceTimersByTime(1000);
 
@@ -366,9 +373,11 @@ test('Delete single button', async done => {
   expect(asFragment()).toMatchSnapshot();
 
   userEvent.click(deleteButtons[0]);
+  await waitForPopper();
   expect(asFragment()).toMatchSnapshot();
 
   userEvent.click(await screen.findByRole('button', { name: /Yes/ }));
+  await waitForPopper();
   expect(asFragment()).toMatchSnapshot();
 
   jest.advanceTimersByTime(1000);
@@ -423,6 +432,7 @@ test('Add a button empty fields', async done => {
   expect(asFragment()).toMatchSnapshot();
 
   userEvent.click(add);
+  await waitForPopper();
   expect(asFragment()).toMatchSnapshot();
   expect(props.onChange).toHaveBeenCalledTimes(1);
   expect(props.onChange.mock.calls[0]).toMatchInlineSnapshot(`
@@ -472,6 +482,7 @@ test('Add a button empty fields', async done => {
   `);
 
   userEvent.click(valueInput);
+  await waitForPopper();
   expect(asFragment()).toMatchSnapshot();
 
   // BLUR & FOCUS
@@ -516,6 +527,7 @@ test('Add a button empty fields', async done => {
   `);
 
   userEvent.click(await screen.findByLabelText('Save button'));
+  await waitForPopper();
   expect(asFragment()).toMatchSnapshot();
 
   // BLUR & FOCUS
@@ -585,6 +597,7 @@ test('Prevent empty fields', async done => {
   expect(asFragment()).toMatchSnapshot();
 
   userEvent.click(add);
+  await waitForPopper();
   expect(asFragment()).toMatchSnapshot();
   expect(props.onChange).toHaveBeenCalledTimes(1);
   expect(props.onChange.mock.calls[0]).toMatchInlineSnapshot(`
@@ -634,6 +647,7 @@ test('Prevent empty fields', async done => {
   `);
 
   userEvent.click(displayInput);
+  await waitForPopper();
   expect(asFragment()).toMatchSnapshot();
 
   // BLUR & FOCUS
@@ -678,6 +692,7 @@ test('Prevent empty fields', async done => {
   `);
 
   userEvent.click(await screen.findByLabelText('Save button'));
+  await waitForPopper();
   expect(asFragment()).toMatchSnapshot();
   // BLUR & FOCUS
   expect(props.onChange).toHaveBeenCalledTimes(6);
