@@ -92,6 +92,7 @@ import {
 import * as agentActions from '../../actions/agent';
 import * as interactionActions from '../../actions/interaction';
 jest.mock('../../actions/agent');
+jest.mock('../../actions/interaction');
 
 let user;
 let agent;
