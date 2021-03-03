@@ -4,7 +4,7 @@ const { getUserById } = require('../session/db');
 
 async function createInteraction(req, res) {
   const owner = {
-    id: req.session?.user?.id
+    id: req.session.user.id
   };
 
   if (!req.body.name ||
