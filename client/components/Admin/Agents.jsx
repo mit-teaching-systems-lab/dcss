@@ -11,7 +11,7 @@ import {
   setAgent,
   getInteractions
 } from '@actions/agent';
-import AgentInterationSelect from './AgentInterationSelect';
+import AgentInteractionSelect from './AgentInteractionSelect';
 import EditorMenu from '@components/EditorMenu';
 import Loading from '@components/Loading';
 import { notify } from '@components/Notification';
@@ -697,7 +697,7 @@ class Agent extends Component {
                             </Text>
                           ) : null}
                         </label>
-                        <AgentInterationSelect
+                        <AgentInteractionSelect
                           {...agentInteractionSelectProps}
                         />
                         <Text color="grey" className="a__textpadding">
