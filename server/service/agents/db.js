@@ -10,8 +10,13 @@ async function setAgent(id, updates) {
 }
 
 async function setAgentSocketConfiguration(id, configuration) {
+
+  if (Object.entries(configuration).length === 0) {
+    return null
+  }
+
   const result = await withClientTransaction(async client => {
-    await client.query(`
+    await client.query(sql`
       DELETE FROM agent_socket_configuration
       WHERE agent_id = ${id};
     `);
@@ -45,8 +50,13 @@ async function setAgentSocketConfiguration(id, configuration) {
 }
 
 async function setAgentConfiguration(id, configuration) {
+
+  if (Object.entries(configuration).length === 0) {
+    return null
+  }
+
   const result = await withClientTransaction(async client => {
-    await client.query(`
+    await client.query(sql`
       DELETE FROM agent_configuration
       WHERE agent_id = ${id};
     `);
@@ -81,17 +91,17 @@ async function setAgentConfiguration(id, configuration) {
 
 async function setAgentInteraction(id, interaction) {
   const result = await withClientTransaction(async client => {
-    await client.query(`
+    await client.query(sql`
       DELETE FROM agent_interaction
       WHERE agent_id = ${id};
     `);
 
-    const result = await client.query(`
+    const result = await client.query(sql`
       INSERT INTO agent_interaction
         (agent_id, interaction_id)
       VALUES
         (${id}, ${interaction.id})
-      RETURNING *
+      RETURNING *;
     `);
 
     return result.rows[0] || null;
@@ -107,7 +117,7 @@ async function setAgentInteraction(id, interaction) {
 async function createAgent(params) {
   const {
     title,
-    name,
+    name = '',
     description,
     endpoint,
     owner,

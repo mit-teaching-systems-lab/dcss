@@ -3,20 +3,26 @@ const db = require('./db');
 const { getUserById } = require('../session/db');
 
 async function createAgent(req, res) {
+  const owner = {
+    id: req.session.user.id
+  };
+
   if (
     !req.body.title ||
-    !req.body.name ||
     !req.body.description ||
-    !req.body.owner
+    !req.body.interaction
   ) {
     const error = new Error(
-      'Creating an agent requires an owner, name and description.'
+      'Creating an agent requires a title, description and interaction.'
     );
     error.status = 500;
     throw error;
   }
 
-  const agent = await db.createAgent(req.body);
+  const agent = await db.createAgent({
+    ...req.body,
+    owner
+  });
   res.json({ agent });
 }
 

@@ -9,7 +9,6 @@ const {
   createAgent,
   getAgents,
   getAgent,
-  getInteractions,
   setAgent
 } = require('./endpoints');
 
@@ -23,7 +22,6 @@ router.post('/', [
   createAgent
 ]);
 
-router.get('/interactions', [requireUser, getInteractions]);
 router.get('/is_active', [requireUser, getAgents]);
 
 router.put('/:id', [
