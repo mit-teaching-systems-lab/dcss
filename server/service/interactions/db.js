@@ -47,7 +47,7 @@ async function getInteraction(id) {
   return result.rows[0] || null;
 }
 
-async function getInteractions(id) {
+async function getInteractions() {
   const result = await query(sql`
     SELECT *
     FROM interaction_view
@@ -56,7 +56,16 @@ async function getInteractions(id) {
   return result.rows;
 }
 
+async function getInteractionsTypes() {
+  const result = await query(sql`
+    SELECT *
+    FROM interaction_type
+  `);
+  return result.rows;
+}
+
 exports.createInteraction = createInteraction;
 exports.getInteraction = getInteraction;
 exports.getInteractions = getInteractions;
+exports.getInteractionsTypes = getInteractionsTypes;
 exports.setInteraction = setInteraction;

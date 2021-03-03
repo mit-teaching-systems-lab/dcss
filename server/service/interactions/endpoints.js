@@ -25,6 +25,11 @@ async function getInteractions(req, res) {
   res.json({ interactions });
 }
 
+async function getInteractionsTypes(req, res) {
+  const interactions = await db.getInteractionsTypes();
+  res.json({ interactions });
+}
+
 async function setInteraction(req, res) {
   const id = Number(req.params.id);
   const { title, name, description, deleted_at } = req.body;
@@ -62,4 +67,5 @@ async function setInteraction(req, res) {
 exports.createInteraction = asyncMiddleware(createInteraction);
 exports.getInteraction = asyncMiddleware(getInteraction);
 exports.getInteractions = asyncMiddleware(getInteractions);
+exports.getInteractionsTypes = asyncMiddleware(getInteractionsTypes);
 exports.setInteraction = asyncMiddleware(setInteraction);

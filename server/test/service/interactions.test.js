@@ -24,7 +24,8 @@ const interaction = {
   name: 'ChatPrompt',
   description:
     'It will appear as an option for scenario authors to include in chat discussions within multi-participant scenarios. It receives participant chat messages.',
-  owner: user
+  owner: user,
+  types: ['ChatPrompt']
 };
 
 const interactions = [
@@ -36,7 +37,8 @@ const interactions = [
     name: 'ChatPrompt',
     description:
       'It will appear as an option for scenario authors to include in chat discussions within multi-participant scenarios. It receives participant chat messages.',
-    owner: user
+    owner: user,
+    types: ['ChatPrompt']
   },
   {
     id: 2,
@@ -46,7 +48,8 @@ const interactions = [
     name: 'AudioPrompt',
     description:
       'It will appear as an option for scenario authors to use in conditional content components within scenarios. It receives participant Audio Prompt Responses.',
-    owner: user
+    owner: user,
+    types: ['ChatPrompt', 'ConversationPrompt']
   },
   {
     id: 3,
@@ -56,7 +59,8 @@ const interactions = [
     name: 'TextPrompt',
     description:
       'It will appear as an option for scenario authors to use in conditional content components within scenarios. It receives participant Text Prompt Responses.',
-    owner: user
+    owner: user,
+    types: ['TextResponse']
   }
 ];
 
@@ -68,12 +72,32 @@ const interactionsById = interactions.reduce(
   {}
 );
 
+const types = [
+  {
+    id: 1,
+    name: 'AudioPrompt'
+  },
+  {
+    id: 2,
+    name: 'ChatPrompt'
+  },
+  {
+    id: 3,
+    name: 'ConversationPrompt'
+  },
+  {
+    id: 4,
+    name: 'TextResponse'
+  }
+];
+
 jest.mock('../../service/interactions/db', () => {
   return {
     ...jest.requireActual('../../service/interactions/db'),
     createInteraction: jest.fn(),
     getInteraction: jest.fn(),
     getInteractions: jest.fn(),
+    getInteractionsTypes: jest.fn(),
     setInteraction: jest.fn()
   };
 });
@@ -116,6 +140,7 @@ describe('/api/interactions/*', () => {
     });
     db.setInteraction.mockImplementation(async props => props);
     db.getInteractions.mockImplementation(async () => interactions);
+    db.getInteractionsTypes.mockImplementation(async () => types);
 
     rolesmw.requireUserRole.mockImplementation(() => [
       (req, res, next) => next()
@@ -154,6 +179,9 @@ describe('/api/interactions/*', () => {
                 ],
                 "username": "superuser",
               },
+              "types": Array [
+                "ChatPrompt",
+              ],
               "updated_at": null,
             },
             Object {
@@ -176,6 +204,10 @@ describe('/api/interactions/*', () => {
                 ],
                 "username": "superuser",
               },
+              "types": Array [
+                "ChatPrompt",
+                "ConversationPrompt",
+              ],
               "updated_at": null,
             },
             Object {
@@ -198,6 +230,9 @@ describe('/api/interactions/*', () => {
                 ],
                 "username": "superuser",
               },
+              "types": Array [
+                "TextResponse",
+              ],
               "updated_at": null,
             },
           ],
@@ -239,6 +274,9 @@ describe('/api/interactions/*', () => {
               ],
               "username": "superuser",
             },
+            "types": Array [
+              "ChatPrompt",
+            ],
             "updated_at": null,
           },
         }
@@ -266,6 +304,9 @@ describe('/api/interactions/*', () => {
               ],
               "username": "superuser",
             },
+            "types": Array [
+              "ChatPrompt",
+            ],
             "updated_at": null,
           },
         ]
@@ -356,6 +397,9 @@ describe('/api/interactions/*', () => {
               ],
               "username": "superuser",
             },
+            "types": Array [
+              "ChatPrompt",
+            ],
             "updated_at": null,
           },
         }
@@ -401,6 +445,9 @@ describe('/api/interactions/*', () => {
               ],
               "username": "superuser",
             },
+            "types": Array [
+              "ChatPrompt",
+            ],
             "updated_at": null,
           },
         }
@@ -446,6 +493,9 @@ describe('/api/interactions/*', () => {
               ],
               "username": "superuser",
             },
+            "types": Array [
+              "ChatPrompt",
+            ],
             "updated_at": null,
           },
         }
@@ -492,6 +542,9 @@ describe('/api/interactions/*', () => {
               ],
               "username": "superuser",
             },
+            "types": Array [
+              "ChatPrompt",
+            ],
             "updated_at": null,
           },
         }
@@ -530,6 +583,9 @@ describe('/api/interactions/*', () => {
               ],
               "username": "superuser",
             },
+            "types": Array [
+              "ChatPrompt",
+            ],
             "updated_at": null,
           },
         }
@@ -568,6 +624,9 @@ describe('/api/interactions/*', () => {
               ],
               "username": "superuser",
             },
+            "types": Array [
+              "ChatPrompt",
+            ],
             "updated_at": null,
           },
         }
@@ -603,6 +662,9 @@ describe('/api/interactions/*', () => {
               ],
               "username": "superuser",
             },
+            "types": Array [
+              "ChatPrompt",
+            ],
             "updated_at": null,
           },
         }
@@ -640,6 +702,9 @@ describe('/api/interactions/*', () => {
                 ],
                 "username": "superuser",
               },
+              "types": Array [
+                "ChatPrompt",
+              ],
               "updated_at": null,
             },
             Object {
@@ -662,6 +727,10 @@ describe('/api/interactions/*', () => {
                 ],
                 "username": "superuser",
               },
+              "types": Array [
+                "ChatPrompt",
+                "ConversationPrompt",
+              ],
               "updated_at": null,
             },
             Object {
@@ -684,6 +753,9 @@ describe('/api/interactions/*', () => {
                 ],
                 "username": "superuser",
               },
+              "types": Array [
+                "TextResponse",
+              ],
               "updated_at": null,
             },
           ],
@@ -712,6 +784,41 @@ describe('/api/interactions/*', () => {
         }
       `);
       expect(db.getInteractions.mock.calls.length).toBe(1);
+    });
+  });
+
+  describe('/api/interactions/types', () => {
+    const path = '/api/interactions/types';
+
+    test('get success', async () => {
+      const response = await request({ path });
+      expect(await response.json()).toMatchInlineSnapshot(`
+        Object {
+          "interactions": Array [
+            Object {
+              "id": 1,
+              "name": "AudioPrompt",
+            },
+            Object {
+              "id": 2,
+              "name": "ChatPrompt",
+            },
+            Object {
+              "id": 3,
+              "name": "ConversationPrompt",
+            },
+            Object {
+              "id": 4,
+              "name": "TextResponse",
+            },
+          ],
+        }
+      `);
+      expect(authmw.requireUser.mock.calls.length).toBe(1);
+      expect(db.getInteractionsTypes.mock.calls.length).toBe(1);
+      expect(db.getInteractionsTypes.mock.calls[0]).toMatchInlineSnapshot(
+        `Array []`
+      );
     });
   });
 });

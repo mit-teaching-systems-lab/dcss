@@ -7,14 +7,16 @@ const { requireUserRole } = require('../roles/middleware');
 const { validateRequestBody } = require('../../util/requestValidation');
 const {
   createInteraction,
-  getInteractions,
   getInteraction,
+  getInteractions,
+  getInteractionsTypes,
   setInteraction
 } = require('./endpoints');
 
 const router = Router();
 
 router.get('/', [requireUser, getInteractions]);
+router.get('/types', [requireUser, getInteractionsTypes]);
 
 router.post('/', [
   requireUserRole(['admin', 'super_admin', 'facilitator']),
