@@ -733,15 +733,18 @@ test('Multiple personas, assign a persona to a component', async done => {
 
   // Open the persona selector
   userEvent.click(listbox);
+  await waitForPopper();
   expect(asFragment()).toMatchSnapshot();
 
   const personaOptions = await tlr.findAllByRole(listbox, 'option');
 
   // Select the first persona (item 0 is not a persona)
   userEvent.click(personaOptions[0]);
+  await waitForPopper();
   expect(asFragment()).toMatchSnapshot();
 
   jest.advanceTimersByTime(1000);
+  expect(asFragment()).toMatchSnapshot();
 
   expect(props.onChange).toHaveBeenCalledTimes(1);
   expect(props.onChange.mock.calls[0]).toMatchInlineSnapshot(`
@@ -815,6 +818,7 @@ test('Multiple personas, toggle chat', async done => {
   expect(asFragment()).toMatchSnapshot();
 
   userEvent.click(toggleChat);
+  await waitForPopper();
   expect(asFragment()).toMatchSnapshot();
 
   jest.advanceTimersByTime(1000);
@@ -952,11 +956,14 @@ test('Change title', async done => {
   const title = await screen.findByPlaceholderText('Slide title');
 
   userEvent.clear(title);
+  await waitForPopper();
   expect(asFragment()).toMatchSnapshot();
 
   userEvent.type(title, 'A new slide title');
+  await waitForPopper();
 
   jest.advanceTimersByTime(1000);
+  await waitForPopper();
 
   expect(asFragment()).toMatchSnapshot();
 
@@ -1025,6 +1032,7 @@ test('Save', async done => {
   const saveSlide = await screen.findByLabelText('Save slide');
 
   userEvent.click(saveSlide);
+  await waitForPopper();
   expect(asFragment()).toMatchSnapshot();
 
   expect(props.onChange).toHaveBeenCalledTimes(1);
@@ -1092,6 +1100,7 @@ test('Save, onChange is missing', async done => {
   const saveSlide = await screen.findByLabelText('Save slide');
 
   userEvent.click(saveSlide);
+  await waitForPopper();
   expect(asFragment()).toMatchSnapshot();
 
   done();
@@ -1125,9 +1134,11 @@ test('Delete, yes', async done => {
   const deleteSlide = await screen.findByLabelText('Delete this slide');
 
   userEvent.click(deleteSlide);
+  await waitForPopper();
   expect(asFragment()).toMatchSnapshot();
 
   userEvent.click(await screen.findByRole('button', { name: /Yes/ }));
+  await waitForPopper();
   expect(asFragment()).toMatchSnapshot();
 
   expect(props.onDelete).toHaveBeenCalledTimes(1);
@@ -1168,13 +1179,14 @@ test('Delete, no', async done => {
   const deleteSlide = await screen.findByLabelText('Delete this slide');
 
   userEvent.click(deleteSlide);
+  await waitForPopper();
   expect(asFragment()).toMatchSnapshot();
 
   userEvent.click(await screen.findByRole('button', { name: /No/ }));
+  await waitForPopper();
   expect(asFragment()).toMatchSnapshot();
 
   expect(props.onDelete).toHaveBeenCalledTimes(0);
-
   done();
 });
 
@@ -1206,6 +1218,7 @@ test('Duplicate', async done => {
   const duplicateSlide = await screen.findByLabelText('Duplicate slide');
 
   userEvent.click(duplicateSlide);
+  await waitForPopper();
   expect(asFragment()).toMatchSnapshot();
 
   expect(props.onDuplicate).toHaveBeenCalledTimes(1);
@@ -1246,11 +1259,13 @@ test('Preview', async done => {
   const previewSlide = await screen.findByLabelText('Preview slide');
 
   userEvent.click(previewSlide);
+  await waitForPopper();
 
   // Preview mode
   expect(asFragment()).toMatchSnapshot();
 
   userEvent.click(previewSlide);
+  await waitForPopper();
 
   // Edit mode
   expect(asFragment()).toMatchSnapshot();
@@ -1316,6 +1331,7 @@ test('Click to activate component', async done => {
   expect(asFragment()).toMatchSnapshot();
 
   userEvent.click(components[0]);
+  await waitForPopper();
   expect(asFragment()).toMatchSnapshot();
 
   done();
@@ -1353,6 +1369,7 @@ test('Add a response-prompt component to a slide without a title', async done =>
   });
 
   userEvent.click(button);
+  await waitForPopper();
 
   jest.advanceTimersByTime(1000);
 
@@ -1431,11 +1448,13 @@ test('Add a non-response-prompt component', async done => {
   expect(asFragment()).toMatchSnapshot();
 
   userEvent.click(components[1]);
+  await waitForPopper();
   expect(asFragment()).toMatchSnapshot();
 
   const rte = await screen.findByRole('button', { name: /Rich Text Editor/i });
 
   userEvent.click(rte);
+  await waitForPopper();
 
   jest.advanceTimersByTime(1000);
 
@@ -1509,6 +1528,7 @@ test('Add a response-prompt component that has disableRequireCheckbox', async do
   });
 
   userEvent.click(button);
+  await waitForPopper();
 
   jest.advanceTimersByTime(1000);
 
@@ -1594,6 +1614,7 @@ test('Add a non-response-prompt component at the end', async done => {
 
   // Activate the component at the end of the slide
   userEvent.click(components[components.length - 1]);
+  await waitForPopper();
   expect(asFragment()).toMatchSnapshot();
 
   const button = await screen.findByRole('button', {
@@ -1602,6 +1623,7 @@ test('Add a non-response-prompt component at the end', async done => {
   expect(asFragment()).toMatchSnapshot();
 
   userEvent.click(button);
+  await waitForPopper();
 
   jest.advanceTimersByTime(1000);
   expect(asFragment()).toMatchSnapshot();
@@ -1682,6 +1704,7 @@ test('Add a response-prompt component', async done => {
   });
 
   userEvent.click(button);
+  await waitForPopper();
 
   jest.advanceTimersByTime(1000);
 
@@ -1765,10 +1788,13 @@ test('Edit a component', async done => {
   });
 
   userEvent.clear(textarea);
+  await waitForPopper();
   userEvent.type(textarea, 'Tell us what you think');
+  await waitForPopper();
 
   // Should trigger a change
   userEvent.click(input);
+  await waitForPopper();
   jest.advanceTimersByTime(1000);
 
   expect(props.onChange).toHaveBeenCalledTimes(1);
@@ -1803,10 +1829,13 @@ test('Edit a component', async done => {
   ]);
 
   userEvent.clear(input);
+  await waitForPopper();
   userEvent.type(input, 'Type stuff here');
+  await waitForPopper();
 
   // Should trigger a change
   userEvent.click(textarea);
+  await waitForPopper();
 
   jest.advanceTimersByTime(1000);
 
@@ -1874,6 +1903,7 @@ test('Duplicate a non-response-prompt component', async done => {
   );
 
   userEvent.click(duplicateComponents[0]);
+  await waitForPopper();
   expect(asFragment()).toMatchSnapshot();
 
   expect(props.onChange).toHaveBeenCalledTimes(1);
@@ -1945,6 +1975,7 @@ test('Duplicate a response-prompt component', async done => {
   );
 
   userEvent.click(duplicateComponents[1]);
+  await waitForPopper();
   expect(asFragment()).toMatchSnapshot();
 
   expect(props.onChange).toHaveBeenCalledTimes(1);
@@ -2022,6 +2053,7 @@ test('Move a component up', async done => {
 
   // Move up
   userEvent.click(movers[0]);
+  await waitForPopper();
   expect(asFragment()).toMatchSnapshot();
 
   expect(props.onChange).toHaveBeenCalledTimes(1);
@@ -2091,6 +2123,7 @@ test('Move a component down', async done => {
 
   // Move down
   userEvent.click(movers[1]);
+  await waitForPopper();
   expect(asFragment()).toMatchSnapshot();
 
   expect(props.onChange).toHaveBeenCalledTimes(1);
@@ -2161,9 +2194,11 @@ test('Delete a component from the beginning', async done => {
   expect(asFragment()).toMatchSnapshot();
 
   userEvent.click(deleteComponents[0]);
+  await waitForPopper();
   expect(asFragment()).toMatchSnapshot();
 
   userEvent.click(await screen.findByRole('button', { name: /Yes/ }));
+  await waitForPopper();
   expect(asFragment()).toMatchSnapshot();
 
   expect(props.onChange).toHaveBeenCalledTimes(1);
@@ -2229,9 +2264,11 @@ test('Delete a component from the middle', async done => {
   expect(asFragment()).toMatchSnapshot();
 
   userEvent.click(deleteComponents[1]);
+  await waitForPopper();
   expect(asFragment()).toMatchSnapshot();
 
   userEvent.click(await screen.findByRole('button', { name: /Yes/ }));
+  await waitForPopper();
   expect(asFragment()).toMatchSnapshot();
 
   expect(props.onChange).toHaveBeenCalledTimes(1);
@@ -2291,9 +2328,11 @@ test('Delete a component from the end', async done => {
   expect(asFragment()).toMatchSnapshot();
 
   userEvent.click(deleteComponents[2]);
+  await waitForPopper();
   expect(asFragment()).toMatchSnapshot();
 
   userEvent.click(await screen.findByRole('button', { name: /Yes/ }));
+  await waitForPopper();
   expect(asFragment()).toMatchSnapshot();
 
   expect(props.onChange).toHaveBeenCalledTimes(1);
@@ -2352,9 +2391,14 @@ test('Toggle required on a prompt-response component', async done => {
 
   const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
   expect(asFragment()).toMatchSnapshot();
+  await waitForPopper();
 
   userEvent.click(await screen.getByLabelText('Required?'));
+  await waitForPopper();
   expect(asFragment()).toMatchSnapshot();
+
+  jest.advanceTimersByTime(1000);
+  await waitForPopper();
 
   expect(props.onChange).toHaveBeenCalledTimes(1);
   expect(props.onChange.mock.calls[0]).toMatchInlineSnapshot(`
@@ -2391,7 +2435,11 @@ test('Toggle required on a prompt-response component', async done => {
   `);
 
   userEvent.click(await screen.getByLabelText('Required?'));
+  await waitForPopper();
   expect(asFragment()).toMatchSnapshot();
+
+  jest.advanceTimersByTime(1000);
+  await waitForPopper();
 
   expect(props.onChange).toHaveBeenCalledTimes(2);
   expect(props.onChange.mock.calls[1]).toMatchInlineSnapshot(`
