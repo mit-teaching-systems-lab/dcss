@@ -40,7 +40,7 @@ describe('cohort', () => {
   test('initial state', () => {
     expect(reducer.cohort(undefined, {})).toMatchInlineSnapshot(`
       Object {
-        "created_at": "",
+        "created_at": null,
         "deleted_at": null,
         "id": null,
         "is_archived": false,
@@ -54,7 +54,7 @@ describe('cohort', () => {
     `);
     expect(reducer.cohort(undefined, {})).toMatchInlineSnapshot(`
       Object {
-        "created_at": "",
+        "created_at": null,
         "deleted_at": null,
         "id": null,
         "is_archived": false,
@@ -528,7 +528,7 @@ describe('cohort', () => {
       };
       expect(reducer.cohort(undefined, action)).toMatchInlineSnapshot(`
         Object {
-          "created_at": "",
+          "created_at": null,
           "deleted_at": null,
           "id": null,
           "is_archived": false,
@@ -566,7 +566,7 @@ describe('cohort', () => {
       `);
       expect(reducer.cohort(undefined, action)).toMatchInlineSnapshot(`
         Object {
-          "created_at": "",
+          "created_at": null,
           "deleted_at": null,
           "id": null,
           "is_archived": false,
@@ -610,7 +610,7 @@ describe('cohort', () => {
       };
       expect(reducer.cohort(undefined, action)).toMatchInlineSnapshot(`
         Object {
-          "created_at": "",
+          "created_at": null,
           "deleted_at": null,
           "id": null,
           "is_archived": false,
@@ -624,7 +624,7 @@ describe('cohort', () => {
       `);
       expect(reducer.cohort(undefined, action)).toMatchInlineSnapshot(`
         Object {
-          "created_at": "",
+          "created_at": null,
           "deleted_at": null,
           "id": null,
           "is_archived": false,

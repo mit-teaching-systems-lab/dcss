@@ -285,7 +285,7 @@ describe('GET_AGENTS_SUCCESS', () => {
       expect(fetch.mock.calls.length).toBe(1);
       expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
         Array [
-          "/api/agents",
+          "/api/agents/is_active",
         ]
       `);
       expect(returnValue).toEqual(agents);
@@ -300,7 +300,7 @@ describe('GET_AGENTS_SUCCESS', () => {
       expect(fetch.mock.calls.length).toBe(1);
       expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
         Array [
-          "/api/agents",
+          "/api/agents/is_active",
         ]
       `);
       expect(returnValue).toMatchInlineSnapshot(`Array []`);

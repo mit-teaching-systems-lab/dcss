@@ -33,7 +33,7 @@ export const chatInitialState = {
 
 export const cohortInitialState = {
   id: null,
-  created_at: '',
+  created_at: null,
   updated_at: null,
   deleted_at: null,
   is_archived: false,
@@ -49,6 +49,16 @@ export const historyInitialState = {
   responses: []
 };
 
+export const interactionInitialState = {
+  id: null,
+  name: null,
+  description: null,
+  owner: null,
+  created_at: null,
+  updated_at: null,
+  deleted_at: null
+};
+
 export const inviteInitialState = {
   id: null,
   sender_id: null,
@@ -56,7 +66,7 @@ export const inviteInitialState = {
   status_id: null,
   props: {},
   code: '',
-  created_at: '',
+  created_at: null,
   updated_at: null,
   expire_at: null
 };

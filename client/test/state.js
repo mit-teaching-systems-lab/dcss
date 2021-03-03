@@ -537,6 +537,24 @@ module.exports = {
     prompts: [],
     responses: []
   },
+  interaction: {
+    id: 1,
+    created_at: '2021-02-25T17:31:33.826Z',
+    updated_at: '2021-02-27T20:38:53.774Z',
+    deleted_at: null,
+    name: 'ChatPrompt',
+    description:
+      'It will appear as an option for scenario authors to include in chat discussions within multi-participant scenarios. It receives participant chat messages.',
+    owner: {
+      id: 999,
+      email: 'super@email.com',
+      roles: ['participant', 'super_admin', 'facilitator', 'researcher'],
+      is_super: true,
+      username: 'superuser',
+      is_anonymous: false,
+      personalname: 'Super User'
+    }
+  },
   interactions: [
     {
       id: 1,
@@ -545,7 +563,16 @@ module.exports = {
       deleted_at: null,
       name: 'ChatPrompt',
       description:
-        'It will appear as an option for scenario authors to include in chat discussions within multi-participant scenarios. It receives participant chat messages.'
+        'It will appear as an option for scenario authors to include in chat discussions within multi-participant scenarios. It receives participant chat messages.',
+      owner: {
+        id: 999,
+        email: 'super@email.com',
+        roles: ['participant', 'super_admin', 'facilitator', 'researcher'],
+        is_super: true,
+        username: 'superuser',
+        is_anonymous: false,
+        personalname: 'Super User'
+      }
     },
     {
       id: 2,
@@ -554,7 +581,16 @@ module.exports = {
       deleted_at: null,
       name: 'AudioPrompt',
       description:
-        'It will appear as an option for scenario authors to use in conditional content components within scenarios. It receives participant Audio Prompt Responses.'
+        'It will appear as an option for scenario authors to use in conditional content components within scenarios. It receives participant Audio Prompt Responses.',
+      owner: {
+        id: 999,
+        email: 'super@email.com',
+        roles: ['participant', 'super_admin', 'facilitator', 'researcher'],
+        is_super: true,
+        username: 'superuser',
+        is_anonymous: false,
+        personalname: 'Super User'
+      }
     },
     {
       id: 3,
@@ -563,7 +599,16 @@ module.exports = {
       deleted_at: null,
       name: 'TextPrompt',
       description:
-        'It will appear as an option for scenario authors to use in conditional content components within scenarios. It receives participant Text Prompt Responses.'
+        'It will appear as an option for scenario authors to use in conditional content components within scenarios. It receives participant Text Prompt Responses.',
+      owner: {
+        id: 999,
+        email: 'super@email.com',
+        roles: ['participant', 'super_admin', 'facilitator', 'researcher'],
+        is_super: true,
+        username: 'superuser',
+        is_anonymous: false,
+        personalname: 'Super User'
+      }
     }
   ],
   interactionsById: {
