@@ -640,6 +640,24 @@ module.exports = {
         'It will appear as an option for scenario authors to use in conditional content components within scenarios. It receives participant Text Prompt Responses.'
     }
   },
+  interactionsTypes: [
+    {
+      id: 1,
+      name: 'AudioPrompt'
+    },
+    {
+      id: 2,
+      name: 'ChatPrompt'
+    },
+    {
+      id: 3,
+      name: 'ConversationPrompt'
+    },
+    {
+      id: 4,
+      name: 'TextResponse'
+    }
+  ],
   invites: [
     {
       id: 1,
