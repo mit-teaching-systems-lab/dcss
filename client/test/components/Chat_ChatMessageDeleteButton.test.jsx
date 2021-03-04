@@ -2,7 +2,7 @@
 import React from 'react';
 jest.mock('react', () => ({
   ...jest.requireActual('react'),
-  useLayoutEffect: jest.requireActual('react').useEffect
+  useLayoutEffect: jest.requireActual('react').useEffect,
 }));
 
 import {
@@ -11,7 +11,7 @@ import {
   reduxer,
   serialize,
   snapshotter,
-  state
+  state,
 } from '../bootstrap';
 import { unmountComponentAtNode } from 'react-dom';
 
@@ -21,7 +21,7 @@ import {
   prettyDOM,
   render,
   screen,
-  waitFor
+  waitFor,
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
@@ -94,17 +94,17 @@ test('ChatMessageDeleteButton', () => {
 });
 
 /** @GENERATED: BEGIN **/
-test('Render 1 1', async done => {
+test('Render 1 1', async (done) => {
   const Component = ChatMessageDeleteButton;
   const props = {
     ...commonProps,
     'aria-label': 'Delete this thing',
     onCancel: jest.fn(),
-    onConfirm: jest.fn()
+    onConfirm: jest.fn(),
   };
 
   const state = {
-    ...commonState
+    ...commonState,
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
@@ -118,18 +118,18 @@ test('Render 1 1', async done => {
 
 /* INJECTION STARTS HERE */
 
-test('Delete, No, then Yes', async done => {
+test('Delete, No, then Yes', async (done) => {
   const Component = ChatMessageDeleteButton;
 
   const props = {
     ...commonProps,
     'aria-label': 'Delete this thing',
     onCancel: jest.fn(),
-    onConfirm: jest.fn()
+    onConfirm: jest.fn(),
   };
 
   const state = {
-    ...commonState
+    ...commonState,
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
@@ -143,18 +143,23 @@ test('Delete, No, then Yes', async done => {
   const deletable = deletables[0];
 
   userEvent.click(deletable);
+  await waitForPopper();
   expect(serialize()).toMatchSnapshot();
 
   userEvent.click(await screen.findByRole('button', { name: /No/i }));
+  await waitForPopper();
   await waitFor(() => expect(props.onCancel).toHaveBeenCalled());
   expect(serialize()).toMatchSnapshot();
 
   userEvent.click(deletable);
+  await waitForPopper();
   expect(serialize()).toMatchSnapshot();
 
   userEvent.click(await screen.findByRole('button', { name: /Yes/i }));
+  await waitForPopper();
   await waitFor(() => expect(props.onConfirm).toHaveBeenCalled());
   expect(serialize()).toMatchSnapshot();
 
   done();
 });
+

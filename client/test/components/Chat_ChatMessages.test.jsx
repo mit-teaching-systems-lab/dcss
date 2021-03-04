@@ -797,6 +797,7 @@ test('Receives new message after scrolling', async done => {
   expect(asFragment()).toMatchSnapshot();
 
   userEvent.click(seeNewMessage);
+  await waitForPopper();
 
   expect(screen.queryByLabelText('See new message')).toBe(null);
   expect(asFragment()).toMatchSnapshot();
@@ -872,34 +873,42 @@ test('Show hidden messages', async done => {
   expect(screen.queryByLabelText('See more messages')).not.toBe(null);
 
   userEvent.click(await screen.findByLabelText('See more messages'));
+  await waitForPopper();
 
   expect((await screen.findAllByTestId('comment')).length).toBe(30);
 
   userEvent.click(await screen.findByLabelText('See more messages'));
+  await waitForPopper();
 
   expect((await screen.findAllByTestId('comment')).length).toBe(40);
 
   userEvent.click(await screen.findByLabelText('See more messages'));
+  await waitForPopper();
 
   expect((await screen.findAllByTestId('comment')).length).toBe(50);
 
   userEvent.click(await screen.findByLabelText('See more messages'));
+  await waitForPopper();
 
   expect((await screen.findAllByTestId('comment')).length).toBe(60);
 
   userEvent.click(await screen.findByLabelText('See more messages'));
+  await waitForPopper();
 
   expect((await screen.findAllByTestId('comment')).length).toBe(70);
 
   userEvent.click(await screen.findByLabelText('See more messages'));
+  await waitForPopper();
 
   expect((await screen.findAllByTestId('comment')).length).toBe(80);
 
   userEvent.click(await screen.findByLabelText('See more messages'));
+  await waitForPopper();
 
   expect((await screen.findAllByTestId('comment')).length).toBe(90);
 
   userEvent.click(await screen.findByLabelText('See more messages'));
+  await waitForPopper();
 
   expect((await screen.findAllByTestId('comment')).length).toBe(100);
 
@@ -989,6 +998,7 @@ test('Receives new message after scrolling without existing messages', async don
   expect(asFragment()).toMatchSnapshot();
 
   userEvent.click(seeNewMessage);
+  await waitForPopper();
 
   expect(screen.queryByLabelText('See new message')).toBe(null);
   expect(asFragment()).toMatchSnapshot();
@@ -1207,6 +1217,7 @@ test('Calls onQuote', async done => {
   const quotables = await screen.findAllByLabelText('Quote this message');
 
   quotables.forEach(quotable => userEvent.click(quotable));
+  await waitForPopper();
 
   expect(props.onQuote).toHaveBeenCalledTimes(2);
   expect(props.onQuote.mock.calls).toMatchInlineSnapshot(`
@@ -1319,15 +1330,19 @@ test('Message can be deleted', async done => {
   const deletable = await screen.findByLabelText('Delete this message');
 
   userEvent.click(deletable);
+  await waitForPopper();
   expect(asFragment()).toMatchSnapshot();
 
   userEvent.click(await screen.findByRole('button', { name: /No/i }));
+  await waitForPopper();
   expect(asFragment()).toMatchSnapshot();
 
   userEvent.click(deletable);
+  await waitForPopper();
   expect(asFragment()).toMatchSnapshot();
 
   userEvent.click(await screen.findByRole('button', { name: /Yes/i }));
+  await waitForPopper();
   expect(asFragment()).toMatchSnapshot();
 
   await waitFor(() => expect(chatActions.setMessageById).toHaveBeenCalled());

@@ -1185,6 +1185,7 @@ test('Calls onChange when RTE is cleared', async done => {
   globalThis.mockSocket.emit.mockReset();
 
   userEvent.clear(await screen.findByRole('textbox'));
+  await waitForPopper();
 
   expect(globalThis.onChange).toHaveBeenCalled();
   expect(serialize()).toMatchSnapshot();
@@ -1222,9 +1223,13 @@ test('Types, then attempts to send empty string', async done => {
   const textbox = await screen.findByRole('textbox');
 
   userEvent.clear(textbox);
+  await waitForPopper();
   userEvent.type(textbox, '');
+  await waitForPopper();
   userEvent.type(textbox, '{enter}');
+  await waitForPopper();
   userEvent.click(await screen.findByLabelText('Send message'));
+  await waitForPopper();
 
   expect(globalThis.onChange).toHaveBeenCalledTimes(0);
   expect(serialize()).toMatchSnapshot();
@@ -1263,9 +1268,13 @@ test('Types, then attempts to send string containing only a space character', as
   const textbox = await screen.findByRole('textbox');
 
   userEvent.clear(textbox);
+  await waitForPopper();
   userEvent.type(textbox, '{space}');
+  await waitForPopper();
   userEvent.type(textbox, '{enter}');
+  await waitForPopper();
   userEvent.click(await screen.findByLabelText('Send message'));
+  await waitForPopper();
 
   expect(globalThis.onChange).toHaveBeenCalledTimes(1);
   expect(globalThis.rte.setContents).toHaveBeenCalledTimes(0);
@@ -1305,9 +1314,13 @@ test('Types, followed by {enter}', async done => {
   const textbox = await screen.findByRole('textbox');
 
   userEvent.clear(textbox);
+  await waitForPopper();
   userEvent.type(textbox, 'typing enter');
+  await waitForPopper();
   userEvent.type(textbox, '{enter}');
+  await waitForPopper();
   userEvent.click(await screen.findByLabelText('Send message'));
+  await waitForPopper();
 
   expect(globalThis.onChange).toHaveBeenCalled();
   expect(globalThis.rte.setContents).toHaveBeenCalledTimes(1);
@@ -1374,9 +1387,13 @@ test('Types, followed by {shift}{enter}, does not submit', async done => {
   const textbox = await screen.findByRole('textbox');
 
   userEvent.clear(textbox);
+  await waitForPopper();
   userEvent.type(textbox, 'typing shift+enter');
+  await waitForPopper();
   userEvent.type(textbox, '{shift}{enter}');
+  await waitForPopper();
   userEvent.click(await screen.findByLabelText('Send message'));
+  await waitForPopper();
 
   expect(globalThis.onChange).toHaveBeenCalled();
   expect(globalThis.rte.setContents).toHaveBeenCalledTimes(1);
@@ -1444,11 +1461,14 @@ test('Empty, many {shift}{enter}, attempts to send, does not submit', async done
   const textbox = await screen.findByRole('textbox');
 
   userEvent.clear(textbox);
+  await waitForPopper();
   userEvent.type(
     textbox,
     '{shift}{enter}{shift}{enter}{shift}{enter}{shift}{enter}{shift}{enter}'
   );
+  await waitForPopper();
   userEvent.click(await screen.findByLabelText('Send message'));
+  await waitForPopper();
 
   expect(globalThis.onChange).toHaveBeenCalled();
   expect(globalThis.rte.setContents).toHaveBeenCalledTimes(0);
@@ -1488,9 +1508,13 @@ test('Types, followed by {shift}{enter}, attempts to send, does submit', async d
   const textbox = await screen.findByRole('textbox');
 
   userEvent.clear(textbox);
+  await waitForPopper();
   userEvent.type(textbox, 'typing enter');
+  await waitForPopper();
   userEvent.type(textbox, '{enter}');
+  await waitForPopper();
   userEvent.click(await screen.findByLabelText('Send message'));
+  await waitForPopper();
 
   expect(globalThis.onChange).toHaveBeenCalled();
   expect(globalThis.mockSocket.emit).toHaveBeenCalledTimes(1);
@@ -1547,7 +1571,9 @@ test('Calls onInput when RTE receives new content', async done => {
   globalThis.mockSocket.emit.mockReset();
 
   userEvent.type(await screen.findByRole('textbox'), 'typing in the chat');
+  await waitForPopper();
   userEvent.click(await screen.findByLabelText('Send message'));
+  await waitForPopper();
 
   expect(globalThis.onChange).toHaveBeenCalled();
   expect(globalThis.rte.setContents).toHaveBeenCalledTimes(1);
@@ -1614,8 +1640,11 @@ test('Calls onKeyDown, responds when key is {enter}', async done => {
   const textbox = await screen.findByRole('textbox');
 
   userEvent.clear(textbox);
+  await waitForPopper();
   userEvent.type(textbox, 'typing in the chat');
+  await waitForPopper();
   userEvent.type(textbox, '{enter}');
+  await waitForPopper();
 
   expect(globalThis.onChange).toHaveBeenCalled();
   expect(globalThis.rte.setContents).toHaveBeenCalledTimes(1);
@@ -1681,9 +1710,13 @@ test('Types, clicks Send Message', async done => {
   const textbox = await screen.findByRole('textbox');
 
   userEvent.clear(textbox);
+  await waitForPopper();
   userEvent.type(textbox, 'typing in the chat');
+  await waitForPopper();
   userEvent.type(textbox, '{enter}');
+  await waitForPopper();
   userEvent.click(await screen.findByLabelText('Send message'));
+  await waitForPopper();
 
   expect(globalThis.onChange).toHaveBeenCalled();
   expect(globalThis.rte.setContents).toHaveBeenCalledTimes(1);
@@ -1751,6 +1784,7 @@ test('onQuote', async done => {
   const quoteButtons = await screen.findAllByLabelText('Quote this message');
 
   userEvent.click(quoteButtons[0]);
+  await waitForPopper();
   expect(globalThis.rte.setContents).toHaveBeenCalledTimes(1);
   expect(globalThis.rte.setContents.mock.calls).toMatchInlineSnapshot(`
     Array [
@@ -1762,6 +1796,7 @@ test('onQuote', async done => {
   expect(serialize()).toMatchSnapshot();
 
   userEvent.click(quoteButtons[1]);
+  await waitForPopper();
   expect(globalThis.rte.setContents).toHaveBeenCalledTimes(2);
   expect(globalThis.rte.setContents.mock.calls).toMatchInlineSnapshot(`
     Array [
@@ -2488,9 +2523,11 @@ test('Click to Minimize and Maximize', async done => {
   const button = await screen.findByLabelText(/minimize/i);
 
   userEvent.click(button);
+  await waitForPopper();
   expect(serialize()).toMatchSnapshot();
 
   userEvent.click(button);
+  await waitForPopper();
   expect(serialize()).toMatchSnapshot();
 
   done();
@@ -2686,6 +2723,7 @@ test('Receives new message, minimized, not mobile', async done => {
       name: /Click to minimize the chat window/i
     })
   );
+  await waitForPopper();
   expect(serialize()).toMatchSnapshot();
 
   globalThis.mockSocket.emit('chat-message-created', {
@@ -2801,6 +2839,7 @@ test('Receives new message, minimized, mobile', async done => {
       name: /Click to minimize the chat window/i
     })
   );
+  await waitForPopper();
   expect(serialize()).toMatchSnapshot();
 
   globalThis.mockSocket.emit('chat-message-created', {
@@ -2843,7 +2882,7 @@ test('Chat id provided via props, but not yet loaded', async done => {
   await render(<ConnectedRoutedComponent {...props} />);
   expect(serialize()).toMatchSnapshot();
 
-  await waitFor(() => expect(chatActions.getChatById).toHaveBeenCalled());
+  await waitFor(() => expect(chatActions.getChat).toHaveBeenCalled());
   done();
 });
 
@@ -2874,6 +2913,7 @@ test('Chat has ended', async done => {
   window.alert = jest.fn();
 
   userEvent.click(await screen.getByLabelText('Chat is closed'));
+  await waitForPopper();
 
   expect(window.alert).toHaveBeenCalled();
   done();
