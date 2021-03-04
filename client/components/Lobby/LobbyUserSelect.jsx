@@ -796,6 +796,10 @@ const mapStateToProps = (state, ownProps) => {
 
   const usersSource = cohort ? cohort.users : state.users;
   const users = usersSource.reduce((accum, user) => {
+    if (user.is_agent) {
+      return accum;
+    }
+
     const key = Identity.key(user);
     const { id, email, personalname, username, roles = [] } = user;
     const { title } = Username.getDisplayables(user);

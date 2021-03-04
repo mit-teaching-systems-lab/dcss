@@ -2,7 +2,7 @@ import {
   GET_INTERACTION_SUCCESS,
   SET_INTERACTION_SUCCESS,
   GET_INTERACTIONS_SUCCESS,
-  GET_INTERACTIONS_TYPES_SUCCESS,
+  GET_INTERACTIONS_TYPES_SUCCESS
 } from '@actions/types';
 import { interactionInitialState } from './initial-states';
 
@@ -10,9 +10,7 @@ export const interactionsTypes = (state = [], action) => {
   const { types, type } = action;
   switch (type) {
     case GET_INTERACTIONS_TYPES_SUCCESS: {
-      return [
-        ...types
-      ];
+      return [...types];
     }
     default:
       return state;

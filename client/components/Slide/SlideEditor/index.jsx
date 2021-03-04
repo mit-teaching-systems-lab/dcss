@@ -321,7 +321,7 @@ export default class SlideEditor extends Component {
       slide: { components, title }
     } = this.state;
 
-    const activeComponentIndex = currentActiveComponentIndex + 1;
+    let activeComponentIndex = currentActiveComponentIndex + 1;
     const component = Components[type].defaultValue({
       responseId: uuid()
     });
@@ -333,11 +333,27 @@ export default class SlideEditor extends Component {
       component.header = `${prefix}${type}-${activeComponentIndex}`;
     }
 
+    //
+    //
+    // DISABLED UNTIL SLIDE COMPONENTS CAN BE REFACTORED TO SUPPORT THIS
+    //
+    //
+    // When the active component has a child component property,
+    // then that becomes the target.
+    // if (
+    //   Reflect.has(components[currentActiveComponentIndex], 'component') &&
+    //   // But you cannot nest another component with a component property
+    //   !component.component
+    // ) {
+    //   components[currentActiveComponentIndex].component = component;
+    //   activeComponentIndex = currentActiveComponentIndex;
+    // } else {
     if (activeComponentIndex === components.length) {
       components.push(component);
     } else {
       components.splice(activeComponentIndex, 0, component);
     }
+    // }
 
     const update = {
       activeComponentIndex,

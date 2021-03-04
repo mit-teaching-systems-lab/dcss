@@ -87,7 +87,8 @@ import {
   GET_AGENT_SUCCESS,
   SET_AGENT_SUCCESS,
   GET_AGENTS_SUCCESS,
-  GET_INTERACTIONS_SUCCESS
+  GET_INTERACTIONS_SUCCESS,
+  GET_INTERACTIONS_TYPES_SUCCESS
 } from '../../actions/types';
 import * as agentActions from '../../actions/agent';
 import * as interactionActions from '../../actions/interaction';
@@ -108,6 +109,25 @@ let interactions;
 let interactionsById;
 let superUser;
 let agentUser;
+
+let interactionsTypes = [
+  {
+    id: 1,
+    name: 'AudioPrompt'
+  },
+  {
+    id: 2,
+    name: 'ChatPrompt'
+  },
+  {
+    id: 3,
+    name: 'ConversationPrompt'
+  },
+  {
+    id: 4,
+    name: 'TextResponse'
+  }
+];
 
 const expectDateString = expect.stringMatching(/[0-9]{4}-[0-9]{2}-[0-9]{2}.*/i);
 
@@ -285,6 +305,14 @@ beforeEach(() => {
     () => async dispatch => {
       dispatch({ type: GET_INTERACTIONS_SUCCESS, interactions });
       return interactions;
+    }
+  );
+
+  interactionActions.getInteractionsTypes.mockImplementation(
+    () => async dispatch => {
+      const types = interactionsTypes;
+      dispatch({ type: GET_INTERACTIONS_TYPES_SUCCESS, types });
+      return types;
     }
   );
 
@@ -1000,7 +1028,7 @@ test('Add a new agent', async done => {
   );
   expect(serialize()).toMatchSnapshot();
 
-  userEvent.click(await screen.getByText(/add an agent/i));
+  userEvent.click(await screen.getByText(/create a new agent/i));
   await waitFor(() =>
     expect(screen.getByTestId('agents-detail')).toBeInTheDocument()
   );

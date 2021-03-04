@@ -263,13 +263,15 @@ class EntrySlide extends React.Component {
       });
     }
 
-    const onLobbyCloseClick = this.state.lobby.isOpen ? () => {
-      this.setState({
-        lobby: {
-          isOpen: false
+    const onLobbyCloseClick = this.state.lobby.isOpen
+      ? () => {
+          this.setState({
+            lobby: {
+              isOpen: false
+            }
+          });
         }
-      })
-    } : null;
+      : null;
 
     return (
       <Fragment>
@@ -345,16 +347,12 @@ class EntrySlide extends React.Component {
               centered={false}
               onClose={onLobbyCloseClick}
             >
-              <Header
-                icon="group"
-                content="Lobby"
-              />
-              <Modal.Content scrolling style={{ height: 'calc(100vh - 10rem)' }}>
-                <Lobby
-                  chat={chat}
-                  cohort={cohort}
-                  scenario={scenario}
-                />
+              <Header icon="group" content="Lobby" />
+              <Modal.Content
+                scrolling
+                style={{ height: 'calc(100vh - 10rem)' }}
+              >
+                <Lobby chat={chat} cohort={cohort} scenario={scenario} />
               </Modal.Content>
               <Modal.Actions>
                 <Button.Group fluid>

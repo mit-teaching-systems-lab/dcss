@@ -58,3 +58,8 @@
     content: '\f2bd';
   }
 }
+
+
+.admin__maxwidth {
+  max-width: 1300px !important;
+}

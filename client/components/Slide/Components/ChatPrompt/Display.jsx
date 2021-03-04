@@ -118,22 +118,25 @@ class Display extends Component {
     this.props.socket.on(CHAT_CLOSED_FOR_SLIDE, this.onChange);
     this.props.socket.on(CHAT_QUORUM_FOR_SLIDE, this.onQuorum);
 
-    this.props.socket.emit(CREATE_USER_CHANNEL, makeSocketPayload(this.props));
-    this.props.socket.emit(CREATE_CHAT_CHANNEL, makeSocketPayload(this.props));
-    this.props.socket.emit(
-      CREATE_CHAT_SLIDE_CHANNEL,
-      makeSocketPayload(this.props, { slide })
-    );
-    this.props.socket.emit(
-      CREATE_CHAT_USER_CHANNEL,
-      makeSocketPayload(this.props)
-    );
-    this.props.socket.emit(
-      USER_JOIN_SLIDE,
-      makeSocketPayload(this.props, {
-        run: Storage.get(this.storageKey)
-      })
-    );
+    const payload = makeSocketPayload(this.props);
+    const chatSlidePayload = {
+      ...payload,
+      slide
+    };
+    const chatUserPayload = {
+      ...payload,
+      slide
+    };
+    const userJoinPayload = {
+      ...payload,
+      run: Storage.get(this.storageKey)
+    };
+
+    this.props.socket.emit(CREATE_USER_CHANNEL, payload);
+    this.props.socket.emit(CREATE_CHAT_CHANNEL, payload);
+    this.props.socket.emit(CREATE_CHAT_SLIDE_CHANNEL, chatSlidePayload);
+    this.props.socket.emit(CREATE_CHAT_USER_CHANNEL, chatUserPayload);
+    this.props.socket.emit(USER_JOIN_SLIDE, userJoinPayload);
 
     this.setState({
       isReady: true
@@ -141,6 +144,10 @@ class Display extends Component {
   }
 
   componentWillUnmount() {
+    if (!this.isScenarioRun) {
+      return;
+    }
+
     this.props.socket.off(CHAT_CLOSED_FOR_SLIDE, this.onChange);
     this.props.socket.off(CHAT_QUORUM_FOR_SLIDE, this.onQuorum);
 

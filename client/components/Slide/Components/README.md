@@ -409,6 +409,9 @@ This `Where` object will determine the boolean value of `disableDefaultNavigatio
 
 ## Optional properties that affect the component editor
 
+### `component`
+
+If a slide component has a child property called `component`, and that slide component is active when the Component menu is clicked, the newly selected component will set to the slide component's child `component` property.
 
 ### `disableDelete`
 

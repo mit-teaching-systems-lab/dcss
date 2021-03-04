@@ -4,6 +4,7 @@ import Identity from '@utils/Identity';
 import path from 'object-path';
 import { Container, Form, Message, Ref, Slider } from '@components/UI';
 import { type } from './meta';
+import AgentSelector from '@components/Slide/Components/AgentSelector';
 import DataHeader from '@components/Slide/Components/DataHeader';
 import ResponseRecall from '@components/Slide/Components/ResponseRecall/Editor';
 import Media from '@utils/Media';
@@ -21,6 +22,7 @@ class ConversationPromptEditor extends Component {
   constructor(props) {
     super(props);
     const {
+      agent = null,
       header = '',
       player,
       prompt = '',
@@ -31,6 +33,7 @@ class ConversationPromptEditor extends Component {
     } = props.value;
 
     this.state = {
+      agent,
       header,
       player,
       prompt,
@@ -52,6 +55,7 @@ class ConversationPromptEditor extends Component {
     clearTimeout(this.timeout);
 
     const {
+      agent,
       header,
       player,
       prompt,
@@ -62,6 +66,7 @@ class ConversationPromptEditor extends Component {
     } = this.props.value;
 
     const lastProps = {
+      agent,
       header,
       player,
       prompt,
@@ -86,6 +91,7 @@ class ConversationPromptEditor extends Component {
 
   updateState() {
     const {
+      agent,
       header,
       player,
       prompt,
@@ -96,6 +102,7 @@ class ConversationPromptEditor extends Component {
     } = this.state;
 
     this.props.onChange({
+      agent,
       header,
       player,
       prompt,
@@ -133,7 +140,7 @@ class ConversationPromptEditor extends Component {
   render() {
     const { scenario, slideIndex } = this.props;
     const { onChange, onRecallChange, updateState } = this;
-    const { header, prompt, configuration, recallId, url } = this.state;
+    const { agent, header, prompt, configuration, recallId, url } = this.state;
     const options = [
       {
         key: 'whole',
@@ -329,6 +336,13 @@ class ConversationPromptEditor extends Component {
             value={prompt}
             onChange={onChange}
             onBlur={updateState}
+          />
+
+          <AgentSelector
+            agent={agent}
+            type={type}
+            onChange={onChange}
+            updateState={updateState}
           />
 
           <DataHeader

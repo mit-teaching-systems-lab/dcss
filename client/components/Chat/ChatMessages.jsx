@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 // import { generateAvatar } from 'robohash-avatars';
 import { connect } from 'react-redux';
 import withSocket, {
+  CHAT_CAN_RECEIVE,
   CHAT_MESSAGE_CREATED,
   CHAT_MESSAGE_UPDATED
 } from '@hoc/withSocket';
@@ -100,15 +101,12 @@ class ChatMessages extends Component {
   }
 
   async componentDidMount() {
+    const { chat, user } = this.props;
     const messages = [];
-    const count = await this.props.getChatMessagesCountByChatId(
-      this.props.chat.id
-    );
+    const count = await this.props.getChatMessagesCountByChatId(chat.id);
 
     if (count) {
-      messages.push(
-        ...(await this.props.getChatMessagesByChatId(this.props.chat.id))
-      );
+      messages.push(...(await this.props.getChatMessagesByChatId(chat.id)));
     }
 
     this.setState({
@@ -119,6 +117,12 @@ class ChatMessages extends Component {
     this.isComponentMounted = true;
     this.props.socket.on(CHAT_MESSAGE_CREATED, this.onMessageReceived);
     this.props.socket.on(CHAT_MESSAGE_UPDATED, this.onMessageUpdated);
+    this.props.socket.emit(CHAT_CAN_RECEIVE, {
+      chat,
+      user: {
+        id: user.id
+      }
+    });
   }
 
   componentWillUnmount() {
@@ -131,6 +135,8 @@ class ChatMessages extends Component {
     if (!this.isComponentMounted) {
       return;
     }
+
+    console.log('onMessageReceived', data);
 
     if (data.chat_id === this.props.chat.id) {
       const { messages } = this.state;

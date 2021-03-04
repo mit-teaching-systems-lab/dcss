@@ -102,7 +102,7 @@ export const terms = [
     op: '$ne',
     en: 'x != y',
     ex: 'Value x does not equal value y'
-  },
+  }
   // {
   //   op: '$notBetween',
   //   en: '',

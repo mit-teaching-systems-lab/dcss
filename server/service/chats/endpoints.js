@@ -54,7 +54,7 @@ async function newOrExistingChat(req, res) {
     identifiers.cohort_id = cohort_id;
   }
 
-  let chat = await db.getChatentifiers(host_id, identifiers);
+  let chat = await db.getChatByIdentifiers(host_id, identifiers);
 
   if (!chat) {
     chat = await db.createChat(host_id, scenario_id, cohort_id, is_open);

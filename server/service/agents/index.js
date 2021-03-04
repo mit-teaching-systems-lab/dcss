@@ -5,12 +5,7 @@ const {
 } = require('../session/middleware');
 const { requireUserRole } = require('../roles/middleware');
 const { validateRequestBody } = require('../../util/requestValidation');
-const {
-  createAgent,
-  getAgents,
-  getAgent,
-  setAgent
-} = require('./endpoints');
+const { createAgent, getAgents, getAgent, setAgent } = require('./endpoints');
 
 const router = Router();
 

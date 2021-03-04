@@ -34,7 +34,7 @@ async function waitForPopper() {
 
 /** @GENERATED: BEGIN **/
 
-import ChatMessageDeleteButton from '../../components/Chat/ChatMessageDeleteButton.jsx';
+import AgentSelect from '../../components/Admin/AgentSelect.jsx';
 /** @GENERATED: END **/
 
 /** @TEMPLATE: BEGIN **/
@@ -89,18 +89,15 @@ afterEach(() => {
   /** @TEMPLATE: END **/
 });
 
-test('ChatMessageDeleteButton', () => {
-  expect(ChatMessageDeleteButton).toBeDefined();
+test('AgentSelect', () => {
+  expect(AgentSelect).toBeDefined();
 });
 
 /** @GENERATED: BEGIN **/
 test('Render 1 1', async done => {
-  const Component = ChatMessageDeleteButton;
+  const Component = AgentSelect;
   const props = {
-    ...commonProps,
-    'aria-label': 'Delete this thing',
-    onCancel: jest.fn(),
-    onConfirm: jest.fn()
+    ...commonProps
   };
 
   const state = {
@@ -115,50 +112,3 @@ test('Render 1 1', async done => {
   done();
 });
 /** @GENERATED: END **/
-
-/* INJECTION STARTS HERE */
-
-test('Delete, No, then Yes', async done => {
-  const Component = ChatMessageDeleteButton;
-
-  const props = {
-    ...commonProps,
-    'aria-label': 'Delete this thing',
-    onCancel: jest.fn(),
-    onConfirm: jest.fn()
-  };
-
-  const state = {
-    ...commonState
-  };
-
-  const ConnectedRoutedComponent = reduxer(Component, props, state);
-
-  await render(<ConnectedRoutedComponent {...props} />);
-  expect(serialize()).toMatchSnapshot();
-
-  const deletables = screen.queryAllByLabelText('Delete this thing');
-
-  expect(deletables.length).toBe(1);
-  const deletable = deletables[0];
-
-  userEvent.click(deletable);
-  await waitForPopper();
-  expect(serialize()).toMatchSnapshot();
-
-  userEvent.click(await screen.findByRole('button', { name: /No/i }));
-  await waitForPopper();
-  await waitFor(() => expect(props.onCancel).toHaveBeenCalled());
-  expect(serialize()).toMatchSnapshot();
-
-  userEvent.click(deletable);
-  await waitForPopper();
-  expect(serialize()).toMatchSnapshot();
-
-  userEvent.click(await screen.findByRole('button', { name: /Yes/i }));
-  await waitForPopper();
-  await waitFor(() => expect(props.onConfirm).toHaveBeenCalled());
-  expect(serialize()).toMatchSnapshot();
-
-  done();
-});

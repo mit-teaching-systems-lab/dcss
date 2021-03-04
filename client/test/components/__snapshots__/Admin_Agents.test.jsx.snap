@@ -35,7 +35,7 @@ exports[`Add a new agent 1`] = `
             class=\\"plus icon primary\\"
           />
         </i>
-        Add an agent
+        Create a new agent
       </a>
       <div
         class=\\"right menu\\"
@@ -212,7 +212,7 @@ exports[`Add a new agent 2`] = `
             class=\\"plus icon primary\\"
           />
         </i>
-        Add an agent
+        Create a new agent
       </a>
       <div
         class=\\"right menu\\"
@@ -405,7 +405,7 @@ exports[`Add a new agent 2`] = `
                   <div
                     aria-expanded=\\"false\\"
                     aria-label=\\"Select an interaction\\"
-                    class=\\"ui fluid search selection scrolling dropdown sp__dropdown\\"
+                    class=\\"ui fluid search selection scrolling dropdown\\"
                     role=\\"combobox\\"
                   >
                     <input
@@ -561,12 +561,26 @@ exports[`Add a new agent 2`] = `
                       </div>
                     </div>
                   </div>
-                  <span
-                    class=\\"a__textpadding\\"
-                    color=\\"grey\\"
+                  <div
+                    class=\\"ui container\\"
+                    style=\\"margin-top: 0.5em;\\"
                   >
-                    This is how the agent will interact with participant input.
-                  </span>
+                    <button
+                      class=\\"ui mini icon right floated left labeled button icon-primary\\"
+                    >
+                      <i
+                        aria-hidden=\\"true\\"
+                        class=\\"plus icon\\"
+                      />
+                      Define a new interaction
+                    </button>
+                    <span
+                      class=\\"a__textpadding\\"
+                      color=\\"grey\\"
+                    >
+                      This is how the agent will interact with participant input.
+                    </span>
+                  </div>
                 </div>
                 <div
                   class=\\"ui horizontal divider\\"
@@ -935,7 +949,7 @@ exports[`Add a new agent 3`] = `
             class=\\"plus icon primary\\"
           />
         </i>
-        Add an agent
+        Create a new agent
       </a>
       <div
         class=\\"right menu\\"
@@ -1133,7 +1147,7 @@ exports[`Add a new agent 3`] = `
                   <div
                     aria-expanded=\\"false\\"
                     aria-label=\\"Select an interaction\\"
-                    class=\\"ui error fluid search selection scrolling dropdown sp__dropdown\\"
+                    class=\\"ui error fluid search selection scrolling dropdown\\"
                     role=\\"combobox\\"
                   >
                     <input
@@ -1289,12 +1303,26 @@ exports[`Add a new agent 3`] = `
                       </div>
                     </div>
                   </div>
-                  <span
-                    class=\\"a__textpadding\\"
-                    color=\\"grey\\"
+                  <div
+                    class=\\"ui container\\"
+                    style=\\"margin-top: 0.5em;\\"
                   >
-                    This is how the agent will interact with participant input.
-                  </span>
+                    <button
+                      class=\\"ui mini icon right floated left labeled button icon-primary\\"
+                    >
+                      <i
+                        aria-hidden=\\"true\\"
+                        class=\\"plus icon\\"
+                      />
+                      Define a new interaction
+                    </button>
+                    <span
+                      class=\\"a__textpadding\\"
+                      color=\\"grey\\"
+                    >
+                      This is how the agent will interact with participant input.
+                    </span>
+                  </div>
                 </div>
                 <div
                   class=\\"ui horizontal divider\\"
@@ -1663,7 +1691,7 @@ exports[`Add a new agent 4`] = `
             class=\\"plus icon primary\\"
           />
         </i>
-        Add an agent
+        Create a new agent
       </a>
       <div
         class=\\"right menu\\"
@@ -1861,7 +1889,7 @@ exports[`Add a new agent 4`] = `
                   <div
                     aria-expanded=\\"false\\"
                     aria-label=\\"Select an interaction\\"
-                    class=\\"ui error fluid search selection scrolling dropdown sp__dropdown\\"
+                    class=\\"ui error fluid search selection scrolling dropdown\\"
                     role=\\"combobox\\"
                   >
                     <input
@@ -2017,12 +2045,26 @@ exports[`Add a new agent 4`] = `
                       </div>
                     </div>
                   </div>
-                  <span
-                    class=\\"a__textpadding\\"
-                    color=\\"grey\\"
+                  <div
+                    class=\\"ui container\\"
+                    style=\\"margin-top: 0.5em;\\"
                   >
-                    This is how the agent will interact with participant input.
-                  </span>
+                    <button
+                      class=\\"ui mini icon right floated left labeled button icon-primary\\"
+                    >
+                      <i
+                        aria-hidden=\\"true\\"
+                        class=\\"plus icon\\"
+                      />
+                      Define a new interaction
+                    </button>
+                    <span
+                      class=\\"a__textpadding\\"
+                      color=\\"grey\\"
+                    >
+                      This is how the agent will interact with participant input.
+                    </span>
+                  </div>
                 </div>
                 <div
                   class=\\"ui horizontal divider\\"
@@ -2391,7 +2433,7 @@ exports[`Add a new agent 5`] = `
             class=\\"plus icon primary\\"
           />
         </i>
-        Add an agent
+        Create a new agent
       </a>
       <div
         class=\\"right menu\\"
@@ -2591,7 +2633,7 @@ exports[`Add a new agent 5`] = `
                   <div
                     aria-expanded=\\"false\\"
                     aria-label=\\"Select an interaction\\"
-                    class=\\"ui error fluid search selection scrolling dropdown sp__dropdown\\"
+                    class=\\"ui error fluid search selection scrolling dropdown\\"
                     role=\\"combobox\\"
                   >
                     <input
@@ -2747,12 +2789,26 @@ exports[`Add a new agent 5`] = `
                       </div>
                     </div>
                   </div>
-                  <span
-                    class=\\"a__textpadding\\"
-                    color=\\"grey\\"
+                  <div
+                    class=\\"ui container\\"
+                    style=\\"margin-top: 0.5em;\\"
                   >
-                    This is how the agent will interact with participant input.
-                  </span>
+                    <button
+                      class=\\"ui mini icon right floated left labeled button icon-primary\\"
+                    >
+                      <i
+                        aria-hidden=\\"true\\"
+                        class=\\"plus icon\\"
+                      />
+                      Define a new interaction
+                    </button>
+                    <span
+                      class=\\"a__textpadding\\"
+                      color=\\"grey\\"
+                    >
+                      This is how the agent will interact with participant input.
+                    </span>
+                  </div>
                 </div>
                 <div
                   class=\\"ui horizontal divider\\"
@@ -3121,7 +3177,7 @@ exports[`Add a new agent 6`] = `
             class=\\"plus icon primary\\"
           />
         </i>
-        Add an agent
+        Create a new agent
       </a>
       <div
         class=\\"right menu\\"
@@ -3321,7 +3377,7 @@ exports[`Add a new agent 6`] = `
                   <div
                     aria-expanded=\\"false\\"
                     aria-label=\\"Select an interaction\\"
-                    class=\\"ui error fluid search selection scrolling dropdown sp__dropdown\\"
+                    class=\\"ui error fluid search selection scrolling dropdown\\"
                     role=\\"combobox\\"
                   >
                     <input
@@ -3477,12 +3533,26 @@ exports[`Add a new agent 6`] = `
                       </div>
                     </div>
                   </div>
-                  <span
-                    class=\\"a__textpadding\\"
-                    color=\\"grey\\"
+                  <div
+                    class=\\"ui container\\"
+                    style=\\"margin-top: 0.5em;\\"
                   >
-                    This is how the agent will interact with participant input.
-                  </span>
+                    <button
+                      class=\\"ui mini icon right floated left labeled button icon-primary\\"
+                    >
+                      <i
+                        aria-hidden=\\"true\\"
+                        class=\\"plus icon\\"
+                      />
+                      Define a new interaction
+                    </button>
+                    <span
+                      class=\\"a__textpadding\\"
+                      color=\\"grey\\"
+                    >
+                      This is how the agent will interact with participant input.
+                    </span>
+                  </div>
                 </div>
                 <div
                   class=\\"ui horizontal divider\\"
@@ -3851,7 +3921,7 @@ exports[`Add a new agent 8`] = `
             class=\\"plus icon primary\\"
           />
         </i>
-        Add an agent
+        Create a new agent
       </a>
       <div
         class=\\"right menu\\"
@@ -4078,7 +4148,7 @@ exports[`Add a new agent 8`] = `
                   <div
                     aria-expanded=\\"false\\"
                     aria-label=\\"Select an interaction\\"
-                    class=\\"ui error fluid search selection scrolling dropdown sp__dropdown\\"
+                    class=\\"ui error fluid search selection scrolling dropdown\\"
                     role=\\"combobox\\"
                   >
                     <input
@@ -4234,12 +4304,26 @@ exports[`Add a new agent 8`] = `
                       </div>
                     </div>
                   </div>
-                  <span
-                    class=\\"a__textpadding\\"
-                    color=\\"grey\\"
+                  <div
+                    class=\\"ui container\\"
+                    style=\\"margin-top: 0.5em;\\"
                   >
-                    This is how the agent will interact with participant input.
-                  </span>
+                    <button
+                      class=\\"ui mini icon right floated left labeled button icon-primary\\"
+                    >
+                      <i
+                        aria-hidden=\\"true\\"
+                        class=\\"plus icon\\"
+                      />
+                      Define a new interaction
+                    </button>
+                    <span
+                      class=\\"a__textpadding\\"
+                      color=\\"grey\\"
+                    >
+                      This is how the agent will interact with participant input.
+                    </span>
+                  </div>
                 </div>
                 <div
                   class=\\"ui horizontal divider\\"
@@ -4610,7 +4694,7 @@ exports[`Add a socket configuration 1`] = `
             class=\\"plus icon primary\\"
           />
         </i>
-        Add an agent
+        Create a new agent
       </a>
       <div
         class=\\"right menu\\"
@@ -4789,7 +4873,7 @@ exports[`Add a socket configuration 2`] = `
             class=\\"plus icon primary\\"
           />
         </i>
-        Add an agent
+        Create a new agent
       </a>
       <div
         class=\\"right menu\\"
@@ -5014,7 +5098,7 @@ exports[`Add a socket configuration 2`] = `
                   <div
                     aria-expanded=\\"false\\"
                     aria-label=\\"Select an interaction\\"
-                    class=\\"ui fluid search selection scrolling dropdown sp__dropdown\\"
+                    class=\\"ui fluid search selection scrolling dropdown\\"
                     role=\\"combobox\\"
                   >
                     <input
@@ -5170,12 +5254,26 @@ exports[`Add a socket configuration 2`] = `
                       </div>
                     </div>
                   </div>
-                  <span
-                    class=\\"a__textpadding\\"
-                    color=\\"grey\\"
+                  <div
+                    class=\\"ui container\\"
+                    style=\\"margin-top: 0.5em;\\"
                   >
-                    This is how the agent will interact with participant input.
-                  </span>
+                    <button
+                      class=\\"ui mini icon right floated left labeled button icon-primary\\"
+                    >
+                      <i
+                        aria-hidden=\\"true\\"
+                        class=\\"plus icon\\"
+                      />
+                      Define a new interaction
+                    </button>
+                    <span
+                      class=\\"a__textpadding\\"
+                      color=\\"grey\\"
+                    >
+                      This is how the agent will interact with participant input.
+                    </span>
+                  </div>
                 </div>
                 <div
                   class=\\"ui horizontal divider\\"
@@ -5821,7 +5919,7 @@ exports[`Add a socket configuration 4`] = `
             class=\\"plus icon primary\\"
           />
         </i>
-        Add an agent
+        Create a new agent
       </a>
       <div
         class=\\"right menu\\"
@@ -6046,7 +6144,7 @@ exports[`Add a socket configuration 4`] = `
                   <div
                     aria-expanded=\\"false\\"
                     aria-label=\\"Select an interaction\\"
-                    class=\\"ui fluid search selection scrolling dropdown sp__dropdown\\"
+                    class=\\"ui fluid search selection scrolling dropdown\\"
                     role=\\"combobox\\"
                   >
                     <input
@@ -6202,12 +6300,26 @@ exports[`Add a socket configuration 4`] = `
                       </div>
                     </div>
                   </div>
-                  <span
-                    class=\\"a__textpadding\\"
-                    color=\\"grey\\"
+                  <div
+                    class=\\"ui container\\"
+                    style=\\"margin-top: 0.5em;\\"
                   >
-                    This is how the agent will interact with participant input.
-                  </span>
+                    <button
+                      class=\\"ui mini icon right floated left labeled button icon-primary\\"
+                    >
+                      <i
+                        aria-hidden=\\"true\\"
+                        class=\\"plus icon\\"
+                      />
+                      Define a new interaction
+                    </button>
+                    <span
+                      class=\\"a__textpadding\\"
+                      color=\\"grey\\"
+                    >
+                      This is how the agent will interact with participant input.
+                    </span>
+                  </div>
                 </div>
                 <div
                   class=\\"ui horizontal divider\\"
@@ -6921,7 +7033,7 @@ exports[`Add an agent configuration 1`] = `
             class=\\"plus icon primary\\"
           />
         </i>
-        Add an agent
+        Create a new agent
       </a>
       <div
         class=\\"right menu\\"
@@ -7100,7 +7212,7 @@ exports[`Add an agent configuration 2`] = `
             class=\\"plus icon primary\\"
           />
         </i>
-        Add an agent
+        Create a new agent
       </a>
       <div
         class=\\"right menu\\"
@@ -7325,7 +7437,7 @@ exports[`Add an agent configuration 2`] = `
                   <div
                     aria-expanded=\\"false\\"
                     aria-label=\\"Select an interaction\\"
-                    class=\\"ui fluid search selection scrolling dropdown sp__dropdown\\"
+                    class=\\"ui fluid search selection scrolling dropdown\\"
                     role=\\"combobox\\"
                   >
                     <input
@@ -7481,12 +7593,26 @@ exports[`Add an agent configuration 2`] = `
                       </div>
                     </div>
                   </div>
-                  <span
-                    class=\\"a__textpadding\\"
-                    color=\\"grey\\"
+                  <div
+                    class=\\"ui container\\"
+                    style=\\"margin-top: 0.5em;\\"
                   >
-                    This is how the agent will interact with participant input.
-                  </span>
+                    <button
+                      class=\\"ui mini icon right floated left labeled button icon-primary\\"
+                    >
+                      <i
+                        aria-hidden=\\"true\\"
+                        class=\\"plus icon\\"
+                      />
+                      Define a new interaction
+                    </button>
+                    <span
+                      class=\\"a__textpadding\\"
+                      color=\\"grey\\"
+                    >
+                      This is how the agent will interact with participant input.
+                    </span>
+                  </div>
                 </div>
                 <div
                   class=\\"ui horizontal divider\\"
@@ -8132,7 +8258,7 @@ exports[`Add an agent configuration 4`] = `
             class=\\"plus icon primary\\"
           />
         </i>
-        Add an agent
+        Create a new agent
       </a>
       <div
         class=\\"right menu\\"
@@ -8357,7 +8483,7 @@ exports[`Add an agent configuration 4`] = `
                   <div
                     aria-expanded=\\"false\\"
                     aria-label=\\"Select an interaction\\"
-                    class=\\"ui fluid search selection scrolling dropdown sp__dropdown\\"
+                    class=\\"ui fluid search selection scrolling dropdown\\"
                     role=\\"combobox\\"
                   >
                     <input
@@ -8513,12 +8639,26 @@ exports[`Add an agent configuration 4`] = `
                       </div>
                     </div>
                   </div>
-                  <span
-                    class=\\"a__textpadding\\"
-                    color=\\"grey\\"
+                  <div
+                    class=\\"ui container\\"
+                    style=\\"margin-top: 0.5em;\\"
                   >
-                    This is how the agent will interact with participant input.
-                  </span>
+                    <button
+                      class=\\"ui mini icon right floated left labeled button icon-primary\\"
+                    >
+                      <i
+                        aria-hidden=\\"true\\"
+                        class=\\"plus icon\\"
+                      />
+                      Define a new interaction
+                    </button>
+                    <span
+                      class=\\"a__textpadding\\"
+                      color=\\"grey\\"
+                    >
+                      This is how the agent will interact with participant input.
+                    </span>
+                  </div>
                 </div>
                 <div
                   class=\\"ui horizontal divider\\"
@@ -9233,7 +9373,7 @@ exports[`Change a socket configuration 1`] = `
             class=\\"plus icon primary\\"
           />
         </i>
-        Add an agent
+        Create a new agent
       </a>
       <div
         class=\\"right menu\\"
@@ -9412,7 +9552,7 @@ exports[`Change a socket configuration 2`] = `
             class=\\"plus icon primary\\"
           />
         </i>
-        Add an agent
+        Create a new agent
       </a>
       <div
         class=\\"right menu\\"
@@ -9637,7 +9777,7 @@ exports[`Change a socket configuration 2`] = `
                   <div
                     aria-expanded=\\"false\\"
                     aria-label=\\"Select an interaction\\"
-                    class=\\"ui fluid search selection scrolling dropdown sp__dropdown\\"
+                    class=\\"ui fluid search selection scrolling dropdown\\"
                     role=\\"combobox\\"
                   >
                     <input
@@ -9793,12 +9933,26 @@ exports[`Change a socket configuration 2`] = `
                       </div>
                     </div>
                   </div>
-                  <span
-                    class=\\"a__textpadding\\"
-                    color=\\"grey\\"
+                  <div
+                    class=\\"ui container\\"
+                    style=\\"margin-top: 0.5em;\\"
                   >
-                    This is how the agent will interact with participant input.
-                  </span>
+                    <button
+                      class=\\"ui mini icon right floated left labeled button icon-primary\\"
+                    >
+                      <i
+                        aria-hidden=\\"true\\"
+                        class=\\"plus icon\\"
+                      />
+                      Define a new interaction
+                    </button>
+                    <span
+                      class=\\"a__textpadding\\"
+                      color=\\"grey\\"
+                    >
+                      This is how the agent will interact with participant input.
+                    </span>
+                  </div>
                 </div>
                 <div
                   class=\\"ui horizontal divider\\"
@@ -10444,7 +10598,7 @@ exports[`Change a socket configuration 3`] = `
             class=\\"plus icon primary\\"
           />
         </i>
-        Add an agent
+        Create a new agent
       </a>
       <div
         class=\\"right menu\\"
@@ -10669,7 +10823,7 @@ exports[`Change a socket configuration 3`] = `
                   <div
                     aria-expanded=\\"false\\"
                     aria-label=\\"Select an interaction\\"
-                    class=\\"ui fluid search selection scrolling dropdown sp__dropdown\\"
+                    class=\\"ui fluid search selection scrolling dropdown\\"
                     role=\\"combobox\\"
                   >
                     <input
@@ -10825,12 +10979,26 @@ exports[`Change a socket configuration 3`] = `
                       </div>
                     </div>
                   </div>
-                  <span
-                    class=\\"a__textpadding\\"
-                    color=\\"grey\\"
+                  <div
+                    class=\\"ui container\\"
+                    style=\\"margin-top: 0.5em;\\"
                   >
-                    This is how the agent will interact with participant input.
-                  </span>
+                    <button
+                      class=\\"ui mini icon right floated left labeled button icon-primary\\"
+                    >
+                      <i
+                        aria-hidden=\\"true\\"
+                        class=\\"plus icon\\"
+                      />
+                      Define a new interaction
+                    </button>
+                    <span
+                      class=\\"a__textpadding\\"
+                      color=\\"grey\\"
+                    >
+                      This is how the agent will interact with participant input.
+                    </span>
+                  </div>
                 </div>
                 <div
                   class=\\"ui horizontal divider\\"
@@ -11544,7 +11712,7 @@ exports[`Change a socket configuration 4`] = `
             class=\\"plus icon primary\\"
           />
         </i>
-        Add an agent
+        Create a new agent
       </a>
       <div
         class=\\"right menu\\"
@@ -11769,7 +11937,7 @@ exports[`Change a socket configuration 4`] = `
                   <div
                     aria-expanded=\\"false\\"
                     aria-label=\\"Select an interaction\\"
-                    class=\\"ui fluid search selection scrolling dropdown sp__dropdown\\"
+                    class=\\"ui fluid search selection scrolling dropdown\\"
                     role=\\"combobox\\"
                   >
                     <input
@@ -11925,12 +12093,26 @@ exports[`Change a socket configuration 4`] = `
                       </div>
                     </div>
                   </div>
-                  <span
-                    class=\\"a__textpadding\\"
-                    color=\\"grey\\"
+                  <div
+                    class=\\"ui container\\"
+                    style=\\"margin-top: 0.5em;\\"
                   >
-                    This is how the agent will interact with participant input.
-                  </span>
+                    <button
+                      class=\\"ui mini icon right floated left labeled button icon-primary\\"
+                    >
+                      <i
+                        aria-hidden=\\"true\\"
+                        class=\\"plus icon\\"
+                      />
+                      Define a new interaction
+                    </button>
+                    <span
+                      class=\\"a__textpadding\\"
+                      color=\\"grey\\"
+                    >
+                      This is how the agent will interact with participant input.
+                    </span>
+                  </div>
                 </div>
                 <div
                   class=\\"ui horizontal divider\\"
@@ -12576,7 +12758,7 @@ exports[`Change a socket configuration 5`] = `
             class=\\"plus icon primary\\"
           />
         </i>
-        Add an agent
+        Create a new agent
       </a>
       <div
         class=\\"right menu\\"
@@ -12801,7 +12983,7 @@ exports[`Change a socket configuration 5`] = `
                   <div
                     aria-expanded=\\"false\\"
                     aria-label=\\"Select an interaction\\"
-                    class=\\"ui fluid search selection scrolling dropdown sp__dropdown\\"
+                    class=\\"ui fluid search selection scrolling dropdown\\"
                     role=\\"combobox\\"
                   >
                     <input
@@ -12957,12 +13139,26 @@ exports[`Change a socket configuration 5`] = `
                       </div>
                     </div>
                   </div>
-                  <span
-                    class=\\"a__textpadding\\"
-                    color=\\"grey\\"
+                  <div
+                    class=\\"ui container\\"
+                    style=\\"margin-top: 0.5em;\\"
                   >
-                    This is how the agent will interact with participant input.
-                  </span>
+                    <button
+                      class=\\"ui mini icon right floated left labeled button icon-primary\\"
+                    >
+                      <i
+                        aria-hidden=\\"true\\"
+                        class=\\"plus icon\\"
+                      />
+                      Define a new interaction
+                    </button>
+                    <span
+                      class=\\"a__textpadding\\"
+                      color=\\"grey\\"
+                    >
+                      This is how the agent will interact with participant input.
+                    </span>
+                  </div>
                 </div>
                 <div
                   class=\\"ui horizontal divider\\"
@@ -13676,7 +13872,7 @@ exports[`Change a socket configuration 6`] = `
             class=\\"plus icon primary\\"
           />
         </i>
-        Add an agent
+        Create a new agent
       </a>
       <div
         class=\\"right menu\\"
@@ -13901,7 +14097,7 @@ exports[`Change a socket configuration 6`] = `
                   <div
                     aria-expanded=\\"false\\"
                     aria-label=\\"Select an interaction\\"
-                    class=\\"ui fluid search selection scrolling dropdown sp__dropdown\\"
+                    class=\\"ui fluid search selection scrolling dropdown\\"
                     role=\\"combobox\\"
                   >
                     <input
@@ -14057,12 +14253,26 @@ exports[`Change a socket configuration 6`] = `
                       </div>
                     </div>
                   </div>
-                  <span
-                    class=\\"a__textpadding\\"
-                    color=\\"grey\\"
+                  <div
+                    class=\\"ui container\\"
+                    style=\\"margin-top: 0.5em;\\"
                   >
-                    This is how the agent will interact with participant input.
-                  </span>
+                    <button
+                      class=\\"ui mini icon right floated left labeled button icon-primary\\"
+                    >
+                      <i
+                        aria-hidden=\\"true\\"
+                        class=\\"plus icon\\"
+                      />
+                      Define a new interaction
+                    </button>
+                    <span
+                      class=\\"a__textpadding\\"
+                      color=\\"grey\\"
+                    >
+                      This is how the agent will interact with participant input.
+                    </span>
+                  </div>
                 </div>
                 <div
                   class=\\"ui horizontal divider\\"
@@ -14640,7 +14850,7 @@ exports[`Change an agent configuration 1`] = `
             class=\\"plus icon primary\\"
           />
         </i>
-        Add an agent
+        Create a new agent
       </a>
       <div
         class=\\"right menu\\"
@@ -14819,7 +15029,7 @@ exports[`Change an agent configuration 2`] = `
             class=\\"plus icon primary\\"
           />
         </i>
-        Add an agent
+        Create a new agent
       </a>
       <div
         class=\\"right menu\\"
@@ -15044,7 +15254,7 @@ exports[`Change an agent configuration 2`] = `
                   <div
                     aria-expanded=\\"false\\"
                     aria-label=\\"Select an interaction\\"
-                    class=\\"ui fluid search selection scrolling dropdown sp__dropdown\\"
+                    class=\\"ui fluid search selection scrolling dropdown\\"
                     role=\\"combobox\\"
                   >
                     <input
@@ -15200,12 +15410,26 @@ exports[`Change an agent configuration 2`] = `
                       </div>
                     </div>
                   </div>
-                  <span
-                    class=\\"a__textpadding\\"
-                    color=\\"grey\\"
+                  <div
+                    class=\\"ui container\\"
+                    style=\\"margin-top: 0.5em;\\"
                   >
-                    This is how the agent will interact with participant input.
-                  </span>
+                    <button
+                      class=\\"ui mini icon right floated left labeled button icon-primary\\"
+                    >
+                      <i
+                        aria-hidden=\\"true\\"
+                        class=\\"plus icon\\"
+                      />
+                      Define a new interaction
+                    </button>
+                    <span
+                      class=\\"a__textpadding\\"
+                      color=\\"grey\\"
+                    >
+                      This is how the agent will interact with participant input.
+                    </span>
+                  </div>
                 </div>
                 <div
                   class=\\"ui horizontal divider\\"
@@ -15851,7 +16075,7 @@ exports[`Change an agent configuration 3`] = `
             class=\\"plus icon primary\\"
           />
         </i>
-        Add an agent
+        Create a new agent
       </a>
       <div
         class=\\"right menu\\"
@@ -16076,7 +16300,7 @@ exports[`Change an agent configuration 3`] = `
                   <div
                     aria-expanded=\\"false\\"
                     aria-label=\\"Select an interaction\\"
-                    class=\\"ui fluid search selection scrolling dropdown sp__dropdown\\"
+                    class=\\"ui fluid search selection scrolling dropdown\\"
                     role=\\"combobox\\"
                   >
                     <input
@@ -16232,12 +16456,26 @@ exports[`Change an agent configuration 3`] = `
                       </div>
                     </div>
                   </div>
-                  <span
-                    class=\\"a__textpadding\\"
-                    color=\\"grey\\"
+                  <div
+                    class=\\"ui container\\"
+                    style=\\"margin-top: 0.5em;\\"
                   >
-                    This is how the agent will interact with participant input.
-                  </span>
+                    <button
+                      class=\\"ui mini icon right floated left labeled button icon-primary\\"
+                    >
+                      <i
+                        aria-hidden=\\"true\\"
+                        class=\\"plus icon\\"
+                      />
+                      Define a new interaction
+                    </button>
+                    <span
+                      class=\\"a__textpadding\\"
+                      color=\\"grey\\"
+                    >
+                      This is how the agent will interact with participant input.
+                    </span>
+                  </div>
                 </div>
                 <div
                   class=\\"ui horizontal divider\\"
@@ -16951,7 +17189,7 @@ exports[`Change an agent configuration 4`] = `
             class=\\"plus icon primary\\"
           />
         </i>
-        Add an agent
+        Create a new agent
       </a>
       <div
         class=\\"right menu\\"
@@ -17176,7 +17414,7 @@ exports[`Change an agent configuration 4`] = `
                   <div
                     aria-expanded=\\"false\\"
                     aria-label=\\"Select an interaction\\"
-                    class=\\"ui fluid search selection scrolling dropdown sp__dropdown\\"
+                    class=\\"ui fluid search selection scrolling dropdown\\"
                     role=\\"combobox\\"
                   >
                     <input
@@ -17332,12 +17570,26 @@ exports[`Change an agent configuration 4`] = `
                       </div>
                     </div>
                   </div>
-                  <span
-                    class=\\"a__textpadding\\"
-                    color=\\"grey\\"
+                  <div
+                    class=\\"ui container\\"
+                    style=\\"margin-top: 0.5em;\\"
                   >
-                    This is how the agent will interact with participant input.
-                  </span>
+                    <button
+                      class=\\"ui mini icon right floated left labeled button icon-primary\\"
+                    >
+                      <i
+                        aria-hidden=\\"true\\"
+                        class=\\"plus icon\\"
+                      />
+                      Define a new interaction
+                    </button>
+                    <span
+                      class=\\"a__textpadding\\"
+                      color=\\"grey\\"
+                    >
+                      This is how the agent will interact with participant input.
+                    </span>
+                  </div>
                 </div>
                 <div
                   class=\\"ui horizontal divider\\"
@@ -17983,7 +18235,7 @@ exports[`Change an agent configuration 5`] = `
             class=\\"plus icon primary\\"
           />
         </i>
-        Add an agent
+        Create a new agent
       </a>
       <div
         class=\\"right menu\\"
@@ -18208,7 +18460,7 @@ exports[`Change an agent configuration 5`] = `
                   <div
                     aria-expanded=\\"false\\"
                     aria-label=\\"Select an interaction\\"
-                    class=\\"ui fluid search selection scrolling dropdown sp__dropdown\\"
+                    class=\\"ui fluid search selection scrolling dropdown\\"
                     role=\\"combobox\\"
                   >
                     <input
@@ -18364,12 +18616,26 @@ exports[`Change an agent configuration 5`] = `
                       </div>
                     </div>
                   </div>
-                  <span
-                    class=\\"a__textpadding\\"
-                    color=\\"grey\\"
+                  <div
+                    class=\\"ui container\\"
+                    style=\\"margin-top: 0.5em;\\"
                   >
-                    This is how the agent will interact with participant input.
-                  </span>
+                    <button
+                      class=\\"ui mini icon right floated left labeled button icon-primary\\"
+                    >
+                      <i
+                        aria-hidden=\\"true\\"
+                        class=\\"plus icon\\"
+                      />
+                      Define a new interaction
+                    </button>
+                    <span
+                      class=\\"a__textpadding\\"
+                      color=\\"grey\\"
+                    >
+                      This is how the agent will interact with participant input.
+                    </span>
+                  </div>
                 </div>
                 <div
                   class=\\"ui horizontal divider\\"
@@ -19083,7 +19349,7 @@ exports[`Change an agent configuration 6`] = `
             class=\\"plus icon primary\\"
           />
         </i>
-        Add an agent
+        Create a new agent
       </a>
       <div
         class=\\"right menu\\"
@@ -19308,7 +19574,7 @@ exports[`Change an agent configuration 6`] = `
                   <div
                     aria-expanded=\\"false\\"
                     aria-label=\\"Select an interaction\\"
-                    class=\\"ui fluid search selection scrolling dropdown sp__dropdown\\"
+                    class=\\"ui fluid search selection scrolling dropdown\\"
                     role=\\"combobox\\"
                   >
                     <input
@@ -19464,12 +19730,26 @@ exports[`Change an agent configuration 6`] = `
                       </div>
                     </div>
                   </div>
-                  <span
-                    class=\\"a__textpadding\\"
-                    color=\\"grey\\"
+                  <div
+                    class=\\"ui container\\"
+                    style=\\"margin-top: 0.5em;\\"
                   >
-                    This is how the agent will interact with participant input.
-                  </span>
+                    <button
+                      class=\\"ui mini icon right floated left labeled button icon-primary\\"
+                    >
+                      <i
+                        aria-hidden=\\"true\\"
+                        class=\\"plus icon\\"
+                      />
+                      Define a new interaction
+                    </button>
+                    <span
+                      class=\\"a__textpadding\\"
+                      color=\\"grey\\"
+                    >
+                      This is how the agent will interact with participant input.
+                    </span>
+                  </div>
                 </div>
                 <div
                   class=\\"ui horizontal divider\\"
@@ -20044,7 +20324,7 @@ exports[`Delete an agent 1`] = `
             class=\\"plus icon primary\\"
           />
         </i>
-        Add an agent
+        Create a new agent
       </a>
       <div
         class=\\"right menu\\"
@@ -20221,7 +20501,7 @@ exports[`Delete an agent 2`] = `
             class=\\"plus icon primary\\"
           />
         </i>
-        Add an agent
+        Create a new agent
       </a>
       <div
         class=\\"right menu\\"
@@ -20446,7 +20726,7 @@ exports[`Delete an agent 2`] = `
                   <div
                     aria-expanded=\\"false\\"
                     aria-label=\\"Select an interaction\\"
-                    class=\\"ui fluid search selection scrolling dropdown sp__dropdown\\"
+                    class=\\"ui fluid search selection scrolling dropdown\\"
                     role=\\"combobox\\"
                   >
                     <input
@@ -20602,12 +20882,26 @@ exports[`Delete an agent 2`] = `
                       </div>
                     </div>
                   </div>
-                  <span
-                    class=\\"a__textpadding\\"
-                    color=\\"grey\\"
+                  <div
+                    class=\\"ui container\\"
+                    style=\\"margin-top: 0.5em;\\"
                   >
-                    This is how the agent will interact with participant input.
-                  </span>
+                    <button
+                      class=\\"ui mini icon right floated left labeled button icon-primary\\"
+                    >
+                      <i
+                        aria-hidden=\\"true\\"
+                        class=\\"plus icon\\"
+                      />
+                      Define a new interaction
+                    </button>
+                    <span
+                      class=\\"a__textpadding\\"
+                      color=\\"grey\\"
+                    >
+                      This is how the agent will interact with participant input.
+                    </span>
+                  </div>
                 </div>
                 <div
                   class=\\"ui horizontal divider\\"
@@ -21254,7 +21548,7 @@ exports[`Delete an agent 3`] = `
             class=\\"plus icon primary\\"
           />
         </i>
-        Add an agent
+        Create a new agent
       </a>
       <div
         class=\\"right menu\\"
@@ -21479,7 +21773,7 @@ exports[`Delete an agent 3`] = `
                   <div
                     aria-expanded=\\"false\\"
                     aria-label=\\"Select an interaction\\"
-                    class=\\"ui fluid search selection scrolling dropdown sp__dropdown\\"
+                    class=\\"ui fluid search selection scrolling dropdown\\"
                     role=\\"combobox\\"
                   >
                     <input
@@ -21635,12 +21929,26 @@ exports[`Delete an agent 3`] = `
                       </div>
                     </div>
                   </div>
-                  <span
-                    class=\\"a__textpadding\\"
-                    color=\\"grey\\"
+                  <div
+                    class=\\"ui container\\"
+                    style=\\"margin-top: 0.5em;\\"
                   >
-                    This is how the agent will interact with participant input.
-                  </span>
+                    <button
+                      class=\\"ui mini icon right floated left labeled button icon-primary\\"
+                    >
+                      <i
+                        aria-hidden=\\"true\\"
+                        class=\\"plus icon\\"
+                      />
+                      Define a new interaction
+                    </button>
+                    <span
+                      class=\\"a__textpadding\\"
+                      color=\\"grey\\"
+                    >
+                      This is how the agent will interact with participant input.
+                    </span>
+                  </div>
                 </div>
                 <div
                   class=\\"ui horizontal divider\\"
@@ -22351,7 +22659,7 @@ exports[`Delete an agent 4`] = `
             class=\\"plus icon primary\\"
           />
         </i>
-        Add an agent
+        Create a new agent
       </a>
       <div
         class=\\"right menu\\"
@@ -22576,7 +22884,7 @@ exports[`Delete an agent 4`] = `
                   <div
                     aria-expanded=\\"false\\"
                     aria-label=\\"Select an interaction\\"
-                    class=\\"ui fluid search selection scrolling dropdown sp__dropdown\\"
+                    class=\\"ui fluid search selection scrolling dropdown\\"
                     role=\\"combobox\\"
                   >
                     <input
@@ -22732,12 +23040,26 @@ exports[`Delete an agent 4`] = `
                       </div>
                     </div>
                   </div>
-                  <span
-                    class=\\"a__textpadding\\"
-                    color=\\"grey\\"
+                  <div
+                    class=\\"ui container\\"
+                    style=\\"margin-top: 0.5em;\\"
                   >
-                    This is how the agent will interact with participant input.
-                  </span>
+                    <button
+                      class=\\"ui mini icon right floated left labeled button icon-primary\\"
+                    >
+                      <i
+                        aria-hidden=\\"true\\"
+                        class=\\"plus icon\\"
+                      />
+                      Define a new interaction
+                    </button>
+                    <span
+                      class=\\"a__textpadding\\"
+                      color=\\"grey\\"
+                    >
+                      This is how the agent will interact with participant input.
+                    </span>
+                  </div>
                 </div>
                 <div
                   class=\\"ui horizontal divider\\"
@@ -23384,7 +23706,7 @@ exports[`Delete an agent 5`] = `
             class=\\"plus icon primary\\"
           />
         </i>
-        Add an agent
+        Create a new agent
       </a>
       <div
         class=\\"right menu\\"
@@ -23609,7 +23931,7 @@ exports[`Delete an agent 5`] = `
                   <div
                     aria-expanded=\\"false\\"
                     aria-label=\\"Select an interaction\\"
-                    class=\\"ui fluid search selection scrolling dropdown sp__dropdown\\"
+                    class=\\"ui fluid search selection scrolling dropdown\\"
                     role=\\"combobox\\"
                   >
                     <input
@@ -23765,12 +24087,26 @@ exports[`Delete an agent 5`] = `
                       </div>
                     </div>
                   </div>
-                  <span
-                    class=\\"a__textpadding\\"
-                    color=\\"grey\\"
+                  <div
+                    class=\\"ui container\\"
+                    style=\\"margin-top: 0.5em;\\"
                   >
-                    This is how the agent will interact with participant input.
-                  </span>
+                    <button
+                      class=\\"ui mini icon right floated left labeled button icon-primary\\"
+                    >
+                      <i
+                        aria-hidden=\\"true\\"
+                        class=\\"plus icon\\"
+                      />
+                      Define a new interaction
+                    </button>
+                    <span
+                      class=\\"a__textpadding\\"
+                      color=\\"grey\\"
+                    >
+                      This is how the agent will interact with participant input.
+                    </span>
+                  </div>
                 </div>
                 <div
                   class=\\"ui horizontal divider\\"
@@ -24481,7 +24817,7 @@ exports[`Delete an agent 6`] = `
             class=\\"plus icon primary\\"
           />
         </i>
-        Add an agent
+        Create a new agent
       </a>
       <div
         class=\\"right menu\\"
@@ -24706,7 +25042,7 @@ exports[`Delete an agent 6`] = `
                   <div
                     aria-expanded=\\"false\\"
                     aria-label=\\"Select an interaction\\"
-                    class=\\"ui fluid search selection scrolling dropdown sp__dropdown\\"
+                    class=\\"ui fluid search selection scrolling dropdown\\"
                     role=\\"combobox\\"
                   >
                     <input
@@ -24862,12 +25198,26 @@ exports[`Delete an agent 6`] = `
                       </div>
                     </div>
                   </div>
-                  <span
-                    class=\\"a__textpadding\\"
-                    color=\\"grey\\"
+                  <div
+                    class=\\"ui container\\"
+                    style=\\"margin-top: 0.5em;\\"
                   >
-                    This is how the agent will interact with participant input.
-                  </span>
+                    <button
+                      class=\\"ui mini icon right floated left labeled button icon-primary\\"
+                    >
+                      <i
+                        aria-hidden=\\"true\\"
+                        class=\\"plus icon\\"
+                      />
+                      Define a new interaction
+                    </button>
+                    <span
+                      class=\\"a__textpadding\\"
+                      color=\\"grey\\"
+                    >
+                      This is how the agent will interact with participant input.
+                    </span>
+                  </div>
                 </div>
                 <div
                   class=\\"ui horizontal divider\\"
@@ -25513,7 +25863,7 @@ exports[`Duplicate an agent 1`] = `
             class=\\"plus icon primary\\"
           />
         </i>
-        Add an agent
+        Create a new agent
       </a>
       <div
         class=\\"right menu\\"
@@ -25692,7 +26042,7 @@ exports[`Duplicate an agent 2`] = `
             class=\\"plus icon primary\\"
           />
         </i>
-        Add an agent
+        Create a new agent
       </a>
       <div
         class=\\"right menu\\"
@@ -25917,7 +26267,7 @@ exports[`Duplicate an agent 2`] = `
                   <div
                     aria-expanded=\\"false\\"
                     aria-label=\\"Select an interaction\\"
-                    class=\\"ui fluid search selection scrolling dropdown sp__dropdown\\"
+                    class=\\"ui fluid search selection scrolling dropdown\\"
                     role=\\"combobox\\"
                   >
                     <input
@@ -26073,12 +26423,26 @@ exports[`Duplicate an agent 2`] = `
                       </div>
                     </div>
                   </div>
-                  <span
-                    class=\\"a__textpadding\\"
-                    color=\\"grey\\"
+                  <div
+                    class=\\"ui container\\"
+                    style=\\"margin-top: 0.5em;\\"
                   >
-                    This is how the agent will interact with participant input.
-                  </span>
+                    <button
+                      class=\\"ui mini icon right floated left labeled button icon-primary\\"
+                    >
+                      <i
+                        aria-hidden=\\"true\\"
+                        class=\\"plus icon\\"
+                      />
+                      Define a new interaction
+                    </button>
+                    <span
+                      class=\\"a__textpadding\\"
+                      color=\\"grey\\"
+                    >
+                      This is how the agent will interact with participant input.
+                    </span>
+                  </div>
                 </div>
                 <div
                   class=\\"ui horizontal divider\\"
@@ -26722,7 +27086,7 @@ exports[`Load with an activePage 1`] = `
             class=\\"plus icon primary\\"
           />
         </i>
-        Add an agent
+        Create a new agent
       </a>
       <div
         class=\\"right menu\\"
@@ -26899,7 +27263,7 @@ exports[`Load with an activePage and id 1`] = `
             class=\\"plus icon primary\\"
           />
         </i>
-        Add an agent
+        Create a new agent
       </a>
       <div
         class=\\"right menu\\"
@@ -27124,7 +27488,7 @@ exports[`Load with an activePage and id 1`] = `
                   <div
                     aria-expanded=\\"false\\"
                     aria-label=\\"Select an interaction\\"
-                    class=\\"ui fluid search selection scrolling dropdown sp__dropdown\\"
+                    class=\\"ui fluid search selection scrolling dropdown\\"
                     role=\\"combobox\\"
                   >
                     <input
@@ -27280,12 +27644,26 @@ exports[`Load with an activePage and id 1`] = `
                       </div>
                     </div>
                   </div>
-                  <span
-                    class=\\"a__textpadding\\"
-                    color=\\"grey\\"
+                  <div
+                    class=\\"ui container\\"
+                    style=\\"margin-top: 0.5em;\\"
                   >
-                    This is how the agent will interact with participant input.
-                  </span>
+                    <button
+                      class=\\"ui mini icon right floated left labeled button icon-primary\\"
+                    >
+                      <i
+                        aria-hidden=\\"true\\"
+                        class=\\"plus icon\\"
+                      />
+                      Define a new interaction
+                    </button>
+                    <span
+                      class=\\"a__textpadding\\"
+                      color=\\"grey\\"
+                    >
+                      This is how the agent will interact with participant input.
+                    </span>
+                  </div>
                 </div>
                 <div
                   class=\\"ui horizontal divider\\"
@@ -27929,7 +28307,7 @@ exports[`Load without activePage 1`] = `
             class=\\"plus icon primary\\"
           />
         </i>
-        Add an agent
+        Create a new agent
       </a>
       <div
         class=\\"right menu\\"
@@ -28106,7 +28484,7 @@ exports[`Load without agents 1`] = `
             class=\\"plus icon primary\\"
           />
         </i>
-        Add an agent
+        Create a new agent
       </a>
       <div
         class=\\"right menu\\"
@@ -28283,7 +28661,7 @@ exports[`Load without correct agents 1`] = `
             class=\\"plus icon primary\\"
           />
         </i>
-        Add an agent
+        Create a new agent
       </a>
       <div
         class=\\"right menu\\"
@@ -28508,7 +28886,7 @@ exports[`Load without correct agents 1`] = `
                   <div
                     aria-expanded=\\"false\\"
                     aria-label=\\"Select an interaction\\"
-                    class=\\"ui fluid search selection scrolling dropdown sp__dropdown\\"
+                    class=\\"ui fluid search selection scrolling dropdown\\"
                     role=\\"combobox\\"
                   >
                     <input
@@ -28664,12 +29042,26 @@ exports[`Load without correct agents 1`] = `
                       </div>
                     </div>
                   </div>
-                  <span
-                    class=\\"a__textpadding\\"
-                    color=\\"grey\\"
+                  <div
+                    class=\\"ui container\\"
+                    style=\\"margin-top: 0.5em;\\"
                   >
-                    This is how the agent will interact with participant input.
-                  </span>
+                    <button
+                      class=\\"ui mini icon right floated left labeled button icon-primary\\"
+                    >
+                      <i
+                        aria-hidden=\\"true\\"
+                        class=\\"plus icon\\"
+                      />
+                      Define a new interaction
+                    </button>
+                    <span
+                      class=\\"a__textpadding\\"
+                      color=\\"grey\\"
+                    >
+                      This is how the agent will interact with participant input.
+                    </span>
+                  </div>
                 </div>
                 <div
                   class=\\"ui horizontal divider\\"
@@ -29313,184 +29705,7 @@ exports[`Load without interactions 1`] = `
             class=\\"plus icon primary\\"
           />
         </i>
-        Add an agent
-      </a>
-      <div
-        class=\\"right menu\\"
-        name=\\"Search agents\\"
-      >
-        <div
-          class=\\"item\\"
-          tabindex=\\"0\\"
-        >
-          <div
-            class=\\"ui icon input\\"
-          >
-            <input
-              aria-label=\\"Search agents\\"
-              placeholder=\\"Search...\\"
-              type=\\"text\\"
-            />
-            <i
-              aria-hidden=\\"true\\"
-              class=\\"search icon\\"
-            />
-          </div>
-        </div>
-      </div>
-    </div>
-    <div
-      class=\\"ui celled grid a__agentviewer-outer\\"
-    >
-      <div
-        class=\\"row\\"
-      >
-        <div
-          class=\\"four wide column\\"
-        >
-          <div
-            class=\\"ui divided selection relaxed list\\"
-            role=\\"list\\"
-          >
-            <a
-              aria-label=\\"Emoji Analysis\\"
-              class=\\"item\\"
-              id=\\"1\\"
-              role=\\"listitem\\"
-            >
-              <div
-                class=\\"content\\"
-              >
-                <div
-                  class=\\"header\\"
-                >
-                  Emoji Analysis
-                </div>
-                <div
-                  class=\\"description\\"
-                >
-                  Detects the presense of an emoji character in your text
-                </div>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div
-          class=\\"twelve wide column a__agentviewer-inner\\"
-        >
-          <div
-            class=\\"row\\"
-          >
-            <div
-              class=\\"column\\"
-            >
-              <div
-                class=\\"ui icon message\\"
-              >
-                <i
-                  aria-hidden=\\"true\\"
-                  class=\\"arrow left icon\\"
-                />
-                <div
-                  class=\\"content\\"
-                >
-                  <div
-                    class=\\"header\\"
-                  >
-                    Agent viewer
-                  </div>
-                  <p>
-                    Select an agent to view and edit
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div
-      aria-label=\\"Pagination Navigation\\"
-      class=\\"ui borderless pagination menu\\"
-      name=\\"agents\\"
-      role=\\"navigation\\"
-    >
-      <a
-        aria-current=\\"false\\"
-        aria-disabled=\\"false\\"
-        aria-label=\\"Previous item\\"
-        class=\\"item\\"
-        tabindex=\\"0\\"
-        type=\\"prevItem\\"
-        value=\\"1\\"
-      >
-        ⟨
-      </a>
-      <a
-        aria-current=\\"true\\"
-        aria-disabled=\\"false\\"
-        class=\\"active item\\"
-        tabindex=\\"0\\"
-        type=\\"pageItem\\"
-        value=\\"1\\"
-      >
-        1
-      </a>
-      <a
-        aria-current=\\"false\\"
-        aria-disabled=\\"false\\"
-        aria-label=\\"Next item\\"
-        class=\\"item\\"
-        tabindex=\\"0\\"
-        type=\\"nextItem\\"
-        value=\\"1\\"
-      >
-        ⟩
-      </a>
-    </div>
-    <div
-      data-testid=\\"agents-main\\"
-    />
-  </div>
-</body>"
-`;
-
-exports[`Load without interactions 2`] = `
-"<body>
-  <div
-    id=\\"root\\"
-  />
-  <div>
-    <div
-      class=\\"ui borderless icon em__height menu\\"
-    >
-      <div
-        class=\\"item\\"
-        tabindex=\\"0\\"
-      >
-        <i
-          class=\\"icons em__icon-group-margin\\"
-        >
-          <i
-            aria-hidden=\\"true\\"
-            class=\\"icon robot\\"
-          />
-        </i>
-        Agents
-      </div>
-      <a
-        class=\\"item\\"
-        tabindex=\\"0\\"
-      >
-        <i
-          class=\\"icons em__icon-group-margin\\"
-        >
-          <i
-            aria-hidden=\\"true\\"
-            class=\\"plus icon primary\\"
-          />
-        </i>
-        Add an agent
+        Create a new agent
       </a>
       <div
         class=\\"right menu\\"
@@ -29667,7 +29882,7 @@ exports[`Search agents 1`] = `
             class=\\"plus icon primary\\"
           />
         </i>
-        Add an agent
+        Create a new agent
       </a>
       <div
         class=\\"right menu\\"
@@ -29844,7 +30059,7 @@ exports[`Search agents 2`] = `
             class=\\"plus icon primary\\"
           />
         </i>
-        Add an agent
+        Create a new agent
       </a>
       <div
         class=\\"right menu\\"
@@ -30048,7 +30263,7 @@ exports[`Search agents 3`] = `
             class=\\"plus icon primary\\"
           />
         </i>
-        Add an agent
+        Create a new agent
       </a>
       <div
         class=\\"right menu\\"
@@ -30252,7 +30467,7 @@ exports[`Search agents 4`] = `
             class=\\"plus icon primary\\"
           />
         </i>
-        Add an agent
+        Create a new agent
       </a>
       <div
         class=\\"right menu\\"
@@ -30392,7 +30607,7 @@ exports[`Search agents 4`] = `
     />
   </div>
   <div
-    style=\\"display: flex; position: absolute; left: 0px; top: 0px;\\"
+    style=\\"display: flex; position: absolute; left: 0px; top: 0px; bottom: 0px; transform: translate(0px, 0px);\\"
   >
     <div
       class=\\"ui top left tiny inverted popup transition visible\\"
@@ -30443,7 +30658,7 @@ exports[`Search agents 5`] = `
             class=\\"plus icon primary\\"
           />
         </i>
-        Add an agent
+        Create a new agent
       </a>
       <div
         class=\\"right menu\\"
@@ -30647,7 +30862,7 @@ exports[`Select an agent 1`] = `
             class=\\"plus icon primary\\"
           />
         </i>
-        Add an agent
+        Create a new agent
       </a>
       <div
         class=\\"right menu\\"
@@ -30824,7 +31039,7 @@ exports[`Select an agent 2`] = `
             class=\\"plus icon primary\\"
           />
         </i>
-        Add an agent
+        Create a new agent
       </a>
       <div
         class=\\"right menu\\"
@@ -31049,7 +31264,7 @@ exports[`Select an agent 2`] = `
                   <div
                     aria-expanded=\\"false\\"
                     aria-label=\\"Select an interaction\\"
-                    class=\\"ui fluid search selection scrolling dropdown sp__dropdown\\"
+                    class=\\"ui fluid search selection scrolling dropdown\\"
                     role=\\"combobox\\"
                   >
                     <input
@@ -31205,12 +31420,26 @@ exports[`Select an agent 2`] = `
                       </div>
                     </div>
                   </div>
-                  <span
-                    class=\\"a__textpadding\\"
-                    color=\\"grey\\"
+                  <div
+                    class=\\"ui container\\"
+                    style=\\"margin-top: 0.5em;\\"
                   >
-                    This is how the agent will interact with participant input.
-                  </span>
+                    <button
+                      class=\\"ui mini icon right floated left labeled button icon-primary\\"
+                    >
+                      <i
+                        aria-hidden=\\"true\\"
+                        class=\\"plus icon\\"
+                      />
+                      Define a new interaction
+                    </button>
+                    <span
+                      class=\\"a__textpadding\\"
+                      color=\\"grey\\"
+                    >
+                      This is how the agent will interact with participant input.
+                    </span>
+                  </div>
                 </div>
                 <div
                   class=\\"ui horizontal divider\\"
@@ -31854,7 +32083,7 @@ exports[`Select an agent 3`] = `
             class=\\"plus icon primary\\"
           />
         </i>
-        Add an agent
+        Create a new agent
       </a>
       <div
         class=\\"right menu\\"
@@ -32031,7 +32260,7 @@ exports[`Select and edit an agent 1`] = `
             class=\\"plus icon primary\\"
           />
         </i>
-        Add an agent
+        Create a new agent
       </a>
       <div
         class=\\"right menu\\"
@@ -32208,7 +32437,7 @@ exports[`Select and edit an agent 2`] = `
             class=\\"plus icon primary\\"
           />
         </i>
-        Add an agent
+        Create a new agent
       </a>
       <div
         class=\\"right menu\\"
@@ -32433,7 +32662,7 @@ exports[`Select and edit an agent 2`] = `
                   <div
                     aria-expanded=\\"false\\"
                     aria-label=\\"Select an interaction\\"
-                    class=\\"ui fluid search selection scrolling dropdown sp__dropdown\\"
+                    class=\\"ui fluid search selection scrolling dropdown\\"
                     role=\\"combobox\\"
                   >
                     <input
@@ -32589,12 +32818,26 @@ exports[`Select and edit an agent 2`] = `
                       </div>
                     </div>
                   </div>
-                  <span
-                    class=\\"a__textpadding\\"
-                    color=\\"grey\\"
+                  <div
+                    class=\\"ui container\\"
+                    style=\\"margin-top: 0.5em;\\"
                   >
-                    This is how the agent will interact with participant input.
-                  </span>
+                    <button
+                      class=\\"ui mini icon right floated left labeled button icon-primary\\"
+                    >
+                      <i
+                        aria-hidden=\\"true\\"
+                        class=\\"plus icon\\"
+                      />
+                      Define a new interaction
+                    </button>
+                    <span
+                      class=\\"a__textpadding\\"
+                      color=\\"grey\\"
+                    >
+                      This is how the agent will interact with participant input.
+                    </span>
+                  </div>
                 </div>
                 <div
                   class=\\"ui horizontal divider\\"
@@ -33238,7 +33481,7 @@ exports[`Select and edit an agent 4`] = `
             class=\\"plus icon primary\\"
           />
         </i>
-        Add an agent
+        Create a new agent
       </a>
       <div
         class=\\"right menu\\"
@@ -33463,7 +33706,7 @@ exports[`Select and edit an agent 4`] = `
                   <div
                     aria-expanded=\\"false\\"
                     aria-label=\\"Select an interaction\\"
-                    class=\\"ui fluid search selection scrolling dropdown sp__dropdown\\"
+                    class=\\"ui fluid search selection scrolling dropdown\\"
                     role=\\"combobox\\"
                   >
                     <input
@@ -33619,12 +33862,26 @@ exports[`Select and edit an agent 4`] = `
                       </div>
                     </div>
                   </div>
-                  <span
-                    class=\\"a__textpadding\\"
-                    color=\\"grey\\"
+                  <div
+                    class=\\"ui container\\"
+                    style=\\"margin-top: 0.5em;\\"
                   >
-                    This is how the agent will interact with participant input.
-                  </span>
+                    <button
+                      class=\\"ui mini icon right floated left labeled button icon-primary\\"
+                    >
+                      <i
+                        aria-hidden=\\"true\\"
+                        class=\\"plus icon\\"
+                      />
+                      Define a new interaction
+                    </button>
+                    <span
+                      class=\\"a__textpadding\\"
+                      color=\\"grey\\"
+                    >
+                      This is how the agent will interact with participant input.
+                    </span>
+                  </div>
                 </div>
                 <div
                   class=\\"ui horizontal divider\\"
@@ -34268,7 +34525,7 @@ exports[`Select and edit an agent 5`] = `
             class=\\"plus icon primary\\"
           />
         </i>
-        Add an agent
+        Create a new agent
       </a>
       <div
         class=\\"right menu\\"
@@ -34499,7 +34756,7 @@ exports[`Select and edit an agent 5`] = `
                   <div
                     aria-expanded=\\"false\\"
                     aria-label=\\"Select an interaction\\"
-                    class=\\"ui fluid search selection scrolling dropdown sp__dropdown\\"
+                    class=\\"ui fluid search selection scrolling dropdown\\"
                     role=\\"combobox\\"
                   >
                     <input
@@ -34655,12 +34912,26 @@ exports[`Select and edit an agent 5`] = `
                       </div>
                     </div>
                   </div>
-                  <span
-                    class=\\"a__textpadding\\"
-                    color=\\"grey\\"
+                  <div
+                    class=\\"ui container\\"
+                    style=\\"margin-top: 0.5em;\\"
                   >
-                    This is how the agent will interact with participant input.
-                  </span>
+                    <button
+                      class=\\"ui mini icon right floated left labeled button icon-primary\\"
+                    >
+                      <i
+                        aria-hidden=\\"true\\"
+                        class=\\"plus icon\\"
+                      />
+                      Define a new interaction
+                    </button>
+                    <span
+                      class=\\"a__textpadding\\"
+                      color=\\"grey\\"
+                    >
+                      This is how the agent will interact with participant input.
+                    </span>
+                  </div>
                 </div>
                 <div
                   class=\\"ui horizontal divider\\"
@@ -35304,7 +35575,7 @@ exports[`Select and edit an agent 7`] = `
             class=\\"plus icon primary\\"
           />
         </i>
-        Add an agent
+        Create a new agent
       </a>
       <div
         class=\\"right menu\\"
@@ -35451,20 +35722,14 @@ exports[`Select and edit an agent 7`] = `
                   >
                     Agent:
                      
-                    <span
-                      class=\\"ui right error medium text\\"
-                    >
-                      Title must not be empty.
-                    </span>
                   </label>
                   <div
-                    class=\\"error field\\"
+                    class=\\"field\\"
                   >
                     <div
                       class=\\"ui large input\\"
                     >
                       <input
-                        aria-invalid=\\"true\\"
                         aria-label=\\"title\\"
                         autocomplete=\\"off\\"
                         name=\\"title\\"
@@ -35535,7 +35800,7 @@ exports[`Select and edit an agent 7`] = `
                   <div
                     aria-expanded=\\"false\\"
                     aria-label=\\"Select an interaction\\"
-                    class=\\"ui fluid search selection scrolling dropdown sp__dropdown\\"
+                    class=\\"ui fluid search selection scrolling dropdown\\"
                     role=\\"combobox\\"
                   >
                     <input
@@ -35691,12 +35956,26 @@ exports[`Select and edit an agent 7`] = `
                       </div>
                     </div>
                   </div>
-                  <span
-                    class=\\"a__textpadding\\"
-                    color=\\"grey\\"
+                  <div
+                    class=\\"ui container\\"
+                    style=\\"margin-top: 0.5em;\\"
                   >
-                    This is how the agent will interact with participant input.
-                  </span>
+                    <button
+                      class=\\"ui mini icon right floated left labeled button icon-primary\\"
+                    >
+                      <i
+                        aria-hidden=\\"true\\"
+                        class=\\"plus icon\\"
+                      />
+                      Define a new interaction
+                    </button>
+                    <span
+                      class=\\"a__textpadding\\"
+                      color=\\"grey\\"
+                    >
+                      This is how the agent will interact with participant input.
+                    </span>
+                  </div>
                 </div>
                 <div
                   class=\\"ui horizontal divider\\"
@@ -36340,7 +36619,7 @@ exports[`Select and edit an agent 8`] = `
             class=\\"plus icon primary\\"
           />
         </i>
-        Add an agent
+        Create a new agent
       </a>
       <div
         class=\\"right menu\\"
@@ -36572,7 +36851,7 @@ exports[`Select and edit an agent 8`] = `
                   <div
                     aria-expanded=\\"false\\"
                     aria-label=\\"Select an interaction\\"
-                    class=\\"ui fluid search selection scrolling dropdown sp__dropdown\\"
+                    class=\\"ui fluid search selection scrolling dropdown\\"
                     role=\\"combobox\\"
                   >
                     <input
@@ -36728,12 +37007,26 @@ exports[`Select and edit an agent 8`] = `
                       </div>
                     </div>
                   </div>
-                  <span
-                    class=\\"a__textpadding\\"
-                    color=\\"grey\\"
+                  <div
+                    class=\\"ui container\\"
+                    style=\\"margin-top: 0.5em;\\"
                   >
-                    This is how the agent will interact with participant input.
-                  </span>
+                    <button
+                      class=\\"ui mini icon right floated left labeled button icon-primary\\"
+                    >
+                      <i
+                        aria-hidden=\\"true\\"
+                        class=\\"plus icon\\"
+                      />
+                      Define a new interaction
+                    </button>
+                    <span
+                      class=\\"a__textpadding\\"
+                      color=\\"grey\\"
+                    >
+                      This is how the agent will interact with participant input.
+                    </span>
+                  </div>
                 </div>
                 <div
                   class=\\"ui horizontal divider\\"
@@ -37377,7 +37670,7 @@ exports[`Select and edit an agent 10`] = `
             class=\\"plus icon primary\\"
           />
         </i>
-        Add an agent
+        Create a new agent
       </a>
       <div
         class=\\"right menu\\"
@@ -37549,18 +37842,11 @@ exports[`Select and edit an agent 10`] = `
                   >
                     Description:
                      
-                    <span
-                      class=\\"ui right error medium text\\"
-                    >
-                      Description must not be empty.
-                    </span>
                   </label>
                   <div
-                    class=\\"error field\\"
+                    class=\\"field\\"
                   >
                     <textarea
-                      aria-describedby=\\"description-error-message\\"
-                      aria-invalid=\\"true\\"
                       aria-label=\\"description\\"
                       autocomplete=\\"off\\"
                       id=\\"description\\"
@@ -37581,14 +37867,12 @@ exports[`Select and edit an agent 10`] = `
                      
                   </label>
                   <div
-                    class=\\"error field\\"
+                    class=\\"field\\"
                   >
                     <div
                       class=\\"ui input\\"
                     >
                       <input
-                        aria-describedby=\\"endpoint-error-message\\"
-                        aria-invalid=\\"true\\"
                         aria-label=\\"endpoint\\"
                         autocomplete=\\"off\\"
                         id=\\"endpoint\\"
@@ -37611,7 +37895,7 @@ exports[`Select and edit an agent 10`] = `
                   <div
                     aria-expanded=\\"false\\"
                     aria-label=\\"Select an interaction\\"
-                    class=\\"ui fluid search selection scrolling dropdown sp__dropdown\\"
+                    class=\\"ui fluid search selection scrolling dropdown\\"
                     role=\\"combobox\\"
                   >
                     <input
@@ -37767,12 +38051,26 @@ exports[`Select and edit an agent 10`] = `
                       </div>
                     </div>
                   </div>
-                  <span
-                    class=\\"a__textpadding\\"
-                    color=\\"grey\\"
+                  <div
+                    class=\\"ui container\\"
+                    style=\\"margin-top: 0.5em;\\"
                   >
-                    This is how the agent will interact with participant input.
-                  </span>
+                    <button
+                      class=\\"ui mini icon right floated left labeled button icon-primary\\"
+                    >
+                      <i
+                        aria-hidden=\\"true\\"
+                        class=\\"plus icon\\"
+                      />
+                      Define a new interaction
+                    </button>
+                    <span
+                      class=\\"a__textpadding\\"
+                      color=\\"grey\\"
+                    >
+                      This is how the agent will interact with participant input.
+                    </span>
+                  </div>
                 </div>
                 <div
                   class=\\"ui horizontal divider\\"
@@ -38416,7 +38714,7 @@ exports[`Select and edit an agent 11`] = `
             class=\\"plus icon primary\\"
           />
         </i>
-        Add an agent
+        Create a new agent
       </a>
       <div
         class=\\"right menu\\"
@@ -38646,7 +38944,7 @@ exports[`Select and edit an agent 11`] = `
                   <div
                     aria-expanded=\\"false\\"
                     aria-label=\\"Select an interaction\\"
-                    class=\\"ui fluid search selection scrolling dropdown sp__dropdown\\"
+                    class=\\"ui fluid search selection scrolling dropdown\\"
                     role=\\"combobox\\"
                   >
                     <input
@@ -38802,12 +39100,26 @@ exports[`Select and edit an agent 11`] = `
                       </div>
                     </div>
                   </div>
-                  <span
-                    class=\\"a__textpadding\\"
-                    color=\\"grey\\"
+                  <div
+                    class=\\"ui container\\"
+                    style=\\"margin-top: 0.5em;\\"
                   >
-                    This is how the agent will interact with participant input.
-                  </span>
+                    <button
+                      class=\\"ui mini icon right floated left labeled button icon-primary\\"
+                    >
+                      <i
+                        aria-hidden=\\"true\\"
+                        class=\\"plus icon\\"
+                      />
+                      Define a new interaction
+                    </button>
+                    <span
+                      class=\\"a__textpadding\\"
+                      color=\\"grey\\"
+                    >
+                      This is how the agent will interact with participant input.
+                    </span>
+                  </div>
                 </div>
                 <div
                   class=\\"ui horizontal divider\\"
@@ -39451,7 +39763,7 @@ exports[`Select and edit an agent 13`] = `
             class=\\"plus icon primary\\"
           />
         </i>
-        Add an agent
+        Create a new agent
       </a>
       <div
         class=\\"right menu\\"
@@ -39646,11 +39958,6 @@ exports[`Select and edit an agent 13`] = `
                   >
                     Endoint:
                      
-                    <span
-                      class=\\"ui right error medium text\\"
-                    >
-                      Endpoint must not be empty.
-                    </span>
                   </label>
                   <div
                     class=\\"field\\"
@@ -39681,7 +39988,7 @@ exports[`Select and edit an agent 13`] = `
                   <div
                     aria-expanded=\\"false\\"
                     aria-label=\\"Select an interaction\\"
-                    class=\\"ui fluid search selection scrolling dropdown sp__dropdown\\"
+                    class=\\"ui fluid search selection scrolling dropdown\\"
                     role=\\"combobox\\"
                   >
                     <input
@@ -39837,12 +40144,26 @@ exports[`Select and edit an agent 13`] = `
                       </div>
                     </div>
                   </div>
-                  <span
-                    class=\\"a__textpadding\\"
-                    color=\\"grey\\"
+                  <div
+                    class=\\"ui container\\"
+                    style=\\"margin-top: 0.5em;\\"
                   >
-                    This is how the agent will interact with participant input.
-                  </span>
+                    <button
+                      class=\\"ui mini icon right floated left labeled button icon-primary\\"
+                    >
+                      <i
+                        aria-hidden=\\"true\\"
+                        class=\\"plus icon\\"
+                      />
+                      Define a new interaction
+                    </button>
+                    <span
+                      class=\\"a__textpadding\\"
+                      color=\\"grey\\"
+                    >
+                      This is how the agent will interact with participant input.
+                    </span>
+                  </div>
                 </div>
                 <div
                   class=\\"ui horizontal divider\\"
@@ -40486,7 +40807,7 @@ exports[`Select and edit an agent 15`] = `
             class=\\"plus icon primary\\"
           />
         </i>
-        Add an agent
+        Create a new agent
       </a>
       <div
         class=\\"right menu\\"
@@ -40681,11 +41002,6 @@ exports[`Select and edit an agent 15`] = `
                   >
                     Endoint:
                      
-                    <span
-                      class=\\"ui right error medium text\\"
-                    >
-                      Endpoint must not be empty.
-                    </span>
                   </label>
                   <div
                     class=\\"field\\"
@@ -40716,7 +41032,7 @@ exports[`Select and edit an agent 15`] = `
                   <div
                     aria-expanded=\\"false\\"
                     aria-label=\\"Select an interaction\\"
-                    class=\\"ui fluid search selection scrolling dropdown sp__dropdown\\"
+                    class=\\"ui fluid search selection scrolling dropdown\\"
                     role=\\"combobox\\"
                   >
                     <input
@@ -40872,12 +41188,26 @@ exports[`Select and edit an agent 15`] = `
                       </div>
                     </div>
                   </div>
-                  <span
-                    class=\\"a__textpadding\\"
-                    color=\\"grey\\"
+                  <div
+                    class=\\"ui container\\"
+                    style=\\"margin-top: 0.5em;\\"
                   >
-                    This is how the agent will interact with participant input.
-                  </span>
+                    <button
+                      class=\\"ui mini icon right floated left labeled button icon-primary\\"
+                    >
+                      <i
+                        aria-hidden=\\"true\\"
+                        class=\\"plus icon\\"
+                      />
+                      Define a new interaction
+                    </button>
+                    <span
+                      class=\\"a__textpadding\\"
+                      color=\\"grey\\"
+                    >
+                      This is how the agent will interact with participant input.
+                    </span>
+                  </div>
                 </div>
                 <div
                   class=\\"ui horizontal divider\\"
@@ -41521,7 +41851,7 @@ exports[`Select and edit an agent 17`] = `
             class=\\"plus icon primary\\"
           />
         </i>
-        Add an agent
+        Create a new agent
       </a>
       <div
         class=\\"right menu\\"
@@ -41716,11 +42046,6 @@ exports[`Select and edit an agent 17`] = `
                   >
                     Endoint:
                      
-                    <span
-                      class=\\"ui right error medium text\\"
-                    >
-                      Endpoint must not be empty.
-                    </span>
                   </label>
                   <div
                     class=\\"field\\"
@@ -41751,7 +42076,7 @@ exports[`Select and edit an agent 17`] = `
                   <div
                     aria-expanded=\\"false\\"
                     aria-label=\\"Select an interaction\\"
-                    class=\\"ui fluid search selection scrolling dropdown sp__dropdown\\"
+                    class=\\"ui fluid search selection scrolling dropdown\\"
                     role=\\"combobox\\"
                   >
                     <input
@@ -41907,12 +42232,26 @@ exports[`Select and edit an agent 17`] = `
                       </div>
                     </div>
                   </div>
-                  <span
-                    class=\\"a__textpadding\\"
-                    color=\\"grey\\"
+                  <div
+                    class=\\"ui container\\"
+                    style=\\"margin-top: 0.5em;\\"
                   >
-                    This is how the agent will interact with participant input.
-                  </span>
+                    <button
+                      class=\\"ui mini icon right floated left labeled button icon-primary\\"
+                    >
+                      <i
+                        aria-hidden=\\"true\\"
+                        class=\\"plus icon\\"
+                      />
+                      Define a new interaction
+                    </button>
+                    <span
+                      class=\\"a__textpadding\\"
+                      color=\\"grey\\"
+                    >
+                      This is how the agent will interact with participant input.
+                    </span>
+                  </div>
                 </div>
                 <div
                   class=\\"ui horizontal divider\\"

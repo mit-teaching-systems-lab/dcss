@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Container, Form } from '@components/UI';
 // import { defaultValue } from './';
 import { type } from './meta';
+import AgentSelector from '@components/Slide/Components/AgentSelector';
 import DataHeader from '@components/Slide/Components/DataHeader';
 import ResponseRecall from '@components/Slide/Components/ResponseRecall/Editor';
 import './TextResponse.css';
@@ -12,6 +13,7 @@ class TextResponseEditor extends React.Component {
   constructor(props) {
     super(props);
     const {
+      agent = null,
       header = '',
       prompt = '',
       placeholder = '',
@@ -19,6 +21,7 @@ class TextResponseEditor extends React.Component {
       responseId = ''
     } = props.value;
     this.state = {
+      agent,
       header,
       prompt,
       placeholder,
@@ -33,24 +36,12 @@ class TextResponseEditor extends React.Component {
     this.timeout = null;
   }
 
-  // shouldComponentUpdate(newProps) {
-  //   const fields = Object.getOwnPropertyNames(defaultValue({}));
-
-  //   for (let field of fields) {
-  //     if (newProps.value[field] !== this.props.value[field]) {
-  //       return true;
-  //     }
-  //   }
-
-  //   return true;
-  // }
-
   componentWillUnmount() {
     clearTimeout(this.timeout);
 
     let shouldCallUpdateState = false;
 
-    const fields = ['header', 'placeholder', 'prompt', 'recallId'];
+    const fields = ['agent', 'header', 'placeholder', 'prompt', 'recallId'];
 
     for (let field of fields) {
       if (this.props.value[field] !== this.state[field]) {
@@ -72,8 +63,16 @@ class TextResponseEditor extends React.Component {
   }
 
   updateState() {
-    const { header, prompt, placeholder, recallId, responseId } = this.state;
+    const {
+      agent,
+      header,
+      prompt,
+      placeholder,
+      recallId,
+      responseId
+    } = this.state;
     this.props.onChange({
+      agent,
       header,
       prompt,
       placeholder,
@@ -92,7 +91,7 @@ class TextResponseEditor extends React.Component {
   }
 
   render() {
-    const { header, prompt, placeholder, recallId } = this.state;
+    const { agent, header, prompt, placeholder, recallId } = this.state;
     const { scenario, slideIndex } = this.props;
     const { onChange, onRecallChange, updateState } = this;
     const promptAriaLabel = 'Optional prompt to display before the input:';
@@ -124,6 +123,12 @@ class TextResponseEditor extends React.Component {
             value={placeholder}
             onChange={onChange}
             onBlur={updateState}
+          />
+          <AgentSelector
+            label="Optional AI agent:"
+            agent={agent}
+            type={type}
+            onChange={onChange}
           />
           <DataHeader
             content={header}

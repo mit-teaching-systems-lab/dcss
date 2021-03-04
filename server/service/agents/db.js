@@ -10,9 +10,8 @@ async function setAgent(id, updates) {
 }
 
 async function setAgentSocketConfiguration(id, configuration) {
-
   if (Object.entries(configuration).length === 0) {
-    return null
+    return null;
   }
 
   const result = await withClientTransaction(async client => {
@@ -50,9 +49,8 @@ async function setAgentSocketConfiguration(id, configuration) {
 }
 
 async function setAgentConfiguration(id, configuration) {
-
   if (Object.entries(configuration).length === 0) {
-    return null
+    return null;
   }
 
   const result = await withClientTransaction(async client => {
@@ -170,15 +168,6 @@ async function getAgents(where) {
   return result.rows;
 }
 
-async function getInteractions(id) {
-  const result = await query(sql`
-    SELECT *
-    FROM interaction
-    WHERE deleted_at IS NULL
-  `);
-  return result.rows;
-}
-
 exports.createAgent = createAgent;
 exports.getAgent = getAgent;
 exports.getAgents = getAgents;
@@ -186,4 +175,3 @@ exports.setAgent = setAgent;
 exports.setAgentSocketConfiguration = setAgentSocketConfiguration;
 exports.setAgentConfiguration = setAgentConfiguration;
 exports.setAgentInteraction = setAgentInteraction;
-exports.getInteractions = getInteractions;

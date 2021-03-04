@@ -1,7 +1,9 @@
-const SocketIO = require('socket.io');
+const hash = require('object-hash');
+const Socket = require('./');
 const { notifier } = require('../../util/db');
 const {
   AGENT_JOIN,
+  CHAT_CAN_RECEIVE,
   CHAT_CREATED,
   CHAT_CLOSED_FOR_SLIDE,
   CHAT_CLOSED,
@@ -32,6 +34,7 @@ const {
   USER_PART_SLIDE
 } = require('./types');
 const authdb = require('../session/db');
+const agentdb = require('../agents/db');
 const chatdb = require('../chats/db');
 const chatutil = require('../chats/util');
 
@@ -61,7 +64,13 @@ const cache = {
         user.id
       ]
     */
-  }
+  },
+  clients: {
+    /*
+      [room key]: socket client
+    */
+  },
+  backlog: []
 };
 
 class SocketManager {
@@ -70,9 +79,11 @@ class SocketManager {
       return;
     }
 
-    this.io = SocketIO(server);
+    this.io = new Socket.Server(server);
     this.io.on('connection', socket => {
       socketlog('Connected', socket.id);
+
+      let chatCanReceive = true;
 
       // Notifications
       //
@@ -109,7 +120,16 @@ class SocketManager {
             ? `${data.chat_id}-user-${data.recipient_id}`
             : data.chat_id;
 
-          this.io.to(room).emit(CHAT_MESSAGE_CREATED, data);
+          if (cache.backlog[data.recipient_id]) {
+            const event = CHAT_MESSAGE_CREATED;
+            cache.backlog[data.recipient_id].push({
+              room,
+              event,
+              data
+            });
+          } else {
+            this.io.emit(CHAT_MESSAGE_CREATED, data);
+          }
         });
         // console.log('chat_message_created listener is registered');
       }
@@ -130,7 +150,7 @@ class SocketManager {
             data.user_id
           );
           // Send JOIN_OR_PART signal BEFORE creating the chat message announcement
-          socket.broadcast.emit(JOIN_OR_PART, {
+          this.io.to(data.chat_id).emit(JOIN_OR_PART, {
             chat: {
               id: data.chat_id
             },
@@ -163,7 +183,7 @@ class SocketManager {
             data.chat_id,
             data.user_id
           );
-          socket.to(chat.host_id).emit(RUN_CHAT_LINK, {
+          this.io.to(chat.host_id).emit(RUN_CHAT_LINK, {
             chat,
             user
           });
@@ -174,7 +194,7 @@ class SocketManager {
       if (!notifier.listenerCount('new_invitation')) {
         notifier.on('new_invitation', async data => {
           console.log('new_invitation', data);
-          socket
+          this.io
             .to(data.receiver_id)
             .emit(
               NEW_INVITATION,
@@ -187,13 +207,13 @@ class SocketManager {
       if (!notifier.listenerCount('set_invitation')) {
         notifier.on('set_invitation', async data => {
           console.log('set_invitation', data);
-          socket
+          this.io
             .to(data.receiver_id)
             .emit(
               SET_INVITATION,
               await chatutil.makeChatInviteNotification(data)
             );
-          socket
+          this.io
             .to(data.sender_id)
             .emit(
               SET_INVITATION,
@@ -206,7 +226,7 @@ class SocketManager {
       if (!notifier.listenerCount('chat_created')) {
         notifier.on('chat_created', async chat => {
           console.log('chat_created', chat);
-          socket.to(chat.cohort_id).emit(CHAT_CREATED, {
+          this.io.to(chat.cohort_id).emit(CHAT_CREATED, {
             chat
           });
         });
@@ -216,7 +236,7 @@ class SocketManager {
       if (!notifier.listenerCount('chat_ended')) {
         notifier.on('chat_ended', async chat => {
           console.log('chat_ended', chat);
-          socket.to(chat.id).emit(CHAT_ENDED, {
+          this.io.to(chat.id).emit(CHAT_ENDED, {
             chat
           });
         });
@@ -234,17 +254,78 @@ class SocketManager {
         socket.join(chat.id);
       });
 
-      socket.on(CREATE_CHAT_SLIDE_CHANNEL, ({ chat, slide }) => {
+      socket.on(CHAT_CAN_RECEIVE, async ({ chat, user }) => {
+        console.log(CHAT_CAN_RECEIVE, { chat, user });
+        chatCanReceive = true;
+        if (cache.backlog[user.id]) {
+          console.log(cache.backlog[user.id]);
+          while (cache.backlog[user.id].length) {
+            const { room, event, data } = cache.backlog[user.id].shift();
+            console.log(room, event, data);
+            this.io.to(room).emit(event, data);
+          }
+          cache.backlog[user.id] = null;
+        }
+      });
+
+      socket.on(CREATE_CHAT_SLIDE_CHANNEL, ({ agent, chat, slide }) => {
         console.log(CREATE_CHAT_SLIDE_CHANNEL, { chat, slide });
         const room = `${chat.id}-slide-${slide.index}`;
         socket.join(room);
       });
 
       // Used for sending messages to a specific user in the chat.
-      socket.on(CREATE_CHAT_USER_CHANNEL, ({ chat, user }) => {
+      socket.on(CREATE_CHAT_USER_CHANNEL, async ({ agent: a, chat, user }) => {
         console.log(CREATE_CHAT_USER_CHANNEL, { chat, user });
+        chatCanReceive = false;
         const room = `${chat.id}-user-${user.id}`;
         socket.join(room);
+
+        if (a && a.id) {
+          const agent = await agentdb.getAgent(a.id);
+          const token = hash(room);
+          const name = agent.name;
+          console.log(agent);
+
+          const options = {
+            ...agent.socket,
+            auth: {
+              agent: {
+                name,
+                token
+              }
+            }
+          };
+
+          const client = new Socket.Client(agent.endpoint, options);
+
+          if (client) {
+            await chatdb.joinChat(chat.id, agent.self.id);
+          }
+
+          client.on('response', ({ value, result }) => {
+            console.log(
+              `The text "${value}" ${
+                result ? 'contains an emoji' : 'does not contain an emoji'
+              }`
+            );
+          });
+
+          client.on('interjection', async ({ message }) => {
+            await chatdb.insertNewAgentMessage(
+              chat.id,
+              agent.self.id, // This comes from the agent!!
+              message,
+              null, // TODO: need the response_id from the slide component
+              user.id
+            );
+          });
+          cache.backlog[user.id] = [];
+          cache.clients[room] = {
+            client,
+            token
+          };
+        }
       });
 
       socket.on(CREATE_COHORT_CHANNEL, ({ cohort }) => {
@@ -326,7 +407,7 @@ class SocketManager {
               cache.rolls[rollKey].indexOf(user.id),
               1
             );
-            console.log('UPDATED ROLLS: ', cache.rolls[rollKey]);
+            // console.log('UPDATED ROLLS: ', cache.rolls[rollKey]);
           }
         }
       });

@@ -68,7 +68,7 @@ class Admin extends Component {
     return isReady ? (
       <div>
         <Title content="Administration" />
-        <Menu attached="top" tabular>
+        <Menu attached="top" tabular className="admin__maxwidth">
           <Menu.Item.Tabbable
             content="Access Control"
             name="access"
@@ -88,7 +88,7 @@ class Admin extends Component {
             onClick={onClick}
           />
         </Menu>
-        <Segment attached="bottom" className="facilitator__content-pane">
+        <Segment attached="bottom" className="admin__maxwidth">
           {this.state.tabs[this.state.activeTab]}
         </Segment>
       </div>

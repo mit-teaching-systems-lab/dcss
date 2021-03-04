@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import pluralize from 'pluralize';
+import AgentSelector from '@components/Slide/Components/AgentSelector';
 import TimeField from 'react-simple-timefield';
 import { Checkbox, Container, Form, Grid, Icon, Text } from '@components/UI';
 import { type } from './meta';
@@ -12,6 +13,7 @@ class ChatPromptEditor extends React.Component {
   constructor(props) {
     super(props);
     const {
+      agent = null,
       auto = true,
       header = '',
       prompt = '',
@@ -20,6 +22,7 @@ class ChatPromptEditor extends React.Component {
       timer = 0
     } = props.value;
     this.state = {
+      agent,
       auto,
       header,
       prompt,
@@ -48,6 +51,7 @@ class ChatPromptEditor extends React.Component {
     let shouldCallUpdateState = false;
 
     const fields = [
+      'agent',
       'auto',
       'header',
       'prompt',
@@ -75,8 +79,17 @@ class ChatPromptEditor extends React.Component {
   }
 
   updateState() {
-    const { auto, header, prompt, timer, required, responseId } = this.state;
+    const {
+      agent,
+      auto,
+      header,
+      prompt,
+      timer,
+      required,
+      responseId
+    } = this.state;
     this.props.onChange({
+      agent,
       auto,
       header,
       prompt,
@@ -101,6 +114,7 @@ class ChatPromptEditor extends React.Component {
   }
 
   onChange(event, { name, value, checked }) {
+    console.log('???????????????');
     if (name === 'auto') {
       value = checked;
     }
@@ -115,7 +129,7 @@ class ChatPromptEditor extends React.Component {
   }
 
   render() {
-    const { auto, header, prompt, timer } = this.state;
+    const { agent, auto, header, prompt, timer } = this.state;
     const { onChange, onTimerChange, updateState } = this;
     const timerString = timer ? Media.secToTime(timer) : '';
     const [hh = 0, mm = 0, ss = 0] = timerString.split(':').map(v => Number(v));
@@ -198,6 +212,13 @@ class ChatPromptEditor extends React.Component {
                   value={prompt}
                   onChange={onChange}
                   onBlur={updateState}
+                />
+
+                <AgentSelector
+                  agent={agent}
+                  type={type}
+                  onChange={onChange}
+                  updateState={updateState}
                 />
               </Grid.Column>
             </Grid.Row>

@@ -7,11 +7,7 @@ async function createInteraction(req, res) {
     id: req.session.user.id
   };
 
-  if (!req.body.name ||
-      !req.body.description ||
-      !req.body.types.length
-    ) {
-
+  if (!req.body.name || !req.body.description || !req.body.types.length) {
     const error = new Error(
       'Creating an interaction requires a name, description and list of prompts.'
     );

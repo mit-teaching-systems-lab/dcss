@@ -96,7 +96,7 @@ class AgentInteractionEditor extends Component {
       [name]: value
     };
 
-    console.log("interaction", interaction);
+    console.log('interaction', interaction);
     this.setState({
       interaction
     });
@@ -134,7 +134,7 @@ class AgentInteractionEditor extends Component {
         key: type.id,
         value: type.name,
         text: type.name
-      }
+      };
     });
 
     return (

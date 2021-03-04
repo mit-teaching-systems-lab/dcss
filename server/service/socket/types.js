@@ -2,6 +2,7 @@
 
 // Client -> Server
 exports.AGENT_JOINED = 'agent-joined';
+exports.CHAT_CAN_RECEIVE = 'chat-can-receive';
 exports.CREATE_CHAT_CHANNEL = 'create-chat-channel';
 exports.CREATE_CHAT_SLIDE_CHANNEL = 'create-chat-slide-channel';
 exports.CREATE_CHAT_USER_CHANNEL = 'create-chat-user-channel';

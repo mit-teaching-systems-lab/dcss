@@ -28,6 +28,7 @@ const defaultConfiguration = {
 };
 
 export const defaultValue = ({ responseId }) => ({
+  agent: null,
   configuration: {
     ...defaultConfiguration
   },

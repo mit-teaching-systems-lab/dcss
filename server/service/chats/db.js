@@ -1,8 +1,9 @@
 const { sql, updateQuery } = require('../../util/sqlHelpers');
 const { query, withClientTransaction } = require('../../util/db');
 const { INVITE_STATUS } = require('../invites/db');
+const sessiondb = require('../session/db');
 
-exports.getChatentifiers = async (host_id, identifiers) => {
+exports.getChatByIdentifiers = async (host_id, identifiers) => {
   const { scenario_id, cohort_id = null } = identifiers;
 
   let lookup = `
@@ -137,6 +138,31 @@ exports.createNewChatMessage = async (
         (chat_id, user_id, content, response_id)
       VALUES
         (${chat_id}, ${user_id}, ${content}, ${response_id})
+      RETURNING *;
+    `);
+    return result.rows[0];
+  });
+};
+
+exports.insertNewAgentMessage = async (
+  chat_id,
+  user_id,
+  message,
+  response_id,
+  recipient_id
+) => {
+  return await withClientTransaction(async client => {
+    const recipient = await sessiondb.getUserById(recipient_id);
+
+    const content = `
+      <p>@${recipient.personalname || recipient.username}: ${message}</p>
+    `.trim();
+
+    const result = await client.query(sql`
+      INSERT INTO chat_message
+        (chat_id, user_id, content, response_id, recipient_id)
+      VALUES
+        (${chat_id}, ${user_id}, ${content}, ${response_id}, ${recipient_id})
       RETURNING *;
     `);
     return result.rows[0];

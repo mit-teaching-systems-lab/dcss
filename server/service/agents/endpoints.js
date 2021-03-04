@@ -7,11 +7,7 @@ async function createAgent(req, res) {
     id: req.session.user.id
   };
 
-  if (
-    !req.body.title ||
-    !req.body.description ||
-    !req.body.interaction
-  ) {
+  if (!req.body.title || !req.body.description || !req.body.interaction) {
     const error = new Error(
       'Creating an agent requires a title, description and interaction.'
     );

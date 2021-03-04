@@ -67,8 +67,9 @@ function isValidMessage(message) {
 }
 
 export function makeSocketPayload(props, data = {}) {
-  const { chat = {}, response = {}, user = {} } = props;
+  const { agent = {}, chat = {}, response = {}, user = {} } = props;
   return {
+    agent,
     chat: {
       id: chat.id,
       host_id: chat.host_id

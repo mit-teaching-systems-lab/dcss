@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Identity from '@utils/Identity';
 import { Container, Form, Message } from '@components/UI';
 import { type } from './meta';
+import AgentSelector from '@components/Slide/Components/AgentSelector';
 import DataHeader from '@components/Slide/Components/DataHeader';
 import ResponseRecall from '@components/Slide/Components/ResponseRecall/Editor';
 import './AudioPrompt.css';
@@ -11,9 +12,16 @@ import '@components/Slide/SlideEditor/SlideEditor.css';
 class AudioPromptEditor extends Component {
   constructor(props) {
     super(props);
-    const { header = '', prompt = '', recallId = '', responseId } = props.value;
+    const {
+      agent = null,
+      header = '',
+      prompt = '',
+      recallId = '',
+      responseId
+    } = props.value;
 
     this.state = {
+      agent,
       header,
       prompt,
       recallId,
@@ -29,9 +37,10 @@ class AudioPromptEditor extends Component {
   componentWillUnmount() {
     clearTimeout(this.timeout);
 
-    const { header, prompt, recallId, responseId } = this.props.value;
+    const { agent, header, prompt, recallId, responseId } = this.props.value;
 
     const lastProps = {
+      agent,
       header,
       prompt,
       recallId,
@@ -52,9 +61,10 @@ class AudioPromptEditor extends Component {
   }
 
   updateState() {
-    const { header, prompt, recallId, responseId } = this.state;
+    const { agent, header, prompt, recallId, responseId } = this.state;
 
     this.props.onChange({
+      agent,
       header,
       prompt,
       recallId,
@@ -72,7 +82,7 @@ class AudioPromptEditor extends Component {
   }
 
   render() {
-    const { header, prompt, recallId } = this.state;
+    const { agent, header, prompt, recallId } = this.state;
     const { scenario, slideIndex } = this.props;
     const { onChange, onRecallChange, updateState } = this;
 
@@ -94,6 +104,13 @@ class AudioPromptEditor extends Component {
             value={prompt}
             onChange={onChange}
             onBlur={updateState}
+          />
+
+          <AgentSelector
+            label="Optional AI agent:"
+            agent={agent}
+            type={type}
+            onChange={onChange}
           />
 
           <DataHeader

@@ -116,7 +116,11 @@ class Agent extends Component {
       confirmDelete: {
         isOpen: false
       },
-      empty: {
+      configuration: {
+        property: '',
+        value: ''
+      },
+      socket: {
         property: '',
         value: ''
       },
@@ -317,6 +321,10 @@ class Agent extends Component {
       agent: {
         ...agent,
         [name]: value
+      },
+      error: {
+        field: null,
+        message: null
       }
     });
   }
@@ -335,12 +343,11 @@ class Agent extends Component {
         agent
       });
     } else {
-      const empty = {
-        ...this.state.empty,
-        [name]: value
-      };
       this.setState({
-        empty
+        [path]: {
+          ...this.state[path],
+          [name]: value
+        }
       });
     }
   }
@@ -755,7 +762,7 @@ class Agent extends Component {
                         <AgentInteractionSelect
                           {...agentInteractionSelectProps}
                         />
-                        <Container style={{marginTop: '0.5em'}}>
+                        <Container style={{ marginTop: '0.5em' }}>
                           {defineNewInteractionButton}
                           <Text color="grey" className="a__textpadding">
                             This is how the agent will interact with participant
@@ -835,6 +842,7 @@ class Agent extends Component {
                                       autoComplete="off"
                                       name="value"
                                       path="configuration"
+                                      key={`${baseKey}-1`}
                                       value={value}
                                       index={index}
                                       onChange={onOptionChange}
@@ -849,6 +857,7 @@ class Agent extends Component {
                                     className="icon-primary a__tablebuttonicon"
                                     name="configuration"
                                     subject="agent configuration"
+                                    key={`${baseKey}-2`}
                                     index={index}
                                     item={item}
                                     tabIndex={0}
@@ -868,11 +877,11 @@ class Agent extends Component {
                               fluid
                               aria-label="New agent configuration key"
                               autoComplete="off"
-                              key="empty-property"
+                              key="empty-property-1"
                               name="property"
                               path="configuration"
                               placeholder="KEY"
-                              value={this.state.empty.property}
+                              value={this.state.configuration.property}
                               index={-1}
                               onChange={onOptionChange}
                             />
@@ -884,11 +893,11 @@ class Agent extends Component {
                               fluid
                               aria-label="New agent configuration value"
                               autoComplete="off"
-                              key="empty-value"
+                              key="empty-value-1"
                               name="value"
                               path="configuration"
                               placeholder="VALUE"
-                              value={this.state.empty.value}
+                              value={this.state.configuration.value}
                               index={-1}
                               onChange={onOptionChange}
                             />
@@ -900,17 +909,17 @@ class Agent extends Component {
                             aria-label="Add agent configuration"
                             className="icon-primary a__tablebuttonicon"
                             disabled={
-                              !this.state.empty.property ||
-                              !this.state.empty.value
+                              !this.state.configuration.property ||
+                              !this.state.configuration.value
                             }
                             onClick={() => {
                               const agent = this.state.agent;
                               agent.configuration.push({
-                                ...this.state.empty
+                                ...this.state.configuration
                               });
                               this.setState({
                                 agent,
-                                empty: {
+                                configuration: {
                                   property: '',
                                   value: ''
                                 }
@@ -968,6 +977,7 @@ class Agent extends Component {
                                     autoComplete="off"
                                     name="property"
                                     path="socket"
+                                    key={`${baseKey}-1`}
                                     value={property}
                                     index={index}
                                     onChange={onOptionChange}
@@ -982,6 +992,7 @@ class Agent extends Component {
                                     autoComplete="off"
                                     name="value"
                                     path="socket"
+                                    key={`${baseKey}-2`}
                                     value={value}
                                     index={index}
                                     onChange={onOptionChange}
@@ -1014,11 +1025,11 @@ class Agent extends Component {
                               fluid
                               aria-label="New socket configuration key"
                               autoComplete="off"
-                              key="empty-property"
+                              key="empty-property-2"
                               name="property"
                               path="socket"
                               placeholder="KEY"
-                              value={this.state.empty.property}
+                              value={this.state.socket.property}
                               index={-1}
                               onChange={onOptionChange}
                             />
@@ -1030,11 +1041,11 @@ class Agent extends Component {
                               fluid
                               aria-label="New socket configuration value"
                               autoComplete="off"
-                              key="empty-value"
+                              key="empty-value-2"
                               name="value"
                               path="socket"
                               placeholder="VALUE"
-                              value={this.state.empty.value}
+                              value={this.state.socket.value}
                               index={-1}
                               onChange={onOptionChange}
                             />
@@ -1046,17 +1057,17 @@ class Agent extends Component {
                             aria-label="Add socket configuration"
                             className="icon-primary a__tablebuttonicon"
                             disabled={
-                              !this.state.empty.property ||
-                              !this.state.empty.value
+                              !this.state.socket.property ||
+                              !this.state.socket.value
                             }
                             onClick={() => {
                               const agent = this.state.agent;
                               agent.socket.push({
-                                ...this.state.empty
+                                ...this.state.socket
                               });
                               this.setState({
                                 agent,
-                                empty: {
+                                socket: {
                                   property: '',
                                   value: ''
                                 }

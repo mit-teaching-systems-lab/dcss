@@ -4,7 +4,7 @@ exports[`Render 1 1 1`] = `
 <DocumentFragment>
   <div
     aria-expanded="false"
-    class="ui scrolling dropdown sp__dropdown"
+    class="ui scrolling dropdown"
     role="listbox"
     tabindex="0"
   >

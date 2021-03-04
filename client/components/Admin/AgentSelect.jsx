@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Dropdown, Table } from '@components/UI';
-import { getInteractions } from '@actions/interaction';
+import { getAgents } from '@actions/agent';
 
-const AgentInteractionSelectItem = ({ name, description }) => {
+const AgentSelect = ({ title, description }) => {
   return (
     <Table>
       <Table.Header>
         <Table.Row>
-          <Table.HeaderCell>{name}</Table.HeaderCell>
+          <Table.HeaderCell>{title}</Table.HeaderCell>
         </Table.Row>
       </Table.Header>
       <Table.Body>
@@ -23,30 +23,35 @@ const AgentInteractionSelectItem = ({ name, description }) => {
   );
 };
 
-AgentInteractionSelectItem.propTypes = {
+AgentSelect.propTypes = {
   description: PropTypes.string,
-  name: PropTypes.string
+  title: PropTypes.string
 };
 
 class AgentInteractionSelect extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      isReady: false
+    };
+
     this.onChange = this.onChange.bind(this);
   }
 
   async componentDidMount() {
-    if (!this.props.interactions.length) {
-      await this.props.getInteractions();
-    }
+    await this.props.getAgents();
+    this.setState({
+      isReady: true
+    });
   }
 
   onChange(e, { value }) {
-    const selected = value ? this.props.interactionsById[value] : null;
+    const selected = value ? this.props.agentsById[value] : null;
     this.props.onSelect(selected);
   }
 
   render() {
-    if (!this.props.interactions.length) {
+    if (!this.state.isReady) {
       return null;
     }
 
@@ -55,33 +60,46 @@ class AgentInteractionSelect extends Component {
       emptyText = 'No selection',
       fluid,
       item,
-      interactions,
+      agents,
       placeholder,
       search,
       selection,
+      types,
       value,
       error
     } = this.props;
 
-    // This empty "interaction" option is used to prevent the
+    // This empty "agent" option is used to prevent the
     // dropdown from treating "open" as "select".
-    interactions.unshift({
+    agents.unshift({
       id: '',
-      value: null,
-      name: emptyText
+      description: '',
+      title: emptyText
     });
 
-    const options = interactions.reduce((accum, interaction) => {
+    const options = agents.reduce((accum, agent) => {
       const option = {
-        key: interaction.id,
-        value: interaction.id,
-        text: interaction.name
+        key: agent.id,
+        value: agent.id,
+        text: agent.title
       };
 
-      if (interaction.id && interaction.name) {
-        option.content = <AgentInteractionSelectItem {...interaction} />;
+      if (agent.id && agent.title) {
+        option.content = <AgentSelect {...agent} />;
+
+        const isSupported = types.every(type =>
+          agent.interaction.types.includes(type)
+        );
+        if (isSupported) {
+          // Only display agents that are compatible
+          // with this component type
+          accum.push(option);
+        }
+      } else {
+        // Include the dummy.
+        accum.push(option);
       }
-      return accum.concat([option]);
+      return accum;
     }, []);
 
     const scrolling = true;
@@ -108,39 +126,43 @@ AgentInteractionSelect.propTypes = {
   error: PropTypes.bool,
   emptyText: PropTypes.string,
   fluid: PropTypes.bool,
-  interactions: PropTypes.array,
-  interactionsById: PropTypes.object,
+  agents: PropTypes.array,
+  agentsById: PropTypes.object,
   item: PropTypes.any,
   onSelect: PropTypes.func,
   placeholder: PropTypes.string,
   search: PropTypes.bool,
   selection: PropTypes.bool,
   style: PropTypes.object,
+  types: PropTypes.array,
   value: PropTypes.number
 };
 
 const mapStateToProps = (state, ownProps) => {
-  const sourceInteractions = state.interactions.length
-    ? state.interactions
-    : ownProps.interactions || [];
+  const types = ownProps.types && ownProps.types.length ? ownProps.types : [];
 
-  const interactions = sourceInteractions.slice();
-  const interactionsById = interactions.reduce(
-    (accum, interaction) => ({
+  const sourceAgents = state.agents.length
+    ? state.agents
+    : ownProps.agents || [];
+
+  const agents = sourceAgents.slice();
+  const agentsById = agents.reduce(
+    (accum, agent) => ({
       ...accum,
-      [interaction.id]: interaction
+      [agent.id]: agent
     }),
     {}
   );
 
   return {
-    interactions,
-    interactionsById
+    agents,
+    agentsById,
+    types
   };
 };
 
 const mapDispatchToProps = dispatch => ({
-  getInteractions: () => dispatch(getInteractions())
+  getAgents: () => dispatch(getAgents())
 });
 
 export default connect(
