@@ -222,6 +222,11 @@ test('Conditional.evaluate(data, boolean)', () => {
   });
 });
 
+test('Conditional.isLogicalOp()', () => {
+  expect(Conditional.isLogicalOp('$and')).toBe(true);
+  expect(Conditional.isLogicalOp('$or')).toBe(true);
+});
+
 test('Conditional.evaluate, $and in leading position is invalid', () => {
   expect(() => {
     Conditional.evaluate(
@@ -242,4 +247,67 @@ test('Conditional.evaluate, $or in leading position is invalid', () => {
       }
     );
   }).toThrow();
+});
+
+test('Conditional.terms', () => {
+  expect(Conditional.terms).toMatchInlineSnapshot(`
+    Array [
+      Object {
+        "def": "Logical AND",
+        "description": "Use this operation to chain two expressions. Both must evaluate to true for the condition to be met.",
+        "key": "$and",
+        "op": "expr1 && expr2",
+        "operator": "&&",
+      },
+      Object {
+        "def": "Logical OR",
+        "description": "Use this operation to chain two expressions. One or the other must evaluate to true for the condition to be met. \\"expr1\\" is evaluated first, if it is false, then \\"expr2\\" is evaluated. If it is true, then the condition is met. If both expressions evaluate to false, then the condition is not met.",
+        "key": "$or",
+        "op": "expr1 || expr2",
+        "operator": "||",
+      },
+      Object {
+        "def": "X equals Y",
+        "description": "Use this operation to determine if \\"X\\", which is the sum of affirmative responses from this agent, is equal to \\"Y\\", which is your comparison value.",
+        "key": "$eq",
+        "op": "X == Y",
+        "operator": "==",
+      },
+      Object {
+        "def": "X does not equal Y",
+        "description": "Use this operation to determine if \\"X\\", which is the sum of affirmative responses from this agent, is not equal to \\"Y\\", which is your comparison value.",
+        "key": "$ne",
+        "op": "X != Y",
+        "operator": "!=",
+      },
+      Object {
+        "def": "X is greater than Y",
+        "description": "Use this operation to determine if \\"X\\", which is the sum of affirmative responses from this agent, is greater than \\"Y\\", which is your comparison value.",
+        "key": "$gt",
+        "op": "X > Y",
+        "operator": ">",
+      },
+      Object {
+        "def": "X is greater than or equal to Y",
+        "description": "Use this operation to determine if \\"X\\", which is the sum of affirmative responses from this agent, is greater than or equal to \\"Y\\", which is your comparison value.",
+        "key": "$gte",
+        "op": "X >= Y",
+        "operator": ">=",
+      },
+      Object {
+        "def": "X is less than Y",
+        "description": "Use this operation to determine if \\"X\\", which is the sum of affirmative responses from this agent, is less than \\"Y\\", which is your comparison value.",
+        "key": "$lt",
+        "op": "X < Y",
+        "operator": "<",
+      },
+      Object {
+        "def": "X is less than or equal to Y",
+        "description": "Use this operation to determine if \\"X\\", which is the sum of affirmative responses from this agent, is less than or equal to \\"Y\\", which is your comparison value.",
+        "key": "$lte",
+        "op": "X <= Y",
+        "operator": "<=",
+      },
+    ]
+  `);
 });

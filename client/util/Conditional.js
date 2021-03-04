@@ -49,64 +49,84 @@ export const Op = {
 
 export const terms = [
   {
-    op: '$and',
-    en: 'x && y',
-    ex: 'Logical AND'
+    def: 'Logical AND',
+    description: 'Use this operation to chain two expressions. Both must evaluate to true for the condition to be met.',
+    key: '$and',
+    operator: '&&',
+    op: 'expr1 && expr2',
   },
   {
-    op: '$or',
-    en: 'x || y',
-    ex: 'Logical OR'
+    def: 'Logical OR',
+    description: 'Use this operation to chain two expressions. One or the other must evaluate to true for the condition to be met. "expr1" is evaluated first, if it is false, then "expr2" is evaluated. If it is true, then the condition is met. If both expressions evaluate to false, then the condition is not met.',
+    key: '$or',
+    operator: '||',
+    op: 'expr1 || expr2',
   },
   // {
-  //   op: '$between',
-  //   en: '(between value a b)',
-  //   ex: 'value is between two numbers a and b, inclusive'
+  //   def: 'value is between two numbers a and b, inclusive',
+  //   key: '$between',
+  //   operator: '$between',
+  //   op: '(between value a b)',
   // },
   // {
-  //   op: '$includes',
-  //   en: '(includes a b)',
-  //   ex: 'String or array value a includes value b'
+  //   def: 'String or array value a includes value b',
+  //   key: '$includes',
+  //   operator: '$includes',
+  //   op: '(includes a b)',
   // },
   {
-    op: '$eq',
-    en: 'x == y',
-    ex: 'Value x equals value y'
+    def: 'X equals Y',
+    description: 'Use this operation to determine if "X", which is the sum of affirmative responses from this agent, is equal to "Y", which is your comparison value.',
+    key: '$eq',
+    operator: '==',
+    op: 'X == Y',
   },
   {
-    op: '$gt',
-    en: 'x > y',
-    ex: 'Value x is greater than value y'
+    def: 'X does not equal Y',
+    description: 'Use this operation to determine if "X", which is the sum of affirmative responses from this agent, is not equal to "Y", which is your comparison value.',
+    key: '$ne',
+    operator: '!=',
+    op: 'X != Y',
   },
   {
-    op: '$gte',
-    en: 'x >= y',
-    ex: 'Value x is greater than or equal to value y'
+    def: 'X is greater than Y',
+    description: 'Use this operation to determine if "X", which is the sum of affirmative responses from this agent, is greater than "Y", which is your comparison value.',
+    key: '$gt',
+    operator: '>',
+    op: 'X > Y',
+  },
+  {
+    def: 'X is greater than or equal to Y',
+    description: 'Use this operation to determine if "X", which is the sum of affirmative responses from this agent, is greater than or equal to "Y", which is your comparison value.',
+    key: '$gte',
+    operator: '>=',
+    op: 'X >= Y',
   },
   // {
-  //   op: '$in',
-  //   en: '',
-  //   ex: ''
+  //   def: '',
+  //   key: '$in',
+  //   operator: '$in',
+  //   op: '',
   // },
   {
-    op: '$lt',
-    en: 'x < y',
-    ex: 'Value x is less than value y'
+    def: 'X is less than Y',
+    description: 'Use this operation to determine if "X", which is the sum of affirmative responses from this agent, is less than "Y", which is your comparison value.',
+    key: '$lt',
+    operator: '<',
+    op: 'X < Y',
   },
   {
-    op: '$lte',
-    en: 'x <= y',
-    ex: 'Value x is less than or equal to value y'
+    def: 'X is less than or equal to Y',
+    description: 'Use this operation to determine if "X", which is the sum of affirmative responses from this agent, is less than or equal to "Y", which is your comparison value.',
+    key: '$lte',
+    operator: '<=',
+    op: 'X <= Y',
   },
-  {
-    op: '$ne',
-    en: 'x != y',
-    ex: 'Value x does not equal value y'
-  }
   // {
-  //   op: '$notBetween',
-  //   en: '',
-  //   ex: ''
+  //   def: '',
+  //   key: '$notBetween',
+  //   operator: '$notBetween',
+  //   op: '',
   // },
 ];
 
@@ -115,6 +135,10 @@ const reconcileAndOr = (op, a, b) => {
 };
 
 export default {
+  terms,
+  isLogicalOp(op) {
+    return op === '$and' || op === '$or';
+  },
   evaluate(data, where) {
     if (typeof where !== 'object') {
       return Boolean(where);
