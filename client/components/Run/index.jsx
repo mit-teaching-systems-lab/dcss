@@ -342,7 +342,6 @@ class Run extends Component {
         />
       );
     }
-    console.log('lobby', lobby.isOpen);
     return (
       <Fragment>
         <Title content={runViewTitle} />
