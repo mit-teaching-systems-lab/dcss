@@ -10,15 +10,15 @@ async function setAgent(id, updates) {
 }
 
 async function setAgentSocketConfiguration(id, configuration) {
-  if (Object.entries(configuration).length === 0) {
-    return null;
-  }
-
   const result = await withClientTransaction(async client => {
     await client.query(sql`
       DELETE FROM agent_socket_configuration
       WHERE agent_id = ${id};
     `);
+
+    if (Object.entries(configuration).length === 0) {
+      return null;
+    }
 
     const records = Object.entries(configuration).map(([key, value]) => [
       id,
@@ -40,24 +40,19 @@ async function setAgentSocketConfiguration(id, configuration) {
 
     return result.rows[0] || null;
   });
-
-  if (!result) {
-    throw new Error(`Could not set agent configuration`);
-  }
-
   return result;
 }
 
 async function setAgentConfiguration(id, configuration) {
-  if (Object.entries(configuration).length === 0) {
-    return null;
-  }
-
   const result = await withClientTransaction(async client => {
     await client.query(sql`
       DELETE FROM agent_configuration
       WHERE agent_id = ${id};
     `);
+
+    if (Object.entries(configuration).length === 0) {
+      return null;
+    }
 
     const records = Object.entries(configuration).map(([key, value]) => [
       id,
@@ -79,10 +74,6 @@ async function setAgentConfiguration(id, configuration) {
 
     return result.rows[0] || null;
   });
-
-  if (!result) {
-    throw new Error(`Could not set agent configuration`);
-  }
 
   return result;
 }
