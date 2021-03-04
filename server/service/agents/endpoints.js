@@ -103,7 +103,6 @@ async function setAgent(req, res) {
   }
 
   if (socket) {
-    console.log("setAgent socket", socket);
     try {
       await db.setAgentSocketConfiguration(id, socket);
     } catch ({ message }) {

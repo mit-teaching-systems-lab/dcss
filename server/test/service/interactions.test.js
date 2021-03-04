@@ -254,6 +254,7 @@ describe('/api/interactions/*', () => {
         ...interaction,
         name: 'secret-interaction'
       };
+
       const response = await request({ path, method, body });
 
       expect(await response.json()).toMatchInlineSnapshot(`
@@ -264,7 +265,9 @@ describe('/api/interactions/*', () => {
             "description": "It will appear as an option for scenario authors to include in chat discussions within multi-participant scenarios. It receives participant chat messages.",
             "id": 1,
             "name": "secret-interaction",
-            "owner": Object {},
+            "owner": Object {
+              "id": 999,
+            },
             "types": Array [
               "ChatPrompt",
             ],
@@ -282,7 +285,7 @@ describe('/api/interactions/*', () => {
             "id": 1,
             "name": "secret-interaction",
             "owner": Object {
-              "id": undefined,
+              "id": 999,
             },
             "types": Array [
               "ChatPrompt",

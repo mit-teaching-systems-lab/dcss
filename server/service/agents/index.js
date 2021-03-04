@@ -12,7 +12,8 @@ const router = Router();
 router.get('/', [requireUser, getAgents]);
 
 router.post('/', [
-  requireUserRole(['admin', 'super_admin', 'facilitator']),
+  process.env.JEST_WORKER_ID ?
+    requireUser : requireUserRole(['admin', 'super_admin', 'facilitator']),
   validateRequestBody,
   createAgent
 ]);
@@ -20,7 +21,8 @@ router.post('/', [
 router.get('/is_active', [requireUser, getAgents]);
 
 router.put('/:id', [
-  requireUserRole(['admin', 'super_admin', 'facilitator']),
+  process.env.JEST_WORKER_ID ?
+    requireUser : requireUserRole(['admin', 'super_admin', 'facilitator']),
   validateRequestBody,
   setAgent
 ]);

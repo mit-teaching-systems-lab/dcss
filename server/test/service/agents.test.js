@@ -256,18 +256,7 @@ describe('/api/agents/*', () => {
             "is_active": true,
             "name": "secret-agent",
             "owner": Object {
-              "email": "super@email.com",
               "id": 999,
-              "is_anonymous": false,
-              "is_super": true,
-              "personalname": "Super User",
-              "roles": Array [
-                "participant",
-                "super_admin",
-                "facilitator",
-                "researcher",
-              ],
-              "username": "superuser",
             },
             "self": Object {
               "email": null,
@@ -312,18 +301,7 @@ describe('/api/agents/*', () => {
             "is_active": true,
             "name": "secret-agent",
             "owner": Object {
-              "email": "super@email.com",
               "id": 999,
-              "is_anonymous": false,
-              "is_super": true,
-              "personalname": "Super User",
-              "roles": Array [
-                "participant",
-                "super_admin",
-                "facilitator",
-                "researcher",
-              ],
-              "username": "superuser",
             },
             "self": Object {
               "email": null,
@@ -357,31 +335,31 @@ describe('/api/agents/*', () => {
       expect(await response.json()).toMatchInlineSnapshot(`
         Object {
           "error": true,
-          "message": "Creating an agent requires an owner, name and description.",
+          "message": "Creating an agent requires a title, description and interaction.",
         }
       `);
       expect(db.createAgent.mock.calls.length).toBe(0);
     });
 
-    test('post failure, missing requirements (name)', async () => {
+    test('post failure, missing requirements (description)', async () => {
       db.createAgent.mockImplementation(async props => null);
 
       const method = 'post';
       const body = {
         title: 'Secret Agent',
-        name: ''
+        description: ''
       };
       const response = await request({ path, method, body, status: 500 });
       expect(await response.json()).toMatchInlineSnapshot(`
         Object {
           "error": true,
-          "message": "Creating an agent requires an owner, name and description.",
+          "message": "Creating an agent requires a title, description and interaction.",
         }
       `);
       expect(db.createAgent.mock.calls.length).toBe(0);
     });
 
-    test('post failure', async () => {
+    test('post failure, missing requirements (interaction)', async () => {
       db.createAgent.mockImplementation(async props => null);
 
       const method = 'post';
@@ -389,13 +367,13 @@ describe('/api/agents/*', () => {
         ...agent,
         title: 'Secret Agent',
         name: 'secret-agent',
-        owner: null
+        interaction: null
       };
       const response = await request({ path, method, body, status: 500 });
       expect(await response.json()).toMatchInlineSnapshot(`
         Object {
           "error": true,
-          "message": "Creating an agent requires an owner, name and description.",
+          "message": "Creating an agent requires a title, description and interaction.",
         }
       `);
       expect(db.createAgent.mock.calls.length).toBe(0);
@@ -1049,64 +1027,6 @@ describe('/api/agents/*', () => {
           },
         ]
       `);
-    });
-  });
-
-  describe('/api/agents/interactions', () => {
-    const path = '/api/agents/interactions';
-
-    test('get success', async () => {
-      const response = await request({ path });
-      expect(await response.json()).toMatchInlineSnapshot(`
-        Object {
-          "interactions": Array [
-            Object {
-              "created_at": "2021-02-25T17:31:33.826Z",
-              "deleted_at": null,
-              "id": 1,
-              "name": "ChatPrompt",
-              "updated_at": null,
-            },
-            Object {
-              "created_at": "2021-02-25T17:31:33.826Z",
-              "deleted_at": null,
-              "id": 2,
-              "name": "AudioPrompt",
-              "updated_at": null,
-            },
-            Object {
-              "created_at": "2021-02-25T17:31:33.826Z",
-              "deleted_at": null,
-              "id": 3,
-              "name": "TextPrompt",
-              "updated_at": null,
-            },
-          ],
-        }
-      `);
-      expect(authmw.requireUser.mock.calls.length).toBe(1);
-      expect(db.getInteractions.mock.calls.length).toBe(1);
-      expect(db.getInteractions.mock.calls[0]).toMatchInlineSnapshot(
-        `Array []`
-      );
-    });
-
-    test('get failure', async () => {
-      const status = 500;
-
-      db.getInteractions.mockImplementation(async () => {
-        throw error;
-      });
-
-      const response = await request({ path, status });
-
-      expect(await response.json()).toMatchInlineSnapshot(`
-        Object {
-          "error": true,
-          "message": "something unexpected happened",
-        }
-      `);
-      expect(db.getInteractions.mock.calls.length).toBe(1);
     });
   });
 });
