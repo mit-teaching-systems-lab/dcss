@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import pluralize from 'pluralize';
 import AgentSelector from '@components/Slide/Components/AgentSelector';
 import TimeField from 'react-simple-timefield';
-import { Checkbox, Container, Form, Grid, Icon, Text } from '@components/UI';
+import { Checkbox, Container, Form, Grid, Icon, Segment, Text } from '@components/UI';
 import { type } from './meta';
 import DataHeader from '@components/Slide/Components/DataHeader';
 import Media from '@utils/Media';
@@ -180,26 +180,29 @@ class ChatPromptEditor extends React.Component {
                     onBlur={updateState}
                   />
                 </Form.Field>
-                <p tabIndex="0" className="cpe__paragraph">
-                  <Icon name="attention" />
-                  Set the timer to 00:00:00 for an unlimited discussion time.
-                </p>
-                <p tabIndex="0" className="cpe__paragraph">
-                  <Icon name="attention" />
-                  If the timer is set, the discussion will be marked{' '}
-                  <strong>Required</strong>. This ensures that participants
-                  cannot move forward until completing the discussion. Hosts
-                  will be able to override the timer.
-                </p>
-                <p tabIndex="0" className="cpe__paragraph">
-                  <Icon name="attention" />
-                  If no timer is set and this chat is set to{' '}
-                  <strong>Required</strong>, the host <strong>must</strong>{' '}
-                  close the discussion before participants can proceed. If no
-                  timer is set and this chat is not{' '}
-                  <strong>not Required</strong>, the discussion can be
-                  optionally closed.
-                </p>
+
+                <Segment>
+                  <p tabIndex="0" className="cpe__paragraph">
+                    <Icon name="attention" />
+                    Set the timer to 00:00:00 for an unlimited discussion time.
+                  </p>
+                  <p tabIndex="0" className="cpe__paragraph">
+                    <Icon name="attention" />
+                    If the timer is set, the discussion will be marked{' '}
+                    <strong>Required</strong>. This ensures that participants
+                    cannot move forward until completing the discussion. Hosts
+                    will be able to override the timer.
+                  </p>
+                  <p tabIndex="0" className="cpe__paragraph">
+                    <Icon name="attention" />
+                    If no timer is set and this chat is set to{' '}
+                    <strong>Required</strong>, the host <strong>must</strong>{' '}
+                    close the discussion before participants can proceed. If no
+                    timer is set and this chat is not{' '}
+                    <strong>not Required</strong>, the discussion can be
+                    optionally closed.
+                  </p>
+                </Segment>
               </Grid.Column>
             </Grid.Row>
             <Grid.Row columns={1}>
