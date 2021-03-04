@@ -71,59 +71,45 @@ describe('interactions', () => {
     expect(reducer.interactionsById(undefined, {})).toEqual(initialStateById);
   });
 
-  test('GET_AGENT_SUCCESS 1', () => {
+  test('GET_INTERACTION_SUCCESS 1', () => {
     const action = {
-      type: types.GET_AGENT_SUCCESS,
+      type: types.GET_INTERACTION_SUCCESS,
       interaction
     };
     const first = reducer.interaction(undefined, action);
     const second = reducer.interaction(undefined, action);
     expect(first).toMatchInlineSnapshot(`
       Object {
-        "configuration": Object {},
         "created_at": null,
         "deleted_at": null,
         "description": "This is a bot",
         "endpoint": "ws://",
         "id": 1,
-        "interaction": Object {
-          "id": null,
-        },
-        "is_active": false,
         "name": "ABC",
-        "owner": Object {},
-        "self": null,
-        "socket": Object {},
-        "title": "",
+        "owner": null,
+        "types": Array [],
         "updated_at": null,
       }
     `);
     expect(second).toMatchInlineSnapshot(`
       Object {
-        "configuration": Object {},
         "created_at": null,
         "deleted_at": null,
         "description": "This is a bot",
         "endpoint": "ws://",
         "id": 1,
-        "interaction": Object {
-          "id": null,
-        },
-        "is_active": false,
         "name": "ABC",
-        "owner": Object {},
-        "self": null,
-        "socket": Object {},
-        "title": "",
+        "owner": null,
+        "types": Array [],
         "updated_at": null,
       }
     `);
     expect(first).toEqual(second);
   });
 
-  test('GET_AGENT_SUCCESS 2', () => {
+  test('GET_INTERACTION_SUCCESS 2', () => {
     const action = {
-      type: types.GET_AGENT_SUCCESS,
+      type: types.GET_INTERACTION_SUCCESS,
       interaction
     };
     expect(reducer.interactions(state, action)).toMatchInlineSnapshot(`
@@ -138,9 +124,9 @@ describe('interactions', () => {
     `);
   });
 
-  test('GET_AGENT_SUCCESS 3', () => {
+  test('GET_INTERACTION_SUCCESS 3', () => {
     const action = {
-      type: types.GET_AGENT_SUCCESS,
+      type: types.GET_INTERACTION_SUCCESS,
       interaction
     };
     expect(
@@ -162,11 +148,11 @@ describe('interactions', () => {
     `);
   });
 
-  test('GET_AGENT_SUCCESS 4', () => {
+  test('GET_INTERACTION_SUCCESS 4', () => {
     const different = JSON.parse(JSON.stringify(interaction));
     different.id = 2;
     const action = {
-      type: types.SET_AGENT_SUCCESS,
+      type: types.SET_INTERACTION_SUCCESS,
       interaction: different
     };
     expect(
@@ -194,62 +180,48 @@ describe('interactions', () => {
     `);
   });
 
-  test('SET_AGENT_SUCCESS 1', () => {
+  test('SET_INTERACTION_SUCCESS 1', () => {
     const action = {
-      type: types.SET_AGENT_SUCCESS,
+      type: types.SET_INTERACTION_SUCCESS,
       interaction
     };
     const first = reducer.interaction(undefined, action);
     const second = reducer.interaction(undefined, action);
     expect(first).toMatchInlineSnapshot(`
       Object {
-        "configuration": Object {},
         "created_at": null,
         "deleted_at": null,
         "description": "This is a bot",
         "endpoint": "ws://",
         "id": 1,
-        "interaction": Object {
-          "id": null,
-        },
-        "is_active": false,
         "name": "ABC",
-        "owner": Object {},
-        "self": null,
-        "socket": Object {},
-        "title": "",
+        "owner": null,
+        "types": Array [],
         "updated_at": null,
       }
     `);
     expect(second).toMatchInlineSnapshot(`
       Object {
-        "configuration": Object {},
         "created_at": null,
         "deleted_at": null,
         "description": "This is a bot",
         "endpoint": "ws://",
         "id": 1,
-        "interaction": Object {
-          "id": null,
-        },
-        "is_active": false,
         "name": "ABC",
-        "owner": Object {},
-        "self": null,
-        "socket": Object {},
-        "title": "",
+        "owner": null,
+        "types": Array [],
         "updated_at": null,
       }
     `);
     expect(first).toEqual(second);
   });
 
-  test('SET_AGENT_SUCCESS 2', () => {
+  test('SET_INTERACTION_SUCCESS 2', () => {
     const different = JSON.parse(JSON.stringify(interaction));
     different.id = 2;
 
     const action = {
-      type: types.SET_AGENT_SUCCESS,
+      type: types.SET_INTERACTION_SUCCESS,
       interaction: different
     };
 
@@ -271,9 +243,9 @@ describe('interactions', () => {
     `);
   });
 
-  test('SET_AGENT_SUCCESS 3', () => {
+  test('SET_INTERACTION_SUCCESS 3', () => {
     const action = {
-      type: types.SET_AGENT_SUCCESS,
+      type: types.SET_INTERACTION_SUCCESS,
       interaction
     };
 
@@ -289,9 +261,9 @@ describe('interactions', () => {
     `);
   });
 
-  test('SET_AGENT_SUCCESS 4', () => {
+  test('SET_INTERACTION_SUCCESS 4', () => {
     const action = {
-      type: types.SET_AGENT_SUCCESS,
+      type: types.SET_INTERACTION_SUCCESS,
       interaction
     };
     expect(
@@ -313,11 +285,11 @@ describe('interactions', () => {
     `);
   });
 
-  test('SET_AGENT_SUCCESS 5', () => {
+  test('SET_INTERACTION_SUCCESS 5', () => {
     const different = JSON.parse(JSON.stringify(interaction));
     different.id = 2;
     const action = {
-      type: types.SET_AGENT_SUCCESS,
+      type: types.SET_INTERACTION_SUCCESS,
       interaction: different
     };
     expect(
@@ -345,9 +317,9 @@ describe('interactions', () => {
     `);
   });
 
-  test('GET_AGENTS_SUCCESS 1', () => {
+  test('GET_INTERACTIONS_SUCCESS 1', () => {
     const action = {
-      type: types.GET_AGENTS_SUCCESS,
+      type: types.GET_INTERACTIONS_SUCCESS,
       interactions
     };
     expect(reducer.interactions(state, action)).toMatchInlineSnapshot(`
@@ -396,9 +368,9 @@ describe('interactions', () => {
     `);
   });
 
-  test('GET_AGENTS_SUCCESS 2', () => {
+  test('GET_INTERACTIONS_SUCCESS 2', () => {
     const action = {
-      type: types.GET_AGENTS_SUCCESS,
+      type: types.GET_INTERACTIONS_SUCCESS,
       interactions
     };
     expect(reducer.interactionsById(state, action)).toMatchInlineSnapshot(`
@@ -425,9 +397,9 @@ describe('interactions', () => {
     `);
   });
 
-  test('GET_AGENTS_SUCCESS 3', () => {
+  test('GET_INTERACTIONS_SUCCESS 3', () => {
     const action = {
-      type: types.GET_AGENTS_SUCCESS,
+      type: types.GET_INTERACTIONS_SUCCESS,
       interactions: [
         { id: 1, endpoint: 'ws://', description: 'This is a bot' },
         { id: 1, endpoint: 'ws://', description: 'This is a bot' }, // this is intentional
