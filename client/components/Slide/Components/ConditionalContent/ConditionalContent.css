@@ -6,3 +6,10 @@
   margin-top: unset;
   padding: 0 0.25em;
 }
+
+
+.cce__cell-constraint {
+  width: 230px !important;
+  min-width: 230px !important;
+  max-width: 230px !important;
+}

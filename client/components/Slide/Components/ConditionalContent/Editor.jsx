@@ -25,21 +25,24 @@ import '@components/Slide/Components/MultiPathResponse/MultiPathResponse.css';
 import '@components/Admin/Agents.css';
 import './ConditionalContent.css';
 
-const operationDropdownOptions = terms.map(({ op, en, ex }) => {
+const operationDropdownOptions = terms.map(({ key, op, def, description }) => {
   return {
-    key: op,
-    value: op,
-    text: en,
+    key,
+    value: key,
+    text: op,
     content: (
       <Table>
         <Table.Header>
           <Table.Row>
-            <Table.HeaderCell>{en}</Table.HeaderCell>
+            <Table.HeaderCell><code>{op}</code></Table.HeaderCell>
           </Table.Row>
         </Table.Header>
         <Table.Body>
           <Table.Row>
-            <Table.Cell>{ex}</Table.Cell>
+            <Table.Cell>
+              {def}:<br />
+              {description}
+            </Table.Cell>
           </Table.Row>
         </Table.Body>
       </Table>
@@ -140,6 +143,7 @@ class ConditionalContentEditor extends React.Component {
     if (value === -1) {
       return;
     }
+
     const { rules } = this.state;
     rules[index][name] = value;
 
@@ -194,7 +198,7 @@ class ConditionalContentEditor extends React.Component {
       onRuleDetailChange,
       onRuleSearchChange
     } = this;
-    const options = operationDropdownOptions.slice();
+    const baseOptions = operationDropdownOptions.slice();
 
     let ComponentEditor = null;
 
@@ -217,38 +221,68 @@ class ConditionalContentEditor extends React.Component {
       });
     };
 
-    options.unshift({
+    baseOptions.unshift({
       id: '',
       key: '',
       value: 'Select an operator'
     });
 
+
+    const agentsSource = scenario.agent
+      ? [scenario.agent]
+      : scenario.slides.reduce((accum, slide) => {
+        const agents = slide.components.reduce((accum, component) => {
+          if (component.agent) {
+            accum.push(agent);
+          }
+          return accum;
+        }, []);
+        return accum.concat(agents);
+      }, []);
+
+    const agentsInUse = agentsSource.reduce((accum, agent) => {
+      if (!agent) {
+        return accum;
+      }
+      if (accum.find(a => a.id === agent.id)) {
+        return accum;
+      }
+      return [...new Set([...accum, agent.id])];
+    }, []);
+
     return (
       <Form>
         <Container fluid>
           <Grid>
-            <Grid.Row className="cce__gridrow">
+            <Grid.Row>
               <Grid.Column>
                 <AgentSelector
                   label="Select an AI agent:"
                   agent={agent}
+                  agentsInUse={agentsInUse}
                   onChange={onChange}
                   types={['AudioPrompt', 'ConversationPrompt', 'TextResponse']}
                   updateState={updateState}
                 />
-
-                <p tabIndex="0" className="cce__paragraph">
-                  Need to explain here what this does, how and why
-                </p>
+                <Segment>
+                  <p tabIndex="0" className="cce__paragraph">
+                    Create rules that are used to determine if the content below will be displayed
+                    to the participant.
+                  </p>
+                  <p tabIndex="0" className="cce__paragraph">
+                    For every rule, <code>X</code> is the sum of affirmative responses from
+                    the agent, and <code>Y</code> is your comparison value.
+                  </p>
+                </Segment>
                 <Table definition striped unstackable>
                   <Table.Header>
                     <Table.Row>
                       <Table.HeaderCell className="mpr__thead-background" />
-                      <Table.HeaderCell>Operator</Table.HeaderCell>
-                      <Table.HeaderCell className="mpr__goto-slide-constraint">
-                        Y Value
+                      <Table.HeaderCell>Operation</Table.HeaderCell>
+                      <Table.HeaderCell className="cce__cell-constraint">
+                        Y value
                       </Table.HeaderCell>
-                      <Table.HeaderCell className="mpr__goto-slide-constraint">
+                      <Table.HeaderCell className="cce__cell-constraint">
                         Evaluates as...
                       </Table.HeaderCell>
                     </Table.Row>
@@ -267,6 +301,43 @@ class ConditionalContentEditor extends React.Component {
                       const { operator, value } = rule;
                       const baseKey = Identity.key({ id, index });
                       const ruleKey = Identity.key({ baseKey, rule });
+
+                      const isFirst = index === 0;
+                      const isLast = index - 1 === rules.length;
+                      const lastRule = rules[index - 1];
+
+                      const options = baseOptions.filter((option) => {
+                        const isLogical = Conditional.isLogicalOp(option.value);
+                        // Logical operators cannot appear at the first or last position
+                        // Logical operators cannot appear in sequence
+                        if (isLogical &&
+                            (isFirst || isLast ||
+                              lastRule && Conditional.isLogicalOp(lastRule.operator))) {
+                          return false;
+                        }
+                        return true;
+                      });
+
+                      const isLogical = operator && Conditional.isLogicalOp(operator);
+                      const operatorDisplay = operator
+                        ? terms.find(term => term.key === operator).operator
+                        : null;
+
+                      const binOpEvalDisplay = operator && !isLogical ? (
+                        <code>
+                          X {operatorDisplay} {value}
+                        </code>
+                      ) : null;
+
+                      const logicalOpEvalDisplay = isLogical ? (
+                        <code>
+                          {operatorDisplay}
+                        </code>
+                      ) : null;
+
+                      const evalDisplay = logicalOpEvalDisplay || binOpEvalDisplay;
+                      const evaluation = evalDisplay || 'Select an operator to create a rule';
+                      const valueIsDisabled = isLogical;
                       return (
                         <Table.Row
                           className="mpr__cursor-grab"
@@ -302,27 +373,24 @@ class ConditionalContentEditor extends React.Component {
                             />
                           </Table.Cell>
                           <Table.Cell>
-                            <Input
-                              fluid
-                              name="value"
-                              autoComplete="off"
-                              aria-label={`Enter the operator for choice ${index +
-                                1}`}
-                              index={index}
-                              value={value}
-                              onChange={onRuleDetailChange}
-                              options={options}
-                              key={`rule-operator-${baseKey}`}
-                            />
+                            {valueIsDisabled ? null : (
+                              <Input
+                                fluid
+                                name="value"
+                                autoComplete="off"
+                                disabled={valueIsDisabled}
+                                aria-label={`Enter the operator for choice ${index +
+                                  1}`}
+                                index={index}
+                                value={value}
+                                onChange={onRuleDetailChange}
+                                options={options}
+                                key={`rule-operator-${baseKey}`}
+                              />
+                            )}
                           </Table.Cell>
                           <Table.Cell>
-                            {!value || !operator ? (
-                              'Invalid rule'
-                            ) : (
-                              <code>
-                                $value {operator} {value}
-                              </code>
-                            )}
+                            {evaluation}
                           </Table.Cell>
                         </Table.Row>
                       );
@@ -335,7 +403,7 @@ class ConditionalContentEditor extends React.Component {
                         key={Identity.key({ id, ['empty']: true })}
                         negative
                       >
-                        <Table.Cell colSpan={3}>
+                        <Table.Cell colSpan={4}>
                           There are no rules defined, which means this component
                           will not display anything on the slide. You must
                           create at least one rule to display the content in

@@ -6,7 +6,7 @@ import AgentSelect from '@components/Admin/AgentSelect';
 const ariaLabel = 'Optional AI agent to engage in this discussion:';
 
 function AgentSelector(props) {
-  const { agent, label, onChange, type, types = [] } = props;
+  const { agent, agentsInUse, label, onChange, type, types = [] } = props;
   const value = agent ? agent.id : null;
 
   if (type) {
@@ -14,6 +14,7 @@ function AgentSelector(props) {
   }
 
   const agentSelectProps = {
+    agentsInUse,
     error: false,
     'aria-label': label || ariaLabel,
     fluid: true,
@@ -43,6 +44,7 @@ function AgentSelector(props) {
 
 AgentSelector.propTypes = {
   agent: PropTypes.any,
+  agentsInUse: PropTypes.array,
   label: PropTypes.string,
   type: PropTypes.string,
   types: PropTypes.array,

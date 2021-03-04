@@ -116,12 +116,12 @@ class AgentInteractionSelect extends Component {
       value,
       error
     };
-
     return <Dropdown {...dropdownProps} />;
   }
 }
 
 AgentInteractionSelect.propTypes = {
+  agentsInUse: PropTypes.array,
   defaultValue: PropTypes.number,
   error: PropTypes.bool,
   emptyText: PropTypes.string,
@@ -140,12 +140,26 @@ AgentInteractionSelect.propTypes = {
 
 const mapStateToProps = (state, ownProps) => {
   const types = ownProps.types && ownProps.types.length ? ownProps.types : [];
-
+  const agentsInUse = ownProps.agentsInUse;
   const sourceAgents = state.agents.length
     ? state.agents
     : ownProps.agents || [];
 
-  const agents = sourceAgents.slice();
+  // Ensure that we only display agents that are actually in use.
+  // If none are in use, then the component does nothing.
+  const filteredAgents = agentsInUse
+    ? sourceAgents.filter(a => agentsInUse.includes(a.id))
+    : sourceAgents;
+
+  const emptyText = !filteredAgents.length
+    ? 'There are currently no compatible agents in use'
+    : ownProps.emptyText;
+
+  const placeholder = !filteredAgents.length
+    ? emptyText
+    : ownProps.placeholder;
+
+  const agents = filteredAgents.slice();
   const agentsById = agents.reduce(
     (accum, agent) => ({
       ...accum,
@@ -157,6 +171,8 @@ const mapStateToProps = (state, ownProps) => {
   return {
     agents,
     agentsById,
+    emptyText,
+    placeholder,
     types
   };
 };
