@@ -47,6 +47,69 @@ export const Op = {
   }
 };
 
+export const terms = [
+  {
+    op: '$and',
+    en: 'x && y',
+    ex: 'Logical AND'
+  },
+  {
+    op: '$or',
+    en: 'x || y',
+    ex: 'Logical OR'
+  },
+  // {
+  //   op: '$between',
+  //   en: '(between value a b)',
+  //   ex: 'value is between two numbers a and b, inclusive'
+  // },
+  // {
+  //   op: '$includes',
+  //   en: '(includes a b)',
+  //   ex: 'String or array value a includes value b'
+  // },
+  {
+    op: '$eq',
+    en: 'x == y',
+    ex: 'Value x equals value y'
+  },
+  {
+    op: '$gt',
+    en: 'x > y',
+    ex: 'Value x is greater than value y'
+  },
+  {
+    op: '$gte',
+    en: 'x >= y',
+    ex: 'Value x is greater than or equal to value y'
+  },
+  // {
+  //   op: '$in',
+  //   en: '',
+  //   ex: ''
+  // },
+  {
+    op: '$lt',
+    en: 'x < y',
+    ex: 'Value x is less than value y'
+  },
+  {
+    op: '$lte',
+    en: 'x <= y',
+    ex: 'Value x is less than or equal to value y'
+  },
+  {
+    op: '$ne',
+    en: 'x != y',
+    ex: 'Value x does not equal value y'
+  },
+  // {
+  //   op: '$notBetween',
+  //   en: '',
+  //   ex: ''
+  // },
+];
+
 const reconcileAndOr = (op, a, b) => {
   return op === '$and' ? a && b : a || b;
 };
