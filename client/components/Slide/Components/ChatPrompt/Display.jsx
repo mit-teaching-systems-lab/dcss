@@ -3,11 +3,13 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { sentenceCase } from 'change-case';
 import { type } from './meta';
+import { getAgent } from '@actions/agent';
 import { getResponse } from '@actions/response';
-import Chat, { makeSocketPayload } from '@components/Chat';
+import Chat from '@components/Chat';
 import { Dropdown, Icon, Menu } from '@components/UI';
 import Identity from '@utils/Identity';
 import Media from '@utils/Media';
+import Payload from '@utils/Payload';
 import Storage from '@utils/Storage';
 import Timer from './Timer';
 
@@ -43,6 +45,10 @@ const resultToRunEventMap = {
 // argument, but is otherwise a no-op;
 const emptyEvent = {};
 
+const needsToFetchAgent = agent => {
+  return agent && agent.id && !agent.title && !agent.description && !agent.created_at;
+};
+
 class Display extends Component {
   constructor(props) {
     super(props);
@@ -52,6 +58,7 @@ class Display extends Component {
     this.state = {
       isReady: false,
       isRestart: false,
+      hasAQuorum: false,
       hasSubmittedResponse: false,
       value: persisted.value
     };
@@ -108,6 +115,10 @@ class Display extends Component {
       this.setState({ hasSubmittedResponse, value });
     }
 
+    if (needsToFetchAgent(this.props.agent)) {
+      await this.props.getAgent(this.props.agent.id);
+    }
+
     const slide = {
       index: this.slideIndex
     };
@@ -118,24 +129,20 @@ class Display extends Component {
     this.props.socket.on(CHAT_CLOSED_FOR_SLIDE, this.onChange);
     this.props.socket.on(CHAT_QUORUM_FOR_SLIDE, this.onQuorum);
 
-    const payload = makeSocketPayload(this.props);
+    const basePayload = Payload.compose(this.props);
     const chatSlidePayload = {
-      ...payload,
-      slide
-    };
-    const chatUserPayload = {
-      ...payload,
+      ...basePayload,
       slide
     };
     const userJoinPayload = {
-      ...payload,
+      ...basePayload,
       run: Storage.get(this.storageKey)
     };
 
-    this.props.socket.emit(CREATE_USER_CHANNEL, payload);
-    this.props.socket.emit(CREATE_CHAT_CHANNEL, payload);
+    this.props.socket.emit(CREATE_USER_CHANNEL, basePayload);
+    this.props.socket.emit(CREATE_CHAT_CHANNEL, basePayload);
     this.props.socket.emit(CREATE_CHAT_SLIDE_CHANNEL, chatSlidePayload);
-    this.props.socket.emit(CREATE_CHAT_USER_CHANNEL, chatUserPayload);
+    this.props.socket.emit(CREATE_CHAT_USER_CHANNEL, chatSlidePayload);
     this.props.socket.emit(USER_JOIN_SLIDE, userJoinPayload);
 
     this.setState({
@@ -164,7 +171,7 @@ class Display extends Component {
   onBeforeUnload() {
     this.props.socket.emit(
       USER_PART_SLIDE,
-      makeSocketPayload(this.props, {
+      Payload.compose(this.props, {
         run: Storage.get(this.storageKey)
       })
     );
@@ -183,7 +190,13 @@ class Display extends Component {
       index: this.slideIndex
     };
 
-    this.props.socket.emit(TIMER_START, { chat, slide, timer });
+    if (timer) {
+      this.props.socket.emit(TIMER_START, { chat, slide, timer });
+    }
+
+    this.setState({
+      hasAQuorum: true
+    });
   }
 
   onChange({ chat, slide, result }) {
@@ -218,8 +231,8 @@ class Display extends Component {
   }
 
   render() {
-    const { chat, auto, isEmbeddedInSVG, responseId, timer, user } = this.props;
-    const { isReady, isRestart, hasSubmittedResponse } = this.state;
+    const { agent, chat, auto, isEmbeddedInSVG, responseId, timer, user } = this.props;
+    const { isReady, isRestart, hasAQuorum, hasSubmittedResponse } = this.state;
 
     if (isEmbeddedInSVG || !this.isScenarioRun) {
       return null;
@@ -259,6 +272,7 @@ class Display extends Component {
     const header = !defaultValue && timer ? timerRender : null;
 
     const chatProps = {
+      agent,
       chat,
       header,
       key,
@@ -315,12 +329,14 @@ class Display extends Component {
       </Menu.Item>
     ) : null;
 
+
     const dropdownOrResultOfDiscussion = !defaultValue ? (
       <Dropdown
         item
         className="cpd__dropdown"
         name="result"
         placeholder="Close discussion as..."
+        disabled={!hasAQuorum}
         closeOnChange={true}
         defaultValue={defaultValue}
         options={options}
@@ -355,8 +371,10 @@ Display.defaultProps = {
 };
 
 Display.propTypes = {
+  agent: PropTypes.object,
   chat: PropTypes.object,
   cohort: PropTypes.object,
+  getAgent: PropTypes.func,
   getResponse: PropTypes.func,
   auto: PropTypes.bool,
   isEmbeddedInSVG: PropTypes.bool,
@@ -374,12 +392,21 @@ Display.propTypes = {
   user: PropTypes.object
 };
 
-const mapStateToProps = state => {
-  const { cohort, chat, run, scenario, user } = state;
-  return { cohort, chat, run, scenario, user };
+const mapStateToProps = (state, ownProps) => {
+  const { agentsById, cohort, chat, run, scenario, user } = state;
+  const ownAgent = ownProps.agent || {};
+  const stateAgent = agentsById[ownProps?.agent?.id] || {};
+  const agent = {
+    ...ownAgent,
+    ...stateAgent
+  };
+  console.log("agent", agent);
+
+  return { agent, cohort, chat, run, scenario, user };
 };
 
 const mapDispatchToProps = dispatch => ({
+  getAgent: id => dispatch(getAgent(id)),
   getResponse: params => dispatch(getResponse(params))
 });
 
