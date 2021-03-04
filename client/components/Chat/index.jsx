@@ -33,6 +33,7 @@ import ChatMessages from '@components/Chat/ChatMessages';
 import ChatMinMax from '@components/Chat/ChatMinMax';
 import { Button, Ref } from '@components/UI';
 import Layout from '@utils/Layout';
+import Payload from '@utils/Payload';
 
 import './Chat.css';
 
@@ -66,23 +67,6 @@ function isValidMessage(message) {
   return true;
 }
 
-export function makeSocketPayload(props, data = {}) {
-  const { agent = {}, chat = {}, response = {}, user = {} } = props;
-  return {
-    agent,
-    chat: {
-      id: chat.id,
-      host_id: chat.host_id
-    },
-    response: {
-      id: response.id
-    },
-    user: {
-      id: user.id
-    },
-    ...data
-  };
-}
 
 function getAvailableHeightForComposer(totalHeight) {
   // top + gap + button tray + bottom
@@ -178,7 +162,7 @@ class Chat extends Component {
 
     // TODO: determine if this is the best way to indicate that a
     // user has joined
-    // this.props.socket.emit(USER_JOIN, makeSocketPayload(this.props));
+    // this.props.socket.emit(USER_JOIN, Payload.compose(this.props));
 
     await this.props.getChatUsersByChatId(this.props.chat.id);
 
@@ -190,8 +174,8 @@ class Chat extends Component {
     this.props.socket.on(CHAT_MESSAGE_CREATED, this.onMessageReceived);
     this.props.socket.on(JOIN_OR_PART, this.onJoinOrPart);
 
-    this.props.socket.emit(CREATE_CHAT_CHANNEL, makeSocketPayload(this.props));
-    this.props.socket.emit(CREATE_USER_CHANNEL, makeSocketPayload(this.props));
+    this.props.socket.emit(CREATE_CHAT_CHANNEL, Payload.compose(this.props));
+    this.props.socket.emit(CREATE_USER_CHANNEL, Payload.compose(this.props));
 
     this.setState({
       isReady: true
@@ -217,7 +201,7 @@ class Chat extends Component {
   onBeforeUnload() {
     // TODO: determine if this is the best way to indicate that a
     // user has parted
-    // this.props.socket.emit(USER_PART, makeSocketPayload(this.props));
+    // this.props.socket.emit(USER_PART, Payload.compose(this.props));
     this.hasUnloaded = true;
 
     if (this.hasUnmounted) {
@@ -343,7 +327,7 @@ class Chat extends Component {
     if (isValidMessage(content)) {
       this.props.socket.emit(
         CHAT_MESSAGE_CREATED,
-        makeSocketPayload(this.props, {
+        Payload.compose(this.props, {
           content
         })
       );
@@ -383,7 +367,7 @@ class Chat extends Component {
       onQuote,
       sendNewMessage
     } = this;
-    const { chat } = this.props;
+    const { agent, chat } = this.props;
     const { id, isClosed, isMinimized, isReady } = this.state;
     const defaultValue = content || '';
 
@@ -445,6 +429,7 @@ class Chat extends Component {
     // ChatMessage props
     const slice = Layout.isForMobile() ? -10 : -20;
     const cmProps = {
+      agent,
       chat,
       isMinimized,
       onQuote,
@@ -528,6 +513,8 @@ class Chat extends Component {
 }
 
 Chat.propTypes = {
+  // This must always come from ChatPrompt/Display
+  agent: PropTypes.object,
   chat: PropTypes.object,
   cohort: PropTypes.object,
   getChat: PropTypes.func,

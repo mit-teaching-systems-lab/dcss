@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 // import { generateAvatar } from 'robohash-avatars';
 import { connect } from 'react-redux';
 import withSocket, {
-  CHAT_CAN_RECEIVE,
+  AGENT_PAUSE,
+  AGENT_START,
   CHAT_MESSAGE_CREATED,
   CHAT_MESSAGE_UPDATED
 } from '@hoc/withSocket';
@@ -30,6 +31,7 @@ import Avatar from '@utils/Avatar';
 import Identity from '@utils/Identity';
 import Layout from '@utils/Layout';
 import Moment from '@utils/Moment';
+import Payload from '@utils/Payload';
 import scrollIntoView from '@utils/scrollIntoView';
 
 import './Chat.css';
@@ -101,42 +103,55 @@ class ChatMessages extends Component {
   }
 
   async componentDidMount() {
-    const { chat, user } = this.props;
+    const { agent, chat, user } = this.props;
     const messages = [];
     const count = await this.props.getChatMessagesCountByChatId(chat.id);
 
     if (count) {
-      messages.push(...(await this.props.getChatMessagesByChatId(chat.id)));
+      const received = await this.props.getChatMessagesByChatId(chat.id);
+      messages.push(
+        ...received.filter(message => {
+          if (message.recipient_id && message.recipient_id !== user.id) {
+            return false;
+          }
+          return true;
+        })
+      );
+    }
+
+    this.isComponentMounted = true;
+    this.props.socket.on(CHAT_MESSAGE_CREATED, this.onMessageReceived);
+    this.props.socket.on(CHAT_MESSAGE_UPDATED, this.onMessageUpdated);
+
+    if (agent) {
+      this.props.socket.emit(
+        AGENT_START, Payload.compose(this.props, { agent, user })
+      );
     }
 
     this.setState({
       isReady: true,
       messages
     });
-
-    this.isComponentMounted = true;
-    this.props.socket.on(CHAT_MESSAGE_CREATED, this.onMessageReceived);
-    this.props.socket.on(CHAT_MESSAGE_UPDATED, this.onMessageUpdated);
-    this.props.socket.emit(CHAT_CAN_RECEIVE, {
-      chat,
-      user: {
-        id: user.id
-      }
-    });
   }
 
   componentWillUnmount() {
+    const { agent } = this.props;
     this.isComponentMounted = false;
     this.props.socket.off(CHAT_MESSAGE_CREATED, this.onMessageReceived);
     this.props.socket.off(CHAT_MESSAGE_UPDATED, this.onMessageUpdated);
+
+    if (agent) {
+      this.props.socket.emit(
+        AGENT_PAUSE, Payload.compose(this.props, { agent })
+      );
+    }
   }
 
   async onMessageReceived(data) {
     if (!this.isComponentMounted) {
       return;
     }
-
-    console.log('onMessageReceived', data);
 
     if (data.chat_id === this.props.chat.id) {
       const { messages } = this.state;
@@ -450,6 +465,8 @@ class ChatMessages extends Component {
 }
 
 ChatMessages.propTypes = {
+  // This must always come from ChatPrompt/Display -> Chat
+  agent: PropTypes.object,
   chat: PropTypes.object,
   getChatMessagesByChatId: PropTypes.func,
   getChatMessagesCountByChatId: PropTypes.func,
@@ -459,6 +476,8 @@ ChatMessages.propTypes = {
   messages: PropTypes.array,
   onMessageReceived: PropTypes.func,
   onQuote: PropTypes.func,
+  run: PropTypes.object,
+  scenario: PropTypes.object,
   setMessageById: PropTypes.func,
   slice: PropTypes.number,
   socket: PropTypes.object,
