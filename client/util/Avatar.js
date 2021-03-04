@@ -1,7 +1,7 @@
 import md5 from 'md5';
 
 export default class Avatar {
-  constructor(user) {
+  constructor(user = {}) {
     this.key = user.email
       ? md5(user.email.trim().toLowerCase())
       : user.username;
