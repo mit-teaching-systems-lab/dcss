@@ -1,9 +1,10 @@
+const { parse } = require('node-html-parser');
 const hash = require('object-hash');
 const Socket = require('./');
 const { notifier } = require('../../util/db');
 const {
-  AGENT_JOIN,
-  CHAT_CAN_RECEIVE,
+  AGENT_PAUSE,
+  AGENT_START,
   CHAT_CREATED,
   CHAT_CLOSED_FOR_SLIDE,
   CHAT_CLOSED,
@@ -69,9 +70,30 @@ const cache = {
     /*
       [room key]: socket client
     */
-  },
-  backlog: []
+  }
 };
+
+const extractTextContent = (html) => parse(html).textContent;
+
+
+const makeRemoteSafeAuthPayload = ({ agent, chat, user }) => {
+  const payload = {
+    agent: {
+      id: agent.id,
+      name: agent.name,
+      configuration: agent.configuration
+    },
+    chat: {
+      id: chat.id,
+    },
+    user: {
+      id: user.id,
+      name: user.personalname || user.username
+    }
+  };
+  return payload;
+};
+
 
 class SocketManager {
   constructor(server) {
@@ -82,8 +104,6 @@ class SocketManager {
     this.io = new Socket.Server(server);
     this.io.on('connection', socket => {
       socketlog('Connected', socket.id);
-
-      let chatCanReceive = true;
 
       // Notifications
       //
@@ -120,15 +140,32 @@ class SocketManager {
             ? `${data.chat_id}-user-${data.recipient_id}`
             : data.chat_id;
 
-          if (cache.backlog[data.recipient_id]) {
-            const event = CHAT_MESSAGE_CREATED;
-            cache.backlog[data.recipient_id].push({
-              room,
-              event,
-              data
+          this.io.to(room).emit(CHAT_MESSAGE_CREATED, data);
+
+          // Check if there is an active agent client for
+          // the user that wrote the message. If there is,
+          // we'll send the contents of their message to
+          // the agent.
+
+          const clientKey = `${data.chat_id}-user-${data.user_id}`;
+          console.log(clientKey);
+          if (cache.clients[clientKey]) {
+            const {
+              client,
+              auth,
+            } = cache.clients[clientKey];
+
+            // IMPORTANT! THIS WILL ONLY SEND TEXT CONTENT!
+            // ANY IMAGE ATTACHMENTS OR EMBEDS WILL BE IGNORED
+            //
+            // console.log(client);
+            const value = extractTextContent(data.content);
+            console.log(auth);
+            console.log(data);
+
+            client.emit('request', {
+              value
             });
-          } else {
-            this.io.emit(CHAT_MESSAGE_CREATED, data);
           }
         });
         // console.log('chat_message_created listener is registered');
@@ -145,31 +182,39 @@ class SocketManager {
       if (!notifier.listenerCount('join_or_part_chat')) {
         notifier.on('join_or_part_chat', async data => {
           console.log('join_or_part_chat', data);
+          console.log(data);
           const user = await chatdb.getChatUserByChatId(
             data.chat_id,
             data.user_id
           );
-          // Send JOIN_OR_PART signal BEFORE creating the chat message announcement
-          this.io.to(data.chat_id).emit(JOIN_OR_PART, {
-            chat: {
-              id: data.chat_id
-            },
-            user
-          });
 
-          const message = data.is_present
-            ? 'has joined the chat.'
-            : 'has left the chat.';
+          // If we allow late arriving agents to trigger JOIN_OR_PART,
+          // it will result in the Chat component reloading ChatMessages,
+          // which will send a socket message to activate the agent, which
+          // will loop back to here causing an infinit loop.
+          if (!user.is_agent) {
+            // Send JOIN_OR_PART signal BEFORE creating the chat message announcement
+            this.io.to(data.chat_id).emit(JOIN_OR_PART, {
+              chat: {
+                id: data.chat_id
+              },
+              user
+            });
 
-          await chatdb.updateJoinPartMessages(data.chat_id, data.user_id, {
-            deleted_at: new Date().toISOString()
-          });
+            const message = data.is_present
+              ? 'has joined the chat.'
+              : 'has left the chat.';
 
-          await chatdb.insertNewJoinPartMessage(
-            data.chat_id,
-            data.user_id,
-            message
-          );
+            await chatdb.updateJoinPartMessages(data.chat_id, data.user_id, {
+              deleted_at: new Date().toISOString()
+            });
+
+            await chatdb.insertNewJoinPartMessage(
+              data.chat_id,
+              data.user_id,
+              message
+            );
+          }
         });
 
         // console.log('join_or_part_chat listener is registered');
@@ -244,57 +289,20 @@ class SocketManager {
       }
 
       // Site
-      socket.on(CREATE_USER_CHANNEL, ({ user }) => {
-        console.log(CREATE_USER_CHANNEL, { user });
-        socket.join(user.id);
+      socket.on(AGENT_PAUSE, async (props) => {
+        console.log(AGENT_PAUSE, props);
       });
 
-      socket.on(CREATE_CHAT_CHANNEL, ({ chat }) => {
-        console.log(CREATE_CHAT_CHANNEL, { chat });
-        socket.join(chat.id);
-      });
+      socket.on(AGENT_START, async ({ agent, chat, user }) => {
+        console.log(AGENT_START, { agent, chat, user });
+        if (agent && agent.id) {
+          const room = `${chat.id}-user-${user.id}`;
+          socket.join(room);
 
-      socket.on(CHAT_CAN_RECEIVE, async ({ chat, user }) => {
-        console.log(CHAT_CAN_RECEIVE, { chat, user });
-        chatCanReceive = true;
-        if (cache.backlog[user.id]) {
-          console.log(cache.backlog[user.id]);
-          while (cache.backlog[user.id].length) {
-            const { room, event, data } = cache.backlog[user.id].shift();
-            console.log(room, event, data);
-            this.io.to(room).emit(event, data);
-          }
-          cache.backlog[user.id] = null;
-        }
-      });
-
-      socket.on(CREATE_CHAT_SLIDE_CHANNEL, ({ agent, chat, slide }) => {
-        console.log(CREATE_CHAT_SLIDE_CHANNEL, { chat, slide });
-        const room = `${chat.id}-slide-${slide.index}`;
-        socket.join(room);
-      });
-
-      // Used for sending messages to a specific user in the chat.
-      socket.on(CREATE_CHAT_USER_CHANNEL, async ({ agent: a, chat, user }) => {
-        console.log(CREATE_CHAT_USER_CHANNEL, { chat, user });
-        chatCanReceive = false;
-        const room = `${chat.id}-user-${user.id}`;
-        socket.join(room);
-
-        if (a && a.id) {
-          const agent = await agentdb.getAgent(a.id);
-          const token = hash(room);
-          const name = agent.name;
-          console.log(agent);
-
+          const auth = makeRemoteSafeAuthPayload({ agent, chat, user });
           const options = {
             ...agent.socket,
-            auth: {
-              agent: {
-                name,
-                token
-              }
-            }
+            auth
           };
 
           const client = new Socket.Client(agent.endpoint, options);
@@ -320,12 +328,40 @@ class SocketManager {
               user.id
             );
           });
-          cache.backlog[user.id] = [];
+
+          // cache.backlog[user.id] = {
+          //   socket,
+          //   messages: []
+          // };
+
           cache.clients[room] = {
             client,
-            token
+            auth
           };
         }
+      });
+
+      socket.on(CREATE_USER_CHANNEL, ({ user }) => {
+        console.log(CREATE_USER_CHANNEL, { user });
+        socket.join(user.id);
+      });
+
+      socket.on(CREATE_CHAT_CHANNEL, ({ chat }) => {
+        console.log(CREATE_CHAT_CHANNEL, { chat });
+        socket.join(chat.id);
+      });
+
+      socket.on(CREATE_CHAT_SLIDE_CHANNEL, ({ agent, chat, slide }) => {
+        console.log(CREATE_CHAT_SLIDE_CHANNEL, { chat, slide });
+        const room = `${chat.id}-slide-${slide.index}`;
+        socket.join(room);
+      });
+
+      // Used for sending messages to a specific user in the chat.
+      socket.on(CREATE_CHAT_USER_CHANNEL, async ({ chat, user }) => {
+        console.log(CREATE_CHAT_USER_CHANNEL, { chat, user });
+        const room = `${chat.id}-user-${user.id}`;
+        socket.join(room);
       });
 
       socket.on(CREATE_COHORT_CHANNEL, ({ cohort }) => {
@@ -370,6 +406,16 @@ class SocketManager {
           if (!cache.rolls[rollKey]) {
             cache.rolls[rollKey] = [];
           }
+
+          // Remove them from other rolls.
+          Object.entries(cache.rolls).forEach(([key, roll]) => {
+            if (key !== rollKey) {
+              const index = cache.rolls[key].indexOf(user.id);
+              if (index !== -1) {
+                cache.rolls[key].splice(index, 1);
+              }
+            }
+          });
 
           if (!cache.rolls[rollKey].includes(user.id)) {
             cache.rolls[rollKey].push(user.id);
