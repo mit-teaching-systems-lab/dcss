@@ -699,6 +699,7 @@ describe('componentDidMount', () => {
         Array [
           "create-chat-channel",
           Object {
+            "agent": Object {},
             "chat": Object {
               "host_id": 2,
               "id": 1,
@@ -714,6 +715,7 @@ describe('componentDidMount', () => {
         Array [
           "create-user-channel",
           Object {
+            "agent": Object {},
             "chat": Object {
               "host_id": 2,
               "id": 1,
@@ -762,6 +764,7 @@ describe('componentDidMount', () => {
         Array [
           "create-chat-channel",
           Object {
+            "agent": Object {},
             "chat": Object {
               "host_id": 2,
               "id": 1,
@@ -777,6 +780,7 @@ describe('componentDidMount', () => {
         Array [
           "create-user-channel",
           Object {
+            "agent": Object {},
             "chat": Object {
               "host_id": 2,
               "id": 1,
@@ -881,6 +885,7 @@ describe('componentWillUnmount', () => {
         Array [
           "create-chat-channel",
           Object {
+            "agent": Object {},
             "chat": Object {
               "host_id": 2,
               "id": 1,
@@ -896,6 +901,7 @@ describe('componentWillUnmount', () => {
         Array [
           "create-user-channel",
           Object {
+            "agent": Object {},
             "chat": Object {
               "host_id": 2,
               "id": 1,
@@ -921,6 +927,7 @@ describe('componentWillUnmount', () => {
         Array [
           "create-chat-channel",
           Object {
+            "agent": Object {},
             "chat": Object {
               "host_id": 2,
               "id": 1,
@@ -936,6 +943,7 @@ describe('componentWillUnmount', () => {
         Array [
           "create-user-channel",
           Object {
+            "agent": Object {},
             "chat": Object {
               "host_id": 2,
               "id": 1,
@@ -995,6 +1003,7 @@ describe('componentWillUnmount', () => {
         Array [
           "create-chat-channel",
           Object {
+            "agent": Object {},
             "chat": Object {
               "host_id": 2,
               "id": 1,
@@ -1010,6 +1019,7 @@ describe('componentWillUnmount', () => {
         Array [
           "create-user-channel",
           Object {
+            "agent": Object {},
             "chat": Object {
               "host_id": 2,
               "id": 1,
@@ -1035,6 +1045,7 @@ describe('componentWillUnmount', () => {
         Array [
           "create-chat-channel",
           Object {
+            "agent": Object {},
             "chat": Object {
               "host_id": 2,
               "id": 1,
@@ -1050,6 +1061,7 @@ describe('componentWillUnmount', () => {
         Array [
           "create-user-channel",
           Object {
+            "agent": Object {},
             "chat": Object {
               "host_id": 2,
               "id": 1,
@@ -1337,6 +1349,7 @@ test('Types, followed by {enter}', async done => {
       Array [
         "chat-message-created",
         Object {
+          "agent": Object {},
           "chat": Object {
             "host_id": 2,
             "id": 1,
@@ -1410,6 +1423,7 @@ test('Types, followed by {shift}{enter}, does not submit', async done => {
       Array [
         "chat-message-created",
         Object {
+          "agent": Object {},
           "chat": Object {
             "host_id": 2,
             "id": 1,
@@ -1523,6 +1537,7 @@ test('Types, followed by {shift}{enter}, attempts to send, does submit', async d
       Array [
         "chat-message-created",
         Object {
+          "agent": Object {},
           "chat": Object {
             "host_id": 2,
             "id": 1,
@@ -1590,6 +1605,7 @@ test('Calls onInput when RTE receives new content', async done => {
       Array [
         "chat-message-created",
         Object {
+          "agent": Object {},
           "chat": Object {
             "host_id": 2,
             "id": 1,
@@ -1661,6 +1677,7 @@ test('Calls onKeyDown, responds when key is {enter}', async done => {
       Array [
         "chat-message-created",
         Object {
+          "agent": Object {},
           "chat": Object {
             "host_id": 2,
             "id": 1,
@@ -1733,6 +1750,7 @@ test('Types, clicks Send Message', async done => {
       Array [
         "chat-message-created",
         Object {
+          "agent": Object {},
           "chat": Object {
             "host_id": 2,
             "id": 1,
@@ -1980,6 +1998,7 @@ test('Rnd: onDragStop/onResizeStop', async done => {
                           Array [
                             "create-chat-channel",
                             Object {
+                              "agent": Object {},
                               "chat": Object {
                                 "host_id": 2,
                                 "id": 1,
@@ -1995,6 +2014,7 @@ test('Rnd: onDragStop/onResizeStop', async done => {
                           Array [
                             "create-user-channel",
                             Object {
+                              "agent": Object {},
                               "chat": Object {
                                 "host_id": 2,
                                 "id": 1,
@@ -2332,6 +2352,7 @@ test('Rnd: onDrag/onResize', async done => {
                           Array [
                             "create-chat-channel",
                             Object {
+                              "agent": Object {},
                               "chat": Object {
                                 "host_id": 2,
                                 "id": 1,
@@ -2347,6 +2368,7 @@ test('Rnd: onDrag/onResize', async done => {
                           Array [
                             "create-user-channel",
                             Object {
+                              "agent": Object {},
                               "chat": Object {
                                 "host_id": 2,
                                 "id": 1,
