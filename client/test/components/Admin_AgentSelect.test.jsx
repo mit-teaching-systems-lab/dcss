@@ -34,6 +34,7 @@ async function waitForPopper() {
 
 /** @GENERATED: BEGIN **/
 
+let agent;
 let agents;
 let agentsById;
 

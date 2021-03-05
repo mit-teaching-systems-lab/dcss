@@ -51,7 +51,13 @@ class ResponseRecallEditor extends React.Component {
       `/api/scenarios/${scenario.id}/slides/prompt-components`
     )).json();
 
-    this.setState({ components });
+    if (!this.hasUnmounted) {
+      this.setState({ components });
+    }
+  }
+
+  componentWillUnmount() {
+    this.hasUnmounted = true;
   }
 
   onChange(event, { name, value }) {

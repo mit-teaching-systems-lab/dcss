@@ -23,6 +23,7 @@ import SlideEditor from '@components/Slide/SlideEditor';
 import MultiPathNetworkGraphModal from '@components/Slide/Components/MultiPathResponse/MultiPathNetworkGraphModal';
 import SlideComponents from '@components/SlideComponents';
 import scrollIntoView from '@utils/scrollIntoView';
+import Identity from '@utils/Identity';
 import { deleteSlide, getSlides, setSlides } from '@actions/scenario';
 import './Slides.css';
 
@@ -413,7 +414,7 @@ class Slides extends React.Component {
                       };
                       const description = index + 1;
                       return (
-                        <Grid.Row key={slide.id} className="slides__list-row">
+                        <Grid.Row className="slides__list-row" key={slide.id}>
                           <Ref
                             innerRef={node => (this.slideRefs[index] = node)}
                           >
@@ -483,6 +484,7 @@ class Slides extends React.Component {
                                   <SlideComponents
                                     asSVG={true}
                                     components={slide.components}
+                                    key={Identity.key(slide.components)}
                                   />
                                 </Card.Content>
                               ) : null}
@@ -520,7 +522,7 @@ class Slides extends React.Component {
           <Grid.Column className="slides__editor-outer-container">
             {isReady ? (
               <SlideEditor
-                key={`slide-editor-${activeSlideIndex}`}
+                key={Identity.key(slides[activeSlideIndex].id)}
                 index={activeSlideIndex}
                 noSlide={noSlide}
                 promptToAddSlide={promptToAddSlide}

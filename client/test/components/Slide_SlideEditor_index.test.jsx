@@ -832,89 +832,89 @@ test('Multiple personas, assign a persona to a component', async (done) => {
   done();
 });
 
-test('Multiple personas, toggle chat', async (done) => {
-  const Component = SlideEditor;
+// test('Multiple personas, toggle chat', async (done) => {
+//   const Component = SlideEditor;
 
-  const props = {
-    ...commonProps,
-    scenario: {
-      ...scenario,
-      personas,
-    },
-    slides,
-    index: 1,
-    promptToAddSlide: '',
-    noSlide: false,
-    onChange: jest.fn(),
-    onDelete: jest.fn(),
-    onDuplicate: jest.fn(),
-    ...slides[1],
-  };
+//   const props = {
+//     ...commonProps,
+//     scenario: {
+//       ...scenario,
+//       personas,
+//     },
+//     slides,
+//     index: 1,
+//     promptToAddSlide: '',
+//     noSlide: false,
+//     onChange: jest.fn(),
+//     onDelete: jest.fn(),
+//     onDuplicate: jest.fn(),
+//     ...slides[1],
+//   };
 
-  const state = {
-    ...commonState,
-  };
+//   const state = {
+//     ...commonState,
+//   };
 
-  const ConnectedRoutedComponent = reduxer(Component, props, state);
+//   const ConnectedRoutedComponent = reduxer(Component, props, state);
 
-  await render(<ConnectedRoutedComponent {...props} />);
-  expect(serialize()).toMatchSnapshot();
+//   await render(<ConnectedRoutedComponent {...props} />);
+//   expect(serialize()).toMatchSnapshot();
 
-  const toggleChat = await screen.findByLabelText(
-    'Enable realtime chat on this slide'
-  );
-  expect(serialize()).toMatchSnapshot();
+//   const toggleChat = await screen.findByLabelText(
+//     'Enable realtime chat on this slide'
+//   );
+//   expect(serialize()).toMatchSnapshot();
 
-  userEvent.click(toggleChat);
-  expect(serialize()).toMatchSnapshot();
+//   userEvent.click(toggleChat);
+//   expect(serialize()).toMatchSnapshot();
 
-  expect(props.onChange).toHaveBeenCalledTimes(3);
-  expect(props.onChange.mock.calls[0]).toMatchObject([
-    1,
-    {
-      components: [
-        {
-          html: '<h1>Welcome to Slide 2</h1>',
-          id: expectUuidString,
-          type: 'Text',
-        },
-        {
-          disableDelete: true,
-          disableDuplicate: true,
-          disableEmbed: true,
-          disableOrdering: true,
-          disablePersona: true,
-          header: 'Slide 2-ChatPrompt-0',
-          id: expectUuidString,
-          required: false,
-          responseId: expectUuidString,
-          timer: 0,
-          type: 'ChatPrompt',
-        },
-        {
-          header: 'TextResponse-1',
-          id: expectUuidString,
-          placeholder: 'Your response',
-          prompt: '',
-          recallId: '',
-          required: true,
-          responseId: '33-be99fe9b-fa0d-4ab7-8541-1bfd1ef0bf11',
-          timeout: 0,
-          type: 'TextResponse',
-        },
-        {
-          html: '<p>?</p>',
-          id: '33-f96ac6de-ac6b-4e06-bd97-d97e12fe72c1',
-          type: 'Text',
-        },
-      ],
-      has_chat_enabled: true,
-      title: 'Slide 2',
-    },
-  ]);
+//   expect(props.onChange).toHaveBeenCalledTimes(3);
+//   expect(props.onChange.mock.calls[0]).toMatchObject([
+//     1,
+//     {
+//       components: [
+//         {
+//           html: '<h1>Welcome to Slide 2</h1>',
+//           id: expectUuidString,
+//           type: 'Text',
+//         },
+//         {
+//           disableDelete: true,
+//           disableDuplicate: true,
+//           disableEmbed: true,
+//           disableOrdering: true,
+//           disablePersona: true,
+//           header: 'Slide 2-ChatPrompt-0',
+//           id: expectUuidString,
+//           required: false,
+//           responseId: expectUuidString,
+//           timer: 0,
+//           type: 'ChatPrompt',
+//         },
+//         {
+//           header: 'TextResponse-1',
+//           id: expectUuidString,
+//           placeholder: 'Your response',
+//           prompt: '',
+//           recallId: '',
+//           required: true,
+//           responseId: '33-be99fe9b-fa0d-4ab7-8541-1bfd1ef0bf11',
+//           timeout: 0,
+//           type: 'TextResponse',
+//         },
+//         {
+//           html: '<p>?</p>',
+//           id: '33-f96ac6de-ac6b-4e06-bd97-d97e12fe72c1',
+//           type: 'Text',
+//         },
+//       ],
+//       has_chat_enabled: true,
+//       title: 'Slide 2',
+//     },
+//   ]);
 
-  done();
-});
+//   done();
+// });
 
 test('Single persona', async (done) => {
   const Component = SlideEditor;
@@ -2410,201 +2410,201 @@ test('Save', async (done) => {
 //   done();
 // });
 
-// test('Toggle required on a prompt-response component', async done => {
-//   const Component = SlideEditor;
+test('Toggle required on a prompt-response component', async (done) => {
+  const Component = SlideEditor;
 
-//   const props = {
-//     ...commonProps,
-//     scenario,
-//     slides,
-//     index: 1,
-//     promptToAddSlide: '',
-//     noSlide: false,
-//     onChange: jest.fn(),
-//     onDelete: jest.fn(),
-//     onDuplicate: jest.fn(),
-//     ...slides[1]
-//   };
+  const props = {
+    ...commonProps,
+    scenario,
+    slides,
+    index: 1,
+    promptToAddSlide: '',
+    noSlide: false,
+    onChange: jest.fn(),
+    onDelete: jest.fn(),
+    onDuplicate: jest.fn(),
+    ...slides[1],
+  };
 
-//   const state = {
-//     ...commonState
-//   };
+  const state = {
+    ...commonState,
+  };
 
-//   const ConnectedRoutedComponent = reduxer(Component, props, state);
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
 
-//   await render(<ConnectedRoutedComponent {...props} />);
-//   expect(serialize()).toMatchSnapshot();
+  await render(<ConnectedRoutedComponent {...props} />);
+  expect(serialize()).toMatchSnapshot();
 
-//   userEvent.click(await screen.getByLabelText('Required?'));
-//   await waitForPopper();
-//   expect(serialize()).toMatchSnapshot();
+  userEvent.click(await screen.getByLabelText('Required?'));
+  await waitForPopper();
+  expect(serialize()).toMatchSnapshot();
 
-//   jest.advanceTimersByTime(1000);
-//   await waitForPopper();
+  jest.advanceTimersByTime(1000);
+  await waitForPopper();
 
-//   expect(props.onChange).toHaveBeenCalledTimes(1);
-//   expect(props.onChange.mock.calls[0]).toMatchInlineSnapshot(`
-//     Array [
-//       1,
-//       Object {
-//         "components": Array [
-//           Object {
-//             "html": "<h1>Welcome to Slide 2</h1>",
-//             "id": "33-b7e7a3f1-eb4e-4afa-8569-838fd5ec854f",
-//             "type": "Text",
-//           },
-//           Object {
-//             "header": "TextResponse-1",
-//             "id": "33-aede9380-c7a3-4ef7-add7-838fd5ec854f",
-//             "placeholder": "Your response",
-//             "prompt": "",
-//             "recallId": "",
-//             "required": false,
-//             "responseId": "33-be99fe9b-fa0d-4ab7-8541-1bfd1ef0bf11",
-//             "timeout": 0,
-//             "type": "TextResponse",
-//           },
-//           Object {
-//             "html": "<p>?</p>",
-//             "id": "33-f96ac6de-ac6b-4e06-bd97-d97e12fe72c1",
-//             "type": "Text",
-//           },
-//         ],
-//         "has_chat_enabled": undefined,
-//         "title": "Slide 2",
-//       },
-//     ]
-//   `);
+  expect(props.onChange).toHaveBeenCalledTimes(1);
+  expect(props.onChange.mock.calls[0]).toMatchInlineSnapshot(`
+    Array [
+      1,
+      Object {
+        "components": Array [
+          Object {
+            "html": "<h1>Welcome to Slide 2</h1>",
+            "id": "33-b7e7a3f1-eb4e-4afa-8569-838fd5ec854f",
+            "type": "Text",
+          },
+          Object {
+            "header": "TextResponse-1",
+            "id": "33-aede9380-c7a3-4ef7-add7-838fd5ec854f",
+            "placeholder": "Your response",
+            "prompt": "",
+            "recallId": "",
+            "required": false,
+            "responseId": "33-be99fe9b-fa0d-4ab7-8541-1bfd1ef0bf11",
+            "timeout": 0,
+            "type": "TextResponse",
+          },
+          Object {
+            "html": "<p>?</p>",
+            "id": "33-f96ac6de-ac6b-4e06-bd97-d97e12fe72c1",
+            "type": "Text",
+          },
+        ],
+        "has_chat_enabled": undefined,
+        "title": "Slide 2",
+      },
+    ]
+  `);
 
-//   userEvent.click(await screen.getByLabelText('Required?'));
-//   await waitForPopper();
-//   expect(serialize()).toMatchSnapshot();
+  userEvent.click(await screen.getByLabelText('Required?'));
+  await waitForPopper();
+  expect(serialize()).toMatchSnapshot();
 
-//   jest.advanceTimersByTime(1000);
+  jest.advanceTimersByTime(1000);
 
-//   expect(props.onChange).toHaveBeenCalledTimes(2);
-//   expect(props.onChange.mock.calls[1]).toMatchInlineSnapshot(`
-//     Array [
-//       1,
-//       Object {
-//         "components": Array [
-//           Object {
-//             "html": "<h1>Welcome to Slide 2</h1>",
-//             "id": "33-b7e7a3f1-eb4e-4afa-8569-838fd5ec854f",
-//             "type": "Text",
-//           },
-//           Object {
-//             "header": "TextResponse-1",
-//             "id": "33-aede9380-c7a3-4ef7-add7-838fd5ec854f",
-//             "placeholder": "Your response",
-//             "prompt": "",
-//             "recallId": "",
-//             "required": true,
-//             "responseId": "33-be99fe9b-fa0d-4ab7-8541-1bfd1ef0bf11",
-//             "timeout": 0,
-//             "type": "TextResponse",
-//           },
-//           Object {
-//             "html": "<p>?</p>",
-//             "id": "33-f96ac6de-ac6b-4e06-bd97-d97e12fe72c1",
-//             "type": "Text",
-//           },
-//         ],
-//         "has_chat_enabled": undefined,
-//         "title": "Slide 2",
-//       },
-//     ]
-//   `);
+  expect(props.onChange).toHaveBeenCalledTimes(2);
+  expect(props.onChange.mock.calls[1]).toMatchInlineSnapshot(`
+    Array [
+      1,
+      Object {
+        "components": Array [
+          Object {
+            "html": "<h1>Welcome to Slide 2</h1>",
+            "id": "33-b7e7a3f1-eb4e-4afa-8569-838fd5ec854f",
+            "type": "Text",
+          },
+          Object {
+            "header": "TextResponse-1",
+            "id": "33-aede9380-c7a3-4ef7-add7-838fd5ec854f",
+            "placeholder": "Your response",
+            "prompt": "",
+            "recallId": "",
+            "required": true,
+            "responseId": "33-be99fe9b-fa0d-4ab7-8541-1bfd1ef0bf11",
+            "timeout": 0,
+            "type": "TextResponse",
+          },
+          Object {
+            "html": "<p>?</p>",
+            "id": "33-f96ac6de-ac6b-4e06-bd97-d97e12fe72c1",
+            "type": "Text",
+          },
+        ],
+        "has_chat_enabled": undefined,
+        "title": "Slide 2",
+      },
+    ]
+  `);
 
-//   done();
-// });
+  done();
+});
 
-// test('noSlide', async done => {
-//   const Component = SlideEditor;
+test('noSlide', async (done) => {
+  const Component = SlideEditor;
 
-//   scenario.slides = [];
+  scenario.slides = [];
 
-//   const props = {
-//     ...commonProps,
-//     scenario,
-//     slides: [],
-//     index: 1,
-//     promptToAddSlide: '',
-//     noSlide: true,
-//     onChange: jest.fn(),
-//     onDelete: jest.fn(),
-//     onDuplicate: jest.fn()
-//   };
+  const props = {
+    ...commonProps,
+    scenario,
+    slides: [],
+    index: 1,
+    promptToAddSlide: '',
+    noSlide: true,
+    onChange: jest.fn(),
+    onDelete: jest.fn(),
+    onDuplicate: jest.fn(),
+  };
 
-//   const state = {
-//     ...commonState
-//   };
+  const state = {
+    ...commonState,
+  };
 
-//   const ConnectedRoutedComponent = reduxer(Component, props, state);
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
 
-//   await render(<ConnectedRoutedComponent {...props} />);
-//   expect(serialize()).toMatchSnapshot();
+  await render(<ConnectedRoutedComponent {...props} />);
+  expect(serialize()).toMatchSnapshot();
 
-//   done();
-// });
+  done();
+});
 
-// test('Component type is unknown', async done => {
-//   const Component = SlideEditor;
+test('Component type is unknown', async (done) => {
+  const Component = SlideEditor;
 
-//   const props = {
-//     ...commonProps,
-//     scenario,
-//     slides,
-//     index: 1,
-//     promptToAddSlide: '',
-//     noSlide: true,
-//     onChange: jest.fn(),
-//     onDelete: jest.fn(),
-//     onDuplicate: jest.fn(),
-//     ...slides[1]
-//   };
+  const props = {
+    ...commonProps,
+    scenario,
+    slides,
+    index: 1,
+    promptToAddSlide: '',
+    noSlide: true,
+    onChange: jest.fn(),
+    onDelete: jest.fn(),
+    onDuplicate: jest.fn(),
+    ...slides[1],
+  };
 
-//   props.components[0].type = 'unknown';
+  props.components[0].type = 'unknown';
 
-//   const state = {
-//     ...commonState
-//   };
+  const state = {
+    ...commonState,
+  };
 
-//   const ConnectedRoutedComponent = reduxer(Component, props, state);
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
 
-//   await render(<ConnectedRoutedComponent {...props} />);
-//   expect(serialize()).toMatchSnapshot();
+  await render(<ConnectedRoutedComponent {...props} />);
+  expect(serialize()).toMatchSnapshot();
 
-//   done();
-// });
+  done();
+});
 
-// test('Component does not have an id property', async done => {
-//   const Component = SlideEditor;
+test('Component does not have an id property', async (done) => {
+  const Component = SlideEditor;
 
-//   const props = {
-//     ...commonProps,
-//     scenario,
-//     slides,
-//     index: 1,
-//     promptToAddSlide: '',
-//     noSlide: true,
-//     onChange: jest.fn(),
-//     onDelete: jest.fn(),
-//     onDuplicate: jest.fn(),
-//     ...slides[1]
-//   };
+  const props = {
+    ...commonProps,
+    scenario,
+    slides,
+    index: 1,
+    promptToAddSlide: '',
+    noSlide: true,
+    onChange: jest.fn(),
+    onDelete: jest.fn(),
+    onDuplicate: jest.fn(),
+    ...slides[1],
+  };
 
-//   props.components[0].id = null;
+  props.components[0].id = null;
 
-//   const state = {
-//     ...commonState
-//   };
+  const state = {
+    ...commonState,
+  };
 
-//   const ConnectedRoutedComponent = reduxer(Component, props, state);
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
 
-//   await render(<ConnectedRoutedComponent {...props} />);
-//   expect(serialize()).toMatchSnapshot();
+  await render(<ConnectedRoutedComponent {...props} />);
+  expect(serialize()).toMatchSnapshot();
 
-//   done();
-// });
+  done();
+});
 

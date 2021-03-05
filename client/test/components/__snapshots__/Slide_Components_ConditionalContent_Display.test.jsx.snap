@@ -3,18 +3,7 @@
 exports[`Render 1 1 1`] = `
 <DocumentFragment>
   <div
-    class="ui container"
-    style="margin: 1rem 0px 1rem 0px;"
-  >
-    <button
-      class="ui icon button"
-    >
-      <i
-        aria-hidden="true"
-        class="info circle icon"
-      />
-       Information
-    </button>
-  </div>
+    class="sun-editor-editable rt__container"
+  />
 </DocumentFragment>
 `;

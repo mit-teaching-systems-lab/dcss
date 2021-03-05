@@ -224,7 +224,7 @@ export default class SlideEditor extends Component {
     }
   }
 
-  async onComponentDuplicate(index) {
+  onComponentDuplicate(index) {
     const { slide } = this.state;
     const id = uuid();
     const sourceComponents = slide.components;
