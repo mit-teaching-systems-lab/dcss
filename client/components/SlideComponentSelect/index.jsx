@@ -9,7 +9,7 @@ const ComponentsMenuOrder = [
   'Text',
   'Suggestion',
   'ResponseRecall',
-  'ConditionalContent',
+  // 'ConditionalContent',
   'AudioPrompt',
   'MultiPathResponse',
   'ConversationPrompt',

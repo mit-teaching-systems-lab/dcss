@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import pluralize from 'pluralize';
-import AgentSelector from '@components/Slide/Components/AgentSelector';
+// import AgentSelector from '@components/Slide/Components/AgentSelector';
 import TimeField from 'react-simple-timefield';
 import {
   Checkbox,
@@ -21,7 +21,7 @@ class ChatPromptEditor extends React.Component {
   constructor(props) {
     super(props);
     const {
-      agent = null,
+      // agent = null,
       auto = true,
       header = '',
       prompt = '',
@@ -30,7 +30,7 @@ class ChatPromptEditor extends React.Component {
       timer = 0
     } = props.value;
     this.state = {
-      agent,
+      // agent,
       auto,
       header,
       prompt,
@@ -59,7 +59,7 @@ class ChatPromptEditor extends React.Component {
     let shouldCallUpdateState = false;
 
     const fields = [
-      'agent',
+      // 'agent',
       'auto',
       'header',
       'prompt',
@@ -88,7 +88,7 @@ class ChatPromptEditor extends React.Component {
 
   updateState() {
     const {
-      agent,
+      // agent,
       auto,
       header,
       prompt,
@@ -97,7 +97,7 @@ class ChatPromptEditor extends React.Component {
       responseId
     } = this.state;
     this.props.onChange({
-      agent,
+      // agent,
       auto,
       header,
       prompt,
@@ -137,7 +137,9 @@ class ChatPromptEditor extends React.Component {
   }
 
   render() {
-    const { agent, auto, header, prompt, timer } = this.state;
+    const {
+      // agent,
+      auto, header, prompt, timer } = this.state;
     const { onChange, onTimerChange, updateState } = this;
     const timerString = timer ? Media.secToTime(timer) : '';
     const [hh = 0, mm = 0, ss = 0] = timerString.split(':').map(v => Number(v));
@@ -151,6 +153,12 @@ class ChatPromptEditor extends React.Component {
       ss ? `${ss} ${pluralize('second', ss)}` : ''
     ].join(' ');
 
+                // <AgentSelector
+                //   agent={agent}
+                //   type={type}
+                //   onChange={onChange}
+                //   updateState={updateState}
+                // />
     return (
       <Form>
         <Container fluid>
@@ -225,12 +233,6 @@ class ChatPromptEditor extends React.Component {
                   onBlur={updateState}
                 />
 
-                <AgentSelector
-                  agent={agent}
-                  type={type}
-                  onChange={onChange}
-                  updateState={updateState}
-                />
               </Grid.Column>
             </Grid.Row>
           </Grid>

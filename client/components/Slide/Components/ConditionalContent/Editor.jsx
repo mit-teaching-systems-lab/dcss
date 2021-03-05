@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { type } from './meta';
-import AgentSelector from '@components/Slide/Components/AgentSelector';
+// import AgentSelector from '@components/Slide/Components/AgentSelector';
 import EditorMenu from '@components/EditorMenu';
 import RichTextEditor from '@components/RichTextEditor';
 import Sortable from '@components/Sortable';
@@ -55,9 +55,11 @@ const operationDropdownOptions = terms.map(({ key, op, def, description }) => {
 class ConditionalContentEditor extends React.Component {
   constructor(props) {
     super(props);
-    const { agent = null, html, rules = [] } = props.value;
+    const {
+      // agent = null,
+      html, rules = [] } = props.value;
     this.state = {
-      agent,
+      // agent,
       html,
       rules,
       rule: {
@@ -80,10 +82,12 @@ class ConditionalContentEditor extends React.Component {
   componentWillUnmount() {
     clearTimeout(this.timeout);
 
-    const { agent, html, rules } = this.props.value;
+    const {
+      // agent,
+      html, rules } = this.props.value;
 
     const lastProps = {
-      agent,
+      // agent,
       html,
       rules
     };
@@ -101,9 +105,11 @@ class ConditionalContentEditor extends React.Component {
   }
 
   updateState() {
-    const { agent, html, rules } = this.state;
+    const {
+      // agent,
+      html, rules } = this.state;
     this.props.onChange({
-      agent,
+      // agent,
       html,
       rules,
       type
@@ -188,7 +194,9 @@ class ConditionalContentEditor extends React.Component {
       scenario,
       value: { id }
     } = this.props;
-    const { agent, html, rules } = this.state;
+    const {
+      // agent,
+      html, rules } = this.state;
     const {
       onChange,
       updateState,
@@ -251,20 +259,20 @@ class ConditionalContentEditor extends React.Component {
       return [...new Set([...accum, agent.id])];
     }, []);
 
+                // <AgentSelector
+                //   label="Select an AI agent:"
+                //   agent={agent}
+                //   agentsInUse={agentsInUse}
+                //   onChange={onChange}
+                //   types={['AudioPrompt', 'ConversationPrompt', 'TextResponse']}
+                //   updateState={updateState}
+                // />
     return (
       <Form>
         <Container fluid>
           <Grid>
             <Grid.Row>
               <Grid.Column>
-                <AgentSelector
-                  label="Select an AI agent:"
-                  agent={agent}
-                  agentsInUse={agentsInUse}
-                  onChange={onChange}
-                  types={['AudioPrompt', 'ConversationPrompt', 'TextResponse']}
-                  updateState={updateState}
-                />
                 <Segment>
                   <p tabIndex="0" className="cce__paragraph">
                     Create rules that are used to determine if the content below
