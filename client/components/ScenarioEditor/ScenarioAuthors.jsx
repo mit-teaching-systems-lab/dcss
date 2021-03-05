@@ -44,10 +44,16 @@ class ScenarioAuthors extends Component {
 
     const editors = await getUsersByPermission('edit_scenario');
 
-    this.setState({
-      isReady: true,
-      editors
-    });
+    if (!this.hasUnmounted) {
+      this.setState({
+        isReady: true,
+        editors
+      });
+    }
+  }
+
+  componentWillUnmount() {
+    this.hasUnmounted = true;
   }
 
   async onChange(event, props) {

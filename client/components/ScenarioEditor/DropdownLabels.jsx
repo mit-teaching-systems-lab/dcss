@@ -40,9 +40,15 @@ class DropdownLabels extends Component {
   async componentDidMount() {
     const options = makeOptions(await this.props.getLabels());
 
-    this.setState({
-      options
-    });
+    if (!this.hasUnmounted) {
+      this.setState({
+        options
+      });
+    }
+  }
+
+  componentWillUnmount() {
+    this.hasUnmounted = true;
   }
 
   render() {

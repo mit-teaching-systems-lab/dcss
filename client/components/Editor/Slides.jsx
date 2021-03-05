@@ -86,15 +86,21 @@ class Slides extends React.Component {
       slide => !slide.is_finish
     );
 
-    if (slides.length === 0) {
-      await this.onSlideAdd();
-    } else {
-      this.activateSlide({
-        activeSlideIndex,
-        slides,
-        isReady: true
-      });
+    if (!this.hasUnmounted) {
+      if (slides.length === 0) {
+        await this.onSlideAdd();
+      } else {
+        this.activateSlide({
+          activeSlideIndex,
+          slides,
+          isReady: true
+        });
+      }
     }
+  }
+
+  componentWillUnmount() {
+    this.hasUnmounted = true;
   }
 
   componentDidUpdate() {
