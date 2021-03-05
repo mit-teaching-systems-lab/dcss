@@ -5,7 +5,11 @@ exports[`Render 1 1 1`] = `
   <form
     class="ui form"
   >
-    There are currently no active agents in this scenario
+    <div
+      class="ui segment"
+    >
+      There are currently no active agents in this scenario
+    </div>
   </form>
 </DocumentFragment>
 `;

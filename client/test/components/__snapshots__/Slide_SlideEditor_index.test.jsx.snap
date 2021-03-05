@@ -38327,15 +38327,15 @@ exports[`Multiple personas, toggle chat 3`] = `
                                     rows=\\"1\\"
                                   />
                                 </div>
+                                <div
+                                  class=\\"field\\"
+                                >
+                                  <label>
+                                    Optional AI agent to engage in this discussion:
+                                  </label>
+                                </div>
                               </div>
                             </div>
-                          </div>
-                          <div
-                            class=\\"field\\"
-                          >
-                            <label>
-                              Optional AI agent to engage in this discussion:
-                            </label>
                           </div>
                           <div
                             class=\\"ui grey message\\"
