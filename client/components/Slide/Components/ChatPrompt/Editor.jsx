@@ -3,7 +3,15 @@ import PropTypes from 'prop-types';
 import pluralize from 'pluralize';
 import AgentSelector from '@components/Slide/Components/AgentSelector';
 import TimeField from 'react-simple-timefield';
-import { Checkbox, Container, Form, Grid, Icon, Segment, Text } from '@components/UI';
+import {
+  Checkbox,
+  Container,
+  Form,
+  Grid,
+  Icon,
+  Segment,
+  Text
+} from '@components/UI';
 import { type } from './meta';
 import DataHeader from '@components/Slide/Components/DataHeader';
 import Media from '@utils/Media';

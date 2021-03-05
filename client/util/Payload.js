@@ -68,4 +68,4 @@ export default {
     // console.log("Payload.compose(props, data) -> ", payload);
     return payload;
   }
-}
+};

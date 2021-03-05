@@ -34,7 +34,9 @@ const operationDropdownOptions = terms.map(({ key, op, def, description }) => {
       <Table>
         <Table.Header>
           <Table.Row>
-            <Table.HeaderCell><code>{op}</code></Table.HeaderCell>
+            <Table.HeaderCell>
+              <code>{op}</code>
+            </Table.HeaderCell>
           </Table.Row>
         </Table.Header>
         <Table.Body>
@@ -227,18 +229,17 @@ class ConditionalContentEditor extends React.Component {
       value: 'Select an operator'
     });
 
-
     const agentsSource = scenario.agent
       ? [scenario.agent]
       : scenario.slides.reduce((accum, slide) => {
-        const agents = slide.components.reduce((accum, component) => {
-          if (component.agent) {
-            accum.push(agent);
-          }
-          return accum;
+          const agents = slide.components.reduce((accum, component) => {
+            if (component.agent) {
+              accum.push(agent);
+            }
+            return accum;
+          }, []);
+          return accum.concat(agents);
         }, []);
-        return accum.concat(agents);
-      }, []);
 
     const agentsInUse = agentsSource.reduce((accum, agent) => {
       if (!agent) {
@@ -266,12 +267,13 @@ class ConditionalContentEditor extends React.Component {
                 />
                 <Segment>
                   <p tabIndex="0" className="cce__paragraph">
-                    Create rules that are used to determine if the content below will be displayed
-                    to the participant.
+                    Create rules that are used to determine if the content below
+                    will be displayed to the participant.
                   </p>
                   <p tabIndex="0" className="cce__paragraph">
-                    For every rule, <code>X</code> is the sum of affirmative responses from
-                    the agent, and <code>Y</code> is your comparison value.
+                    For every rule, <code>X</code> is the sum of affirmative
+                    responses from the agent, and <code>Y</code> is your
+                    comparison value.
                   </p>
                 </Segment>
                 <Table definition striped unstackable>
@@ -306,37 +308,43 @@ class ConditionalContentEditor extends React.Component {
                       const isLast = index - 1 === rules.length;
                       const lastRule = rules[index - 1];
 
-                      const options = baseOptions.filter((option) => {
+                      const options = baseOptions.filter(option => {
                         const isLogical = Conditional.isLogicalOp(option.value);
                         // Logical operators cannot appear at the first or last position
                         // Logical operators cannot appear in sequence
-                        if (isLogical &&
-                            (isFirst || isLast ||
-                              lastRule && Conditional.isLogicalOp(lastRule.operator))) {
+                        if (
+                          isLogical &&
+                          (isFirst ||
+                            isLast ||
+                            (lastRule &&
+                              Conditional.isLogicalOp(lastRule.operator)))
+                        ) {
                           return false;
                         }
                         return true;
                       });
 
-                      const isLogical = operator && Conditional.isLogicalOp(operator);
+                      const isLogical =
+                        operator && Conditional.isLogicalOp(operator);
                       const operatorDisplay = operator
                         ? terms.find(term => term.key === operator).operator
                         : null;
 
-                      const binOpEvalDisplay = operator && !isLogical ? (
-                        <code>
-                          X {operatorDisplay} {value}
-                        </code>
-                      ) : null;
+                      const binOpEvalDisplay =
+                        operator && !isLogical ? (
+                          <code>
+                            X {operatorDisplay} {value}
+                          </code>
+                        ) : null;
 
                       const logicalOpEvalDisplay = isLogical ? (
-                        <code>
-                          {operatorDisplay}
-                        </code>
+                        <code>{operatorDisplay}</code>
                       ) : null;
 
-                      const evalDisplay = logicalOpEvalDisplay || binOpEvalDisplay;
-                      const evaluation = evalDisplay || 'Select an operator to create a rule';
+                      const evalDisplay =
+                        logicalOpEvalDisplay || binOpEvalDisplay;
+                      const evaluation =
+                        evalDisplay || 'Select an operator to create a rule';
                       const valueIsDisabled = isLogical;
                       return (
                         <Table.Row
@@ -389,9 +397,7 @@ class ConditionalContentEditor extends React.Component {
                               />
                             )}
                           </Table.Cell>
-                          <Table.Cell>
-                            {evaluation}
-                          </Table.Cell>
+                          <Table.Cell>{evaluation}</Table.Cell>
                         </Table.Row>
                       );
                     })}

@@ -18,8 +18,9 @@ const router = Router();
 router.get('/', [requireUser, getInteractions]);
 
 router.post('/', [
-  process.env.JEST_WORKER_ID ?
-    requireUser : requireUserRole(['admin', 'super_admin', 'facilitator']),
+  process.env.JEST_WORKER_ID
+    ? requireUser
+    : requireUserRole(['admin', 'super_admin', 'facilitator']),
   validateRequestBody,
   createInteraction
 ]);
@@ -27,8 +28,9 @@ router.post('/', [
 router.get('/types', [requireUser, getInteractionsTypes]);
 
 router.put('/:id', [
-  process.env.JEST_WORKER_ID ?
-    requireUser : requireUserRole(['admin', 'super_admin', 'facilitator']),
+  process.env.JEST_WORKER_ID
+    ? requireUser
+    : requireUserRole(['admin', 'super_admin', 'facilitator']),
   validateRequestBody,
   setInteraction
 ]);

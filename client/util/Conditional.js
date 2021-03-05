@@ -50,17 +50,19 @@ export const Op = {
 export const terms = [
   {
     def: 'Logical AND',
-    description: 'Use this operation to chain two expressions. Both must evaluate to true for the condition to be met.',
+    description:
+      'Use this operation to chain two expressions. Both must evaluate to true for the condition to be met.',
     key: '$and',
     operator: '&&',
-    op: 'expr1 && expr2',
+    op: 'expr1 && expr2'
   },
   {
     def: 'Logical OR',
-    description: 'Use this operation to chain two expressions. One or the other must evaluate to true for the condition to be met. "expr1" is evaluated first, if it is false, then "expr2" is evaluated. If it is true, then the condition is met. If both expressions evaluate to false, then the condition is not met.',
+    description:
+      'Use this operation to chain two expressions. One or the other must evaluate to true for the condition to be met. "expr1" is evaluated first, if it is false, then "expr2" is evaluated. If it is true, then the condition is met. If both expressions evaluate to false, then the condition is not met.',
     key: '$or',
     operator: '||',
-    op: 'expr1 || expr2',
+    op: 'expr1 || expr2'
   },
   // {
   //   def: 'value is between two numbers a and b, inclusive',
@@ -76,31 +78,35 @@ export const terms = [
   // },
   {
     def: 'X equals Y',
-    description: 'Use this operation to determine if "X", which is the sum of affirmative responses from this agent, is equal to "Y", which is your comparison value.',
+    description:
+      'Use this operation to determine if "X", which is the sum of affirmative responses from this agent, is equal to "Y", which is your comparison value.',
     key: '$eq',
     operator: '==',
-    op: 'X == Y',
+    op: 'X == Y'
   },
   {
     def: 'X does not equal Y',
-    description: 'Use this operation to determine if "X", which is the sum of affirmative responses from this agent, is not equal to "Y", which is your comparison value.',
+    description:
+      'Use this operation to determine if "X", which is the sum of affirmative responses from this agent, is not equal to "Y", which is your comparison value.',
     key: '$ne',
     operator: '!=',
-    op: 'X != Y',
+    op: 'X != Y'
   },
   {
     def: 'X is greater than Y',
-    description: 'Use this operation to determine if "X", which is the sum of affirmative responses from this agent, is greater than "Y", which is your comparison value.',
+    description:
+      'Use this operation to determine if "X", which is the sum of affirmative responses from this agent, is greater than "Y", which is your comparison value.',
     key: '$gt',
     operator: '>',
-    op: 'X > Y',
+    op: 'X > Y'
   },
   {
     def: 'X is greater than or equal to Y',
-    description: 'Use this operation to determine if "X", which is the sum of affirmative responses from this agent, is greater than or equal to "Y", which is your comparison value.',
+    description:
+      'Use this operation to determine if "X", which is the sum of affirmative responses from this agent, is greater than or equal to "Y", which is your comparison value.',
     key: '$gte',
     operator: '>=',
-    op: 'X >= Y',
+    op: 'X >= Y'
   },
   // {
   //   def: '',
@@ -110,18 +116,20 @@ export const terms = [
   // },
   {
     def: 'X is less than Y',
-    description: 'Use this operation to determine if "X", which is the sum of affirmative responses from this agent, is less than "Y", which is your comparison value.',
+    description:
+      'Use this operation to determine if "X", which is the sum of affirmative responses from this agent, is less than "Y", which is your comparison value.',
     key: '$lt',
     operator: '<',
-    op: 'X < Y',
+    op: 'X < Y'
   },
   {
     def: 'X is less than or equal to Y',
-    description: 'Use this operation to determine if "X", which is the sum of affirmative responses from this agent, is less than or equal to "Y", which is your comparison value.',
+    description:
+      'Use this operation to determine if "X", which is the sum of affirmative responses from this agent, is less than or equal to "Y", which is your comparison value.',
     key: '$lte',
     operator: '<=',
-    op: 'X <= Y',
-  },
+    op: 'X <= Y'
+  }
   // {
   //   def: '',
   //   key: '$notBetween',

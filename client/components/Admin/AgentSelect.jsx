@@ -155,9 +155,7 @@ const mapStateToProps = (state, ownProps) => {
     ? 'There are currently no compatible agents in use'
     : ownProps.emptyText;
 
-  const placeholder = !filteredAgents.length
-    ? emptyText
-    : ownProps.placeholder;
+  const placeholder = !filteredAgents.length ? emptyText : ownProps.placeholder;
 
   const agents = filteredAgents.slice();
   const agentsById = agents.reduce(

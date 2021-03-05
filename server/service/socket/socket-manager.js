@@ -73,8 +73,7 @@ const cache = {
   }
 };
 
-const extractTextContent = (html) => parse(html).textContent;
-
+const extractTextContent = html => parse(html).textContent;
 
 const makeRemoteSafeAuthPayload = ({ agent, chat, user }) => {
   const payload = {
@@ -84,7 +83,7 @@ const makeRemoteSafeAuthPayload = ({ agent, chat, user }) => {
       configuration: agent.configuration
     },
     chat: {
-      id: chat.id,
+      id: chat.id
     },
     user: {
       id: user.id,
@@ -93,7 +92,6 @@ const makeRemoteSafeAuthPayload = ({ agent, chat, user }) => {
   };
   return payload;
 };
-
 
 class SocketManager {
   constructor(server) {
@@ -150,10 +148,7 @@ class SocketManager {
           const clientKey = `${data.chat_id}-user-${data.user_id}`;
           console.log(clientKey);
           if (cache.clients[clientKey]) {
-            const {
-              client,
-              auth,
-            } = cache.clients[clientKey];
+            const { client, auth } = cache.clients[clientKey];
 
             // IMPORTANT! THIS WILL ONLY SEND TEXT CONTENT!
             // ANY IMAGE ATTACHMENTS OR EMBEDS WILL BE IGNORED
@@ -289,7 +284,7 @@ class SocketManager {
       }
 
       // Site
-      socket.on(AGENT_PAUSE, async (props) => {
+      socket.on(AGENT_PAUSE, async props => {
         console.log(AGENT_PAUSE, props);
       });
 

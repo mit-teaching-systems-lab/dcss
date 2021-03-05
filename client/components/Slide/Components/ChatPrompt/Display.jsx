@@ -46,7 +46,9 @@ const resultToRunEventMap = {
 const emptyEvent = {};
 
 const needsToFetchAgent = agent => {
-  return agent && agent.id && !agent.title && !agent.description && !agent.created_at;
+  return (
+    agent && agent.id && !agent.title && !agent.description && !agent.created_at
+  );
 };
 
 class Display extends Component {
@@ -171,9 +173,12 @@ class Display extends Component {
   onBeforeUnload() {
     this.props.socket.emit(
       USER_PART_SLIDE,
-      Payload.compose(this.props, {
-        run: Storage.get(this.storageKey)
-      })
+      Payload.compose(
+        this.props,
+        {
+          run: Storage.get(this.storageKey)
+        }
+      )
     );
 
     this.hasUnloaded = true;
@@ -231,7 +236,15 @@ class Display extends Component {
   }
 
   render() {
-    const { agent, chat, auto, isEmbeddedInSVG, responseId, timer, user } = this.props;
+    const {
+      agent,
+      chat,
+      auto,
+      isEmbeddedInSVG,
+      responseId,
+      timer,
+      user
+    } = this.props;
     const { isReady, isRestart, hasAQuorum, hasSubmittedResponse } = this.state;
 
     if (isEmbeddedInSVG || !this.isScenarioRun) {
@@ -329,7 +342,6 @@ class Display extends Component {
       </Menu.Item>
     ) : null;
 
-
     const dropdownOrResultOfDiscussion = !defaultValue ? (
       <Dropdown
         item
@@ -395,12 +407,12 @@ Display.propTypes = {
 const mapStateToProps = (state, ownProps) => {
   const { agentsById, cohort, chat, run, scenario, user } = state;
   const ownAgent = ownProps.agent || {};
-  const stateAgent = agentsById[ownProps?.agent?.id] || {};
+  const stateAgent = agentsById[(ownProps?.agent?.id)] || {};
   const agent = {
     ...ownAgent,
     ...stateAgent
   };
-  console.log("agent", agent);
+  console.log('agent', agent);
 
   return { agent, cohort, chat, run, scenario, user };
 };

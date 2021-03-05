@@ -60,6 +60,22 @@ exports[`Render 1 1 1`] = `
       tabindex="0"
     >
       <i
+        aria-label="Conditional Content"
+        class="flask icon"
+      />
+      <span
+        class="ser__component-name"
+      >
+        Conditional Content
+      </span>
+    </a>
+    <a
+      class="item"
+      role="button"
+      style="float: none !important;"
+      tabindex="0"
+    >
+      <i
         aria-label="Prompt: Audio Input"
         class="microphone icon"
       />

@@ -125,7 +125,11 @@ class ChatMessages extends Component {
 
     if (agent) {
       this.props.socket.emit(
-        AGENT_START, Payload.compose(this.props, { agent, user })
+        AGENT_START,
+        Payload.compose(
+          this.props,
+          { agent, user }
+        )
       );
     }
 
@@ -143,7 +147,11 @@ class ChatMessages extends Component {
 
     if (agent) {
       this.props.socket.emit(
-        AGENT_PAUSE, Payload.compose(this.props, { agent })
+        AGENT_PAUSE,
+        Payload.compose(
+          this.props,
+          { agent }
+        )
       );
     }
   }

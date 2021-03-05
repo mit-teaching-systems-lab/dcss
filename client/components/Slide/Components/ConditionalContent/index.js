@@ -8,10 +8,11 @@ export const defaultValue = () => ({
   Authors will select from currently in-use agents,
   that list is also limited to a subset of agents.
 
-  ChatPrompt agents are no compatible, or relevant to,
+  ChatPrompt agents are not compatible, or relevant to,
   Conditional Content outputs.
   */
   agent: null,
+  id: '',
   persona: null,
   rules: [
     // See util/Conditional

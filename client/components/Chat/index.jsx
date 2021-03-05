@@ -67,7 +67,6 @@ function isValidMessage(message) {
   return true;
 }
 
-
 function getAvailableHeightForComposer(totalHeight) {
   // top + gap + button tray + bottom
   const totalPaddingSpace = 82 + 14 + 47 + 26;
@@ -327,9 +326,12 @@ class Chat extends Component {
     if (isValidMessage(content)) {
       this.props.socket.emit(
         CHAT_MESSAGE_CREATED,
-        Payload.compose(this.props, {
-          content
-        })
+        Payload.compose(
+          this.props,
+          {
+            content
+          }
+        )
       );
       this.clear();
     }

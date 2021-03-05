@@ -1,0 +1,141 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render 1 1 1`] = `
+<DocumentFragment>
+  <form
+    class="ui form"
+  >
+    <div
+      class="ui fluid container"
+    >
+      <div
+        class="ui grid"
+      >
+        <div
+          class="row"
+        >
+          <div
+            class="column"
+          >
+            <div
+              class="field"
+            >
+              <label>
+                Select an AI agent:
+              </label>
+            </div>
+            <div
+              class="ui segment"
+            >
+              <p
+                class="cce__paragraph"
+                tabindex="0"
+              >
+                Create rules that are used to determine if the content below will be displayed to the participant.
+              </p>
+              <p
+                class="cce__paragraph"
+                tabindex="0"
+              >
+                For every rule, 
+                <code>
+                  X
+                </code>
+                 is the sum of affirmative responses from the agent, and 
+                <code>
+                  Y
+                </code>
+                 is your comparison value.
+              </p>
+            </div>
+            <table
+              class="ui definition striped unstackable table"
+            >
+              <thead
+                class=""
+              >
+                <tr
+                  class=""
+                >
+                  <th
+                    class="mpr__thead-background"
+                  />
+                  <th
+                    class=""
+                  >
+                    Operation
+                  </th>
+                  <th
+                    class="cce__cell-constraint"
+                  >
+                    Y value
+                  </th>
+                  <th
+                    class="cce__cell-constraint"
+                  >
+                    Evaluates as...
+                  </th>
+                </tr>
+              </thead>
+              <tbody
+                class=""
+              >
+                <tr
+                  class="negative"
+                >
+                  <td
+                    class=""
+                    colspan="4"
+                  >
+                    There are no rules defined, which means this component will not display anything on the slide. You must create at least one rule to display the content in your slide.
+                  </td>
+                </tr>
+              </tbody>
+              <tfoot
+                class="full-width"
+              >
+                <tr
+                  class=""
+                >
+                  <th
+                    class=""
+                  />
+                  <th
+                    class=""
+                    colspan="3"
+                  >
+                    <div
+                      class="ui borderless right floated menu"
+                    >
+                      <a
+                        aria-label="Add another slide choice"
+                        class="icon item"
+                        tabindex="0"
+                      >
+                        <i
+                          class="large icons em__icon-group-margin"
+                        >
+                          <i
+                            aria-hidden="true"
+                            class="hand pointer outline icon"
+                          />
+                          <i
+                            aria-hidden="true"
+                            class="green add top right corner icon"
+                          />
+                        </i>
+                        Add a rule
+                      </a>
+                    </div>
+                  </th>
+                </tr>
+              </tfoot>
+            </table>
+            <textarea />
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</DocumentFragment>
+`;
