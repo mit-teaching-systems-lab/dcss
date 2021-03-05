@@ -60,7 +60,35 @@ describe('GET_INTERACTION_SUCCESS', () => {
       expect(returnValue).toEqual(interaction);
 
       await mockStore.dispatch(actions.getInteraction(1));
-      expect(mockStore.getActions()).toMatchSnapshot();
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "interaction": Object {
+              "created_at": "2021-02-25T17:31:33.826Z",
+              "deleted_at": null,
+              "description": "It will appear as an option for scenario authors to include in chat discussions within multi-participant scenarios. It receives participant chat messages.",
+              "id": 1,
+              "name": "Fake Interaction",
+              "owner": Object {
+                "email": "super@email.com",
+                "id": 999,
+                "is_anonymous": false,
+                "is_super": true,
+                "personalname": "Super User",
+                "roles": Array [
+                  "participant",
+                  "super_admin",
+                  "facilitator",
+                  "researcher",
+                ],
+                "username": "superuser",
+              },
+              "updated_at": "2021-02-27T20:38:53.774Z",
+            },
+            "type": "GET_INTERACTION_SUCCESS",
+          },
+        ]
+      `);
     });
   });
 
@@ -88,7 +116,35 @@ describe('GET_INTERACTION_SUCCESS', () => {
       expect(returnValue).toEqual(interaction);
 
       await mockStore.dispatch(actions.createInteraction(interaction));
-      expect(mockStore.getActions()).toMatchSnapshot();
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "interaction": Object {
+              "created_at": "2021-02-25T17:31:33.826Z",
+              "deleted_at": null,
+              "description": "It will appear as an option for scenario authors to include in chat discussions within multi-participant scenarios. It receives participant chat messages.",
+              "id": 1,
+              "name": "Fake Interaction",
+              "owner": Object {
+                "email": "super@email.com",
+                "id": 999,
+                "is_anonymous": false,
+                "is_super": true,
+                "personalname": "Super User",
+                "roles": Array [
+                  "participant",
+                  "super_admin",
+                  "facilitator",
+                  "researcher",
+                ],
+                "username": "superuser",
+              },
+              "updated_at": "2021-02-27T20:38:53.774Z",
+            },
+            "type": "GET_INTERACTION_SUCCESS",
+          },
+        ]
+      `);
     });
 
     test('Empty params', async () => {
@@ -98,7 +154,7 @@ describe('GET_INTERACTION_SUCCESS', () => {
       expect(returnValue).toEqual(null);
 
       await mockStore.dispatch(actions.setInteraction(1, {}));
-      expect(mockStore.getActions()).toMatchSnapshot();
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`Array []`);
     });
   });
 });
@@ -119,7 +175,16 @@ describe('GET_INTERACTION_ERROR', () => {
       expect(returnValue).toEqual(null);
 
       await mockStore.dispatch(actions.getInteraction(1));
-      expect(mockStore.getActions()).toMatchSnapshot();
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "error": Object {
+              "error": [Error: something unexpected happened on the server],
+            },
+            "type": "GET_INTERACTION_ERROR",
+          },
+        ]
+      `);
     });
   });
 
@@ -145,7 +210,16 @@ describe('GET_INTERACTION_ERROR', () => {
       expect(returnValue).toEqual(null);
 
       await mockStore.dispatch(actions.createInteraction(interaction));
-      expect(mockStore.getActions()).toMatchSnapshot();
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "error": Object {
+              "error": [Error: something unexpected happened on the server],
+            },
+            "type": "GET_INTERACTION_ERROR",
+          },
+        ]
+      `);
     });
   });
 });
@@ -161,7 +235,7 @@ describe('SET_INTERACTION_SUCCESS', () => {
       expect(returnValue).toEqual(null);
 
       await mockStore.dispatch(actions.setInteraction(1, {}));
-      expect(mockStore.getActions()).toMatchSnapshot();
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`Array []`);
     });
 
     test('Receives a interaction', async () => {
@@ -185,7 +259,35 @@ describe('SET_INTERACTION_SUCCESS', () => {
       expect(returnValue).toEqual(interaction);
 
       await mockStore.dispatch(actions.setInteraction(1, interaction));
-      expect(mockStore.getActions()).toMatchSnapshot();
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "interaction": Object {
+              "created_at": "2021-02-25T17:31:33.826Z",
+              "deleted_at": null,
+              "description": "It will appear as an option for scenario authors to include in chat discussions within multi-participant scenarios. It receives participant chat messages.",
+              "id": 1,
+              "name": "Fake Interaction",
+              "owner": Object {
+                "email": "super@email.com",
+                "id": 999,
+                "is_anonymous": false,
+                "is_super": true,
+                "personalname": "Super User",
+                "roles": Array [
+                  "participant",
+                  "super_admin",
+                  "facilitator",
+                  "researcher",
+                ],
+                "username": "superuser",
+              },
+              "updated_at": "2021-02-27T20:38:53.774Z",
+            },
+            "type": "SET_INTERACTION_SUCCESS",
+          },
+        ]
+      `);
     });
 
     test('Receives a interaction, updates scenario', async () => {
@@ -217,7 +319,35 @@ describe('SET_INTERACTION_SUCCESS', () => {
       expect(returnValue).toEqual(interaction);
 
       await mockStore.dispatch(actions.setInteraction(1, interaction));
-      expect(mockStore.getActions()).toMatchSnapshot();
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "interaction": Object {
+              "created_at": "2021-02-25T17:31:33.826Z",
+              "deleted_at": null,
+              "description": "It will appear as an option for scenario authors to include in chat discussions within multi-participant scenarios. It receives participant chat messages.",
+              "id": 1,
+              "name": "Fake Interaction",
+              "owner": Object {
+                "email": "super@email.com",
+                "id": 999,
+                "is_anonymous": false,
+                "is_super": true,
+                "personalname": "Super User",
+                "roles": Array [
+                  "participant",
+                  "super_admin",
+                  "facilitator",
+                  "researcher",
+                ],
+                "username": "superuser",
+              },
+              "updated_at": "2021-02-27T20:38:53.774Z",
+            },
+            "type": "SET_INTERACTION_SUCCESS",
+          },
+        ]
+      `);
     });
   });
 });
@@ -247,7 +377,16 @@ describe('SET_INTERACTION_ERROR', () => {
       expect(returnValue).toEqual(null);
 
       await mockStore.dispatch(actions.setInteraction(1, interaction));
-      expect(mockStore.getActions()).toMatchSnapshot();
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "error": Object {
+              "error": [Error: something unexpected happened on the server],
+            },
+            "type": "SET_INTERACTION_ERROR",
+          },
+        ]
+      `);
     });
   });
 });
@@ -268,7 +407,81 @@ describe('GET_INTERACTIONS_SUCCESS', () => {
       expect(returnValue).toEqual(interactions);
 
       await mockStore.dispatch(actions.getInteractions());
-      expect(mockStore.getActions()).toMatchSnapshot();
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "interactions": Array [
+              Object {
+                "created_at": "2021-02-25T17:31:33.826Z",
+                "deleted_at": null,
+                "description": "It will appear as an option for scenario authors to include in chat discussions within multi-participant scenarios. It receives participant chat messages.",
+                "id": 1,
+                "name": "ChatPrompt",
+                "owner": Object {
+                  "email": "super@email.com",
+                  "id": 999,
+                  "is_anonymous": false,
+                  "is_super": true,
+                  "personalname": "Super User",
+                  "roles": Array [
+                    "participant",
+                    "super_admin",
+                    "facilitator",
+                    "researcher",
+                  ],
+                  "username": "superuser",
+                },
+                "updated_at": "2021-02-27T20:38:53.774Z",
+              },
+              Object {
+                "created_at": "2021-02-25T17:31:33.826Z",
+                "deleted_at": null,
+                "description": "It will appear as an option for scenario authors to use in conditional content components within scenarios. It receives participant Audio Prompt Responses.",
+                "id": 2,
+                "name": "AudioPrompt",
+                "owner": Object {
+                  "email": "super@email.com",
+                  "id": 999,
+                  "is_anonymous": false,
+                  "is_super": true,
+                  "personalname": "Super User",
+                  "roles": Array [
+                    "participant",
+                    "super_admin",
+                    "facilitator",
+                    "researcher",
+                  ],
+                  "username": "superuser",
+                },
+                "updated_at": "2021-02-27T20:38:53.774Z",
+              },
+              Object {
+                "created_at": "2021-02-25T17:31:33.826Z",
+                "deleted_at": null,
+                "description": "It will appear as an option for scenario authors to use in conditional content components within scenarios. It receives participant Text Prompt Responses.",
+                "id": 3,
+                "name": "TextPrompt",
+                "owner": Object {
+                  "email": "super@email.com",
+                  "id": 999,
+                  "is_anonymous": false,
+                  "is_super": true,
+                  "personalname": "Super User",
+                  "roles": Array [
+                    "participant",
+                    "super_admin",
+                    "facilitator",
+                    "researcher",
+                  ],
+                  "username": "superuser",
+                },
+                "updated_at": "2021-02-27T20:38:53.774Z",
+              },
+            ],
+            "type": "GET_INTERACTIONS_SUCCESS",
+          },
+        ]
+      `);
     });
 
     test('Receives undefined', async () => {
@@ -283,7 +496,14 @@ describe('GET_INTERACTIONS_SUCCESS', () => {
       expect(returnValue).toMatchInlineSnapshot(`null`);
 
       await mockStore.dispatch(actions.getInteractions());
-      expect(mockStore.getActions()).toMatchSnapshot();
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "interactions": undefined,
+            "type": "GET_INTERACTIONS_SUCCESS",
+          },
+        ]
+      `);
     });
   });
 });
@@ -296,7 +516,95 @@ describe('GET_INTERACTIONS_ERROR', () => {
       expect(fetch.mock.calls.length).toBe(1);
       expect(returnValue).toEqual(null);
       await mockStore.dispatch(actions.getInteractions());
-      expect(mockStore.getActions()).toMatchSnapshot();
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "error": Object {
+              "error": [Error: something unexpected happened on the server],
+            },
+            "type": "GET_INTERACTIONS_ERROR",
+          },
+        ]
+      `);
+    });
+  });
+});
+
+describe('GET_INTERACTIONS_TYPES_SUCCESS', () => {
+  describe('getInteractionsTypes', () => {
+    let types = [{ name: 'A' }, { name: 'B' }];
+
+    test('Receives types', async () => {
+      fetchImplementation(fetch, 200, { types });
+      const returnValue = await store.dispatch(actions.getInteractionsTypes());
+      expect(fetch.mock.calls.length).toBe(1);
+      expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+        Array [
+          "/api/interactions/types",
+        ]
+      `);
+      expect(returnValue).toEqual(types);
+
+      await mockStore.dispatch(actions.getInteractionsTypes());
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "type": "GET_INTERACTIONS_TYPES_SUCCESS",
+            "types": Array [
+              Object {
+                "name": "A",
+              },
+              Object {
+                "name": "B",
+              },
+            ],
+          },
+        ]
+      `);
+    });
+
+    test('Receives undefined', async () => {
+      fetchImplementation(fetch, 200, { types: undefined });
+      const returnValue = await store.dispatch(actions.getInteractionsTypes());
+      expect(fetch.mock.calls.length).toBe(1);
+      expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+        Array [
+          "/api/interactions/types",
+        ]
+      `);
+      expect(returnValue).toMatchInlineSnapshot(`null`);
+
+      await mockStore.dispatch(actions.getInteractionsTypes());
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "type": "GET_INTERACTIONS_TYPES_SUCCESS",
+            "types": undefined,
+          },
+        ]
+      `);
+    });
+  });
+});
+
+describe('GET_INTERACTIONS_TYPES_ERROR', () => {
+  describe('getInteractionsTypes', () => {
+    test('Receives error', async () => {
+      fetchImplementation(fetch, 200, { error });
+      const returnValue = await store.dispatch(actions.getInteractionsTypes());
+      expect(fetch.mock.calls.length).toBe(1);
+      expect(returnValue).toEqual(null);
+      await mockStore.dispatch(actions.getInteractionsTypes());
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "error": Object {
+              "error": [Error: something unexpected happened on the server],
+            },
+            "type": "GET_INTERACTIONS_TYPES_ERROR",
+          },
+        ]
+      `);
     });
   });
 });

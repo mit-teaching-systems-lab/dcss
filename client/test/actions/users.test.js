@@ -55,7 +55,11 @@ describe('GET_USERS_SUCCESS', () => {
     fetchImplementation(fetch, 200, { users });
 
     const returnValue = await store.dispatch(actions.getUsers());
-    expect(fetch.mock.calls[0]).toEqual(['/api/roles/all']);
+    expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+      Array [
+        "/api/roles/all",
+      ]
+    `);
     expect(store.getState().usersById).toEqual(makeById(users));
     expect(store.getState().users).toEqual(users);
     expect(returnValue).toEqual(users);
@@ -66,10 +70,46 @@ describe('GET_USERS_SUCCESS', () => {
     fetchImplementation(fetch, 200, {});
 
     const returnValue = await store.dispatch(actions.getUsers());
-    expect(fetch.mock.calls[0]).toEqual(['/api/roles/all']);
+    expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+      Array [
+        "/api/roles/all",
+      ]
+    `);
     expect(store.getState().usersById).toEqual({});
     expect(store.getState().users).toEqual([]);
     expect(returnValue).toEqual([]);
+  });
+
+  test('getUsersCount', async () => {
+    const users = state.users.slice();
+
+    fetchImplementation(fetch, 200, { count: 1 });
+
+    const returnValue = await store.dispatch(actions.getUsersCount());
+    expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+      Array [
+        "/api/roles/all/count",
+      ]
+    `);
+    expect(store.getState().usersById).toEqual({});
+    expect(store.getState().users).toEqual([]);
+    expect(returnValue).toEqual(1);
+  });
+
+  test('getUsersCount, filter', async () => {
+    const users = state.users.slice();
+
+    fetchImplementation(fetch, 200, { count: 1 });
+
+    const returnValue = await store.dispatch(actions.getUsersCount('all'));
+    expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+      Array [
+        "/api/roles/all/count",
+      ]
+    `);
+    expect(store.getState().usersById).toEqual({});
+    expect(store.getState().users).toEqual([]);
+    expect(returnValue).toEqual(1);
   });
 });
 
@@ -77,8 +117,23 @@ test('GET_USERS_ERROR', async () => {
   fetchImplementation(fetch, 200, { error });
 
   const returnValue = await store.dispatch(actions.getUsers());
-  expect(fetch.mock.calls[0]).toEqual(['/api/roles/all']);
-  expect(store.getState().errors.users.error).toEqual(error);
+  expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+    Array [
+      "/api/roles/all",
+    ]
+  `);
+  expect(returnValue).toBe(null);
+});
+
+test('GET_USERS_COUNT_ERROR', async () => {
+  fetchImplementation(fetch, 200, { error });
+
+  const returnValue = await store.dispatch(actions.getUsersCount());
+  expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+    Array [
+      "/api/roles/all/count",
+    ]
+  `);
   expect(returnValue).toBe(null);
 });
 
@@ -101,6 +156,5 @@ test('GET_USERS_BY_PERMISSION_ERROR', async () => {
     actions.getUsersByPermission('boss')
   );
   expect(fetch.mock.calls[0]).toEqual(['/api/roles/user/permission/boss']);
-  expect(store.getState().errors.users.error).toEqual(error);
   expect(returnValue).toBe(null);
 });

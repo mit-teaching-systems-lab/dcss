@@ -1,5 +1,4 @@
 import { v4 as uuid } from 'uuid';
-import assert from 'assert';
 import {
   createMockStore,
   createMockConnectedStore,
@@ -60,7 +59,134 @@ describe('GET_CHAT_SUCCESS', () => {
       expect(returnValue).toEqual(chat);
 
       await mockStore.dispatch(actions.getChat(1));
-      expect(mockStore.getActions()).toMatchSnapshot();
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "chat": Object {
+              "created_at": "2020-12-08T21:51:33.659Z",
+              "deleted_at": null,
+              "ended_at": null,
+              "host_id": 2,
+              "id": 1,
+              "scenario_id": 42,
+              "updated_at": null,
+            },
+            "type": "GET_CHAT_SUCCESS",
+          },
+        ]
+      `);
+    });
+  });
+
+  describe('joinChat', () => {
+    let chat = { ...state.chats[0] };
+
+    test('Receives a chat', async () => {
+      fetchImplementation(fetch, 200, { chat });
+      const returnValue = await store.dispatch(actions.joinChat(1, {}));
+      expect(fetch.mock.calls.length).toBe(1);
+      expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+        Array [
+          "/api/chats/1/join",
+          Object {
+            "body": "{\\"persona\\":{}}",
+            "headers": Object {
+              "Content-Type": "application/json",
+            },
+            "method": "POST",
+          },
+        ]
+      `);
+      expect(returnValue).toEqual(chat);
+
+      await mockStore.dispatch(actions.joinChat(1, {}));
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "chat": Object {
+              "created_at": "2020-12-08T21:51:33.659Z",
+              "deleted_at": null,
+              "ended_at": null,
+              "host_id": 2,
+              "id": 1,
+              "scenario_id": 42,
+              "updated_at": null,
+            },
+            "type": "GET_CHAT_SUCCESS",
+          },
+        ]
+      `);
+    });
+  });
+
+  describe('getChatByIdentifiers', () => {
+    let chat = { ...state.chats[0] };
+
+    test('Receives a chat, with scenario and cohort', async () => {
+      fetchImplementation(fetch, 200, { chat });
+      const scenario = { id: 1 };
+      const cohort = { id: 2 };
+      const returnValue = await store.dispatch(
+        actions.getChatByIdentifiers(scenario, cohort)
+      );
+      expect(fetch.mock.calls.length).toBe(1);
+      expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+        Array [
+          "/api/chats/new-or-existing/scenario/1/cohort/2",
+        ]
+      `);
+      expect(returnValue).toEqual(chat);
+
+      await mockStore.dispatch(actions.getChatByIdentifiers(1));
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "chat": Object {
+              "created_at": "2020-12-08T21:51:33.659Z",
+              "deleted_at": null,
+              "ended_at": null,
+              "host_id": 2,
+              "id": 1,
+              "scenario_id": 42,
+              "updated_at": null,
+            },
+            "type": "GET_CHAT_SUCCESS",
+          },
+        ]
+      `);
+    });
+
+    test('Receives a chat, with scenario', async () => {
+      fetchImplementation(fetch, 200, { chat });
+      const scenario = { id: 1 };
+      const returnValue = await store.dispatch(
+        actions.getChatByIdentifiers(scenario)
+      );
+      expect(fetch.mock.calls.length).toBe(1);
+      expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+        Array [
+          "/api/chats/new-or-existing/scenario/1",
+        ]
+      `);
+      expect(returnValue).toEqual(chat);
+
+      await mockStore.dispatch(actions.getChatByIdentifiers(1));
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "chat": Object {
+              "created_at": "2020-12-08T21:51:33.659Z",
+              "deleted_at": null,
+              "ended_at": null,
+              "host_id": 2,
+              "id": 1,
+              "scenario_id": 42,
+              "updated_at": null,
+            },
+            "type": "GET_CHAT_SUCCESS",
+          },
+        ]
+      `);
     });
   });
 
@@ -86,7 +212,22 @@ describe('GET_CHAT_SUCCESS', () => {
       expect(returnValue).toEqual(chat);
 
       await mockStore.dispatch(actions.createChat(chat));
-      expect(mockStore.getActions()).toMatchSnapshot();
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "chat": Object {
+              "created_at": "2020-12-08T21:51:33.659Z",
+              "deleted_at": null,
+              "ended_at": null,
+              "host_id": 2,
+              "id": 1,
+              "scenario_id": 42,
+              "updated_at": null,
+            },
+            "type": "GET_CHAT_SUCCESS",
+          },
+        ]
+      `);
     });
 
     test('Empty params', async () => {
@@ -96,7 +237,7 @@ describe('GET_CHAT_SUCCESS', () => {
       expect(returnValue).toEqual(null);
 
       await mockStore.dispatch(actions.setChat(1, {}));
-      expect(mockStore.getActions()).toMatchSnapshot();
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`Array []`);
     });
   });
 });
@@ -117,7 +258,107 @@ describe('GET_CHAT_ERROR', () => {
       expect(returnValue).toEqual(null);
 
       await mockStore.dispatch(actions.getChat(1));
-      expect(mockStore.getActions()).toMatchSnapshot();
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "error": Object {
+              "error": [Error: something unexpected happened on the server],
+            },
+            "type": "GET_CHAT_ERROR",
+          },
+        ]
+      `);
+    });
+  });
+
+  describe('joinChat', () => {
+    test('Receives an error', async () => {
+      fetchImplementation(fetch, 200, { error });
+      const returnValue = await store.dispatch(actions.joinChat(1, {}));
+      expect(fetch.mock.calls.length).toBe(1);
+      expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+        Array [
+          "/api/chats/1/join",
+          Object {
+            "body": "{\\"persona\\":{}}",
+            "headers": Object {
+              "Content-Type": "application/json",
+            },
+            "method": "POST",
+          },
+        ]
+      `);
+      expect(returnValue).toEqual(null);
+
+      await mockStore.dispatch(actions.joinChat(1, {}));
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "error": Object {
+              "error": [Error: something unexpected happened on the server],
+            },
+            "type": "GET_CHAT_ERROR",
+          },
+        ]
+      `);
+    });
+  });
+
+  describe('getChatByIdentifiers', () => {
+    let chat = { ...state.chats[0] };
+    const scenario = { id: 1 };
+    const cohort = { id: 2 };
+
+    test('Receives an error, with scenario and cohort', async () => {
+      fetchImplementation(fetch, 200, { error });
+      const returnValue = await store.dispatch(
+        actions.getChatByIdentifiers(scenario, cohort)
+      );
+      expect(fetch.mock.calls.length).toBe(1);
+      expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+        Array [
+          "/api/chats/new-or-existing/scenario/1/cohort/2",
+        ]
+      `);
+      expect(returnValue).toEqual(null);
+
+      await mockStore.dispatch(actions.getChatByIdentifiers(scenario, cohort));
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "error": Object {
+              "error": [Error: something unexpected happened on the server],
+            },
+            "type": "GET_CHAT_ERROR",
+          },
+        ]
+      `);
+    });
+
+    test('Receives an error, with scenario', async () => {
+      fetchImplementation(fetch, 200, { error });
+      const returnValue = await store.dispatch(
+        actions.getChatByIdentifiers(scenario)
+      );
+      expect(fetch.mock.calls.length).toBe(1);
+      expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+        Array [
+          "/api/chats/new-or-existing/scenario/1",
+        ]
+      `);
+      expect(returnValue).toEqual(null);
+
+      await mockStore.dispatch(actions.getChatByIdentifiers(scenario));
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "error": Object {
+              "error": [Error: something unexpected happened on the server],
+            },
+            "type": "GET_CHAT_ERROR",
+          },
+        ]
+      `);
     });
   });
 
@@ -141,7 +382,16 @@ describe('GET_CHAT_ERROR', () => {
       expect(returnValue).toEqual(null);
 
       await mockStore.dispatch(actions.createChat(chat));
-      expect(mockStore.getActions()).toMatchSnapshot();
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "error": Object {
+              "error": [Error: something unexpected happened on the server],
+            },
+            "type": "GET_CHAT_ERROR",
+          },
+        ]
+      `);
     });
   });
 });
@@ -157,7 +407,7 @@ describe('SET_CHAT_SUCCESS', () => {
       expect(returnValue).toEqual(null);
 
       await mockStore.dispatch(actions.setChat(1, {}));
-      expect(mockStore.getActions()).toMatchSnapshot();
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`Array []`);
     });
 
     test('Receives a chat', async () => {
@@ -179,7 +429,22 @@ describe('SET_CHAT_SUCCESS', () => {
       expect(returnValue).toEqual(chat);
 
       await mockStore.dispatch(actions.setChat(1, chat));
-      expect(mockStore.getActions()).toMatchSnapshot();
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "chat": Object {
+              "created_at": "2020-12-08T21:51:33.659Z",
+              "deleted_at": null,
+              "ended_at": null,
+              "host_id": 2,
+              "id": 1,
+              "scenario_id": 42,
+              "updated_at": null,
+            },
+            "type": "SET_CHAT_SUCCESS",
+          },
+        ]
+      `);
     });
   });
 });
@@ -207,7 +472,16 @@ describe('SET_CHAT_ERROR', () => {
       expect(returnValue).toEqual(null);
 
       await mockStore.dispatch(actions.setChat(1, chat));
-      expect(mockStore.getActions()).toMatchSnapshot();
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "error": Object {
+              "error": [Error: something unexpected happened on the server],
+            },
+            "type": "SET_CHAT_ERROR",
+          },
+        ]
+      `);
     });
   });
 });
@@ -228,7 +502,24 @@ describe('GET_CHATS_SUCCESS', () => {
       expect(returnValue).toEqual(chats);
 
       await mockStore.dispatch(actions.getChats());
-      expect(mockStore.getActions()).toMatchSnapshot();
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "chats": Array [
+              Object {
+                "created_at": "2020-12-08T21:51:33.659Z",
+                "deleted_at": null,
+                "ended_at": null,
+                "host_id": 2,
+                "id": 1,
+                "scenario_id": 42,
+                "updated_at": null,
+              },
+            ],
+            "type": "GET_CHATS_SUCCESS",
+          },
+        ]
+      `);
     });
 
     test('Receives undefined', async () => {
@@ -243,7 +534,14 @@ describe('GET_CHATS_SUCCESS', () => {
       expect(returnValue).toMatchInlineSnapshot(`Array []`);
 
       await mockStore.dispatch(actions.getChats());
-      expect(mockStore.getActions()).toMatchSnapshot();
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "chats": Array [],
+            "type": "GET_CHATS_SUCCESS",
+          },
+        ]
+      `);
     });
   });
 });
@@ -256,7 +554,35 @@ describe('GET_CHATS_ERROR', () => {
       expect(fetch.mock.calls.length).toBe(1);
       expect(returnValue).toEqual(null);
       await mockStore.dispatch(actions.getChats());
-      expect(mockStore.getActions()).toMatchSnapshot();
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "error": Object {
+              "error": [Error: something unexpected happened on the server],
+            },
+            "type": "GET_CHATS_ERROR",
+          },
+        ]
+      `);
+    });
+  });
+  describe('getChatsByCohortId', () => {
+    test('Receives error', async () => {
+      fetchImplementation(fetch, 200, { error });
+      const returnValue = await store.dispatch(actions.getChatsByCohortId(1));
+      expect(fetch.mock.calls.length).toBe(1);
+      expect(returnValue).toEqual(null);
+      await mockStore.dispatch(actions.getChatsByCohortId(1));
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "error": Object {
+              "error": [Error: something unexpected happened on the server],
+            },
+            "type": "GET_CHATS_ERROR",
+          },
+        ]
+      `);
     });
   });
 });
@@ -277,7 +603,14 @@ describe('LINK_RUN_TO_CHAT_SUCCESS', () => {
       expect(returnValue).toMatchInlineSnapshot(`undefined`);
 
       await mockStore.dispatch(actions.linkRunToChat(1, 2));
-      expect(mockStore.getActions()).toMatchSnapshot();
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "chat": undefined,
+            "type": "LINK_RUN_TO_CHAT_SUCCESS",
+          },
+        ]
+      `);
     });
   });
 });
@@ -296,7 +629,16 @@ describe('LINK_RUN_TO_CHAT_ERROR', () => {
       expect(returnValue).toEqual(null);
 
       await mockStore.dispatch(actions.linkRunToChat(1, 2));
-      expect(mockStore.getActions()).toMatchSnapshot();
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "error": Object {
+              "error": [Error: something unexpected happened on the server],
+            },
+            "type": "LINK_RUN_TO_CHAT_ERROR",
+          },
+        ]
+      `);
     });
   });
 });
@@ -319,7 +661,14 @@ describe('GET_CHAT_MESSAGES_SUCCESS', () => {
       expect(returnValue).toEqual(messages);
 
       await mockStore.dispatch(actions.getChatMessagesByChatId(1));
-      expect(mockStore.getActions()).toMatchSnapshot();
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "messages": Array [],
+            "type": "GET_CHAT_MESSAGES_SUCCESS",
+          },
+        ]
+      `);
     });
   });
 });
@@ -334,7 +683,16 @@ describe('GET_CHAT_MESSAGES_ERROR', () => {
       expect(fetch.mock.calls.length).toBe(1);
       expect(returnValue).toEqual(null);
       await mockStore.dispatch(actions.getChatMessagesByChatId(1));
-      expect(mockStore.getActions()).toMatchSnapshot();
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "error": Object {
+              "error": [Error: something unexpected happened on the server],
+            },
+            "type": "GET_CHAT_MESSAGES_ERROR",
+          },
+        ]
+      `);
     });
   });
 });
@@ -357,7 +715,14 @@ describe('GET_CHAT_MESSAGES_COUNT_SUCCESS', () => {
       expect(returnValue).toEqual(count);
 
       await mockStore.dispatch(actions.getChatMessagesCountByChatId(1));
-      expect(mockStore.getActions()).toMatchSnapshot();
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "count": 10,
+            "type": "GET_CHAT_MESSAGES_COUNT_SUCCESS",
+          },
+        ]
+      `);
     });
   });
 });
@@ -372,7 +737,16 @@ describe('GET_CHAT_MESSAGES_COUNT_ERROR', () => {
       expect(fetch.mock.calls.length).toBe(1);
       expect(returnValue).toEqual(null);
       await mockStore.dispatch(actions.getChatMessagesCountByChatId(1));
-      expect(mockStore.getActions()).toMatchSnapshot();
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "error": Object {
+              "error": [Error: something unexpected happened on the server],
+            },
+            "type": "GET_CHAT_MESSAGES_COUNT_ERROR",
+          },
+        ]
+      `);
     });
   });
 });
@@ -420,7 +794,138 @@ describe('GET_CHAT_USERS_SUCCESS', () => {
       expect(returnValue).toEqual(users);
 
       await mockStore.dispatch(actions.getChatUsersByChatId(1));
-      expect(mockStore.getActions()).toMatchSnapshot();
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "type": "GET_CHAT_USERS_SUCCESS",
+            "users": Array [
+              Object {
+                "email": "super@email.com",
+                "id": 999,
+                "is_anonymous": false,
+                "is_muted": false,
+                "is_present": true,
+                "is_super": true,
+                "personalname": "Super User",
+                "roles": Array [
+                  "participant",
+                  "super_admin",
+                  "facilitator",
+                  "researcher",
+                ],
+                "single_use_password": false,
+                "updated_at": "2020-12-10T22:29:11.638Z",
+                "username": "super",
+              },
+              Object {
+                "email": null,
+                "id": 4,
+                "is_anonymous": true,
+                "is_muted": false,
+                "is_present": true,
+                "is_super": false,
+                "personalname": null,
+                "roles": Array [
+                  "participant",
+                  "facilitator",
+                ],
+                "single_use_password": false,
+                "updated_at": "2020-12-10T17:50:19.074Z",
+                "username": "credible-lyrebird",
+              },
+            ],
+          },
+        ]
+      `);
+    });
+  });
+  describe('getLinkedChatUsersByChatId', () => {
+    let users = [
+      {
+        id: 999,
+        username: 'super',
+        personalname: 'Super User',
+        email: 'super@email.com',
+        is_anonymous: false,
+        single_use_password: false,
+        roles: ['participant', 'super_admin', 'facilitator', 'researcher'],
+        is_super: true,
+        updated_at: '2020-12-10T22:29:11.638Z',
+        is_muted: false,
+        is_present: true
+      },
+      {
+        id: 4,
+        username: 'credible-lyrebird',
+        personalname: null,
+        email: null,
+        is_anonymous: true,
+        single_use_password: false,
+        roles: ['participant', 'facilitator'],
+        is_super: false,
+        updated_at: '2020-12-10T17:50:19.074Z',
+        is_muted: false,
+        is_present: true
+      }
+    ];
+
+    test('Receives users', async () => {
+      fetchImplementation(fetch, 200, { users });
+      const returnValue = await store.dispatch(
+        actions.getLinkedChatUsersByChatId(1)
+      );
+      expect(fetch.mock.calls.length).toBe(1);
+      expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+        Array [
+          "/api/chats/1/users/linked",
+        ]
+      `);
+      expect(returnValue).toEqual(users);
+
+      await mockStore.dispatch(actions.getLinkedChatUsersByChatId(1));
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "type": "GET_CHAT_USERS_SUCCESS",
+            "users": Array [
+              Object {
+                "email": "super@email.com",
+                "id": 999,
+                "is_anonymous": false,
+                "is_muted": false,
+                "is_present": true,
+                "is_super": true,
+                "personalname": "Super User",
+                "roles": Array [
+                  "participant",
+                  "super_admin",
+                  "facilitator",
+                  "researcher",
+                ],
+                "single_use_password": false,
+                "updated_at": "2020-12-10T22:29:11.638Z",
+                "username": "super",
+              },
+              Object {
+                "email": null,
+                "id": 4,
+                "is_anonymous": true,
+                "is_muted": false,
+                "is_present": true,
+                "is_super": false,
+                "personalname": null,
+                "roles": Array [
+                  "participant",
+                  "facilitator",
+                ],
+                "single_use_password": false,
+                "updated_at": "2020-12-10T17:50:19.074Z",
+                "username": "credible-lyrebird",
+              },
+            ],
+          },
+        ]
+      `);
     });
   });
 });
@@ -433,7 +938,37 @@ describe('GET_CHAT_USERS_ERROR', () => {
       expect(fetch.mock.calls.length).toBe(1);
       expect(returnValue).toEqual(null);
       await mockStore.dispatch(actions.getChatUsersByChatId(1));
-      expect(mockStore.getActions()).toMatchSnapshot();
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "error": Object {
+              "error": [Error: something unexpected happened on the server],
+            },
+            "type": "GET_CHAT_USERS_ERROR",
+          },
+        ]
+      `);
+    });
+  });
+  describe('getLinkedChatUsersByChatId', () => {
+    test('Receives error', async () => {
+      fetchImplementation(fetch, 200, { error });
+      const returnValue = await store.dispatch(
+        actions.getLinkedChatUsersByChatId(1)
+      );
+      expect(fetch.mock.calls.length).toBe(1);
+      expect(returnValue).toEqual(null);
+      await mockStore.dispatch(actions.getLinkedChatUsersByChatId(1));
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "error": Object {
+              "error": [Error: something unexpected happened on the server],
+            },
+            "type": "GET_CHAT_USERS_ERROR",
+          },
+        ]
+      `);
     });
   });
 });
@@ -476,7 +1011,49 @@ describe('SET_CHAT_USERS_SUCCESS', () => {
       expect(returnValue).toEqual(users);
 
       await mockStore.dispatch(actions.setChatUsersByChatId(1, users));
-      expect(mockStore.getActions()).toMatchSnapshot();
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "type": "SET_CHAT_USERS_SUCCESS",
+            "users": Array [
+              Object {
+                "email": "super@email.com",
+                "id": 999,
+                "is_anonymous": false,
+                "is_muted": false,
+                "is_present": true,
+                "is_super": true,
+                "personalname": "Super User",
+                "roles": Array [
+                  "participant",
+                  "super_admin",
+                  "facilitator",
+                  "researcher",
+                ],
+                "single_use_password": false,
+                "updated_at": "2020-12-10T22:29:11.638Z",
+                "username": "super",
+              },
+              Object {
+                "email": null,
+                "id": 4,
+                "is_anonymous": true,
+                "is_muted": false,
+                "is_present": true,
+                "is_super": false,
+                "personalname": null,
+                "roles": Array [
+                  "participant",
+                  "facilitator",
+                ],
+                "single_use_password": false,
+                "updated_at": "2020-12-10T17:50:19.074Z",
+                "username": "credible-lyrebird",
+              },
+            ],
+          },
+        ]
+      `);
     });
   });
 
@@ -567,7 +1144,49 @@ describe('SET_CHAT_USERS_SUCCESS', () => {
       `);
 
       await mockStore.dispatch(actions.setChatUsersByChatId(1, users));
-      expect(mockStore.getActions()).toMatchSnapshot();
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "type": "SET_CHAT_USERS_SUCCESS",
+            "users": Array [
+              Object {
+                "email": "super@email.com",
+                "id": 999,
+                "is_anonymous": false,
+                "is_muted": false,
+                "is_present": true,
+                "is_super": true,
+                "personalname": "Super User",
+                "roles": Array [
+                  "participant",
+                  "super_admin",
+                  "facilitator",
+                  "researcher",
+                ],
+                "single_use_password": false,
+                "updated_at": "2020-12-10T22:29:11.638Z",
+                "username": "super",
+              },
+              Object {
+                "email": null,
+                "id": 4,
+                "is_anonymous": true,
+                "is_muted": false,
+                "is_present": true,
+                "is_super": false,
+                "personalname": null,
+                "roles": Array [
+                  "participant",
+                  "facilitator",
+                ],
+                "single_use_password": false,
+                "updated_at": "2020-12-10T17:50:19.074Z",
+                "username": "credible-lyrebird",
+              },
+            ],
+          },
+        ]
+      `);
     });
   });
 });
@@ -586,7 +1205,7 @@ describe('SET_CHAT_MESSAGE_SUCCESS', () => {
       expect(returnValue).toEqual(null);
 
       await mockStore.dispatch(actions.setMessageById(1, {}));
-      expect(mockStore.getActions()).toMatchSnapshot();
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`Array []`);
     });
 
     test('deleted_at', async () => {
@@ -610,7 +1229,16 @@ describe('SET_CHAT_MESSAGE_SUCCESS', () => {
       expect(returnValue).toEqual(message);
 
       await mockStore.dispatch(actions.setMessageById(1, params));
-      expect(mockStore.getActions()).toMatchSnapshot();
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "message": Object {
+              "deleted_at": "2021-01-19T18:45:01.366Z",
+            },
+            "type": "SET_CHAT_MESSAGE_SUCCESS",
+          },
+        ]
+      `);
     });
   });
 });
@@ -642,7 +1270,117 @@ describe('SET_CHAT_MESSAGE_ERROR', () => {
       expect(returnValue).toEqual(null);
 
       await mockStore.dispatch(actions.setMessageById(1, params));
-      expect(mockStore.getActions()).toMatchSnapshot();
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "error": Object {
+              "error": [Error: something unexpected happened on the server],
+            },
+            "type": "SET_CHAT_MESSAGE_ERROR",
+          },
+        ]
+      `);
+    });
+  });
+});
+
+describe('CREATE_CHAT_INVITE_SUCCESS', () => {
+  describe('createChatInvite', () => {
+    let invite = {};
+
+    test('Receives invite', async () => {
+      fetchImplementation(fetch, 200, { invite });
+      const returnValue = await store.dispatch(actions.createChatInvite(1, {}));
+      expect(fetch.mock.calls.length).toBe(1);
+      expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+        Array [
+          "/api/chats/1/invite",
+          Object {
+            "body": "{\\"invite\\":{}}",
+            "headers": Object {
+              "Content-Type": "application/json",
+            },
+            "method": "POST",
+          },
+        ]
+      `);
+      expect(returnValue).toEqual(invite);
+
+      await mockStore.dispatch(actions.createChatInvite(1, {}));
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "invite": Object {},
+            "type": "CREATE_CHAT_INVITE_SUCCESS",
+          },
+        ]
+      `);
+    });
+
+    test('Receives undefined', async () => {
+      fetchImplementation(fetch, 200, { invite: undefined });
+      const returnValue = await store.dispatch(actions.createChatInvite(1, {}));
+      expect(fetch.mock.calls.length).toBe(1);
+      expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+        Array [
+          "/api/chats/1/invite",
+          Object {
+            "body": "{\\"invite\\":{}}",
+            "headers": Object {
+              "Content-Type": "application/json",
+            },
+            "method": "POST",
+          },
+        ]
+      `);
+      expect(returnValue).toMatchInlineSnapshot(`undefined`);
+
+      await mockStore.dispatch(actions.createChatInvite(1, {}));
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "invite": undefined,
+            "type": "CREATE_CHAT_INVITE_SUCCESS",
+          },
+        ]
+      `);
+    });
+  });
+});
+
+describe('CREATE_CHAT_INVITE_ERROR', () => {
+  describe('createChatInvite', () => {
+    let invite = {};
+
+    test('Receives an error', async () => {
+      fetchImplementation(fetch, 200, { error });
+      const returnValue = await store.dispatch(actions.createChatInvite(1, {}));
+      expect(fetch.mock.calls.length).toBe(1);
+      expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+        Array [
+          "/api/chats/1/invite",
+          Object {
+            "body": "{\\"invite\\":{}}",
+            "headers": Object {
+              "Content-Type": "application/json",
+            },
+            "method": "POST",
+          },
+        ]
+      `);
+      expect(returnValue).toEqual(null);
+
+      await mockStore.dispatch(actions.createChatInvite(1, {}));
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "error": Object {
+              "error": [Error: something unexpected happened on the server],
+            },
+            "type": "CREATE_CHAT_INVITE_ERROR",
+          },
+        ]
+      `);
     });
   });
 });

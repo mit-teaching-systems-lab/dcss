@@ -1,5 +1,4 @@
 import { v4 as uuid } from 'uuid';
-import assert from 'assert';
 import {
   createMockStore,
   createMockConnectedStore,
@@ -60,7 +59,62 @@ describe('GET_AGENT_SUCCESS', () => {
       expect(returnValue).toEqual(agent);
 
       await mockStore.dispatch(actions.getAgent(1));
-      expect(mockStore.getActions()).toMatchSnapshot();
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "agent": Object {
+              "configuration": Object {
+                "bar": "2",
+                "baz": "c",
+                "foo": "false",
+              },
+              "created_at": "2021-02-25T17:31:33.826Z",
+              "deleted_at": null,
+              "description": "Detects the presense of an emoji character in your text",
+              "endpoint": "ws://emoji-analysis-production.herokuapp.com",
+              "id": 1,
+              "interaction": Object {
+                "created_at": "2021-02-25T15:09:05.001302-05:00",
+                "deleted_at": null,
+                "description": "It will appear as an option for scenario authors to include in chat discussions within multi-participant scenarios. It receives participant chat messages.",
+                "id": 1,
+                "name": "ChatPrompt",
+                "updated_at": null,
+              },
+              "is_active": true,
+              "name": "Fake Agent",
+              "owner": Object {
+                "email": "super@email.com",
+                "id": 999,
+                "is_anonymous": false,
+                "is_super": true,
+                "personalname": "Super User",
+                "roles": Array [
+                  "participant",
+                  "super_admin",
+                  "facilitator",
+                  "researcher",
+                ],
+                "username": "superuser",
+              },
+              "self": Object {
+                "email": null,
+                "id": 148,
+                "is_anonymous": true,
+                "is_super": false,
+                "lastseen_at": "2021-02-25T13:08:57.323-05:00",
+                "personalname": "Emoji Analysis",
+                "roles": null,
+                "single_use_password": false,
+                "username": "ebe565050b31cbb4e7eacc39b23e2167",
+              },
+              "title": "Emoji Analysis",
+              "updated_at": "2021-02-25T20:09:04.999Z",
+            },
+            "type": "GET_AGENT_SUCCESS",
+          },
+        ]
+      `);
     });
   });
 
@@ -86,7 +140,62 @@ describe('GET_AGENT_SUCCESS', () => {
       expect(returnValue).toEqual(agent);
 
       await mockStore.dispatch(actions.createAgent(agent));
-      expect(mockStore.getActions()).toMatchSnapshot();
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "agent": Object {
+              "configuration": Object {
+                "bar": "2",
+                "baz": "c",
+                "foo": "false",
+              },
+              "created_at": "2021-02-25T17:31:33.826Z",
+              "deleted_at": null,
+              "description": "Detects the presense of an emoji character in your text",
+              "endpoint": "ws://emoji-analysis-production.herokuapp.com",
+              "id": 1,
+              "interaction": Object {
+                "created_at": "2021-02-25T15:09:05.001302-05:00",
+                "deleted_at": null,
+                "description": "It will appear as an option for scenario authors to include in chat discussions within multi-participant scenarios. It receives participant chat messages.",
+                "id": 1,
+                "name": "ChatPrompt",
+                "updated_at": null,
+              },
+              "is_active": true,
+              "name": "Fake Agent",
+              "owner": Object {
+                "email": "super@email.com",
+                "id": 999,
+                "is_anonymous": false,
+                "is_super": true,
+                "personalname": "Super User",
+                "roles": Array [
+                  "participant",
+                  "super_admin",
+                  "facilitator",
+                  "researcher",
+                ],
+                "username": "superuser",
+              },
+              "self": Object {
+                "email": null,
+                "id": 148,
+                "is_anonymous": true,
+                "is_super": false,
+                "lastseen_at": "2021-02-25T13:08:57.323-05:00",
+                "personalname": "Emoji Analysis",
+                "roles": null,
+                "single_use_password": false,
+                "username": "ebe565050b31cbb4e7eacc39b23e2167",
+              },
+              "title": "Emoji Analysis",
+              "updated_at": "2021-02-25T20:09:04.999Z",
+            },
+            "type": "GET_AGENT_SUCCESS",
+          },
+        ]
+      `);
     });
 
     test('Empty params', async () => {
@@ -96,7 +205,7 @@ describe('GET_AGENT_SUCCESS', () => {
       expect(returnValue).toEqual(null);
 
       await mockStore.dispatch(actions.setAgent(1, {}));
-      expect(mockStore.getActions()).toMatchSnapshot();
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`Array []`);
     });
   });
 });
@@ -117,7 +226,16 @@ describe('GET_AGENT_ERROR', () => {
       expect(returnValue).toEqual(null);
 
       await mockStore.dispatch(actions.getAgent(1));
-      expect(mockStore.getActions()).toMatchSnapshot();
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "error": Object {
+              "error": [Error: something unexpected happened on the server],
+            },
+            "type": "GET_AGENT_ERROR",
+          },
+        ]
+      `);
     });
   });
 
@@ -141,7 +259,16 @@ describe('GET_AGENT_ERROR', () => {
       expect(returnValue).toEqual(null);
 
       await mockStore.dispatch(actions.createAgent(agent));
-      expect(mockStore.getActions()).toMatchSnapshot();
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "error": Object {
+              "error": [Error: something unexpected happened on the server],
+            },
+            "type": "GET_AGENT_ERROR",
+          },
+        ]
+      `);
     });
   });
 });
@@ -157,7 +284,7 @@ describe('SET_AGENT_SUCCESS', () => {
       expect(returnValue).toEqual(null);
 
       await mockStore.dispatch(actions.setAgent(1, {}));
-      expect(mockStore.getActions()).toMatchSnapshot();
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`Array []`);
     });
 
     test('Receives a agent', async () => {
@@ -179,7 +306,62 @@ describe('SET_AGENT_SUCCESS', () => {
       expect(returnValue).toEqual(agent);
 
       await mockStore.dispatch(actions.setAgent(1, agent));
-      expect(mockStore.getActions()).toMatchSnapshot();
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "agent": Object {
+              "configuration": Object {
+                "bar": "2",
+                "baz": "c",
+                "foo": "false",
+              },
+              "created_at": "2021-02-25T17:31:33.826Z",
+              "deleted_at": null,
+              "description": "Detects the presense of an emoji character in your text",
+              "endpoint": "ws://emoji-analysis-production.herokuapp.com",
+              "id": 1,
+              "interaction": Object {
+                "created_at": "2021-02-25T15:09:05.001302-05:00",
+                "deleted_at": null,
+                "description": "It will appear as an option for scenario authors to include in chat discussions within multi-participant scenarios. It receives participant chat messages.",
+                "id": 1,
+                "name": "ChatPrompt",
+                "updated_at": null,
+              },
+              "is_active": true,
+              "name": "Fake Agent",
+              "owner": Object {
+                "email": "super@email.com",
+                "id": 999,
+                "is_anonymous": false,
+                "is_super": true,
+                "personalname": "Super User",
+                "roles": Array [
+                  "participant",
+                  "super_admin",
+                  "facilitator",
+                  "researcher",
+                ],
+                "username": "superuser",
+              },
+              "self": Object {
+                "email": null,
+                "id": 148,
+                "is_anonymous": true,
+                "is_super": false,
+                "lastseen_at": "2021-02-25T13:08:57.323-05:00",
+                "personalname": "Emoji Analysis",
+                "roles": null,
+                "single_use_password": false,
+                "username": "ebe565050b31cbb4e7eacc39b23e2167",
+              },
+              "title": "Emoji Analysis",
+              "updated_at": "2021-02-25T20:09:04.999Z",
+            },
+            "type": "SET_AGENT_SUCCESS",
+          },
+        ]
+      `);
     });
 
     test('Receives a agent, updates scenario', async () => {
@@ -209,7 +391,62 @@ describe('SET_AGENT_SUCCESS', () => {
       expect(returnValue).toEqual(agent);
 
       await mockStore.dispatch(actions.setAgent(1, agent));
-      expect(mockStore.getActions()).toMatchSnapshot();
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "agent": Object {
+              "configuration": Object {
+                "bar": "2",
+                "baz": "c",
+                "foo": "false",
+              },
+              "created_at": "2021-02-25T17:31:33.826Z",
+              "deleted_at": null,
+              "description": "Detects the presense of an emoji character in your text",
+              "endpoint": "ws://emoji-analysis-production.herokuapp.com",
+              "id": 1,
+              "interaction": Object {
+                "created_at": "2021-02-25T15:09:05.001302-05:00",
+                "deleted_at": null,
+                "description": "It will appear as an option for scenario authors to include in chat discussions within multi-participant scenarios. It receives participant chat messages.",
+                "id": 1,
+                "name": "ChatPrompt",
+                "updated_at": null,
+              },
+              "is_active": true,
+              "name": "Fake Agent",
+              "owner": Object {
+                "email": "super@email.com",
+                "id": 999,
+                "is_anonymous": false,
+                "is_super": true,
+                "personalname": "Super User",
+                "roles": Array [
+                  "participant",
+                  "super_admin",
+                  "facilitator",
+                  "researcher",
+                ],
+                "username": "superuser",
+              },
+              "self": Object {
+                "email": null,
+                "id": 148,
+                "is_anonymous": true,
+                "is_super": false,
+                "lastseen_at": "2021-02-25T13:08:57.323-05:00",
+                "personalname": "Emoji Analysis",
+                "roles": null,
+                "single_use_password": false,
+                "username": "ebe565050b31cbb4e7eacc39b23e2167",
+              },
+              "title": "Emoji Analysis",
+              "updated_at": "2021-02-25T20:09:04.999Z",
+            },
+            "type": "SET_AGENT_SUCCESS",
+          },
+        ]
+      `);
     });
   });
 });
@@ -237,7 +474,16 @@ describe('SET_AGENT_ERROR', () => {
       expect(returnValue).toEqual(null);
 
       await mockStore.dispatch(actions.setAgent(1, agent));
-      expect(mockStore.getActions()).toMatchSnapshot();
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "error": Object {
+              "error": [Error: something unexpected happened on the server],
+            },
+            "type": "SET_AGENT_ERROR",
+          },
+        ]
+      `);
     });
   });
 });
@@ -258,7 +504,64 @@ describe('GET_AGENTS_SUCCESS', () => {
       expect(returnValue).toEqual(agents);
 
       await mockStore.dispatch(actions.getAgents());
-      expect(mockStore.getActions()).toMatchSnapshot();
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "agents": Array [
+              Object {
+                "configuration": Object {
+                  "bar": "2",
+                  "baz": "c",
+                  "foo": "false",
+                },
+                "created_at": "2021-02-25T17:31:33.826Z",
+                "deleted_at": null,
+                "description": "Detects the presense of an emoji character in your text",
+                "endpoint": "ws://emoji-analysis-production.herokuapp.com",
+                "id": 1,
+                "interaction": Object {
+                  "created_at": "2021-02-25T15:09:05.001302-05:00",
+                  "deleted_at": null,
+                  "description": "It will appear as an option for scenario authors to include in chat discussions within multi-participant scenarios. It receives participant chat messages.",
+                  "id": 1,
+                  "name": "ChatPrompt",
+                  "updated_at": null,
+                },
+                "is_active": true,
+                "name": "emoji-analysis",
+                "owner": Object {
+                  "email": "super@email.com",
+                  "id": 999,
+                  "is_anonymous": false,
+                  "is_super": true,
+                  "personalname": "Super User",
+                  "roles": Array [
+                    "participant",
+                    "super_admin",
+                    "facilitator",
+                    "researcher",
+                  ],
+                  "username": "superuser",
+                },
+                "self": Object {
+                  "email": null,
+                  "id": 148,
+                  "is_anonymous": true,
+                  "is_super": false,
+                  "lastseen_at": "2021-02-25T13:08:57.323-05:00",
+                  "personalname": "Emoji Analysis",
+                  "roles": null,
+                  "single_use_password": false,
+                  "username": "ebe565050b31cbb4e7eacc39b23e2167",
+                },
+                "title": "Emoji Analysis",
+                "updated_at": "2021-02-25T20:09:04.999Z",
+              },
+            ],
+            "type": "GET_AGENTS_SUCCESS",
+          },
+        ]
+      `);
     });
 
     test('Receives undefined', async () => {
@@ -273,7 +576,14 @@ describe('GET_AGENTS_SUCCESS', () => {
       expect(returnValue).toMatchInlineSnapshot(`Array []`);
 
       await mockStore.dispatch(actions.getAgents());
-      expect(mockStore.getActions()).toMatchSnapshot();
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "agents": Array [],
+            "type": "GET_AGENTS_SUCCESS",
+          },
+        ]
+      `);
     });
   });
   describe('getAgents, filtered', () => {
@@ -291,7 +601,64 @@ describe('GET_AGENTS_SUCCESS', () => {
       expect(returnValue).toEqual(agents);
 
       await mockStore.dispatch(actions.getAgents());
-      expect(mockStore.getActions()).toMatchSnapshot();
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "agents": Array [
+              Object {
+                "configuration": Object {
+                  "bar": "2",
+                  "baz": "c",
+                  "foo": "false",
+                },
+                "created_at": "2021-02-25T17:31:33.826Z",
+                "deleted_at": null,
+                "description": "Detects the presense of an emoji character in your text",
+                "endpoint": "ws://emoji-analysis-production.herokuapp.com",
+                "id": 1,
+                "interaction": Object {
+                  "created_at": "2021-02-25T15:09:05.001302-05:00",
+                  "deleted_at": null,
+                  "description": "It will appear as an option for scenario authors to include in chat discussions within multi-participant scenarios. It receives participant chat messages.",
+                  "id": 1,
+                  "name": "ChatPrompt",
+                  "updated_at": null,
+                },
+                "is_active": true,
+                "name": "emoji-analysis",
+                "owner": Object {
+                  "email": "super@email.com",
+                  "id": 999,
+                  "is_anonymous": false,
+                  "is_super": true,
+                  "personalname": "Super User",
+                  "roles": Array [
+                    "participant",
+                    "super_admin",
+                    "facilitator",
+                    "researcher",
+                  ],
+                  "username": "superuser",
+                },
+                "self": Object {
+                  "email": null,
+                  "id": 148,
+                  "is_anonymous": true,
+                  "is_super": false,
+                  "lastseen_at": "2021-02-25T13:08:57.323-05:00",
+                  "personalname": "Emoji Analysis",
+                  "roles": null,
+                  "single_use_password": false,
+                  "username": "ebe565050b31cbb4e7eacc39b23e2167",
+                },
+                "title": "Emoji Analysis",
+                "updated_at": "2021-02-25T20:09:04.999Z",
+              },
+            ],
+            "type": "GET_AGENTS_SUCCESS",
+          },
+        ]
+      `);
     });
 
     test('Receives undefined', async () => {
@@ -306,7 +673,14 @@ describe('GET_AGENTS_SUCCESS', () => {
       expect(returnValue).toMatchInlineSnapshot(`Array []`);
 
       await mockStore.dispatch(actions.getAgents());
-      expect(mockStore.getActions()).toMatchSnapshot();
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "agents": Array [],
+            "type": "GET_AGENTS_SUCCESS",
+          },
+        ]
+      `);
     });
   });
 });
@@ -319,7 +693,16 @@ describe('GET_AGENTS_ERROR', () => {
       expect(fetch.mock.calls.length).toBe(1);
       expect(returnValue).toEqual(null);
       await mockStore.dispatch(actions.getAgents());
-      expect(mockStore.getActions()).toMatchSnapshot();
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "error": Object {
+              "error": [Error: something unexpected happened on the server],
+            },
+            "type": "GET_AGENTS_ERROR",
+          },
+        ]
+      `);
     });
   });
 });

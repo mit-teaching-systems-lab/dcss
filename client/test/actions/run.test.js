@@ -1,6 +1,6 @@
 import { v4 as uuid } from 'uuid';
-import assert from 'assert';
 import {
+  createMockStore,
   createMockConnectedStore,
   fetchImplementation,
   makeById,
@@ -14,6 +14,7 @@ jest.mock('../../util/Storage');
 
 const error = new Error('something unexpected happened on the server');
 const original = JSON.parse(JSON.stringify(state));
+let mockStore;
 let store;
 
 beforeAll(() => {
@@ -29,6 +30,7 @@ afterAll(() => {
 });
 
 beforeEach(() => {
+  mockStore = createMockStore({});
   store = createMockConnectedStore({});
   fetch.mockImplementation(() => {});
   Storage.has.mockImplementation(() => true);
@@ -44,46 +46,143 @@ afterEach(() => {
 describe('GET_RUN_SUCCESS', () => {
   const run = { ...state.run };
 
-  test('by scenario id', async () => {
-    fetchImplementation(fetch, 200, { run });
+  describe('getRun', () => {
+    test('by scenario id', async () => {
+      fetchImplementation(fetch, 200, { run });
 
+      const returnValue = await store.dispatch(actions.getRun(1));
+      expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+        Array [
+          "/api/runs/new-or-existing/scenario/1",
+        ]
+      `);
+      expect(store.getState().runsById).toEqual(makeById([run]));
+      expect(store.getState().run).toEqual(run);
+      expect(returnValue).toEqual(run);
+
+      await mockStore.dispatch(actions.getRun(1));
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "run": Object {
+              "consent_acknowledged_by_user": true,
+              "consent_granted_by_user": true,
+              "consent_id": 57,
+              "created_at": "2020-09-01T15:59:39.571Z",
+              "ended_at": null,
+              "id": 60,
+              "referrer_params": null,
+              "scenario_id": 42,
+              "updated_at": "2020-09-01T15:59:47.121Z",
+              "user_id": 2,
+            },
+            "type": "GET_RUN_SUCCESS",
+          },
+        ]
+      `);
+    });
+
+    test('by scenario id, by cohort id', async () => {
+      fetchImplementation(fetch, 200, { run });
+
+      const returnValue = await store.dispatch(actions.getRun(1, 2));
+      expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+        Array [
+          "/api/runs/new-or-existing/scenario/1/cohort/2",
+        ]
+      `);
+      expect(store.getState().runsById).toEqual(makeById([run]));
+      expect(store.getState().run).toEqual(run);
+      expect(returnValue).toEqual(run);
+
+      await mockStore.dispatch(actions.getRun(1, 2));
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "run": Object {
+              "consent_acknowledged_by_user": true,
+              "consent_granted_by_user": true,
+              "consent_id": 57,
+              "created_at": "2020-09-01T15:59:39.571Z",
+              "ended_at": null,
+              "id": 60,
+              "referrer_params": null,
+              "scenario_id": 42,
+              "updated_at": "2020-09-01T15:59:47.121Z",
+              "user_id": 2,
+            },
+            "type": "GET_RUN_SUCCESS",
+          },
+        ]
+      `);
+    });
+  });
+
+  describe('getRunByIdentifiers', () => {
+    test('by scenario id, cohort id, chat id', async () => {
+      fetchImplementation(fetch, 200, { run });
+
+      const returnValue = await store.dispatch(
+        actions.getRunByIdentifiers(1, 2, 3)
+      );
+      expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+        Array [
+          "/api/runs/by-identifiers/scenario/1/cohort/2/chat/3",
+        ]
+      `);
+      expect(store.getState().runsById).toEqual(makeById([run]));
+      expect(store.getState().run).toEqual(run);
+      expect(returnValue).toEqual(run);
+
+      await mockStore.dispatch(actions.getRunByIdentifiers(1, 2, 3));
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "run": Object {
+              "consent_acknowledged_by_user": true,
+              "consent_granted_by_user": true,
+              "consent_id": 57,
+              "created_at": "2020-09-01T15:59:39.571Z",
+              "ended_at": null,
+              "id": 60,
+              "referrer_params": null,
+              "scenario_id": 42,
+              "updated_at": "2020-09-01T15:59:47.121Z",
+              "user_id": 2,
+            },
+            "type": "GET_RUN_SUCCESS",
+          },
+        ]
+      `);
+    });
+  });
+});
+
+describe('GET_RUN_ERROR', () => {
+  test('getRun', async () => {
+    fetchImplementation(fetch, 200, { error });
     const returnValue = await store.dispatch(actions.getRun(1));
     expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
       Array [
         "/api/runs/new-or-existing/scenario/1",
       ]
     `);
-    expect(store.getState().runsById).toEqual(makeById([run]));
-    expect(store.getState().run).toEqual(run);
-    expect(returnValue).toEqual(run);
+    expect(store.getState().errors.run.error).toEqual(error);
+    expect(returnValue).toBe(null);
   });
-
-  test('by scenario id, by cohort id', async () => {
-    fetchImplementation(fetch, 200, { run });
-
-    const returnValue = await store.dispatch(actions.getRun(1, 2));
+  test('getRunByIdentifiers', async () => {
+    fetchImplementation(fetch, 200, { error });
+    const returnValue = await store.dispatch(
+      actions.getRunByIdentifiers(1, 2, 3)
+    );
     expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
       Array [
-        "/api/runs/new-or-existing/scenario/1/cohort/2",
+        "/api/runs/by-identifiers/scenario/1/cohort/2/chat/3",
       ]
     `);
-    expect(store.getState().runsById).toEqual(makeById([run]));
-    expect(store.getState().run).toEqual(run);
-    expect(returnValue).toEqual(run);
+    expect(store.getState().errors.run.error).toEqual(error);
+    expect(returnValue).toBe(null);
   });
-});
-
-test('GET_RUN_ERROR', async () => {
-  fetchImplementation(fetch, 200, { error });
-
-  const returnValue = await store.dispatch(actions.getRun(1));
-  expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
-    Array [
-      "/api/runs/new-or-existing/scenario/1",
-    ]
-  `);
-  expect(store.getState().errors.run.error).toEqual(error);
-  expect(returnValue).toBe(null);
 });
 
 test('SET_RUN_SUCCESS', async () => {

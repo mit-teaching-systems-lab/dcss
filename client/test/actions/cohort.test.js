@@ -1,4 +1,3 @@
-import assert from 'assert';
 import {
   createMockStore,
   createMockConnectedStore,
@@ -71,7 +70,54 @@ describe('CREATE_COHORT_SUCCESS', () => {
     expect(returnValue).toEqual(cohortWithOwnerRole);
 
     await mockStore.dispatch(actions.createCohort({ name: 'Fake Cohort' }));
-    expect(mockStore.getActions()).toMatchSnapshot();
+    expect(mockStore.getActions()).toMatchInlineSnapshot(`
+      Array [
+        Object {
+          "cohort": Object {
+            "created_at": "2020-02-31T14:01:02.656Z",
+            "deleted_at": null,
+            "id": 2,
+            "is_archived": false,
+            "name": "Fake Cohort",
+            "role": "owner",
+            "roles": Array [
+              "super",
+              "facilitator",
+            ],
+            "runs": Array [],
+            "scenarios": Array [],
+            "updated_at": "2021-01-15T14:01:02.656Z",
+            "users": Array [
+              Object {
+                "email": "super@email.com",
+                "id": 999,
+                "is_anonymous": false,
+                "is_super": true,
+                "roles": Array [
+                  "super",
+                  "facilitator",
+                ],
+                "username": "super",
+              },
+            ],
+            "usersById": Object {
+              "999": Object {
+                "email": "super@email.com",
+                "id": 999,
+                "is_anonymous": false,
+                "is_super": true,
+                "roles": Array [
+                  "super",
+                  "facilitator",
+                ],
+                "username": "super",
+              },
+            },
+          },
+          "type": "CREATE_COHORT_SUCCESS",
+        },
+      ]
+    `);
   });
 
   test('copyCohort', async () => {
@@ -100,7 +146,54 @@ describe('CREATE_COHORT_SUCCESS', () => {
     expect(returnValue).toEqual(cohortWithOwnerRole);
 
     await mockStore.dispatch(actions.createCohort(1));
-    expect(mockStore.getActions()).toMatchSnapshot();
+    expect(mockStore.getActions()).toMatchInlineSnapshot(`
+      Array [
+        Object {
+          "cohort": Object {
+            "created_at": "2020-02-31T14:01:02.656Z",
+            "deleted_at": null,
+            "id": 9001,
+            "is_archived": false,
+            "name": "Fake Cohort COPY",
+            "role": "owner",
+            "roles": Array [
+              "super",
+              "facilitator",
+            ],
+            "runs": Array [],
+            "scenarios": Array [],
+            "updated_at": "2021-01-15T14:01:02.656Z",
+            "users": Array [
+              Object {
+                "email": "super@email.com",
+                "id": 999,
+                "is_anonymous": false,
+                "is_super": true,
+                "roles": Array [
+                  "super",
+                  "facilitator",
+                ],
+                "username": "super",
+              },
+            ],
+            "usersById": Object {
+              "999": Object {
+                "email": "super@email.com",
+                "id": 999,
+                "is_anonymous": false,
+                "is_super": true,
+                "roles": Array [
+                  "super",
+                  "facilitator",
+                ],
+                "username": "super",
+              },
+            },
+          },
+          "type": "CREATE_COHORT_SUCCESS",
+        },
+      ]
+    `);
   });
 });
 
@@ -135,7 +228,16 @@ describe('CREATE_COHORT_ERROR', () => {
     expect(returnValue).toBe(null);
 
     await mockStore.dispatch(actions.createCohort({ name: 'Fake Cohort' }));
-    expect(mockStore.getActions()).toMatchSnapshot();
+    expect(mockStore.getActions()).toMatchInlineSnapshot(`
+      Array [
+        Object {
+          "error": Object {
+            "error": [Error: something unexpected happened on the server],
+          },
+          "type": "CREATE_COHORT_ERROR",
+        },
+      ]
+    `);
   });
 
   test('copyCohort', async () => {
@@ -159,7 +261,16 @@ describe('CREATE_COHORT_ERROR', () => {
     expect(returnValue).toBe(null);
 
     await mockStore.dispatch(actions.copyCohort(1));
-    expect(mockStore.getActions()).toMatchSnapshot();
+    expect(mockStore.getActions()).toMatchInlineSnapshot(`
+      Array [
+        Object {
+          "error": Object {
+            "error": [Error: something unexpected happened on the server],
+          },
+          "type": "CREATE_COHORT_ERROR",
+        },
+      ]
+    `);
   });
 });
 
@@ -198,7 +309,127 @@ describe('SET_COHORT_SUCCESS', () => {
     expect(returnValue).toEqual(cohort);
 
     await mockStore.dispatch(actions.setCohort(cohort.id, cohort));
-    expect(mockStore.getActions()).toMatchSnapshot();
+    expect(mockStore.getActions()).toMatchInlineSnapshot(`
+      Array [
+        Object {
+          "cohort": Object {
+            "created_at": "2020-03-24T14:52:28.429Z",
+            "deleted_at": "2020-01-01T00:00:00.000Z",
+            "id": 1,
+            "is_archived": false,
+            "name": "Some other name",
+            "runs": Array [
+              Object {
+                "cohort_id": 1,
+                "consent_acknowledged_by_user": true,
+                "consent_granted_by_user": true,
+                "consent_id": 8,
+                "created_at": "2020-03-28T19:44:03.069Z",
+                "ended_at": "2020-03-31T17:01:43.128Z",
+                "id": 11,
+                "referrer_params": null,
+                "run_id": 11,
+                "scenario_id": 7,
+                "updated_at": "2020-03-31T17:01:43.139Z",
+                "user_id": 2,
+              },
+              Object {
+                "cohort_id": 1,
+                "consent_acknowledged_by_user": true,
+                "consent_granted_by_user": true,
+                "consent_id": 8,
+                "created_at": "2020-03-31T17:01:52.902Z",
+                "ended_at": "2020-03-31T17:02:00.296Z",
+                "id": 28,
+                "referrer_params": null,
+                "run_id": 28,
+                "scenario_id": 7,
+                "updated_at": "2020-03-31T17:02:00.309Z",
+                "user_id": 2,
+              },
+              Object {
+                "cohort_id": 1,
+                "consent_acknowledged_by_user": true,
+                "consent_granted_by_user": true,
+                "consent_id": 8,
+                "created_at": "2020-03-31T17:02:51.357Z",
+                "ended_at": "2020-03-31T17:02:57.043Z",
+                "id": 29,
+                "referrer_params": null,
+                "run_id": 29,
+                "scenario_id": 7,
+                "updated_at": "2020-03-31T17:02:57.054Z",
+                "user_id": 2,
+              },
+              Object {
+                "cohort_id": 1,
+                "consent_acknowledged_by_user": true,
+                "consent_granted_by_user": true,
+                "consent_id": 8,
+                "created_at": "2020-03-31T17:05:34.501Z",
+                "ended_at": "2020-03-31T17:05:39.136Z",
+                "id": 30,
+                "referrer_params": null,
+                "run_id": 30,
+                "scenario_id": 7,
+                "updated_at": "2020-03-31T17:05:39.144Z",
+                "user_id": 2,
+              },
+              Object {
+                "cohort_id": 1,
+                "consent_acknowledged_by_user": true,
+                "consent_granted_by_user": true,
+                "consent_id": 8,
+                "created_at": "2020-03-31T17:07:15.447Z",
+                "ended_at": "2020-03-31T17:07:20.321Z",
+                "id": 31,
+                "referrer_params": null,
+                "run_id": 31,
+                "scenario_id": 7,
+                "updated_at": "2020-03-31T17:07:20.331Z",
+                "user_id": 2,
+              },
+            ],
+            "scenarios": Array [
+              7,
+              1,
+              9,
+              8,
+            ],
+            "updated_at": "2021-01-15T14:01:02.656Z",
+            "users": Array [
+              Object {
+                "cohort_id": 1,
+                "email": "super@email.com",
+                "id": 999,
+                "is_anonymous": false,
+                "is_super": true,
+                "roles": Array [
+                  "super",
+                  "facilitator",
+                ],
+                "username": "super",
+              },
+            ],
+            "usersById": Object {
+              "999": Object {
+                "cohort_id": 1,
+                "email": "super@email.com",
+                "id": 999,
+                "is_anonymous": false,
+                "is_super": true,
+                "roles": Array [
+                  "super",
+                  "facilitator",
+                ],
+                "username": "super",
+              },
+            },
+          },
+          "type": "SET_COHORT_SUCCESS",
+        },
+      ]
+    `);
   });
 
   test('name', async () => {
@@ -234,7 +465,127 @@ describe('SET_COHORT_SUCCESS', () => {
     expect(returnValue).toEqual(cohort);
 
     await mockStore.dispatch(actions.setCohort(cohort.id, cohort));
-    expect(mockStore.getActions()).toMatchSnapshot();
+    expect(mockStore.getActions()).toMatchInlineSnapshot(`
+      Array [
+        Object {
+          "cohort": Object {
+            "created_at": "2020-03-24T14:52:28.429Z",
+            "deleted_at": null,
+            "id": 1,
+            "is_archived": false,
+            "name": "A New Name!",
+            "runs": Array [
+              Object {
+                "cohort_id": 1,
+                "consent_acknowledged_by_user": true,
+                "consent_granted_by_user": true,
+                "consent_id": 8,
+                "created_at": "2020-03-28T19:44:03.069Z",
+                "ended_at": "2020-03-31T17:01:43.128Z",
+                "id": 11,
+                "referrer_params": null,
+                "run_id": 11,
+                "scenario_id": 7,
+                "updated_at": "2020-03-31T17:01:43.139Z",
+                "user_id": 2,
+              },
+              Object {
+                "cohort_id": 1,
+                "consent_acknowledged_by_user": true,
+                "consent_granted_by_user": true,
+                "consent_id": 8,
+                "created_at": "2020-03-31T17:01:52.902Z",
+                "ended_at": "2020-03-31T17:02:00.296Z",
+                "id": 28,
+                "referrer_params": null,
+                "run_id": 28,
+                "scenario_id": 7,
+                "updated_at": "2020-03-31T17:02:00.309Z",
+                "user_id": 2,
+              },
+              Object {
+                "cohort_id": 1,
+                "consent_acknowledged_by_user": true,
+                "consent_granted_by_user": true,
+                "consent_id": 8,
+                "created_at": "2020-03-31T17:02:51.357Z",
+                "ended_at": "2020-03-31T17:02:57.043Z",
+                "id": 29,
+                "referrer_params": null,
+                "run_id": 29,
+                "scenario_id": 7,
+                "updated_at": "2020-03-31T17:02:57.054Z",
+                "user_id": 2,
+              },
+              Object {
+                "cohort_id": 1,
+                "consent_acknowledged_by_user": true,
+                "consent_granted_by_user": true,
+                "consent_id": 8,
+                "created_at": "2020-03-31T17:05:34.501Z",
+                "ended_at": "2020-03-31T17:05:39.136Z",
+                "id": 30,
+                "referrer_params": null,
+                "run_id": 30,
+                "scenario_id": 7,
+                "updated_at": "2020-03-31T17:05:39.144Z",
+                "user_id": 2,
+              },
+              Object {
+                "cohort_id": 1,
+                "consent_acknowledged_by_user": true,
+                "consent_granted_by_user": true,
+                "consent_id": 8,
+                "created_at": "2020-03-31T17:07:15.447Z",
+                "ended_at": "2020-03-31T17:07:20.321Z",
+                "id": 31,
+                "referrer_params": null,
+                "run_id": 31,
+                "scenario_id": 7,
+                "updated_at": "2020-03-31T17:07:20.331Z",
+                "user_id": 2,
+              },
+            ],
+            "scenarios": Array [
+              7,
+              1,
+              9,
+              8,
+            ],
+            "updated_at": "2021-01-15T14:01:02.656Z",
+            "users": Array [
+              Object {
+                "cohort_id": 1,
+                "email": "super@email.com",
+                "id": 999,
+                "is_anonymous": false,
+                "is_super": true,
+                "roles": Array [
+                  "super",
+                  "facilitator",
+                ],
+                "username": "super",
+              },
+            ],
+            "usersById": Object {
+              "999": Object {
+                "cohort_id": 1,
+                "email": "super@email.com",
+                "id": 999,
+                "is_anonymous": false,
+                "is_super": true,
+                "roles": Array [
+                  "super",
+                  "facilitator",
+                ],
+                "username": "super",
+              },
+            },
+          },
+          "type": "SET_COHORT_SUCCESS",
+        },
+      ]
+    `);
   });
 
   test('deleted_at', async () => {
@@ -273,7 +624,127 @@ describe('SET_COHORT_SUCCESS', () => {
     );
 
     await mockStore.dispatch(actions.setCohort(cohort.id, cohort));
-    expect(mockStore.getActions()).toMatchSnapshot();
+    expect(mockStore.getActions()).toMatchInlineSnapshot(`
+      Array [
+        Object {
+          "cohort": Object {
+            "created_at": "2020-03-24T14:52:28.429Z",
+            "deleted_at": "2020-01-01T00:00:00.000Z",
+            "id": 1,
+            "is_archived": false,
+            "name": "First Cohort",
+            "runs": Array [
+              Object {
+                "cohort_id": 1,
+                "consent_acknowledged_by_user": true,
+                "consent_granted_by_user": true,
+                "consent_id": 8,
+                "created_at": "2020-03-28T19:44:03.069Z",
+                "ended_at": "2020-03-31T17:01:43.128Z",
+                "id": 11,
+                "referrer_params": null,
+                "run_id": 11,
+                "scenario_id": 7,
+                "updated_at": "2020-03-31T17:01:43.139Z",
+                "user_id": 2,
+              },
+              Object {
+                "cohort_id": 1,
+                "consent_acknowledged_by_user": true,
+                "consent_granted_by_user": true,
+                "consent_id": 8,
+                "created_at": "2020-03-31T17:01:52.902Z",
+                "ended_at": "2020-03-31T17:02:00.296Z",
+                "id": 28,
+                "referrer_params": null,
+                "run_id": 28,
+                "scenario_id": 7,
+                "updated_at": "2020-03-31T17:02:00.309Z",
+                "user_id": 2,
+              },
+              Object {
+                "cohort_id": 1,
+                "consent_acknowledged_by_user": true,
+                "consent_granted_by_user": true,
+                "consent_id": 8,
+                "created_at": "2020-03-31T17:02:51.357Z",
+                "ended_at": "2020-03-31T17:02:57.043Z",
+                "id": 29,
+                "referrer_params": null,
+                "run_id": 29,
+                "scenario_id": 7,
+                "updated_at": "2020-03-31T17:02:57.054Z",
+                "user_id": 2,
+              },
+              Object {
+                "cohort_id": 1,
+                "consent_acknowledged_by_user": true,
+                "consent_granted_by_user": true,
+                "consent_id": 8,
+                "created_at": "2020-03-31T17:05:34.501Z",
+                "ended_at": "2020-03-31T17:05:39.136Z",
+                "id": 30,
+                "referrer_params": null,
+                "run_id": 30,
+                "scenario_id": 7,
+                "updated_at": "2020-03-31T17:05:39.144Z",
+                "user_id": 2,
+              },
+              Object {
+                "cohort_id": 1,
+                "consent_acknowledged_by_user": true,
+                "consent_granted_by_user": true,
+                "consent_id": 8,
+                "created_at": "2020-03-31T17:07:15.447Z",
+                "ended_at": "2020-03-31T17:07:20.321Z",
+                "id": 31,
+                "referrer_params": null,
+                "run_id": 31,
+                "scenario_id": 7,
+                "updated_at": "2020-03-31T17:07:20.331Z",
+                "user_id": 2,
+              },
+            ],
+            "scenarios": Array [
+              7,
+              1,
+              9,
+              8,
+            ],
+            "updated_at": "2021-01-15T14:01:02.656Z",
+            "users": Array [
+              Object {
+                "cohort_id": 1,
+                "email": "super@email.com",
+                "id": 999,
+                "is_anonymous": false,
+                "is_super": true,
+                "roles": Array [
+                  "super",
+                  "facilitator",
+                ],
+                "username": "super",
+              },
+            ],
+            "usersById": Object {
+              "999": Object {
+                "cohort_id": 1,
+                "email": "super@email.com",
+                "id": 999,
+                "is_anonymous": false,
+                "is_super": true,
+                "roles": Array [
+                  "super",
+                  "facilitator",
+                ],
+                "username": "super",
+              },
+            },
+          },
+          "type": "SET_COHORT_SUCCESS",
+        },
+      ]
+    `);
   });
 
   test('deleted_at is null (restores cohort)', async () => {
@@ -312,7 +783,127 @@ describe('SET_COHORT_SUCCESS', () => {
     );
 
     await mockStore.dispatch(actions.setCohort(cohort.id, cohort));
-    expect(mockStore.getActions()).toMatchSnapshot();
+    expect(mockStore.getActions()).toMatchInlineSnapshot(`
+      Array [
+        Object {
+          "cohort": Object {
+            "created_at": "2020-03-24T14:52:28.429Z",
+            "deleted_at": null,
+            "id": 1,
+            "is_archived": false,
+            "name": "First Cohort",
+            "runs": Array [
+              Object {
+                "cohort_id": 1,
+                "consent_acknowledged_by_user": true,
+                "consent_granted_by_user": true,
+                "consent_id": 8,
+                "created_at": "2020-03-28T19:44:03.069Z",
+                "ended_at": "2020-03-31T17:01:43.128Z",
+                "id": 11,
+                "referrer_params": null,
+                "run_id": 11,
+                "scenario_id": 7,
+                "updated_at": "2020-03-31T17:01:43.139Z",
+                "user_id": 2,
+              },
+              Object {
+                "cohort_id": 1,
+                "consent_acknowledged_by_user": true,
+                "consent_granted_by_user": true,
+                "consent_id": 8,
+                "created_at": "2020-03-31T17:01:52.902Z",
+                "ended_at": "2020-03-31T17:02:00.296Z",
+                "id": 28,
+                "referrer_params": null,
+                "run_id": 28,
+                "scenario_id": 7,
+                "updated_at": "2020-03-31T17:02:00.309Z",
+                "user_id": 2,
+              },
+              Object {
+                "cohort_id": 1,
+                "consent_acknowledged_by_user": true,
+                "consent_granted_by_user": true,
+                "consent_id": 8,
+                "created_at": "2020-03-31T17:02:51.357Z",
+                "ended_at": "2020-03-31T17:02:57.043Z",
+                "id": 29,
+                "referrer_params": null,
+                "run_id": 29,
+                "scenario_id": 7,
+                "updated_at": "2020-03-31T17:02:57.054Z",
+                "user_id": 2,
+              },
+              Object {
+                "cohort_id": 1,
+                "consent_acknowledged_by_user": true,
+                "consent_granted_by_user": true,
+                "consent_id": 8,
+                "created_at": "2020-03-31T17:05:34.501Z",
+                "ended_at": "2020-03-31T17:05:39.136Z",
+                "id": 30,
+                "referrer_params": null,
+                "run_id": 30,
+                "scenario_id": 7,
+                "updated_at": "2020-03-31T17:05:39.144Z",
+                "user_id": 2,
+              },
+              Object {
+                "cohort_id": 1,
+                "consent_acknowledged_by_user": true,
+                "consent_granted_by_user": true,
+                "consent_id": 8,
+                "created_at": "2020-03-31T17:07:15.447Z",
+                "ended_at": "2020-03-31T17:07:20.321Z",
+                "id": 31,
+                "referrer_params": null,
+                "run_id": 31,
+                "scenario_id": 7,
+                "updated_at": "2020-03-31T17:07:20.331Z",
+                "user_id": 2,
+              },
+            ],
+            "scenarios": Array [
+              7,
+              1,
+              9,
+              8,
+            ],
+            "updated_at": "2021-01-15T14:01:02.656Z",
+            "users": Array [
+              Object {
+                "cohort_id": 1,
+                "email": "super@email.com",
+                "id": 999,
+                "is_anonymous": false,
+                "is_super": true,
+                "roles": Array [
+                  "super",
+                  "facilitator",
+                ],
+                "username": "super",
+              },
+            ],
+            "usersById": Object {
+              "999": Object {
+                "cohort_id": 1,
+                "email": "super@email.com",
+                "id": 999,
+                "is_anonymous": false,
+                "is_super": true,
+                "roles": Array [
+                  "super",
+                  "facilitator",
+                ],
+                "username": "super",
+              },
+            },
+          },
+          "type": "SET_COHORT_SUCCESS",
+        },
+      ]
+    `);
   });
 
   test('deleted_at is undefined no-op', async () => {
@@ -351,7 +942,127 @@ describe('SET_COHORT_SUCCESS', () => {
     );
 
     await mockStore.dispatch(actions.setCohort(cohort.id, cohort));
-    expect(mockStore.getActions()).toMatchSnapshot();
+    expect(mockStore.getActions()).toMatchInlineSnapshot(`
+      Array [
+        Object {
+          "cohort": Object {
+            "created_at": "2020-03-24T14:52:28.429Z",
+            "deleted_at": undefined,
+            "id": 1,
+            "is_archived": false,
+            "name": "First Cohort",
+            "runs": Array [
+              Object {
+                "cohort_id": 1,
+                "consent_acknowledged_by_user": true,
+                "consent_granted_by_user": true,
+                "consent_id": 8,
+                "created_at": "2020-03-28T19:44:03.069Z",
+                "ended_at": "2020-03-31T17:01:43.128Z",
+                "id": 11,
+                "referrer_params": null,
+                "run_id": 11,
+                "scenario_id": 7,
+                "updated_at": "2020-03-31T17:01:43.139Z",
+                "user_id": 2,
+              },
+              Object {
+                "cohort_id": 1,
+                "consent_acknowledged_by_user": true,
+                "consent_granted_by_user": true,
+                "consent_id": 8,
+                "created_at": "2020-03-31T17:01:52.902Z",
+                "ended_at": "2020-03-31T17:02:00.296Z",
+                "id": 28,
+                "referrer_params": null,
+                "run_id": 28,
+                "scenario_id": 7,
+                "updated_at": "2020-03-31T17:02:00.309Z",
+                "user_id": 2,
+              },
+              Object {
+                "cohort_id": 1,
+                "consent_acknowledged_by_user": true,
+                "consent_granted_by_user": true,
+                "consent_id": 8,
+                "created_at": "2020-03-31T17:02:51.357Z",
+                "ended_at": "2020-03-31T17:02:57.043Z",
+                "id": 29,
+                "referrer_params": null,
+                "run_id": 29,
+                "scenario_id": 7,
+                "updated_at": "2020-03-31T17:02:57.054Z",
+                "user_id": 2,
+              },
+              Object {
+                "cohort_id": 1,
+                "consent_acknowledged_by_user": true,
+                "consent_granted_by_user": true,
+                "consent_id": 8,
+                "created_at": "2020-03-31T17:05:34.501Z",
+                "ended_at": "2020-03-31T17:05:39.136Z",
+                "id": 30,
+                "referrer_params": null,
+                "run_id": 30,
+                "scenario_id": 7,
+                "updated_at": "2020-03-31T17:05:39.144Z",
+                "user_id": 2,
+              },
+              Object {
+                "cohort_id": 1,
+                "consent_acknowledged_by_user": true,
+                "consent_granted_by_user": true,
+                "consent_id": 8,
+                "created_at": "2020-03-31T17:07:15.447Z",
+                "ended_at": "2020-03-31T17:07:20.321Z",
+                "id": 31,
+                "referrer_params": null,
+                "run_id": 31,
+                "scenario_id": 7,
+                "updated_at": "2020-03-31T17:07:20.331Z",
+                "user_id": 2,
+              },
+            ],
+            "scenarios": Array [
+              7,
+              1,
+              9,
+              8,
+            ],
+            "updated_at": "2021-01-15T14:01:02.656Z",
+            "users": Array [
+              Object {
+                "cohort_id": 1,
+                "email": "super@email.com",
+                "id": 999,
+                "is_anonymous": false,
+                "is_super": true,
+                "roles": Array [
+                  "super",
+                  "facilitator",
+                ],
+                "username": "super",
+              },
+            ],
+            "usersById": Object {
+              "999": Object {
+                "cohort_id": 1,
+                "email": "super@email.com",
+                "id": 999,
+                "is_anonymous": false,
+                "is_super": true,
+                "roles": Array [
+                  "super",
+                  "facilitator",
+                ],
+                "username": "super",
+              },
+            },
+          },
+          "type": "SET_COHORT_SUCCESS",
+        },
+      ]
+    `);
   });
 
   test('is_archived', async () => {
@@ -391,7 +1102,127 @@ describe('SET_COHORT_SUCCESS', () => {
     );
 
     await mockStore.dispatch(actions.setCohort(cohort.id, cohort));
-    expect(mockStore.getActions()).toMatchSnapshot();
+    expect(mockStore.getActions()).toMatchInlineSnapshot(`
+      Array [
+        Object {
+          "cohort": Object {
+            "created_at": "2020-03-24T14:52:28.429Z",
+            "deleted_at": null,
+            "id": 1,
+            "is_archived": true,
+            "name": "First Cohort",
+            "runs": Array [
+              Object {
+                "cohort_id": 1,
+                "consent_acknowledged_by_user": true,
+                "consent_granted_by_user": true,
+                "consent_id": 8,
+                "created_at": "2020-03-28T19:44:03.069Z",
+                "ended_at": "2020-03-31T17:01:43.128Z",
+                "id": 11,
+                "referrer_params": null,
+                "run_id": 11,
+                "scenario_id": 7,
+                "updated_at": "2020-03-31T17:01:43.139Z",
+                "user_id": 2,
+              },
+              Object {
+                "cohort_id": 1,
+                "consent_acknowledged_by_user": true,
+                "consent_granted_by_user": true,
+                "consent_id": 8,
+                "created_at": "2020-03-31T17:01:52.902Z",
+                "ended_at": "2020-03-31T17:02:00.296Z",
+                "id": 28,
+                "referrer_params": null,
+                "run_id": 28,
+                "scenario_id": 7,
+                "updated_at": "2020-03-31T17:02:00.309Z",
+                "user_id": 2,
+              },
+              Object {
+                "cohort_id": 1,
+                "consent_acknowledged_by_user": true,
+                "consent_granted_by_user": true,
+                "consent_id": 8,
+                "created_at": "2020-03-31T17:02:51.357Z",
+                "ended_at": "2020-03-31T17:02:57.043Z",
+                "id": 29,
+                "referrer_params": null,
+                "run_id": 29,
+                "scenario_id": 7,
+                "updated_at": "2020-03-31T17:02:57.054Z",
+                "user_id": 2,
+              },
+              Object {
+                "cohort_id": 1,
+                "consent_acknowledged_by_user": true,
+                "consent_granted_by_user": true,
+                "consent_id": 8,
+                "created_at": "2020-03-31T17:05:34.501Z",
+                "ended_at": "2020-03-31T17:05:39.136Z",
+                "id": 30,
+                "referrer_params": null,
+                "run_id": 30,
+                "scenario_id": 7,
+                "updated_at": "2020-03-31T17:05:39.144Z",
+                "user_id": 2,
+              },
+              Object {
+                "cohort_id": 1,
+                "consent_acknowledged_by_user": true,
+                "consent_granted_by_user": true,
+                "consent_id": 8,
+                "created_at": "2020-03-31T17:07:15.447Z",
+                "ended_at": "2020-03-31T17:07:20.321Z",
+                "id": 31,
+                "referrer_params": null,
+                "run_id": 31,
+                "scenario_id": 7,
+                "updated_at": "2020-03-31T17:07:20.331Z",
+                "user_id": 2,
+              },
+            ],
+            "scenarios": Array [
+              7,
+              1,
+              9,
+              8,
+            ],
+            "updated_at": "2021-01-15T14:01:02.656Z",
+            "users": Array [
+              Object {
+                "cohort_id": 1,
+                "email": "super@email.com",
+                "id": 999,
+                "is_anonymous": false,
+                "is_super": true,
+                "roles": Array [
+                  "super",
+                  "facilitator",
+                ],
+                "username": "super",
+              },
+            ],
+            "usersById": Object {
+              "999": Object {
+                "cohort_id": 1,
+                "email": "super@email.com",
+                "id": 999,
+                "is_anonymous": false,
+                "is_super": true,
+                "roles": Array [
+                  "super",
+                  "facilitator",
+                ],
+                "username": "super",
+              },
+            },
+          },
+          "type": "SET_COHORT_SUCCESS",
+        },
+      ]
+    `);
   });
 });
 
@@ -422,7 +1253,16 @@ test('SET_COHORT_ERROR', async () => {
   expect(returnValue).toEqual(null);
 
   await mockStore.dispatch(actions.setCohort(cohort.id, cohort));
-  expect(mockStore.getActions()).toMatchSnapshot();
+  expect(mockStore.getActions()).toMatchInlineSnapshot(`
+    Array [
+      Object {
+        "error": Object {
+          "error": [Error: something unexpected happened on the server],
+        },
+        "type": "SET_COHORT_ERROR",
+      },
+    ]
+  `);
 });
 
 test('SET_COHORT_SCENARIOS_SUCCESS', async () => {
@@ -451,7 +1291,244 @@ test('SET_COHORT_SCENARIOS_SUCCESS', async () => {
   expect(returnValue).toEqual(cohort);
 
   await mockStore.dispatch(actions.setCohortScenarios(cohort));
-  expect(mockStore.getActions()).toMatchSnapshot();
+  expect(mockStore.getActions()).toMatchInlineSnapshot(`
+    Array [
+      Object {
+        "cohort": Object {
+          "created_at": "2020-03-24T14:52:28.429Z",
+          "deleted_at": null,
+          "id": 1,
+          "is_archived": false,
+          "name": "First Cohort",
+          "runs": Array [
+            Object {
+              "cohort_id": 1,
+              "consent_acknowledged_by_user": true,
+              "consent_granted_by_user": true,
+              "consent_id": 8,
+              "created_at": "2020-03-28T19:44:03.069Z",
+              "ended_at": "2020-03-31T17:01:43.128Z",
+              "id": 11,
+              "referrer_params": null,
+              "run_id": 11,
+              "scenario_id": 7,
+              "updated_at": "2020-03-31T17:01:43.139Z",
+              "user_id": 2,
+            },
+            Object {
+              "cohort_id": 1,
+              "consent_acknowledged_by_user": true,
+              "consent_granted_by_user": true,
+              "consent_id": 8,
+              "created_at": "2020-03-31T17:01:52.902Z",
+              "ended_at": "2020-03-31T17:02:00.296Z",
+              "id": 28,
+              "referrer_params": null,
+              "run_id": 28,
+              "scenario_id": 7,
+              "updated_at": "2020-03-31T17:02:00.309Z",
+              "user_id": 2,
+            },
+            Object {
+              "cohort_id": 1,
+              "consent_acknowledged_by_user": true,
+              "consent_granted_by_user": true,
+              "consent_id": 8,
+              "created_at": "2020-03-31T17:02:51.357Z",
+              "ended_at": "2020-03-31T17:02:57.043Z",
+              "id": 29,
+              "referrer_params": null,
+              "run_id": 29,
+              "scenario_id": 7,
+              "updated_at": "2020-03-31T17:02:57.054Z",
+              "user_id": 2,
+            },
+            Object {
+              "cohort_id": 1,
+              "consent_acknowledged_by_user": true,
+              "consent_granted_by_user": true,
+              "consent_id": 8,
+              "created_at": "2020-03-31T17:05:34.501Z",
+              "ended_at": "2020-03-31T17:05:39.136Z",
+              "id": 30,
+              "referrer_params": null,
+              "run_id": 30,
+              "scenario_id": 7,
+              "updated_at": "2020-03-31T17:05:39.144Z",
+              "user_id": 2,
+            },
+            Object {
+              "cohort_id": 1,
+              "consent_acknowledged_by_user": true,
+              "consent_granted_by_user": true,
+              "consent_id": 8,
+              "created_at": "2020-03-31T17:07:15.447Z",
+              "ended_at": "2020-03-31T17:07:20.321Z",
+              "id": 31,
+              "referrer_params": null,
+              "run_id": 31,
+              "scenario_id": 7,
+              "updated_at": "2020-03-31T17:07:20.331Z",
+              "user_id": 2,
+            },
+          ],
+          "scenarios": Array [
+            7,
+            1,
+            9,
+            8,
+          ],
+          "updated_at": "2021-01-15T14:01:02.656Z",
+          "users": Array [
+            Object {
+              "cohort_id": 1,
+              "email": "super@email.com",
+              "id": 999,
+              "is_anonymous": false,
+              "is_super": true,
+              "roles": Array [
+                "super",
+                "facilitator",
+              ],
+              "username": "super",
+            },
+          ],
+          "usersById": Object {
+            "999": Object {
+              "cohort_id": 1,
+              "email": "super@email.com",
+              "id": 999,
+              "is_anonymous": false,
+              "is_super": true,
+              "roles": Array [
+                "super",
+                "facilitator",
+              ],
+              "username": "super",
+            },
+          },
+        },
+        "type": "SET_COHORT_SCENARIOS_SUCCESS",
+      },
+      Object {
+        "cohort": Object {
+          "created_at": "2020-03-24T14:52:28.429Z",
+          "deleted_at": null,
+          "id": 1,
+          "is_archived": false,
+          "name": "First Cohort",
+          "runs": Array [
+            Object {
+              "cohort_id": 1,
+              "consent_acknowledged_by_user": true,
+              "consent_granted_by_user": true,
+              "consent_id": 8,
+              "created_at": "2020-03-28T19:44:03.069Z",
+              "ended_at": "2020-03-31T17:01:43.128Z",
+              "id": 11,
+              "referrer_params": null,
+              "run_id": 11,
+              "scenario_id": 7,
+              "updated_at": "2020-03-31T17:01:43.139Z",
+              "user_id": 2,
+            },
+            Object {
+              "cohort_id": 1,
+              "consent_acknowledged_by_user": true,
+              "consent_granted_by_user": true,
+              "consent_id": 8,
+              "created_at": "2020-03-31T17:01:52.902Z",
+              "ended_at": "2020-03-31T17:02:00.296Z",
+              "id": 28,
+              "referrer_params": null,
+              "run_id": 28,
+              "scenario_id": 7,
+              "updated_at": "2020-03-31T17:02:00.309Z",
+              "user_id": 2,
+            },
+            Object {
+              "cohort_id": 1,
+              "consent_acknowledged_by_user": true,
+              "consent_granted_by_user": true,
+              "consent_id": 8,
+              "created_at": "2020-03-31T17:02:51.357Z",
+              "ended_at": "2020-03-31T17:02:57.043Z",
+              "id": 29,
+              "referrer_params": null,
+              "run_id": 29,
+              "scenario_id": 7,
+              "updated_at": "2020-03-31T17:02:57.054Z",
+              "user_id": 2,
+            },
+            Object {
+              "cohort_id": 1,
+              "consent_acknowledged_by_user": true,
+              "consent_granted_by_user": true,
+              "consent_id": 8,
+              "created_at": "2020-03-31T17:05:34.501Z",
+              "ended_at": "2020-03-31T17:05:39.136Z",
+              "id": 30,
+              "referrer_params": null,
+              "run_id": 30,
+              "scenario_id": 7,
+              "updated_at": "2020-03-31T17:05:39.144Z",
+              "user_id": 2,
+            },
+            Object {
+              "cohort_id": 1,
+              "consent_acknowledged_by_user": true,
+              "consent_granted_by_user": true,
+              "consent_id": 8,
+              "created_at": "2020-03-31T17:07:15.447Z",
+              "ended_at": "2020-03-31T17:07:20.321Z",
+              "id": 31,
+              "referrer_params": null,
+              "run_id": 31,
+              "scenario_id": 7,
+              "updated_at": "2020-03-31T17:07:20.331Z",
+              "user_id": 2,
+            },
+          ],
+          "scenarios": Array [
+            7,
+            1,
+            9,
+            8,
+          ],
+          "updated_at": "2021-01-15T14:01:02.656Z",
+          "users": Array [
+            Object {
+              "cohort_id": 1,
+              "email": "super@email.com",
+              "id": 999,
+              "is_anonymous": false,
+              "is_super": true,
+              "roles": Array [
+                "super",
+                "facilitator",
+              ],
+              "username": "super",
+            },
+          ],
+          "usersById": Object {
+            "999": Object {
+              "cohort_id": 1,
+              "email": "super@email.com",
+              "id": 999,
+              "is_anonymous": false,
+              "is_super": true,
+              "roles": Array [
+                "super",
+                "facilitator",
+              ],
+              "username": "super",
+            },
+          },
+        },
+        "type": "SET_COHORT_SCENARIOS_SUCCESS",
+      },
+    ]
+  `);
 });
 
 test('SET_COHORT_SCENARIOS_ERROR', async () => {
@@ -479,7 +1556,133 @@ test('SET_COHORT_SCENARIOS_ERROR', async () => {
   expect(returnValue).toEqual(null);
 
   await mockStore.dispatch(actions.setCohortScenarios(cohort));
-  expect(mockStore.getActions()).toMatchSnapshot();
+  expect(mockStore.getActions()).toMatchInlineSnapshot(`
+    Array [
+      Object {
+        "cohort": Object {
+          "created_at": "2020-03-24T14:52:28.429Z",
+          "deleted_at": null,
+          "id": 1,
+          "is_archived": false,
+          "name": "First Cohort",
+          "runs": Array [
+            Object {
+              "cohort_id": 1,
+              "consent_acknowledged_by_user": true,
+              "consent_granted_by_user": true,
+              "consent_id": 8,
+              "created_at": "2020-03-28T19:44:03.069Z",
+              "ended_at": "2020-03-31T17:01:43.128Z",
+              "id": 11,
+              "referrer_params": null,
+              "run_id": 11,
+              "scenario_id": 7,
+              "updated_at": "2020-03-31T17:01:43.139Z",
+              "user_id": 2,
+            },
+            Object {
+              "cohort_id": 1,
+              "consent_acknowledged_by_user": true,
+              "consent_granted_by_user": true,
+              "consent_id": 8,
+              "created_at": "2020-03-31T17:01:52.902Z",
+              "ended_at": "2020-03-31T17:02:00.296Z",
+              "id": 28,
+              "referrer_params": null,
+              "run_id": 28,
+              "scenario_id": 7,
+              "updated_at": "2020-03-31T17:02:00.309Z",
+              "user_id": 2,
+            },
+            Object {
+              "cohort_id": 1,
+              "consent_acknowledged_by_user": true,
+              "consent_granted_by_user": true,
+              "consent_id": 8,
+              "created_at": "2020-03-31T17:02:51.357Z",
+              "ended_at": "2020-03-31T17:02:57.043Z",
+              "id": 29,
+              "referrer_params": null,
+              "run_id": 29,
+              "scenario_id": 7,
+              "updated_at": "2020-03-31T17:02:57.054Z",
+              "user_id": 2,
+            },
+            Object {
+              "cohort_id": 1,
+              "consent_acknowledged_by_user": true,
+              "consent_granted_by_user": true,
+              "consent_id": 8,
+              "created_at": "2020-03-31T17:05:34.501Z",
+              "ended_at": "2020-03-31T17:05:39.136Z",
+              "id": 30,
+              "referrer_params": null,
+              "run_id": 30,
+              "scenario_id": 7,
+              "updated_at": "2020-03-31T17:05:39.144Z",
+              "user_id": 2,
+            },
+            Object {
+              "cohort_id": 1,
+              "consent_acknowledged_by_user": true,
+              "consent_granted_by_user": true,
+              "consent_id": 8,
+              "created_at": "2020-03-31T17:07:15.447Z",
+              "ended_at": "2020-03-31T17:07:20.321Z",
+              "id": 31,
+              "referrer_params": null,
+              "run_id": 31,
+              "scenario_id": 7,
+              "updated_at": "2020-03-31T17:07:20.331Z",
+              "user_id": 2,
+            },
+          ],
+          "scenarios": Array [
+            7,
+            1,
+            9,
+            8,
+          ],
+          "updated_at": "2021-01-15T14:01:02.656Z",
+          "users": Array [
+            Object {
+              "cohort_id": 1,
+              "email": "super@email.com",
+              "id": 999,
+              "is_anonymous": false,
+              "is_super": true,
+              "roles": Array [
+                "super",
+                "facilitator",
+              ],
+              "username": "super",
+            },
+          ],
+          "usersById": Object {
+            "999": Object {
+              "cohort_id": 1,
+              "email": "super@email.com",
+              "id": 999,
+              "is_anonymous": false,
+              "is_super": true,
+              "roles": Array [
+                "super",
+                "facilitator",
+              ],
+              "username": "super",
+            },
+          },
+        },
+        "type": "SET_COHORT_SCENARIOS_SUCCESS",
+      },
+      Object {
+        "error": Object {
+          "error": [Error: something unexpected happened on the server],
+        },
+        "type": "SET_COHORT_SCENARIOS_ERROR",
+      },
+    ]
+  `);
 });
 
 describe('GET_COHORT_SUCCESS', () => {
@@ -496,7 +1699,14 @@ describe('GET_COHORT_SUCCESS', () => {
     expect(returnValue).toEqual(cohort);
 
     await mockStore.dispatch(actions.getCohort(1));
-    expect(mockStore.getActions()).toMatchSnapshot();
+    expect(mockStore.getActions()).toMatchInlineSnapshot(`
+      Array [
+        Object {
+          "cohort": undefined,
+          "type": "GET_COHORT_SUCCESS",
+        },
+      ]
+    `);
   });
 
   test('Receives a cohort missing an id', async () => {
@@ -521,7 +1731,14 @@ describe('GET_COHORT_SUCCESS', () => {
     expect(returnValue).toEqual(cohort);
 
     await mockStore.dispatch(actions.getCohort(1));
-    expect(mockStore.getActions()).toMatchSnapshot();
+    expect(mockStore.getActions()).toMatchInlineSnapshot(`
+      Array [
+        Object {
+          "cohort": Object {},
+          "type": "GET_COHORT_SUCCESS",
+        },
+      ]
+    `);
   });
 
   test('Invalid Cohort id', async () => {
@@ -530,7 +1747,7 @@ describe('GET_COHORT_SUCCESS', () => {
     expect(returnValue).toBe(undefined);
 
     await mockStore.dispatch(actions.getCohort(NaN));
-    expect(mockStore.getActions()).toMatchSnapshot();
+    expect(mockStore.getActions()).toMatchInlineSnapshot(`Array []`);
   });
 
   test('Valid Cohort id', async () => {
@@ -551,7 +1768,127 @@ describe('GET_COHORT_SUCCESS', () => {
     expect(store.getState().cohort.id).toEqual(cohort.id);
 
     await mockStore.dispatch(actions.getCohort(2));
-    expect(mockStore.getActions()).toMatchSnapshot();
+    expect(mockStore.getActions()).toMatchInlineSnapshot(`
+      Array [
+        Object {
+          "cohort": Object {
+            "created_at": "2020-03-24T14:52:28.429Z",
+            "deleted_at": null,
+            "id": 1,
+            "is_archived": false,
+            "name": "First Cohort",
+            "runs": Array [
+              Object {
+                "cohort_id": 1,
+                "consent_acknowledged_by_user": true,
+                "consent_granted_by_user": true,
+                "consent_id": 8,
+                "created_at": "2020-03-28T19:44:03.069Z",
+                "ended_at": "2020-03-31T17:01:43.128Z",
+                "id": 11,
+                "referrer_params": null,
+                "run_id": 11,
+                "scenario_id": 7,
+                "updated_at": "2020-03-31T17:01:43.139Z",
+                "user_id": 2,
+              },
+              Object {
+                "cohort_id": 1,
+                "consent_acknowledged_by_user": true,
+                "consent_granted_by_user": true,
+                "consent_id": 8,
+                "created_at": "2020-03-31T17:01:52.902Z",
+                "ended_at": "2020-03-31T17:02:00.296Z",
+                "id": 28,
+                "referrer_params": null,
+                "run_id": 28,
+                "scenario_id": 7,
+                "updated_at": "2020-03-31T17:02:00.309Z",
+                "user_id": 2,
+              },
+              Object {
+                "cohort_id": 1,
+                "consent_acknowledged_by_user": true,
+                "consent_granted_by_user": true,
+                "consent_id": 8,
+                "created_at": "2020-03-31T17:02:51.357Z",
+                "ended_at": "2020-03-31T17:02:57.043Z",
+                "id": 29,
+                "referrer_params": null,
+                "run_id": 29,
+                "scenario_id": 7,
+                "updated_at": "2020-03-31T17:02:57.054Z",
+                "user_id": 2,
+              },
+              Object {
+                "cohort_id": 1,
+                "consent_acknowledged_by_user": true,
+                "consent_granted_by_user": true,
+                "consent_id": 8,
+                "created_at": "2020-03-31T17:05:34.501Z",
+                "ended_at": "2020-03-31T17:05:39.136Z",
+                "id": 30,
+                "referrer_params": null,
+                "run_id": 30,
+                "scenario_id": 7,
+                "updated_at": "2020-03-31T17:05:39.144Z",
+                "user_id": 2,
+              },
+              Object {
+                "cohort_id": 1,
+                "consent_acknowledged_by_user": true,
+                "consent_granted_by_user": true,
+                "consent_id": 8,
+                "created_at": "2020-03-31T17:07:15.447Z",
+                "ended_at": "2020-03-31T17:07:20.321Z",
+                "id": 31,
+                "referrer_params": null,
+                "run_id": 31,
+                "scenario_id": 7,
+                "updated_at": "2020-03-31T17:07:20.331Z",
+                "user_id": 2,
+              },
+            ],
+            "scenarios": Array [
+              7,
+              1,
+              9,
+              8,
+            ],
+            "updated_at": "2021-01-15T14:01:02.656Z",
+            "users": Array [
+              Object {
+                "cohort_id": 1,
+                "email": "super@email.com",
+                "id": 999,
+                "is_anonymous": false,
+                "is_super": true,
+                "roles": Array [
+                  "super",
+                  "facilitator",
+                ],
+                "username": "super",
+              },
+            ],
+            "usersById": Object {
+              "999": Object {
+                "cohort_id": 1,
+                "email": "super@email.com",
+                "id": 999,
+                "is_anonymous": false,
+                "is_super": true,
+                "roles": Array [
+                  "super",
+                  "facilitator",
+                ],
+                "username": "super",
+              },
+            },
+          },
+          "type": "GET_COHORT_SUCCESS",
+        },
+      ]
+    `);
   });
 });
 
@@ -573,7 +1910,16 @@ test('GET_COHORT_ERROR', async () => {
   expect(returnValue).toEqual(null);
 
   await mockStore.dispatch(actions.getCohort(2));
-  expect(mockStore.getActions()).toMatchSnapshot();
+  expect(mockStore.getActions()).toMatchInlineSnapshot(`
+    Array [
+      Object {
+        "error": Object {
+          "error": [Error: something unexpected happened on the server],
+        },
+        "type": "GET_COHORT_ERROR",
+      },
+    ]
+  `);
 });
 
 test('GET_COHORTS_COUNT_SUCCESS', async () => {
@@ -591,7 +1937,14 @@ test('GET_COHORTS_COUNT_SUCCESS', async () => {
   expect(returnValue).toEqual(Number(count));
 
   await mockStore.dispatch(actions.getCohortsCount());
-  expect(mockStore.getActions()).toMatchSnapshot();
+  expect(mockStore.getActions()).toMatchInlineSnapshot(`
+    Array [
+      Object {
+        "count": 1,
+        "type": "GET_COHORTS_COUNT_SUCCESS",
+      },
+    ]
+  `);
 });
 
 test('GET_COHORTS_COUNT_ERROR', async () => {
@@ -1451,7 +2804,74 @@ describe('GET_COHORT_SCENARIOS_SUCCESS', () => {
     expect(returnValue).toEqual(scenarios);
 
     await mockStore.dispatch(actions.getCohortScenarios(1));
-    expect(mockStore.getActions()).toMatchSnapshot();
+    expect(mockStore.getActions()).toMatchInlineSnapshot(`
+      Array [
+        Object {
+          "scenarios": Array [
+            Object {
+              "author": Object {
+                "email": "super@email.com",
+                "id": 999,
+                "is_anonymous": false,
+                "is_super": true,
+                "personalname": "Super User",
+                "roles": Array [
+                  "participant",
+                  "super_admin",
+                  "facilitator",
+                  "researcher",
+                ],
+                "username": "super",
+              },
+              "categories": Array [],
+              "consent": Object {
+                "id": 57,
+                "prose": "<p>Educators and researchers in the <a href=\\"http://tsl.mit.edu/\\">MIT Teaching Systems Lab</a> would like to include your responses in research about improving this experience and learning how to better prepare teachers for the classroom.<br><br>All data you enter is protected by <a href=\\"https://couhes.mit.edu/\\">MIT's IRB review procedures</a>.</p><p>None of your personal information will be shared.<br><br>More details are available in the consent form itself.</p>",
+              },
+              "created_at": "2020-02-31T17:50:28.029Z",
+              "deleted_at": null,
+              "description": "A scenario about \\"Multiplayer Scenario\\"",
+              "finish": Object {
+                "components": Array [
+                  Object {
+                    "html": "<h2>Thanks for participating!</h2>",
+                    "type": "Text",
+                  },
+                ],
+                "id": 1,
+                "is_finish": true,
+                "title": "",
+              },
+              "id": 42,
+              "lock": Object {
+                "created_at": "2020-01-01T23:54:19.934Z",
+                "ended_at": null,
+                "scenario_id": 42,
+                "user_id": 999,
+              },
+              "status": 1,
+              "title": "Multiplayer Scenario",
+              "updated_at": null,
+              "users": Array [
+                Object {
+                  "email": "super@email.com",
+                  "id": 999,
+                  "is_author": true,
+                  "is_reviewer": false,
+                  "is_super": true,
+                  "personalname": "Super User",
+                  "roles": Array [
+                    "super",
+                  ],
+                  "username": "super",
+                },
+              ],
+            },
+          ],
+          "type": "GET_COHORT_SCENARIOS_SUCCESS",
+        },
+      ]
+    `);
   });
 });
 
@@ -1464,5 +2884,100 @@ test('GET_COHORT_SCENARIOS_ERROR', async () => {
     ]
   `);
   await mockStore.dispatch(actions.getCohortScenarios(2));
-  expect(mockStore.getActions()).toMatchSnapshot();
+  expect(mockStore.getActions()).toMatchInlineSnapshot(`
+    Array [
+      Object {
+        "error": Object {
+          "error": [Error: something unexpected happened on the server],
+        },
+        "type": "GET_COHORT_SCENARIOS_ERROR",
+      },
+    ]
+  `);
+});
+
+describe('GET_COHORT_CHATS_OVERVIEW_SUCCESS', () => {
+  describe('getCohortChatsOverview', () => {
+    let chats = [];
+
+    test('Receives chats', async () => {
+      fetchImplementation(fetch, 200, { chats });
+      const returnValue = await store.dispatch(
+        actions.getCohortChatsOverview(1)
+      );
+      expect(fetch.mock.calls.length).toBe(1);
+      expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+        Array [
+          "/api/cohorts/1/overview",
+        ]
+      `);
+      expect(returnValue).toEqual(chats);
+
+      await mockStore.dispatch(actions.getCohortChatsOverview(1));
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "chats": Array [],
+            "type": "GET_COHORT_CHATS_OVERVIEW_SUCCESS",
+          },
+        ]
+      `);
+    });
+
+    test('Receives undefined', async () => {
+      fetchImplementation(fetch, 200, { chats: undefined });
+      const returnValue = await store.dispatch(
+        actions.getCohortChatsOverview(1)
+      );
+      expect(fetch.mock.calls.length).toBe(1);
+      expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+        Array [
+          "/api/cohorts/1/overview",
+        ]
+      `);
+      expect(returnValue).toMatchInlineSnapshot(`undefined`);
+
+      await mockStore.dispatch(actions.getCohortChatsOverview(1));
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "chats": undefined,
+            "type": "GET_COHORT_CHATS_OVERVIEW_SUCCESS",
+          },
+        ]
+      `);
+    });
+  });
+});
+
+describe('GET_COHORT_CHATS_OVERVIEW_ERROR', () => {
+  describe('getCohortChatsOverview', () => {
+    let chats = [];
+
+    test('Receives an error', async () => {
+      fetchImplementation(fetch, 200, { error });
+      const returnValue = await store.dispatch(
+        actions.getCohortChatsOverview(1)
+      );
+      expect(fetch.mock.calls.length).toBe(1);
+      expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+        Array [
+          "/api/cohorts/1/overview",
+        ]
+      `);
+      expect(returnValue).toEqual(null);
+
+      await mockStore.dispatch(actions.getCohortChatsOverview(1));
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "error": Object {
+              "error": [Error: something unexpected happened on the server],
+            },
+            "type": "GET_COHORT_CHATS_OVERVIEW_ERROR",
+          },
+        ]
+      `);
+    });
+  });
 });
