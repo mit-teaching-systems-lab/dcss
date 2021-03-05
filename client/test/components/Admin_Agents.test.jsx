@@ -545,6 +545,8 @@ test('Select an agent', async done => {
 });
 
 test('Select and edit an agent', async done => {
+  jest.setTimeout(30000);
+
   const Component = Agents;
   const props = {
     ...commonProps,
