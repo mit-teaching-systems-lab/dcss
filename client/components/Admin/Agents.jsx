@@ -1111,9 +1111,11 @@ class Agent extends Component {
                       </Button>
                     </Button.Group>
                   </Form.Field>
-                  <div data-testid="agents-detail" />
+                  <div data-testid="agent-is-selected" />
                 </Grid.Row>
-              ) : null}
+              ) : (
+                <div data-testid="agent-is-not-selected" />
+              )}
             </Grid.Column>
           </Grid.Row>
         </Grid>

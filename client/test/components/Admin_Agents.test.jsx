@@ -529,13 +529,17 @@ test('Select an agent', async done => {
   userEvent.click(listIems[0]);
 
   await waitFor(() =>
-    expect(screen.getByTestId('agents-detail')).toBeInTheDocument()
+    expect(screen.getByTestId('agent-is-selected')).toBeInTheDocument()
   );
   expect(serialize()).toMatchSnapshot();
 
   const closeButton = await screen.findByRole('button', { name: /close/i });
 
   userEvent.click(closeButton);
+
+  await waitFor(() =>
+    expect(screen.getByTestId('agent-is-not-selected')).toBeInTheDocument()
+  );
   expect(serialize()).toMatchSnapshot();
   done();
 });
@@ -569,13 +573,13 @@ test('Select and edit an agent', async done => {
   userEvent.click(listItems[0]);
 
   await waitFor(() =>
-    expect(screen.getByTestId('agents-detail')).toBeInTheDocument()
+    expect(screen.getByTestId('agent-is-selected')).toBeInTheDocument()
   );
   expect(serialize()).toMatchSnapshot();
 
   userEvent.click(await screen.getByRole('button', { name: /save/i }));
   await waitFor(() =>
-    expect(screen.getByTestId('agents-detail')).toBeInTheDocument()
+    expect(screen.getByTestId('agent-is-selected')).toBeInTheDocument()
   );
   expect(agentActions.createAgent).not.toHaveBeenCalled();
   expect(agentActions.setAgent).toHaveBeenCalled();
@@ -647,7 +651,7 @@ test('Select and edit an agent', async done => {
 
   userEvent.click(await screen.getByRole('button', { name: /save/i }));
   await waitFor(() =>
-    expect(screen.getByTestId('agents-detail')).toBeInTheDocument()
+    expect(screen.getByTestId('agent-is-selected')).toBeInTheDocument()
   );
   expect(agentActions.createAgent).not.toHaveBeenCalled();
   expect(agentActions.setAgent.mock.calls.length).toBe(1);
@@ -657,7 +661,7 @@ test('Select and edit an agent', async done => {
 
   userEvent.click(await screen.getByRole('button', { name: /save/i }));
   await waitFor(() =>
-    expect(screen.getByTestId('agents-detail')).toBeInTheDocument()
+    expect(screen.getByTestId('agent-is-selected')).toBeInTheDocument()
   );
   expect(agentActions.createAgent).not.toHaveBeenCalled();
   expect(agentActions.setAgent.mock.calls[1]).toMatchInlineSnapshot(`
@@ -724,7 +728,7 @@ test('Select and edit an agent', async done => {
 
   userEvent.click(await screen.getByRole('button', { name: /save/i }));
   await waitFor(() =>
-    expect(screen.getByTestId('agents-detail')).toBeInTheDocument()
+    expect(screen.getByTestId('agent-is-selected')).toBeInTheDocument()
   );
   expect(agentActions.createAgent).not.toHaveBeenCalled();
   expect(agentActions.setAgent.mock.calls.length).toBe(2);
@@ -734,7 +738,7 @@ test('Select and edit an agent', async done => {
 
   userEvent.click(await screen.getByRole('button', { name: /save/i }));
   await waitFor(() =>
-    expect(screen.getByTestId('agents-detail')).toBeInTheDocument()
+    expect(screen.getByTestId('agent-is-selected')).toBeInTheDocument()
   );
   expect(agentActions.createAgent).not.toHaveBeenCalled();
   expect(agentActions.setAgent.mock.calls[2]).toMatchInlineSnapshot(`
@@ -801,7 +805,7 @@ test('Select and edit an agent', async done => {
 
   userEvent.click(await screen.getByRole('button', { name: /save/i }));
   await waitFor(() =>
-    expect(screen.getByTestId('agents-detail')).toBeInTheDocument()
+    expect(screen.getByTestId('agent-is-selected')).toBeInTheDocument()
   );
   expect(agentActions.createAgent).not.toHaveBeenCalled();
   expect(agentActions.setAgent.mock.calls.length).toBe(3);
@@ -811,7 +815,7 @@ test('Select and edit an agent', async done => {
 
   userEvent.click(await screen.getByRole('button', { name: /save/i }));
   await waitFor(() =>
-    expect(screen.getByTestId('agents-detail')).toBeInTheDocument()
+    expect(screen.getByTestId('agent-is-selected')).toBeInTheDocument()
   );
   expect(agentActions.createAgent).not.toHaveBeenCalled();
   expect(agentActions.setAgent.mock.calls[3]).toMatchInlineSnapshot(`
@@ -877,7 +881,7 @@ test('Select and edit an agent', async done => {
   userEvent.click(await screen.getByRole('option', { name: /AudioPrompt/i }));
   userEvent.click(await screen.getByRole('button', { name: /save/i }));
   await waitFor(() =>
-    expect(screen.getByTestId('agents-detail')).toBeInTheDocument()
+    expect(screen.getByTestId('agent-is-selected')).toBeInTheDocument()
   );
   expect(agentActions.createAgent).not.toHaveBeenCalled();
   expect(agentActions.setAgent.mock.calls[4]).toMatchInlineSnapshot(`
@@ -944,7 +948,7 @@ test('Select and edit an agent', async done => {
   );
   userEvent.click(await screen.getByRole('button', { name: /save/i }));
   await waitFor(() =>
-    expect(screen.getByTestId('agents-detail')).toBeInTheDocument()
+    expect(screen.getByTestId('agent-is-selected')).toBeInTheDocument()
   );
   expect(agentActions.createAgent).not.toHaveBeenCalled();
   expect(agentActions.setAgent.mock.calls[5]).toMatchInlineSnapshot(`
@@ -1035,13 +1039,13 @@ test('Add a new agent', async done => {
 
   userEvent.click(await screen.getByText(/create a new agent/i));
   await waitFor(() =>
-    expect(screen.getByTestId('agents-detail')).toBeInTheDocument()
+    expect(screen.getByTestId('agent-is-selected')).toBeInTheDocument()
   );
   expect(serialize()).toMatchSnapshot();
 
   userEvent.click(await screen.getByRole('button', { name: /save/i }));
   await waitFor(() =>
-    expect(screen.getByTestId('agents-detail')).toBeInTheDocument()
+    expect(screen.getByTestId('agent-is-selected')).toBeInTheDocument()
   );
   expect(agentActions.createAgent).not.toHaveBeenCalled();
   expect(agentActions.setAgent).not.toHaveBeenCalled();
@@ -1055,7 +1059,7 @@ test('Add a new agent', async done => {
 
   userEvent.click(await screen.getByRole('button', { name: /save/i }));
   await waitFor(() =>
-    expect(screen.getByTestId('agents-detail')).toBeInTheDocument()
+    expect(screen.getByTestId('agent-is-selected')).toBeInTheDocument()
   );
   expect(agentActions.createAgent).not.toHaveBeenCalled();
   expect(agentActions.setAgent).not.toHaveBeenCalled();
@@ -1065,7 +1069,7 @@ test('Add a new agent', async done => {
 
   userEvent.click(await screen.getByRole('button', { name: /save/i }));
   await waitFor(() =>
-    expect(screen.getByTestId('agents-detail')).toBeInTheDocument()
+    expect(screen.getByTestId('agent-is-selected')).toBeInTheDocument()
   );
   expect(agentActions.createAgent).not.toHaveBeenCalled();
   expect(agentActions.setAgent).not.toHaveBeenCalled();
@@ -1075,7 +1079,7 @@ test('Add a new agent', async done => {
 
   userEvent.click(await screen.getByRole('button', { name: /save/i }));
   await waitFor(() =>
-    expect(screen.getByTestId('agents-detail')).toBeInTheDocument()
+    expect(screen.getByTestId('agent-is-selected')).toBeInTheDocument()
   );
   expect(agentActions.createAgent).not.toHaveBeenCalled();
   expect(agentActions.setAgent).not.toHaveBeenCalled();
@@ -1085,7 +1089,7 @@ test('Add a new agent', async done => {
 
   userEvent.click(await screen.getByRole('button', { name: /save/i }));
   await waitFor(() =>
-    expect(screen.getByTestId('agents-detail')).toBeInTheDocument()
+    expect(screen.getByTestId('agent-is-selected')).toBeInTheDocument()
   );
 
   expect(agentActions.setAgent).not.toHaveBeenCalled();
@@ -1204,7 +1208,7 @@ test('Delete an agent', async done => {
   userEvent.click(listItems[0]);
 
   await waitFor(() =>
-    expect(screen.getByTestId('agents-detail')).toBeInTheDocument()
+    expect(screen.getByTestId('agent-is-selected')).toBeInTheDocument()
   );
   expect(serialize()).toMatchSnapshot();
 
@@ -1317,14 +1321,14 @@ test('Duplicate an agent', async done => {
   userEvent.click(listItems[0]);
 
   await waitFor(() =>
-    expect(screen.getByTestId('agents-detail')).toBeInTheDocument()
+    expect(screen.getByTestId('agent-is-selected')).toBeInTheDocument()
   );
   expect(serialize()).toMatchSnapshot();
 
   userEvent.click(await screen.findByLabelText('Duplicate this agent'));
   await waitForPopper();
   await waitFor(() =>
-    expect(screen.getByTestId('agents-detail')).toBeInTheDocument()
+    expect(screen.getByTestId('agent-is-selected')).toBeInTheDocument()
   );
 
   userEvent.click(await screen.getByRole('button', { name: /save/i }));
@@ -1423,7 +1427,7 @@ test('Change a socket configuration', async done => {
   userEvent.click(listItems[0]);
 
   await waitFor(() =>
-    expect(screen.getByTestId('agents-detail')).toBeInTheDocument()
+    expect(screen.getByTestId('agent-is-selected')).toBeInTheDocument()
   );
   expect(serialize()).toMatchSnapshot();
 
@@ -1615,7 +1619,7 @@ test('Add a socket configuration', async done => {
   userEvent.click(listItems[0]);
 
   await waitFor(() =>
-    expect(screen.getByTestId('agents-detail')).toBeInTheDocument()
+    expect(screen.getByTestId('agent-is-selected')).toBeInTheDocument()
   );
   expect(serialize()).toMatchSnapshot();
 
@@ -1793,7 +1797,7 @@ test('Change an agent configuration', async done => {
   userEvent.click(listItems[0]);
 
   await waitFor(() =>
-    expect(screen.getByTestId('agents-detail')).toBeInTheDocument()
+    expect(screen.getByTestId('agent-is-selected')).toBeInTheDocument()
   );
   expect(serialize()).toMatchSnapshot();
 
@@ -1983,7 +1987,7 @@ test('Add an agent configuration', async done => {
   userEvent.click(listItems[0]);
 
   await waitFor(() =>
-    expect(screen.getByTestId('agents-detail')).toBeInTheDocument()
+    expect(screen.getByTestId('agent-is-selected')).toBeInTheDocument()
   );
   expect(serialize()).toMatchSnapshot();
 
