@@ -872,16 +872,11 @@ test('Multiple personas, toggle chat', async done => {
   userEvent.click(toggleChat);
   expect(serialize()).toMatchSnapshot();
 
-  expect(props.onChange).toHaveBeenCalledTimes(3);
+  expect(props.onChange).toHaveBeenCalledTimes(1);
   expect(props.onChange.mock.calls[0]).toMatchObject([
     1,
     {
       components: [
-        {
-          html: '<h1>Welcome to Slide 2</h1>',
-          id: expectUuidString,
-          type: 'Text'
-        },
         {
           disableDelete: true,
           disableDuplicate: true,
@@ -894,6 +889,11 @@ test('Multiple personas, toggle chat', async done => {
           responseId: expectUuidString,
           timer: 0,
           type: 'ChatPrompt'
+        },
+        {
+          html: '<h1>Welcome to Slide 2</h1>',
+          id: expectUuidString,
+          type: 'Text'
         },
         {
           header: 'TextResponse-1',

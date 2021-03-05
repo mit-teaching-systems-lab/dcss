@@ -36722,15 +36722,241 @@ exports[`Multiple personas, toggle chat 3`] = `
                     class=\\"sortable__draggable-outer-container\\"
                   >
                     <div
+                      class=\\"ui segment sortable__selected sortable__component\\"
+                      data-testid=\\"on-component-click\\"
+                    >
+                      <div
+                        class=\\"ui borderless icon em__height menu\\"
+                        index=\\"0\\"
+                      >
+                        <div
+                          class=\\"item ser__component-card\\"
+                          tabindex=\\"0\\"
+                        >
+                          <i
+                            aria-label=\\"Chat\\"
+                            class=\\"chat icon\\"
+                          />
+                          <span
+                            class=\\"ser__component-name\\"
+                          >
+                            Chat
+                          </span>
+                        </div>
+                        <a
+                          class=\\"item\\"
+                          id=\\"551536122beb9d13e80040482ec628ce1473ef8a\\"
+                          tabindex=\\"0\\"
+                        >
+                          <div
+                            class=\\"ui checkbox\\"
+                          >
+                            <input
+                              aria-labelledby=\\"551536122beb9d13e80040482ec628ce1473ef8a\\"
+                              class=\\"hidden\\"
+                              name=\\"required\\"
+                              readonly=\\"\\"
+                              tabindex=\\"0\\"
+                              type=\\"checkbox\\"
+                              value=\\"\\"
+                            />
+                            <label>
+                              Required
+                            </label>
+                          </div>
+                        </a>
+                      </div>
+                      <form
+                        class=\\"ui form\\"
+                      >
+                        <div
+                          class=\\"ui fluid container\\"
+                        >
+                          <div
+                            class=\\"ui grid\\"
+                          >
+                            <div
+                              class=\\"two column row\\"
+                            >
+                              <div
+                                class=\\"column\\"
+                              >
+                                <div
+                                  class=\\"field\\"
+                                >
+                                  <label
+                                    for=\\"timer\\"
+                                  >
+                                    Max duration for this discussion:
+                                  </label>
+                                  <div
+                                    class=\\"ui input\\"
+                                  >
+                                    <input
+                                      id=\\"timer\\"
+                                      name=\\"timer\\"
+                                      style=\\"width: 54px;\\"
+                                      type=\\"text\\"
+                                      value=\\"00:00:00\\"
+                                    />
+                                  </div>
+                                </div>
+                              </div>
+                              <div
+                                class=\\"column cpe__displaytime-outer\\"
+                              >
+                                <span
+                                  class=\\"ui large text\\"
+                                >
+                                    
+                                </span>
+                              </div>
+                            </div>
+                            <div
+                              class=\\"one column row cpe__gridrow\\"
+                            >
+                              <div
+                                class=\\"column\\"
+                              >
+                                <div
+                                  class=\\"field\\"
+                                >
+                                  <div
+                                    class=\\"ui checked checkbox\\"
+                                  >
+                                    <input
+                                      checked=\\"\\"
+                                      class=\\"hidden\\"
+                                      id=\\"auto\\"
+                                      name=\\"auto\\"
+                                      readonly=\\"\\"
+                                      tabindex=\\"0\\"
+                                      type=\\"checkbox\\"
+                                      value=\\"\\"
+                                    />
+                                    <label
+                                      for=\\"auto\\"
+                                    >
+                                      Automatically start the discussion timer when participants arrive?
+                                    </label>
+                                  </div>
+                                </div>
+                                <div
+                                  class=\\"ui segment\\"
+                                >
+                                  <p
+                                    class=\\"cpe__paragraph\\"
+                                    tabindex=\\"0\\"
+                                  >
+                                    <i
+                                      aria-hidden=\\"true\\"
+                                      class=\\"attention icon\\"
+                                    />
+                                    Set the timer to 00:00:00 for an unlimited discussion time.
+                                  </p>
+                                  <p
+                                    class=\\"cpe__paragraph\\"
+                                    tabindex=\\"0\\"
+                                  >
+                                    <i
+                                      aria-hidden=\\"true\\"
+                                      class=\\"attention icon\\"
+                                    />
+                                    If the timer is set, the discussion will be marked
+                                     
+                                    <strong>
+                                      Required
+                                    </strong>
+                                    . This ensures that participants cannot move forward until completing the discussion. Hosts will be able to override the timer.
+                                  </p>
+                                  <p
+                                    class=\\"cpe__paragraph\\"
+                                    tabindex=\\"0\\"
+                                  >
+                                    <i
+                                      aria-hidden=\\"true\\"
+                                      class=\\"attention icon\\"
+                                    />
+                                    If no timer is set and this chat is set to
+                                     
+                                    <strong>
+                                      Required
+                                    </strong>
+                                    , the host 
+                                    <strong>
+                                      must
+                                    </strong>
+                                     
+                                    close the discussion before participants can proceed. If no timer is set and this chat is not
+                                     
+                                    <strong>
+                                      not Required
+                                    </strong>
+                                    , the discussion can be optionally closed.
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                            <div
+                              class=\\"one column row\\"
+                            >
+                              <div
+                                class=\\"column\\"
+                              >
+                                <div
+                                  class=\\"field\\"
+                                >
+                                  <label>
+                                    Optional prompt to display for this discussion:
+                                  </label>
+                                  <textarea
+                                    aria-label=\\"Optional prompt to display for this discussion:\\"
+                                    name=\\"prompt\\"
+                                    rows=\\"1\\"
+                                  />
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div
+                            class=\\"ui grey message\\"
+                          >
+                            <div
+                              class=\\"content\\"
+                            >
+                              <div
+                                class=\\"required field\\"
+                              >
+                                <label>
+                                  Data header
+                                </label>
+                                <div
+                                  class=\\"ui input\\"
+                                >
+                                  <input
+                                    name=\\"header\\"
+                                    required=\\"\\"
+                                    type=\\"text\\"
+                                    value=\\"Slide 2-ChatPrompt-0\\"
+                                  />
+                                </div>
+                              </div>
+                              This will only appear in data downloads, as the column header or row name.
+                            </div>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                    <div
                       style=\\"opacity: 1;\\"
                     >
                       <div
-                        class=\\"ui segment sortable__selected sortable__component draggable\\"
+                        class=\\"ui segment sortable__component draggable\\"
                         data-testid=\\"on-component-click\\"
                       >
                         <div
                           class=\\"ui borderless icon em__height menu\\"
-                          index=\\"0\\"
+                          index=\\"1\\"
                         >
                           <div
                             class=\\"item ser__component-card\\"
@@ -36930,273 +37156,9 @@ exports[`Multiple personas, toggle chat 3`] = `
                               </div>
                             </div>
                           </div>
-                          <div
-                            class=\\"right menu movers\\"
-                            name=\\"Move component\\"
-                          >
-                            <div
-                              aria-label=\\"Move component\\"
-                              class=\\"icon item\\"
-                              tabindex=\\"0\\"
-                            >
-                              <i
-                                aria-hidden=\\"true\\"
-                                class=\\"move icon\\"
-                              />
-                              
-                            </div>
-                            <a
-                              aria-label=\\"Move component 1,  up\\"
-                              class=\\"disabled icon item\\"
-                              tabindex=\\"0\\"
-                            >
-                              <i
-                                aria-hidden=\\"true\\"
-                                class=\\"caret up icon\\"
-                              />
-                              
-                            </a>
-                            <a
-                              aria-label=\\"Move component 1,  down\\"
-                              class=\\"icon item\\"
-                              tabindex=\\"0\\"
-                            >
-                              <i
-                                aria-hidden=\\"true\\"
-                                class=\\"caret down icon\\"
-                              />
-                              
-                            </a>
-                          </div>
                         </div>
                         <textarea />
                       </div>
-                    </div>
-                    <div
-                      class=\\"ui segment sortable__component\\"
-                      data-testid=\\"on-component-click\\"
-                    >
-                      <div
-                        class=\\"ui borderless icon em__height menu\\"
-                        index=\\"1\\"
-                      >
-                        <div
-                          class=\\"item ser__component-card\\"
-                          tabindex=\\"0\\"
-                        >
-                          <i
-                            aria-label=\\"Chat\\"
-                            class=\\"chat icon\\"
-                          />
-                          <span
-                            class=\\"ser__component-name\\"
-                          >
-                            Chat
-                          </span>
-                        </div>
-                        <a
-                          class=\\"item\\"
-                          id=\\"4b9b8ee599a358c925f4753ccde931546c0b64e2\\"
-                          tabindex=\\"0\\"
-                        >
-                          <div
-                            class=\\"ui checkbox\\"
-                          >
-                            <input
-                              aria-labelledby=\\"4b9b8ee599a358c925f4753ccde931546c0b64e2\\"
-                              class=\\"hidden\\"
-                              name=\\"required\\"
-                              readonly=\\"\\"
-                              tabindex=\\"0\\"
-                              type=\\"checkbox\\"
-                              value=\\"\\"
-                            />
-                            <label>
-                              Required
-                            </label>
-                          </div>
-                        </a>
-                      </div>
-                      <form
-                        class=\\"ui form\\"
-                      >
-                        <div
-                          class=\\"ui fluid container\\"
-                        >
-                          <div
-                            class=\\"ui grid\\"
-                          >
-                            <div
-                              class=\\"two column row\\"
-                            >
-                              <div
-                                class=\\"column\\"
-                              >
-                                <div
-                                  class=\\"field\\"
-                                >
-                                  <label
-                                    for=\\"timer\\"
-                                  >
-                                    Max duration for this discussion:
-                                  </label>
-                                  <div
-                                    class=\\"ui input\\"
-                                  >
-                                    <input
-                                      id=\\"timer\\"
-                                      name=\\"timer\\"
-                                      style=\\"width: 54px;\\"
-                                      type=\\"text\\"
-                                      value=\\"00:00:00\\"
-                                    />
-                                  </div>
-                                </div>
-                              </div>
-                              <div
-                                class=\\"column cpe__displaytime-outer\\"
-                              >
-                                <span
-                                  class=\\"ui large text\\"
-                                >
-                                    
-                                </span>
-                              </div>
-                            </div>
-                            <div
-                              class=\\"one column row cpe__gridrow\\"
-                            >
-                              <div
-                                class=\\"column\\"
-                              >
-                                <div
-                                  class=\\"field\\"
-                                >
-                                  <div
-                                    class=\\"ui checked checkbox\\"
-                                  >
-                                    <input
-                                      checked=\\"\\"
-                                      class=\\"hidden\\"
-                                      id=\\"auto\\"
-                                      name=\\"auto\\"
-                                      readonly=\\"\\"
-                                      tabindex=\\"0\\"
-                                      type=\\"checkbox\\"
-                                      value=\\"\\"
-                                    />
-                                    <label
-                                      for=\\"auto\\"
-                                    >
-                                      Automatically start the discussion timer when participants arrive?
-                                    </label>
-                                  </div>
-                                </div>
-                                <div
-                                  class=\\"ui segment\\"
-                                >
-                                  <p
-                                    class=\\"cpe__paragraph\\"
-                                    tabindex=\\"0\\"
-                                  >
-                                    <i
-                                      aria-hidden=\\"true\\"
-                                      class=\\"attention icon\\"
-                                    />
-                                    Set the timer to 00:00:00 for an unlimited discussion time.
-                                  </p>
-                                  <p
-                                    class=\\"cpe__paragraph\\"
-                                    tabindex=\\"0\\"
-                                  >
-                                    <i
-                                      aria-hidden=\\"true\\"
-                                      class=\\"attention icon\\"
-                                    />
-                                    If the timer is set, the discussion will be marked
-                                     
-                                    <strong>
-                                      Required
-                                    </strong>
-                                    . This ensures that participants cannot move forward until completing the discussion. Hosts will be able to override the timer.
-                                  </p>
-                                  <p
-                                    class=\\"cpe__paragraph\\"
-                                    tabindex=\\"0\\"
-                                  >
-                                    <i
-                                      aria-hidden=\\"true\\"
-                                      class=\\"attention icon\\"
-                                    />
-                                    If no timer is set and this chat is set to
-                                     
-                                    <strong>
-                                      Required
-                                    </strong>
-                                    , the host 
-                                    <strong>
-                                      must
-                                    </strong>
-                                     
-                                    close the discussion before participants can proceed. If no timer is set and this chat is not
-                                     
-                                    <strong>
-                                      not Required
-                                    </strong>
-                                    , the discussion can be optionally closed.
-                                  </p>
-                                </div>
-                              </div>
-                            </div>
-                            <div
-                              class=\\"one column row\\"
-                            >
-                              <div
-                                class=\\"column\\"
-                              >
-                                <div
-                                  class=\\"field\\"
-                                >
-                                  <label>
-                                    Optional prompt to display for this discussion:
-                                  </label>
-                                  <textarea
-                                    aria-label=\\"Optional prompt to display for this discussion:\\"
-                                    name=\\"prompt\\"
-                                    rows=\\"1\\"
-                                  />
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div
-                            class=\\"ui grey message\\"
-                          >
-                            <div
-                              class=\\"content\\"
-                            >
-                              <div
-                                class=\\"required field\\"
-                              >
-                                <label>
-                                  Data header
-                                </label>
-                                <div
-                                  class=\\"ui input\\"
-                                >
-                                  <input
-                                    name=\\"header\\"
-                                    required=\\"\\"
-                                    type=\\"text\\"
-                                    value=\\"Slide 2-ChatPrompt-0\\"
-                                  />
-                                </div>
-                              </div>
-                              This will only appear in data downloads, as the column header or row name.
-                            </div>
-                          </div>
-                        </div>
-                      </form>
                     </div>
                     <div
                       style=\\"opacity: 1;\\"
