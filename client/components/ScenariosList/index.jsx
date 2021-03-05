@@ -33,6 +33,7 @@ import { notify } from '@components/Notification';
 import ScenarioCard from './ScenarioCard';
 import ScenarioDetailModal from './ScenarioDetailModal';
 import ScenarioLabelsFilter from './ScenarioLabelsFilter';
+import History from '@utils/History';
 import Layout from '@utils/Layout';
 import QueryString from '@utils/QueryString';
 import './ScenariosList.css';
@@ -101,10 +102,6 @@ const filter = (scenarios, user) => {
 
   return [...notDeleted, ...deleted];
 };
-
-function makeHistoryEntry(location, keyVals) {
-  return `${location.pathname}?${QueryString.mergedStringify(keyVals)}`;
-}
 
 class ScenariosList extends Component {
   constructor(props) {
@@ -208,7 +205,7 @@ class ScenariosList extends Component {
       });
 
       this.props.history.push(
-        makeHistoryEntry(this.props.location, {
+        History.composeUrl(this.props.location, {
           page,
           search
         })
@@ -262,7 +259,7 @@ class ScenariosList extends Component {
       search
     });
 
-    const historyEntry = makeHistoryEntry(this.props.location, {
+    const historyEntry = History.composeUrl(this.props.location, {
       page,
       search
     });
@@ -281,7 +278,7 @@ class ScenariosList extends Component {
     });
 
     this.props.history.push(
-      makeHistoryEntry(this.props.location, {
+      History.composeUrl(this.props.location, {
         page,
         search
       })

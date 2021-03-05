@@ -3,7 +3,7 @@
 exports[`Render 1 1 1`] = `
 <DocumentFragment>
   <div
-    class="ui borderless icon em__height menu"
+    class="ui borderless menu"
   >
     <div
       class="item"
@@ -27,7 +27,7 @@ exports[`Render 1 1 1`] = `
         tabindex="0"
       >
         <div
-          class="ui icon input"
+          class="ui transparent icon input"
         >
           <input
             placeholder="Search..."
@@ -42,10 +42,10 @@ exports[`Render 1 1 1`] = `
     </div>
   </div>
   <div
-    class="ui celled grid"
+    class="ui grid"
   >
     <div
-      class="row"
+      class="divided row"
     >
       <div
         class="four wide column"
@@ -131,6 +131,45 @@ exports[`Render 1 1 1`] = `
             </div>
           </a>
         </div>
+        <div
+          aria-label="Pagination Navigation"
+          class="ui borderless pagination menu"
+          name="logs"
+          role="navigation"
+        >
+          <a
+            aria-current="false"
+            aria-disabled="false"
+            aria-label="Previous item"
+            class="item"
+            tabindex="0"
+            type="prevItem"
+            value="1"
+          >
+            ⟨
+          </a>
+          <a
+            aria-current="true"
+            aria-disabled="false"
+            class="active item"
+            tabindex="0"
+            type="pageItem"
+            value="1"
+          >
+            1
+          </a>
+          <a
+            aria-current="false"
+            aria-disabled="false"
+            aria-label="Next item"
+            class="item"
+            tabindex="0"
+            type="nextItem"
+            value="1"
+          >
+            ⟩
+          </a>
+        </div>
       </div>
       <div
         class="twelve wide column"
@@ -157,45 +196,6 @@ exports[`Render 1 1 1`] = `
         </div>
       </div>
     </div>
-  </div>
-  <div
-    aria-label="Pagination Navigation"
-    class="ui borderless pagination menu"
-    name="logs"
-    role="navigation"
-  >
-    <a
-      aria-current="false"
-      aria-disabled="false"
-      aria-label="Previous item"
-      class="item"
-      tabindex="0"
-      type="prevItem"
-      value="1"
-    >
-      ⟨
-    </a>
-    <a
-      aria-current="true"
-      aria-disabled="false"
-      class="active item"
-      tabindex="0"
-      type="pageItem"
-      value="1"
-    >
-      1
-    </a>
-    <a
-      aria-current="false"
-      aria-disabled="false"
-      aria-label="Next item"
-      class="item"
-      tabindex="0"
-      type="nextItem"
-      value="1"
-    >
-      ⟩
-    </a>
   </div>
 </DocumentFragment>
 `;
@@ -203,7 +203,7 @@ exports[`Render 1 1 1`] = `
 exports[`Render 2 1 1`] = `
 <DocumentFragment>
   <div
-    class="ui borderless icon em__height menu"
+    class="ui borderless menu"
   >
     <div
       class="item"
@@ -227,7 +227,7 @@ exports[`Render 2 1 1`] = `
         tabindex="0"
       >
         <div
-          class="ui icon input"
+          class="ui transparent icon input"
         >
           <input
             placeholder="Search..."
@@ -242,10 +242,10 @@ exports[`Render 2 1 1`] = `
     </div>
   </div>
   <div
-    class="ui celled grid"
+    class="ui grid"
   >
     <div
-      class="row"
+      class="divided row"
     >
       <div
         class="four wide column"
@@ -331,6 +331,45 @@ exports[`Render 2 1 1`] = `
             </div>
           </a>
         </div>
+        <div
+          aria-label="Pagination Navigation"
+          class="ui borderless pagination menu"
+          name="logs"
+          role="navigation"
+        >
+          <a
+            aria-current="false"
+            aria-disabled="false"
+            aria-label="Previous item"
+            class="item"
+            tabindex="0"
+            type="prevItem"
+            value="1"
+          >
+            ⟨
+          </a>
+          <a
+            aria-current="true"
+            aria-disabled="false"
+            class="active item"
+            tabindex="0"
+            type="pageItem"
+            value="1"
+          >
+            1
+          </a>
+          <a
+            aria-current="false"
+            aria-disabled="false"
+            aria-label="Next item"
+            class="item"
+            tabindex="0"
+            type="nextItem"
+            value="1"
+          >
+            ⟩
+          </a>
+        </div>
       </div>
       <div
         class="twelve wide column"
@@ -357,45 +396,6 @@ exports[`Render 2 1 1`] = `
         </div>
       </div>
     </div>
-  </div>
-  <div
-    aria-label="Pagination Navigation"
-    class="ui borderless pagination menu"
-    name="logs"
-    role="navigation"
-  >
-    <a
-      aria-current="false"
-      aria-disabled="false"
-      aria-label="Previous item"
-      class="item"
-      tabindex="0"
-      type="prevItem"
-      value="1"
-    >
-      ⟨
-    </a>
-    <a
-      aria-current="true"
-      aria-disabled="false"
-      class="active item"
-      tabindex="0"
-      type="pageItem"
-      value="1"
-    >
-      1
-    </a>
-    <a
-      aria-current="false"
-      aria-disabled="false"
-      aria-label="Next item"
-      class="item"
-      tabindex="0"
-      type="nextItem"
-      value="1"
-    >
-      ⟩
-    </a>
   </div>
 </DocumentFragment>
 `;
@@ -407,7 +407,7 @@ exports[`Render 2 1 2`] = `
   />
   <div>
     <div
-      class=\\"ui borderless icon em__height menu\\"
+      class=\\"ui borderless menu\\"
     >
       <div
         class=\\"item\\"
@@ -431,7 +431,7 @@ exports[`Render 2 1 2`] = `
           tabindex=\\"0\\"
         >
           <div
-            class=\\"ui icon input\\"
+            class=\\"ui transparent icon input\\"
           >
             <input
               placeholder=\\"Search...\\"
@@ -446,10 +446,10 @@ exports[`Render 2 1 2`] = `
       </div>
     </div>
     <div
-      class=\\"ui celled grid\\"
+      class=\\"ui grid\\"
     >
       <div
-        class=\\"row\\"
+        class=\\"divided row\\"
       >
         <div
           class=\\"four wide column\\"
@@ -537,6 +537,45 @@ exports[`Render 2 1 2`] = `
                   12/31/2019
                 </div>
               </div>
+            </a>
+          </div>
+          <div
+            aria-label=\\"Pagination Navigation\\"
+            class=\\"ui borderless pagination menu\\"
+            name=\\"logs\\"
+            role=\\"navigation\\"
+          >
+            <a
+              aria-current=\\"false\\"
+              aria-disabled=\\"false\\"
+              aria-label=\\"Previous item\\"
+              class=\\"item\\"
+              tabindex=\\"0\\"
+              type=\\"prevItem\\"
+              value=\\"1\\"
+            >
+              ⟨
+            </a>
+            <a
+              aria-current=\\"true\\"
+              aria-disabled=\\"false\\"
+              class=\\"active item\\"
+              tabindex=\\"0\\"
+              type=\\"pageItem\\"
+              value=\\"1\\"
+            >
+              1
+            </a>
+            <a
+              aria-current=\\"false\\"
+              aria-disabled=\\"false\\"
+              aria-label=\\"Next item\\"
+              class=\\"item\\"
+              tabindex=\\"0\\"
+              type=\\"nextItem\\"
+              value=\\"1\\"
+            >
+              ⟩
             </a>
           </div>
         </div>
@@ -895,45 +934,6 @@ exports[`Render 2 1 2`] = `
         </div>
       </div>
     </div>
-    <div
-      aria-label=\\"Pagination Navigation\\"
-      class=\\"ui borderless pagination menu\\"
-      name=\\"logs\\"
-      role=\\"navigation\\"
-    >
-      <a
-        aria-current=\\"false\\"
-        aria-disabled=\\"false\\"
-        aria-label=\\"Previous item\\"
-        class=\\"item\\"
-        tabindex=\\"0\\"
-        type=\\"prevItem\\"
-        value=\\"1\\"
-      >
-        ⟨
-      </a>
-      <a
-        aria-current=\\"true\\"
-        aria-disabled=\\"false\\"
-        class=\\"active item\\"
-        tabindex=\\"0\\"
-        type=\\"pageItem\\"
-        value=\\"1\\"
-      >
-        1
-      </a>
-      <a
-        aria-current=\\"false\\"
-        aria-disabled=\\"false\\"
-        aria-label=\\"Next item\\"
-        class=\\"item\\"
-        tabindex=\\"0\\"
-        type=\\"nextItem\\"
-        value=\\"1\\"
-      >
-        ⟩
-      </a>
-    </div>
   </div>
 </body>"
 `;
@@ -941,7 +941,7 @@ exports[`Render 2 1 2`] = `
 exports[`Render 3 1 1`] = `
 <DocumentFragment>
   <div
-    class="ui borderless icon em__height menu"
+    class="ui borderless menu"
   >
     <div
       class="item"
@@ -965,7 +965,7 @@ exports[`Render 3 1 1`] = `
         tabindex="0"
       >
         <div
-          class="ui icon input"
+          class="ui transparent icon input"
         >
           <input
             placeholder="Search..."
@@ -980,10 +980,10 @@ exports[`Render 3 1 1`] = `
     </div>
   </div>
   <div
-    class="ui celled grid"
+    class="ui grid"
   >
     <div
-      class="row"
+      class="divided row"
     >
       <div
         class="four wide column"
@@ -1069,6 +1069,45 @@ exports[`Render 3 1 1`] = `
             </div>
           </a>
         </div>
+        <div
+          aria-label="Pagination Navigation"
+          class="ui borderless pagination menu"
+          name="logs"
+          role="navigation"
+        >
+          <a
+            aria-current="false"
+            aria-disabled="false"
+            aria-label="Previous item"
+            class="item"
+            tabindex="0"
+            type="prevItem"
+            value="1"
+          >
+            ⟨
+          </a>
+          <a
+            aria-current="true"
+            aria-disabled="false"
+            class="active item"
+            tabindex="0"
+            type="pageItem"
+            value="1"
+          >
+            1
+          </a>
+          <a
+            aria-current="false"
+            aria-disabled="false"
+            aria-label="Next item"
+            class="item"
+            tabindex="0"
+            type="nextItem"
+            value="1"
+          >
+            ⟩
+          </a>
+        </div>
       </div>
       <div
         class="twelve wide column"
@@ -1095,45 +1134,6 @@ exports[`Render 3 1 1`] = `
         </div>
       </div>
     </div>
-  </div>
-  <div
-    aria-label="Pagination Navigation"
-    class="ui borderless pagination menu"
-    name="logs"
-    role="navigation"
-  >
-    <a
-      aria-current="false"
-      aria-disabled="false"
-      aria-label="Previous item"
-      class="item"
-      tabindex="0"
-      type="prevItem"
-      value="1"
-    >
-      ⟨
-    </a>
-    <a
-      aria-current="true"
-      aria-disabled="false"
-      class="active item"
-      tabindex="0"
-      type="pageItem"
-      value="1"
-    >
-      1
-    </a>
-    <a
-      aria-current="false"
-      aria-disabled="false"
-      aria-label="Next item"
-      class="item"
-      tabindex="0"
-      type="nextItem"
-      value="1"
-    >
-      ⟩
-    </a>
   </div>
 </DocumentFragment>
 `;
@@ -1141,7 +1141,7 @@ exports[`Render 3 1 1`] = `
 exports[`Render 4 1 1`] = `
 <DocumentFragment>
   <div
-    class="ui borderless icon em__height menu"
+    class="ui borderless menu"
   >
     <div
       class="item"
@@ -1165,7 +1165,7 @@ exports[`Render 4 1 1`] = `
         tabindex="0"
       >
         <div
-          class="ui icon input"
+          class="ui transparent icon input"
         >
           <input
             placeholder="Search..."
@@ -1180,10 +1180,10 @@ exports[`Render 4 1 1`] = `
     </div>
   </div>
   <div
-    class="ui celled grid"
+    class="ui grid"
   >
     <div
-      class="row"
+      class="divided row"
     >
       <div
         class="four wide column"
@@ -1269,6 +1269,45 @@ exports[`Render 4 1 1`] = `
             </div>
           </a>
         </div>
+        <div
+          aria-label="Pagination Navigation"
+          class="ui borderless pagination menu"
+          name="logs"
+          role="navigation"
+        >
+          <a
+            aria-current="false"
+            aria-disabled="false"
+            aria-label="Previous item"
+            class="item"
+            tabindex="0"
+            type="prevItem"
+            value="1"
+          >
+            ⟨
+          </a>
+          <a
+            aria-current="true"
+            aria-disabled="false"
+            class="active item"
+            tabindex="0"
+            type="pageItem"
+            value="1"
+          >
+            1
+          </a>
+          <a
+            aria-current="false"
+            aria-disabled="false"
+            aria-label="Next item"
+            class="item"
+            tabindex="0"
+            type="nextItem"
+            value="1"
+          >
+            ⟩
+          </a>
+        </div>
       </div>
       <div
         class="twelve wide column"
@@ -1295,45 +1334,6 @@ exports[`Render 4 1 1`] = `
         </div>
       </div>
     </div>
-  </div>
-  <div
-    aria-label="Pagination Navigation"
-    class="ui borderless pagination menu"
-    name="logs"
-    role="navigation"
-  >
-    <a
-      aria-current="false"
-      aria-disabled="false"
-      aria-label="Previous item"
-      class="item"
-      tabindex="0"
-      type="prevItem"
-      value="1"
-    >
-      ⟨
-    </a>
-    <a
-      aria-current="true"
-      aria-disabled="false"
-      class="active item"
-      tabindex="0"
-      type="pageItem"
-      value="1"
-    >
-      1
-    </a>
-    <a
-      aria-current="false"
-      aria-disabled="false"
-      aria-label="Next item"
-      class="item"
-      tabindex="0"
-      type="nextItem"
-      value="1"
-    >
-      ⟩
-    </a>
   </div>
 </DocumentFragment>
 `;

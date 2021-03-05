@@ -3,7 +3,7 @@
 exports[`Render 1 1 1`] = `
 <DocumentFragment>
   <div
-    class="ui borderless icon em__height menu"
+    class="ui borderless menu"
   >
     <div
       class="item"
@@ -31,7 +31,7 @@ exports[`Render 1 1 1`] = `
         tabindex="0"
       >
         <div
-          class="ui icon input"
+          class="ui transparent icon input"
         >
           <input
             placeholder="Search..."

@@ -8,7 +8,7 @@ import { getUser } from '@actions/user';
 import Loading from '@components/Loading';
 import Activity from './Activity';
 import Agents from './Agents';
-import Users from './Users';
+import Access from './Access';
 import './Admin.css';
 
 class Admin extends Component {
@@ -52,7 +52,7 @@ class Admin extends Component {
   getTab(name) {
     switch (name) {
       case 'access':
-        return <Users {...this.props} />;
+        return <Access {...this.props} />;
       case 'activity':
         return <Activity {...this.props} />;
       case 'agents':

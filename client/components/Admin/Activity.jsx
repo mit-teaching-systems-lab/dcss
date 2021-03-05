@@ -17,7 +17,6 @@ import {
   // Table
 } from '@components/UI';
 
-import EditorMenu from '@components/EditorMenu';
 import Loading from '@components/Loading';
 import Username from '@components/User/Username';
 import { computeItemsRowsPerPage } from '@utils/Layout';
@@ -93,8 +92,8 @@ class Activity extends Component {
     // by searching.
     this.logs = [];
     this.onPageChange = this.onPageChange.bind(this);
-    this.onActivitySearchChange = this.onActivitySearchChange.bind(this);
-    this.onActivityRecordClick = this.onActivityRecordClick.bind(this);
+    this.onSearch = this.onSearch.bind(this);
+    this.onSelect = this.onSelect.bind(this);
   }
 
   async componentDidMount() {
@@ -109,18 +108,18 @@ class Activity extends Component {
   }
 
   onPageChange(event, { activePage }) {
-    this.props.history.push(`/admin/activity/${activePage}`);
+    this.props.history.push(`/admin/activity?page=${activePage}`);
     this.setState({
       ...this.state,
       activePage
     });
   }
 
-  onActivityRecordClick(event, { id }) {
+  onSelect(event, { id }) {
     this.setState({ id });
   }
 
-  onActivitySearchChange(event, { value }) {
+  onSearch(event, { value }) {
     const logs = this.logs.slice();
 
     if (value === '') {
@@ -161,8 +160,8 @@ class Activity extends Component {
   render() {
     const {
       onPageChange,
-      onActivityRecordClick,
-      onActivitySearchChange
+      onSelect,
+      onSearch
     } = this;
     // const { user } = this.props;
     const { isReady, activePage, id } = this.state;
@@ -201,45 +200,39 @@ class Activity extends Component {
 
     return (
       <Fragment>
-        <EditorMenu
-          type="administration"
-          items={{
-            left: [
-              <Menu.Item.Tabbable key="menu-item-activity-administration">
-                <Icon.Group className="em__icon-group-margin">
-                  <Icon className="history" />
-                </Icon.Group>
-                Activity
-              </Menu.Item.Tabbable>
-            ],
-            right: [
-              <Menu.Menu key="menu-item-activity-search" position="right">
-                <Menu.Item.Tabbable
-                  key="menu-item-search-accounts"
-                  name="Search activity logs"
-                >
-                  <Input
-                    icon="search"
-                    placeholder="Search..."
-                    onChange={onActivitySearchChange}
-                  />
-                </Menu.Item.Tabbable>
-              </Menu.Menu>
-            ]
-          }}
-        />
+        <Menu borderless>
+          <Menu.Item.Tabbable key="menu-item-activity-administration">
+            <Icon.Group className="em__icon-group-margin">
+              <Icon className="history" />
+            </Icon.Group>
+            Activity
+          </Menu.Item.Tabbable>
+          <Menu.Menu position="right">
+            <Menu.Item.Tabbable
+              key="menu-item-search-accounts"
+              name="Search activity logs"
+            >
+              <Input
+                transparent
+                icon="search"
+                placeholder="Search..."
+                onChange={onSearch}
+              />
+            </Menu.Item.Tabbable>
+          </Menu.Menu>
+        </Menu>
 
         {!isReady ? (
           <Loading />
         ) : (
-          <Grid celled>
-            <Grid.Row>
+          <Grid>
+            <Grid.Row divided>
               <Grid.Column width={4}>
                 <List selection divided relaxed>
                   {logs
                     .map(item => (
                       <ActivityListItem
-                        onClick={onActivityRecordClick}
+                        onClick={onSelect}
                         active={item.id === id}
                         item={item}
                         key={Identity.key(item)}
@@ -247,6 +240,18 @@ class Activity extends Component {
                     ))
                     .filter(Boolean)}
                 </List>
+                <Pagination
+                  borderless
+                  name="logs"
+                  activePage={activePage}
+                  siblingRange={1}
+                  boundaryRange={0}
+                  ellipsisItem={null}
+                  firstItem={null}
+                  lastItem={null}
+                  onPageChange={onPageChange}
+                  totalPages={pages}
+                />
               </Grid.Column>
               <Grid.Column width={12}>
                 {json ? (
@@ -276,18 +281,6 @@ class Activity extends Component {
           </Grid>
         )}
 
-        <Pagination
-          borderless
-          name="logs"
-          activePage={activePage}
-          siblingRange={1}
-          boundaryRange={0}
-          ellipsisItem={null}
-          firstItem={null}
-          lastItem={null}
-          onPageChange={onPageChange}
-          totalPages={pages}
-        />
       </Fragment>
     );
   }

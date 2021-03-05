@@ -7,7 +7,7 @@ exports[`Add a new agent 1`] = `
   />
   <div>
     <div
-      class=\\"ui borderless icon em__height menu\\"
+      class=\\"ui borderless menu\\"
     >
       <div
         class=\\"item\\"
@@ -39,24 +39,28 @@ exports[`Add a new agent 1`] = `
       </a>
       <div
         class=\\"right menu\\"
-        name=\\"Search agents\\"
       >
         <div
-          class=\\"item\\"
-          tabindex=\\"0\\"
+          class=\\"right menu\\"
+          name=\\"Search agents\\"
         >
           <div
-            class=\\"ui icon input\\"
+            class=\\"item\\"
+            tabindex=\\"0\\"
           >
-            <input
-              aria-label=\\"Search agents\\"
-              placeholder=\\"Search...\\"
-              type=\\"text\\"
-            />
-            <i
-              aria-hidden=\\"true\\"
-              class=\\"search icon\\"
-            />
+            <div
+              class=\\"ui transparent icon input\\"
+            >
+              <input
+                aria-label=\\"Search agents\\"
+                placeholder=\\"Search...\\"
+                type=\\"text\\"
+              />
+              <i
+                aria-hidden=\\"true\\"
+                class=\\"search icon\\"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -184,7 +188,7 @@ exports[`Add a new agent 2`] = `
   />
   <div>
     <div
-      class=\\"ui borderless icon em__height menu\\"
+      class=\\"ui borderless menu\\"
     >
       <div
         class=\\"item\\"
@@ -216,24 +220,28 @@ exports[`Add a new agent 2`] = `
       </a>
       <div
         class=\\"right menu\\"
-        name=\\"Search agents\\"
       >
         <div
-          class=\\"item\\"
-          tabindex=\\"0\\"
+          class=\\"right menu\\"
+          name=\\"Search agents\\"
         >
           <div
-            class=\\"ui icon input\\"
+            class=\\"item\\"
+            tabindex=\\"0\\"
           >
-            <input
-              aria-label=\\"Search agents\\"
-              placeholder=\\"Search...\\"
-              type=\\"text\\"
-            />
-            <i
-              aria-hidden=\\"true\\"
-              class=\\"search icon\\"
-            />
+            <div
+              class=\\"ui transparent icon input\\"
+            >
+              <input
+                aria-label=\\"Search agents\\"
+                placeholder=\\"Search...\\"
+                type=\\"text\\"
+              />
+              <i
+                aria-hidden=\\"true\\"
+                class=\\"search icon\\"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -284,7 +292,7 @@ exports[`Add a new agent 2`] = `
               class=\\"column\\"
             >
               <div
-                class=\\"ui borderless icon em__height a__agentviewer-editormenu menu\\"
+                class=\\"ui borderless icon a__agentviewer-editormenu menu\\"
               >
                 <div
                   class=\\"item\\"
@@ -921,7 +929,7 @@ exports[`Add a new agent 3`] = `
   />
   <div>
     <div
-      class=\\"ui borderless icon em__height menu\\"
+      class=\\"ui borderless menu\\"
     >
       <div
         class=\\"item\\"
@@ -953,24 +961,28 @@ exports[`Add a new agent 3`] = `
       </a>
       <div
         class=\\"right menu\\"
-        name=\\"Search agents\\"
       >
         <div
-          class=\\"item\\"
-          tabindex=\\"0\\"
+          class=\\"right menu\\"
+          name=\\"Search agents\\"
         >
           <div
-            class=\\"ui icon input\\"
+            class=\\"item\\"
+            tabindex=\\"0\\"
           >
-            <input
-              aria-label=\\"Search agents\\"
-              placeholder=\\"Search...\\"
-              type=\\"text\\"
-            />
-            <i
-              aria-hidden=\\"true\\"
-              class=\\"search icon\\"
-            />
+            <div
+              class=\\"ui transparent icon input\\"
+            >
+              <input
+                aria-label=\\"Search agents\\"
+                placeholder=\\"Search...\\"
+                type=\\"text\\"
+              />
+              <i
+                aria-hidden=\\"true\\"
+                class=\\"search icon\\"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -1021,7 +1033,7 @@ exports[`Add a new agent 3`] = `
               class=\\"column\\"
             >
               <div
-                class=\\"ui borderless icon em__height a__agentviewer-editormenu menu\\"
+                class=\\"ui borderless icon a__agentviewer-editormenu menu\\"
               >
                 <div
                   class=\\"item\\"
@@ -1663,7 +1675,7 @@ exports[`Add a new agent 4`] = `
   />
   <div>
     <div
-      class=\\"ui borderless icon em__height menu\\"
+      class=\\"ui borderless menu\\"
     >
       <div
         class=\\"item\\"
@@ -1695,24 +1707,28 @@ exports[`Add a new agent 4`] = `
       </a>
       <div
         class=\\"right menu\\"
-        name=\\"Search agents\\"
       >
         <div
-          class=\\"item\\"
-          tabindex=\\"0\\"
+          class=\\"right menu\\"
+          name=\\"Search agents\\"
         >
           <div
-            class=\\"ui icon input\\"
+            class=\\"item\\"
+            tabindex=\\"0\\"
           >
-            <input
-              aria-label=\\"Search agents\\"
-              placeholder=\\"Search...\\"
-              type=\\"text\\"
-            />
-            <i
-              aria-hidden=\\"true\\"
-              class=\\"search icon\\"
-            />
+            <div
+              class=\\"ui transparent icon input\\"
+            >
+              <input
+                aria-label=\\"Search agents\\"
+                placeholder=\\"Search...\\"
+                type=\\"text\\"
+              />
+              <i
+                aria-hidden=\\"true\\"
+                class=\\"search icon\\"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -1763,7 +1779,7 @@ exports[`Add a new agent 4`] = `
               class=\\"column\\"
             >
               <div
-                class=\\"ui borderless icon em__height a__agentviewer-editormenu menu\\"
+                class=\\"ui borderless icon a__agentviewer-editormenu menu\\"
               >
                 <div
                   class=\\"item\\"
@@ -2405,7 +2421,7 @@ exports[`Add a new agent 5`] = `
   />
   <div>
     <div
-      class=\\"ui borderless icon em__height menu\\"
+      class=\\"ui borderless menu\\"
     >
       <div
         class=\\"item\\"
@@ -2437,24 +2453,28 @@ exports[`Add a new agent 5`] = `
       </a>
       <div
         class=\\"right menu\\"
-        name=\\"Search agents\\"
       >
         <div
-          class=\\"item\\"
-          tabindex=\\"0\\"
+          class=\\"right menu\\"
+          name=\\"Search agents\\"
         >
           <div
-            class=\\"ui icon input\\"
+            class=\\"item\\"
+            tabindex=\\"0\\"
           >
-            <input
-              aria-label=\\"Search agents\\"
-              placeholder=\\"Search...\\"
-              type=\\"text\\"
-            />
-            <i
-              aria-hidden=\\"true\\"
-              class=\\"search icon\\"
-            />
+            <div
+              class=\\"ui transparent icon input\\"
+            >
+              <input
+                aria-label=\\"Search agents\\"
+                placeholder=\\"Search...\\"
+                type=\\"text\\"
+              />
+              <i
+                aria-hidden=\\"true\\"
+                class=\\"search icon\\"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -2505,7 +2525,7 @@ exports[`Add a new agent 5`] = `
               class=\\"column\\"
             >
               <div
-                class=\\"ui borderless icon em__height a__agentviewer-editormenu menu\\"
+                class=\\"ui borderless icon a__agentviewer-editormenu menu\\"
               >
                 <div
                   class=\\"item\\"
@@ -3149,7 +3169,7 @@ exports[`Add a new agent 6`] = `
   />
   <div>
     <div
-      class=\\"ui borderless icon em__height menu\\"
+      class=\\"ui borderless menu\\"
     >
       <div
         class=\\"item\\"
@@ -3181,24 +3201,28 @@ exports[`Add a new agent 6`] = `
       </a>
       <div
         class=\\"right menu\\"
-        name=\\"Search agents\\"
       >
         <div
-          class=\\"item\\"
-          tabindex=\\"0\\"
+          class=\\"right menu\\"
+          name=\\"Search agents\\"
         >
           <div
-            class=\\"ui icon input\\"
+            class=\\"item\\"
+            tabindex=\\"0\\"
           >
-            <input
-              aria-label=\\"Search agents\\"
-              placeholder=\\"Search...\\"
-              type=\\"text\\"
-            />
-            <i
-              aria-hidden=\\"true\\"
-              class=\\"search icon\\"
-            />
+            <div
+              class=\\"ui transparent icon input\\"
+            >
+              <input
+                aria-label=\\"Search agents\\"
+                placeholder=\\"Search...\\"
+                type=\\"text\\"
+              />
+              <i
+                aria-hidden=\\"true\\"
+                class=\\"search icon\\"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -3249,7 +3273,7 @@ exports[`Add a new agent 6`] = `
               class=\\"column\\"
             >
               <div
-                class=\\"ui borderless icon em__height a__agentviewer-editormenu menu\\"
+                class=\\"ui borderless icon a__agentviewer-editormenu menu\\"
               >
                 <div
                   class=\\"item\\"
@@ -3893,7 +3917,7 @@ exports[`Add a new agent 8`] = `
   />
   <div>
     <div
-      class=\\"ui borderless icon em__height menu\\"
+      class=\\"ui borderless menu\\"
     >
       <div
         class=\\"item\\"
@@ -3925,24 +3949,28 @@ exports[`Add a new agent 8`] = `
       </a>
       <div
         class=\\"right menu\\"
-        name=\\"Search agents\\"
       >
         <div
-          class=\\"item\\"
-          tabindex=\\"0\\"
+          class=\\"right menu\\"
+          name=\\"Search agents\\"
         >
           <div
-            class=\\"ui icon input\\"
+            class=\\"item\\"
+            tabindex=\\"0\\"
           >
-            <input
-              aria-label=\\"Search agents\\"
-              placeholder=\\"Search...\\"
-              type=\\"text\\"
-            />
-            <i
-              aria-hidden=\\"true\\"
-              class=\\"search icon\\"
-            />
+            <div
+              class=\\"ui transparent icon input\\"
+            >
+              <input
+                aria-label=\\"Search agents\\"
+                placeholder=\\"Search...\\"
+                type=\\"text\\"
+              />
+              <i
+                aria-hidden=\\"true\\"
+                class=\\"search icon\\"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -4009,7 +4037,7 @@ exports[`Add a new agent 8`] = `
               class=\\"column\\"
             >
               <div
-                class=\\"ui borderless icon em__height a__agentviewer-editormenu menu\\"
+                class=\\"ui borderless icon a__agentviewer-editormenu menu\\"
               >
                 <div
                   aria-label=\\"Agent is ready to be saved.\\"
@@ -4666,7 +4694,7 @@ exports[`Add a socket configuration 1`] = `
   />
   <div>
     <div
-      class=\\"ui borderless icon em__height menu\\"
+      class=\\"ui borderless menu\\"
     >
       <div
         class=\\"item\\"
@@ -4698,24 +4726,28 @@ exports[`Add a socket configuration 1`] = `
       </a>
       <div
         class=\\"right menu\\"
-        name=\\"Search agents\\"
       >
         <div
-          class=\\"item\\"
-          tabindex=\\"0\\"
+          class=\\"right menu\\"
+          name=\\"Search agents\\"
         >
           <div
-            class=\\"ui icon input\\"
+            class=\\"item\\"
+            tabindex=\\"0\\"
           >
-            <input
-              aria-label=\\"Search agents\\"
-              placeholder=\\"Search...\\"
-              type=\\"text\\"
-            />
-            <i
-              aria-hidden=\\"true\\"
-              class=\\"search icon\\"
-            />
+            <div
+              class=\\"ui transparent icon input\\"
+            >
+              <input
+                aria-label=\\"Search agents\\"
+                placeholder=\\"Search...\\"
+                type=\\"text\\"
+              />
+              <i
+                aria-hidden=\\"true\\"
+                class=\\"search icon\\"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -4845,7 +4877,7 @@ exports[`Add a socket configuration 2`] = `
   />
   <div>
     <div
-      class=\\"ui borderless icon em__height menu\\"
+      class=\\"ui borderless menu\\"
     >
       <div
         class=\\"item\\"
@@ -4877,24 +4909,28 @@ exports[`Add a socket configuration 2`] = `
       </a>
       <div
         class=\\"right menu\\"
-        name=\\"Search agents\\"
       >
         <div
-          class=\\"item\\"
-          tabindex=\\"0\\"
+          class=\\"right menu\\"
+          name=\\"Search agents\\"
         >
           <div
-            class=\\"ui icon input\\"
+            class=\\"item\\"
+            tabindex=\\"0\\"
           >
-            <input
-              aria-label=\\"Search agents\\"
-              placeholder=\\"Search...\\"
-              type=\\"text\\"
-            />
-            <i
-              aria-hidden=\\"true\\"
-              class=\\"search icon\\"
-            />
+            <div
+              class=\\"ui transparent icon input\\"
+            >
+              <input
+                aria-label=\\"Search agents\\"
+                placeholder=\\"Search...\\"
+                type=\\"text\\"
+              />
+              <i
+                aria-hidden=\\"true\\"
+                class=\\"search icon\\"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -4945,7 +4981,7 @@ exports[`Add a socket configuration 2`] = `
               class=\\"column\\"
             >
               <div
-                class=\\"ui borderless icon em__height a__agentviewer-editormenu menu\\"
+                class=\\"ui borderless icon a__agentviewer-editormenu menu\\"
               >
                 <a
                   aria-label=\\"Duplicate this agent\\"
@@ -5891,7 +5927,7 @@ exports[`Add a socket configuration 4`] = `
   />
   <div>
     <div
-      class=\\"ui borderless icon em__height menu\\"
+      class=\\"ui borderless menu\\"
     >
       <div
         class=\\"item\\"
@@ -5923,24 +5959,28 @@ exports[`Add a socket configuration 4`] = `
       </a>
       <div
         class=\\"right menu\\"
-        name=\\"Search agents\\"
       >
         <div
-          class=\\"item\\"
-          tabindex=\\"0\\"
+          class=\\"right menu\\"
+          name=\\"Search agents\\"
         >
           <div
-            class=\\"ui icon input\\"
+            class=\\"item\\"
+            tabindex=\\"0\\"
           >
-            <input
-              aria-label=\\"Search agents\\"
-              placeholder=\\"Search...\\"
-              type=\\"text\\"
-            />
-            <i
-              aria-hidden=\\"true\\"
-              class=\\"search icon\\"
-            />
+            <div
+              class=\\"ui transparent icon input\\"
+            >
+              <input
+                aria-label=\\"Search agents\\"
+                placeholder=\\"Search...\\"
+                type=\\"text\\"
+              />
+              <i
+                aria-hidden=\\"true\\"
+                class=\\"search icon\\"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -5991,7 +6031,7 @@ exports[`Add a socket configuration 4`] = `
               class=\\"column\\"
             >
               <div
-                class=\\"ui borderless icon em__height a__agentviewer-editormenu menu\\"
+                class=\\"ui borderless icon a__agentviewer-editormenu menu\\"
               >
                 <a
                   aria-label=\\"Duplicate this agent\\"
@@ -7005,7 +7045,7 @@ exports[`Add an agent configuration 1`] = `
   />
   <div>
     <div
-      class=\\"ui borderless icon em__height menu\\"
+      class=\\"ui borderless menu\\"
     >
       <div
         class=\\"item\\"
@@ -7037,24 +7077,28 @@ exports[`Add an agent configuration 1`] = `
       </a>
       <div
         class=\\"right menu\\"
-        name=\\"Search agents\\"
       >
         <div
-          class=\\"item\\"
-          tabindex=\\"0\\"
+          class=\\"right menu\\"
+          name=\\"Search agents\\"
         >
           <div
-            class=\\"ui icon input\\"
+            class=\\"item\\"
+            tabindex=\\"0\\"
           >
-            <input
-              aria-label=\\"Search agents\\"
-              placeholder=\\"Search...\\"
-              type=\\"text\\"
-            />
-            <i
-              aria-hidden=\\"true\\"
-              class=\\"search icon\\"
-            />
+            <div
+              class=\\"ui transparent icon input\\"
+            >
+              <input
+                aria-label=\\"Search agents\\"
+                placeholder=\\"Search...\\"
+                type=\\"text\\"
+              />
+              <i
+                aria-hidden=\\"true\\"
+                class=\\"search icon\\"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -7184,7 +7228,7 @@ exports[`Add an agent configuration 2`] = `
   />
   <div>
     <div
-      class=\\"ui borderless icon em__height menu\\"
+      class=\\"ui borderless menu\\"
     >
       <div
         class=\\"item\\"
@@ -7216,24 +7260,28 @@ exports[`Add an agent configuration 2`] = `
       </a>
       <div
         class=\\"right menu\\"
-        name=\\"Search agents\\"
       >
         <div
-          class=\\"item\\"
-          tabindex=\\"0\\"
+          class=\\"right menu\\"
+          name=\\"Search agents\\"
         >
           <div
-            class=\\"ui icon input\\"
+            class=\\"item\\"
+            tabindex=\\"0\\"
           >
-            <input
-              aria-label=\\"Search agents\\"
-              placeholder=\\"Search...\\"
-              type=\\"text\\"
-            />
-            <i
-              aria-hidden=\\"true\\"
-              class=\\"search icon\\"
-            />
+            <div
+              class=\\"ui transparent icon input\\"
+            >
+              <input
+                aria-label=\\"Search agents\\"
+                placeholder=\\"Search...\\"
+                type=\\"text\\"
+              />
+              <i
+                aria-hidden=\\"true\\"
+                class=\\"search icon\\"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -7284,7 +7332,7 @@ exports[`Add an agent configuration 2`] = `
               class=\\"column\\"
             >
               <div
-                class=\\"ui borderless icon em__height a__agentviewer-editormenu menu\\"
+                class=\\"ui borderless icon a__agentviewer-editormenu menu\\"
               >
                 <a
                   aria-label=\\"Duplicate this agent\\"
@@ -8230,7 +8278,7 @@ exports[`Add an agent configuration 4`] = `
   />
   <div>
     <div
-      class=\\"ui borderless icon em__height menu\\"
+      class=\\"ui borderless menu\\"
     >
       <div
         class=\\"item\\"
@@ -8262,24 +8310,28 @@ exports[`Add an agent configuration 4`] = `
       </a>
       <div
         class=\\"right menu\\"
-        name=\\"Search agents\\"
       >
         <div
-          class=\\"item\\"
-          tabindex=\\"0\\"
+          class=\\"right menu\\"
+          name=\\"Search agents\\"
         >
           <div
-            class=\\"ui icon input\\"
+            class=\\"item\\"
+            tabindex=\\"0\\"
           >
-            <input
-              aria-label=\\"Search agents\\"
-              placeholder=\\"Search...\\"
-              type=\\"text\\"
-            />
-            <i
-              aria-hidden=\\"true\\"
-              class=\\"search icon\\"
-            />
+            <div
+              class=\\"ui transparent icon input\\"
+            >
+              <input
+                aria-label=\\"Search agents\\"
+                placeholder=\\"Search...\\"
+                type=\\"text\\"
+              />
+              <i
+                aria-hidden=\\"true\\"
+                class=\\"search icon\\"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -8330,7 +8382,7 @@ exports[`Add an agent configuration 4`] = `
               class=\\"column\\"
             >
               <div
-                class=\\"ui borderless icon em__height a__agentviewer-editormenu menu\\"
+                class=\\"ui borderless icon a__agentviewer-editormenu menu\\"
               >
                 <a
                   aria-label=\\"Duplicate this agent\\"
@@ -9345,7 +9397,7 @@ exports[`Change a socket configuration 1`] = `
   />
   <div>
     <div
-      class=\\"ui borderless icon em__height menu\\"
+      class=\\"ui borderless menu\\"
     >
       <div
         class=\\"item\\"
@@ -9377,24 +9429,28 @@ exports[`Change a socket configuration 1`] = `
       </a>
       <div
         class=\\"right menu\\"
-        name=\\"Search agents\\"
       >
         <div
-          class=\\"item\\"
-          tabindex=\\"0\\"
+          class=\\"right menu\\"
+          name=\\"Search agents\\"
         >
           <div
-            class=\\"ui icon input\\"
+            class=\\"item\\"
+            tabindex=\\"0\\"
           >
-            <input
-              aria-label=\\"Search agents\\"
-              placeholder=\\"Search...\\"
-              type=\\"text\\"
-            />
-            <i
-              aria-hidden=\\"true\\"
-              class=\\"search icon\\"
-            />
+            <div
+              class=\\"ui transparent icon input\\"
+            >
+              <input
+                aria-label=\\"Search agents\\"
+                placeholder=\\"Search...\\"
+                type=\\"text\\"
+              />
+              <i
+                aria-hidden=\\"true\\"
+                class=\\"search icon\\"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -9524,7 +9580,7 @@ exports[`Change a socket configuration 2`] = `
   />
   <div>
     <div
-      class=\\"ui borderless icon em__height menu\\"
+      class=\\"ui borderless menu\\"
     >
       <div
         class=\\"item\\"
@@ -9556,24 +9612,28 @@ exports[`Change a socket configuration 2`] = `
       </a>
       <div
         class=\\"right menu\\"
-        name=\\"Search agents\\"
       >
         <div
-          class=\\"item\\"
-          tabindex=\\"0\\"
+          class=\\"right menu\\"
+          name=\\"Search agents\\"
         >
           <div
-            class=\\"ui icon input\\"
+            class=\\"item\\"
+            tabindex=\\"0\\"
           >
-            <input
-              aria-label=\\"Search agents\\"
-              placeholder=\\"Search...\\"
-              type=\\"text\\"
-            />
-            <i
-              aria-hidden=\\"true\\"
-              class=\\"search icon\\"
-            />
+            <div
+              class=\\"ui transparent icon input\\"
+            >
+              <input
+                aria-label=\\"Search agents\\"
+                placeholder=\\"Search...\\"
+                type=\\"text\\"
+              />
+              <i
+                aria-hidden=\\"true\\"
+                class=\\"search icon\\"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -9624,7 +9684,7 @@ exports[`Change a socket configuration 2`] = `
               class=\\"column\\"
             >
               <div
-                class=\\"ui borderless icon em__height a__agentviewer-editormenu menu\\"
+                class=\\"ui borderless icon a__agentviewer-editormenu menu\\"
               >
                 <a
                   aria-label=\\"Duplicate this agent\\"
@@ -10570,7 +10630,7 @@ exports[`Change a socket configuration 3`] = `
   />
   <div>
     <div
-      class=\\"ui borderless icon em__height menu\\"
+      class=\\"ui borderless menu\\"
     >
       <div
         class=\\"item\\"
@@ -10602,24 +10662,28 @@ exports[`Change a socket configuration 3`] = `
       </a>
       <div
         class=\\"right menu\\"
-        name=\\"Search agents\\"
       >
         <div
-          class=\\"item\\"
-          tabindex=\\"0\\"
+          class=\\"right menu\\"
+          name=\\"Search agents\\"
         >
           <div
-            class=\\"ui icon input\\"
+            class=\\"item\\"
+            tabindex=\\"0\\"
           >
-            <input
-              aria-label=\\"Search agents\\"
-              placeholder=\\"Search...\\"
-              type=\\"text\\"
-            />
-            <i
-              aria-hidden=\\"true\\"
-              class=\\"search icon\\"
-            />
+            <div
+              class=\\"ui transparent icon input\\"
+            >
+              <input
+                aria-label=\\"Search agents\\"
+                placeholder=\\"Search...\\"
+                type=\\"text\\"
+              />
+              <i
+                aria-hidden=\\"true\\"
+                class=\\"search icon\\"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -10670,7 +10734,7 @@ exports[`Change a socket configuration 3`] = `
               class=\\"column\\"
             >
               <div
-                class=\\"ui borderless icon em__height a__agentviewer-editormenu menu\\"
+                class=\\"ui borderless icon a__agentviewer-editormenu menu\\"
               >
                 <a
                   aria-label=\\"Duplicate this agent\\"
@@ -11684,7 +11748,7 @@ exports[`Change a socket configuration 4`] = `
   />
   <div>
     <div
-      class=\\"ui borderless icon em__height menu\\"
+      class=\\"ui borderless menu\\"
     >
       <div
         class=\\"item\\"
@@ -11716,24 +11780,28 @@ exports[`Change a socket configuration 4`] = `
       </a>
       <div
         class=\\"right menu\\"
-        name=\\"Search agents\\"
       >
         <div
-          class=\\"item\\"
-          tabindex=\\"0\\"
+          class=\\"right menu\\"
+          name=\\"Search agents\\"
         >
           <div
-            class=\\"ui icon input\\"
+            class=\\"item\\"
+            tabindex=\\"0\\"
           >
-            <input
-              aria-label=\\"Search agents\\"
-              placeholder=\\"Search...\\"
-              type=\\"text\\"
-            />
-            <i
-              aria-hidden=\\"true\\"
-              class=\\"search icon\\"
-            />
+            <div
+              class=\\"ui transparent icon input\\"
+            >
+              <input
+                aria-label=\\"Search agents\\"
+                placeholder=\\"Search...\\"
+                type=\\"text\\"
+              />
+              <i
+                aria-hidden=\\"true\\"
+                class=\\"search icon\\"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -11784,7 +11852,7 @@ exports[`Change a socket configuration 4`] = `
               class=\\"column\\"
             >
               <div
-                class=\\"ui borderless icon em__height a__agentviewer-editormenu menu\\"
+                class=\\"ui borderless icon a__agentviewer-editormenu menu\\"
               >
                 <a
                   aria-label=\\"Duplicate this agent\\"
@@ -12730,7 +12798,7 @@ exports[`Change a socket configuration 5`] = `
   />
   <div>
     <div
-      class=\\"ui borderless icon em__height menu\\"
+      class=\\"ui borderless menu\\"
     >
       <div
         class=\\"item\\"
@@ -12762,24 +12830,28 @@ exports[`Change a socket configuration 5`] = `
       </a>
       <div
         class=\\"right menu\\"
-        name=\\"Search agents\\"
       >
         <div
-          class=\\"item\\"
-          tabindex=\\"0\\"
+          class=\\"right menu\\"
+          name=\\"Search agents\\"
         >
           <div
-            class=\\"ui icon input\\"
+            class=\\"item\\"
+            tabindex=\\"0\\"
           >
-            <input
-              aria-label=\\"Search agents\\"
-              placeholder=\\"Search...\\"
-              type=\\"text\\"
-            />
-            <i
-              aria-hidden=\\"true\\"
-              class=\\"search icon\\"
-            />
+            <div
+              class=\\"ui transparent icon input\\"
+            >
+              <input
+                aria-label=\\"Search agents\\"
+                placeholder=\\"Search...\\"
+                type=\\"text\\"
+              />
+              <i
+                aria-hidden=\\"true\\"
+                class=\\"search icon\\"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -12830,7 +12902,7 @@ exports[`Change a socket configuration 5`] = `
               class=\\"column\\"
             >
               <div
-                class=\\"ui borderless icon em__height a__agentviewer-editormenu menu\\"
+                class=\\"ui borderless icon a__agentviewer-editormenu menu\\"
               >
                 <a
                   aria-label=\\"Duplicate this agent\\"
@@ -13844,7 +13916,7 @@ exports[`Change a socket configuration 6`] = `
   />
   <div>
     <div
-      class=\\"ui borderless icon em__height menu\\"
+      class=\\"ui borderless menu\\"
     >
       <div
         class=\\"item\\"
@@ -13876,24 +13948,28 @@ exports[`Change a socket configuration 6`] = `
       </a>
       <div
         class=\\"right menu\\"
-        name=\\"Search agents\\"
       >
         <div
-          class=\\"item\\"
-          tabindex=\\"0\\"
+          class=\\"right menu\\"
+          name=\\"Search agents\\"
         >
           <div
-            class=\\"ui icon input\\"
+            class=\\"item\\"
+            tabindex=\\"0\\"
           >
-            <input
-              aria-label=\\"Search agents\\"
-              placeholder=\\"Search...\\"
-              type=\\"text\\"
-            />
-            <i
-              aria-hidden=\\"true\\"
-              class=\\"search icon\\"
-            />
+            <div
+              class=\\"ui transparent icon input\\"
+            >
+              <input
+                aria-label=\\"Search agents\\"
+                placeholder=\\"Search...\\"
+                type=\\"text\\"
+              />
+              <i
+                aria-hidden=\\"true\\"
+                class=\\"search icon\\"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -13944,7 +14020,7 @@ exports[`Change a socket configuration 6`] = `
               class=\\"column\\"
             >
               <div
-                class=\\"ui borderless icon em__height a__agentviewer-editormenu menu\\"
+                class=\\"ui borderless icon a__agentviewer-editormenu menu\\"
               >
                 <a
                   aria-label=\\"Duplicate this agent\\"
@@ -14822,7 +14898,7 @@ exports[`Change an agent configuration 1`] = `
   />
   <div>
     <div
-      class=\\"ui borderless icon em__height menu\\"
+      class=\\"ui borderless menu\\"
     >
       <div
         class=\\"item\\"
@@ -14854,24 +14930,28 @@ exports[`Change an agent configuration 1`] = `
       </a>
       <div
         class=\\"right menu\\"
-        name=\\"Search agents\\"
       >
         <div
-          class=\\"item\\"
-          tabindex=\\"0\\"
+          class=\\"right menu\\"
+          name=\\"Search agents\\"
         >
           <div
-            class=\\"ui icon input\\"
+            class=\\"item\\"
+            tabindex=\\"0\\"
           >
-            <input
-              aria-label=\\"Search agents\\"
-              placeholder=\\"Search...\\"
-              type=\\"text\\"
-            />
-            <i
-              aria-hidden=\\"true\\"
-              class=\\"search icon\\"
-            />
+            <div
+              class=\\"ui transparent icon input\\"
+            >
+              <input
+                aria-label=\\"Search agents\\"
+                placeholder=\\"Search...\\"
+                type=\\"text\\"
+              />
+              <i
+                aria-hidden=\\"true\\"
+                class=\\"search icon\\"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -15001,7 +15081,7 @@ exports[`Change an agent configuration 2`] = `
   />
   <div>
     <div
-      class=\\"ui borderless icon em__height menu\\"
+      class=\\"ui borderless menu\\"
     >
       <div
         class=\\"item\\"
@@ -15033,24 +15113,28 @@ exports[`Change an agent configuration 2`] = `
       </a>
       <div
         class=\\"right menu\\"
-        name=\\"Search agents\\"
       >
         <div
-          class=\\"item\\"
-          tabindex=\\"0\\"
+          class=\\"right menu\\"
+          name=\\"Search agents\\"
         >
           <div
-            class=\\"ui icon input\\"
+            class=\\"item\\"
+            tabindex=\\"0\\"
           >
-            <input
-              aria-label=\\"Search agents\\"
-              placeholder=\\"Search...\\"
-              type=\\"text\\"
-            />
-            <i
-              aria-hidden=\\"true\\"
-              class=\\"search icon\\"
-            />
+            <div
+              class=\\"ui transparent icon input\\"
+            >
+              <input
+                aria-label=\\"Search agents\\"
+                placeholder=\\"Search...\\"
+                type=\\"text\\"
+              />
+              <i
+                aria-hidden=\\"true\\"
+                class=\\"search icon\\"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -15101,7 +15185,7 @@ exports[`Change an agent configuration 2`] = `
               class=\\"column\\"
             >
               <div
-                class=\\"ui borderless icon em__height a__agentviewer-editormenu menu\\"
+                class=\\"ui borderless icon a__agentviewer-editormenu menu\\"
               >
                 <a
                   aria-label=\\"Duplicate this agent\\"
@@ -16047,7 +16131,7 @@ exports[`Change an agent configuration 3`] = `
   />
   <div>
     <div
-      class=\\"ui borderless icon em__height menu\\"
+      class=\\"ui borderless menu\\"
     >
       <div
         class=\\"item\\"
@@ -16079,24 +16163,28 @@ exports[`Change an agent configuration 3`] = `
       </a>
       <div
         class=\\"right menu\\"
-        name=\\"Search agents\\"
       >
         <div
-          class=\\"item\\"
-          tabindex=\\"0\\"
+          class=\\"right menu\\"
+          name=\\"Search agents\\"
         >
           <div
-            class=\\"ui icon input\\"
+            class=\\"item\\"
+            tabindex=\\"0\\"
           >
-            <input
-              aria-label=\\"Search agents\\"
-              placeholder=\\"Search...\\"
-              type=\\"text\\"
-            />
-            <i
-              aria-hidden=\\"true\\"
-              class=\\"search icon\\"
-            />
+            <div
+              class=\\"ui transparent icon input\\"
+            >
+              <input
+                aria-label=\\"Search agents\\"
+                placeholder=\\"Search...\\"
+                type=\\"text\\"
+              />
+              <i
+                aria-hidden=\\"true\\"
+                class=\\"search icon\\"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -16147,7 +16235,7 @@ exports[`Change an agent configuration 3`] = `
               class=\\"column\\"
             >
               <div
-                class=\\"ui borderless icon em__height a__agentviewer-editormenu menu\\"
+                class=\\"ui borderless icon a__agentviewer-editormenu menu\\"
               >
                 <a
                   aria-label=\\"Duplicate this agent\\"
@@ -17161,7 +17249,7 @@ exports[`Change an agent configuration 4`] = `
   />
   <div>
     <div
-      class=\\"ui borderless icon em__height menu\\"
+      class=\\"ui borderless menu\\"
     >
       <div
         class=\\"item\\"
@@ -17193,24 +17281,28 @@ exports[`Change an agent configuration 4`] = `
       </a>
       <div
         class=\\"right menu\\"
-        name=\\"Search agents\\"
       >
         <div
-          class=\\"item\\"
-          tabindex=\\"0\\"
+          class=\\"right menu\\"
+          name=\\"Search agents\\"
         >
           <div
-            class=\\"ui icon input\\"
+            class=\\"item\\"
+            tabindex=\\"0\\"
           >
-            <input
-              aria-label=\\"Search agents\\"
-              placeholder=\\"Search...\\"
-              type=\\"text\\"
-            />
-            <i
-              aria-hidden=\\"true\\"
-              class=\\"search icon\\"
-            />
+            <div
+              class=\\"ui transparent icon input\\"
+            >
+              <input
+                aria-label=\\"Search agents\\"
+                placeholder=\\"Search...\\"
+                type=\\"text\\"
+              />
+              <i
+                aria-hidden=\\"true\\"
+                class=\\"search icon\\"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -17261,7 +17353,7 @@ exports[`Change an agent configuration 4`] = `
               class=\\"column\\"
             >
               <div
-                class=\\"ui borderless icon em__height a__agentviewer-editormenu menu\\"
+                class=\\"ui borderless icon a__agentviewer-editormenu menu\\"
               >
                 <a
                   aria-label=\\"Duplicate this agent\\"
@@ -18207,7 +18299,7 @@ exports[`Change an agent configuration 5`] = `
   />
   <div>
     <div
-      class=\\"ui borderless icon em__height menu\\"
+      class=\\"ui borderless menu\\"
     >
       <div
         class=\\"item\\"
@@ -18239,24 +18331,28 @@ exports[`Change an agent configuration 5`] = `
       </a>
       <div
         class=\\"right menu\\"
-        name=\\"Search agents\\"
       >
         <div
-          class=\\"item\\"
-          tabindex=\\"0\\"
+          class=\\"right menu\\"
+          name=\\"Search agents\\"
         >
           <div
-            class=\\"ui icon input\\"
+            class=\\"item\\"
+            tabindex=\\"0\\"
           >
-            <input
-              aria-label=\\"Search agents\\"
-              placeholder=\\"Search...\\"
-              type=\\"text\\"
-            />
-            <i
-              aria-hidden=\\"true\\"
-              class=\\"search icon\\"
-            />
+            <div
+              class=\\"ui transparent icon input\\"
+            >
+              <input
+                aria-label=\\"Search agents\\"
+                placeholder=\\"Search...\\"
+                type=\\"text\\"
+              />
+              <i
+                aria-hidden=\\"true\\"
+                class=\\"search icon\\"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -18307,7 +18403,7 @@ exports[`Change an agent configuration 5`] = `
               class=\\"column\\"
             >
               <div
-                class=\\"ui borderless icon em__height a__agentviewer-editormenu menu\\"
+                class=\\"ui borderless icon a__agentviewer-editormenu menu\\"
               >
                 <a
                   aria-label=\\"Duplicate this agent\\"
@@ -19321,7 +19417,7 @@ exports[`Change an agent configuration 6`] = `
   />
   <div>
     <div
-      class=\\"ui borderless icon em__height menu\\"
+      class=\\"ui borderless menu\\"
     >
       <div
         class=\\"item\\"
@@ -19353,24 +19449,28 @@ exports[`Change an agent configuration 6`] = `
       </a>
       <div
         class=\\"right menu\\"
-        name=\\"Search agents\\"
       >
         <div
-          class=\\"item\\"
-          tabindex=\\"0\\"
+          class=\\"right menu\\"
+          name=\\"Search agents\\"
         >
           <div
-            class=\\"ui icon input\\"
+            class=\\"item\\"
+            tabindex=\\"0\\"
           >
-            <input
-              aria-label=\\"Search agents\\"
-              placeholder=\\"Search...\\"
-              type=\\"text\\"
-            />
-            <i
-              aria-hidden=\\"true\\"
-              class=\\"search icon\\"
-            />
+            <div
+              class=\\"ui transparent icon input\\"
+            >
+              <input
+                aria-label=\\"Search agents\\"
+                placeholder=\\"Search...\\"
+                type=\\"text\\"
+              />
+              <i
+                aria-hidden=\\"true\\"
+                class=\\"search icon\\"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -19421,7 +19521,7 @@ exports[`Change an agent configuration 6`] = `
               class=\\"column\\"
             >
               <div
-                class=\\"ui borderless icon em__height a__agentviewer-editormenu menu\\"
+                class=\\"ui borderless icon a__agentviewer-editormenu menu\\"
               >
                 <a
                   aria-label=\\"Duplicate this agent\\"
@@ -20296,7 +20396,7 @@ exports[`Delete an agent 1`] = `
   />
   <div>
     <div
-      class=\\"ui borderless icon em__height menu\\"
+      class=\\"ui borderless menu\\"
     >
       <div
         class=\\"item\\"
@@ -20328,24 +20428,28 @@ exports[`Delete an agent 1`] = `
       </a>
       <div
         class=\\"right menu\\"
-        name=\\"Search agents\\"
       >
         <div
-          class=\\"item\\"
-          tabindex=\\"0\\"
+          class=\\"right menu\\"
+          name=\\"Search agents\\"
         >
           <div
-            class=\\"ui icon input\\"
+            class=\\"item\\"
+            tabindex=\\"0\\"
           >
-            <input
-              aria-label=\\"Search agents\\"
-              placeholder=\\"Search...\\"
-              type=\\"text\\"
-            />
-            <i
-              aria-hidden=\\"true\\"
-              class=\\"search icon\\"
-            />
+            <div
+              class=\\"ui transparent icon input\\"
+            >
+              <input
+                aria-label=\\"Search agents\\"
+                placeholder=\\"Search...\\"
+                type=\\"text\\"
+              />
+              <i
+                aria-hidden=\\"true\\"
+                class=\\"search icon\\"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -20473,7 +20577,7 @@ exports[`Delete an agent 2`] = `
   />
   <div>
     <div
-      class=\\"ui borderless icon em__height menu\\"
+      class=\\"ui borderless menu\\"
     >
       <div
         class=\\"item\\"
@@ -20505,24 +20609,28 @@ exports[`Delete an agent 2`] = `
       </a>
       <div
         class=\\"right menu\\"
-        name=\\"Search agents\\"
       >
         <div
-          class=\\"item\\"
-          tabindex=\\"0\\"
+          class=\\"right menu\\"
+          name=\\"Search agents\\"
         >
           <div
-            class=\\"ui icon input\\"
+            class=\\"item\\"
+            tabindex=\\"0\\"
           >
-            <input
-              aria-label=\\"Search agents\\"
-              placeholder=\\"Search...\\"
-              type=\\"text\\"
-            />
-            <i
-              aria-hidden=\\"true\\"
-              class=\\"search icon\\"
-            />
+            <div
+              class=\\"ui transparent icon input\\"
+            >
+              <input
+                aria-label=\\"Search agents\\"
+                placeholder=\\"Search...\\"
+                type=\\"text\\"
+              />
+              <i
+                aria-hidden=\\"true\\"
+                class=\\"search icon\\"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -20573,7 +20681,7 @@ exports[`Delete an agent 2`] = `
               class=\\"column\\"
             >
               <div
-                class=\\"ui borderless icon em__height a__agentviewer-editormenu menu\\"
+                class=\\"ui borderless icon a__agentviewer-editormenu menu\\"
               >
                 <a
                   aria-label=\\"Duplicate this agent\\"
@@ -21520,7 +21628,7 @@ exports[`Delete an agent 3`] = `
   />
   <div>
     <div
-      class=\\"ui borderless icon em__height menu\\"
+      class=\\"ui borderless menu\\"
     >
       <div
         class=\\"item\\"
@@ -21552,24 +21660,28 @@ exports[`Delete an agent 3`] = `
       </a>
       <div
         class=\\"right menu\\"
-        name=\\"Search agents\\"
       >
         <div
-          class=\\"item\\"
-          tabindex=\\"0\\"
+          class=\\"right menu\\"
+          name=\\"Search agents\\"
         >
           <div
-            class=\\"ui icon input\\"
+            class=\\"item\\"
+            tabindex=\\"0\\"
           >
-            <input
-              aria-label=\\"Search agents\\"
-              placeholder=\\"Search...\\"
-              type=\\"text\\"
-            />
-            <i
-              aria-hidden=\\"true\\"
-              class=\\"search icon\\"
-            />
+            <div
+              class=\\"ui transparent icon input\\"
+            >
+              <input
+                aria-label=\\"Search agents\\"
+                placeholder=\\"Search...\\"
+                type=\\"text\\"
+              />
+              <i
+                aria-hidden=\\"true\\"
+                class=\\"search icon\\"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -21620,7 +21732,7 @@ exports[`Delete an agent 3`] = `
               class=\\"column\\"
             >
               <div
-                class=\\"ui borderless icon em__height a__agentviewer-editormenu menu\\"
+                class=\\"ui borderless icon a__agentviewer-editormenu menu\\"
               >
                 <a
                   aria-label=\\"Duplicate this agent\\"
@@ -22631,7 +22743,7 @@ exports[`Delete an agent 4`] = `
   />
   <div>
     <div
-      class=\\"ui borderless icon em__height menu\\"
+      class=\\"ui borderless menu\\"
     >
       <div
         class=\\"item\\"
@@ -22663,24 +22775,28 @@ exports[`Delete an agent 4`] = `
       </a>
       <div
         class=\\"right menu\\"
-        name=\\"Search agents\\"
       >
         <div
-          class=\\"item\\"
-          tabindex=\\"0\\"
+          class=\\"right menu\\"
+          name=\\"Search agents\\"
         >
           <div
-            class=\\"ui icon input\\"
+            class=\\"item\\"
+            tabindex=\\"0\\"
           >
-            <input
-              aria-label=\\"Search agents\\"
-              placeholder=\\"Search...\\"
-              type=\\"text\\"
-            />
-            <i
-              aria-hidden=\\"true\\"
-              class=\\"search icon\\"
-            />
+            <div
+              class=\\"ui transparent icon input\\"
+            >
+              <input
+                aria-label=\\"Search agents\\"
+                placeholder=\\"Search...\\"
+                type=\\"text\\"
+              />
+              <i
+                aria-hidden=\\"true\\"
+                class=\\"search icon\\"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -22731,7 +22847,7 @@ exports[`Delete an agent 4`] = `
               class=\\"column\\"
             >
               <div
-                class=\\"ui borderless icon em__height a__agentviewer-editormenu menu\\"
+                class=\\"ui borderless icon a__agentviewer-editormenu menu\\"
               >
                 <a
                   aria-label=\\"Duplicate this agent\\"
@@ -23678,7 +23794,7 @@ exports[`Delete an agent 5`] = `
   />
   <div>
     <div
-      class=\\"ui borderless icon em__height menu\\"
+      class=\\"ui borderless menu\\"
     >
       <div
         class=\\"item\\"
@@ -23710,24 +23826,28 @@ exports[`Delete an agent 5`] = `
       </a>
       <div
         class=\\"right menu\\"
-        name=\\"Search agents\\"
       >
         <div
-          class=\\"item\\"
-          tabindex=\\"0\\"
+          class=\\"right menu\\"
+          name=\\"Search agents\\"
         >
           <div
-            class=\\"ui icon input\\"
+            class=\\"item\\"
+            tabindex=\\"0\\"
           >
-            <input
-              aria-label=\\"Search agents\\"
-              placeholder=\\"Search...\\"
-              type=\\"text\\"
-            />
-            <i
-              aria-hidden=\\"true\\"
-              class=\\"search icon\\"
-            />
+            <div
+              class=\\"ui transparent icon input\\"
+            >
+              <input
+                aria-label=\\"Search agents\\"
+                placeholder=\\"Search...\\"
+                type=\\"text\\"
+              />
+              <i
+                aria-hidden=\\"true\\"
+                class=\\"search icon\\"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -23778,7 +23898,7 @@ exports[`Delete an agent 5`] = `
               class=\\"column\\"
             >
               <div
-                class=\\"ui borderless icon em__height a__agentviewer-editormenu menu\\"
+                class=\\"ui borderless icon a__agentviewer-editormenu menu\\"
               >
                 <a
                   aria-label=\\"Duplicate this agent\\"
@@ -24789,7 +24909,7 @@ exports[`Delete an agent 6`] = `
   />
   <div>
     <div
-      class=\\"ui borderless icon em__height menu\\"
+      class=\\"ui borderless menu\\"
     >
       <div
         class=\\"item\\"
@@ -24821,24 +24941,28 @@ exports[`Delete an agent 6`] = `
       </a>
       <div
         class=\\"right menu\\"
-        name=\\"Search agents\\"
       >
         <div
-          class=\\"item\\"
-          tabindex=\\"0\\"
+          class=\\"right menu\\"
+          name=\\"Search agents\\"
         >
           <div
-            class=\\"ui icon input\\"
+            class=\\"item\\"
+            tabindex=\\"0\\"
           >
-            <input
-              aria-label=\\"Search agents\\"
-              placeholder=\\"Search...\\"
-              type=\\"text\\"
-            />
-            <i
-              aria-hidden=\\"true\\"
-              class=\\"search icon\\"
-            />
+            <div
+              class=\\"ui transparent icon input\\"
+            >
+              <input
+                aria-label=\\"Search agents\\"
+                placeholder=\\"Search...\\"
+                type=\\"text\\"
+              />
+              <i
+                aria-hidden=\\"true\\"
+                class=\\"search icon\\"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -24889,7 +25013,7 @@ exports[`Delete an agent 6`] = `
               class=\\"column\\"
             >
               <div
-                class=\\"ui borderless icon em__height a__agentviewer-editormenu menu\\"
+                class=\\"ui borderless icon a__agentviewer-editormenu menu\\"
               >
                 <a
                   aria-label=\\"Duplicate this agent\\"
@@ -25835,7 +25959,7 @@ exports[`Duplicate an agent 1`] = `
   />
   <div>
     <div
-      class=\\"ui borderless icon em__height menu\\"
+      class=\\"ui borderless menu\\"
     >
       <div
         class=\\"item\\"
@@ -25867,24 +25991,28 @@ exports[`Duplicate an agent 1`] = `
       </a>
       <div
         class=\\"right menu\\"
-        name=\\"Search agents\\"
       >
         <div
-          class=\\"item\\"
-          tabindex=\\"0\\"
+          class=\\"right menu\\"
+          name=\\"Search agents\\"
         >
           <div
-            class=\\"ui icon input\\"
+            class=\\"item\\"
+            tabindex=\\"0\\"
           >
-            <input
-              aria-label=\\"Search agents\\"
-              placeholder=\\"Search...\\"
-              type=\\"text\\"
-            />
-            <i
-              aria-hidden=\\"true\\"
-              class=\\"search icon\\"
-            />
+            <div
+              class=\\"ui transparent icon input\\"
+            >
+              <input
+                aria-label=\\"Search agents\\"
+                placeholder=\\"Search...\\"
+                type=\\"text\\"
+              />
+              <i
+                aria-hidden=\\"true\\"
+                class=\\"search icon\\"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -26014,7 +26142,7 @@ exports[`Duplicate an agent 2`] = `
   />
   <div>
     <div
-      class=\\"ui borderless icon em__height menu\\"
+      class=\\"ui borderless menu\\"
     >
       <div
         class=\\"item\\"
@@ -26046,24 +26174,28 @@ exports[`Duplicate an agent 2`] = `
       </a>
       <div
         class=\\"right menu\\"
-        name=\\"Search agents\\"
       >
         <div
-          class=\\"item\\"
-          tabindex=\\"0\\"
+          class=\\"right menu\\"
+          name=\\"Search agents\\"
         >
           <div
-            class=\\"ui icon input\\"
+            class=\\"item\\"
+            tabindex=\\"0\\"
           >
-            <input
-              aria-label=\\"Search agents\\"
-              placeholder=\\"Search...\\"
-              type=\\"text\\"
-            />
-            <i
-              aria-hidden=\\"true\\"
-              class=\\"search icon\\"
-            />
+            <div
+              class=\\"ui transparent icon input\\"
+            >
+              <input
+                aria-label=\\"Search agents\\"
+                placeholder=\\"Search...\\"
+                type=\\"text\\"
+              />
+              <i
+                aria-hidden=\\"true\\"
+                class=\\"search icon\\"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -26114,7 +26246,7 @@ exports[`Duplicate an agent 2`] = `
               class=\\"column\\"
             >
               <div
-                class=\\"ui borderless icon em__height a__agentviewer-editormenu menu\\"
+                class=\\"ui borderless icon a__agentviewer-editormenu menu\\"
               >
                 <a
                   aria-label=\\"Duplicate this agent\\"
@@ -27058,7 +27190,7 @@ exports[`Load with an activePage 1`] = `
   />
   <div>
     <div
-      class=\\"ui borderless icon em__height menu\\"
+      class=\\"ui borderless menu\\"
     >
       <div
         class=\\"item\\"
@@ -27090,24 +27222,28 @@ exports[`Load with an activePage 1`] = `
       </a>
       <div
         class=\\"right menu\\"
-        name=\\"Search agents\\"
       >
         <div
-          class=\\"item\\"
-          tabindex=\\"0\\"
+          class=\\"right menu\\"
+          name=\\"Search agents\\"
         >
           <div
-            class=\\"ui icon input\\"
+            class=\\"item\\"
+            tabindex=\\"0\\"
           >
-            <input
-              aria-label=\\"Search agents\\"
-              placeholder=\\"Search...\\"
-              type=\\"text\\"
-            />
-            <i
-              aria-hidden=\\"true\\"
-              class=\\"search icon\\"
-            />
+            <div
+              class=\\"ui transparent icon input\\"
+            >
+              <input
+                aria-label=\\"Search agents\\"
+                placeholder=\\"Search...\\"
+                type=\\"text\\"
+              />
+              <i
+                aria-hidden=\\"true\\"
+                class=\\"search icon\\"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -27235,7 +27371,7 @@ exports[`Load with an activePage and id 1`] = `
   />
   <div>
     <div
-      class=\\"ui borderless icon em__height menu\\"
+      class=\\"ui borderless menu\\"
     >
       <div
         class=\\"item\\"
@@ -27267,24 +27403,28 @@ exports[`Load with an activePage and id 1`] = `
       </a>
       <div
         class=\\"right menu\\"
-        name=\\"Search agents\\"
       >
         <div
-          class=\\"item\\"
-          tabindex=\\"0\\"
+          class=\\"right menu\\"
+          name=\\"Search agents\\"
         >
           <div
-            class=\\"ui icon input\\"
+            class=\\"item\\"
+            tabindex=\\"0\\"
           >
-            <input
-              aria-label=\\"Search agents\\"
-              placeholder=\\"Search...\\"
-              type=\\"text\\"
-            />
-            <i
-              aria-hidden=\\"true\\"
-              class=\\"search icon\\"
-            />
+            <div
+              class=\\"ui transparent icon input\\"
+            >
+              <input
+                aria-label=\\"Search agents\\"
+                placeholder=\\"Search...\\"
+                type=\\"text\\"
+              />
+              <i
+                aria-hidden=\\"true\\"
+                class=\\"search icon\\"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -27335,7 +27475,7 @@ exports[`Load with an activePage and id 1`] = `
               class=\\"column\\"
             >
               <div
-                class=\\"ui borderless icon em__height a__agentviewer-editormenu menu\\"
+                class=\\"ui borderless icon a__agentviewer-editormenu menu\\"
               >
                 <a
                   aria-label=\\"Duplicate this agent\\"
@@ -28279,7 +28419,7 @@ exports[`Load without activePage 1`] = `
   />
   <div>
     <div
-      class=\\"ui borderless icon em__height menu\\"
+      class=\\"ui borderless menu\\"
     >
       <div
         class=\\"item\\"
@@ -28311,24 +28451,28 @@ exports[`Load without activePage 1`] = `
       </a>
       <div
         class=\\"right menu\\"
-        name=\\"Search agents\\"
       >
         <div
-          class=\\"item\\"
-          tabindex=\\"0\\"
+          class=\\"right menu\\"
+          name=\\"Search agents\\"
         >
           <div
-            class=\\"ui icon input\\"
+            class=\\"item\\"
+            tabindex=\\"0\\"
           >
-            <input
-              aria-label=\\"Search agents\\"
-              placeholder=\\"Search...\\"
-              type=\\"text\\"
-            />
-            <i
-              aria-hidden=\\"true\\"
-              class=\\"search icon\\"
-            />
+            <div
+              class=\\"ui transparent icon input\\"
+            >
+              <input
+                aria-label=\\"Search agents\\"
+                placeholder=\\"Search...\\"
+                type=\\"text\\"
+              />
+              <i
+                aria-hidden=\\"true\\"
+                class=\\"search icon\\"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -28456,7 +28600,7 @@ exports[`Load without agents 1`] = `
   />
   <div>
     <div
-      class=\\"ui borderless icon em__height menu\\"
+      class=\\"ui borderless menu\\"
     >
       <div
         class=\\"item\\"
@@ -28488,24 +28632,28 @@ exports[`Load without agents 1`] = `
       </a>
       <div
         class=\\"right menu\\"
-        name=\\"Search agents\\"
       >
         <div
-          class=\\"item\\"
-          tabindex=\\"0\\"
+          class=\\"right menu\\"
+          name=\\"Search agents\\"
         >
           <div
-            class=\\"ui icon input\\"
+            class=\\"item\\"
+            tabindex=\\"0\\"
           >
-            <input
-              aria-label=\\"Search agents\\"
-              placeholder=\\"Search...\\"
-              type=\\"text\\"
-            />
-            <i
-              aria-hidden=\\"true\\"
-              class=\\"search icon\\"
-            />
+            <div
+              class=\\"ui transparent icon input\\"
+            >
+              <input
+                aria-label=\\"Search agents\\"
+                placeholder=\\"Search...\\"
+                type=\\"text\\"
+              />
+              <i
+                aria-hidden=\\"true\\"
+                class=\\"search icon\\"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -28633,7 +28781,7 @@ exports[`Load without correct agents 1`] = `
   />
   <div>
     <div
-      class=\\"ui borderless icon em__height menu\\"
+      class=\\"ui borderless menu\\"
     >
       <div
         class=\\"item\\"
@@ -28665,24 +28813,28 @@ exports[`Load without correct agents 1`] = `
       </a>
       <div
         class=\\"right menu\\"
-        name=\\"Search agents\\"
       >
         <div
-          class=\\"item\\"
-          tabindex=\\"0\\"
+          class=\\"right menu\\"
+          name=\\"Search agents\\"
         >
           <div
-            class=\\"ui icon input\\"
+            class=\\"item\\"
+            tabindex=\\"0\\"
           >
-            <input
-              aria-label=\\"Search agents\\"
-              placeholder=\\"Search...\\"
-              type=\\"text\\"
-            />
-            <i
-              aria-hidden=\\"true\\"
-              class=\\"search icon\\"
-            />
+            <div
+              class=\\"ui transparent icon input\\"
+            >
+              <input
+                aria-label=\\"Search agents\\"
+                placeholder=\\"Search...\\"
+                type=\\"text\\"
+              />
+              <i
+                aria-hidden=\\"true\\"
+                class=\\"search icon\\"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -28733,7 +28885,7 @@ exports[`Load without correct agents 1`] = `
               class=\\"column\\"
             >
               <div
-                class=\\"ui borderless icon em__height a__agentviewer-editormenu menu\\"
+                class=\\"ui borderless icon a__agentviewer-editormenu menu\\"
               >
                 <a
                   aria-label=\\"Duplicate this agent\\"
@@ -29677,7 +29829,7 @@ exports[`Load without interactions 1`] = `
   />
   <div>
     <div
-      class=\\"ui borderless icon em__height menu\\"
+      class=\\"ui borderless menu\\"
     >
       <div
         class=\\"item\\"
@@ -29709,24 +29861,28 @@ exports[`Load without interactions 1`] = `
       </a>
       <div
         class=\\"right menu\\"
-        name=\\"Search agents\\"
       >
         <div
-          class=\\"item\\"
-          tabindex=\\"0\\"
+          class=\\"right menu\\"
+          name=\\"Search agents\\"
         >
           <div
-            class=\\"ui icon input\\"
+            class=\\"item\\"
+            tabindex=\\"0\\"
           >
-            <input
-              aria-label=\\"Search agents\\"
-              placeholder=\\"Search...\\"
-              type=\\"text\\"
-            />
-            <i
-              aria-hidden=\\"true\\"
-              class=\\"search icon\\"
-            />
+            <div
+              class=\\"ui transparent icon input\\"
+            >
+              <input
+                aria-label=\\"Search agents\\"
+                placeholder=\\"Search...\\"
+                type=\\"text\\"
+              />
+              <i
+                aria-hidden=\\"true\\"
+                class=\\"search icon\\"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -29854,7 +30010,7 @@ exports[`Search agents 1`] = `
   />
   <div>
     <div
-      class=\\"ui borderless icon em__height menu\\"
+      class=\\"ui borderless menu\\"
     >
       <div
         class=\\"item\\"
@@ -29886,24 +30042,28 @@ exports[`Search agents 1`] = `
       </a>
       <div
         class=\\"right menu\\"
-        name=\\"Search agents\\"
       >
         <div
-          class=\\"item\\"
-          tabindex=\\"0\\"
+          class=\\"right menu\\"
+          name=\\"Search agents\\"
         >
           <div
-            class=\\"ui icon input\\"
+            class=\\"item\\"
+            tabindex=\\"0\\"
           >
-            <input
-              aria-label=\\"Search agents\\"
-              placeholder=\\"Search...\\"
-              type=\\"text\\"
-            />
-            <i
-              aria-hidden=\\"true\\"
-              class=\\"search icon\\"
-            />
+            <div
+              class=\\"ui transparent icon input\\"
+            >
+              <input
+                aria-label=\\"Search agents\\"
+                placeholder=\\"Search...\\"
+                type=\\"text\\"
+              />
+              <i
+                aria-hidden=\\"true\\"
+                class=\\"search icon\\"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -30031,7 +30191,7 @@ exports[`Search agents 2`] = `
   />
   <div>
     <div
-      class=\\"ui borderless icon em__height menu\\"
+      class=\\"ui borderless menu\\"
     >
       <div
         class=\\"item\\"
@@ -30063,37 +30223,41 @@ exports[`Search agents 2`] = `
       </a>
       <div
         class=\\"right menu\\"
-        name=\\"Search agents\\"
       >
         <div
-          aria-label=\\"Search results\\"
-          class=\\"item\\"
-          tabindex=\\"0\\"
-        >
-          Showing all agents, 
-          matching 'emoji'
-           (
-          <strong>
-            1
-          </strong>
-          )
-        </div>
-        <div
-          class=\\"item\\"
-          tabindex=\\"0\\"
+          class=\\"right menu\\"
+          name=\\"Search agents\\"
         >
           <div
-            class=\\"ui icon input\\"
+            aria-label=\\"Search results\\"
+            class=\\"item\\"
+            tabindex=\\"0\\"
           >
-            <input
-              aria-label=\\"Search agents\\"
-              placeholder=\\"Search...\\"
-              type=\\"text\\"
-            />
-            <i
-              aria-hidden=\\"true\\"
-              class=\\"search icon\\"
-            />
+            Showing all agents, 
+            matching 'emoji'
+             (
+            <strong>
+              1
+            </strong>
+            )
+          </div>
+          <div
+            class=\\"item\\"
+            tabindex=\\"0\\"
+          >
+            <div
+              class=\\"ui transparent icon input\\"
+            >
+              <input
+                aria-label=\\"Search agents\\"
+                placeholder=\\"Search...\\"
+                type=\\"text\\"
+              />
+              <i
+                aria-hidden=\\"true\\"
+                class=\\"search icon\\"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -30210,20 +30374,6 @@ exports[`Search agents 2`] = `
     <div
       data-testid=\\"agents-main\\"
     />
-  </div>
-  <div
-    style=\\"display: flex; position: absolute; left: 0px; top: 0px; bottom: 0px; transform: translate(0px, 0px);\\"
-  >
-    <div
-      class=\\"ui top left tiny inverted popup transition visible\\"
-      style=\\"position: initial;\\"
-    >
-      <div
-        class=\\"content\\"
-      >
-        Search agents
-      </div>
-    </div>
   </div>
 </body>"
 `;
@@ -30235,7 +30385,7 @@ exports[`Search agents 3`] = `
   />
   <div>
     <div
-      class=\\"ui borderless icon em__height menu\\"
+      class=\\"ui borderless menu\\"
     >
       <div
         class=\\"item\\"
@@ -30267,37 +30417,41 @@ exports[`Search agents 3`] = `
       </a>
       <div
         class=\\"right menu\\"
-        name=\\"Search agents\\"
       >
         <div
-          aria-label=\\"Search results\\"
-          class=\\"item\\"
-          tabindex=\\"0\\"
-        >
-          Showing all agents, 
-          matching ' analysis'
-           (
-          <strong>
-            1
-          </strong>
-          )
-        </div>
-        <div
-          class=\\"item\\"
-          tabindex=\\"0\\"
+          class=\\"right menu\\"
+          name=\\"Search agents\\"
         >
           <div
-            class=\\"ui icon input\\"
+            aria-label=\\"Search results\\"
+            class=\\"item\\"
+            tabindex=\\"0\\"
           >
-            <input
-              aria-label=\\"Search agents\\"
-              placeholder=\\"Search...\\"
-              type=\\"text\\"
-            />
-            <i
-              aria-hidden=\\"true\\"
-              class=\\"search icon\\"
-            />
+            Showing all agents, 
+            matching ' analysis'
+             (
+            <strong>
+              1
+            </strong>
+            )
+          </div>
+          <div
+            class=\\"item\\"
+            tabindex=\\"0\\"
+          >
+            <div
+              class=\\"ui transparent icon input\\"
+            >
+              <input
+                aria-label=\\"Search agents\\"
+                placeholder=\\"Search...\\"
+                type=\\"text\\"
+              />
+              <i
+                aria-hidden=\\"true\\"
+                class=\\"search icon\\"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -30414,20 +30568,6 @@ exports[`Search agents 3`] = `
     <div
       data-testid=\\"agents-main\\"
     />
-  </div>
-  <div
-    style=\\"display: flex; position: absolute; left: 0px; top: 0px; bottom: 0px; transform: translate(0px, 0px);\\"
-  >
-    <div
-      class=\\"ui top left tiny inverted popup transition visible\\"
-      style=\\"position: initial;\\"
-    >
-      <div
-        class=\\"content\\"
-      >
-        Search agents
-      </div>
-    </div>
   </div>
 </body>"
 `;
@@ -30439,7 +30579,7 @@ exports[`Search agents 4`] = `
   />
   <div>
     <div
-      class=\\"ui borderless icon em__height menu\\"
+      class=\\"ui borderless menu\\"
     >
       <div
         class=\\"item\\"
@@ -30471,24 +30611,28 @@ exports[`Search agents 4`] = `
       </a>
       <div
         class=\\"right menu\\"
-        name=\\"Search agents\\"
       >
         <div
-          class=\\"item\\"
-          tabindex=\\"0\\"
+          class=\\"right menu\\"
+          name=\\"Search agents\\"
         >
           <div
-            class=\\"ui icon input\\"
+            class=\\"item\\"
+            tabindex=\\"0\\"
           >
-            <input
-              aria-label=\\"Search agents\\"
-              placeholder=\\"Search...\\"
-              type=\\"text\\"
-            />
-            <i
-              aria-hidden=\\"true\\"
-              class=\\"search icon\\"
-            />
+            <div
+              class=\\"ui transparent icon input\\"
+            >
+              <input
+                aria-label=\\"Search agents\\"
+                placeholder=\\"Search...\\"
+                type=\\"text\\"
+              />
+              <i
+                aria-hidden=\\"true\\"
+                class=\\"search icon\\"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -30605,20 +30749,6 @@ exports[`Search agents 4`] = `
     <div
       data-testid=\\"agents-main\\"
     />
-  </div>
-  <div
-    style=\\"display: flex; position: absolute; left: 0px; top: 0px; bottom: 0px; transform: translate(0px, 0px);\\"
-  >
-    <div
-      class=\\"ui top left tiny inverted popup transition visible\\"
-      style=\\"position: initial;\\"
-    >
-      <div
-        class=\\"content\\"
-      >
-        Search agents
-      </div>
-    </div>
   </div>
 </body>"
 `;
@@ -30630,7 +30760,7 @@ exports[`Search agents 5`] = `
   />
   <div>
     <div
-      class=\\"ui borderless icon em__height menu\\"
+      class=\\"ui borderless menu\\"
     >
       <div
         class=\\"item\\"
@@ -30662,37 +30792,41 @@ exports[`Search agents 5`] = `
       </a>
       <div
         class=\\"right menu\\"
-        name=\\"Search agents\\"
       >
         <div
-          aria-label=\\"Search results\\"
-          class=\\"item\\"
-          tabindex=\\"0\\"
-        >
-          Showing all agents, 
-          matching 'analysis'
-           (
-          <strong>
-            1
-          </strong>
-          )
-        </div>
-        <div
-          class=\\"item\\"
-          tabindex=\\"0\\"
+          class=\\"right menu\\"
+          name=\\"Search agents\\"
         >
           <div
-            class=\\"ui icon input\\"
+            aria-label=\\"Search results\\"
+            class=\\"item\\"
+            tabindex=\\"0\\"
           >
-            <input
-              aria-label=\\"Search agents\\"
-              placeholder=\\"Search...\\"
-              type=\\"text\\"
-            />
-            <i
-              aria-hidden=\\"true\\"
-              class=\\"search icon\\"
-            />
+            Showing all agents, 
+            matching 'analysis'
+             (
+            <strong>
+              1
+            </strong>
+            )
+          </div>
+          <div
+            class=\\"item\\"
+            tabindex=\\"0\\"
+          >
+            <div
+              class=\\"ui transparent icon input\\"
+            >
+              <input
+                aria-label=\\"Search agents\\"
+                placeholder=\\"Search...\\"
+                type=\\"text\\"
+              />
+              <i
+                aria-hidden=\\"true\\"
+                class=\\"search icon\\"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -30810,20 +30944,6 @@ exports[`Search agents 5`] = `
       data-testid=\\"agents-main\\"
     />
   </div>
-  <div
-    style=\\"display: flex; position: absolute; left: 0px; top: 0px; bottom: 0px; transform: translate(0px, 0px);\\"
-  >
-    <div
-      class=\\"ui top left tiny inverted popup transition visible\\"
-      style=\\"position: initial;\\"
-    >
-      <div
-        class=\\"content\\"
-      >
-        Search agents
-      </div>
-    </div>
-  </div>
 </body>"
 `;
 
@@ -30834,7 +30954,7 @@ exports[`Select an agent 1`] = `
   />
   <div>
     <div
-      class=\\"ui borderless icon em__height menu\\"
+      class=\\"ui borderless menu\\"
     >
       <div
         class=\\"item\\"
@@ -30866,24 +30986,28 @@ exports[`Select an agent 1`] = `
       </a>
       <div
         class=\\"right menu\\"
-        name=\\"Search agents\\"
       >
         <div
-          class=\\"item\\"
-          tabindex=\\"0\\"
+          class=\\"right menu\\"
+          name=\\"Search agents\\"
         >
           <div
-            class=\\"ui icon input\\"
+            class=\\"item\\"
+            tabindex=\\"0\\"
           >
-            <input
-              aria-label=\\"Search agents\\"
-              placeholder=\\"Search...\\"
-              type=\\"text\\"
-            />
-            <i
-              aria-hidden=\\"true\\"
-              class=\\"search icon\\"
-            />
+            <div
+              class=\\"ui transparent icon input\\"
+            >
+              <input
+                aria-label=\\"Search agents\\"
+                placeholder=\\"Search...\\"
+                type=\\"text\\"
+              />
+              <i
+                aria-hidden=\\"true\\"
+                class=\\"search icon\\"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -31011,7 +31135,7 @@ exports[`Select an agent 2`] = `
   />
   <div>
     <div
-      class=\\"ui borderless icon em__height menu\\"
+      class=\\"ui borderless menu\\"
     >
       <div
         class=\\"item\\"
@@ -31043,24 +31167,28 @@ exports[`Select an agent 2`] = `
       </a>
       <div
         class=\\"right menu\\"
-        name=\\"Search agents\\"
       >
         <div
-          class=\\"item\\"
-          tabindex=\\"0\\"
+          class=\\"right menu\\"
+          name=\\"Search agents\\"
         >
           <div
-            class=\\"ui icon input\\"
+            class=\\"item\\"
+            tabindex=\\"0\\"
           >
-            <input
-              aria-label=\\"Search agents\\"
-              placeholder=\\"Search...\\"
-              type=\\"text\\"
-            />
-            <i
-              aria-hidden=\\"true\\"
-              class=\\"search icon\\"
-            />
+            <div
+              class=\\"ui transparent icon input\\"
+            >
+              <input
+                aria-label=\\"Search agents\\"
+                placeholder=\\"Search...\\"
+                type=\\"text\\"
+              />
+              <i
+                aria-hidden=\\"true\\"
+                class=\\"search icon\\"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -31111,7 +31239,7 @@ exports[`Select an agent 2`] = `
               class=\\"column\\"
             >
               <div
-                class=\\"ui borderless icon em__height a__agentviewer-editormenu menu\\"
+                class=\\"ui borderless icon a__agentviewer-editormenu menu\\"
               >
                 <a
                   aria-label=\\"Duplicate this agent\\"
@@ -32055,7 +32183,7 @@ exports[`Select an agent 3`] = `
   />
   <div>
     <div
-      class=\\"ui borderless icon em__height menu\\"
+      class=\\"ui borderless menu\\"
     >
       <div
         class=\\"item\\"
@@ -32087,24 +32215,28 @@ exports[`Select an agent 3`] = `
       </a>
       <div
         class=\\"right menu\\"
-        name=\\"Search agents\\"
       >
         <div
-          class=\\"item\\"
-          tabindex=\\"0\\"
+          class=\\"right menu\\"
+          name=\\"Search agents\\"
         >
           <div
-            class=\\"ui icon input\\"
+            class=\\"item\\"
+            tabindex=\\"0\\"
           >
-            <input
-              aria-label=\\"Search agents\\"
-              placeholder=\\"Search...\\"
-              type=\\"text\\"
-            />
-            <i
-              aria-hidden=\\"true\\"
-              class=\\"search icon\\"
-            />
+            <div
+              class=\\"ui transparent icon input\\"
+            >
+              <input
+                aria-label=\\"Search agents\\"
+                placeholder=\\"Search...\\"
+                type=\\"text\\"
+              />
+              <i
+                aria-hidden=\\"true\\"
+                class=\\"search icon\\"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -32232,7 +32364,7 @@ exports[`Select and edit an agent 1`] = `
   />
   <div>
     <div
-      class=\\"ui borderless icon em__height menu\\"
+      class=\\"ui borderless menu\\"
     >
       <div
         class=\\"item\\"
@@ -32264,24 +32396,28 @@ exports[`Select and edit an agent 1`] = `
       </a>
       <div
         class=\\"right menu\\"
-        name=\\"Search agents\\"
       >
         <div
-          class=\\"item\\"
-          tabindex=\\"0\\"
+          class=\\"right menu\\"
+          name=\\"Search agents\\"
         >
           <div
-            class=\\"ui icon input\\"
+            class=\\"item\\"
+            tabindex=\\"0\\"
           >
-            <input
-              aria-label=\\"Search agents\\"
-              placeholder=\\"Search...\\"
-              type=\\"text\\"
-            />
-            <i
-              aria-hidden=\\"true\\"
-              class=\\"search icon\\"
-            />
+            <div
+              class=\\"ui transparent icon input\\"
+            >
+              <input
+                aria-label=\\"Search agents\\"
+                placeholder=\\"Search...\\"
+                type=\\"text\\"
+              />
+              <i
+                aria-hidden=\\"true\\"
+                class=\\"search icon\\"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -32409,7 +32545,7 @@ exports[`Select and edit an agent 2`] = `
   />
   <div>
     <div
-      class=\\"ui borderless icon em__height menu\\"
+      class=\\"ui borderless menu\\"
     >
       <div
         class=\\"item\\"
@@ -32441,24 +32577,28 @@ exports[`Select and edit an agent 2`] = `
       </a>
       <div
         class=\\"right menu\\"
-        name=\\"Search agents\\"
       >
         <div
-          class=\\"item\\"
-          tabindex=\\"0\\"
+          class=\\"right menu\\"
+          name=\\"Search agents\\"
         >
           <div
-            class=\\"ui icon input\\"
+            class=\\"item\\"
+            tabindex=\\"0\\"
           >
-            <input
-              aria-label=\\"Search agents\\"
-              placeholder=\\"Search...\\"
-              type=\\"text\\"
-            />
-            <i
-              aria-hidden=\\"true\\"
-              class=\\"search icon\\"
-            />
+            <div
+              class=\\"ui transparent icon input\\"
+            >
+              <input
+                aria-label=\\"Search agents\\"
+                placeholder=\\"Search...\\"
+                type=\\"text\\"
+              />
+              <i
+                aria-hidden=\\"true\\"
+                class=\\"search icon\\"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -32509,7 +32649,7 @@ exports[`Select and edit an agent 2`] = `
               class=\\"column\\"
             >
               <div
-                class=\\"ui borderless icon em__height a__agentviewer-editormenu menu\\"
+                class=\\"ui borderless icon a__agentviewer-editormenu menu\\"
               >
                 <a
                   aria-label=\\"Duplicate this agent\\"
@@ -33453,7 +33593,7 @@ exports[`Select and edit an agent 4`] = `
   />
   <div>
     <div
-      class=\\"ui borderless icon em__height menu\\"
+      class=\\"ui borderless menu\\"
     >
       <div
         class=\\"item\\"
@@ -33485,24 +33625,28 @@ exports[`Select and edit an agent 4`] = `
       </a>
       <div
         class=\\"right menu\\"
-        name=\\"Search agents\\"
       >
         <div
-          class=\\"item\\"
-          tabindex=\\"0\\"
+          class=\\"right menu\\"
+          name=\\"Search agents\\"
         >
           <div
-            class=\\"ui icon input\\"
+            class=\\"item\\"
+            tabindex=\\"0\\"
           >
-            <input
-              aria-label=\\"Search agents\\"
-              placeholder=\\"Search...\\"
-              type=\\"text\\"
-            />
-            <i
-              aria-hidden=\\"true\\"
-              class=\\"search icon\\"
-            />
+            <div
+              class=\\"ui transparent icon input\\"
+            >
+              <input
+                aria-label=\\"Search agents\\"
+                placeholder=\\"Search...\\"
+                type=\\"text\\"
+              />
+              <i
+                aria-hidden=\\"true\\"
+                class=\\"search icon\\"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -33553,7 +33697,7 @@ exports[`Select and edit an agent 4`] = `
               class=\\"column\\"
             >
               <div
-                class=\\"ui borderless icon em__height a__agentviewer-editormenu menu\\"
+                class=\\"ui borderless icon a__agentviewer-editormenu menu\\"
               >
                 <a
                   aria-label=\\"Duplicate this agent\\"
@@ -34497,7 +34641,7 @@ exports[`Select and edit an agent 5`] = `
   />
   <div>
     <div
-      class=\\"ui borderless icon em__height menu\\"
+      class=\\"ui borderless menu\\"
     >
       <div
         class=\\"item\\"
@@ -34529,24 +34673,28 @@ exports[`Select and edit an agent 5`] = `
       </a>
       <div
         class=\\"right menu\\"
-        name=\\"Search agents\\"
       >
         <div
-          class=\\"item\\"
-          tabindex=\\"0\\"
+          class=\\"right menu\\"
+          name=\\"Search agents\\"
         >
           <div
-            class=\\"ui icon input\\"
+            class=\\"item\\"
+            tabindex=\\"0\\"
           >
-            <input
-              aria-label=\\"Search agents\\"
-              placeholder=\\"Search...\\"
-              type=\\"text\\"
-            />
-            <i
-              aria-hidden=\\"true\\"
-              class=\\"search icon\\"
-            />
+            <div
+              class=\\"ui transparent icon input\\"
+            >
+              <input
+                aria-label=\\"Search agents\\"
+                placeholder=\\"Search...\\"
+                type=\\"text\\"
+              />
+              <i
+                aria-hidden=\\"true\\"
+                class=\\"search icon\\"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -34597,7 +34745,7 @@ exports[`Select and edit an agent 5`] = `
               class=\\"column\\"
             >
               <div
-                class=\\"ui borderless icon em__height a__agentviewer-editormenu menu\\"
+                class=\\"ui borderless icon a__agentviewer-editormenu menu\\"
               >
                 <a
                   aria-label=\\"Duplicate this agent\\"
@@ -35547,7 +35695,7 @@ exports[`Select and edit an agent 7`] = `
   />
   <div>
     <div
-      class=\\"ui borderless icon em__height menu\\"
+      class=\\"ui borderless menu\\"
     >
       <div
         class=\\"item\\"
@@ -35579,24 +35727,28 @@ exports[`Select and edit an agent 7`] = `
       </a>
       <div
         class=\\"right menu\\"
-        name=\\"Search agents\\"
       >
         <div
-          class=\\"item\\"
-          tabindex=\\"0\\"
+          class=\\"right menu\\"
+          name=\\"Search agents\\"
         >
           <div
-            class=\\"ui icon input\\"
+            class=\\"item\\"
+            tabindex=\\"0\\"
           >
-            <input
-              aria-label=\\"Search agents\\"
-              placeholder=\\"Search...\\"
-              type=\\"text\\"
-            />
-            <i
-              aria-hidden=\\"true\\"
-              class=\\"search icon\\"
-            />
+            <div
+              class=\\"ui transparent icon input\\"
+            >
+              <input
+                aria-label=\\"Search agents\\"
+                placeholder=\\"Search...\\"
+                type=\\"text\\"
+              />
+              <i
+                aria-hidden=\\"true\\"
+                class=\\"search icon\\"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -35647,7 +35799,7 @@ exports[`Select and edit an agent 7`] = `
               class=\\"column\\"
             >
               <div
-                class=\\"ui borderless icon em__height a__agentviewer-editormenu menu\\"
+                class=\\"ui borderless icon a__agentviewer-editormenu menu\\"
               >
                 <a
                   aria-label=\\"Duplicate this agent\\"
@@ -36591,7 +36743,7 @@ exports[`Select and edit an agent 8`] = `
   />
   <div>
     <div
-      class=\\"ui borderless icon em__height menu\\"
+      class=\\"ui borderless menu\\"
     >
       <div
         class=\\"item\\"
@@ -36623,24 +36775,28 @@ exports[`Select and edit an agent 8`] = `
       </a>
       <div
         class=\\"right menu\\"
-        name=\\"Search agents\\"
       >
         <div
-          class=\\"item\\"
-          tabindex=\\"0\\"
+          class=\\"right menu\\"
+          name=\\"Search agents\\"
         >
           <div
-            class=\\"ui icon input\\"
+            class=\\"item\\"
+            tabindex=\\"0\\"
           >
-            <input
-              aria-label=\\"Search agents\\"
-              placeholder=\\"Search...\\"
-              type=\\"text\\"
-            />
-            <i
-              aria-hidden=\\"true\\"
-              class=\\"search icon\\"
-            />
+            <div
+              class=\\"ui transparent icon input\\"
+            >
+              <input
+                aria-label=\\"Search agents\\"
+                placeholder=\\"Search...\\"
+                type=\\"text\\"
+              />
+              <i
+                aria-hidden=\\"true\\"
+                class=\\"search icon\\"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -36691,7 +36847,7 @@ exports[`Select and edit an agent 8`] = `
               class=\\"column\\"
             >
               <div
-                class=\\"ui borderless icon em__height a__agentviewer-editormenu menu\\"
+                class=\\"ui borderless icon a__agentviewer-editormenu menu\\"
               >
                 <a
                   aria-label=\\"Duplicate this agent\\"
@@ -37642,7 +37798,7 @@ exports[`Select and edit an agent 10`] = `
   />
   <div>
     <div
-      class=\\"ui borderless icon em__height menu\\"
+      class=\\"ui borderless menu\\"
     >
       <div
         class=\\"item\\"
@@ -37674,24 +37830,28 @@ exports[`Select and edit an agent 10`] = `
       </a>
       <div
         class=\\"right menu\\"
-        name=\\"Search agents\\"
       >
         <div
-          class=\\"item\\"
-          tabindex=\\"0\\"
+          class=\\"right menu\\"
+          name=\\"Search agents\\"
         >
           <div
-            class=\\"ui icon input\\"
+            class=\\"item\\"
+            tabindex=\\"0\\"
           >
-            <input
-              aria-label=\\"Search agents\\"
-              placeholder=\\"Search...\\"
-              type=\\"text\\"
-            />
-            <i
-              aria-hidden=\\"true\\"
-              class=\\"search icon\\"
-            />
+            <div
+              class=\\"ui transparent icon input\\"
+            >
+              <input
+                aria-label=\\"Search agents\\"
+                placeholder=\\"Search...\\"
+                type=\\"text\\"
+              />
+              <i
+                aria-hidden=\\"true\\"
+                class=\\"search icon\\"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -37742,7 +37902,7 @@ exports[`Select and edit an agent 10`] = `
               class=\\"column\\"
             >
               <div
-                class=\\"ui borderless icon em__height a__agentviewer-editormenu menu\\"
+                class=\\"ui borderless icon a__agentviewer-editormenu menu\\"
               >
                 <a
                   aria-label=\\"Duplicate this agent\\"
@@ -38686,7 +38846,7 @@ exports[`Select and edit an agent 11`] = `
   />
   <div>
     <div
-      class=\\"ui borderless icon em__height menu\\"
+      class=\\"ui borderless menu\\"
     >
       <div
         class=\\"item\\"
@@ -38718,24 +38878,28 @@ exports[`Select and edit an agent 11`] = `
       </a>
       <div
         class=\\"right menu\\"
-        name=\\"Search agents\\"
       >
         <div
-          class=\\"item\\"
-          tabindex=\\"0\\"
+          class=\\"right menu\\"
+          name=\\"Search agents\\"
         >
           <div
-            class=\\"ui icon input\\"
+            class=\\"item\\"
+            tabindex=\\"0\\"
           >
-            <input
-              aria-label=\\"Search agents\\"
-              placeholder=\\"Search...\\"
-              type=\\"text\\"
-            />
-            <i
-              aria-hidden=\\"true\\"
-              class=\\"search icon\\"
-            />
+            <div
+              class=\\"ui transparent icon input\\"
+            >
+              <input
+                aria-label=\\"Search agents\\"
+                placeholder=\\"Search...\\"
+                type=\\"text\\"
+              />
+              <i
+                aria-hidden=\\"true\\"
+                class=\\"search icon\\"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -38786,7 +38950,7 @@ exports[`Select and edit an agent 11`] = `
               class=\\"column\\"
             >
               <div
-                class=\\"ui borderless icon em__height a__agentviewer-editormenu menu\\"
+                class=\\"ui borderless icon a__agentviewer-editormenu menu\\"
               >
                 <a
                   aria-label=\\"Duplicate this agent\\"
@@ -39735,7 +39899,7 @@ exports[`Select and edit an agent 13`] = `
   />
   <div>
     <div
-      class=\\"ui borderless icon em__height menu\\"
+      class=\\"ui borderless menu\\"
     >
       <div
         class=\\"item\\"
@@ -39767,24 +39931,28 @@ exports[`Select and edit an agent 13`] = `
       </a>
       <div
         class=\\"right menu\\"
-        name=\\"Search agents\\"
       >
         <div
-          class=\\"item\\"
-          tabindex=\\"0\\"
+          class=\\"right menu\\"
+          name=\\"Search agents\\"
         >
           <div
-            class=\\"ui icon input\\"
+            class=\\"item\\"
+            tabindex=\\"0\\"
           >
-            <input
-              aria-label=\\"Search agents\\"
-              placeholder=\\"Search...\\"
-              type=\\"text\\"
-            />
-            <i
-              aria-hidden=\\"true\\"
-              class=\\"search icon\\"
-            />
+            <div
+              class=\\"ui transparent icon input\\"
+            >
+              <input
+                aria-label=\\"Search agents\\"
+                placeholder=\\"Search...\\"
+                type=\\"text\\"
+              />
+              <i
+                aria-hidden=\\"true\\"
+                class=\\"search icon\\"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -39835,7 +40003,7 @@ exports[`Select and edit an agent 13`] = `
               class=\\"column\\"
             >
               <div
-                class=\\"ui borderless icon em__height a__agentviewer-editormenu menu\\"
+                class=\\"ui borderless icon a__agentviewer-editormenu menu\\"
               >
                 <a
                   aria-label=\\"Duplicate this agent\\"
@@ -40779,7 +40947,7 @@ exports[`Select and edit an agent 15`] = `
   />
   <div>
     <div
-      class=\\"ui borderless icon em__height menu\\"
+      class=\\"ui borderless menu\\"
     >
       <div
         class=\\"item\\"
@@ -40811,24 +40979,28 @@ exports[`Select and edit an agent 15`] = `
       </a>
       <div
         class=\\"right menu\\"
-        name=\\"Search agents\\"
       >
         <div
-          class=\\"item\\"
-          tabindex=\\"0\\"
+          class=\\"right menu\\"
+          name=\\"Search agents\\"
         >
           <div
-            class=\\"ui icon input\\"
+            class=\\"item\\"
+            tabindex=\\"0\\"
           >
-            <input
-              aria-label=\\"Search agents\\"
-              placeholder=\\"Search...\\"
-              type=\\"text\\"
-            />
-            <i
-              aria-hidden=\\"true\\"
-              class=\\"search icon\\"
-            />
+            <div
+              class=\\"ui transparent icon input\\"
+            >
+              <input
+                aria-label=\\"Search agents\\"
+                placeholder=\\"Search...\\"
+                type=\\"text\\"
+              />
+              <i
+                aria-hidden=\\"true\\"
+                class=\\"search icon\\"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -40879,7 +41051,7 @@ exports[`Select and edit an agent 15`] = `
               class=\\"column\\"
             >
               <div
-                class=\\"ui borderless icon em__height a__agentviewer-editormenu menu\\"
+                class=\\"ui borderless icon a__agentviewer-editormenu menu\\"
               >
                 <a
                   aria-label=\\"Duplicate this agent\\"
@@ -41823,7 +41995,7 @@ exports[`Select and edit an agent 17`] = `
   />
   <div>
     <div
-      class=\\"ui borderless icon em__height menu\\"
+      class=\\"ui borderless menu\\"
     >
       <div
         class=\\"item\\"
@@ -41855,24 +42027,28 @@ exports[`Select and edit an agent 17`] = `
       </a>
       <div
         class=\\"right menu\\"
-        name=\\"Search agents\\"
       >
         <div
-          class=\\"item\\"
-          tabindex=\\"0\\"
+          class=\\"right menu\\"
+          name=\\"Search agents\\"
         >
           <div
-            class=\\"ui icon input\\"
+            class=\\"item\\"
+            tabindex=\\"0\\"
           >
-            <input
-              aria-label=\\"Search agents\\"
-              placeholder=\\"Search...\\"
-              type=\\"text\\"
-            />
-            <i
-              aria-hidden=\\"true\\"
-              class=\\"search icon\\"
-            />
+            <div
+              class=\\"ui transparent icon input\\"
+            >
+              <input
+                aria-label=\\"Search agents\\"
+                placeholder=\\"Search...\\"
+                type=\\"text\\"
+              />
+              <i
+                aria-hidden=\\"true\\"
+                class=\\"search icon\\"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -41923,7 +42099,7 @@ exports[`Select and edit an agent 17`] = `
               class=\\"column\\"
             >
               <div
-                class=\\"ui borderless icon em__height a__agentviewer-editormenu menu\\"
+                class=\\"ui borderless icon a__agentviewer-editormenu menu\\"
               >
                 <a
                   aria-label=\\"Duplicate this agent\\"

@@ -4,12 +4,8 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { Label } from '@components/UI';
 import { setFilterScenariosInUse } from '@actions/filters';
+import History from '@utils/History';
 import Identity from '@utils/Identity';
-import QueryString from '@utils/QueryString';
-
-function makeHistoryEntry(location, keyVals) {
-  return `${location.pathname}?${QueryString.mergedStringify(keyVals)}`;
-}
 
 class CohortScenarioLabels extends React.Component {
   constructor(props) {
@@ -28,7 +24,7 @@ class CohortScenarioLabels extends React.Component {
 
     this.props.setFilterScenariosInUse(scenariosInUse);
     this.props.history.push(
-      makeHistoryEntry(this.props.location, { s: scenariosInUse })
+      History.composeUrl(this.props.location, { s: scenariosInUse })
     );
   }
 

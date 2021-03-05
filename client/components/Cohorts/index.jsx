@@ -36,13 +36,10 @@ import { SCENARIO_IS_PUBLIC } from '@components/Scenario/constants';
 import CohortCard from './CohortCard';
 import CohortScenarioLabelsFilter from './CohortScenarioLabelsFilter';
 import CohortCreateWizard from './CohortCreateWizard';
+import History from '@utils/History';
 import Identity from '@utils/Identity';
 import QueryString from '@utils/QueryString';
 import '../ScenariosList/ScenariosList.css';
-
-function makeHistoryEntry(location, keyVals) {
-  return `${location.pathname}?${QueryString.mergedStringify(keyVals)}`;
-}
 
 export class Cohorts extends React.Component {
   constructor(props) {
@@ -136,7 +133,7 @@ export class Cohorts extends React.Component {
 
     if (search === '') {
       this.props.history.push(
-        makeHistoryEntry(this.props.location, {
+        History.composeUrl(this.props.location, {
           page,
           search
         })
@@ -203,7 +200,7 @@ export class Cohorts extends React.Component {
       search
     });
 
-    const historyEntry = makeHistoryEntry(this.props.location, {
+    const historyEntry = History.composeUrl(this.props.location, {
       page,
       search
     });
@@ -217,7 +214,7 @@ export class Cohorts extends React.Component {
     const { search } = this.state;
 
     this.props.history.push(
-      makeHistoryEntry(this.props.location, {
+      History.composeUrl(this.props.location, {
         page,
         search
       })

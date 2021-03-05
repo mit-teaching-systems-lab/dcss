@@ -2,7 +2,7 @@
 import React from 'react';
 jest.mock('react', () => ({
   ...jest.requireActual('react'),
-  useLayoutEffect: jest.requireActual('react').useEffect,
+  useLayoutEffect: jest.requireActual('react').useEffect
 }));
 
 import {
@@ -11,7 +11,7 @@ import {
   reduxer,
   serialize,
   snapshotter,
-  state,
+  state
 } from '../bootstrap';
 import { unmountComponentAtNode } from 'react-dom';
 
@@ -21,7 +21,7 @@ import {
   prettyDOM,
   render,
   screen,
-  waitFor,
+  waitFor
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
@@ -85,7 +85,7 @@ beforeEach(() => {
     configuration: {
       bar: '2',
       baz: 'c',
-      foo: 'false',
+      foo: 'false'
     },
     interaction: {
       id: 1,
@@ -95,7 +95,7 @@ beforeEach(() => {
       created_at: '2021-02-25T15:09:05.001302-05:00',
       deleted_at: null,
       updated_at: null,
-      types: [],
+      types: []
     },
     owner: {
       id: 999,
@@ -104,7 +104,7 @@ beforeEach(() => {
       is_super: true,
       username: 'superuser',
       is_anonymous: false,
-      personalname: 'Super User',
+      personalname: 'Super User'
     },
     self: {
       id: 148,
@@ -115,11 +115,11 @@ beforeEach(() => {
       lastseen_at: '2021-02-25T13:08:57.323-05:00',
       is_anonymous: true,
       personalname: 'Emoji Analysis',
-      single_use_password: false,
+      single_use_password: false
     },
     socket: {
-      path: '/path/to/foo',
-    },
+      path: '/path/to/foo'
+    }
   };
 
   agents = [agent];
@@ -155,16 +155,16 @@ test('AgentSelect', () => {
 });
 
 /** @GENERATED: BEGIN **/
-test('Render 1 1', async (done) => {
+test('Render 1 1', async done => {
   const Component = AgentSelect;
   const props = {
     ...commonProps,
     agents,
-    onSelect: jest.fn(),
+    onSelect: jest.fn()
   };
 
   const state = {
-    ...commonState,
+    ...commonState
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
@@ -175,4 +175,3 @@ test('Render 1 1', async (done) => {
   done();
 });
 /** @GENERATED: END **/
-

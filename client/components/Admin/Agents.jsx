@@ -8,7 +8,6 @@ import { createAgent, getAgent, getAgents, setAgent } from '@actions/agent';
 import { getInteractions, getInteractionsTypes } from '@actions/interaction';
 import AgentInteractionEditor from './AgentInteractionEditor';
 import AgentInteractionSelect from './AgentInteractionSelect';
-import EditorMenu from '@components/EditorMenu';
 import Loading from '@components/Loading';
 import { notify } from '@components/Notification';
 import {
@@ -31,12 +30,8 @@ import {
 import { agentInitialState } from '@reducers/initial-states';
 import Identity from '@utils/Identity';
 import { computeItemsRowsPerPage } from '@utils/Layout';
-import QueryString from '@utils/QueryString';
+import History from '@utils/History';
 import './Agents.css';
-
-function makeHistoryEntry(location, keyVals) {
-  return `${location.pathname}?${QueryString.mergedStringify(keyVals)}`;
-}
 
 const AgentListItem = props => {
   const {
@@ -199,7 +194,7 @@ class Agent extends Component {
         time: 3000
       });
       this.props.history.push(
-        makeHistoryEntry(this.props.location, {
+        History.composeUrl(this.props.location, {
           id: this.props.agent.id
         })
       );
@@ -261,6 +256,7 @@ class Agent extends Component {
 
   /* istanbul ignore next */
   onPageChange(event, { activePage }) {
+    this.props.history.push(`/admin/agents?page=${activePage}`);
     /* istanbul ignore next */
     this.setState({
       ...this.state,
@@ -278,7 +274,7 @@ class Agent extends Component {
     };
     this.setState({ agent, error, id });
     this.props.history.push(
-      makeHistoryEntry(this.props.location, {
+      History.composeUrl(this.props.location, {
         id
       })
     );
@@ -388,14 +384,14 @@ class Agent extends Component {
     });
 
     const selectedId = this.state.id || this.props.id || null;
-    const sourceAgents = this.state.results.length
+    const agentsSource = this.state.results.length
       ? this.state.results
       : this.props.agents;
 
-    const agentsCount = sourceAgents.length;
+    const agentsCount = agentsSource.length;
     const pages = Math.ceil(agentsCount / rowsPerPage);
     const index = (activePage - 1) * rowsPerPage;
-    const agents = sourceAgents.slice(index, index + rowsPerPage);
+    const agents = agentsSource.slice(index, index + rowsPerPage);
     const agentIcon = (
       <Menu.Item.Tabbable key="menu-item-agents-administration">
         <Icon.Group className="em__icon-group-margin">
@@ -438,7 +434,7 @@ class Agent extends Component {
             agent
           });
           this.props.history.push(
-            makeHistoryEntry(this.props.location, {
+            History.composeUrl(this.props.location, {
               id: null
             })
           );
@@ -510,6 +506,7 @@ class Agent extends Component {
         {searchResults}
         <Menu.Item.Tabbable>
           <Input
+            transparent
             aria-label="Search agents"
             icon="search"
             placeholder="Search..."
@@ -643,13 +640,14 @@ class Agent extends Component {
 
     return (
       <Fragment>
-        <EditorMenu
-          type="agents"
-          items={{
-            left: [agentIcon, createAgentButton],
-            right: [agentSearchInput]
-          }}
-        />
+        <Menu borderless>
+          {agentIcon}
+          {createAgentButton}
+          <Menu.Menu position="right">
+            {agentSearchInput}
+          </Menu.Menu>
+        </Menu>
+
         <Grid celled className="a__agentviewer-outer">
           <Grid.Row>
             <Grid.Column width={4}>
@@ -669,18 +667,16 @@ class Agent extends Component {
               {agent ? (
                 <Grid.Row>
                   <Grid.Column>
-                    <EditorMenu
+                    <Menu
+                      icon
+                      borderless
                       className="a__agentviewer-editormenu"
-                      type="agent"
-                      items={{
-                        left: [
-                          !agent.id ? unsavedAgent : null,
-                          agent.id ? duplicateAgentButton : null,
-                          agent.id ? deleteAgentButton : null,
-                          agent ? activeAgentCheckbox : null
-                        ]
-                      }}
-                    />
+                    >
+                      {!agent.id ? unsavedAgent : null}
+                      {agent.id ? duplicateAgentButton : null}
+                      {agent.id ? deleteAgentButton : null}
+                      {agent ? activeAgentCheckbox : null}
+                    </Menu>
                   </Grid.Column>
                 </Grid.Row>
               ) : null}

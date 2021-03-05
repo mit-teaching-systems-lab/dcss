@@ -5,12 +5,8 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { Dropdown, Text } from '@components/UI';
 import { setLabelsInUse } from '@actions/tags';
+import History from '@utils/History';
 import Identity from '@utils/Identity';
-import QueryString from '@utils/QueryString';
-
-function makeHistoryEntry(location, keyVals) {
-  return `${location.pathname}?${QueryString.mergedStringify(keyVals)}`;
-}
 
 class ScenarioLabelsFilter extends React.Component {
   constructor(props) {
@@ -41,7 +37,7 @@ class ScenarioLabelsFilter extends React.Component {
 
     this.props.setLabelsInUse(labelsInUse);
     this.props.history.push(
-      makeHistoryEntry(this.props.location, { l: labelsInUse })
+      History.composeUrl(this.props.location, { l: labelsInUse })
     );
   }
 
