@@ -30,7 +30,7 @@ Display.defaultProps = {
 Display.propTypes = {
   isEmbeddedInSVG: PropTypes.bool,
   rules: PropTypes.array,
-  html: PropTypes.string.isRequired,
+  html: PropTypes.string,
   type: PropTypes.oneOf([type]).isRequired
 };
 

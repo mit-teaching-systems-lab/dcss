@@ -139,7 +139,11 @@ class ChatPromptEditor extends React.Component {
   render() {
     const {
       // agent,
-      auto, header, prompt, timer } = this.state;
+      auto,
+      header,
+      prompt,
+      timer
+    } = this.state;
     const { onChange, onTimerChange, updateState } = this;
     const timerString = timer ? Media.secToTime(timer) : '';
     const [hh = 0, mm = 0, ss = 0] = timerString.split(':').map(v => Number(v));
@@ -153,12 +157,12 @@ class ChatPromptEditor extends React.Component {
       ss ? `${ss} ${pluralize('second', ss)}` : ''
     ].join(' ');
 
-                // <AgentSelector
-                //   agent={agent}
-                //   type={type}
-                //   onChange={onChange}
-                //   updateState={updateState}
-                // />
+    // <AgentSelector
+    //   agent={agent}
+    //   type={type}
+    //   onChange={onChange}
+    //   updateState={updateState}
+    // />
     return (
       <Form>
         <Container fluid>
@@ -232,7 +236,6 @@ class ChatPromptEditor extends React.Component {
                   onChange={onChange}
                   onBlur={updateState}
                 />
-
               </Grid.Column>
             </Grid.Row>
           </Grid>

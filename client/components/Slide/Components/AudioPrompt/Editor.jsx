@@ -39,7 +39,11 @@ class AudioPromptEditor extends Component {
 
     const {
       // agent,
-      header, prompt, recallId, responseId } = this.props.value;
+      header,
+      prompt,
+      recallId,
+      responseId
+    } = this.props.value;
 
     const lastProps = {
       // agent,
@@ -65,7 +69,11 @@ class AudioPromptEditor extends Component {
   updateState() {
     const {
       // agent,
-      header, prompt, recallId, responseId } = this.state;
+      header,
+      prompt,
+      recallId,
+      responseId
+    } = this.state;
 
     this.props.onChange({
       // agent,
@@ -88,16 +96,19 @@ class AudioPromptEditor extends Component {
   render() {
     const {
       // agent,
-      header, prompt, recallId } = this.state;
+      header,
+      prompt,
+      recallId
+    } = this.state;
     const { scenario, slideIndex } = this.props;
     const { onChange, onRecallChange, updateState } = this;
 
-          // <AgentSelector
-          //   label="Optional AI agent:"
-          //   agent={agent}
-          //   type={type}
-          //   onChange={onChange}
-          // />
+    // <AgentSelector
+    //   label="Optional AI agent:"
+    //   agent={agent}
+    //   type={type}
+    //   onChange={onChange}
+    // />
 
     return (
       <Form>

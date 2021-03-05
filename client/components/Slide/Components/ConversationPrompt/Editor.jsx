@@ -142,7 +142,12 @@ class ConversationPromptEditor extends Component {
     const { onChange, onRecallChange, updateState } = this;
     const {
       // agent,
-      header, prompt, configuration, recallId, url } = this.state;
+      header,
+      prompt,
+      configuration,
+      recallId,
+      url
+    } = this.state;
     const options = [
       {
         key: 'whole',
@@ -268,12 +273,12 @@ class ConversationPromptEditor extends Component {
     const startTimeValue = Media.secToTime(start);
     const endTimeValue = Media.secToTime(end);
 
-          // <AgentSelector
-          //   agent={agent}
-          //   type={type}
-          //   onChange={onChange}
-          //   updateState={updateState}
-          // />
+    // <AgentSelector
+    //   agent={agent}
+    //   type={type}
+    //   onChange={onChange}
+    //   updateState={updateState}
+    // />
     return (
       <Form>
         <Container fluid>
@@ -345,7 +350,6 @@ class ConversationPromptEditor extends Component {
             onChange={onChange}
             onBlur={updateState}
           />
-
 
           <DataHeader
             content={header}

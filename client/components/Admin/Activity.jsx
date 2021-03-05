@@ -158,11 +158,7 @@ class Activity extends Component {
   }
 
   render() {
-    const {
-      onPageChange,
-      onSelect,
-      onSearch
-    } = this;
+    const { onPageChange, onSelect, onSearch } = this;
     // const { user } = this.props;
     const { isReady, activePage, id } = this.state;
 
@@ -280,7 +276,6 @@ class Activity extends Component {
             </Grid.Row>
           </Grid>
         )}
-
       </Fragment>
     );
   }

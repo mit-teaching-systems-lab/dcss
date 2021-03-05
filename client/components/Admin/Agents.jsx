@@ -643,9 +643,7 @@ class Agent extends Component {
         <Menu borderless>
           {agentIcon}
           {createAgentButton}
-          <Menu.Menu position="right">
-            {agentSearchInput}
-          </Menu.Menu>
+          <Menu.Menu position="right">{agentSearchInput}</Menu.Menu>
         </Menu>
 
         <Grid celled className="a__agentviewer-outer">
@@ -667,11 +665,7 @@ class Agent extends Component {
               {agent ? (
                 <Grid.Row>
                   <Grid.Column>
-                    <Menu
-                      icon
-                      borderless
-                      className="a__agentviewer-editormenu"
-                    >
+                    <Menu icon borderless className="a__agentviewer-editormenu">
                       {!agent.id ? unsavedAgent : null}
                       {agent.id ? duplicateAgentButton : null}
                       {agent.id ? deleteAgentButton : null}

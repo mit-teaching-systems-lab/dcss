@@ -40,8 +40,7 @@ class AgentSelect extends Component {
   }
 
   async componentDidMount() {
-    if (!this.props.agentsInUse &&
-        !this.props.agents.length) {
+    if (!this.props.agentsInUse && !this.props.agents.length) {
       await this.props.getAgents();
       if (!this.hasUnmounted) {
         this.setState({

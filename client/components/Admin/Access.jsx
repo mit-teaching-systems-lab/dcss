@@ -3,8 +3,15 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import escapeRegExp from 'lodash.escaperegexp';
 import PropTypes from 'prop-types';
-import { Grid, Icon, Input, List, Menu, Pagination, Table } from '@components/UI';
-
+import {
+  Grid,
+  Icon,
+  Input,
+  List,
+  Menu,
+  Pagination,
+  Table
+} from '@components/UI';
 
 import Loading from '@components/Loading';
 import Username from '@components/User/Username';
@@ -22,15 +29,11 @@ const rolesMap = {
   admin: 'Admin',
   facilitator: 'Facilitator',
   researcher: 'Researcher',
-  participant: 'Participant',
+  participant: 'Participant'
 };
 
 const AccessListItem = props => {
-  const {
-    active,
-    item,
-    onClick
-  } = props;
+  const { active, item, onClick } = props;
 
   return (
     <List.Item
@@ -292,8 +295,6 @@ class Access extends Component {
         </Grid>
         */}
 
-
-
         {!isReady ? <Loading /> : <UsersTable {...usersTableProps} />}
       </Fragment>
     );
@@ -309,7 +310,7 @@ Access.propTypes = {
   id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   user: PropTypes.object,
   users: PropTypes.array,
-  usersById: PropTypes.object,
+  usersById: PropTypes.object
 };
 
 const mapStateToProps = (state, ownProps) => {
@@ -317,10 +318,13 @@ const mapStateToProps = (state, ownProps) => {
   const usersSource = ownProps.users || state.users;
   const activePage = ownProps.activePage || 1;
   const users = usersSource.filter(user => !user.is_agent);
-  const usersById = users.reduce((accum, user) => ({
-    ...accum,
-    [user.id]: user
-  }), {})
+  const usersById = users.reduce(
+    (accum, user) => ({
+      ...accum,
+      [user.id]: user
+    }),
+    {}
+  );
   return { activePage, user, users, usersById };
 };
 

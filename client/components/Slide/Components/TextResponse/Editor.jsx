@@ -42,8 +42,12 @@ class TextResponseEditor extends React.Component {
     let shouldCallUpdateState = false;
 
     const fields = [
-    // 'agent',
-    'header', 'placeholder', 'prompt', 'recallId'];
+      // 'agent',
+      'header',
+      'placeholder',
+      'prompt',
+      'recallId'
+    ];
 
     for (let field of fields) {
       if (this.props.value[field] !== this.state[field]) {
@@ -95,7 +99,11 @@ class TextResponseEditor extends React.Component {
   render() {
     const {
       // agent,
-      header, prompt, placeholder, recallId } = this.state;
+      header,
+      prompt,
+      placeholder,
+      recallId
+    } = this.state;
     const { scenario, slideIndex } = this.props;
     const { onChange, onRecallChange, updateState } = this;
     const promptAriaLabel = 'Optional prompt to display before the input:';
@@ -139,12 +147,12 @@ class TextResponseEditor extends React.Component {
   }
 }
 
-          // <AgentSelector
-          //   label="Optional AI agent:"
-          //   agent={agent}
-          //   type={type}
-          //   onChange={onChange}
-          // />
+// <AgentSelector
+//   label="Optional AI agent:"
+//   agent={agent}
+//   type={type}
+//   onChange={onChange}
+// />
 TextResponseEditor.propTypes = {
   onChange: PropTypes.func.isRequired,
   slideIndex: PropTypes.any,

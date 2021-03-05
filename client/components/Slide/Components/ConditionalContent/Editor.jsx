@@ -57,7 +57,9 @@ class ConditionalContentEditor extends React.Component {
     super(props);
     const {
       // agent = null,
-      html, rules = [] } = props.value;
+      html,
+      rules = []
+    } = props.value;
     this.state = {
       // agent,
       html,
@@ -84,7 +86,9 @@ class ConditionalContentEditor extends React.Component {
 
     const {
       // agent,
-      html, rules } = this.props.value;
+      html,
+      rules
+    } = this.props.value;
 
     const lastProps = {
       // agent,
@@ -107,7 +111,9 @@ class ConditionalContentEditor extends React.Component {
   updateState() {
     const {
       // agent,
-      html, rules } = this.state;
+      html,
+      rules
+    } = this.state;
     this.props.onChange({
       // agent,
       html,
@@ -196,7 +202,9 @@ class ConditionalContentEditor extends React.Component {
     } = this.props;
     const {
       // agent,
-      html, rules } = this.state;
+      html,
+      rules
+    } = this.state;
     const {
       onChange,
       updateState,
@@ -259,14 +267,14 @@ class ConditionalContentEditor extends React.Component {
       return [...new Set([...accum, agent.id])];
     }, []);
 
-                // <AgentSelector
-                //   label="Select an AI agent:"
-                //   agent={agent}
-                //   agentsInUse={agentsInUse}
-                //   onChange={onChange}
-                //   types={['AudioPrompt', 'ConversationPrompt', 'TextResponse']}
-                //   updateState={updateState}
-                // />
+    // <AgentSelector
+    //   label="Select an AI agent:"
+    //   agent={agent}
+    //   agentsInUse={agentsInUse}
+    //   onChange={onChange}
+    //   types={['AudioPrompt', 'ConversationPrompt', 'TextResponse']}
+    //   updateState={updateState}
+    // />
     return (
       <Form>
         <Container fluid>

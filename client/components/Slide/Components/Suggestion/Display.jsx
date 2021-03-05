@@ -66,7 +66,7 @@ Display.defaultProps = {
 Display.propTypes = {
   isEmbeddedInSVG: PropTypes.bool,
   color: PropTypes.string.isRequired,
-  html: PropTypes.string.isRequired,
+  html: PropTypes.string,
   id: PropTypes.string,
   open: PropTypes.bool,
   saveRunEvent: PropTypes.func,
