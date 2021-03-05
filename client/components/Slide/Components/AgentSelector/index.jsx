@@ -1,6 +1,6 @@
-import React, { Component, Fragment } from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { Form, Message } from '@components/UI';
+import { Form } from '@components/UI';
 import AgentSelect from '@components/Admin/AgentSelect';
 
 const ariaLabel = 'Optional AI agent to engage in this discussion:';

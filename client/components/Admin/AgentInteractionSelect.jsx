@@ -104,6 +104,7 @@ class AgentInteractionSelect extends Component {
 }
 
 AgentInteractionSelect.propTypes = {
+  getInteractions: PropTypes.func,
   defaultValue: PropTypes.number,
   error: PropTypes.bool,
   emptyText: PropTypes.string,

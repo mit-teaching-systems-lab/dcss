@@ -371,6 +371,8 @@ class EntrySlide extends React.Component {
 }
 
 EntrySlide.propTypes = {
+  chat: PropTypes.object,
+  cohort: PropTypes.object,
   onChange: PropTypes.func,
   onNextClick: PropTypes.func,
   permissions: PropTypes.object,

@@ -147,8 +147,6 @@ class Chat extends Component {
       await this.props.getChat(this.props.chat.id);
     }
 
-    const { chat, user } = this.props;
-
     // If this chat has been closed, then there is no
     // further loading or registering to do.
     if (this.props.chat.ended_at) {

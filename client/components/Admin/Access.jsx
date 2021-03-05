@@ -4,12 +4,10 @@ import { withRouter } from 'react-router-dom';
 import escapeRegExp from 'lodash.escaperegexp';
 import PropTypes from 'prop-types';
 import {
-  Grid,
   Icon,
   Input,
   List,
   Menu,
-  Pagination,
   Table
 } from '@components/UI';
 
@@ -147,9 +145,9 @@ class Access extends Component {
   }
 
   render() {
-    const { onPageChange, onSearch, onSelect } = this;
+    const { onPageChange, onSearch, /*onSelect*/ } = this;
     const { user } = this.props;
-    const { id, isReady, activePage } = this.state;
+    const { /*id,*/ isReady, activePage } = this.state;
 
     const defaultRowCount = 10;
     // known total height of all ui that is not a table row

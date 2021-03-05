@@ -96,7 +96,6 @@ class AgentInteractionEditor extends Component {
       [name]: value
     };
 
-    console.log('interaction', interaction);
     this.setState({
       interaction
     });
@@ -107,7 +106,7 @@ class AgentInteractionEditor extends Component {
   }
 
   render() {
-    const { error, open, interaction } = this.state;
+    const { error, interaction } = this.state;
     const { onChange, onCancel, onSubmit } = this;
     const isNewInteraction = !interaction.id;
 
@@ -122,12 +121,6 @@ class AgentInteractionEditor extends Component {
 
     const createOrSave = isNewInteraction ? 'Create' : 'Save';
     const cancelOrClose = isNewInteraction ? 'Cancel' : 'Close';
-    const colorPickerProps = {
-      name: 'color',
-      value: interaction.color,
-      onChange,
-      position: 'absolute'
-    };
 
     const options = this.props.interactionsTypes.map(type => {
       return {

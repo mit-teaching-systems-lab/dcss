@@ -60,7 +60,7 @@ class LobbyUserOverview extends Component {
           }
 
           const key = Identity.key({ user, index });
-          const avatar = new Avatar(user);
+          // const avatar = new Avatar(user);
           const scenario = user.chat
             ? this.props.scenariosById[user.chat.scenario_id]
             : null;
@@ -94,8 +94,6 @@ class LobbyUserOverview extends Component {
   }
 
   renderChatCards(chats) {
-    const { chat } = this.props;
-
     return chats.reduce((accum, chat, index) => {
       const key = Identity.key({ chat, index });
       const host = this.props.usersById[chat.host_id];
@@ -267,6 +265,7 @@ LobbyUserOverview.propTypes = {
   cohort: PropTypes.object,
   getCohortChatsOverview: PropTypes.func,
   scenario: PropTypes.object,
+  scenariosById: PropTypes.object,
   user: PropTypes.object,
   users: PropTypes.array,
   usersById: PropTypes.object

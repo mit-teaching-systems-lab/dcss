@@ -248,7 +248,14 @@ class Display extends Component {
     const { isReady, isRestart, hasAQuorum, hasSubmittedResponse } = this.state;
 
     if (isEmbeddedInSVG || !this.isScenarioRun) {
-      return null;
+      return (
+        <Menu borderless>
+          <Menu.Item>
+            <Icon name="discussions" />
+            Discussion
+          </Menu.Item>
+        </Menu>
+      );
     }
 
     const isUserHost = chat.host_id === user.id;
@@ -363,13 +370,9 @@ class Display extends Component {
     return (
       <Menu borderless>
         {discussionIsOpen && isUserHost && timer ? timerRender : null}
-
         {isUserHost ? dropdownOrResultOfDiscussion : null}
-
         {!isUserHost ? resultOfDiscussion : null}
-
         {!isUserHost && !defaultValue && timer ? timerRender : null}
-
         <Menu.Menu position="right">
           {discussionIsOpen && chat && isReady ? <Chat {...chatProps} /> : null}
         </Menu.Menu>

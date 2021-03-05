@@ -130,13 +130,14 @@ class AgentSelect extends Component {
 }
 
 AgentSelect.propTypes = {
+  agents: PropTypes.array,
+  agentsById: PropTypes.object,
   agentsInUse: PropTypes.array,
   defaultValue: PropTypes.number,
   error: PropTypes.bool,
   emptyText: PropTypes.string,
   fluid: PropTypes.bool,
-  agents: PropTypes.array,
-  agentsById: PropTypes.object,
+  getAgents: PropTypes.func,
   item: PropTypes.any,
   onSelect: PropTypes.func,
   placeholder: PropTypes.string,
