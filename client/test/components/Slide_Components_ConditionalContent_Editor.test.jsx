@@ -175,8 +175,21 @@ beforeEach(() => {
   };
   slideIndex = 0;
   value = {
+    agent: null,
+    disableRequireCheckbox: true,
+    header: '',
     id: 'XYZ',
-    rules: [],
+    rules: [
+      {
+        operator: null,
+        value: null
+      }
+    ],
+    persona: null,
+    recallId: 'xyz-recallId',
+    required: false,
+    responseId: 'xyz-responseId',
+    html: '<p></p>',
     type: 'ConditionalContent'
   };
 

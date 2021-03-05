@@ -464,7 +464,6 @@ class ConditionalContentEditor extends React.Component {
                   </Table.Footer>
                 </Table>
                 <RichTextEditor
-                  id="html"
                   name="html"
                   defaultValue={html}
                   onChange={value => {

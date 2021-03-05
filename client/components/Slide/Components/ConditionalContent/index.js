@@ -3,7 +3,7 @@ export { type, name, description };
 export { default as Display } from './Display';
 export { default as Editor } from './Editor';
 export { default as Card } from './Card';
-export const defaultValue = () => ({
+export const defaultValue = ({ responseId }) => ({
   /*
   Authors will select from currently in-use agents,
   that list is also limited to a subset of agents.
@@ -12,24 +12,19 @@ export const defaultValue = () => ({
   Conditional Content outputs.
   */
   agent: null,
+  disableRequireCheckbox: true,
+  header: '',
   id: '',
-  persona: null,
   rules: [
-    // See util/Conditional
-    /* Example:
-
-    This will check an see if an agent responded
-    in the affirmative, less than or equal 10 times.
     {
-      affirmative: {
-        $lte: 10
-      }
+      operator: null,
+      value: null
     }
-
-    All rules must evaluate to true for the content to be displayed.
-
-    */
   ],
+  persona: null,
+  recallId: '',
+  required: false,
+  responseId,
   html: '<p></p>',
   type
 });
