@@ -56,12 +56,12 @@ class ConditionalContentEditor extends React.Component {
   constructor(props) {
     super(props);
     const {
-      // agent = null,
+      agent = null,
       html,
       rules = []
     } = props.value;
     this.state = {
-      // agent,
+      agent,
       html,
       rules,
       rule: {

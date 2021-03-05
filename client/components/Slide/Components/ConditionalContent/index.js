@@ -17,8 +17,8 @@ export const defaultValue = ({ responseId }) => ({
   id: '',
   rules: [
     {
-      operator: null,
-      value: null
+      operator: '',
+      value: ''
     }
   ],
   persona: null,
