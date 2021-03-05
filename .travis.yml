@@ -4,7 +4,7 @@ node_js:
 
 env:
   global:
-    # - DB_CONFIG=test
+    - DB_CONFIG=test
     - SENDGRID_API_KEY=xyz
     - SESSION_SECRET=any
     - SENDGRID_SENDER='teachermoments@mit.edu'
@@ -15,10 +15,10 @@ before_install:
   - export TZ=America/New_York
 
 services:
-  # - postgresql
+  - postgresql
 
-# before_script:
-#   - yarn db-init-local
+before_script:
+  - yarn db-init-local
 
 jobs:
   include:
