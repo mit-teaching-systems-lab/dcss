@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Dropdown, Table } from '@components/UI';
 import { getAgents } from '@actions/agent';
 
-const AgentSelect = ({ title, description }) => {
+const AgentSelectItem = ({ title, description }) => {
   return (
     <Table>
       <Table.Header>
@@ -23,12 +23,12 @@ const AgentSelect = ({ title, description }) => {
   );
 };
 
-AgentSelect.propTypes = {
+AgentSelectItem.propTypes = {
   description: PropTypes.string,
   title: PropTypes.string
 };
 
-class AgentInteractionSelect extends Component {
+class AgentSelect extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -36,13 +36,23 @@ class AgentInteractionSelect extends Component {
     };
 
     this.onChange = this.onChange.bind(this);
+    this.hasUnmounted = false;
   }
 
   async componentDidMount() {
-    await this.props.getAgents();
-    this.setState({
-      isReady: true
-    });
+    if (!this.props.agentsInUse &&
+        !this.props.agents.length) {
+      await this.props.getAgents();
+      if (!this.hasUnmounted) {
+        this.setState({
+          isReady: true
+        });
+      }
+    }
+  }
+
+  componentWillUnmount() {
+    this.hasUnmounted = true;
   }
 
   onChange(e, { value }) {
@@ -85,7 +95,7 @@ class AgentInteractionSelect extends Component {
       };
 
       if (agent.id && agent.title) {
-        option.content = <AgentSelect {...agent} />;
+        option.content = <AgentSelectItem {...agent} />;
 
         const isSupported = types.every(type =>
           agent.interaction.types.includes(type)
@@ -120,7 +130,7 @@ class AgentInteractionSelect extends Component {
   }
 }
 
-AgentInteractionSelect.propTypes = {
+AgentSelect.propTypes = {
   agentsInUse: PropTypes.array,
   defaultValue: PropTypes.number,
   error: PropTypes.bool,
@@ -168,6 +178,7 @@ const mapStateToProps = (state, ownProps) => {
 
   return {
     agents,
+    agentsInUse,
     agentsById,
     emptyText,
     placeholder,
@@ -182,4 +193,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(AgentInteractionSelect);
+)(AgentSelect);
