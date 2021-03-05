@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import escapeRegExp from 'lodash.escaperegexp';
 import { type } from './meta';
-// import AgentSelector from '@components/Slide/Components/AgentSelector';
+import AgentSelector from '@components/Slide/Components/AgentSelector';
 import EditorMenu from '@components/EditorMenu';
 import RichTextEditor from '@components/RichTextEditor';
 import Sortable from '@components/Sortable';
@@ -183,7 +183,7 @@ class ConditionalContentEditor extends React.Component {
       value: { id }
     } = this.props;
     const {
-      // agent,
+      agent,
       html,
       rules
     } = this.state;
@@ -235,20 +235,21 @@ class ConditionalContentEditor extends React.Component {
       return [...new Set([...accum, agent.id])];
     }, []);
 
-    // <AgentSelector
-    //   label="Select an AI agent:"
-    //   agent={agent}
-    //   agentsInUse={agentsInUse}
-    //   onChange={onChange}
-    //   types={['AudioPrompt', 'ConversationPrompt', 'TextResponse']}
-    //   updateState={updateState}
-    // />
     return (
       <Form>
         <Container fluid>
           <Grid>
             <Grid.Row>
               <Grid.Column>
+                {agentsInUse ? (
+                  <AgentSelector
+                    label="Select an AI agent:"
+                    agent={agent}
+                    agentsInUse={agentsInUse}
+                    onChange={onChange}
+                    types={['AudioPrompt', 'ConversationPrompt', 'TextResponse']}
+                  />
+                ) : null}
                 <Segment>
                   <p tabIndex="0" className="cce__paragraph">
                     Create rules that are used to determine if the content below
@@ -373,7 +374,7 @@ class ConditionalContentEditor extends React.Component {
                                 aria-label={`Enter the value for expression ${index +
                                   1}`}
                                 index={index}
-                                value={value}
+                                value={value || ''}
                                 onChange={onRuleDetailChange}
                                 options={options}
                                 key={`rule-operator-${baseKey}`}

@@ -139,6 +139,13 @@ exports[`Add another slide choice empty fields 2`] = `
           </tfoot>
         </table>
         <div
+          class=\\"field\\"
+        >
+          <label>
+            Optional AI agent to engage in this discussion:
+          </label>
+        </div>
+        <div
           class=\\"ui grey message\\"
         >
           <div
@@ -661,6 +668,13 @@ exports[`Add another slide choice empty fields 3`] = `
             </tr>
           </tfoot>
         </table>
+        <div
+          class=\\"field\\"
+        >
+          <label>
+            Optional AI agent to engage in this discussion:
+          </label>
+        </div>
         <div
           class=\\"ui grey message\\"
         >
@@ -1193,6 +1207,13 @@ exports[`Add another slide choice empty fields 5`] = `
           </tfoot>
         </table>
         <div
+          class=\\"field\\"
+        >
+          <label>
+            Optional AI agent to engage in this discussion:
+          </label>
+        </div>
+        <div
           class=\\"ui grey message\\"
         >
           <div
@@ -1723,6 +1744,13 @@ exports[`Add another slide choice empty fields 6`] = `
             </tr>
           </tfoot>
         </table>
+        <div
+          class=\\"field\\"
+        >
+          <label>
+            Optional AI agent to engage in this discussion:
+          </label>
+        </div>
         <div
           class=\\"ui grey message\\"
         >
@@ -2255,6 +2283,13 @@ exports[`Add another slide choice empty fields 8`] = `
           </tfoot>
         </table>
         <div
+          class=\\"field\\"
+        >
+          <label>
+            Optional AI agent to engage in this discussion:
+          </label>
+        </div>
+        <div
           class=\\"ui grey message\\"
         >
           <div
@@ -2785,6 +2820,13 @@ exports[`Add another slide choice empty fields 9`] = `
             </tr>
           </tfoot>
         </table>
+        <div
+          class=\\"field\\"
+        >
+          <label>
+            Optional AI agent to engage in this discussion:
+          </label>
+        </div>
         <div
           class=\\"ui grey message\\"
         >
@@ -3690,6 +3732,13 @@ exports[`Add prompt 2`] = `
           </tfoot>
         </table>
         <div
+          class=\\"field\\"
+        >
+          <label>
+            Optional AI agent to engage in this discussion:
+          </label>
+        </div>
+        <div
           class=\\"ui grey message\\"
         >
           <div
@@ -4584,6 +4633,13 @@ exports[`Add prompt 3`] = `
             </tr>
           </tfoot>
         </table>
+        <div
+          class=\\"field\\"
+        >
+          <label>
+            Optional AI agent to engage in this discussion:
+          </label>
+        </div>
         <div
           class=\\"ui grey message\\"
         >
@@ -5489,6 +5545,13 @@ exports[`Delete choice 2`] = `
           </tfoot>
         </table>
         <div
+          class=\\"field\\"
+        >
+          <label>
+            Optional AI agent to engage in this discussion:
+          </label>
+        </div>
+        <div
           class=\\"ui grey message\\"
         >
           <div
@@ -6386,6 +6449,13 @@ exports[`Delete choice 3`] = `
           </tfoot>
         </table>
         <div
+          class=\\"field\\"
+        >
+          <label>
+            Optional AI agent to engage in this discussion:
+          </label>
+        </div>
+        <div
           class=\\"ui grey message\\"
         >
           <div
@@ -6970,6 +7040,13 @@ exports[`Delete choice 4`] = `
           </tfoot>
         </table>
         <div
+          class=\\"field\\"
+        >
+          <label>
+            Optional AI agent to engage in this discussion:
+          </label>
+        </div>
+        <div
           class=\\"ui grey message\\"
         >
           <div
@@ -7493,6 +7570,13 @@ exports[`Delete choice 5`] = `
           </tfoot>
         </table>
         <div
+          class=\\"field\\"
+        >
+          <label>
+            Optional AI agent to engage in this discussion:
+          </label>
+        </div>
+        <div
           class=\\"ui grey message\\"
         >
           <div
@@ -7656,6 +7740,13 @@ exports[`Missing props 2`] = `
             </tr>
           </tfoot>
         </table>
+        <div
+          class=\\"field\\"
+        >
+          <label>
+            Optional AI agent to engage in this discussion:
+          </label>
+        </div>
         <div
           class=\\"ui red message\\"
         >
@@ -7822,6 +7913,13 @@ exports[`Paths empty 2`] = `
             </tr>
           </tfoot>
         </table>
+        <div
+          class=\\"field\\"
+        >
+          <label>
+            Optional AI agent to engage in this discussion:
+          </label>
+        </div>
         <div
           class=\\"ui grey message\\"
         >
@@ -7992,6 +8090,13 @@ exports[`Prevent empty fields 2`] = `
             </tr>
           </tfoot>
         </table>
+        <div
+          class=\\"field\\"
+        >
+          <label>
+            Optional AI agent to engage in this discussion:
+          </label>
+        </div>
         <div
           class=\\"ui grey message\\"
         >
@@ -8515,6 +8620,13 @@ exports[`Prevent empty fields 3`] = `
             </tr>
           </tfoot>
         </table>
+        <div
+          class=\\"field\\"
+        >
+          <label>
+            Optional AI agent to engage in this discussion:
+          </label>
+        </div>
         <div
           class=\\"ui grey message\\"
         >
@@ -9047,6 +9159,13 @@ exports[`Prevent empty fields 5`] = `
           </tfoot>
         </table>
         <div
+          class=\\"field\\"
+        >
+          <label>
+            Optional AI agent to engage in this discussion:
+          </label>
+        </div>
+        <div
           class=\\"ui grey message\\"
         >
           <div
@@ -9577,6 +9696,13 @@ exports[`Prevent empty fields 6`] = `
             </tr>
           </tfoot>
         </table>
+        <div
+          class=\\"field\\"
+        >
+          <label>
+            Optional AI agent to engage in this discussion:
+          </label>
+        </div>
         <div
           class=\\"ui grey message\\"
         >
@@ -10109,6 +10235,13 @@ exports[`Prevent empty fields 8`] = `
           </tfoot>
         </table>
         <div
+          class=\\"field\\"
+        >
+          <label>
+            Optional AI agent to engage in this discussion:
+          </label>
+        </div>
+        <div
           class=\\"ui grey message\\"
         >
           <div
@@ -10639,6 +10772,13 @@ exports[`Prevent empty fields 9`] = `
             </tr>
           </tfoot>
         </table>
+        <div
+          class=\\"field\\"
+        >
+          <label>
+            Optional AI agent to engage in this discussion:
+          </label>
+        </div>
         <div
           class=\\"ui grey message\\"
         >
@@ -11171,6 +11311,13 @@ exports[`Prevent empty fields 11`] = `
           </tfoot>
         </table>
         <div
+          class=\\"field\\"
+        >
+          <label>
+            Optional AI agent to engage in this discussion:
+          </label>
+        </div>
+        <div
           class=\\"ui grey message\\"
         >
           <div
@@ -11701,6 +11848,13 @@ exports[`Prevent empty fields 12`] = `
             </tr>
           </tfoot>
         </table>
+        <div
+          class=\\"field\\"
+        >
+          <label>
+            Optional AI agent to engage in this discussion:
+          </label>
+        </div>
         <div
           class=\\"ui grey message\\"
         >
@@ -12608,6 +12762,13 @@ exports[`Save choice 2`] = `
           </tfoot>
         </table>
         <div
+          class=\\"field\\"
+        >
+          <label>
+            Optional AI agent to engage in this discussion:
+          </label>
+        </div>
+        <div
           class=\\"ui grey message\\"
         >
           <div
@@ -13503,6 +13664,13 @@ exports[`Save choice 3`] = `
           </tfoot>
         </table>
         <div
+          class=\\"field\\"
+        >
+          <label>
+            Optional AI agent to engage in this discussion:
+          </label>
+        </div>
+        <div
           class=\\"ui grey message\\"
         >
           <div
@@ -13686,6 +13854,13 @@ exports[`Search for slide 2`] = `
             </tr>
           </tfoot>
         </table>
+        <div
+          class=\\"field\\"
+        >
+          <label>
+            Optional AI agent to engage in this discussion:
+          </label>
+        </div>
         <div
           class=\\"ui grey message\\"
         >
@@ -14209,6 +14384,13 @@ exports[`Search for slide 3`] = `
             </tr>
           </tfoot>
         </table>
+        <div
+          class=\\"field\\"
+        >
+          <label>
+            Optional AI agent to engage in this discussion:
+          </label>
+        </div>
         <div
           class=\\"ui grey message\\"
         >
@@ -14741,6 +14923,13 @@ exports[`Search for slide 5`] = `
           </tfoot>
         </table>
         <div
+          class=\\"field\\"
+        >
+          <label>
+            Optional AI agent to engage in this discussion:
+          </label>
+        </div>
+        <div
           class=\\"ui grey message\\"
         >
           <div
@@ -15271,6 +15460,13 @@ exports[`Search for slide 6`] = `
             </tr>
           </tfoot>
         </table>
+        <div
+          class=\\"field\\"
+        >
+          <label>
+            Optional AI agent to engage in this discussion:
+          </label>
+        </div>
         <div
           class=\\"ui grey message\\"
         >
@@ -16032,6 +16228,13 @@ exports[`Slide has title 2`] = `
           </tfoot>
         </table>
         <div
+          class=\\"field\\"
+        >
+          <label>
+            Optional AI agent to engage in this discussion:
+          </label>
+        </div>
+        <div
           class=\\"ui grey message\\"
         >
           <div
@@ -16220,6 +16423,13 @@ exports[`View Graph 2`] = `
           </tfoot>
         </table>
         <div
+          class=\\"field\\"
+        >
+          <label>
+            Optional AI agent to engage in this discussion:
+          </label>
+        </div>
+        <div
           class=\\"ui grey message\\"
         >
           <div
@@ -16378,6 +16588,13 @@ exports[`View Graph 3`] = `
             </tr>
           </tfoot>
         </table>
+        <div
+          class=\\"field\\"
+        >
+          <label>
+            Optional AI agent to engage in this discussion:
+          </label>
+        </div>
         <div
           class=\\"ui grey message\\"
         >

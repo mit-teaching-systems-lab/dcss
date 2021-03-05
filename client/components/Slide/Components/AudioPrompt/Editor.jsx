@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Identity from '@utils/Identity';
 import { Container, Form, Message } from '@components/UI';
 import { type } from './meta';
-// import AgentSelector from '@components/Slide/Components/AgentSelector';
+import AgentSelector from '@components/Slide/Components/AgentSelector';
 import DataHeader from '@components/Slide/Components/DataHeader';
 import ResponseRecall from '@components/Slide/Components/ResponseRecall/Editor';
 import './AudioPrompt.css';
@@ -87,13 +87,6 @@ class AudioPromptEditor extends Component {
     const { scenario, slideIndex } = this.props;
     const { onChange, onRecallChange, updateState } = this;
 
-    // <AgentSelector
-    //   label="Optional AI agent:"
-    //   agent={agent}
-    //   type={type}
-    //   onChange={onChange}
-    // />
-
     return (
       <Form>
         <Container fluid>
@@ -112,6 +105,13 @@ class AudioPromptEditor extends Component {
             value={prompt}
             onChange={onChange}
             onBlur={updateState}
+          />
+
+          <AgentSelector
+            label="Optional AI agent:"
+            agent={agent}
+            type={type}
+            onChange={onChange}
           />
 
           <DataHeader

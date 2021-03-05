@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import escapeRegExp from 'lodash.escaperegexp';
-import Identity from '@utils/Identity';
+import AgentSelector from '@components/Slide/Components/AgentSelector';
 import {
   Container,
   ColorPicker,
@@ -20,6 +20,7 @@ import Sortable from '@components/Sortable';
 import ResponseRecall from '@components/Slide/Components/ResponseRecall/Editor';
 import SlideComponents from '@components/SlideComponents';
 import MultiPathNetworkGraphModal from './MultiPathNetworkGraphModal';
+import Identity from '@utils/Identity';
 import '@components/Slide/SlideEditor/SlideEditor.css';
 import './MultiPathResponse.css';
 
@@ -265,7 +266,7 @@ class MultiPathResponseEditor extends React.Component {
       slideIndex,
       value: { id }
     } = this.props;
-    const { header, prompt, paths, open, recallId } = this.state;
+    const { agent, header, prompt, paths, open, recallId } = this.state;
 
     if (!slides.length) {
       return null;
@@ -506,6 +507,13 @@ class MultiPathResponseEditor extends React.Component {
               </Table.Row>
             </Table.Footer>
           </Table>
+
+          <AgentSelector
+            agent={agent}
+            type={type}
+            onChange={onChange}
+          />
+
           <DataHeader
             content={header}
             onChange={onChange}

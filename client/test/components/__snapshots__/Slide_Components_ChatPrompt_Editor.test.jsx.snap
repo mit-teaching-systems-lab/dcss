@@ -153,6 +153,13 @@ exports[`Render 1 1 1`] = `
         </div>
       </div>
       <div
+        class="field"
+      >
+        <label>
+          Optional AI agent to engage in this discussion:
+        </label>
+      </div>
+      <div
         class="ui grey message"
       >
         <div

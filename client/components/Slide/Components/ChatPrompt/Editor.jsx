@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import pluralize from 'pluralize';
-// import AgentSelector from '@components/Slide/Components/AgentSelector';
+import AgentSelector from '@components/Slide/Components/AgentSelector';
 import TimeField from 'react-simple-timefield';
 import {
   Checkbox,
@@ -152,11 +152,6 @@ class ChatPromptEditor extends React.Component {
       ss ? `${ss} ${pluralize('second', ss)}` : ''
     ].join(' ');
 
-    // <AgentSelector
-    //   agent={agent}
-    //   type={type}
-    //   onChange={onChange}
-    // />
     return (
       <Form>
         <Container fluid>
@@ -233,6 +228,13 @@ class ChatPromptEditor extends React.Component {
               </Grid.Column>
             </Grid.Row>
           </Grid>
+
+          <AgentSelector
+            agent={agent}
+            type={type}
+            onChange={onChange}
+          />
+
           <DataHeader
             content={header}
             onChange={onChange}

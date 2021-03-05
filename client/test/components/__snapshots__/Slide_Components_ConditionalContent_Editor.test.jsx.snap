@@ -18,6 +18,13 @@ exports[`Render 1 1 1`] = `
             class="column"
           >
             <div
+              class="field"
+            >
+              <label>
+                Select an AI agent:
+              </label>
+            </div>
+            <div
               class="ui segment"
             >
               <p

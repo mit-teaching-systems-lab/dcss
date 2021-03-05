@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Identity from '@utils/Identity';
 import {
   Container,
   ColorPicker,
@@ -11,10 +10,12 @@ import {
   Table
 } from '@components/UI';
 import { type } from './meta';
+import AgentSelector from '@components/Slide/Components/AgentSelector';
 import EditorMenu from '@components/EditorMenu';
 import DataHeader from '@components/Slide/Components/DataHeader';
 import Sortable from '@components/Sortable';
 import ResponseRecall from '@components/Slide/Components/ResponseRecall/Editor';
+import Identity from '@utils/Identity';
 import '@components/Slide/SlideEditor/SlideEditor.css';
 import './MultiButtonResponse.css';
 
@@ -172,7 +173,7 @@ class MultiButtonResponseEditor extends React.Component {
 
   render() {
     const { scenario, slideIndex } = this.props;
-    const { header, id, prompt, buttons, recallId } = this.state;
+    const { agent, header, id, prompt, buttons, recallId } = this.state;
 
     const {
       onButtonAddClick,
@@ -324,6 +325,13 @@ class MultiButtonResponseEditor extends React.Component {
               </Table.Row>
             </Table.Footer>
           </Table>
+
+          <AgentSelector
+            agent={agent}
+            type={type}
+            onChange={onChange}
+          />
+
           <DataHeader
             content={header}
             onChange={onChange}

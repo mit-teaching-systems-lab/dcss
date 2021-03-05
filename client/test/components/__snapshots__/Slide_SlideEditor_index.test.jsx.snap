@@ -314,6 +314,13 @@ exports[`Add a non-response-prompt component 1`] = `
                               </div>
                             </div>
                             <div
+                              class=\\"field\\"
+                            >
+                              <label>
+                                Optional AI agent to engage in this discussion:
+                              </label>
+                            </div>
+                            <div
                               class=\\"ui grey message\\"
                             >
                               <div
@@ -878,6 +885,13 @@ exports[`Add a non-response-prompt component 2`] = `
                                   value=\\"Your response\\"
                                 />
                               </div>
+                            </div>
+                            <div
+                              class=\\"field\\"
+                            >
+                              <label>
+                                Optional AI agent to engage in this discussion:
+                              </label>
                             </div>
                             <div
                               class=\\"ui grey message\\"
@@ -1446,6 +1460,13 @@ exports[`Add a non-response-prompt component 3`] = `
                               </div>
                             </div>
                             <div
+                              class=\\"field\\"
+                            >
+                              <label>
+                                Optional AI agent to engage in this discussion:
+                              </label>
+                            </div>
+                            <div
                               class=\\"ui grey message\\"
                             >
                               <div
@@ -1972,6 +1993,13 @@ exports[`Add a non-response-prompt component at the end 1`] = `
                                   value=\\"Your response\\"
                                 />
                               </div>
+                            </div>
+                            <div
+                              class=\\"field\\"
+                            >
+                              <label>
+                                Optional AI agent to engage in this discussion:
+                              </label>
                             </div>
                             <div
                               class=\\"ui grey message\\"
@@ -2502,6 +2530,13 @@ exports[`Add a non-response-prompt component at the end 2`] = `
                               </div>
                             </div>
                             <div
+                              class=\\"field\\"
+                            >
+                              <label>
+                                Optional AI agent to engage in this discussion:
+                              </label>
+                            </div>
+                            <div
                               class=\\"ui grey message\\"
                             >
                               <div
@@ -3028,6 +3063,13 @@ exports[`Add a non-response-prompt component at the end 3`] = `
                                   value=\\"Your response\\"
                                 />
                               </div>
+                            </div>
+                            <div
+                              class=\\"field\\"
+                            >
+                              <label>
+                                Optional AI agent to engage in this discussion:
+                              </label>
                             </div>
                             <div
                               class=\\"ui grey message\\"
@@ -3596,6 +3638,13 @@ exports[`Add a non-response-prompt component at the end 4`] = `
                               </div>
                             </div>
                             <div
+                              class=\\"field\\"
+                            >
+                              <label>
+                                Optional AI agent to engage in this discussion:
+                              </label>
+                            </div>
+                            <div
                               class=\\"ui grey message\\"
                             >
                               <div
@@ -4162,6 +4211,13 @@ exports[`Add a non-response-prompt component at the end 5`] = `
                               </div>
                             </div>
                             <div
+                              class=\\"field\\"
+                            >
+                              <label>
+                                Optional AI agent to engage in this discussion:
+                              </label>
+                            </div>
+                            <div
                               class=\\"ui grey message\\"
                             >
                               <div
@@ -4401,6 +4457,13 @@ exports[`Add a non-response-prompt component at the end 5`] = `
                                   value=\\"Your response\\"
                                 />
                               </div>
+                            </div>
+                            <div
+                              class=\\"field\\"
+                            >
+                              <label>
+                                Optional AI agent to engage in this discussion:
+                              </label>
                             </div>
                             <div
                               class=\\"ui grey message\\"
@@ -4889,6 +4952,13 @@ exports[`Add a response-prompt component 1`] = `
                                   value=\\"Your response\\"
                                 />
                               </div>
+                            </div>
+                            <div
+                              class=\\"field\\"
+                            >
+                              <label>
+                                Optional AI agent to engage in this discussion:
+                              </label>
                             </div>
                             <div
                               class=\\"ui grey message\\"
@@ -5417,6 +5487,13 @@ exports[`Add a response-prompt component that has disableRequireCheckbox 1`] = `
                                   value=\\"Your response\\"
                                 />
                               </div>
+                            </div>
+                            <div
+                              class=\\"field\\"
+                            >
+                              <label>
+                                Optional AI agent to engage in this discussion:
+                              </label>
                             </div>
                             <div
                               class=\\"ui grey message\\"
@@ -6023,6 +6100,13 @@ exports[`Add a response-prompt component to a slide without a title 1`] = `
                               </div>
                             </div>
                             <div
+                              class=\\"field\\"
+                            >
+                              <label>
+                                Optional AI agent to engage in this discussion:
+                              </label>
+                            </div>
+                            <div
                               class=\\"ui grey message\\"
                             >
                               <div
@@ -6587,6 +6671,13 @@ exports[`Change title 1`] = `
                               </div>
                             </div>
                             <div
+                              class=\\"field\\"
+                            >
+                              <label>
+                                Optional AI agent to engage in this discussion:
+                              </label>
+                            </div>
+                            <div
                               class=\\"ui grey message\\"
                             >
                               <div
@@ -7149,6 +7240,13 @@ exports[`Change title 2`] = `
                                   value=\\"Your response\\"
                                 />
                               </div>
+                            </div>
+                            <div
+                              class=\\"field\\"
+                            >
+                              <label>
+                                Optional AI agent to engage in this discussion:
+                              </label>
                             </div>
                             <div
                               class=\\"ui grey message\\"
@@ -7727,6 +7825,13 @@ exports[`Change title 3`] = `
                                   value=\\"Your response\\"
                                 />
                               </div>
+                            </div>
+                            <div
+                              class=\\"field\\"
+                            >
+                              <label>
+                                Optional AI agent to engage in this discussion:
+                              </label>
                             </div>
                             <div
                               class=\\"ui grey message\\"
@@ -8309,6 +8414,13 @@ exports[`Click to activate component 1`] = `
                               </div>
                             </div>
                             <div
+                              class=\\"field\\"
+                            >
+                              <label>
+                                Optional AI agent to engage in this discussion:
+                              </label>
+                            </div>
+                            <div
                               class=\\"ui grey message\\"
                             >
                               <div
@@ -8875,6 +8987,13 @@ exports[`Click to activate component 2`] = `
                               </div>
                             </div>
                             <div
+                              class=\\"field\\"
+                            >
+                              <label>
+                                Optional AI agent to engage in this discussion:
+                              </label>
+                            </div>
+                            <div
                               class=\\"ui grey message\\"
                             >
                               <div
@@ -9439,6 +9558,13 @@ exports[`Click to activate component 3`] = `
                                   value=\\"Your response\\"
                                 />
                               </div>
+                            </div>
+                            <div
+                              class=\\"field\\"
+                            >
+                              <label>
+                                Optional AI agent to engage in this discussion:
+                              </label>
                             </div>
                             <div
                               class=\\"ui grey message\\"
@@ -10118,6 +10244,13 @@ exports[`Component is missing an id 1`] = `
                               </div>
                             </div>
                             <div
+                              class=\\"field\\"
+                            >
+                              <label>
+                                Optional AI agent to engage in this discussion:
+                              </label>
+                            </div>
+                            <div
                               class=\\"ui grey message\\"
                             >
                               <div
@@ -10795,6 +10928,13 @@ exports[`Delete a component from the beginning 1`] = `
                               </div>
                             </div>
                             <div
+                              class=\\"field\\"
+                            >
+                              <label>
+                                Optional AI agent to engage in this discussion:
+                              </label>
+                            </div>
+                            <div
                               class=\\"ui grey message\\"
                             >
                               <div
@@ -11361,6 +11501,13 @@ exports[`Delete a component from the beginning 2`] = `
                               </div>
                             </div>
                             <div
+                              class=\\"field\\"
+                            >
+                              <label>
+                                Optional AI agent to engage in this discussion:
+                              </label>
+                            </div>
+                            <div
                               class=\\"ui grey message\\"
                             >
                               <div
@@ -11925,6 +12072,13 @@ exports[`Delete a component from the beginning 3`] = `
                                   value=\\"Your response\\"
                                 />
                               </div>
+                            </div>
+                            <div
+                              class=\\"field\\"
+                            >
+                              <label>
+                                Optional AI agent to engage in this discussion:
+                              </label>
                             </div>
                             <div
                               class=\\"ui grey message\\"
@@ -12495,6 +12649,13 @@ exports[`Delete a component from the beginning 4`] = `
                               </div>
                             </div>
                             <div
+                              class=\\"field\\"
+                            >
+                              <label>
+                                Optional AI agent to engage in this discussion:
+                              </label>
+                            </div>
+                            <div
                               class=\\"ui grey message\\"
                             >
                               <div
@@ -13059,6 +13220,13 @@ exports[`Delete a component from the end 1`] = `
                                   value=\\"Your response\\"
                                 />
                               </div>
+                            </div>
+                            <div
+                              class=\\"field\\"
+                            >
+                              <label>
+                                Optional AI agent to engage in this discussion:
+                              </label>
                             </div>
                             <div
                               class=\\"ui grey message\\"
@@ -13627,6 +13795,13 @@ exports[`Delete a component from the end 2`] = `
                               </div>
                             </div>
                             <div
+                              class=\\"field\\"
+                            >
+                              <label>
+                                Optional AI agent to engage in this discussion:
+                              </label>
+                            </div>
+                            <div
                               class=\\"ui grey message\\"
                             >
                               <div
@@ -14153,6 +14328,13 @@ exports[`Delete a component from the end 3`] = `
                                   value=\\"Your response\\"
                                 />
                               </div>
+                            </div>
+                            <div
+                              class=\\"field\\"
+                            >
+                              <label>
+                                Optional AI agent to engage in this discussion:
+                              </label>
                             </div>
                             <div
                               class=\\"ui grey message\\"
@@ -14820,6 +15002,13 @@ exports[`Delete a component from the end 4`] = `
                               </div>
                             </div>
                             <div
+                              class=\\"field\\"
+                            >
+                              <label>
+                                Optional AI agent to engage in this discussion:
+                              </label>
+                            </div>
+                            <div
                               class=\\"ui grey message\\"
                             >
                               <div
@@ -15325,6 +15514,13 @@ exports[`Delete a component from the middle 1`] = `
                                   value=\\"Your response\\"
                                 />
                               </div>
+                            </div>
+                            <div
+                              class=\\"field\\"
+                            >
+                              <label>
+                                Optional AI agent to engage in this discussion:
+                              </label>
                             </div>
                             <div
                               class=\\"ui grey message\\"
@@ -15893,6 +16089,13 @@ exports[`Delete a component from the middle 2`] = `
                               </div>
                             </div>
                             <div
+                              class=\\"field\\"
+                            >
+                              <label>
+                                Optional AI agent to engage in this discussion:
+                              </label>
+                            </div>
+                            <div
                               class=\\"ui grey message\\"
                             >
                               <div
@@ -16457,6 +16660,13 @@ exports[`Delete a component from the middle 3`] = `
                                   value=\\"Your response\\"
                                 />
                               </div>
+                            </div>
+                            <div
+                              class=\\"field\\"
+                            >
+                              <label>
+                                Optional AI agent to engage in this discussion:
+                              </label>
                             </div>
                             <div
                               class=\\"ui grey message\\"
@@ -17508,6 +17718,13 @@ exports[`Delete, no 1`] = `
                               </div>
                             </div>
                             <div
+                              class=\\"field\\"
+                            >
+                              <label>
+                                Optional AI agent to engage in this discussion:
+                              </label>
+                            </div>
+                            <div
                               class=\\"ui grey message\\"
                             >
                               <div
@@ -18072,6 +18289,13 @@ exports[`Delete, no 2`] = `
                                   value=\\"Your response\\"
                                 />
                               </div>
+                            </div>
+                            <div
+                              class=\\"field\\"
+                            >
+                              <label>
+                                Optional AI agent to engage in this discussion:
+                              </label>
                             </div>
                             <div
                               class=\\"ui grey message\\"
@@ -18701,6 +18925,13 @@ exports[`Delete, no 3`] = `
                               </div>
                             </div>
                             <div
+                              class=\\"field\\"
+                            >
+                              <label>
+                                Optional AI agent to engage in this discussion:
+                              </label>
+                            </div>
+                            <div
                               class=\\"ui grey message\\"
                             >
                               <div
@@ -19263,6 +19494,13 @@ exports[`Delete, yes 1`] = `
                                   value=\\"Your response\\"
                                 />
                               </div>
+                            </div>
+                            <div
+                              class=\\"field\\"
+                            >
+                              <label>
+                                Optional AI agent to engage in this discussion:
+                              </label>
                             </div>
                             <div
                               class=\\"ui grey message\\"
@@ -19829,6 +20067,13 @@ exports[`Delete, yes 2`] = `
                                   value=\\"Your response\\"
                                 />
                               </div>
+                            </div>
+                            <div
+                              class=\\"field\\"
+                            >
+                              <label>
+                                Optional AI agent to engage in this discussion:
+                              </label>
                             </div>
                             <div
                               class=\\"ui grey message\\"
@@ -20458,6 +20703,13 @@ exports[`Delete, yes 3`] = `
                               </div>
                             </div>
                             <div
+                              class=\\"field\\"
+                            >
+                              <label>
+                                Optional AI agent to engage in this discussion:
+                              </label>
+                            </div>
+                            <div
                               class=\\"ui grey message\\"
                             >
                               <div
@@ -21024,6 +21276,13 @@ exports[`Duplicate 1`] = `
                               </div>
                             </div>
                             <div
+                              class=\\"field\\"
+                            >
+                              <label>
+                                Optional AI agent to engage in this discussion:
+                              </label>
+                            </div>
+                            <div
                               class=\\"ui grey message\\"
                             >
                               <div
@@ -21588,6 +21847,13 @@ exports[`Duplicate 2`] = `
                                   value=\\"Your response\\"
                                 />
                               </div>
+                            </div>
+                            <div
+                              class=\\"field\\"
+                            >
+                              <label>
+                                Optional AI agent to engage in this discussion:
+                              </label>
                             </div>
                             <div
                               class=\\"ui grey message\\"
@@ -22168,6 +22434,13 @@ exports[`Duplicate a non-response-prompt component 1`] = `
                                   value=\\"Your response\\"
                                 />
                               </div>
+                            </div>
+                            <div
+                              class=\\"field\\"
+                            >
+                              <label>
+                                Optional AI agent to engage in this discussion:
+                              </label>
                             </div>
                             <div
                               class=\\"ui grey message\\"
@@ -22795,6 +23068,13 @@ exports[`Duplicate a non-response-prompt component 2`] = `
                               </div>
                             </div>
                             <div
+                              class=\\"field\\"
+                            >
+                              <label>
+                                Optional AI agent to engage in this discussion:
+                              </label>
+                            </div>
+                            <div
                               class=\\"ui grey message\\"
                             >
                               <div
@@ -23375,6 +23655,13 @@ exports[`Duplicate a response-prompt component 1`] = `
                               </div>
                             </div>
                             <div
+                              class=\\"field\\"
+                            >
+                              <label>
+                                Optional AI agent to engage in this discussion:
+                              </label>
+                            </div>
+                            <div
                               class=\\"ui grey message\\"
                             >
                               <div
@@ -23941,6 +24228,13 @@ exports[`Duplicate a response-prompt component 2`] = `
                               </div>
                             </div>
                             <div
+                              class=\\"field\\"
+                            >
+                              <label>
+                                Optional AI agent to engage in this discussion:
+                              </label>
+                            </div>
+                            <div
                               class=\\"ui grey message\\"
                             >
                               <div
@@ -24083,6 +24377,13 @@ exports[`Duplicate a response-prompt component 2`] = `
                                   value=\\"Your response\\"
                                 />
                               </div>
+                            </div>
+                            <div
+                              class=\\"field\\"
+                            >
+                              <label>
+                                Optional AI agent to engage in this discussion:
+                              </label>
                             </div>
                             <div
                               class=\\"ui grey message\\"
@@ -24625,6 +24926,13 @@ exports[`Edit a component 1`] = `
                                   value=\\"Your response\\"
                                 />
                               </div>
+                            </div>
+                            <div
+                              class=\\"field\\"
+                            >
+                              <label>
+                                Optional AI agent to engage in this discussion:
+                              </label>
                             </div>
                             <div
                               class=\\"ui grey message\\"
@@ -25496,6 +25804,13 @@ exports[`Move a component down 1`] = `
                               </div>
                             </div>
                             <div
+                              class=\\"field\\"
+                            >
+                              <label>
+                                Optional AI agent to engage in this discussion:
+                              </label>
+                            </div>
+                            <div
                               class=\\"ui grey message\\"
                             >
                               <div
@@ -26062,6 +26377,13 @@ exports[`Move a component down 2`] = `
                               </div>
                             </div>
                             <div
+                              class=\\"field\\"
+                            >
+                              <label>
+                                Optional AI agent to engage in this discussion:
+                              </label>
+                            </div>
+                            <div
                               class=\\"ui grey message\\"
                             >
                               <div
@@ -26529,6 +26851,13 @@ exports[`Move a component down 3`] = `
                                   value=\\"Your response\\"
                                 />
                               </div>
+                            </div>
+                            <div
+                              class=\\"field\\"
+                            >
+                              <label>
+                                Optional AI agent to engage in this discussion:
+                              </label>
                             </div>
                             <div
                               class=\\"ui grey message\\"
@@ -27194,6 +27523,13 @@ exports[`Move a component up 1`] = `
                               </div>
                             </div>
                             <div
+                              class=\\"field\\"
+                            >
+                              <label>
+                                Optional AI agent to engage in this discussion:
+                              </label>
+                            </div>
+                            <div
                               class=\\"ui grey message\\"
                             >
                               <div
@@ -27760,6 +28096,13 @@ exports[`Move a component up 2`] = `
                               </div>
                             </div>
                             <div
+                              class=\\"field\\"
+                            >
+                              <label>
+                                Optional AI agent to engage in this discussion:
+                              </label>
+                            </div>
+                            <div
                               class=\\"ui grey message\\"
                             >
                               <div
@@ -28265,6 +28608,13 @@ exports[`Move a component up 3`] = `
                                   value=\\"Your response\\"
                                 />
                               </div>
+                            </div>
+                            <div
+                              class=\\"field\\"
+                            >
+                              <label>
+                                Optional AI agent to engage in this discussion:
+                              </label>
                             </div>
                             <div
                               class=\\"ui grey message\\"
@@ -29173,6 +29523,13 @@ exports[`Multiple personas 1`] = `
                                   value=\\"Your response\\"
                                 />
                               </div>
+                            </div>
+                            <div
+                              class=\\"field\\"
+                            >
+                              <label>
+                                Optional AI agent to engage in this discussion:
+                              </label>
                             </div>
                             <div
                               class=\\"ui grey message\\"
@@ -30178,6 +30535,13 @@ exports[`Multiple personas 2`] = `
                               </div>
                             </div>
                             <div
+                              class=\\"field\\"
+                            >
+                              <label>
+                                Optional AI agent to engage in this discussion:
+                              </label>
+                            </div>
+                            <div
                               class=\\"ui grey message\\"
                             >
                               <div
@@ -31179,6 +31543,13 @@ exports[`Multiple personas, assign a persona to a component 1`] = `
                                   value=\\"Your response\\"
                                 />
                               </div>
+                            </div>
+                            <div
+                              class=\\"field\\"
+                            >
+                              <label>
+                                Optional AI agent to engage in this discussion:
+                              </label>
                             </div>
                             <div
                               class=\\"ui grey message\\"
@@ -32184,6 +32555,13 @@ exports[`Multiple personas, assign a persona to a component 2`] = `
                               </div>
                             </div>
                             <div
+                              class=\\"field\\"
+                            >
+                              <label>
+                                Optional AI agent to engage in this discussion:
+                              </label>
+                            </div>
+                            <div
                               class=\\"ui grey message\\"
                             >
                               <div
@@ -33185,6 +33563,13 @@ exports[`Multiple personas, assign a persona to a component 3`] = `
                                   value=\\"Your response\\"
                                 />
                               </div>
+                            </div>
+                            <div
+                              class=\\"field\\"
+                            >
+                              <label>
+                                Optional AI agent to engage in this discussion:
+                              </label>
                             </div>
                             <div
                               class=\\"ui grey message\\"
@@ -34190,6 +34575,13 @@ exports[`Multiple personas, assign a persona to a component 4`] = `
                               </div>
                             </div>
                             <div
+                              class=\\"field\\"
+                            >
+                              <label>
+                                Optional AI agent to engage in this discussion:
+                              </label>
+                            </div>
+                            <div
                               class=\\"ui grey message\\"
                             >
                               <div
@@ -35191,6 +35583,13 @@ exports[`Multiple personas, assign a persona to a component 5`] = `
                                   value=\\"Your response\\"
                                 />
                               </div>
+                            </div>
+                            <div
+                              class=\\"field\\"
+                            >
+                              <label>
+                                Optional AI agent to engage in this discussion:
+                              </label>
                             </div>
                             <div
                               class=\\"ui grey message\\"
@@ -36196,6 +36595,13 @@ exports[`Multiple personas, toggle chat 1`] = `
                               </div>
                             </div>
                             <div
+                              class=\\"field\\"
+                            >
+                              <label>
+                                Optional AI agent to engage in this discussion:
+                              </label>
+                            </div>
+                            <div
                               class=\\"ui grey message\\"
                             >
                               <div
@@ -37199,6 +37605,13 @@ exports[`Multiple personas, toggle chat 2`] = `
                               </div>
                             </div>
                             <div
+                              class=\\"field\\"
+                            >
+                              <label>
+                                Optional AI agent to engage in this discussion:
+                              </label>
+                            </div>
+                            <div
                               class=\\"ui grey message\\"
                             >
                               <div
@@ -37918,6 +38331,13 @@ exports[`Multiple personas, toggle chat 3`] = `
                             </div>
                           </div>
                           <div
+                            class=\\"field\\"
+                          >
+                            <label>
+                              Optional AI agent to engage in this discussion:
+                            </label>
+                          </div>
+                          <div
                             class=\\"ui grey message\\"
                           >
                             <div
@@ -38426,6 +38846,13 @@ exports[`Multiple personas, toggle chat 3`] = `
                                   value=\\"Your response\\"
                                 />
                               </div>
+                            </div>
+                            <div
+                              class=\\"field\\"
+                            >
+                              <label>
+                                Optional AI agent to engage in this discussion:
+                              </label>
                             </div>
                             <div
                               class=\\"ui grey message\\"
@@ -39445,6 +39872,13 @@ exports[`Multiple personas, with an assigned component 1`] = `
                               </div>
                             </div>
                             <div
+                              class=\\"field\\"
+                            >
+                              <label>
+                                Optional AI agent to engage in this discussion:
+                              </label>
+                            </div>
+                            <div
                               class=\\"ui grey message\\"
                             >
                               <div
@@ -40446,6 +40880,13 @@ exports[`Multiple personas, with an assigned component 2`] = `
                                   value=\\"Your response\\"
                                 />
                               </div>
+                            </div>
+                            <div
+                              class=\\"field\\"
+                            >
+                              <label>
+                                Optional AI agent to engage in this discussion:
+                              </label>
                             </div>
                             <div
                               class=\\"ui grey message\\"
@@ -41456,6 +41897,13 @@ exports[`Preview 1`] = `
                               </div>
                             </div>
                             <div
+                              class=\\"field\\"
+                            >
+                              <label>
+                                Optional AI agent to engage in this discussion:
+                              </label>
+                            </div>
+                            <div
                               class=\\"ui grey message\\"
                             >
                               <div
@@ -42336,6 +42784,13 @@ exports[`Preview 3`] = `
                               </div>
                             </div>
                             <div
+                              class=\\"field\\"
+                            >
+                              <label>
+                                Optional AI agent to engage in this discussion:
+                              </label>
+                            </div>
+                            <div
                               class=\\"ui grey message\\"
                             >
                               <div
@@ -42900,6 +43355,13 @@ exports[`Save 1`] = `
                               </div>
                             </div>
                             <div
+                              class=\\"field\\"
+                            >
+                              <label>
+                                Optional AI agent to engage in this discussion:
+                              </label>
+                            </div>
+                            <div
                               class=\\"ui grey message\\"
                             >
                               <div
@@ -43462,6 +43924,13 @@ exports[`Save 2`] = `
                                   value=\\"Your response\\"
                                 />
                               </div>
+                            </div>
+                            <div
+                              class=\\"field\\"
+                            >
+                              <label>
+                                Optional AI agent to engage in this discussion:
+                              </label>
                             </div>
                             <div
                               class=\\"ui grey message\\"
@@ -44042,6 +44511,13 @@ exports[`Save, onChange is missing 1`] = `
                               </div>
                             </div>
                             <div
+                              class=\\"field\\"
+                            >
+                              <label>
+                                Optional AI agent to engage in this discussion:
+                              </label>
+                            </div>
+                            <div
                               class=\\"ui grey message\\"
                             >
                               <div
@@ -44604,6 +45080,13 @@ exports[`Save, onChange is missing 2`] = `
                                   value=\\"Your response\\"
                                 />
                               </div>
+                            </div>
+                            <div
+                              class=\\"field\\"
+                            >
+                              <label>
+                                Optional AI agent to engage in this discussion:
+                              </label>
                             </div>
                             <div
                               class=\\"ui grey message\\"
@@ -45184,6 +45667,13 @@ exports[`Single persona 1`] = `
                               </div>
                             </div>
                             <div
+                              class=\\"field\\"
+                            >
+                              <label>
+                                Optional AI agent to engage in this discussion:
+                              </label>
+                            </div>
+                            <div
                               class=\\"ui grey message\\"
                             >
                               <div
@@ -45750,6 +46240,13 @@ exports[`Toggle required on a prompt-response component 1`] = `
                               </div>
                             </div>
                             <div
+                              class=\\"field\\"
+                            >
+                              <label>
+                                Optional AI agent to engage in this discussion:
+                              </label>
+                            </div>
+                            <div
                               class=\\"ui grey message\\"
                             >
                               <div
@@ -46313,6 +46810,13 @@ exports[`Toggle required on a prompt-response component 2`] = `
                                   value=\\"Your response\\"
                                 />
                               </div>
+                            </div>
+                            <div
+                              class=\\"field\\"
+                            >
+                              <label>
+                                Optional AI agent to engage in this discussion:
+                              </label>
                             </div>
                             <div
                               class=\\"ui grey message\\"
@@ -46893,6 +47397,13 @@ exports[`Toggle required on a prompt-response component 4`] = `
                                   value=\\"Your response\\"
                                 />
                               </div>
+                            </div>
+                            <div
+                              class=\\"field\\"
+                            >
+                              <label>
+                                Optional AI agent to engage in this discussion:
+                              </label>
                             </div>
                             <div
                               class=\\"ui grey message\\"

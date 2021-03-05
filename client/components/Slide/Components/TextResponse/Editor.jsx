@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Container, Form } from '@components/UI';
 // import { defaultValue } from './';
 import { type } from './meta';
-// import AgentSelector from '@components/Slide/Components/AgentSelector';
+import AgentSelector from '@components/Slide/Components/AgentSelector';
 import DataHeader from '@components/Slide/Components/DataHeader';
 import ResponseRecall from '@components/Slide/Components/ResponseRecall/Editor';
 import './TextResponse.css';
@@ -125,6 +125,13 @@ class TextResponseEditor extends React.Component {
             onChange={onChange}
             onBlur={updateState}
           />
+
+          <AgentSelector
+            agent={agent}
+            type={type}
+            onChange={onChange}
+          />
+
           <DataHeader
             content={header}
             onChange={onChange}
@@ -136,12 +143,7 @@ class TextResponseEditor extends React.Component {
   }
 }
 
-// <AgentSelector
-//   label="Optional AI agent:"
-//   agent={agent}
-//   type={type}
-//   onChange={onChange}
-// />
+
 TextResponseEditor.propTypes = {
   onChange: PropTypes.func.isRequired,
   slideIndex: PropTypes.any,
