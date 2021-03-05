@@ -1,12 +1,12 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
+import escapeRegExp from 'lodash.escaperegexp';
 import { type } from './meta';
 // import AgentSelector from '@components/Slide/Components/AgentSelector';
 import EditorMenu from '@components/EditorMenu';
 import RichTextEditor from '@components/RichTextEditor';
 import Sortable from '@components/Sortable';
 import {
-  Checkbox,
   Container,
   Dropdown,
   Form,
@@ -16,9 +16,7 @@ import {
   Menu,
   Segment,
   Table,
-  Text
 } from '@components/UI';
-import * as Components from '../../Components';
 import Conditional, { terms } from '@utils/Conditional';
 import Identity from '@utils/Identity';
 import '@components/Slide/Components/MultiPathResponse/MultiPathResponse.css';
@@ -55,14 +53,11 @@ const operationDropdownOptions = terms.map(({ key, op, def, description }) => {
 class ConditionalContentEditor extends React.Component {
   constructor(props) {
     super(props);
-    const {
-      agent = null,
-      html,
-      rules = []
-    } = props.value;
+    const { agent = null, html, recallId = '', rules = [] } = props.value;
     this.state = {
       agent,
       html,
+      recallId,
       rules,
       rule: {
         operator: '',
@@ -84,15 +79,12 @@ class ConditionalContentEditor extends React.Component {
   componentWillUnmount() {
     clearTimeout(this.timeout);
 
-    const {
-      // agent,
-      html,
-      rules
-    } = this.props.value;
+    const { agent, html, recallId, rules } = this.props.value;
 
     const lastProps = {
-      // agent,
+      agent,
       html,
+      recallId,
       rules
     };
 
@@ -105,29 +97,19 @@ class ConditionalContentEditor extends React.Component {
     if (this.timeout) {
       clearTimeout(this.timeout);
     }
-    this.timeout = setTimeout(this.updateState, 5000);
+    this.timeout = setTimeout(this.updateState, 500);
   }
 
   updateState() {
-    const {
-      // agent,
-      html,
-      rules
-    } = this.state;
+    const { agent, html, recallId, rules } = this.state;
     this.props.onChange({
-      // agent,
+      ...this.props.value,
+      agent,
       html,
+      recallId,
       rules,
       type
     });
-  }
-
-  moveButton(fromIndex, toIndex) {
-    const { rules } = this.state;
-    const moving = rules[fromIndex];
-    rules.splice(fromIndex, 1);
-    rules.splice(toIndex, 0, moving);
-    this.setState({ rules }, this.updateState);
   }
 
   onRuleAddClick() {
@@ -208,7 +190,6 @@ class ConditionalContentEditor extends React.Component {
     const {
       onChange,
       updateState,
-      delayedUpdateState,
       moveButton,
       onRuleAddClick,
       onRuleDeleteClick,
@@ -217,19 +198,6 @@ class ConditionalContentEditor extends React.Component {
       onRuleSearchChange
     } = this;
     const baseOptions = operationDropdownOptions.slice();
-
-    let ComponentEditor = null;
-
-    //
-    //
-    // DISABLED UNTIL SLIDE COMPONENT EDITING IS REFACTORED
-    //
-    //
-    // if (component && component.type) {
-    //   ComponentEditor = Components[component.type].Editor;
-    // }
-    // console.log("Rendering with:");
-    // console.log(component);
 
     const onDeleteRuleClick = index => {
       const rules = this.state.rules.slice();
@@ -386,7 +354,7 @@ class ConditionalContentEditor extends React.Component {
                               fluid
                               selection
                               name="operator"
-                              aria-label={`Select the destination slide for choice ${index +
+                              aria-label={`Select the operator for expression ${index +
                                 1}`}
                               index={index}
                               value={operator}
@@ -402,8 +370,7 @@ class ConditionalContentEditor extends React.Component {
                                 fluid
                                 name="value"
                                 autoComplete="off"
-                                disabled={valueIsDisabled}
-                                aria-label={`Enter the operator for choice ${index +
+                                aria-label={`Enter the value for expression ${index +
                                   1}`}
                                 index={index}
                                 value={value}
@@ -524,9 +491,11 @@ ConditionalContentEditor.propTypes = {
   onChange: PropTypes.func.isRequired,
   scenario: PropTypes.object,
   value: PropTypes.shape({
+    agent: PropTypes.object,
     id: PropTypes.string,
+    recallId: PropTypes.string,
     rules: PropTypes.array,
-    component: PropTypes.object,
+    html: PropTypes.string,
     type: PropTypes.oneOf([type])
   })
 };

@@ -109,7 +109,7 @@ exports[`Render 1 1 1`] = `
                   >
                     <div
                       aria-expanded="false"
-                      aria-label="Select the destination slide for choice 1"
+                      aria-label="Select the operator for expression 1"
                       class="ui fluid search selection dropdown"
                       index="0"
                       name="operator"
@@ -403,7 +403,7 @@ exports[`Render 1 1 1`] = `
                       options="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
                     >
                       <input
-                        aria-label="Enter the operator for choice 1"
+                        aria-label="Enter the value for expression 1"
                         autocomplete="off"
                         name="value"
                         type="text"

@@ -466,6 +466,22 @@ exports[`Add a non-response-prompt component 1`] = `
                     tabindex=\\"0\\"
                   >
                     <i
+                      aria-label=\\"Conditional Content\\"
+                      class=\\"flask icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Conditional Content
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
                       aria-label=\\"Prompt: Audio Input\\"
                       class=\\"microphone icon\\"
                     />
@@ -1007,6 +1023,22 @@ exports[`Add a non-response-prompt component 2`] = `
                       class=\\"ser__component-name\\"
                     >
                       Embed Previous Response
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Conditional Content\\"
+                      class=\\"flask icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Conditional Content
                     </span>
                   </a>
                   <a
@@ -1566,6 +1598,22 @@ exports[`Add a non-response-prompt component 3`] = `
                     tabindex=\\"0\\"
                   >
                     <i
+                      aria-label=\\"Conditional Content\\"
+                      class=\\"flask icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Conditional Content
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
                       aria-label=\\"Prompt: Audio Input\\"
                       class=\\"microphone icon\\"
                     />
@@ -2078,6 +2126,22 @@ exports[`Add a non-response-prompt component at the end 1`] = `
                     tabindex=\\"0\\"
                   >
                     <i
+                      aria-label=\\"Conditional Content\\"
+                      class=\\"flask icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Conditional Content
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
                       aria-label=\\"Prompt: Audio Input\\"
                       class=\\"microphone icon\\"
                     />
@@ -2581,6 +2645,22 @@ exports[`Add a non-response-prompt component at the end 2`] = `
                       class=\\"ser__component-name\\"
                     >
                       Embed Previous Response
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Conditional Content\\"
+                      class=\\"flask icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Conditional Content
                     </span>
                   </a>
                   <a
@@ -3140,6 +3220,22 @@ exports[`Add a non-response-prompt component at the end 3`] = `
                     tabindex=\\"0\\"
                   >
                     <i
+                      aria-label=\\"Conditional Content\\"
+                      class=\\"flask icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Conditional Content
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
                       aria-label=\\"Prompt: Audio Input\\"
                       class=\\"microphone icon\\"
                     />
@@ -3681,6 +3777,22 @@ exports[`Add a non-response-prompt component at the end 4`] = `
                       class=\\"ser__component-name\\"
                     >
                       Embed Previous Response
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Conditional Content\\"
+                      class=\\"flask icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Conditional Content
                     </span>
                   </a>
                   <a
@@ -4384,6 +4496,22 @@ exports[`Add a non-response-prompt component at the end 5`] = `
                     tabindex=\\"0\\"
                   >
                     <i
+                      aria-label=\\"Conditional Content\\"
+                      class=\\"flask icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Conditional Content
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
                       aria-label=\\"Prompt: Audio Input\\"
                       class=\\"microphone icon\\"
                     />
@@ -4906,6 +5034,22 @@ exports[`Add a response-prompt component 1`] = `
                       class=\\"ser__component-name\\"
                     >
                       Embed Previous Response
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Conditional Content\\"
+                      class=\\"flask icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Conditional Content
                     </span>
                   </a>
                   <a
@@ -5465,6 +5609,22 @@ exports[`Add a response-prompt component that has disableRequireCheckbox 1`] = `
                     tabindex=\\"0\\"
                   >
                     <i
+                      aria-label=\\"Conditional Content\\"
+                      class=\\"flask icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Conditional Content
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
                       aria-label=\\"Prompt: Audio Input\\"
                       class=\\"microphone icon\\"
                     />
@@ -6006,6 +6166,22 @@ exports[`Add a response-prompt component to a slide without a title 1`] = `
                       class=\\"ser__component-name\\"
                     >
                       Embed Previous Response
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Conditional Content\\"
+                      class=\\"flask icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Conditional Content
                     </span>
                   </a>
                   <a
@@ -6563,6 +6739,22 @@ exports[`Change title 1`] = `
                     tabindex=\\"0\\"
                   >
                     <i
+                      aria-label=\\"Conditional Content\\"
+                      class=\\"flask icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Conditional Content
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
                       aria-label=\\"Prompt: Audio Input\\"
                       class=\\"microphone icon\\"
                     />
@@ -7102,6 +7294,22 @@ exports[`Change title 2`] = `
                       class=\\"ser__component-name\\"
                     >
                       Embed Previous Response
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Conditional Content\\"
+                      class=\\"flask icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Conditional Content
                     </span>
                   </a>
                   <a
@@ -7664,6 +7872,22 @@ exports[`Change title 3`] = `
                       class=\\"ser__component-name\\"
                     >
                       Embed Previous Response
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Conditional Content\\"
+                      class=\\"flask icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Conditional Content
                     </span>
                   </a>
                   <a
@@ -8237,6 +8461,22 @@ exports[`Click to activate component 1`] = `
                     tabindex=\\"0\\"
                   >
                     <i
+                      aria-label=\\"Conditional Content\\"
+                      class=\\"flask icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Conditional Content
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
                       aria-label=\\"Prompt: Audio Input\\"
                       class=\\"microphone icon\\"
                     />
@@ -8787,6 +9027,22 @@ exports[`Click to activate component 2`] = `
                     tabindex=\\"0\\"
                   >
                     <i
+                      aria-label=\\"Conditional Content\\"
+                      class=\\"flask icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Conditional Content
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
                       aria-label=\\"Prompt: Audio Input\\"
                       class=\\"microphone icon\\"
                     />
@@ -9328,6 +9584,22 @@ exports[`Click to activate component 3`] = `
                       class=\\"ser__component-name\\"
                     >
                       Embed Previous Response
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Conditional Content\\"
+                      class=\\"flask icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Conditional Content
                     </span>
                   </a>
                   <a
@@ -9998,6 +10270,22 @@ exports[`Component is missing an id 1`] = `
                     tabindex=\\"0\\"
                   >
                     <i
+                      aria-label=\\"Conditional Content\\"
+                      class=\\"flask icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Conditional Content
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
                       aria-label=\\"Prompt: Audio Input\\"
                       class=\\"microphone icon\\"
                     />
@@ -10659,6 +10947,22 @@ exports[`Delete a component from the beginning 1`] = `
                     tabindex=\\"0\\"
                   >
                     <i
+                      aria-label=\\"Conditional Content\\"
+                      class=\\"flask icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Conditional Content
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
                       aria-label=\\"Prompt: Audio Input\\"
                       class=\\"microphone icon\\"
                     />
@@ -11209,6 +11513,22 @@ exports[`Delete a component from the beginning 2`] = `
                     tabindex=\\"0\\"
                   >
                     <i
+                      aria-label=\\"Conditional Content\\"
+                      class=\\"flask icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Conditional Content
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
                       aria-label=\\"Prompt: Audio Input\\"
                       class=\\"microphone icon\\"
                     />
@@ -11750,6 +12070,22 @@ exports[`Delete a component from the beginning 3`] = `
                       class=\\"ser__component-name\\"
                     >
                       Embed Previous Response
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Conditional Content\\"
+                      class=\\"flask icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Conditional Content
                     </span>
                   </a>
                   <a
@@ -12311,6 +12647,22 @@ exports[`Delete a component from the beginning 4`] = `
                     tabindex=\\"0\\"
                   >
                     <i
+                      aria-label=\\"Conditional Content\\"
+                      class=\\"flask icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Conditional Content
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
                       aria-label=\\"Prompt: Audio Input\\"
                       class=\\"microphone icon\\"
                     />
@@ -12852,6 +13204,22 @@ exports[`Delete a component from the end 1`] = `
                       class=\\"ser__component-name\\"
                     >
                       Embed Previous Response
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Conditional Content\\"
+                      class=\\"flask icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Conditional Content
                     </span>
                   </a>
                   <a
@@ -13411,6 +13779,22 @@ exports[`Delete a component from the end 2`] = `
                     tabindex=\\"0\\"
                   >
                     <i
+                      aria-label=\\"Conditional Content\\"
+                      class=\\"flask icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Conditional Content
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
                       aria-label=\\"Prompt: Audio Input\\"
                       class=\\"microphone icon\\"
                     />
@@ -13952,6 +14336,22 @@ exports[`Delete a component from the end 3`] = `
                       class=\\"ser__component-name\\"
                     >
                       Embed Previous Response
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Conditional Content\\"
+                      class=\\"flask icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Conditional Content
                     </span>
                   </a>
                   <a
@@ -14513,6 +14913,22 @@ exports[`Delete a component from the end 4`] = `
                     tabindex=\\"0\\"
                   >
                     <i
+                      aria-label=\\"Conditional Content\\"
+                      class=\\"flask icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Conditional Content
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
                       aria-label=\\"Prompt: Audio Input\\"
                       class=\\"microphone icon\\"
                     />
@@ -15054,6 +15470,22 @@ exports[`Delete a component from the middle 1`] = `
                       class=\\"ser__component-name\\"
                     >
                       Embed Previous Response
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Conditional Content\\"
+                      class=\\"flask icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Conditional Content
                     </span>
                   </a>
                   <a
@@ -15613,6 +16045,22 @@ exports[`Delete a component from the middle 2`] = `
                     tabindex=\\"0\\"
                   >
                     <i
+                      aria-label=\\"Conditional Content\\"
+                      class=\\"flask icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Conditional Content
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
                       aria-label=\\"Prompt: Audio Input\\"
                       class=\\"microphone icon\\"
                     />
@@ -16163,6 +16611,22 @@ exports[`Delete a component from the middle 3`] = `
                     tabindex=\\"0\\"
                   >
                     <i
+                      aria-label=\\"Conditional Content\\"
+                      class=\\"flask icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Conditional Content
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
                       aria-label=\\"Prompt: Audio Input\\"
                       class=\\"microphone icon\\"
                     />
@@ -16621,6 +17085,22 @@ exports[`Delete a component from the middle 4`] = `
                       class=\\"ser__component-name\\"
                     >
                       Embed Previous Response
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Conditional Content\\"
+                      class=\\"flask icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Conditional Content
                     </span>
                   </a>
                   <a
@@ -17180,6 +17660,22 @@ exports[`Delete, no 1`] = `
                     tabindex=\\"0\\"
                   >
                     <i
+                      aria-label=\\"Conditional Content\\"
+                      class=\\"flask icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Conditional Content
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
                       aria-label=\\"Prompt: Audio Input\\"
                       class=\\"microphone icon\\"
                     />
@@ -17721,6 +18217,22 @@ exports[`Delete, no 2`] = `
                       class=\\"ser__component-name\\"
                     >
                       Embed Previous Response
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Conditional Content\\"
+                      class=\\"flask icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Conditional Content
                     </span>
                   </a>
                   <a
@@ -18341,6 +18853,22 @@ exports[`Delete, no 3`] = `
                     tabindex=\\"0\\"
                   >
                     <i
+                      aria-label=\\"Conditional Content\\"
+                      class=\\"flask icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Conditional Content
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
                       aria-label=\\"Prompt: Audio Input\\"
                       class=\\"microphone icon\\"
                     />
@@ -18880,6 +19408,22 @@ exports[`Delete, yes 1`] = `
                       class=\\"ser__component-name\\"
                     >
                       Embed Previous Response
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Conditional Content\\"
+                      class=\\"flask icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Conditional Content
                     </span>
                   </a>
                   <a
@@ -19430,6 +19974,22 @@ exports[`Delete, yes 2`] = `
                       class=\\"ser__component-name\\"
                     >
                       Embed Previous Response
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Conditional Content\\"
+                      class=\\"flask icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Conditional Content
                     </span>
                   </a>
                   <a
@@ -20050,6 +20610,22 @@ exports[`Delete, yes 3`] = `
                     tabindex=\\"0\\"
                   >
                     <i
+                      aria-label=\\"Conditional Content\\"
+                      class=\\"flask icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Conditional Content
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
                       aria-label=\\"Prompt: Audio Input\\"
                       class=\\"microphone icon\\"
                     />
@@ -20600,6 +21176,22 @@ exports[`Duplicate 1`] = `
                     tabindex=\\"0\\"
                   >
                     <i
+                      aria-label=\\"Conditional Content\\"
+                      class=\\"flask icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Conditional Content
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
                       aria-label=\\"Prompt: Audio Input\\"
                       class=\\"microphone icon\\"
                     />
@@ -21141,6 +21733,22 @@ exports[`Duplicate 2`] = `
                       class=\\"ser__component-name\\"
                     >
                       Embed Previous Response
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Conditional Content\\"
+                      class=\\"flask icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Conditional Content
                     </span>
                   </a>
                   <a
@@ -21705,6 +22313,22 @@ exports[`Duplicate a non-response-prompt component 1`] = `
                       class=\\"ser__component-name\\"
                     >
                       Embed Previous Response
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Conditional Content\\"
+                      class=\\"flask icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Conditional Content
                     </span>
                   </a>
                   <a
@@ -22323,6 +22947,22 @@ exports[`Duplicate a non-response-prompt component 2`] = `
                     tabindex=\\"0\\"
                   >
                     <i
+                      aria-label=\\"Conditional Content\\"
+                      class=\\"flask icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Conditional Content
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
                       aria-label=\\"Prompt: Audio Input\\"
                       class=\\"microphone icon\\"
                     />
@@ -22878,6 +23518,22 @@ exports[`Duplicate a response-prompt component 1`] = `
                       class=\\"ser__component-name\\"
                     >
                       Embed Previous Response
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Conditional Content\\"
+                      class=\\"flask icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Conditional Content
                     </span>
                   </a>
                   <a
@@ -23581,6 +24237,22 @@ exports[`Duplicate a response-prompt component 2`] = `
                     tabindex=\\"0\\"
                   >
                     <i
+                      aria-label=\\"Conditional Content\\"
+                      class=\\"flask icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Conditional Content
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
                       aria-label=\\"Prompt: Audio Input\\"
                       class=\\"microphone icon\\"
                     />
@@ -24107,6 +24779,22 @@ exports[`Edit a component 1`] = `
                     tabindex=\\"0\\"
                   >
                     <i
+                      aria-label=\\"Conditional Content\\"
+                      class=\\"flask icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Conditional Content
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
                       aria-label=\\"Prompt: Audio Input\\"
                       class=\\"microphone icon\\"
                     />
@@ -24272,14 +24960,19 @@ exports[`Missing props 1`] = `
               />
             </a>
             <a
-              aria-label=\\"Enable realtime chat on this slide\\"
+              aria-label=\\"Enable realtime chat\\"
               class=\\"item\\"
               tabindex=\\"0\\"
             >
               <i
-                aria-hidden=\\"true\\"
-                class=\\"black chat icon\\"
-              />
+                class=\\"icons em__icon-group-margin\\"
+              >
+                <i
+                  aria-hidden=\\"true\\"
+                  class=\\"black discussions icon\\"
+                />
+              </i>
+              Enable realtime chat
             </a>
           </div>
         </div>
@@ -24380,6 +25073,22 @@ exports[`Missing props 1`] = `
                       class=\\"ser__component-name\\"
                     >
                       Embed Previous Response
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Conditional Content\\"
+                      class=\\"flask icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Conditional Content
                     </span>
                   </a>
                   <a
@@ -24939,6 +25648,22 @@ exports[`Move a component down 1`] = `
                     tabindex=\\"0\\"
                   >
                     <i
+                      aria-label=\\"Conditional Content\\"
+                      class=\\"flask icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Conditional Content
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
                       aria-label=\\"Prompt: Audio Input\\"
                       class=\\"microphone icon\\"
                     />
@@ -25480,6 +26205,22 @@ exports[`Move a component down 2`] = `
                       class=\\"ser__component-name\\"
                     >
                       Embed Previous Response
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Conditional Content\\"
+                      class=\\"flask icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Conditional Content
                     </span>
                   </a>
                   <a
@@ -26039,6 +26780,22 @@ exports[`Move a component down 3`] = `
                     tabindex=\\"0\\"
                   >
                     <i
+                      aria-label=\\"Conditional Content\\"
+                      class=\\"flask icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Conditional Content
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
                       aria-label=\\"Prompt: Audio Input\\"
                       class=\\"microphone icon\\"
                     />
@@ -26580,6 +27337,22 @@ exports[`Move a component up 1`] = `
                       class=\\"ser__component-name\\"
                     >
                       Embed Previous Response
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Conditional Content\\"
+                      class=\\"flask icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Conditional Content
                     </span>
                   </a>
                   <a
@@ -27139,6 +27912,22 @@ exports[`Move a component up 2`] = `
                     tabindex=\\"0\\"
                   >
                     <i
+                      aria-label=\\"Conditional Content\\"
+                      class=\\"flask icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Conditional Content
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
                       aria-label=\\"Prompt: Audio Input\\"
                       class=\\"microphone icon\\"
                     />
@@ -27689,6 +28478,22 @@ exports[`Move a component up 3`] = `
                     tabindex=\\"0\\"
                   >
                     <i
+                      aria-label=\\"Conditional Content\\"
+                      class=\\"flask icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Conditional Content
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
                       aria-label=\\"Prompt: Audio Input\\"
                       class=\\"microphone icon\\"
                     />
@@ -27854,14 +28659,19 @@ exports[`Multiple personas 1`] = `
               />
             </a>
             <a
-              aria-label=\\"Enable realtime chat on this slide\\"
+              aria-label=\\"Enable realtime chat\\"
               class=\\"item\\"
               tabindex=\\"0\\"
             >
               <i
-                aria-hidden=\\"true\\"
-                class=\\"black chat icon\\"
-              />
+                class=\\"icons em__icon-group-margin\\"
+              >
+                <i
+                  aria-hidden=\\"true\\"
+                  class=\\"black discussions icon\\"
+                />
+              </i>
+              Enable realtime chat
             </a>
           </div>
         </div>
@@ -28662,6 +29472,22 @@ exports[`Multiple personas 1`] = `
                       class=\\"ser__component-name\\"
                     >
                       Embed Previous Response
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Conditional Content\\"
+                      class=\\"flask icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Conditional Content
                     </span>
                   </a>
                   <a
@@ -28836,14 +29662,19 @@ exports[`Multiple personas 2`] = `
               />
             </a>
             <a
-              aria-label=\\"Enable realtime chat on this slide\\"
+              aria-label=\\"Enable realtime chat\\"
               class=\\"item\\"
               tabindex=\\"0\\"
             >
               <i
-                aria-hidden=\\"true\\"
-                class=\\"black chat icon\\"
-              />
+                class=\\"icons em__icon-group-margin\\"
+              >
+                <i
+                  aria-hidden=\\"true\\"
+                  class=\\"black discussions icon\\"
+                />
+              </i>
+              Enable realtime chat
             </a>
           </div>
         </div>
@@ -29644,6 +30475,22 @@ exports[`Multiple personas 2`] = `
                       class=\\"ser__component-name\\"
                     >
                       Embed Previous Response
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Conditional Content\\"
+                      class=\\"flask icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Conditional Content
                     </span>
                   </a>
                   <a
@@ -29818,14 +30665,19 @@ exports[`Multiple personas, assign a persona to a component 1`] = `
               />
             </a>
             <a
-              aria-label=\\"Enable realtime chat on this slide\\"
+              aria-label=\\"Enable realtime chat\\"
               class=\\"item\\"
               tabindex=\\"0\\"
             >
               <i
-                aria-hidden=\\"true\\"
-                class=\\"black chat icon\\"
-              />
+                class=\\"icons em__icon-group-margin\\"
+              >
+                <i
+                  aria-hidden=\\"true\\"
+                  class=\\"black discussions icon\\"
+                />
+              </i>
+              Enable realtime chat
             </a>
           </div>
         </div>
@@ -30626,6 +31478,22 @@ exports[`Multiple personas, assign a persona to a component 1`] = `
                       class=\\"ser__component-name\\"
                     >
                       Embed Previous Response
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Conditional Content\\"
+                      class=\\"flask icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Conditional Content
                     </span>
                   </a>
                   <a
@@ -30800,14 +31668,19 @@ exports[`Multiple personas, assign a persona to a component 2`] = `
               />
             </a>
             <a
-              aria-label=\\"Enable realtime chat on this slide\\"
+              aria-label=\\"Enable realtime chat\\"
               class=\\"item\\"
               tabindex=\\"0\\"
             >
               <i
-                aria-hidden=\\"true\\"
-                class=\\"black chat icon\\"
-              />
+                class=\\"icons em__icon-group-margin\\"
+              >
+                <i
+                  aria-hidden=\\"true\\"
+                  class=\\"black discussions icon\\"
+                />
+              </i>
+              Enable realtime chat
             </a>
           </div>
         </div>
@@ -31617,6 +32490,22 @@ exports[`Multiple personas, assign a persona to a component 2`] = `
                     tabindex=\\"0\\"
                   >
                     <i
+                      aria-label=\\"Conditional Content\\"
+                      class=\\"flask icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Conditional Content
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
                       aria-label=\\"Prompt: Audio Input\\"
                       class=\\"microphone icon\\"
                     />
@@ -31782,14 +32671,19 @@ exports[`Multiple personas, assign a persona to a component 3`] = `
               />
             </a>
             <a
-              aria-label=\\"Enable realtime chat on this slide\\"
+              aria-label=\\"Enable realtime chat\\"
               class=\\"item\\"
               tabindex=\\"0\\"
             >
               <i
-                aria-hidden=\\"true\\"
-                class=\\"black chat icon\\"
-              />
+                class=\\"icons em__icon-group-margin\\"
+              >
+                <i
+                  aria-hidden=\\"true\\"
+                  class=\\"black discussions icon\\"
+                />
+              </i>
+              Enable realtime chat
             </a>
           </div>
         </div>
@@ -32599,6 +33493,22 @@ exports[`Multiple personas, assign a persona to a component 3`] = `
                     tabindex=\\"0\\"
                   >
                     <i
+                      aria-label=\\"Conditional Content\\"
+                      class=\\"flask icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Conditional Content
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
                       aria-label=\\"Prompt: Audio Input\\"
                       class=\\"microphone icon\\"
                     />
@@ -32764,14 +33674,19 @@ exports[`Multiple personas, assign a persona to a component 4`] = `
               />
             </a>
             <a
-              aria-label=\\"Enable realtime chat on this slide\\"
+              aria-label=\\"Enable realtime chat\\"
               class=\\"item\\"
               tabindex=\\"0\\"
             >
               <i
-                aria-hidden=\\"true\\"
-                class=\\"black chat icon\\"
-              />
+                class=\\"icons em__icon-group-margin\\"
+              >
+                <i
+                  aria-hidden=\\"true\\"
+                  class=\\"black discussions icon\\"
+                />
+              </i>
+              Enable realtime chat
             </a>
           </div>
         </div>
@@ -33572,6 +34487,22 @@ exports[`Multiple personas, assign a persona to a component 4`] = `
                       class=\\"ser__component-name\\"
                     >
                       Embed Previous Response
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Conditional Content\\"
+                      class=\\"flask icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Conditional Content
                     </span>
                   </a>
                   <a
@@ -33746,14 +34677,19 @@ exports[`Multiple personas, assign a persona to a component 5`] = `
               />
             </a>
             <a
-              aria-label=\\"Enable realtime chat on this slide\\"
+              aria-label=\\"Enable realtime chat\\"
               class=\\"item\\"
               tabindex=\\"0\\"
             >
               <i
-                aria-hidden=\\"true\\"
-                class=\\"black chat icon\\"
-              />
+                class=\\"icons em__icon-group-margin\\"
+              >
+                <i
+                  aria-hidden=\\"true\\"
+                  class=\\"black discussions icon\\"
+                />
+              </i>
+              Enable realtime chat
             </a>
           </div>
         </div>
@@ -34554,6 +35490,22 @@ exports[`Multiple personas, assign a persona to a component 5`] = `
                       class=\\"ser__component-name\\"
                     >
                       Embed Previous Response
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Conditional Content\\"
+                      class=\\"flask icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Conditional Content
                     </span>
                   </a>
                   <a
@@ -34728,14 +35680,19 @@ exports[`Multiple personas, toggle chat 1`] = `
               />
             </a>
             <a
-              aria-label=\\"Enable realtime chat on this slide\\"
+              aria-label=\\"Enable realtime chat\\"
               class=\\"item\\"
               tabindex=\\"0\\"
             >
               <i
-                aria-hidden=\\"true\\"
-                class=\\"black chat icon\\"
-              />
+                class=\\"icons em__icon-group-margin\\"
+              >
+                <i
+                  aria-hidden=\\"true\\"
+                  class=\\"black discussions icon\\"
+                />
+              </i>
+              Enable realtime chat
             </a>
           </div>
         </div>
@@ -35536,6 +36493,22 @@ exports[`Multiple personas, toggle chat 1`] = `
                       class=\\"ser__component-name\\"
                     >
                       Embed Previous Response
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Conditional Content\\"
+                      class=\\"flask icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Conditional Content
                     </span>
                   </a>
                   <a
@@ -35710,14 +36683,19 @@ exports[`Multiple personas, toggle chat 2`] = `
               />
             </a>
             <a
-              aria-label=\\"Enable realtime chat on this slide\\"
+              aria-label=\\"Enable realtime chat\\"
               class=\\"item\\"
               tabindex=\\"0\\"
             >
               <i
-                aria-hidden=\\"true\\"
-                class=\\"black chat icon\\"
-              />
+                class=\\"icons em__icon-group-margin\\"
+              >
+                <i
+                  aria-hidden=\\"true\\"
+                  class=\\"black discussions icon\\"
+                />
+              </i>
+              Enable realtime chat
             </a>
           </div>
         </div>
@@ -36527,6 +37505,22 @@ exports[`Multiple personas, toggle chat 2`] = `
                     tabindex=\\"0\\"
                   >
                     <i
+                      aria-label=\\"Conditional Content\\"
+                      class=\\"flask icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Conditional Content
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
                       aria-label=\\"Prompt: Audio Input\\"
                       class=\\"microphone icon\\"
                     />
@@ -36692,14 +37686,19 @@ exports[`Multiple personas, toggle chat 3`] = `
               />
             </a>
             <a
-              aria-label=\\"Disable realtime chat on this slide\\"
+              aria-label=\\"Disable realtime chat\\"
               class=\\"item\\"
               tabindex=\\"0\\"
             >
               <i
-                aria-hidden=\\"true\\"
-                class=\\"green chat icon\\"
-              />
+                class=\\"icons em__icon-group-margin\\"
+              >
+                <i
+                  aria-hidden=\\"true\\"
+                  class=\\"green discussions icon\\"
+                />
+              </i>
+              Disable realtime chat
             </a>
           </div>
         </div>
@@ -37735,6 +38734,22 @@ exports[`Multiple personas, toggle chat 3`] = `
                     tabindex=\\"0\\"
                   >
                     <i
+                      aria-label=\\"Conditional Content\\"
+                      class=\\"flask icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Conditional Content
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
                       aria-label=\\"Prompt: Audio Input\\"
                       class=\\"microphone icon\\"
                     />
@@ -37826,7 +38841,7 @@ exports[`Multiple personas, toggle chat 3`] = `
       <div
         class=\\"content\\"
       >
-        Disable realtime chat on this slide
+        Disable realtime chat
       </div>
     </div>
   </div>
@@ -37914,14 +38929,19 @@ exports[`Multiple personas, with an assigned component 1`] = `
               />
             </a>
             <a
-              aria-label=\\"Enable realtime chat on this slide\\"
+              aria-label=\\"Enable realtime chat\\"
               class=\\"item\\"
               tabindex=\\"0\\"
             >
               <i
-                aria-hidden=\\"true\\"
-                class=\\"black chat icon\\"
-              />
+                class=\\"icons em__icon-group-margin\\"
+              >
+                <i
+                  aria-hidden=\\"true\\"
+                  class=\\"black discussions icon\\"
+                />
+              </i>
+              Enable realtime chat
             </a>
           </div>
         </div>
@@ -38722,6 +39742,22 @@ exports[`Multiple personas, with an assigned component 1`] = `
                       class=\\"ser__component-name\\"
                     >
                       Embed Previous Response
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Conditional Content\\"
+                      class=\\"flask icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Conditional Content
                     </span>
                   </a>
                   <a
@@ -38896,14 +39932,19 @@ exports[`Multiple personas, with an assigned component 2`] = `
               />
             </a>
             <a
-              aria-label=\\"Enable realtime chat on this slide\\"
+              aria-label=\\"Enable realtime chat\\"
               class=\\"item\\"
               tabindex=\\"0\\"
             >
               <i
-                aria-hidden=\\"true\\"
-                class=\\"black chat icon\\"
-              />
+                class=\\"icons em__icon-group-margin\\"
+              >
+                <i
+                  aria-hidden=\\"true\\"
+                  class=\\"black discussions icon\\"
+                />
+              </i>
+              Enable realtime chat
             </a>
           </div>
         </div>
@@ -39704,6 +40745,22 @@ exports[`Multiple personas, with an assigned component 2`] = `
                       class=\\"ser__component-name\\"
                     >
                       Embed Previous Response
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Conditional Content\\"
+                      class=\\"flask icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Conditional Content
                     </span>
                   </a>
                   <a
@@ -39976,6 +41033,22 @@ exports[`No slide components 1`] = `
                       class=\\"ser__component-name\\"
                     >
                       Embed Previous Response
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Conditional Content\\"
+                      class=\\"flask icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Conditional Content
                     </span>
                   </a>
                   <a
@@ -40535,6 +41608,22 @@ exports[`Preview 1`] = `
                     tabindex=\\"0\\"
                   >
                     <i
+                      aria-label=\\"Conditional Content\\"
+                      class=\\"flask icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Conditional Content
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
                       aria-label=\\"Prompt: Audio Input\\"
                       class=\\"microphone icon\\"
                     />
@@ -40824,6 +41913,22 @@ exports[`Preview 2`] = `
                       class=\\"ser__component-name\\"
                     >
                       Embed Previous Response
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Conditional Content\\"
+                      class=\\"flask icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Conditional Content
                     </span>
                   </a>
                   <a
@@ -41383,6 +42488,22 @@ exports[`Preview 3`] = `
                     tabindex=\\"0\\"
                   >
                     <i
+                      aria-label=\\"Conditional Content\\"
+                      class=\\"flask icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Conditional Content
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
                       aria-label=\\"Prompt: Audio Input\\"
                       class=\\"microphone icon\\"
                     />
@@ -41931,6 +43052,22 @@ exports[`Save 1`] = `
                     tabindex=\\"0\\"
                   >
                     <i
+                      aria-label=\\"Conditional Content\\"
+                      class=\\"flask icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Conditional Content
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
                       aria-label=\\"Prompt: Audio Input\\"
                       class=\\"microphone icon\\"
                     />
@@ -42470,6 +43607,22 @@ exports[`Save 2`] = `
                       class=\\"ser__component-name\\"
                     >
                       Embed Previous Response
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Conditional Content\\"
+                      class=\\"flask icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Conditional Content
                     </span>
                   </a>
                   <a
@@ -43041,6 +44194,22 @@ exports[`Save, onChange is missing 1`] = `
                     tabindex=\\"0\\"
                   >
                     <i
+                      aria-label=\\"Conditional Content\\"
+                      class=\\"flask icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Conditional Content
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
                       aria-label=\\"Prompt: Audio Input\\"
                       class=\\"microphone icon\\"
                     />
@@ -43580,6 +44749,22 @@ exports[`Save, onChange is missing 2`] = `
                       class=\\"ser__component-name\\"
                     >
                       Embed Previous Response
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Conditional Content\\"
+                      class=\\"flask icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Conditional Content
                     </span>
                   </a>
                   <a
@@ -44151,6 +45336,22 @@ exports[`Single persona 1`] = `
                     tabindex=\\"0\\"
                   >
                     <i
+                      aria-label=\\"Conditional Content\\"
+                      class=\\"flask icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Conditional Content
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
                       aria-label=\\"Prompt: Audio Input\\"
                       class=\\"microphone icon\\"
                     />
@@ -44701,6 +45902,22 @@ exports[`Toggle required on a prompt-response component 1`] = `
                     tabindex=\\"0\\"
                   >
                     <i
+                      aria-label=\\"Conditional Content\\"
+                      class=\\"flask icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Conditional Content
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
                       aria-label=\\"Prompt: Audio Input\\"
                       class=\\"microphone icon\\"
                     />
@@ -45241,6 +46458,22 @@ exports[`Toggle required on a prompt-response component 2`] = `
                       class=\\"ser__component-name\\"
                     >
                       Embed Previous Response
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Conditional Content\\"
+                      class=\\"flask icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Conditional Content
                     </span>
                   </a>
                   <a
@@ -45805,6 +47038,22 @@ exports[`Toggle required on a prompt-response component 4`] = `
                       class=\\"ser__component-name\\"
                     >
                       Embed Previous Response
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Conditional Content\\"
+                      class=\\"flask icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Conditional Content
                     </span>
                   </a>
                   <a

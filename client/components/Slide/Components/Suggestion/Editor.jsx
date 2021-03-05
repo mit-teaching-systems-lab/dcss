@@ -26,15 +26,15 @@ class SuggestionEditor extends React.Component {
     this.onTextareaChange = this.onTextareaChange.bind(this);
   }
   onTextareaChange(html) {
-    this.props.onChange({ html });
+    this.props.onChange({ ...this.props.value, html });
   }
 
   onVisibilityChange(event, { checked: open }) {
-    this.props.onChange({ open });
+    this.props.onChange({ ...this.props.value, open });
   }
 
   onColorChange(event, { value: color }) {
-    this.props.onChange({ color });
+    this.props.onChange({ ...this.props.value, color });
   }
 
   render() {

@@ -242,6 +242,7 @@ beforeEach(() => {
   slides = scenario.slides.slice();
   slideIndex = 0;
   value = {
+    agent: null,
     id: 'XYZ',
     paths: [
       { color: '#ff00ff', display: 'Goto 1', value: 1 },
@@ -467,7 +468,9 @@ test('Add prompt', async done => {
   expect(props.onChange.mock.calls[0]).toMatchInlineSnapshot(`
     Array [
       Object {
+        "agent": null,
         "header": "xyz-header",
+        "id": "XYZ",
         "paths": Array [
           Object {
             "color": "#ff00ff",
@@ -482,6 +485,7 @@ test('Add prompt', async done => {
         ],
         "prompt": "xyz-promptA prompt",
         "recallId": "xyz-recallId",
+        "required": true,
         "responseId": "xyz-responseId",
         "type": "MultiPathResponse",
       },
@@ -525,7 +529,9 @@ test('Save choice', async done => {
   expect(props.onChange.mock.calls[0]).toMatchInlineSnapshot(`
     Array [
       Object {
+        "agent": null,
         "header": "xyz-header",
+        "id": "XYZ",
         "paths": Array [
           Object {
             "color": "#ff00ff",
@@ -540,6 +546,7 @@ test('Save choice', async done => {
         ],
         "prompt": "xyz-prompt",
         "recallId": "xyz-recallId",
+        "required": true,
         "responseId": "xyz-responseId",
         "type": "MultiPathResponse",
       },
@@ -587,7 +594,9 @@ test('Delete choice', async done => {
   expect(props.onChange.mock.calls[0]).toMatchInlineSnapshot(`
     Array [
       Object {
+        "agent": null,
         "header": "xyz-header",
+        "id": "XYZ",
         "paths": Array [
           Object {
             "color": "#ff0000",
@@ -597,6 +606,7 @@ test('Delete choice', async done => {
         ],
         "prompt": "xyz-prompt",
         "recallId": "xyz-recallId",
+        "required": true,
         "responseId": "xyz-responseId",
         "type": "MultiPathResponse",
       },
@@ -638,7 +648,9 @@ test('Add another slide choice empty fields', async done => {
   expect(props.onChange.mock.calls[0]).toMatchInlineSnapshot(`
     Array [
       Object {
+        "agent": null,
         "header": "xyz-header",
+        "id": "XYZ",
         "paths": Array [
           Object {
             "display": "",
@@ -647,6 +659,7 @@ test('Add another slide choice empty fields', async done => {
         ],
         "prompt": "xyz-prompt",
         "recallId": "xyz-recallId",
+        "required": true,
         "responseId": "xyz-responseId",
         "type": "MultiPathResponse",
       },
@@ -675,7 +688,9 @@ test('Add another slide choice empty fields', async done => {
   expect(props.onChange.mock.calls[0]).toMatchInlineSnapshot(`
     Array [
       Object {
+        "agent": null,
         "header": "xyz-header",
+        "id": "XYZ",
         "paths": Array [
           Object {
             "display": "Go to Slide #3  \\"Slide 3\\"",
@@ -684,6 +699,7 @@ test('Add another slide choice empty fields', async done => {
         ],
         "prompt": "xyz-prompt",
         "recallId": "xyz-recallId",
+        "required": true,
         "responseId": "xyz-responseId",
         "type": "MultiPathResponse",
       },
@@ -703,7 +719,9 @@ test('Add another slide choice empty fields', async done => {
   expect(props.onChange.mock.calls[1]).toMatchInlineSnapshot(`
     Array [
       Object {
+        "agent": null,
         "header": "xyz-header",
+        "id": "XYZ",
         "paths": Array [
           Object {
             "display": "Go to Slide #3  \\"Slide 3\\"A new display",
@@ -712,6 +730,7 @@ test('Add another slide choice empty fields', async done => {
         ],
         "prompt": "xyz-prompt",
         "recallId": "xyz-recallId",
+        "required": true,
         "responseId": "xyz-responseId",
         "type": "MultiPathResponse",
       },
@@ -753,7 +772,9 @@ test('Prevent empty fields', async done => {
   expect(props.onChange.mock.calls[0]).toMatchInlineSnapshot(`
     Array [
       Object {
+        "agent": null,
         "header": "xyz-header",
+        "id": "XYZ",
         "paths": Array [
           Object {
             "display": "",
@@ -762,6 +783,7 @@ test('Prevent empty fields', async done => {
         ],
         "prompt": "xyz-prompt",
         "recallId": "xyz-recallId",
+        "required": true,
         "responseId": "xyz-responseId",
         "type": "MultiPathResponse",
       },
@@ -790,7 +812,9 @@ test('Prevent empty fields', async done => {
   expect(props.onChange.mock.calls[0]).toMatchInlineSnapshot(`
     Array [
       Object {
+        "agent": null,
         "header": "xyz-header",
+        "id": "XYZ",
         "paths": Array [
           Object {
             "display": "Go to Slide #3  \\"Slide 3\\"",
@@ -799,6 +823,7 @@ test('Prevent empty fields', async done => {
         ],
         "prompt": "xyz-prompt",
         "recallId": "xyz-recallId",
+        "required": true,
         "responseId": "xyz-responseId",
         "type": "MultiPathResponse",
       },
@@ -818,7 +843,9 @@ test('Prevent empty fields', async done => {
   expect(props.onChange.mock.calls[1]).toMatchInlineSnapshot(`
     Array [
       Object {
+        "agent": null,
         "header": "xyz-header",
+        "id": "XYZ",
         "paths": Array [
           Object {
             "display": "Go to Slide #3  \\"Slide 3\\"A new display",
@@ -827,6 +854,7 @@ test('Prevent empty fields', async done => {
         ],
         "prompt": "xyz-prompt",
         "recallId": "xyz-recallId",
+        "required": true,
         "responseId": "xyz-responseId",
         "type": "MultiPathResponse",
       },
@@ -846,7 +874,9 @@ test('Prevent empty fields', async done => {
   expect(props.onChange.mock.calls[2]).toMatchInlineSnapshot(`
     Array [
       Object {
+        "agent": null,
         "header": "xyz-header",
+        "id": "XYZ",
         "paths": Array [
           Object {
             "display": "Go to Slide #3  \\"Slide 3\\"",
@@ -855,6 +885,7 @@ test('Prevent empty fields', async done => {
         ],
         "prompt": "xyz-prompt",
         "recallId": "xyz-recallId",
+        "required": true,
         "responseId": "xyz-responseId",
         "type": "MultiPathResponse",
       },
@@ -896,7 +927,9 @@ test('Search for slide', async done => {
   expect(props.onChange.mock.calls[0]).toMatchInlineSnapshot(`
     Array [
       Object {
+        "agent": null,
         "header": "xyz-header",
+        "id": "XYZ",
         "paths": Array [
           Object {
             "display": "",
@@ -905,6 +938,7 @@ test('Search for slide', async done => {
         ],
         "prompt": "xyz-prompt",
         "recallId": "xyz-recallId",
+        "required": true,
         "responseId": "xyz-responseId",
         "type": "MultiPathResponse",
       },
@@ -931,7 +965,9 @@ test('Search for slide', async done => {
   expect(props.onChange.mock.calls[0]).toMatchInlineSnapshot(`
     Array [
       Object {
+        "agent": null,
         "header": "xyz-header",
+        "id": "XYZ",
         "paths": Array [
           Object {
             "display": "Go to Slide #2  \\"Slide 2\\"",
@@ -940,6 +976,7 @@ test('Search for slide', async done => {
         ],
         "prompt": "xyz-prompt",
         "recallId": "xyz-recallId",
+        "required": true,
         "responseId": "xyz-responseId",
         "type": "MultiPathResponse",
       },

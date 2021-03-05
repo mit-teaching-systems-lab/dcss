@@ -13,8 +13,8 @@ export { AudioPrompt, AudioPrompt as AudioResponse };
 import * as ChatPrompt from './ChatPrompt';
 export { ChatPrompt };
 
-// import * as ConditionalContent from './ConditionalContent';
-// export { ConditionalContent };
+import * as ConditionalContent from './ConditionalContent';
+export { ConditionalContent };
 
 import * as ConversationPrompt from './ConversationPrompt';
 export { ConversationPrompt };

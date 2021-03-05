@@ -13,7 +13,7 @@ class AudioPromptEditor extends Component {
   constructor(props) {
     super(props);
     const {
-      // agent = null,
+      agent = null,
       header = '',
       prompt = '',
       recallId = '',
@@ -21,7 +21,7 @@ class AudioPromptEditor extends Component {
     } = props.value;
 
     this.state = {
-      // agent,
+      agent,
       header,
       prompt,
       recallId,
@@ -37,16 +37,10 @@ class AudioPromptEditor extends Component {
   componentWillUnmount() {
     clearTimeout(this.timeout);
 
-    const {
-      // agent,
-      header,
-      prompt,
-      recallId,
-      responseId
-    } = this.props.value;
+    const { agent, header, prompt, recallId, responseId } = this.props.value;
 
     const lastProps = {
-      // agent,
+      agent,
       header,
       prompt,
       recallId,
@@ -67,16 +61,11 @@ class AudioPromptEditor extends Component {
   }
 
   updateState() {
-    const {
-      // agent,
-      header,
-      prompt,
-      recallId,
-      responseId
-    } = this.state;
+    const { agent, header, prompt, recallId, responseId } = this.state;
 
     this.props.onChange({
-      // agent,
+      ...this.props.value,
+      agent,
       header,
       prompt,
       recallId,
@@ -94,12 +83,7 @@ class AudioPromptEditor extends Component {
   }
 
   render() {
-    const {
-      // agent,
-      header,
-      prompt,
-      recallId
-    } = this.state;
+    const { agent, header, prompt, recallId } = this.state;
     const { scenario, slideIndex } = this.props;
     const { onChange, onRecallChange, updateState } = this;
 
@@ -152,6 +136,7 @@ AudioPromptEditor.propTypes = {
   scenario: PropTypes.object,
   slideIndex: PropTypes.any,
   value: PropTypes.shape({
+    agent: PropTypes.object,
     id: PropTypes.string,
     header: PropTypes.string,
     prompt: PropTypes.string,

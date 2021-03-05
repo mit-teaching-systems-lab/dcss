@@ -13,7 +13,7 @@ class TextResponseEditor extends React.Component {
   constructor(props) {
     super(props);
     const {
-      // agent = null,
+      agent = null,
       header = '',
       prompt = '',
       placeholder = '',
@@ -21,7 +21,7 @@ class TextResponseEditor extends React.Component {
       responseId = ''
     } = props.value;
     this.state = {
-      // agent,
+      agent,
       header,
       prompt,
       placeholder,
@@ -41,13 +41,7 @@ class TextResponseEditor extends React.Component {
 
     let shouldCallUpdateState = false;
 
-    const fields = [
-      // 'agent',
-      'header',
-      'placeholder',
-      'prompt',
-      'recallId'
-    ];
+    const fields = ['agent', 'header', 'placeholder', 'prompt', 'recallId'];
 
     for (let field of fields) {
       if (this.props.value[field] !== this.state[field]) {
@@ -70,7 +64,7 @@ class TextResponseEditor extends React.Component {
 
   updateState() {
     const {
-      // agent,
+      agent,
       header,
       prompt,
       placeholder,
@@ -78,7 +72,8 @@ class TextResponseEditor extends React.Component {
       responseId
     } = this.state;
     this.props.onChange({
-      // agent,
+      ...this.props.value,
+      agent,
       header,
       prompt,
       placeholder,
@@ -97,13 +92,7 @@ class TextResponseEditor extends React.Component {
   }
 
   render() {
-    const {
-      // agent,
-      header,
-      prompt,
-      placeholder,
-      recallId
-    } = this.state;
+    const { agent, header, prompt, placeholder, recallId } = this.state;
     const { scenario, slideIndex } = this.props;
     const { onChange, onRecallChange, updateState } = this;
     const promptAriaLabel = 'Optional prompt to display before the input:';
@@ -158,6 +147,7 @@ TextResponseEditor.propTypes = {
   slideIndex: PropTypes.any,
   scenario: PropTypes.object,
   value: PropTypes.shape({
+    agent: PropTypes.object,
     id: PropTypes.string,
     placeholder: PropTypes.string,
     header: PropTypes.string,

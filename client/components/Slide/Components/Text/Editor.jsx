@@ -28,6 +28,7 @@ class TextEditor extends React.Component {
     // eslint-disable-next-line no-console
     // console.log(this.props.value.html === html, this.props.value.html, html);
     this.props.onChange({
+      ...this.props.value,
       type,
       html
     });

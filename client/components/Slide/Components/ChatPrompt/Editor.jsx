@@ -21,7 +21,7 @@ class ChatPromptEditor extends React.Component {
   constructor(props) {
     super(props);
     const {
-      // agent = null,
+      agent = null,
       auto = true,
       header = '',
       prompt = '',
@@ -30,7 +30,7 @@ class ChatPromptEditor extends React.Component {
       timer = 0
     } = props.value;
     this.state = {
-      // agent,
+      agent,
       auto,
       header,
       prompt,
@@ -59,7 +59,7 @@ class ChatPromptEditor extends React.Component {
     let shouldCallUpdateState = false;
 
     const fields = [
-      // 'agent',
+      'agent',
       'auto',
       'header',
       'prompt',
@@ -88,7 +88,7 @@ class ChatPromptEditor extends React.Component {
 
   updateState() {
     const {
-      // agent,
+      agent,
       auto,
       header,
       prompt,
@@ -97,7 +97,8 @@ class ChatPromptEditor extends React.Component {
       responseId
     } = this.state;
     this.props.onChange({
-      // agent,
+      ...this.props.value,
+      agent,
       auto,
       header,
       prompt,
@@ -137,13 +138,7 @@ class ChatPromptEditor extends React.Component {
   }
 
   render() {
-    const {
-      // agent,
-      auto,
-      header,
-      prompt,
-      timer
-    } = this.state;
+    const { agent, auto, header, prompt, timer } = this.state;
     const { onChange, onTimerChange, updateState } = this;
     const timerString = timer ? Media.secToTime(timer) : '';
     const [hh = 0, mm = 0, ss = 0] = timerString.split(':').map(v => Number(v));
@@ -161,7 +156,6 @@ class ChatPromptEditor extends React.Component {
     //   agent={agent}
     //   type={type}
     //   onChange={onChange}
-    //   updateState={updateState}
     // />
     return (
       <Form>

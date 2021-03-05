@@ -93,6 +93,7 @@ test('Render 1', async () => {
 
   expect(component.defaultValue(params)).toMatchInlineSnapshot(`
     Object {
+      "agent": null,
       "buttons": Array [
         Object {
           "display": "",
@@ -116,6 +117,7 @@ test('Render 2', async () => {
 
   expect(component.defaultValue(params)).toMatchInlineSnapshot(`
     Object {
+      "agent": null,
       "buttons": Array [
         Object {
           "display": "",
@@ -139,6 +141,7 @@ test('Render 3', async () => {
 
   expect(component.defaultValue(params)).toMatchInlineSnapshot(`
     Object {
+      "agent": null,
       "buttons": Array [
         Object {
           "display": "",

@@ -28,6 +28,7 @@ class MultiPathResponseEditor extends React.Component {
     super(props);
 
     const {
+      agent,
       header = '',
       /*
       {
@@ -46,6 +47,7 @@ class MultiPathResponseEditor extends React.Component {
 
     this.state = {
       isReady: false,
+      agent,
       header,
       prompt,
       paths,
@@ -127,9 +129,11 @@ class MultiPathResponseEditor extends React.Component {
   }
 
   updateState() {
-    const { paths, header, prompt, recallId, responseId } = this.state;
+    const { agent, paths, header, prompt, recallId, responseId } = this.state;
 
     this.props.onChange({
+      ...this.props.value,
+      agent,
       paths,
       header,
       prompt,
@@ -519,6 +523,7 @@ MultiPathResponseEditor.propTypes = {
   scenario: PropTypes.object,
   slideIndex: PropTypes.any,
   value: PropTypes.shape({
+    agent: PropTypes.object,
     id: PropTypes.string,
     paths: PropTypes.array,
     header: PropTypes.string,

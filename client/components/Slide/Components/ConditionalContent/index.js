@@ -3,7 +3,7 @@ export { type, name, description };
 export { default as Display } from './Display';
 export { default as Editor } from './Editor';
 export { default as Card } from './Card';
-export const defaultValue = ({ responseId }) => ({
+export const defaultValue = () => ({
   /*
   Authors will select from currently in-use agents,
   that list is also limited to a subset of agents.
@@ -12,19 +12,16 @@ export const defaultValue = ({ responseId }) => ({
   Conditional Content outputs.
   */
   agent: null,
-  disableRequireCheckbox: true,
   header: '',
+  html: '<p></p>',
   id: '',
+  persona: null,
+  recallId: '',
   rules: [
     {
       operator: '',
       value: ''
     }
   ],
-  persona: null,
-  recallId: '',
-  required: false,
-  responseId,
-  html: '<p></p>',
   type
 });

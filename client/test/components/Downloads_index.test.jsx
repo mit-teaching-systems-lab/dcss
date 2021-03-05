@@ -362,6 +362,7 @@ beforeEach(() => {
               components: [
                 {
                   id: 'd28c0557-4301-41cb-b84c-3810e2a9e601',
+                  agent: null,
                   type: 'MultiPathResponse',
                   paths: [
                     { value: 39, display: 'Go to Slide #2' },

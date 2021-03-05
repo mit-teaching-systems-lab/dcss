@@ -4,7 +4,7 @@ export { default as Display } from './Display';
 export { default as Editor } from './Editor';
 export { default as Card } from './Card';
 export const defaultValue = ({ responseId }) => ({
-  // agent: null,
+  agent: null,
   id: '',
   persona: null,
   placeholder: 'Your response',

@@ -1,12 +1,12 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import Identity from '@utils/Identity';
 import path from 'object-path';
 import { Container, Form, Message, Ref, Slider } from '@components/UI';
 import { type } from './meta';
 // import AgentSelector from '@components/Slide/Components/AgentSelector';
 import DataHeader from '@components/Slide/Components/DataHeader';
 import ResponseRecall from '@components/Slide/Components/ResponseRecall/Editor';
+import Identity from '@utils/Identity';
 import Media from '@utils/Media';
 import '@components/Slide/Components/AudioPrompt/AudioPrompt.css';
 import '@components/Slide/SlideEditor/SlideEditor.css';
@@ -22,7 +22,7 @@ class ConversationPromptEditor extends Component {
   constructor(props) {
     super(props);
     const {
-      // agent = null,
+      agent = null,
       header = '',
       player,
       prompt = '',
@@ -33,7 +33,7 @@ class ConversationPromptEditor extends Component {
     } = props.value;
 
     this.state = {
-      // agent,
+      agent,
       header,
       player,
       prompt,
@@ -55,7 +55,7 @@ class ConversationPromptEditor extends Component {
     clearTimeout(this.timeout);
 
     const {
-      // agent,
+      agent,
       header,
       player,
       prompt,
@@ -66,7 +66,7 @@ class ConversationPromptEditor extends Component {
     } = this.props.value;
 
     const lastProps = {
-      // agent,
+      agent,
       header,
       player,
       prompt,
@@ -91,7 +91,7 @@ class ConversationPromptEditor extends Component {
 
   updateState() {
     const {
-      // agent,
+      agent,
       header,
       player,
       prompt,
@@ -102,7 +102,8 @@ class ConversationPromptEditor extends Component {
     } = this.state;
 
     this.props.onChange({
-      // agent,
+      ...this.props.value,
+      agent,
       header,
       player,
       prompt,
@@ -140,14 +141,7 @@ class ConversationPromptEditor extends Component {
   render() {
     const { scenario, slideIndex } = this.props;
     const { onChange, onRecallChange, updateState } = this;
-    const {
-      // agent,
-      header,
-      prompt,
-      configuration,
-      recallId,
-      url
-    } = this.state;
+    const { agent, header, prompt, configuration, recallId, url } = this.state;
     const options = [
       {
         key: 'whole',
@@ -373,6 +367,7 @@ ConversationPromptEditor.propTypes = {
   scenario: PropTypes.object,
   slideIndex: PropTypes.any,
   value: PropTypes.shape({
+    agent: PropTypes.object,
     id: PropTypes.string,
     header: PropTypes.string,
     prompt: PropTypes.string,

@@ -29,14 +29,16 @@ class MultiButtonResponseEditor extends React.Component {
           value: "Value button represents"
       }
       */
+      agent,
       buttons = [],
       header = '',
       prompt = '',
       recallId = '',
-      responseId = ''
+      responseId
     } = props.value;
 
     this.state = {
+      agent,
       buttons,
       header,
       prompt,
@@ -338,6 +340,7 @@ MultiButtonResponseEditor.propTypes = {
   scenario: PropTypes.object,
   slideIndex: PropTypes.any,
   value: PropTypes.shape({
+    agent: PropTypes.object,
     id: PropTypes.string,
     buttons: PropTypes.array,
     header: PropTypes.string,

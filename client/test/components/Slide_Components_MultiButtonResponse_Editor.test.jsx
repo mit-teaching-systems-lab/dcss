@@ -175,6 +175,7 @@ beforeEach(() => {
   };
   slideIndex = 0;
   value = {
+    agent: null,
     id: 'XYZ',
     buttons: [
       { color: '#ff00ff', display: 'Yes', value: 'Yes' },

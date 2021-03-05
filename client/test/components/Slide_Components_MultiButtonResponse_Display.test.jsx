@@ -99,6 +99,7 @@ beforeEach(() => {
       id: 457,
       run_id: 147,
       response: {
+        agent: null,
         type: 'MultiButtonResponse',
         value: 'Yes',
         isSkip: false,
@@ -232,6 +233,7 @@ beforeEach(() => {
   };
   slideIndex = 0;
   value = {
+    agent: null,
     id: 'XYZ',
     buttons: [
       { color: '#ff00ff', display: 'Yes', value: 'Yes' },

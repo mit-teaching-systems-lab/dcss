@@ -62,6 +62,7 @@ class ResponseRecallEditor extends React.Component {
 
   onChange(event, { name, value }) {
     this.props.onChange({
+      ...this.props.value,
       type,
       // recallId: selected value
       [name]: value

@@ -864,9 +864,7 @@ test('Multiple personas, toggle chat', async done => {
   await render(<ConnectedRoutedComponent {...props} />);
   expect(serialize()).toMatchSnapshot();
 
-  const toggleChat = await screen.findByLabelText(
-    'Enable realtime chat on this slide'
-  );
+  const toggleChat = await screen.findByLabelText('Enable realtime chat');
   expect(serialize()).toMatchSnapshot();
 
   userEvent.click(toggleChat);

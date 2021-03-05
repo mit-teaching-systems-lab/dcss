@@ -65,17 +65,14 @@ const MenuItemChatToggler = props => {
   const { disabled, onToggle, hasChatEnabled } = props;
   const color = hasChatEnabled ? 'green' : 'black';
   const iconProps = {
-    name: 'chat',
+    name: 'discussions',
     color
   };
 
-  const ariaLabel = `${
-    hasChatEnabled ? 'Disable' : 'Enable'
-  } realtime chat on this slide`;
+  const ariaLabel = `${hasChatEnabled ? 'Disable' : 'Enable'} realtime chat`;
+
   const onClick = () => {
-    onToggle({
-      has_chat_enabled: !hasChatEnabled
-    });
+    onToggle();
   };
 
   return !disabled ? (
@@ -85,7 +82,10 @@ const MenuItemChatToggler = props => {
       popup={ariaLabel}
       onClick={onClick}
     >
-      <Icon {...iconProps} />
+      <Icon.Group className="em__icon-group-margin">
+        <Icon {...iconProps} />
+      </Icon.Group>
+      {ariaLabel}
     </Menu.Item.Tabbable>
   ) : null;
 };
@@ -201,9 +201,18 @@ export default class SlideEditor extends Component {
       slide,
       slide: { components }
     } = this.state;
+
     /* istanbul ignore else */
     if (components[index]) {
+      if (
+        components[index].id !== value.id ||
+        components[index].type !== value.type
+      ) {
+        return;
+      }
+
       Object.assign(components[index], value);
+
       const update = {
         slide: {
           ...slide,
@@ -250,10 +259,8 @@ export default class SlideEditor extends Component {
   }
 
   onComponentOrderChange(fromIndex, activeComponentIndex) {
-    const {
-      slide,
-      slide: { components }
-    } = this.state;
+    const { slide } = this.state;
+    const components = slide.components.slice();
     const moving = components[fromIndex];
     components.splice(fromIndex, 1);
     components.splice(activeComponentIndex, 0, moving);
@@ -264,13 +271,12 @@ export default class SlideEditor extends Component {
         components
       }
     };
-
     this.activateComponent(update, () => {
       this.updateSlide();
     });
   }
 
-  onComponentDelete(index, additionalSlideState = {}) {
+  onComponentDelete(index) {
     const { slide } = this.state;
     const components = slide.components.slice();
 
@@ -295,7 +301,6 @@ export default class SlideEditor extends Component {
       activeComponentIndex,
       slide: {
         ...slide,
-        ...additionalSlideState,
         components
       }
     };
@@ -305,7 +310,7 @@ export default class SlideEditor extends Component {
     });
   }
 
-  onComponentSelectClick(type, insertAtIndex = -1, additionalSlideState = {}) {
+  onComponentSelectClick(type, insertAtIndex = -1) {
     const {
       activeComponentIndex: currentActiveComponentIndex,
       slide
@@ -336,12 +341,19 @@ export default class SlideEditor extends Component {
       }
     }
 
+    // TODO: eliminate this legacy property, as it's no longer
+    //        used in the way that it was originally intended
+    //         (or at all).
+    const has_chat_enabled = !!components.find(
+      ({ type }) => type === 'ChatPrompt'
+    );
+
     const update = {
       activeComponentIndex,
       slide: {
         ...slide,
-        ...additionalSlideState,
-        components
+        components,
+        has_chat_enabled
       }
     };
 
@@ -380,6 +392,11 @@ export default class SlideEditor extends Component {
     const { activeComponentIndex, mode, slide } = this.state;
     const noSlideComponents = slide.components.length === 0;
     const disabled = !!noSlide;
+
+    const hasChatEnabled = !!this.state.slide.components.find(
+      ({ type }) => type === 'ChatPrompt'
+    );
+
     const editorMenuItems = {
       left: [
         <Menu.Item.Tabbable
@@ -433,20 +450,16 @@ export default class SlideEditor extends Component {
           key="menu-item-chat-toggler"
           name="has_chat_enabled"
           disabled={scenario.personas.length === 1}
-          hasChatEnabled={slide.has_chat_enabled}
-          onToggle={({ has_chat_enabled }) => {
+          hasChatEnabled={hasChatEnabled}
+          onToggle={() => {
             const index = this.state.slide.components.findIndex(
               ({ type }) => type === 'ChatPrompt'
             );
 
-            const additionalSlideState = {
-              has_chat_enabled
-            };
-
             if (index !== -1) {
-              onComponentDelete(index, additionalSlideState);
+              onComponentDelete(index);
             } else {
-              onComponentSelectClick('ChatPrompt', 0, additionalSlideState);
+              onComponentSelectClick('ChatPrompt', 0);
             }
           }}
         />
@@ -561,7 +574,6 @@ export default class SlideEditor extends Component {
                                 const persona = personaOrNull
                                   ? { id: personaOrNull.id }
                                   : null;
-
                                 onComponentChange(index, {
                                   ...value,
                                   persona
