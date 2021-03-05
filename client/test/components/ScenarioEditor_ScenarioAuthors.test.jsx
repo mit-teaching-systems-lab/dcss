@@ -84,6 +84,7 @@ const scenario = {
           type: 'Text'
         },
         {
+          agent: null,
           id: 'aede9380-c7a3-4ef7-add7-838fd5ec854f',
           type: 'TextResponse',
           header: 'TextResponse-1',
@@ -585,6 +586,7 @@ test('Non-super author owner', async done => {
               type: 'Text'
             },
             {
+              agent: null,
               id: 'aede9380-c7a3-4ef7-add7-838fd5ec854f',
               type: 'TextResponse',
               header: 'TextResponse-1',
@@ -732,6 +734,7 @@ test('Non-super non-owner author', async done => {
               type: 'Text'
             },
             {
+              agent: null,
               id: 'aede9380-c7a3-4ef7-add7-838fd5ec854f',
               type: 'TextResponse',
               header: 'TextResponse-1',
@@ -879,6 +882,7 @@ test('No users loaded', async done => {
               type: 'Text'
             },
             {
+              agent: null,
               id: 'aede9380-c7a3-4ef7-add7-838fd5ec854f',
               type: 'TextResponse',
               header: 'TextResponse-1',
@@ -1016,6 +1020,7 @@ test('Search', async done => {
               type: 'Text'
             },
             {
+              agent: null,
               id: 'aede9380-c7a3-4ef7-add7-838fd5ec854f',
               type: 'TextResponse',
               header: 'TextResponse-1',
@@ -1174,6 +1179,7 @@ test('Roles', async done => {
               type: 'Text'
             },
             {
+              agent: null,
               id: 'aede9380-c7a3-4ef7-add7-838fd5ec854f',
               type: 'TextResponse',
               header: 'TextResponse-1',

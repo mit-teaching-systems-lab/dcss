@@ -93,7 +93,6 @@ test('Render 1', async () => {
 
   expect(component.defaultValue(params)).toMatchInlineSnapshot(`
     Object {
-      "agent": null,
       "header": "",
       "id": "",
       "persona": null,
@@ -112,7 +111,6 @@ test('Render 2', async () => {
 
   expect(component.defaultValue(params)).toMatchInlineSnapshot(`
     Object {
-      "agent": null,
       "header": "",
       "id": "",
       "persona": null,
@@ -131,7 +129,6 @@ test('Render 3', async () => {
 
   expect(component.defaultValue(params)).toMatchInlineSnapshot(`
     Object {
-      "agent": null,
       "header": "",
       "id": "",
       "persona": null,

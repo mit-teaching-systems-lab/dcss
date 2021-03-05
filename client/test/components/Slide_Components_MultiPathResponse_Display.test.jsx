@@ -101,6 +101,7 @@ test('Render 1 1', async done => {
   const props = {
     ...commonProps,
     type: 'MultiPathResponse',
+    agent: null,
     header: '',
     prompt: '',
     responseId: 'ABC',
@@ -152,6 +153,7 @@ test('Render 1 1', async done => {
               type: 'Text'
             },
             {
+              agent: null,
               id: 'aede9380-c7a3-4ef7-add7-838fd5ec854f',
               type: 'TextResponse',
               header: 'TextResponse-1',
@@ -228,6 +230,7 @@ test('Render 2 1', async done => {
   const props = {
     ...commonProps,
     type: 'MultiPathResponse',
+    agent: null,
     header: '',
     prompt: '',
     responseId: 'ABC',
@@ -279,6 +282,7 @@ test('Render 2 1', async done => {
               type: 'Text'
             },
             {
+              agent: null,
               id: 'aede9380-c7a3-4ef7-add7-838fd5ec854f',
               type: 'TextResponse',
               header: 'TextResponse-1',
@@ -356,6 +360,7 @@ test('Render 3 1', async done => {
   const props = {
     ...commonProps,
     type: 'MultiPathResponse',
+    agent: null,
     header: '',
     prompt: '',
     responseId: 'ABC',
@@ -407,6 +412,7 @@ test('Render 3 1', async done => {
               type: 'Text'
             },
             {
+              agent: null,
               id: 'aede9380-c7a3-4ef7-add7-838fd5ec854f',
               type: 'TextResponse',
               header: 'TextResponse-1',
@@ -484,6 +490,7 @@ test('Render 4 1', async done => {
   const props = {
     ...commonProps,
     type: 'MultiPathResponse',
+    agent: null,
     header: '',
     prompt: '',
     responseId: 'ABC',
@@ -535,6 +542,7 @@ test('Render 4 1', async done => {
               type: 'Text'
             },
             {
+              agent: null,
               id: 'aede9380-c7a3-4ef7-add7-838fd5ec854f',
               type: 'TextResponse',
               header: 'TextResponse-1',

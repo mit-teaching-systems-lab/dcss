@@ -150,6 +150,7 @@ test('Render 1 1', async done => {
               type: 'Text'
             },
             {
+              agent: null,
               id: 'aede9380-c7a3-4ef7-add7-eb6677358c9e',
               type: 'TextResponse',
               header: 'TextResponse-1',

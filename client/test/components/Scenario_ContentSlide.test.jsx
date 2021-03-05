@@ -116,6 +116,7 @@ beforeEach(() => {
             type: 'Text'
           },
           {
+            agent: null,
             id: 'aede9380-c7a3-4ef7-add7-838fd5ec854f',
             type: 'TextResponse',
             header: 'TextResponse-1',

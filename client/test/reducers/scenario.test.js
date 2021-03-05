@@ -331,6 +331,7 @@ describe('scenario', () => {
                 "type": "Text",
               },
               Object {
+                "agent": null,
                 "header": "TextResponse-1",
                 "id": "aede9380-c7a3-4ef7-add7-838fd5ec854f",
                 "placeholder": "Your response",
@@ -378,6 +379,7 @@ describe('scenario', () => {
                 "type": "Text",
               },
               Object {
+                "agent": null,
                 "header": "TextResponse-1",
                 "id": "aede9380-c7a3-4ef7-add7-838fd5ec854f",
                 "placeholder": "Your response",
@@ -432,6 +434,7 @@ describe('scenario', () => {
                 "type": "Text",
               },
               Object {
+                "agent": null,
                 "header": "TextResponse-1",
                 "id": "aede9380-c7a3-4ef7-add7-838fd5ec854f",
                 "placeholder": "Your response",
@@ -479,6 +482,7 @@ describe('scenario', () => {
                 "type": "Text",
               },
               Object {
+                "agent": null,
                 "header": "TextResponse-1",
                 "id": "aede9380-c7a3-4ef7-add7-838fd5ec854f",
                 "placeholder": "Your response",
@@ -522,6 +526,7 @@ describe('scenario', () => {
                 "type": "Text",
               },
               Object {
+                "agent": null,
                 "header": "TextResponse-1",
                 "id": "aede9380-c7a3-4ef7-add7-838fd5ec854f",
                 "placeholder": "Your response",
@@ -558,6 +563,7 @@ describe('scenario', () => {
                 "type": "Text",
               },
               Object {
+                "agent": null,
                 "header": "TextResponse-1",
                 "id": "aede9380-c7a3-4ef7-add7-838fd5ec854f",
                 "placeholder": "Your response",

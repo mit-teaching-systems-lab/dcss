@@ -118,6 +118,7 @@ beforeEach(() => {
             type: 'Text'
           },
           {
+            agent: null,
             id: 'aede9380-c7a3-4ef7-add7-838fd5ec854f',
             type: 'TextResponse',
             header: 'TextResponse-1',
@@ -174,6 +175,7 @@ beforeEach(() => {
   };
   slideIndex = 0;
   value = {
+    agent: null,
     id: 'XYZ',
     timer: 0,
     header: 'xyz-header',

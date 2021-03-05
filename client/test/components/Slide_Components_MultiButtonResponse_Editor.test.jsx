@@ -118,6 +118,7 @@ beforeEach(() => {
             type: 'Text'
           },
           {
+            agent: null,
             id: 'aede9380-c7a3-4ef7-add7-838fd5ec854f',
             type: 'TextResponse',
             header: 'TextResponse-1',
@@ -241,6 +242,7 @@ test('Render 1 1', async done => {
 test('Missing props', async done => {
   const Component = Editor;
 
+  value.persona = null;
   value.buttons = undefined;
   value.header = undefined;
   value.prompt = undefined;

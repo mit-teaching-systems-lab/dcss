@@ -147,6 +147,7 @@ test('Render 1 1', async done => {
               type: 'Text'
             },
             {
+              agent: null,
               id: 'aede9380-c7a3-4ef7-add7-838fd5ec854f',
               type: 'TextResponse',
               header: 'TextResponse-1',
@@ -270,6 +271,7 @@ test('Render 2 1', async done => {
               type: 'Text'
             },
             {
+              agent: null,
               id: 'aede9380-c7a3-4ef7-add7-838fd5ec854f',
               type: 'TextResponse',
               header: 'TextResponse-1',

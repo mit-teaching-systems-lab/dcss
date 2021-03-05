@@ -127,6 +127,7 @@ const scenario = {
           type: 'Text'
         },
         {
+          agent: null,
           id: 'aede9380-c7a3-4ef7-add7-838fd5ec854f',
           type: 'TextResponse',
           header: 'TextResponse-1',
@@ -223,6 +224,7 @@ const scenario2 = {
           type: 'Text'
         },
         {
+          agent: null,
           id: 'aede9380-c7a3-4ef7-add7-eb6677358c9e',
           type: 'TextResponse',
           header: 'TextResponse-1',
@@ -670,6 +672,7 @@ beforeEach(() => {
                   type: 'Text'
                 },
                 {
+                  agent: null,
                   id: 'aede9380-c7a3-4ef7-add7-838fd5ec854f',
                   type: 'TextResponse',
                   header: 'TextResponse-1',
@@ -766,6 +769,7 @@ beforeEach(() => {
                   type: 'Text'
                 },
                 {
+                  agent: null,
                   id: 'aede9380-c7a3-4ef7-add7-eb6677358c9e',
                   type: 'TextResponse',
                   header: 'TextResponse-1',
@@ -1466,6 +1470,7 @@ test('Click to see all response', async done => {
                 "type": "Text",
               },
               Object {
+                "agent": null,
                 "header": "TextResponse-1",
                 "id": "aede9380-c7a3-4ef7-add7-eb6677358c9e",
                 "placeholder": "Your response",
