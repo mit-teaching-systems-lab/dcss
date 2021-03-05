@@ -237,11 +237,11 @@ class ConditionalContentEditor extends React.Component {
 
     return (
       <Form>
-        <Container fluid>
-          <Grid>
-            <Grid.Row>
-              <Grid.Column>
-                {agentsInUse ? (
+        {agentsInUse.length ? (
+          <Container fluid>
+            <Grid>
+              <Grid.Row>
+                <Grid.Column>
                   <AgentSelector
                     label="Select an AI agent:"
                     agent={agent}
@@ -249,240 +249,216 @@ class ConditionalContentEditor extends React.Component {
                     onChange={onChange}
                     types={['AudioPrompt', 'ConversationPrompt', 'TextResponse']}
                   />
-                ) : null}
-                <Segment>
-                  <p tabIndex="0" className="cce__paragraph">
-                    Create rules that are used to determine if the content below
-                    will be displayed to the participant.
-                  </p>
-                  <p tabIndex="0" className="cce__paragraph">
-                    For every rule, <code>X</code> is the sum of affirmative
-                    responses from the agent, and <code>Y</code> is your
-                    comparison value.
-                  </p>
-                </Segment>
-                <Table definition striped unstackable>
-                  <Table.Header>
-                    <Table.Row>
-                      <Table.HeaderCell className="mpr__thead-background" />
-                      <Table.HeaderCell>Operation</Table.HeaderCell>
-                      <Table.HeaderCell className="cce__cell-constraint">
-                        Y value
-                      </Table.HeaderCell>
-                      <Table.HeaderCell className="cce__cell-constraint">
-                        Evaluates as...
-                      </Table.HeaderCell>
-                    </Table.Row>
-                  </Table.Header>
+                  <Segment>
+                    <p tabIndex="0" className="cce__paragraph">
+                      Create rules that are used to determine if the content below
+                      will be displayed to the participant.
+                    </p>
+                    <p tabIndex="0" className="cce__paragraph">
+                      For every rule, <code>X</code> is the sum of affirmative
+                      responses from the agent, and <code>Y</code> is your
+                      comparison value.
+                    </p>
+                  </Segment>
+                  <Table definition striped unstackable>
+                    <Table.Header>
+                      <Table.Row>
+                        <Table.HeaderCell className="mpr__thead-background" />
+                        <Table.HeaderCell>Operation</Table.HeaderCell>
+                        <Table.HeaderCell className="cce__cell-constraint">
+                          Y value
+                        </Table.HeaderCell>
+                        <Table.HeaderCell className="cce__cell-constraint">
+                          Evaluates as...
+                        </Table.HeaderCell>
+                      </Table.Row>
+                    </Table.Header>
 
-                  <Sortable
-                    tag="tbody"
-                    onChange={onRuleOrderChange}
-                    options={{
-                      direction: 'vertical',
-                      swapThreshold: 0.5,
-                      animation: 150
-                    }}
-                  >
-                    {rules.map((rule, index) => {
-                      const { operator, value } = rule;
-                      const baseKey = Identity.key({ id, index });
-                      const ruleKey = Identity.key({ baseKey, rule });
+                    <Sortable
+                      tag="tbody"
+                      onChange={onRuleOrderChange}
+                      options={{
+                        direction: 'vertical',
+                        swapThreshold: 0.5,
+                        animation: 150
+                      }}
+                    >
+                      {rules.map((rule, index) => {
+                        const { operator, value } = rule;
+                        const baseKey = Identity.key({ id, index });
+                        const ruleKey = Identity.key({ baseKey, rule });
 
-                      const isFirst = index === 0;
-                      const isLast = index - 1 === rules.length;
-                      const lastRule = rules[index - 1];
+                        const isFirst = index === 0;
+                        const isLast = index - 1 === rules.length;
+                        const lastRule = rules[index - 1];
 
-                      const options = baseOptions.filter(option => {
-                        const isLogical = Conditional.isLogicalOp(option.value);
-                        // Logical operators cannot appear at the first or last position
-                        // Logical operators cannot appear in sequence
-                        if (
-                          isLogical &&
-                          (isFirst ||
-                            isLast ||
-                            (lastRule &&
-                              Conditional.isLogicalOp(lastRule.operator)))
-                        ) {
-                          return false;
-                        }
-                        return true;
-                      });
+                        const options = baseOptions.filter(option => {
+                          const isLogical = Conditional.isLogicalOp(option.value);
+                          // Logical operators cannot appear at the first or last position
+                          // Logical operators cannot appear in sequence
+                          if (
+                            isLogical &&
+                            (isFirst ||
+                              isLast ||
+                              (lastRule &&
+                                Conditional.isLogicalOp(lastRule.operator)))
+                          ) {
+                            return false;
+                          }
+                          return true;
+                        });
 
-                      const isLogical =
-                        operator && Conditional.isLogicalOp(operator);
-                      const operatorDisplay = operator
-                        ? terms.find(term => term.key === operator).operator
-                        : null;
+                        const isLogical =
+                          operator && Conditional.isLogicalOp(operator);
+                        const operatorDisplay = operator
+                          ? terms.find(term => term.key === operator).operator
+                          : null;
 
-                      const binOpEvalDisplay =
-                        operator && !isLogical ? (
-                          <code>
-                            X {operatorDisplay} {value}
-                          </code>
+                        const binOpEvalDisplay =
+                          operator && !isLogical ? (
+                            <code>
+                              X {operatorDisplay} {value}
+                            </code>
+                          ) : null;
+
+                        const logicalOpEvalDisplay = isLogical ? (
+                          <code>{operatorDisplay}</code>
                         ) : null;
 
-                      const logicalOpEvalDisplay = isLogical ? (
-                        <code>{operatorDisplay}</code>
-                      ) : null;
-
-                      const evalDisplay =
-                        logicalOpEvalDisplay || binOpEvalDisplay;
-                      const evaluation =
-                        evalDisplay || 'Select an operator to create a rule';
-                      const valueIsDisabled = isLogical;
-                      return (
-                        <Table.Row
-                          className="mpr__cursor-grab"
-                          key={`table-row-${baseKey}`}
-                        >
-                          <Table.Cell collapsing>
-                            <EditorMenu
-                              type="rule"
-                              items={{
-                                save: {
-                                  onClick: () => updateState()
-                                },
-                                delete: {
-                                  onConfirm: () => onRuleDeleteClick(index)
-                                }
-                              }}
-                            />
-                          </Table.Cell>
-                          <Table.Cell>
-                            <Dropdown
-                              closeOnChange
-                              fluid
-                              selection
-                              name="operator"
-                              aria-label={`Select the operator for expression ${index +
-                                1}`}
-                              index={index}
-                              value={operator}
-                              onChange={onRuleDetailChange}
-                              search={onRuleSearchChange}
-                              options={options}
-                              key={`rule-node-${ruleKey}`}
-                            />
-                          </Table.Cell>
-                          <Table.Cell>
-                            {valueIsDisabled ? null : (
-                              <Input
+                        const evalDisplay =
+                          logicalOpEvalDisplay || binOpEvalDisplay;
+                        const evaluation =
+                          evalDisplay || 'Select an operator to create a rule';
+                        const valueIsDisabled = isLogical;
+                        return (
+                          <Table.Row
+                            className="mpr__cursor-grab"
+                            key={`table-row-${baseKey}`}
+                          >
+                            <Table.Cell collapsing>
+                              <EditorMenu
+                                type="rule"
+                                items={{
+                                  save: {
+                                    onClick: () => updateState()
+                                  },
+                                  delete: {
+                                    onConfirm: () => onRuleDeleteClick(index)
+                                  }
+                                }}
+                              />
+                            </Table.Cell>
+                            <Table.Cell>
+                              <Dropdown
+                                closeOnChange
                                 fluid
-                                name="value"
-                                autoComplete="off"
-                                aria-label={`Enter the value for expression ${index +
+                                selection
+                                name="operator"
+                                aria-label={`Select the operator for expression ${index +
                                   1}`}
                                 index={index}
-                                value={value || ''}
+                                value={operator}
                                 onChange={onRuleDetailChange}
+                                search={onRuleSearchChange}
                                 options={options}
-                                key={`rule-operator-${baseKey}`}
+                                key={`rule-node-${ruleKey}`}
                               />
-                            )}
+                            </Table.Cell>
+                            <Table.Cell>
+                              {valueIsDisabled ? null : (
+                                <Input
+                                  fluid
+                                  name="value"
+                                  autoComplete="off"
+                                  aria-label={`Enter the value for expression ${index +
+                                    1}`}
+                                  index={index}
+                                  value={value || ''}
+                                  onChange={onRuleDetailChange}
+                                  options={options}
+                                  key={`rule-operator-${baseKey}`}
+                                />
+                              )}
+                            </Table.Cell>
+                            <Table.Cell>{evaluation}</Table.Cell>
+                          </Table.Row>
+                        );
+                      })}
+                    </Sortable>
+
+                    {!rules.length ? (
+                      <Table.Body>
+                        <Table.Row
+                          key={Identity.key({ id, ['empty']: true })}
+                          negative
+                        >
+                          <Table.Cell colSpan={4}>
+                            There are no rules defined, which means this component
+                            will not display anything on the slide. You must
+                            create at least one rule to display the content in
+                            your slide.
                           </Table.Cell>
-                          <Table.Cell>{evaluation}</Table.Cell>
                         </Table.Row>
-                      );
-                    })}
-                  </Sortable>
+                      </Table.Body>
+                    ) : null}
 
-                  {!rules.length ? (
-                    <Table.Body>
-                      <Table.Row
-                        key={Identity.key({ id, ['empty']: true })}
-                        negative
-                      >
-                        <Table.Cell colSpan={4}>
-                          There are no rules defined, which means this component
-                          will not display anything on the slide. You must
-                          create at least one rule to display the content in
-                          your slide.
-                        </Table.Cell>
-                      </Table.Row>
-                    </Table.Body>
-                  ) : null}
-
-                  <Table.Footer fullWidth>
-                    <Table.Row>
-                      <Table.HeaderCell />
-                      <Table.HeaderCell colSpan="3">
-                        <Menu floated="right" borderless>
-                          <Menu.Item.Tabbable
-                            icon
-                            aria-label="Add another slide choice"
-                            onClick={onRuleAddClick}
-                          >
-                            <Icon.Group
-                              size="large"
-                              className="em__icon-group-margin"
+                    <Table.Footer fullWidth>
+                      <Table.Row>
+                        <Table.HeaderCell />
+                        <Table.HeaderCell colSpan="3">
+                          <Menu floated="right" borderless>
+                            <Menu.Item.Tabbable
+                              icon
+                              aria-label="Add another slide choice"
+                              onClick={onRuleAddClick}
                             >
-                              <Icon name="hand pointer outline" />
-                              <Icon
-                                corner="top right"
-                                name="add"
-                                color="green"
-                              />
-                            </Icon.Group>
-                            Add a rule
-                          </Menu.Item.Tabbable>
-                        </Menu>
-                      </Table.HeaderCell>
-                    </Table.Row>
-                  </Table.Footer>
-                </Table>
-                <RichTextEditor
-                  name="html"
-                  defaultValue={html}
-                  onChange={value => {
-                    console.log('?', value);
-                    onChange(
-                      {},
-                      {
-                        name: 'html',
-                        value
-                      }
-                    );
-                  }}
-                  options={{
-                    autoFocus: false,
-                    buttons: 'component',
-                    minHeight: '150px',
-                    tabDisable: true
-                  }}
-                />
-              </Grid.Column>
-            </Grid.Row>
-          </Grid>
-        </Container>
-        {/*
-        <Segment>
-          {ComponentEditor ? (
-            <ComponentEditor
-              key={component.id}
-              id={component.id}
-              slideId={this.props.id}
-              slideIndex={this.props.index}
-              scenario={scenario}
-              value={component}
-              onChange={updates => {
-                console.log("...........ComponentEditor...........");
-
-                const value = {
-                  ...this.state.component,
-                  ...updates
-                };
-
-                console.log(value);
-                onChange({}, {
-                  name: 'component',
-                  value
-                });
-              }}
-            />
-          ) : 'Select a component from the right'}
-        </Segment>
-      */}
+                              <Icon.Group
+                                size="large"
+                                className="em__icon-group-margin"
+                              >
+                                <Icon name="hand pointer outline" />
+                                <Icon
+                                  corner="top right"
+                                  name="add"
+                                  color="green"
+                                />
+                              </Icon.Group>
+                              Add a rule
+                            </Menu.Item.Tabbable>
+                          </Menu>
+                        </Table.HeaderCell>
+                      </Table.Row>
+                    </Table.Footer>
+                  </Table>
+                  <RichTextEditor
+                    name="html"
+                    defaultValue={html}
+                    onChange={value => {
+                      console.log('?', value);
+                      onChange(
+                        {},
+                        {
+                          name: 'html',
+                          value
+                        }
+                      );
+                    }}
+                    options={{
+                      autoFocus: false,
+                      buttons: 'component',
+                      minHeight: '150px',
+                      tabDisable: true
+                    }}
+                  />
+                </Grid.Column>
+              </Grid.Row>
+            </Grid>
+          </Container>
+        ) : (
+          <Segment>
+            There are currently no active agents in this scenario
+          </Segment>
+        )}
       </Form>
     );
   }

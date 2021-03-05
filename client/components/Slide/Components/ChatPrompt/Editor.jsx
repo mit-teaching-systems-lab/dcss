@@ -225,15 +225,14 @@ class ChatPromptEditor extends React.Component {
                   onChange={onChange}
                   onBlur={updateState}
                 />
+                <AgentSelector
+                  agent={agent}
+                  type={type}
+                  onChange={onChange}
+                />
               </Grid.Column>
             </Grid.Row>
           </Grid>
-
-          <AgentSelector
-            agent={agent}
-            type={type}
-            onChange={onChange}
-          />
 
           <DataHeader
             content={header}
