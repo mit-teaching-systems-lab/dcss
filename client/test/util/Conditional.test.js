@@ -225,6 +225,16 @@ test('Conditional.evaluate(data, boolean)', () => {
 test('Conditional.isLogicalOp()', () => {
   expect(Conditional.isLogicalOp('$and')).toBe(true);
   expect(Conditional.isLogicalOp('$or')).toBe(true);
+  expect(Conditional.isLogicalOp('$between').toBe(false);
+  expect(Conditional.isLogicalOp('$includes').toBe(false);
+  expect(Conditional.isLogicalOp('$eq').toBe(false);
+  expect(Conditional.isLogicalOp('$gt').toBe(false);
+  expect(Conditional.isLogicalOp('$gte').toBe(false);
+  expect(Conditional.isLogicalOp('$in').toBe(false);
+  expect(Conditional.isLogicalOp('$lt').toBe(false);
+  expect(Conditional.isLogicalOp('$lte').toBe(false);
+  expect(Conditional.isLogicalOp('$ne').toBe(false);
+  expect(Conditional.isLogicalOp('$notBetween').toBe(false);
 });
 
 test('Conditional.evaluate, $and in leading position is invalid', () => {
