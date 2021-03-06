@@ -150,7 +150,7 @@ const scenario = {
           recallId: '',
           required: true,
           responseId: 'be99fe9b-fa0d-4ab7-8541-1bfd1ef0bf11',
-          placeholder: 'Your response'
+          placeholder: ''
         },
         {
           id: 'f96ac6de-ac6b-4e06-bd97-d97e12fe72c1',
@@ -247,7 +247,7 @@ const scenario2 = {
           recallId: '',
           required: true,
           responseId: 'be99fe9b-fa0d-4ab7-8541-1bfd1ef0bf11',
-          placeholder: 'Your response'
+          placeholder: ''
         },
         {
           id: 'f96ac6de-ac6b-4e06-bd97-d97e12fe72c1',
@@ -835,15 +835,7 @@ test('Render 1 1', async done => {
   const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
   expect(asFragment()).toMatchSnapshot();
   expect(Storage.get.mock.calls.length).toBe(1);
-  expect(Storage.get.mock.calls[0]).toMatchInlineSnapshot(`
-    Array [
-      "cohort/1",
-      Object {
-        "activeTabKey": "cohort",
-        "tabs": Array [],
-      },
-    ]
-  `);
+  expect(Storage.get.mock.calls[0]).toMatchInlineSnapshot();
   await screen.findByTestId('cohort-boundary-bottom');
   expect(asFragment()).toMatchSnapshot();
 
@@ -1134,15 +1126,7 @@ test('Render 2 1', async done => {
   const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
   expect(asFragment()).toMatchSnapshot();
   expect(Storage.get.mock.calls.length).toBe(1);
-  expect(Storage.get.mock.calls[0]).toMatchInlineSnapshot(`
-    Array [
-      "cohort/1",
-      Object {
-        "activeTabKey": "cohort",
-        "tabs": Array [],
-      },
-    ]
-  `);
+  expect(Storage.get.mock.calls[0]).toMatchInlineSnapshot();
   await screen.findByTestId('cohort-boundary-bottom');
   expect(asFragment()).toMatchSnapshot();
 
@@ -1434,15 +1418,7 @@ test('Render 3 1', async done => {
   const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
   expect(asFragment()).toMatchSnapshot();
   expect(Storage.get.mock.calls.length).toBe(1);
-  expect(Storage.get.mock.calls[0]).toMatchInlineSnapshot(`
-    Array [
-      "cohort/1",
-      Object {
-        "activeTabKey": "cohort",
-        "tabs": Array [],
-      },
-    ]
-  `);
+  expect(Storage.get.mock.calls[0]).toMatchInlineSnapshot();
   await screen.findByTestId('cohort-boundary-bottom');
   expect(asFragment()).toMatchSnapshot();
 
@@ -1497,15 +1473,7 @@ test('Render 4 1', async done => {
   const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
   expect(asFragment()).toMatchSnapshot();
   expect(Storage.get.mock.calls.length).toBe(1);
-  expect(Storage.get.mock.calls[0]).toMatchInlineSnapshot(`
-    Array [
-      "cohort/1",
-      Object {
-        "activeTabKey": "cohort",
-        "tabs": Array [],
-      },
-    ]
-  `);
+  expect(Storage.get.mock.calls[0]).toMatchInlineSnapshot();
   await screen.findByTestId('cohort-boundary-bottom');
   expect(asFragment()).toMatchSnapshot();
 
@@ -1825,15 +1793,7 @@ test('Render 5 1', async done => {
   const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
   expect(asFragment()).toMatchSnapshot();
   expect(Storage.get.mock.calls.length).toBe(1);
-  expect(Storage.get.mock.calls[0]).toMatchInlineSnapshot(`
-    Array [
-      "cohort/1",
-      Object {
-        "activeTabKey": "cohort",
-        "tabs": Array [],
-      },
-    ]
-  `);
+  expect(Storage.get.mock.calls[0]).toMatchInlineSnapshot();
   await screen.findByTestId('cohort-boundary-bottom');
   expect(asFragment()).toMatchSnapshot();
 
@@ -1891,15 +1851,7 @@ test('Render 6 1', async done => {
   const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
   expect(asFragment()).toMatchSnapshot();
   expect(Storage.get.mock.calls.length).toBe(1);
-  expect(Storage.get.mock.calls[0]).toMatchInlineSnapshot(`
-    Array [
-      "cohort/1",
-      Object {
-        "activeTabKey": "cohort",
-        "tabs": Array [],
-      },
-    ]
-  `);
+  expect(Storage.get.mock.calls[0]).toMatchInlineSnapshot();
 
   await screen.findByTestId('cohort-boundary-bottom');
   expect(asFragment()).toMatchSnapshot();
@@ -1958,15 +1910,7 @@ test('Render 7 1', async done => {
   const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
   expect(asFragment()).toMatchSnapshot();
   expect(Storage.get.mock.calls.length).toBe(1);
-  expect(Storage.get.mock.calls[0]).toMatchInlineSnapshot(`
-    Array [
-      "cohort/1",
-      Object {
-        "activeTabKey": "cohort",
-        "tabs": Array [],
-      },
-    ]
-  `);
+  expect(Storage.get.mock.calls[0]).toMatchInlineSnapshot();
   await screen.findByTestId('cohort-boundary-bottom');
   expect(asFragment()).toMatchSnapshot();
 
@@ -2287,15 +2231,7 @@ test('Render 8 1', async done => {
   const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
   expect(asFragment()).toMatchSnapshot();
   expect(Storage.get.mock.calls.length).toBe(1);
-  expect(Storage.get.mock.calls[0]).toMatchInlineSnapshot(`
-    Array [
-      "cohort/1",
-      Object {
-        "activeTabKey": "cohort",
-        "tabs": Array [],
-      },
-    ]
-  `);
+  expect(Storage.get.mock.calls[0]).toMatchInlineSnapshot();
   await screen.findByTestId('cohort-boundary-bottom');
   expect(asFragment()).toMatchSnapshot();
 
@@ -2614,15 +2550,7 @@ test('Render 9 1', async done => {
   const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
   expect(asFragment()).toMatchSnapshot();
   expect(Storage.get.mock.calls.length).toBe(1);
-  expect(Storage.get.mock.calls[0]).toMatchInlineSnapshot(`
-    Array [
-      "cohort/1",
-      Object {
-        "activeTabKey": "cohort",
-        "tabs": Array [],
-      },
-    ]
-  `);
+  expect(Storage.get.mock.calls[0]).toMatchInlineSnapshot();
   await screen.findByTestId('cohort-boundary-bottom');
   expect(asFragment()).toMatchSnapshot();
 
@@ -2975,25 +2903,9 @@ test('Copy cohort url', async done => {
   userEvent.click(button);
   expect(serialize()).toMatchSnapshot();
   expect(copy).toHaveBeenCalledTimes(1);
-  expect(copy.mock.calls).toMatchInlineSnapshot(`
-    Array [
-      Array [
-        "http://localhost/cohort/6e4213d8d3",
-      ],
-    ]
-  `);
+  expect(copy.mock.calls).toMatchInlineSnapshot();
   expect(notify).toHaveBeenCalledTimes(1);
-  expect(notify.mock.calls).toMatchInlineSnapshot(`
-    Array [
-      Array [
-        Object {
-          "icon": "linkify",
-          "message": "http://localhost/cohort/6e4213d8d3",
-          "title": "Copied",
-        },
-      ],
-    ]
-  `);
+  expect(notify.mock.calls).toMatchInlineSnapshot();
 
   done();
 });
@@ -3166,7 +3078,7 @@ test('Delete cohort', async done => {
     expect(cohortActions.setCohort).toHaveBeenCalledTimes(1);
   });
 
-  expect(window.location.href).toMatchInlineSnapshot(`"/cohorts"`);
+  expect(window.location.href).toMatchInlineSnapshot();
   done();
 });
 
@@ -3221,6 +3133,6 @@ test('Copy cohort', async done => {
     expect(cohortActions.copyCohort).toHaveBeenCalledTimes(1);
   });
 
-  expect(window.location.href).toMatchInlineSnapshot(`"/cohort/6c4adee67a"`);
+  expect(window.location.href).toMatchInlineSnapshot();
   done();
 });

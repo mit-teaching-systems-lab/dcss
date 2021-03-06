@@ -135,7 +135,7 @@ beforeEach(() => {
             recallId: '',
             required: true,
             responseId: '22-be99fe9b-fa0d-4ab7-8541-1bfd1ef0bf11',
-            placeholder: 'Your response'
+            placeholder: ''
           },
           {
             id: '22-f96ac6de-ac6b-4e06-bd97-d97e12fe72c1',
@@ -164,7 +164,7 @@ beforeEach(() => {
             recallId: '',
             required: true,
             responseId: '33-be99fe9b-fa0d-4ab7-8541-1bfd1ef0bf11',
-            placeholder: 'Your response'
+            placeholder: ''
           },
           {
             id: '33-f96ac6de-ac6b-4e06-bd97-d97e12fe72c1',
@@ -193,7 +193,7 @@ beforeEach(() => {
             recallId: '',
             required: true,
             responseId: '44-be99fe9b-fa0d-4ab7-8541-1bfd1ef0bf11',
-            placeholder: 'Your response'
+            placeholder: ''
           },
           {
             id: '44-f96ac6de-ac6b-4e06-bd97-d97e12fe72c1',
@@ -671,7 +671,8 @@ test('Add another slide choice empty fields', async done => {
   );
 
   const dropdowns = await screen.getAllByRole('listbox');
-  expect(dropdowns.length).toBe(1);
+  // The agent select box + 1
+  expect(dropdowns.length).toBe(2);
 
   const dropdown = dropdowns[0];
   const options = await tlr.findAllByRole(dropdown, 'option');
@@ -795,7 +796,8 @@ test('Prevent empty fields', async done => {
   );
 
   const dropdowns = await screen.getAllByRole('listbox');
-  expect(dropdowns.length).toBe(1);
+  // The agent select box + 1
+  expect(dropdowns.length).toBe(2);
 
   const dropdown = dropdowns[0];
   const options = await tlr.findAllByRole(dropdown, 'option');
@@ -946,7 +948,8 @@ test('Search for slide', async done => {
   `);
 
   const dropdowns = await screen.getAllByRole('combobox');
-  expect(dropdowns.length).toBe(1);
+  // The agent select + 1
+  expect(dropdowns.length).toBe(2);
 
   const dropdown = dropdowns[0];
   const input = await tlr.findAllByDisplayValue(dropdown, '');

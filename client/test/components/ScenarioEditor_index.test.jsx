@@ -143,7 +143,7 @@ beforeEach(() => {
               recallId: '',
               required: true,
               responseId: 'be99fe9b-fa0d-4ab7-8541-1bfd1ef0bf11',
-              placeholder: 'Your response'
+              placeholder: ''
             },
             {
               id: 'f96ac6de-ac6b-4e06-bd97-d97e12fe72c1',
@@ -250,7 +250,7 @@ beforeEach(() => {
               recallId: '',
               required: true,
               responseId: 'be99fe9b-fa0d-4ab7-8541-1bfd1ef0bf11',
-              placeholder: 'Your response'
+              placeholder: ''
             },
             {
               id: 'f96ac6de-ac6b-4e06-bd97-d97e12fe72c1',
@@ -357,7 +357,7 @@ beforeEach(() => {
               recallId: '',
               required: true,
               responseId: 'be99fe9b-fa0d-4ab7-8541-1bfd1ef0bf11',
-              placeholder: 'Your response'
+              placeholder: ''
             },
             {
               id: 'f96ac6de-ac6b-4e06-bd97-d97e12fe72c1',
@@ -464,7 +464,7 @@ beforeEach(() => {
               recallId: '',
               required: true,
               responseId: 'be99fe9b-fa0d-4ab7-8541-1bfd1ef0bf11',
-              placeholder: 'Your response'
+              placeholder: ''
             },
             {
               id: 'f96ac6de-ac6b-4e06-bd97-d97e12fe72c1',
@@ -571,7 +571,7 @@ beforeEach(() => {
               recallId: '',
               required: true,
               responseId: 'be99fe9b-fa0d-4ab7-8541-1bfd1ef0bf11',
-              placeholder: 'Your response'
+              placeholder: ''
             },
             {
               id: 'f96ac6de-ac6b-4e06-bd97-d97e12fe72c1',
@@ -988,7 +988,7 @@ test('Render 1 1', async done => {
               recallId: '',
               required: true,
               responseId: 'be99fe9b-fa0d-4ab7-8541-1bfd1ef0bf11',
-              placeholder: 'Your response'
+              placeholder: ''
             },
             {
               id: 'f96ac6de-ac6b-4e06-bd97-d97e12fe72c1',
