@@ -368,7 +368,7 @@ class AudioRecorder extends Component {
       <Form>
         <Form.TextArea
           autoFocus
-          placeholder="Your response"
+          placeholder=""
           name={responseId}
           onFocus={onFocus}
           onChange={onChange}

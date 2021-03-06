@@ -32,6 +32,7 @@ import {
   setScenario,
   endScenarioLock
 } from '@actions/scenario';
+import { getAgents } from '@actions/agent';
 import { getPersonas } from '@actions/persona';
 import { getUsers } from '@actions/users';
 import './editor.css';
@@ -129,11 +130,9 @@ class Editor extends Component {
       }
     }
 
+    await this.props.getAgents();
+    await this.props.getPersonas();
     await this.props.getUsers();
-
-    if (!this.props.personas.length) {
-      await this.props.getPersonas();
-    }
 
     this.setState(state => {
       const { scenarioUser } = this.props;
@@ -667,6 +666,7 @@ const mapDispatchToProps = dispatch => ({
   endScenarioLock: id => dispatch(endScenarioLock(id)),
   copyScenario: id => dispatch(copyScenario(id)),
   deleteScenario: id => dispatch(deleteScenario(id)),
+  getAgents: () => dispatch(getAgents()),
   getPersonas: () => dispatch(getPersonas()),
   getScenario: (id, options = {}) => dispatch(getScenario(id, options)),
   setScenario: params => dispatch(setScenario(params)),

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Dropdown, Table } from '@components/UI';
-import { getAgents } from '@actions/agent';
 
 const AgentSelectItem = ({ title, description }) => {
   return (
@@ -31,27 +30,7 @@ AgentSelectItem.propTypes = {
 class AgentSelect extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      isReady: false
-    };
-
     this.onChange = this.onChange.bind(this);
-    this.hasUnmounted = false;
-  }
-
-  async componentDidMount() {
-    if (!this.props.agentsInUse && !this.props.agents.length) {
-      await this.props.getAgents();
-      if (!this.hasUnmounted) {
-        this.setState({
-          isReady: true
-        });
-      }
-    }
-  }
-
-  componentWillUnmount() {
-    this.hasUnmounted = true;
   }
 
   onChange(e, { value }) {
@@ -60,10 +39,6 @@ class AgentSelect extends Component {
   }
 
   render() {
-    if (!this.state.isReady) {
-      return null;
-    }
-
     const { onChange } = this;
     const {
       emptyText = 'No selection',
@@ -93,12 +68,12 @@ class AgentSelect extends Component {
         text: agent.title
       };
 
-      if (agent.id && agent.title) {
+      if (agent.id && agent.interaction) {
         option.content = <AgentSelectItem {...agent} />;
 
-        const isSupported = types.every(type =>
-          agent.interaction.types.includes(type)
-        );
+        const isSupported =
+          agent.interaction.types &&
+          types.every(type => agent.interaction.types.includes(type));
         if (isSupported) {
           // Only display agents that are compatible
           // with this component type
@@ -137,7 +112,6 @@ AgentSelect.propTypes = {
   error: PropTypes.bool,
   emptyText: PropTypes.string,
   fluid: PropTypes.bool,
-  getAgents: PropTypes.func,
   item: PropTypes.any,
   onSelect: PropTypes.func,
   placeholder: PropTypes.string,
@@ -187,7 +161,7 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  getAgents: () => dispatch(getAgents())
+  // getAgents: () => dispatch(getAgents())
 });
 
 export default connect(

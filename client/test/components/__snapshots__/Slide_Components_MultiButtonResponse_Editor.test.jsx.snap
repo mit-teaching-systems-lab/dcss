@@ -111,6 +111,51 @@ exports[`Add a button empty fields 1`] = `
         <label>
           Optional AI agent to engage in this discussion:
         </label>
+        <div
+          aria-expanded="false"
+          aria-label="Select an agent"
+          class="ui fluid search selection scrolling dropdown"
+          role="combobox"
+        >
+          <input
+            aria-autocomplete="list"
+            autocomplete="off"
+            class="search"
+            tabindex="0"
+            type="text"
+            value=""
+          />
+          <div
+            aria-atomic="true"
+            aria-live="polite"
+            class="divider default text"
+            role="alert"
+          >
+            Select an agent
+          </div>
+          <i
+            aria-hidden="true"
+            class="dropdown icon"
+          />
+          <div
+            class="menu transition"
+            role="listbox"
+          >
+            <div
+              aria-checked="false"
+              aria-selected="true"
+              class="selected item"
+              role="option"
+              style="pointer-events: all;"
+            >
+              <span
+                class="text"
+              >
+                No selection
+              </span>
+            </div>
+          </div>
+        </div>
       </div>
       <div
         class="ui grey message"
@@ -254,6 +299,51 @@ exports[`Add a button empty fields 2`] = `
         <label>
           Optional AI agent to engage in this discussion:
         </label>
+        <div
+          aria-expanded="false"
+          aria-label="Select an agent"
+          class="ui fluid search selection scrolling dropdown"
+          role="combobox"
+        >
+          <input
+            aria-autocomplete="list"
+            autocomplete="off"
+            class="search"
+            tabindex="0"
+            type="text"
+            value=""
+          />
+          <div
+            aria-atomic="true"
+            aria-live="polite"
+            class="divider default text"
+            role="alert"
+          >
+            Select an agent
+          </div>
+          <i
+            aria-hidden="true"
+            class="dropdown icon"
+          />
+          <div
+            class="menu transition"
+            role="listbox"
+          >
+            <div
+              aria-checked="false"
+              aria-selected="true"
+              class="selected item"
+              role="option"
+              style="pointer-events: all;"
+            >
+              <span
+                class="text"
+              >
+                No selection
+              </span>
+            </div>
+          </div>
+        </div>
       </div>
       <div
         class="ui grey message"
@@ -459,6 +549,51 @@ exports[`Add a button empty fields 3`] = `
         <label>
           Optional AI agent to engage in this discussion:
         </label>
+        <div
+          aria-expanded="false"
+          aria-label="Select an agent"
+          class="ui fluid search selection scrolling dropdown"
+          role="combobox"
+        >
+          <input
+            aria-autocomplete="list"
+            autocomplete="off"
+            class="search"
+            tabindex="0"
+            type="text"
+            value=""
+          />
+          <div
+            aria-atomic="true"
+            aria-live="polite"
+            class="divider default text"
+            role="alert"
+          >
+            Select an agent
+          </div>
+          <i
+            aria-hidden="true"
+            class="dropdown icon"
+          />
+          <div
+            class="menu transition"
+            role="listbox"
+          >
+            <div
+              aria-checked="false"
+              aria-selected="true"
+              class="selected item"
+              role="option"
+              style="pointer-events: all;"
+            >
+              <span
+                class="text"
+              >
+                No selection
+              </span>
+            </div>
+          </div>
+        </div>
       </div>
       <div
         class="ui grey message"
@@ -664,6 +799,51 @@ exports[`Add a button empty fields 5`] = `
         <label>
           Optional AI agent to engage in this discussion:
         </label>
+        <div
+          aria-expanded="false"
+          aria-label="Select an agent"
+          class="ui fluid search selection scrolling dropdown"
+          role="combobox"
+        >
+          <input
+            aria-autocomplete="list"
+            autocomplete="off"
+            class="search"
+            tabindex="0"
+            type="text"
+            value=""
+          />
+          <div
+            aria-atomic="true"
+            aria-live="polite"
+            class="divider default text"
+            role="alert"
+          >
+            Select an agent
+          </div>
+          <i
+            aria-hidden="true"
+            class="dropdown icon"
+          />
+          <div
+            class="menu transition"
+            role="listbox"
+          >
+            <div
+              aria-checked="false"
+              aria-selected="true"
+              class="selected item"
+              role="option"
+              style="pointer-events: all;"
+            >
+              <span
+                class="text"
+              >
+                No selection
+              </span>
+            </div>
+          </div>
+        </div>
       </div>
       <div
         class="ui grey message"
@@ -869,6 +1049,51 @@ exports[`Add a button empty fields 7`] = `
         <label>
           Optional AI agent to engage in this discussion:
         </label>
+        <div
+          aria-expanded="false"
+          aria-label="Select an agent"
+          class="ui fluid search selection scrolling dropdown"
+          role="combobox"
+        >
+          <input
+            aria-autocomplete="list"
+            autocomplete="off"
+            class="search"
+            tabindex="0"
+            type="text"
+            value=""
+          />
+          <div
+            aria-atomic="true"
+            aria-live="polite"
+            class="divider default text"
+            role="alert"
+          >
+            Select an agent
+          </div>
+          <i
+            aria-hidden="true"
+            class="dropdown icon"
+          />
+          <div
+            class="menu transition"
+            role="listbox"
+          >
+            <div
+              aria-checked="false"
+              aria-selected="true"
+              class="selected item"
+              role="option"
+              style="pointer-events: all;"
+            >
+              <span
+                class="text"
+              >
+                No selection
+              </span>
+            </div>
+          </div>
+        </div>
       </div>
       <div
         class="ui grey message"
@@ -1074,6 +1299,51 @@ exports[`Add a button empty fields 10`] = `
         <label>
           Optional AI agent to engage in this discussion:
         </label>
+        <div
+          aria-expanded="false"
+          aria-label="Select an agent"
+          class="ui fluid search selection scrolling dropdown"
+          role="combobox"
+        >
+          <input
+            aria-autocomplete="list"
+            autocomplete="off"
+            class="search"
+            tabindex="0"
+            type="text"
+            value=""
+          />
+          <div
+            aria-atomic="true"
+            aria-live="polite"
+            class="divider default text"
+            role="alert"
+          >
+            Select an agent
+          </div>
+          <i
+            aria-hidden="true"
+            class="dropdown icon"
+          />
+          <div
+            class="menu transition"
+            role="listbox"
+          >
+            <div
+              aria-checked="false"
+              aria-selected="true"
+              class="selected item"
+              role="option"
+              style="pointer-events: all;"
+            >
+              <span
+                class="text"
+              >
+                No selection
+              </span>
+            </div>
+          </div>
+        </div>
       </div>
       <div
         class="ui grey message"
@@ -1217,6 +1487,51 @@ exports[`Buttons empty 1`] = `
         <label>
           Optional AI agent to engage in this discussion:
         </label>
+        <div
+          aria-expanded="false"
+          aria-label="Select an agent"
+          class="ui fluid search selection scrolling dropdown"
+          role="combobox"
+        >
+          <input
+            aria-autocomplete="list"
+            autocomplete="off"
+            class="search"
+            tabindex="0"
+            type="text"
+            value=""
+          />
+          <div
+            aria-atomic="true"
+            aria-live="polite"
+            class="divider default text"
+            role="alert"
+          >
+            Select an agent
+          </div>
+          <i
+            aria-hidden="true"
+            class="dropdown icon"
+          />
+          <div
+            class="menu transition"
+            role="listbox"
+          >
+            <div
+              aria-checked="false"
+              aria-selected="true"
+              class="selected item"
+              role="option"
+              style="pointer-events: all;"
+            >
+              <span
+                class="text"
+              >
+                No selection
+              </span>
+            </div>
+          </div>
+        </div>
       </div>
       <div
         class="ui grey message"
@@ -1496,6 +1811,51 @@ exports[`Delete single button 1`] = `
         <label>
           Optional AI agent to engage in this discussion:
         </label>
+        <div
+          aria-expanded="false"
+          aria-label="Select an agent"
+          class="ui fluid search selection scrolling dropdown"
+          role="combobox"
+        >
+          <input
+            aria-autocomplete="list"
+            autocomplete="off"
+            class="search"
+            tabindex="0"
+            type="text"
+            value=""
+          />
+          <div
+            aria-atomic="true"
+            aria-live="polite"
+            class="divider default text"
+            role="alert"
+          >
+            Select an agent
+          </div>
+          <i
+            aria-hidden="true"
+            class="dropdown icon"
+          />
+          <div
+            class="menu transition"
+            role="listbox"
+          >
+            <div
+              aria-checked="false"
+              aria-selected="true"
+              class="selected item"
+              role="option"
+              style="pointer-events: all;"
+            >
+              <span
+                class="text"
+              >
+                No selection
+              </span>
+            </div>
+          </div>
+        </div>
       </div>
       <div
         class="ui grey message"
@@ -1775,6 +2135,51 @@ exports[`Delete single button 2`] = `
         <label>
           Optional AI agent to engage in this discussion:
         </label>
+        <div
+          aria-expanded="false"
+          aria-label="Select an agent"
+          class="ui fluid search selection scrolling dropdown"
+          role="combobox"
+        >
+          <input
+            aria-autocomplete="list"
+            autocomplete="off"
+            class="search"
+            tabindex="0"
+            type="text"
+            value=""
+          />
+          <div
+            aria-atomic="true"
+            aria-live="polite"
+            class="divider default text"
+            role="alert"
+          >
+            Select an agent
+          </div>
+          <i
+            aria-hidden="true"
+            class="dropdown icon"
+          />
+          <div
+            class="menu transition"
+            role="listbox"
+          >
+            <div
+              aria-checked="false"
+              aria-selected="true"
+              class="selected item"
+              role="option"
+              style="pointer-events: all;"
+            >
+              <span
+                class="text"
+              >
+                No selection
+              </span>
+            </div>
+          </div>
+        </div>
       </div>
       <div
         class="ui grey message"
@@ -2054,6 +2459,51 @@ exports[`Delete single button 3`] = `
         <label>
           Optional AI agent to engage in this discussion:
         </label>
+        <div
+          aria-expanded="false"
+          aria-label="Select an agent"
+          class="ui fluid search selection scrolling dropdown"
+          role="combobox"
+        >
+          <input
+            aria-autocomplete="list"
+            autocomplete="off"
+            class="search"
+            tabindex="0"
+            type="text"
+            value=""
+          />
+          <div
+            aria-atomic="true"
+            aria-live="polite"
+            class="divider default text"
+            role="alert"
+          >
+            Select an agent
+          </div>
+          <i
+            aria-hidden="true"
+            class="dropdown icon"
+          />
+          <div
+            class="menu transition"
+            role="listbox"
+          >
+            <div
+              aria-checked="false"
+              aria-selected="true"
+              class="selected item"
+              role="option"
+              style="pointer-events: all;"
+            >
+              <span
+                class="text"
+              >
+                No selection
+              </span>
+            </div>
+          </div>
+        </div>
       </div>
       <div
         class="ui grey message"
@@ -2260,6 +2710,51 @@ exports[`Delete single button 4`] = `
         <label>
           Optional AI agent to engage in this discussion:
         </label>
+        <div
+          aria-expanded="false"
+          aria-label="Select an agent"
+          class="ui fluid search selection scrolling dropdown"
+          role="combobox"
+        >
+          <input
+            aria-autocomplete="list"
+            autocomplete="off"
+            class="search"
+            tabindex="0"
+            type="text"
+            value=""
+          />
+          <div
+            aria-atomic="true"
+            aria-live="polite"
+            class="divider default text"
+            role="alert"
+          >
+            Select an agent
+          </div>
+          <i
+            aria-hidden="true"
+            class="dropdown icon"
+          />
+          <div
+            class="menu transition"
+            role="listbox"
+          >
+            <div
+              aria-checked="false"
+              aria-selected="true"
+              class="selected item"
+              role="option"
+              style="pointer-events: all;"
+            >
+              <span
+                class="text"
+              >
+                No selection
+              </span>
+            </div>
+          </div>
+        </div>
       </div>
       <div
         class="ui grey message"
@@ -2466,6 +2961,51 @@ exports[`Delete single button 5`] = `
         <label>
           Optional AI agent to engage in this discussion:
         </label>
+        <div
+          aria-expanded="false"
+          aria-label="Select an agent"
+          class="ui fluid search selection scrolling dropdown"
+          role="combobox"
+        >
+          <input
+            aria-autocomplete="list"
+            autocomplete="off"
+            class="search"
+            tabindex="0"
+            type="text"
+            value=""
+          />
+          <div
+            aria-atomic="true"
+            aria-live="polite"
+            class="divider default text"
+            role="alert"
+          >
+            Select an agent
+          </div>
+          <i
+            aria-hidden="true"
+            class="dropdown icon"
+          />
+          <div
+            class="menu transition"
+            role="listbox"
+          >
+            <div
+              aria-checked="false"
+              aria-selected="true"
+              class="selected item"
+              role="option"
+              style="pointer-events: all;"
+            >
+              <span
+                class="text"
+              >
+                No selection
+              </span>
+            </div>
+          </div>
+        </div>
       </div>
       <div
         class="ui grey message"
@@ -2607,6 +3147,51 @@ exports[`Missing props 1`] = `
         <label>
           Optional AI agent to engage in this discussion:
         </label>
+        <div
+          aria-expanded="false"
+          aria-label="Select an agent"
+          class="ui fluid search selection scrolling dropdown"
+          role="combobox"
+        >
+          <input
+            aria-autocomplete="list"
+            autocomplete="off"
+            class="search"
+            tabindex="0"
+            type="text"
+            value=""
+          />
+          <div
+            aria-atomic="true"
+            aria-live="polite"
+            class="divider default text"
+            role="alert"
+          >
+            Select an agent
+          </div>
+          <i
+            aria-hidden="true"
+            class="dropdown icon"
+          />
+          <div
+            class="menu transition"
+            role="listbox"
+          >
+            <div
+              aria-checked="false"
+              aria-selected="true"
+              class="selected item"
+              role="option"
+              style="pointer-events: all;"
+            >
+              <span
+                class="text"
+              >
+                No selection
+              </span>
+            </div>
+          </div>
+        </div>
       </div>
       <div
         class="ui red message"
@@ -2750,6 +3335,51 @@ exports[`Prevent empty fields 1`] = `
         <label>
           Optional AI agent to engage in this discussion:
         </label>
+        <div
+          aria-expanded="false"
+          aria-label="Select an agent"
+          class="ui fluid search selection scrolling dropdown"
+          role="combobox"
+        >
+          <input
+            aria-autocomplete="list"
+            autocomplete="off"
+            class="search"
+            tabindex="0"
+            type="text"
+            value=""
+          />
+          <div
+            aria-atomic="true"
+            aria-live="polite"
+            class="divider default text"
+            role="alert"
+          >
+            Select an agent
+          </div>
+          <i
+            aria-hidden="true"
+            class="dropdown icon"
+          />
+          <div
+            class="menu transition"
+            role="listbox"
+          >
+            <div
+              aria-checked="false"
+              aria-selected="true"
+              class="selected item"
+              role="option"
+              style="pointer-events: all;"
+            >
+              <span
+                class="text"
+              >
+                No selection
+              </span>
+            </div>
+          </div>
+        </div>
       </div>
       <div
         class="ui grey message"
@@ -2893,6 +3523,51 @@ exports[`Prevent empty fields 2`] = `
         <label>
           Optional AI agent to engage in this discussion:
         </label>
+        <div
+          aria-expanded="false"
+          aria-label="Select an agent"
+          class="ui fluid search selection scrolling dropdown"
+          role="combobox"
+        >
+          <input
+            aria-autocomplete="list"
+            autocomplete="off"
+            class="search"
+            tabindex="0"
+            type="text"
+            value=""
+          />
+          <div
+            aria-atomic="true"
+            aria-live="polite"
+            class="divider default text"
+            role="alert"
+          >
+            Select an agent
+          </div>
+          <i
+            aria-hidden="true"
+            class="dropdown icon"
+          />
+          <div
+            class="menu transition"
+            role="listbox"
+          >
+            <div
+              aria-checked="false"
+              aria-selected="true"
+              class="selected item"
+              role="option"
+              style="pointer-events: all;"
+            >
+              <span
+                class="text"
+              >
+                No selection
+              </span>
+            </div>
+          </div>
+        </div>
       </div>
       <div
         class="ui grey message"
@@ -3098,6 +3773,51 @@ exports[`Prevent empty fields 3`] = `
         <label>
           Optional AI agent to engage in this discussion:
         </label>
+        <div
+          aria-expanded="false"
+          aria-label="Select an agent"
+          class="ui fluid search selection scrolling dropdown"
+          role="combobox"
+        >
+          <input
+            aria-autocomplete="list"
+            autocomplete="off"
+            class="search"
+            tabindex="0"
+            type="text"
+            value=""
+          />
+          <div
+            aria-atomic="true"
+            aria-live="polite"
+            class="divider default text"
+            role="alert"
+          >
+            Select an agent
+          </div>
+          <i
+            aria-hidden="true"
+            class="dropdown icon"
+          />
+          <div
+            class="menu transition"
+            role="listbox"
+          >
+            <div
+              aria-checked="false"
+              aria-selected="true"
+              class="selected item"
+              role="option"
+              style="pointer-events: all;"
+            >
+              <span
+                class="text"
+              >
+                No selection
+              </span>
+            </div>
+          </div>
+        </div>
       </div>
       <div
         class="ui grey message"
@@ -3303,6 +4023,51 @@ exports[`Prevent empty fields 5`] = `
         <label>
           Optional AI agent to engage in this discussion:
         </label>
+        <div
+          aria-expanded="false"
+          aria-label="Select an agent"
+          class="ui fluid search selection scrolling dropdown"
+          role="combobox"
+        >
+          <input
+            aria-autocomplete="list"
+            autocomplete="off"
+            class="search"
+            tabindex="0"
+            type="text"
+            value=""
+          />
+          <div
+            aria-atomic="true"
+            aria-live="polite"
+            class="divider default text"
+            role="alert"
+          >
+            Select an agent
+          </div>
+          <i
+            aria-hidden="true"
+            class="dropdown icon"
+          />
+          <div
+            class="menu transition"
+            role="listbox"
+          >
+            <div
+              aria-checked="false"
+              aria-selected="true"
+              class="selected item"
+              role="option"
+              style="pointer-events: all;"
+            >
+              <span
+                class="text"
+              >
+                No selection
+              </span>
+            </div>
+          </div>
+        </div>
       </div>
       <div
         class="ui grey message"
@@ -3508,6 +4273,51 @@ exports[`Prevent empty fields 7`] = `
         <label>
           Optional AI agent to engage in this discussion:
         </label>
+        <div
+          aria-expanded="false"
+          aria-label="Select an agent"
+          class="ui fluid search selection scrolling dropdown"
+          role="combobox"
+        >
+          <input
+            aria-autocomplete="list"
+            autocomplete="off"
+            class="search"
+            tabindex="0"
+            type="text"
+            value=""
+          />
+          <div
+            aria-atomic="true"
+            aria-live="polite"
+            class="divider default text"
+            role="alert"
+          >
+            Select an agent
+          </div>
+          <i
+            aria-hidden="true"
+            class="dropdown icon"
+          />
+          <div
+            class="menu transition"
+            role="listbox"
+          >
+            <div
+              aria-checked="false"
+              aria-selected="true"
+              class="selected item"
+              role="option"
+              style="pointer-events: all;"
+            >
+              <span
+                class="text"
+              >
+                No selection
+              </span>
+            </div>
+          </div>
+        </div>
       </div>
       <div
         class="ui grey message"
@@ -3713,6 +4523,51 @@ exports[`Prevent empty fields 10`] = `
         <label>
           Optional AI agent to engage in this discussion:
         </label>
+        <div
+          aria-expanded="false"
+          aria-label="Select an agent"
+          class="ui fluid search selection scrolling dropdown"
+          role="combobox"
+        >
+          <input
+            aria-autocomplete="list"
+            autocomplete="off"
+            class="search"
+            tabindex="0"
+            type="text"
+            value=""
+          />
+          <div
+            aria-atomic="true"
+            aria-live="polite"
+            class="divider default text"
+            role="alert"
+          >
+            Select an agent
+          </div>
+          <i
+            aria-hidden="true"
+            class="dropdown icon"
+          />
+          <div
+            class="menu transition"
+            role="listbox"
+          >
+            <div
+              aria-checked="false"
+              aria-selected="true"
+              class="selected item"
+              role="option"
+              style="pointer-events: all;"
+            >
+              <span
+                class="text"
+              >
+                No selection
+              </span>
+            </div>
+          </div>
+        </div>
       </div>
       <div
         class="ui grey message"
@@ -3992,6 +4847,51 @@ exports[`Render 1 1 1`] = `
         <label>
           Optional AI agent to engage in this discussion:
         </label>
+        <div
+          aria-expanded="false"
+          aria-label="Select an agent"
+          class="ui fluid search selection scrolling dropdown"
+          role="combobox"
+        >
+          <input
+            aria-autocomplete="list"
+            autocomplete="off"
+            class="search"
+            tabindex="0"
+            type="text"
+            value=""
+          />
+          <div
+            aria-atomic="true"
+            aria-live="polite"
+            class="divider default text"
+            role="alert"
+          >
+            Select an agent
+          </div>
+          <i
+            aria-hidden="true"
+            class="dropdown icon"
+          />
+          <div
+            class="menu transition"
+            role="listbox"
+          >
+            <div
+              aria-checked="false"
+              aria-selected="true"
+              class="selected item"
+              role="option"
+              style="pointer-events: all;"
+            >
+              <span
+                class="text"
+              >
+                No selection
+              </span>
+            </div>
+          </div>
+        </div>
       </div>
       <div
         class="ui grey message"
@@ -4271,6 +5171,51 @@ exports[`Save single button 1`] = `
         <label>
           Optional AI agent to engage in this discussion:
         </label>
+        <div
+          aria-expanded="false"
+          aria-label="Select an agent"
+          class="ui fluid search selection scrolling dropdown"
+          role="combobox"
+        >
+          <input
+            aria-autocomplete="list"
+            autocomplete="off"
+            class="search"
+            tabindex="0"
+            type="text"
+            value=""
+          />
+          <div
+            aria-atomic="true"
+            aria-live="polite"
+            class="divider default text"
+            role="alert"
+          >
+            Select an agent
+          </div>
+          <i
+            aria-hidden="true"
+            class="dropdown icon"
+          />
+          <div
+            class="menu transition"
+            role="listbox"
+          >
+            <div
+              aria-checked="false"
+              aria-selected="true"
+              class="selected item"
+              role="option"
+              style="pointer-events: all;"
+            >
+              <span
+                class="text"
+              >
+                No selection
+              </span>
+            </div>
+          </div>
+        </div>
       </div>
       <div
         class="ui grey message"
@@ -4550,6 +5495,51 @@ exports[`Save single button 2`] = `
         <label>
           Optional AI agent to engage in this discussion:
         </label>
+        <div
+          aria-expanded="false"
+          aria-label="Select an agent"
+          class="ui fluid search selection scrolling dropdown"
+          role="combobox"
+        >
+          <input
+            aria-autocomplete="list"
+            autocomplete="off"
+            class="search"
+            tabindex="0"
+            type="text"
+            value=""
+          />
+          <div
+            aria-atomic="true"
+            aria-live="polite"
+            class="divider default text"
+            role="alert"
+          >
+            Select an agent
+          </div>
+          <i
+            aria-hidden="true"
+            class="dropdown icon"
+          />
+          <div
+            class="menu transition"
+            role="listbox"
+          >
+            <div
+              aria-checked="false"
+              aria-selected="true"
+              class="selected item"
+              role="option"
+              style="pointer-events: all;"
+            >
+              <span
+                class="text"
+              >
+                No selection
+              </span>
+            </div>
+          </div>
+        </div>
       </div>
       <div
         class="ui grey message"
@@ -4829,6 +5819,51 @@ exports[`Save single button 3`] = `
         <label>
           Optional AI agent to engage in this discussion:
         </label>
+        <div
+          aria-expanded="false"
+          aria-label="Select an agent"
+          class="ui fluid search selection scrolling dropdown"
+          role="combobox"
+        >
+          <input
+            aria-autocomplete="list"
+            autocomplete="off"
+            class="search"
+            tabindex="0"
+            type="text"
+            value=""
+          />
+          <div
+            aria-atomic="true"
+            aria-live="polite"
+            class="divider default text"
+            role="alert"
+          >
+            Select an agent
+          </div>
+          <i
+            aria-hidden="true"
+            class="dropdown icon"
+          />
+          <div
+            class="menu transition"
+            role="listbox"
+          >
+            <div
+              aria-checked="false"
+              aria-selected="true"
+              class="selected item"
+              role="option"
+              style="pointer-events: all;"
+            >
+              <span
+                class="text"
+              >
+                No selection
+              </span>
+            </div>
+          </div>
+        </div>
       </div>
       <div
         class="ui grey message"

@@ -46,6 +46,7 @@ AgentSelector.propTypes = {
   agent: PropTypes.any,
   agentsInUse: PropTypes.array,
   label: PropTypes.string,
+  // Used to determine which kind of agents can be shown
   type: PropTypes.string,
   types: PropTypes.array,
   onChange: PropTypes.func
