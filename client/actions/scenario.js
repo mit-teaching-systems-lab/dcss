@@ -1,31 +1,26 @@
 import cloneDeep from 'lodash.clonedeep';
 import {
-  // GET_SCENARIO,
-  COPY_SCENARIO_SUCCESS,
   COPY_SCENARIO_ERROR,
-  DELETE_SCENARIO_SUCCESS,
+  COPY_SCENARIO_SUCCESS,
   DELETE_SCENARIO_ERROR,
-  GET_SCENARIO_SUCCESS,
-  GET_SCENARIO_ERROR,
-  UNLOCK_SCENARIO_SUCCESS,
-  UNLOCK_SCENARIO_ERROR,
-  // GET_SCENARIOS,
-  GET_SCENARIOS_SUCCESS,
-  GET_SCENARIOS_ERROR,
-  GET_SCENARIOS_COUNT_SUCCESS,
-  GET_SCENARIOS_COUNT_ERROR,
-  // GET_SLIDES,
-  GET_SLIDES_SUCCESS,
-  GET_SLIDES_ERROR,
-  DELETE_SLIDE_SUCCESS,
+  DELETE_SCENARIO_SUCCESS,
   DELETE_SLIDE_ERROR,
+  DELETE_SLIDE_SUCCESS,
+  GET_SCENARIOS_COUNT_ERROR,
+  GET_SCENARIOS_COUNT_SUCCESS,
+  GET_SCENARIOS_ERROR,
+  GET_SCENARIOS_SUCCESS,
+  GET_SCENARIO_ERROR,
+  GET_SCENARIO_PROMPT_COMPONENTS_ERROR,
+  GET_SCENARIO_PROMPT_COMPONENTS_SUCCESS,
+  GET_SCENARIO_SUCCESS,
+  GET_SLIDES_ERROR,
+  GET_SLIDES_SUCCESS,
   SET_SCENARIO,
-  // SET_SCENARIO_SUCCESS,
-  // SET_SCENARIO_ERROR,
   SET_SCENARIOS,
-  // SET_SCENARIOS_SUCCESS,
-  // SET_SCENARIOS_ERROR,
-  SET_SLIDES
+  SET_SLIDES,
+  UNLOCK_SCENARIO_ERROR,
+  UNLOCK_SCENARIO_SUCCESS,
 } from './types';
 import store from '@client/store';
 
@@ -56,6 +51,27 @@ export let getScenario = (id, options) => async dispatch => {
     return scenario;
   } catch (error) {
     dispatch({ type: GET_SCENARIO_ERROR, error });
+    return null;
+  }
+};
+
+export let getScenarioPromptComponents = (id) => async dispatch => {
+
+  try {
+    const res = await (await fetch(
+      `/api/scenarios/${id}/slides/prompt-components`
+    )).json();
+
+
+    if (res.error) {
+      throw res;
+    }
+    const { components: prompts } = res;
+
+    dispatch({ type: GET_SCENARIO_PROMPT_COMPONENTS_SUCCESS, prompts });
+    return prompts;
+  } catch (error) {
+    dispatch({ type: GET_SCENARIO_PROMPT_COMPONENTS_ERROR, error });
     return null;
   }
 };

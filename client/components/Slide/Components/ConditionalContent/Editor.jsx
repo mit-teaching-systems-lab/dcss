@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import escapeRegExp from 'lodash.escaperegexp';
 import { type } from './meta';
+import { getScenarioPromptComponents } from '@actions/scenario';
 import AgentSelector from '@components/Slide/Components/AgentSelector';
 import EditorMenu from '@components/EditorMenu';
 import RichTextEditor from '@components/RichTextEditor';
@@ -76,6 +78,16 @@ class ConditionalContentEditor extends React.Component {
     this.onRuleSearchChange = this.onRuleSearchChange.bind(this);
   }
 
+  async componentDidMount() {
+    const prompts = await this.props.getScenarioPromptComponents(
+      this.props.scenario.id
+    );
+
+    if (!this.hasUnmounted) {
+      this.setState({ isReady: true, prompts });
+    }
+  }
+
   componentWillUnmount() {
     clearTimeout(this.timeout);
 
@@ -91,6 +103,7 @@ class ConditionalContentEditor extends React.Component {
     if (Identity.key(this.state) !== Identity.key(lastProps)) {
       this.updateState();
     }
+    this.hasUnmounted = true;
   }
 
   delayedUpdateState() {
@@ -178,11 +191,14 @@ class ConditionalContentEditor extends React.Component {
   }
 
   render() {
+    if (!this.state.isReady) {
+      return null;
+    }
     const {
       scenario,
       value: { id }
     } = this.props;
-    const { agent, html, rules } = this.state;
+    const { agent, prompts, html, rules } = this.state;
     const {
       onChange,
       updateState,
@@ -209,17 +225,16 @@ class ConditionalContentEditor extends React.Component {
       value: 'Select an operator'
     });
 
+
     const agentsSource = scenario.agent
       ? [scenario.agent]
-      : scenario.slides.reduce((accum, slide) => {
-          const agents = slide.components.reduce((accum, component) => {
-            if (component.agent) {
-              accum.push(agent);
-            }
-            return accum;
-          }, []);
-          return accum.concat(agents);
+      : prompts.reduce((accum, prompt) => {
+          if (prompt.agent) {
+            accum.push(prompt.agent);
+          }
+          return accum;
         }, []);
+    console.log(agentsSource);
 
     const agentsInUse = agentsSource.reduce((accum, agent) => {
       if (!agent) {
@@ -239,7 +254,7 @@ class ConditionalContentEditor extends React.Component {
               <Grid.Row>
                 <Grid.Column>
                   <AgentSelector
-                    label="Select an AI agent:"
+                    label="Select an active AI agent:"
                     agent={agent}
                     agentsInUse={agentsInUse}
                     onChange={onChange}
@@ -479,4 +494,11 @@ ConditionalContentEditor.propTypes = {
   })
 };
 
-export default ConditionalContentEditor;
+const mapDispatchToProps = dispatch => ({
+  getScenarioPromptComponents: (id) => dispatch(getScenarioPromptComponents(id))
+});
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(ConditionalContentEditor);
