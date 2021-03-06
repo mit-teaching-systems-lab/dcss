@@ -474,8 +474,8 @@ class SocketManager {
 
       const timers = {};
 
-      socket.on(TIMER_START, async ({ chat, user, slide, timer }) => {
-        console.log(TIMER_START, { chat, user, slide, timer });
+      socket.on(TIMER_START, async ({ chat, user, slide, timeout }) => {
+        console.log(TIMER_START, { chat, user, slide, timeout });
         const room = `${chat.id}-slide-${slide.index}`;
 
         if (!timers[room]) {
@@ -483,23 +483,23 @@ class SocketManager {
             chat,
             user,
             slide,
-            timer
+            timeout
           });
 
           // wait until the next execution turn to start the timer
           await 0;
 
           timers[room] = setInterval(() => {
-            timer--;
+            timeout--;
 
             // Intentionally using this.io here, instead of
             // socket, to ensure that all clients recieve
             // these ticks. Using socket will omit the sending
             // socket from the list of recipients.
             this.io.to(room).emit(TIMER_TICK, {
-              timer
+              timeout
             });
-            if (!timer) {
+            if (!timeout) {
               clearInterval(timers[room]);
               timers[room] = null;
               const result = 'timeout';

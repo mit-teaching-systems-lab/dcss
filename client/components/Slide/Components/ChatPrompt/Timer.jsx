@@ -81,14 +81,14 @@ class Timer extends Component {
     }
   }
 
-  timerTick({ timer }) {
+  timerTick({ timeout }) {
     this.timerNodes
       .filter(Boolean)
-      .forEach(node => (node.innerText = Media.secToTime(timer)));
+      .forEach(node => (node.innerText = Media.secToTime(timeout)));
   }
 
   render() {
-    const { chat, slide, timer, user } = this.props;
+    const { chat, slide, timeout, user } = this.props;
     const { isActive } = this.state;
 
     if (!this.isScenarioRun) {
@@ -96,7 +96,7 @@ class Timer extends Component {
     }
 
     const isUserHost = chat.host_id === user.id;
-    const timerValue = timer ? Media.secToTime(timer) : '';
+    const timerValue = timeout ? Media.secToTime(timeout) : '';
 
     const startOrClockIcon = isActive ? (
       <Icon className="icon-primary" name="clock outline" />
@@ -117,7 +117,7 @@ class Timer extends Component {
         className="cpd__timer icon-primary"
         onClick={() => {
           if (!isActive) {
-            this.props.socket.emit(TIMER_START, { chat, slide, timer });
+            this.props.socket.emit(TIMER_START, { chat, slide, timeout });
           }
         }}
       >

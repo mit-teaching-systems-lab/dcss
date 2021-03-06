@@ -189,14 +189,14 @@ class Display extends Component {
   }
 
   onQuorum() {
-    const { chat, timer } = this.props;
+    const { chat, timeout } = this.props;
 
     const slide = {
       index: this.slideIndex
     };
 
-    if (timer) {
-      this.props.socket.emit(TIMER_START, { chat, slide, timer });
+    if (timeout) {
+      this.props.socket.emit(TIMER_START, { chat, slide, timeout });
     }
 
     this.setState({
@@ -242,7 +242,7 @@ class Display extends Component {
       auto,
       isEmbeddedInSVG,
       responseId,
-      timer,
+      timeout,
       user
     } = this.props;
     const { isReady, isRestart, hasAQuorum, hasSubmittedResponse } = this.state;
@@ -271,7 +271,7 @@ class Display extends Component {
       isComplete,
       isRestart,
       slide,
-      timer,
+      timeout,
       onTimerEnd: params => {
         this.props.socket.emit(CHAT_CLOSED_FOR_SLIDE, params);
       },
@@ -289,7 +289,7 @@ class Display extends Component {
       <Timer key={Identity.key(timerProps)} {...timerProps} />
     );
 
-    const header = !defaultValue && timer ? timerRender : null;
+    const header = !defaultValue && timeout ? timerRender : null;
 
     const chatProps = {
       agent,
@@ -369,10 +369,10 @@ class Display extends Component {
 
     return (
       <Menu borderless>
-        {discussionIsOpen && isUserHost && timer ? timerRender : null}
+        {discussionIsOpen && isUserHost && timeout ? timerRender : null}
         {isUserHost ? dropdownOrResultOfDiscussion : null}
         {!isUserHost ? resultOfDiscussion : null}
-        {!isUserHost && !defaultValue && timer ? timerRender : null}
+        {!isUserHost && !defaultValue && timeout ? timerRender : null}
         <Menu.Menu position="right">
           {discussionIsOpen && chat && isReady ? <Chat {...chatProps} /> : null}
         </Menu.Menu>
@@ -402,7 +402,7 @@ Display.propTypes = {
   saveRunEvent: PropTypes.func,
   scenario: PropTypes.object,
   socket: PropTypes.object,
-  timer: PropTypes.number,
+  timeout: PropTypes.number,
   type: PropTypes.oneOf([type]).isRequired,
   user: PropTypes.object
 };

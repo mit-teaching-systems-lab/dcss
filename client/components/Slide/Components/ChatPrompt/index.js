@@ -12,7 +12,7 @@ export const defaultValue = ({ responseId }) => ({
   disableOrdering: true,
   disablePersona: true,
   disableRequireCheckbox: {
-    timer: {
+    timeout: {
       $gt: 0
     }
   },
@@ -20,6 +20,6 @@ export const defaultValue = ({ responseId }) => ({
   prompt: '',
   required: false,
   responseId,
-  timer: 0,
+  timeout: 0,
   type
 });
