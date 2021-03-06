@@ -3,13 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import escapeRegExp from 'lodash.escaperegexp';
 import PropTypes from 'prop-types';
-import {
-  Icon,
-  Input,
-  List,
-  Menu,
-  Table
-} from '@components/UI';
+import { Icon, Input, List, Menu, Table } from '@components/UI';
 
 import Loading from '@components/Loading';
 import Username from '@components/User/Username';
@@ -145,7 +139,7 @@ class Access extends Component {
   }
 
   render() {
-    const { onPageChange, onSearch, /*onSelect*/ } = this;
+    const { onPageChange, onSearch /*onSelect*/ } = this;
     const { user } = this.props;
     const { /*id,*/ isReady, activePage } = this.state;
 

@@ -15,7 +15,7 @@ import {
   Input,
   Menu,
   Segment,
-  Table,
+  Table
 } from '@components/UI';
 import Conditional, { terms } from '@utils/Conditional';
 import Identity from '@utils/Identity';
@@ -182,11 +182,7 @@ class ConditionalContentEditor extends React.Component {
       scenario,
       value: { id }
     } = this.props;
-    const {
-      agent,
-      html,
-      rules
-    } = this.state;
+    const { agent, html, rules } = this.state;
     const {
       onChange,
       updateState,
@@ -247,12 +243,16 @@ class ConditionalContentEditor extends React.Component {
                     agent={agent}
                     agentsInUse={agentsInUse}
                     onChange={onChange}
-                    types={['AudioPrompt', 'ConversationPrompt', 'TextResponse']}
+                    types={[
+                      'AudioPrompt',
+                      'ConversationPrompt',
+                      'TextResponse'
+                    ]}
                   />
                   <Segment>
                     <p tabIndex="0" className="cce__paragraph">
-                      Create rules that are used to determine if the content below
-                      will be displayed to the participant.
+                      Create rules that are used to determine if the content
+                      below will be displayed to the participant.
                     </p>
                     <p tabIndex="0" className="cce__paragraph">
                       For every rule, <code>X</code> is the sum of affirmative
@@ -293,7 +293,9 @@ class ConditionalContentEditor extends React.Component {
                         const lastRule = rules[index - 1];
 
                         const options = baseOptions.filter(option => {
-                          const isLogical = Conditional.isLogicalOp(option.value);
+                          const isLogical = Conditional.isLogicalOp(
+                            option.value
+                          );
                           // Logical operators cannot appear at the first or last position
                           // Logical operators cannot appear in sequence
                           if (
@@ -393,10 +395,10 @@ class ConditionalContentEditor extends React.Component {
                           negative
                         >
                           <Table.Cell colSpan={4}>
-                            There are no rules defined, which means this component
-                            will not display anything on the slide. You must
-                            create at least one rule to display the content in
-                            your slide.
+                            There are no rules defined, which means this
+                            component will not display anything on the slide.
+                            You must create at least one rule to display the
+                            content in your slide.
                           </Table.Cell>
                         </Table.Row>
                       </Table.Body>

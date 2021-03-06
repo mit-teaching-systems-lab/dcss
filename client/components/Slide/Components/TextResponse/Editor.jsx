@@ -59,7 +59,7 @@ class TextResponseEditor extends React.Component {
     if (this.timeout) {
       clearTimeout(this.timeout);
     }
-    this.timeout = setTimeout(this.updateState, 5000);
+    this.timeout = setTimeout(this.updateState, 500);
   }
 
   updateState() {
@@ -126,11 +126,7 @@ class TextResponseEditor extends React.Component {
             onBlur={updateState}
           />
 
-          <AgentSelector
-            agent={agent}
-            type={type}
-            onChange={onChange}
-          />
+          <AgentSelector agent={agent} type={type} onChange={onChange} />
 
           <DataHeader
             content={header}
@@ -142,7 +138,6 @@ class TextResponseEditor extends React.Component {
     );
   }
 }
-
 
 TextResponseEditor.propTypes = {
   onChange: PropTypes.func.isRequired,

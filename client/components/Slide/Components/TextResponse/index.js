@@ -7,7 +7,7 @@ export const defaultValue = ({ responseId }) => ({
   agent: null,
   id: '',
   persona: null,
-  placeholder: 'Your response',
+  placeholder: '',
   prompt: '',
   recallId: '',
   required: true,

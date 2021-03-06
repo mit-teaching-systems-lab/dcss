@@ -326,11 +326,7 @@ class MultiButtonResponseEditor extends React.Component {
             </Table.Footer>
           </Table>
 
-          <AgentSelector
-            agent={agent}
-            type={type}
-            onChange={onChange}
-          />
+          <AgentSelector agent={agent} type={type} onChange={onChange} />
 
           <DataHeader
             content={header}
