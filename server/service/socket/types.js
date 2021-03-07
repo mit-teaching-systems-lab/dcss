@@ -5,6 +5,7 @@ exports.AGENT_ACTIVATE = 'agent-activate';
 exports.AGENT_DEACTIVATE = 'agent-deactivate';
 exports.AGENT_PAUSE = 'agent-pause';
 exports.AGENT_START = 'agent-start';
+exports.AWAITING_AGENT = 'awaiting-agent';
 exports.CREATE_CHAT_CHANNEL = 'create-chat-channel';
 exports.CREATE_CHAT_SLIDE_CHANNEL = 'create-chat-slide-channel';
 exports.CREATE_CHAT_USER_CHANNEL = 'create-chat-user-channel';
@@ -26,6 +27,7 @@ exports.NOTIFICATION = 'notification';
 
 // Server -> Client
 exports.AGENT_JOINED = 'agent-joined';
+exports.AGENT_RESPONSE_RECEIVED = 'agent-response-received';
 exports.CHAT_QUORUM_FOR_SLIDE = 'chat-quorum-for-slide';
 exports.CHAT_CREATED = 'chat-created';
 exports.CHAT_CLOSED = 'chat-closed';
