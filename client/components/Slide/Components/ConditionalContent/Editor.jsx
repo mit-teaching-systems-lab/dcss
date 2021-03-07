@@ -7,7 +7,6 @@ import { type } from './meta';
 import { getScenarioPromptComponents } from '@actions/scenario';
 import AgentSelector from '@components/Slide/Components/AgentSelector';
 import EditorMenu from '@components/EditorMenu';
-import RichTextEditor from '@components/RichTextEditor';
 import SlideComponentSelect, {
   ComponentItem
 } from '@components/SlideComponentSelect';
@@ -61,11 +60,11 @@ const availableComponents = [
   'Text',
   'Suggestion',
   'ResponseRecall',
-  'AudioPrompt',
-  'MultiPathResponse',
-  'ConversationPrompt',
-  'MultiButtonResponse',
-  'TextResponse'
+  // 'AudioPrompt',
+  // 'MultiPathResponse',
+  // 'ConversationPrompt',
+  // 'MultiButtonResponse',
+  // 'TextResponse'
 ];
 
 class ConditionalContentEditor extends React.Component {
