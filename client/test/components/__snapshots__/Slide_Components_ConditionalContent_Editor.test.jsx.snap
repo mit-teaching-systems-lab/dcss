@@ -6,97 +6,108 @@ exports[`Render 1 1 1`] = `
     id=\\"root\\"
   />
   <div>
-    <form
-      class=\\"ui form\\"
+    <div
+      class=\\"ui fluid container\\"
     >
       <div
-        class=\\"ui fluid container\\"
+        class=\\"ui grid\\"
       >
         <div
-          class=\\"ui grid\\"
+          class=\\"row\\"
         >
           <div
-            class=\\"row\\"
+            class=\\"column\\"
           >
             <div
-              class=\\"column\\"
+              class=\\"field\\"
             >
+              <label>
+                Select an active AI agent:
+              </label>
               <div
-                class=\\"field\\"
+                aria-expanded=\\"false\\"
+                aria-label=\\"Select an agent\\"
+                class=\\"ui fluid search selection scrolling dropdown\\"
+                role=\\"combobox\\"
               >
-                <label>
-                  Select an AI agent:
-                </label>
+                <input
+                  aria-autocomplete=\\"list\\"
+                  autocomplete=\\"off\\"
+                  class=\\"search\\"
+                  tabindex=\\"0\\"
+                  type=\\"text\\"
+                  value=\\"\\"
+                />
                 <div
-                  aria-expanded=\\"false\\"
-                  aria-label=\\"Select an agent\\"
-                  class=\\"ui fluid search selection scrolling dropdown\\"
-                  role=\\"combobox\\"
+                  aria-atomic=\\"true\\"
+                  aria-live=\\"polite\\"
+                  class=\\"divider default text\\"
+                  role=\\"alert\\"
                 >
-                  <input
-                    aria-autocomplete=\\"list\\"
-                    autocomplete=\\"off\\"
-                    class=\\"search\\"
-                    tabindex=\\"0\\"
-                    type=\\"text\\"
-                    value=\\"\\"
-                  />
+                  Select an agent
+                </div>
+                <i
+                  aria-hidden=\\"true\\"
+                  class=\\"dropdown icon\\"
+                />
+                <div
+                  class=\\"menu transition\\"
+                  role=\\"listbox\\"
+                >
                   <div
-                    aria-atomic=\\"true\\"
-                    aria-live=\\"polite\\"
-                    class=\\"divider default text\\"
-                    role=\\"alert\\"
+                    aria-checked=\\"false\\"
+                    aria-selected=\\"true\\"
+                    class=\\"selected item\\"
+                    role=\\"option\\"
+                    style=\\"pointer-events: all;\\"
                   >
-                    Select an agent
-                  </div>
-                  <i
-                    aria-hidden=\\"true\\"
-                    class=\\"dropdown icon\\"
-                  />
-                  <div
-                    class=\\"menu transition\\"
-                    role=\\"listbox\\"
-                  >
-                    <div
-                      aria-checked=\\"false\\"
-                      aria-selected=\\"true\\"
-                      class=\\"selected item\\"
-                      role=\\"option\\"
-                      style=\\"pointer-events: all;\\"
+                    <span
+                      class=\\"text\\"
                     >
-                      <span
-                        class=\\"text\\"
-                      >
-                        No selection
-                      </span>
-                    </div>
+                      No selection
+                    </span>
                   </div>
                 </div>
               </div>
-              <div
-                class=\\"ui segment\\"
+            </div>
+            <div
+              class=\\"ui segment\\"
+            >
+              <p
+                class=\\"cce__paragraph\\"
+                tabindex=\\"0\\"
               >
-                <p
-                  class=\\"cce__paragraph\\"
-                  tabindex=\\"0\\"
+                <i
+                  aria-hidden=\\"true\\"
+                  class=\\"attention icon\\"
+                />
+                Create rules that are used to determine if the content below will be displayed to the participant.
+              </p>
+              <p
+                class=\\"cce__paragraph\\"
+                tabindex=\\"0\\"
+              >
+                <i
+                  aria-hidden=\\"true\\"
+                  class=\\"attention icon\\"
+                />
+                <code
+                  class=\\"cce__code\\"
                 >
-                  Create rules that are used to determine if the content below will be displayed to the participant.
-                </p>
-                <p
-                  class=\\"cce__paragraph\\"
-                  tabindex=\\"0\\"
+                  X
+                </code>
+                 is the sum of affirmative responses from the agent, and 
+                <code
+                  class=\\"cce__code\\"
                 >
-                  For every rule, 
-                  <code>
-                    X
-                  </code>
-                   is the sum of affirmative responses from the agent, and 
-                  <code>
-                    Y
-                  </code>
-                   is your comparison value.
-                </p>
-              </div>
+                  Y
+                </code>
+                 is your comparison value.
+              </p>
+            </div>
+            <form
+              class=\\"ui form\\"
+            >
               <table
                 class=\\"ui definition striped unstackable table\\"
               >
@@ -121,9 +132,7 @@ exports[`Render 1 1 1`] = `
                     </th>
                     <th
                       class=\\"cce__cell-constraint\\"
-                    >
-                      Evaluates as...
-                    </th>
+                    />
                   </tr>
                 </thead>
                 <tbody
@@ -168,7 +177,7 @@ exports[`Render 1 1 1`] = `
                         aria-label=\\"Select the operator for expression 1\\"
                         class=\\"ui fluid search selection dropdown\\"
                         index=\\"0\\"
-                        name=\\"operator\\"
+                        name=\\"key\\"
                         role=\\"combobox\\"
                       >
                         <input
@@ -468,7 +477,7 @@ exports[`Render 1 1 1`] = `
                           aria-label=\\"Enter the value for expression 1\\"
                           autocomplete=\\"off\\"
                           name=\\"value\\"
-                          type=\\"text\\"
+                          type=\\"number\\"
                           value=\\"\\"
                         />
                       </div>
@@ -488,16 +497,16 @@ exports[`Render 1 1 1`] = `
                   >
                     <th
                       class=\\"\\"
+                      colspan=\\"3\\"
                     />
                     <th
                       class=\\"\\"
-                      colspan=\\"3\\"
                     >
                       <div
                         class=\\"ui borderless right floated menu\\"
                       >
                         <a
-                          aria-label=\\"Add another slide choice\\"
+                          aria-label=\\"Add a rule\\"
                           class=\\"icon item\\"
                           tabindex=\\"0\\"
                         >
@@ -520,12 +529,171 @@ exports[`Render 1 1 1`] = `
                   </tr>
                 </tfoot>
               </table>
-              <textarea />
+            </form>
+            <div
+              class=\\"ui borderless menu\\"
+            >
+              <div
+                aria-expanded=\\"false\\"
+                class=\\"ui item dropdown\\"
+                role=\\"listbox\\"
+                tabindex=\\"0\\"
+              >
+                <div
+                  aria-atomic=\\"true\\"
+                  aria-live=\\"polite\\"
+                  class=\\"divider text\\"
+                  role=\\"alert\\"
+                >
+                  Select a component to display
+                </div>
+                <i
+                  aria-hidden=\\"true\\"
+                  class=\\"dropdown icon\\"
+                />
+                <div
+                  class=\\"menu transition\\"
+                >
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Rich Text Editor\\"
+                      class=\\"edit icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Rich Text Editor
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Participant Suggestion\\"
+                      class=\\"info icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Participant Suggestion
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Embed Previous Response\\"
+                      class=\\"comment alternate outline icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Embed Previous Response
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Audio Input\\"
+                      class=\\"microphone icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Audio Input
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Choose Next Slide\\"
+                      class=\\"fork clockwise rotated icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Choose Next Slide
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Conversation\\"
+                      class=\\"conversation icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Conversation
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Multiple Buttons\\"
+                      class=\\"hand pointer outline icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Multiple Buttons
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Text Input\\"
+                      class=\\"keyboard icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Text Input
+                    </span>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div
+              class=\\"ui segment\\"
+            >
+              Select a component to configure as your condition&apos;s consequent output. It will be displayed here.
             </div>
           </div>
         </div>
       </div>
-    </form>
+    </div>
   </div>
 </body>"
 `;

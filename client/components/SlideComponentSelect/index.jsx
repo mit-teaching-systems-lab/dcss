@@ -17,32 +17,39 @@ const ComponentsMenuOrder = [
   'TextResponse'
 ];
 
-const ComponentItems = ({ onComponentItemClick }) => {
-  const style = { float: 'none !important' };
-  return ComponentsMenuOrder.map(item => {
-    const { Card, name: header, description: content } = Components[item];
 
-    const trigger = (
-      <Menu.Item.Tabbable
-        role="button"
-        style={style}
-        onClick={() => onComponentItemClick(item)}
-      >
-        <Card />
-      </Menu.Item.Tabbable>
-    );
-    return (
-      <Popup
-        inverted
-        pinned
-        position="left center"
-        key={Identity.key(item)}
-        header={header}
-        content={content}
-        trigger={trigger}
-      />
-    );
-  });
+export const ComponentItem = ({ position = 'left center', item, onClick }) => {
+  const { Card, name: header, description: content } = Components[item];
+  const style = { float: 'none !important' };
+  const trigger = (
+    <Menu.Item.Tabbable
+      role="button"
+      style={style}
+      onClick={() => onClick(item)}
+    >
+      <Card />
+    </Menu.Item.Tabbable>
+  );
+  return (
+    <Popup
+      inverted
+      pinned
+      position={position}
+      header={header}
+      content={content}
+      trigger={trigger}
+    />
+  );
+};
+
+export const ComponentItems = ({ onComponentItemClick }) => {
+  return ComponentsMenuOrder.map(item =>
+    <ComponentItem
+      key={Identity.key(item)}
+      item={item}
+      onClick={onComponentItemClick}
+    />
+  );
 };
 
 class SlideComponentSelect extends Component {

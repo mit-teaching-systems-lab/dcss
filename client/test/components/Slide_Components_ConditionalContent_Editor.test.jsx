@@ -205,7 +205,7 @@ beforeEach(() => {
     id: 'XYZ',
     rules: [
       {
-        operator: null,
+        key: null,
         value: null,
       },
     ],
@@ -213,7 +213,7 @@ beforeEach(() => {
     recallId: 'xyz-recallId',
     required: false,
     responseId: 'xyz-responseId',
-    html: '<p></p>',
+    component: null,
     type: 'ConditionalContent',
   };
 

@@ -12,3 +12,9 @@
   min-width: 230px !important;
   max-width: 230px !important;
 }
+
+.cce__code {
+  background: rgba(0,0,0,0.1);
+  padding: 0.1em 0.5em;
+  border-radius: 0.25em;
+}

@@ -54,15 +54,15 @@ export const terms = [
       'Use this operation to chain two expressions. Both must evaluate to true for the condition to be met.',
     key: '$and',
     operator: '&&',
-    op: 'expr1 && expr2'
+    op: 'left && right'
   },
   {
     def: 'Logical OR',
     description:
-      'Use this operation to chain two expressions. One or the other must evaluate to true for the condition to be met. "expr1" is evaluated first, if it is false, then "expr2" is evaluated. If it is true, then the condition is met. If both expressions evaluate to false, then the condition is not met.',
+      'Use this operation to chain two expressions. One or the other must evaluate to true for the condition to be met. The "left" expression is evaluated first, if it is false, then the  "right" expression is evaluated. If it is true, then the condition is met. If both expressions evaluate to false, then the condition is not met.',
     key: '$or',
     operator: '||',
-    op: 'expr1 || expr2'
+    op: 'left || right'
   },
   // {
   //   def: 'value is between two numbers a and b, inclusive',
@@ -144,6 +144,9 @@ const reconcileAndOr = (op, a, b) => {
 
 export default {
   terms,
+  getTerm(key) {
+    return terms.find(term => term.key === key);
+  },
   isLogicalOp(op) {
     return op === '$and' || op === '$or';
   },

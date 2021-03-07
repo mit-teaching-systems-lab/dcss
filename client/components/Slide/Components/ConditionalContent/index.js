@@ -13,13 +13,13 @@ export const defaultValue = () => ({
   */
   agent: null,
   header: '',
-  html: '<p></p>',
+  component: null,
   id: '',
   persona: null,
   recallId: '',
   rules: [
     {
-      operator: '',
+      key: '',
       value: ''
     }
   ],

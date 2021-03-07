@@ -237,6 +237,85 @@ test('Conditional.isLogicalOp()', () => {
   expect(Conditional.isLogicalOp('$notBetween')).toBe(false);
 });
 
+test('Conditional.getTerm(key)', () => {
+  expect(Conditional.getTerm('$and')).toMatchInlineSnapshot(`
+    Object {
+      "def": "Logical AND",
+      "description": "Use this operation to chain two expressions. Both must evaluate to true for the condition to be met.",
+      "key": "$and",
+      "op": "left && right",
+      "operator": "&&",
+    }
+  `);
+  expect(Conditional.getTerm('$or')).toMatchInlineSnapshot(`
+    Object {
+      "def": "Logical OR",
+      "description": "Use this operation to chain two expressions. One or the other must evaluate to true for the condition to be met. The \\"left\\" expression is evaluated first, if it is false, then the  \\"right\\" expression is evaluated. If it is true, then the condition is met. If both expressions evaluate to false, then the condition is not met.",
+      "key": "$or",
+      "op": "left || right",
+      "operator": "||",
+    }
+  `);
+  expect(Conditional.getTerm('$between')).toMatchInlineSnapshot(`undefined`);
+  expect(Conditional.getTerm('$includes')).toMatchInlineSnapshot(`undefined`);
+  expect(Conditional.getTerm('$eq')).toMatchInlineSnapshot(`
+    Object {
+      "def": "X equals Y",
+      "description": "Use this operation to determine if \\"X\\", which is the sum of affirmative responses from this agent, is equal to \\"Y\\", which is your comparison value.",
+      "key": "$eq",
+      "op": "X == Y",
+      "operator": "==",
+    }
+  `);
+  expect(Conditional.getTerm('$gt')).toMatchInlineSnapshot(`
+    Object {
+      "def": "X is greater than Y",
+      "description": "Use this operation to determine if \\"X\\", which is the sum of affirmative responses from this agent, is greater than \\"Y\\", which is your comparison value.",
+      "key": "$gt",
+      "op": "X > Y",
+      "operator": ">",
+    }
+  `);
+  expect(Conditional.getTerm('$gte')).toMatchInlineSnapshot(`
+    Object {
+      "def": "X is greater than or equal to Y",
+      "description": "Use this operation to determine if \\"X\\", which is the sum of affirmative responses from this agent, is greater than or equal to \\"Y\\", which is your comparison value.",
+      "key": "$gte",
+      "op": "X >= Y",
+      "operator": ">=",
+    }
+  `);
+  expect(Conditional.getTerm('$in')).toMatchInlineSnapshot(`undefined`);
+  expect(Conditional.getTerm('$lt')).toMatchInlineSnapshot(`
+    Object {
+      "def": "X is less than Y",
+      "description": "Use this operation to determine if \\"X\\", which is the sum of affirmative responses from this agent, is less than \\"Y\\", which is your comparison value.",
+      "key": "$lt",
+      "op": "X < Y",
+      "operator": "<",
+    }
+  `);
+  expect(Conditional.getTerm('$lte')).toMatchInlineSnapshot(`
+    Object {
+      "def": "X is less than or equal to Y",
+      "description": "Use this operation to determine if \\"X\\", which is the sum of affirmative responses from this agent, is less than or equal to \\"Y\\", which is your comparison value.",
+      "key": "$lte",
+      "op": "X <= Y",
+      "operator": "<=",
+    }
+  `);
+  expect(Conditional.getTerm('$ne')).toMatchInlineSnapshot(`
+    Object {
+      "def": "X does not equal Y",
+      "description": "Use this operation to determine if \\"X\\", which is the sum of affirmative responses from this agent, is not equal to \\"Y\\", which is your comparison value.",
+      "key": "$ne",
+      "op": "X != Y",
+      "operator": "!=",
+    }
+  `);
+  expect(Conditional.getTerm('$notBetween')).toMatchInlineSnapshot(`undefined`);
+});
+
 test('Conditional.evaluate, $and in leading position is invalid', () => {
   expect(() => {
     Conditional.evaluate(
@@ -266,14 +345,14 @@ test('Conditional.terms', () => {
         "def": "Logical AND",
         "description": "Use this operation to chain two expressions. Both must evaluate to true for the condition to be met.",
         "key": "$and",
-        "op": "expr1 && expr2",
+        "op": "left && right",
         "operator": "&&",
       },
       Object {
         "def": "Logical OR",
-        "description": "Use this operation to chain two expressions. One or the other must evaluate to true for the condition to be met. \\"expr1\\" is evaluated first, if it is false, then \\"expr2\\" is evaluated. If it is true, then the condition is met. If both expressions evaluate to false, then the condition is not met.",
+        "description": "Use this operation to chain two expressions. One or the other must evaluate to true for the condition to be met. The \\"left\\" expression is evaluated first, if it is false, then the  \\"right\\" expression is evaluated. If it is true, then the condition is met. If both expressions evaluate to false, then the condition is not met.",
         "key": "$or",
-        "op": "expr1 || expr2",
+        "op": "left || right",
         "operator": "||",
       },
       Object {
