@@ -177,6 +177,7 @@ async function upsertResponse({
 exports.upsertResponse = upsertResponse;
 
 exports.getRunResponses = async run_id => {
+  // TODO: Migrate this to use run_response_view
   const result = await query(sql`
     SELECT
       run.user_id as user_id,
@@ -206,6 +207,15 @@ exports.getRunResponses = async run_id => {
   `);
 
   return result.rows;
+};
+
+exports.getResponseView = async id => {
+  const result = await query(sql`
+    SELECT *
+    FROM run_response_view
+    WHERE id = ${id}
+  `);
+  return result.rows[0] || null;
 };
 
 exports.getResponses = async ({ run_id, user_id }) => {

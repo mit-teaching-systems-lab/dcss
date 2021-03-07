@@ -19,7 +19,6 @@ exports.uploadToS3 = async function(key, buffer) {
     Key
   };
   await util.promisify(s3.putObject).call(s3, params);
-
   // Intentionally return the UNPREFIXED key.
   return key;
 };

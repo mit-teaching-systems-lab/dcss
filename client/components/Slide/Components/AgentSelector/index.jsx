@@ -18,13 +18,7 @@ function AgentSelector(props) {
     error: false,
     'aria-label': label || ariaLabel,
     fluid: true,
-    onSelect: selected => {
-      const value = selected
-        ? {
-            id: selected.id,
-            rules: []
-          }
-        : null;
+    onSelect: value => {
       onChange({}, { name: 'agent', value });
     },
     placeholder: 'Select an agent',

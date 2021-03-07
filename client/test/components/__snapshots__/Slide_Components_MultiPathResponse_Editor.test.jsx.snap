@@ -142,7 +142,7 @@ exports[`Add another slide choice empty fields 2`] = `
           class=\\"field\\"
         >
           <label>
-            Optional AI agent to engage in this discussion:
+            Optional AI agent to receive slide selection:
           </label>
           <div
             aria-expanded=\\"false\\"
@@ -717,7 +717,7 @@ exports[`Add another slide choice empty fields 3`] = `
           class=\\"field\\"
         >
           <label>
-            Optional AI agent to engage in this discussion:
+            Optional AI agent to receive slide selection:
           </label>
           <div
             aria-expanded=\\"false\\"
@@ -1300,7 +1300,7 @@ exports[`Add another slide choice empty fields 5`] = `
           class=\\"field\\"
         >
           <label>
-            Optional AI agent to engage in this discussion:
+            Optional AI agent to receive slide selection:
           </label>
           <div
             aria-expanded=\\"false\\"
@@ -1883,7 +1883,7 @@ exports[`Add another slide choice empty fields 6`] = `
           class=\\"field\\"
         >
           <label>
-            Optional AI agent to engage in this discussion:
+            Optional AI agent to receive slide selection:
           </label>
           <div
             aria-expanded=\\"false\\"
@@ -2466,7 +2466,7 @@ exports[`Add another slide choice empty fields 8`] = `
           class=\\"field\\"
         >
           <label>
-            Optional AI agent to engage in this discussion:
+            Optional AI agent to receive slide selection:
           </label>
           <div
             aria-expanded=\\"false\\"
@@ -3049,7 +3049,7 @@ exports[`Add another slide choice empty fields 9`] = `
           class=\\"field\\"
         >
           <label>
-            Optional AI agent to engage in this discussion:
+            Optional AI agent to receive slide selection:
           </label>
           <div
             aria-expanded=\\"false\\"
@@ -4005,7 +4005,7 @@ exports[`Add prompt 2`] = `
           class=\\"field\\"
         >
           <label>
-            Optional AI agent to engage in this discussion:
+            Optional AI agent to receive slide selection:
           </label>
           <div
             aria-expanded=\\"false\\"
@@ -4952,7 +4952,7 @@ exports[`Add prompt 3`] = `
           class=\\"field\\"
         >
           <label>
-            Optional AI agent to engage in this discussion:
+            Optional AI agent to receive slide selection:
           </label>
           <div
             aria-expanded=\\"false\\"
@@ -5908,7 +5908,7 @@ exports[`Delete choice 2`] = `
           class=\\"field\\"
         >
           <label>
-            Optional AI agent to engage in this discussion:
+            Optional AI agent to receive slide selection:
           </label>
           <div
             aria-expanded=\\"false\\"
@@ -6857,7 +6857,7 @@ exports[`Delete choice 3`] = `
           class=\\"field\\"
         >
           <label>
-            Optional AI agent to engage in this discussion:
+            Optional AI agent to receive slide selection:
           </label>
           <div
             aria-expanded=\\"false\\"
@@ -7493,7 +7493,7 @@ exports[`Delete choice 4`] = `
           class=\\"field\\"
         >
           <label>
-            Optional AI agent to engage in this discussion:
+            Optional AI agent to receive slide selection:
           </label>
           <div
             aria-expanded=\\"false\\"
@@ -8068,7 +8068,7 @@ exports[`Delete choice 5`] = `
           class=\\"field\\"
         >
           <label>
-            Optional AI agent to engage in this discussion:
+            Optional AI agent to receive slide selection:
           </label>
           <div
             aria-expanded=\\"false\\"
@@ -8284,7 +8284,7 @@ exports[`Missing props 2`] = `
           class=\\"field\\"
         >
           <label>
-            Optional AI agent to engage in this discussion:
+            Optional AI agent to receive slide selection:
           </label>
           <div
             aria-expanded=\\"false\\"
@@ -8502,7 +8502,7 @@ exports[`Paths empty 2`] = `
           class=\\"field\\"
         >
           <label>
-            Optional AI agent to engage in this discussion:
+            Optional AI agent to receive slide selection:
           </label>
           <div
             aria-expanded=\\"false\\"
@@ -8724,7 +8724,7 @@ exports[`Prevent empty fields 2`] = `
           class=\\"field\\"
         >
           <label>
-            Optional AI agent to engage in this discussion:
+            Optional AI agent to receive slide selection:
           </label>
           <div
             aria-expanded=\\"false\\"
@@ -9299,7 +9299,7 @@ exports[`Prevent empty fields 3`] = `
           class=\\"field\\"
         >
           <label>
-            Optional AI agent to engage in this discussion:
+            Optional AI agent to receive slide selection:
           </label>
           <div
             aria-expanded=\\"false\\"
@@ -9882,7 +9882,7 @@ exports[`Prevent empty fields 5`] = `
           class=\\"field\\"
         >
           <label>
-            Optional AI agent to engage in this discussion:
+            Optional AI agent to receive slide selection:
           </label>
           <div
             aria-expanded=\\"false\\"
@@ -10465,7 +10465,7 @@ exports[`Prevent empty fields 6`] = `
           class=\\"field\\"
         >
           <label>
-            Optional AI agent to engage in this discussion:
+            Optional AI agent to receive slide selection:
           </label>
           <div
             aria-expanded=\\"false\\"
@@ -11048,7 +11048,7 @@ exports[`Prevent empty fields 8`] = `
           class=\\"field\\"
         >
           <label>
-            Optional AI agent to engage in this discussion:
+            Optional AI agent to receive slide selection:
           </label>
           <div
             aria-expanded=\\"false\\"
@@ -11631,7 +11631,7 @@ exports[`Prevent empty fields 9`] = `
           class=\\"field\\"
         >
           <label>
-            Optional AI agent to engage in this discussion:
+            Optional AI agent to receive slide selection:
           </label>
           <div
             aria-expanded=\\"false\\"
@@ -12214,7 +12214,7 @@ exports[`Prevent empty fields 11`] = `
           class=\\"field\\"
         >
           <label>
-            Optional AI agent to engage in this discussion:
+            Optional AI agent to receive slide selection:
           </label>
           <div
             aria-expanded=\\"false\\"
@@ -12797,7 +12797,7 @@ exports[`Prevent empty fields 12`] = `
           class=\\"field\\"
         >
           <label>
-            Optional AI agent to engage in this discussion:
+            Optional AI agent to receive slide selection:
           </label>
           <div
             aria-expanded=\\"false\\"
@@ -13755,7 +13755,7 @@ exports[`Save choice 2`] = `
           class=\\"field\\"
         >
           <label>
-            Optional AI agent to engage in this discussion:
+            Optional AI agent to receive slide selection:
           </label>
           <div
             aria-expanded=\\"false\\"
@@ -14702,7 +14702,7 @@ exports[`Save choice 3`] = `
           class=\\"field\\"
         >
           <label>
-            Optional AI agent to engage in this discussion:
+            Optional AI agent to receive slide selection:
           </label>
           <div
             aria-expanded=\\"false\\"
@@ -14938,7 +14938,7 @@ exports[`Search for slide 2`] = `
           class=\\"field\\"
         >
           <label>
-            Optional AI agent to engage in this discussion:
+            Optional AI agent to receive slide selection:
           </label>
           <div
             aria-expanded=\\"false\\"
@@ -15513,7 +15513,7 @@ exports[`Search for slide 3`] = `
           class=\\"field\\"
         >
           <label>
-            Optional AI agent to engage in this discussion:
+            Optional AI agent to receive slide selection:
           </label>
           <div
             aria-expanded=\\"false\\"
@@ -16096,7 +16096,7 @@ exports[`Search for slide 5`] = `
           class=\\"field\\"
         >
           <label>
-            Optional AI agent to engage in this discussion:
+            Optional AI agent to receive slide selection:
           </label>
           <div
             aria-expanded=\\"false\\"
@@ -16679,7 +16679,7 @@ exports[`Search for slide 6`] = `
           class=\\"field\\"
         >
           <label>
-            Optional AI agent to engage in this discussion:
+            Optional AI agent to receive slide selection:
           </label>
           <div
             aria-expanded=\\"false\\"
@@ -17491,7 +17491,7 @@ exports[`Slide has title 2`] = `
           class=\\"field\\"
         >
           <label>
-            Optional AI agent to engage in this discussion:
+            Optional AI agent to receive slide selection:
           </label>
           <div
             aria-expanded=\\"false\\"
@@ -17731,7 +17731,7 @@ exports[`View Graph 2`] = `
           class=\\"field\\"
         >
           <label>
-            Optional AI agent to engage in this discussion:
+            Optional AI agent to receive slide selection:
           </label>
           <div
             aria-expanded=\\"false\\"
@@ -17942,7 +17942,7 @@ exports[`View Graph 3`] = `
           class=\\"field\\"
         >
           <label>
-            Optional AI agent to engage in this discussion:
+            Optional AI agent to receive slide selection:
           </label>
           <div
             aria-expanded=\\"false\\"

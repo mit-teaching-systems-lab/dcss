@@ -5,7 +5,13 @@ const {
 } = require('../session/middleware');
 const { requireUserRole } = require('../roles/middleware');
 const { validateRequestBody } = require('../../util/requestValidation');
-const { createAgent, getAgents, getAgent, setAgent } = require('./endpoints');
+const {
+  createAgent,
+  getAgent,
+  getAgentResponses,
+  getAgents,
+  setAgent
+} = require('./endpoints');
 
 const router = Router();
 
@@ -30,5 +36,7 @@ router.put('/:id', [
 ]);
 
 router.get('/:id', [requireUser, getAgent]);
+
+router.get('/:id/run/:run_id/user/:user_id', [requireUser, getAgentResponses]);
 
 module.exports = router;

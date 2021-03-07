@@ -108,7 +108,7 @@ class AudioPromptEditor extends Component {
           />
 
           <AgentSelector
-            label="Optional AI agent:"
+            label="Optional AI agent to receive audio and transcript:"
             agent={agent}
             type={type}
             onChange={onChange}

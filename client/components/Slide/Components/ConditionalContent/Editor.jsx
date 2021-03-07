@@ -59,7 +59,7 @@ const operationDropdownOptions = terms.map(({ key, op, def, description }) => {
 const availableComponents = [
   'Text',
   'Suggestion',
-  'ResponseRecall',
+  'ResponseRecall'
   // 'AudioPrompt',
   // 'MultiPathResponse',
   // 'ConversationPrompt',
@@ -150,12 +150,12 @@ class ConditionalContentEditor extends React.Component {
     component.required = false;
 
     if (component.responseId) {
-      component.header = `Slide ${this.props.slideIndex + 1}, Conditional Content: ${selected}`;
+      component.header = `Slide ${this.props.slideIndex +
+        1}, Conditional Content: ${selected}`;
     }
 
     this.setState({ component }, this.updateState);
   }
-
 
   onRuleAddClick() {
     const { rules } = this.state;
@@ -186,25 +186,14 @@ class ConditionalContentEditor extends React.Component {
     }
 
     const { rules } = this.state;
-    rules[index][name] = value;
-
-    if (!rules[index].key.trim()) {
-      const { text } =
-        options.find(option => option.value === rules[index].value) || {};
-
-      if (text) {
-        rules[index].key = `Go to ${text}`;
-      }
-    }
+    rules[index][name] = name === 'value' ? Number(value) : value;
 
     this.setState({ rules }, this.delayedUpdateState);
   }
 
   onRuleSearchChange(options, query) {
     const re = new RegExp(escapeRegExp(query));
-    return options.filter(
-      (option, index) => re.test(JSON.stringify(option))
-    );
+    return options.filter((option, index) => re.test(JSON.stringify(option)));
   }
 
   moveButton(fromIndex, toIndex) {
@@ -277,18 +266,16 @@ class ConditionalContentEditor extends React.Component {
       return [...new Set([...accum, agent.id])];
     }, []);
 
-
     let expression = rules.reduce((accum, rule, index) => {
       const term = Conditional.getTerm(rule.key);
       const isLogical = Conditional.isLogicalOp(rule.key);
       if (isLogical && rules.length === index + 1) {
         return accum;
       }
-      return term ?
-        `${accum}${!isLogical ? 'X' : ''} ${term.operator} ${rule.value}`
+      return term
+        ? `${accum}${!isLogical ? 'X' : ''} ${term.operator} ${rule.value}`
         : accum;
     }, '');
-
 
     const ComponentEditor = component
       ? Components[component.type].Editor
@@ -308,14 +295,14 @@ class ConditionalContentEditor extends React.Component {
               <Segment>
                 <p tabIndex="0" className="cce__paragraph">
                   <Icon name="attention" />
-                  Create rules that are used to determine if the content
-                  below will be displayed to the participant.
+                  Create rules that are used to determine if the content below
+                  will be displayed to the participant.
                 </p>
                 <p tabIndex="0" className="cce__paragraph">
                   <Icon name="attention" />
                   <code className="cce__code">X</code> is the sum of affirmative
-                  responses from the agent, and <code className="cce__code">Y</code> is your
-                  comparison value.
+                  responses from the agent, and{' '}
+                  <code className="cce__code">Y</code> is your comparison value.
                 </p>
               </Segment>
               <Form>
@@ -323,11 +310,15 @@ class ConditionalContentEditor extends React.Component {
                   <Table.Header>
                     <Table.Row>
                       <Table.HeaderCell className="mpr__thead-background" />
-                      <Table.HeaderCell>Operation</Table.HeaderCell>
+                      <Table.HeaderCell>
+                        Operation
+                      </Table.HeaderCell>
                       <Table.HeaderCell className="cce__cell-constraint">
                         Y value
                       </Table.HeaderCell>
+                      {/*
                       <Table.HeaderCell className="cce__cell-constraint" />
+                      */}
                     </Table.Row>
                   </Table.Header>
 
@@ -350,30 +341,24 @@ class ConditionalContentEditor extends React.Component {
                       const lastRule = rules[index - 1];
 
                       const options = baseOptions.filter(option => {
-                        const isLogical = Conditional.isLogicalOp(
-                          option.value
-                        );
+                        const isLogical = Conditional.isLogicalOp(option.value);
                         // Logical operators cannot appear at the first or last position
                         // Logical operators cannot appear in sequence
                         if (
                           isLogical &&
                           (isFirst ||
                             isLast ||
-                            (lastRule &&
-                              Conditional.isLogicalOp(lastRule.key)))
+                            (lastRule && Conditional.isLogicalOp(lastRule.key)))
                         ) {
                           return false;
                         }
                         return true;
                       });
 
-                      const isLogical =
-                        key && Conditional.isLogicalOp(key);
+                      const isLogical = key && Conditional.isLogicalOp(key);
 
                       const term = Conditional.getTerm(key);
-                      const operatorDisplay = term
-                        ? term.operator
-                        : null;
+                      const operatorDisplay = term ? term.operator : null;
                       const binOpEvalDisplay =
                         operatorDisplay && !isLogical ? (
                           <code>
@@ -442,7 +427,9 @@ class ConditionalContentEditor extends React.Component {
                               />
                             )}
                           </Table.Cell>
+                          {/*
                           <Table.Cell>{evaluation}</Table.Cell>
+                          */}
                         </Table.Row>
                       );
                     })}
@@ -454,11 +441,14 @@ class ConditionalContentEditor extends React.Component {
                         key={Identity.key({ id, ['empty']: true })}
                         negative
                       >
+                        {/*
                         <Table.Cell colSpan={4}>
-                          There are no rules defined, which means this
-                          component will not display anything on the slide.
-                          You must create at least one rule to display the
-                          content in your slide.
+                        */}
+                        <Table.Cell colSpan={4}>
+                          There are no rules defined, which means this component
+                          will not display anything on the slide. You must
+                          create at least one rule to display the content in
+                          your slide.
                         </Table.Cell>
                       </Table.Row>
                     </Table.Body>
@@ -466,7 +456,10 @@ class ConditionalContentEditor extends React.Component {
 
                   <Table.Footer fullWidth>
                     <Table.Row>
+                      {/*
                       <Table.HeaderCell colSpan="3" />
+                      */}
+                      <Table.HeaderCell colSpan="2" />
                       <Table.HeaderCell>
                         <Menu floated="right" borderless>
                           <Menu.Item.Tabbable
@@ -495,25 +488,22 @@ class ConditionalContentEditor extends React.Component {
               </Form>
 
               {expression ? (
-                <pre className="cce__code" style={{padding: '1em'}}>
+                <pre className="cce__code" style={{ padding: '1em' }}>
                   IF {expression} THEN:
                 </pre>
               ) : null}
 
               <Menu borderless>
-                <Dropdown
-                  item
-                  text="Select a component to display"
-                >
+                <Dropdown item text="Select a component to display">
                   <Dropdown.Menu>
-                    {availableComponents.map((item, index) =>
+                    {availableComponents.map((item, index) => (
                       <ComponentItem
                         position="right center"
                         key={Identity.key({ item, index })}
                         item={item}
                         onClick={onComponentSelectClick}
                       />
-                    )}
+                    ))}
                   </Dropdown.Menu>
                 </Dropdown>
               </Menu>
@@ -524,13 +514,18 @@ class ConditionalContentEditor extends React.Component {
                     scenario={scenario}
                     slideIndex={slideIndex}
                     value={component}
-                    onChange={(component) => {
-                      this.setState({
-                        component
-                      }, this.updateState);
+                    onChange={component => {
+                      this.setState(
+                        {
+                          component
+                        },
+                        this.updateState
+                      );
                     }}
                   />
-                ) : 'Select a component to configure as your condition&apos;s consequent output. It will be displayed here.'}
+                ) : (
+                  'Select a component to configure as your condition&apos;s consequent output. It will be displayed here.'
+                )}
               </Segment>
               {/*
               <RichTextEditor
@@ -559,9 +554,7 @@ class ConditionalContentEditor extends React.Component {
         </Grid>
       </Container>
     ) : (
-      <Segment>
-        There are currently no active agents in this scenario
-      </Segment>
+      <Segment>There are currently no active agents in this scenario</Segment>
     );
   }
 }
@@ -580,7 +573,7 @@ ConditionalContentEditor.propTypes = {
 };
 
 const mapDispatchToProps = dispatch => ({
-  getScenarioPromptComponents: (id) => dispatch(getScenarioPromptComponents(id))
+  getScenarioPromptComponents: id => dispatch(getScenarioPromptComponents(id))
 });
 
 export default connect(

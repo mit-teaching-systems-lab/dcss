@@ -3,8 +3,8 @@ const hash = require('object-hash');
 const Socket = require('./');
 const { notifier } = require('../../util/db');
 const {
-  AGENT_PAUSE,
-  AGENT_START,
+  CHAT_AGENT_PAUSE,
+  CHAT_AGENT_START,
   CHAT_CREATED,
   CHAT_CLOSED_FOR_SLIDE,
   CHAT_CLOSED,
@@ -23,6 +23,8 @@ const {
   JOIN_OR_PART,
   NEW_INVITATION,
   NOTIFICATION,
+  RUN_AGENT_END,
+  RUN_AGENT_START,
   RUN_CHAT_LINK,
   SET_INVITATION,
   TIMER_END,
@@ -37,6 +39,7 @@ const {
 const authdb = require('../session/db');
 const agentdb = require('../agents/db');
 const chatdb = require('../chats/db');
+const rundb = require('../runs/db');
 const chatutil = require('../chats/util');
 
 function socketlog(...args) {
@@ -75,7 +78,8 @@ const cache = {
 
 const extractTextContent = html => parse(html).textContent;
 
-const makeRemoteSafeAuthPayload = ({ agent, chat, user }) => {
+const makeRemoteSafeAuthPayload = (data) => {
+  const { agent, chat = {}, run = {}, user } = data;
   const payload = {
     agent: {
       id: agent.id,
@@ -84,6 +88,9 @@ const makeRemoteSafeAuthPayload = ({ agent, chat, user }) => {
     },
     chat: {
       id: chat.id
+    },
+    run: {
+      id: run.id,
     },
     user: {
       id: user.id,
@@ -177,7 +184,6 @@ class SocketManager {
       if (!notifier.listenerCount('join_or_part_chat')) {
         notifier.on('join_or_part_chat', async data => {
           console.log('join_or_part_chat', data);
-          console.log(data);
           const user = await chatdb.getChatUserByChatId(
             data.chat_id,
             data.user_id
@@ -283,13 +289,82 @@ class SocketManager {
         // console.log('chat_invite listener is registered');
       }
 
+      const sendRunResponseToAgent = data => {
+        const clientKey = `${data.run_id}-${data.user_id}-${data.response_id}`;
+
+        console.log("sendRunResponseToAgent, clientKey", clientKey);
+        console.log("sendRunResponseToAgent, data", data);
+
+        console.log(cache.clients[clientKey]);
+        if (cache.clients[clientKey]) {
+          const { client, auth } = cache.clients[clientKey];
+
+          const {
+            id,
+            response_id,
+            transcript = '',
+            value = '',
+          } = data;
+
+          // console.log(auth);
+          // console.log(data);
+
+          if (value) {
+            console.log("sendRunResponseToAgent: ", data);
+            client.emit('request', {
+              auth,
+              id,
+              response_id,
+              transcript,
+              value
+            });
+          }
+        }
+      };
+
+      if (!notifier.listenerCount('agent_response_created')) {
+        notifier.on('agent_response_created', async data => {
+          console.log('agent_response_created', data);
+          const room = `${data.run_id}-${data.user_id}-${data.response_id}`;
+          this.io.to(room).emit(AGENT_RESPONSE_CREATED, data);
+        });
+      }
+
+      if (!notifier.listenerCount('run_response_created')) {
+        notifier.on('run_response_created', async data => {
+          console.log('run_response_created', data);
+          sendRunResponseToAgent(data);
+        });
+      }
+
+      if (!notifier.listenerCount('run_response_updated')) {
+        notifier.on('run_response_updated', async data => {
+          console.log('run_response_updated', data);
+          sendRunResponseToAgent(data);
+        });
+      }
+
+      // if (!notifier.listenerCount('audio_transcript_created')) {
+      //   notifier.on('audio_transcript_created', async data => {
+      //     console.log('audio_transcript_created', data);
+      //   });
+      //   // console.log('chat_message_created listener is registered');
+      // }
+
+      // if (!notifier.listenerCount('audio_transcript_updated')) {
+      //   notifier.on('audio_transcript_updated', async data => {
+      //     console.log('audio_transcript_updated', data);
+      //     // socket.broadcast.emit(CHAT_MESSAGE_UPDATED, data);
+      //   });
+      // }
+
       // Site
-      socket.on(AGENT_PAUSE, async props => {
-        console.log(AGENT_PAUSE, props);
+      socket.on(CHAT_AGENT_PAUSE, async props => {
+        console.log(CHAT_AGENT_PAUSE, props);
       });
 
-      socket.on(AGENT_START, async ({ agent, chat, user }) => {
-        console.log(AGENT_START, { agent, chat, user });
+      socket.on(CHAT_AGENT_START, async ({ agent, chat, user }) => {
+        console.log(CHAT_AGENT_START, { agent, chat, user });
         if (agent && agent.id) {
           const room = `${chat.id}-user-${user.id}`;
           socket.join(room);
@@ -334,6 +409,69 @@ class SocketManager {
             auth
           };
         }
+      });
+
+      socket.on(RUN_AGENT_START, async ({ run, user }) => {
+        console.log(RUN_AGENT_START, { run, user });
+        const prompts = await agentdb.getScenarioAgentPrompts(run.scenario_id);
+
+        for (const prompt of prompts) {
+          const {
+            agent
+          } = prompt;
+
+          if (agent && agent.id) {
+            const room = `${run.id}-${run.user_id}-${prompt.response_id}`;
+            socket.join(room);
+
+            if (!cache.clients[room]) {
+              const auth = makeRemoteSafeAuthPayload({ agent, run, user });
+              const options = {
+                ...agent.socket,
+                auth
+              };
+
+              const client = new Socket.Client(agent.endpoint, options);
+
+              client.on('response', async (response) => {
+                console.log("AGENT RESPONSE: ", response);
+                await agentdb.insertNewAgentResponse(
+                  // agent_id
+                  agent.id,
+                  // chat_id
+                  null,
+                  // interaction_id
+                  agent.interaction.id,
+                  // prompt_response_id
+                  response.response_id,
+                  // recipient_id
+                  user.id,
+                  // response_id
+                  response.id,
+                  // run_id
+                  run.id,
+                  // response
+                  response
+                );
+              });
+
+              cache.clients[room] = {
+                client,
+                auth
+              };
+            }
+          }
+        }
+      });
+
+      socket.on(RUN_AGENT_END, async ({ run }) => {
+        console.log(RUN_AGENT_END, { run });
+        // socket.join(user.id);
+
+        const agents = await agentdb.getScenarioAgents(run.scenario_id);
+
+        console.log(agents);
+
       });
 
       socket.on(CREATE_USER_CHANNEL, ({ user }) => {

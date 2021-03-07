@@ -78,7 +78,7 @@ class ChatDraggableResizableDialog extends Component {
     }
 
     if (bottom > availableY && y === 0) {
-      y = availableY - right;
+      y = availableY - bottom;
     }
 
     this.setState({

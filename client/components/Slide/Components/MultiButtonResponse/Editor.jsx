@@ -64,8 +64,9 @@ class MultiButtonResponseEditor extends React.Component {
   componentWillUnmount() {
     clearTimeout(this.timeout);
 
-    const { header, prompt, buttons, recallId, responseId } = this.props.value;
+    const { agent, header, prompt, buttons, recallId, responseId } = this.props.value;
     const lastProps = {
+      agent,
       header,
       prompt,
       buttons,
@@ -87,9 +88,11 @@ class MultiButtonResponseEditor extends React.Component {
   }
 
   updateState() {
-    const { buttons, header, prompt, recallId, responseId } = this.state;
+    const { agent, buttons, header, prompt, recallId, responseId } = this.state;
 
     this.props.onChange({
+      ...this.props.value,
+      agent,
       buttons,
       header,
       prompt,
@@ -326,7 +329,12 @@ class MultiButtonResponseEditor extends React.Component {
             </Table.Footer>
           </Table>
 
-          <AgentSelector agent={agent} type={type} onChange={onChange} />
+          <AgentSelector
+            label="Optional AI agent to receive button selection:"
+            agent={agent}
+            type={type}
+            onChange={onChange}
+          />
 
           <DataHeader
             content={header}

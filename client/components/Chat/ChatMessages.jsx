@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 // import { generateAvatar } from 'robohash-avatars';
 import { connect } from 'react-redux';
 import withSocket, {
-  AGENT_PAUSE,
-  AGENT_START,
+  CHAT_AGENT_PAUSE,
+  CHAT_AGENT_START,
   CHAT_MESSAGE_CREATED,
   CHAT_MESSAGE_UPDATED
 } from '@hoc/withSocket';
@@ -125,7 +125,7 @@ class ChatMessages extends Component {
 
     if (agent) {
       this.props.socket.emit(
-        AGENT_START,
+        CHAT_AGENT_START,
         Payload.compose(
           this.props,
           { agent, user }
@@ -145,9 +145,9 @@ class ChatMessages extends Component {
     this.props.socket.off(CHAT_MESSAGE_CREATED, this.onMessageReceived);
     this.props.socket.off(CHAT_MESSAGE_UPDATED, this.onMessageUpdated);
 
-    if (agent) {
+    if (agent && agent.id) {
       this.props.socket.emit(
-        AGENT_PAUSE,
+        CHAT_AGENT_PAUSE,
         Payload.compose(
           this.props,
           { agent }

@@ -27,6 +27,19 @@ async function getAgent(req, res) {
   res.json({ agent });
 }
 
+async function getAgentResponses(req, res) {
+  const agent_id = Number(req.params.id);
+  const run_id = Number(req.params.run_id);
+  const user_id = Number(req.params.user_id);
+
+  if (user_id !== req.session.user.id) {
+    return res.json({ responses: [] });
+  }
+
+  const responses = await db.getAgentResponses(agent_id, run_id, user_id);
+  res.json({ responses });
+}
+
 async function getInteractions(req, res) {
   const interactions = await db.getInteractions();
   res.json({ interactions });
@@ -133,6 +146,7 @@ async function setAgent(req, res) {
 
 exports.createAgent = asyncMiddleware(createAgent);
 exports.getAgent = asyncMiddleware(getAgent);
+exports.getAgentResponses = asyncMiddleware(getAgentResponses);
 exports.getAgents = asyncMiddleware(getAgents);
-exports.setAgent = asyncMiddleware(setAgent);
 exports.getInteractions = asyncMiddleware(getInteractions);
+exports.setAgent = asyncMiddleware(setAgent);

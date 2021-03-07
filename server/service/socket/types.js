@@ -3,8 +3,8 @@
 // Client -> Server
 exports.AGENT_ACTIVATE = 'agent-activate';
 exports.AGENT_DEACTIVATE = 'agent-deactivate';
-exports.AGENT_PAUSE = 'agent-pause';
-exports.AGENT_START = 'agent-start';
+exports.CHAT_AGENT_PAUSE = 'chat-agent-pause';
+exports.CHAT_AGENT_START = 'chat-agent-start';
 exports.AWAITING_AGENT = 'awaiting-agent';
 exports.CREATE_CHAT_CHANNEL = 'create-chat-channel';
 exports.CREATE_CHAT_SLIDE_CHANNEL = 'create-chat-slide-channel';
@@ -13,6 +13,8 @@ exports.CREATE_COHORT_CHANNEL = 'create-cohort-channel';
 exports.CREATE_USER_CHANNEL = 'create-user-channel';
 exports.DISCONNECT = 'disconnect';
 exports.HEART_BEAT = 'heart-beat';
+exports.RUN_AGENT_START = 'run-agent-start';
+exports.RUN_AGENT_END = 'run-agent-end';
 exports.USER_JOIN = 'user-join';
 exports.USER_PART = 'user-part';
 exports.USER_JOIN_SLIDE = 'user-join-slide';
@@ -27,7 +29,7 @@ exports.NOTIFICATION = 'notification';
 
 // Server -> Client
 exports.AGENT_JOINED = 'agent-joined';
-exports.AGENT_RESPONSE_RECEIVED = 'agent-response-received';
+exports.AGENT_RESPONSE_CREATED = 'agent-response-created';
 exports.CHAT_QUORUM_FOR_SLIDE = 'chat-quorum-for-slide';
 exports.CHAT_CREATED = 'chat-created';
 exports.CHAT_CLOSED = 'chat-closed';

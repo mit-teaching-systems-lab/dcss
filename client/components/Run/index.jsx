@@ -22,8 +22,12 @@ import withRunEventCapturing, {
   PROMPT_RESPONSE_SUBMITTED,
   SCENARIO_ARRIVAL
 } from '@hoc/withRunEventCapturing';
-import withSocket from '@hoc/withSocket';
+import withSocket, {
+  RUN_AGENT_START,
+  RUN_END
+} from '@hoc/withSocket';
 import Identity from '@utils/Identity';
+import Payload from '@utils/Payload';
 import QueryString from '@utils/QueryString';
 import Storage from '@utils/Storage';
 
@@ -202,6 +206,10 @@ class Run extends Component {
         }
       }
 
+      this.props.socket.emit(RUN_AGENT_START,
+        Payload.compose(this.props, { run })
+      );
+
       this.setState({
         isReady: true,
         lobby
@@ -317,7 +325,7 @@ class Run extends Component {
         }
       };
 
-      const onContinueClick = () => {
+      const onContinueClick = destination => {
         this.setState({
           lobby: {
             isOpen: false,
@@ -327,7 +335,8 @@ class Run extends Component {
         // If consent has been acknowledged,
         // proceed to slide/1 from here.
         if (run.consent_acknowledged_by_user) {
-          this.props.history.push(`${baseurl}/slide/1`);
+          const nextPath = destination ? destination : `${baseurl}/slide/1`;
+          this.props.history.push(nextPath);
         }
       };
 

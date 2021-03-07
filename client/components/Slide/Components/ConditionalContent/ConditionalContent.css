@@ -9,7 +9,8 @@
 
 .cce__cell-constraint {
   width: 230px !important;
-  min-width: 230px !important;
+  /*min-width: 230px !important;*/
+  min-width: 80px !important;
   max-width: 230px !important;
 }
 

@@ -328,6 +328,7 @@ test('Save single button', async done => {
   expect(props.onChange.mock.calls[0]).toMatchInlineSnapshot(`
     Array [
       Object {
+        "agent": null,
         "buttons": Array [
           Object {
             "color": "#ff00ff",
@@ -341,8 +342,10 @@ test('Save single button', async done => {
           },
         ],
         "header": "xyz-header",
+        "id": "XYZ",
         "prompt": "xyz-prompt",
         "recallId": "xyz-recallId",
+        "required": true,
         "responseId": "xyz-responseId",
         "type": "MultiButtonResponse",
       },
@@ -390,6 +393,7 @@ test('Delete single button', async done => {
   expect(props.onChange.mock.calls[0]).toMatchInlineSnapshot(`
     Array [
       Object {
+        "agent": null,
         "buttons": Array [
           Object {
             "color": "#ff0000",
@@ -398,8 +402,10 @@ test('Delete single button', async done => {
           },
         ],
         "header": "xyz-header",
+        "id": "XYZ",
         "prompt": "xyz-prompt",
         "recallId": "xyz-recallId",
+        "required": true,
         "responseId": "xyz-responseId",
         "type": "MultiButtonResponse",
       },
@@ -441,6 +447,7 @@ test('Add a button empty fields', async done => {
   expect(props.onChange.mock.calls[0]).toMatchInlineSnapshot(`
     Array [
       Object {
+        "agent": null,
         "buttons": Array [
           Object {
             "display": "",
@@ -448,8 +455,10 @@ test('Add a button empty fields', async done => {
           },
         ],
         "header": "xyz-header",
+        "id": "XYZ",
         "prompt": "xyz-prompt",
         "recallId": "xyz-recallId",
+        "required": true,
         "responseId": "xyz-responseId",
         "type": "MultiButtonResponse",
       },
@@ -469,6 +478,7 @@ test('Add a button empty fields', async done => {
   expect(props.onChange.mock.calls[1]).toMatchInlineSnapshot(`
     Array [
       Object {
+        "agent": null,
         "buttons": Array [
           Object {
             "display": "Yes",
@@ -476,8 +486,10 @@ test('Add a button empty fields', async done => {
           },
         ],
         "header": "xyz-header",
+        "id": "XYZ",
         "prompt": "xyz-prompt",
         "recallId": "xyz-recallId",
+        "required": true,
         "responseId": "xyz-responseId",
         "type": "MultiButtonResponse",
       },
@@ -495,6 +507,7 @@ test('Add a button empty fields', async done => {
   expect(props.onChange.mock.calls[2]).toMatchInlineSnapshot(`
     Array [
       Object {
+        "agent": null,
         "buttons": Array [
           Object {
             "display": "Yes",
@@ -502,8 +515,10 @@ test('Add a button empty fields', async done => {
           },
         ],
         "header": "xyz-header",
+        "id": "XYZ",
         "prompt": "xyz-prompt",
         "recallId": "xyz-recallId",
+        "required": true,
         "responseId": "xyz-responseId",
         "type": "MultiButtonResponse",
       },
@@ -514,6 +529,7 @@ test('Add a button empty fields', async done => {
   expect(props.onChange.mock.calls[3]).toMatchInlineSnapshot(`
     Array [
       Object {
+        "agent": null,
         "buttons": Array [
           Object {
             "display": "Yes",
@@ -521,8 +537,10 @@ test('Add a button empty fields', async done => {
           },
         ],
         "header": "xyz-header",
+        "id": "XYZ",
         "prompt": "xyz-prompt",
         "recallId": "xyz-recallId",
+        "required": true,
         "responseId": "xyz-responseId",
         "type": "MultiButtonResponse",
       },
@@ -538,6 +556,7 @@ test('Add a button empty fields', async done => {
   expect(props.onChange.mock.calls[4]).toMatchInlineSnapshot(`
     Array [
       Object {
+        "agent": null,
         "buttons": Array [
           Object {
             "display": "Yes",
@@ -545,8 +564,10 @@ test('Add a button empty fields', async done => {
           },
         ],
         "header": "xyz-header",
+        "id": "XYZ",
         "prompt": "xyz-prompt",
         "recallId": "xyz-recallId",
+        "required": true,
         "responseId": "xyz-responseId",
         "type": "MultiButtonResponse",
       },
@@ -556,6 +577,7 @@ test('Add a button empty fields', async done => {
   expect(props.onChange.mock.calls[5]).toMatchInlineSnapshot(`
     Array [
       Object {
+        "agent": null,
         "buttons": Array [
           Object {
             "display": "Yes",
@@ -563,8 +585,10 @@ test('Add a button empty fields', async done => {
           },
         ],
         "header": "xyz-header",
+        "id": "XYZ",
         "prompt": "xyz-prompt",
         "recallId": "xyz-recallId",
+        "required": true,
         "responseId": "xyz-responseId",
         "type": "MultiButtonResponse",
       },
@@ -606,6 +630,7 @@ test('Prevent empty fields', async done => {
   expect(props.onChange.mock.calls[0]).toMatchInlineSnapshot(`
     Array [
       Object {
+        "agent": null,
         "buttons": Array [
           Object {
             "display": "",
@@ -613,8 +638,10 @@ test('Prevent empty fields', async done => {
           },
         ],
         "header": "xyz-header",
+        "id": "XYZ",
         "prompt": "xyz-prompt",
         "recallId": "xyz-recallId",
+        "required": true,
         "responseId": "xyz-responseId",
         "type": "MultiButtonResponse",
       },
@@ -634,6 +661,7 @@ test('Prevent empty fields', async done => {
   expect(props.onChange.mock.calls[1]).toMatchInlineSnapshot(`
     Array [
       Object {
+        "agent": null,
         "buttons": Array [
           Object {
             "display": "",
@@ -641,8 +669,10 @@ test('Prevent empty fields', async done => {
           },
         ],
         "header": "xyz-header",
+        "id": "XYZ",
         "prompt": "xyz-prompt",
         "recallId": "xyz-recallId",
+        "required": true,
         "responseId": "xyz-responseId",
         "type": "MultiButtonResponse",
       },
@@ -660,6 +690,7 @@ test('Prevent empty fields', async done => {
   expect(props.onChange.mock.calls[2]).toMatchInlineSnapshot(`
     Array [
       Object {
+        "agent": null,
         "buttons": Array [
           Object {
             "display": "Yes",
@@ -667,8 +698,10 @@ test('Prevent empty fields', async done => {
           },
         ],
         "header": "xyz-header",
+        "id": "XYZ",
         "prompt": "xyz-prompt",
         "recallId": "xyz-recallId",
+        "required": true,
         "responseId": "xyz-responseId",
         "type": "MultiButtonResponse",
       },
@@ -679,6 +712,7 @@ test('Prevent empty fields', async done => {
   expect(props.onChange.mock.calls[3]).toMatchInlineSnapshot(`
     Array [
       Object {
+        "agent": null,
         "buttons": Array [
           Object {
             "display": "Yes",
@@ -686,8 +720,10 @@ test('Prevent empty fields', async done => {
           },
         ],
         "header": "xyz-header",
+        "id": "XYZ",
         "prompt": "xyz-prompt",
         "recallId": "xyz-recallId",
+        "required": true,
         "responseId": "xyz-responseId",
         "type": "MultiButtonResponse",
       },
@@ -702,6 +738,7 @@ test('Prevent empty fields', async done => {
   expect(props.onChange.mock.calls[4]).toMatchInlineSnapshot(`
     Array [
       Object {
+        "agent": null,
         "buttons": Array [
           Object {
             "display": "Yes",
@@ -709,8 +746,10 @@ test('Prevent empty fields', async done => {
           },
         ],
         "header": "xyz-header",
+        "id": "XYZ",
         "prompt": "xyz-prompt",
         "recallId": "xyz-recallId",
+        "required": true,
         "responseId": "xyz-responseId",
         "type": "MultiButtonResponse",
       },
@@ -720,6 +759,7 @@ test('Prevent empty fields', async done => {
   expect(props.onChange.mock.calls[5]).toMatchInlineSnapshot(`
     Array [
       Object {
+        "agent": null,
         "buttons": Array [
           Object {
             "display": "Yes",
@@ -727,8 +767,10 @@ test('Prevent empty fields', async done => {
           },
         ],
         "header": "xyz-header",
+        "id": "XYZ",
         "prompt": "xyz-prompt",
         "recallId": "xyz-recallId",
+        "required": true,
         "responseId": "xyz-responseId",
         "type": "MultiButtonResponse",
       },

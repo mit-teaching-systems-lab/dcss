@@ -42,7 +42,11 @@ const notifier = new Emitter();
     `);
   }
 
+  // TODO: determine if these are necessary
+  // LISTEN audio_transcript_created;
+  // LISTEN audio_transcript_updated;
   await client.query(`
+    LISTEN agent_response_created;
     LISTEN chat_created;
     LISTEN chat_ended;
     LISTEN chat_message_created;
@@ -51,6 +55,8 @@ const notifier = new Emitter();
     LISTEN new_invitation;
     LISTEN new_notification;
     LISTEN run_chat_link;
+    LISTEN run_response_created;
+    LISTEN run_response_updated;
     LISTEN set_invitation;
   `);
 

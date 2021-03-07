@@ -150,6 +150,112 @@ async function getAgent(id) {
   return result.rows[0] || null;
 }
 
+async function getAgentResponses(agent_id, run_id, recipient_id) {
+  const result = await query(sql`
+    SELECT * FROM (
+      SELECT DISTINCT ON (recipient_id, prompt_response_id) * FROM agent_response
+    ) AS s
+    WHERE agent_id = ${agent_id}
+    AND run_id = ${run_id}
+    AND recipient_id = ${recipient_id}
+    ORDER BY created_at DESC;
+  `);
+  return result.rows;
+}
+
+async function insertNewAgentResponse(
+  agent_id,
+  chat_id,
+  interaction_id,
+  prompt_response_id,
+  recipient_id,
+  response_id,
+  run_id,
+  response
+) {
+  const result = await withClientTransaction(async client => {
+    const result = await client.query(sql`
+      INSERT INTO agent_response
+        (
+          agent_id,
+          chat_id,
+          interaction_id,
+          prompt_response_id,
+          recipient_id,
+          response_id,
+          run_id,
+          response
+        )
+      VALUES
+        (
+          ${agent_id},
+          ${chat_id},
+          ${interaction_id},
+          ${prompt_response_id},
+          ${recipient_id},
+          ${response_id},
+          ${run_id},
+          ${response}
+        )
+      ON CONFLICT DO NOTHING
+      RETURNING *;
+    `);
+    return result.rows[0] || null;
+  });
+
+  return result;
+}
+
+async function getScenarioAgentPrompts(scenario_id) {
+  const result = await query(sql`
+  WITH c AS (
+    SELECT
+      components.id AS id,
+      s.id AS slide_id,
+      s.scenario_id AS scenario_id,
+      components.required,
+      components."responseId" AS response_id,
+      components.agent->>'id' AS agent_id,
+      components.persona,
+      components.type
+    FROM
+      slide s,
+      jsonb_to_recordset(s.components) AS components(
+        id TEXT,
+        required BOOLEAN,
+        "responseId" TEXT,
+        agent JSONB,
+        persona JSONB,
+        type TEXT
+      )
+    WHERE scenario_id = ${scenario_id}
+    AND components.id IS NOT NULL
+    AND components."responseId" IS NOT NULL
+    AND components.agent IS NOT NULL
+  )
+  SELECT
+    c.id,
+    c.slide_id,
+    c.scenario_id,
+    c.required,
+    c.response_id,
+    c.persona,
+    c.type,
+    JSONB_AGG(TO_JSONB(av))::json->0 AS agent
+  FROM c
+  JOIN agent_view av ON c.agent_id::INTEGER = av.id
+  GROUP BY
+    c.id,
+    c.slide_id,
+    c.scenario_id,
+    c.required,
+    c.response_id,
+    c.persona,
+    c.type;
+  `);
+  return result.rows;
+}
+
 async function getAgents(where) {
   const result = await query(`
     SELECT *
@@ -161,7 +267,10 @@ async function getAgents(where) {
 
 exports.createAgent = createAgent;
 exports.getAgent = getAgent;
+exports.getAgentResponses = getAgentResponses;
 exports.getAgents = getAgents;
+exports.getScenarioAgentPrompts = getScenarioAgentPrompts;
+exports.insertNewAgentResponse = insertNewAgentResponse;
 exports.setAgent = setAgent;
 exports.setAgentSocketConfiguration = setAgentSocketConfiguration;
 exports.setAgentConfiguration = setAgentConfiguration;

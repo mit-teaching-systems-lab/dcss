@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Container, Form } from '@components/UI';
 // import { defaultValue } from './';
 import { type } from './meta';
+import { createInteraction, setInteraction } from '@actions/interaction';
 import AgentSelector from '@components/Slide/Components/AgentSelector';
 import DataHeader from '@components/Slide/Components/DataHeader';
 import ResponseRecall from '@components/Slide/Components/ResponseRecall/Editor';
@@ -126,7 +127,12 @@ class TextResponseEditor extends React.Component {
             onBlur={updateState}
           />
 
-          <AgentSelector agent={agent} type={type} onChange={onChange} />
+          <AgentSelector
+            label="Optional AI agent to receive responses:"
+            agent={agent}
+            type={type}
+            onChange={onChange}
+          />
 
           <DataHeader
             content={header}

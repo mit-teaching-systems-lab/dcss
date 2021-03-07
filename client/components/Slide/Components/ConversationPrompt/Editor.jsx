@@ -339,7 +339,12 @@ class ConversationPromptEditor extends Component {
             onBlur={updateState}
           />
 
-          <AgentSelector agent={agent} type={type} onChange={onChange} />
+          <AgentSelector
+            label="Optional AI agent to receive audio and transcript:"
+            agent={agent}
+            type={type}
+            onChange={onChange}
+          />
 
           <DataHeader
             content={header}

@@ -96,7 +96,8 @@ exports[`Render 1 1 1`] = `
                 >
                   X
                 </code>
-                 is the sum of affirmative responses from the agent, and 
+                 is the sum of affirmative responses from the agent, and
+                 
                 <code
                   class=\\"cce__code\\"
                 >
@@ -130,9 +131,6 @@ exports[`Render 1 1 1`] = `
                     >
                       Y value
                     </th>
-                    <th
-                      class=\\"cce__cell-constraint\\"
-                    />
                   </tr>
                 </thead>
                 <tbody
@@ -482,11 +480,6 @@ exports[`Render 1 1 1`] = `
                         />
                       </div>
                     </td>
-                    <td
-                      class=\\"\\"
-                    >
-                      Select an operator to create a rule
-                    </td>
                   </tr>
                 </tbody>
                 <tfoot
@@ -497,7 +490,7 @@ exports[`Render 1 1 1`] = `
                   >
                     <th
                       class=\\"\\"
-                      colspan=\\"3\\"
+                      colspan=\\"2\\"
                     />
                     <th
                       class=\\"\\"
@@ -600,86 +593,6 @@ exports[`Render 1 1 1`] = `
                       class=\\"ser__component-name\\"
                     >
                       Embed Previous Response
-                    </span>
-                  </a>
-                  <a
-                    class=\\"item\\"
-                    role=\\"button\\"
-                    style=\\"float: none !important;\\"
-                    tabindex=\\"0\\"
-                  >
-                    <i
-                      aria-label=\\"Prompt: Audio Input\\"
-                      class=\\"microphone icon\\"
-                    />
-                    <span
-                      class=\\"ser__component-name\\"
-                    >
-                      Prompt: Audio Input
-                    </span>
-                  </a>
-                  <a
-                    class=\\"item\\"
-                    role=\\"button\\"
-                    style=\\"float: none !important;\\"
-                    tabindex=\\"0\\"
-                  >
-                    <i
-                      aria-label=\\"Prompt: Choose Next Slide\\"
-                      class=\\"fork clockwise rotated icon\\"
-                    />
-                    <span
-                      class=\\"ser__component-name\\"
-                    >
-                      Prompt: Choose Next Slide
-                    </span>
-                  </a>
-                  <a
-                    class=\\"item\\"
-                    role=\\"button\\"
-                    style=\\"float: none !important;\\"
-                    tabindex=\\"0\\"
-                  >
-                    <i
-                      aria-label=\\"Prompt: Conversation\\"
-                      class=\\"conversation icon\\"
-                    />
-                    <span
-                      class=\\"ser__component-name\\"
-                    >
-                      Prompt: Conversation
-                    </span>
-                  </a>
-                  <a
-                    class=\\"item\\"
-                    role=\\"button\\"
-                    style=\\"float: none !important;\\"
-                    tabindex=\\"0\\"
-                  >
-                    <i
-                      aria-label=\\"Prompt: Multiple Buttons\\"
-                      class=\\"hand pointer outline icon\\"
-                    />
-                    <span
-                      class=\\"ser__component-name\\"
-                    >
-                      Prompt: Multiple Buttons
-                    </span>
-                  </a>
-                  <a
-                    class=\\"item\\"
-                    role=\\"button\\"
-                    style=\\"float: none !important;\\"
-                    tabindex=\\"0\\"
-                  >
-                    <i
-                      aria-label=\\"Prompt: Text Input\\"
-                      class=\\"keyboard icon\\"
-                    />
-                    <span
-                      class=\\"ser__component-name\\"
-                    >
-                      Prompt: Text Input
                     </span>
                   </a>
                 </div>

@@ -23,7 +23,7 @@ exports[`Render 1 1 1`] = `
         class="field"
       >
         <label>
-          Optional AI agent:
+          Optional AI agent to receive audio and transcript:
         </label>
         <div
           aria-expanded="false"

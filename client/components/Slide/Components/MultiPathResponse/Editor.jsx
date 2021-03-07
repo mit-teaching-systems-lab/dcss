@@ -508,7 +508,12 @@ class MultiPathResponseEditor extends React.Component {
             </Table.Footer>
           </Table>
 
-          <AgentSelector agent={agent} type={type} onChange={onChange} />
+          <AgentSelector
+            label="Optional AI agent to receive slide selection:"
+            agent={agent}
+            type={type}
+            onChange={onChange}
+          />
 
           <DataHeader
             content={header}

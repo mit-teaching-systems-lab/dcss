@@ -1,6 +1,8 @@
 import {
   GET_AGENT_ERROR,
   GET_AGENT_SUCCESS,
+  GET_AGENT_RESPONSES_ERROR,
+  GET_AGENT_RESPONSES_SUCCESS,
   GET_AGENTS_ERROR,
   GET_AGENTS_SUCCESS,
   SET_AGENT_ERROR,
@@ -92,6 +94,26 @@ export let getAgents = filter => async dispatch => {
     return agents;
   } catch (error) {
     dispatch({ type: GET_AGENTS_ERROR, error });
+    return null;
+  }
+};
+
+export let getAgentResponses = (agent, run, user) => async dispatch => {
+  console.log(run);
+  try {
+    const res = await (await fetch(
+      `/api/agents/${agent.id}/run/${run.id}/user/${user.id}`
+    )).json();
+
+    if (res.error) {
+      throw res;
+    }
+    const { responses } = res;
+
+    dispatch({ type: GET_AGENT_RESPONSES_SUCCESS, responses });
+    return responses;
+  } catch (error) {
+    dispatch({ type: GET_AGENT_RESPONSES_ERROR, error });
     return null;
   }
 };

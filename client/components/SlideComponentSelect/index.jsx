@@ -17,7 +17,6 @@ const ComponentsMenuOrder = [
   'TextResponse'
 ];
 
-
 export const ComponentItem = ({ position = 'left center', item, onClick }) => {
   const { Card, name: header, description: content } = Components[item];
   const style = { float: 'none !important' };
@@ -43,13 +42,13 @@ export const ComponentItem = ({ position = 'left center', item, onClick }) => {
 };
 
 export const ComponentItems = ({ onComponentItemClick }) => {
-  return ComponentsMenuOrder.map(item =>
+  return ComponentsMenuOrder.map(item => (
     <ComponentItem
       key={Identity.key(item)}
       item={item}
       onClick={onComponentItemClick}
     />
-  );
+  ));
 };
 
 class SlideComponentSelect extends Component {

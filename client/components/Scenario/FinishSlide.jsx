@@ -4,6 +4,11 @@ import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { Button, Card, Header, Icon, Modal } from '@components/UI';
 import { SCENARIO_COMPLETE } from '@hoc/withRunEventCapturing';
+import withSocket, {
+  RUN_AGENT_START,
+  RUN_AGENT_END
+} from '@hoc/withSocket';
+
 import Identity from '@utils/Identity';
 import './Scenario.css';
 
@@ -56,6 +61,14 @@ class FinishSlide extends React.Component {
     this.props.saveRunEvent(SCENARIO_COMPLETE, {
       scenario: this.props.scenario
     });
+
+    const {
+      run
+    } = this.props;
+
+    this.props.socket.emit(RUN_AGENT_END,
+      Payload.compose(this.props, { run })
+    );
   }
 
   render() {
@@ -179,7 +192,8 @@ FinishSlide.propTypes = {
   run: PropTypes.object,
   saveRunEvent: PropTypes.func,
   scenario: PropTypes.object,
-  slide: PropTypes.object
+  slide: PropTypes.object,
+  socket: PropTypes.object
 };
 
 const mapStateToProps = state => {
@@ -187,4 +201,4 @@ const mapStateToProps = state => {
   return { run };
 };
 
-export default connect(mapStateToProps)(FinishSlide);
+export default withSocket(connect(mapStateToProps)(FinishSlide));

@@ -122,6 +122,7 @@ test('GET_USERS_ERROR', async () => {
       "/api/roles/all",
     ]
   `);
+  expect(store.getState().errors.users.error).toEqual(error);
   expect(returnValue).toBe(null);
 });
 
@@ -134,6 +135,7 @@ test('GET_USERS_COUNT_ERROR', async () => {
       "/api/roles/all/count",
     ]
   `);
+  expect(store.getState().errors.users.error).toEqual(error);
   expect(returnValue).toBe(null);
 });
 
@@ -156,5 +158,6 @@ test('GET_USERS_BY_PERMISSION_ERROR', async () => {
     actions.getUsersByPermission('boss')
   );
   expect(fetch.mock.calls[0]).toEqual(['/api/roles/user/permission/boss']);
+  expect(store.getState().errors.users.error).toEqual(error);
   expect(returnValue).toBe(null);
 });

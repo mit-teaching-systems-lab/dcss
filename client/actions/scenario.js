@@ -20,7 +20,7 @@ import {
   SET_SCENARIOS,
   SET_SLIDES,
   UNLOCK_SCENARIO_ERROR,
-  UNLOCK_SCENARIO_SUCCESS,
+  UNLOCK_SCENARIO_SUCCESS
 } from './types';
 import store from '@client/store';
 
@@ -55,13 +55,11 @@ export let getScenario = (id, options) => async dispatch => {
   }
 };
 
-export let getScenarioPromptComponents = (id) => async dispatch => {
-
+export let getScenarioPromptComponents = id => async dispatch => {
   try {
     const res = await (await fetch(
       `/api/scenarios/${id}/slides/prompt-components`
     )).json();
-
 
     if (res.error) {
       throw res;

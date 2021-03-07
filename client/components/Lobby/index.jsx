@@ -192,17 +192,22 @@ class Lobby extends Component {
       }
     };
 
-    const onClick = () => {
-      if (this.props.onContinueClick) {
-        this.props.onContinueClick();
-      }
-    };
-
     const runStorageKey = cohort
       ? `cohort/${cohort.id}/run/${scenario.id}`
       : `run/${scenario.id}`;
 
     const persisted = Storage.get(runStorageKey);
+
+    const onClick = () => {
+      const nextPath =
+        persisted && persisted.activeRunSlideIndex
+          ? window.location.pathname
+          : null;
+
+      if (this.props.onContinueClick) {
+        this.props.onContinueClick(nextPath);
+      }
+    };
 
     const content =
       persisted && persisted.activeRunSlideIndex

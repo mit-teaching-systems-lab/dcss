@@ -317,7 +317,7 @@ exports[`Add a non-response-prompt component 1`] = `
                               class=\\"field\\"
                             >
                               <label>
-                                Optional AI agent to engage in this discussion:
+                                Optional AI agent to receive responses:
                               </label>
                               <div
                                 aria-expanded=\\"false\\"
@@ -935,7 +935,7 @@ exports[`Add a non-response-prompt component 2`] = `
                               class=\\"field\\"
                             >
                               <label>
-                                Optional AI agent to engage in this discussion:
+                                Optional AI agent to receive responses:
                               </label>
                               <div
                                 aria-expanded=\\"false\\"
@@ -1553,7 +1553,7 @@ exports[`Add a non-response-prompt component 3`] = `
                               class=\\"field\\"
                             >
                               <label>
-                                Optional AI agent to engage in this discussion:
+                                Optional AI agent to receive responses:
                               </label>
                               <div
                                 aria-expanded=\\"false\\"
@@ -2133,7 +2133,7 @@ exports[`Add a non-response-prompt component at the end 1`] = `
                               class=\\"field\\"
                             >
                               <label>
-                                Optional AI agent to engage in this discussion:
+                                Optional AI agent to receive responses:
                               </label>
                               <div
                                 aria-expanded=\\"false\\"
@@ -2713,7 +2713,7 @@ exports[`Add a non-response-prompt component at the end 2`] = `
                               class=\\"field\\"
                             >
                               <label>
-                                Optional AI agent to engage in this discussion:
+                                Optional AI agent to receive responses:
                               </label>
                               <div
                                 aria-expanded=\\"false\\"
@@ -3293,7 +3293,7 @@ exports[`Add a non-response-prompt component at the end 3`] = `
                               class=\\"field\\"
                             >
                               <label>
-                                Optional AI agent to engage in this discussion:
+                                Optional AI agent to receive responses:
                               </label>
                               <div
                                 aria-expanded=\\"false\\"
@@ -3911,7 +3911,7 @@ exports[`Add a non-response-prompt component at the end 4`] = `
                               class=\\"field\\"
                             >
                               <label>
-                                Optional AI agent to engage in this discussion:
+                                Optional AI agent to receive responses:
                               </label>
                               <div
                                 aria-expanded=\\"false\\"
@@ -4529,7 +4529,7 @@ exports[`Add a non-response-prompt component at the end 5`] = `
                               class=\\"field\\"
                             >
                               <label>
-                                Optional AI agent to engage in this discussion:
+                                Optional AI agent to receive responses:
                               </label>
                               <div
                                 aria-expanded=\\"false\\"
@@ -4822,7 +4822,7 @@ exports[`Add a non-response-prompt component at the end 5`] = `
                               class=\\"field\\"
                             >
                               <label>
-                                Optional AI agent to engage in this discussion:
+                                Optional AI agent to receive responses:
                               </label>
                               <div
                                 aria-expanded=\\"false\\"
@@ -5362,7 +5362,7 @@ exports[`Add a response-prompt component 1`] = `
                               class=\\"field\\"
                             >
                               <label>
-                                Optional AI agent to engage in this discussion:
+                                Optional AI agent to receive responses:
                               </label>
                               <div
                                 aria-expanded=\\"false\\"
@@ -5942,7 +5942,7 @@ exports[`Add a response-prompt component that has disableRequireCheckbox 1`] = `
                               class=\\"field\\"
                             >
                               <label>
-                                Optional AI agent to engage in this discussion:
+                                Optional AI agent to receive responses:
                               </label>
                               <div
                                 aria-expanded=\\"false\\"
@@ -6598,7 +6598,7 @@ exports[`Add a response-prompt component to a slide without a title 1`] = `
                               class=\\"field\\"
                             >
                               <label>
-                                Optional AI agent to engage in this discussion:
+                                Optional AI agent to receive responses:
                               </label>
                               <div
                                 aria-expanded=\\"false\\"
@@ -7214,7 +7214,7 @@ exports[`Change title 1`] = `
                               class=\\"field\\"
                             >
                               <label>
-                                Optional AI agent to engage in this discussion:
+                                Optional AI agent to receive responses:
                               </label>
                               <div
                                 aria-expanded=\\"false\\"
@@ -7830,7 +7830,7 @@ exports[`Change title 2`] = `
                               class=\\"field\\"
                             >
                               <label>
-                                Optional AI agent to engage in this discussion:
+                                Optional AI agent to receive responses:
                               </label>
                               <div
                                 aria-expanded=\\"false\\"
@@ -8460,7 +8460,7 @@ exports[`Change title 3`] = `
                               class=\\"field\\"
                             >
                               <label>
-                                Optional AI agent to engage in this discussion:
+                                Optional AI agent to receive responses:
                               </label>
                               <div
                                 aria-expanded=\\"false\\"
@@ -9092,7 +9092,7 @@ exports[`Click to activate component 1`] = `
                               class=\\"field\\"
                             >
                               <label>
-                                Optional AI agent to engage in this discussion:
+                                Optional AI agent to receive responses:
                               </label>
                               <div
                                 aria-expanded=\\"false\\"
@@ -9710,7 +9710,7 @@ exports[`Click to activate component 2`] = `
                               class=\\"field\\"
                             >
                               <label>
-                                Optional AI agent to engage in this discussion:
+                                Optional AI agent to receive responses:
                               </label>
                               <div
                                 aria-expanded=\\"false\\"
@@ -10328,7 +10328,7 @@ exports[`Click to activate component 3`] = `
                               class=\\"field\\"
                             >
                               <label>
-                                Optional AI agent to engage in this discussion:
+                                Optional AI agent to receive responses:
                               </label>
                               <div
                                 aria-expanded=\\"false\\"
@@ -11057,7 +11057,7 @@ exports[`Component is missing an id 1`] = `
                               class=\\"field\\"
                             >
                               <label>
-                                Optional AI agent to engage in this discussion:
+                                Optional AI agent to receive responses:
                               </label>
                               <div
                                 aria-expanded=\\"false\\"
@@ -11786,7 +11786,7 @@ exports[`Delete a component from the beginning 1`] = `
                               class=\\"field\\"
                             >
                               <label>
-                                Optional AI agent to engage in this discussion:
+                                Optional AI agent to receive responses:
                               </label>
                               <div
                                 aria-expanded=\\"false\\"
@@ -12404,7 +12404,7 @@ exports[`Delete a component from the beginning 2`] = `
                               class=\\"field\\"
                             >
                               <label>
-                                Optional AI agent to engage in this discussion:
+                                Optional AI agent to receive responses:
                               </label>
                               <div
                                 aria-expanded=\\"false\\"
@@ -13022,7 +13022,7 @@ exports[`Delete a component from the beginning 3`] = `
                               class=\\"field\\"
                             >
                               <label>
-                                Optional AI agent to engage in this discussion:
+                                Optional AI agent to receive responses:
                               </label>
                               <div
                                 aria-expanded=\\"false\\"
@@ -13642,7 +13642,7 @@ exports[`Delete a component from the beginning 4`] = `
                               class=\\"field\\"
                             >
                               <label>
-                                Optional AI agent to engage in this discussion:
+                                Optional AI agent to receive responses:
                               </label>
                               <div
                                 aria-expanded=\\"false\\"
@@ -14260,7 +14260,7 @@ exports[`Delete a component from the end 1`] = `
                               class=\\"field\\"
                             >
                               <label>
-                                Optional AI agent to engage in this discussion:
+                                Optional AI agent to receive responses:
                               </label>
                               <div
                                 aria-expanded=\\"false\\"
@@ -14878,7 +14878,7 @@ exports[`Delete a component from the end 2`] = `
                               class=\\"field\\"
                             >
                               <label>
-                                Optional AI agent to engage in this discussion:
+                                Optional AI agent to receive responses:
                               </label>
                               <div
                                 aria-expanded=\\"false\\"
@@ -15458,7 +15458,7 @@ exports[`Delete a component from the end 3`] = `
                               class=\\"field\\"
                             >
                               <label>
-                                Optional AI agent to engage in this discussion:
+                                Optional AI agent to receive responses:
                               </label>
                               <div
                                 aria-expanded=\\"false\\"
@@ -16175,7 +16175,7 @@ exports[`Delete a component from the end 4`] = `
                               class=\\"field\\"
                             >
                               <label>
-                                Optional AI agent to engage in this discussion:
+                                Optional AI agent to receive responses:
                               </label>
                               <div
                                 aria-expanded=\\"false\\"
@@ -16734,7 +16734,7 @@ exports[`Delete a component from the middle 1`] = `
                               class=\\"field\\"
                             >
                               <label>
-                                Optional AI agent to engage in this discussion:
+                                Optional AI agent to receive responses:
                               </label>
                               <div
                                 aria-expanded=\\"false\\"
@@ -17352,7 +17352,7 @@ exports[`Delete a component from the middle 2`] = `
                               class=\\"field\\"
                             >
                               <label>
-                                Optional AI agent to engage in this discussion:
+                                Optional AI agent to receive responses:
                               </label>
                               <div
                                 aria-expanded=\\"false\\"
@@ -17970,7 +17970,7 @@ exports[`Delete a component from the middle 3`] = `
                               class=\\"field\\"
                             >
                               <label>
-                                Optional AI agent to engage in this discussion:
+                                Optional AI agent to receive responses:
                               </label>
                               <div
                                 aria-expanded=\\"false\\"
@@ -19071,7 +19071,7 @@ exports[`Delete, no 1`] = `
                               class=\\"field\\"
                             >
                               <label>
-                                Optional AI agent to engage in this discussion:
+                                Optional AI agent to receive responses:
                               </label>
                               <div
                                 aria-expanded=\\"false\\"
@@ -19689,7 +19689,7 @@ exports[`Delete, no 2`] = `
                               class=\\"field\\"
                             >
                               <label>
-                                Optional AI agent to engage in this discussion:
+                                Optional AI agent to receive responses:
                               </label>
                               <div
                                 aria-expanded=\\"false\\"
@@ -20368,7 +20368,7 @@ exports[`Delete, no 3`] = `
                               class=\\"field\\"
                             >
                               <label>
-                                Optional AI agent to engage in this discussion:
+                                Optional AI agent to receive responses:
                               </label>
                               <div
                                 aria-expanded=\\"false\\"
@@ -20984,7 +20984,7 @@ exports[`Delete, yes 1`] = `
                               class=\\"field\\"
                             >
                               <label>
-                                Optional AI agent to engage in this discussion:
+                                Optional AI agent to receive responses:
                               </label>
                               <div
                                 aria-expanded=\\"false\\"
@@ -21602,7 +21602,7 @@ exports[`Delete, yes 2`] = `
                               class=\\"field\\"
                             >
                               <label>
-                                Optional AI agent to engage in this discussion:
+                                Optional AI agent to receive responses:
                               </label>
                               <div
                                 aria-expanded=\\"false\\"
@@ -22281,7 +22281,7 @@ exports[`Delete, yes 3`] = `
                               class=\\"field\\"
                             >
                               <label>
-                                Optional AI agent to engage in this discussion:
+                                Optional AI agent to receive responses:
                               </label>
                               <div
                                 aria-expanded=\\"false\\"
@@ -22899,7 +22899,7 @@ exports[`Duplicate 1`] = `
                               class=\\"field\\"
                             >
                               <label>
-                                Optional AI agent to engage in this discussion:
+                                Optional AI agent to receive responses:
                               </label>
                               <div
                                 aria-expanded=\\"false\\"
@@ -23517,7 +23517,7 @@ exports[`Duplicate 2`] = `
                               class=\\"field\\"
                             >
                               <label>
-                                Optional AI agent to engage in this discussion:
+                                Optional AI agent to receive responses:
                               </label>
                               <div
                                 aria-expanded=\\"false\\"
@@ -24149,7 +24149,7 @@ exports[`Duplicate a non-response-prompt component 1`] = `
                               class=\\"field\\"
                             >
                               <label>
-                                Optional AI agent to engage in this discussion:
+                                Optional AI agent to receive responses:
                               </label>
                               <div
                                 aria-expanded=\\"false\\"
@@ -24826,7 +24826,7 @@ exports[`Duplicate a non-response-prompt component 2`] = `
                               class=\\"field\\"
                             >
                               <label>
-                                Optional AI agent to engage in this discussion:
+                                Optional AI agent to receive responses:
                               </label>
                               <div
                                 aria-expanded=\\"false\\"
@@ -25458,7 +25458,7 @@ exports[`Duplicate a response-prompt component 1`] = `
                               class=\\"field\\"
                             >
                               <label>
-                                Optional AI agent to engage in this discussion:
+                                Optional AI agent to receive responses:
                               </label>
                               <div
                                 aria-expanded=\\"false\\"
@@ -26076,7 +26076,7 @@ exports[`Duplicate a response-prompt component 2`] = `
                               class=\\"field\\"
                             >
                               <label>
-                                Optional AI agent to engage in this discussion:
+                                Optional AI agent to receive responses:
                               </label>
                               <div
                                 aria-expanded=\\"false\\"
@@ -26272,7 +26272,7 @@ exports[`Duplicate a response-prompt component 2`] = `
                               class=\\"field\\"
                             >
                               <label>
-                                Optional AI agent to engage in this discussion:
+                                Optional AI agent to receive responses:
                               </label>
                               <div
                                 aria-expanded=\\"false\\"
@@ -26866,7 +26866,7 @@ exports[`Edit a component 1`] = `
                               class=\\"field\\"
                             >
                               <label>
-                                Optional AI agent to engage in this discussion:
+                                Optional AI agent to receive responses:
                               </label>
                               <div
                                 aria-expanded=\\"false\\"
@@ -27787,7 +27787,7 @@ exports[`Move a component down 1`] = `
                               class=\\"field\\"
                             >
                               <label>
-                                Optional AI agent to engage in this discussion:
+                                Optional AI agent to receive responses:
                               </label>
                               <div
                                 aria-expanded=\\"false\\"
@@ -28405,7 +28405,7 @@ exports[`Move a component down 2`] = `
                               class=\\"field\\"
                             >
                               <label>
-                                Optional AI agent to engage in this discussion:
+                                Optional AI agent to receive responses:
                               </label>
                               <div
                                 aria-expanded=\\"false\\"
@@ -28926,7 +28926,7 @@ exports[`Move a component down 3`] = `
                               class=\\"field\\"
                             >
                               <label>
-                                Optional AI agent to engage in this discussion:
+                                Optional AI agent to receive responses:
                               </label>
                               <div
                                 aria-expanded=\\"false\\"
@@ -29641,7 +29641,7 @@ exports[`Move a component up 1`] = `
                               class=\\"field\\"
                             >
                               <label>
-                                Optional AI agent to engage in this discussion:
+                                Optional AI agent to receive responses:
                               </label>
                               <div
                                 aria-expanded=\\"false\\"
@@ -30259,7 +30259,7 @@ exports[`Move a component up 2`] = `
                               class=\\"field\\"
                             >
                               <label>
-                                Optional AI agent to engage in this discussion:
+                                Optional AI agent to receive responses:
                               </label>
                               <div
                                 aria-expanded=\\"false\\"
@@ -30818,7 +30818,7 @@ exports[`Move a component up 3`] = `
                               class=\\"field\\"
                             >
                               <label>
-                                Optional AI agent to engage in this discussion:
+                                Optional AI agent to receive responses:
                               </label>
                               <div
                                 aria-expanded=\\"false\\"
@@ -31778,7 +31778,7 @@ exports[`Multiple personas 1`] = `
                               class=\\"field\\"
                             >
                               <label>
-                                Optional AI agent to engage in this discussion:
+                                Optional AI agent to receive responses:
                               </label>
                               <div
                                 aria-expanded=\\"false\\"
@@ -32833,7 +32833,7 @@ exports[`Multiple personas 2`] = `
                               class=\\"field\\"
                             >
                               <label>
-                                Optional AI agent to engage in this discussion:
+                                Optional AI agent to receive responses:
                               </label>
                               <div
                                 aria-expanded=\\"false\\"
@@ -33888,7 +33888,7 @@ exports[`Multiple personas, assign a persona to a component 1`] = `
                               class=\\"field\\"
                             >
                               <label>
-                                Optional AI agent to engage in this discussion:
+                                Optional AI agent to receive responses:
                               </label>
                               <div
                                 aria-expanded=\\"false\\"
@@ -34943,7 +34943,7 @@ exports[`Multiple personas, assign a persona to a component 2`] = `
                               class=\\"field\\"
                             >
                               <label>
-                                Optional AI agent to engage in this discussion:
+                                Optional AI agent to receive responses:
                               </label>
                               <div
                                 aria-expanded=\\"false\\"
@@ -35998,7 +35998,7 @@ exports[`Multiple personas, assign a persona to a component 3`] = `
                               class=\\"field\\"
                             >
                               <label>
-                                Optional AI agent to engage in this discussion:
+                                Optional AI agent to receive responses:
                               </label>
                               <div
                                 aria-expanded=\\"false\\"
@@ -37053,7 +37053,7 @@ exports[`Multiple personas, assign a persona to a component 4`] = `
                               class=\\"field\\"
                             >
                               <label>
-                                Optional AI agent to engage in this discussion:
+                                Optional AI agent to receive responses:
                               </label>
                               <div
                                 aria-expanded=\\"false\\"
@@ -38108,7 +38108,7 @@ exports[`Multiple personas, assign a persona to a component 5`] = `
                               class=\\"field\\"
                             >
                               <label>
-                                Optional AI agent to engage in this discussion:
+                                Optional AI agent to receive responses:
                               </label>
                               <div
                                 aria-expanded=\\"false\\"
@@ -39163,7 +39163,7 @@ exports[`Multiple personas, toggle chat 1`] = `
                               class=\\"field\\"
                             >
                               <label>
-                                Optional AI agent to engage in this discussion:
+                                Optional AI agent to receive responses:
                               </label>
                               <div
                                 aria-expanded=\\"false\\"
@@ -40218,7 +40218,7 @@ exports[`Multiple personas, toggle chat 2`] = `
                               class=\\"field\\"
                             >
                               <label>
-                                Optional AI agent to engage in this discussion:
+                                Optional AI agent to receive responses:
                               </label>
                               <div
                                 aria-expanded=\\"false\\"
@@ -41551,7 +41551,7 @@ exports[`Multiple personas, toggle chat 3`] = `
                               class=\\"field\\"
                             >
                               <label>
-                                Optional AI agent to engage in this discussion:
+                                Optional AI agent to receive responses:
                               </label>
                               <div
                                 aria-expanded=\\"false\\"
@@ -42620,7 +42620,7 @@ exports[`Multiple personas, with an assigned component 1`] = `
                               class=\\"field\\"
                             >
                               <label>
-                                Optional AI agent to engage in this discussion:
+                                Optional AI agent to receive responses:
                               </label>
                               <div
                                 aria-expanded=\\"false\\"
@@ -43675,7 +43675,7 @@ exports[`Multiple personas, with an assigned component 2`] = `
                               class=\\"field\\"
                             >
                               <label>
-                                Optional AI agent to engage in this discussion:
+                                Optional AI agent to receive responses:
                               </label>
                               <div
                                 aria-expanded=\\"false\\"
@@ -44735,7 +44735,7 @@ exports[`Preview 1`] = `
                               class=\\"field\\"
                             >
                               <label>
-                                Optional AI agent to engage in this discussion:
+                                Optional AI agent to receive responses:
                               </label>
                               <div
                                 aria-expanded=\\"false\\"
@@ -45667,7 +45667,7 @@ exports[`Preview 3`] = `
                               class=\\"field\\"
                             >
                               <label>
-                                Optional AI agent to engage in this discussion:
+                                Optional AI agent to receive responses:
                               </label>
                               <div
                                 aria-expanded=\\"false\\"
@@ -46283,7 +46283,7 @@ exports[`Save 1`] = `
                               class=\\"field\\"
                             >
                               <label>
-                                Optional AI agent to engage in this discussion:
+                                Optional AI agent to receive responses:
                               </label>
                               <div
                                 aria-expanded=\\"false\\"
@@ -46899,7 +46899,7 @@ exports[`Save 2`] = `
                               class=\\"field\\"
                             >
                               <label>
-                                Optional AI agent to engage in this discussion:
+                                Optional AI agent to receive responses:
                               </label>
                               <div
                                 aria-expanded=\\"false\\"
@@ -47529,7 +47529,7 @@ exports[`Save, onChange is missing 1`] = `
                               class=\\"field\\"
                             >
                               <label>
-                                Optional AI agent to engage in this discussion:
+                                Optional AI agent to receive responses:
                               </label>
                               <div
                                 aria-expanded=\\"false\\"
@@ -48145,7 +48145,7 @@ exports[`Save, onChange is missing 2`] = `
                               class=\\"field\\"
                             >
                               <label>
-                                Optional AI agent to engage in this discussion:
+                                Optional AI agent to receive responses:
                               </label>
                               <div
                                 aria-expanded=\\"false\\"
@@ -48775,7 +48775,7 @@ exports[`Single persona 1`] = `
                               class=\\"field\\"
                             >
                               <label>
-                                Optional AI agent to engage in this discussion:
+                                Optional AI agent to receive responses:
                               </label>
                               <div
                                 aria-expanded=\\"false\\"
@@ -49393,7 +49393,7 @@ exports[`Toggle required on a prompt-response component 1`] = `
                               class=\\"field\\"
                             >
                               <label>
-                                Optional AI agent to engage in this discussion:
+                                Optional AI agent to receive responses:
                               </label>
                               <div
                                 aria-expanded=\\"false\\"
@@ -50010,7 +50010,7 @@ exports[`Toggle required on a prompt-response component 2`] = `
                               class=\\"field\\"
                             >
                               <label>
-                                Optional AI agent to engage in this discussion:
+                                Optional AI agent to receive responses:
                               </label>
                               <div
                                 aria-expanded=\\"false\\"
@@ -50642,7 +50642,7 @@ exports[`Toggle required on a prompt-response component 4`] = `
                               class=\\"field\\"
                             >
                               <label>
-                                Optional AI agent to engage in this discussion:
+                                Optional AI agent to receive responses:
                               </label>
                               <div
                                 aria-expanded=\\"false\\"
