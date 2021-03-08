@@ -35,6 +35,7 @@ exports.CHAT_CREATED = 'chat-created';
 exports.CHAT_CLOSED = 'chat-closed';
 exports.CHAT_ENDED = 'chat-ended';
 exports.CHAT_OPENED = 'chat-opened';
+exports.HOST_JOIN = 'host-join';
 exports.JOIN_OR_PART = 'join-or-part';
 exports.RUN_CHAT_LINK = 'run-chat-link';
 

@@ -24,7 +24,9 @@ import {
 import Username from '@components/User/Username';
 import withSocket, {
   CHAT_CREATED,
+  CHAT_ENDED,
   CREATE_COHORT_CHANNEL,
+  HOST_JOIN,
   JOIN_OR_PART,
   RUN_CHAT_LINK
 } from '@hoc/withSocket';
@@ -74,6 +76,7 @@ export class CohortRoomSelector extends React.Component {
     if (data.chat) {
       await this.props.getChatUsersByChatId(data.chat.id);
     }
+    /* istanbul ignore else */
     if (!this.state.isReady) {
       this.setState({
         isReady: true
@@ -88,12 +91,16 @@ export class CohortRoomSelector extends React.Component {
 
     this.props.socket.emit(CREATE_COHORT_CHANNEL, { cohort });
     this.props.socket.on(CHAT_CREATED, this.fetchChats);
+    this.props.socket.on(CHAT_ENDED, this.fetchChats);
+    this.props.socket.on(HOST_JOIN, this.fetchChats);
     this.props.socket.on(JOIN_OR_PART, this.fetchChats);
     this.props.socket.on(RUN_CHAT_LINK, this.fetchChats);
   }
 
   componentWillUnmount() {
     this.props.socket.off(CHAT_CREATED, this.fetchChats);
+    this.props.socket.off(CHAT_ENDED, this.fetchChats);
+    this.props.socket.off(HOST_JOIN, this.fetchChats);
     this.props.socket.off(JOIN_OR_PART, this.fetchChats);
     this.props.socket.off(RUN_CHAT_LINK, this.fetchChats);
   }
@@ -148,14 +155,25 @@ export class CohortRoomSelector extends React.Component {
       const key = Identity.key(chat);
       const userInChat = chat.usersById[user.id];
       const host = chat.usersById[chat.host_id];
-      const isUserNotHost = host.id !== user.id;
-      const isUserHost = !isUserNotHost;
-      const filledRoles = chat.users.reduce((accum, { persona_id }) => {
+      const useIsNotHost = host.id !== user.id;
+      const isUserHost = !useIsNotHost;
+      let hasHostClaimedARole = false;
+      const filledRoles = chat.users.reduce((accum, { id, persona_id }) => {
+        if (id === chat.host_id && persona_id) {
+          hasHostClaimedARole = true;
+        }
         if (persona_id) {
           accum.push(persona_id);
         }
         return accum;
       }, []);
+
+      // If this user is not the host, don't display a public room if the
+      // host hasn't selected a role yet
+      if (useIsNotHost && !hasHostClaimedARole) {
+        return accum;
+      }
+
       // const unfilledRoles = scenario.personas.reduce((accum, persona) => {
       //   if (!filledRoles.includes(persona.id)) {
       //     accum.push(persona);
@@ -241,7 +259,7 @@ export class CohortRoomSelector extends React.Component {
         'Click on one of those roles to join the scenario room:'
       );
 
-      const whoseRoom = isUserNotHost ? (
+      const whoseRoom = useIsNotHost ? (
         <Fragment>{<Username user={host} possessive />} room</Fragment>
       ) : (
         <Fragment>This is your room</Fragment>
@@ -256,9 +274,7 @@ export class CohortRoomSelector extends React.Component {
               <Label.Group>
                 {options.reduce((accum, option, index) => {
                   const { content, persona } = option;
-
                   const key = Identity.key({ scenario, chat, index });
-
                   accum.push(
                     <Label
                       className="fluid"
@@ -311,8 +327,12 @@ export class CohortRoomSelector extends React.Component {
       return accum;
     }, []);
 
+    const publicOrPrivateChatButtonContent = this.state.isOpenToCohort
+      ? 'Create'
+      : 'Create and go to lobby';
+
     const primaryCreateButtonContent = this.state.create.isOpen
-      ? 'Create and go to lobby'
+      ? publicOrPrivateChatButtonContent
       : '';
 
     const primaryLobbyButtonContent = this.state.lobby.isOpen
@@ -338,7 +358,6 @@ export class CohortRoomSelector extends React.Component {
       primary: true,
       onClick: async () => {
         if (this.state.lobby.isOpen) {
-          // await this.props.joinChat(chat.id, persona);
           location.href = makeCohortScenarioChatJoinPath(
             cohort,
             scenario,
@@ -347,7 +366,9 @@ export class CohortRoomSelector extends React.Component {
           return;
         }
 
+        /* istanbul ignore else */
         if (this.state.create.isOpen) {
+          const lobbyIsOpen = !this.state.isOpenToCohort;
           this.setState(
             {
               isReady: false,
@@ -355,7 +376,7 @@ export class CohortRoomSelector extends React.Component {
                 isOpen: false
               },
               lobby: {
-                isOpen: true
+                isOpen: lobbyIsOpen
               }
             },
             async () => {
@@ -366,9 +387,7 @@ export class CohortRoomSelector extends React.Component {
       }
     };
 
-    const secondary = {
-      ...this.props?.buttons?.secondary
-    };
+    const { secondary = {} } = this.props?.buttons || {};
 
     const closeOrCancel = this.state.create.isOpen ? 'Cancel' : 'Close';
 
@@ -412,11 +431,11 @@ export class CohortRoomSelector extends React.Component {
       });
     };
 
-    const pluralRoom = pluralize('room', chats.length);
-    const isAre = pluralize('is', chats.length);
+    const pluralRoom = pluralize('room', cards.length);
+    const isAre = pluralize('is', cards.length);
     const availableDisplay = (
       <p tabIndex="0">
-        There {isAre} <strong>{chats.length}</strong> open {pluralRoom}{' '}
+        There {isAre} <strong>{cards.length}</strong> open {pluralRoom}{' '}
         available.
       </p>
     );
@@ -487,6 +506,7 @@ export class CohortRoomSelector extends React.Component {
                             </div>
                           </Form.Field>
                         </Form>
+                        <div data-testid="cohort-chat-creator" />
                       </Grid.Column>
                     </Grid.Row>
                   </Grid>
@@ -598,7 +618,7 @@ const mapStateToProps = (state, ownProps) => {
   const { chat, cohort, chatsById, user } = state;
   let chats = [];
 
-  if (state.chats) {
+  if (state.chats && state.chats.length) {
     chats.push(
       ...state.chats.filter(({ cohort_id, ended_at, host_id, is_open }) => {
         const isKeeper = (is_open || host_id === user.id) && !ended_at;

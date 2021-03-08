@@ -21,6 +21,7 @@ const {
   CREATE_USER_CHANNEL,
   DISCONNECT,
   HEART_BEAT,
+  HOST_JOIN,
   JOIN_OR_PART,
   NEW_INVITATION,
   NOTIFICATION,
@@ -154,7 +155,7 @@ class SocketManager {
           // the agent.
 
           const clientKey = `${data.chat_id}-user-${data.user_id}`;
-          console.log(clientKey);
+
           if (cache.clients[clientKey]) {
             const { client, auth } = cache.clients[clientKey];
 
@@ -163,8 +164,8 @@ class SocketManager {
             //
             // console.log(client);
             const value = extractTextContent(data.content);
-            console.log(auth);
-            console.log(data);
+            // console.log(auth);
+            // console.log(data);
 
             client.emit('request', {
               value
@@ -216,6 +217,18 @@ class SocketManager {
               data.user_id,
               message
             );
+          }
+
+          const chat = await chatdb.getChat(data.chat_id);
+
+          // The host joined and has a persona selected.
+          if (
+            chat.cohort_id &&
+            data.persona_id &&
+            data.is_present &&
+            chat.host_id === data.user_id
+          ) {
+            this.io.to(chat.cohort_id).emit(HOST_JOIN);
           }
         });
 
@@ -283,7 +296,7 @@ class SocketManager {
       if (!notifier.listenerCount('chat_ended')) {
         notifier.on('chat_ended', async chat => {
           console.log('chat_ended', chat);
-          this.io.to(chat.id).emit(CHAT_ENDED, {
+          this.io.emit(CHAT_ENDED, {
             chat
           });
         });
@@ -458,13 +471,13 @@ class SocketManager {
         }
       });
 
-      socket.on(RUN_AGENT_END, async ({ run }) => {
-        console.log(RUN_AGENT_END, { run });
+      socket.on(RUN_AGENT_END, async ({ agent, run, user }) => {
+        console.log(RUN_AGENT_END, { agent, run, user });
         // socket.join(user.id);
 
-        const agents = await agentdb.getScenarioAgents(run.scenario_id);
+        // const agents = await agentdb.getScenarioAgents(run.scenario_id);
 
-        console.log(agents);
+        // console.log(agents);
       });
 
       socket.on(CREATE_USER_CHANNEL, ({ user }) => {
@@ -535,7 +548,7 @@ class SocketManager {
 
           // Remove them from other rolls.
           Object.entries(cache.rolls).forEach(([key, roll]) => {
-            if (key !== rollKey) {
+            if (key !== rollKey && cache.rolls[key]) {
               const index = cache.rolls[key].indexOf(user.id);
               if (index !== -1) {
                 cache.rolls[key].splice(index, 1);

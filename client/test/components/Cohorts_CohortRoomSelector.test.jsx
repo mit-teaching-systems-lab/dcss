@@ -117,6 +117,8 @@ let chatsById;
 let cohort;
 let invites;
 let invitesById;
+let personaTeacher;
+let personaStudent;
 let scenario;
 let users;
 let usersById;
@@ -156,6 +158,33 @@ beforeEach(() => {
   /** @TEMPLATE: END **/
 
   /** @GENERATED: BEGIN **/
+
+  personaTeacher = {
+    id: 2,
+    name: 'Teacher',
+    description:
+      'A non-specific teacher, participating in a multi person scenario.',
+    color: '#3f59a9',
+    created_at: '2020-12-01T15:49:04.962Z',
+    updated_at: null,
+    deleted_at: null,
+    author_id: 3,
+    is_read_only: true,
+    is_shared: true
+  };
+  personaStudent = {
+    id: 3,
+    name: 'Student',
+    description:
+      'A non-specific student, participating in a multi person scenario.',
+    color: '#e59235',
+    created_at: '2020-12-01T15:49:04.962Z',
+    updated_at: null,
+    deleted_at: null,
+    author_id: 3,
+    is_read_only: true,
+    is_shared: true
+  };
 
   user = superUser = {
     username: 'super',
@@ -286,11 +315,14 @@ beforeEach(() => {
     updated_at: null,
     deleted_at: null,
     ended_at: null,
-    users: [superUser],
+    users: [superUser, participantUser],
     usersById: {
-      [superUser.id]: superUser
+      [superUser.id]: superUser,
+      [participantUser.id]: participantUser
     }
   };
+
+  chat.users[0].persona_id = personaTeacher.id;
 
   chats = [chat];
 
@@ -673,34 +705,7 @@ beforeEach(() => {
     ]
   };
 
-  scenario.personas = [
-    {
-      id: 2,
-      name: 'Teacher',
-      description:
-        'A non-specific teacher, participating in a multi person scenario.',
-      color: '#3f59a9',
-      created_at: '2020-12-01T15:49:04.962Z',
-      updated_at: null,
-      deleted_at: null,
-      author_id: 3,
-      is_read_only: true,
-      is_shared: true
-    },
-    {
-      id: 3,
-      name: 'Student',
-      description:
-        'A non-specific student, participating in a multi person scenario.',
-      color: '#e59235',
-      created_at: '2020-12-01T15:49:04.962Z',
-      updated_at: null,
-      deleted_at: null,
-      author_id: 3,
-      is_read_only: true,
-      is_shared: true
-    }
-  ];
+  scenario.personas = [personaTeacher, personaStudent];
 
   invitesById = invites.reduce((accum, invite) => {
     accum[invite.id] = invite;
@@ -722,6 +727,18 @@ beforeEach(() => {
     return chat;
   });
 
+  chatActions.getChatUsersByChatId.mockImplementation(() => async dispatch => {
+    const users = chat.users;
+    dispatch({ type: GET_CHAT_USERS_SUCCESS, users });
+    return users;
+  });
+
+  chatActions.getChatUsersByChatId.mockImplementation(() => async dispatch => {
+    const users = chat.users;
+    dispatch({ type: GET_CHAT_USERS_SUCCESS, users });
+    return users;
+  });
+
   chatActions.joinChat.mockImplementation(() => async dispatch => {
     dispatch({ type: GET_CHAT_SUCCESS, chat });
     return chat;
@@ -740,6 +757,11 @@ beforeEach(() => {
   scenarioActions.getScenario.mockImplementation(() => async dispatch => {
     dispatch({ type: GET_SCENARIO_SUCCESS, scenario });
     return scenario;
+  });
+
+  usersActions.getUsers.mockImplementation(() => async dispatch => {
+    dispatch({ type: GET_USERS_SUCCESS, users });
+    return users;
   });
 
   Storage.get.mockImplementation((key, defaultValue) => defaultValue);
@@ -823,6 +845,117 @@ test('Render 2 1', async done => {
 
 /* INJECTION STARTS HERE */
 
+test('Emits CREATE_COHORT_CHANNEL on socket', async done => {
+  const Component = CohortRoomSelector;
+
+  const props = {
+    ...commonProps,
+    chat,
+    cohort,
+    scenario,
+    user
+  };
+
+  const state = {
+    ...commonState,
+    chat,
+    chats,
+    cohort,
+    scenario,
+    user,
+    users,
+    usersById
+  };
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  await render(<ConnectedRoutedComponent {...props} />);
+  await waitFor(() =>
+    expect(screen.queryAllByTestId('cohort-chat-selector').length).toBe(1)
+  );
+  expect(serialize()).toMatchSnapshot();
+
+  expect(globalThis.mockSocket.emit).toHaveBeenCalledTimes(1);
+
+  expect(serialize()).toMatchSnapshot();
+
+  done();
+});
+
+const socketEvents = [
+  'CHAT_CREATED',
+  'CHAT_ENDED',
+  'HOST_JOIN',
+  'JOIN_OR_PART',
+  'RUN_CHAT_LINK'
+];
+test(`Adds ${socketEvents.join(', ')} handlers`, async done => {
+  const Component = CohortRoomSelector;
+
+  const props = {
+    ...commonProps,
+    chat,
+    cohort,
+    scenario,
+    user
+  };
+
+  const state = {
+    ...commonState,
+    chat,
+    chats,
+    cohort,
+    scenario,
+    user,
+    users,
+    usersById
+  };
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  await render(<ConnectedRoutedComponent {...props} />);
+  expect(serialize()).toMatchSnapshot();
+
+  await waitFor(() =>
+    expect(globalThis.mockSocket.on).toHaveBeenCalledTimes(5)
+  );
+
+  expect(globalThis.mockSocket.on.mock.calls[0]).toMatchInlineSnapshot(`
+    Array [
+      "chat-created",
+      [Function],
+    ]
+  `);
+  expect(globalThis.mockSocket.on.mock.calls[1]).toMatchInlineSnapshot(`
+    Array [
+      "chat-ended",
+      [Function],
+    ]
+  `);
+  expect(globalThis.mockSocket.on.mock.calls[2]).toMatchInlineSnapshot(`
+    Array [
+      "host-join",
+      [Function],
+    ]
+  `);
+  expect(globalThis.mockSocket.on.mock.calls[3]).toMatchInlineSnapshot(`
+    Array [
+      "join-or-part",
+      [Function],
+    ]
+  `);
+  expect(globalThis.mockSocket.on.mock.calls[4]).toMatchInlineSnapshot(`
+    Array [
+      "run-chat-link",
+      [Function],
+    ]
+  `);
+
+  expect(serialize()).toMatchSnapshot();
+
+  done();
+});
+
 test('Has chats in state', async done => {
   const Component = CohortRoomSelector;
 
@@ -853,923 +986,717 @@ test('Has chats in state', async done => {
 
   await render(<ConnectedRoutedComponent {...props} />);
   expect(serialize()).toMatchSnapshot();
+  await waitFor(async () =>
+    expect(
+      await screen.findByTestId('cohort-chat-selector')
+    ).toBeInTheDocument()
+  );
+  expect(serialize()).toMatchSnapshot();
   done();
 });
 
-// test('Fallbacks for state.chat, state.scenario, state.cohort (missing)', async done => {
-//   const Component = CohortRoomSelector;
-
-//   const props = {
-//     ...commonProps,
-//     chat,
-//     cohort,
-//     scenario,
-//     user
-//   };
-
-//   const state = {
-//     ...commonState,
-//     chat: null,
-//     cohort: null,
-//     scenario: null,
-//     user,
-//     users,
-//     usersById
-//   };
-
-//   const emitter = new Emitter();
-
-//   globalThis.mockSocket.emit.mockImplementation(emitter.emit);
-
-//   const ConnectedRoutedComponent = reduxer(Component, props, state);
-
-//   await render(<ConnectedRoutedComponent {...props} />);
-//   expect(serialize()).toMatchSnapshot();
-//   done();
-// });
-
-// test('Fallbacks for state.chat, state.scenario, state.cohort (unloaded)', async done => {
-//   const Component = CohortRoomSelector;
-
-//   const props = {
-//     ...commonProps,
-//     chat,
-//     cohort,
-//     scenario,
-//     user
-//   };
-
-//   const state = {
-//     ...commonState,
-//     chat: {id: null},
-//     cohort: {id: null},
-//     scenario: {id: null},
-//     user,
-//     users,
-//     usersById
-//   };
-
-//   const emitter = new Emitter();
-
-//   globalThis.mockSocket.emit.mockImplementation(emitter.emit);
-
-//   const ConnectedRoutedComponent = reduxer(Component, props, state);
-
-//   await render(<ConnectedRoutedComponent {...props} />);
-//   expect(serialize()).toMatchSnapshot();
-//   done();
-// });
-
-// test('Fallbacks for state.chat, state.scenario, state.cohort (unavailable)', async done => {
-//   const Component = CohortRoomSelector;
-
-//   const props = {
-//     ...commonProps,
-//     chat: null,
-//     cohort: null,
-//     scenario: null,
-//     user
-//   };
-
-//   const state = {
-//     ...commonState,
-//     chat: {id: null},
-//     cohort: {id: null},
-//     scenario: {id: null},
-//     user,
-//     users,
-//     usersById
-//   };
-
-//   const emitter = new Emitter();
-
-//   globalThis.mockSocket.emit.mockImplementation(emitter.emit);
-
-//   const ConnectedRoutedComponent = reduxer(Component, props, state);
-
-//   await render(<ConnectedRoutedComponent {...props} />);
-//   expect(serialize()).toMatchSnapshot();
-//   done();
-// });
-
-// test('On RUN_CHAT_LINK, receives list with waiting users, personas missing', async (done) => {
-//   const Component = CohortRoomSelector;
-
-//   scenario.personas = [];
-
-//   const props = {
-//     ...commonProps,
-//     chat,
-//     cohort,
-//     scenario,
-//     user,
-//   };
-
-//   const state = {
-//     ...commonState,
-//     chat,
-//     cohort,
-//     scenario,
-//     user,
-//     users,
-//     usersById,
-//   };
-
-//   const emitter = new Emitter();
-
-//   globalThis.mockSocket.emit.mockImplementation(emitter.emit);
-//   globalThis.mockSocket.on.mockImplementation(emitter.on);
-//   globalThis.mockSocket.off.mockImplementation(emitter.off);
-
-//   let count = 0;
-
-//   chatActions.getLinkedChatUsersByChatId.mockImplementation(
-//     () => async (dispatch) => {
-//       users = count
-//         ? [
-//             {
-//               ...users[0],
-//               persona_id: 2,
-//             },
-//           ]
-//         : [
-//             {
-//               ...users[0],
-//               persona_id: 2,
-//             },
-//             {
-//               ...users[1],
-//               persona_id: 3,
-//             },
-//           ];
-
-//       count++;
-
-//       dispatch({ type: GET_CHAT_USERS_SUCCESS, users });
-//       return users;
-//     }
-//   );
-
-//   const ConnectedRoutedComponent = reduxer(Component, props, state);
-
-//   await render(<ConnectedRoutedComponent {...props} />);
-//   expect(serialize()).toMatchSnapshot();
-
-//   await waitFor(() => expect(globalThis.mockSocket.on).toHaveBeenCalled());
-//   expect(globalThis.mockSocket.on.mock.calls).toMatchInlineSnapshot(`
-//     Array [
-//       Array [
-//         "run-chat-link",
-//         [Function],
-//       ],
-//     ]
-//   `);
-//   expect(serialize()).toMatchSnapshot();
-
-//   globalThis.mockSocket.emit('run-chat-link', {});
-
-//   await waitFor(() =>
-//     expect(chatActions.getLinkedChatUsersByChatId).toHaveBeenCalled()
-//   );
-//   expect(serialize()).toMatchSnapshot();
-
-//   globalThis.mockSocket.emit('run-chat-link', {});
-
-//   await waitFor(() =>
-//     expect(chatActions.getLinkedChatUsersByChatId).toHaveBeenCalled()
-//   );
-//   expect(serialize()).toMatchSnapshot();
-
-//   done();
-// });
-
-// describe('With cohort', () => {
-//   test('Send CREATE_USER_CHANNEL', async done => {
-//     const Component = CohortRoomSelector;
-
-//     const props = {
-//       ...commonProps,
-//       chat,
-//       cohort,
-//       scenario,
-//       user
-//     };
-
-//     const state = {
-//       ...commonState,
-//       chat,
-//       cohort,
-//       scenario,
-//       user,
-//       users,
-//       usersById
-//     };
-
-//     const emitter = new Emitter();
-
-//     globalThis.mockSocket.emit.mockImplementation(emitter.emit);
-
-//     const ConnectedRoutedComponent = reduxer(Component, props, state);
-
-//     await render(<ConnectedRoutedComponent {...props} />);
-//     expect(serialize()).toMatchSnapshot();
-
-//     await waitFor(() => expect(globalThis.mockSocket.emit).toHaveBeenCalled());
-//     expect(globalThis.mockSocket.emit.mock.calls).toMatchInlineSnapshot(`
-//       Array [
-//         Array [
-//           "create-user-channel",
-//           Object {
-//             "user": Object {
-//               "email": "super@email.com",
-//               "id": 999,
-//               "is_anonymous": false,
-//               "is_super": true,
-//               "personalname": "Super User",
-//               "roles": Array [
-//                 "participant",
-//                 "super_admin",
-//               ],
-//               "username": "super",
-//             },
-//           },
-//         ],
-//       ]
-//     `);
-//     expect(serialize()).toMatchSnapshot();
-//     done();
-//   });
-
-//   test('Chat has no users yet', async done => {
-//     const Component = CohortRoomSelector;
-
-//     // Make sure there are no users in the chat
-//     chat = {
-//       ...chat,
-//       users: [],
-//       usersById: {}
-//     };
-
-//     const props = {
-//       ...commonProps,
-//       chat,
-//       cohort,
-//       scenario,
-//       user
-//     };
-
-//     const state = {
-//       ...commonState,
-//       chat,
-//       cohort,
-//       scenario,
-//       user
-//     };
-
-//     const emitter = new Emitter();
-
-//     globalThis.mockSocket.emit.mockImplementation(emitter.emit);
-//     globalThis.mockSocket.on.mockImplementation(emitter.on);
-//     globalThis.mockSocket.off.mockImplementation(emitter.off);
-
-//     chatActions.getChat.mockImplementation(() => async dispatch => {
-//       dispatch({ type: GET_CHAT_SUCCESS, chat });
-//       return chat;
-//     });
-
-//     chatActions.getLinkedChatUsersByChatId.mockImplementation(
-//       () => async dispatch => {
-//         const users = [];
-//         dispatch({ type: GET_CHAT_USERS_SUCCESS, users });
-//         return users;
-//       }
-//     );
-
-//     const ConnectedRoutedComponent = reduxer(Component, props, state);
-
-//     await render(<ConnectedRoutedComponent {...props} />);
-//     expect(serialize()).toMatchSnapshot();
-
-//     await waitFor(() => expect(globalThis.mockSocket.on).toHaveBeenCalled());
-//     expect(globalThis.mockSocket.on.mock.calls).toMatchInlineSnapshot(`
-//       Array [
-//         Array [
-//           "run-chat-link",
-//           [Function],
-//         ],
-//       ]
-//     `);
-//     expect(serialize()).toMatchSnapshot();
-
-//     globalThis.mockSocket.emit('run-chat-link', {});
-
-//     await waitFor(() =>
-//       expect(chatActions.getLinkedChatUsersByChatId).toHaveBeenCalled()
-//     );
-//     expect(serialize()).toMatchSnapshot();
-//     done();
-//   });
-
-//   test('On RUN_CHAT_LINK, receives empty list', async done => {
-//     const Component = CohortRoomSelector;
-
-//     // Make sure there are no users in the chat
-//     chat = {
-//       ...chat,
-//       users: [],
-//       usersById: {}
-//     };
-
-//     const props = {
-//       ...commonProps,
-//       chat,
-//       cohort,
-//       scenario,
-//       user
-//     };
-
-//     const state = {
-//       ...commonState,
-//       chat,
-//       cohort,
-//       scenario,
-//       user
-//     };
-
-//     const emitter = new Emitter();
-
-//     globalThis.mockSocket.emit.mockImplementation(emitter.emit);
-//     globalThis.mockSocket.on.mockImplementation(emitter.on);
-//     globalThis.mockSocket.off.mockImplementation(emitter.off);
-
-//     chatActions.getLinkedChatUsersByChatId.mockImplementation(
-//       () => async dispatch => {
-//         const users = [];
-//         dispatch({ type: GET_CHAT_USERS_SUCCESS, users });
-//         return users;
-//       }
-//     );
-
-//     const ConnectedRoutedComponent = reduxer(Component, props, state);
-
-//     await render(<ConnectedRoutedComponent {...props} />);
-//     expect(serialize()).toMatchSnapshot();
-
-//     await waitFor(() => expect(globalThis.mockSocket.on).toHaveBeenCalled());
-//     expect(globalThis.mockSocket.on.mock.calls).toMatchInlineSnapshot(`
-//       Array [
-//         Array [
-//           "run-chat-link",
-//           [Function],
-//         ],
-//       ]
-//     `);
-//     expect(serialize()).toMatchSnapshot();
-
-//     globalThis.mockSocket.emit('run-chat-link', {});
-
-//     await waitFor(() =>
-//       expect(chatActions.getLinkedChatUsersByChatId).toHaveBeenCalled()
-//     );
-//     expect(serialize()).toMatchSnapshot();
-//     done();
-//   });
-
-//   test('On RUN_CHAT_LINK, receives list, but no one is assigned yet', async (done) => {
-//     const Component = CohortRoomSelector;
-
-//     const unassignedUser = {
-//       ...superUser,
-//       persona_id: null,
-//     };
-
-//     chat = {
-//       ...chat,
-//       users: [unassignedUser],
-//       usersById: {
-//         [unassignedUser.id]: unassignedUser,
-//       },
-//     };
-
-//     const props = {
-//       ...commonProps,
-//       cohort,
-//       scenario,
-//       user,
-//     };
-
-//     const state = {
-//       ...commonState,
-//       chat,
-//       cohort,
-//       scenario,
-//       user,
-//     };
-
-//     const emitter = new Emitter();
-
-//     globalThis.mockSocket.emit.mockImplementation(emitter.emit);
-//     globalThis.mockSocket.on.mockImplementation(emitter.on);
-//     globalThis.mockSocket.off.mockImplementation(emitter.off);
-
-//     const ConnectedRoutedComponent = reduxer(Component, props, state);
-
-//     await render(<ConnectedRoutedComponent {...props} />);
-//     expect(serialize()).toMatchSnapshot();
-
-//     await waitFor(() => expect(chatActions.getChatById).toHaveBeenCalled());
-//     expect(chatActions.getChat.mock.calls).toMatchInlineSnapshot(`
-//       Array [
-//         Array [
-//           1,
-//         ],
-//       ]
-//     `);
-
-//     await waitFor(() =>
-//       expect(chatActions.getLinkedChatUsersByChatId).toHaveBeenCalled()
-//     );
-//     expect(chatActions.getLinkedChatUsersByChatId.mock.calls)
-//       .toMatchInlineSnapshot(`
-//       Array [
-//         Array [
-//           1,
-//         ],
-//       ]
-//     `);
-
-//     await waitFor(() => expect(globalThis.mockSocket.on).toHaveBeenCalled());
-//     expect(globalThis.mockSocket.on.mock.calls).toMatchInlineSnapshot(`
-//       Array [
-//         Array [
-//           "run-chat-link",
-//           [Function],
-//         ],
-//       ]
-//     `);
-//     expect(serialize()).toMatchSnapshot();
-
-//     globalThis.mockSocket.emit('run-chat-link', {});
-
-//     await waitFor(() =>
-//       expect(chatActions.getLinkedChatUsersByChatId).toHaveBeenCalled()
-//     );
-//     expect(serialize()).toMatchSnapshot();
-//     done();
-//   });
-
-//   test('On RUN_CHAT_LINK, receives list with waiting users', async (done) => {
-//     const Component = CohortRoomSelector;
-
-//     const props = {
-//       ...commonProps,
-//       chat,
-//       cohort,
-//       scenario,
-//       user,
-//     };
-
-//     const state = {
-//       ...commonState,
-//       chat,
-//       cohort,
-//       scenario,
-//       user,
-//       users,
-//       usersById,
-//     };
-
-//     const emitter = new Emitter();
-
-//     globalThis.mockSocket.emit.mockImplementation(emitter.emit);
-//     globalThis.mockSocket.on.mockImplementation(emitter.on);
-//     globalThis.mockSocket.off.mockImplementation(emitter.off);
-
-//     let count = 0;
-
-//     chatActions.getLinkedChatUsersByChatId.mockImplementation(
-//       () => async (dispatch) => {
-//         users = count
-//           ? [
-//               {
-//                 ...users[0],
-//                 persona_id: 2,
-//               },
-//             ]
-//           : [
-//               {
-//                 ...users[0],
-//                 persona_id: 2,
-//               },
-//               {
-//                 ...users[1],
-//                 persona_id: 3,
-//               },
-//             ];
-
-//         count++;
-
-//         dispatch({ type: GET_CHAT_USERS_SUCCESS, users });
-//         return users;
-//       }
-//     );
-
-//     const ConnectedRoutedComponent = reduxer(Component, props, state);
-
-//     await render(<ConnectedRoutedComponent {...props} />);
-//     expect(serialize()).toMatchSnapshot();
-
-//     await waitFor(() => expect(globalThis.mockSocket.on).toHaveBeenCalled());
-//     expect(globalThis.mockSocket.on.mock.calls).toMatchInlineSnapshot(`
-//       Array [
-//         Array [
-//           "run-chat-link",
-//           [Function],
-//         ],
-//       ]
-//     `);
-//     expect(serialize()).toMatchSnapshot();
-
-//     globalThis.mockSocket.emit('run-chat-link', {});
-
-//     await waitFor(() =>
-//       expect(chatActions.getLinkedChatUsersByChatId).toHaveBeenCalled()
-//     );
-//     expect(serialize()).toMatchSnapshot();
-
-//     globalThis.mockSocket.emit('run-chat-link', {});
-
-//     await waitFor(() =>
-//       expect(chatActions.getLinkedChatUsersByChatId).toHaveBeenCalled()
-//     );
-//     expect(serialize()).toMatchSnapshot();
-
-//     done();
-//   });
-
-// });
-
-// describe('Without cohort', () => {
-//   test('Send CREATE_USER_CHANNEL', async done => {
-//     const Component = CohortRoomSelector;
-
-//     const props = {
-//       ...commonProps,
-//       chat,
-//       cohort: null,
-//       scenario,
-//       user
-//     };
-
-//     const state = {
-//       ...commonState,
-//       chat,
-//       cohort: null,
-//       scenario,
-//       user,
-//       users,
-//       usersById
-//     };
-
-//     const emitter = new Emitter();
-
-//     globalThis.mockSocket.emit.mockImplementation(emitter.emit);
-
-//     const ConnectedRoutedComponent = reduxer(Component, props, state);
-
-//     await render(<ConnectedRoutedComponent {...props} />);
-//     expect(serialize()).toMatchSnapshot();
-
-//     await waitFor(() => expect(globalThis.mockSocket.emit).toHaveBeenCalled());
-//     expect(globalThis.mockSocket.emit.mock.calls).toMatchInlineSnapshot(`
-//       Array [
-//         Array [
-//           "create-user-channel",
-//           Object {
-//             "user": Object {
-//               "email": "super@email.com",
-//               "id": 999,
-//               "is_anonymous": false,
-//               "is_super": true,
-//               "personalname": "Super User",
-//               "roles": Array [
-//                 "participant",
-//                 "super_admin",
-//               ],
-//               "username": "super",
-//             },
-//           },
-//         ],
-//       ]
-//     `);
-//     expect(serialize()).toMatchSnapshot();
-//     done();
-//   });
-
-//   test('Chat has no users yet', async done => {
-//     const Component = CohortRoomSelector;
-
-//     // Make sure there are no users in the chat
-//     chat = {
-//       ...chat,
-//       users: [],
-//       usersById: {}
-//     };
-
-//     const props = {
-//       ...commonProps,
-//       chat,
-//       cohort: null,
-//       scenario,
-//       user
-//     };
-
-//     const state = {
-//       ...commonState,
-//       chat,
-//       cohort: null,
-//       scenario,
-//       user
-//     };
-
-//     const emitter = new Emitter();
-
-//     globalThis.mockSocket.emit.mockImplementation(emitter.emit);
-//     globalThis.mockSocket.on.mockImplementation(emitter.on);
-//     globalThis.mockSocket.off.mockImplementation(emitter.off);
-
-//     chatActions.getChat.mockImplementation(() => async dispatch => {
-//       dispatch({ type: GET_CHAT_SUCCESS, chat });
-//       return chat;
-//     });
-
-//     chatActions.getLinkedChatUsersByChatId.mockImplementation(
-//       () => async dispatch => {
-//         const users = [];
-//         dispatch({ type: GET_CHAT_USERS_SUCCESS, users });
-//         return users;
-//       }
-//     );
-
-//     const ConnectedRoutedComponent = reduxer(Component, props, state);
-
-//     await render(<ConnectedRoutedComponent {...props} />);
-//     expect(serialize()).toMatchSnapshot();
-
-//     await waitFor(() => expect(globalThis.mockSocket.on).toHaveBeenCalled());
-//     expect(globalThis.mockSocket.on.mock.calls).toMatchInlineSnapshot(`
-//       Array [
-//         Array [
-//           "run-chat-link",
-//           [Function],
-//         ],
-//       ]
-//     `);
-//     expect(serialize()).toMatchSnapshot();
-
-//     globalThis.mockSocket.emit('run-chat-link', {});
-
-//     await waitFor(() =>
-//       expect(chatActions.getLinkedChatUsersByChatId).toHaveBeenCalled()
-//     );
-//     expect(serialize()).toMatchSnapshot();
-//     done();
-//   });
-
-//   test('On RUN_CHAT_LINK, receives empty list', async done => {
-//     const Component = CohortRoomSelector;
-
-//     // Make sure there are no users in the chat
-//     chat = {
-//       ...chat,
-//       users: [],
-//       usersById: {}
-//     };
-
-//     const props = {
-//       ...commonProps,
-//       chat,
-//       cohort: null,
-//       scenario,
-//       user
-//     };
-
-//     const state = {
-//       ...commonState,
-//       chat,
-//       cohort: null,
-//       scenario,
-//       user
-//     };
-
-//     const emitter = new Emitter();
-
-//     globalThis.mockSocket.emit.mockImplementation(emitter.emit);
-//     globalThis.mockSocket.on.mockImplementation(emitter.on);
-//     globalThis.mockSocket.off.mockImplementation(emitter.off);
-
-//     chatActions.getLinkedChatUsersByChatId.mockImplementation(
-//       () => async dispatch => {
-//         const users = [];
-//         dispatch({ type: GET_CHAT_USERS_SUCCESS, users });
-//         return users;
-//       }
-//     );
-
-//     const ConnectedRoutedComponent = reduxer(Component, props, state);
-
-//     await render(<ConnectedRoutedComponent {...props} />);
-//     expect(serialize()).toMatchSnapshot();
-
-//     await waitFor(() => expect(globalThis.mockSocket.on).toHaveBeenCalled());
-//     expect(globalThis.mockSocket.on.mock.calls).toMatchInlineSnapshot(`
-//       Array [
-//         Array [
-//           "run-chat-link",
-//           [Function],
-//         ],
-//       ]
-//     `);
-//     expect(serialize()).toMatchSnapshot();
-
-//     globalThis.mockSocket.emit('run-chat-link', {});
-
-//     await waitFor(() =>
-//       expect(chatActions.getLinkedChatUsersByChatId).toHaveBeenCalled()
-//     );
-//     expect(serialize()).toMatchSnapshot();
-//     done();
-//   });
-
-//   test('On RUN_CHAT_LINK, receives list, but no one is assigned yet', async (done) => {
-//     const Component = CohortRoomSelector;
-
-//     const unassignedUser = {
-//       ...superUser,
-//       persona_id: null,
-//     };
-
-//     chat = {
-//       ...chat,
-//       users: [unassignedUser],
-//       usersById: {
-//         [unassignedUser.id]: unassignedUser,
-//       },
-//     };
-
-//     const props = {
-//       ...commonProps,
-//       cohort: null,
-//       scenario,
-//       user,
-//     };
-
-//     const state = {
-//       ...commonState,
-//       chat,
-//       cohort: null,
-//       scenario,
-//       user,
-//     };
-
-//     const emitter = new Emitter();
-
-//     globalThis.mockSocket.emit.mockImplementation(emitter.emit);
-//     globalThis.mockSocket.on.mockImplementation(emitter.on);
-//     globalThis.mockSocket.off.mockImplementation(emitter.off);
-
-//     const ConnectedRoutedComponent = reduxer(Component, props, state);
-
-//     await render(<ConnectedRoutedComponent {...props} />);
-//     expect(serialize()).toMatchSnapshot();
-
-//     await waitFor(() => expect(chatActions.getChatById).toHaveBeenCalled());
-//     expect(chatActions.getChat.mock.calls).toMatchInlineSnapshot(`
-//       Array [
-//         Array [
-//           1,
-//         ],
-//       ]
-//     `);
-
-//     await waitFor(() =>
-//       expect(chatActions.getLinkedChatUsersByChatId).toHaveBeenCalled()
-//     );
-//     expect(chatActions.getLinkedChatUsersByChatId.mock.calls)
-//       .toMatchInlineSnapshot(`
-//       Array [
-//         Array [
-//           1,
-//         ],
-//       ]
-//     `);
-
-//     await waitFor(() => expect(globalThis.mockSocket.on).toHaveBeenCalled());
-//     expect(globalThis.mockSocket.on.mock.calls).toMatchInlineSnapshot(`
-//       Array [
-//         Array [
-//           "run-chat-link",
-//           [Function],
-//         ],
-//       ]
-//     `);
-//     expect(serialize()).toMatchSnapshot();
-
-//     globalThis.mockSocket.emit('run-chat-link', {});
-
-//     await waitFor(() =>
-//       expect(chatActions.getLinkedChatUsersByChatId).toHaveBeenCalled()
-//     );
-//     expect(serialize()).toMatchSnapshot();
-//     done();
-//   });
-
-//   test('On RUN_CHAT_LINK, receives list with waiting users', async (done) => {
-//     const Component = CohortRoomSelector;
-
-//     const props = {
-//       ...commonProps,
-//       chat,
-//       cohort: null,
-//       scenario,
-//       user,
-//     };
-
-//     const state = {
-//       ...commonState,
-//       chat,
-//       cohort: null,
-//       scenario,
-//       user,
-//       users,
-//       usersById,
-//     };
-
-//     const emitter = new Emitter();
-
-//     globalThis.mockSocket.emit.mockImplementation(emitter.emit);
-//     globalThis.mockSocket.on.mockImplementation(emitter.on);
-//     globalThis.mockSocket.off.mockImplementation(emitter.off);
-
-//     let count = 0;
-
-//     chatActions.getLinkedChatUsersByChatId.mockImplementation(
-//       () => async (dispatch) => {
-//         users = count
-//           ? [
-//               {
-//                 ...users[0],
-//                 persona_id: 2,
-//               },
-//             ]
-//           : [
-//               {
-//                 ...users[0],
-//                 persona_id: 2,
-//               },
-//               {
-//                 ...users[1],
-//                 persona_id: 3,
-//               },
-//             ];
-
-//         count++;
-
-//         dispatch({ type: GET_CHAT_USERS_SUCCESS, users });
-//         return users;
-//       }
-//     );
-
-//     const ConnectedRoutedComponent = reduxer(Component, props, state);
-
-//     await render(<ConnectedRoutedComponent {...props} />);
-//     expect(serialize()).toMatchSnapshot();
-
-//     await waitFor(() => expect(globalThis.mockSocket.on).toHaveBeenCalled());
-//     expect(globalThis.mockSocket.on.mock.calls).toMatchInlineSnapshot(`
-//       Array [
-//         Array [
-//           "run-chat-link",
-//           [Function],
-//         ],
-//       ]
-//     `);
-//     expect(serialize()).toMatchSnapshot();
-
-//     globalThis.mockSocket.emit('run-chat-link', {});
-
-//     await waitFor(() =>
-//       expect(chatActions.getLinkedChatUsersByChatId).toHaveBeenCalled()
-//     );
-//     expect(serialize()).toMatchSnapshot();
-
-//     globalThis.mockSocket.emit('run-chat-link', {});
-
-//     await waitFor(() =>
-//       expect(chatActions.getLinkedChatUsersByChatId).toHaveBeenCalled()
-//     );
-//     expect(serialize()).toMatchSnapshot();
-
-//     done();
-//   });
-// });
+test('Has no chats in state', async done => {
+  const Component = CohortRoomSelector;
+
+  const props = {
+    ...commonProps,
+    chat,
+    cohort,
+    scenario,
+    user
+  };
+
+  const state = {
+    ...commonState,
+    chat,
+    chats: [],
+    cohort,
+    scenario,
+    user,
+    users,
+    usersById
+  };
+
+  const emitter = new Emitter();
+
+  globalThis.mockSocket.emit.mockImplementation(emitter.emit);
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  await render(<ConnectedRoutedComponent {...props} />);
+  expect(serialize()).toMatchSnapshot();
+  await waitFor(async () =>
+    expect(
+      await screen.findByTestId('cohort-chat-selector')
+    ).toBeInTheDocument()
+  );
+  expect(serialize()).toMatchSnapshot();
+  done();
+});
+
+test('Has no cohort in state', async done => {
+  const Component = CohortRoomSelector;
+
+  const props = {
+    ...commonProps,
+    chat,
+    cohort,
+    scenario,
+    user
+  };
+
+  const state = {
+    ...commonState,
+    chat,
+    chats,
+    cohort: {},
+    scenario,
+    user,
+    users,
+    usersById
+  };
+
+  const emitter = new Emitter();
+
+  globalThis.mockSocket.emit.mockImplementation(emitter.emit);
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  await render(<ConnectedRoutedComponent {...props} />);
+  await waitFor(async () =>
+    expect(
+      await screen.findByTestId('cohort-chat-selector')
+    ).toBeInTheDocument()
+  );
+  expect(serialize()).toMatchSnapshot();
+  done();
+});
+
+test('Has lobby prop, but not lobby.chat, chat is found through heuristic search', async done => {
+  const Component = CohortRoomSelector;
+
+  const lobby = {};
+
+  chat.cohort_id = cohort.id;
+  chat.host_id = superUser.id;
+  chat.scenario_id = scenario.id;
+
+  const props = {
+    ...commonProps,
+    chat,
+    cohort,
+    lobby,
+    scenario,
+    user
+  };
+
+  const state = {
+    ...commonState,
+    chat,
+    chats: [chat],
+    cohort,
+    scenario,
+    user,
+    users,
+    usersById
+  };
+
+  const emitter = new Emitter();
+
+  globalThis.mockSocket.emit.mockImplementation(emitter.emit);
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  await render(<ConnectedRoutedComponent {...props} />);
+  await waitFor(async () =>
+    expect(
+      await screen.findByTestId('cohort-chat-selector')
+    ).toBeInTheDocument()
+  );
+  expect(serialize()).toMatchSnapshot();
+  done();
+});
+
+test('Has lobby prop, but not lobby.chat, chat is NOT found through heuristic search', async done => {
+  const Component = CohortRoomSelector;
+
+  const lobby = {};
+
+  chat.cohort_id = -1;
+  chat.host_id = -1;
+  chat.scenario_id = -1;
+
+  const props = {
+    ...commonProps,
+    chat,
+    cohort,
+    lobby,
+    scenario,
+    user
+  };
+
+  const state = {
+    ...commonState,
+    chat,
+    chats: [chat],
+    cohort,
+    scenario,
+    user,
+    users,
+    usersById
+  };
+
+  const emitter = new Emitter();
+
+  globalThis.mockSocket.emit.mockImplementation(emitter.emit);
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  await render(<ConnectedRoutedComponent {...props} />);
+  expect(serialize()).toMatchSnapshot();
+  await waitFor(async () =>
+    expect(
+      await screen.findByTestId('cohort-chat-selector')
+    ).toBeInTheDocument()
+  );
+  expect(serialize()).toMatchSnapshot();
+  done();
+});
+
+test('Close default', async done => {
+  const Component = CohortRoomSelector;
+
+  const props = {
+    ...commonProps,
+    chat,
+    cohort,
+    scenario,
+    user
+  };
+
+  const state = {
+    ...commonState,
+    chat,
+    chats: [chat],
+    cohort,
+    scenario,
+    user,
+    users,
+    usersById
+  };
+
+  const emitter = new Emitter();
+
+  globalThis.mockSocket.emit.mockImplementation(emitter.emit);
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  await render(<ConnectedRoutedComponent {...props} />);
+  expect(serialize()).toMatchSnapshot();
+  await waitFor(async () =>
+    expect(
+      await screen.findByTestId('cohort-chat-selector')
+    ).toBeInTheDocument()
+  );
+  expect(serialize()).toMatchSnapshot();
+
+  const closeButton = await screen.findByRole('button', { name: /close/i });
+
+  userEvent.click(closeButton);
+
+  expect(serialize()).toMatchSnapshot();
+
+  done();
+});
+
+test('Close provided', async done => {
+  const Component = CohortRoomSelector;
+
+  const buttons = {
+    secondary: {
+      onClick: jest.fn()
+    }
+  };
+
+  const props = {
+    ...commonProps,
+    buttons,
+    chat,
+    cohort,
+    scenario,
+    user
+  };
+
+  const state = {
+    ...commonState,
+    chat,
+    chats: [chat],
+    cohort,
+    scenario,
+    user,
+    users,
+    usersById
+  };
+
+  const emitter = new Emitter();
+
+  globalThis.mockSocket.emit.mockImplementation(emitter.emit);
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  await render(<ConnectedRoutedComponent {...props} />);
+  expect(serialize()).toMatchSnapshot();
+  await waitFor(async () =>
+    expect(
+      await screen.findByTestId('cohort-chat-selector')
+    ).toBeInTheDocument()
+  );
+  expect(serialize()).toMatchSnapshot();
+
+  const closeButton = await screen.findByRole('button', { name: /close/i });
+
+  userEvent.click(closeButton);
+
+  expect(serialize()).toMatchSnapshot();
+  done();
+});
+
+test('Create a room for this scenario, cancel', async done => {
+  const Component = CohortRoomSelector;
+
+  const buttons = {
+    secondary: {
+      onClick: jest.fn()
+    }
+  };
+
+  const props = {
+    ...commonProps,
+    buttons,
+    chat,
+    cohort,
+    scenario,
+    user
+  };
+
+  const state = {
+    ...commonState,
+    chat,
+    chats,
+    cohort,
+    scenario,
+    user,
+    users,
+    usersById
+  };
+
+  const emitter = new Emitter();
+
+  globalThis.mockSocket.emit.mockImplementation(emitter.emit);
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  await render(<ConnectedRoutedComponent {...props} />);
+  expect(serialize()).toMatchSnapshot();
+  await waitFor(async () =>
+    expect(
+      await screen.findByTestId('cohort-chat-selector')
+    ).toBeInTheDocument()
+  );
+  expect(serialize()).toMatchSnapshot();
+
+  const createButton = await screen.findByRole('button', {
+    name: /create a room/i
+  });
+  userEvent.click(createButton);
+
+  await waitFor(async () =>
+    expect(await screen.findByTestId('cohort-chat-creator')).toBeInTheDocument()
+  );
+  expect(serialize()).toMatchSnapshot();
+
+  const cancelButton = await screen.findByRole('button', { name: /cancel/i });
+
+  userEvent.click(cancelButton);
+
+  expect(serialize()).toMatchSnapshot();
+  done();
+});
+
+test('Create a room for this scenario, user will invite, proceed', async done => {
+  const Component = CohortRoomSelector;
+
+  delete window.location;
+  // eslint-disable-next-line
+  window.location = {
+    href: '',
+    pathname: ''
+  };
+
+  const buttons = {
+    secondary: {
+      onClick: jest.fn()
+    }
+  };
+
+  const props = {
+    ...commonProps,
+    buttons,
+    chat,
+    cohort,
+    scenario,
+    user
+  };
+
+  const state = {
+    ...commonState,
+    chat,
+    chats,
+    cohort,
+    scenario,
+    user,
+    users,
+    usersById
+  };
+
+  const emitter = new Emitter();
+
+  globalThis.mockSocket.emit.mockImplementation(emitter.emit);
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  await render(<ConnectedRoutedComponent {...props} />);
+  expect(serialize()).toMatchSnapshot();
+  await waitFor(async () =>
+    expect(
+      await screen.findByTestId('cohort-chat-selector')
+    ).toBeInTheDocument()
+  );
+  expect(serialize()).toMatchSnapshot();
+
+  const createButton = await screen.findByRole('button', {
+    name: /create a room/i
+  });
+  userEvent.click(createButton);
+
+  await waitFor(async () =>
+    expect(await screen.findByTestId('cohort-chat-creator')).toBeInTheDocument()
+  );
+  expect(serialize()).toMatchSnapshot();
+
+  const checkbox = await screen.findByLabelText(
+    'No, I will invite participants.'
+  );
+
+  const createAndGoButton = await screen.findByRole('button', {
+    name: /create and/i
+  });
+
+  userEvent.click(checkbox);
+  userEvent.click(createAndGoButton);
+
+  await waitFor(async () => {
+    expect(chatActions.getChatsByCohortId).toHaveBeenCalled();
+    expect(chatActions.getChatUsersByChatId).toHaveBeenCalled();
+  });
+  expect(serialize()).toMatchSnapshot();
+
+  expect(chatActions.createChat).toHaveBeenCalled();
+
+  await waitFor(async () =>
+    expect(await screen.findByTestId('lobby-main')).toBeInTheDocument()
+  );
+  expect(serialize()).toMatchSnapshot();
+
+  const joinButton = await screen.findByRole('button', {
+    name: /join/i
+  });
+
+  userEvent.click(joinButton);
+
+  expect(window.location.href).toMatchInlineSnapshot(
+    `"/cohort/6e4213d8d3/run/1765cf2e64/chat/6e4213d8d3/slide/0"`
+  );
+
+  done();
+});
+
+test('Create a room for this scenario, open to cohort, proceed', async done => {
+  const Component = CohortRoomSelector;
+
+  const buttons = {
+    secondary: {
+      onClick: jest.fn()
+    }
+  };
+
+  const props = {
+    ...commonProps,
+    buttons,
+    chat,
+    cohort,
+    scenario,
+    user
+  };
+
+  const state = {
+    ...commonState,
+    chat,
+    chats,
+    cohort,
+    scenario,
+    user,
+    users,
+    usersById
+  };
+
+  const emitter = new Emitter();
+
+  globalThis.mockSocket.emit.mockImplementation(emitter.emit);
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  await render(<ConnectedRoutedComponent {...props} />);
+  expect(serialize()).toMatchSnapshot();
+  await waitFor(async () =>
+    expect(
+      await screen.findByTestId('cohort-chat-selector')
+    ).toBeInTheDocument()
+  );
+  expect(serialize()).toMatchSnapshot();
+
+  const createButton = await screen.findByRole('button', {
+    name: /create a room/i
+  });
+  userEvent.click(createButton);
+
+  await waitFor(async () =>
+    expect(await screen.findByTestId('cohort-chat-creator')).toBeInTheDocument()
+  );
+  expect(serialize()).toMatchSnapshot();
+
+  const checkbox = await screen.findByLabelText(
+    'Yes, let anyone in my cohort join.'
+  );
+
+  chatActions.getChatsByCohortId.mockClear();
+  chatActions.getChatUsersByChatId.mockClear();
+
+  const createAndGoButton = await screen.findByRole('button', {
+    name: /create/i
+  });
+
+  userEvent.click(checkbox);
+  userEvent.click(createAndGoButton);
+
+  await waitFor(async () =>
+    expect(
+      await screen.findByTestId('cohort-chat-selector')
+    ).toBeInTheDocument()
+  );
+
+  await waitFor(async () => {
+    expect(chatActions.getChatsByCohortId).toHaveBeenCalled();
+    expect(chatActions.getChatUsersByChatId).toHaveBeenCalled();
+  });
+
+  expect(chatActions.createChat).toHaveBeenCalled();
+  expect(serialize()).toMatchSnapshot();
+  done();
+});
+
+test('Create a room for this scenario, open to cohort, close', async done => {
+  const Component = CohortRoomSelector;
+
+  chatActions.createChat.mockImplementation(params => async dispatch => {
+    const chat = {
+      ...params,
+      id: 2,
+      scenario_id: 42,
+      cohort_id: 1,
+      host_id: 999,
+      created_at: '2020-12-08T21:51:33.659Z',
+      updated_at: null,
+      deleted_at: null,
+      ended_at: null,
+      users: [superUser],
+      usersById: {
+        [superUser.id]: superUser
+      }
+    };
+    dispatch({ type: GET_CHAT_SUCCESS, chat });
+    return chat;
+  });
+
+  const buttons = {
+    secondary: {
+      onClick: jest.fn()
+    }
+  };
+
+  const props = {
+    ...commonProps,
+    buttons,
+    chat,
+    cohort,
+    scenario,
+    user
+  };
+
+  const state = {
+    ...commonState,
+    chat,
+    chats,
+    cohort,
+    scenario,
+    user,
+    users,
+    usersById
+  };
+
+  const emitter = new Emitter();
+
+  globalThis.mockSocket.emit.mockImplementation(emitter.emit);
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  await render(<ConnectedRoutedComponent {...props} />);
+  expect(serialize()).toMatchSnapshot();
+  await waitFor(async () =>
+    expect(
+      await screen.findByTestId('cohort-chat-selector')
+    ).toBeInTheDocument()
+  );
+  expect(serialize()).toMatchSnapshot();
+
+  const createButton = await screen.findByRole('button', {
+    name: /create a room/i
+  });
+  userEvent.click(createButton);
+
+  await waitFor(async () =>
+    expect(await screen.findByTestId('cohort-chat-creator')).toBeInTheDocument()
+  );
+  expect(serialize()).toMatchSnapshot();
+
+  const checkbox = await screen.findByLabelText(
+    'Yes, let anyone in my cohort join.'
+  );
+
+  chatActions.getChatsByCohortId.mockClear();
+  chatActions.getChatUsersByChatId.mockClear();
+
+  const createAndGoButton = await screen.findByRole('button', {
+    name: /create/i
+  });
+
+  userEvent.click(checkbox);
+  userEvent.click(createAndGoButton);
+
+  await waitFor(async () => {
+    expect(chatActions.getChatsByCohortId).toHaveBeenCalled();
+    expect(chatActions.getChatUsersByChatId).toHaveBeenCalled();
+  });
+  expect(serialize()).toMatchSnapshot();
+
+  expect(chatActions.createChat).toHaveBeenCalled();
+
+  // const allButtons = await screen.findAllByRole('button');
+  // console.log(allButtons);
+
+  const selectStudentRoleButton = await screen.getByText('Student');
+
+  userEvent.click(selectStudentRoleButton);
+
+  expect(serialize()).toMatchSnapshot();
+  done();
+});
+
+test('Create a room for this scenario, open to cohort, close', async done => {
+  const Component = CohortRoomSelector;
+
+  const buttons = {
+    secondary: {
+      onClick: jest.fn()
+    }
+  };
+
+  const props = {
+    ...commonProps,
+    buttons,
+    chat,
+    cohort,
+    scenario,
+    user
+  };
+
+  const state = {
+    ...commonState,
+    chat,
+    chats,
+    cohort,
+    scenario,
+    user,
+    users,
+    usersById
+  };
+
+  const emitter = new Emitter();
+
+  globalThis.mockSocket.emit.mockImplementation(emitter.emit);
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  await render(<ConnectedRoutedComponent {...props} />);
+  expect(serialize()).toMatchSnapshot();
+  await waitFor(async () =>
+    expect(
+      await screen.findByTestId('cohort-chat-selector')
+    ).toBeInTheDocument()
+  );
+  expect(serialize()).toMatchSnapshot();
+
+  const createButton = await screen.findByRole('button', {
+    name: /create a room/i
+  });
+  userEvent.click(createButton);
+
+  await waitFor(async () =>
+    expect(await screen.findByTestId('cohort-chat-creator')).toBeInTheDocument()
+  );
+  expect(serialize()).toMatchSnapshot();
+
+  const checkbox = await screen.findByLabelText(
+    'Yes, let anyone in my cohort join.'
+  );
+
+  chatActions.getChatsByCohortId.mockClear();
+  chatActions.getChatUsersByChatId.mockClear();
+
+  const createAndGoButton = await screen.findByRole('button', {
+    name: /create/i
+  });
+
+  userEvent.click(checkbox);
+  userEvent.click(createAndGoButton);
+
+  await waitFor(async () =>
+    expect(
+      await screen.findByTestId('cohort-chat-selector')
+    ).toBeInTheDocument()
+  );
+
+  await waitFor(async () => {
+    expect(chatActions.getChatsByCohortId).toHaveBeenCalled();
+    expect(chatActions.getChatUsersByChatId).toHaveBeenCalled();
+  });
+
+  expect(chatActions.createChat).toHaveBeenCalled();
+
+  const closeButton = await screen.findByRole('button', { name: /close/i });
+
+  userEvent.click(closeButton);
+
+  expect(serialize()).toMatchSnapshot();
+  done();
+});
