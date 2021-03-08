@@ -67,7 +67,9 @@ class LobbyUserWaiting extends Component {
                     selection
                     data-testid="lobby-user-waiting-invitees"
                   >
-                    {totalPresent ? this.renderListItems(usersPresentWithAssignedRoles) : (
+                    {totalPresent ? (
+                      this.renderListItems(usersPresentWithAssignedRoles)
+                    ) : (
                       <List.Item>
                         <List.Content>
                           <p>No one has entered the scenario room yet</p>
