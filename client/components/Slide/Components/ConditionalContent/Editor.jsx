@@ -310,9 +310,7 @@ class ConditionalContentEditor extends React.Component {
                   <Table.Header>
                     <Table.Row>
                       <Table.HeaderCell className="mpr__thead-background" />
-                      <Table.HeaderCell>
-                        Operation
-                      </Table.HeaderCell>
+                      <Table.HeaderCell>Operation</Table.HeaderCell>
                       <Table.HeaderCell className="cce__cell-constraint">
                         Y value
                       </Table.HeaderCell>

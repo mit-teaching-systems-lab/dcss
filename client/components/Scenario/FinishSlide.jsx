@@ -4,10 +4,7 @@ import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { Button, Card, Header, Icon, Modal } from '@components/UI';
 import { SCENARIO_COMPLETE } from '@hoc/withRunEventCapturing';
-import withSocket, {
-  RUN_AGENT_START,
-  RUN_AGENT_END
-} from '@hoc/withSocket';
+import withSocket, { RUN_AGENT_START, RUN_AGENT_END } from '@hoc/withSocket';
 
 import Identity from '@utils/Identity';
 import './Scenario.css';
@@ -62,12 +59,14 @@ class FinishSlide extends React.Component {
       scenario: this.props.scenario
     });
 
-    const {
-      run
-    } = this.props;
+    const { run } = this.props;
 
-    this.props.socket.emit(RUN_AGENT_END,
-      Payload.compose(this.props, { run })
+    this.props.socket.emit(
+      RUN_AGENT_END,
+      Payload.compose(
+        this.props,
+        { run }
+      )
     );
   }
 

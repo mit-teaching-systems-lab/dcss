@@ -61,12 +61,7 @@ class Display extends Component {
   }
 
   render() {
-    const {
-      component,
-      onResponseChange,
-      run,
-      saveRunEvent
-    } = this.props;
+    const { component, onResponseChange, run, saveRunEvent } = this.props;
 
     const rules = this.props.rules.slice();
 
@@ -88,13 +83,14 @@ class Display extends Component {
     };
 
     const sumOfAffirmative = responses.reduce(
-      (accum, {response}) => accum + Number(response.result), 0
+      (accum, { response }) => accum + Number(response.result),
+      0
     );
 
     let x = {};
 
     while (rules.length) {
-      let {key, value} = rules.shift();
+      let { key, value } = rules.shift();
 
       if (Conditional.isLogicalOp(key)) {
         let next = rules.shift();

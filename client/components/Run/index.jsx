@@ -22,10 +22,7 @@ import withRunEventCapturing, {
   PROMPT_RESPONSE_SUBMITTED,
   SCENARIO_ARRIVAL
 } from '@hoc/withRunEventCapturing';
-import withSocket, {
-  RUN_AGENT_START,
-  RUN_END
-} from '@hoc/withSocket';
+import withSocket, { RUN_AGENT_START, RUN_END } from '@hoc/withSocket';
 import Identity from '@utils/Identity';
 import Payload from '@utils/Payload';
 import QueryString from '@utils/QueryString';
@@ -206,8 +203,12 @@ class Run extends Component {
         }
       }
 
-      this.props.socket.emit(RUN_AGENT_START,
-        Payload.compose(this.props, { run })
+      this.props.socket.emit(
+        RUN_AGENT_START,
+        Payload.compose(
+          this.props,
+          { run }
+        )
       );
 
       this.setState({

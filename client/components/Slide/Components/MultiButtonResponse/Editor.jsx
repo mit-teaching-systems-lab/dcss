@@ -64,7 +64,14 @@ class MultiButtonResponseEditor extends React.Component {
   componentWillUnmount() {
     clearTimeout(this.timeout);
 
-    const { agent, header, prompt, buttons, recallId, responseId } = this.props.value;
+    const {
+      agent,
+      header,
+      prompt,
+      buttons,
+      recallId,
+      responseId
+    } = this.props.value;
     const lastProps = {
       agent,
       header,

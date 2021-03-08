@@ -78,7 +78,7 @@ const cache = {
 
 const extractTextContent = html => parse(html).textContent;
 
-const makeRemoteSafeAuthPayload = (data) => {
+const makeRemoteSafeAuthPayload = data => {
   const { agent, chat = {}, run = {}, user } = data;
   const payload = {
     agent: {
@@ -90,7 +90,7 @@ const makeRemoteSafeAuthPayload = (data) => {
       id: chat.id
     },
     run: {
-      id: run.id,
+      id: run.id
     },
     user: {
       id: user.id,
@@ -292,25 +292,20 @@ class SocketManager {
       const sendRunResponseToAgent = data => {
         const clientKey = `${data.run_id}-${data.user_id}-${data.response_id}`;
 
-        console.log("sendRunResponseToAgent, clientKey", clientKey);
-        console.log("sendRunResponseToAgent, data", data);
+        console.log('sendRunResponseToAgent, clientKey', clientKey);
+        console.log('sendRunResponseToAgent, data', data);
 
         console.log(cache.clients[clientKey]);
         if (cache.clients[clientKey]) {
           const { client, auth } = cache.clients[clientKey];
 
-          const {
-            id,
-            response_id,
-            transcript = '',
-            value = '',
-          } = data;
+          const { id, response_id, transcript = '', value = '' } = data;
 
           // console.log(auth);
           // console.log(data);
 
           if (value) {
-            console.log("sendRunResponseToAgent: ", data);
+            console.log('sendRunResponseToAgent: ', data);
             client.emit('request', {
               auth,
               id,
@@ -416,9 +411,7 @@ class SocketManager {
         const prompts = await agentdb.getScenarioAgentPrompts(run.scenario_id);
 
         for (const prompt of prompts) {
-          const {
-            agent
-          } = prompt;
+          const { agent } = prompt;
 
           if (agent && agent.id) {
             const room = `${run.id}-${run.user_id}-${prompt.response_id}`;
@@ -433,8 +426,8 @@ class SocketManager {
 
               const client = new Socket.Client(agent.endpoint, options);
 
-              client.on('response', async (response) => {
-                console.log("AGENT RESPONSE: ", response);
+              client.on('response', async response => {
+                console.log('AGENT RESPONSE: ', response);
                 await agentdb.insertNewAgentResponse(
                   // agent_id
                   agent.id,
@@ -471,7 +464,6 @@ class SocketManager {
         const agents = await agentdb.getScenarioAgents(run.scenario_id);
 
         console.log(agents);
-
       });
 
       socket.on(CREATE_USER_CHANNEL, ({ user }) => {
