@@ -14,15 +14,15 @@ env:
 before_install:
   - export TZ=America/New_York
 
-addons:
-  postgresql: "11"
+# addons:
+#   postgresql: "11"
 
-services:
-  - postgresql
+# services:
+#   - postgresql
 
 before_script:
-  - psql -c 'create extension if not exists "uuid-ossp";' -U postgres
-  - yarn db-init:test
+  # - psql -c 'create extension if not exists "uuid-ossp";' -U postgres
+  # - yarn db-init:test
 
 jobs:
   include:
@@ -32,7 +32,7 @@ jobs:
     - stage: Client test
       script:
         - yarn workspace client run test
-    - stage: Server test
-      script:
-        - yarn workspace server run test
-        - yarn workspace test run test
+    # - stage: Server test
+    #   script:
+    #     - yarn workspace server run test
+    #     - yarn workspace test run test
