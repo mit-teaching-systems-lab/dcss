@@ -4,7 +4,6 @@ import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Button, Form, Header, Icon, Input, Modal } from '@components/UI';
 import { createCohort } from '@actions/cohort';
-import { getUser } from '@actions/user';
 import '../ScenariosList/ScenariosList.css';
 
 export class CohortCreateNewForm extends React.Component {
@@ -114,13 +113,12 @@ export class CohortCreateNewForm extends React.Component {
 CohortCreateNewForm.propTypes = {
   buttons: PropTypes.object,
   createCohort: PropTypes.func,
-  getUser: PropTypes.func,
   header: PropTypes.any,
   history: PropTypes.shape({
     push: PropTypes.func.isRequired
   }).isRequired,
   onCancel: PropTypes.func,
-  stepGroup: PropTypes.object,
+  stepGroup: PropTypes.node,
   user: PropTypes.object
 };
 
@@ -130,8 +128,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  createCohort: params => dispatch(createCohort(params)),
-  getUser: () => dispatch(getUser())
+  createCohort: params => dispatch(createCohort(params))
 });
 
 export default withRouter(
