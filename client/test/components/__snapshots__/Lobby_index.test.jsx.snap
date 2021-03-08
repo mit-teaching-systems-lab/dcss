@@ -372,7 +372,49 @@ exports[`Fallback: chat missing, use scenario and cohort to request chat 1`] = `
       >
         <div
           class=\\"column\\"
-        />
+        >
+          <p>
+            Who is in 
+            <strong>
+              this
+            </strong>
+             scenario room?
+          </p>
+        </div>
+      </div>
+      <div
+        class=\\"row\\"
+      >
+        <div
+          class=\\"column\\"
+        >
+          <div
+            class=\\"ui fluid card\\"
+          >
+            <div
+              class=\\"content\\"
+            >
+              <div
+                class=\\"ui divided selection list\\"
+                data-testid=\\"lobby-user-waiting-invitees\\"
+                role=\\"list\\"
+              >
+                <div
+                  class=\\"item\\"
+                  role=\\"listitem\\"
+                >
+                  <div
+                    class=\\"content\\"
+                  >
+                    <p>
+                      No one has entered the scenario room yet
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <div
@@ -754,7 +796,49 @@ exports[`Fallback: chat missing, use scenario and cohort to request chat 4`] = `
       >
         <div
           class=\\"column\\"
-        />
+        >
+          <p>
+            Who is in 
+            <strong>
+              this
+            </strong>
+             scenario room?
+          </p>
+        </div>
+      </div>
+      <div
+        class=\\"row\\"
+      >
+        <div
+          class=\\"column\\"
+        >
+          <div
+            class=\\"ui fluid card\\"
+          >
+            <div
+              class=\\"content\\"
+            >
+              <div
+                class=\\"ui divided selection list\\"
+                data-testid=\\"lobby-user-waiting-invitees\\"
+                role=\\"list\\"
+              >
+                <div
+                  class=\\"item\\"
+                  role=\\"listitem\\"
+                >
+                  <div
+                    class=\\"content\\"
+                  >
+                    <p>
+                      No one has entered the scenario room yet
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <div
@@ -1136,7 +1220,49 @@ exports[`Fallback: chat missing, use scenario to request chat 1`] = `
       >
         <div
           class=\\"column\\"
-        />
+        >
+          <p>
+            Who is in 
+            <strong>
+              this
+            </strong>
+             scenario room?
+          </p>
+        </div>
+      </div>
+      <div
+        class=\\"row\\"
+      >
+        <div
+          class=\\"column\\"
+        >
+          <div
+            class=\\"ui fluid card\\"
+          >
+            <div
+              class=\\"content\\"
+            >
+              <div
+                class=\\"ui divided selection list\\"
+                data-testid=\\"lobby-user-waiting-invitees\\"
+                role=\\"list\\"
+              >
+                <div
+                  class=\\"item\\"
+                  role=\\"listitem\\"
+                >
+                  <div
+                    class=\\"content\\"
+                  >
+                    <p>
+                      No one has entered the scenario room yet
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <div
@@ -1518,7 +1644,49 @@ exports[`Fallback: chat missing, use scenario to request chat 4`] = `
       >
         <div
           class=\\"column\\"
-        />
+        >
+          <p>
+            Who is in 
+            <strong>
+              this
+            </strong>
+             scenario room?
+          </p>
+        </div>
+      </div>
+      <div
+        class=\\"row\\"
+      >
+        <div
+          class=\\"column\\"
+        >
+          <div
+            class=\\"ui fluid card\\"
+          >
+            <div
+              class=\\"content\\"
+            >
+              <div
+                class=\\"ui divided selection list\\"
+                data-testid=\\"lobby-user-waiting-invitees\\"
+                role=\\"list\\"
+              >
+                <div
+                  class=\\"item\\"
+                  role=\\"listitem\\"
+                >
+                  <div
+                    class=\\"content\\"
+                  >
+                    <p>
+                      No one has entered the scenario room yet
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <div
@@ -1900,7 +2068,49 @@ exports[`Fallback: chat, scenario, cohort are not yet loaded, use provided props
       >
         <div
           class=\\"column\\"
-        />
+        >
+          <p>
+            Who is in 
+            <strong>
+              this
+            </strong>
+             scenario room?
+          </p>
+        </div>
+      </div>
+      <div
+        class=\\"row\\"
+      >
+        <div
+          class=\\"column\\"
+        >
+          <div
+            class=\\"ui fluid card\\"
+          >
+            <div
+              class=\\"content\\"
+            >
+              <div
+                class=\\"ui divided selection list\\"
+                data-testid=\\"lobby-user-waiting-invitees\\"
+                role=\\"list\\"
+              >
+                <div
+                  class=\\"item\\"
+                  role=\\"listitem\\"
+                >
+                  <div
+                    class=\\"content\\"
+                  >
+                    <p>
+                      No one has entered the scenario room yet
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <div
@@ -2282,7 +2492,49 @@ exports[`Fallback: chat, scenario, cohort are not yet loaded, use provided props
       >
         <div
           class=\\"column\\"
-        />
+        >
+          <p>
+            Who is in 
+            <strong>
+              this
+            </strong>
+             scenario room?
+          </p>
+        </div>
+      </div>
+      <div
+        class=\\"row\\"
+      >
+        <div
+          class=\\"column\\"
+        >
+          <div
+            class=\\"ui fluid card\\"
+          >
+            <div
+              class=\\"content\\"
+            >
+              <div
+                class=\\"ui divided selection list\\"
+                data-testid=\\"lobby-user-waiting-invitees\\"
+                role=\\"list\\"
+              >
+                <div
+                  class=\\"item\\"
+                  role=\\"listitem\\"
+                >
+                  <div
+                    class=\\"content\\"
+                  >
+                    <p>
+                      No one has entered the scenario room yet
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <div
@@ -2626,7 +2878,49 @@ exports[`Fallback: cohort expected, but not yet loaded 1`] = `
       >
         <div
           class=\\"column\\"
-        />
+        >
+          <p>
+            Who is in 
+            <strong>
+              this
+            </strong>
+             scenario room?
+          </p>
+        </div>
+      </div>
+      <div
+        class=\\"row\\"
+      >
+        <div
+          class=\\"column\\"
+        >
+          <div
+            class=\\"ui fluid card\\"
+          >
+            <div
+              class=\\"content\\"
+            >
+              <div
+                class=\\"ui divided selection list\\"
+                data-testid=\\"lobby-user-waiting-invitees\\"
+                role=\\"list\\"
+              >
+                <div
+                  class=\\"item\\"
+                  role=\\"listitem\\"
+                >
+                  <div
+                    class=\\"content\\"
+                  >
+                    <p>
+                      No one has entered the scenario room yet
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <div
@@ -2970,7 +3264,49 @@ exports[`Fallback: cohort expected, but not yet loaded 4`] = `
       >
         <div
           class=\\"column\\"
-        />
+        >
+          <p>
+            Who is in 
+            <strong>
+              this
+            </strong>
+             scenario room?
+          </p>
+        </div>
+      </div>
+      <div
+        class=\\"row\\"
+      >
+        <div
+          class=\\"column\\"
+        >
+          <div
+            class=\\"ui fluid card\\"
+          >
+            <div
+              class=\\"content\\"
+            >
+              <div
+                class=\\"ui divided selection list\\"
+                data-testid=\\"lobby-user-waiting-invitees\\"
+                role=\\"list\\"
+              >
+                <div
+                  class=\\"item\\"
+                  role=\\"listitem\\"
+                >
+                  <div
+                    class=\\"content\\"
+                  >
+                    <p>
+                      No one has entered the scenario room yet
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <div
@@ -3352,7 +3688,49 @@ exports[`Fallback: scenario missing 1`] = `
       >
         <div
           class=\\"column\\"
-        />
+        >
+          <p>
+            Who is in 
+            <strong>
+              this
+            </strong>
+             scenario room?
+          </p>
+        </div>
+      </div>
+      <div
+        class=\\"row\\"
+      >
+        <div
+          class=\\"column\\"
+        >
+          <div
+            class=\\"ui fluid card\\"
+          >
+            <div
+              class=\\"content\\"
+            >
+              <div
+                class=\\"ui divided selection list\\"
+                data-testid=\\"lobby-user-waiting-invitees\\"
+                role=\\"list\\"
+              >
+                <div
+                  class=\\"item\\"
+                  role=\\"listitem\\"
+                >
+                  <div
+                    class=\\"content\\"
+                  >
+                    <p>
+                      No one has entered the scenario room yet
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <div
@@ -3734,7 +4112,49 @@ exports[`Fallback: scenario missing 4`] = `
       >
         <div
           class=\\"column\\"
-        />
+        >
+          <p>
+            Who is in 
+            <strong>
+              this
+            </strong>
+             scenario room?
+          </p>
+        </div>
+      </div>
+      <div
+        class=\\"row\\"
+      >
+        <div
+          class=\\"column\\"
+        >
+          <div
+            class=\\"ui fluid card\\"
+          >
+            <div
+              class=\\"content\\"
+            >
+              <div
+                class=\\"ui divided selection list\\"
+                data-testid=\\"lobby-user-waiting-invitees\\"
+                role=\\"list\\"
+              >
+                <div
+                  class=\\"item\\"
+                  role=\\"listitem\\"
+                >
+                  <div
+                    class=\\"content\\"
+                  >
+                    <p>
+                      No one has entered the scenario room yet
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <div
@@ -4116,7 +4536,49 @@ exports[`Fallback: scenario object present, unloaded 1`] = `
       >
         <div
           class=\\"column\\"
-        />
+        >
+          <p>
+            Who is in 
+            <strong>
+              this
+            </strong>
+             scenario room?
+          </p>
+        </div>
+      </div>
+      <div
+        class=\\"row\\"
+      >
+        <div
+          class=\\"column\\"
+        >
+          <div
+            class=\\"ui fluid card\\"
+          >
+            <div
+              class=\\"content\\"
+            >
+              <div
+                class=\\"ui divided selection list\\"
+                data-testid=\\"lobby-user-waiting-invitees\\"
+                role=\\"list\\"
+              >
+                <div
+                  class=\\"item\\"
+                  role=\\"listitem\\"
+                >
+                  <div
+                    class=\\"content\\"
+                  >
+                    <p>
+                      No one has entered the scenario room yet
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <div
@@ -4498,7 +4960,49 @@ exports[`Fallback: scenario object present, unloaded 4`] = `
       >
         <div
           class=\\"column\\"
-        />
+        >
+          <p>
+            Who is in 
+            <strong>
+              this
+            </strong>
+             scenario room?
+          </p>
+        </div>
+      </div>
+      <div
+        class=\\"row\\"
+      >
+        <div
+          class=\\"column\\"
+        >
+          <div
+            class=\\"ui fluid card\\"
+          >
+            <div
+              class=\\"content\\"
+            >
+              <div
+                class=\\"ui divided selection list\\"
+                data-testid=\\"lobby-user-waiting-invitees\\"
+                role=\\"list\\"
+              >
+                <div
+                  class=\\"item\\"
+                  role=\\"listitem\\"
+                >
+                  <div
+                    class=\\"content\\"
+                  >
+                    <p>
+                      No one has entered the scenario room yet
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <div
@@ -4836,7 +5340,49 @@ exports[`Lobby visited by a non-facilitator user 1`] = `
       >
         <div
           class=\\"column\\"
-        />
+        >
+          <p>
+            Who is in 
+            <strong>
+              this
+            </strong>
+             scenario room?
+          </p>
+        </div>
+      </div>
+      <div
+        class=\\"row\\"
+      >
+        <div
+          class=\\"column\\"
+        >
+          <div
+            class=\\"ui fluid card\\"
+          >
+            <div
+              class=\\"content\\"
+            >
+              <div
+                class=\\"ui divided selection list\\"
+                data-testid=\\"lobby-user-waiting-invitees\\"
+                role=\\"list\\"
+              >
+                <div
+                  class=\\"item\\"
+                  role=\\"listitem\\"
+                >
+                  <div
+                    class=\\"content\\"
+                  >
+                    <p>
+                      No one has entered the scenario room yet
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <div
@@ -5174,7 +5720,49 @@ exports[`Lobby visited by a non-facilitator user 4`] = `
       >
         <div
           class=\\"column\\"
-        />
+        >
+          <p>
+            Who is in 
+            <strong>
+              this
+            </strong>
+             scenario room?
+          </p>
+        </div>
+      </div>
+      <div
+        class=\\"row\\"
+      >
+        <div
+          class=\\"column\\"
+        >
+          <div
+            class=\\"ui fluid card\\"
+          >
+            <div
+              class=\\"content\\"
+            >
+              <div
+                class=\\"ui divided selection list\\"
+                data-testid=\\"lobby-user-waiting-invitees\\"
+                role=\\"list\\"
+              >
+                <div
+                  class=\\"item\\"
+                  role=\\"listitem\\"
+                >
+                  <div
+                    class=\\"content\\"
+                  >
+                    <p>
+                      No one has entered the scenario room yet
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <div
@@ -6503,7 +7091,49 @@ exports[`Without cohort, Receives RUN_CHAT_LINK, calls getLinkedChatUsersByChatI
       >
         <div
           class=\\"column\\"
-        />
+        >
+          <p>
+            Who is in 
+            <strong>
+              this
+            </strong>
+             scenario room?
+          </p>
+        </div>
+      </div>
+      <div
+        class=\\"row\\"
+      >
+        <div
+          class=\\"column\\"
+        >
+          <div
+            class=\\"ui fluid card\\"
+          >
+            <div
+              class=\\"content\\"
+            >
+              <div
+                class=\\"ui divided selection list\\"
+                data-testid=\\"lobby-user-waiting-invitees\\"
+                role=\\"list\\"
+              >
+                <div
+                  class=\\"item\\"
+                  role=\\"listitem\\"
+                >
+                  <div
+                    class=\\"content\\"
+                  >
+                    <p>
+                      No one has entered the scenario room yet
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <div
@@ -6954,7 +7584,49 @@ exports[`Without cohort, Receives RUN_CHAT_LINK, calls getLinkedChatUsersByChatI
       >
         <div
           class=\\"column\\"
-        />
+        >
+          <p>
+            Who is in 
+            <strong>
+              this
+            </strong>
+             scenario room?
+          </p>
+        </div>
+      </div>
+      <div
+        class=\\"row\\"
+      >
+        <div
+          class=\\"column\\"
+        >
+          <div
+            class=\\"ui fluid card\\"
+          >
+            <div
+              class=\\"content\\"
+            >
+              <div
+                class=\\"ui divided selection list\\"
+                data-testid=\\"lobby-user-waiting-invitees\\"
+                role=\\"list\\"
+              >
+                <div
+                  class=\\"item\\"
+                  role=\\"listitem\\"
+                >
+                  <div
+                    class=\\"content\\"
+                  >
+                    <p>
+                      No one has entered the scenario room yet
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <div
@@ -7358,7 +8030,49 @@ exports[`props.asCard 1`] = `
               >
                 <div
                   class=\\"column\\"
-                />
+                >
+                  <p>
+                    Who is in 
+                    <strong>
+                      this
+                    </strong>
+                     scenario room?
+                  </p>
+                </div>
+              </div>
+              <div
+                class=\\"row\\"
+              >
+                <div
+                  class=\\"column\\"
+                >
+                  <div
+                    class=\\"ui fluid card\\"
+                  >
+                    <div
+                      class=\\"content\\"
+                    >
+                      <div
+                        class=\\"ui divided selection list\\"
+                        data-testid=\\"lobby-user-waiting-invitees\\"
+                        role=\\"list\\"
+                      >
+                        <div
+                          class=\\"item\\"
+                          role=\\"listitem\\"
+                        >
+                          <div
+                            class=\\"content\\"
+                          >
+                            <p>
+                              No one has entered the scenario room yet
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -7781,7 +8495,49 @@ exports[`props.asCard 4`] = `
               >
                 <div
                   class=\\"column\\"
-                />
+                >
+                  <p>
+                    Who is in 
+                    <strong>
+                      this
+                    </strong>
+                     scenario room?
+                  </p>
+                </div>
+              </div>
+              <div
+                class=\\"row\\"
+              >
+                <div
+                  class=\\"column\\"
+                >
+                  <div
+                    class=\\"ui fluid card\\"
+                  >
+                    <div
+                      class=\\"content\\"
+                    >
+                      <div
+                        class=\\"ui divided selection list\\"
+                        data-testid=\\"lobby-user-waiting-invitees\\"
+                        role=\\"list\\"
+                      >
+                        <div
+                          class=\\"item\\"
+                          role=\\"listitem\\"
+                        >
+                          <div
+                            class=\\"content\\"
+                          >
+                            <p>
+                              No one has entered the scenario room yet
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

@@ -53,30 +53,32 @@ class LobbyUserWaiting extends Component {
         <Grid padded className="l__waiting not-modal">
           <Grid.Row>
             <Grid.Column>
-              {totalPresent ? (
-                <p>
-                  Who is in <strong>this</strong> scenario room?
-                </p>
-              ) : null}
+              <p>
+                Who is in <strong>this</strong> scenario room?
+              </p>
             </Grid.Column>
           </Grid.Row>
-          {totalPresent ? (
-            <Grid.Row>
-              <Grid.Column>
-                <Card fluid>
-                  <Card.Content>
-                    <List
-                      divided
-                      selection
-                      data-testid="lobby-user-waiting-invitees"
-                    >
-                      {this.renderListItems(usersPresentWithAssignedRoles)}
-                    </List>
-                  </Card.Content>
-                </Card>
-              </Grid.Column>
-            </Grid.Row>
-          ) : null}
+          <Grid.Row>
+            <Grid.Column>
+              <Card fluid>
+                <Card.Content>
+                  <List
+                    divided
+                    selection
+                    data-testid="lobby-user-waiting-invitees"
+                  >
+                    {totalPresent ? this.renderListItems(usersPresentWithAssignedRoles) : (
+                      <List.Item>
+                        <List.Content>
+                          <p>No one has entered the scenario room yet</p>
+                        </List.Content>
+                      </List.Item>
+                    )}
+                  </List>
+                </Card.Content>
+              </Card>
+            </Grid.Column>
+          </Grid.Row>
           {totalAbsent ? (
             <Fragment>
               <Grid.Row>
