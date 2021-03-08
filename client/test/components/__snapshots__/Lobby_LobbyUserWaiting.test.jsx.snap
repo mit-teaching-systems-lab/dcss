@@ -14,7 +14,49 @@ exports[`Fallbacks for state.chat, state.scenario, state.cohort (missing) 1`] = 
       >
         <div
           class=\\"column\\"
-        />
+        >
+          <p>
+            Who is in 
+            <strong>
+              this
+            </strong>
+             scenario room?
+          </p>
+        </div>
+      </div>
+      <div
+        class=\\"row\\"
+      >
+        <div
+          class=\\"column\\"
+        >
+          <div
+            class=\\"ui fluid card\\"
+          >
+            <div
+              class=\\"content\\"
+            >
+              <div
+                class=\\"ui divided selection list\\"
+                data-testid=\\"lobby-user-waiting-invitees\\"
+                role=\\"list\\"
+              >
+                <div
+                  class=\\"item\\"
+                  role=\\"listitem\\"
+                >
+                  <div
+                    class=\\"content\\"
+                  >
+                    <p>
+                      No one has entered the scenario room yet
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -35,7 +77,49 @@ exports[`Fallbacks for state.chat, state.scenario, state.cohort (unloaded) 1`] =
       >
         <div
           class=\\"column\\"
-        />
+        >
+          <p>
+            Who is in 
+            <strong>
+              this
+            </strong>
+             scenario room?
+          </p>
+        </div>
+      </div>
+      <div
+        class=\\"row\\"
+      >
+        <div
+          class=\\"column\\"
+        >
+          <div
+            class=\\"ui fluid card\\"
+          >
+            <div
+              class=\\"content\\"
+            >
+              <div
+                class=\\"ui divided selection list\\"
+                data-testid=\\"lobby-user-waiting-invitees\\"
+                role=\\"list\\"
+              >
+                <div
+                  class=\\"item\\"
+                  role=\\"listitem\\"
+                >
+                  <div
+                    class=\\"content\\"
+                  >
+                    <p>
+                      No one has entered the scenario room yet
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -56,7 +140,49 @@ exports[`Render 1 1 1`] = `
       >
         <div
           class=\\"column\\"
-        />
+        >
+          <p>
+            Who is in 
+            <strong>
+              this
+            </strong>
+             scenario room?
+          </p>
+        </div>
+      </div>
+      <div
+        class=\\"row\\"
+      >
+        <div
+          class=\\"column\\"
+        >
+          <div
+            class=\\"ui fluid card\\"
+          >
+            <div
+              class=\\"content\\"
+            >
+              <div
+                class=\\"ui divided selection list\\"
+                data-testid=\\"lobby-user-waiting-invitees\\"
+                role=\\"list\\"
+              >
+                <div
+                  class=\\"item\\"
+                  role=\\"listitem\\"
+                >
+                  <div
+                    class=\\"content\\"
+                  >
+                    <p>
+                      No one has entered the scenario room yet
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -77,7 +203,49 @@ exports[`Render 2 1 1`] = `
       >
         <div
           class=\\"column\\"
-        />
+        >
+          <p>
+            Who is in 
+            <strong>
+              this
+            </strong>
+             scenario room?
+          </p>
+        </div>
+      </div>
+      <div
+        class=\\"row\\"
+      >
+        <div
+          class=\\"column\\"
+        >
+          <div
+            class=\\"ui fluid card\\"
+          >
+            <div
+              class=\\"content\\"
+            >
+              <div
+                class=\\"ui divided selection list\\"
+                data-testid=\\"lobby-user-waiting-invitees\\"
+                role=\\"list\\"
+              >
+                <div
+                  class=\\"item\\"
+                  role=\\"listitem\\"
+                >
+                  <div
+                    class=\\"content\\"
+                  >
+                    <p>
+                      No one has entered the scenario room yet
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -98,7 +266,49 @@ exports[`With cohort Has users that are assigned personas 1`] = `
       >
         <div
           class=\\"column\\"
-        />
+        >
+          <p>
+            Who is in 
+            <strong>
+              this
+            </strong>
+             scenario room?
+          </p>
+        </div>
+      </div>
+      <div
+        class=\\"row\\"
+      >
+        <div
+          class=\\"column\\"
+        >
+          <div
+            class=\\"ui fluid card\\"
+          >
+            <div
+              class=\\"content\\"
+            >
+              <div
+                class=\\"ui divided selection list\\"
+                data-testid=\\"lobby-user-waiting-invitees\\"
+                role=\\"list\\"
+              >
+                <div
+                  class=\\"item\\"
+                  role=\\"listitem\\"
+                >
+                  <div
+                    class=\\"content\\"
+                  >
+                    <p>
+                      No one has entered the scenario room yet
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -119,7 +329,49 @@ exports[`With cohort Has users that are no longer present 1`] = `
       >
         <div
           class=\\"column\\"
-        />
+        >
+          <p>
+            Who is in 
+            <strong>
+              this
+            </strong>
+             scenario room?
+          </p>
+        </div>
+      </div>
+      <div
+        class=\\"row\\"
+      >
+        <div
+          class=\\"column\\"
+        >
+          <div
+            class=\\"ui fluid card\\"
+          >
+            <div
+              class=\\"content\\"
+            >
+              <div
+                class=\\"ui divided selection list\\"
+                data-testid=\\"lobby-user-waiting-invitees\\"
+                role=\\"list\\"
+              >
+                <div
+                  class=\\"item\\"
+                  role=\\"listitem\\"
+                >
+                  <div
+                    class=\\"content\\"
+                  >
+                    <p>
+                      No one has entered the scenario room yet
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -140,7 +392,49 @@ exports[`Without cohort Has users that are assigned personas 1`] = `
       >
         <div
           class=\\"column\\"
-        />
+        >
+          <p>
+            Who is in 
+            <strong>
+              this
+            </strong>
+             scenario room?
+          </p>
+        </div>
+      </div>
+      <div
+        class=\\"row\\"
+      >
+        <div
+          class=\\"column\\"
+        >
+          <div
+            class=\\"ui fluid card\\"
+          >
+            <div
+              class=\\"content\\"
+            >
+              <div
+                class=\\"ui divided selection list\\"
+                data-testid=\\"lobby-user-waiting-invitees\\"
+                role=\\"list\\"
+              >
+                <div
+                  class=\\"item\\"
+                  role=\\"listitem\\"
+                >
+                  <div
+                    class=\\"content\\"
+                  >
+                    <p>
+                      No one has entered the scenario room yet
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -161,7 +455,49 @@ exports[`Without cohort Has users that are no longer present 1`] = `
       >
         <div
           class=\\"column\\"
-        />
+        >
+          <p>
+            Who is in 
+            <strong>
+              this
+            </strong>
+             scenario room?
+          </p>
+        </div>
+      </div>
+      <div
+        class=\\"row\\"
+      >
+        <div
+          class=\\"column\\"
+        >
+          <div
+            class=\\"ui fluid card\\"
+          >
+            <div
+              class=\\"content\\"
+            >
+              <div
+                class=\\"ui divided selection list\\"
+                data-testid=\\"lobby-user-waiting-invitees\\"
+                role=\\"list\\"
+              >
+                <div
+                  class=\\"item\\"
+                  role=\\"listitem\\"
+                >
+                  <div
+                    class=\\"content\\"
+                  >
+                    <p>
+                      No one has entered the scenario room yet
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <div
         class=\\"row\\"
