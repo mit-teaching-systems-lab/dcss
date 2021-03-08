@@ -1,13 +1,4 @@
-
--- IMPORTANT!
--- travis-ci chokes on this, so it's diabled here.
--- when deploying a new version of the site, it must be enabled.
---
--- CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
---
---
-
-
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
 ALTER TABLE chat
   DROP COLUMN lobby_id,
