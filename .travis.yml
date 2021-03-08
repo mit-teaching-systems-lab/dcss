@@ -21,7 +21,6 @@ before_install:
 #   - postgresql
 
 before_script:
-  # - psql -c 'create extension if not exists "uuid-ossp";' -U postgres
   # - yarn db-init:test
 
 jobs:
