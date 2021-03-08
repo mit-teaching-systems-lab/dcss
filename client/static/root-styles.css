@@ -265,12 +265,11 @@ button {
 }
 
 .grid__bottom-row {
-  top: unset;
   bottom: 0 !important;
+  padding-top: 0em !important;
   position: absolute;
+  top: unset;
 }
-
-
 
 .ui.primary.buttons .button,
 .ui.primary.button {

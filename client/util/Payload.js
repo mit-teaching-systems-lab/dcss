@@ -1,6 +1,24 @@
 export default {
   compose(props, data = {}) {
-    const { agent = {}, chat = {}, response = {}, user = {} } = props;
+    let { agent, chat, response, user } = props;
+
+    // These may be null, so we can't rely on default params
+    if (!agent) {
+      agent = {};
+    }
+
+    if (!chat) {
+      chat = {};
+    }
+
+    if (!response) {
+      response = {};
+    }
+
+    if (!user) {
+      user = {};
+    }
+
     // To override the minimal payload properties, pass
     // an object property of the same name in `data`:
     //

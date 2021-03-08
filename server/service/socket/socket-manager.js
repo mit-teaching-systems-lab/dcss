@@ -3,6 +3,7 @@ const hash = require('object-hash');
 const Socket = require('./');
 const { notifier } = require('../../util/db');
 const {
+  AGENT_RESPONSE_CREATED,
   CHAT_AGENT_PAUSE,
   CHAT_AGENT_START,
   CHAT_CREATED,
