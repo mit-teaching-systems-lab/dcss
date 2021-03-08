@@ -849,23 +849,215 @@ test('Click to see all response', async done => {
 
   userEvent.click(viewResponsesButtons[0]);
   expect(props.onClick).toHaveBeenCalledTimes(1);
-  expect(props.onClick.mock.calls[0][1]).toMatchInlineSnapshot();
+  expect(props.onClick.mock.calls[0][1]).toMatchInlineSnapshot(`
+    Object {
+      "as": "button",
+      "children": "View responses",
+      "className": "c__participant-card__responses",
+      "data-testid": "view-participant-responses",
+      "onClick": [Function],
+      "primary": true,
+      "size": "large",
+      "source": Object {
+        "email": "super@email.com",
+        "id": 999,
+        "is_anonymous": false,
+        "is_super": true,
+        "personalname": "Super User",
+        "progress": Object {
+          "completed": Array [
+            1,
+          ],
+          "latestByScenarioId": Object {
+            "1": Object {
+              "created_at": 1602454306144,
+              "event_id": 1909,
+              "generic": "arrived at a slide.",
+              "is_complete": true,
+              "name": "slide-arrival",
+              "url": "http://localhost:3000/cohort/1/run/99/slide/1",
+            },
+          },
+          "status": "incomplete",
+        },
+        "roles": Array [
+          "participant",
+          "super_admin",
+        ],
+        "username": "super",
+      },
+      "type": "participant",
+    }
+  `);
 
   userEvent.click(viewResponsesButtons[1]);
   expect(props.onClick).toHaveBeenCalledTimes(2);
-  expect(props.onClick.mock.calls[1][1]).toMatchInlineSnapshot();
+  expect(props.onClick.mock.calls[1][1]).toMatchInlineSnapshot(`
+    Object {
+      "as": "button",
+      "children": "View responses",
+      "className": "c__participant-card__responses",
+      "data-testid": "view-participant-responses",
+      "onClick": [Function],
+      "primary": true,
+      "size": "large",
+      "source": Object {
+        "email": "facilitator@email.com",
+        "id": 555,
+        "is_anonymous": false,
+        "is_owner": true,
+        "is_super": false,
+        "personalname": "Facilitator User",
+        "progress": Object {
+          "completed": Array [],
+          "latestByScenarioId": Object {
+            "1": Object {
+              "created_at": 1602454306144,
+              "event_id": 1905,
+              "generic": "arrived at a slide.",
+              "is_complete": false,
+              "name": "slide-arrival",
+              "scenario_id": 99,
+              "url": "http://localhost:3000/cohort/1/run/99/slide/1",
+            },
+          },
+          "status": "incomplete",
+        },
+        "roles": Array [
+          "participant",
+          "facilitator",
+          "researcher",
+          "owner",
+        ],
+        "username": "facilitator",
+      },
+      "type": "participant",
+    }
+  `);
 
   userEvent.click(viewResponsesButtons[2]);
   expect(props.onClick).toHaveBeenCalledTimes(3);
-  expect(props.onClick.mock.calls[2][1]).toMatchInlineSnapshot();
+  expect(props.onClick.mock.calls[2][1]).toMatchInlineSnapshot(`
+    Object {
+      "as": "button",
+      "children": "View responses",
+      "className": "c__participant-card__responses",
+      "data-testid": "view-participant-responses",
+      "onClick": [Function],
+      "primary": true,
+      "size": "large",
+      "source": Object {
+        "email": "researcher@email.com",
+        "id": 444,
+        "is_anonymous": false,
+        "is_super": false,
+        "personalname": "Researcher User",
+        "progress": Object {
+          "completed": Array [],
+          "latestByScenarioId": Object {
+            "1": Object {
+              "created_at": 1602454306144,
+              "event_id": 1904,
+              "generic": "arrived at a slide.",
+              "is_complete": false,
+              "name": "slide-arrival",
+              "scenario_id": 99,
+              "url": "http://localhost:3000/cohort/1/run/99/slide/1",
+            },
+          },
+          "status": "incomplete",
+        },
+        "roles": Array [
+          "participant",
+          "researcher",
+        ],
+        "username": "researcher",
+      },
+      "type": "participant",
+    }
+  `);
 
   userEvent.click(viewResponsesButtons[3]);
   expect(props.onClick).toHaveBeenCalledTimes(4);
-  expect(props.onClick.mock.calls[3][1]).toMatchInlineSnapshot();
+  expect(props.onClick.mock.calls[3][1]).toMatchInlineSnapshot(`
+    Object {
+      "as": "button",
+      "children": "View responses",
+      "className": "c__participant-card__responses",
+      "data-testid": "view-participant-responses",
+      "onClick": [Function],
+      "primary": true,
+      "size": "large",
+      "source": Object {
+        "email": "participant@email.com",
+        "id": 333,
+        "is_anonymous": false,
+        "is_super": false,
+        "personalname": "Participant User",
+        "progress": Object {
+          "completed": Array [],
+          "latestByScenarioId": Object {
+            "1": Object {
+              "created_at": 1602454306144,
+              "event_id": 1903,
+              "generic": "arrived at a slide.",
+              "is_complete": false,
+              "name": "slide-arrival",
+              "scenario_id": 99,
+              "url": "http://localhost:3000/cohort/1/run/99/slide/1",
+            },
+          },
+          "status": "incomplete",
+        },
+        "roles": Array [
+          "participant",
+        ],
+        "username": "participant",
+      },
+      "type": "participant",
+    }
+  `);
 
   userEvent.click(viewResponsesButtons[4]);
   expect(props.onClick).toHaveBeenCalledTimes(5);
-  expect(props.onClick.mock.calls[4][1]).toMatchInlineSnapshot();
+  expect(props.onClick.mock.calls[4][1]).toMatchInlineSnapshot(`
+    Object {
+      "as": "button",
+      "children": "View responses",
+      "className": "c__participant-card__responses",
+      "data-testid": "view-participant-responses",
+      "onClick": [Function],
+      "primary": true,
+      "size": "large",
+      "source": Object {
+        "email": "",
+        "id": 222,
+        "is_anonymous": true,
+        "is_super": false,
+        "personalname": "",
+        "progress": Object {
+          "completed": Array [],
+          "latestByScenarioId": Object {
+            "1": Object {
+              "created_at": 1602454306144,
+              "event_id": 1902,
+              "generic": "arrived at a slide.",
+              "is_complete": false,
+              "name": "slide-arrival",
+              "scenario_id": 99,
+              "url": "http://localhost:3000/cohort/1/run/99/slide/1",
+            },
+          },
+          "status": "incomplete",
+        },
+        "roles": Array [
+          "participant",
+        ],
+        "username": "anonymous",
+      },
+      "type": "participant",
+    }
+  `);
 
   done();
 });

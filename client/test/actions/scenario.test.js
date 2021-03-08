@@ -1302,3 +1302,34 @@ test('SET_SLIDES', async () => {
   expect(action1).toEqual(action2);
   expect(action2).toEqual(action3);
 });
+
+test('GET_SCENARIO_PROMPT_COMPONENTS_SUCCESS', async () => {
+  const slides = state.scenario.slides.slice();
+  const components = slides[0].components.slice();
+
+  fetchImplementation(fetch, 200, { components });
+
+  const returnValue = await store.dispatch(
+    actions.getScenarioPromptComponents(1)
+  );
+  expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+    Array [
+      "/api/scenarios/1/slides/prompt-components",
+    ]
+  `);
+  expect(returnValue).toEqual(components);
+});
+
+test('GET_SCENARIO_PROMPT_COMPONENTS_ERROR', async () => {
+  fetchImplementation(fetch, 200, { error });
+
+  const returnValue = await store.dispatch(
+    actions.getScenarioPromptComponents(1)
+  );
+  expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+    Array [
+      "/api/scenarios/1/slides/prompt-components",
+    ]
+  `);
+  expect(returnValue).toBe(null);
+});

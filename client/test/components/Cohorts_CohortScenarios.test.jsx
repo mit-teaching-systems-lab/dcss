@@ -1332,7 +1332,7 @@ test('Run as participant', async done => {
   };
 
   userEvent.click(await screen.getAllByTestId('run-cohort-as-participant')[0]);
-  expect(window.location.href).toMatchInlineSnapshot();
+  expect(window.location.href).toMatchInlineSnapshot(`""`);
   expect(asFragment()).toMatchSnapshot();
 
   done();
@@ -1366,7 +1366,153 @@ test('Click to see all response', async done => {
 
   userEvent.click(viewResponsesButtons[0]);
   expect(props.onClick).toHaveBeenCalledTimes(1);
-  expect(props.onClick.mock.calls[0][1]).toMatchInlineSnapshot();
+  expect(props.onClick.mock.calls[0][1]).toMatchInlineSnapshot(`
+    Object {
+      "source": Object {
+        "author": Object {
+          "email": "super@email.com",
+          "id": 999,
+          "is_anonymous": false,
+          "is_super": true,
+          "personalname": "Super User",
+          "roles": Array [
+            "participant",
+            "super_admin",
+            "facilitator",
+            "researcher",
+          ],
+          "username": "super",
+        },
+        "categories": Array [],
+        "consent": Object {
+          "id": 69,
+          "prose": "",
+        },
+        "created_at": "2020-07-31T17:50:28.089Z",
+        "deleted_at": null,
+        "description": "This is the description of 'Some Other Scenario'",
+        "finish": Object {
+          "components": Array [
+            Object {
+              "html": "<h2>Bye!</h2>",
+              "type": "Text",
+            },
+          ],
+          "id": 11,
+          "is_finish": true,
+          "title": "",
+        },
+        "id": 99,
+        "labels": Array [
+          "a",
+        ],
+        "lock": Object {
+          "created_at": "2020-02-31T23:54:19.934Z",
+          "ended_at": null,
+          "scenario_id": 99,
+          "user_id": 999,
+        },
+        "personas": Array [
+          Object {
+            "author_id": 3,
+            "color": "#FFFFFF",
+            "created_at": "2020-12-01T15:49:04.962Z",
+            "deleted_at": null,
+            "description": "The default user participating in a single person scenario.",
+            "id": 1,
+            "is_read_only": true,
+            "is_shared": true,
+            "name": "Participant",
+            "updated_at": null,
+          },
+          Object {
+            "author_id": 3,
+            "color": "#3f59a9",
+            "created_at": "2020-12-01T15:49:04.962Z",
+            "deleted_at": null,
+            "description": "A non-specific teacher, participating in a multi person scenario.",
+            "id": 2,
+            "is_read_only": true,
+            "is_shared": true,
+            "name": "Teacher",
+            "updated_at": null,
+          },
+          Object {
+            "author_id": 3,
+            "color": "#e59235",
+            "created_at": "2020-12-01T15:49:04.962Z",
+            "deleted_at": null,
+            "description": "A non-specific student, participating in a multi person scenario.",
+            "id": 3,
+            "is_read_only": true,
+            "is_shared": true,
+            "name": "Student",
+            "updated_at": null,
+          },
+        ],
+        "slides": Array [
+          Object {
+            "components": Array [
+              Object {
+                "html": "<h2>Bye!</h2>",
+                "type": "Text",
+              },
+            ],
+            "id": 11,
+            "is_finish": true,
+            "title": "",
+          },
+          Object {
+            "components": Array [
+              Object {
+                "html": "<p>HTML!</p>",
+                "id": "b7e7a3f1-eb4e-4afa-8569-838fd5ec854f",
+                "type": "Text",
+              },
+              Object {
+                "agent": null,
+                "header": "TextResponse-1",
+                "id": "aede9380-c7a3-4ef7-add7-eb6677358c9e",
+                "placeholder": "",
+                "prompt": "",
+                "recallId": "",
+                "required": true,
+                "responseId": "be99fe9b-fa0d-4ab7-8541-1bfd1ef0bf11",
+                "timeout": 0,
+                "type": "TextResponse",
+              },
+              Object {
+                "html": "<p>?</p>",
+                "id": "f96ac6de-ac6b-4e06-bd97-d97e12fe72c1",
+                "type": "Text",
+              },
+            ],
+            "id": 22,
+            "is_finish": false,
+            "title": "",
+          },
+        ],
+        "status": 2,
+        "title": "Some Other Scenario",
+        "updated_at": null,
+        "users": Array [
+          Object {
+            "email": "super@email.com",
+            "id": 999,
+            "is_author": true,
+            "is_reviewer": false,
+            "is_super": true,
+            "personalname": "Super User",
+            "roles": Array [
+              "super",
+            ],
+            "username": "super",
+          },
+        ],
+      },
+      "type": "scenario",
+    }
+  `);
 
   done();
 });

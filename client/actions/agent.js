@@ -99,7 +99,6 @@ export let getAgents = filter => async dispatch => {
 };
 
 export let getAgentResponses = (agent, run, user) => async dispatch => {
-  console.log(run);
   try {
     const res = await (await fetch(
       `/api/agents/${agent.id}/run/${run.id}/user/${user.id}`

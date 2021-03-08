@@ -706,3 +706,63 @@ describe('GET_AGENTS_ERROR', () => {
     });
   });
 });
+
+describe('GET_AGENT_RESPONSES_SUCCESS', () => {
+  const agent = { id: 1 };
+  const run = { id: 2 };
+  const user = { id: 3 };
+  const responses = [];
+  describe('getAgentResponses', () => {
+    test('Receives error', async () => {
+      fetchImplementation(fetch, 200, { responses });
+      const returnValue = await store.dispatch(
+        actions.getAgentResponses(agent, run, user)
+      );
+      expect(fetch.mock.calls.length).toBe(1);
+      expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+        Array [
+          "/api/agents/1/run/2/user/3",
+        ]
+      `);
+      expect(returnValue).toEqual(responses);
+
+      await mockStore.dispatch(actions.getAgentResponses(agent, run, user));
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "responses": Array [],
+            "type": "GET_AGENT_RESPONSES_SUCCESS",
+          },
+        ]
+      `);
+    });
+  });
+});
+
+describe('GET_AGENT_RESPONSES_ERROR', () => {
+  const agent = { id: 1 };
+  const run = { id: 2 };
+  const user = { id: 3 };
+
+  describe('getAgentResponses', () => {
+    test('Receives responses', async () => {
+      fetchImplementation(fetch, 200, { error });
+      const returnValue = await store.dispatch(
+        actions.getAgentResponses(agent, run, user)
+      );
+      expect(fetch.mock.calls.length).toBe(1);
+      expect(returnValue).toEqual(null);
+      await mockStore.dispatch(actions.getAgentResponses(agent, run, user));
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "error": Object {
+              "error": [Error: something unexpected happened on the server],
+            },
+            "type": "GET_AGENT_RESPONSES_ERROR",
+          },
+        ]
+      `);
+    });
+  });
+});

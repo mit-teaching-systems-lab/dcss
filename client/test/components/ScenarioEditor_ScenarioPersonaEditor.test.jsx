@@ -958,7 +958,22 @@ test('Edit a persona', async done => {
     expect(personaActions.setPersona).toHaveBeenCalledTimes(2)
   );
 
-  expect(notify.mock.calls).toMatchInlineSnapshot();
+  expect(notify.mock.calls).toMatchInlineSnapshot(`
+    Array [
+      Array [
+        Object {
+          "color": "green",
+          "message": "Persona updated!",
+        },
+      ],
+      Array [
+        Object {
+          "color": "green",
+          "message": "Persona updated!",
+        },
+      ],
+    ]
+  `);
 
   done();
 });

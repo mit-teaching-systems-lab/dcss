@@ -5,6 +5,35 @@ exports[`Render 1 1 1`] = `
   <div
     id=\\"root\\"
   />
-  <div />
+  <div>
+    <div
+      aria-expanded=\\"false\\"
+      class=\\"ui scrolling dropdown\\"
+      role=\\"listbox\\"
+      tabindex=\\"0\\"
+    >
+      <i
+        aria-hidden=\\"true\\"
+        class=\\"dropdown icon\\"
+      />
+      <div
+        class=\\"menu transition\\"
+      >
+        <div
+          aria-checked=\\"true\\"
+          aria-selected=\\"true\\"
+          class=\\"active selected item\\"
+          role=\\"option\\"
+          style=\\"pointer-events: all;\\"
+        >
+          <span
+            class=\\"text\\"
+          >
+            No selection
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>"
 `;
