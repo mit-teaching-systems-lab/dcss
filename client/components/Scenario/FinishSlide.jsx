@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 import { Button, Card, Header, Icon, Modal } from '@components/UI';
 import { SCENARIO_COMPLETE } from '@hoc/withRunEventCapturing';
 import withSocket, { RUN_AGENT_START, RUN_AGENT_END } from '@hoc/withSocket';
-
+import Payload from '@utils/Payload';
 import Identity from '@utils/Identity';
 import './Scenario.css';
 
