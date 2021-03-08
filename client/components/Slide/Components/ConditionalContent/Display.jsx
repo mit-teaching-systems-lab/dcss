@@ -44,10 +44,7 @@ class Display extends Component {
       }
     );
 
-    this.props.socket.on(
-      AGENT_RESPONSE_CREATED,
-      this.onAgentResponseReceived
-    );
+    this.props.socket.on(AGENT_RESPONSE_CREATED, this.onAgentResponseReceived);
     this.props.socket.emit(AWAITING_AGENT, payload);
 
     this.setState({

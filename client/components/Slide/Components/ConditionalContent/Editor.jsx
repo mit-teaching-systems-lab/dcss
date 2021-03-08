@@ -301,9 +301,10 @@ class ConditionalContentEditor extends React.Component {
                   </p>
                   <p tabIndex="0" className="cce__paragraph">
                     <Icon name="attention" />
-                    <code className="cce__code">X</code> is the sum of affirmative
-                    responses from the agent, and{' '}
-                    <code className="cce__code">Y</code> is your comparison value.
+                    <code className="cce__code">X</code> is the sum of
+                    affirmative responses from the agent, and{' '}
+                    <code className="cce__code">Y</code> is your comparison
+                    value.
                   </p>
                 </Segment>
                 <Table definition striped unstackable>
@@ -522,31 +523,9 @@ class ConditionalContentEditor extends React.Component {
                     }}
                   />
                 ) : (
-                  'Select a component to configure as your condition&apos;s consequent output. It will be displayed here.'
+                  "Select a component to configure as your condition's consequent output. It will be displayed here."
                 )}
               </Segment>
-              {/*
-              <RichTextEditor
-                name="html"
-                defaultValue={html}
-                onChange={value => {
-                  console.log('?', value);
-                  onChange(
-                    {},
-                    {
-                      name: 'html',
-                      value
-                    }
-                  );
-                }}
-                options={{
-                  autoFocus: false,
-                  buttons: 'html',
-                  minHeight: '150px',
-                  tabDisable: true
-                }}
-              />
-              */}
             </Grid.Column>
           </Grid.Row>
         </Grid>
