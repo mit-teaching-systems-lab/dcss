@@ -282,14 +282,15 @@ class Chat extends Component {
     // TODO: possibly send "typing" message?
   }
 
-  onChatEnded() {
+  onChatEnded({ chat }) {
     if (this.hasUnmounted) {
       return;
     }
-
-    this.setState({
-      isClosed: true
-    });
+    if (chat.id === this.props.chat.id) {
+      this.setState({
+        isClosed: true
+      });
+    }
   }
 
   onMessageReceived() {
