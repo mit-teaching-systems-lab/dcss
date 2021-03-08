@@ -612,6 +612,33 @@ test('Layout on desktop', async done => {
 });
 
 describe('componentDidMount', () => {
+  test('Adds CHAT_ENDED handler', async done => {
+    const Component = Chat;
+
+    const props = {
+      ...commonProps
+    };
+
+    const state = {
+      ...commonState
+    };
+
+    const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+    await render(<ConnectedRoutedComponent {...props} />);
+    expect(serialize()).toMatchSnapshot();
+
+    await waitFor(() => expect(globalThis.mockSocket.on).toHaveBeenCalled());
+    expect(globalThis.mockSocket.on.mock.calls[0]).toMatchInlineSnapshot(`
+      Array [
+        "chat-ended",
+        [Function],
+      ]
+    `);
+    expect(serialize()).toMatchSnapshot();
+
+    done();
+  });
   test('Adds JOIN_OR_PART handler', async done => {
     const Component = Chat;
 
@@ -1165,6 +1192,49 @@ test('Calls onJoinOrPart when receives JOIN_OR_PART event', async done => {
       ],
     ]
   `);
+
+  done();
+});
+
+test('Calls onChatEnded when receives CHAT_ENDED event', async done => {
+  const Component = Chat;
+
+  const props = {
+    ...commonProps,
+    id: 1
+  };
+
+  const state = {
+    ...commonState
+  };
+
+  const emitter = new Emitter();
+
+  globalThis.mockSocket.emit.mockImplementation(emitter.emit);
+  globalThis.mockSocket.on.mockImplementation(emitter.on);
+  globalThis.mockSocket.off.mockImplementation(emitter.off);
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  const { asFragment, unmount } = render(
+    <ConnectedRoutedComponent {...props} />
+  );
+  expect(serialize()).toMatchSnapshot();
+
+  await waitFor(() =>
+    expect(globalThis.mockSocket.on).toHaveBeenCalledWith(
+      'join-or-part',
+      expect.any(Function)
+    )
+  );
+
+  globalThis.mockSocket.emit(SOCKET_EVENT_TYPES.CHAT_ENDED, { chat, user });
+
+  await waitFor(async () =>
+    expect(await screen.findByLabelText('Chat is closed')).toBeInTheDocument()
+  );
+
+  expect(serialize()).toMatchSnapshot();
 
   done();
 });
@@ -1983,13 +2053,20 @@ test('Rnd: onDragStop/onResizeStop', async done => {
                   socket={
                     Object {
                       "_events": Object {
-                        "chat-ended": [Function],
+                        "chat-ended": Array [
+                          [Function],
+                          [Function],
+                        ],
                         "chat-message-created": Array [
+                          [Function],
                           [Function],
                           [Function],
                         ],
                         "chat-message-updated": [Function],
-                        "join-or-part": [Function],
+                        "join-or-part": Array [
+                          [Function],
+                          [Function],
+                        ],
                       },
                       "_eventsCount": 4,
                       "disconnect": [MockFunction],
@@ -2100,7 +2177,7 @@ test('Rnd: onDragStop/onResizeStop', async done => {
               >
                 <ChatComposer
                   defaultValue="<p>credible-lyrebird wrote:<blockquote><p>Hi!</p></blockquote></p>"
-                  id="x24"
+                  id="x26"
                   name="content"
                   onChange={[Function]}
                   onInput={[Function]}
@@ -2337,13 +2414,20 @@ test('Rnd: onDrag/onResize', async done => {
                   socket={
                     Object {
                       "_events": Object {
-                        "chat-ended": [Function],
+                        "chat-ended": Array [
+                          [Function],
+                          [Function],
+                        ],
                         "chat-message-created": Array [
+                          [Function],
                           [Function],
                           [Function],
                         ],
                         "chat-message-updated": [Function],
-                        "join-or-part": [Function],
+                        "join-or-part": Array [
+                          [Function],
+                          [Function],
+                        ],
                       },
                       "_eventsCount": 4,
                       "disconnect": [MockFunction],
@@ -2454,7 +2538,7 @@ test('Rnd: onDrag/onResize', async done => {
               >
                 <ChatComposer
                   defaultValue="<p>credible-lyrebird wrote:<blockquote><p>Hi!</p></blockquote></p>"
-                  id="x25"
+                  id="x27"
                   name="content"
                   onChange={[Function]}
                   onInput={[Function]}
