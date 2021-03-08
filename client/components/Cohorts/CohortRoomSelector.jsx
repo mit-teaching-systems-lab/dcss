@@ -266,6 +266,11 @@ export class CohortRoomSelector extends React.Component {
                       key={key}
                       onClick={async () => {
                         await this.props.joinChat(chat.id, persona);
+                        location.href = makeCohortScenarioChatJoinPath(
+                          cohort,
+                          scenario,
+                          chat
+                        );
                       }}
                     >
                       {content}
