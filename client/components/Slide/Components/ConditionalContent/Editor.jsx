@@ -286,26 +286,26 @@ class ConditionalContentEditor extends React.Component {
         <Grid>
           <Grid.Row>
             <Grid.Column>
-              <AgentSelector
-                label="Select an active AI agent:"
-                agent={agent}
-                agentsInUse={agentsInUse}
-                onChange={onChange}
-              />
-              <Segment>
-                <p tabIndex="0" className="cce__paragraph">
-                  <Icon name="attention" />
-                  Create rules that are used to determine if the content below
-                  will be displayed to the participant.
-                </p>
-                <p tabIndex="0" className="cce__paragraph">
-                  <Icon name="attention" />
-                  <code className="cce__code">X</code> is the sum of affirmative
-                  responses from the agent, and{' '}
-                  <code className="cce__code">Y</code> is your comparison value.
-                </p>
-              </Segment>
               <Form>
+                <AgentSelector
+                  label="Select an active AI agent:"
+                  agent={agent}
+                  agentsInUse={agentsInUse}
+                  onChange={onChange}
+                />
+                <Segment>
+                  <p tabIndex="0" className="cce__paragraph">
+                    <Icon name="attention" />
+                    Create rules that are used to determine if the content below
+                    will be displayed to the participant.
+                  </p>
+                  <p tabIndex="0" className="cce__paragraph">
+                    <Icon name="attention" />
+                    <code className="cce__code">X</code> is the sum of affirmative
+                    responses from the agent, and{' '}
+                    <code className="cce__code">Y</code> is your comparison value.
+                  </p>
+                </Segment>
                 <Table definition striped unstackable>
                   <Table.Header>
                     <Table.Row>

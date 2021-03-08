@@ -29,10 +29,11 @@ class Display extends Component {
   }
 
   async componentDidMount() {
-    if (!this.isScenarioRun) {
+    const { agent, run, user } = this.props;
+
+    if (!this.isScenarioRun || !(agent && agent.id)) {
       return;
     }
-    const { agent, run, user } = this.props;
 
     const responses = await this.props.getAgentResponses(agent, run, user);
 
@@ -43,7 +44,10 @@ class Display extends Component {
       }
     );
 
-    this.props.socket.on(AGENT_RESPONSE_CREATED, this.onAgentResponseReceived);
+    this.props.socket.on(
+      AGENT_RESPONSE_CREATED,
+      this.onAgentResponseReceived
+    );
     this.props.socket.emit(AWAITING_AGENT, payload);
 
     this.setState({
