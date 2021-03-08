@@ -14,11 +14,14 @@ env:
 before_install:
   - export TZ=America/New_York
 
+addons:
+  postgresql: "11"
+
 services:
   - postgresql
 
 before_script:
-  - psql -U postgres -c 'create extension "uuid-ossp";'
+  - psql -c 'create extension if not exists "uuid-ossp";' -U postgres
   - yarn db-init:test
 
 jobs:
