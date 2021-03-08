@@ -73,13 +73,20 @@ class ChatDraggableResizableDialog extends Component {
     const availableX = document.body.offsetWidth;
     const availableY = document.body.offsetHeight;
 
-    if (right > availableX && x === 0) {
+    if (right > availableX) {
       x = availableX - right;
     }
 
-    if (bottom > availableY && y === 0) {
+    if (bottom > availableY) {
       y = availableY - bottom;
     }
+    // Previously:
+    // if (right > availableX && x === 0) {
+    //   x = availableX - right;
+    // }
+    // if (bottom > availableY && y === 0) {
+    //   y = availableY - bottom;
+    // }
 
     this.setState({
       x,
