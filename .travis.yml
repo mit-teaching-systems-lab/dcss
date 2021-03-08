@@ -21,7 +21,7 @@ services:
   - postgresql
 
 before_script:
-  - yarn db-init:ci
+  # - yarn db-init:test
 
 jobs:
   include:
@@ -31,7 +31,7 @@ jobs:
     - stage: Client test
       script:
         - yarn workspace client run test
-    - stage: Server test
-      script:
-        - yarn workspace server run ci:test
-        - yarn workspace test run test
+    # - stage: Server test
+    #   script:
+    #     - yarn workspace server run test
+    #     - yarn workspace test run test
