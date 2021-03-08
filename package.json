@@ -29,6 +29,7 @@
     "db-create:test:role": "yarn workspace server run db-create:test:role",
     "db-init:dev": "yarn workspace server run db-init:dev",
     "db-init:test": "yarn workspace server run db-init:test",
+    "db-init:ci": "yarn workspace server run db-init:ci",
     "db-migrate-down:dev": "yarn workspace server run db-migrate-down:dev",
     "db-migrate-down:test": "yarn workspace server run db-migrate-down:test",
     "db-migrate-up:dev": "yarn workspace server run db-migrate-up:dev",
