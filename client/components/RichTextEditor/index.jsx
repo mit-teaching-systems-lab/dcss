@@ -127,6 +127,9 @@ class RichTextEditor extends Component {
         options.katex = katex;
       }
 
+      // Ensure that media is not auto selected when uploaded
+      options.mediaAutoSelect = false;
+
       const onContentChange = content => {
         if (name) {
           this.ref.current.value = content;
