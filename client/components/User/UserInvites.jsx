@@ -159,9 +159,6 @@ class UserInvites extends Component {
 
           if (status === INVITE_STATUS_ACCEPT) {
             location.href = makeAcceptedInviteRedirectPath(invite);
-            // this.props.history.push(
-            //   makeAcceptedInviteRedirectPath(invite)
-            // );
           }
         };
 
@@ -198,6 +195,21 @@ class UserInvites extends Component {
       //   };
       // }
 
+      // If there is an open modal window, or some other view that
+      // obscures the main application view, then Modal.Accessible
+      // will prevent interactions with elements outside of the
+      // focus trap. For these cases, we will not show the invite
+      // notification until the view is cleared.
+      if (document.body &&
+          document.body.classList.contains('dimmed')) {
+        let interval = setInterval(() => {
+          if (!document.body.classList.contains('dimmed')) {
+            clearInterval(interval);
+            notify(notification.props);
+          }
+        }, 1000);
+        return;
+      }
       notify(notification.props);
     }
   }
