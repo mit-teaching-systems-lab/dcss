@@ -43,7 +43,8 @@ class Lobby extends Component {
     super(props);
 
     this.state = {
-      isReady: false
+      isReady: false,
+      selection: null,
     };
 
     this.isComponentMounted = false;
@@ -166,7 +167,7 @@ class Lobby extends Component {
 
   render() {
     const { chat, cohort, scenario, user } = this.props;
-    const { isReady } = this.state;
+    const { isReady, selection } = this.state;
 
     if (!isReady) {
       return <Loading />;
@@ -176,21 +177,30 @@ class Lobby extends Component {
       ? `${scenario.title} in ${cohort.name} Lobby`
       : `${scenario.title} Lobby`;
 
-    const lobbyUserViewsProps = {
+    const lobbyUserSelectOrWaitingProps = {
       chat,
       cohort,
-      scenario
+      scenario,
+      selection
+    };
+
+    const lobbyUserOverviewProps = {
+      chat,
+      cohort,
+      scenario,
+      selection,
+      onSelect: (selection) => {
+        console.log(selection);
+        this.setState({
+          selection
+        });
+      }
     };
 
     const chatUser = this.props.chat.usersById[user.id];
     const disabled =
       (!cohort && !chatUser) || (chatUser && !chatUser.persona_id);
     const positive = !disabled;
-    const onSelect = selected => {
-      if (this.props.onRoleSelect) {
-        this.props.onRoleSelect(selected);
-      }
-    };
 
     const runStorageKey = cohort
       ? `cohort/${cohort.id}/run/${scenario.id}`
@@ -234,12 +244,12 @@ class Lobby extends Component {
                 </Card.Content>
                 <Card.Content className="scenario__slide-card-content">
                   <LobbyUserSelect
-                    {...lobbyUserViewsProps}
-                    onSelect={onSelect}
+                    {...lobbyUserSelectOrWaitingProps}
+                    onSelect={this.props.onRoleSelect}
                   />
-                  <LobbyUserWaiting {...lobbyUserViewsProps} />
+                  <LobbyUserWaiting {...lobbyUserSelectOrWaitingProps} />
                   {this.isCohortScenarioRun ? (
-                    <LobbyUserOverview {...lobbyUserViewsProps} />
+                    <LobbyUserOverview {...lobbyUserOverviewProps} />
                   ) : null}
                 </Card.Content>
                 <Card.Content extra>
@@ -252,10 +262,10 @@ class Lobby extends Component {
           </Grid>
         ) : (
           <Fragment>
-            <LobbyUserSelect {...lobbyUserViewsProps} />
-            <LobbyUserWaiting {...lobbyUserViewsProps} />
+            <LobbyUserSelect {...lobbyUserSelectOrWaitingProps} />
+            <LobbyUserWaiting {...lobbyUserSelectOrWaitingProps} />
             {this.isCohortScenarioRun ? (
-              <LobbyUserOverview {...lobbyUserViewsProps} />
+              <LobbyUserOverview {...lobbyUserOverviewProps} />
             ) : null}
           </Fragment>
         )}

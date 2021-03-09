@@ -44,6 +44,7 @@ exports[`Fallbacks for state.chat, state.scenario, state.cohort (missing) 1`] = 
                 <div
                   class=\\"item\\"
                   role=\\"listitem\\"
+                  style=\\"cursor: default;\\"
                 >
                   <div
                     class=\\"content\\"
@@ -107,6 +108,7 @@ exports[`Fallbacks for state.chat, state.scenario, state.cohort (unloaded) 1`] =
                 <div
                   class=\\"item\\"
                   role=\\"listitem\\"
+                  style=\\"cursor: default;\\"
                 >
                   <div
                     class=\\"content\\"
@@ -170,6 +172,7 @@ exports[`Render 1 1 1`] = `
                 <div
                   class=\\"item\\"
                   role=\\"listitem\\"
+                  style=\\"cursor: default;\\"
                 >
                   <div
                     class=\\"content\\"
@@ -233,6 +236,7 @@ exports[`Render 2 1 1`] = `
                 <div
                   class=\\"item\\"
                   role=\\"listitem\\"
+                  style=\\"cursor: default;\\"
                 >
                   <div
                     class=\\"content\\"
@@ -296,6 +300,7 @@ exports[`With cohort Has users that are assigned personas 1`] = `
                 <div
                   class=\\"item\\"
                   role=\\"listitem\\"
+                  style=\\"cursor: default;\\"
                 >
                   <div
                     class=\\"content\\"
@@ -359,6 +364,7 @@ exports[`With cohort Has users that are no longer present 1`] = `
                 <div
                   class=\\"item\\"
                   role=\\"listitem\\"
+                  style=\\"cursor: default;\\"
                 >
                   <div
                     class=\\"content\\"
@@ -422,6 +428,7 @@ exports[`Without cohort Has users that are assigned personas 1`] = `
                 <div
                   class=\\"item\\"
                   role=\\"listitem\\"
+                  style=\\"cursor: default;\\"
                 >
                   <div
                     class=\\"content\\"
@@ -485,6 +492,7 @@ exports[`Without cohort Has users that are no longer present 1`] = `
                 <div
                   class=\\"item\\"
                   role=\\"listitem\\"
+                  style=\\"cursor: default;\\"
                 >
                   <div
                     class=\\"content\\"
@@ -492,89 +500,6 @@ exports[`Without cohort Has users that are no longer present 1`] = `
                     <p>
                       No one has entered the scenario room yet
                     </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div
-        class=\\"row\\"
-      >
-        <div
-          class=\\"column\\"
-        >
-          <p>
-            Who has left the scenario?
-          </p>
-        </div>
-      </div>
-      <div
-        class=\\"row\\"
-      >
-        <div
-          class=\\"column\\"
-        >
-          <div
-            class=\\"ui fluid card\\"
-          >
-            <div
-              class=\\"content\\"
-            >
-              <div
-                class=\\"ui divided selection list\\"
-                data-testid=\\"lobby-user-absent-invitees\\"
-                role=\\"list\\"
-              >
-                <div
-                  class=\\"item\\"
-                  role=\\"listitem\\"
-                >
-                  <div
-                    class=\\"content\\"
-                  >
-                    <span
-                      aria-label=\\"Facilitator User (facilitator)\\"
-                      class=\\"ui medium text\\"
-                      title=\\"Facilitator User (facilitator)\\"
-                    >
-                      Facilitator User
-                    </span>
-                    
-                     
-                    <i
-                      aria-hidden=\\"true\\"
-                      class=\\"small icon chalkboard teacher\\"
-                      style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                      title=\\"Facilitator\\"
-                    />
-                     
-                  </div>
-                </div>
-                <div
-                  class=\\"item\\"
-                  role=\\"listitem\\"
-                >
-                  <div
-                    class=\\"content\\"
-                  >
-                    <span
-                      aria-label=\\"Researcher User (researcher)\\"
-                      class=\\"ui medium text\\"
-                      title=\\"Researcher User (researcher)\\"
-                    >
-                      Researcher User
-                    </span>
-                    
-                     
-                    <i
-                      aria-hidden=\\"true\\"
-                      class=\\"small icon user graduate\\"
-                      style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                      title=\\"Researcher\\"
-                    />
-                     
                   </div>
                 </div>
               </div>

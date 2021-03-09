@@ -402,6 +402,7 @@ exports[`Fallback: chat missing, use scenario and cohort to request chat 1`] = `
                 <div
                   class=\\"item\\"
                   role=\\"listitem\\"
+                  style=\\"cursor: default;\\"
                 >
                   <div
                     class=\\"content\\"
@@ -826,6 +827,7 @@ exports[`Fallback: chat missing, use scenario and cohort to request chat 4`] = `
                 <div
                   class=\\"item\\"
                   role=\\"listitem\\"
+                  style=\\"cursor: default;\\"
                 >
                   <div
                     class=\\"content\\"
@@ -1250,6 +1252,7 @@ exports[`Fallback: chat missing, use scenario to request chat 1`] = `
                 <div
                   class=\\"item\\"
                   role=\\"listitem\\"
+                  style=\\"cursor: default;\\"
                 >
                   <div
                     class=\\"content\\"
@@ -1674,6 +1677,7 @@ exports[`Fallback: chat missing, use scenario to request chat 4`] = `
                 <div
                   class=\\"item\\"
                   role=\\"listitem\\"
+                  style=\\"cursor: default;\\"
                 >
                   <div
                     class=\\"content\\"
@@ -2098,6 +2102,7 @@ exports[`Fallback: chat, scenario, cohort are not yet loaded, use provided props
                 <div
                   class=\\"item\\"
                   role=\\"listitem\\"
+                  style=\\"cursor: default;\\"
                 >
                   <div
                     class=\\"content\\"
@@ -2522,6 +2527,7 @@ exports[`Fallback: chat, scenario, cohort are not yet loaded, use provided props
                 <div
                   class=\\"item\\"
                   role=\\"listitem\\"
+                  style=\\"cursor: default;\\"
                 >
                   <div
                     class=\\"content\\"
@@ -2908,6 +2914,7 @@ exports[`Fallback: cohort expected, but not yet loaded 1`] = `
                 <div
                   class=\\"item\\"
                   role=\\"listitem\\"
+                  style=\\"cursor: default;\\"
                 >
                   <div
                     class=\\"content\\"
@@ -3294,6 +3301,7 @@ exports[`Fallback: cohort expected, but not yet loaded 4`] = `
                 <div
                   class=\\"item\\"
                   role=\\"listitem\\"
+                  style=\\"cursor: default;\\"
                 >
                   <div
                     class=\\"content\\"
@@ -3718,6 +3726,7 @@ exports[`Fallback: scenario missing 1`] = `
                 <div
                   class=\\"item\\"
                   role=\\"listitem\\"
+                  style=\\"cursor: default;\\"
                 >
                   <div
                     class=\\"content\\"
@@ -4142,6 +4151,7 @@ exports[`Fallback: scenario missing 4`] = `
                 <div
                   class=\\"item\\"
                   role=\\"listitem\\"
+                  style=\\"cursor: default;\\"
                 >
                   <div
                     class=\\"content\\"
@@ -4566,6 +4576,7 @@ exports[`Fallback: scenario object present, unloaded 1`] = `
                 <div
                   class=\\"item\\"
                   role=\\"listitem\\"
+                  style=\\"cursor: default;\\"
                 >
                   <div
                     class=\\"content\\"
@@ -4990,6 +5001,7 @@ exports[`Fallback: scenario object present, unloaded 4`] = `
                 <div
                   class=\\"item\\"
                   role=\\"listitem\\"
+                  style=\\"cursor: default;\\"
                 >
                   <div
                     class=\\"content\\"
@@ -5370,6 +5382,7 @@ exports[`Lobby visited by a non-facilitator user 1`] = `
                 <div
                   class=\\"item\\"
                   role=\\"listitem\\"
+                  style=\\"cursor: default;\\"
                 >
                   <div
                     class=\\"content\\"
@@ -5750,6 +5763,7 @@ exports[`Lobby visited by a non-facilitator user 4`] = `
                 <div
                   class=\\"item\\"
                   role=\\"listitem\\"
+                  style=\\"cursor: default;\\"
                 >
                   <div
                     class=\\"content\\"
@@ -6195,7 +6209,9 @@ exports[`With cohort, Receives RUN_CHAT_LINK, calls getChatUsersByChatId 1`] = `
                     />
                      
                     as 
-                    Teacher
+                    <strong>
+                      Teacher
+                    </strong>
                   </div>
                 </div>
               </div>
@@ -6634,7 +6650,9 @@ exports[`With cohort, Receives RUN_CHAT_LINK, calls getChatUsersByChatId 4`] = `
                     />
                      
                     as 
-                    Teacher
+                    <strong>
+                      Teacher
+                    </strong>
                   </div>
                 </div>
               </div>
@@ -7121,6 +7139,7 @@ exports[`Without cohort, Receives RUN_CHAT_LINK, calls getLinkedChatUsersByChatI
                 <div
                   class=\\"item\\"
                   role=\\"listitem\\"
+                  style=\\"cursor: default;\\"
                 >
                   <div
                     class=\\"content\\"
@@ -7614,6 +7633,7 @@ exports[`Without cohort, Receives RUN_CHAT_LINK, calls getLinkedChatUsersByChatI
                 <div
                   class=\\"item\\"
                   role=\\"listitem\\"
+                  style=\\"cursor: default;\\"
                 >
                   <div
                     class=\\"content\\"
@@ -8060,6 +8080,7 @@ exports[`props.asCard 1`] = `
                         <div
                           class=\\"item\\"
                           role=\\"listitem\\"
+                          style=\\"cursor: default;\\"
                         >
                           <div
                             class=\\"content\\"
@@ -8525,6 +8546,7 @@ exports[`props.asCard 4`] = `
                         <div
                           class=\\"item\\"
                           role=\\"listitem\\"
+                          style=\\"cursor: default;\\"
                         >
                           <div
                             class=\\"content\\"

@@ -50,7 +50,10 @@ class LobbyUserOverview extends Component {
     }
   }
 
-  renderUserList(users) {
+  renderUserList(users, options = {}) {
+    const {
+      onSelect
+    } = options;
     const { chat } = this.props;
     return (
       <List divided relaxed selection data-testid="lobby-cohort-chat-users">
@@ -71,8 +74,19 @@ class LobbyUserOverview extends Component {
             </Text>
           ) : null;
 
+
+          const listItemProps = {
+            as: 'a',
+            key,
+            onClick: () => {
+              if (onSelect) {
+                onSelect(user);
+              }
+            },
+          };
+
           accum.push(
-            <List.Item key={key}>
+            <List.Item {...listItemProps}>
               <List.Content>
                 <List.Description>
                   {/*<Image size="mini" src={avatar.src} />{' '}*/}
@@ -147,7 +161,7 @@ class LobbyUserOverview extends Component {
   render() {
     const { chats, isReady } = this.state;
 
-    const { chat, cohort, user } = this.props;
+    const { chat, cohort, onSelect, user } = this.props;
 
     if (!isReady) {
       return null;
@@ -200,7 +214,7 @@ class LobbyUserOverview extends Component {
             <Grid.Row>
               <Grid.Column>
                 <p>
-                  Who is <strong>not yet</strong> in a scenario room?
+                  Who is <strong>not in any scenario</strong> room?
                 </p>
               </Grid.Column>
             </Grid.Row>
@@ -212,7 +226,7 @@ class LobbyUserOverview extends Component {
                   data-testid="lobby-cohort-users-unassigned-card"
                 >
                   <Card.Content>
-                    {this.renderUserList(usersNotInRooms)}
+                    {this.renderUserList(usersNotInRooms, { onSelect })}
                   </Card.Content>
                 </Card>
               </Grid.Column>
@@ -268,6 +282,7 @@ LobbyUserOverview.propTypes = {
   chat: PropTypes.object,
   cohort: PropTypes.object,
   getCohortChatsOverview: PropTypes.func,
+  onSelect: PropTypes.func,
   scenario: PropTypes.object,
   scenariosById: PropTypes.object,
   user: PropTypes.object,

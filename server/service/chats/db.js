@@ -217,11 +217,12 @@ exports.joinChat = async (chat_id, user_id, persona_id = null) => {
     return;
   }
   return await withClientTransaction(async client => {
+    const is_present = persona_id !== null;
     const result = await client.query(sql`
       INSERT INTO chat_user
         (chat_id, user_id, is_present, persona_id)
       VALUES
-        (${chat_id}, ${user_id}, TRUE, ${persona_id})
+        (${chat_id}, ${user_id}, ${is_present}, ${persona_id})
       ON CONFLICT ON CONSTRAINT chat_user_pkey
       DO
         UPDATE SET is_present = TRUE, persona_id = ${persona_id}

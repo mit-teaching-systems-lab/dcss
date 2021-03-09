@@ -25,7 +25,7 @@ class LobbyUserWaiting extends Component {
         persona => persona.id === chatUser.persona_id
       );
 
-      const asPersona = persona ? <Fragment>as {persona.name}</Fragment> : null;
+      const asPersona = persona ? <Fragment>as <strong>{persona.name}</strong></Fragment> : null;
 
       return (
         <List.Item key={key}>
@@ -70,7 +70,7 @@ class LobbyUserWaiting extends Component {
                     {totalPresent ? (
                       this.renderListItems(usersPresentWithAssignedRoles)
                     ) : (
-                      <List.Item>
+                      <List.Item style={{cursor: 'default'}}>
                         <List.Content>
                           <p>No one has entered the scenario room yet</p>
                         </List.Content>
@@ -81,7 +81,7 @@ class LobbyUserWaiting extends Component {
               </Card>
             </Grid.Column>
           </Grid.Row>
-          {totalAbsent ? (
+          {/*totalAbsent ? (
             <Fragment>
               <Grid.Row>
                 <Grid.Column>
@@ -104,7 +104,7 @@ class LobbyUserWaiting extends Component {
                 </Grid.Column>
               </Grid.Row>
             </Fragment>
-          ) : null}
+          ) : null*/}
         </Grid>
       </Fragment>
     );

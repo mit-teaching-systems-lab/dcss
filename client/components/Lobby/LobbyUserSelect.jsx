@@ -138,6 +138,28 @@ class LobbyUserSelect extends Component {
     });
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    const {
+      selection
+    } = nextProps;
+
+    if (selection && !nextState.selected.find(s => s.user.id === selection.id)) {
+      this.setState({
+        selected: [
+          ...nextState.selected,
+          {
+            persona: {
+              id: null
+            },
+            user: selection
+          }
+        ]
+      });
+    }
+
+    return true;
+  }
+
   onRemoveInviteeClick(event, { id }) {
     const selected = this.state.selected.slice();
     const index = selected.findIndex(selection => selection.user.id === id);
@@ -412,7 +434,7 @@ class LobbyUserSelect extends Component {
   onSendInviteClick() {
     const { scenario, usersById } = this.props;
     const { isSending, selected, sent } = this.state;
-    const header = 'Send invites?';
+    const header = 'Set these roles and send invites?';
     const participants = selected.slice(1);
     const pluralParticipant = pluralize('participant', participants.length);
     const pluralRole = pluralize('role', participants.length);
@@ -427,7 +449,7 @@ class LobbyUserSelect extends Component {
       return (
         <List.Item key={key}>
           <List.Content>
-            <strong>{user.content}</strong> as <strong>{persona.name}</strong>.
+            {user.content} as <strong>{persona.name}</strong>.
           </List.Content>
         </List.Item>
       );
@@ -490,12 +512,16 @@ class LobbyUserSelect extends Component {
       });
 
       const sent = [];
+      const {
+        chat,
+        user
+      } = this.props;
 
       for (let selection of this.state.selected) {
-        if (selection.user.id === this.props.user.id) {
-          await this.props.joinChat(this.props.chat.id, selection.persona);
+        if (selection.user.id === user.id) {
+          await this.props.joinChat(chat.id, selection.persona);
         } else {
-          await this.props.createChatInvite(this.props.chat.id, selection);
+          await this.props.createChatInvite(chat.id, selection);
         }
 
         sent.push(selection.user.id);
@@ -505,8 +531,9 @@ class LobbyUserSelect extends Component {
         });
       }
 
-      // Sync invites
+      // Sync invites & chat users
       await this.props.getInvites();
+      await this.getChatUsers();
 
       this.setState({
         confirmation: {
@@ -775,6 +802,7 @@ LobbyUserSelect.propTypes = {
   joinChat: PropTypes.func,
   onSelect: PropTypes.func,
   personasInUseById: PropTypes.object,
+  selection: PropTypes.object,
   scenario: PropTypes.object,
   user: PropTypes.object,
   users: PropTypes.array,
@@ -844,6 +872,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => ({
   createChatInvite: (id, params) => dispatch(createChatInvite(id, params)),
+  getChat: (id) => dispatch(getChat(id)),
   getChatUsersByChatId: id => dispatch(getChatUsersByChatId(id)),
   getLinkedChatUsersByChatId: id => dispatch(getLinkedChatUsersByChatId(id)),
   getInvites: () => dispatch(getInvites()),

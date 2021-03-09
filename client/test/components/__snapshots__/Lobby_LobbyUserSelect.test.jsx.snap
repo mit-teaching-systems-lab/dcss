@@ -9392,7 +9392,7 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 10`] =
         <div
           class=\\"content\\"
         >
-          Send invites?
+          Set these roles and send invites?
         </div>
       </div>
       <div
@@ -9433,23 +9433,21 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 10`] =
                       <div
                         class=\\"content\\"
                       >
-                        <strong>
-                          <span
-                            aria-label=\\"Super User (super)\\"
-                            class=\\"ui medium text\\"
-                            title=\\"Super User (super)\\"
-                          >
-                            Super User
-                          </span>
-                          
-                           
-                          <i
-                            aria-hidden=\\"true\\"
-                            class=\\"small icon chess queen\\"
-                            style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                            title=\\"Super\\"
-                          />
-                        </strong>
+                        <span
+                          aria-label=\\"Super User (super)\\"
+                          class=\\"ui medium text\\"
+                          title=\\"Super User (super)\\"
+                        >
+                          Super User
+                        </span>
+                        
+                         
+                        <i
+                          aria-hidden=\\"true\\"
+                          class=\\"small icon chess queen\\"
+                          style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                          title=\\"Super\\"
+                        />
                          as 
                         <strong>
                           Teacher
@@ -9498,23 +9496,21 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 10`] =
                       <div
                         class=\\"content\\"
                       >
-                        <strong>
-                          <span
-                            aria-label=\\"Facilitator User (facilitator)\\"
-                            class=\\"ui medium text\\"
-                            title=\\"Facilitator User (facilitator)\\"
-                          >
-                            Facilitator User
-                          </span>
-                          
-                           
-                          <i
-                            aria-hidden=\\"true\\"
-                            class=\\"small icon chalkboard teacher\\"
-                            style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                            title=\\"Facilitator\\"
-                          />
-                        </strong>
+                        <span
+                          aria-label=\\"Facilitator User (facilitator)\\"
+                          class=\\"ui medium text\\"
+                          title=\\"Facilitator User (facilitator)\\"
+                        >
+                          Facilitator User
+                        </span>
+                        
+                         
+                        <i
+                          aria-hidden=\\"true\\"
+                          class=\\"small icon chalkboard teacher\\"
+                          style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                          title=\\"Facilitator\\"
+                        />
                          as 
                         <strong>
                           Student
@@ -10597,7 +10593,7 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 13`] =
         <div
           class=\\"content\\"
         >
-          Send invites?
+          Set these roles and send invites?
         </div>
       </div>
       <div
@@ -10638,23 +10634,21 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 13`] =
                       <div
                         class=\\"content\\"
                       >
-                        <strong>
-                          <span
-                            aria-label=\\"Super User (super)\\"
-                            class=\\"ui medium text\\"
-                            title=\\"Super User (super)\\"
-                          >
-                            Super User
-                          </span>
-                          
-                           
-                          <i
-                            aria-hidden=\\"true\\"
-                            class=\\"small icon chess queen\\"
-                            style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                            title=\\"Super\\"
-                          />
-                        </strong>
+                        <span
+                          aria-label=\\"Super User (super)\\"
+                          class=\\"ui medium text\\"
+                          title=\\"Super User (super)\\"
+                        >
+                          Super User
+                        </span>
+                        
+                         
+                        <i
+                          aria-hidden=\\"true\\"
+                          class=\\"small icon chess queen\\"
+                          style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                          title=\\"Super\\"
+                        />
                          as 
                         <strong>
                           Teacher
@@ -10703,23 +10697,21 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 13`] =
                       <div
                         class=\\"content\\"
                       >
-                        <strong>
-                          <span
-                            aria-label=\\"Facilitator User (facilitator)\\"
-                            class=\\"ui medium text\\"
-                            title=\\"Facilitator User (facilitator)\\"
-                          >
-                            Facilitator User
-                          </span>
-                          
-                           
-                          <i
-                            aria-hidden=\\"true\\"
-                            class=\\"small icon chalkboard teacher\\"
-                            style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                            title=\\"Facilitator\\"
-                          />
-                        </strong>
+                        <span
+                          aria-label=\\"Facilitator User (facilitator)\\"
+                          class=\\"ui medium text\\"
+                          title=\\"Facilitator User (facilitator)\\"
+                        >
+                          Facilitator User
+                        </span>
+                        
+                         
+                        <i
+                          aria-hidden=\\"true\\"
+                          class=\\"small icon chalkboard teacher\\"
+                          style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                          title=\\"Facilitator\\"
+                        />
                          as 
                         <strong>
                           Student
@@ -11136,7 +11128,7 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 14`] =
         <div
           class=\\"content\\"
         >
-          Send invites?
+          Set these roles and send invites?
         </div>
       </div>
       <div
@@ -11177,23 +11169,21 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 14`] =
                       <div
                         class=\\"content\\"
                       >
-                        <strong>
-                          <span
-                            aria-label=\\"Super User (super)\\"
-                            class=\\"ui medium text\\"
-                            title=\\"Super User (super)\\"
-                          >
-                            Super User
-                          </span>
-                          
-                           
-                          <i
-                            aria-hidden=\\"true\\"
-                            class=\\"small icon chess queen\\"
-                            style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                            title=\\"Super\\"
-                          />
-                        </strong>
+                        <span
+                          aria-label=\\"Super User (super)\\"
+                          class=\\"ui medium text\\"
+                          title=\\"Super User (super)\\"
+                        >
+                          Super User
+                        </span>
+                        
+                         
+                        <i
+                          aria-hidden=\\"true\\"
+                          class=\\"small icon chess queen\\"
+                          style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                          title=\\"Super\\"
+                        />
                          as 
                         <strong>
                           Teacher
@@ -11242,23 +11232,21 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 14`] =
                       <div
                         class=\\"content\\"
                       >
-                        <strong>
-                          <span
-                            aria-label=\\"Facilitator User (facilitator)\\"
-                            class=\\"ui medium text\\"
-                            title=\\"Facilitator User (facilitator)\\"
-                          >
-                            Facilitator User
-                          </span>
-                          
-                           
-                          <i
-                            aria-hidden=\\"true\\"
-                            class=\\"small icon chalkboard teacher\\"
-                            style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                            title=\\"Facilitator\\"
-                          />
-                        </strong>
+                        <span
+                          aria-label=\\"Facilitator User (facilitator)\\"
+                          class=\\"ui medium text\\"
+                          title=\\"Facilitator User (facilitator)\\"
+                        >
+                          Facilitator User
+                        </span>
+                        
+                         
+                        <i
+                          aria-hidden=\\"true\\"
+                          class=\\"small icon chalkboard teacher\\"
+                          style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                          title=\\"Facilitator\\"
+                        />
                          as 
                         <strong>
                           Student
@@ -26776,7 +26764,7 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 10`
         <div
           class=\\"content\\"
         >
-          Send invites?
+          Set these roles and send invites?
         </div>
       </div>
       <div
@@ -26817,23 +26805,21 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 10`
                       <div
                         class=\\"content\\"
                       >
-                        <strong>
-                          <span
-                            aria-label=\\"Super User (super)\\"
-                            class=\\"ui medium text\\"
-                            title=\\"Super User (super)\\"
-                          >
-                            Super User
-                          </span>
-                          
-                           
-                          <i
-                            aria-hidden=\\"true\\"
-                            class=\\"small icon chess queen\\"
-                            style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                            title=\\"Super\\"
-                          />
-                        </strong>
+                        <span
+                          aria-label=\\"Super User (super)\\"
+                          class=\\"ui medium text\\"
+                          title=\\"Super User (super)\\"
+                        >
+                          Super User
+                        </span>
+                        
+                         
+                        <i
+                          aria-hidden=\\"true\\"
+                          class=\\"small icon chess queen\\"
+                          style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                          title=\\"Super\\"
+                        />
                          as 
                         <strong>
                           Teacher
@@ -26882,23 +26868,21 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 10`
                       <div
                         class=\\"content\\"
                       >
-                        <strong>
-                          <span
-                            aria-label=\\"Facilitator User (facilitator)\\"
-                            class=\\"ui medium text\\"
-                            title=\\"Facilitator User (facilitator)\\"
-                          >
-                            Facilitator User
-                          </span>
-                          
-                           
-                          <i
-                            aria-hidden=\\"true\\"
-                            class=\\"small icon chalkboard teacher\\"
-                            style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                            title=\\"Facilitator\\"
-                          />
-                        </strong>
+                        <span
+                          aria-label=\\"Facilitator User (facilitator)\\"
+                          class=\\"ui medium text\\"
+                          title=\\"Facilitator User (facilitator)\\"
+                        >
+                          Facilitator User
+                        </span>
+                        
+                         
+                        <i
+                          aria-hidden=\\"true\\"
+                          class=\\"small icon chalkboard teacher\\"
+                          style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                          title=\\"Facilitator\\"
+                        />
                          as 
                         <strong>
                           Student
@@ -27981,7 +27965,7 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 13`
         <div
           class=\\"content\\"
         >
-          Send invites?
+          Set these roles and send invites?
         </div>
       </div>
       <div
@@ -28022,23 +28006,21 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 13`
                       <div
                         class=\\"content\\"
                       >
-                        <strong>
-                          <span
-                            aria-label=\\"Super User (super)\\"
-                            class=\\"ui medium text\\"
-                            title=\\"Super User (super)\\"
-                          >
-                            Super User
-                          </span>
-                          
-                           
-                          <i
-                            aria-hidden=\\"true\\"
-                            class=\\"small icon chess queen\\"
-                            style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                            title=\\"Super\\"
-                          />
-                        </strong>
+                        <span
+                          aria-label=\\"Super User (super)\\"
+                          class=\\"ui medium text\\"
+                          title=\\"Super User (super)\\"
+                        >
+                          Super User
+                        </span>
+                        
+                         
+                        <i
+                          aria-hidden=\\"true\\"
+                          class=\\"small icon chess queen\\"
+                          style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                          title=\\"Super\\"
+                        />
                          as 
                         <strong>
                           Teacher
@@ -28087,23 +28069,21 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 13`
                       <div
                         class=\\"content\\"
                       >
-                        <strong>
-                          <span
-                            aria-label=\\"Facilitator User (facilitator)\\"
-                            class=\\"ui medium text\\"
-                            title=\\"Facilitator User (facilitator)\\"
-                          >
-                            Facilitator User
-                          </span>
-                          
-                           
-                          <i
-                            aria-hidden=\\"true\\"
-                            class=\\"small icon chalkboard teacher\\"
-                            style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                            title=\\"Facilitator\\"
-                          />
-                        </strong>
+                        <span
+                          aria-label=\\"Facilitator User (facilitator)\\"
+                          class=\\"ui medium text\\"
+                          title=\\"Facilitator User (facilitator)\\"
+                        >
+                          Facilitator User
+                        </span>
+                        
+                         
+                        <i
+                          aria-hidden=\\"true\\"
+                          class=\\"small icon chalkboard teacher\\"
+                          style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                          title=\\"Facilitator\\"
+                        />
                          as 
                         <strong>
                           Student
@@ -28520,7 +28500,7 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 14`
         <div
           class=\\"content\\"
         >
-          Send invites?
+          Set these roles and send invites?
         </div>
       </div>
       <div
@@ -28561,23 +28541,21 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 14`
                       <div
                         class=\\"content\\"
                       >
-                        <strong>
-                          <span
-                            aria-label=\\"Super User (super)\\"
-                            class=\\"ui medium text\\"
-                            title=\\"Super User (super)\\"
-                          >
-                            Super User
-                          </span>
-                          
-                           
-                          <i
-                            aria-hidden=\\"true\\"
-                            class=\\"small icon chess queen\\"
-                            style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                            title=\\"Super\\"
-                          />
-                        </strong>
+                        <span
+                          aria-label=\\"Super User (super)\\"
+                          class=\\"ui medium text\\"
+                          title=\\"Super User (super)\\"
+                        >
+                          Super User
+                        </span>
+                        
+                         
+                        <i
+                          aria-hidden=\\"true\\"
+                          class=\\"small icon chess queen\\"
+                          style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                          title=\\"Super\\"
+                        />
                          as 
                         <strong>
                           Teacher
@@ -28626,23 +28604,21 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 14`
                       <div
                         class=\\"content\\"
                       >
-                        <strong>
-                          <span
-                            aria-label=\\"Facilitator User (facilitator)\\"
-                            class=\\"ui medium text\\"
-                            title=\\"Facilitator User (facilitator)\\"
-                          >
-                            Facilitator User
-                          </span>
-                          
-                           
-                          <i
-                            aria-hidden=\\"true\\"
-                            class=\\"small icon chalkboard teacher\\"
-                            style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                            title=\\"Facilitator\\"
-                          />
-                        </strong>
+                        <span
+                          aria-label=\\"Facilitator User (facilitator)\\"
+                          class=\\"ui medium text\\"
+                          title=\\"Facilitator User (facilitator)\\"
+                        >
+                          Facilitator User
+                        </span>
+                        
+                         
+                        <i
+                          aria-hidden=\\"true\\"
+                          class=\\"small icon chalkboard teacher\\"
+                          style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                          title=\\"Facilitator\\"
+                        />
                          as 
                         <strong>
                           Student
