@@ -54,6 +54,11 @@
   height: calc(100vh - 180px) !important;
 }
 
+.ui.card.scenario__slide-card .scenario__slide-card-content-lobby {
+  overflow-y: auto;
+  height: calc(100vh - 195px) !important;
+}
+
 .ui.card.scenario__slide-card .scenario__slide-card-content-preview {
   overflow-y: auto;
   height: calc(100vh - 120px) !important;

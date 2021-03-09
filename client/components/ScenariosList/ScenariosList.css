@@ -151,7 +151,7 @@
   }
 
   .ui.stackable.cards > .card.sc.sc__margin-height {
-    width: calc(100% - 1em) !important;
+    width: calc(100% - 0.1em) !important;
   }
 }
 

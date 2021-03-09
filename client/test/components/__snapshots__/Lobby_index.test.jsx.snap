@@ -7682,7 +7682,7 @@ exports[`props.asCard 1`] = `
             </div>
           </div>
           <div
-            class=\\"content scenario__slide-card-content\\"
+            class=\\"content scenario__slide-card-content-lobby\\"
           >
             <div
               class=\\"ui padded grid l__invite not-modal\\"
@@ -8148,7 +8148,7 @@ exports[`props.asCard 4`] = `
             </div>
           </div>
           <div
-            class=\\"content scenario__slide-card-content\\"
+            class=\\"content scenario__slide-card-content-lobby\\"
           >
             <div
               class=\\"ui padded grid l__invite not-modal\\"

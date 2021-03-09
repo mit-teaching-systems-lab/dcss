@@ -224,6 +224,20 @@ td .ui.fluid.selection.dropdown > .text {
   .grid__menu-search > input {
     width: 50%;
   }
+
+  .grid__sidebar {
+    padding: 0 !important;
+  }
+
+  .grid__header {
+    margin-bottom: 0 !important;
+  }
+
+  .grid__main {
+    padding: 1rem 0 0 0 !important;
+    background-color: unset !important;
+  }
+
 }
 
 button {

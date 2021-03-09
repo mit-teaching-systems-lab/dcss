@@ -299,7 +299,7 @@ class EntrySlide extends React.Component {
               {title}
             </Card.Header>
           </Card.Content>
-          <Card.Content>
+          <Card.Content className="scenario__slide-card-content-lobby">
             <p tabIndex="0" className="entryslide__description-inner-container">
               {description}
             </p>

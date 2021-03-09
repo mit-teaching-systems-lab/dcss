@@ -242,7 +242,7 @@ class Lobby extends Component {
                     {title}
                   </Card.Header>
                 </Card.Content>
-                <Card.Content className="scenario__slide-card-content">
+                <Card.Content className="scenario__slide-card-content-lobby">
                   <LobbyUserSelect
                     {...lobbyUserSelectOrWaitingProps}
                     onSelect={this.props.onRoleSelect}
