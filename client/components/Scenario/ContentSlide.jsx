@@ -268,7 +268,7 @@ class ContentSlide extends React.Component {
     }
 
     const cardClass = this.isScenarioRun
-      ? 'scenario__slide-card'
+      ? 'scenario__slide-card unset-position'
       : 'scenario__slide-card-preview';
 
     const slideComponentsProps = run ? { run, saveRunEvent } : {};
@@ -354,6 +354,7 @@ class ContentSlide extends React.Component {
         key={slide.id}
         className={cardClass}
         onPointerUp={onPointerUp}
+        style={{position: 'unset !important'}}
       >
         {slide.title ? (
           <Card.Content className="scenario__slide-card-header">
