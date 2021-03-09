@@ -26,7 +26,7 @@ exports[`Calls onChange when RTE is cleared 1`] = `
         >
           <i
             aria-hidden=\\"true\\"
-            class=\\"comments outline icon\\"
+            class=\\"discussions icon\\"
           />
           <div
             class=\\"content\\"
@@ -110,7 +110,7 @@ exports[`Calls onChange when RTE is cleared 2`] = `
         >
           <i
             aria-hidden=\\"true\\"
-            class=\\"comments outline icon\\"
+            class=\\"discussions icon\\"
           />
           <div
             class=\\"content\\"
@@ -488,7 +488,7 @@ exports[`Calls onChatEnded when receives CHAT_ENDED event 2`] = `
     >
       <i
         aria-hidden=\\"true\\"
-        class=\\"comments outline icon\\"
+        class=\\"discussions icon\\"
       />
     </button>
   </div>
@@ -521,7 +521,7 @@ exports[`Calls onInput when RTE receives new content 1`] = `
         >
           <i
             aria-hidden=\\"true\\"
-            class=\\"comments outline icon\\"
+            class=\\"discussions icon\\"
           />
           <div
             class=\\"content\\"
@@ -605,7 +605,7 @@ exports[`Calls onInput when RTE receives new content 4`] = `
         >
           <i
             aria-hidden=\\"true\\"
-            class=\\"comments outline icon\\"
+            class=\\"discussions icon\\"
           />
           <div
             class=\\"content\\"
@@ -997,7 +997,7 @@ exports[`Calls onKeyDown, responds when key is {enter} 1`] = `
         >
           <i
             aria-hidden=\\"true\\"
-            class=\\"comments outline icon\\"
+            class=\\"discussions icon\\"
           />
           <div
             class=\\"content\\"
@@ -1081,7 +1081,7 @@ exports[`Calls onKeyDown, responds when key is {enter} 4`] = `
         >
           <i
             aria-hidden=\\"true\\"
-            class=\\"comments outline icon\\"
+            class=\\"discussions icon\\"
           />
           <div
             class=\\"content\\"
@@ -1450,7 +1450,7 @@ exports[`Chat has ended 1`] = `
     >
       <i
         aria-hidden=\\"true\\"
-        class=\\"comments outline icon\\"
+        class=\\"discussions icon\\"
       />
     </button>
   </div>
@@ -1492,7 +1492,7 @@ exports[`Click to Minimize and Maximize 1`] = `
         >
           <i
             aria-hidden=\\"true\\"
-            class=\\"comments outline icon\\"
+            class=\\"discussions icon\\"
           />
           <div
             class=\\"content\\"
@@ -1614,7 +1614,7 @@ exports[`Empty, many {shift}{enter}, attempts to send, does not submit 1`] = `
         >
           <i
             aria-hidden=\\"true\\"
-            class=\\"comments outline icon\\"
+            class=\\"discussions icon\\"
           />
           <div
             class=\\"content\\"
@@ -1698,7 +1698,7 @@ exports[`Empty, many {shift}{enter}, attempts to send, does not submit 2`] = `
         >
           <i
             aria-hidden=\\"true\\"
-            class=\\"comments outline icon\\"
+            class=\\"discussions icon\\"
           />
           <div
             class=\\"content\\"
@@ -2081,7 +2081,7 @@ exports[`Layout on desktop 1`] = `
         >
           <i
             aria-hidden=\\"true\\"
-            class=\\"comments outline icon\\"
+            class=\\"discussions icon\\"
           />
           <div
             class=\\"content\\"
@@ -2165,7 +2165,7 @@ exports[`Layout on desktop 2`] = `
         >
           <i
             aria-hidden=\\"true\\"
-            class=\\"comments outline icon\\"
+            class=\\"discussions icon\\"
           />
           <div
             class=\\"content\\"
@@ -2548,7 +2548,7 @@ exports[`Layout on mobile 1`] = `
         >
           <i
             aria-hidden=\\"true\\"
-            class=\\"comments outline icon\\"
+            class=\\"discussions icon\\"
           />
           <div
             class=\\"content\\"
@@ -2632,7 +2632,7 @@ exports[`Layout on mobile 2`] = `
         >
           <i
             aria-hidden=\\"true\\"
-            class=\\"comments outline icon\\"
+            class=\\"discussions icon\\"
           />
           <div
             class=\\"content\\"
@@ -3015,7 +3015,7 @@ exports[`No chat id, defaults to 1. This test should fail when the feature is co
         >
           <i
             aria-hidden=\\"true\\"
-            class=\\"comments outline icon\\"
+            class=\\"discussions icon\\"
           />
           <div
             class=\\"content\\"
@@ -3099,7 +3099,7 @@ exports[`Receives new message, minimized, mobile 1`] = `
         >
           <i
             aria-hidden=\\"true\\"
-            class=\\"comments outline icon\\"
+            class=\\"discussions icon\\"
           />
           <div
             class=\\"content\\"
@@ -3183,7 +3183,7 @@ exports[`Receives new message, minimized, mobile 3`] = `
         >
           <i
             aria-hidden=\\"true\\"
-            class=\\"comments outline icon\\"
+            class=\\"discussions icon\\"
           />
           <div
             class=\\"content\\"
@@ -4052,7 +4052,7 @@ exports[`Receives new message, minimized, not mobile 1`] = `
         >
           <i
             aria-hidden=\\"true\\"
-            class=\\"comments outline icon\\"
+            class=\\"discussions icon\\"
           />
           <div
             class=\\"content\\"
@@ -4136,7 +4136,7 @@ exports[`Receives new message, minimized, not mobile 3`] = `
         >
           <i
             aria-hidden=\\"true\\"
-            class=\\"comments outline icon\\"
+            class=\\"discussions icon\\"
           />
           <div
             class=\\"content\\"
@@ -5067,7 +5067,7 @@ exports[`Receives new message, not minimized 1`] = `
         >
           <i
             aria-hidden=\\"true\\"
-            class=\\"comments outline icon\\"
+            class=\\"discussions icon\\"
           />
           <div
             class=\\"content\\"
@@ -5151,7 +5151,7 @@ exports[`Receives new message, not minimized 3`] = `
         >
           <i
             aria-hidden=\\"true\\"
-            class=\\"comments outline icon\\"
+            class=\\"discussions icon\\"
           />
           <div
             class=\\"content\\"
@@ -6044,7 +6044,7 @@ exports[`Receives new message, not minimized 4`] = `
         >
           <i
             aria-hidden=\\"true\\"
-            class=\\"comments outline icon\\"
+            class=\\"discussions icon\\"
           />
           <div
             class=\\"content\\"
@@ -7011,7 +7011,7 @@ exports[`Rnd: onDrag/onResize 1`] = `
         >
           <i
             aria-hidden=\\"true\\"
-            class=\\"comments outline icon\\"
+            class=\\"discussions icon\\"
           />
           <div
             class=\\"content\\"
@@ -7095,7 +7095,7 @@ exports[`Rnd: onDrag/onResize 2`] = `
         >
           <i
             aria-hidden=\\"true\\"
-            class=\\"comments outline icon\\"
+            class=\\"discussions icon\\"
           />
           <div
             class=\\"content\\"
@@ -7478,7 +7478,7 @@ exports[`Rnd: onDragStop/onResizeStop 1`] = `
         >
           <i
             aria-hidden=\\"true\\"
-            class=\\"comments outline icon\\"
+            class=\\"discussions icon\\"
           />
           <div
             class=\\"content\\"
@@ -7562,7 +7562,7 @@ exports[`Rnd: onDragStop/onResizeStop 2`] = `
         >
           <i
             aria-hidden=\\"true\\"
-            class=\\"comments outline icon\\"
+            class=\\"discussions icon\\"
           />
           <div
             class=\\"content\\"
@@ -7945,7 +7945,7 @@ exports[`Types, clicks Send Message 1`] = `
         >
           <i
             aria-hidden=\\"true\\"
-            class=\\"comments outline icon\\"
+            class=\\"discussions icon\\"
           />
           <div
             class=\\"content\\"
@@ -8029,7 +8029,7 @@ exports[`Types, clicks Send Message 4`] = `
         >
           <i
             aria-hidden=\\"true\\"
-            class=\\"comments outline icon\\"
+            class=\\"discussions icon\\"
           />
           <div
             class=\\"content\\"
@@ -8412,7 +8412,7 @@ exports[`Types, followed by {enter} 1`] = `
         >
           <i
             aria-hidden=\\"true\\"
-            class=\\"comments outline icon\\"
+            class=\\"discussions icon\\"
           />
           <div
             class=\\"content\\"
@@ -8496,7 +8496,7 @@ exports[`Types, followed by {enter} 4`] = `
         >
           <i
             aria-hidden=\\"true\\"
-            class=\\"comments outline icon\\"
+            class=\\"discussions icon\\"
           />
           <div
             class=\\"content\\"
@@ -8879,7 +8879,7 @@ exports[`Types, followed by {shift}{enter}, attempts to send, does submit 1`] = 
         >
           <i
             aria-hidden=\\"true\\"
-            class=\\"comments outline icon\\"
+            class=\\"discussions icon\\"
           />
           <div
             class=\\"content\\"
@@ -8968,7 +8968,7 @@ exports[`Types, followed by {shift}{enter}, attempts to send, does submit 3`] = 
         >
           <i
             aria-hidden=\\"true\\"
-            class=\\"comments outline icon\\"
+            class=\\"discussions icon\\"
           />
           <div
             class=\\"content\\"
@@ -9356,7 +9356,7 @@ exports[`Types, followed by {shift}{enter}, does not submit 1`] = `
         >
           <i
             aria-hidden=\\"true\\"
-            class=\\"comments outline icon\\"
+            class=\\"discussions icon\\"
           />
           <div
             class=\\"content\\"
@@ -9440,7 +9440,7 @@ exports[`Types, followed by {shift}{enter}, does not submit 4`] = `
         >
           <i
             aria-hidden=\\"true\\"
-            class=\\"comments outline icon\\"
+            class=\\"discussions icon\\"
           />
           <div
             class=\\"content\\"
@@ -9823,7 +9823,7 @@ exports[`Types, then attempts to send empty string 1`] = `
         >
           <i
             aria-hidden=\\"true\\"
-            class=\\"comments outline icon\\"
+            class=\\"discussions icon\\"
           />
           <div
             class=\\"content\\"
@@ -9905,7 +9905,7 @@ exports[`Types, then attempts to send empty string 2`] = `
         >
           <i
             aria-hidden=\\"true\\"
-            class=\\"comments outline icon\\"
+            class=\\"discussions icon\\"
           />
           <div
             class=\\"content\\"
@@ -10286,7 +10286,7 @@ exports[`Types, then attempts to send string containing only a space character 1
         >
           <i
             aria-hidden=\\"true\\"
-            class=\\"comments outline icon\\"
+            class=\\"discussions icon\\"
           />
           <div
             class=\\"content\\"
@@ -10368,7 +10368,7 @@ exports[`Types, then attempts to send string containing only a space character 2
         >
           <i
             aria-hidden=\\"true\\"
-            class=\\"comments outline icon\\"
+            class=\\"discussions icon\\"
           />
           <div
             class=\\"content\\"
@@ -10749,7 +10749,7 @@ exports[`componentDidMount Adds CHAT_ENDED handler 1`] = `
         >
           <i
             aria-hidden=\\"true\\"
-            class=\\"comments outline icon\\"
+            class=\\"discussions icon\\"
           />
           <div
             class=\\"content\\"
@@ -10833,7 +10833,7 @@ exports[`componentDidMount Adds CHAT_ENDED handler 3`] = `
         >
           <i
             aria-hidden=\\"true\\"
-            class=\\"comments outline icon\\"
+            class=\\"discussions icon\\"
           />
           <div
             class=\\"content\\"
@@ -11216,7 +11216,7 @@ exports[`componentDidMount Adds JOIN_OR_PART handler 1`] = `
         >
           <i
             aria-hidden=\\"true\\"
-            class=\\"comments outline icon\\"
+            class=\\"discussions icon\\"
           />
           <div
             class=\\"content\\"
@@ -11300,7 +11300,7 @@ exports[`componentDidMount Adds JOIN_OR_PART handler 3`] = `
         >
           <i
             aria-hidden=\\"true\\"
-            class=\\"comments outline icon\\"
+            class=\\"discussions icon\\"
           />
           <div
             class=\\"content\\"
@@ -11683,7 +11683,7 @@ exports[`componentDidMount Adds onbeforeunload handler 1`] = `
         >
           <i
             aria-hidden=\\"true\\"
-            class=\\"comments outline icon\\"
+            class=\\"discussions icon\\"
           />
           <div
             class=\\"content\\"
@@ -11767,7 +11767,7 @@ exports[`componentDidMount Adds onbeforeunload handler 2`] = `
         >
           <i
             aria-hidden=\\"true\\"
-            class=\\"comments outline icon\\"
+            class=\\"discussions icon\\"
           />
           <div
             class=\\"content\\"
@@ -12150,7 +12150,7 @@ exports[`componentDidMount Emits CREATE_CHAT_CHANNEL on socket 1`] = `
         >
           <i
             aria-hidden=\\"true\\"
-            class=\\"comments outline icon\\"
+            class=\\"discussions icon\\"
           />
           <div
             class=\\"content\\"
@@ -12533,7 +12533,7 @@ exports[`componentDidMount Emits CREATE_CHAT_CHANNEL on socket 3`] = `
         >
           <i
             aria-hidden=\\"true\\"
-            class=\\"comments outline icon\\"
+            class=\\"discussions icon\\"
           />
           <div
             class=\\"content\\"
@@ -12916,7 +12916,7 @@ exports[`componentDidMount Emits CREATE_USER_CHANNEL on socket 1`] = `
         >
           <i
             aria-hidden=\\"true\\"
-            class=\\"comments outline icon\\"
+            class=\\"discussions icon\\"
           />
           <div
             class=\\"content\\"
@@ -13299,7 +13299,7 @@ exports[`componentDidMount Emits CREATE_USER_CHANNEL on socket 3`] = `
         >
           <i
             aria-hidden=\\"true\\"
-            class=\\"comments outline icon\\"
+            class=\\"discussions icon\\"
           />
           <div
             class=\\"content\\"
@@ -13682,7 +13682,7 @@ exports[`componentWillUnmount Calls onbeforeunload handler when beforeunload occ
         >
           <i
             aria-hidden=\\"true\\"
-            class=\\"comments outline icon\\"
+            class=\\"discussions icon\\"
           />
           <div
             class=\\"content\\"
@@ -14065,7 +14065,7 @@ exports[`componentWillUnmount Calls onbeforeunload handler when beforeunload occ
         >
           <i
             aria-hidden=\\"true\\"
-            class=\\"comments outline icon\\"
+            class=\\"discussions icon\\"
           />
           <div
             class=\\"content\\"
@@ -14448,7 +14448,7 @@ exports[`componentWillUnmount Calls onbeforeunload handler when unmount occurs 1
         >
           <i
             aria-hidden=\\"true\\"
-            class=\\"comments outline icon\\"
+            class=\\"discussions icon\\"
           />
           <div
             class=\\"content\\"
@@ -14840,7 +14840,7 @@ exports[`componentWillUnmount Removes onbeforeunload handler 1`] = `
         >
           <i
             aria-hidden=\\"true\\"
-            class=\\"comments outline icon\\"
+            class=\\"discussions icon\\"
           />
           <div
             class=\\"content\\"
@@ -15223,7 +15223,7 @@ exports[`componentWillUnmount Removes onbeforeunload handler 2`] = `
         >
           <i
             aria-hidden=\\"true\\"
-            class=\\"comments outline icon\\"
+            class=\\"discussions icon\\"
           />
           <div
             class=\\"content\\"
@@ -15615,7 +15615,7 @@ exports[`onQuote 1`] = `
         >
           <i
             aria-hidden=\\"true\\"
-            class=\\"comments outline icon\\"
+            class=\\"discussions icon\\"
           />
           <div
             class=\\"content\\"
@@ -15699,7 +15699,7 @@ exports[`onQuote 3`] = `
         >
           <i
             aria-hidden=\\"true\\"
-            class=\\"comments outline icon\\"
+            class=\\"discussions icon\\"
           />
           <div
             class=\\"content\\"
@@ -16096,7 +16096,7 @@ exports[`onQuote 5`] = `
         >
           <i
             aria-hidden=\\"true\\"
-            class=\\"comments outline icon\\"
+            class=\\"discussions icon\\"
           />
           <div
             class=\\"content\\"

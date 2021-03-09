@@ -31,7 +31,7 @@ import ChatComposer from '@components/Chat/ChatComposer';
 import ChatDraggableResizableDialog from '@components/Chat/ChatDraggableResizableDialog';
 import ChatMessages from '@components/Chat/ChatMessages';
 import ChatMinMax from '@components/Chat/ChatMinMax';
-import { Button, Ref } from '@components/UI';
+import { Button, Icon, Ref } from '@components/UI';
 import Layout from '@utils/Layout';
 import Payload from '@utils/Payload';
 
@@ -95,12 +95,14 @@ class Chat extends Component {
 
     const { chat } = this.props;
 
-    this.storageKey = `chat/${chat.id || TEMPORARY_CHAT_ID}`;
+    // Chat settings are for placement and size, so they
+    // are shared across all instances of the chat window.
+    this.storageKey = `chat/*`;
 
     const { content } = Storage.get(this.storageKey, {
       content: NEW_MESSAGE_CONTENT_HTML,
       dimensions: {
-        width: 430,
+        width: 456,
         height: 410
       },
       position: {
@@ -297,7 +299,6 @@ class Chat extends Component {
     if (this.hasUnmounted) {
       return;
     }
-
     if (this.state.isMinimized) {
       this.setState({
         isNotifying: true
@@ -310,6 +311,9 @@ class Chat extends Component {
   }
 
   onMinMaxClick() {
+    if (this.hasUnmounted) {
+      return;
+    }
     this.setState({
       isMinimized: !this.state.isMinimized,
       isNotifying: false
@@ -381,7 +385,7 @@ class Chat extends Component {
         <Button
           className="close c__container-modal-minmax"
           aria-label="Chat is closed"
-          icon="comments outline"
+          icon="discussions"
           onClick={() => {
             alert('This chat is closed');
           }}
@@ -392,11 +396,13 @@ class Chat extends Component {
     // Layout.isForMobile()?
     const { dimensions, position } = Storage.get(this.storageKey);
 
+    // console.log(dimensions, position);
     const onDragResizeStop = ({ width, height, x, y }) => {
       if (!width || !height) {
         return;
       }
 
+      // console.log(width, height, x, y);
       Storage.merge(this.storageKey, {
         dimensions: { width, height },
         position: { x, y }
@@ -472,7 +478,7 @@ class Chat extends Component {
 
     const defaultHeaderContents = (
       <Fragment>
-        <i aria-hidden="true" className="comments outline icon"></i>
+        <Icon name="discussions" />
         <div className="content">Discussion</div>
       </Fragment>
     );

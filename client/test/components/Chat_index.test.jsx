@@ -1946,9 +1946,9 @@ test('Rnd: onDragStop/onResizeStop', async done => {
             tabIndex="0"
           >
             <React.Fragment>
-              <i
-                aria-hidden="true"
-                className="comments outline icon"
+              <Icon
+                as="i"
+                name="discussions"
               />
               <div
                 className="content"
@@ -2188,7 +2188,7 @@ test('Rnd: onDragStop/onResizeStop', async done => {
                       "height": "51.325px",
                       "maxHeight": "51.325px",
                       "minHeight": "51.325px",
-                      "width": "430px",
+                      "width": "456px",
                     }
                   }
                   sendNewMessage={[Function]}
@@ -2204,7 +2204,7 @@ test('Rnd: onDragStop/onResizeStop', async done => {
       "disableDragging": false,
       "dragHandleClassName": "c__drag-handle",
       "minHeight": 590,
-      "minWidth": 430,
+      "minWidth": 456,
       "onDrag": [Function],
       "onDragStart": [Function],
       "onDragStop": [Function],
@@ -2218,12 +2218,11 @@ test('Rnd: onDragStop/onResizeStop', async done => {
       "resizeHandleWrapperClass": "c__size-handle",
       "size": Object {
         "height": 410,
-        "width": 430,
+        "width": 456,
       },
       "style": Object {
         "alignItems": "center",
         "background": "#f0f0f0",
-        "border": "solid 1px #ddd",
         "display": "flex",
         "justifyContent": "center",
       },
@@ -2245,11 +2244,11 @@ test('Rnd: onDragStop/onResizeStop', async done => {
 
   expect(Storage.merge.mock.calls[0]).toMatchInlineSnapshot(`
     Array [
-      "chat/1",
+      "chat/*",
       Object {
         "dimensions": Object {
           "height": 410,
-          "width": 430,
+          "width": 456,
         },
         "position": Object {
           "x": 393,
@@ -2307,9 +2306,9 @@ test('Rnd: onDrag/onResize', async done => {
             tabIndex="0"
           >
             <React.Fragment>
-              <i
-                aria-hidden="true"
-                className="comments outline icon"
+              <Icon
+                as="i"
+                name="discussions"
               />
               <div
                 className="content"
@@ -2549,7 +2548,7 @@ test('Rnd: onDrag/onResize', async done => {
                       "height": "51.325px",
                       "maxHeight": "51.325px",
                       "minHeight": "51.325px",
-                      "width": "430px",
+                      "width": "456px",
                     }
                   }
                   sendNewMessage={[Function]}
@@ -2565,7 +2564,7 @@ test('Rnd: onDrag/onResize', async done => {
       "disableDragging": false,
       "dragHandleClassName": "c__drag-handle",
       "minHeight": 590,
-      "minWidth": 430,
+      "minWidth": 456,
       "onDrag": [Function],
       "onDragStart": [Function],
       "onDragStop": [Function],
@@ -2579,12 +2578,11 @@ test('Rnd: onDrag/onResize', async done => {
       "resizeHandleWrapperClass": "c__size-handle",
       "size": Object {
         "height": 410,
-        "width": 430,
+        "width": 456,
       },
       "style": Object {
         "alignItems": "center",
         "background": "#f0f0f0",
-        "border": "solid 1px #ddd",
         "display": "flex",
         "justifyContent": "center",
       },

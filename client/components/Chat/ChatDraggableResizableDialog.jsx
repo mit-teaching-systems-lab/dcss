@@ -12,7 +12,7 @@ const outerMinClassName = `${outerBaseClassNames} c__minimized`;
 const outerMaxClassName = `${outerBaseClassNames} resizable`;
 
 const BASE_HEIGHT = 590;
-const BASE_WIDTH = 430;
+const BASE_WIDTH = 456;
 
 const rndStyleUserSelectNone = {
   WebkitUserSelect: 'none',
@@ -88,6 +88,8 @@ class ChatDraggableResizableDialog extends Component {
     //   y = availableY - bottom;
     // }
 
+    // console.log("x", x);
+    // console.log("y", y);
     this.setState({
       x,
       y
@@ -111,7 +113,6 @@ class ChatDraggableResizableDialog extends Component {
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      border: 'solid 1px #ddd',
       background: '#f0f0f0'
     };
 
@@ -229,16 +230,14 @@ class ChatDraggableResizableDialog extends Component {
       position.y = 0;
     }
 
-    const adjustPositionIfMinimized = node => {
+    const adjustPositionIfNecessary = node => {
+      // console.log("?");
       let styles = {};
 
       if (node) {
         if (Layout.isNotForMobile()) {
           if (isMinimized) {
             styles = {
-              // position: 'absolute',
-              // width: '500px',
-              // top: '-54px'
               position: 'relative',
               top: 'unset',
               width: '100%',
@@ -256,15 +255,16 @@ class ChatDraggableResizableDialog extends Component {
             };
           }
         }
-      }
 
-      for (let [key, value] of Object.entries(styles)) {
-        node.style.setProperty(key, value);
+        for (let [key, value] of Object.entries(styles)) {
+          node.style.setProperty(key, value);
+        }
       }
     };
-
+    // <ResizeDetector onResize={() => console.log("resuze")} />
+    // console.log("position?", position);
     return (
-      <Ref innerRef={adjustPositionIfMinimized}>
+      <Ref innerRef={adjustPositionIfNecessary}>
         {Layout.isNotForMobile() ? (
           <Rnd
             bounds="window"
