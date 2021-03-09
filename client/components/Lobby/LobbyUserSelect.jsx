@@ -28,6 +28,7 @@ import {
 } from '@components/UI';
 import Username from '@components/User/Username';
 import Identity from '@utils/Identity';
+import Layout from '@utils/Layout';
 import Storage from '@utils/Storage';
 
 import './Lobby.css';
@@ -285,6 +286,7 @@ class LobbyUserSelect extends Component {
           const dropdown = (
             <Dropdown
               selection
+              fluid={Layout.isForMobile()}
               key={`${key}-dropdown`}
               name={index}
               id={selection.user.id}
@@ -306,24 +308,50 @@ class LobbyUserSelect extends Component {
             ? 'l__contentnoremoval'
             : '';
 
+          const dropdownContent = Layout.isNotForMobile() ? (
+            <List.Content key="1" floated="right">
+              {rightFloatedContents}
+            </List.Content>
+          ) : (
+            <List.Content key="1">
+              {rightFloatedContents}
+            </List.Content>
+          );
+
+          const listContentStyle = Layout.isForMobile() ? {
+            marginBottom: '0.5em'
+          } : {};
+          const nameAndButtonContent = (
+            <List.Content
+              key="2"
+              className={listContentClassName}
+              style={listContentStyle}
+            >
+              {isSelectedNotHost && !assignedRole ? (
+                <Button
+                  className="icon-primary"
+                  icon="x"
+                  size="tiny"
+                  aria-label={`Remove ${selectedUser.title}`}
+                  id={selectedUser.id}
+                  onClick={onRemoveInviteeClick}
+                />
+              ) : null}
+              {selectedUserDisplay}
+            </List.Content>
+          );
+
+          const contents = Layout.isForMobile() ? [
+            nameAndButtonContent,
+            dropdownContent
+          ] : [
+            dropdownContent,
+            nameAndButtonContent
+          ];
+
           return (
             <List.Item key={key}>
-              <List.Content floated="right">
-                {rightFloatedContents}
-              </List.Content>
-              <List.Content className={listContentClassName}>
-                {isSelectedNotHost && !assignedRole ? (
-                  <Button
-                    className="icon-primary"
-                    icon="x"
-                    size="tiny"
-                    aria-label={`Remove ${selectedUser.title}`}
-                    id={selectedUser.id}
-                    onClick={onRemoveInviteeClick}
-                  />
-                ) : null}
-                {selectedUserDisplay}
-              </List.Content>
+              {contents}
             </List.Item>
           );
         })}
@@ -645,7 +673,14 @@ class LobbyUserSelect extends Component {
     const disabled = selectedCount !== rolesAssigned || selectedCount <= 1;
 
     let remainingMessage = `${remainingCount} ${pluralRemaining} unassigned.`;
-    let remainingTextProps = {};
+    let remainingTextProps = Layout.isForMobile()
+      ? {
+        style: {
+          display: 'block',
+          marginBottom: '0.5em'
+        }
+      }
+      : {};
 
     if (remainingCount === 0) {
       remainingMessage = `all roles assigned.`;
@@ -693,13 +728,22 @@ class LobbyUserSelect extends Component {
       </Button>
     );
 
+    const sendInvitesButtonConditionalProps = Layout.isNotForMobile() ? {
+      floated: 'right',
+    } : {
+      fluid: true,
+    };
+
+
+    const sendInvitesButtonProps = {
+      ...sendInvitesButtonConditionalProps,
+      disabled,
+      className: 'primary',
+      onClick: onSendInviteClick
+    };
+
     const sendInvitesButton = (
-      <Button
-        className="primary"
-        floated="right"
-        disabled={disabled}
-        onClick={onSendInviteClick}
-      >
+      <Button {...sendInvitesButtonProps}>
         Set roles & send invites
       </Button>
     );

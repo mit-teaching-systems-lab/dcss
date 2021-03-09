@@ -27,16 +27,16 @@ class ChatPromptEditor extends React.Component {
       prompt = '',
       required = false,
       responseId = '',
-      timer = 0
+      timeout = 0
     } = props.value;
     this.state = {
       agent,
       auto,
       header,
       prompt,
-      required: timer ? true : required,
+      required: timeout ? true : required,
       responseId,
-      timer
+      timeout
     };
 
     this.enforceRequiredWhenTimerIsSet = this.enforceRequiredWhenTimerIsSet.bind(
@@ -138,12 +138,12 @@ class ChatPromptEditor extends React.Component {
   }
 
   render() {
-    const { agent, auto, header, prompt, timer } = this.state;
+    const { agent, auto, header, prompt, timeout } = this.state;
     const { onChange, onTimerChange, updateState } = this;
-    const timerString = timer ? Media.secToTime(timer) : '';
-    const [hh = 0, mm = 0, ss = 0] = timerString.split(':').map(v => Number(v));
+    const timeoutString = timeout ? Media.secToTime(timeout) : '';
+    const [hh = 0, mm = 0, ss = 0] = timeoutString.split(':').map(v => Number(v));
     const promptAriaLabel = 'Optional prompt to display for this discussion:';
-    const timerAriaLabel = 'Max duration for this discussion:';
+    const timeoutAriaLabel = 'Max duration for this discussion:';
     const autoAriaLabel =
       'Automatically start the discussion timer when participants arrive?';
     const timeDisplay = [
@@ -159,16 +159,16 @@ class ChatPromptEditor extends React.Component {
             <Grid.Row columns={2}>
               <Grid.Column>
                 <Form.Field>
-                  <label htmlFor="timer">{timerAriaLabel}</label>
+                  <label htmlFor="timeout">{timeoutAriaLabel}</label>
                   <div className="ui input">
                     <TimeField
                       showSeconds
                       colon=":"
-                      name="timer"
-                      id="timer"
+                      name="timeout"
+                      id="timeout"
                       onChange={onTimerChange}
                       onBlur={updateState}
-                      value={timerString}
+                      value={timeoutString}
                     />
                   </div>
                 </Form.Field>
@@ -193,21 +193,21 @@ class ChatPromptEditor extends React.Component {
                 <Segment>
                   <p tabIndex="0" className="cpe__paragraph">
                     <Icon name="attention" />
-                    Set the timer to 00:00:00 for an unlimited discussion time.
+                    Set the timeout to 00:00:00 for an unlimited discussion time.
                   </p>
                   <p tabIndex="0" className="cpe__paragraph">
                     <Icon name="attention" />
-                    If the timer is set, the discussion will be marked{' '}
+                    If the timeout is set, the discussion will be marked{' '}
                     <strong>Required</strong>. This ensures that participants
                     cannot move forward until completing the discussion. Hosts
-                    will be able to override the timer.
+                    will be able to override the timeout.
                   </p>
                   <p tabIndex="0" className="cpe__paragraph">
                     <Icon name="attention" />
-                    If no timer is set and this chat is set to{' '}
+                    If no timeout is set and this chat is set to{' '}
                     <strong>Required</strong>, the host <strong>must</strong>{' '}
                     close the discussion before participants can proceed. If no
-                    timer is set and this chat is not{' '}
+                    timeout is set and this chat is not{' '}
                     <strong>not Required</strong>, the discussion can be
                     optionally closed.
                   </p>

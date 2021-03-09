@@ -40852,7 +40852,7 @@ exports[`Multiple personas, toggle chat 3`] = `
                                   class=\\"field\\"
                                 >
                                   <label
-                                    for=\\"timer\\"
+                                    for=\\"timeout\\"
                                   >
                                     Max duration for this discussion:
                                   </label>
@@ -40860,8 +40860,8 @@ exports[`Multiple personas, toggle chat 3`] = `
                                     class=\\"ui input\\"
                                   >
                                     <input
-                                      id=\\"timer\\"
-                                      name=\\"timer\\"
+                                      id=\\"timeout\\"
+                                      name=\\"timeout\\"
                                       style=\\"width: 54px;\\"
                                       type=\\"text\\"
                                       value=\\"00:00:00\\"
@@ -40919,7 +40919,7 @@ exports[`Multiple personas, toggle chat 3`] = `
                                       aria-hidden=\\"true\\"
                                       class=\\"attention icon\\"
                                     />
-                                    Set the timer to 00:00:00 for an unlimited discussion time.
+                                    Set the timeout to 00:00:00 for an unlimited discussion time.
                                   </p>
                                   <p
                                     class=\\"cpe__paragraph\\"
@@ -40929,12 +40929,12 @@ exports[`Multiple personas, toggle chat 3`] = `
                                       aria-hidden=\\"true\\"
                                       class=\\"attention icon\\"
                                     />
-                                    If the timer is set, the discussion will be marked
+                                    If the timeout is set, the discussion will be marked
                                      
                                     <strong>
                                       Required
                                     </strong>
-                                    . This ensures that participants cannot move forward until completing the discussion. Hosts will be able to override the timer.
+                                    . This ensures that participants cannot move forward until completing the discussion. Hosts will be able to override the timeout.
                                   </p>
                                   <p
                                     class=\\"cpe__paragraph\\"
@@ -40944,7 +40944,7 @@ exports[`Multiple personas, toggle chat 3`] = `
                                       aria-hidden=\\"true\\"
                                       class=\\"attention icon\\"
                                     />
-                                    If no timer is set and this chat is set to
+                                    If no timeout is set and this chat is set to
                                      
                                     <strong>
                                       Required
@@ -40954,7 +40954,7 @@ exports[`Multiple personas, toggle chat 3`] = `
                                       must
                                     </strong>
                                      
-                                    close the discussion before participants can proceed. If no timer is set and this chat is not
+                                    close the discussion before participants can proceed. If no timeout is set and this chat is not
                                      
                                     <strong>
                                       not Required

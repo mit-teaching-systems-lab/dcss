@@ -189,13 +189,13 @@ class Display extends Component {
   }
 
   onQuorum() {
-    const { chat, timeout } = this.props;
+    const { chat, auto, timeout } = this.props;
 
     const slide = {
       index: this.slideIndex
     };
 
-    if (timeout) {
+    if (auto && timeout) {
       this.props.socket.emit(TIMER_START, { chat, slide, timeout });
     }
 
