@@ -55,10 +55,6 @@ class LobbyUserOverview extends Component {
     return (
       <List divided relaxed selection data-testid="lobby-cohort-chat-users">
         {users.reduce((accum, user, index) => {
-          if (chat.users.find(u => u.id === user.id)) {
-            return accum;
-          }
-
           const key = Identity.key({ user, index });
           // const avatar = new Avatar(user);
           const scenario = user.chat
@@ -98,12 +94,6 @@ class LobbyUserOverview extends Component {
       const key = Identity.key({ chat, index });
       const host = this.props.usersById[chat.host_id];
       const scenario = this.props.scenariosById[chat.scenario_id];
-      const inRoom = this.props.chat.id === chat.id;
-
-      if (inRoom) {
-        return accum;
-      }
-
       const ownerDisplay = (
         <Fragment>
           <strong>
@@ -157,13 +147,16 @@ class LobbyUserOverview extends Component {
   render() {
     const { chats, isReady } = this.state;
 
-    const { chat, cohort } = this.props;
+    const { chat, cohort, user } = this.props;
 
     if (!isReady) {
       return null;
     }
 
     const usersInRooms = chats.reduce((accum, chat) => {
+      if (chat.users.find(u => u.id === user.id)) {
+        return accum;
+      }
       return accum.concat(
         chat.users.reduce((accum, user) => {
           if (user.is_present && user.persona_id) {
@@ -187,6 +180,17 @@ class LobbyUserOverview extends Component {
         accum.push(cohortUser);
       }
       return accum;
+    }, []);
+
+    const otherRooms = chats.reduce((accum, chat) => {
+      const inRoom = this.props.chat.id === chat.id;
+      if (inRoom) {
+        return accum;
+      }
+      return [
+        ...accum,
+        chat
+      ];
     }, []);
 
     return (
@@ -239,7 +243,7 @@ class LobbyUserOverview extends Component {
             </Grid.Row>
           </Fragment>
         ) : null}
-        {chats.length ? (
+        {otherRooms.length ? (
           <Fragment>
             <Grid.Row>
               <Grid.Column>
@@ -249,7 +253,7 @@ class LobbyUserOverview extends Component {
             <Grid.Row>
               <Grid.Column>
                 <Card.Group className="l__overviewcards">
-                  {this.renderChatCards(chats)}
+                  {this.renderChatCards(otherRooms)}
                 </Card.Group>
               </Grid.Column>
             </Grid.Row>

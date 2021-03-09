@@ -54,7 +54,7 @@ class LobbyUserWaiting extends Component {
           <Grid.Row>
             <Grid.Column>
               <p>
-                Who is in <strong>this</strong> scenario room?
+                Who is in <strong>this scenario</strong> room?
               </p>
             </Grid.Column>
           </Grid.Row>

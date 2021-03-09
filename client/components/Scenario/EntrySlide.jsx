@@ -118,7 +118,7 @@ class EntrySlide extends React.Component {
   }
 
   render() {
-    const { chat, cohort, run, scenario } = this.props;
+    const { chat, cohort, run, scenario, user } = this.props;
     const { isReady, permissions, showPermissionConfirmation } = this.state;
     const { title, description, consent } = scenario;
     const cardClass = this.isScenarioRun
@@ -273,12 +273,14 @@ class EntrySlide extends React.Component {
         }
       : null;
 
+    const mustShowLobbyButton = this.isCohortScenarioRun && this.isMultiparticipant && chat.host_id === user.id;
+
     return (
       <Fragment>
         <Card id="entry" key="entry" centered className={cardClass}>
           <Card.Content className="scenario__slide-card-header">
             <Card.Header tabIndex="0">
-              {this.isCohortScenarioRun && this.isMultiparticipant ? (
+              {mustShowLobbyButton ? (
                 <Button
                   floated="right"
                   tabIndex="0"
@@ -382,8 +384,8 @@ EntrySlide.propTypes = {
 };
 
 const mapStateToProps = state => {
-  const { chat, cohort, run } = state;
-  return { chat, cohort, run };
+  const { chat, cohort, run, user } = state;
+  return { chat, cohort, run, user };
 };
 
 export default connect(mapStateToProps)(EntrySlide);

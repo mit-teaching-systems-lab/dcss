@@ -4135,9 +4135,9 @@ exports[`Create a room for this scenario, user will invite, proceed 4`] = `
               <p>
                 Who is in 
                 <strong>
-                  this
+                  this scenario
                 </strong>
-                 scenario room?
+                 room?
               </p>
             </div>
           </div>
@@ -4685,9 +4685,9 @@ exports[`Create a room for this scenario, user will invite, proceed 5`] = `
               <p>
                 Who is in 
                 <strong>
-                  this
+                  this scenario
                 </strong>
-                 scenario room?
+                 room?
               </p>
             </div>
           </div>

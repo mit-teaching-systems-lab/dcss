@@ -18,9 +18,9 @@ exports[`Fallbacks for state.chat, state.scenario, state.cohort (missing) 1`] = 
           <p>
             Who is in 
             <strong>
-              this
+              this scenario
             </strong>
-             scenario room?
+             room?
           </p>
         </div>
       </div>
@@ -81,9 +81,9 @@ exports[`Fallbacks for state.chat, state.scenario, state.cohort (unloaded) 1`] =
           <p>
             Who is in 
             <strong>
-              this
+              this scenario
             </strong>
-             scenario room?
+             room?
           </p>
         </div>
       </div>
@@ -144,9 +144,9 @@ exports[`Render 1 1 1`] = `
           <p>
             Who is in 
             <strong>
-              this
+              this scenario
             </strong>
-             scenario room?
+             room?
           </p>
         </div>
       </div>
@@ -207,9 +207,9 @@ exports[`Render 2 1 1`] = `
           <p>
             Who is in 
             <strong>
-              this
+              this scenario
             </strong>
-             scenario room?
+             room?
           </p>
         </div>
       </div>
@@ -270,9 +270,9 @@ exports[`With cohort Has users that are assigned personas 1`] = `
           <p>
             Who is in 
             <strong>
-              this
+              this scenario
             </strong>
-             scenario room?
+             room?
           </p>
         </div>
       </div>
@@ -333,9 +333,9 @@ exports[`With cohort Has users that are no longer present 1`] = `
           <p>
             Who is in 
             <strong>
-              this
+              this scenario
             </strong>
-             scenario room?
+             room?
           </p>
         </div>
       </div>
@@ -396,9 +396,9 @@ exports[`Without cohort Has users that are assigned personas 1`] = `
           <p>
             Who is in 
             <strong>
-              this
+              this scenario
             </strong>
-             scenario room?
+             room?
           </p>
         </div>
       </div>
@@ -459,9 +459,9 @@ exports[`Without cohort Has users that are no longer present 1`] = `
           <p>
             Who is in 
             <strong>
-              this
+              this scenario
             </strong>
-             scenario room?
+             room?
           </p>
         </div>
       </div>

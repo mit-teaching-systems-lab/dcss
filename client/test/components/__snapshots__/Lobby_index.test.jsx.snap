@@ -376,9 +376,9 @@ exports[`Fallback: chat missing, use scenario and cohort to request chat 1`] = `
           <p>
             Who is in 
             <strong>
-              this
+              this scenario
             </strong>
-             scenario room?
+             room?
           </p>
         </div>
       </div>
@@ -800,9 +800,9 @@ exports[`Fallback: chat missing, use scenario and cohort to request chat 4`] = `
           <p>
             Who is in 
             <strong>
-              this
+              this scenario
             </strong>
-             scenario room?
+             room?
           </p>
         </div>
       </div>
@@ -1224,9 +1224,9 @@ exports[`Fallback: chat missing, use scenario to request chat 1`] = `
           <p>
             Who is in 
             <strong>
-              this
+              this scenario
             </strong>
-             scenario room?
+             room?
           </p>
         </div>
       </div>
@@ -1648,9 +1648,9 @@ exports[`Fallback: chat missing, use scenario to request chat 4`] = `
           <p>
             Who is in 
             <strong>
-              this
+              this scenario
             </strong>
-             scenario room?
+             room?
           </p>
         </div>
       </div>
@@ -2072,9 +2072,9 @@ exports[`Fallback: chat, scenario, cohort are not yet loaded, use provided props
           <p>
             Who is in 
             <strong>
-              this
+              this scenario
             </strong>
-             scenario room?
+             room?
           </p>
         </div>
       </div>
@@ -2496,9 +2496,9 @@ exports[`Fallback: chat, scenario, cohort are not yet loaded, use provided props
           <p>
             Who is in 
             <strong>
-              this
+              this scenario
             </strong>
-             scenario room?
+             room?
           </p>
         </div>
       </div>
@@ -2882,9 +2882,9 @@ exports[`Fallback: cohort expected, but not yet loaded 1`] = `
           <p>
             Who is in 
             <strong>
-              this
+              this scenario
             </strong>
-             scenario room?
+             room?
           </p>
         </div>
       </div>
@@ -3268,9 +3268,9 @@ exports[`Fallback: cohort expected, but not yet loaded 4`] = `
           <p>
             Who is in 
             <strong>
-              this
+              this scenario
             </strong>
-             scenario room?
+             room?
           </p>
         </div>
       </div>
@@ -3692,9 +3692,9 @@ exports[`Fallback: scenario missing 1`] = `
           <p>
             Who is in 
             <strong>
-              this
+              this scenario
             </strong>
-             scenario room?
+             room?
           </p>
         </div>
       </div>
@@ -4116,9 +4116,9 @@ exports[`Fallback: scenario missing 4`] = `
           <p>
             Who is in 
             <strong>
-              this
+              this scenario
             </strong>
-             scenario room?
+             room?
           </p>
         </div>
       </div>
@@ -4540,9 +4540,9 @@ exports[`Fallback: scenario object present, unloaded 1`] = `
           <p>
             Who is in 
             <strong>
-              this
+              this scenario
             </strong>
-             scenario room?
+             room?
           </p>
         </div>
       </div>
@@ -4964,9 +4964,9 @@ exports[`Fallback: scenario object present, unloaded 4`] = `
           <p>
             Who is in 
             <strong>
-              this
+              this scenario
             </strong>
-             scenario room?
+             room?
           </p>
         </div>
       </div>
@@ -5344,9 +5344,9 @@ exports[`Lobby visited by a non-facilitator user 1`] = `
           <p>
             Who is in 
             <strong>
-              this
+              this scenario
             </strong>
-             scenario room?
+             room?
           </p>
         </div>
       </div>
@@ -5724,9 +5724,9 @@ exports[`Lobby visited by a non-facilitator user 4`] = `
           <p>
             Who is in 
             <strong>
-              this
+              this scenario
             </strong>
-             scenario room?
+             room?
           </p>
         </div>
       </div>
@@ -6148,9 +6148,9 @@ exports[`With cohort, Receives RUN_CHAT_LINK, calls getChatUsersByChatId 1`] = `
           <p>
             Who is in 
             <strong>
-              this
+              this scenario
             </strong>
-             scenario room?
+             room?
           </p>
         </div>
       </div>
@@ -6587,9 +6587,9 @@ exports[`With cohort, Receives RUN_CHAT_LINK, calls getChatUsersByChatId 4`] = `
           <p>
             Who is in 
             <strong>
-              this
+              this scenario
             </strong>
-             scenario room?
+             room?
           </p>
         </div>
       </div>
@@ -7095,9 +7095,9 @@ exports[`Without cohort, Receives RUN_CHAT_LINK, calls getLinkedChatUsersByChatI
           <p>
             Who is in 
             <strong>
-              this
+              this scenario
             </strong>
-             scenario room?
+             room?
           </p>
         </div>
       </div>
@@ -7588,9 +7588,9 @@ exports[`Without cohort, Receives RUN_CHAT_LINK, calls getLinkedChatUsersByChatI
           <p>
             Who is in 
             <strong>
-              this
+              this scenario
             </strong>
-             scenario room?
+             room?
           </p>
         </div>
       </div>
@@ -8034,9 +8034,9 @@ exports[`props.asCard 1`] = `
                   <p>
                     Who is in 
                     <strong>
-                      this
+                      this scenario
                     </strong>
-                     scenario room?
+                     room?
                   </p>
                 </div>
               </div>
@@ -8499,9 +8499,9 @@ exports[`props.asCard 4`] = `
                   <p>
                     Who is in 
                     <strong>
-                      this
+                      this scenario
                     </strong>
-                     scenario room?
+                     room?
                   </p>
                 </div>
               </div>
