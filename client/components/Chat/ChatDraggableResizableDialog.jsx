@@ -52,50 +52,6 @@ class ChatDraggableResizableDialog extends Component {
     this.ref = null;
   }
 
-  componentDidMount() {
-    let x = this.state.x;
-    let y = this.state.y;
-
-    const container = document.querySelector('.react-draggable');
-
-    if (!container) {
-      return;
-    }
-
-    const parent = container.offsetParent;
-
-    const left = parent.offsetWidth + parent.offsetLeft;
-    const right = left + container.offsetWidth;
-
-    const top = parent.offsetTop;
-    const bottom = top + container.offsetHeight;
-
-    const availableX = document.body.offsetWidth;
-    const availableY = document.body.offsetHeight;
-
-    if (right > availableX) {
-      x = availableX - right;
-    }
-
-    if (bottom > availableY) {
-      y = availableY - bottom;
-    }
-    // Previously:
-    // if (right > availableX && x === 0) {
-    //   x = availableX - right;
-    // }
-    // if (bottom > availableY && y === 0) {
-    //   y = availableY - bottom;
-    // }
-
-    // console.log("x", x);
-    // console.log("y", y);
-    this.setState({
-      x,
-      y
-    });
-  }
-
   render() {
     const { children, isMinimized } = this.props;
     const { height, width, x, y } = this.state;
