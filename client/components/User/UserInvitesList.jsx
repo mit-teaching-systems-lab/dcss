@@ -166,6 +166,11 @@ class UserInvitesList extends Component {
             const createdAgo = Moment(invite.created_at).fromNow();
             const cohort = cohortsById[invite.cohort_id];
             const scenario = scenariosById[invite.scenario_id];
+
+            if (!scenario || !scenario.personas || !scenario.personas.length) {
+              return accum;
+            }
+
             const persona = scenario.personas.find(
               persona => persona.id === invite.persona_id
             );
