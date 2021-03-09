@@ -347,7 +347,12 @@ class Display extends Component {
         The discussion {whatHappened}&nbsp;
         <strong>{defaultValue}</strong>.
       </Menu.Item>
-    ) : null;
+    ) : (
+      <Menu.Item>
+        <Icon name="discussions" />
+        Discussion
+      </Menu.Item>
+      );
 
     const dropdownOrResultOfDiscussion = !defaultValue ? (
       <Dropdown
@@ -415,7 +420,7 @@ const mapStateToProps = (state, ownProps) => {
     ...ownAgent,
     ...stateAgent
   };
-  console.log('agent', agent);
+  // console.log('agent', agent);
 
   return { agent, cohort, chat, run, scenario, user };
 };

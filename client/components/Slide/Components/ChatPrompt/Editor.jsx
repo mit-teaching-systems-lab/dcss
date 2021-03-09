@@ -64,7 +64,7 @@ class ChatPromptEditor extends React.Component {
       'header',
       'prompt',
       // 'required',
-      'timer'
+      'timeout'
     ];
 
     for (let field of fields) {
@@ -92,7 +92,7 @@ class ChatPromptEditor extends React.Component {
       auto,
       header,
       prompt,
-      timer,
+      timeout,
       required,
       responseId
     } = this.state;
@@ -104,18 +104,18 @@ class ChatPromptEditor extends React.Component {
       prompt,
       required,
       responseId,
-      timer,
+      timeout,
       type
     });
   }
 
   onTimerChange(event, value) {
-    const timer = Media.timeToSec(value);
+    const timeout = Media.timeToSec(value);
     const update = {
-      timer
+      timeout
     };
 
-    if (timer) {
+    if (timeout) {
       update.required = true;
     }
 
@@ -252,7 +252,7 @@ ChatPromptEditor.propTypes = {
     prompt: PropTypes.string,
     required: PropTypes.bool,
     responseId: PropTypes.string,
-    timer: PropTypes.number,
+    timeout: PropTypes.number,
     type: PropTypes.oneOf([type])
   })
 };
