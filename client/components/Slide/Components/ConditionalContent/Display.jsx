@@ -99,7 +99,7 @@ class Display extends Component {
           [next.key]: next.value
         };
       }
-      console.log(key, value);
+      // console.log(key, value);
       x = {
         ...x,
         [key]: value
