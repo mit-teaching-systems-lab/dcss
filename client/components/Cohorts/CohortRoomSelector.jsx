@@ -343,14 +343,25 @@ export class CohortRoomSelector extends React.Component {
       ? primaryCreateButtonContent
       : primaryLobbyButtonContent;
 
-    let primaryButtonDisabled = false;
     let host = null;
 
+    // If this component received an explicit "lobby" object,
+    // check to make sure that the host has a role before allowing
+    // then to proceed to the room.
     if (this.state.lobby.isOpen && this.state.lobby.chat) {
       const chat = this.props.chatsById[this.state.lobby.chat.id];
-      host = chat.usersById[this.props.user.id];
-      primaryButtonDisabled = host.persona_id === null;
+      host = chat.usersById[user.id];
     }
+
+    if (user.id === chat.host_id) {
+      host = chat.usersById[user.id];
+    }
+
+    // If the use is also the host, but has not selected a role,
+    // then they cannot join the room yet.
+    const primaryButtonDisabled = host
+      ? host.persona_id === null
+      : false;
 
     const primaryButtonProps = {
       content: primaryButtonContent,

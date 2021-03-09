@@ -4182,59 +4182,9 @@ exports[`Create a room for this scenario, user will invite, proceed 4`] = `
                         />
                          
                         as 
-                        Teacher
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div
-            class=\\"row\\"
-          >
-            <div
-              class=\\"column\\"
-            >
-              <p>
-                Who has left the scenario?
-              </p>
-            </div>
-          </div>
-          <div
-            class=\\"row\\"
-          >
-            <div
-              class=\\"column\\"
-            >
-              <div
-                class=\\"ui fluid card\\"
-              >
-                <div
-                  class=\\"content\\"
-                >
-                  <div
-                    class=\\"ui divided selection list\\"
-                    data-testid=\\"lobby-user-absent-invitees\\"
-                    role=\\"list\\"
-                  >
-                    <div
-                      class=\\"item\\"
-                      role=\\"listitem\\"
-                    >
-                      <div
-                        class=\\"content\\"
-                      >
-                        <span
-                          aria-label=\\"Participant User (participant)\\"
-                          class=\\"ui medium text\\"
-                          title=\\"Participant User (participant)\\"
-                        >
-                          Participant User
-                        </span>
-                        
-                         
-                         
+                        <strong>
+                          Teacher
+                        </strong>
                       </div>
                     </div>
                   </div>
@@ -4732,59 +4682,9 @@ exports[`Create a room for this scenario, user will invite, proceed 5`] = `
                         />
                          
                         as 
-                        Teacher
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div
-            class=\\"row\\"
-          >
-            <div
-              class=\\"column\\"
-            >
-              <p>
-                Who has left the scenario?
-              </p>
-            </div>
-          </div>
-          <div
-            class=\\"row\\"
-          >
-            <div
-              class=\\"column\\"
-            >
-              <div
-                class=\\"ui fluid card\\"
-              >
-                <div
-                  class=\\"content\\"
-                >
-                  <div
-                    class=\\"ui divided selection list\\"
-                    data-testid=\\"lobby-user-absent-invitees\\"
-                    role=\\"list\\"
-                  >
-                    <div
-                      class=\\"item\\"
-                      role=\\"listitem\\"
-                    >
-                      <div
-                        class=\\"content\\"
-                      >
-                        <span
-                          aria-label=\\"Participant User (participant)\\"
-                          class=\\"ui medium text\\"
-                          title=\\"Participant User (participant)\\"
-                        >
-                          Participant User
-                        </span>
-                        
-                         
-                         
+                        <strong>
+                          Teacher
+                        </strong>
                       </div>
                     </div>
                   </div>
