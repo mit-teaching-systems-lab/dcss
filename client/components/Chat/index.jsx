@@ -95,12 +95,16 @@ class Chat extends Component {
 
     const { chat } = this.props;
 
-    // Chat settings are for placement and size, so they
-    // are shared across all instances of the chat window.
-    this.storageKey = `chat/*`;
+    this.storageKey = `chat/${chat.id}`;
 
+    // Chat content is persisted only for this chat
     const { content } = Storage.get(this.storageKey, {
       content: NEW_MESSAGE_CONTENT_HTML,
+    });
+
+    // chat/* settings are persisted for placement and size,
+    // so they are shared across all instances of the chat window.
+    Storage.get(`chat/*`, {
       dimensions: {
         width: 456,
         height: 410
@@ -394,7 +398,7 @@ class Chat extends Component {
     }
 
     // Layout.isForMobile()?
-    const { dimensions, position } = Storage.get(this.storageKey);
+    const { dimensions, position } = Storage.get(`chat/*`);
 
     // console.log(dimensions, position);
     const onDragResizeStop = ({ width, height, x, y }) => {
@@ -403,7 +407,7 @@ class Chat extends Component {
       }
 
       // console.log(width, height, x, y);
-      Storage.merge(this.storageKey, {
+      Storage.merge(`chat/*`, {
         dimensions: { width, height },
         position: { x, y }
       });
