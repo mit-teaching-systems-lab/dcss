@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Button } from '@components/UI';
+import { Button, Popup } from '@components/UI';
 import './Chat.css';
 
 const minAriaLabel = 'Click to minimize the chat window';
 const maxAriaLabel = 'Click to maximize the chat window';
 
-const maxIcon = 'window maximize';
+const maxIcon = 'discussions';
 const minIcon = 'window minimize';
 
 function ChatMinMax(props) {
@@ -24,12 +24,21 @@ function ChatMinMax(props) {
     ? `close c__container-modal-minmax ${props.className}`
     : 'close c__container-modal-minmax';
 
-  return (
+  const trigger = (
     <Button
       className={className}
       aria-label={minMaxAriaLabel}
       icon={minMaxIcon}
       onClick={onClick}
+    />
+  );
+
+  return (
+    <Popup
+      inverted
+      aria-label={minMaxAriaLabel}
+      content={minMaxAriaLabel}
+      trigger={trigger}
     />
   );
 }

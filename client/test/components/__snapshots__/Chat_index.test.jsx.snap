@@ -1562,7 +1562,7 @@ exports[`Click to Minimize and Maximize 2`] = `
     >
       <i
         aria-hidden=\\"true\\"
-        class=\\"window maximize icon\\"
+        class=\\"discussions icon\\"
       />
     </button>
   </div>
@@ -1581,7 +1581,7 @@ exports[`Click to Minimize and Maximize 3`] = `
     >
       <i
         aria-hidden=\\"true\\"
-        class=\\"window maximize icon\\"
+        class=\\"discussions icon\\"
       />
     </button>
   </div>
@@ -4000,7 +4000,7 @@ exports[`Receives new message, minimized, mobile 4`] = `
     >
       <i
         aria-hidden=\\"true\\"
-        class=\\"window maximize icon\\"
+        class=\\"discussions icon\\"
       />
     </button>
   </div>
@@ -4019,7 +4019,7 @@ exports[`Receives new message, minimized, mobile 5`] = `
     >
       <i
         aria-hidden=\\"true\\"
-        class=\\"window maximize icon\\"
+        class=\\"discussions icon\\"
       />
     </button>
   </div>
@@ -5015,7 +5015,7 @@ exports[`Receives new message, minimized, not mobile 4`] = `
     >
       <i
         aria-hidden=\\"true\\"
-        class=\\"window maximize icon\\"
+        class=\\"discussions icon\\"
       />
     </button>
   </div>
@@ -5034,7 +5034,7 @@ exports[`Receives new message, minimized, not mobile 5`] = `
     >
       <i
         aria-hidden=\\"true\\"
-        class=\\"window maximize icon\\"
+        class=\\"discussions icon\\"
       />
     </button>
   </div>

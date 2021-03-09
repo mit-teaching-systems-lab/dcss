@@ -31,9 +31,24 @@ exports[`Click to Minimize and Maximize 2`] = `
     >
       <i
         aria-hidden=\\"true\\"
-        class=\\"window maximize icon\\"
+        class=\\"discussions icon\\"
       />
     </button>
+  </div>
+  <div
+    style=\\"display: flex; position: absolute; left: 0px; top: 0px;\\"
+  >
+    <div
+      aria-label=\\"Click to maximize the chat window\\"
+      class=\\"ui top left inverted popup transition visible\\"
+      style=\\"position: initial;\\"
+    >
+      <div
+        class=\\"content\\"
+      >
+        Click to maximize the chat window
+      </div>
+    </div>
   </div>
 </body>"
 `;
@@ -88,9 +103,24 @@ exports[`No props.onChange 2`] = `
     >
       <i
         aria-hidden=\\"true\\"
-        class=\\"window maximize icon\\"
+        class=\\"discussions icon\\"
       />
     </button>
+  </div>
+  <div
+    style=\\"display: flex; position: absolute; left: 0px; top: 0px;\\"
+  >
+    <div
+      aria-label=\\"Click to maximize the chat window\\"
+      class=\\"ui top left inverted popup transition visible\\"
+      style=\\"position: initial;\\"
+    >
+      <div
+        class=\\"content\\"
+      >
+        Click to maximize the chat window
+      </div>
+    </div>
   </div>
 </body>"
 `;
