@@ -200,8 +200,7 @@ class UserInvites extends Component {
       // will prevent interactions with elements outside of the
       // focus trap. For these cases, we will not show the invite
       // notification until the view is cleared.
-      if (document.body &&
-          document.body.classList.contains('dimmed')) {
+      if (document.body && document.body.classList.contains('dimmed')) {
         let interval = setInterval(() => {
           if (!document.body.classList.contains('dimmed')) {
             clearInterval(interval);

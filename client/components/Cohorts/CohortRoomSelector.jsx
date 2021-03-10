@@ -359,9 +359,7 @@ export class CohortRoomSelector extends React.Component {
 
     // If the use is also the host, but has not selected a role,
     // then they cannot join the room yet.
-    const primaryButtonDisabled = host
-      ? host.persona_id === null
-      : false;
+    const primaryButtonDisabled = host ? host.persona_id === null : false;
 
     const primaryButtonProps = {
       content: primaryButtonContent,

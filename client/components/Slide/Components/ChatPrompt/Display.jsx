@@ -352,7 +352,7 @@ class Display extends Component {
         <Icon name="discussions" />
         Discussion
       </Menu.Item>
-      );
+    );
 
     const dropdownOrResultOfDiscussion = !defaultValue ? (
       <Dropdown

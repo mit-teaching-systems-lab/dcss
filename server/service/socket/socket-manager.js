@@ -418,8 +418,7 @@ class SocketManager {
           });
 
           client.on('interjection', async ({ message }) => {
-
-            console.log("interjection", message);
+            console.log('interjection', message);
 
             await chatdb.insertNewAgentMessage(
               chat.id,

@@ -141,7 +141,9 @@ class ChatPromptEditor extends React.Component {
     const { agent, auto, header, prompt, timeout } = this.state;
     const { onChange, onTimerChange, updateState } = this;
     const timeoutString = timeout ? Media.secToTime(timeout) : '';
-    const [hh = 0, mm = 0, ss = 0] = timeoutString.split(':').map(v => Number(v));
+    const [hh = 0, mm = 0, ss = 0] = timeoutString
+      .split(':')
+      .map(v => Number(v));
     const promptAriaLabel = 'Optional prompt to display for this discussion:';
     const timeoutAriaLabel = 'Max duration for this discussion:';
     const autoAriaLabel =
@@ -193,7 +195,8 @@ class ChatPromptEditor extends React.Component {
                 <Segment>
                   <p tabIndex="0" className="cpe__paragraph">
                     <Icon name="attention" />
-                    Set the timeout to 00:00:00 for an unlimited discussion time.
+                    Set the timeout to 00:00:00 for an unlimited discussion
+                    time.
                   </p>
                   <p tabIndex="0" className="cpe__paragraph">
                     <Icon name="attention" />

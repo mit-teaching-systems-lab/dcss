@@ -44,7 +44,7 @@ class Lobby extends Component {
 
     this.state = {
       isReady: false,
-      selection: null,
+      selection: null
     };
 
     this.isComponentMounted = false;
@@ -189,7 +189,7 @@ class Lobby extends Component {
       cohort,
       scenario,
       selection,
-      onSelect: (selection) => {
+      onSelect: selection => {
         console.log(selection);
         this.setState({
           selection

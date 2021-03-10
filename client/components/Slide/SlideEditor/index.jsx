@@ -69,7 +69,7 @@ const MenuItemChatToggler = props => {
     color
   };
 
-  const ariaLabel = `${hasChatEnabled ? 'Disable' : 'Enable'} realtime chat`;
+  const ariaLabel = `${hasChatEnabled ? 'Disable' : 'Enable'} real-time chat`;
 
   const onClick = () => {
     onToggle();

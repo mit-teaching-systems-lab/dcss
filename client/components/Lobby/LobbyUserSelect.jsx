@@ -140,11 +140,12 @@ class LobbyUserSelect extends Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    const {
-      selection
-    } = nextProps;
+    const { selection } = nextProps;
 
-    if (selection && !nextState.selected.find(s => s.user.id === selection.id)) {
+    if (
+      selection &&
+      !nextState.selected.find(s => s.user.id === selection.id)
+    ) {
       this.setState({
         selected: [
           ...nextState.selected,
@@ -313,14 +314,14 @@ class LobbyUserSelect extends Component {
               {rightFloatedContents}
             </List.Content>
           ) : (
-            <List.Content key="1">
-              {rightFloatedContents}
-            </List.Content>
+            <List.Content key="1">{rightFloatedContents}</List.Content>
           );
 
-          const listContentStyle = Layout.isForMobile() ? {
-            marginBottom: '0.5em'
-          } : {};
+          const listContentStyle = Layout.isForMobile()
+            ? {
+                marginBottom: '0.5em'
+              }
+            : {};
           const nameAndButtonContent = (
             <List.Content
               key="2"
@@ -341,19 +342,11 @@ class LobbyUserSelect extends Component {
             </List.Content>
           );
 
-          const contents = Layout.isForMobile() ? [
-            nameAndButtonContent,
-            dropdownContent
-          ] : [
-            dropdownContent,
-            nameAndButtonContent
-          ];
+          const contents = Layout.isForMobile()
+            ? [nameAndButtonContent, dropdownContent]
+            : [dropdownContent, nameAndButtonContent];
 
-          return (
-            <List.Item key={key}>
-              {contents}
-            </List.Item>
-          );
+          return <List.Item key={key}>{contents}</List.Item>;
         })}
       </List>
     ) : /* istanbul ignore next */
@@ -540,10 +533,7 @@ class LobbyUserSelect extends Component {
       });
 
       const sent = [];
-      const {
-        chat,
-        user
-      } = this.props;
+      const { chat, user } = this.props;
 
       for (let selection of this.state.selected) {
         if (selection.user.id === user.id) {
@@ -675,11 +665,11 @@ class LobbyUserSelect extends Component {
     let remainingMessage = `${remainingCount} ${pluralRemaining} unassigned.`;
     let remainingTextProps = Layout.isForMobile()
       ? {
-        style: {
-          display: 'block',
-          marginBottom: '0.5em'
+          style: {
+            display: 'block',
+            marginBottom: '0.5em'
+          }
         }
-      }
       : {};
 
     if (remainingCount === 0) {
@@ -728,12 +718,13 @@ class LobbyUserSelect extends Component {
       </Button>
     );
 
-    const sendInvitesButtonConditionalProps = Layout.isNotForMobile() ? {
-      floated: 'right',
-    } : {
-      fluid: true,
-    };
-
+    const sendInvitesButtonConditionalProps = Layout.isNotForMobile()
+      ? {
+          floated: 'right'
+        }
+      : {
+          fluid: true
+        };
 
     const sendInvitesButtonProps = {
       ...sendInvitesButtonConditionalProps,
@@ -743,9 +734,7 @@ class LobbyUserSelect extends Component {
     };
 
     const sendInvitesButton = (
-      <Button {...sendInvitesButtonProps}>
-        Set roles & send invites
-      </Button>
+      <Button {...sendInvitesButtonProps}>Set roles & send invites</Button>
     );
 
     const onInstructionDismiss = () => {
@@ -916,7 +905,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => ({
   createChatInvite: (id, params) => dispatch(createChatInvite(id, params)),
-  getChat: (id) => dispatch(getChat(id)),
+  getChat: id => dispatch(getChat(id)),
   getChatUsersByChatId: id => dispatch(getChatUsersByChatId(id)),
   getLinkedChatUsersByChatId: id => dispatch(getLinkedChatUsersByChatId(id)),
   getInvites: () => dispatch(getInvites()),

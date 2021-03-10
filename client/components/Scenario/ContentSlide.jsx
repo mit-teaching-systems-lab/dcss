@@ -354,7 +354,7 @@ class ContentSlide extends React.Component {
         key={slide.id}
         className={cardClass}
         onPointerUp={onPointerUp}
-        style={{position: 'unset !important'}}
+        style={{ position: 'unset !important' }}
       >
         {slide.title ? (
           <Card.Content className="scenario__slide-card-header">

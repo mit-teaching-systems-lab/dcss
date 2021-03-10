@@ -273,7 +273,10 @@ class EntrySlide extends React.Component {
         }
       : null;
 
-    const mustShowLobbyButton = this.isCohortScenarioRun && this.isMultiparticipant && chat.host_id === user.id;
+    const mustShowLobbyButton =
+      this.isCohortScenarioRun &&
+      this.isMultiparticipant &&
+      chat.host_id === user.id;
 
     return (
       <Fragment>

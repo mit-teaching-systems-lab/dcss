@@ -131,9 +131,11 @@ const mapStateToProps = (state, ownProps) => {
 
   // Ensure that we only display agents that are actually in use.
   // If none are in use, then the component does nothing.
-  const filteredAgents = agentsInUse
+  const preFilteredAgents = agentsInUse
     ? sourceAgents.filter(a => agentsInUse.includes(a.id))
     : sourceAgents;
+
+  const filteredAgents = preFilteredAgents.filter(a => !a.deleted_at);
 
   const emptyText = !filteredAgents.length
     ? 'There are currently no compatible agents in use'

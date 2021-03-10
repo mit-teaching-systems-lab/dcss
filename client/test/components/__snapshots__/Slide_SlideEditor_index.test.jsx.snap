@@ -27248,7 +27248,7 @@ exports[`Missing props 1`] = `
               />
             </a>
             <a
-              aria-label=\\"Enable realtime chat\\"
+              aria-label=\\"Enable real-time chat\\"
               class=\\"item\\"
               tabindex=\\"0\\"
             >
@@ -27260,7 +27260,7 @@ exports[`Missing props 1`] = `
                   class=\\"black discussions icon\\"
                 />
               </i>
-              Enable realtime chat
+              Enable real-time chat
             </a>
           </div>
         </div>
@@ -31259,7 +31259,7 @@ exports[`Multiple personas 1`] = `
               />
             </a>
             <a
-              aria-label=\\"Enable realtime chat\\"
+              aria-label=\\"Enable real-time chat\\"
               class=\\"item\\"
               tabindex=\\"0\\"
             >
@@ -31271,7 +31271,7 @@ exports[`Multiple personas 1`] = `
                   class=\\"black discussions icon\\"
                 />
               </i>
-              Enable realtime chat
+              Enable real-time chat
             </a>
           </div>
         </div>
@@ -32314,7 +32314,7 @@ exports[`Multiple personas 2`] = `
               />
             </a>
             <a
-              aria-label=\\"Enable realtime chat\\"
+              aria-label=\\"Enable real-time chat\\"
               class=\\"item\\"
               tabindex=\\"0\\"
             >
@@ -32326,7 +32326,7 @@ exports[`Multiple personas 2`] = `
                   class=\\"black discussions icon\\"
                 />
               </i>
-              Enable realtime chat
+              Enable real-time chat
             </a>
           </div>
         </div>
@@ -33369,7 +33369,7 @@ exports[`Multiple personas, assign a persona to a component 1`] = `
               />
             </a>
             <a
-              aria-label=\\"Enable realtime chat\\"
+              aria-label=\\"Enable real-time chat\\"
               class=\\"item\\"
               tabindex=\\"0\\"
             >
@@ -33381,7 +33381,7 @@ exports[`Multiple personas, assign a persona to a component 1`] = `
                   class=\\"black discussions icon\\"
                 />
               </i>
-              Enable realtime chat
+              Enable real-time chat
             </a>
           </div>
         </div>
@@ -34424,7 +34424,7 @@ exports[`Multiple personas, assign a persona to a component 2`] = `
               />
             </a>
             <a
-              aria-label=\\"Enable realtime chat\\"
+              aria-label=\\"Enable real-time chat\\"
               class=\\"item\\"
               tabindex=\\"0\\"
             >
@@ -34436,7 +34436,7 @@ exports[`Multiple personas, assign a persona to a component 2`] = `
                   class=\\"black discussions icon\\"
                 />
               </i>
-              Enable realtime chat
+              Enable real-time chat
             </a>
           </div>
         </div>
@@ -35479,7 +35479,7 @@ exports[`Multiple personas, assign a persona to a component 3`] = `
               />
             </a>
             <a
-              aria-label=\\"Enable realtime chat\\"
+              aria-label=\\"Enable real-time chat\\"
               class=\\"item\\"
               tabindex=\\"0\\"
             >
@@ -35491,7 +35491,7 @@ exports[`Multiple personas, assign a persona to a component 3`] = `
                   class=\\"black discussions icon\\"
                 />
               </i>
-              Enable realtime chat
+              Enable real-time chat
             </a>
           </div>
         </div>
@@ -36534,7 +36534,7 @@ exports[`Multiple personas, assign a persona to a component 4`] = `
               />
             </a>
             <a
-              aria-label=\\"Enable realtime chat\\"
+              aria-label=\\"Enable real-time chat\\"
               class=\\"item\\"
               tabindex=\\"0\\"
             >
@@ -36546,7 +36546,7 @@ exports[`Multiple personas, assign a persona to a component 4`] = `
                   class=\\"black discussions icon\\"
                 />
               </i>
-              Enable realtime chat
+              Enable real-time chat
             </a>
           </div>
         </div>
@@ -37589,7 +37589,7 @@ exports[`Multiple personas, assign a persona to a component 5`] = `
               />
             </a>
             <a
-              aria-label=\\"Enable realtime chat\\"
+              aria-label=\\"Enable real-time chat\\"
               class=\\"item\\"
               tabindex=\\"0\\"
             >
@@ -37601,7 +37601,7 @@ exports[`Multiple personas, assign a persona to a component 5`] = `
                   class=\\"black discussions icon\\"
                 />
               </i>
-              Enable realtime chat
+              Enable real-time chat
             </a>
           </div>
         </div>
@@ -38644,7 +38644,7 @@ exports[`Multiple personas, toggle chat 1`] = `
               />
             </a>
             <a
-              aria-label=\\"Enable realtime chat\\"
+              aria-label=\\"Enable real-time chat\\"
               class=\\"item\\"
               tabindex=\\"0\\"
             >
@@ -38656,7 +38656,7 @@ exports[`Multiple personas, toggle chat 1`] = `
                   class=\\"black discussions icon\\"
                 />
               </i>
-              Enable realtime chat
+              Enable real-time chat
             </a>
           </div>
         </div>
@@ -39699,7 +39699,7 @@ exports[`Multiple personas, toggle chat 2`] = `
               />
             </a>
             <a
-              aria-label=\\"Enable realtime chat\\"
+              aria-label=\\"Enable real-time chat\\"
               class=\\"item\\"
               tabindex=\\"0\\"
             >
@@ -39711,7 +39711,7 @@ exports[`Multiple personas, toggle chat 2`] = `
                   class=\\"black discussions icon\\"
                 />
               </i>
-              Enable realtime chat
+              Enable real-time chat
             </a>
           </div>
         </div>
@@ -40754,7 +40754,7 @@ exports[`Multiple personas, toggle chat 3`] = `
               />
             </a>
             <a
-              aria-label=\\"Disable realtime chat\\"
+              aria-label=\\"Disable real-time chat\\"
               class=\\"item\\"
               tabindex=\\"0\\"
             >
@@ -40766,7 +40766,7 @@ exports[`Multiple personas, toggle chat 3`] = `
                   class=\\"green discussions icon\\"
                 />
               </i>
-              Disable realtime chat
+              Disable real-time chat
             </a>
           </div>
         </div>
@@ -42013,7 +42013,7 @@ exports[`Multiple personas, toggle chat 3`] = `
       <div
         class=\\"content\\"
       >
-        Disable realtime chat
+        Disable real-time chat
       </div>
     </div>
   </div>
@@ -42101,7 +42101,7 @@ exports[`Multiple personas, with an assigned component 1`] = `
               />
             </a>
             <a
-              aria-label=\\"Enable realtime chat\\"
+              aria-label=\\"Enable real-time chat\\"
               class=\\"item\\"
               tabindex=\\"0\\"
             >
@@ -42113,7 +42113,7 @@ exports[`Multiple personas, with an assigned component 1`] = `
                   class=\\"black discussions icon\\"
                 />
               </i>
-              Enable realtime chat
+              Enable real-time chat
             </a>
           </div>
         </div>
@@ -43156,7 +43156,7 @@ exports[`Multiple personas, with an assigned component 2`] = `
               />
             </a>
             <a
-              aria-label=\\"Enable realtime chat\\"
+              aria-label=\\"Enable real-time chat\\"
               class=\\"item\\"
               tabindex=\\"0\\"
             >
@@ -43168,7 +43168,7 @@ exports[`Multiple personas, with an assigned component 2`] = `
                   class=\\"black discussions icon\\"
                 />
               </i>
-              Enable realtime chat
+              Enable real-time chat
             </a>
           </div>
         </div>

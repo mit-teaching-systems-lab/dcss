@@ -51,9 +51,7 @@ class LobbyUserOverview extends Component {
   }
 
   renderUserList(users, options = {}) {
-    const {
-      onSelect
-    } = options;
+    const { onSelect } = options;
     const { chat } = this.props;
     return (
       <List divided relaxed selection data-testid="lobby-cohort-chat-users">
@@ -74,7 +72,6 @@ class LobbyUserOverview extends Component {
             </Text>
           ) : null;
 
-
           const listItemProps = {
             as: 'a',
             key,
@@ -82,7 +79,7 @@ class LobbyUserOverview extends Component {
               if (onSelect) {
                 onSelect(user);
               }
-            },
+            }
           };
 
           accum.push(
@@ -201,10 +198,7 @@ class LobbyUserOverview extends Component {
       if (inRoom) {
         return accum;
       }
-      return [
-        ...accum,
-        chat
-      ];
+      return [...accum, chat];
     }, []);
 
     return (

@@ -99,7 +99,7 @@ class Chat extends Component {
 
     // Chat content is persisted only for this chat
     const { content } = Storage.get(this.storageKey, {
-      content: NEW_MESSAGE_CONTENT_HTML,
+      content: NEW_MESSAGE_CONTENT_HTML
     });
 
     // chat/* settings are persisted for placement and size,

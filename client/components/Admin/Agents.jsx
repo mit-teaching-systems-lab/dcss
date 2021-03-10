@@ -632,9 +632,8 @@ class Agent extends Component {
       });
     };
 
-    const interactionIdValue = agent && agent.interaction
-      ? agent.interaction.id
-      : null;
+    const interactionIdValue =
+      agent && agent.interaction ? agent.interaction.id : null;
 
     const interactionDropdownProps = {
       ...(error.field === 'interaction' && { error: true }),
@@ -1193,23 +1192,24 @@ class Agent extends Component {
 
         {this.state.interaction.isOpen ? (
           <AgentInteractionEditor
-            onCancel={(interaction) => {
+            onCancel={interaction => {
               const agent = this.state.agent;
 
               this.setState({
                 agent: {
                   ...agent,
-                  interaction: interaction && interaction.id
-                    ? interaction
-                    : this.state.interaction
+                  interaction:
+                    interaction && interaction.id
+                      ? interaction
+                      : this.state.interaction
                 },
                 error: {
                   field: '',
                   message: ''
                 },
                 interaction: {
-                  isOpen: false,
-                },
+                  isOpen: false
+                }
               });
             }}
           />
@@ -1253,10 +1253,13 @@ const mapStateToProps = (state, ownProps) => {
 
   const activePage = ownProps.activePage || 1;
   const agents = state.agents.filter(a => !a.deleted_at);
-  const agentsById = agents.reduce((accum, agent) => ({
-    ...accum,
-    [agent.id]: agent
-  }), {});
+  const agentsById = agents.reduce(
+    (accum, agent) => ({
+      ...accum,
+      [agent.id]: agent
+    }),
+    {}
+  );
   return {
     activePage,
     agent,
@@ -1265,7 +1268,7 @@ const mapStateToProps = (state, ownProps) => {
     interactions,
     interactionsById,
     interactionsTypes,
-    user,
+    user
   };
 };
 
