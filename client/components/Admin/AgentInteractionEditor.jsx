@@ -102,7 +102,9 @@ class AgentInteractionEditor extends Component {
   }
 
   onCancel() {
-    this.props.onCancel();
+    this.props.onCancel(
+      this.state.interaction.id ? this.state.interaction : null
+    );
   }
 
   render() {

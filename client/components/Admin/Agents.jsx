@@ -1193,11 +1193,23 @@ class Agent extends Component {
 
         {this.state.interaction.isOpen ? (
           <AgentInteractionEditor
-            onCancel={() => {
+            onCancel={(interaction) => {
+              const agent = this.state.agent;
+
               this.setState({
+                agent: {
+                  ...agent,
+                  interaction: interaction && interaction.id
+                    ? interaction
+                    : this.state.interaction
+                },
+                error: {
+                  field: '',
+                  message: ''
+                },
                 interaction: {
-                  isOpen: false
-                }
+                  isOpen: false,
+                },
               });
             }}
           />
