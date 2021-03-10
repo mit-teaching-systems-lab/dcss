@@ -139,22 +139,22 @@ class SocketManager {
       }
 
       if (!notifier.listenerCount('chat_message_created')) {
-        notifier.on('chat_message_created', data => {
-          console.log('chat_message_created', data);
+        notifier.on('chat_message_created', record => {
+          console.log('chat_message_created', record);
 
           // If the message is for a specific participant...
-          const room = data.recipient_id
-            ? `${data.chat_id}-user-${data.recipient_id}`
-            : data.chat_id;
+          const room = record.recipient_id
+            ? `${record.chat_id}-user-${record.recipient_id}`
+            : record.chat_id;
 
-          this.io.to(room).emit(CHAT_MESSAGE_CREATED, data);
+          this.io.to(room).emit(CHAT_MESSAGE_CREATED, record);
 
           // Check if there is an active agent client for
           // the user that wrote the message. If there is,
           // we'll send the contents of their message to
           // the agent.
 
-          const clientKey = `${data.chat_id}-user-${data.user_id}`;
+          const clientKey = `${record.chat_id}-user-${record.user_id}`;
 
           if (cache.clients[clientKey]) {
             const { client, auth } = cache.clients[clientKey];
@@ -163,11 +163,12 @@ class SocketManager {
             // ANY IMAGE ATTACHMENTS OR EMBEDS WILL BE IGNORED
             //
             // console.log(client);
-            const value = extractTextContent(data.content);
+            const value = extractTextContent(record.content);
             // console.log(auth);
-            // console.log(data);
+            // console.log(record);
 
             client.emit('request', {
+              record,
               value
             });
           }
@@ -372,7 +373,7 @@ class SocketManager {
         console.log(CHAT_AGENT_PAUSE, props);
       });
 
-      socket.on(CHAT_AGENT_START, async ({ agent, chat, user }) => {
+      socket.on(CHAT_AGENT_START, async ({ agent, chat, run, user }) => {
         console.log(CHAT_AGENT_START, { agent, chat, user });
         if (agent && agent.id) {
           const room = `${chat.id}-user-${user.id}`;
@@ -390,15 +391,36 @@ class SocketManager {
             await chatdb.joinChat(chat.id, agent.self.id);
           }
 
-          client.on('response', ({ value, result }) => {
-            console.log(
-              `The text "${value}" ${
-                result ? 'contains an emoji' : 'does not contain an emoji'
-              }`
+          client.on('response', async response => {
+            console.log('CHAT AGENT RESPONSE: ', response);
+            if (!response.record || !response.record.chat_id) {
+              // This is NOT a response to a chat message
+              return;
+            }
+            await agentdb.insertNewAgentResponse(
+              // agent_id
+              agent.id,
+              // chat_id
+              response.record.chat_id,
+              // interaction_id
+              agent.interaction.id,
+              // prompt_response_id
+              response.response_id,
+              // recipient_id
+              user.id,
+              // response_id
+              response.id,
+              // run_id
+              run.id,
+              // response
+              response
             );
           });
 
           client.on('interjection', async ({ message }) => {
+
+            console.log("interjection", message);
+
             await chatdb.insertNewAgentMessage(
               chat.id,
               agent.self.id, // This comes from the agent!!
@@ -441,7 +463,12 @@ class SocketManager {
               const client = new Socket.Client(agent.endpoint, options);
 
               client.on('response', async response => {
-                console.log('AGENT RESPONSE: ', response);
+                console.log('RUN AGENT RESPONSE: ', response);
+                if (response.record && response.record.chat_id) {
+                  // This is a response to a chat message,
+                  // not a regular prompt component
+                  return;
+                }
                 await agentdb.insertNewAgentResponse(
                   // agent_id
                   agent.id,
