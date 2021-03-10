@@ -78,6 +78,12 @@ const cache = {
   }
 };
 
+const timers = {
+  /*
+  [chat.id-slide-slide.id] = interval;
+   */
+};
+
 const extractTextContent = html => parse(html).textContent;
 
 const makeRemoteSafeAuthPayload = data => {
@@ -642,23 +648,13 @@ class SocketManager {
         });
       });
 
-      const timers = {};
-
       socket.on(TIMER_START, async ({ chat, user, slide, timeout }) => {
         console.log(TIMER_START, { chat, user, slide, timeout });
         const room = `${chat.id}-slide-${slide.index}`;
 
+        socket.join(room);
+
         if (!timers[room]) {
-          this.io.to(room).emit(TIMER_START, {
-            chat,
-            user,
-            slide,
-            timeout
-          });
-
-          // wait until the next execution turn to start the timer
-          await 0;
-
           timers[room] = setInterval(() => {
             timeout--;
 
@@ -682,6 +678,13 @@ class SocketManager {
             }
           }, 1000);
         }
+
+        this.io.to(room).emit(TIMER_START, {
+          chat,
+          user,
+          slide,
+          timeout
+        });
       });
 
       // socket.on(TIMER_END, ({ chat, user, slide, result }) => {
