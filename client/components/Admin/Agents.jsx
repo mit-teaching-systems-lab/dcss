@@ -66,6 +66,9 @@ const makeListOfPropertyValuePairs = object => {
   if (Array.isArray(object)) {
     return object;
   }
+  if (!object) {
+    return [];
+  }
   const pairs = Object.entries(object);
   return pairs.length
     ? pairs.map(([property, value]) => ({ property, value }))
@@ -193,6 +196,16 @@ class Agent extends Component {
         message: 'Agent created',
         time: 3000
       });
+
+      const newAgent = makeMutabilitySafeAgent({
+        ...this.props.agentsById[this.props.agent.id]
+      });
+
+      this.setState({
+        agent: newAgent,
+        id: this.props.agent.id
+      });
+
       this.props.history.push(
         History.composeUrl(this.props.location, {
           id: this.props.agent.id
@@ -545,7 +558,7 @@ class Agent extends Component {
               isOpen: true,
               subject: 'agent',
               item: agent.title,
-              onConfirm: () => {
+              onConfirm: async () => {
                 const agent = makeStorableAgent(
                   makeMutabilitySafeAgent(this.state.agent)
                 );
@@ -553,6 +566,15 @@ class Agent extends Component {
                   ...agent,
                   deleted_at: new Date().toISOString()
                 });
+
+                await this.props.getAgents();
+
+                this.setState({
+                  agent: null
+                });
+
+                this.props.history.push(`/admin/agents?page=1`);
+
                 notify({
                   color: 'green',
                   message: 'Agent deleted',
@@ -610,7 +632,9 @@ class Agent extends Component {
       });
     };
 
-    const interactionIdValue = agent ? agent.interaction.id : null;
+    const interactionIdValue = agent && agent.interaction
+      ? agent.interaction.id
+      : null;
 
     const interactionDropdownProps = {
       ...(error.field === 'interaction' && { error: true }),
@@ -1210,14 +1234,17 @@ const mapStateToProps = (state, ownProps) => {
   const {
     user,
     agent,
-    agents,
-    agentsById,
     interactions,
     interactionsById,
     interactionsTypes
   } = state;
 
   const activePage = ownProps.activePage || 1;
+  const agents = state.agents.filter(a => !a.deleted_at);
+  const agentsById = agents.reduce((accum, agent) => ({
+    ...accum,
+    [agent.id]: agent
+  }), {});
   return {
     activePage,
     agent,
@@ -1226,7 +1253,7 @@ const mapStateToProps = (state, ownProps) => {
     interactions,
     interactionsById,
     interactionsTypes,
-    user
+    user,
   };
 };
 

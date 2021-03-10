@@ -4013,7 +4013,7 @@ exports[`Add a new agent 8`] = `
               </div>
             </a>
             <a
-              class=\\"item\\"
+              class=\\"active item\\"
               id=\\"2\\"
               role=\\"listitem\\"
             >
@@ -4042,32 +4042,50 @@ exports[`Add a new agent 8`] = `
               <div
                 class=\\"ui borderless icon a__agentviewer-editormenu menu\\"
               >
-                <div
-                  aria-label=\\"Agent is ready to be saved.\\"
+                <a
+                  aria-label=\\"Duplicate this agent\\"
                   class=\\"item\\"
                   tabindex=\\"0\\"
                 >
-                  Click 
-                  <strong>
-                    Save
-                  </strong>
-                   to activate this agent.
-                </div>
+                  <i
+                    class=\\"icons em__icon-group-margin\\"
+                  >
+                    <i
+                      aria-hidden=\\"true\\"
+                      class=\\"copy outline icon primary\\"
+                    />
+                  </i>
+                  Duplicate this agent
+                </a>
+                <a
+                  aria-label=\\"Delete this agent\\"
+                  class=\\"item\\"
+                  tabindex=\\"0\\"
+                >
+                  <i
+                    class=\\"icons em__icon-group-margin\\"
+                  >
+                    <i
+                      aria-hidden=\\"true\\"
+                      class=\\"trash outline alternate icon primary\\"
+                    />
+                  </i>
+                  Delete this agent
+                </a>
                 <div
                   class=\\"item\\"
                   tabindex=\\"0\\"
                 >
                   <div
-                    class=\\"ui checked disabled checkbox\\"
+                    class=\\"ui checked checkbox\\"
                   >
                     <input
-                      aria-label=\\"agent is active\\"
+                      aria-label=\\"agent is inactive\\"
                       autocomplete=\\"off\\"
                       class=\\"hidden\\"
-                      disabled=\\"\\"
                       name=\\"is_active\\"
                       readonly=\\"\\"
-                      tabindex=\\"-1\\"
+                      tabindex=\\"0\\"
                       type=\\"checkbox\\"
                       value=\\"\\"
                     />
@@ -4108,7 +4126,7 @@ exports[`Add a new agent 8`] = `
                         autocomplete=\\"off\\"
                         name=\\"title\\"
                         type=\\"text\\"
-                        value=\\"A new agent\\"
+                        value=\\"\\"
                       />
                     </div>
                   </div>
@@ -4157,7 +4175,7 @@ exports[`Add a new agent 8`] = `
                         id=\\"endpoint\\"
                         name=\\"endpoint\\"
                         type=\\"text\\"
-                        value=\\"ws:...\\"
+                        value=\\"\\"
                       />
                     </div>
                   </div>
@@ -4193,10 +4211,10 @@ exports[`Add a new agent 8`] = `
                     <div
                       aria-atomic=\\"true\\"
                       aria-live=\\"polite\\"
-                      class=\\"divider text\\"
+                      class=\\"divider default text\\"
                       role=\\"alert\\"
                     >
-                      ChatPrompt
+                      Select an interaction
                     </div>
                     <i
                       aria-hidden=\\"true\\"
@@ -4208,8 +4226,8 @@ exports[`Add a new agent 8`] = `
                     >
                       <div
                         aria-checked=\\"false\\"
-                        aria-selected=\\"false\\"
-                        class=\\"item\\"
+                        aria-selected=\\"true\\"
+                        class=\\"selected item\\"
                         role=\\"option\\"
                         style=\\"pointer-events: all;\\"
                       >
@@ -4220,9 +4238,9 @@ exports[`Add a new agent 8`] = `
                         </span>
                       </div>
                       <div
-                        aria-checked=\\"true\\"
-                        aria-selected=\\"true\\"
-                        class=\\"active selected item\\"
+                        aria-checked=\\"false\\"
+                        aria-selected=\\"false\\"
+                        class=\\"item\\"
                         role=\\"option\\"
                         style=\\"pointer-events: all;\\"
                       >
@@ -24997,29 +25015,7 @@ exports[`Delete an agent 6`] = `
           <div
             class=\\"ui divided selection relaxed list\\"
             role=\\"list\\"
-          >
-            <a
-              aria-label=\\"Emoji Analysis\\"
-              class=\\"active item\\"
-              id=\\"1\\"
-              role=\\"listitem\\"
-            >
-              <div
-                class=\\"content\\"
-              >
-                <div
-                  class=\\"header\\"
-                >
-                  Emoji Analysis
-                </div>
-                <div
-                  class=\\"description\\"
-                >
-                  Detects the presense of an emoji character in your text
-                </div>
-              </div>
-            </a>
-          </div>
+          />
         </div>
         <div
           class=\\"twelve wide column a__agentviewer-inner\\"
@@ -25940,23 +25936,13 @@ exports[`Delete an agent 6`] = `
         ⟨
       </a>
       <a
-        aria-current=\\"true\\"
-        aria-disabled=\\"false\\"
-        class=\\"active item\\"
-        tabindex=\\"0\\"
-        type=\\"pageItem\\"
-        value=\\"1\\"
-      >
-        1
-      </a>
-      <a
         aria-current=\\"false\\"
         aria-disabled=\\"false\\"
         aria-label=\\"Next item\\"
         class=\\"item\\"
         tabindex=\\"0\\"
         type=\\"nextItem\\"
-        value=\\"1\\"
+        value=\\"0\\"
       >
         ⟩
       </a>
