@@ -2,9 +2,7 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { getCohorts } from '@actions/cohort';
 import { getInvites, setInvite } from '@actions/invite';
-import { getScenariosByStatus } from '@actions/scenario';
 import { getUsers } from '@actions/users';
 import { SCENARIO_IS_PUBLIC } from '@components/Scenario/constants';
 import {
@@ -70,8 +68,6 @@ class UserInvites extends Component {
 
   async refresh() {
     await this.props.getInvites();
-    await this.props.getCohorts();
-    await this.props.getScenariosByStatus(SCENARIO_IS_PUBLIC);
 
     if (isMissingUsers(this.props.invites, this.props.usersById)) {
       await this.props.getUsers(
@@ -297,9 +293,7 @@ class UserInvites extends Component {
 
 UserInvites.propTypes = {
   code: PropTypes.string,
-  getCohorts: PropTypes.func,
   getInvites: PropTypes.func,
-  getScenariosByStatus: PropTypes.func,
   getUsers: PropTypes.func,
   history: PropTypes.shape({
     push: PropTypes.func.isRequired
@@ -324,7 +318,7 @@ UserInvites.defaultProps = {
 };
 
 const mapStateToProps = (state, ownProps) => {
-  const { invites, personas, user, usersById } = state;
+  const { invites, personas, user, users, usersById } = state;
   const invitesByCode = invites.reduce(
     (accum, invite) => ({
       ...accum,
@@ -339,9 +333,7 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  getCohorts: () => dispatch(getCohorts()),
   getInvites: () => dispatch(getInvites()),
-  getScenariosByStatus: status => dispatch(getScenariosByStatus(status)),
   getUsers: limit => dispatch(getUsers(limit)),
   setInvite: (id, params) => dispatch(setInvite(id, params))
 });

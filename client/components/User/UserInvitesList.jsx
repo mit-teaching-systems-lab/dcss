@@ -117,7 +117,14 @@ class UserInvitesList extends Component {
   }
 
   async componentDidMount() {
-    await this.props.getScenariosByStatus(SCENARIO_IS_PUBLIC);
+
+    for (const invite of this.props.invites) {
+      if (!this.props.scenariosById[invite.scenario_id]) {
+        await this.props.getScenariosByStatus(SCENARIO_IS_PUBLIC);
+        break;
+      }
+    }
+
     this.setState({
       isReady: true
     });
