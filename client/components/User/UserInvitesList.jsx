@@ -130,7 +130,7 @@ class UserInvitesList extends Component {
     });
   }
 
-  async onInviteChange(event, { value: invite }) {
+  onInviteChange(event, { value: invite }) {
     if (invite.status === 'accepted') {
       const acceptUrl = `/invite/${INVITE_STATUS_ACCEPT}/${invite.code}`;
       const redirect = makeAcceptedInviteRedirectPath(invite);
@@ -138,7 +138,7 @@ class UserInvitesList extends Component {
         redirect
       });
     } else {
-      await this.props.setInvite(invite.id, {
+      this.props.setInvite(invite.id, {
         status: INVITE_STATUS_MAP[invite.status]
       });
     }
