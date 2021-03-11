@@ -313,13 +313,12 @@ class SocketManager {
       const sendRunResponseToAgent = data => {
         const clientKey = `${data.run_id}-${data.user_id}-${data.response_id}`;
 
-        console.log('sendRunResponseToAgent, clientKey', clientKey);
-        console.log('sendRunResponseToAgent, data', data);
+        // console.log('sendRunResponseToAgent, clientKey', clientKey);
+        // console.log('sendRunResponseToAgent, data', data);
+        // console.log(cache.clients[clientKey]);
 
-        console.log(cache.clients[clientKey]);
         if (cache.clients[clientKey]) {
           const { client, auth } = cache.clients[clientKey];
-
           const { id, response_id, transcript = '', value = '' } = data;
 
           // console.log(auth);
@@ -641,6 +640,18 @@ class SocketManager {
         console.log(CHAT_CLOSED_FOR_SLIDE, { chat, user, slide, result });
         const room = `${chat.id}-slide-${slide.index}`;
         cache.rolls[room] = null;
+
+        if (timers[room]) {
+          clearInterval(timers[room]);
+          timers[room] = null;
+          this.io.to(room).emit(TIMER_END, {
+            chat,
+            user,
+            slide,
+            result
+          });
+        }
+
         this.io.to(room).emit(CHAT_CLOSED_FOR_SLIDE, {
           chat,
           slide,
