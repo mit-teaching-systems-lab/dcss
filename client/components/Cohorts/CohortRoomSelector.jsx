@@ -187,6 +187,11 @@ export class CohortRoomSelector extends React.Component {
       const options = defaultOptions.filter(
         option => !filledRoles.includes(option.value)
       );
+
+      if (!options.length) {
+        return accum;
+      }
+
       const memoChatId = chat.id;
 
       const miniSendInvitesButton = (
