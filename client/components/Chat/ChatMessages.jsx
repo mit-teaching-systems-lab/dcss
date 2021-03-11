@@ -103,7 +103,7 @@ class ChatMessages extends Component {
   }
 
   async componentDidMount() {
-    const { agent, chat, user } = this.props;
+    const { agent, chat, run, user } = this.props;
     const messages = [];
     const count = await this.props.getChatMessagesCountByChatId(chat.id);
 
@@ -128,7 +128,7 @@ class ChatMessages extends Component {
         CHAT_AGENT_START,
         Payload.compose(
           this.props,
-          { agent, user }
+          { agent, run, user }
         )
       );
     }
