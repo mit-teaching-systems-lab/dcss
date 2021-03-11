@@ -155,8 +155,8 @@ export class CohortRoomSelector extends React.Component {
       const key = Identity.key(chat);
       const userInChat = chat.usersById[user.id];
       const host = chat.usersById[chat.host_id];
-      const useIsNotHost = host.id !== user.id;
-      const isUserHost = !useIsNotHost;
+      const userIsNotHost = host.id !== user.id;
+      const isUserHost = !userIsNotHost;
       let hasHostClaimedARole = false;
       const filledRoles = chat.users.reduce((accum, { id, persona_id }) => {
         if (id === chat.host_id && persona_id) {
@@ -170,7 +170,7 @@ export class CohortRoomSelector extends React.Component {
 
       // If this user is not the host, don't display a public room if the
       // host hasn't selected a role yet
-      if (useIsNotHost && !hasHostClaimedARole) {
+      if (userIsNotHost && !hasHostClaimedARole) {
         return accum;
       }
 
@@ -252,7 +252,7 @@ export class CohortRoomSelector extends React.Component {
         ? scenario.personas.find(({ id }) => id === userInChat.persona_id)
         : null;
 
-      const userRoleDisplay = isUserRoleAssigned ? (
+      const userRoleDisplay = isUserRoleAssigned && userPersona ? (
         <Fragment>
           You are participating as <strong>{userPersona.name}</strong>. Click{' '}
           <strong>Join Room</strong> to run the scenario.
@@ -264,7 +264,7 @@ export class CohortRoomSelector extends React.Component {
         'Click on one of those roles to join the scenario room:'
       );
 
-      const whoseRoom = useIsNotHost ? (
+      const whoseRoom = userIsNotHost ? (
         <Fragment>{<Username user={host} possessive />} room</Fragment>
       ) : (
         <Fragment>This is your room</Fragment>

@@ -6334,3 +6334,899 @@ exports[`Render 2 1 1`] = `
   </div>
 </body>"
 `;
+
+exports[`User is not host, host does have role 1`] = `
+"<body
+  class=\\"dimmable dimmed\\"
+>
+  <div
+    id=\\"root\\"
+  />
+  <div />
+  <div
+    class=\\"ui top aligned page modals dimmer transition visible active\\"
+    style=\\"display: flex;\\"
+  >
+    <div
+      aria-modal=\\"true\\"
+      class=\\"ui modal transition visible active\\"
+      role=\\"dialog\\"
+    >
+      <i
+        aria-hidden=\\"true\\"
+        class=\\"close icon\\"
+      />
+      <div
+        class=\\"ui header\\"
+        tabindex=\\"0\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"group icon\\"
+        />
+        <div
+          class=\\"content\\"
+        >
+          Create or join a room for Some Other Scenario
+        </div>
+      </div>
+      <div
+        class=\\"scrolling content\\"
+        style=\\"height: calc(100vh - 10rem);\\"
+      >
+        <button
+          class=\\"ui large button\\"
+          tabindex=\\"0\\"
+        >
+          <i
+            class=\\"icons\\"
+          >
+            <i
+              aria-hidden=\\"true\\"
+              class=\\"group icon primary\\"
+            />
+            <i
+              aria-hidden=\\"true\\"
+              class=\\"plus top right corner icon\\"
+            />
+          </i>
+          Create a room for this scenario
+        </button>
+        <div
+          class=\\"ui padded grid\\"
+        >
+          <div
+            class=\\"row\\"
+          >
+            <div
+              class=\\"column c__grid-single-col-padding\\"
+            >
+              <p>
+                This scenario requires multiple particpants in order to complete. Runs of the scenario are completed in
+                 
+                <strong>
+                  Rooms
+                </strong>
+                . 
+                <strong>
+                  Rooms
+                </strong>
+                 shown here are open for you to join.
+              </p>
+              <p>
+                If there are no rooms here, and you can click
+                 
+                <strong>
+                  Create a room for this scenario
+                </strong>
+                 to host your own room. You will be able to invite other participants directly, or allow all members of this cohort to join freely.
+              </p>
+              <p
+                tabindex=\\"0\\"
+              >
+                There 
+                is
+                 
+                <strong>
+                  1
+                </strong>
+                 open 
+                room
+                 
+                available.
+              </p>
+              <div
+                class=\\"ui three cards\\"
+              >
+                <div
+                  class=\\"ui card\\"
+                >
+                  <div
+                    class=\\"content c__chat-card\\"
+                  >
+                    <div
+                      class=\\"header\\"
+                    >
+                      <span
+                        aria-label=\\"Super User (super)\\"
+                        class=\\"ui medium text\\"
+                        title=\\"Super User (super)\\"
+                      >
+                        Super User
+                      </span>
+                      's
+                       
+                      <i
+                        aria-hidden=\\"true\\"
+                        class=\\"small icon chess queen\\"
+                        style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                        title=\\"Super\\"
+                      />
+                       room
+                    </div>
+                    <div
+                      class=\\"description c__chat-card__meta\\"
+                    >
+                      <p>
+                        Click on one of those roles to join the scenario room:
+                      </p>
+                      <div
+                        class=\\"ui labels\\"
+                      >
+                        <button
+                          class=\\"ui button ui label fluid\\"
+                        >
+                          <span
+                            class=\\"ui medium text\\"
+                          >
+                            Student
+                          </span>
+                          <br />
+                          <span
+                            class=\\"ui small text\\"
+                          >
+                            A non-specific student, participating in a multi person scenario.
+                          </span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class=\\"extra content\\"
+                  >
+                    <button
+                      class=\\"ui fluid button primary\\"
+                    >
+                      Join room
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class=\\"actions c__action-btns__scenario-selector\\"
+      >
+        <div
+          class=\\"ui fluid buttons\\"
+        >
+          <button
+            class=\\"ui button\\"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+      <div
+        data-testid=\\"cohort-chat-selector\\"
+      />
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`User is not host, host does have role 2`] = `
+"<body
+  class=\\"dimmable dimmed\\"
+>
+  <div
+    id=\\"root\\"
+  />
+  <div />
+  <div
+    class=\\"ui top aligned page modals dimmer transition visible active\\"
+    style=\\"display: flex;\\"
+  >
+    <div
+      aria-modal=\\"true\\"
+      class=\\"ui modal transition visible active\\"
+      role=\\"dialog\\"
+    >
+      <i
+        aria-hidden=\\"true\\"
+        class=\\"close icon\\"
+      />
+      <div
+        class=\\"ui header\\"
+        tabindex=\\"0\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"group icon\\"
+        />
+        <div
+          class=\\"content\\"
+        >
+          Create or join a room for Some Other Scenario
+        </div>
+      </div>
+      <div
+        class=\\"scrolling content\\"
+        style=\\"height: calc(100vh - 10rem);\\"
+      >
+        <button
+          class=\\"ui large button\\"
+          tabindex=\\"0\\"
+        >
+          <i
+            class=\\"icons\\"
+          >
+            <i
+              aria-hidden=\\"true\\"
+              class=\\"group icon primary\\"
+            />
+            <i
+              aria-hidden=\\"true\\"
+              class=\\"plus top right corner icon\\"
+            />
+          </i>
+          Create a room for this scenario
+        </button>
+        <div
+          class=\\"ui padded grid\\"
+        >
+          <div
+            class=\\"row\\"
+          >
+            <div
+              class=\\"column c__grid-single-col-padding\\"
+            >
+              <p>
+                This scenario requires multiple particpants in order to complete. Runs of the scenario are completed in
+                 
+                <strong>
+                  Rooms
+                </strong>
+                . 
+                <strong>
+                  Rooms
+                </strong>
+                 shown here are open for you to join.
+              </p>
+              <p>
+                If there are no rooms here, and you can click
+                 
+                <strong>
+                  Create a room for this scenario
+                </strong>
+                 to host your own room. You will be able to invite other participants directly, or allow all members of this cohort to join freely.
+              </p>
+              <p
+                tabindex=\\"0\\"
+              >
+                There 
+                is
+                 
+                <strong>
+                  1
+                </strong>
+                 open 
+                room
+                 
+                available.
+              </p>
+              <div
+                class=\\"ui three cards\\"
+              >
+                <div
+                  class=\\"ui card\\"
+                >
+                  <div
+                    class=\\"content c__chat-card\\"
+                  >
+                    <div
+                      class=\\"header\\"
+                    >
+                      <span
+                        aria-label=\\"Super User (super)\\"
+                        class=\\"ui medium text\\"
+                        title=\\"Super User (super)\\"
+                      >
+                        Super User
+                      </span>
+                      's
+                       
+                      <i
+                        aria-hidden=\\"true\\"
+                        class=\\"small icon chess queen\\"
+                        style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                        title=\\"Super\\"
+                      />
+                       room
+                    </div>
+                    <div
+                      class=\\"description c__chat-card__meta\\"
+                    >
+                      <p>
+                        Click on one of those roles to join the scenario room:
+                      </p>
+                      <div
+                        class=\\"ui labels\\"
+                      >
+                        <button
+                          class=\\"ui button ui label fluid\\"
+                        >
+                          <span
+                            class=\\"ui medium text\\"
+                          >
+                            Student
+                          </span>
+                          <br />
+                          <span
+                            class=\\"ui small text\\"
+                          >
+                            A non-specific student, participating in a multi person scenario.
+                          </span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class=\\"extra content\\"
+                  >
+                    <button
+                      class=\\"ui fluid button primary\\"
+                    >
+                      Join room
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class=\\"actions c__action-btns__scenario-selector\\"
+      >
+        <div
+          class=\\"ui fluid buttons\\"
+        >
+          <button
+            class=\\"ui button\\"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+      <div
+        data-testid=\\"cohort-chat-selector\\"
+      />
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`User is not host, host does have role, no roles remain 1`] = `
+"<body
+  class=\\"dimmable dimmed\\"
+>
+  <div
+    id=\\"root\\"
+  />
+  <div />
+  <div
+    class=\\"ui top aligned page modals dimmer transition visible active\\"
+    style=\\"display: flex;\\"
+  >
+    <div
+      aria-modal=\\"true\\"
+      class=\\"ui modal transition visible active\\"
+      role=\\"dialog\\"
+    >
+      <i
+        aria-hidden=\\"true\\"
+        class=\\"close icon\\"
+      />
+      <div
+        class=\\"ui header\\"
+        tabindex=\\"0\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"group icon\\"
+        />
+        <div
+          class=\\"content\\"
+        >
+          Create or join a room for Some Other Scenario
+        </div>
+      </div>
+      <div
+        class=\\"scrolling content\\"
+        style=\\"height: calc(100vh - 10rem);\\"
+      >
+        <button
+          class=\\"ui large button\\"
+          tabindex=\\"0\\"
+        >
+          <i
+            class=\\"icons\\"
+          >
+            <i
+              aria-hidden=\\"true\\"
+              class=\\"group icon primary\\"
+            />
+            <i
+              aria-hidden=\\"true\\"
+              class=\\"plus top right corner icon\\"
+            />
+          </i>
+          Create a room for this scenario
+        </button>
+        <div
+          class=\\"ui padded grid\\"
+        >
+          <div
+            class=\\"row\\"
+          >
+            <div
+              class=\\"column c__grid-single-col-padding\\"
+            >
+              <p>
+                This scenario requires multiple particpants in order to complete. Runs of the scenario are completed in
+                 
+                <strong>
+                  Rooms
+                </strong>
+                . 
+                <strong>
+                  Rooms
+                </strong>
+                 shown here are open for you to join.
+              </p>
+              <p>
+                If there are no rooms here, and you can click
+                 
+                <strong>
+                  Create a room for this scenario
+                </strong>
+                 to host your own room. You will be able to invite other participants directly, or allow all members of this cohort to join freely.
+              </p>
+              <p
+                tabindex=\\"0\\"
+              >
+                There 
+                are
+                 
+                <strong>
+                  0
+                </strong>
+                 open 
+                rooms
+                 
+                available.
+              </p>
+              <div
+                class=\\"ui three cards\\"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class=\\"actions c__action-btns__scenario-selector\\"
+      >
+        <div
+          class=\\"ui fluid buttons\\"
+        >
+          <button
+            class=\\"ui button\\"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+      <div
+        data-testid=\\"cohort-chat-selector\\"
+      />
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`User is not host, host does have role, no roles remain 2`] = `
+"<body
+  class=\\"dimmable dimmed\\"
+>
+  <div
+    id=\\"root\\"
+  />
+  <div />
+  <div
+    class=\\"ui top aligned page modals dimmer transition visible active\\"
+    style=\\"display: flex;\\"
+  >
+    <div
+      aria-modal=\\"true\\"
+      class=\\"ui modal transition visible active\\"
+      role=\\"dialog\\"
+    >
+      <i
+        aria-hidden=\\"true\\"
+        class=\\"close icon\\"
+      />
+      <div
+        class=\\"ui header\\"
+        tabindex=\\"0\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"group icon\\"
+        />
+        <div
+          class=\\"content\\"
+        >
+          Create or join a room for Some Other Scenario
+        </div>
+      </div>
+      <div
+        class=\\"scrolling content\\"
+        style=\\"height: calc(100vh - 10rem);\\"
+      >
+        <button
+          class=\\"ui large button\\"
+          tabindex=\\"0\\"
+        >
+          <i
+            class=\\"icons\\"
+          >
+            <i
+              aria-hidden=\\"true\\"
+              class=\\"group icon primary\\"
+            />
+            <i
+              aria-hidden=\\"true\\"
+              class=\\"plus top right corner icon\\"
+            />
+          </i>
+          Create a room for this scenario
+        </button>
+        <div
+          class=\\"ui padded grid\\"
+        >
+          <div
+            class=\\"row\\"
+          >
+            <div
+              class=\\"column c__grid-single-col-padding\\"
+            >
+              <p>
+                This scenario requires multiple particpants in order to complete. Runs of the scenario are completed in
+                 
+                <strong>
+                  Rooms
+                </strong>
+                . 
+                <strong>
+                  Rooms
+                </strong>
+                 shown here are open for you to join.
+              </p>
+              <p>
+                If there are no rooms here, and you can click
+                 
+                <strong>
+                  Create a room for this scenario
+                </strong>
+                 to host your own room. You will be able to invite other participants directly, or allow all members of this cohort to join freely.
+              </p>
+              <p
+                tabindex=\\"0\\"
+              >
+                There 
+                are
+                 
+                <strong>
+                  0
+                </strong>
+                 open 
+                rooms
+                 
+                available.
+              </p>
+              <div
+                class=\\"ui three cards\\"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class=\\"actions c__action-btns__scenario-selector\\"
+      >
+        <div
+          class=\\"ui fluid buttons\\"
+        >
+          <button
+            class=\\"ui button\\"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+      <div
+        data-testid=\\"cohort-chat-selector\\"
+      />
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`User is not host, host does not have role 1`] = `
+"<body
+  class=\\"dimmable dimmed\\"
+>
+  <div
+    id=\\"root\\"
+  />
+  <div />
+  <div
+    class=\\"ui top aligned page modals dimmer transition visible active\\"
+    style=\\"display: flex;\\"
+  >
+    <div
+      aria-modal=\\"true\\"
+      class=\\"ui modal transition visible active\\"
+      role=\\"dialog\\"
+    >
+      <i
+        aria-hidden=\\"true\\"
+        class=\\"close icon\\"
+      />
+      <div
+        class=\\"ui header\\"
+        tabindex=\\"0\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"group icon\\"
+        />
+        <div
+          class=\\"content\\"
+        >
+          Create or join a room for Some Other Scenario
+        </div>
+      </div>
+      <div
+        class=\\"scrolling content\\"
+        style=\\"height: calc(100vh - 10rem);\\"
+      >
+        <button
+          class=\\"ui large button\\"
+          tabindex=\\"0\\"
+        >
+          <i
+            class=\\"icons\\"
+          >
+            <i
+              aria-hidden=\\"true\\"
+              class=\\"group icon primary\\"
+            />
+            <i
+              aria-hidden=\\"true\\"
+              class=\\"plus top right corner icon\\"
+            />
+          </i>
+          Create a room for this scenario
+        </button>
+        <div
+          class=\\"ui padded grid\\"
+        >
+          <div
+            class=\\"row\\"
+          >
+            <div
+              class=\\"column c__grid-single-col-padding\\"
+            >
+              <p>
+                This scenario requires multiple particpants in order to complete. Runs of the scenario are completed in
+                 
+                <strong>
+                  Rooms
+                </strong>
+                . 
+                <strong>
+                  Rooms
+                </strong>
+                 shown here are open for you to join.
+              </p>
+              <p>
+                If there are no rooms here, and you can click
+                 
+                <strong>
+                  Create a room for this scenario
+                </strong>
+                 to host your own room. You will be able to invite other participants directly, or allow all members of this cohort to join freely.
+              </p>
+              <p
+                tabindex=\\"0\\"
+              >
+                There 
+                are
+                 
+                <strong>
+                  0
+                </strong>
+                 open 
+                rooms
+                 
+                available.
+              </p>
+              <div
+                class=\\"ui three cards\\"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class=\\"actions c__action-btns__scenario-selector\\"
+      >
+        <div
+          class=\\"ui fluid buttons\\"
+        >
+          <button
+            class=\\"ui button\\"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+      <div
+        data-testid=\\"cohort-chat-selector\\"
+      />
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`User is not host, host does not have role 2`] = `
+"<body
+  class=\\"dimmable dimmed\\"
+>
+  <div
+    id=\\"root\\"
+  />
+  <div />
+  <div
+    class=\\"ui top aligned page modals dimmer transition visible active\\"
+    style=\\"display: flex;\\"
+  >
+    <div
+      aria-modal=\\"true\\"
+      class=\\"ui modal transition visible active\\"
+      role=\\"dialog\\"
+    >
+      <i
+        aria-hidden=\\"true\\"
+        class=\\"close icon\\"
+      />
+      <div
+        class=\\"ui header\\"
+        tabindex=\\"0\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"group icon\\"
+        />
+        <div
+          class=\\"content\\"
+        >
+          Create or join a room for Some Other Scenario
+        </div>
+      </div>
+      <div
+        class=\\"scrolling content\\"
+        style=\\"height: calc(100vh - 10rem);\\"
+      >
+        <button
+          class=\\"ui large button\\"
+          tabindex=\\"0\\"
+        >
+          <i
+            class=\\"icons\\"
+          >
+            <i
+              aria-hidden=\\"true\\"
+              class=\\"group icon primary\\"
+            />
+            <i
+              aria-hidden=\\"true\\"
+              class=\\"plus top right corner icon\\"
+            />
+          </i>
+          Create a room for this scenario
+        </button>
+        <div
+          class=\\"ui padded grid\\"
+        >
+          <div
+            class=\\"row\\"
+          >
+            <div
+              class=\\"column c__grid-single-col-padding\\"
+            >
+              <p>
+                This scenario requires multiple particpants in order to complete. Runs of the scenario are completed in
+                 
+                <strong>
+                  Rooms
+                </strong>
+                . 
+                <strong>
+                  Rooms
+                </strong>
+                 shown here are open for you to join.
+              </p>
+              <p>
+                If there are no rooms here, and you can click
+                 
+                <strong>
+                  Create a room for this scenario
+                </strong>
+                 to host your own room. You will be able to invite other participants directly, or allow all members of this cohort to join freely.
+              </p>
+              <p
+                tabindex=\\"0\\"
+              >
+                There 
+                are
+                 
+                <strong>
+                  0
+                </strong>
+                 open 
+                rooms
+                 
+                available.
+              </p>
+              <div
+                class=\\"ui three cards\\"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class=\\"actions c__action-btns__scenario-selector\\"
+      >
+        <div
+          class=\\"ui fluid buttons\\"
+        >
+          <button
+            class=\\"ui button\\"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+      <div
+        data-testid=\\"cohort-chat-selector\\"
+      />
+    </div>
+  </div>
+</body>"
+`;
