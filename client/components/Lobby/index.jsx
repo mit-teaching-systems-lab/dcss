@@ -25,11 +25,6 @@ import withSocket, {
 import Storage from '@utils/Storage';
 import './Lobby.css';
 
-const isParticipantOnly = user => {
-  const { roles = [] } = user;
-  return roles.length === 1 && roles[0] === 'participant';
-};
-
 const isLoaded = record => {
   return record && record.created_at !== null && record.id !== null;
 };
@@ -135,9 +130,7 @@ class Lobby extends Component {
     if (!this.isComponentMounted) {
       return;
     }
-    await this.props.getUsers(
-      isParticipantOnly(this.props.user) ? 'available' : 'all'
-    );
+    await this.props.getUsers('available');
   }
 
   async onRunChatLink(/* data */) {
