@@ -82,6 +82,54 @@
   visibility: visible;
 }
 
+.ui.comments .comment .avatar {
+  margin-left: 0.25em !important;
+}
+
+.ui.comments .comment .actions {
+  margin-right: 0.25em !important;
+}
+
+.ui.comments .comment .text {
+  margin: 0em !important;
+}
+
+.cmm__content {
+  /*border-left: 1px solid;*/
+}
+
+.cmm__comment {
+  margin: 0em !important;
+  padding: 0.2em 0 !important;
+}
+
+.cmm__comment:not(.cmm__nometadata) + .cmm__comment:not(.cmm__nometadata) {
+  margin: 0em !important;
+  padding: 0.5em 0 0.5em 0 !important;
+}
+
+.cmm__comment:not(.cmm__nometadata) + .cmm__comment.cmm__nometadata {
+  margin: 0em !important;
+  padding: 0.25em 0 0.25em 0 !important;
+}
+
+.cmm__comment.cmm__nometadata + .cmm__comment.cmm__nometadata {
+  padding: 0.25em 0 !important;
+}
+
+.cmm__comment.cmm__nometadata {
+  /*margin-top: 0em !important;*/
+  padding: 0.125em 0 0 !important;
+}
+
+.cmm__comment:hover {
+  background-color: rgba(0, 0, 0, 0.05) !important;
+}
+
+.cmm__nometadata > .content {
+  margin-left: 3.5em;
+}
+
 .c__container-modal > .ui.header>i.icon+.content {
   overflow: hidden !important;
   white-space: nowrap !important;

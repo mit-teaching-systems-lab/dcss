@@ -236,8 +236,32 @@ class ChatMessages extends Component {
   }
 
   render() {
-    const { chat, isMinimized } = this.props;
-    const { hasNewMessages, isReady, messages, slice } = this.state;
+    const { chat, isMinimized, scenario } = this.props;
+    const { hasNewMessages, isReady, slice } = this.state;
+
+    const joinPartMessages = [];
+    const sourceMessages = this.state.messages.reduce((accum, message) => {
+      const user = chat.usersById[message.user_id];
+
+      if (!user) {
+        return accum;
+      }
+
+      if (message.deleted_at) {
+        return accum;
+      }
+
+      if (message.is_joinpart) {
+        joinPartMessages.push(message);
+      } else {
+        accum.push(message);
+      }
+
+      return accum;
+    }, []);
+
+    const messages = [...joinPartMessages, ...sourceMessages];
+
     const messagesSlice = messages.slice(slice);
     const isHidingMessages = messages.length > messagesSlice.length;
     let scrollingContainer = null;
@@ -322,6 +346,10 @@ class ChatMessages extends Component {
       }
     };
 
+    let previousUserId = messagesSlice && messagesSlice.length
+      ? messagesSlice[0].user_id
+      : null;
+
     return isReady ? (
       <Fragment>
         {/*
@@ -350,7 +378,7 @@ class ChatMessages extends Component {
                   size="large"
                   style={{ marginTop: '1.4em !important' }}
                 >
-                  {messagesSlice.reduce((accum, message) => {
+                  {messagesSlice.reduce((accum, message, index) => {
                     const user = chat.usersById[message.user_id];
 
                     if (!user) {
@@ -400,20 +428,30 @@ class ChatMessages extends Component {
                       />
                     );
 
+                    const role = scenario.personas.find(p => p.id === user.persona_id);
+                    const mustShowAuthorAndMetadata = index === 0 || previousUserId !== user.id;
+
+                    previousUserId = user.id;
+
                     //
                     // NOTE: data-testid="comment" is used when testing
                     // for the number of messages rendered before
                     // and after pressing "See more" or receiving new
                     // messages
                     //
-                    accum.push(
-                      <Comment data-testid="comment" key={key}>
+                    const comment = mustShowAuthorAndMetadata ? (
+                      <Comment
+                        className="cmm__comment"
+                        data-testid="comment"
+                        key={key}
+                      >
                         <Comment.Avatar src={avatar.src} />
                         <Comment.Content className="cmm__content">
                           <Comment.Author as="span" tabIndex="0">
                             <Username user={user} />
                           </Comment.Author>
                           <Comment.Metadata>
+                            {role ? `(${role.name})` : ''}{' '}
                             <span tabIndex="0" aria-label={message.created_at}>
                               {Moment(message.created_at).format('LT')}
                             </span>
@@ -445,7 +483,43 @@ class ChatMessages extends Component {
                           </Comment.Text>
                         </Comment.Content>
                       </Comment>
+                    ) : (
+                      <Comment
+                        className="cmm__comment cmm__nometadata"
+                        data-testid="comment"
+                        key={key}
+                      >
+                        <Comment.Content className="cmm__content">
+                          <Comment.Actions>
+                            <Button.Group size="mini">
+                              {isQuotable ? (
+                                <Popup
+                                  inverted
+                                  position="top right"
+                                  size="tiny"
+                                  content={quoteAriaLabel}
+                                  trigger={quoteTrigger}
+                                />
+                              ) : null}
+                              {isDeletable ? (
+                                <Popup
+                                  inverted
+                                  position="top right"
+                                  size="tiny"
+                                  content={deleteAriaLabel}
+                                  trigger={deleteTrigger}
+                                />
+                              ) : null}
+                            </Button.Group>
+                          </Comment.Actions>
+                          <Comment.Text>
+                            <RichTextRenderer {...rteProps} />
+                          </Comment.Text>
+                        </Comment.Content>
+                      </Comment>
                     );
+
+                    accum.push(comment);
                     return accum;
                   }, [])}
                 </Comment.Group>
