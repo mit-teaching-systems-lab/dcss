@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { sentenceCase } from 'change-case';
@@ -6,7 +6,7 @@ import { type } from './meta';
 import { getAgent } from '@actions/agent';
 import { getResponse } from '@actions/response';
 import Chat from '@components/Chat';
-import { Dropdown, Icon, Menu } from '@components/UI';
+import { Button, Dropdown, Header, Icon, Menu, Modal } from '@components/UI';
 import Identity from '@utils/Identity';
 import Media from '@utils/Media';
 import Payload from '@utils/Payload';
@@ -70,6 +70,10 @@ class Display extends Component {
       isRestart: false,
       isActive: false,
       hasSubmittedResponse: false,
+      markComplete: {
+        isOpen: false,
+        result: null,
+      },
       value: persisted.value
     };
 
@@ -337,21 +341,47 @@ class Display extends Component {
       text: ''
     });
 
-    const onChatCompleteChange = (event, { name, value }) => {
+    const onChatCompleteChange = () => {
       const time = this.ticks;
-      if (value) {
+      const {
+        result
+      } = this.state.markComplete;
+
+      if (result) {
         this.props.socket.emit(CHAT_CLOSED_FOR_SLIDE, {
           chat,
           slide,
-          [name]: value
+          result
         });
         this.setState({
           value: {
-            [name]: value,
+            result,
             time
+          },
+          markComplete: {
+            isOpen: false,
+            result: null
           }
         });
       }
+    };
+
+    const onMarkCompleteChange = (event, { name, value }) => {
+      this.setState({
+        markComplete: {
+          isOpen: true,
+          [name]: value
+        }
+      });
+    };
+
+    const onMarkCompleteClose = () => {
+      this.setState({
+        markComplete: {
+          isOpen: false,
+          result: null
+        }
+      });
     };
 
     const whatHappened =
@@ -381,7 +411,7 @@ class Display extends Component {
     //     closeOnChange={true}
     //     defaultValue={defaultValue}
     //     options={options}
-    //     onChange={onChatCompleteChange}
+    //     onChange={onMarkCompleteChange}
     //   />
     // ) : (
     //   resultOfDiscussion
@@ -397,7 +427,7 @@ class Display extends Component {
         closeOnChange={true}
         defaultValue={defaultValue}
         options={options}
-        onChange={onChatCompleteChange}
+        onChange={onMarkCompleteChange}
       />
     ) : (
       resultOfDiscussion
@@ -406,14 +436,54 @@ class Display extends Component {
     const discussionIsOpen = !hasSubmittedResponse && !defaultValue;
 
     return (
-      <Menu borderless>
-        {dropdownOrResultOfDiscussion}
-        {discussionIsOpen && timeout ? timerRender : null}
-        {/*!isUserHost && !defaultValue && timeout ? timerRender : null*/}
-        <Menu.Menu position="right">
-          {discussionIsOpen && chat && isReady ? <Chat {...chatProps} /> : null}
-        </Menu.Menu>
-      </Menu>
+      <Fragment>
+        <Menu borderless>
+          {dropdownOrResultOfDiscussion}
+          {discussionIsOpen && timeout ? timerRender : null}
+          {/*!isUserHost && !defaultValue && timeout ? timerRender : null*/}
+          <Menu.Menu position="right">
+            {discussionIsOpen && chat && isReady ? <Chat {...chatProps} /> : null}
+          </Menu.Menu>
+        </Menu>
+        {this.state.markComplete.isOpen ? (
+          <Modal.Accessible open>
+            <Modal
+              closeIcon
+              open
+              aria-modal="true"
+              role="dialog"
+              size="small"
+              onClose={onMarkCompleteClose}
+            >
+              <Header
+                icon="checkmark"
+                content={`Close this discussion?`}
+              />
+              <Modal.Content>
+                Are you sure you want to mark this discussion {this.state.markComplete.result}? Doing so will end the discussion on this slide for all active participants.
+              </Modal.Content>
+              <Modal.Actions>
+                <Button.Group fluid>
+                  <Button
+                    primary
+                    aria-label="Yes"
+                    onClick={() => {
+                      onChatCompleteChange();
+                    }}
+                  >
+                    Yes
+                  </Button>
+                  <Button.Or />
+                  <Button aria-label="No" onClick={onMarkCompleteClose}>
+                    No
+                  </Button>
+                </Button.Group>
+              </Modal.Actions>
+              <div data-testid="confirm-chat-complete" />
+            </Modal>
+          </Modal.Accessible>
+        ) :  null}
+      </Fragment>
     );
   }
 }
