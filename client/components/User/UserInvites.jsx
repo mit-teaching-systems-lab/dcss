@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { getInvites, setInvite } from '@actions/invite';
 import { getUsers } from '@actions/users';
+import Loading from '@components/Loading';
 import { SCENARIO_IS_PUBLIC } from '@components/Scenario/constants';
 import {
   checkNotificationRules,
@@ -57,6 +58,7 @@ class UserInvites extends Component {
     const { open = false } = this.props;
 
     this.state = {
+      isReady: false,
       open
     };
 
@@ -70,9 +72,8 @@ class UserInvites extends Component {
     await this.props.getInvites();
 
     if (isMissingUsers(this.props.invites, this.props.usersById)) {
-      await this.props.getUsers(
-        isParticipantOnly(this.props.user) ? 'available' : 'all'
-      );
+        // isParticipantOnly(this.props.user) ? 'available' : 'all'
+      await this.props.getUsers('available');
     }
   }
 
@@ -112,6 +113,10 @@ class UserInvites extends Component {
 
       return;
     }
+
+    this.setState({
+      isReady: true
+    });
 
     await this.refresh();
   }
@@ -228,7 +233,7 @@ class UserInvites extends Component {
     }
 
     const { onClose, onOpen } = this;
-    const { open } = this.state;
+    const { isReady, open } = this.state;
     const { invites } = this.props;
     const pendingCount = invites.reduce((accum, invite) => {
       if (invite.status === 'pending') {
@@ -268,7 +273,11 @@ class UserInvites extends Component {
             >
               <Header icon="mail" content="Invites" />
               <Modal.Content className="u__invite-container">
-                <UserInvitesList onClose={onClose} />
+                {isReady ? (
+                  <UserInvitesList onClose={onClose} />
+                ) : (
+                  <Loading />
+                )}
               </Modal.Content>
               <Modal.Actions>
                 <Grid>
