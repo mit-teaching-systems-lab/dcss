@@ -3791,10 +3791,10 @@ exports[`Create a room for this scenario, user will invite, proceed 4`] = `
                 </p>
                 <ol>
                   <li>
-                    Choose your role first.
+                    Search and select participants that you want to invite, and assign their roles as you go.
                   </li>
                   <li>
-                    Search and select participants that you want to invite, and assign their roles as you go.
+                    Choose your role.
                   </li>
                   <li>
                     Once all of the available roles are filled, click the
@@ -3836,8 +3836,13 @@ exports[`Create a room for this scenario, user will invite, proceed 4`] = `
           <div
             class=\\"row\\"
           >
+            <p>
+              <strong>
+                Search and select participants that you want to invite:
+              </strong>
+            </p>
             <div
-              class=\\"ui fluid search grid__menu-search l__search-input primary\\"
+              class=\\"ui active visible focus fluid search grid__menu-search l__search-input primary\\"
             >
               <div
                 class=\\"ui icon input\\"
@@ -3855,33 +3860,8 @@ exports[`Create a room for this scenario, user will invite, proceed 4`] = `
                 />
               </div>
               <div
-                class=\\"results transition\\"
+                class=\\"results transition visible\\"
               >
-                <div
-                  class=\\"result\\"
-                  searchable=\\"  Super User  super  super  super@email.com  participant super_admin  \\"
-                >
-                  <span
-                    aria-label=\\"Super User (super)\\"
-                    class=\\"ui medium text\\"
-                    title=\\"Super User (super)\\"
-                  >
-                    Super User
-                  </span>
-                  
-                   
-                  <i
-                    aria-hidden=\\"true\\"
-                    class=\\"small icon chess queen\\"
-                    style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                    title=\\"Super\\"
-                  />
-                  <span
-                    class=\\"l__hidden\\"
-                  >
-                    (Select to invite)
-                  </span>
-                </div>
                 <div
                   class=\\"result\\"
                   searchable=\\"  Facilitator User  facilitator  facilitator  facilitator@email.com  participant facilitator researcher owner  \\"
@@ -4291,10 +4271,10 @@ exports[`Create a room for this scenario, user will invite, proceed 5`] = `
                 </p>
                 <ol>
                   <li>
-                    Choose your role first.
+                    Search and select participants that you want to invite, and assign their roles as you go.
                   </li>
                   <li>
-                    Search and select participants that you want to invite, and assign their roles as you go.
+                    Choose your role.
                   </li>
                   <li>
                     Once all of the available roles are filled, click the
@@ -4336,8 +4316,13 @@ exports[`Create a room for this scenario, user will invite, proceed 5`] = `
           <div
             class=\\"row\\"
           >
+            <p>
+              <strong>
+                Search and select participants that you want to invite:
+              </strong>
+            </p>
             <div
-              class=\\"ui fluid search grid__menu-search l__search-input primary\\"
+              class=\\"ui active visible focus fluid search grid__menu-search l__search-input primary\\"
             >
               <div
                 class=\\"ui icon input\\"
@@ -4355,33 +4340,8 @@ exports[`Create a room for this scenario, user will invite, proceed 5`] = `
                 />
               </div>
               <div
-                class=\\"results transition\\"
+                class=\\"results transition visible\\"
               >
-                <div
-                  class=\\"result\\"
-                  searchable=\\"  Super User  super  super  super@email.com  participant super_admin  \\"
-                >
-                  <span
-                    aria-label=\\"Super User (super)\\"
-                    class=\\"ui medium text\\"
-                    title=\\"Super User (super)\\"
-                  >
-                    Super User
-                  </span>
-                  
-                   
-                  <i
-                    aria-hidden=\\"true\\"
-                    class=\\"small icon chess queen\\"
-                    style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                    title=\\"Super\\"
-                  />
-                  <span
-                    class=\\"l__hidden\\"
-                  >
-                    (Select to invite)
-                  </span>
-                </div>
                 <div
                   class=\\"result\\"
                   searchable=\\"  Facilitator User  facilitator  facilitator  facilitator@email.com  participant facilitator researcher owner  \\"

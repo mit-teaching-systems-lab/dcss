@@ -32,10 +32,10 @@ exports[`Fallback: chat missing, use scenario and cohort to request chat 1`] = `
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -77,8 +77,13 @@ exports[`Fallback: chat missing, use scenario and cohort to request chat 1`] = `
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
-          class=\\"ui fluid search grid__menu-search l__search-input primary\\"
+          class=\\"ui active visible focus fluid search grid__menu-search l__search-input primary\\"
         >
           <div
             class=\\"ui icon input\\"
@@ -96,33 +101,8 @@ exports[`Fallback: chat missing, use scenario and cohort to request chat 1`] = `
             />
           </div>
           <div
-            class=\\"results transition\\"
+            class=\\"results transition visible\\"
           >
-            <div
-              class=\\"result\\"
-              searchable=\\"  Super User  super  super  super@email.com  participant super_admin  \\"
-            >
-              <span
-                aria-label=\\"Super User (super)\\"
-                class=\\"ui medium text\\"
-                title=\\"Super User (super)\\"
-              >
-                Super User
-              </span>
-              
-               
-              <i
-                aria-hidden=\\"true\\"
-                class=\\"small icon chess queen\\"
-                style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                title=\\"Super\\"
-              />
-              <span
-                class=\\"l__hidden\\"
-              >
-                (Select to invite)
-              </span>
-            </div>
             <div
               class=\\"result\\"
               searchable=\\"  Facilitator User  facilitator  facilitator  facilitator@email.com  participant facilitator researcher owner  \\"
@@ -457,10 +437,10 @@ exports[`Fallback: chat missing, use scenario and cohort to request chat 4`] = `
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -502,8 +482,13 @@ exports[`Fallback: chat missing, use scenario and cohort to request chat 4`] = `
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
-          class=\\"ui fluid search grid__menu-search l__search-input primary\\"
+          class=\\"ui active visible focus fluid search grid__menu-search l__search-input primary\\"
         >
           <div
             class=\\"ui icon input\\"
@@ -521,33 +506,8 @@ exports[`Fallback: chat missing, use scenario and cohort to request chat 4`] = `
             />
           </div>
           <div
-            class=\\"results transition\\"
+            class=\\"results transition visible\\"
           >
-            <div
-              class=\\"result\\"
-              searchable=\\"  Super User  super  super  super@email.com  participant super_admin  \\"
-            >
-              <span
-                aria-label=\\"Super User (super)\\"
-                class=\\"ui medium text\\"
-                title=\\"Super User (super)\\"
-              >
-                Super User
-              </span>
-              
-               
-              <i
-                aria-hidden=\\"true\\"
-                class=\\"small icon chess queen\\"
-                style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                title=\\"Super\\"
-              />
-              <span
-                class=\\"l__hidden\\"
-              >
-                (Select to invite)
-              </span>
-            </div>
             <div
               class=\\"result\\"
               searchable=\\"  Facilitator User  facilitator  facilitator  facilitator@email.com  participant facilitator researcher owner  \\"
@@ -882,10 +842,10 @@ exports[`Fallback: chat missing, use scenario to request chat 1`] = `
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -927,8 +887,13 @@ exports[`Fallback: chat missing, use scenario to request chat 1`] = `
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
-          class=\\"ui fluid search grid__menu-search l__search-input primary\\"
+          class=\\"ui active visible focus fluid search grid__menu-search l__search-input primary\\"
         >
           <div
             class=\\"ui icon input\\"
@@ -946,33 +911,8 @@ exports[`Fallback: chat missing, use scenario to request chat 1`] = `
             />
           </div>
           <div
-            class=\\"results transition\\"
+            class=\\"results transition visible\\"
           >
-            <div
-              class=\\"result\\"
-              searchable=\\"  Super User  super  super  super@email.com  participant super_admin  \\"
-            >
-              <span
-                aria-label=\\"Super User (super)\\"
-                class=\\"ui medium text\\"
-                title=\\"Super User (super)\\"
-              >
-                Super User
-              </span>
-              
-               
-              <i
-                aria-hidden=\\"true\\"
-                class=\\"small icon chess queen\\"
-                style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                title=\\"Super\\"
-              />
-              <span
-                class=\\"l__hidden\\"
-              >
-                (Select to invite)
-              </span>
-            </div>
             <div
               class=\\"result\\"
               searchable=\\"  Facilitator User  facilitator  facilitator  facilitator@email.com  participant facilitator researcher owner  \\"
@@ -1307,10 +1247,10 @@ exports[`Fallback: chat missing, use scenario to request chat 4`] = `
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -1352,8 +1292,13 @@ exports[`Fallback: chat missing, use scenario to request chat 4`] = `
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
-          class=\\"ui fluid search grid__menu-search l__search-input primary\\"
+          class=\\"ui active visible focus fluid search grid__menu-search l__search-input primary\\"
         >
           <div
             class=\\"ui icon input\\"
@@ -1371,33 +1316,8 @@ exports[`Fallback: chat missing, use scenario to request chat 4`] = `
             />
           </div>
           <div
-            class=\\"results transition\\"
+            class=\\"results transition visible\\"
           >
-            <div
-              class=\\"result\\"
-              searchable=\\"  Super User  super  super  super@email.com  participant super_admin  \\"
-            >
-              <span
-                aria-label=\\"Super User (super)\\"
-                class=\\"ui medium text\\"
-                title=\\"Super User (super)\\"
-              >
-                Super User
-              </span>
-              
-               
-              <i
-                aria-hidden=\\"true\\"
-                class=\\"small icon chess queen\\"
-                style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                title=\\"Super\\"
-              />
-              <span
-                class=\\"l__hidden\\"
-              >
-                (Select to invite)
-              </span>
-            </div>
             <div
               class=\\"result\\"
               searchable=\\"  Facilitator User  facilitator  facilitator  facilitator@email.com  participant facilitator researcher owner  \\"
@@ -1732,10 +1652,10 @@ exports[`Fallback: chat, scenario, cohort are not yet loaded, use provided props
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -1777,8 +1697,13 @@ exports[`Fallback: chat, scenario, cohort are not yet loaded, use provided props
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
-          class=\\"ui fluid search grid__menu-search l__search-input primary\\"
+          class=\\"ui active visible focus fluid search grid__menu-search l__search-input primary\\"
         >
           <div
             class=\\"ui icon input\\"
@@ -1796,33 +1721,8 @@ exports[`Fallback: chat, scenario, cohort are not yet loaded, use provided props
             />
           </div>
           <div
-            class=\\"results transition\\"
+            class=\\"results transition visible\\"
           >
-            <div
-              class=\\"result\\"
-              searchable=\\"  Super User  super  super  super@email.com  participant super_admin  \\"
-            >
-              <span
-                aria-label=\\"Super User (super)\\"
-                class=\\"ui medium text\\"
-                title=\\"Super User (super)\\"
-              >
-                Super User
-              </span>
-              
-               
-              <i
-                aria-hidden=\\"true\\"
-                class=\\"small icon chess queen\\"
-                style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                title=\\"Super\\"
-              />
-              <span
-                class=\\"l__hidden\\"
-              >
-                (Select to invite)
-              </span>
-            </div>
             <div
               class=\\"result\\"
               searchable=\\"  Facilitator User  facilitator  facilitator  facilitator@email.com  participant facilitator researcher owner  \\"
@@ -2157,10 +2057,10 @@ exports[`Fallback: chat, scenario, cohort are not yet loaded, use provided props
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -2202,8 +2102,13 @@ exports[`Fallback: chat, scenario, cohort are not yet loaded, use provided props
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
-          class=\\"ui fluid search grid__menu-search l__search-input primary\\"
+          class=\\"ui active visible focus fluid search grid__menu-search l__search-input primary\\"
         >
           <div
             class=\\"ui icon input\\"
@@ -2221,33 +2126,8 @@ exports[`Fallback: chat, scenario, cohort are not yet loaded, use provided props
             />
           </div>
           <div
-            class=\\"results transition\\"
+            class=\\"results transition visible\\"
           >
-            <div
-              class=\\"result\\"
-              searchable=\\"  Super User  super  super  super@email.com  participant super_admin  \\"
-            >
-              <span
-                aria-label=\\"Super User (super)\\"
-                class=\\"ui medium text\\"
-                title=\\"Super User (super)\\"
-              >
-                Super User
-              </span>
-              
-               
-              <i
-                aria-hidden=\\"true\\"
-                class=\\"small icon chess queen\\"
-                style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                title=\\"Super\\"
-              />
-              <span
-                class=\\"l__hidden\\"
-              >
-                (Select to invite)
-              </span>
-            </div>
             <div
               class=\\"result\\"
               searchable=\\"  Facilitator User  facilitator  facilitator  facilitator@email.com  participant facilitator researcher owner  \\"
@@ -2582,10 +2462,10 @@ exports[`Fallback: cohort expected, but not yet loaded 1`] = `
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -2627,8 +2507,13 @@ exports[`Fallback: cohort expected, but not yet loaded 1`] = `
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
-          class=\\"ui fluid search grid__menu-search l__search-input primary\\"
+          class=\\"ui active visible focus fluid search grid__menu-search l__search-input primary\\"
         >
           <div
             class=\\"ui icon input\\"
@@ -2646,33 +2531,8 @@ exports[`Fallback: cohort expected, but not yet loaded 1`] = `
             />
           </div>
           <div
-            class=\\"results transition\\"
+            class=\\"results transition visible\\"
           >
-            <div
-              class=\\"result\\"
-              searchable=\\"  Super User  super  super  super@email.com  participant super_admin  \\"
-            >
-              <span
-                aria-label=\\"Super User (super)\\"
-                class=\\"ui medium text\\"
-                title=\\"Super User (super)\\"
-              >
-                Super User
-              </span>
-              
-               
-              <i
-                aria-hidden=\\"true\\"
-                class=\\"small icon chess queen\\"
-                style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                title=\\"Super\\"
-              />
-              <span
-                class=\\"l__hidden\\"
-              >
-                (Select to invite)
-              </span>
-            </div>
             <div
               class=\\"result\\"
               searchable=\\"  Facilitator User  facilitator  facilitator  facilitator@email.com  participant facilitator researcher owner  \\"
@@ -2969,10 +2829,10 @@ exports[`Fallback: cohort expected, but not yet loaded 4`] = `
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -3014,8 +2874,13 @@ exports[`Fallback: cohort expected, but not yet loaded 4`] = `
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
-          class=\\"ui fluid search grid__menu-search l__search-input primary\\"
+          class=\\"ui active visible focus fluid search grid__menu-search l__search-input primary\\"
         >
           <div
             class=\\"ui icon input\\"
@@ -3033,33 +2898,8 @@ exports[`Fallback: cohort expected, but not yet loaded 4`] = `
             />
           </div>
           <div
-            class=\\"results transition\\"
+            class=\\"results transition visible\\"
           >
-            <div
-              class=\\"result\\"
-              searchable=\\"  Super User  super  super  super@email.com  participant super_admin  \\"
-            >
-              <span
-                aria-label=\\"Super User (super)\\"
-                class=\\"ui medium text\\"
-                title=\\"Super User (super)\\"
-              >
-                Super User
-              </span>
-              
-               
-              <i
-                aria-hidden=\\"true\\"
-                class=\\"small icon chess queen\\"
-                style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                title=\\"Super\\"
-              />
-              <span
-                class=\\"l__hidden\\"
-              >
-                (Select to invite)
-              </span>
-            </div>
             <div
               class=\\"result\\"
               searchable=\\"  Facilitator User  facilitator  facilitator  facilitator@email.com  participant facilitator researcher owner  \\"
@@ -3356,10 +3196,10 @@ exports[`Fallback: scenario missing 1`] = `
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -3401,8 +3241,13 @@ exports[`Fallback: scenario missing 1`] = `
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
-          class=\\"ui fluid search grid__menu-search l__search-input primary\\"
+          class=\\"ui active visible focus fluid search grid__menu-search l__search-input primary\\"
         >
           <div
             class=\\"ui icon input\\"
@@ -3420,33 +3265,8 @@ exports[`Fallback: scenario missing 1`] = `
             />
           </div>
           <div
-            class=\\"results transition\\"
+            class=\\"results transition visible\\"
           >
-            <div
-              class=\\"result\\"
-              searchable=\\"  Super User  super  super  super@email.com  participant super_admin  \\"
-            >
-              <span
-                aria-label=\\"Super User (super)\\"
-                class=\\"ui medium text\\"
-                title=\\"Super User (super)\\"
-              >
-                Super User
-              </span>
-              
-               
-              <i
-                aria-hidden=\\"true\\"
-                class=\\"small icon chess queen\\"
-                style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                title=\\"Super\\"
-              />
-              <span
-                class=\\"l__hidden\\"
-              >
-                (Select to invite)
-              </span>
-            </div>
             <div
               class=\\"result\\"
               searchable=\\"  Facilitator User  facilitator  facilitator  facilitator@email.com  participant facilitator researcher owner  \\"
@@ -3781,10 +3601,10 @@ exports[`Fallback: scenario missing 4`] = `
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -3826,8 +3646,13 @@ exports[`Fallback: scenario missing 4`] = `
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
-          class=\\"ui fluid search grid__menu-search l__search-input primary\\"
+          class=\\"ui active visible focus fluid search grid__menu-search l__search-input primary\\"
         >
           <div
             class=\\"ui icon input\\"
@@ -3845,33 +3670,8 @@ exports[`Fallback: scenario missing 4`] = `
             />
           </div>
           <div
-            class=\\"results transition\\"
+            class=\\"results transition visible\\"
           >
-            <div
-              class=\\"result\\"
-              searchable=\\"  Super User  super  super  super@email.com  participant super_admin  \\"
-            >
-              <span
-                aria-label=\\"Super User (super)\\"
-                class=\\"ui medium text\\"
-                title=\\"Super User (super)\\"
-              >
-                Super User
-              </span>
-              
-               
-              <i
-                aria-hidden=\\"true\\"
-                class=\\"small icon chess queen\\"
-                style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                title=\\"Super\\"
-              />
-              <span
-                class=\\"l__hidden\\"
-              >
-                (Select to invite)
-              </span>
-            </div>
             <div
               class=\\"result\\"
               searchable=\\"  Facilitator User  facilitator  facilitator  facilitator@email.com  participant facilitator researcher owner  \\"
@@ -4206,10 +4006,10 @@ exports[`Fallback: scenario object present, unloaded 1`] = `
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -4251,8 +4051,13 @@ exports[`Fallback: scenario object present, unloaded 1`] = `
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
-          class=\\"ui fluid search grid__menu-search l__search-input primary\\"
+          class=\\"ui active visible focus fluid search grid__menu-search l__search-input primary\\"
         >
           <div
             class=\\"ui icon input\\"
@@ -4270,33 +4075,8 @@ exports[`Fallback: scenario object present, unloaded 1`] = `
             />
           </div>
           <div
-            class=\\"results transition\\"
+            class=\\"results transition visible\\"
           >
-            <div
-              class=\\"result\\"
-              searchable=\\"  Super User  super  super  super@email.com  participant super_admin  \\"
-            >
-              <span
-                aria-label=\\"Super User (super)\\"
-                class=\\"ui medium text\\"
-                title=\\"Super User (super)\\"
-              >
-                Super User
-              </span>
-              
-               
-              <i
-                aria-hidden=\\"true\\"
-                class=\\"small icon chess queen\\"
-                style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                title=\\"Super\\"
-              />
-              <span
-                class=\\"l__hidden\\"
-              >
-                (Select to invite)
-              </span>
-            </div>
             <div
               class=\\"result\\"
               searchable=\\"  Facilitator User  facilitator  facilitator  facilitator@email.com  participant facilitator researcher owner  \\"
@@ -4631,10 +4411,10 @@ exports[`Fallback: scenario object present, unloaded 4`] = `
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -4676,8 +4456,13 @@ exports[`Fallback: scenario object present, unloaded 4`] = `
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
-          class=\\"ui fluid search grid__menu-search l__search-input primary\\"
+          class=\\"ui active visible focus fluid search grid__menu-search l__search-input primary\\"
         >
           <div
             class=\\"ui icon input\\"
@@ -4695,33 +4480,8 @@ exports[`Fallback: scenario object present, unloaded 4`] = `
             />
           </div>
           <div
-            class=\\"results transition\\"
+            class=\\"results transition visible\\"
           >
-            <div
-              class=\\"result\\"
-              searchable=\\"  Super User  super  super  super@email.com  participant super_admin  \\"
-            >
-              <span
-                aria-label=\\"Super User (super)\\"
-                class=\\"ui medium text\\"
-                title=\\"Super User (super)\\"
-              >
-                Super User
-              </span>
-              
-               
-              <i
-                aria-hidden=\\"true\\"
-                class=\\"small icon chess queen\\"
-                style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                title=\\"Super\\"
-              />
-              <span
-                class=\\"l__hidden\\"
-              >
-                (Select to invite)
-              </span>
-            </div>
             <div
               class=\\"result\\"
               searchable=\\"  Facilitator User  facilitator  facilitator  facilitator@email.com  participant facilitator researcher owner  \\"
@@ -5056,10 +4816,10 @@ exports[`Lobby visited by a non-facilitator user 1`] = `
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -5101,8 +4861,13 @@ exports[`Lobby visited by a non-facilitator user 1`] = `
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
-          class=\\"ui fluid search grid__menu-search l__search-input primary\\"
+          class=\\"ui active visible focus fluid search grid__menu-search l__search-input primary\\"
         >
           <div
             class=\\"ui icon input\\"
@@ -5120,7 +4885,7 @@ exports[`Lobby visited by a non-facilitator user 1`] = `
             />
           </div>
           <div
-            class=\\"results transition\\"
+            class=\\"results transition visible\\"
           >
             <div
               class=\\"result\\"
@@ -5191,25 +4956,6 @@ exports[`Lobby visited by a non-facilitator user 1`] = `
                 style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
                 title=\\"Researcher\\"
               />
-              <span
-                class=\\"l__hidden\\"
-              >
-                (Select to invite)
-              </span>
-            </div>
-            <div
-              class=\\"result\\"
-              searchable=\\"  Participant User  participant  participant  participant@email.com  participant  \\"
-            >
-              <span
-                aria-label=\\"Participant User (participant)\\"
-                class=\\"ui medium text\\"
-                title=\\"Participant User (participant)\\"
-              >
-                Participant User
-              </span>
-              
-               
               <span
                 class=\\"l__hidden\\"
               >
@@ -5437,10 +5183,10 @@ exports[`Lobby visited by a non-facilitator user 4`] = `
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -5482,8 +5228,13 @@ exports[`Lobby visited by a non-facilitator user 4`] = `
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
-          class=\\"ui fluid search grid__menu-search l__search-input primary\\"
+          class=\\"ui active visible focus fluid search grid__menu-search l__search-input primary\\"
         >
           <div
             class=\\"ui icon input\\"
@@ -5501,7 +5252,7 @@ exports[`Lobby visited by a non-facilitator user 4`] = `
             />
           </div>
           <div
-            class=\\"results transition\\"
+            class=\\"results transition visible\\"
           >
             <div
               class=\\"result\\"
@@ -5572,25 +5323,6 @@ exports[`Lobby visited by a non-facilitator user 4`] = `
                 style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
                 title=\\"Researcher\\"
               />
-              <span
-                class=\\"l__hidden\\"
-              >
-                (Select to invite)
-              </span>
-            </div>
-            <div
-              class=\\"result\\"
-              searchable=\\"  Participant User  participant  participant  participant@email.com  participant  \\"
-            >
-              <span
-                aria-label=\\"Participant User (participant)\\"
-                class=\\"ui medium text\\"
-                title=\\"Participant User (participant)\\"
-              >
-                Participant User
-              </span>
-              
-               
               <span
                 class=\\"l__hidden\\"
               >
@@ -5818,10 +5550,10 @@ exports[`With cohort, Receives RUN_CHAT_LINK, calls getChatUsersByChatId 1`] = `
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -5863,8 +5595,13 @@ exports[`With cohort, Receives RUN_CHAT_LINK, calls getChatUsersByChatId 1`] = `
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
-          class=\\"ui fluid search grid__menu-search l__search-input primary\\"
+          class=\\"ui active visible focus fluid search grid__menu-search l__search-input primary\\"
         >
           <div
             class=\\"ui icon input\\"
@@ -5882,33 +5619,8 @@ exports[`With cohort, Receives RUN_CHAT_LINK, calls getChatUsersByChatId 1`] = `
             />
           </div>
           <div
-            class=\\"results transition\\"
+            class=\\"results transition visible\\"
           >
-            <div
-              class=\\"result\\"
-              searchable=\\"  Super User  super  super  super@email.com  participant super_admin  \\"
-            >
-              <span
-                aria-label=\\"Super User (super)\\"
-                class=\\"ui medium text\\"
-                title=\\"Super User (super)\\"
-              >
-                Super User
-              </span>
-              
-               
-              <i
-                aria-hidden=\\"true\\"
-                class=\\"small icon chess queen\\"
-                style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                title=\\"Super\\"
-              />
-              <span
-                class=\\"l__hidden\\"
-              >
-                (Select to invite)
-              </span>
-            </div>
             <div
               class=\\"result\\"
               searchable=\\"  Facilitator User  facilitator  facilitator  facilitator@email.com  participant facilitator researcher owner  \\"
@@ -6259,10 +5971,10 @@ exports[`With cohort, Receives RUN_CHAT_LINK, calls getChatUsersByChatId 4`] = `
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -6304,8 +6016,13 @@ exports[`With cohort, Receives RUN_CHAT_LINK, calls getChatUsersByChatId 4`] = `
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
-          class=\\"ui fluid search grid__menu-search l__search-input primary\\"
+          class=\\"ui active visible focus fluid search grid__menu-search l__search-input primary\\"
         >
           <div
             class=\\"ui icon input\\"
@@ -6323,33 +6040,8 @@ exports[`With cohort, Receives RUN_CHAT_LINK, calls getChatUsersByChatId 4`] = `
             />
           </div>
           <div
-            class=\\"results transition\\"
+            class=\\"results transition visible\\"
           >
-            <div
-              class=\\"result\\"
-              searchable=\\"  Super User  super  super  super@email.com  participant super_admin  \\"
-            >
-              <span
-                aria-label=\\"Super User (super)\\"
-                class=\\"ui medium text\\"
-                title=\\"Super User (super)\\"
-              >
-                Super User
-              </span>
-              
-               
-              <i
-                aria-hidden=\\"true\\"
-                class=\\"small icon chess queen\\"
-                style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                title=\\"Super\\"
-              />
-              <span
-                class=\\"l__hidden\\"
-              >
-                (Select to invite)
-              </span>
-            </div>
             <div
               class=\\"result\\"
               searchable=\\"  Facilitator User  facilitator  facilitator  facilitator@email.com  participant facilitator researcher owner  \\"
@@ -6700,10 +6392,10 @@ exports[`Without cohort, Receives RUN_CHAT_LINK, calls getLinkedChatUsersByChatI
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -6745,8 +6437,13 @@ exports[`Without cohort, Receives RUN_CHAT_LINK, calls getLinkedChatUsersByChatI
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
-          class=\\"ui fluid search grid__menu-search l__search-input primary\\"
+          class=\\"ui active visible focus fluid search grid__menu-search l__search-input primary\\"
         >
           <div
             class=\\"ui icon input\\"
@@ -6764,33 +6461,8 @@ exports[`Without cohort, Receives RUN_CHAT_LINK, calls getLinkedChatUsersByChatI
             />
           </div>
           <div
-            class=\\"results transition\\"
+            class=\\"results transition visible\\"
           >
-            <div
-              class=\\"result\\"
-              searchable=\\"  Super User  super  super  super@email.com  participant super_admin  \\"
-            >
-              <span
-                aria-label=\\"Super User (super)\\"
-                class=\\"ui medium text\\"
-                title=\\"Super User (super)\\"
-              >
-                Super User
-              </span>
-              
-               
-              <i
-                aria-hidden=\\"true\\"
-                class=\\"small icon chess queen\\"
-                style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                title=\\"Super\\"
-              />
-              <span
-                class=\\"l__hidden\\"
-              >
-                (Select to invite)
-              </span>
-            </div>
             <div
               class=\\"result\\"
               searchable=\\"  null  credible-lyrebird  credible lyrebird  null  participant  \\"
@@ -7194,10 +6866,10 @@ exports[`Without cohort, Receives RUN_CHAT_LINK, calls getLinkedChatUsersByChatI
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -7239,8 +6911,13 @@ exports[`Without cohort, Receives RUN_CHAT_LINK, calls getLinkedChatUsersByChatI
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
-          class=\\"ui fluid search grid__menu-search l__search-input primary\\"
+          class=\\"ui active visible focus fluid search grid__menu-search l__search-input primary\\"
         >
           <div
             class=\\"ui icon input\\"
@@ -7258,33 +6935,8 @@ exports[`Without cohort, Receives RUN_CHAT_LINK, calls getLinkedChatUsersByChatI
             />
           </div>
           <div
-            class=\\"results transition\\"
+            class=\\"results transition visible\\"
           >
-            <div
-              class=\\"result\\"
-              searchable=\\"  Super User  super  super  super@email.com  participant super_admin  \\"
-            >
-              <span
-                aria-label=\\"Super User (super)\\"
-                class=\\"ui medium text\\"
-                title=\\"Super User (super)\\"
-              >
-                Super User
-              </span>
-              
-               
-              <i
-                aria-hidden=\\"true\\"
-                class=\\"small icon chess queen\\"
-                style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                title=\\"Super\\"
-              />
-              <span
-                class=\\"l__hidden\\"
-              >
-                (Select to invite)
-              </span>
-            </div>
             <div
               class=\\"result\\"
               searchable=\\"  null  credible-lyrebird  credible lyrebird  null  participant  \\"
@@ -7710,10 +7362,10 @@ exports[`props.asCard 1`] = `
                     </p>
                     <ol>
                       <li>
-                        Choose your role first.
+                        Search and select participants that you want to invite, and assign their roles as you go.
                       </li>
                       <li>
-                        Search and select participants that you want to invite, and assign their roles as you go.
+                        Choose your role.
                       </li>
                       <li>
                         Once all of the available roles are filled, click the
@@ -7755,8 +7407,13 @@ exports[`props.asCard 1`] = `
               <div
                 class=\\"row\\"
               >
+                <p>
+                  <strong>
+                    Search and select participants that you want to invite:
+                  </strong>
+                </p>
                 <div
-                  class=\\"ui fluid search grid__menu-search l__search-input primary\\"
+                  class=\\"ui active visible focus fluid search grid__menu-search l__search-input primary\\"
                 >
                   <div
                     class=\\"ui icon input\\"
@@ -7774,33 +7431,8 @@ exports[`props.asCard 1`] = `
                     />
                   </div>
                   <div
-                    class=\\"results transition\\"
+                    class=\\"results transition visible\\"
                   >
-                    <div
-                      class=\\"result\\"
-                      searchable=\\"  Super User  super  super  super@email.com  participant super_admin  \\"
-                    >
-                      <span
-                        aria-label=\\"Super User (super)\\"
-                        class=\\"ui medium text\\"
-                        title=\\"Super User (super)\\"
-                      >
-                        Super User
-                      </span>
-                      
-                       
-                      <i
-                        aria-hidden=\\"true\\"
-                        class=\\"small icon chess queen\\"
-                        style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                        title=\\"Super\\"
-                      />
-                      <span
-                        class=\\"l__hidden\\"
-                      >
-                        (Select to invite)
-                      </span>
-                    </div>
                     <div
                       class=\\"result\\"
                       searchable=\\"  Facilitator User  facilitator  facilitator  facilitator@email.com  participant facilitator researcher owner  \\"
@@ -8176,10 +7808,10 @@ exports[`props.asCard 4`] = `
                     </p>
                     <ol>
                       <li>
-                        Choose your role first.
+                        Search and select participants that you want to invite, and assign their roles as you go.
                       </li>
                       <li>
-                        Search and select participants that you want to invite, and assign their roles as you go.
+                        Choose your role.
                       </li>
                       <li>
                         Once all of the available roles are filled, click the
@@ -8221,8 +7853,13 @@ exports[`props.asCard 4`] = `
               <div
                 class=\\"row\\"
               >
+                <p>
+                  <strong>
+                    Search and select participants that you want to invite:
+                  </strong>
+                </p>
                 <div
-                  class=\\"ui fluid search grid__menu-search l__search-input primary\\"
+                  class=\\"ui active visible focus fluid search grid__menu-search l__search-input primary\\"
                 >
                   <div
                     class=\\"ui icon input\\"
@@ -8240,33 +7877,8 @@ exports[`props.asCard 4`] = `
                     />
                   </div>
                   <div
-                    class=\\"results transition\\"
+                    class=\\"results transition visible\\"
                   >
-                    <div
-                      class=\\"result\\"
-                      searchable=\\"  Super User  super  super  super@email.com  participant super_admin  \\"
-                    >
-                      <span
-                        aria-label=\\"Super User (super)\\"
-                        class=\\"ui medium text\\"
-                        title=\\"Super User (super)\\"
-                      >
-                        Super User
-                      </span>
-                      
-                       
-                      <i
-                        aria-hidden=\\"true\\"
-                        class=\\"small icon chess queen\\"
-                        style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                        title=\\"Super\\"
-                      />
-                      <span
-                        class=\\"l__hidden\\"
-                      >
-                        (Select to invite)
-                      </span>
-                    </div>
                     <div
                       class=\\"result\\"
                       searchable=\\"  Facilitator User  facilitator  facilitator  facilitator@email.com  participant facilitator researcher owner  \\"

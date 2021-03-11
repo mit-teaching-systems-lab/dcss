@@ -90,10 +90,10 @@ exports[`With cohort Assign & unassign roles 2`] = `
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -135,8 +135,13 @@ exports[`With cohort Assign & unassign roles 2`] = `
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
-          class=\\"ui fluid search grid__menu-search l__search-input primary\\"
+          class=\\"ui active visible focus fluid search grid__menu-search l__search-input primary\\"
         >
           <div
             class=\\"ui icon input\\"
@@ -154,33 +159,8 @@ exports[`With cohort Assign & unassign roles 2`] = `
             />
           </div>
           <div
-            class=\\"results transition\\"
+            class=\\"results transition visible\\"
           >
-            <div
-              class=\\"result\\"
-              searchable=\\"  Super User  super  super  super@email.com  participant super_admin  \\"
-            >
-              <span
-                aria-label=\\"Super User (super)\\"
-                class=\\"ui medium text\\"
-                title=\\"Super User (super)\\"
-              >
-                Super User
-              </span>
-              
-               
-              <i
-                aria-hidden=\\"true\\"
-                class=\\"small icon chess queen\\"
-                style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                title=\\"Super\\"
-              />
-              <span
-                class=\\"l__hidden\\"
-              >
-                (Select to invite)
-              </span>
-            </div>
             <div
               class=\\"result\\"
               searchable=\\"  Facilitator User  facilitator  facilitator  facilitator@email.com  participant facilitator researcher owner  \\"
@@ -460,10 +440,10 @@ exports[`With cohort Assign & unassign roles 3`] = `
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -500,6 +480,11 @@ exports[`With cohort Assign & unassign roles 3`] = `
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
           class=\\"ui fluid search grid__menu-search l__search-input primary\\"
         >
@@ -835,10 +820,10 @@ exports[`With cohort Assign & unassign roles 4`] = `
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -875,6 +860,11 @@ exports[`With cohort Assign & unassign roles 4`] = `
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
           class=\\"ui fluid search grid__menu-search l__search-input primary\\"
         >
@@ -1191,10 +1181,10 @@ exports[`With cohort Assign & unassign roles 5`] = `
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -1231,6 +1221,11 @@ exports[`With cohort Assign & unassign roles 5`] = `
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
           class=\\"ui fluid search grid__menu-search l__search-input primary\\"
         >
@@ -1577,10 +1572,10 @@ exports[`With cohort Assigning roles enables Send Invites button 2`] = `
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -1622,8 +1617,13 @@ exports[`With cohort Assigning roles enables Send Invites button 2`] = `
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
-          class=\\"ui fluid search grid__menu-search l__search-input primary\\"
+          class=\\"ui active visible focus fluid search grid__menu-search l__search-input primary\\"
         >
           <div
             class=\\"ui icon input\\"
@@ -1641,33 +1641,8 @@ exports[`With cohort Assigning roles enables Send Invites button 2`] = `
             />
           </div>
           <div
-            class=\\"results transition\\"
+            class=\\"results transition visible\\"
           >
-            <div
-              class=\\"result\\"
-              searchable=\\"  Super User  super  super  super@email.com  participant super_admin  \\"
-            >
-              <span
-                aria-label=\\"Super User (super)\\"
-                class=\\"ui medium text\\"
-                title=\\"Super User (super)\\"
-              >
-                Super User
-              </span>
-              
-               
-              <i
-                aria-hidden=\\"true\\"
-                class=\\"small icon chess queen\\"
-                style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                title=\\"Super\\"
-              />
-              <span
-                class=\\"l__hidden\\"
-              >
-                (Select to invite)
-              </span>
-            </div>
             <div
               class=\\"result\\"
               searchable=\\"  Facilitator User  facilitator  facilitator  facilitator@email.com  participant facilitator researcher owner  \\"
@@ -1947,10 +1922,10 @@ exports[`With cohort Assigning roles enables Send Invites button 3`] = `
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -1987,6 +1962,11 @@ exports[`With cohort Assigning roles enables Send Invites button 3`] = `
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
           class=\\"ui fluid search grid__menu-search l__search-input primary\\"
         >
@@ -2322,10 +2302,10 @@ exports[`With cohort Assigning roles enables Send Invites button 4`] = `
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -2362,6 +2342,11 @@ exports[`With cohort Assigning roles enables Send Invites button 4`] = `
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
           class=\\"ui fluid search grid__menu-search l__search-input primary\\"
         >
@@ -2678,10 +2663,10 @@ exports[`With cohort Assigning roles enables Send Invites button 5`] = `
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -2718,6 +2703,11 @@ exports[`With cohort Assigning roles enables Send Invites button 5`] = `
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
           class=\\"ui fluid search grid__menu-search l__search-input primary\\"
         >
@@ -3034,10 +3024,10 @@ exports[`With cohort Assigning roles enables Send Invites button 6`] = `
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -3072,6 +3062,11 @@ exports[`With cohort Assigning roles enables Send Invites button 6`] = `
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
           class=\\"ui fluid search grid__menu-search l__search-input primary\\"
         >
@@ -3374,10 +3369,10 @@ exports[`With cohort Both Send Invites buttons are disabled 2`] = `
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -3419,8 +3414,13 @@ exports[`With cohort Both Send Invites buttons are disabled 2`] = `
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
-          class=\\"ui fluid search grid__menu-search l__search-input primary\\"
+          class=\\"ui active visible focus fluid search grid__menu-search l__search-input primary\\"
         >
           <div
             class=\\"ui icon input\\"
@@ -3438,33 +3438,8 @@ exports[`With cohort Both Send Invites buttons are disabled 2`] = `
             />
           </div>
           <div
-            class=\\"results transition\\"
+            class=\\"results transition visible\\"
           >
-            <div
-              class=\\"result\\"
-              searchable=\\"  Super User  super  super  super@email.com  participant super_admin  \\"
-            >
-              <span
-                aria-label=\\"Super User (super)\\"
-                class=\\"ui medium text\\"
-                title=\\"Super User (super)\\"
-              >
-                Super User
-              </span>
-              
-               
-              <i
-                aria-hidden=\\"true\\"
-                class=\\"small icon chess queen\\"
-                style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                title=\\"Super\\"
-              />
-              <span
-                class=\\"l__hidden\\"
-              >
-                (Select to invite)
-              </span>
-            </div>
             <div
               class=\\"result\\"
               searchable=\\"  Facilitator User  facilitator  facilitator  facilitator@email.com  participant facilitator researcher owner  \\"
@@ -3751,10 +3726,10 @@ exports[`With cohort Click in search shows default list of available users 2`] =
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -3796,8 +3771,13 @@ exports[`With cohort Click in search shows default list of available users 2`] =
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
-          class=\\"ui fluid search grid__menu-search l__search-input primary\\"
+          class=\\"ui active visible focus fluid search grid__menu-search l__search-input primary\\"
         >
           <div
             class=\\"ui icon input\\"
@@ -3815,33 +3795,8 @@ exports[`With cohort Click in search shows default list of available users 2`] =
             />
           </div>
           <div
-            class=\\"results transition\\"
+            class=\\"results transition visible\\"
           >
-            <div
-              class=\\"result\\"
-              searchable=\\"  Super User  super  super  super@email.com  participant super_admin  \\"
-            >
-              <span
-                aria-label=\\"Super User (super)\\"
-                class=\\"ui medium text\\"
-                title=\\"Super User (super)\\"
-              >
-                Super User
-              </span>
-              
-               
-              <i
-                aria-hidden=\\"true\\"
-                class=\\"small icon chess queen\\"
-                style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                title=\\"Super\\"
-              />
-              <span
-                class=\\"l__hidden\\"
-              >
-                (Select to invite)
-              </span>
-            </div>
             <div
               class=\\"result\\"
               searchable=\\"  Facilitator User  facilitator  facilitator  facilitator@email.com  participant facilitator researcher owner  \\"
@@ -4119,10 +4074,10 @@ exports[`With cohort Click in search shows default list of available users 3`] =
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -4164,6 +4119,11 @@ exports[`With cohort Click in search shows default list of available users 3`] =
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
           class=\\"ui active visible focus fluid search grid__menu-search l__search-input primary\\"
         >
@@ -4475,10 +4435,10 @@ exports[`With cohort Dismiss instructions 2`] = `
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -4520,8 +4480,13 @@ exports[`With cohort Dismiss instructions 2`] = `
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
-          class=\\"ui fluid search grid__menu-search l__search-input primary\\"
+          class=\\"ui active visible focus fluid search grid__menu-search l__search-input primary\\"
         >
           <div
             class=\\"ui icon input\\"
@@ -4539,33 +4504,8 @@ exports[`With cohort Dismiss instructions 2`] = `
             />
           </div>
           <div
-            class=\\"results transition\\"
+            class=\\"results transition visible\\"
           >
-            <div
-              class=\\"result\\"
-              searchable=\\"  Super User  super  super  super@email.com  participant super_admin  \\"
-            >
-              <span
-                aria-label=\\"Super User (super)\\"
-                class=\\"ui medium text\\"
-                title=\\"Super User (super)\\"
-              >
-                Super User
-              </span>
-              
-               
-              <i
-                aria-hidden=\\"true\\"
-                class=\\"small icon chess queen\\"
-                style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                title=\\"Super\\"
-              />
-              <span
-                class=\\"l__hidden\\"
-              >
-                (Select to invite)
-              </span>
-            </div>
             <div
               class=\\"result\\"
               searchable=\\"  Facilitator User  facilitator  facilitator  facilitator@email.com  participant facilitator researcher owner  \\"
@@ -4861,6 +4801,11 @@ exports[`With cohort Dismiss instructions 3`] = `
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
           class=\\"ui fluid search grid__menu-search l__search-input primary\\"
         >
@@ -4882,31 +4827,6 @@ exports[`With cohort Dismiss instructions 3`] = `
           <div
             class=\\"results transition\\"
           >
-            <div
-              class=\\"result\\"
-              searchable=\\"  Super User  super  super  super@email.com  participant super_admin  \\"
-            >
-              <span
-                aria-label=\\"Super User (super)\\"
-                class=\\"ui medium text\\"
-                title=\\"Super User (super)\\"
-              >
-                Super User
-              </span>
-              
-               
-              <i
-                aria-hidden=\\"true\\"
-                class=\\"small icon chess queen\\"
-                style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                title=\\"Super\\"
-              />
-              <span
-                class=\\"l__hidden\\"
-              >
-                (Select to invite)
-              </span>
-            </div>
             <div
               class=\\"result\\"
               searchable=\\"  Facilitator User  facilitator  facilitator  facilitator@email.com  participant facilitator researcher owner  \\"
@@ -5197,10 +5117,10 @@ exports[`With cohort Select & unselect participant 2`] = `
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -5242,8 +5162,13 @@ exports[`With cohort Select & unselect participant 2`] = `
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
-          class=\\"ui fluid search grid__menu-search l__search-input primary\\"
+          class=\\"ui active visible focus fluid search grid__menu-search l__search-input primary\\"
         >
           <div
             class=\\"ui icon input\\"
@@ -5261,33 +5186,8 @@ exports[`With cohort Select & unselect participant 2`] = `
             />
           </div>
           <div
-            class=\\"results transition\\"
+            class=\\"results transition visible\\"
           >
-            <div
-              class=\\"result\\"
-              searchable=\\"  Super User  super  super  super@email.com  participant super_admin  \\"
-            >
-              <span
-                aria-label=\\"Super User (super)\\"
-                class=\\"ui medium text\\"
-                title=\\"Super User (super)\\"
-              >
-                Super User
-              </span>
-              
-               
-              <i
-                aria-hidden=\\"true\\"
-                class=\\"small icon chess queen\\"
-                style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                title=\\"Super\\"
-              />
-              <span
-                class=\\"l__hidden\\"
-              >
-                (Select to invite)
-              </span>
-            </div>
             <div
               class=\\"result\\"
               searchable=\\"  Facilitator User  facilitator  facilitator  facilitator@email.com  participant facilitator researcher owner  \\"
@@ -5567,10 +5467,10 @@ exports[`With cohort Select & unselect participant 3`] = `
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -5607,6 +5507,11 @@ exports[`With cohort Select & unselect participant 3`] = `
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
           class=\\"ui focus fluid search grid__menu-search l__search-input primary\\"
         >
@@ -5942,10 +5847,10 @@ exports[`With cohort Select & unselect participant 4`] = `
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -5987,6 +5892,11 @@ exports[`With cohort Select & unselect participant 4`] = `
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
           class=\\"ui fluid search grid__menu-search l__search-input primary\\"
         >
@@ -6219,10 +6129,10 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 2`] = 
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -6264,8 +6174,13 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 2`] = 
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
-          class=\\"ui fluid search grid__menu-search l__search-input primary\\"
+          class=\\"ui active visible focus fluid search grid__menu-search l__search-input primary\\"
         >
           <div
             class=\\"ui icon input\\"
@@ -6283,33 +6198,8 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 2`] = 
             />
           </div>
           <div
-            class=\\"results transition\\"
+            class=\\"results transition visible\\"
           >
-            <div
-              class=\\"result\\"
-              searchable=\\"  Super User  super  super  super@email.com  participant super_admin  \\"
-            >
-              <span
-                aria-label=\\"Super User (super)\\"
-                class=\\"ui medium text\\"
-                title=\\"Super User (super)\\"
-              >
-                Super User
-              </span>
-              
-               
-              <i
-                aria-hidden=\\"true\\"
-                class=\\"small icon chess queen\\"
-                style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                title=\\"Super\\"
-              />
-              <span
-                class=\\"l__hidden\\"
-              >
-                (Select to invite)
-              </span>
-            </div>
             <div
               class=\\"result\\"
               searchable=\\"  Facilitator User  facilitator  facilitator  facilitator@email.com  participant facilitator researcher owner  \\"
@@ -6589,10 +6479,10 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 3`] = 
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -6629,6 +6519,11 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 3`] = 
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
           class=\\"ui focus fluid search grid__menu-search l__search-input primary\\"
         >
@@ -6964,10 +6859,10 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 4`] = 
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -7004,6 +6899,11 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 4`] = 
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
           class=\\"ui fluid search grid__menu-search l__search-input primary\\"
         >
@@ -7339,10 +7239,10 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 5`] = 
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -7379,6 +7279,11 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 5`] = 
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
           class=\\"ui fluid search grid__menu-search l__search-input primary\\"
         >
@@ -7695,10 +7600,10 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 6`] = 
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -7735,6 +7640,11 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 6`] = 
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
           class=\\"ui fluid search grid__menu-search l__search-input primary\\"
         >
@@ -8051,10 +7961,10 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 7`] = 
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -8091,6 +8001,11 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 7`] = 
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
           class=\\"ui fluid search grid__menu-search l__search-input primary\\"
         >
@@ -8407,10 +8322,10 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 8`] = 
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -8445,6 +8360,11 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 8`] = 
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
           class=\\"ui fluid search grid__menu-search l__search-input primary\\"
         >
@@ -8740,10 +8660,10 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 9`] = 
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -8778,6 +8698,11 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 9`] = 
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
           class=\\"ui fluid search grid__menu-search l__search-input primary\\"
         >
@@ -9073,10 +8998,10 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 10`] =
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -9111,6 +9036,11 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 10`] =
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
           class=\\"ui fluid search grid__menu-search l__search-input primary\\"
         >
@@ -9608,10 +9538,10 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 11`] =
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -9646,6 +9576,11 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 11`] =
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
           class=\\"ui fluid search grid__menu-search l__search-input primary\\"
         >
@@ -9941,10 +9876,10 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 12`] =
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -9979,6 +9914,11 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 12`] =
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
           class=\\"ui fluid search grid__menu-search l__search-input primary\\"
         >
@@ -10274,10 +10214,10 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 13`] =
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -10312,6 +10252,11 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 13`] =
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
           class=\\"ui fluid search grid__menu-search l__search-input primary\\"
         >
@@ -10809,10 +10754,10 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 14`] =
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -10847,6 +10792,11 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 14`] =
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
           class=\\"ui fluid search grid__menu-search l__search-input primary\\"
         >
@@ -11351,10 +11301,10 @@ exports[`With cohort Selecting from search results adds a participant 2`] = `
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -11396,8 +11346,13 @@ exports[`With cohort Selecting from search results adds a participant 2`] = `
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
-          class=\\"ui fluid search grid__menu-search l__search-input primary\\"
+          class=\\"ui active visible focus fluid search grid__menu-search l__search-input primary\\"
         >
           <div
             class=\\"ui icon input\\"
@@ -11415,33 +11370,8 @@ exports[`With cohort Selecting from search results adds a participant 2`] = `
             />
           </div>
           <div
-            class=\\"results transition\\"
+            class=\\"results transition visible\\"
           >
-            <div
-              class=\\"result\\"
-              searchable=\\"  Super User  super  super  super@email.com  participant super_admin  \\"
-            >
-              <span
-                aria-label=\\"Super User (super)\\"
-                class=\\"ui medium text\\"
-                title=\\"Super User (super)\\"
-              >
-                Super User
-              </span>
-              
-               
-              <i
-                aria-hidden=\\"true\\"
-                class=\\"small icon chess queen\\"
-                style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                title=\\"Super\\"
-              />
-              <span
-                class=\\"l__hidden\\"
-              >
-                (Select to invite)
-              </span>
-            </div>
             <div
               class=\\"result\\"
               searchable=\\"  Facilitator User  facilitator  facilitator  facilitator@email.com  participant facilitator researcher owner  \\"
@@ -11719,10 +11649,10 @@ exports[`With cohort Selecting from search results adds a participant 3`] = `
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -11759,6 +11689,11 @@ exports[`With cohort Selecting from search results adds a participant 3`] = `
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
           class=\\"ui focus fluid search grid__menu-search l__search-input primary\\"
         >
@@ -12105,10 +12040,10 @@ exports[`With cohort Selecting too many shows a warning, discard selection 2`] =
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -12150,8 +12085,13 @@ exports[`With cohort Selecting too many shows a warning, discard selection 2`] =
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
-          class=\\"ui fluid search grid__menu-search l__search-input primary\\"
+          class=\\"ui active visible focus fluid search grid__menu-search l__search-input primary\\"
         >
           <div
             class=\\"ui icon input\\"
@@ -12169,33 +12109,8 @@ exports[`With cohort Selecting too many shows a warning, discard selection 2`] =
             />
           </div>
           <div
-            class=\\"results transition\\"
+            class=\\"results transition visible\\"
           >
-            <div
-              class=\\"result\\"
-              searchable=\\"  Super User  super  super  super@email.com  participant super_admin  \\"
-            >
-              <span
-                aria-label=\\"Super User (super)\\"
-                class=\\"ui medium text\\"
-                title=\\"Super User (super)\\"
-              >
-                Super User
-              </span>
-              
-               
-              <i
-                aria-hidden=\\"true\\"
-                class=\\"small icon chess queen\\"
-                style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                title=\\"Super\\"
-              />
-              <span
-                class=\\"l__hidden\\"
-              >
-                (Select to invite)
-              </span>
-            </div>
             <div
               class=\\"result\\"
               searchable=\\"  Facilitator User  facilitator  facilitator  facilitator@email.com  participant facilitator researcher owner  \\"
@@ -12475,10 +12390,10 @@ exports[`With cohort Selecting too many shows a warning, discard selection 3`] =
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -12520,6 +12435,11 @@ exports[`With cohort Selecting too many shows a warning, discard selection 3`] =
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
           class=\\"ui active visible focus fluid search grid__menu-search l__search-input primary\\"
         >
@@ -12757,10 +12677,10 @@ exports[`With cohort Selecting too many shows a warning, discard selection 4`] =
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -12797,6 +12717,11 @@ exports[`With cohort Selecting too many shows a warning, discard selection 4`] =
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
           class=\\"ui focus fluid search grid__menu-search l__search-input primary\\"
         >
@@ -13132,10 +13057,10 @@ exports[`With cohort Selecting too many shows a warning, discard selection 5`] =
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -13172,6 +13097,11 @@ exports[`With cohort Selecting too many shows a warning, discard selection 5`] =
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
           class=\\"ui active visible focus fluid search grid__menu-search l__search-input primary\\"
         >
@@ -13523,10 +13453,10 @@ exports[`With cohort Selecting too many shows a warning, discard selection 6`] =
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -13563,6 +13493,11 @@ exports[`With cohort Selecting too many shows a warning, discard selection 6`] =
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
           class=\\"ui focus fluid search grid__menu-search l__search-input primary\\"
         >
@@ -13995,10 +13930,10 @@ exports[`With cohort Selecting too many shows a warning, discard selection 7`] =
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -14035,6 +13970,11 @@ exports[`With cohort Selecting too many shows a warning, discard selection 7`] =
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
           class=\\"ui fluid search grid__menu-search l__search-input primary\\"
         >
@@ -14393,10 +14333,10 @@ exports[`With cohort Selecting too many shows a warning, remove an invite 2`] = 
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -14438,8 +14378,13 @@ exports[`With cohort Selecting too many shows a warning, remove an invite 2`] = 
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
-          class=\\"ui fluid search grid__menu-search l__search-input primary\\"
+          class=\\"ui active visible focus fluid search grid__menu-search l__search-input primary\\"
         >
           <div
             class=\\"ui icon input\\"
@@ -14457,33 +14402,8 @@ exports[`With cohort Selecting too many shows a warning, remove an invite 2`] = 
             />
           </div>
           <div
-            class=\\"results transition\\"
+            class=\\"results transition visible\\"
           >
-            <div
-              class=\\"result\\"
-              searchable=\\"  Super User  super  super  super@email.com  participant super_admin  \\"
-            >
-              <span
-                aria-label=\\"Super User (super)\\"
-                class=\\"ui medium text\\"
-                title=\\"Super User (super)\\"
-              >
-                Super User
-              </span>
-              
-               
-              <i
-                aria-hidden=\\"true\\"
-                class=\\"small icon chess queen\\"
-                style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                title=\\"Super\\"
-              />
-              <span
-                class=\\"l__hidden\\"
-              >
-                (Select to invite)
-              </span>
-            </div>
             <div
               class=\\"result\\"
               searchable=\\"  Facilitator User  facilitator  facilitator  facilitator@email.com  participant facilitator researcher owner  \\"
@@ -14761,10 +14681,10 @@ exports[`With cohort Selecting too many shows a warning, remove an invite 3`] = 
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -14806,6 +14726,11 @@ exports[`With cohort Selecting too many shows a warning, remove an invite 3`] = 
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
           class=\\"ui active visible focus fluid search grid__menu-search l__search-input primary\\"
         >
@@ -15041,10 +14966,10 @@ exports[`With cohort Selecting too many shows a warning, remove an invite 4`] = 
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -15081,6 +15006,11 @@ exports[`With cohort Selecting too many shows a warning, remove an invite 4`] = 
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
           class=\\"ui focus fluid search grid__menu-search l__search-input primary\\"
         >
@@ -15414,10 +15344,10 @@ exports[`With cohort Selecting too many shows a warning, remove an invite 5`] = 
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -15454,6 +15384,11 @@ exports[`With cohort Selecting too many shows a warning, remove an invite 5`] = 
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
           class=\\"ui active visible focus fluid search grid__menu-search l__search-input primary\\"
         >
@@ -15806,10 +15741,10 @@ exports[`With cohort Selecting too many shows a warning, remove an invite 6`] = 
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -15846,6 +15781,11 @@ exports[`With cohort Selecting too many shows a warning, remove an invite 6`] = 
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
           class=\\"ui focus fluid search grid__menu-search l__search-input primary\\"
         >
@@ -16279,10 +16219,10 @@ exports[`With cohort Selecting too many shows a warning, remove an invite 7`] = 
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -16319,6 +16259,11 @@ exports[`With cohort Selecting too many shows a warning, remove an invite 7`] = 
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
           class=\\"ui fluid search grid__menu-search l__search-input primary\\"
         >
@@ -16791,10 +16736,10 @@ exports[`With cohort Typing in search shows filtered list of available users 2`]
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -16836,8 +16781,13 @@ exports[`With cohort Typing in search shows filtered list of available users 2`]
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
-          class=\\"ui fluid search grid__menu-search l__search-input primary\\"
+          class=\\"ui active visible focus fluid search grid__menu-search l__search-input primary\\"
         >
           <div
             class=\\"ui icon input\\"
@@ -16855,33 +16805,8 @@ exports[`With cohort Typing in search shows filtered list of available users 2`]
             />
           </div>
           <div
-            class=\\"results transition\\"
+            class=\\"results transition visible\\"
           >
-            <div
-              class=\\"result\\"
-              searchable=\\"  Super User  super  super  super@email.com  participant super_admin  \\"
-            >
-              <span
-                aria-label=\\"Super User (super)\\"
-                class=\\"ui medium text\\"
-                title=\\"Super User (super)\\"
-              >
-                Super User
-              </span>
-              
-               
-              <i
-                aria-hidden=\\"true\\"
-                class=\\"small icon chess queen\\"
-                style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                title=\\"Super\\"
-              />
-              <span
-                class=\\"l__hidden\\"
-              >
-                (Select to invite)
-              </span>
-            </div>
             <div
               class=\\"result\\"
               searchable=\\"  Facilitator User  facilitator  facilitator  facilitator@email.com  participant facilitator researcher owner  \\"
@@ -17159,10 +17084,10 @@ exports[`With cohort Typing in search shows filtered list of available users 3`]
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -17204,6 +17129,11 @@ exports[`With cohort Typing in search shows filtered list of available users 3`]
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
           class=\\"ui active visible focus fluid search grid__menu-search l__search-input primary\\"
         >
@@ -17452,10 +17382,10 @@ exports[`Without cohort Assign & unassign roles 2`] = `
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -17497,8 +17427,13 @@ exports[`Without cohort Assign & unassign roles 2`] = `
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
-          class=\\"ui fluid search grid__menu-search l__search-input primary\\"
+          class=\\"ui active visible focus fluid search grid__menu-search l__search-input primary\\"
         >
           <div
             class=\\"ui icon input\\"
@@ -17516,33 +17451,8 @@ exports[`Without cohort Assign & unassign roles 2`] = `
             />
           </div>
           <div
-            class=\\"results transition\\"
+            class=\\"results transition visible\\"
           >
-            <div
-              class=\\"result\\"
-              searchable=\\"  Super User  super  super  super@email.com  participant super_admin  \\"
-            >
-              <span
-                aria-label=\\"Super User (super)\\"
-                class=\\"ui medium text\\"
-                title=\\"Super User (super)\\"
-              >
-                Super User
-              </span>
-              
-               
-              <i
-                aria-hidden=\\"true\\"
-                class=\\"small icon chess queen\\"
-                style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                title=\\"Super\\"
-              />
-              <span
-                class=\\"l__hidden\\"
-              >
-                (Select to invite)
-              </span>
-            </div>
             <div
               class=\\"result\\"
               searchable=\\"  Facilitator User  facilitator  facilitator  facilitator@email.com  participant facilitator researcher owner  \\"
@@ -17822,10 +17732,10 @@ exports[`Without cohort Assign & unassign roles 3`] = `
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -17862,6 +17772,11 @@ exports[`Without cohort Assign & unassign roles 3`] = `
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
           class=\\"ui fluid search grid__menu-search l__search-input primary\\"
         >
@@ -18197,10 +18112,10 @@ exports[`Without cohort Assign & unassign roles 4`] = `
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -18237,6 +18152,11 @@ exports[`Without cohort Assign & unassign roles 4`] = `
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
           class=\\"ui fluid search grid__menu-search l__search-input primary\\"
         >
@@ -18553,10 +18473,10 @@ exports[`Without cohort Assign & unassign roles 5`] = `
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -18593,6 +18513,11 @@ exports[`Without cohort Assign & unassign roles 5`] = `
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
           class=\\"ui fluid search grid__menu-search l__search-input primary\\"
         >
@@ -18939,10 +18864,10 @@ exports[`Without cohort Assigning roles enables Send Invites button 2`] = `
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -18984,8 +18909,13 @@ exports[`Without cohort Assigning roles enables Send Invites button 2`] = `
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
-          class=\\"ui fluid search grid__menu-search l__search-input primary\\"
+          class=\\"ui active visible focus fluid search grid__menu-search l__search-input primary\\"
         >
           <div
             class=\\"ui icon input\\"
@@ -19003,33 +18933,8 @@ exports[`Without cohort Assigning roles enables Send Invites button 2`] = `
             />
           </div>
           <div
-            class=\\"results transition\\"
+            class=\\"results transition visible\\"
           >
-            <div
-              class=\\"result\\"
-              searchable=\\"  Super User  super  super  super@email.com  participant super_admin  \\"
-            >
-              <span
-                aria-label=\\"Super User (super)\\"
-                class=\\"ui medium text\\"
-                title=\\"Super User (super)\\"
-              >
-                Super User
-              </span>
-              
-               
-              <i
-                aria-hidden=\\"true\\"
-                class=\\"small icon chess queen\\"
-                style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                title=\\"Super\\"
-              />
-              <span
-                class=\\"l__hidden\\"
-              >
-                (Select to invite)
-              </span>
-            </div>
             <div
               class=\\"result\\"
               searchable=\\"  Facilitator User  facilitator  facilitator  facilitator@email.com  participant facilitator researcher owner  \\"
@@ -19309,10 +19214,10 @@ exports[`Without cohort Assigning roles enables Send Invites button 3`] = `
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -19349,6 +19254,11 @@ exports[`Without cohort Assigning roles enables Send Invites button 3`] = `
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
           class=\\"ui fluid search grid__menu-search l__search-input primary\\"
         >
@@ -19684,10 +19594,10 @@ exports[`Without cohort Assigning roles enables Send Invites button 4`] = `
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -19724,6 +19634,11 @@ exports[`Without cohort Assigning roles enables Send Invites button 4`] = `
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
           class=\\"ui fluid search grid__menu-search l__search-input primary\\"
         >
@@ -20040,10 +19955,10 @@ exports[`Without cohort Assigning roles enables Send Invites button 5`] = `
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -20080,6 +19995,11 @@ exports[`Without cohort Assigning roles enables Send Invites button 5`] = `
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
           class=\\"ui fluid search grid__menu-search l__search-input primary\\"
         >
@@ -20396,10 +20316,10 @@ exports[`Without cohort Assigning roles enables Send Invites button 6`] = `
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -20434,6 +20354,11 @@ exports[`Without cohort Assigning roles enables Send Invites button 6`] = `
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
           class=\\"ui fluid search grid__menu-search l__search-input primary\\"
         >
@@ -20740,10 +20665,10 @@ exports[`Without cohort Both Send Invites buttons are disabled 2`] = `
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -20785,8 +20710,13 @@ exports[`Without cohort Both Send Invites buttons are disabled 2`] = `
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
-          class=\\"ui fluid search grid__menu-search l__search-input primary\\"
+          class=\\"ui active visible focus fluid search grid__menu-search l__search-input primary\\"
         >
           <div
             class=\\"ui icon input\\"
@@ -20804,33 +20734,8 @@ exports[`Without cohort Both Send Invites buttons are disabled 2`] = `
             />
           </div>
           <div
-            class=\\"results transition\\"
+            class=\\"results transition visible\\"
           >
-            <div
-              class=\\"result\\"
-              searchable=\\"  Super User  super  super  super@email.com  participant super_admin  \\"
-            >
-              <span
-                aria-label=\\"Super User (super)\\"
-                class=\\"ui medium text\\"
-                title=\\"Super User (super)\\"
-              >
-                Super User
-              </span>
-              
-               
-              <i
-                aria-hidden=\\"true\\"
-                class=\\"small icon chess queen\\"
-                style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                title=\\"Super\\"
-              />
-              <span
-                class=\\"l__hidden\\"
-              >
-                (Select to invite)
-              </span>
-            </div>
             <div
               class=\\"result\\"
               searchable=\\"  Facilitator User  facilitator  facilitator  facilitator@email.com  participant facilitator researcher owner  \\"
@@ -21121,10 +21026,10 @@ exports[`Without cohort Click in search shows default list of available users 2`
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -21166,8 +21071,13 @@ exports[`Without cohort Click in search shows default list of available users 2`
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
-          class=\\"ui fluid search grid__menu-search l__search-input primary\\"
+          class=\\"ui active visible focus fluid search grid__menu-search l__search-input primary\\"
         >
           <div
             class=\\"ui icon input\\"
@@ -21185,33 +21095,8 @@ exports[`Without cohort Click in search shows default list of available users 2`
             />
           </div>
           <div
-            class=\\"results transition\\"
+            class=\\"results transition visible\\"
           >
-            <div
-              class=\\"result\\"
-              searchable=\\"  Super User  super  super  super@email.com  participant super_admin  \\"
-            >
-              <span
-                aria-label=\\"Super User (super)\\"
-                class=\\"ui medium text\\"
-                title=\\"Super User (super)\\"
-              >
-                Super User
-              </span>
-              
-               
-              <i
-                aria-hidden=\\"true\\"
-                class=\\"small icon chess queen\\"
-                style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                title=\\"Super\\"
-              />
-              <span
-                class=\\"l__hidden\\"
-              >
-                (Select to invite)
-              </span>
-            </div>
             <div
               class=\\"result\\"
               searchable=\\"  Facilitator User  facilitator  facilitator  facilitator@email.com  participant facilitator researcher owner  \\"
@@ -21491,10 +21376,10 @@ exports[`Without cohort Click in search shows default list of available users 3`
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -21536,6 +21421,11 @@ exports[`Without cohort Click in search shows default list of available users 3`
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
           class=\\"ui active visible focus fluid search grid__menu-search l__search-input primary\\"
         >
@@ -21847,10 +21737,10 @@ exports[`Without cohort Dismiss instructions 2`] = `
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -21892,8 +21782,13 @@ exports[`Without cohort Dismiss instructions 2`] = `
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
-          class=\\"ui fluid search grid__menu-search l__search-input primary\\"
+          class=\\"ui active visible focus fluid search grid__menu-search l__search-input primary\\"
         >
           <div
             class=\\"ui icon input\\"
@@ -21911,33 +21806,8 @@ exports[`Without cohort Dismiss instructions 2`] = `
             />
           </div>
           <div
-            class=\\"results transition\\"
+            class=\\"results transition visible\\"
           >
-            <div
-              class=\\"result\\"
-              searchable=\\"  Super User  super  super  super@email.com  participant super_admin  \\"
-            >
-              <span
-                aria-label=\\"Super User (super)\\"
-                class=\\"ui medium text\\"
-                title=\\"Super User (super)\\"
-              >
-                Super User
-              </span>
-              
-               
-              <i
-                aria-hidden=\\"true\\"
-                class=\\"small icon chess queen\\"
-                style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                title=\\"Super\\"
-              />
-              <span
-                class=\\"l__hidden\\"
-              >
-                (Select to invite)
-              </span>
-            </div>
             <div
               class=\\"result\\"
               searchable=\\"  Facilitator User  facilitator  facilitator  facilitator@email.com  participant facilitator researcher owner  \\"
@@ -22233,6 +22103,11 @@ exports[`Without cohort Dismiss instructions 3`] = `
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
           class=\\"ui fluid search grid__menu-search l__search-input primary\\"
         >
@@ -22254,31 +22129,6 @@ exports[`Without cohort Dismiss instructions 3`] = `
           <div
             class=\\"results transition\\"
           >
-            <div
-              class=\\"result\\"
-              searchable=\\"  Super User  super  super  super@email.com  participant super_admin  \\"
-            >
-              <span
-                aria-label=\\"Super User (super)\\"
-                class=\\"ui medium text\\"
-                title=\\"Super User (super)\\"
-              >
-                Super User
-              </span>
-              
-               
-              <i
-                aria-hidden=\\"true\\"
-                class=\\"small icon chess queen\\"
-                style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                title=\\"Super\\"
-              />
-              <span
-                class=\\"l__hidden\\"
-              >
-                (Select to invite)
-              </span>
-            </div>
             <div
               class=\\"result\\"
               searchable=\\"  Facilitator User  facilitator  facilitator  facilitator@email.com  participant facilitator researcher owner  \\"
@@ -22569,10 +22419,10 @@ exports[`Without cohort Select & unselect participant 2`] = `
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -22614,8 +22464,13 @@ exports[`Without cohort Select & unselect participant 2`] = `
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
-          class=\\"ui fluid search grid__menu-search l__search-input primary\\"
+          class=\\"ui active visible focus fluid search grid__menu-search l__search-input primary\\"
         >
           <div
             class=\\"ui icon input\\"
@@ -22633,33 +22488,8 @@ exports[`Without cohort Select & unselect participant 2`] = `
             />
           </div>
           <div
-            class=\\"results transition\\"
+            class=\\"results transition visible\\"
           >
-            <div
-              class=\\"result\\"
-              searchable=\\"  Super User  super  super  super@email.com  participant super_admin  \\"
-            >
-              <span
-                aria-label=\\"Super User (super)\\"
-                class=\\"ui medium text\\"
-                title=\\"Super User (super)\\"
-              >
-                Super User
-              </span>
-              
-               
-              <i
-                aria-hidden=\\"true\\"
-                class=\\"small icon chess queen\\"
-                style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                title=\\"Super\\"
-              />
-              <span
-                class=\\"l__hidden\\"
-              >
-                (Select to invite)
-              </span>
-            </div>
             <div
               class=\\"result\\"
               searchable=\\"  Facilitator User  facilitator  facilitator  facilitator@email.com  participant facilitator researcher owner  \\"
@@ -22939,10 +22769,10 @@ exports[`Without cohort Select & unselect participant 3`] = `
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -22979,6 +22809,11 @@ exports[`Without cohort Select & unselect participant 3`] = `
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
           class=\\"ui focus fluid search grid__menu-search l__search-input primary\\"
         >
@@ -23314,10 +23149,10 @@ exports[`Without cohort Select & unselect participant 4`] = `
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -23359,6 +23194,11 @@ exports[`Without cohort Select & unselect participant 4`] = `
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
           class=\\"ui fluid search grid__menu-search l__search-input primary\\"
         >
@@ -23591,10 +23431,10 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 2`]
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -23636,8 +23476,13 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 2`]
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
-          class=\\"ui fluid search grid__menu-search l__search-input primary\\"
+          class=\\"ui active visible focus fluid search grid__menu-search l__search-input primary\\"
         >
           <div
             class=\\"ui icon input\\"
@@ -23655,33 +23500,8 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 2`]
             />
           </div>
           <div
-            class=\\"results transition\\"
+            class=\\"results transition visible\\"
           >
-            <div
-              class=\\"result\\"
-              searchable=\\"  Super User  super  super  super@email.com  participant super_admin  \\"
-            >
-              <span
-                aria-label=\\"Super User (super)\\"
-                class=\\"ui medium text\\"
-                title=\\"Super User (super)\\"
-              >
-                Super User
-              </span>
-              
-               
-              <i
-                aria-hidden=\\"true\\"
-                class=\\"small icon chess queen\\"
-                style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                title=\\"Super\\"
-              />
-              <span
-                class=\\"l__hidden\\"
-              >
-                (Select to invite)
-              </span>
-            </div>
             <div
               class=\\"result\\"
               searchable=\\"  Facilitator User  facilitator  facilitator  facilitator@email.com  participant facilitator researcher owner  \\"
@@ -23961,10 +23781,10 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 3`]
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -24001,6 +23821,11 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 3`]
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
           class=\\"ui focus fluid search grid__menu-search l__search-input primary\\"
         >
@@ -24336,10 +24161,10 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 4`]
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -24376,6 +24201,11 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 4`]
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
           class=\\"ui fluid search grid__menu-search l__search-input primary\\"
         >
@@ -24711,10 +24541,10 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 5`]
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -24751,6 +24581,11 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 5`]
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
           class=\\"ui fluid search grid__menu-search l__search-input primary\\"
         >
@@ -25067,10 +24902,10 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 6`]
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -25107,6 +24942,11 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 6`]
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
           class=\\"ui fluid search grid__menu-search l__search-input primary\\"
         >
@@ -25423,10 +25263,10 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 7`]
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -25463,6 +25303,11 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 7`]
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
           class=\\"ui fluid search grid__menu-search l__search-input primary\\"
         >
@@ -25779,10 +25624,10 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 8`]
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -25817,6 +25662,11 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 8`]
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
           class=\\"ui fluid search grid__menu-search l__search-input primary\\"
         >
@@ -26112,10 +25962,10 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 9`]
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -26150,6 +26000,11 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 9`]
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
           class=\\"ui fluid search grid__menu-search l__search-input primary\\"
         >
@@ -26445,10 +26300,10 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 10`
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -26483,6 +26338,11 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 10`
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
           class=\\"ui fluid search grid__menu-search l__search-input primary\\"
         >
@@ -26980,10 +26840,10 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 11`
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -27018,6 +26878,11 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 11`
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
           class=\\"ui fluid search grid__menu-search l__search-input primary\\"
         >
@@ -27313,10 +27178,10 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 12`
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -27351,6 +27216,11 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 12`
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
           class=\\"ui fluid search grid__menu-search l__search-input primary\\"
         >
@@ -27646,10 +27516,10 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 13`
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -27684,6 +27554,11 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 13`
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
           class=\\"ui fluid search grid__menu-search l__search-input primary\\"
         >
@@ -28181,10 +28056,10 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 14`
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -28219,6 +28094,11 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 14`
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
           class=\\"ui fluid search grid__menu-search l__search-input primary\\"
         >
@@ -28727,10 +28607,10 @@ exports[`Without cohort Selecting from search results adds a participant 2`] = `
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -28772,8 +28652,13 @@ exports[`Without cohort Selecting from search results adds a participant 2`] = `
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
-          class=\\"ui fluid search grid__menu-search l__search-input primary\\"
+          class=\\"ui active visible focus fluid search grid__menu-search l__search-input primary\\"
         >
           <div
             class=\\"ui icon input\\"
@@ -28791,33 +28676,8 @@ exports[`Without cohort Selecting from search results adds a participant 2`] = `
             />
           </div>
           <div
-            class=\\"results transition\\"
+            class=\\"results transition visible\\"
           >
-            <div
-              class=\\"result\\"
-              searchable=\\"  Super User  super  super  super@email.com  participant super_admin  \\"
-            >
-              <span
-                aria-label=\\"Super User (super)\\"
-                class=\\"ui medium text\\"
-                title=\\"Super User (super)\\"
-              >
-                Super User
-              </span>
-              
-               
-              <i
-                aria-hidden=\\"true\\"
-                class=\\"small icon chess queen\\"
-                style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                title=\\"Super\\"
-              />
-              <span
-                class=\\"l__hidden\\"
-              >
-                (Select to invite)
-              </span>
-            </div>
             <div
               class=\\"result\\"
               searchable=\\"  Facilitator User  facilitator  facilitator  facilitator@email.com  participant facilitator researcher owner  \\"
@@ -29097,10 +28957,10 @@ exports[`Without cohort Selecting from search results adds a participant 3`] = `
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -29137,6 +28997,11 @@ exports[`Without cohort Selecting from search results adds a participant 3`] = `
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
           class=\\"ui focus fluid search grid__menu-search l__search-input primary\\"
         >
@@ -29483,10 +29348,10 @@ exports[`Without cohort Selecting too many shows a warning, discard selection 2`
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -29528,8 +29393,13 @@ exports[`Without cohort Selecting too many shows a warning, discard selection 2`
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
-          class=\\"ui fluid search grid__menu-search l__search-input primary\\"
+          class=\\"ui active visible focus fluid search grid__menu-search l__search-input primary\\"
         >
           <div
             class=\\"ui icon input\\"
@@ -29547,33 +29417,8 @@ exports[`Without cohort Selecting too many shows a warning, discard selection 2`
             />
           </div>
           <div
-            class=\\"results transition\\"
+            class=\\"results transition visible\\"
           >
-            <div
-              class=\\"result\\"
-              searchable=\\"  Super User  super  super  super@email.com  participant super_admin  \\"
-            >
-              <span
-                aria-label=\\"Super User (super)\\"
-                class=\\"ui medium text\\"
-                title=\\"Super User (super)\\"
-              >
-                Super User
-              </span>
-              
-               
-              <i
-                aria-hidden=\\"true\\"
-                class=\\"small icon chess queen\\"
-                style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                title=\\"Super\\"
-              />
-              <span
-                class=\\"l__hidden\\"
-              >
-                (Select to invite)
-              </span>
-            </div>
             <div
               class=\\"result\\"
               searchable=\\"  Facilitator User  facilitator  facilitator  facilitator@email.com  participant facilitator researcher owner  \\"
@@ -29853,10 +29698,10 @@ exports[`Without cohort Selecting too many shows a warning, discard selection 3`
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -29898,6 +29743,11 @@ exports[`Without cohort Selecting too many shows a warning, discard selection 3`
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
           class=\\"ui active visible focus fluid search grid__menu-search l__search-input primary\\"
         >
@@ -30135,10 +29985,10 @@ exports[`Without cohort Selecting too many shows a warning, discard selection 4`
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -30175,6 +30025,11 @@ exports[`Without cohort Selecting too many shows a warning, discard selection 4`
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
           class=\\"ui focus fluid search grid__menu-search l__search-input primary\\"
         >
@@ -30510,10 +30365,10 @@ exports[`Without cohort Selecting too many shows a warning, discard selection 5`
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -30550,6 +30405,11 @@ exports[`Without cohort Selecting too many shows a warning, discard selection 5`
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
           class=\\"ui active visible focus fluid search grid__menu-search l__search-input primary\\"
         >
@@ -30901,10 +30761,10 @@ exports[`Without cohort Selecting too many shows a warning, discard selection 6`
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -30941,6 +30801,11 @@ exports[`Without cohort Selecting too many shows a warning, discard selection 6`
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
           class=\\"ui focus fluid search grid__menu-search l__search-input primary\\"
         >
@@ -31373,10 +31238,10 @@ exports[`Without cohort Selecting too many shows a warning, discard selection 7`
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -31413,6 +31278,11 @@ exports[`Without cohort Selecting too many shows a warning, discard selection 7`
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
           class=\\"ui fluid search grid__menu-search l__search-input primary\\"
         >
@@ -31775,10 +31645,10 @@ exports[`Without cohort Selecting too many shows a warning, remove an invite 2`]
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -31820,8 +31690,13 @@ exports[`Without cohort Selecting too many shows a warning, remove an invite 2`]
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
-          class=\\"ui fluid search grid__menu-search l__search-input primary\\"
+          class=\\"ui active visible focus fluid search grid__menu-search l__search-input primary\\"
         >
           <div
             class=\\"ui icon input\\"
@@ -31839,33 +31714,8 @@ exports[`Without cohort Selecting too many shows a warning, remove an invite 2`]
             />
           </div>
           <div
-            class=\\"results transition\\"
+            class=\\"results transition visible\\"
           >
-            <div
-              class=\\"result\\"
-              searchable=\\"  Super User  super  super  super@email.com  participant super_admin  \\"
-            >
-              <span
-                aria-label=\\"Super User (super)\\"
-                class=\\"ui medium text\\"
-                title=\\"Super User (super)\\"
-              >
-                Super User
-              </span>
-              
-               
-              <i
-                aria-hidden=\\"true\\"
-                class=\\"small icon chess queen\\"
-                style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                title=\\"Super\\"
-              />
-              <span
-                class=\\"l__hidden\\"
-              >
-                (Select to invite)
-              </span>
-            </div>
             <div
               class=\\"result\\"
               searchable=\\"  Facilitator User  facilitator  facilitator  facilitator@email.com  participant facilitator researcher owner  \\"
@@ -32145,10 +31995,10 @@ exports[`Without cohort Selecting too many shows a warning, remove an invite 3`]
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -32190,6 +32040,11 @@ exports[`Without cohort Selecting too many shows a warning, remove an invite 3`]
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
           class=\\"ui active visible focus fluid search grid__menu-search l__search-input primary\\"
         >
@@ -32427,10 +32282,10 @@ exports[`Without cohort Selecting too many shows a warning, remove an invite 4`]
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -32467,6 +32322,11 @@ exports[`Without cohort Selecting too many shows a warning, remove an invite 4`]
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
           class=\\"ui focus fluid search grid__menu-search l__search-input primary\\"
         >
@@ -32802,10 +32662,10 @@ exports[`Without cohort Selecting too many shows a warning, remove an invite 5`]
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -32842,6 +32702,11 @@ exports[`Without cohort Selecting too many shows a warning, remove an invite 5`]
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
           class=\\"ui active visible focus fluid search grid__menu-search l__search-input primary\\"
         >
@@ -33193,10 +33058,10 @@ exports[`Without cohort Selecting too many shows a warning, remove an invite 6`]
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -33233,6 +33098,11 @@ exports[`Without cohort Selecting too many shows a warning, remove an invite 6`]
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
           class=\\"ui focus fluid search grid__menu-search l__search-input primary\\"
         >
@@ -33665,10 +33535,10 @@ exports[`Without cohort Selecting too many shows a warning, remove an invite 7`]
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -33705,6 +33575,11 @@ exports[`Without cohort Selecting too many shows a warning, remove an invite 7`]
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
           class=\\"ui fluid search grid__menu-search l__search-input primary\\"
         >
@@ -34181,10 +34056,10 @@ exports[`Without cohort Typing in search shows filtered list of available users 
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -34226,8 +34101,13 @@ exports[`Without cohort Typing in search shows filtered list of available users 
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
-          class=\\"ui fluid search grid__menu-search l__search-input primary\\"
+          class=\\"ui active visible focus fluid search grid__menu-search l__search-input primary\\"
         >
           <div
             class=\\"ui icon input\\"
@@ -34245,33 +34125,8 @@ exports[`Without cohort Typing in search shows filtered list of available users 
             />
           </div>
           <div
-            class=\\"results transition\\"
+            class=\\"results transition visible\\"
           >
-            <div
-              class=\\"result\\"
-              searchable=\\"  Super User  super  super  super@email.com  participant super_admin  \\"
-            >
-              <span
-                aria-label=\\"Super User (super)\\"
-                class=\\"ui medium text\\"
-                title=\\"Super User (super)\\"
-              >
-                Super User
-              </span>
-              
-               
-              <i
-                aria-hidden=\\"true\\"
-                class=\\"small icon chess queen\\"
-                style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                title=\\"Super\\"
-              />
-              <span
-                class=\\"l__hidden\\"
-              >
-                (Select to invite)
-              </span>
-            </div>
             <div
               class=\\"result\\"
               searchable=\\"  Facilitator User  facilitator  facilitator  facilitator@email.com  participant facilitator researcher owner  \\"
@@ -34551,10 +34406,10 @@ exports[`Without cohort Typing in search shows filtered list of available users 
             </p>
             <ol>
               <li>
-                Choose your role first.
+                Search and select participants that you want to invite, and assign their roles as you go.
               </li>
               <li>
-                Search and select participants that you want to invite, and assign their roles as you go.
+                Choose your role.
               </li>
               <li>
                 Once all of the available roles are filled, click the
@@ -34596,6 +34451,11 @@ exports[`Without cohort Typing in search shows filtered list of available users 
       <div
         class=\\"row\\"
       >
+        <p>
+          <strong>
+            Search and select participants that you want to invite:
+          </strong>
+        </p>
         <div
           class=\\"ui active visible focus fluid search grid__menu-search l__search-input primary\\"
         >

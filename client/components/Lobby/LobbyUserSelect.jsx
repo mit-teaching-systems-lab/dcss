@@ -763,11 +763,11 @@ class LobbyUserSelect extends Component {
                     the available roles.
                   </p>
                   <ol>
-                    <li>Choose your role first.</li>
                     <li>
                       Search and select participants that you want to invite,
                       and assign their roles as you go.
                     </li>
+                    <li>Choose your role.</li>
                     <li>
                       Once all of the available roles are filled, click the{' '}
                       {miniSendInvitesButton} button to invite your selected
@@ -789,8 +789,12 @@ class LobbyUserSelect extends Component {
             )}
           </Grid.Row>
           <Grid.Row>
+            <p>
+              <strong>Search and select participants that you want to invite:</strong>
+            </p>
             <Search
               fluid
+              autoFocus
               key="x"
               className="grid__menu-search l__search-input primary"
               onFocus={onSearchChange}
