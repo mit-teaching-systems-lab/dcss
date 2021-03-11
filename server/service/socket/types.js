@@ -30,11 +30,11 @@ exports.NOTIFICATION = 'notification';
 // Server -> Client
 exports.AGENT_JOINED = 'agent-joined';
 exports.AGENT_RESPONSE_CREATED = 'agent-response-created';
-exports.CHAT_QUORUM_FOR_SLIDE = 'chat-quorum-for-slide';
 exports.CHAT_CREATED = 'chat-created';
 exports.CHAT_CLOSED = 'chat-closed';
 exports.CHAT_ENDED = 'chat-ended';
 exports.CHAT_OPENED = 'chat-opened';
+exports.CHAT_STATE = 'chat-state';
 exports.HOST_JOIN = 'host-join';
 exports.JOIN_OR_PART = 'join-or-part';
 exports.RUN_CHAT_LINK = 'run-chat-link';

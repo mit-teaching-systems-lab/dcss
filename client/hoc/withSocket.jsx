@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Socket from 'socket.io-client';
+export * as STATES from '@server/service/socket/states';
 export * from '@server/service/socket/types';
 
 function getDisplayName(WrappedComponent) {

@@ -11,9 +11,9 @@ const {
   CHAT_CLOSED,
   CHAT_ENDED,
   CHAT_OPENED,
-  CHAT_QUORUM_FOR_SLIDE,
   CHAT_MESSAGE_CREATED,
   CHAT_MESSAGE_UPDATED,
+  CHAT_STATE,
   CREATE_CHAT_CHANNEL,
   CREATE_CHAT_SLIDE_CHANNEL,
   CREATE_CHAT_USER_CHANNEL,
@@ -38,6 +38,14 @@ const {
   USER_JOIN_SLIDE,
   USER_PART_SLIDE
 } = require('./types');
+const {
+  CHAT_IS_PENDING,
+  CHAT_IS_ACTIVE,
+  CHAT_IS_CLOSED,
+  CHAT_IS_CLOSED_COMPLETE,
+  CHAT_IS_CLOSED_INCOMPLETE,
+  CHAT_IS_CLOSED_TIMEOUT
+} = require('./states');
 const authdb = require('../session/db');
 const agentdb = require('../agents/db');
 const chatdb = require('../chats/db');
@@ -56,32 +64,45 @@ function socketlog(...args) {
 }
 
 const cache = {
-  notifications: [],
-  messages: [],
+  clients: {
+    /*
+      [chat.id-slide-slide.id]: socket client
+    */
+  },
   //
   // Track user presence in rooms
   //
   //  - Used for "announcing" participants in channel.
   //  - Used for triggering automatic timers.
   //
+  notifications: [],
+  messages: [],
+
+  discussions: {
+    /*
+      [chat.id-slide-slide.id]:
+        CHAT_IS_PENDING | CHAT_IS_ACTIVE | CHAT_IS_CLOSED_COMPLETE |
+        CHAT_IS_CLOSED_INCOMPLETE | CHAT_IS_CLOSED_TIMEOUT
+    */
+  },
   rolls: {
     /*
-      [room key]: [
+      [chat.id-slide-slide.id]: [
         user.id
       ]
     */
   },
-  clients: {
+  timers: {
     /*
-      [room key]: socket client
+      [chat.id-slide-slide.id] = interval;
     */
   }
 };
 
-const timers = {
-  /*
-  [chat.id-slide-slide.id] = interval;
-   */
+const closeResultToStateMap = {
+  complete: CHAT_IS_CLOSED_COMPLETE,
+  incomplete: CHAT_IS_CLOSED_INCOMPLETE,
+  timeout: CHAT_IS_CLOSED_TIMEOUT,
 };
 
 const extractTextContent = html => parse(html).textContent;
@@ -521,10 +542,19 @@ class SocketManager {
         socket.join(chat.id);
       });
 
-      socket.on(CREATE_CHAT_SLIDE_CHANNEL, ({ agent, chat, slide }) => {
+      socket.on(CREATE_CHAT_SLIDE_CHANNEL, ({ chat, slide }) => {
         console.log(CREATE_CHAT_SLIDE_CHANNEL, { chat, slide });
         const room = `${chat.id}-slide-${slide.index}`;
         socket.join(room);
+
+        if (!cache.discussions[room]) {
+          cache.discussions[room] = CHAT_IS_PENDING;
+        }
+
+        const state = cache.discussions[room];
+
+        this.io.to(room).emit(CHAT_STATE, { chat, slide, state });
+        console.log(CHAT_STATE, room, { chat, slide, state });
       });
 
       // Used for sending messages to a specific user in the chat.
@@ -597,12 +627,20 @@ class SocketManager {
           );
 
           if (quorum) {
-            const room = `${chat.id}-user-${chat.host_id}`;
-            this.io.to(room).emit(CHAT_QUORUM_FOR_SLIDE, {
+            // const room = `${chat.id}-user-${chat.host_id}`;
+            // this.io.to(room).emit(CHAT_QUORUM_FOR_SLIDE, {
+            //   chat,
+            //   user: {
+            //     id: chat.host_id
+            //   }
+            // });
+            cache.discussions[rollKey] = CHAT_IS_ACTIVE;
+            this.io.to(rollKey).emit(CHAT_STATE, {
               chat,
-              user: {
-                id: chat.host_id
-              }
+              slide: {
+                index: run.activeRunSlideIndex
+              },
+              state: cache.discussions[rollKey]
             });
           }
         }
@@ -641,9 +679,9 @@ class SocketManager {
         const room = `${chat.id}-slide-${slide.index}`;
         cache.rolls[room] = null;
 
-        if (timers[room]) {
-          clearInterval(timers[room]);
-          timers[room] = null;
+        if (cache.timers[room]) {
+          clearInterval(cache.timers[room]);
+          cache.timers[room] = null;
           this.io.to(room).emit(TIMER_END, {
             chat,
             user,
@@ -657,6 +695,8 @@ class SocketManager {
           slide,
           result
         });
+
+        cache.discussions[room] = closeResultToStateMap[result];
       });
 
       socket.on(TIMER_START, async ({ chat, user, slide, timeout }) => {
@@ -665,8 +705,8 @@ class SocketManager {
 
         socket.join(room);
 
-        if (!timers[room]) {
-          timers[room] = setInterval(() => {
+        if (!cache.timers[room]) {
+          cache.timers[room] = setInterval(() => {
             timeout--;
 
             // Intentionally using this.io here, instead of
@@ -677,8 +717,8 @@ class SocketManager {
               timeout
             });
             if (!timeout) {
-              clearInterval(timers[room]);
-              timers[room] = null;
+              clearInterval(cache.timers[room]);
+              cache.timers[room] = null;
               const result = 'timeout';
               this.io.to(room).emit(TIMER_END, {
                 chat,
@@ -701,7 +741,7 @@ class SocketManager {
       // socket.on(TIMER_END, ({ chat, user, slide, result }) => {
       //   const room = `${chat.id}-${slide.index}`;
 
-      //   clearInterval(timers[room]);
+      //   clearInterval(cache.timers[room]);
 
       //   this.io.to(room).emit(TIMER_END, {
       //     chat,

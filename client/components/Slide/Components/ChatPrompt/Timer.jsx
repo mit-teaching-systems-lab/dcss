@@ -65,7 +65,13 @@ class Timer extends Component {
     }
   }
 
-  timerEnd({ result }) {
+  timerEnd(data) {
+    const { result } = data;
+
+    if (data.slide.index !== this.slideIndex) {
+      return;
+    }
+
     const { chat } = this.props;
 
     const slide = {
@@ -88,7 +94,7 @@ class Timer extends Component {
   }
 
   render() {
-    const { chat, slide, timeout, user } = this.props;
+    const { auto, chat, slide, timeout, user } = this.props;
     const { isActive } = this.state;
 
     if (!this.isScenarioRun) {
@@ -98,11 +104,15 @@ class Timer extends Component {
     const isUserHost = chat.host_id === user.id;
     const timerValue = timeout ? Media.secToTime(timeout) : '';
 
-    const startOrClockIcon = isActive ? (
-      <Icon className="icon-primary" name="clock outline" />
+    const startOrAutoIcon = auto ? (
+      <Icon name="clock outline" style={{color: 'grey'}} />
     ) : (
       <Icon className="icon-primary" name="play" />
     );
+
+    const startOrClockIcon = isActive ? (
+      <Icon className="icon-primary" name="clock outline" />
+    ) : startOrAutoIcon;
 
     const timerDisplay = (
       <Ref innerRef={node => this.timerNodes.push(node)}>
@@ -110,13 +120,19 @@ class Timer extends Component {
       </Ref>
     );
 
-    const startOrClockText = isActive ? timerDisplay : 'Start discussion timer';
+    const startTimerOrWaiting = !isActive && auto
+      ? 'Waiting for participants'
+      : 'Start discussion timer';
+
+    const startOrClockText = isActive
+      ? timerDisplay
+      : startTimerOrWaiting;
 
     const startOrStopButton = (
       <Menu.Item
         className="cpd__timer icon-primary"
         onClick={() => {
-          if (!isActive) {
+          if (!isActive && !auto) {
             this.props.socket.emit(TIMER_START, { chat, slide, timeout });
           }
         }}

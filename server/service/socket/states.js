@@ -1,0 +1,6 @@
+exports.CHAT_IS_PENDING             = 0b00000001;
+exports.CHAT_IS_ACTIVE              = 0b00000010;
+exports.CHAT_IS_CLOSED              = 0b00000100;
+exports.CHAT_IS_CLOSED_COMPLETE     = 0b00000101;
+exports.CHAT_IS_CLOSED_INCOMPLETE   = 0b00000110;
+exports.CHAT_IS_CLOSED_TIMEOUT      = 0b00000111;

@@ -20,8 +20,10 @@ import {
 } from '@hoc/withRunEventCapturing';
 
 import withSocket, {
+  STATES,
+  // Event Names
   CHAT_CLOSED_FOR_SLIDE,
-  CHAT_QUORUM_FOR_SLIDE,
+  CHAT_STATE,
   CREATE_CHAT_CHANNEL,
   CREATE_CHAT_SLIDE_CHANNEL,
   CREATE_CHAT_USER_CHANNEL,
@@ -39,6 +41,12 @@ const resultToRunEventMap = {
   complete: CHAT_CLOSE_COMPLETE,
   incomplete: CHAT_CLOSE_INCOMPLETE,
   timeout: CHAT_CLOSE_TIMEOUT
+};
+
+const closeStateToResultMap = {
+  [STATES.CHAT_IS_CLOSED_COMPLETE]: 'complete',
+  [STATES.CHAT_IS_CLOSED_INCOMPLETE]: 'incomplete',
+  [STATES.CHAT_IS_CLOSED_TIMEOUT]: 'timeout',
 };
 
 // This is used to fill in an expected event
@@ -60,7 +68,7 @@ class Display extends Component {
     this.state = {
       isReady: false,
       isRestart: false,
-      hasAQuorum: false,
+      isActive: false,
       hasSubmittedResponse: false,
       value: persisted.value
     };
@@ -75,8 +83,8 @@ class Display extends Component {
     this.hasUnloaded = false;
 
     this.onBeforeUnload = this.onBeforeUnload.bind(this);
+    this.onStateChange = this.onStateChange.bind(this);
     this.onChange = this.onChange.bind(this);
-    this.onQuorum = this.onQuorum.bind(this);
 
     this.storageKey = this.props.cohort.id
       ? `cohort/${this.props.cohort.id}/run/${this.props.scenario.id}`
@@ -128,8 +136,8 @@ class Display extends Component {
     // Register Window events
     window.addEventListener('beforeunload', this.onBeforeUnload);
 
+    this.props.socket.on(CHAT_STATE, this.onStateChange);
     this.props.socket.on(CHAT_CLOSED_FOR_SLIDE, this.onChange);
-    this.props.socket.on(CHAT_QUORUM_FOR_SLIDE, this.onQuorum);
 
     const basePayload = Payload.compose(this.props);
     const chatSlidePayload = {
@@ -157,8 +165,8 @@ class Display extends Component {
       return;
     }
 
+    this.props.socket.off(CHAT_STATE, this.onStateChange);
     this.props.socket.off(CHAT_CLOSED_FOR_SLIDE, this.onChange);
-    this.props.socket.off(CHAT_QUORUM_FOR_SLIDE, this.onQuorum);
 
     this.hasUnmounted = true;
 
@@ -188,20 +196,31 @@ class Display extends Component {
     }
   }
 
-  onQuorum() {
-    const { chat, auto, timeout } = this.props;
+  onStateChange({ chat, slide, state }) {
+    const result = closeStateToResultMap[state];
 
-    const slide = {
-      index: this.slideIndex
-    };
+    // If the current state of this chat, on this slide,
+    // matches any of the known closed states, we need
+    // to forward this on to the response change mechanism.
+    if (result) {
+      this.onChange({ chat, slide, result });
+    } else {
+      if (state === STATES.CHAT_IS_ACTIVE) {
+        const { chat, auto, timeout } = this.props;
 
-    if (auto && timeout) {
-      this.props.socket.emit(TIMER_START, { chat, slide, timeout });
+        const slide = {
+          index: this.slideIndex
+        };
+
+        if (auto && timeout) {
+          this.props.socket.emit(TIMER_START, { chat, slide, timeout });
+        }
+
+        this.setState({
+          isActive: true
+        });
+      }
     }
-
-    this.setState({
-      hasAQuorum: true
-    });
   }
 
   onChange({ chat, slide, result }) {
@@ -245,7 +264,7 @@ class Display extends Component {
       timeout,
       user
     } = this.props;
-    const { isReady, isRestart, hasAQuorum, hasSubmittedResponse } = this.state;
+    const { isReady, isRestart, isActive, hasSubmittedResponse } = this.state;
 
     if (isEmbeddedInSVG || !this.isScenarioRun) {
       return (
@@ -347,20 +366,34 @@ class Display extends Component {
         The discussion {whatHappened}&nbsp;
         <strong>{defaultValue}</strong>.
       </Menu.Item>
-    ) : (
-      <Menu.Item>
-        <Icon name="discussions" />
-        Discussion
-      </Menu.Item>
-    );
+    ) : null;
+
+    //
+    // TODO: This is guarded by the "isActive" flag
+    //
+    // const dropdownOrResultOfDiscussion = !defaultValue ? (
+    //   <Dropdown
+    //     item
+    //     className="cpd__dropdown"
+    //     name="result"
+    //     placeholder="Mark discussion as..."
+    //     disabled={!isActive}
+    //     closeOnChange={true}
+    //     defaultValue={defaultValue}
+    //     options={options}
+    //     onChange={onChatCompleteChange}
+    //   />
+    // ) : (
+    //   resultOfDiscussion
+    // );
+    //
 
     const dropdownOrResultOfDiscussion = !defaultValue ? (
       <Dropdown
         item
         className="cpd__dropdown"
         name="result"
-        placeholder="Close discussion as..."
-        disabled={!hasAQuorum}
+        placeholder="Mark discussion as..."
         closeOnChange={true}
         defaultValue={defaultValue}
         options={options}
@@ -374,10 +407,9 @@ class Display extends Component {
 
     return (
       <Menu borderless>
-        {discussionIsOpen && isUserHost && timeout ? timerRender : null}
-        {isUserHost ? dropdownOrResultOfDiscussion : null}
-        {!isUserHost ? resultOfDiscussion : null}
-        {!isUserHost && !defaultValue && timeout ? timerRender : null}
+        {dropdownOrResultOfDiscussion}
+        {discussionIsOpen && timeout ? timerRender : null}
+        {/*!isUserHost && !defaultValue && timeout ? timerRender : null*/}
         <Menu.Menu position="right">
           {discussionIsOpen && chat && isReady ? <Chat {...chatProps} /> : null}
         </Menu.Menu>
