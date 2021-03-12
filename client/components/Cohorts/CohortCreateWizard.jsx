@@ -129,6 +129,7 @@ export class CohortCreate extends React.Component {
         {step === 0 ? <CohortCreateNewForm {...props} /> : null}
         {step === 1 ? <CohortScenariosSelector {...props} /> : null}
         {step === 2 ? <CohortShare {...props} /> : null}
+        <div data-testid="cohort-create-wizard" />
       </Fragment>
     );
   }

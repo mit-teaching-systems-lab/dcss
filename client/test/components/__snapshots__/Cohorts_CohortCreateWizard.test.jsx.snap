@@ -1,3 +1,464 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Render 1 1 1`] = `<DocumentFragment />`;
+exports[`Click cancel 1`] = `
+"<body
+  class=\\"dimmable dimmed\\"
+>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <div
+      data-testid=\\"cohort-create-wizard\\"
+    />
+  </div>
+  <div
+    class=\\"ui top aligned page modals dimmer transition visible active\\"
+    style=\\"display: flex;\\"
+  >
+    <div
+      aria-modal=\\"true\\"
+      class=\\"ui fullscreen modal transition visible active\\"
+      role=\\"dialog\\"
+    >
+      <i
+        aria-hidden=\\"true\\"
+        class=\\"close icon\\"
+      />
+      <div
+        class=\\"ui header\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"group icon\\"
+        />
+        <div
+          class=\\"content\\"
+        >
+          Create a cohort
+        </div>
+      </div>
+      <div
+        class=\\"content\\"
+      >
+        <div
+          class=\\"ui tiny three steps\\"
+        >
+          <div
+            class=\\"active step\\"
+          >
+            <i
+              aria-hidden=\\"true\\"
+              class=\\"group icon\\"
+            />
+            <div
+              class=\\"content\\"
+            >
+              <div
+                class=\\"title\\"
+              >
+                Name your cohort
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"step\\"
+          >
+            <i
+              aria-hidden=\\"true\\"
+              class=\\"newspaper outline icon\\"
+            />
+            <div
+              class=\\"content\\"
+            >
+              <div
+                class=\\"title\\"
+              >
+                Choose scenarios
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"step\\"
+          >
+            <i
+              aria-hidden=\\"true\\"
+              class=\\"share icon\\"
+            />
+            <div
+              class=\\"content\\"
+            >
+              <div
+                class=\\"title\\"
+              >
+                Share it!
+              </div>
+            </div>
+          </div>
+        </div>
+        <h2
+          class=\\"ui header\\"
+        >
+          Name your cohort
+        </h2>
+        <p>
+          <i
+            aria-hidden=\\"true\\"
+            class=\\"star icon primary\\"
+          />
+          Use a label that makes it easy for you to locate it (e.g. CS 101: Fall 
+          2021
+          ). You may also change the name of your cohort any time after it has been created.
+        </p>
+        <form
+          class=\\"ui form\\"
+        >
+          <div
+            class=\\"ui fluid focus input\\"
+          >
+            <input
+              name=\\"name\\"
+              type=\\"text\\"
+            />
+          </div>
+        </form>
+      </div>
+      <div
+        class=\\"actions\\"
+      >
+        <div
+          class=\\"ui fluid buttons\\"
+        >
+          <button
+            class=\\"ui primary disabled button\\"
+            disabled=\\"\\"
+            tabindex=\\"-1\\"
+          >
+            Create and continue
+          </button>
+          <div
+            class=\\"or\\"
+          />
+          <button
+            class=\\"ui button\\"
+          >
+            Cancel
+          </button>
+        </div>
+      </div>
+      <div
+        data-testid=\\"cohort-create-new-form\\"
+      />
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`Click cancel 2`] = `
+"<body
+  class=\\"dimmable dimmed\\"
+>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <div
+      data-testid=\\"cohort-create-wizard\\"
+    />
+  </div>
+  <div
+    class=\\"ui top aligned page modals dimmer transition visible active\\"
+    style=\\"display: flex;\\"
+  >
+    <div
+      aria-modal=\\"true\\"
+      class=\\"ui fullscreen modal transition visible active\\"
+      role=\\"dialog\\"
+    >
+      <i
+        aria-hidden=\\"true\\"
+        class=\\"close icon\\"
+      />
+      <div
+        class=\\"ui header\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"group icon\\"
+        />
+        <div
+          class=\\"content\\"
+        >
+          Create a cohort
+        </div>
+      </div>
+      <div
+        class=\\"content\\"
+      >
+        <div
+          class=\\"ui tiny three steps\\"
+        >
+          <div
+            class=\\"active step\\"
+          >
+            <i
+              aria-hidden=\\"true\\"
+              class=\\"group icon\\"
+            />
+            <div
+              class=\\"content\\"
+            >
+              <div
+                class=\\"title\\"
+              >
+                Name your cohort
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"step\\"
+          >
+            <i
+              aria-hidden=\\"true\\"
+              class=\\"newspaper outline icon\\"
+            />
+            <div
+              class=\\"content\\"
+            >
+              <div
+                class=\\"title\\"
+              >
+                Choose scenarios
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"step\\"
+          >
+            <i
+              aria-hidden=\\"true\\"
+              class=\\"share icon\\"
+            />
+            <div
+              class=\\"content\\"
+            >
+              <div
+                class=\\"title\\"
+              >
+                Share it!
+              </div>
+            </div>
+          </div>
+        </div>
+        <h2
+          class=\\"ui header\\"
+        >
+          Name your cohort
+        </h2>
+        <p>
+          <i
+            aria-hidden=\\"true\\"
+            class=\\"star icon primary\\"
+          />
+          Use a label that makes it easy for you to locate it (e.g. CS 101: Fall 
+          2021
+          ). You may also change the name of your cohort any time after it has been created.
+        </p>
+        <form
+          class=\\"ui form\\"
+        >
+          <div
+            class=\\"ui fluid focus input\\"
+          >
+            <input
+              name=\\"name\\"
+              type=\\"text\\"
+            />
+          </div>
+        </form>
+      </div>
+      <div
+        class=\\"actions\\"
+      >
+        <div
+          class=\\"ui fluid buttons\\"
+        >
+          <button
+            class=\\"ui primary disabled button\\"
+            disabled=\\"\\"
+            tabindex=\\"-1\\"
+          >
+            Create and continue
+          </button>
+          <div
+            class=\\"or\\"
+          />
+          <button
+            class=\\"ui button\\"
+          >
+            Cancel
+          </button>
+        </div>
+      </div>
+      <div
+        data-testid=\\"cohort-create-new-form\\"
+      />
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`Render 1 1 1`] = `
+"<body
+  class=\\"dimmable dimmed\\"
+>
+  <div
+    aria-hidden=\\"true\\"
+    id=\\"root\\"
+  />
+  <div>
+    <div
+      data-testid=\\"cohort-create-wizard\\"
+    />
+  </div>
+  <div
+    class=\\"ui top aligned page modals dimmer transition visible active\\"
+    style=\\"display: flex;\\"
+  >
+    <div
+      aria-modal=\\"true\\"
+      class=\\"ui fullscreen modal transition visible active\\"
+      role=\\"dialog\\"
+    >
+      <i
+        aria-hidden=\\"true\\"
+        class=\\"close icon\\"
+      />
+      <div
+        class=\\"ui header\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"group icon\\"
+        />
+        <div
+          class=\\"content\\"
+        >
+          Create a cohort
+        </div>
+      </div>
+      <div
+        class=\\"content\\"
+      >
+        <div
+          class=\\"ui tiny three steps\\"
+        >
+          <div
+            class=\\"active step\\"
+          >
+            <i
+              aria-hidden=\\"true\\"
+              class=\\"group icon\\"
+            />
+            <div
+              class=\\"content\\"
+            >
+              <div
+                class=\\"title\\"
+              >
+                Name your cohort
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"step\\"
+          >
+            <i
+              aria-hidden=\\"true\\"
+              class=\\"newspaper outline icon\\"
+            />
+            <div
+              class=\\"content\\"
+            >
+              <div
+                class=\\"title\\"
+              >
+                Choose scenarios
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"step\\"
+          >
+            <i
+              aria-hidden=\\"true\\"
+              class=\\"share icon\\"
+            />
+            <div
+              class=\\"content\\"
+            >
+              <div
+                class=\\"title\\"
+              >
+                Share it!
+              </div>
+            </div>
+          </div>
+        </div>
+        <h2
+          class=\\"ui header\\"
+        >
+          Name your cohort
+        </h2>
+        <p>
+          <i
+            aria-hidden=\\"true\\"
+            class=\\"star icon primary\\"
+          />
+          Use a label that makes it easy for you to locate it (e.g. CS 101: Fall 
+          2021
+          ). You may also change the name of your cohort any time after it has been created.
+        </p>
+        <form
+          class=\\"ui form\\"
+        >
+          <div
+            class=\\"ui fluid focus input\\"
+          >
+            <input
+              name=\\"name\\"
+              type=\\"text\\"
+            />
+          </div>
+        </form>
+      </div>
+      <div
+        class=\\"actions\\"
+      >
+        <div
+          class=\\"ui fluid buttons\\"
+        >
+          <button
+            class=\\"ui primary disabled button\\"
+            disabled=\\"\\"
+            tabindex=\\"-1\\"
+          >
+            Create and continue
+          </button>
+          <div
+            class=\\"or\\"
+          />
+          <button
+            class=\\"ui button\\"
+          >
+            Cancel
+          </button>
+        </div>
+      </div>
+      <div
+        data-testid=\\"cohort-create-new-form\\"
+      />
+    </div>
+  </div>
+</body>"
+`;
