@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Socket from 'socket.io-client';
+import Client from 'socket.io-client';
 export * as STATES from '@server/service/socket/states';
 export * from '@server/service/socket/types';
 
@@ -12,6 +12,12 @@ function getDisplayName(WrappedComponent) {
 const port = typeof PORT !== 'undefined' ? PORT : 3000;
 const endpoint = location.origin.replace(/:\d.*/, `:${port}`);
 const transports = ['websocket', 'polling'];
+const settings = {
+  reconnection: true,
+  reconnectionDelay: 1000,
+  reconnectionDelayMax: 5000,
+  reconnectionAttempts: Infinity
+};
 
 let socket = null;
 
@@ -21,7 +27,10 @@ function getSocketOrCreate() {
   }
   // This block provides a TDZ boundary
   {
-    socket = new Socket(endpoint, { transports });
+    socket = new Client(endpoint, {
+      ...settings,
+      transports
+    });
     return socket;
   }
 }
