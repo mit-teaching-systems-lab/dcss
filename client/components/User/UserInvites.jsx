@@ -5,6 +5,7 @@ import { withRouter } from 'react-router-dom';
 import { getInvites, setInvite } from '@actions/invite';
 import { getUsers } from '@actions/users';
 import Loading from '@components/Loading';
+import Username from '@components/User/Username';
 import { SCENARIO_IS_PUBLIC } from '@components/Scenario/constants';
 import {
   checkNotificationRules,
@@ -33,10 +34,10 @@ import withSocket, {
   SET_INVITATION
 } from '@hoc/withSocket';
 
-const isParticipantOnly = user => {
-  const { roles = [] } = user;
-  return roles.length === 1 && roles[0] === 'participant';
-};
+// const isParticipantOnly = user => {
+//   const { roles = [] } = user;
+//   return roles.length === 1 && roles[0] === 'participant';
+// };
 
 const isMissingUsers = (invites, usersById) => {
   const userIdMap = invites.reduce(
@@ -55,7 +56,7 @@ class UserInvites extends Component {
   constructor(props) {
     super(props);
 
-    const { open = false } = this.props;
+    const { open } = this.props;
 
     this.state = {
       isReady: false,
@@ -72,16 +73,13 @@ class UserInvites extends Component {
     await this.props.getInvites();
 
     if (isMissingUsers(this.props.invites, this.props.usersById)) {
-        // isParticipantOnly(this.props.user) ? 'available' : 'all'
       await this.props.getUsers('available');
     }
   }
 
   async componentDidMount() {
     const { user } = this.props;
-
     const { code, status } = this.props;
-
     if (code && status) {
       if (!this.props.invitesByCode[code]) {
         await this.props.getInvites();
@@ -98,6 +96,7 @@ class UserInvites extends Component {
         return;
       }
 
+      /* istanbul ignore else */
       if (status === INVITE_STATUS_ACCEPT) {
         // Entering a scenario run must always
         // begin with a full refresh of all state.
@@ -143,6 +142,7 @@ class UserInvites extends Component {
       return;
     }
 
+    /* istanbul ignore else */
     if (notification.type === 'invite') {
       let className = notification.props.className || '';
       className += `n__container`;
@@ -215,7 +215,44 @@ class UserInvites extends Component {
     }
   }
 
-  async onSetInvitation() {
+  async onSetInvitation({ invite }) {
+    if (
+      invite.sender_id === this.props.user.id &&
+      invite.status === 'declined'
+    ) {
+      const onClick = async () => {
+        if (notify.queue.data.length) {
+          notify.queue.remove(notify.queue.data[0]);
+        }
+      };
+
+      const other = this.props.usersById[invite.receiver_id];
+      const props = {
+        className: 'n__container',
+        icon: 'mail',
+        time: 0,
+        title: 'Invitation declined',
+        message: (
+          <Fragment>
+            <Container className="u__invite-html-container">
+              <strong>
+                <Username user={other} />
+              </strong>{' '}
+              has declined your invitation.
+            </Container>
+            <Button.Group fluid size="small">
+              <Button
+                className="primary"
+                content="Ok"
+                tabIndex="0"
+                onClick={onClick}
+              />
+            </Button.Group>
+          </Fragment>
+        )
+      };
+      notify(props);
+    }
     await this.refresh();
   }
 
@@ -274,11 +311,7 @@ class UserInvites extends Component {
             >
               <Header icon="mail" content="Invites" />
               <Modal.Content className="u__invite-container">
-                {isReady ? (
-                  <UserInvitesList onClose={onClose} />
-                ) : (
-                  <Loading />
-                )}
+                {isReady ? <UserInvitesList onClose={onClose} /> : <Loading />}
               </Modal.Content>
               <Modal.Actions>
                 <Grid>
@@ -293,9 +326,11 @@ class UserInvites extends Component {
                   </Grid.Row>
                 </Grid>
               </Modal.Actions>
+              <div data-testid="modal-user-invites" />
             </Modal>
           </Modal.Accessible>
         ) : null}
+        <div data-testid="user-invites" />
       </Fragment>
     );
   }
