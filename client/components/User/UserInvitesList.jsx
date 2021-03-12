@@ -74,10 +74,14 @@ export const makeAcceptedInviteRedirectPath = invite => {
 export const makeInviteExplanation = parts => {
   const { isRecipient, user, scenario, persona, cohort = null } = parts;
 
+  const asRole = persona
+    ? (<Fragment>, as{' '}<strong>{persona.name}</strong></Fragment>)
+    : null;
+
   const theScenario = (
     <Fragment>
-      the scenario <strong>{scenario.title}</strong>, as{' '}
-      <strong>{persona.name}</strong>
+      the scenario <strong>{scenario.title}</strong>
+      {asRole}
     </Fragment>
   );
 
