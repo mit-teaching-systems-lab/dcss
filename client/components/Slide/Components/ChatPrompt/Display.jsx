@@ -46,7 +46,7 @@ const resultToRunEventMap = {
 const closeStateToResultMap = {
   [STATES.CHAT_IS_CLOSED_COMPLETE]: 'complete',
   [STATES.CHAT_IS_CLOSED_INCOMPLETE]: 'incomplete',
-  [STATES.CHAT_IS_CLOSED_TIMEOUT]: 'timeout',
+  [STATES.CHAT_IS_CLOSED_TIMEOUT]: 'timeout'
 };
 
 // This is used to fill in an expected event
@@ -72,7 +72,7 @@ class Display extends Component {
       hasSubmittedResponse: false,
       markComplete: {
         isOpen: false,
-        result: null,
+        result: null
       },
       value: persisted.value
     };
@@ -343,9 +343,7 @@ class Display extends Component {
 
     const onChatCompleteChange = () => {
       const time = this.ticks;
-      const {
-        result
-      } = this.state.markComplete;
+      const { result } = this.state.markComplete;
 
       if (result) {
         this.props.socket.emit(CHAT_CLOSED_FOR_SLIDE, {
@@ -442,7 +440,9 @@ class Display extends Component {
           {discussionIsOpen && timeout ? timerRender : null}
           {/*!isUserHost && !defaultValue && timeout ? timerRender : null*/}
           <Menu.Menu position="right">
-            {discussionIsOpen && chat && isReady ? <Chat {...chatProps} /> : null}
+            {discussionIsOpen && chat && isReady ? (
+              <Chat {...chatProps} />
+            ) : null}
           </Menu.Menu>
         </Menu>
         {this.state.markComplete.isOpen ? (
@@ -455,12 +455,11 @@ class Display extends Component {
               size="small"
               onClose={onMarkCompleteClose}
             >
-              <Header
-                icon="checkmark"
-                content={`Close this discussion?`}
-              />
+              <Header icon="checkmark" content={`Close this discussion?`} />
               <Modal.Content>
-                Are you sure you want to mark this discussion {this.state.markComplete.result}? Doing so will end the discussion on this slide for all active participants.
+                Are you sure you want to mark this discussion{' '}
+                {this.state.markComplete.result}? Doing so will end the
+                discussion on this slide for all active participants.
               </Modal.Content>
               <Modal.Actions>
                 <Button.Group fluid>
@@ -482,7 +481,7 @@ class Display extends Component {
               <div data-testid="confirm-chat-complete" />
             </Modal>
           </Modal.Accessible>
-        ) :  null}
+        ) : null}
       </Fragment>
     );
   }

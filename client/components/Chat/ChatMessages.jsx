@@ -346,9 +346,8 @@ class ChatMessages extends Component {
       }
     };
 
-    let previousUserId = messagesSlice && messagesSlice.length
-      ? messagesSlice[0].user_id
-      : null;
+    let previousUserId =
+      messagesSlice && messagesSlice.length ? messagesSlice[0].user_id : null;
 
     return isReady ? (
       <Fragment>
@@ -428,8 +427,11 @@ class ChatMessages extends Component {
                       />
                     );
 
-                    const role = scenario.personas.find(p => p.id === user.persona_id);
-                    const mustShowAuthorAndMetadata = index === 0 || previousUserId !== user.id;
+                    const role = scenario.personas.find(
+                      p => p.id === user.persona_id
+                    );
+                    const mustShowAuthorAndMetadata =
+                      index === 0 || previousUserId !== user.id;
 
                     previousUserId = user.id;
 

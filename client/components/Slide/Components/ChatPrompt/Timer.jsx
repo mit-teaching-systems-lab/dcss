@@ -105,14 +105,16 @@ class Timer extends Component {
     const timerValue = timeout ? Media.secToTime(timeout) : '';
 
     const startOrAutoIcon = auto ? (
-      <Icon name="clock outline" style={{color: 'grey'}} />
+      <Icon name="clock outline" style={{ color: 'grey' }} />
     ) : (
       <Icon className="icon-primary" name="play" />
     );
 
     const startOrClockIcon = isActive ? (
       <Icon className="icon-primary" name="clock outline" />
-    ) : startOrAutoIcon;
+    ) : (
+      startOrAutoIcon
+    );
 
     const timerDisplay = (
       <Ref innerRef={node => this.timerNodes.push(node)}>
@@ -120,13 +122,10 @@ class Timer extends Component {
       </Ref>
     );
 
-    const startTimerOrWaiting = !isActive && auto
-      ? 'Waiting for participants'
-      : 'Start discussion timer';
+    const startTimerOrWaiting =
+      !isActive && auto ? 'Waiting for participants' : 'Start discussion timer';
 
-    const startOrClockText = isActive
-      ? timerDisplay
-      : startTimerOrWaiting;
+    const startOrClockText = isActive ? timerDisplay : startTimerOrWaiting;
 
     const startOrStopButton = (
       <Menu.Item

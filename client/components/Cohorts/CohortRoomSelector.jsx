@@ -252,17 +252,18 @@ export class CohortRoomSelector extends React.Component {
         ? scenario.personas.find(({ id }) => id === userInChat.persona_id)
         : null;
 
-      const userRoleDisplay = isUserRoleAssigned && userPersona ? (
-        <Fragment>
-          You are participating as <strong>{userPersona.name}</strong>. Click{' '}
-          <strong>Join Room</strong> to run the scenario.
-          <br />
-          <br />
-          The following roles are not yet assigned.
-        </Fragment>
-      ) : (
-        'Click on one of those roles to join the scenario room:'
-      );
+      const userRoleDisplay =
+        isUserRoleAssigned && userPersona ? (
+          <Fragment>
+            You are participating as <strong>{userPersona.name}</strong>. Click{' '}
+            <strong>Join Room</strong> to run the scenario.
+            <br />
+            <br />
+            The following roles are not yet assigned.
+          </Fragment>
+        ) : (
+          'Click on one of those roles to join the scenario room:'
+        );
 
       const whoseRoom = userIsNotHost ? (
         <Fragment>{<Username user={host} possessive />} room</Fragment>
@@ -364,9 +365,8 @@ export class CohortRoomSelector extends React.Component {
 
     // If the use is also the host, but has not selected a role,
     // then they cannot join the room yet.
-    const primaryButtonDisabled = host && this.state.lobby.isOpen
-      ? host.persona_id === null
-      : false;
+    const primaryButtonDisabled =
+      host && this.state.lobby.isOpen ? host.persona_id === null : false;
 
     const primaryButtonProps = {
       content: primaryButtonContent,
