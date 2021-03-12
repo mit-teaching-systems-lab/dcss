@@ -108,7 +108,7 @@ const closeResultToStateMap = {
 const extractTextContent = html => parse(html).textContent;
 
 const makeRemoteSafeAuthPayload = data => {
-  const { agent, chat = {}, run = {}, user } = data;
+  const { agent = {}, chat = {}, run = {}, user } = data;
   const payload = {
     agent: {
       id: agent.id,
@@ -451,7 +451,7 @@ class SocketManager {
               agent.self.id, // This comes from the agent!!
               message,
               null, // TODO: need the response_id from the slide component
-              user.id
+              user.id // TODO: this should come from the interjection event
             );
           });
 
