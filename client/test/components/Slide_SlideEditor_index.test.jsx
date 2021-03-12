@@ -836,7 +836,7 @@ test('Multiple personas, assign a persona to a component', async done => {
   done();
 });
 
-test('Multiple personas, toggle chat', async done => {
+test('Multiple personas, toggle chat on', async done => {
   const Component = SlideEditor;
 
   const props = {
@@ -915,6 +915,119 @@ test('Multiple personas, toggle chat', async done => {
     }
   ]);
 
+  done();
+});
+
+test('Multiple personas, toggle chat off', async done => {
+  const Component = SlideEditor;
+
+  const props = {
+    ...commonProps,
+    scenario: {
+      ...scenario,
+      personas
+    },
+    slides,
+    index: 1,
+    promptToAddSlide: '',
+    noSlide: false,
+    onChange: jest.fn(),
+    onDelete: jest.fn(),
+    onDuplicate: jest.fn(),
+    ...slides[1]
+  };
+
+  const state = {
+    ...commonState
+  };
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  await render(<ConnectedRoutedComponent {...props} />);
+  expect(serialize()).toMatchSnapshot();
+
+  userEvent.click(await screen.findByLabelText('Enable real-time chat'));
+  expect(serialize()).toMatchSnapshot();
+
+  expect(props.onChange).toHaveBeenCalledTimes(1);
+  expect(props.onChange.mock.calls[0]).toMatchObject([
+    1,
+    {
+      components: [
+        {
+          disableDelete: true,
+          disableDuplicate: true,
+          disableEmbed: true,
+          disableOrdering: true,
+          disablePersona: true,
+          header: 'Slide 2-ChatPrompt-0',
+          id: expectUuidString,
+          required: false,
+          responseId: expectUuidString,
+          timeout: 0,
+          type: 'ChatPrompt'
+        },
+        {
+          html: '<h1>Welcome to Slide 2</h1>',
+          id: expectUuidString,
+          type: 'Text'
+        },
+        {
+          header: 'TextResponse-1',
+          id: expectUuidString,
+          placeholder: '',
+          prompt: '',
+          recallId: '',
+          required: true,
+          responseId: '33-be99fe9b-fa0d-4ab7-8541-1bfd1ef0bf11',
+          timeout: 0,
+          type: 'TextResponse'
+        },
+        {
+          html: '<p>?</p>',
+          id: '33-f96ac6de-ac6b-4e06-bd97-d97e12fe72c1',
+          type: 'Text'
+        }
+      ],
+      has_chat_enabled: true,
+      title: 'Slide 2'
+    }
+  ]);
+
+  userEvent.click(await screen.findByLabelText('Disable real-time chat'));
+  expect(serialize()).toMatchSnapshot();
+
+  expect(props.onChange).toHaveBeenCalledTimes(2);
+  expect(props.onChange.mock.calls[1]).toMatchObject([
+    1,
+    {
+      components: [
+        {
+          html: '<h1>Welcome to Slide 2</h1>',
+          id: expectUuidString,
+          type: 'Text'
+        },
+        {
+          header: 'TextResponse-1',
+          id: expectUuidString,
+          placeholder: '',
+          prompt: '',
+          recallId: '',
+          required: true,
+          responseId: '33-be99fe9b-fa0d-4ab7-8541-1bfd1ef0bf11',
+          timeout: 0,
+          type: 'TextResponse'
+        },
+        {
+          html: '<p>?</p>',
+          id: '33-f96ac6de-ac6b-4e06-bd97-d97e12fe72c1',
+          type: 'Text'
+        }
+      ],
+      has_chat_enabled: true,
+      title: 'Slide 2'
+    }
+  ]);
   done();
 });
 

@@ -2,7 +2,7 @@
 import React from 'react';
 jest.mock('react', () => ({
   ...jest.requireActual('react'),
-  useLayoutEffect: jest.requireActual('react').useEffect,
+  useLayoutEffect: jest.requireActual('react').useEffect
 }));
 
 import {
@@ -11,7 +11,7 @@ import {
   reduxer,
   serialize,
   snapshotter,
-  state,
+  state
 } from '../bootstrap';
 import { unmountComponentAtNode } from 'react-dom';
 
@@ -21,7 +21,7 @@ import {
   prettyDOM,
   render,
   screen,
-  waitFor,
+  waitFor
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
@@ -42,7 +42,7 @@ jest.mock('@hoc/withSocket', () => {
     disconnect: jest.fn(),
     emit: jest.fn(),
     on: jest.fn(),
-    off: jest.fn(),
+    off: jest.fn()
   };
 
   globalThis.mockSocket = socket;
@@ -50,26 +50,26 @@ jest.mock('@hoc/withSocket', () => {
   return {
     __esModule: true,
     ...jest.requireActual('@hoc/withSocket'),
-    default: function (Component) {
+    default: function(Component) {
       Component.defaultProps = {
         ...Component.defaultProps,
-        socket,
+        socket
       };
       return Component;
-    },
+    }
   };
 });
 
 jest.mock('@utils/Moment', () => {
   return {
     __esModule: true,
-    default: function (time) {
+    default: function(time) {
       return {
         format() {
           return 'HH:mm A';
-        },
+        }
       };
-    },
+    }
   };
 });
 
@@ -79,7 +79,7 @@ jest.mock('@utils/Storage', () => {
     ...jest.requireActual('@utils/Storage'),
     get: jest.fn(),
     set: jest.fn(),
-    merge: jest.fn(),
+    merge: jest.fn()
   };
 });
 
@@ -92,7 +92,7 @@ import {
   GET_INVITES_SUCCESS,
   GET_SCENARIO_SUCCESS,
   GET_USERS_COUNT_SUCCESS,
-  GET_USERS_SUCCESS,
+  GET_USERS_SUCCESS
 } from '../../actions/types';
 import * as chatActions from '../../actions/chat';
 import * as cohortActions from '../../actions/cohort';
@@ -170,7 +170,7 @@ beforeEach(() => {
     deleted_at: null,
     author_id: 3,
     is_read_only: true,
-    is_shared: true,
+    is_shared: true
   };
   personaStudent = {
     id: 3,
@@ -183,7 +183,7 @@ beforeEach(() => {
     deleted_at: null,
     author_id: 3,
     is_read_only: true,
-    is_shared: true,
+    is_shared: true
   };
 
   user = superUser = {
@@ -193,7 +193,7 @@ beforeEach(() => {
     id: 999,
     roles: ['participant', 'super_admin'],
     is_anonymous: false,
-    is_super: true,
+    is_super: true
   };
 
   facilitatorUser = {
@@ -215,10 +215,10 @@ beforeEach(() => {
           created_at: 1602454306144,
           generic: 'arrived at a slide.',
           name: 'slide-arrival',
-          url: 'http://localhost:3000/cohort/1/run/99/slide/1',
-        },
-      },
-    },
+          url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+        }
+      }
+    }
   };
   researcherUser = {
     username: 'researcher',
@@ -238,10 +238,10 @@ beforeEach(() => {
           created_at: 1602454306144,
           generic: 'arrived at a slide.',
           name: 'slide-arrival',
-          url: 'http://localhost:3000/cohort/1/run/99/slide/1',
-        },
-      },
-    },
+          url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+        }
+      }
+    }
   };
   participantUser = {
     username: 'participant',
@@ -261,10 +261,10 @@ beforeEach(() => {
           created_at: 1602454306144,
           generic: 'arrived at a slide.',
           name: 'slide-arrival',
-          url: 'http://localhost:3000/cohort/1/run/99/slide/1',
-        },
-      },
-    },
+          url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+        }
+      }
+    }
   };
   anonymousUser = {
     username: 'anonymous',
@@ -284,10 +284,10 @@ beforeEach(() => {
           created_at: 1602454306144,
           generic: 'arrived at a slide.',
           name: 'slide-arrival',
-          url: 'http://localhost:3000/cohort/1/run/99/slide/1',
-        },
-      },
-    },
+          url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+        }
+      }
+    }
   };
 
   users = [
@@ -295,13 +295,13 @@ beforeEach(() => {
     facilitatorUser,
     researcherUser,
     participantUser,
-    anonymousUser,
+    anonymousUser
   ];
 
   usersById = users.reduce(
     (accum, user) => ({
       ...accum,
-      [user.id]: user,
+      [user.id]: user
     }),
     {}
   );
@@ -318,8 +318,8 @@ beforeEach(() => {
     users: [superUser, participantUser],
     usersById: {
       [superUser.id]: superUser,
-      [participantUser.id]: participantUser,
-    },
+      [participantUser.id]: participantUser
+    }
   };
 
   chat.users[0].persona_id = personaTeacher.id;
@@ -349,8 +349,8 @@ beforeEach(() => {
         consent_granted_by_user: true,
         referrer_params: null,
         cohort_id: 1,
-        run_id: 11,
-      },
+        run_id: 11
+      }
     ],
     scenarios: [99],
     users: [
@@ -371,10 +371,10 @@ beforeEach(() => {
               created_at: 1602454306144,
               generic: 'arrived at a slide.',
               name: 'slide-arrival',
-              url: 'http://localhost:3000/cohort/1/run/99/slide/1',
-            },
-          },
-        },
+              url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+            }
+          }
+        }
       },
       {
         username: 'facilitator',
@@ -395,10 +395,10 @@ beforeEach(() => {
               created_at: 1602454306144,
               generic: 'arrived at a slide.',
               name: 'slide-arrival',
-              url: 'http://localhost:3000/cohort/1/run/99/slide/1',
-            },
-          },
-        },
+              url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+            }
+          }
+        }
       },
       {
         username: 'researcher',
@@ -418,10 +418,10 @@ beforeEach(() => {
               created_at: 1602454306144,
               generic: 'arrived at a slide.',
               name: 'slide-arrival',
-              url: 'http://localhost:3000/cohort/1/run/99/slide/1',
-            },
-          },
-        },
+              url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+            }
+          }
+        }
       },
       {
         username: 'participant',
@@ -441,10 +441,10 @@ beforeEach(() => {
               created_at: 1602454306144,
               generic: 'arrived at a slide.',
               name: 'slide-arrival',
-              url: 'http://localhost:3000/cohort/1/run/99/slide/1',
-            },
-          },
-        },
+              url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+            }
+          }
+        }
       },
       {
         username: 'anonymous',
@@ -464,11 +464,11 @@ beforeEach(() => {
               created_at: 1602454306144,
               generic: 'arrived at a slide.',
               name: 'slide-arrival',
-              url: 'http://localhost:3000/cohort/1/run/99/slide/1',
-            },
-          },
-        },
-      },
+              url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+            }
+          }
+        }
+      }
     ],
     roles: ['super', 'facilitator'],
     usersById: {
@@ -489,10 +489,10 @@ beforeEach(() => {
               created_at: 1602454306144,
               generic: 'arrived at a slide.',
               name: 'slide-arrival',
-              url: 'http://localhost:3000/cohort/1/run/99/slide/1',
-            },
-          },
-        },
+              url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+            }
+          }
+        }
       },
       555: {
         username: 'facilitator',
@@ -513,10 +513,10 @@ beforeEach(() => {
               created_at: 1602454306144,
               generic: 'arrived at a slide.',
               name: 'slide-arrival',
-              url: 'http://localhost:3000/cohort/1/run/99/slide/1',
-            },
-          },
-        },
+              url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+            }
+          }
+        }
       },
       444: {
         username: 'researcher',
@@ -536,10 +536,10 @@ beforeEach(() => {
               created_at: 1602454306144,
               generic: 'arrived at a slide.',
               name: 'slide-arrival',
-              url: 'http://localhost:3000/cohort/1/run/99/slide/1',
-            },
-          },
-        },
+              url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+            }
+          }
+        }
       },
       333: {
         username: 'participant',
@@ -559,10 +559,10 @@ beforeEach(() => {
               created_at: 1602454306144,
               generic: 'arrived at a slide.',
               name: 'slide-arrival',
-              url: 'http://localhost:3000/cohort/1/run/99/slide/1',
-            },
-          },
-        },
+              url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+            }
+          }
+        }
       },
       222: {
         username: 'anonymous',
@@ -582,12 +582,12 @@ beforeEach(() => {
               created_at: 1602454306144,
               generic: 'arrived at a slide.',
               name: 'slide-arrival',
-              url: 'http://localhost:3000/cohort/1/run/99/slide/1',
-            },
-          },
-        },
-      },
-    },
+              url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+            }
+          }
+        }
+      }
+    }
   };
 
   invites = [
@@ -598,13 +598,13 @@ beforeEach(() => {
       status_id: 1,
       props: {
         chat_id: 8,
-        persona_id: null,
+        persona_id: null
       },
       code: 'b7f21ab4-aa95-4f48-aee8-19f7176bc595',
       created_at: '2021-02-04T19:24:39.039Z',
       updated_at: null,
-      expire_at: null,
-    },
+      expire_at: null
+    }
   ];
 
   scenario = {
@@ -615,7 +615,7 @@ beforeEach(() => {
       email: 'super@email.com',
       is_anonymous: false,
       roles: ['participant', 'super_admin', 'facilitator', 'researcher'],
-      is_super: true,
+      is_super: true
     },
     categories: [],
     consent: { id: 69, prose: '' },
@@ -624,20 +624,20 @@ beforeEach(() => {
       id: 11,
       title: '',
       components: [{ html: '<h2>Bye!</h2>', type: 'Text' }],
-      is_finish: true,
+      is_finish: true
     },
     lock: {
       scenario_id: 99,
       user_id: 999,
       created_at: '2020-02-31T23:54:19.934Z',
-      ended_at: null,
+      ended_at: null
     },
     slides: [
       {
         id: 11,
         title: '',
         components: [{ html: '<h2>Bye!</h2>', type: 'Text' }],
-        is_finish: true,
+        is_finish: true
       },
       {
         id: 22,
@@ -646,7 +646,7 @@ beforeEach(() => {
           {
             id: 'b7e7a3f1-eb4e-4afa-8569-838fd5ec854f',
             html: '<p>HTML!</p>',
-            type: 'Text',
+            type: 'Text'
           },
           {
             agent: null,
@@ -658,16 +658,16 @@ beforeEach(() => {
             recallId: '',
             required: true,
             responseId: 'be99fe9b-fa0d-4ab7-8541-1bfd1ef0bf11',
-            placeholder: '',
+            placeholder: ''
           },
           {
             id: 'f96ac6de-ac6b-4e06-bd97-d97e12fe72c1',
             html: '<p>?</p>',
-            type: 'Text',
-          },
+            type: 'Text'
+          }
         ],
-        is_finish: false,
-      },
+        is_finish: false
+      }
     ],
     status: 1,
     title: 'Some Other Scenario',
@@ -680,8 +680,8 @@ beforeEach(() => {
         roles: ['super'],
         is_super: true,
         is_author: true,
-        is_reviewer: false,
-      },
+        is_reviewer: false
+      }
     ],
     id: 99,
     created_at: '2020-07-31T17:50:28.089Z',
@@ -700,9 +700,9 @@ beforeEach(() => {
         deleted_at: null,
         author_id: 3,
         is_read_only: true,
-        is_shared: true,
-      },
-    ],
+        is_shared: true
+      }
+    ]
   };
 
   scenario.personas = [personaTeacher, personaStudent];
@@ -712,60 +712,54 @@ beforeEach(() => {
     return accum;
   }, {});
 
-  chatActions.createChat.mockImplementation(() => async (dispatch) => {
+  chatActions.createChat.mockImplementation(() => async dispatch => {
     dispatch({ type: GET_CHAT_SUCCESS, chat });
     return chat;
   });
 
-  chatActions.getChat.mockImplementation(() => async (dispatch) => {
+  chatActions.getChat.mockImplementation(() => async dispatch => {
     dispatch({ type: GET_CHAT_SUCCESS, chat });
     return chat;
   });
 
-  chatActions.getChatByIdentifiers.mockImplementation(
-    () => async (dispatch) => {
-      dispatch({ type: GET_CHAT_SUCCESS, chat });
-      return chat;
-    }
-  );
-
-  chatActions.getChatUsersByChatId.mockImplementation(
-    () => async (dispatch) => {
-      const users = chat.users;
-      dispatch({ type: GET_CHAT_USERS_SUCCESS, users });
-      return users;
-    }
-  );
-
-  chatActions.getChatUsersByChatId.mockImplementation(
-    () => async (dispatch) => {
-      const users = chat.users;
-      dispatch({ type: GET_CHAT_USERS_SUCCESS, users });
-      return users;
-    }
-  );
-
-  chatActions.joinChat.mockImplementation(() => async (dispatch) => {
+  chatActions.getChatByIdentifiers.mockImplementation(() => async dispatch => {
     dispatch({ type: GET_CHAT_SUCCESS, chat });
     return chat;
   });
 
-  chatActions.getChatsByCohortId.mockImplementation(() => async (dispatch) => {
+  chatActions.getChatUsersByChatId.mockImplementation(() => async dispatch => {
+    const users = chat.users;
+    dispatch({ type: GET_CHAT_USERS_SUCCESS, users });
+    return users;
+  });
+
+  chatActions.getChatUsersByChatId.mockImplementation(() => async dispatch => {
+    const users = chat.users;
+    dispatch({ type: GET_CHAT_USERS_SUCCESS, users });
+    return users;
+  });
+
+  chatActions.joinChat.mockImplementation(() => async dispatch => {
+    dispatch({ type: GET_CHAT_SUCCESS, chat });
+    return chat;
+  });
+
+  chatActions.getChatsByCohortId.mockImplementation(() => async dispatch => {
     dispatch({ type: GET_CHATS_SUCCESS, chats });
     return chats;
   });
 
-  cohortActions.getCohort.mockImplementation(() => async (dispatch) => {
+  cohortActions.getCohort.mockImplementation(() => async dispatch => {
     dispatch({ type: GET_COHORT_SUCCESS, cohort });
     return cohort;
   });
 
-  scenarioActions.getScenario.mockImplementation(() => async (dispatch) => {
+  scenarioActions.getScenario.mockImplementation(() => async dispatch => {
     dispatch({ type: GET_SCENARIO_SUCCESS, scenario });
     return scenario;
   });
 
-  usersActions.getUsers.mockImplementation(() => async (dispatch) => {
+  usersActions.getUsers.mockImplementation(() => async dispatch => {
     dispatch({ type: GET_USERS_SUCCESS, users });
     return users;
   });
@@ -799,17 +793,17 @@ test('CohortRoomSelector', () => {
 });
 
 /** @GENERATED: BEGIN **/
-test('Render 1 1', async (done) => {
+test('Render 1 1', async done => {
   const Component = CohortRoomSelector;
   const props = {
     ...commonProps,
     chat,
     cohort,
-    scenario,
+    scenario
   };
 
   const state = {
-    ...commonState,
+    ...commonState
   };
 
   state.chat = chat;
@@ -825,16 +819,16 @@ test('Render 1 1', async (done) => {
 /** @GENERATED: END **/
 
 /** @GENERATED: BEGIN **/
-test('Render 2 1', async (done) => {
+test('Render 2 1', async done => {
   const Component = CohortRoomSelector;
   const props = {
     ...commonProps,
     chat,
-    scenario,
+    scenario
   };
 
   const state = {
-    ...commonState,
+    ...commonState
   };
 
   state.chat = chat;
@@ -851,7 +845,7 @@ test('Render 2 1', async (done) => {
 
 /* INJECTION STARTS HERE */
 
-test('Emits CREATE_COHORT_CHANNEL on socket', async (done) => {
+test('Emits CREATE_COHORT_CHANNEL on socket', async done => {
   const Component = CohortRoomSelector;
 
   const props = {
@@ -859,7 +853,7 @@ test('Emits CREATE_COHORT_CHANNEL on socket', async (done) => {
     chat,
     cohort,
     scenario,
-    user,
+    user
   };
 
   const state = {
@@ -870,7 +864,7 @@ test('Emits CREATE_COHORT_CHANNEL on socket', async (done) => {
     scenario,
     user,
     users,
-    usersById,
+    usersById
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
@@ -893,9 +887,9 @@ const socketEvents = [
   'CHAT_ENDED',
   'HOST_JOIN',
   'JOIN_OR_PART',
-  'RUN_CHAT_LINK',
+  'RUN_CHAT_LINK'
 ];
-test(`Adds ${socketEvents.join(', ')} handlers`, async (done) => {
+test(`Adds ${socketEvents.join(', ')} handlers`, async done => {
   const Component = CohortRoomSelector;
 
   const props = {
@@ -903,7 +897,7 @@ test(`Adds ${socketEvents.join(', ')} handlers`, async (done) => {
     chat,
     cohort,
     scenario,
-    user,
+    user
   };
 
   const state = {
@@ -914,7 +908,7 @@ test(`Adds ${socketEvents.join(', ')} handlers`, async (done) => {
     scenario,
     user,
     users,
-    usersById,
+    usersById
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
@@ -962,7 +956,7 @@ test(`Adds ${socketEvents.join(', ')} handlers`, async (done) => {
   done();
 });
 
-test('Has chats in state', async (done) => {
+test('Has chats in state', async done => {
   const Component = CohortRoomSelector;
 
   const props = {
@@ -970,7 +964,7 @@ test('Has chats in state', async (done) => {
     chat,
     cohort,
     scenario,
-    user,
+    user
   };
 
   const state = {
@@ -981,7 +975,7 @@ test('Has chats in state', async (done) => {
     scenario,
     user,
     users,
-    usersById,
+    usersById
   };
 
   const emitter = new Emitter();
@@ -1001,7 +995,7 @@ test('Has chats in state', async (done) => {
   done();
 });
 
-test('Has no chats in state', async (done) => {
+test('Has no chats in state', async done => {
   const Component = CohortRoomSelector;
 
   const props = {
@@ -1009,7 +1003,7 @@ test('Has no chats in state', async (done) => {
     chat,
     cohort,
     scenario,
-    user,
+    user
   };
 
   const state = {
@@ -1020,7 +1014,7 @@ test('Has no chats in state', async (done) => {
     scenario,
     user,
     users,
-    usersById,
+    usersById
   };
 
   const emitter = new Emitter();
@@ -1040,7 +1034,7 @@ test('Has no chats in state', async (done) => {
   done();
 });
 
-test('Has no cohort in state', async (done) => {
+test('Has no cohort in state', async done => {
   const Component = CohortRoomSelector;
 
   const props = {
@@ -1048,7 +1042,7 @@ test('Has no cohort in state', async (done) => {
     chat,
     cohort,
     scenario,
-    user,
+    user
   };
 
   const state = {
@@ -1059,7 +1053,7 @@ test('Has no cohort in state', async (done) => {
     scenario,
     user,
     users,
-    usersById,
+    usersById
   };
 
   const emitter = new Emitter();
@@ -1078,7 +1072,7 @@ test('Has no cohort in state', async (done) => {
   done();
 });
 
-test('Has lobby prop, but not lobby.chat, chat is found through heuristic search', async (done) => {
+test('Has lobby prop, but not lobby.chat, chat is found through heuristic search', async done => {
   const Component = CohortRoomSelector;
 
   const lobby = {};
@@ -1093,7 +1087,7 @@ test('Has lobby prop, but not lobby.chat, chat is found through heuristic search
     cohort,
     lobby,
     scenario,
-    user,
+    user
   };
 
   const state = {
@@ -1104,7 +1098,7 @@ test('Has lobby prop, but not lobby.chat, chat is found through heuristic search
     scenario,
     user,
     users,
-    usersById,
+    usersById
   };
 
   const emitter = new Emitter();
@@ -1123,7 +1117,7 @@ test('Has lobby prop, but not lobby.chat, chat is found through heuristic search
   done();
 });
 
-test('Has lobby prop, but not lobby.chat, chat is NOT found through heuristic search', async (done) => {
+test('Has lobby prop, but not lobby.chat, chat is NOT found through heuristic search', async done => {
   const Component = CohortRoomSelector;
 
   const lobby = {};
@@ -1138,7 +1132,7 @@ test('Has lobby prop, but not lobby.chat, chat is NOT found through heuristic se
     cohort,
     lobby,
     scenario,
-    user,
+    user
   };
 
   const state = {
@@ -1149,7 +1143,7 @@ test('Has lobby prop, but not lobby.chat, chat is NOT found through heuristic se
     scenario,
     user,
     users,
-    usersById,
+    usersById
   };
 
   const emitter = new Emitter();
@@ -1169,7 +1163,7 @@ test('Has lobby prop, but not lobby.chat, chat is NOT found through heuristic se
   done();
 });
 
-test('Close default', async (done) => {
+test('Close default', async done => {
   const Component = CohortRoomSelector;
 
   const props = {
@@ -1177,7 +1171,7 @@ test('Close default', async (done) => {
     chat,
     cohort,
     scenario,
-    user,
+    user
   };
 
   const state = {
@@ -1188,60 +1182,7 @@ test('Close default', async (done) => {
     scenario,
     user,
     users,
-    usersById,
-  };
-
-  const emitter = new Emitter();
-
-  globalThis.mockSocket.emit.mockImplementation(emitter.emit);
-
-  const ConnectedRoutedComponent = reduxer(Component, props, state);
-
-  await render(<ConnectedRoutedComponent {...props} />);
-  expect(serialize()).toMatchSnapshot();
-  await waitFor(async () =>
-    expect(
-      await screen.findByTestId('cohort-chat-selector')
-    ).toBeInTheDocument()
-  );
-  expect(serialize()).toMatchSnapshot();
-
-  const closeButton = await screen.findByRole('button', { name: /close/i });
-
-  userEvent.click(closeButton);
-
-  expect(serialize()).toMatchSnapshot();
-
-  done();
-});
-
-test('Close provided', async (done) => {
-  const Component = CohortRoomSelector;
-
-  const buttons = {
-    secondary: {
-      onClick: jest.fn(),
-    },
-  };
-
-  const props = {
-    ...commonProps,
-    buttons,
-    chat,
-    cohort,
-    scenario,
-    user,
-  };
-
-  const state = {
-    ...commonState,
-    chat,
-    chats: [chat],
-    cohort,
-    scenario,
-    user,
-    users,
-    usersById,
+    usersById
   };
 
   const emitter = new Emitter();
@@ -1264,16 +1205,17 @@ test('Close provided', async (done) => {
   userEvent.click(closeButton);
 
   expect(serialize()).toMatchSnapshot();
+
   done();
 });
 
-test('Create a room for this scenario, cancel', async (done) => {
+test('Close provided', async done => {
   const Component = CohortRoomSelector;
 
   const buttons = {
     secondary: {
-      onClick: jest.fn(),
-    },
+      onClick: jest.fn()
+    }
   };
 
   const props = {
@@ -1282,7 +1224,59 @@ test('Create a room for this scenario, cancel', async (done) => {
     chat,
     cohort,
     scenario,
+    user
+  };
+
+  const state = {
+    ...commonState,
+    chat,
+    chats: [chat],
+    cohort,
+    scenario,
     user,
+    users,
+    usersById
+  };
+
+  const emitter = new Emitter();
+
+  globalThis.mockSocket.emit.mockImplementation(emitter.emit);
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  await render(<ConnectedRoutedComponent {...props} />);
+  expect(serialize()).toMatchSnapshot();
+  await waitFor(async () =>
+    expect(
+      await screen.findByTestId('cohort-chat-selector')
+    ).toBeInTheDocument()
+  );
+  expect(serialize()).toMatchSnapshot();
+
+  const closeButton = await screen.findByRole('button', { name: /close/i });
+
+  userEvent.click(closeButton);
+
+  expect(serialize()).toMatchSnapshot();
+  done();
+});
+
+test('Create a room for this scenario, cancel', async done => {
+  const Component = CohortRoomSelector;
+
+  const buttons = {
+    secondary: {
+      onClick: jest.fn()
+    }
+  };
+
+  const props = {
+    ...commonProps,
+    buttons,
+    chat,
+    cohort,
+    scenario,
+    user
   };
 
   const state = {
@@ -1293,7 +1287,7 @@ test('Create a room for this scenario, cancel', async (done) => {
     scenario,
     user,
     users,
-    usersById,
+    usersById
   };
 
   const emitter = new Emitter();
@@ -1312,7 +1306,7 @@ test('Create a room for this scenario, cancel', async (done) => {
   expect(serialize()).toMatchSnapshot();
 
   const createButton = await screen.findByRole('button', {
-    name: /create a room/i,
+    name: /create a room/i
   });
   userEvent.click(createButton);
 
@@ -1329,20 +1323,20 @@ test('Create a room for this scenario, cancel', async (done) => {
   done();
 });
 
-test('Create a room for this scenario, user will invite, proceed', async (done) => {
+test('Create a room for this scenario, user will invite, proceed', async done => {
   const Component = CohortRoomSelector;
 
   delete window.location;
   // eslint-disable-next-line
   window.location = {
     href: '',
-    pathname: '',
+    pathname: ''
   };
 
   const buttons = {
     secondary: {
-      onClick: jest.fn(),
-    },
+      onClick: jest.fn()
+    }
   };
 
   const props = {
@@ -1351,7 +1345,7 @@ test('Create a room for this scenario, user will invite, proceed', async (done) 
     chat,
     cohort,
     scenario,
-    user,
+    user
   };
 
   const state = {
@@ -1362,7 +1356,7 @@ test('Create a room for this scenario, user will invite, proceed', async (done) 
     scenario,
     user,
     users,
-    usersById,
+    usersById
   };
 
   const emitter = new Emitter();
@@ -1381,7 +1375,7 @@ test('Create a room for this scenario, user will invite, proceed', async (done) 
   expect(serialize()).toMatchSnapshot();
 
   const createButton = await screen.findByRole('button', {
-    name: /create a room/i,
+    name: /create a room/i
   });
   userEvent.click(createButton);
 
@@ -1395,7 +1389,7 @@ test('Create a room for this scenario, user will invite, proceed', async (done) 
   );
 
   const createAndGoButton = await screen.findByRole('button', {
-    name: /create and/i,
+    name: /create and/i
   });
 
   userEvent.click(checkbox);
@@ -1415,7 +1409,7 @@ test('Create a room for this scenario, user will invite, proceed', async (done) 
   expect(serialize()).toMatchSnapshot();
 
   const joinButton = await screen.findByRole('button', {
-    name: /join/i,
+    name: /join/i
   });
 
   userEvent.click(joinButton);
@@ -1427,13 +1421,13 @@ test('Create a room for this scenario, user will invite, proceed', async (done) 
   done();
 });
 
-test('Create a room for this scenario, open to cohort, proceed', async (done) => {
+test('Create a room for this scenario, open to cohort, proceed', async done => {
   const Component = CohortRoomSelector;
 
   const buttons = {
     secondary: {
-      onClick: jest.fn(),
-    },
+      onClick: jest.fn()
+    }
   };
 
   const props = {
@@ -1442,7 +1436,7 @@ test('Create a room for this scenario, open to cohort, proceed', async (done) =>
     chat,
     cohort,
     scenario,
-    user,
+    user
   };
 
   const state = {
@@ -1453,7 +1447,7 @@ test('Create a room for this scenario, open to cohort, proceed', async (done) =>
     scenario,
     user,
     users,
-    usersById,
+    usersById
   };
 
   const emitter = new Emitter();
@@ -1472,7 +1466,7 @@ test('Create a room for this scenario, open to cohort, proceed', async (done) =>
   expect(serialize()).toMatchSnapshot();
 
   const createButton = await screen.findByRole('button', {
-    name: /create a room/i,
+    name: /create a room/i
   });
   userEvent.click(createButton);
 
@@ -1489,7 +1483,7 @@ test('Create a room for this scenario, open to cohort, proceed', async (done) =>
   chatActions.getChatUsersByChatId.mockClear();
 
   const createAndGoButton = await screen.findByRole('button', {
-    name: /create/i,
+    name: /create/i
   });
 
   userEvent.click(checkbox);
@@ -1511,10 +1505,10 @@ test('Create a room for this scenario, open to cohort, proceed', async (done) =>
   done();
 });
 
-test('Create a room for this scenario, open to cohort, close', async (done) => {
+test('Create a room for this scenario, open to cohort, close', async done => {
   const Component = CohortRoomSelector;
 
-  chatActions.createChat.mockImplementation((params) => async (dispatch) => {
+  chatActions.createChat.mockImplementation(params => async dispatch => {
     const chat = {
       ...params,
       id: 2,
@@ -1527,8 +1521,8 @@ test('Create a room for this scenario, open to cohort, close', async (done) => {
       ended_at: null,
       users: [superUser],
       usersById: {
-        [superUser.id]: superUser,
-      },
+        [superUser.id]: superUser
+      }
     };
     dispatch({ type: GET_CHAT_SUCCESS, chat });
     return chat;
@@ -1536,8 +1530,8 @@ test('Create a room for this scenario, open to cohort, close', async (done) => {
 
   const buttons = {
     secondary: {
-      onClick: jest.fn(),
-    },
+      onClick: jest.fn()
+    }
   };
 
   const props = {
@@ -1546,7 +1540,7 @@ test('Create a room for this scenario, open to cohort, close', async (done) => {
     chat,
     cohort,
     scenario,
-    user,
+    user
   };
 
   const state = {
@@ -1557,7 +1551,7 @@ test('Create a room for this scenario, open to cohort, close', async (done) => {
     scenario,
     user,
     users,
-    usersById,
+    usersById
   };
 
   const emitter = new Emitter();
@@ -1576,7 +1570,7 @@ test('Create a room for this scenario, open to cohort, close', async (done) => {
   expect(serialize()).toMatchSnapshot();
 
   const createButton = await screen.findByRole('button', {
-    name: /create a room/i,
+    name: /create a room/i
   });
   userEvent.click(createButton);
 
@@ -1593,7 +1587,7 @@ test('Create a room for this scenario, open to cohort, close', async (done) => {
   chatActions.getChatUsersByChatId.mockClear();
 
   const createAndGoButton = await screen.findByRole('button', {
-    name: /create/i,
+    name: /create/i
   });
 
   userEvent.click(checkbox);
@@ -1618,13 +1612,13 @@ test('Create a room for this scenario, open to cohort, close', async (done) => {
   done();
 });
 
-test('Create a room for this scenario, open to cohort, close', async (done) => {
+test('Create a room for this scenario, open to cohort, close', async done => {
   const Component = CohortRoomSelector;
 
   const buttons = {
     secondary: {
-      onClick: jest.fn(),
-    },
+      onClick: jest.fn()
+    }
   };
 
   const props = {
@@ -1633,7 +1627,7 @@ test('Create a room for this scenario, open to cohort, close', async (done) => {
     chat,
     cohort,
     scenario,
-    user,
+    user
   };
 
   const state = {
@@ -1644,7 +1638,7 @@ test('Create a room for this scenario, open to cohort, close', async (done) => {
     scenario,
     user,
     users,
-    usersById,
+    usersById
   };
 
   const emitter = new Emitter();
@@ -1663,7 +1657,7 @@ test('Create a room for this scenario, open to cohort, close', async (done) => {
   expect(serialize()).toMatchSnapshot();
 
   const createButton = await screen.findByRole('button', {
-    name: /create a room/i,
+    name: /create a room/i
   });
   userEvent.click(createButton);
 
@@ -1680,7 +1674,7 @@ test('Create a room for this scenario, open to cohort, close', async (done) => {
   chatActions.getChatUsersByChatId.mockClear();
 
   const createAndGoButton = await screen.findByRole('button', {
-    name: /create/i,
+    name: /create/i
   });
 
   userEvent.click(checkbox);
@@ -1707,18 +1701,18 @@ test('Create a room for this scenario, open to cohort, close', async (done) => {
   done();
 });
 
-test('User is not host, host does not have role', async (done) => {
+test('User is not host, host does not have role', async done => {
   const Component = CohortRoomSelector;
 
   const buttons = {
     secondary: {
-      onClick: jest.fn(),
-    },
+      onClick: jest.fn()
+    }
   };
 
   const host = {
     ...superUser,
-    persona_id: null,
+    persona_id: null
   };
 
   const chat = {
@@ -1734,8 +1728,8 @@ test('User is not host, host does not have role', async (done) => {
     users: [host, participantUser],
     usersById: {
       [host.id]: host,
-      [participantUser.id]: participantUser,
-    },
+      [participantUser.id]: participantUser
+    }
   };
 
   const chats = [chat];
@@ -1749,7 +1743,7 @@ test('User is not host, host does not have role', async (done) => {
     buttons,
     chat,
     cohort,
-    scenario,
+    scenario
   };
 
   const state = {
@@ -1761,16 +1755,16 @@ test('User is not host, host does not have role', async (done) => {
     scenario,
     user,
     users,
-    usersById,
+    usersById
   };
 
   state.user = {
     ...user,
     id: 333,
-    persona_id: null,
+    persona_id: null
   };
 
-  chatActions.getChatsByCohortId.mockImplementation(() => async (dispatch) => {
+  chatActions.getChatsByCohortId.mockImplementation(() => async dispatch => {
     dispatch({ type: GET_CHATS_SUCCESS, chats });
     return chats;
   });
@@ -1793,13 +1787,13 @@ test('User is not host, host does not have role', async (done) => {
   done();
 });
 
-test('User is not host, host does have role', async (done) => {
+test('User is not host, host does have role', async done => {
   const Component = CohortRoomSelector;
 
   const buttons = {
     secondary: {
-      onClick: jest.fn(),
-    },
+      onClick: jest.fn()
+    }
   };
 
   const chat = {
@@ -1815,8 +1809,8 @@ test('User is not host, host does have role', async (done) => {
     users: [superUser, participantUser],
     usersById: {
       [superUser.id]: superUser,
-      [participantUser.id]: participantUser,
-    },
+      [participantUser.id]: participantUser
+    }
   };
 
   const chats = [chat];
@@ -1830,7 +1824,7 @@ test('User is not host, host does have role', async (done) => {
     buttons,
     chat,
     cohort,
-    scenario,
+    scenario
   };
 
   const state = {
@@ -1842,16 +1836,16 @@ test('User is not host, host does have role', async (done) => {
     scenario,
     user,
     users,
-    usersById,
+    usersById
   };
 
   state.user = {
     ...user,
     id: 333,
-    persona_id: null,
+    persona_id: null
   };
 
-  chatActions.getChatsByCohortId.mockImplementation(() => async (dispatch) => {
+  chatActions.getChatsByCohortId.mockImplementation(() => async dispatch => {
     dispatch({ type: GET_CHATS_SUCCESS, chats });
     return chats;
   });
@@ -1874,13 +1868,13 @@ test('User is not host, host does have role', async (done) => {
   done();
 });
 
-test('User is not host, host does have role, no roles remain', async (done) => {
+test('User is not host, host does have role, no roles remain', async done => {
   const Component = CohortRoomSelector;
 
   const buttons = {
     secondary: {
-      onClick: jest.fn(),
-    },
+      onClick: jest.fn()
+    }
   };
 
   const chat = {
@@ -1896,13 +1890,13 @@ test('User is not host, host does have role, no roles remain', async (done) => {
     users: [superUser, participantUser],
     usersById: {
       [superUser.id]: superUser,
-      [participantUser.id]: participantUser,
-    },
+      [participantUser.id]: participantUser
+    }
   };
 
   const altScenario = {
     ...scenario,
-    personas: [],
+    personas: []
   };
 
   const chats = [chat];
@@ -1916,7 +1910,7 @@ test('User is not host, host does have role, no roles remain', async (done) => {
     buttons,
     chat,
     cohort,
-    scenario: altScenario,
+    scenario: altScenario
   };
 
   const state = {
@@ -1928,16 +1922,16 @@ test('User is not host, host does have role, no roles remain', async (done) => {
     scenario: altScenario,
     user,
     users,
-    usersById,
+    usersById
   };
 
   state.user = {
     ...user,
     id: 333,
-    persona_id: null,
+    persona_id: null
   };
 
-  chatActions.getChatsByCohortId.mockImplementation(() => async (dispatch) => {
+  chatActions.getChatsByCohortId.mockImplementation(() => async dispatch => {
     dispatch({ type: GET_CHATS_SUCCESS, chats });
     return chats;
   });
@@ -1959,4 +1953,3 @@ test('User is not host, host does have role, no roles remain', async (done) => {
 
   done();
 });
-

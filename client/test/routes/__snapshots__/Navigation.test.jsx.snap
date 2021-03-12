@@ -66,6 +66,9 @@ exports[`Render 1 1 1`] = `
         Invites
       </a>
       <div
+        data-testid="user-invites"
+      />
+      <div
         aria-expanded="false"
         class="ui item simple dropdown"
         role="listbox"

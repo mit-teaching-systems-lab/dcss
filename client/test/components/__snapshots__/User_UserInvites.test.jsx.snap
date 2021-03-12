@@ -1,12 +1,1020 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Render 1 1 1`] = `
-<DocumentFragment>
-  <a
-    class="item"
-    tabindex="0"
+exports[`Has +99 invites 1`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <a
+      class=\\"item\\"
+      tabindex=\\"0\\"
+    >
+      Invites
+      <div
+        aria-label=\\"There are 99+ pending invitations.\\"
+        class=\\"ui red tiny circular floating label\\"
+        style=\\"top: 0.1em; right: 1em;\\"
+      >
+        99+
+      </div>
+    </a>
+    <div
+      data-testid=\\"user-invites\\"
+    />
+  </div>
+</body>"
+`;
+
+exports[`Has 0 invites 1`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <a
+      class=\\"item\\"
+      tabindex=\\"0\\"
+    >
+      Invites
+    </a>
+    <div
+      data-testid=\\"user-invites\\"
+    />
+  </div>
+</body>"
+`;
+
+exports[`Has 1-99 invites 1`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <a
+      class=\\"item\\"
+      tabindex=\\"0\\"
+    >
+      Invites
+      <div
+        aria-label=\\"There are 1 pending invitations.\\"
+        class=\\"ui red tiny circular floating label\\"
+        style=\\"top: 0.1em; right: 1em;\\"
+      >
+        1
+      </div>
+    </a>
+    <div
+      data-testid=\\"user-invites\\"
+    />
+  </div>
+</body>"
+`;
+
+exports[`Has 1-99 invites, open onClick 1`] = `
+"<body
+  class=\\"\\"
+>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <a
+      class=\\"item\\"
+      tabindex=\\"0\\"
+    >
+      Invites
+      <div
+        aria-label=\\"There are 1 pending invitations.\\"
+        class=\\"ui red tiny circular floating label\\"
+        style=\\"top: 0.1em; right: 1em;\\"
+      >
+        1
+      </div>
+    </a>
+    <div
+      data-testid=\\"user-invites\\"
+    />
+  </div>
+</body>"
+`;
+
+exports[`Has 1-99 invites, open onClick 2`] = `
+"<body
+  class=\\"dimmable dimmed\\"
+>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <a
+      class=\\"item\\"
+      tabindex=\\"0\\"
+    >
+      Invites
+      <div
+        aria-label=\\"There are 1 pending invitations.\\"
+        class=\\"ui red tiny circular floating label\\"
+        style=\\"top: 0.1em; right: 1em;\\"
+      >
+        1
+      </div>
+    </a>
+    <div
+      data-testid=\\"user-invites\\"
+    />
+  </div>
+  <div
+    class=\\"ui page modals dimmer transition visible active\\"
+    style=\\"display: flex;\\"
   >
-    Invites
-  </a>
-</DocumentFragment>
+    <div
+      aria-modal=\\"true\\"
+      class=\\"ui small modal transition visible active\\"
+      role=\\"dialog\\"
+    >
+      <i
+        aria-hidden=\\"true\\"
+        class=\\"close icon\\"
+      />
+      <div
+        class=\\"ui header\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"mail icon\\"
+        />
+        <div
+          class=\\"content\\"
+        >
+          Invites
+        </div>
+      </div>
+      <div
+        class=\\"u__invite-container content\\"
+      >
+        <div
+          class=\\"ui comments\\"
+        >
+          <div
+            data-testid=\\"user-invites-list\\"
+          />
+        </div>
+      </div>
+      <div
+        class=\\"actions\\"
+      >
+        <div
+          class=\\"ui grid\\"
+        >
+          <div
+            class=\\"row\\"
+          >
+            <div
+              class=\\"column\\"
+            >
+              <div
+                class=\\"ui fluid buttons\\"
+              >
+                <button
+                  class=\\"ui large button\\"
+                  tabindex=\\"0\\"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        data-testid=\\"modal-user-invites\\"
+      />
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`Has 1-99 invites, open onClick, close onClick 1`] = `
+"<body
+  class=\\"\\"
+>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <a
+      class=\\"item\\"
+      tabindex=\\"0\\"
+    >
+      Invites
+      <div
+        aria-label=\\"There are 1 pending invitations.\\"
+        class=\\"ui red tiny circular floating label\\"
+        style=\\"top: 0.1em; right: 1em;\\"
+      >
+        1
+      </div>
+    </a>
+    <div
+      data-testid=\\"user-invites\\"
+    />
+  </div>
+</body>"
+`;
+
+exports[`Has 1-99 invites, open onClick, close onClick 2`] = `
+"<body
+  class=\\"\\"
+>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <a
+      class=\\"item\\"
+      tabindex=\\"0\\"
+    >
+      Invites
+      <div
+        aria-label=\\"There are 1 pending invitations.\\"
+        class=\\"ui red tiny circular floating label\\"
+        style=\\"top: 0.1em; right: 1em;\\"
+      >
+        1
+      </div>
+    </a>
+    <div
+      data-testid=\\"user-invites\\"
+    />
+  </div>
+</body>"
+`;
+
+exports[`Has 1-99 invites, open: true 1`] = `
+"<body
+  class=\\"dimmable dimmed\\"
+>
+  <div
+    aria-hidden=\\"true\\"
+    id=\\"root\\"
+  />
+  <div>
+    <a
+      class=\\"item\\"
+      tabindex=\\"0\\"
+    >
+      Invites
+      <div
+        aria-label=\\"There are 1 pending invitations.\\"
+        class=\\"ui red tiny circular floating label\\"
+        style=\\"top: 0.1em; right: 1em;\\"
+      >
+        1
+      </div>
+    </a>
+    <div
+      data-testid=\\"user-invites\\"
+    />
+  </div>
+  <div
+    class=\\"ui page modals dimmer transition visible active\\"
+    style=\\"display: flex;\\"
+  >
+    <div
+      aria-modal=\\"true\\"
+      class=\\"ui small modal transition visible active\\"
+      role=\\"dialog\\"
+    >
+      <i
+        aria-hidden=\\"true\\"
+        class=\\"close icon\\"
+      />
+      <div
+        class=\\"ui header\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"mail icon\\"
+        />
+        <div
+          class=\\"content\\"
+        >
+          Invites
+        </div>
+      </div>
+      <div
+        class=\\"u__invite-container content\\"
+      >
+        <div
+          class=\\"ui comments\\"
+        >
+          <div
+            data-testid=\\"user-invites-list\\"
+          />
+        </div>
+      </div>
+      <div
+        class=\\"actions\\"
+      >
+        <div
+          class=\\"ui grid\\"
+        >
+          <div
+            class=\\"row\\"
+          >
+            <div
+              class=\\"column\\"
+            >
+              <div
+                class=\\"ui fluid buttons\\"
+              >
+                <button
+                  class=\\"ui large button\\"
+                  tabindex=\\"0\\"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        data-testid=\\"modal-user-invites\\"
+      />
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`Has 1-99 invites, open: true, accept 1`] = `
+"<body
+  class=\\"dimmable dimmed\\"
+>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <a
+      class=\\"item\\"
+      tabindex=\\"0\\"
+    >
+      Invites
+      <div
+        aria-label=\\"There are 1 pending invitations.\\"
+        class=\\"ui red tiny circular floating label\\"
+        style=\\"top: 0.1em; right: 1em;\\"
+      >
+        1
+      </div>
+    </a>
+    <div
+      data-testid=\\"user-invites\\"
+    />
+  </div>
+  <div
+    class=\\"ui page modals dimmer transition visible active\\"
+    style=\\"display: flex;\\"
+  >
+    <div
+      aria-modal=\\"true\\"
+      class=\\"ui small modal transition visible active\\"
+      role=\\"dialog\\"
+    >
+      <i
+        aria-hidden=\\"true\\"
+        class=\\"close icon\\"
+      />
+      <div
+        class=\\"ui header\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"mail icon\\"
+        />
+        <div
+          class=\\"content\\"
+        >
+          Invites
+        </div>
+      </div>
+      <div
+        class=\\"u__invite-container content\\"
+      >
+        <div
+          class=\\"ui comments\\"
+        >
+          <div
+            data-testid=\\"user-invites-list\\"
+          />
+        </div>
+      </div>
+      <div
+        class=\\"actions\\"
+      >
+        <div
+          class=\\"ui grid\\"
+        >
+          <div
+            class=\\"row\\"
+          >
+            <div
+              class=\\"column\\"
+            >
+              <div
+                class=\\"ui fluid buttons\\"
+              >
+                <button
+                  class=\\"ui large button\\"
+                  tabindex=\\"0\\"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        data-testid=\\"modal-user-invites\\"
+      />
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`Has 1-99 invites, open: true, accept 2`] = `
+"<body
+  class=\\"dimmable dimmed\\"
+>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <a
+      class=\\"item\\"
+      tabindex=\\"0\\"
+    >
+      Invites
+      <div
+        aria-label=\\"There are 1 pending invitations.\\"
+        class=\\"ui red tiny circular floating label\\"
+        style=\\"top: 0.1em; right: 1em;\\"
+      >
+        1
+      </div>
+    </a>
+    <div
+      data-testid=\\"user-invites\\"
+    />
+  </div>
+  <div
+    class=\\"ui page modals dimmer transition visible active\\"
+    style=\\"display: flex;\\"
+  >
+    <div
+      aria-modal=\\"true\\"
+      class=\\"ui small modal transition visible active\\"
+      role=\\"dialog\\"
+    >
+      <i
+        aria-hidden=\\"true\\"
+        class=\\"close icon\\"
+      />
+      <div
+        class=\\"ui header\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"mail icon\\"
+        />
+        <div
+          class=\\"content\\"
+        >
+          Invites
+        </div>
+      </div>
+      <div
+        class=\\"u__invite-container content\\"
+      >
+        <div
+          class=\\"ui comments\\"
+        >
+          <div
+            data-testid=\\"user-invites-list\\"
+          />
+        </div>
+      </div>
+      <div
+        class=\\"actions\\"
+      >
+        <div
+          class=\\"ui grid\\"
+        >
+          <div
+            class=\\"row\\"
+          >
+            <div
+              class=\\"column\\"
+            >
+              <div
+                class=\\"ui fluid buttons\\"
+              >
+                <button
+                  class=\\"ui large button\\"
+                  tabindex=\\"0\\"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        data-testid=\\"modal-user-invites\\"
+      />
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`Has code, invite is present, accept 1`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div />
+</body>"
+`;
+
+exports[`Has code, invite is present, cancel 1`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div />
+</body>"
+`;
+
+exports[`Has code, invite is present, decline 1`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div />
+</body>"
+`;
+
+exports[`Has code, invite is present, pending 1`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div />
+</body>"
+`;
+
+exports[`Has code, invite is present, unknown 1`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div />
+</body>"
+`;
+
+exports[`Has code, invite not present, accept 1`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div />
+</body>"
+`;
+
+exports[`Has redirect 1`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div />
+</body>"
+`;
+
+exports[`NEW_INVITATION, invalid rules 1`] = `
+"<body
+  class=\\"\\"
+>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <a
+      class=\\"item\\"
+      tabindex=\\"0\\"
+    >
+      Invites
+      <div
+        aria-label=\\"There are 1 pending invitations.\\"
+        class=\\"ui red tiny circular floating label\\"
+        style=\\"top: 0.1em; right: 1em;\\"
+      >
+        1
+      </div>
+    </a>
+    <div
+      data-testid=\\"user-invites\\"
+    />
+  </div>
+</body>"
+`;
+
+exports[`NEW_INVITATION, invalid rules 2`] = `
+"<body
+  class=\\"\\"
+>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <a
+      class=\\"item\\"
+      tabindex=\\"0\\"
+    >
+      Invites
+      <div
+        aria-label=\\"There are 1 pending invitations.\\"
+        class=\\"ui red tiny circular floating label\\"
+        style=\\"top: 0.1em; right: 1em;\\"
+      >
+        1
+      </div>
+    </a>
+    <div
+      data-testid=\\"user-invites\\"
+    />
+  </div>
+</body>"
+`;
+
+exports[`NEW_INVITATION, open: true 1`] = `
+"<body
+  class=\\"dimmable dimmed\\"
+>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <a
+      class=\\"item\\"
+      tabindex=\\"0\\"
+    >
+      Invites
+      <div
+        aria-label=\\"There are 1 pending invitations.\\"
+        class=\\"ui red tiny circular floating label\\"
+        style=\\"top: 0.1em; right: 1em;\\"
+      >
+        1
+      </div>
+    </a>
+    <div
+      data-testid=\\"user-invites\\"
+    />
+  </div>
+  <div
+    class=\\"ui page modals dimmer transition visible active\\"
+    style=\\"display: flex;\\"
+  >
+    <div
+      aria-modal=\\"true\\"
+      class=\\"ui small modal transition visible active\\"
+      role=\\"dialog\\"
+    >
+      <i
+        aria-hidden=\\"true\\"
+        class=\\"close icon\\"
+      />
+      <div
+        class=\\"ui header\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"mail icon\\"
+        />
+        <div
+          class=\\"content\\"
+        >
+          Invites
+        </div>
+      </div>
+      <div
+        class=\\"u__invite-container content\\"
+      >
+        <div
+          class=\\"ui comments\\"
+        >
+          <div
+            data-testid=\\"user-invites-list\\"
+          />
+        </div>
+      </div>
+      <div
+        class=\\"actions\\"
+      >
+        <div
+          class=\\"ui grid\\"
+        >
+          <div
+            class=\\"row\\"
+          >
+            <div
+              class=\\"column\\"
+            >
+              <div
+                class=\\"ui fluid buttons\\"
+              >
+                <button
+                  class=\\"ui large button\\"
+                  tabindex=\\"0\\"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        data-testid=\\"modal-user-invites\\"
+      />
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`NEW_INVITATION, open: true 2`] = `
+"<body
+  class=\\"dimmable dimmed\\"
+>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <a
+      class=\\"item\\"
+      tabindex=\\"0\\"
+    >
+      Invites
+      <div
+        aria-label=\\"There are 1 pending invitations.\\"
+        class=\\"ui red tiny circular floating label\\"
+        style=\\"top: 0.1em; right: 1em;\\"
+      >
+        1
+      </div>
+    </a>
+    <div
+      data-testid=\\"user-invites\\"
+    />
+  </div>
+  <div
+    class=\\"ui page modals dimmer transition visible active\\"
+    style=\\"display: flex;\\"
+  >
+    <div
+      aria-modal=\\"true\\"
+      class=\\"ui small modal transition visible active\\"
+      role=\\"dialog\\"
+    >
+      <i
+        aria-hidden=\\"true\\"
+        class=\\"close icon\\"
+      />
+      <div
+        class=\\"ui header\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"mail icon\\"
+        />
+        <div
+          class=\\"content\\"
+        >
+          Invites
+        </div>
+      </div>
+      <div
+        class=\\"u__invite-container content\\"
+      >
+        <div
+          class=\\"ui comments\\"
+        >
+          <div
+            data-testid=\\"user-invites-list\\"
+          />
+        </div>
+      </div>
+      <div
+        class=\\"actions\\"
+      >
+        <div
+          class=\\"ui grid\\"
+        >
+          <div
+            class=\\"row\\"
+          >
+            <div
+              class=\\"column\\"
+            >
+              <div
+                class=\\"ui fluid buttons\\"
+              >
+                <button
+                  class=\\"ui large button\\"
+                  tabindex=\\"0\\"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        data-testid=\\"modal-user-invites\\"
+      />
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`NEW_INVITATION, valid rules 1`] = `
+"<body
+  class=\\"\\"
+>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <a
+      class=\\"item\\"
+      tabindex=\\"0\\"
+    >
+      Invites
+      <div
+        aria-label=\\"There are 1 pending invitations.\\"
+        class=\\"ui red tiny circular floating label\\"
+        style=\\"top: 0.1em; right: 1em;\\"
+      >
+        1
+      </div>
+    </a>
+    <div
+      data-testid=\\"user-invites\\"
+    />
+  </div>
+</body>"
+`;
+
+exports[`NEW_INVITATION, valid rules 2`] = `
+"<body
+  class=\\"\\"
+>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <a
+      class=\\"item\\"
+      tabindex=\\"0\\"
+    >
+      Invites
+      <div
+        aria-label=\\"There are 1 pending invitations.\\"
+        class=\\"ui red tiny circular floating label\\"
+        style=\\"top: 0.1em; right: 1em;\\"
+      >
+        1
+      </div>
+    </a>
+    <div
+      data-testid=\\"user-invites\\"
+    />
+  </div>
+</body>"
+`;
+
+exports[`NEW_INVITATION, valid rules, document.body is dimmed 1`] = `
+"<body
+  class=\\"dimmed\\"
+>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <a
+      class=\\"item\\"
+      tabindex=\\"0\\"
+    >
+      Invites
+      <div
+        aria-label=\\"There are 1 pending invitations.\\"
+        class=\\"ui red tiny circular floating label\\"
+        style=\\"top: 0.1em; right: 1em;\\"
+      >
+        1
+      </div>
+    </a>
+    <div
+      data-testid=\\"user-invites\\"
+    />
+  </div>
+</body>"
+`;
+
+exports[`NEW_INVITATION, valid rules, document.body is dimmed 2`] = `
+"<body
+  class=\\"dimmed\\"
+>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <a
+      class=\\"item\\"
+      tabindex=\\"0\\"
+    >
+      Invites
+      <div
+        aria-label=\\"There are 1 pending invitations.\\"
+        class=\\"ui red tiny circular floating label\\"
+        style=\\"top: 0.1em; right: 1em;\\"
+      >
+        1
+      </div>
+    </a>
+    <div
+      data-testid=\\"user-invites\\"
+    />
+  </div>
+</body>"
+`;
+
+exports[`NEW_INVITATION, valid rules, no html prop 1`] = `
+"<body
+  class=\\"dimmed\\"
+>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <a
+      class=\\"item\\"
+      tabindex=\\"0\\"
+    >
+      Invites
+      <div
+        aria-label=\\"There are 1 pending invitations.\\"
+        class=\\"ui red tiny circular floating label\\"
+        style=\\"top: 0.1em; right: 1em;\\"
+      >
+        1
+      </div>
+    </a>
+    <div
+      data-testid=\\"user-invites\\"
+    />
+  </div>
+</body>"
+`;
+
+exports[`NEW_INVITATION, valid rules, no html prop 2`] = `
+"<body
+  class=\\"dimmed\\"
+>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <a
+      class=\\"item\\"
+      tabindex=\\"0\\"
+    >
+      Invites
+      <div
+        aria-label=\\"There are 1 pending invitations.\\"
+        class=\\"ui red tiny circular floating label\\"
+        style=\\"top: 0.1em; right: 1em;\\"
+      >
+        1
+      </div>
+    </a>
+    <div
+      data-testid=\\"user-invites\\"
+    />
+  </div>
+</body>"
 `;

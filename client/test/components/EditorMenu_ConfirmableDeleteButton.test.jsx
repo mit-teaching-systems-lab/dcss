@@ -114,12 +114,10 @@ test('Render 1 1', async done => {
 
   userEvent.click(await screen.findByLabelText('Delete this disabled-false'));
   await waitForPopper();
-  jest.advanceTimersByTime(1000);
   expect(asFragment()).toMatchSnapshot();
 
   userEvent.click(await screen.findByRole('button', { name: /Yes/ }));
   await waitForPopper();
-  jest.advanceTimersByTime(1000);
   expect(asFragment()).toMatchSnapshot();
 
   expect(props.onConfirm.mock.calls.length).toBe(1);
@@ -127,12 +125,10 @@ test('Render 1 1', async done => {
 
   userEvent.click(await screen.findByLabelText('Delete this disabled-false'));
   await waitForPopper();
-  jest.advanceTimersByTime(1000);
   expect(asFragment()).toMatchSnapshot();
 
   userEvent.click(await screen.findByRole('button', { name: /No/ }));
   await waitForPopper();
-  jest.advanceTimersByTime(1000);
   expect(asFragment()).toMatchSnapshot();
 
   done();
@@ -160,7 +156,6 @@ test('Render 2 1', async done => {
 
   userEvent.click(await screen.findByLabelText('Delete this disabled-true'));
   await waitForPopper();
-  jest.advanceTimersByTime(1000);
   expect(asFragment()).toMatchSnapshot();
 
   done();

@@ -38563,7 +38563,3540 @@ exports[`Multiple personas, assign a persona to a component 5`] = `
 </body>"
 `;
 
-exports[`Multiple personas, toggle chat 1`] = `
+exports[`Multiple personas, toggle chat off 1`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <div
+      class=\\"ui grid\\"
+    >
+      <div
+        class=\\"stretched column\\"
+      >
+        <div
+          class=\\"row\\"
+        >
+          <div
+            class=\\"ui borderless icon em__height menu\\"
+            mode=\\"edit\\"
+          >
+            <a
+              class=\\"item slideeditormenu__slide-number-width header\\"
+              tabindex=\\"0\\"
+            >
+              2
+            </a>
+            <a
+              class=\\"item\\"
+            >
+              <div
+                class=\\"ui input\\"
+              >
+                <input
+                  id=\\"title-1\\"
+                  name=\\"title\\"
+                  placeholder=\\"Slide title\\"
+                  type=\\"text\\"
+                  value=\\"Slide 2\\"
+                />
+              </div>
+            </a>
+            <a
+              aria-label=\\"Save slide\\"
+              class=\\"item\\"
+              tabindex=\\"0\\"
+            >
+              <i
+                aria-hidden=\\"true\\"
+                class=\\"save outline icon\\"
+              />
+            </a>
+            <a
+              aria-label=\\"Delete this slide\\"
+              class=\\"item\\"
+              tabindex=\\"0\\"
+            >
+              <i
+                aria-hidden=\\"true\\"
+                class=\\"trash alternate outline icon\\"
+              />
+            </a>
+            <a
+              aria-label=\\"Duplicate slide\\"
+              class=\\"item\\"
+              tabindex=\\"0\\"
+            >
+              <i
+                aria-hidden=\\"true\\"
+                class=\\"copy outline icon\\"
+              />
+            </a>
+            <a
+              aria-label=\\"Preview slide\\"
+              class=\\"item\\"
+              tabindex=\\"0\\"
+            >
+              <i
+                aria-hidden=\\"true\\"
+                class=\\"eye icon\\"
+              />
+            </a>
+            <a
+              aria-label=\\"Enable real-time chat\\"
+              class=\\"item\\"
+              tabindex=\\"0\\"
+            >
+              <i
+                class=\\"icons em__icon-group-margin\\"
+              >
+                <i
+                  aria-hidden=\\"true\\"
+                  class=\\"black discussions icon\\"
+                />
+              </i>
+              Enable real-time chat
+            </a>
+          </div>
+        </div>
+        <div
+          class=\\"row\\"
+        >
+          <div
+            class=\\"ui two column grid\\"
+          >
+            <div
+              class=\\"row ser__component-pane\\"
+            >
+              <div
+                class=\\"column ser__component-layout-pane-outer\\"
+              >
+                <div
+                  class=\\"ui segment ser__component-layout-pane\\"
+                >
+                  <div
+                    class=\\"sortable__draggable-outer-container\\"
+                  >
+                    <div
+                      style=\\"opacity: 1;\\"
+                    >
+                      <div
+                        class=\\"ui segment sortable__selected sortable__component draggable\\"
+                        data-testid=\\"on-component-click\\"
+                      >
+                        <div
+                          class=\\"ui borderless icon em__height menu\\"
+                          index=\\"0\\"
+                        >
+                          <div
+                            class=\\"item ser__component-card\\"
+                            tabindex=\\"0\\"
+                          >
+                            <i
+                              aria-label=\\"Rich Text Editor\\"
+                              class=\\"edit icon\\"
+                            />
+                            <span
+                              class=\\"ser__component-name\\"
+                            >
+                              Rich Text Editor
+                            </span>
+                          </div>
+                          <a
+                            aria-label=\\"Save component\\"
+                            class=\\"item\\"
+                            tabindex=\\"0\\"
+                          >
+                            <i
+                              aria-hidden=\\"true\\"
+                              class=\\"save outline icon\\"
+                            />
+                          </a>
+                          <a
+                            aria-label=\\"Delete this component\\"
+                            class=\\"item\\"
+                            tabindex=\\"0\\"
+                          >
+                            <i
+                              aria-hidden=\\"true\\"
+                              class=\\"trash alternate outline icon\\"
+                            />
+                          </a>
+                          <a
+                            aria-label=\\"Duplicate this component\\"
+                            class=\\"item\\"
+                            tabindex=\\"0\\"
+                          >
+                            <i
+                              aria-hidden=\\"true\\"
+                              class=\\"copy outline icon\\"
+                            />
+                          </a>
+                          <div
+                            aria-expanded=\\"false\\"
+                            aria-label=\\"Select a persona\\"
+                            class=\\"ui item scrolling dropdown sp__dropdown\\"
+                            role=\\"listbox\\"
+                            tabindex=\\"0\\"
+                          >
+                            <div
+                              aria-atomic=\\"true\\"
+                              aria-live=\\"polite\\"
+                              class=\\"divider default text\\"
+                              role=\\"alert\\"
+                            >
+                              Select a persona
+                            </div>
+                            <i
+                              aria-hidden=\\"true\\"
+                              class=\\"dropdown icon\\"
+                            />
+                            <div
+                              class=\\"menu transition\\"
+                            >
+                              <div
+                                aria-checked=\\"false\\"
+                                aria-selected=\\"true\\"
+                                class=\\"selected item\\"
+                                role=\\"option\\"
+                                style=\\"pointer-events: all;\\"
+                              >
+                                <span
+                                  class=\\"text\\"
+                                >
+                                  No persona restriction
+                                </span>
+                              </div>
+                              <div
+                                aria-checked=\\"false\\"
+                                aria-selected=\\"false\\"
+                                class=\\"item\\"
+                                role=\\"option\\"
+                                style=\\"pointer-events: all;\\"
+                              >
+                                <table
+                                  class=\\"ui table\\"
+                                >
+                                  <thead
+                                    class=\\"\\"
+                                  >
+                                    <tr
+                                      class=\\"\\"
+                                    >
+                                      <th
+                                        class=\\"\\"
+                                        style=\\"color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);\\"
+                                      >
+                                        Participant
+                                      </th>
+                                    </tr>
+                                  </thead>
+                                  <tbody
+                                    class=\\"\\"
+                                  >
+                                    <tr
+                                      class=\\"\\"
+                                    >
+                                      <td
+                                        class=\\"\\"
+                                      >
+                                        The default user participating in a single person scenario.
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                              <div
+                                aria-checked=\\"false\\"
+                                aria-selected=\\"false\\"
+                                class=\\"item\\"
+                                role=\\"option\\"
+                                style=\\"pointer-events: all;\\"
+                              >
+                                <table
+                                  class=\\"ui table\\"
+                                >
+                                  <thead
+                                    class=\\"\\"
+                                  >
+                                    <tr
+                                      class=\\"\\"
+                                    >
+                                      <th
+                                        class=\\"\\"
+                                        style=\\"color: rgb(255, 255, 255); background-color: rgb(63, 89, 169);\\"
+                                      >
+                                        Teacher
+                                      </th>
+                                    </tr>
+                                  </thead>
+                                  <tbody
+                                    class=\\"\\"
+                                  >
+                                    <tr
+                                      class=\\"\\"
+                                    >
+                                      <td
+                                        class=\\"\\"
+                                      >
+                                        A non-specific teacher, participating in a multi person scenario.
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                              <div
+                                aria-checked=\\"false\\"
+                                aria-selected=\\"false\\"
+                                class=\\"item\\"
+                                role=\\"option\\"
+                                style=\\"pointer-events: all;\\"
+                              >
+                                <table
+                                  class=\\"ui table\\"
+                                >
+                                  <thead
+                                    class=\\"\\"
+                                  >
+                                    <tr
+                                      class=\\"\\"
+                                    >
+                                      <th
+                                        class=\\"\\"
+                                        style=\\"color: rgb(0, 0, 0); background-color: rgb(229, 146, 53);\\"
+                                      >
+                                        Student
+                                      </th>
+                                    </tr>
+                                  </thead>
+                                  <tbody
+                                    class=\\"\\"
+                                  >
+                                    <tr
+                                      class=\\"\\"
+                                    >
+                                      <td
+                                        class=\\"\\"
+                                      >
+                                        A non-specific student, participating in a multi person scenario.
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
+                          </div>
+                          <div
+                            class=\\"right menu movers\\"
+                            name=\\"Move component\\"
+                          >
+                            <div
+                              aria-label=\\"Move component\\"
+                              class=\\"icon item\\"
+                              tabindex=\\"0\\"
+                            >
+                              <i
+                                aria-hidden=\\"true\\"
+                                class=\\"move icon\\"
+                              />
+                              
+                            </div>
+                            <a
+                              aria-label=\\"Move component 1,  up\\"
+                              class=\\"disabled icon item\\"
+                              tabindex=\\"0\\"
+                            >
+                              <i
+                                aria-hidden=\\"true\\"
+                                class=\\"caret up icon\\"
+                              />
+                              
+                            </a>
+                            <a
+                              aria-label=\\"Move component 1,  down\\"
+                              class=\\"icon item\\"
+                              tabindex=\\"0\\"
+                            >
+                              <i
+                                aria-hidden=\\"true\\"
+                                class=\\"caret down icon\\"
+                              />
+                              
+                            </a>
+                          </div>
+                        </div>
+                        <textarea />
+                      </div>
+                    </div>
+                    <div
+                      style=\\"opacity: 1;\\"
+                    >
+                      <div
+                        class=\\"ui segment sortable__component draggable\\"
+                        data-testid=\\"on-component-click\\"
+                      >
+                        <div
+                          class=\\"ui borderless icon em__height menu\\"
+                          index=\\"1\\"
+                        >
+                          <div
+                            class=\\"item ser__component-card\\"
+                            tabindex=\\"0\\"
+                          >
+                            <i
+                              aria-label=\\"Prompt: Text Input\\"
+                              class=\\"keyboard icon\\"
+                            />
+                            <span
+                              class=\\"ser__component-name\\"
+                            >
+                              Prompt: Text Input
+                            </span>
+                          </div>
+                          <a
+                            aria-label=\\"Save component\\"
+                            class=\\"item\\"
+                            tabindex=\\"0\\"
+                          >
+                            <i
+                              aria-hidden=\\"true\\"
+                              class=\\"save outline icon\\"
+                            />
+                          </a>
+                          <a
+                            aria-label=\\"Delete this component\\"
+                            class=\\"item\\"
+                            tabindex=\\"0\\"
+                          >
+                            <i
+                              aria-hidden=\\"true\\"
+                              class=\\"trash alternate outline icon\\"
+                            />
+                          </a>
+                          <a
+                            aria-label=\\"Duplicate this component\\"
+                            class=\\"item\\"
+                            tabindex=\\"0\\"
+                          >
+                            <i
+                              aria-hidden=\\"true\\"
+                              class=\\"copy outline icon\\"
+                            />
+                          </a>
+                          <div
+                            aria-expanded=\\"false\\"
+                            aria-label=\\"Select a persona\\"
+                            class=\\"ui item scrolling dropdown sp__dropdown\\"
+                            role=\\"listbox\\"
+                            tabindex=\\"0\\"
+                          >
+                            <div
+                              aria-atomic=\\"true\\"
+                              aria-live=\\"polite\\"
+                              class=\\"divider default text\\"
+                              role=\\"alert\\"
+                            >
+                              Select a persona
+                            </div>
+                            <i
+                              aria-hidden=\\"true\\"
+                              class=\\"dropdown icon\\"
+                            />
+                            <div
+                              class=\\"menu transition\\"
+                            >
+                              <div
+                                aria-checked=\\"false\\"
+                                aria-selected=\\"true\\"
+                                class=\\"selected item\\"
+                                role=\\"option\\"
+                                style=\\"pointer-events: all;\\"
+                              >
+                                <span
+                                  class=\\"text\\"
+                                >
+                                  No persona restriction
+                                </span>
+                              </div>
+                              <div
+                                aria-checked=\\"false\\"
+                                aria-selected=\\"false\\"
+                                class=\\"item\\"
+                                role=\\"option\\"
+                                style=\\"pointer-events: all;\\"
+                              >
+                                <table
+                                  class=\\"ui table\\"
+                                >
+                                  <thead
+                                    class=\\"\\"
+                                  >
+                                    <tr
+                                      class=\\"\\"
+                                    >
+                                      <th
+                                        class=\\"\\"
+                                        style=\\"color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);\\"
+                                      >
+                                        Participant
+                                      </th>
+                                    </tr>
+                                  </thead>
+                                  <tbody
+                                    class=\\"\\"
+                                  >
+                                    <tr
+                                      class=\\"\\"
+                                    >
+                                      <td
+                                        class=\\"\\"
+                                      >
+                                        The default user participating in a single person scenario.
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                              <div
+                                aria-checked=\\"false\\"
+                                aria-selected=\\"false\\"
+                                class=\\"item\\"
+                                role=\\"option\\"
+                                style=\\"pointer-events: all;\\"
+                              >
+                                <table
+                                  class=\\"ui table\\"
+                                >
+                                  <thead
+                                    class=\\"\\"
+                                  >
+                                    <tr
+                                      class=\\"\\"
+                                    >
+                                      <th
+                                        class=\\"\\"
+                                        style=\\"color: rgb(255, 255, 255); background-color: rgb(63, 89, 169);\\"
+                                      >
+                                        Teacher
+                                      </th>
+                                    </tr>
+                                  </thead>
+                                  <tbody
+                                    class=\\"\\"
+                                  >
+                                    <tr
+                                      class=\\"\\"
+                                    >
+                                      <td
+                                        class=\\"\\"
+                                      >
+                                        A non-specific teacher, participating in a multi person scenario.
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                              <div
+                                aria-checked=\\"false\\"
+                                aria-selected=\\"false\\"
+                                class=\\"item\\"
+                                role=\\"option\\"
+                                style=\\"pointer-events: all;\\"
+                              >
+                                <table
+                                  class=\\"ui table\\"
+                                >
+                                  <thead
+                                    class=\\"\\"
+                                  >
+                                    <tr
+                                      class=\\"\\"
+                                    >
+                                      <th
+                                        class=\\"\\"
+                                        style=\\"color: rgb(0, 0, 0); background-color: rgb(229, 146, 53);\\"
+                                      >
+                                        Student
+                                      </th>
+                                    </tr>
+                                  </thead>
+                                  <tbody
+                                    class=\\"\\"
+                                  >
+                                    <tr
+                                      class=\\"\\"
+                                    >
+                                      <td
+                                        class=\\"\\"
+                                      >
+                                        A non-specific student, participating in a multi person scenario.
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
+                          </div>
+                          <a
+                            class=\\"item\\"
+                            id=\\"4b9b8ee599a358c925f4753ccde931546c0b64e2\\"
+                            tabindex=\\"0\\"
+                          >
+                            <div
+                              class=\\"ui checked checkbox\\"
+                            >
+                              <input
+                                aria-labelledby=\\"4b9b8ee599a358c925f4753ccde931546c0b64e2\\"
+                                checked=\\"\\"
+                                class=\\"hidden\\"
+                                name=\\"required\\"
+                                readonly=\\"\\"
+                                tabindex=\\"0\\"
+                                type=\\"checkbox\\"
+                                value=\\"\\"
+                              />
+                              <label>
+                                Required?
+                              </label>
+                            </div>
+                          </a>
+                        </div>
+                        <form
+                          class=\\"ui form\\"
+                        >
+                          <div
+                            class=\\"ui fluid container\\"
+                          >
+                            <div
+                              class=\\"field\\"
+                            >
+                              <label>
+                                Optional prompt to display before the input:
+                              </label>
+                              <textarea
+                                aria-label=\\"Optional prompt to display before the input:\\"
+                                name=\\"prompt\\"
+                                rows=\\"1\\"
+                              />
+                            </div>
+                            <div
+                              class=\\"field\\"
+                            >
+                              <label>
+                                Placeholder text displayed inside the input:
+                              </label>
+                              <div
+                                class=\\"ui input\\"
+                              >
+                                <input
+                                  aria-label=\\"Placeholder text displayed inside the input:\\"
+                                  name=\\"placeholder\\"
+                                  type=\\"text\\"
+                                  value=\\"\\"
+                                />
+                              </div>
+                            </div>
+                            <div
+                              class=\\"field\\"
+                            >
+                              <label>
+                                Optional AI agent to receive responses:
+                              </label>
+                              <div
+                                aria-expanded=\\"false\\"
+                                aria-label=\\"Select an agent\\"
+                                class=\\"ui fluid search selection scrolling dropdown\\"
+                                role=\\"combobox\\"
+                              >
+                                <input
+                                  aria-autocomplete=\\"list\\"
+                                  autocomplete=\\"off\\"
+                                  class=\\"search\\"
+                                  tabindex=\\"0\\"
+                                  type=\\"text\\"
+                                  value=\\"\\"
+                                />
+                                <div
+                                  aria-atomic=\\"true\\"
+                                  aria-live=\\"polite\\"
+                                  class=\\"divider default text\\"
+                                  role=\\"alert\\"
+                                >
+                                  Select an agent
+                                </div>
+                                <i
+                                  aria-hidden=\\"true\\"
+                                  class=\\"dropdown icon\\"
+                                />
+                                <div
+                                  class=\\"menu transition\\"
+                                  role=\\"listbox\\"
+                                >
+                                  <div
+                                    aria-checked=\\"false\\"
+                                    aria-selected=\\"true\\"
+                                    class=\\"selected item\\"
+                                    role=\\"option\\"
+                                    style=\\"pointer-events: all;\\"
+                                  >
+                                    <span
+                                      class=\\"text\\"
+                                    >
+                                      No selection
+                                    </span>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div
+                              class=\\"ui grey message\\"
+                            >
+                              <div
+                                class=\\"content\\"
+                              >
+                                <div
+                                  class=\\"required field\\"
+                                >
+                                  <label>
+                                    Data header
+                                  </label>
+                                  <div
+                                    class=\\"ui input\\"
+                                  >
+                                    <input
+                                      name=\\"header\\"
+                                      required=\\"\\"
+                                      type=\\"text\\"
+                                      value=\\"TextResponse-1\\"
+                                    />
+                                  </div>
+                                </div>
+                                This will only appear in data downloads, as the column header or row name.
+                              </div>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                    <div
+                      style=\\"opacity: 1;\\"
+                    >
+                      <div
+                        class=\\"ui segment sortable__component draggable\\"
+                        data-testid=\\"on-component-click\\"
+                      >
+                        <div
+                          class=\\"ui borderless icon em__height menu\\"
+                          index=\\"2\\"
+                        >
+                          <div
+                            class=\\"item ser__component-card\\"
+                            tabindex=\\"0\\"
+                          >
+                            <i
+                              aria-label=\\"Rich Text Editor\\"
+                              class=\\"edit icon\\"
+                            />
+                            <span
+                              class=\\"ser__component-name\\"
+                            >
+                              Rich Text Editor
+                            </span>
+                          </div>
+                          <a
+                            aria-label=\\"Save component\\"
+                            class=\\"item\\"
+                            tabindex=\\"0\\"
+                          >
+                            <i
+                              aria-hidden=\\"true\\"
+                              class=\\"save outline icon\\"
+                            />
+                          </a>
+                          <a
+                            aria-label=\\"Delete this component\\"
+                            class=\\"item\\"
+                            tabindex=\\"0\\"
+                          >
+                            <i
+                              aria-hidden=\\"true\\"
+                              class=\\"trash alternate outline icon\\"
+                            />
+                          </a>
+                          <a
+                            aria-label=\\"Duplicate this component\\"
+                            class=\\"item\\"
+                            tabindex=\\"0\\"
+                          >
+                            <i
+                              aria-hidden=\\"true\\"
+                              class=\\"copy outline icon\\"
+                            />
+                          </a>
+                          <div
+                            aria-expanded=\\"false\\"
+                            aria-label=\\"Select a persona\\"
+                            class=\\"ui item scrolling dropdown sp__dropdown\\"
+                            role=\\"listbox\\"
+                            tabindex=\\"0\\"
+                          >
+                            <div
+                              aria-atomic=\\"true\\"
+                              aria-live=\\"polite\\"
+                              class=\\"divider default text\\"
+                              role=\\"alert\\"
+                            >
+                              Select a persona
+                            </div>
+                            <i
+                              aria-hidden=\\"true\\"
+                              class=\\"dropdown icon\\"
+                            />
+                            <div
+                              class=\\"menu transition\\"
+                            >
+                              <div
+                                aria-checked=\\"false\\"
+                                aria-selected=\\"true\\"
+                                class=\\"selected item\\"
+                                role=\\"option\\"
+                                style=\\"pointer-events: all;\\"
+                              >
+                                <span
+                                  class=\\"text\\"
+                                >
+                                  No persona restriction
+                                </span>
+                              </div>
+                              <div
+                                aria-checked=\\"false\\"
+                                aria-selected=\\"false\\"
+                                class=\\"item\\"
+                                role=\\"option\\"
+                                style=\\"pointer-events: all;\\"
+                              >
+                                <table
+                                  class=\\"ui table\\"
+                                >
+                                  <thead
+                                    class=\\"\\"
+                                  >
+                                    <tr
+                                      class=\\"\\"
+                                    >
+                                      <th
+                                        class=\\"\\"
+                                        style=\\"color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);\\"
+                                      >
+                                        Participant
+                                      </th>
+                                    </tr>
+                                  </thead>
+                                  <tbody
+                                    class=\\"\\"
+                                  >
+                                    <tr
+                                      class=\\"\\"
+                                    >
+                                      <td
+                                        class=\\"\\"
+                                      >
+                                        The default user participating in a single person scenario.
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                              <div
+                                aria-checked=\\"false\\"
+                                aria-selected=\\"false\\"
+                                class=\\"item\\"
+                                role=\\"option\\"
+                                style=\\"pointer-events: all;\\"
+                              >
+                                <table
+                                  class=\\"ui table\\"
+                                >
+                                  <thead
+                                    class=\\"\\"
+                                  >
+                                    <tr
+                                      class=\\"\\"
+                                    >
+                                      <th
+                                        class=\\"\\"
+                                        style=\\"color: rgb(255, 255, 255); background-color: rgb(63, 89, 169);\\"
+                                      >
+                                        Teacher
+                                      </th>
+                                    </tr>
+                                  </thead>
+                                  <tbody
+                                    class=\\"\\"
+                                  >
+                                    <tr
+                                      class=\\"\\"
+                                    >
+                                      <td
+                                        class=\\"\\"
+                                      >
+                                        A non-specific teacher, participating in a multi person scenario.
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                              <div
+                                aria-checked=\\"false\\"
+                                aria-selected=\\"false\\"
+                                class=\\"item\\"
+                                role=\\"option\\"
+                                style=\\"pointer-events: all;\\"
+                              >
+                                <table
+                                  class=\\"ui table\\"
+                                >
+                                  <thead
+                                    class=\\"\\"
+                                  >
+                                    <tr
+                                      class=\\"\\"
+                                    >
+                                      <th
+                                        class=\\"\\"
+                                        style=\\"color: rgb(0, 0, 0); background-color: rgb(229, 146, 53);\\"
+                                      >
+                                        Student
+                                      </th>
+                                    </tr>
+                                  </thead>
+                                  <tbody
+                                    class=\\"\\"
+                                  >
+                                    <tr
+                                      class=\\"\\"
+                                    >
+                                      <td
+                                        class=\\"\\"
+                                      >
+                                        A non-specific student, participating in a multi person scenario.
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <textarea />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class=\\"column ser__component-select-pane-outer\\"
+              >
+                <div
+                  class=\\"ui fluid vertical ser__component-select menu\\"
+                >
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Rich Text Editor\\"
+                      class=\\"edit icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Rich Text Editor
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Participant Suggestion\\"
+                      class=\\"info icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Participant Suggestion
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Embed Previous Response\\"
+                      class=\\"comment alternate outline icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Embed Previous Response
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Conditional Content\\"
+                      class=\\"flask icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Conditional Content
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Audio Input\\"
+                      class=\\"microphone icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Audio Input
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Choose Next Slide\\"
+                      class=\\"fork clockwise rotated icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Choose Next Slide
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Conversation\\"
+                      class=\\"conversation icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Conversation
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Multiple Buttons\\"
+                      class=\\"hand pointer outline icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Multiple Buttons
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Text Input\\"
+                      class=\\"keyboard icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Text Input
+                    </span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`Multiple personas, toggle chat off 2`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <div
+      class=\\"ui grid\\"
+    >
+      <div
+        class=\\"stretched column\\"
+      >
+        <div
+          class=\\"row\\"
+        >
+          <div
+            class=\\"ui borderless icon em__height menu\\"
+            mode=\\"edit\\"
+          >
+            <a
+              class=\\"item slideeditormenu__slide-number-width header\\"
+              tabindex=\\"0\\"
+            >
+              2
+            </a>
+            <a
+              class=\\"item\\"
+            >
+              <div
+                class=\\"ui input\\"
+              >
+                <input
+                  id=\\"title-1\\"
+                  name=\\"title\\"
+                  placeholder=\\"Slide title\\"
+                  type=\\"text\\"
+                  value=\\"Slide 2\\"
+                />
+              </div>
+            </a>
+            <a
+              aria-label=\\"Save slide\\"
+              class=\\"item\\"
+              tabindex=\\"0\\"
+            >
+              <i
+                aria-hidden=\\"true\\"
+                class=\\"save outline icon\\"
+              />
+            </a>
+            <a
+              aria-label=\\"Delete this slide\\"
+              class=\\"item\\"
+              tabindex=\\"0\\"
+            >
+              <i
+                aria-hidden=\\"true\\"
+                class=\\"trash alternate outline icon\\"
+              />
+            </a>
+            <a
+              aria-label=\\"Duplicate slide\\"
+              class=\\"item\\"
+              tabindex=\\"0\\"
+            >
+              <i
+                aria-hidden=\\"true\\"
+                class=\\"copy outline icon\\"
+              />
+            </a>
+            <a
+              aria-label=\\"Preview slide\\"
+              class=\\"item\\"
+              tabindex=\\"0\\"
+            >
+              <i
+                aria-hidden=\\"true\\"
+                class=\\"eye icon\\"
+              />
+            </a>
+            <a
+              aria-label=\\"Disable real-time chat\\"
+              class=\\"item\\"
+              tabindex=\\"0\\"
+            >
+              <i
+                class=\\"icons em__icon-group-margin\\"
+              >
+                <i
+                  aria-hidden=\\"true\\"
+                  class=\\"green discussions icon\\"
+                />
+              </i>
+              Disable real-time chat
+            </a>
+          </div>
+        </div>
+        <div
+          class=\\"row\\"
+        >
+          <div
+            class=\\"ui two column grid\\"
+          >
+            <div
+              class=\\"row ser__component-pane\\"
+            >
+              <div
+                class=\\"column ser__component-layout-pane-outer\\"
+              >
+                <div
+                  class=\\"ui segment ser__component-layout-pane\\"
+                >
+                  <div
+                    class=\\"sortable__draggable-outer-container\\"
+                  >
+                    <div
+                      class=\\"ui segment sortable__selected sortable__component\\"
+                      data-testid=\\"on-component-click\\"
+                    >
+                      <div
+                        class=\\"ui borderless icon em__height menu\\"
+                        index=\\"0\\"
+                      >
+                        <div
+                          class=\\"item ser__component-card\\"
+                          tabindex=\\"0\\"
+                        >
+                          <i
+                            aria-label=\\"Chat\\"
+                            class=\\"chat icon\\"
+                          />
+                          <span
+                            class=\\"ser__component-name\\"
+                          >
+                            Chat
+                          </span>
+                        </div>
+                        <a
+                          class=\\"item\\"
+                          id=\\"551536122beb9d13e80040482ec628ce1473ef8a\\"
+                          tabindex=\\"0\\"
+                        >
+                          <div
+                            class=\\"ui checkbox\\"
+                          >
+                            <input
+                              aria-labelledby=\\"551536122beb9d13e80040482ec628ce1473ef8a\\"
+                              class=\\"hidden\\"
+                              name=\\"required\\"
+                              readonly=\\"\\"
+                              tabindex=\\"0\\"
+                              type=\\"checkbox\\"
+                              value=\\"\\"
+                            />
+                            <label>
+                              Required
+                            </label>
+                          </div>
+                        </a>
+                      </div>
+                      <form
+                        class=\\"ui form\\"
+                      >
+                        <div
+                          class=\\"ui fluid container\\"
+                        >
+                          <div
+                            class=\\"ui grid\\"
+                          >
+                            <div
+                              class=\\"two column row\\"
+                            >
+                              <div
+                                class=\\"column\\"
+                              >
+                                <div
+                                  class=\\"field\\"
+                                >
+                                  <label
+                                    for=\\"timeout\\"
+                                  >
+                                    Max duration for this discussion:
+                                  </label>
+                                  <div
+                                    class=\\"ui input\\"
+                                  >
+                                    <input
+                                      id=\\"timeout\\"
+                                      name=\\"timeout\\"
+                                      style=\\"width: 54px;\\"
+                                      type=\\"text\\"
+                                      value=\\"00:00:00\\"
+                                    />
+                                  </div>
+                                </div>
+                              </div>
+                              <div
+                                class=\\"column cpe__displaytime-outer\\"
+                              >
+                                <span
+                                  class=\\"ui large text\\"
+                                >
+                                    
+                                </span>
+                              </div>
+                            </div>
+                            <div
+                              class=\\"one column row cpe__gridrow\\"
+                            >
+                              <div
+                                class=\\"column\\"
+                              >
+                                <div
+                                  class=\\"field\\"
+                                >
+                                  <div
+                                    class=\\"ui checked checkbox\\"
+                                  >
+                                    <input
+                                      checked=\\"\\"
+                                      class=\\"hidden\\"
+                                      id=\\"auto\\"
+                                      name=\\"auto\\"
+                                      readonly=\\"\\"
+                                      tabindex=\\"0\\"
+                                      type=\\"checkbox\\"
+                                      value=\\"\\"
+                                    />
+                                    <label
+                                      for=\\"auto\\"
+                                    >
+                                      Automatically start the discussion timer when participants arrive?
+                                    </label>
+                                  </div>
+                                </div>
+                                <div
+                                  class=\\"ui segment\\"
+                                >
+                                  <p
+                                    class=\\"cpe__paragraph\\"
+                                    tabindex=\\"0\\"
+                                  >
+                                    <i
+                                      aria-hidden=\\"true\\"
+                                      class=\\"attention icon\\"
+                                    />
+                                    Set the timeout to 00:00:00 for an unlimited discussion time.
+                                  </p>
+                                  <p
+                                    class=\\"cpe__paragraph\\"
+                                    tabindex=\\"0\\"
+                                  >
+                                    <i
+                                      aria-hidden=\\"true\\"
+                                      class=\\"attention icon\\"
+                                    />
+                                    If the timeout is set, the discussion will be marked
+                                     
+                                    <strong>
+                                      Required
+                                    </strong>
+                                    . This ensures that participants cannot move forward until completing the discussion. Hosts will be able to override the timeout.
+                                  </p>
+                                  <p
+                                    class=\\"cpe__paragraph\\"
+                                    tabindex=\\"0\\"
+                                  >
+                                    <i
+                                      aria-hidden=\\"true\\"
+                                      class=\\"attention icon\\"
+                                    />
+                                    If no timeout is set and this chat is set to
+                                     
+                                    <strong>
+                                      Required
+                                    </strong>
+                                    , the host 
+                                    <strong>
+                                      must
+                                    </strong>
+                                     
+                                    close the discussion before participants can proceed. If no timeout is set and this chat is not
+                                     
+                                    <strong>
+                                      not Required
+                                    </strong>
+                                    , the discussion can be optionally closed.
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                            <div
+                              class=\\"one column row\\"
+                            >
+                              <div
+                                class=\\"column\\"
+                              >
+                                <div
+                                  class=\\"field\\"
+                                >
+                                  <label>
+                                    Optional prompt to display for this discussion:
+                                  </label>
+                                  <textarea
+                                    aria-label=\\"Optional prompt to display for this discussion:\\"
+                                    name=\\"prompt\\"
+                                    rows=\\"1\\"
+                                  />
+                                </div>
+                                <div
+                                  class=\\"field\\"
+                                >
+                                  <label>
+                                    Optional AI agent to engage in this discussion:
+                                  </label>
+                                  <div
+                                    aria-expanded=\\"false\\"
+                                    aria-label=\\"Select an agent\\"
+                                    class=\\"ui fluid search selection scrolling dropdown\\"
+                                    role=\\"combobox\\"
+                                  >
+                                    <input
+                                      aria-autocomplete=\\"list\\"
+                                      autocomplete=\\"off\\"
+                                      class=\\"search\\"
+                                      tabindex=\\"0\\"
+                                      type=\\"text\\"
+                                      value=\\"\\"
+                                    />
+                                    <div
+                                      aria-atomic=\\"true\\"
+                                      aria-live=\\"polite\\"
+                                      class=\\"divider default text\\"
+                                      role=\\"alert\\"
+                                    >
+                                      Select an agent
+                                    </div>
+                                    <i
+                                      aria-hidden=\\"true\\"
+                                      class=\\"dropdown icon\\"
+                                    />
+                                    <div
+                                      class=\\"menu transition\\"
+                                      role=\\"listbox\\"
+                                    >
+                                      <div
+                                        aria-checked=\\"false\\"
+                                        aria-selected=\\"true\\"
+                                        class=\\"selected item\\"
+                                        role=\\"option\\"
+                                        style=\\"pointer-events: all;\\"
+                                      >
+                                        <span
+                                          class=\\"text\\"
+                                        >
+                                          No selection
+                                        </span>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div
+                            class=\\"ui grey message\\"
+                          >
+                            <div
+                              class=\\"content\\"
+                            >
+                              <div
+                                class=\\"required field\\"
+                              >
+                                <label>
+                                  Data header
+                                </label>
+                                <div
+                                  class=\\"ui input\\"
+                                >
+                                  <input
+                                    name=\\"header\\"
+                                    required=\\"\\"
+                                    type=\\"text\\"
+                                    value=\\"Slide 2-ChatPrompt-0\\"
+                                  />
+                                </div>
+                              </div>
+                              This will only appear in data downloads, as the column header or row name.
+                            </div>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                    <div
+                      style=\\"opacity: 1;\\"
+                    >
+                      <div
+                        class=\\"ui segment sortable__component draggable\\"
+                        data-testid=\\"on-component-click\\"
+                      >
+                        <div
+                          class=\\"ui borderless icon em__height menu\\"
+                          index=\\"1\\"
+                        >
+                          <div
+                            class=\\"item ser__component-card\\"
+                            tabindex=\\"0\\"
+                          >
+                            <i
+                              aria-label=\\"Rich Text Editor\\"
+                              class=\\"edit icon\\"
+                            />
+                            <span
+                              class=\\"ser__component-name\\"
+                            >
+                              Rich Text Editor
+                            </span>
+                          </div>
+                          <a
+                            aria-label=\\"Save component\\"
+                            class=\\"item\\"
+                            tabindex=\\"0\\"
+                          >
+                            <i
+                              aria-hidden=\\"true\\"
+                              class=\\"save outline icon\\"
+                            />
+                          </a>
+                          <a
+                            aria-label=\\"Delete this component\\"
+                            class=\\"item\\"
+                            tabindex=\\"0\\"
+                          >
+                            <i
+                              aria-hidden=\\"true\\"
+                              class=\\"trash alternate outline icon\\"
+                            />
+                          </a>
+                          <a
+                            aria-label=\\"Duplicate this component\\"
+                            class=\\"item\\"
+                            tabindex=\\"0\\"
+                          >
+                            <i
+                              aria-hidden=\\"true\\"
+                              class=\\"copy outline icon\\"
+                            />
+                          </a>
+                          <div
+                            aria-expanded=\\"false\\"
+                            aria-label=\\"Select a persona\\"
+                            class=\\"ui item scrolling dropdown sp__dropdown\\"
+                            role=\\"listbox\\"
+                            tabindex=\\"0\\"
+                          >
+                            <div
+                              aria-atomic=\\"true\\"
+                              aria-live=\\"polite\\"
+                              class=\\"divider default text\\"
+                              role=\\"alert\\"
+                            >
+                              Select a persona
+                            </div>
+                            <i
+                              aria-hidden=\\"true\\"
+                              class=\\"dropdown icon\\"
+                            />
+                            <div
+                              class=\\"menu transition\\"
+                            >
+                              <div
+                                aria-checked=\\"false\\"
+                                aria-selected=\\"true\\"
+                                class=\\"selected item\\"
+                                role=\\"option\\"
+                                style=\\"pointer-events: all;\\"
+                              >
+                                <span
+                                  class=\\"text\\"
+                                >
+                                  No persona restriction
+                                </span>
+                              </div>
+                              <div
+                                aria-checked=\\"false\\"
+                                aria-selected=\\"false\\"
+                                class=\\"item\\"
+                                role=\\"option\\"
+                                style=\\"pointer-events: all;\\"
+                              >
+                                <table
+                                  class=\\"ui table\\"
+                                >
+                                  <thead
+                                    class=\\"\\"
+                                  >
+                                    <tr
+                                      class=\\"\\"
+                                    >
+                                      <th
+                                        class=\\"\\"
+                                        style=\\"color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);\\"
+                                      >
+                                        Participant
+                                      </th>
+                                    </tr>
+                                  </thead>
+                                  <tbody
+                                    class=\\"\\"
+                                  >
+                                    <tr
+                                      class=\\"\\"
+                                    >
+                                      <td
+                                        class=\\"\\"
+                                      >
+                                        The default user participating in a single person scenario.
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                              <div
+                                aria-checked=\\"false\\"
+                                aria-selected=\\"false\\"
+                                class=\\"item\\"
+                                role=\\"option\\"
+                                style=\\"pointer-events: all;\\"
+                              >
+                                <table
+                                  class=\\"ui table\\"
+                                >
+                                  <thead
+                                    class=\\"\\"
+                                  >
+                                    <tr
+                                      class=\\"\\"
+                                    >
+                                      <th
+                                        class=\\"\\"
+                                        style=\\"color: rgb(255, 255, 255); background-color: rgb(63, 89, 169);\\"
+                                      >
+                                        Teacher
+                                      </th>
+                                    </tr>
+                                  </thead>
+                                  <tbody
+                                    class=\\"\\"
+                                  >
+                                    <tr
+                                      class=\\"\\"
+                                    >
+                                      <td
+                                        class=\\"\\"
+                                      >
+                                        A non-specific teacher, participating in a multi person scenario.
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                              <div
+                                aria-checked=\\"false\\"
+                                aria-selected=\\"false\\"
+                                class=\\"item\\"
+                                role=\\"option\\"
+                                style=\\"pointer-events: all;\\"
+                              >
+                                <table
+                                  class=\\"ui table\\"
+                                >
+                                  <thead
+                                    class=\\"\\"
+                                  >
+                                    <tr
+                                      class=\\"\\"
+                                    >
+                                      <th
+                                        class=\\"\\"
+                                        style=\\"color: rgb(0, 0, 0); background-color: rgb(229, 146, 53);\\"
+                                      >
+                                        Student
+                                      </th>
+                                    </tr>
+                                  </thead>
+                                  <tbody
+                                    class=\\"\\"
+                                  >
+                                    <tr
+                                      class=\\"\\"
+                                    >
+                                      <td
+                                        class=\\"\\"
+                                      >
+                                        A non-specific student, participating in a multi person scenario.
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <textarea />
+                      </div>
+                    </div>
+                    <div
+                      style=\\"opacity: 1;\\"
+                    >
+                      <div
+                        class=\\"ui segment sortable__component draggable\\"
+                        data-testid=\\"on-component-click\\"
+                      >
+                        <div
+                          class=\\"ui borderless icon em__height menu\\"
+                          index=\\"2\\"
+                        >
+                          <div
+                            class=\\"item ser__component-card\\"
+                            tabindex=\\"0\\"
+                          >
+                            <i
+                              aria-label=\\"Prompt: Text Input\\"
+                              class=\\"keyboard icon\\"
+                            />
+                            <span
+                              class=\\"ser__component-name\\"
+                            >
+                              Prompt: Text Input
+                            </span>
+                          </div>
+                          <a
+                            aria-label=\\"Save component\\"
+                            class=\\"item\\"
+                            tabindex=\\"0\\"
+                          >
+                            <i
+                              aria-hidden=\\"true\\"
+                              class=\\"save outline icon\\"
+                            />
+                          </a>
+                          <a
+                            aria-label=\\"Delete this component\\"
+                            class=\\"item\\"
+                            tabindex=\\"0\\"
+                          >
+                            <i
+                              aria-hidden=\\"true\\"
+                              class=\\"trash alternate outline icon\\"
+                            />
+                          </a>
+                          <a
+                            aria-label=\\"Duplicate this component\\"
+                            class=\\"item\\"
+                            tabindex=\\"0\\"
+                          >
+                            <i
+                              aria-hidden=\\"true\\"
+                              class=\\"copy outline icon\\"
+                            />
+                          </a>
+                          <div
+                            aria-expanded=\\"false\\"
+                            aria-label=\\"Select a persona\\"
+                            class=\\"ui item scrolling dropdown sp__dropdown\\"
+                            role=\\"listbox\\"
+                            tabindex=\\"0\\"
+                          >
+                            <div
+                              aria-atomic=\\"true\\"
+                              aria-live=\\"polite\\"
+                              class=\\"divider default text\\"
+                              role=\\"alert\\"
+                            >
+                              Select a persona
+                            </div>
+                            <i
+                              aria-hidden=\\"true\\"
+                              class=\\"dropdown icon\\"
+                            />
+                            <div
+                              class=\\"menu transition\\"
+                            >
+                              <div
+                                aria-checked=\\"false\\"
+                                aria-selected=\\"true\\"
+                                class=\\"selected item\\"
+                                role=\\"option\\"
+                                style=\\"pointer-events: all;\\"
+                              >
+                                <span
+                                  class=\\"text\\"
+                                >
+                                  No persona restriction
+                                </span>
+                              </div>
+                              <div
+                                aria-checked=\\"false\\"
+                                aria-selected=\\"false\\"
+                                class=\\"item\\"
+                                role=\\"option\\"
+                                style=\\"pointer-events: all;\\"
+                              >
+                                <table
+                                  class=\\"ui table\\"
+                                >
+                                  <thead
+                                    class=\\"\\"
+                                  >
+                                    <tr
+                                      class=\\"\\"
+                                    >
+                                      <th
+                                        class=\\"\\"
+                                        style=\\"color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);\\"
+                                      >
+                                        Participant
+                                      </th>
+                                    </tr>
+                                  </thead>
+                                  <tbody
+                                    class=\\"\\"
+                                  >
+                                    <tr
+                                      class=\\"\\"
+                                    >
+                                      <td
+                                        class=\\"\\"
+                                      >
+                                        The default user participating in a single person scenario.
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                              <div
+                                aria-checked=\\"false\\"
+                                aria-selected=\\"false\\"
+                                class=\\"item\\"
+                                role=\\"option\\"
+                                style=\\"pointer-events: all;\\"
+                              >
+                                <table
+                                  class=\\"ui table\\"
+                                >
+                                  <thead
+                                    class=\\"\\"
+                                  >
+                                    <tr
+                                      class=\\"\\"
+                                    >
+                                      <th
+                                        class=\\"\\"
+                                        style=\\"color: rgb(255, 255, 255); background-color: rgb(63, 89, 169);\\"
+                                      >
+                                        Teacher
+                                      </th>
+                                    </tr>
+                                  </thead>
+                                  <tbody
+                                    class=\\"\\"
+                                  >
+                                    <tr
+                                      class=\\"\\"
+                                    >
+                                      <td
+                                        class=\\"\\"
+                                      >
+                                        A non-specific teacher, participating in a multi person scenario.
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                              <div
+                                aria-checked=\\"false\\"
+                                aria-selected=\\"false\\"
+                                class=\\"item\\"
+                                role=\\"option\\"
+                                style=\\"pointer-events: all;\\"
+                              >
+                                <table
+                                  class=\\"ui table\\"
+                                >
+                                  <thead
+                                    class=\\"\\"
+                                  >
+                                    <tr
+                                      class=\\"\\"
+                                    >
+                                      <th
+                                        class=\\"\\"
+                                        style=\\"color: rgb(0, 0, 0); background-color: rgb(229, 146, 53);\\"
+                                      >
+                                        Student
+                                      </th>
+                                    </tr>
+                                  </thead>
+                                  <tbody
+                                    class=\\"\\"
+                                  >
+                                    <tr
+                                      class=\\"\\"
+                                    >
+                                      <td
+                                        class=\\"\\"
+                                      >
+                                        A non-specific student, participating in a multi person scenario.
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
+                          </div>
+                          <a
+                            class=\\"item\\"
+                            id=\\"64297ed8c61c3fa95db14217a1145690b973da3f\\"
+                            tabindex=\\"0\\"
+                          >
+                            <div
+                              class=\\"ui checked checkbox\\"
+                            >
+                              <input
+                                aria-labelledby=\\"64297ed8c61c3fa95db14217a1145690b973da3f\\"
+                                checked=\\"\\"
+                                class=\\"hidden\\"
+                                name=\\"required\\"
+                                readonly=\\"\\"
+                                tabindex=\\"0\\"
+                                type=\\"checkbox\\"
+                                value=\\"\\"
+                              />
+                              <label>
+                                Required?
+                              </label>
+                            </div>
+                          </a>
+                        </div>
+                        <form
+                          class=\\"ui form\\"
+                        >
+                          <div
+                            class=\\"ui fluid container\\"
+                          >
+                            <div
+                              class=\\"field\\"
+                            >
+                              <label>
+                                Optional prompt to display before the input:
+                              </label>
+                              <textarea
+                                aria-label=\\"Optional prompt to display before the input:\\"
+                                name=\\"prompt\\"
+                                rows=\\"1\\"
+                              />
+                            </div>
+                            <div
+                              class=\\"field\\"
+                            >
+                              <label>
+                                Placeholder text displayed inside the input:
+                              </label>
+                              <div
+                                class=\\"ui input\\"
+                              >
+                                <input
+                                  aria-label=\\"Placeholder text displayed inside the input:\\"
+                                  name=\\"placeholder\\"
+                                  type=\\"text\\"
+                                  value=\\"\\"
+                                />
+                              </div>
+                            </div>
+                            <div
+                              class=\\"field\\"
+                            >
+                              <label>
+                                Optional AI agent to receive responses:
+                              </label>
+                              <div
+                                aria-expanded=\\"false\\"
+                                aria-label=\\"Select an agent\\"
+                                class=\\"ui fluid search selection scrolling dropdown\\"
+                                role=\\"combobox\\"
+                              >
+                                <input
+                                  aria-autocomplete=\\"list\\"
+                                  autocomplete=\\"off\\"
+                                  class=\\"search\\"
+                                  tabindex=\\"0\\"
+                                  type=\\"text\\"
+                                  value=\\"\\"
+                                />
+                                <div
+                                  aria-atomic=\\"true\\"
+                                  aria-live=\\"polite\\"
+                                  class=\\"divider default text\\"
+                                  role=\\"alert\\"
+                                >
+                                  Select an agent
+                                </div>
+                                <i
+                                  aria-hidden=\\"true\\"
+                                  class=\\"dropdown icon\\"
+                                />
+                                <div
+                                  class=\\"menu transition\\"
+                                  role=\\"listbox\\"
+                                >
+                                  <div
+                                    aria-checked=\\"false\\"
+                                    aria-selected=\\"true\\"
+                                    class=\\"selected item\\"
+                                    role=\\"option\\"
+                                    style=\\"pointer-events: all;\\"
+                                  >
+                                    <span
+                                      class=\\"text\\"
+                                    >
+                                      No selection
+                                    </span>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div
+                              class=\\"ui grey message\\"
+                            >
+                              <div
+                                class=\\"content\\"
+                              >
+                                <div
+                                  class=\\"required field\\"
+                                >
+                                  <label>
+                                    Data header
+                                  </label>
+                                  <div
+                                    class=\\"ui input\\"
+                                  >
+                                    <input
+                                      name=\\"header\\"
+                                      required=\\"\\"
+                                      type=\\"text\\"
+                                      value=\\"TextResponse-1\\"
+                                    />
+                                  </div>
+                                </div>
+                                This will only appear in data downloads, as the column header or row name.
+                              </div>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                    <div
+                      style=\\"opacity: 1;\\"
+                    >
+                      <div
+                        class=\\"ui segment sortable__component draggable\\"
+                        data-testid=\\"on-component-click\\"
+                      >
+                        <div
+                          class=\\"ui borderless icon em__height menu\\"
+                          index=\\"3\\"
+                        >
+                          <div
+                            class=\\"item ser__component-card\\"
+                            tabindex=\\"0\\"
+                          >
+                            <i
+                              aria-label=\\"Rich Text Editor\\"
+                              class=\\"edit icon\\"
+                            />
+                            <span
+                              class=\\"ser__component-name\\"
+                            >
+                              Rich Text Editor
+                            </span>
+                          </div>
+                          <a
+                            aria-label=\\"Save component\\"
+                            class=\\"item\\"
+                            tabindex=\\"0\\"
+                          >
+                            <i
+                              aria-hidden=\\"true\\"
+                              class=\\"save outline icon\\"
+                            />
+                          </a>
+                          <a
+                            aria-label=\\"Delete this component\\"
+                            class=\\"item\\"
+                            tabindex=\\"0\\"
+                          >
+                            <i
+                              aria-hidden=\\"true\\"
+                              class=\\"trash alternate outline icon\\"
+                            />
+                          </a>
+                          <a
+                            aria-label=\\"Duplicate this component\\"
+                            class=\\"item\\"
+                            tabindex=\\"0\\"
+                          >
+                            <i
+                              aria-hidden=\\"true\\"
+                              class=\\"copy outline icon\\"
+                            />
+                          </a>
+                          <div
+                            aria-expanded=\\"false\\"
+                            aria-label=\\"Select a persona\\"
+                            class=\\"ui item scrolling dropdown sp__dropdown\\"
+                            role=\\"listbox\\"
+                            tabindex=\\"0\\"
+                          >
+                            <div
+                              aria-atomic=\\"true\\"
+                              aria-live=\\"polite\\"
+                              class=\\"divider default text\\"
+                              role=\\"alert\\"
+                            >
+                              Select a persona
+                            </div>
+                            <i
+                              aria-hidden=\\"true\\"
+                              class=\\"dropdown icon\\"
+                            />
+                            <div
+                              class=\\"menu transition\\"
+                            >
+                              <div
+                                aria-checked=\\"false\\"
+                                aria-selected=\\"true\\"
+                                class=\\"selected item\\"
+                                role=\\"option\\"
+                                style=\\"pointer-events: all;\\"
+                              >
+                                <span
+                                  class=\\"text\\"
+                                >
+                                  No persona restriction
+                                </span>
+                              </div>
+                              <div
+                                aria-checked=\\"false\\"
+                                aria-selected=\\"false\\"
+                                class=\\"item\\"
+                                role=\\"option\\"
+                                style=\\"pointer-events: all;\\"
+                              >
+                                <table
+                                  class=\\"ui table\\"
+                                >
+                                  <thead
+                                    class=\\"\\"
+                                  >
+                                    <tr
+                                      class=\\"\\"
+                                    >
+                                      <th
+                                        class=\\"\\"
+                                        style=\\"color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);\\"
+                                      >
+                                        Participant
+                                      </th>
+                                    </tr>
+                                  </thead>
+                                  <tbody
+                                    class=\\"\\"
+                                  >
+                                    <tr
+                                      class=\\"\\"
+                                    >
+                                      <td
+                                        class=\\"\\"
+                                      >
+                                        The default user participating in a single person scenario.
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                              <div
+                                aria-checked=\\"false\\"
+                                aria-selected=\\"false\\"
+                                class=\\"item\\"
+                                role=\\"option\\"
+                                style=\\"pointer-events: all;\\"
+                              >
+                                <table
+                                  class=\\"ui table\\"
+                                >
+                                  <thead
+                                    class=\\"\\"
+                                  >
+                                    <tr
+                                      class=\\"\\"
+                                    >
+                                      <th
+                                        class=\\"\\"
+                                        style=\\"color: rgb(255, 255, 255); background-color: rgb(63, 89, 169);\\"
+                                      >
+                                        Teacher
+                                      </th>
+                                    </tr>
+                                  </thead>
+                                  <tbody
+                                    class=\\"\\"
+                                  >
+                                    <tr
+                                      class=\\"\\"
+                                    >
+                                      <td
+                                        class=\\"\\"
+                                      >
+                                        A non-specific teacher, participating in a multi person scenario.
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                              <div
+                                aria-checked=\\"false\\"
+                                aria-selected=\\"false\\"
+                                class=\\"item\\"
+                                role=\\"option\\"
+                                style=\\"pointer-events: all;\\"
+                              >
+                                <table
+                                  class=\\"ui table\\"
+                                >
+                                  <thead
+                                    class=\\"\\"
+                                  >
+                                    <tr
+                                      class=\\"\\"
+                                    >
+                                      <th
+                                        class=\\"\\"
+                                        style=\\"color: rgb(0, 0, 0); background-color: rgb(229, 146, 53);\\"
+                                      >
+                                        Student
+                                      </th>
+                                    </tr>
+                                  </thead>
+                                  <tbody
+                                    class=\\"\\"
+                                  >
+                                    <tr
+                                      class=\\"\\"
+                                    >
+                                      <td
+                                        class=\\"\\"
+                                      >
+                                        A non-specific student, participating in a multi person scenario.
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <textarea />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class=\\"column ser__component-select-pane-outer\\"
+              >
+                <div
+                  class=\\"ui fluid vertical ser__component-select menu\\"
+                >
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Rich Text Editor\\"
+                      class=\\"edit icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Rich Text Editor
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Participant Suggestion\\"
+                      class=\\"info icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Participant Suggestion
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Embed Previous Response\\"
+                      class=\\"comment alternate outline icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Embed Previous Response
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Conditional Content\\"
+                      class=\\"flask icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Conditional Content
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Audio Input\\"
+                      class=\\"microphone icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Audio Input
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Choose Next Slide\\"
+                      class=\\"fork clockwise rotated icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Choose Next Slide
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Conversation\\"
+                      class=\\"conversation icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Conversation
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Multiple Buttons\\"
+                      class=\\"hand pointer outline icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Multiple Buttons
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Text Input\\"
+                      class=\\"keyboard icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Text Input
+                    </span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    style=\\"display: flex; position: absolute; left: 0px; top: 0px;\\"
+  >
+    <div
+      class=\\"ui top left tiny inverted popup transition visible\\"
+      style=\\"position: initial;\\"
+    >
+      <div
+        class=\\"content\\"
+      >
+        Disable real-time chat
+      </div>
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`Multiple personas, toggle chat off 3`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <div
+      class=\\"ui grid\\"
+    >
+      <div
+        class=\\"stretched column\\"
+      >
+        <div
+          class=\\"row\\"
+        >
+          <div
+            class=\\"ui borderless icon em__height menu\\"
+            mode=\\"edit\\"
+          >
+            <a
+              class=\\"item slideeditormenu__slide-number-width header\\"
+              tabindex=\\"0\\"
+            >
+              2
+            </a>
+            <a
+              class=\\"item\\"
+            >
+              <div
+                class=\\"ui input\\"
+              >
+                <input
+                  id=\\"title-1\\"
+                  name=\\"title\\"
+                  placeholder=\\"Slide title\\"
+                  type=\\"text\\"
+                  value=\\"Slide 2\\"
+                />
+              </div>
+            </a>
+            <a
+              aria-label=\\"Save slide\\"
+              class=\\"item\\"
+              tabindex=\\"0\\"
+            >
+              <i
+                aria-hidden=\\"true\\"
+                class=\\"save outline icon\\"
+              />
+            </a>
+            <a
+              aria-label=\\"Delete this slide\\"
+              class=\\"item\\"
+              tabindex=\\"0\\"
+            >
+              <i
+                aria-hidden=\\"true\\"
+                class=\\"trash alternate outline icon\\"
+              />
+            </a>
+            <a
+              aria-label=\\"Duplicate slide\\"
+              class=\\"item\\"
+              tabindex=\\"0\\"
+            >
+              <i
+                aria-hidden=\\"true\\"
+                class=\\"copy outline icon\\"
+              />
+            </a>
+            <a
+              aria-label=\\"Preview slide\\"
+              class=\\"item\\"
+              tabindex=\\"0\\"
+            >
+              <i
+                aria-hidden=\\"true\\"
+                class=\\"eye icon\\"
+              />
+            </a>
+            <a
+              aria-label=\\"Enable real-time chat\\"
+              class=\\"item\\"
+              tabindex=\\"0\\"
+            >
+              <i
+                class=\\"icons em__icon-group-margin\\"
+              >
+                <i
+                  aria-hidden=\\"true\\"
+                  class=\\"black discussions icon\\"
+                />
+              </i>
+              Enable real-time chat
+            </a>
+          </div>
+        </div>
+        <div
+          class=\\"row\\"
+        >
+          <div
+            class=\\"ui two column grid\\"
+          >
+            <div
+              class=\\"row ser__component-pane\\"
+            >
+              <div
+                class=\\"column ser__component-layout-pane-outer\\"
+              >
+                <div
+                  class=\\"ui segment ser__component-layout-pane\\"
+                >
+                  <div
+                    class=\\"sortable__draggable-outer-container\\"
+                  >
+                    <div
+                      style=\\"opacity: 1;\\"
+                    >
+                      <div
+                        class=\\"ui segment sortable__selected sortable__component draggable\\"
+                        data-testid=\\"on-component-click\\"
+                      >
+                        <div
+                          class=\\"ui borderless icon em__height menu\\"
+                          index=\\"0\\"
+                        >
+                          <div
+                            class=\\"item ser__component-card\\"
+                            tabindex=\\"0\\"
+                          >
+                            <i
+                              aria-label=\\"Rich Text Editor\\"
+                              class=\\"edit icon\\"
+                            />
+                            <span
+                              class=\\"ser__component-name\\"
+                            >
+                              Rich Text Editor
+                            </span>
+                          </div>
+                          <a
+                            aria-label=\\"Save component\\"
+                            class=\\"item\\"
+                            tabindex=\\"0\\"
+                          >
+                            <i
+                              aria-hidden=\\"true\\"
+                              class=\\"save outline icon\\"
+                            />
+                          </a>
+                          <a
+                            aria-label=\\"Delete this component\\"
+                            class=\\"item\\"
+                            tabindex=\\"0\\"
+                          >
+                            <i
+                              aria-hidden=\\"true\\"
+                              class=\\"trash alternate outline icon\\"
+                            />
+                          </a>
+                          <a
+                            aria-label=\\"Duplicate this component\\"
+                            class=\\"item\\"
+                            tabindex=\\"0\\"
+                          >
+                            <i
+                              aria-hidden=\\"true\\"
+                              class=\\"copy outline icon\\"
+                            />
+                          </a>
+                          <div
+                            aria-expanded=\\"false\\"
+                            aria-label=\\"Select a persona\\"
+                            class=\\"ui item scrolling dropdown sp__dropdown\\"
+                            role=\\"listbox\\"
+                            tabindex=\\"0\\"
+                          >
+                            <div
+                              aria-atomic=\\"true\\"
+                              aria-live=\\"polite\\"
+                              class=\\"divider default text\\"
+                              role=\\"alert\\"
+                            >
+                              Select a persona
+                            </div>
+                            <i
+                              aria-hidden=\\"true\\"
+                              class=\\"dropdown icon\\"
+                            />
+                            <div
+                              class=\\"menu transition\\"
+                            >
+                              <div
+                                aria-checked=\\"false\\"
+                                aria-selected=\\"true\\"
+                                class=\\"selected item\\"
+                                role=\\"option\\"
+                                style=\\"pointer-events: all;\\"
+                              >
+                                <span
+                                  class=\\"text\\"
+                                >
+                                  No persona restriction
+                                </span>
+                              </div>
+                              <div
+                                aria-checked=\\"false\\"
+                                aria-selected=\\"false\\"
+                                class=\\"item\\"
+                                role=\\"option\\"
+                                style=\\"pointer-events: all;\\"
+                              >
+                                <table
+                                  class=\\"ui table\\"
+                                >
+                                  <thead
+                                    class=\\"\\"
+                                  >
+                                    <tr
+                                      class=\\"\\"
+                                    >
+                                      <th
+                                        class=\\"\\"
+                                        style=\\"color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);\\"
+                                      >
+                                        Participant
+                                      </th>
+                                    </tr>
+                                  </thead>
+                                  <tbody
+                                    class=\\"\\"
+                                  >
+                                    <tr
+                                      class=\\"\\"
+                                    >
+                                      <td
+                                        class=\\"\\"
+                                      >
+                                        The default user participating in a single person scenario.
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                              <div
+                                aria-checked=\\"false\\"
+                                aria-selected=\\"false\\"
+                                class=\\"item\\"
+                                role=\\"option\\"
+                                style=\\"pointer-events: all;\\"
+                              >
+                                <table
+                                  class=\\"ui table\\"
+                                >
+                                  <thead
+                                    class=\\"\\"
+                                  >
+                                    <tr
+                                      class=\\"\\"
+                                    >
+                                      <th
+                                        class=\\"\\"
+                                        style=\\"color: rgb(255, 255, 255); background-color: rgb(63, 89, 169);\\"
+                                      >
+                                        Teacher
+                                      </th>
+                                    </tr>
+                                  </thead>
+                                  <tbody
+                                    class=\\"\\"
+                                  >
+                                    <tr
+                                      class=\\"\\"
+                                    >
+                                      <td
+                                        class=\\"\\"
+                                      >
+                                        A non-specific teacher, participating in a multi person scenario.
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                              <div
+                                aria-checked=\\"false\\"
+                                aria-selected=\\"false\\"
+                                class=\\"item\\"
+                                role=\\"option\\"
+                                style=\\"pointer-events: all;\\"
+                              >
+                                <table
+                                  class=\\"ui table\\"
+                                >
+                                  <thead
+                                    class=\\"\\"
+                                  >
+                                    <tr
+                                      class=\\"\\"
+                                    >
+                                      <th
+                                        class=\\"\\"
+                                        style=\\"color: rgb(0, 0, 0); background-color: rgb(229, 146, 53);\\"
+                                      >
+                                        Student
+                                      </th>
+                                    </tr>
+                                  </thead>
+                                  <tbody
+                                    class=\\"\\"
+                                  >
+                                    <tr
+                                      class=\\"\\"
+                                    >
+                                      <td
+                                        class=\\"\\"
+                                      >
+                                        A non-specific student, participating in a multi person scenario.
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
+                          </div>
+                          <div
+                            class=\\"right menu movers\\"
+                            name=\\"Move component\\"
+                          >
+                            <div
+                              aria-label=\\"Move component\\"
+                              class=\\"icon item\\"
+                              tabindex=\\"0\\"
+                            >
+                              <i
+                                aria-hidden=\\"true\\"
+                                class=\\"move icon\\"
+                              />
+                              
+                            </div>
+                            <a
+                              aria-label=\\"Move component 1,  up\\"
+                              class=\\"disabled icon item\\"
+                              tabindex=\\"0\\"
+                            >
+                              <i
+                                aria-hidden=\\"true\\"
+                                class=\\"caret up icon\\"
+                              />
+                              
+                            </a>
+                            <a
+                              aria-label=\\"Move component 1,  down\\"
+                              class=\\"icon item\\"
+                              tabindex=\\"0\\"
+                            >
+                              <i
+                                aria-hidden=\\"true\\"
+                                class=\\"caret down icon\\"
+                              />
+                              
+                            </a>
+                          </div>
+                        </div>
+                        <textarea />
+                      </div>
+                    </div>
+                    <div
+                      style=\\"opacity: 1;\\"
+                    >
+                      <div
+                        class=\\"ui segment sortable__component draggable\\"
+                        data-testid=\\"on-component-click\\"
+                      >
+                        <div
+                          class=\\"ui borderless icon em__height menu\\"
+                          index=\\"1\\"
+                        >
+                          <div
+                            class=\\"item ser__component-card\\"
+                            tabindex=\\"0\\"
+                          >
+                            <i
+                              aria-label=\\"Prompt: Text Input\\"
+                              class=\\"keyboard icon\\"
+                            />
+                            <span
+                              class=\\"ser__component-name\\"
+                            >
+                              Prompt: Text Input
+                            </span>
+                          </div>
+                          <a
+                            aria-label=\\"Save component\\"
+                            class=\\"item\\"
+                            tabindex=\\"0\\"
+                          >
+                            <i
+                              aria-hidden=\\"true\\"
+                              class=\\"save outline icon\\"
+                            />
+                          </a>
+                          <a
+                            aria-label=\\"Delete this component\\"
+                            class=\\"item\\"
+                            tabindex=\\"0\\"
+                          >
+                            <i
+                              aria-hidden=\\"true\\"
+                              class=\\"trash alternate outline icon\\"
+                            />
+                          </a>
+                          <a
+                            aria-label=\\"Duplicate this component\\"
+                            class=\\"item\\"
+                            tabindex=\\"0\\"
+                          >
+                            <i
+                              aria-hidden=\\"true\\"
+                              class=\\"copy outline icon\\"
+                            />
+                          </a>
+                          <div
+                            aria-expanded=\\"false\\"
+                            aria-label=\\"Select a persona\\"
+                            class=\\"ui item scrolling dropdown sp__dropdown\\"
+                            role=\\"listbox\\"
+                            tabindex=\\"0\\"
+                          >
+                            <div
+                              aria-atomic=\\"true\\"
+                              aria-live=\\"polite\\"
+                              class=\\"divider default text\\"
+                              role=\\"alert\\"
+                            >
+                              Select a persona
+                            </div>
+                            <i
+                              aria-hidden=\\"true\\"
+                              class=\\"dropdown icon\\"
+                            />
+                            <div
+                              class=\\"menu transition\\"
+                            >
+                              <div
+                                aria-checked=\\"false\\"
+                                aria-selected=\\"true\\"
+                                class=\\"selected item\\"
+                                role=\\"option\\"
+                                style=\\"pointer-events: all;\\"
+                              >
+                                <span
+                                  class=\\"text\\"
+                                >
+                                  No persona restriction
+                                </span>
+                              </div>
+                              <div
+                                aria-checked=\\"false\\"
+                                aria-selected=\\"false\\"
+                                class=\\"item\\"
+                                role=\\"option\\"
+                                style=\\"pointer-events: all;\\"
+                              >
+                                <table
+                                  class=\\"ui table\\"
+                                >
+                                  <thead
+                                    class=\\"\\"
+                                  >
+                                    <tr
+                                      class=\\"\\"
+                                    >
+                                      <th
+                                        class=\\"\\"
+                                        style=\\"color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);\\"
+                                      >
+                                        Participant
+                                      </th>
+                                    </tr>
+                                  </thead>
+                                  <tbody
+                                    class=\\"\\"
+                                  >
+                                    <tr
+                                      class=\\"\\"
+                                    >
+                                      <td
+                                        class=\\"\\"
+                                      >
+                                        The default user participating in a single person scenario.
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                              <div
+                                aria-checked=\\"false\\"
+                                aria-selected=\\"false\\"
+                                class=\\"item\\"
+                                role=\\"option\\"
+                                style=\\"pointer-events: all;\\"
+                              >
+                                <table
+                                  class=\\"ui table\\"
+                                >
+                                  <thead
+                                    class=\\"\\"
+                                  >
+                                    <tr
+                                      class=\\"\\"
+                                    >
+                                      <th
+                                        class=\\"\\"
+                                        style=\\"color: rgb(255, 255, 255); background-color: rgb(63, 89, 169);\\"
+                                      >
+                                        Teacher
+                                      </th>
+                                    </tr>
+                                  </thead>
+                                  <tbody
+                                    class=\\"\\"
+                                  >
+                                    <tr
+                                      class=\\"\\"
+                                    >
+                                      <td
+                                        class=\\"\\"
+                                      >
+                                        A non-specific teacher, participating in a multi person scenario.
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                              <div
+                                aria-checked=\\"false\\"
+                                aria-selected=\\"false\\"
+                                class=\\"item\\"
+                                role=\\"option\\"
+                                style=\\"pointer-events: all;\\"
+                              >
+                                <table
+                                  class=\\"ui table\\"
+                                >
+                                  <thead
+                                    class=\\"\\"
+                                  >
+                                    <tr
+                                      class=\\"\\"
+                                    >
+                                      <th
+                                        class=\\"\\"
+                                        style=\\"color: rgb(0, 0, 0); background-color: rgb(229, 146, 53);\\"
+                                      >
+                                        Student
+                                      </th>
+                                    </tr>
+                                  </thead>
+                                  <tbody
+                                    class=\\"\\"
+                                  >
+                                    <tr
+                                      class=\\"\\"
+                                    >
+                                      <td
+                                        class=\\"\\"
+                                      >
+                                        A non-specific student, participating in a multi person scenario.
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
+                          </div>
+                          <a
+                            class=\\"item\\"
+                            id=\\"4b9b8ee599a358c925f4753ccde931546c0b64e2\\"
+                            tabindex=\\"0\\"
+                          >
+                            <div
+                              class=\\"ui checked checkbox\\"
+                            >
+                              <input
+                                aria-labelledby=\\"4b9b8ee599a358c925f4753ccde931546c0b64e2\\"
+                                checked=\\"\\"
+                                class=\\"hidden\\"
+                                name=\\"required\\"
+                                readonly=\\"\\"
+                                tabindex=\\"0\\"
+                                type=\\"checkbox\\"
+                                value=\\"\\"
+                              />
+                              <label>
+                                Required?
+                              </label>
+                            </div>
+                          </a>
+                        </div>
+                        <form
+                          class=\\"ui form\\"
+                        >
+                          <div
+                            class=\\"ui fluid container\\"
+                          >
+                            <div
+                              class=\\"field\\"
+                            >
+                              <label>
+                                Optional prompt to display before the input:
+                              </label>
+                              <textarea
+                                aria-label=\\"Optional prompt to display before the input:\\"
+                                name=\\"prompt\\"
+                                rows=\\"1\\"
+                              />
+                            </div>
+                            <div
+                              class=\\"field\\"
+                            >
+                              <label>
+                                Placeholder text displayed inside the input:
+                              </label>
+                              <div
+                                class=\\"ui input\\"
+                              >
+                                <input
+                                  aria-label=\\"Placeholder text displayed inside the input:\\"
+                                  name=\\"placeholder\\"
+                                  type=\\"text\\"
+                                  value=\\"\\"
+                                />
+                              </div>
+                            </div>
+                            <div
+                              class=\\"field\\"
+                            >
+                              <label>
+                                Optional AI agent to receive responses:
+                              </label>
+                              <div
+                                aria-expanded=\\"false\\"
+                                aria-label=\\"Select an agent\\"
+                                class=\\"ui fluid search selection scrolling dropdown\\"
+                                role=\\"combobox\\"
+                              >
+                                <input
+                                  aria-autocomplete=\\"list\\"
+                                  autocomplete=\\"off\\"
+                                  class=\\"search\\"
+                                  tabindex=\\"0\\"
+                                  type=\\"text\\"
+                                  value=\\"\\"
+                                />
+                                <div
+                                  aria-atomic=\\"true\\"
+                                  aria-live=\\"polite\\"
+                                  class=\\"divider default text\\"
+                                  role=\\"alert\\"
+                                >
+                                  Select an agent
+                                </div>
+                                <i
+                                  aria-hidden=\\"true\\"
+                                  class=\\"dropdown icon\\"
+                                />
+                                <div
+                                  class=\\"menu transition\\"
+                                  role=\\"listbox\\"
+                                >
+                                  <div
+                                    aria-checked=\\"false\\"
+                                    aria-selected=\\"true\\"
+                                    class=\\"selected item\\"
+                                    role=\\"option\\"
+                                    style=\\"pointer-events: all;\\"
+                                  >
+                                    <span
+                                      class=\\"text\\"
+                                    >
+                                      No selection
+                                    </span>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div
+                              class=\\"ui grey message\\"
+                            >
+                              <div
+                                class=\\"content\\"
+                              >
+                                <div
+                                  class=\\"required field\\"
+                                >
+                                  <label>
+                                    Data header
+                                  </label>
+                                  <div
+                                    class=\\"ui input\\"
+                                  >
+                                    <input
+                                      name=\\"header\\"
+                                      required=\\"\\"
+                                      type=\\"text\\"
+                                      value=\\"TextResponse-1\\"
+                                    />
+                                  </div>
+                                </div>
+                                This will only appear in data downloads, as the column header or row name.
+                              </div>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                    <div
+                      style=\\"opacity: 1;\\"
+                    >
+                      <div
+                        class=\\"ui segment sortable__component draggable\\"
+                        data-testid=\\"on-component-click\\"
+                      >
+                        <div
+                          class=\\"ui borderless icon em__height menu\\"
+                          index=\\"2\\"
+                        >
+                          <div
+                            class=\\"item ser__component-card\\"
+                            tabindex=\\"0\\"
+                          >
+                            <i
+                              aria-label=\\"Rich Text Editor\\"
+                              class=\\"edit icon\\"
+                            />
+                            <span
+                              class=\\"ser__component-name\\"
+                            >
+                              Rich Text Editor
+                            </span>
+                          </div>
+                          <a
+                            aria-label=\\"Save component\\"
+                            class=\\"item\\"
+                            tabindex=\\"0\\"
+                          >
+                            <i
+                              aria-hidden=\\"true\\"
+                              class=\\"save outline icon\\"
+                            />
+                          </a>
+                          <a
+                            aria-label=\\"Delete this component\\"
+                            class=\\"item\\"
+                            tabindex=\\"0\\"
+                          >
+                            <i
+                              aria-hidden=\\"true\\"
+                              class=\\"trash alternate outline icon\\"
+                            />
+                          </a>
+                          <a
+                            aria-label=\\"Duplicate this component\\"
+                            class=\\"item\\"
+                            tabindex=\\"0\\"
+                          >
+                            <i
+                              aria-hidden=\\"true\\"
+                              class=\\"copy outline icon\\"
+                            />
+                          </a>
+                          <div
+                            aria-expanded=\\"false\\"
+                            aria-label=\\"Select a persona\\"
+                            class=\\"ui item scrolling dropdown sp__dropdown\\"
+                            role=\\"listbox\\"
+                            tabindex=\\"0\\"
+                          >
+                            <div
+                              aria-atomic=\\"true\\"
+                              aria-live=\\"polite\\"
+                              class=\\"divider default text\\"
+                              role=\\"alert\\"
+                            >
+                              Select a persona
+                            </div>
+                            <i
+                              aria-hidden=\\"true\\"
+                              class=\\"dropdown icon\\"
+                            />
+                            <div
+                              class=\\"menu transition\\"
+                            >
+                              <div
+                                aria-checked=\\"false\\"
+                                aria-selected=\\"true\\"
+                                class=\\"selected item\\"
+                                role=\\"option\\"
+                                style=\\"pointer-events: all;\\"
+                              >
+                                <span
+                                  class=\\"text\\"
+                                >
+                                  No persona restriction
+                                </span>
+                              </div>
+                              <div
+                                aria-checked=\\"false\\"
+                                aria-selected=\\"false\\"
+                                class=\\"item\\"
+                                role=\\"option\\"
+                                style=\\"pointer-events: all;\\"
+                              >
+                                <table
+                                  class=\\"ui table\\"
+                                >
+                                  <thead
+                                    class=\\"\\"
+                                  >
+                                    <tr
+                                      class=\\"\\"
+                                    >
+                                      <th
+                                        class=\\"\\"
+                                        style=\\"color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);\\"
+                                      >
+                                        Participant
+                                      </th>
+                                    </tr>
+                                  </thead>
+                                  <tbody
+                                    class=\\"\\"
+                                  >
+                                    <tr
+                                      class=\\"\\"
+                                    >
+                                      <td
+                                        class=\\"\\"
+                                      >
+                                        The default user participating in a single person scenario.
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                              <div
+                                aria-checked=\\"false\\"
+                                aria-selected=\\"false\\"
+                                class=\\"item\\"
+                                role=\\"option\\"
+                                style=\\"pointer-events: all;\\"
+                              >
+                                <table
+                                  class=\\"ui table\\"
+                                >
+                                  <thead
+                                    class=\\"\\"
+                                  >
+                                    <tr
+                                      class=\\"\\"
+                                    >
+                                      <th
+                                        class=\\"\\"
+                                        style=\\"color: rgb(255, 255, 255); background-color: rgb(63, 89, 169);\\"
+                                      >
+                                        Teacher
+                                      </th>
+                                    </tr>
+                                  </thead>
+                                  <tbody
+                                    class=\\"\\"
+                                  >
+                                    <tr
+                                      class=\\"\\"
+                                    >
+                                      <td
+                                        class=\\"\\"
+                                      >
+                                        A non-specific teacher, participating in a multi person scenario.
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                              <div
+                                aria-checked=\\"false\\"
+                                aria-selected=\\"false\\"
+                                class=\\"item\\"
+                                role=\\"option\\"
+                                style=\\"pointer-events: all;\\"
+                              >
+                                <table
+                                  class=\\"ui table\\"
+                                >
+                                  <thead
+                                    class=\\"\\"
+                                  >
+                                    <tr
+                                      class=\\"\\"
+                                    >
+                                      <th
+                                        class=\\"\\"
+                                        style=\\"color: rgb(0, 0, 0); background-color: rgb(229, 146, 53);\\"
+                                      >
+                                        Student
+                                      </th>
+                                    </tr>
+                                  </thead>
+                                  <tbody
+                                    class=\\"\\"
+                                  >
+                                    <tr
+                                      class=\\"\\"
+                                    >
+                                      <td
+                                        class=\\"\\"
+                                      >
+                                        A non-specific student, participating in a multi person scenario.
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <textarea />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class=\\"column ser__component-select-pane-outer\\"
+              >
+                <div
+                  class=\\"ui fluid vertical ser__component-select menu\\"
+                >
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Rich Text Editor\\"
+                      class=\\"edit icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Rich Text Editor
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Participant Suggestion\\"
+                      class=\\"info icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Participant Suggestion
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Embed Previous Response\\"
+                      class=\\"comment alternate outline icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Embed Previous Response
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Conditional Content\\"
+                      class=\\"flask icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Conditional Content
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Audio Input\\"
+                      class=\\"microphone icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Audio Input
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Choose Next Slide\\"
+                      class=\\"fork clockwise rotated icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Choose Next Slide
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Conversation\\"
+                      class=\\"conversation icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Conversation
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Multiple Buttons\\"
+                      class=\\"hand pointer outline icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Multiple Buttons
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Text Input\\"
+                      class=\\"keyboard icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Text Input
+                    </span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`Multiple personas, toggle chat on 1`] = `
 "<body>
   <div
     id=\\"root\\"
@@ -39618,7 +43151,7 @@ exports[`Multiple personas, toggle chat 1`] = `
 </body>"
 `;
 
-exports[`Multiple personas, toggle chat 2`] = `
+exports[`Multiple personas, toggle chat on 2`] = `
 "<body>
   <div
     id=\\"root\\"
@@ -40673,7 +44206,7 @@ exports[`Multiple personas, toggle chat 2`] = `
 </body>"
 `;
 
-exports[`Multiple personas, toggle chat 3`] = `
+exports[`Multiple personas, toggle chat on 3`] = `
 "<body>
   <div
     id=\\"root\\"

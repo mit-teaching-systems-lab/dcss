@@ -796,6 +796,8 @@ test('Render 10 1', async done => {
 });
 /** @GENERATED: END **/
 
+/* INJECTION STARTS HERE */
+
 test('Validation', async done => {
   const Component = UserSettings;
 
