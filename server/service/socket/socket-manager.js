@@ -102,7 +102,7 @@ const cache = {
 const closeResultToStateMap = {
   complete: CHAT_IS_CLOSED_COMPLETE,
   incomplete: CHAT_IS_CLOSED_INCOMPLETE,
-  timeout: CHAT_IS_CLOSED_TIMEOUT,
+  timeout: CHAT_IS_CLOSED_TIMEOUT
 };
 
 const extractTextContent = html => parse(html).textContent;
@@ -395,13 +395,9 @@ class SocketManager {
         console.log(CHAT_AGENT_PAUSE, props);
       });
 
-      socket.on(CHAT_AGENT_START, async (payload) => {
+      socket.on(CHAT_AGENT_START, async payload => {
         console.log(CHAT_AGENT_START, payload);
-        const {
-          chat,
-          prompt,
-          user
-        } = payload;
+        const { chat, prompt, user } = payload;
 
         if (payload.agent && payload.agent.id) {
           const room = `${chat.id}-user-${user.id}`;

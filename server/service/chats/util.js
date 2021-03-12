@@ -18,9 +18,7 @@ exports.makeChatInviteNotification = async invite => {
     persona => persona.id === invite.persona_id
   );
 
-  const asRole = persona
-    ? `, as <strong>${persona.name}</strong>`
-    : '';
+  const asRole = persona ? `, as <strong>${persona.name}</strong>` : '';
   const inScenario = `the scenario <strong>${scenario.title}</strong>${asRole}`;
   const place = cohort
     ? `${inScenario}, which is part of the cohort <strong>${cohort.name}</strong>`

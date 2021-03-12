@@ -2,11 +2,11 @@
 
 const sqlFile = require('./helpers/sql-file')(__filename);
 exports.up = function(db) {
-    return db.runSql(sqlFile.up);
+  return db.runSql(sqlFile.up);
 };
 exports.down = function(db) {
-    return db.runSql(sqlFile.down);
+  return db.runSql(sqlFile.down);
 };
 exports._meta = {
-    version: 1
+  version: 1
 };
