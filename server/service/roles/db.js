@@ -29,7 +29,7 @@ exports.getAvailableUsers = async () => {
   const result = await query(sql`
     SELECT *
     FROM user_role_detail
-    WHERE lastseen_at >= NOW() - interval '1 hour'
+    WHERE lastseen_at >= NOW() - interval '6 hours'
   `);
   return result.rows;
 };
@@ -39,7 +39,7 @@ exports.getAvailableUsersCount = async () => {
     SELECT
       COUNT(id)
     FROM user_role_detail
-    WHERE lastseen_at >= NOW() - interval '1 hour'
+    WHERE lastseen_at >= NOW() - interval '6 hours'
   `);
 
   let count = 0;

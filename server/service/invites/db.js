@@ -18,7 +18,7 @@ async function __getInvitesFromTable(view, user_id) {
     WHERE
       receiver_id = ${user_id} OR sender_id = ${user_id}
     AND
-      created_at > now() - interval '24 hours' OR expire_at > now()
+      created_at > NOW() - interval '6 hours' OR expire_at > NOW()
   `);
   return result.rows;
 }
@@ -30,7 +30,7 @@ async function getChatInvitesExclusive(user_id) {
     JOIN chat c ON c.id = ci.chat_id
     WHERE ci.receiver_id = ${user_id} OR ci.sender_id = ${user_id}
     AND c.ended_at IS NULL
-    AND (ci.created_at > now() - interval '24 hours' OR ci.expire_at > now())
+    AND (ci.created_at > NOW() - interval '6 hours' OR ci.expire_at > NOW())
   `);
 
   // console.log(result.rows);
@@ -77,7 +77,7 @@ exports.getInvitesForUser = async user_id => {
     WHERE
       receiver_id = ${user_id} OR sender_id = ${user_id}
     AND
-      created_at > now() - interval '24 hours' OR expire_at > now()
+      created_at > NOW() - interval '6 hours' OR expire_at > NOW()
   `);
   return result.rows;
 };
