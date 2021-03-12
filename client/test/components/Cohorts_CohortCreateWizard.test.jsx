@@ -2,7 +2,7 @@
 import React from 'react';
 jest.mock('react', () => ({
   ...jest.requireActual('react'),
-  useLayoutEffect: jest.requireActual('react').useEffect,
+  useLayoutEffect: jest.requireActual('react').useEffect
 }));
 
 import {
@@ -11,7 +11,7 @@ import {
   reduxer,
   serialize,
   snapshotter,
-  state,
+  state
 } from '../bootstrap';
 import { unmountComponentAtNode } from 'react-dom';
 
@@ -21,7 +21,7 @@ import {
   prettyDOM,
   render,
   screen,
-  waitFor,
+  waitFor
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
@@ -37,7 +37,7 @@ async function waitForPopper() {
 import {
   GET_COHORT_SUCCESS,
   SET_COHORT_SUCCESS,
-  GET_USER_SUCCESS,
+  GET_USER_SUCCESS
 } from '../../actions/types';
 import * as cohortActions from '@actions/cohort';
 import * as userActions from '@actions/user';
@@ -99,8 +99,8 @@ beforeEach(() => {
         consent_granted_by_user: true,
         referrer_params: null,
         cohort_id: 1,
-        run_id: 11,
-      },
+        run_id: 11
+      }
     ],
     scenarios: [99],
     users: [
@@ -121,10 +121,10 @@ beforeEach(() => {
               created_at: 1602454306144,
               generic: 'arrived at a slide.',
               name: 'slide-arrival',
-              url: 'http://localhost:3000/cohort/1/run/99/slide/1',
-            },
-          },
-        },
+              url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+            }
+          }
+        }
       },
       {
         username: 'facilitator',
@@ -145,10 +145,10 @@ beforeEach(() => {
               created_at: 1602454306144,
               generic: 'arrived at a slide.',
               name: 'slide-arrival',
-              url: 'http://localhost:3000/cohort/1/run/99/slide/1',
-            },
-          },
-        },
+              url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+            }
+          }
+        }
       },
       {
         username: 'researcher',
@@ -168,10 +168,10 @@ beforeEach(() => {
               created_at: 1602454306144,
               generic: 'arrived at a slide.',
               name: 'slide-arrival',
-              url: 'http://localhost:3000/cohort/1/run/99/slide/1',
-            },
-          },
-        },
+              url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+            }
+          }
+        }
       },
       {
         username: 'participant',
@@ -191,10 +191,10 @@ beforeEach(() => {
               created_at: 1602454306144,
               generic: 'arrived at a slide.',
               name: 'slide-arrival',
-              url: 'http://localhost:3000/cohort/1/run/99/slide/1',
-            },
-          },
-        },
+              url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+            }
+          }
+        }
       },
       {
         username: 'anonymous',
@@ -214,11 +214,11 @@ beforeEach(() => {
               created_at: 1602454306144,
               generic: 'arrived at a slide.',
               name: 'slide-arrival',
-              url: 'http://localhost:3000/cohort/1/run/99/slide/1',
-            },
-          },
-        },
-      },
+              url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+            }
+          }
+        }
+      }
     ],
     roles: ['super', 'facilitator'],
     usersById: {
@@ -239,10 +239,10 @@ beforeEach(() => {
               created_at: 1602454306144,
               generic: 'arrived at a slide.',
               name: 'slide-arrival',
-              url: 'http://localhost:3000/cohort/1/run/99/slide/1',
-            },
-          },
-        },
+              url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+            }
+          }
+        }
       },
       555: {
         username: 'facilitator',
@@ -263,10 +263,10 @@ beforeEach(() => {
               created_at: 1602454306144,
               generic: 'arrived at a slide.',
               name: 'slide-arrival',
-              url: 'http://localhost:3000/cohort/1/run/99/slide/1',
-            },
-          },
-        },
+              url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+            }
+          }
+        }
       },
       444: {
         username: 'researcher',
@@ -286,10 +286,10 @@ beforeEach(() => {
               created_at: 1602454306144,
               generic: 'arrived at a slide.',
               name: 'slide-arrival',
-              url: 'http://localhost:3000/cohort/1/run/99/slide/1',
-            },
-          },
-        },
+              url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+            }
+          }
+        }
       },
       333: {
         username: 'participant',
@@ -309,10 +309,10 @@ beforeEach(() => {
               created_at: 1602454306144,
               generic: 'arrived at a slide.',
               name: 'slide-arrival',
-              url: 'http://localhost:3000/cohort/1/run/99/slide/1',
-            },
-          },
-        },
+              url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+            }
+          }
+        }
       },
       222: {
         username: 'anonymous',
@@ -332,12 +332,12 @@ beforeEach(() => {
               created_at: 1602454306144,
               generic: 'arrived at a slide.',
               name: 'slide-arrival',
-              url: 'http://localhost:3000/cohort/1/run/99/slide/1',
-            },
-          },
-        },
-      },
-    },
+              url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+            }
+          }
+        }
+      }
+    }
   };
   user = {
     username: 'super',
@@ -356,24 +356,24 @@ beforeEach(() => {
           created_at: 1602454306144,
           generic: 'arrived at a slide.',
           name: 'slide-arrival',
-          url: 'http://localhost:3000/cohort/1/run/99/slide/1',
-        },
-      },
-    },
+          url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+        }
+      }
+    }
   };
 
   cohortActions.getCohort.mockImplementation(
-    (id, updates) => async (dispatch) => {
+    (id, updates) => async dispatch => {
       const updatedCohort = {
         cohort,
-        ...updates,
+        ...updates
       };
       dispatch({ type: SET_COHORT_SUCCESS, cohort: updatedCohort });
       return updatedCohort;
     }
   );
 
-  userActions.getUser.mockImplementation(() => async (dispatch) => {
+  userActions.getUser.mockImplementation(() => async dispatch => {
     dispatch({ type: GET_USER_SUCCESS, user });
     return user;
   });
@@ -404,16 +404,16 @@ test('CohortCreateWizard', () => {
 });
 
 /** @GENERATED: BEGIN **/
-test('Render 1 1', async (done) => {
+test('Render 1 1', async done => {
   const Component = CohortCreateWizard;
   const props = {
     ...commonProps,
     onCancel: jest.fn(),
-    onCreate: jest.fn(),
+    onCreate: jest.fn()
   };
 
   const state = {
-    ...commonState,
+    ...commonState
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
@@ -430,16 +430,16 @@ test('Render 1 1', async (done) => {
 
 /* INJECTION STARTS HERE */
 
-test('Click cancel', async (done) => {
+test('Click cancel', async done => {
   const Component = CohortCreateWizard;
   const props = {
     ...commonProps,
     onCancel: jest.fn(),
-    onCreate: jest.fn(),
+    onCreate: jest.fn()
   };
 
   const state = {
-    ...commonState,
+    ...commonState
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
@@ -451,7 +451,7 @@ test('Click cancel', async (done) => {
   expect(serialize()).toMatchSnapshot();
 
   const createButton = await screen.findByRole('button', {
-    name: /Cancel/i,
+    name: /Cancel/i
   });
 
   expect(serialize()).toMatchSnapshot();
@@ -715,4 +715,3 @@ test('Click cancel', async (done) => {
 //   expect(serialize()).toMatchSnapshot();
 //   done();
 // });
-

@@ -790,7 +790,9 @@ class LobbyUserSelect extends Component {
           </Grid.Row>
           <Grid.Row>
             <p>
-              <strong>Search and select participants that you want to invite:</strong>
+              <strong>
+                Search and select participants that you want to invite:
+              </strong>
             </p>
             <Search
               fluid

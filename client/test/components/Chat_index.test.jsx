@@ -731,8 +731,11 @@ describe('componentDidMount', () => {
               "host_id": 2,
               "id": 1,
             },
-            "response": Object {
+            "prompt": Object {
               "id": null,
+            },
+            "response": Object {
+              "id": undefined,
             },
             "user": Object {
               "id": null,
@@ -747,8 +750,11 @@ describe('componentDidMount', () => {
               "host_id": 2,
               "id": 1,
             },
-            "response": Object {
+            "prompt": Object {
               "id": null,
+            },
+            "response": Object {
+              "id": undefined,
             },
             "user": Object {
               "id": null,
@@ -796,8 +802,11 @@ describe('componentDidMount', () => {
               "host_id": 2,
               "id": 1,
             },
-            "response": Object {
+            "prompt": Object {
               "id": null,
+            },
+            "response": Object {
+              "id": undefined,
             },
             "user": Object {
               "id": null,
@@ -812,8 +821,11 @@ describe('componentDidMount', () => {
               "host_id": 2,
               "id": 1,
             },
-            "response": Object {
+            "prompt": Object {
               "id": null,
+            },
+            "response": Object {
+              "id": undefined,
             },
             "user": Object {
               "id": null,
@@ -917,8 +929,11 @@ describe('componentWillUnmount', () => {
               "host_id": 2,
               "id": 1,
             },
-            "response": Object {
+            "prompt": Object {
               "id": null,
+            },
+            "response": Object {
+              "id": undefined,
             },
             "user": Object {
               "id": null,
@@ -933,8 +948,11 @@ describe('componentWillUnmount', () => {
               "host_id": 2,
               "id": 1,
             },
-            "response": Object {
+            "prompt": Object {
               "id": null,
+            },
+            "response": Object {
+              "id": undefined,
             },
             "user": Object {
               "id": null,
@@ -959,8 +977,11 @@ describe('componentWillUnmount', () => {
               "host_id": 2,
               "id": 1,
             },
-            "response": Object {
+            "prompt": Object {
               "id": null,
+            },
+            "response": Object {
+              "id": undefined,
             },
             "user": Object {
               "id": null,
@@ -975,8 +996,11 @@ describe('componentWillUnmount', () => {
               "host_id": 2,
               "id": 1,
             },
-            "response": Object {
+            "prompt": Object {
               "id": null,
+            },
+            "response": Object {
+              "id": undefined,
             },
             "user": Object {
               "id": null,
@@ -1035,8 +1059,11 @@ describe('componentWillUnmount', () => {
               "host_id": 2,
               "id": 1,
             },
-            "response": Object {
+            "prompt": Object {
               "id": null,
+            },
+            "response": Object {
+              "id": undefined,
             },
             "user": Object {
               "id": null,
@@ -1051,8 +1078,11 @@ describe('componentWillUnmount', () => {
               "host_id": 2,
               "id": 1,
             },
-            "response": Object {
+            "prompt": Object {
               "id": null,
+            },
+            "response": Object {
+              "id": undefined,
             },
             "user": Object {
               "id": null,
@@ -1077,8 +1107,11 @@ describe('componentWillUnmount', () => {
               "host_id": 2,
               "id": 1,
             },
-            "response": Object {
+            "prompt": Object {
               "id": null,
+            },
+            "response": Object {
+              "id": undefined,
             },
             "user": Object {
               "id": null,
@@ -1093,8 +1126,11 @@ describe('componentWillUnmount', () => {
               "host_id": 2,
               "id": 1,
             },
-            "response": Object {
+            "prompt": Object {
               "id": null,
+            },
+            "response": Object {
+              "id": undefined,
             },
             "user": Object {
               "id": null,
@@ -1425,8 +1461,11 @@ test('Types, followed by {enter}', async done => {
             "id": 1,
           },
           "content": "typing enter",
-          "response": Object {
+          "prompt": Object {
             "id": null,
+          },
+          "response": Object {
+            "id": undefined,
           },
           "user": Object {
             "id": null,
@@ -1500,8 +1539,11 @@ test('Types, followed by {shift}{enter}, does not submit', async done => {
           },
           "content": "typing shift+enter
     ",
-          "response": Object {
+          "prompt": Object {
             "id": null,
+          },
+          "response": Object {
+            "id": undefined,
           },
           "user": Object {
             "id": null,
@@ -1613,8 +1655,11 @@ test('Types, followed by {shift}{enter}, attempts to send, does submit', async d
             "id": 1,
           },
           "content": "typing enter",
-          "response": Object {
+          "prompt": Object {
             "id": null,
+          },
+          "response": Object {
+            "id": undefined,
           },
           "user": Object {
             "id": null,
@@ -1681,8 +1726,11 @@ test('Calls onInput when RTE receives new content', async done => {
             "id": 1,
           },
           "content": "<p><br></p>typing in the chat",
-          "response": Object {
+          "prompt": Object {
             "id": null,
+          },
+          "response": Object {
+            "id": undefined,
           },
           "user": Object {
             "id": null,
@@ -1753,8 +1801,11 @@ test('Calls onKeyDown, responds when key is {enter}', async done => {
             "id": 1,
           },
           "content": "typing in the chat",
-          "response": Object {
+          "prompt": Object {
             "id": null,
+          },
+          "response": Object {
+            "id": undefined,
           },
           "user": Object {
             "id": null,
@@ -1826,8 +1877,11 @@ test('Types, clicks Send Message', async done => {
             "id": 1,
           },
           "content": "typing in the chat",
-          "response": Object {
+          "prompt": Object {
             "id": null,
+          },
+          "response": Object {
+            "id": undefined,
           },
           "user": Object {
             "id": null,
@@ -2049,6 +2103,11 @@ test('Rnd: onDragStop/onResizeStop', async done => {
                   isMinimized={false}
                   onMessageReceived={[Function]}
                   onQuote={[Function]}
+                  prompt={
+                    Object {
+                      "id": null,
+                    }
+                  }
                   slice={-20}
                   socket={
                     Object {
@@ -2080,8 +2139,11 @@ test('Rnd: onDragStop/onResizeStop', async done => {
                                 "host_id": 2,
                                 "id": 1,
                               },
-                              "response": Object {
+                              "prompt": Object {
                                 "id": null,
+                              },
+                              "response": Object {
+                                "id": undefined,
                               },
                               "user": Object {
                                 "id": null,
@@ -2096,8 +2158,11 @@ test('Rnd: onDragStop/onResizeStop', async done => {
                                 "host_id": 2,
                                 "id": 1,
                               },
-                              "response": Object {
+                              "prompt": Object {
                                 "id": null,
+                              },
+                              "response": Object {
+                                "id": undefined,
                               },
                               "user": Object {
                                 "id": null,
@@ -2409,6 +2474,11 @@ test('Rnd: onDrag/onResize', async done => {
                   isMinimized={false}
                   onMessageReceived={[Function]}
                   onQuote={[Function]}
+                  prompt={
+                    Object {
+                      "id": null,
+                    }
+                  }
                   slice={-20}
                   socket={
                     Object {
@@ -2440,8 +2510,11 @@ test('Rnd: onDrag/onResize', async done => {
                                 "host_id": 2,
                                 "id": 1,
                               },
-                              "response": Object {
+                              "prompt": Object {
                                 "id": null,
+                              },
+                              "response": Object {
+                                "id": undefined,
                               },
                               "user": Object {
                                 "id": null,
@@ -2456,8 +2529,11 @@ test('Rnd: onDrag/onResize', async done => {
                                 "host_id": 2,
                                 "id": 1,
                               },
-                              "response": Object {
+                              "prompt": Object {
                                 "id": null,
+                              },
+                              "response": Object {
+                                "id": undefined,
                               },
                               "user": Object {
                                 "id": null,

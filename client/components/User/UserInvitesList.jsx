@@ -74,9 +74,11 @@ export const makeAcceptedInviteRedirectPath = invite => {
 export const makeInviteExplanation = parts => {
   const { isRecipient, user, scenario, persona, cohort = null } = parts;
 
-  const asRole = persona
-    ? (<Fragment>, as{' '}<strong>{persona.name}</strong></Fragment>)
-    : null;
+  const asRole = persona ? (
+    <Fragment>
+      , as <strong>{persona.name}</strong>
+    </Fragment>
+  ) : null;
 
   const theScenario = (
     <Fragment>
@@ -121,7 +123,6 @@ class UserInvitesList extends Component {
   }
 
   async componentDidMount() {
-
     for (const invite of this.props.invites) {
       if (!this.props.scenariosById[invite.scenario_id]) {
         await this.props.getScenariosByStatus(SCENARIO_IS_PUBLIC);
@@ -303,6 +304,8 @@ class UserInvitesList extends Component {
             </Invite.Content>
           </Invite>
         )}
+
+        <div data-testid="user-invites-list" />
       </Invite.Group>
     );
   }

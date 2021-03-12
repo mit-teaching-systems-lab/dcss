@@ -204,10 +204,7 @@ export default class SlideEditor extends Component {
 
     /* istanbul ignore else */
     if (components[index]) {
-      if (
-        components[index].id !== value.id ||
-        components[index].type !== value.type
-      ) {
+      if (components[index].id !== value.id) {
         return;
       }
 
