@@ -32,3 +32,10 @@
   overflow: hidden !important;
   text-overflow: ellipsis !important;
 }
+
+@media only screen and (max-width: 767px) {
+  .n__container {
+    min-width: unset;
+    max-width: 100vw;
+  }
+}
