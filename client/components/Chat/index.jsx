@@ -376,7 +376,7 @@ class Chat extends Component {
       onQuote,
       sendNewMessage
     } = this;
-    const { agent, chat } = this.props;
+    const { agent, chat, prompt } = this.props;
     const { id, isClosed, isMinimized, isReady } = this.state;
     const defaultValue = content || '';
 
@@ -445,6 +445,7 @@ class Chat extends Component {
       isMinimized,
       onQuote,
       onMessageReceived,
+      prompt,
       slice
     };
 
@@ -532,7 +533,7 @@ Chat.propTypes = {
   getChatUsersByChatId: PropTypes.func,
   setChatUsersByChatId: PropTypes.func,
   header: PropTypes.node,
-  response: PropTypes.object,
+  prompt: PropTypes.object,
   run: PropTypes.object,
   saveRunEvent: PropTypes.func,
   scenario: PropTypes.object,
@@ -542,13 +543,13 @@ Chat.propTypes = {
 
 const mapStateToProps = (state, ownProps) => {
   const { chat, cohort, run, scenario, user } = state;
-  const response = {
+  const prompt = {
     id: ownProps.responseId || null
   };
   return {
     chat,
     cohort,
-    response,
+    prompt,
     run,
     scenario,
     user

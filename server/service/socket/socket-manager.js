@@ -289,7 +289,6 @@ class SocketManager {
               await chatutil.makeChatInviteNotification(data)
             );
         });
-        // console.log('chat_invite listener is registered');
       }
 
       if (!notifier.listenerCount('set_invitation')) {
@@ -308,7 +307,6 @@ class SocketManager {
               await chatutil.makeChatInviteNotification(data)
             );
         });
-        // console.log('chat_invite listener is registered');
       }
 
       if (!notifier.listenerCount('chat_created')) {
@@ -318,7 +316,6 @@ class SocketManager {
             chat
           });
         });
-        // console.log('chat_invite listener is registered');
       }
 
       if (!notifier.listenerCount('chat_ended')) {
@@ -328,7 +325,6 @@ class SocketManager {
             chat
           });
         });
-        // console.log('chat_invite listener is registered');
       }
 
       const sendRunResponseToAgent = data => {
@@ -399,17 +395,29 @@ class SocketManager {
         console.log(CHAT_AGENT_PAUSE, props);
       });
 
-      socket.on(CHAT_AGENT_START, async ({ agent, chat, run, user }) => {
-        console.log(CHAT_AGENT_START, { agent, chat, user });
-        if (agent && agent.id) {
+      socket.on(CHAT_AGENT_START, async (payload) => {
+        console.log(CHAT_AGENT_START, payload);
+        const {
+          chat,
+          prompt,
+          user
+        } = payload;
+
+        if (payload.agent && payload.agent.id) {
           const room = `${chat.id}-user-${user.id}`;
           socket.join(room);
 
+          const agent = await agentdb.getAgent(payload.agent.id);
           const auth = makeRemoteSafeAuthPayload({ agent, chat, user });
+
           const options = {
             ...agent.socket,
             auth
           };
+
+          if (cache.clients[room]) {
+            cache.clients[room].client.disconnect();
+          }
 
           const client = new Socket.Client(agent.endpoint, options);
 
@@ -431,7 +439,7 @@ class SocketManager {
               // interaction_id
               agent.interaction.id,
               // prompt_response_id
-              response.response_id,
+              prompt.id,
               // recipient_id
               user.id,
               // response_id
@@ -450,15 +458,10 @@ class SocketManager {
               chat.id,
               agent.self.id, // This comes from the agent!!
               message,
-              null, // TODO: need the response_id from the slide component
+              prompt.id,
               user.id // TODO: this should come from the interjection event
             );
           });
-
-          // cache.backlog[user.id] = {
-          //   socket,
-          //   messages: []
-          // };
 
           cache.clients[room] = {
             client,
@@ -478,47 +481,49 @@ class SocketManager {
             const room = `${run.id}-${run.user_id}-${prompt.response_id}`;
             socket.join(room);
 
-            if (!cache.clients[room]) {
-              const auth = makeRemoteSafeAuthPayload({ agent, run, user });
-              const options = {
-                ...agent.socket,
-                auth
-              };
+            const auth = makeRemoteSafeAuthPayload({ agent, run, user });
+            const options = {
+              ...agent.socket,
+              auth
+            };
 
-              const client = new Socket.Client(agent.endpoint, options);
-
-              client.on('response', async response => {
-                console.log('RUN AGENT RESPONSE: ', response);
-                if (response.record && response.record.chat_id) {
-                  // This is a response to a chat message,
-                  // not a regular prompt component
-                  return;
-                }
-                await agentdb.insertNewAgentResponse(
-                  // agent_id
-                  agent.id,
-                  // chat_id
-                  null,
-                  // interaction_id
-                  agent.interaction.id,
-                  // prompt_response_id
-                  response.response_id,
-                  // recipient_id
-                  user.id,
-                  // response_id
-                  response.id,
-                  // run_id
-                  run.id,
-                  // response
-                  response
-                );
-              });
-
-              cache.clients[room] = {
-                client,
-                auth
-              };
+            if (cache.clients[room]) {
+              cache.clients[room].client.disconnect();
             }
+
+            const client = new Socket.Client(agent.endpoint, options);
+
+            client.on('response', async response => {
+              console.log('RUN AGENT RESPONSE: ', response);
+              if (response.record && response.record.chat_id) {
+                // This is a response to a chat message,
+                // not a regular prompt component
+                return;
+              }
+              await agentdb.insertNewAgentResponse(
+                // agent_id
+                agent.id,
+                // chat_id
+                null,
+                // interaction_id
+                agent.interaction.id,
+                // prompt_response_id
+                response.response_id,
+                // recipient_id
+                user.id,
+                // response_id
+                response.id,
+                // run_id
+                run.id,
+                // response
+                response
+              );
+            });
+
+            cache.clients[room] = {
+              client,
+              auth
+            };
           }
         }
       });
