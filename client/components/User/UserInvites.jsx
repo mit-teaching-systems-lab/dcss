@@ -79,9 +79,6 @@ class UserInvites extends Component {
 
   async componentDidMount() {
     const { user } = this.props;
-    this.props.socket.emit(CREATE_USER_CHANNEL, { user });
-    this.props.socket.on(NEW_INVITATION, this.onNewInvitation);
-    this.props.socket.on(SET_INVITATION, this.onSetInvitation);
 
     const { code, status } = this.props;
 
@@ -113,6 +110,10 @@ class UserInvites extends Component {
 
       return;
     }
+
+    this.props.socket.emit(CREATE_USER_CHANNEL, { user });
+    this.props.socket.on(NEW_INVITATION, this.onNewInvitation);
+    this.props.socket.on(SET_INVITATION, this.onSetInvitation);
 
     this.setState({
       isReady: true
