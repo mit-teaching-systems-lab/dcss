@@ -115,11 +115,11 @@ class UserInvites extends Component {
     this.props.socket.on(NEW_INVITATION, this.onNewInvitation);
     this.props.socket.on(SET_INVITATION, this.onSetInvitation);
 
+    await this.refresh();
+
     this.setState({
       isReady: true
     });
-
-    await this.refresh();
   }
 
   componentWillUnmount() {
