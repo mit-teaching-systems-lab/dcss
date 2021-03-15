@@ -98,7 +98,7 @@ class History extends Component {
           pane.sources = this.props.runs.reduce((accum, run) => {
             if (run.scenario_id === pane.scenarioId) {
               accum.push({
-                runId: run.run_id,
+                runId: run.id,
                 participantId
               });
             }
@@ -123,7 +123,7 @@ class History extends Component {
   onRunDataClick(event, props) {
     const {
       scenario,
-      run: { run_id: runId }
+      run: { id: runId }
     } = props;
     const { panes } = this.state;
     const index = panes.findIndex(
@@ -171,7 +171,7 @@ class History extends Component {
 
   render() {
     const { onPageChange, onRunDataClick, onTabChange } = this;
-    const { cohortsById, runs } = this.props;
+    const { cohortsById, runs, scenariosById } = this.props;
     const { isReady, activeIndex, activePage, panes } = this.state;
 
     const runsPages = Math.ceil(runs.length / ROWS_PER_PAGE);
@@ -242,30 +242,30 @@ class History extends Component {
             <Table.Body key={Identity.key({ runsSlice })}>
               {runsSlice.map(run => {
                 const {
-                  run_created_at,
-                  run_ended_at,
+                  created_at,
+                  ended_at,
                   scenario_id,
-                  scenario_title,
                   cohort_id
                 } = run;
-                const scenario = this.props.scenariosById[scenario_id];
-                const completeOrIncomplete = run_ended_at
+                const cohort = cohortsById[cohort_id];
+                const scenario = scenariosById[scenario_id];
+                const completeOrIncomplete = ended_at
                   ? { positive: true }
                   : { negative: true };
 
                 const createdAt = (
-                  <span>{Moment(run_created_at).fromNow()}</span>
+                  <span>{Moment(created_at).fromNow()}</span>
                 );
-                const createdAtAlt = Moment(run_created_at).calendar();
+                const createdAtAlt = Moment(created_at).calendar();
 
-                const endedAt = run_ended_at ? (
-                  <span>{Moment(run_ended_at).fromNow()}</span>
+                const endedAt = ended_at ? (
+                  <span>{Moment(ended_at).fromNow()}</span>
                 ) : (
                   ''
                 );
 
-                const endedAtAlt = run_ended_at
-                  ? Moment(run_ended_at).calendar()
+                const endedAtAlt = ended_at
+                  ? Moment(ended_at).calendar()
                   : 'This run is not complete';
 
                 const createdAtWithPopup = (
@@ -286,16 +286,14 @@ class History extends Component {
                   />
                 );
 
-                const scenarioIdHash = Identity.toHash(scenario_id);
-                const pathname = cohort_id
-                  ? `/cohort/${Identity.toHash(
-                      cohort_id
-                    )}/run/${scenarioIdHash}/slide/0`
+                const cohortIdHash = cohort ? Identity.toHash(cohort.id) : null;
+                const scenarioIdHash = Identity.toHash(scenario.id);
+                const pathname = cohort
+                  ? `/cohort/${cohortIdHash}/run/${scenarioIdHash}/slide/0`
                   : `/run/${scenarioIdHash}/slide/0`;
 
-                const cohort = cohortsById[cohort_id];
                 const cohortPathname = cohort
-                  ? `/cohort/${Identity.toHash(cohort_id)}`
+                  ? `/cohort/${cohortIdHash}`
                   : null;
                 const cohortDisplay = cohort ? cohort.name : null;
 
@@ -307,17 +305,17 @@ class History extends Component {
                   });
                 };
 
-                const cohortRunData = run_ended_at
+                const cohortRunData = ended_at
                   ? `View your data for this scenario run, from cohort "${cohortDisplay}"`
-                  : `Finish this "${scenario_title}" to view your data`;
+                  : `Finish this "${scenario.title}" to view your data`;
 
-                const nonCohortRunData = run_ended_at
-                  ? `View your data for this run of scenario "${scenario_title}"`
-                  : `Finish this "${scenario_title}" to view your data`;
+                const nonCohortRunData = ended_at
+                  ? `View your data for this run of scenario "${scenario.title}"`
+                  : `Finish this "${scenario.title}" to view your data`;
 
                 const popupContent = cohort ? cohortRunData : nonCohortRunData;
 
-                const viewDataIcon = run_ended_at ? (
+                const viewDataIcon = ended_at ? (
                   <Table.Cell.Clickable
                     className="h__table-cell-first"
                     aria-label={popupContent}
@@ -352,7 +350,7 @@ class History extends Component {
                     <Table.Cell.Clickable
                       className="h__col-medium"
                       href={pathname}
-                      content={scenario_title}
+                      content={scenario.title}
                     />
                     {Layout.isNotForMobile() ? (
                       <Table.Cell className="h__col-small" alt={createdAtAlt}>
