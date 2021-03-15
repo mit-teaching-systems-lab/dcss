@@ -109,7 +109,9 @@ exports[`With cohort Assign & unassign roles 2`] = `
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -459,7 +461,9 @@ exports[`With cohort Assign & unassign roles 3`] = `
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -839,7 +843,9 @@ exports[`With cohort Assign & unassign roles 4`] = `
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -1200,7 +1206,9 @@ exports[`With cohort Assign & unassign roles 5`] = `
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -1591,7 +1599,9 @@ exports[`With cohort Assigning roles enables Send Invites button 2`] = `
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -1941,7 +1951,9 @@ exports[`With cohort Assigning roles enables Send Invites button 3`] = `
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -2321,7 +2333,9 @@ exports[`With cohort Assigning roles enables Send Invites button 4`] = `
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -2682,7 +2696,9 @@ exports[`With cohort Assigning roles enables Send Invites button 5`] = `
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -3041,7 +3057,9 @@ exports[`With cohort Assigning roles enables Send Invites button 6`] = `
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -3388,7 +3406,9 @@ exports[`With cohort Both Send Invites buttons are disabled 2`] = `
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -3745,7 +3765,9 @@ exports[`With cohort Click in search shows default list of available users 2`] =
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -4093,7 +4115,9 @@ exports[`With cohort Click in search shows default list of available users 3`] =
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -4454,7 +4478,9 @@ exports[`With cohort Dismiss instructions 2`] = `
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -4776,7 +4802,9 @@ exports[`With cohort Dismiss instructions 3`] = `
              roles. As host, you will participate in the scenario by filling one of the available roles.
           </p>
           <p>
-            There are 
+            There 
+            are
+             
             <strong>
               4
             </strong>
@@ -5136,7 +5164,9 @@ exports[`With cohort Select & unselect participant 2`] = `
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -5486,7 +5516,9 @@ exports[`With cohort Select & unselect participant 3`] = `
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -5866,7 +5898,9 @@ exports[`With cohort Select & unselect participant 4`] = `
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -6148,7 +6182,9 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 2`] = 
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -6498,7 +6534,9 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 3`] = 
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -6878,7 +6916,9 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 4`] = 
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -7258,7 +7298,9 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 5`] = 
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -7619,7 +7661,9 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 6`] = 
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -7980,7 +8024,9 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 7`] = 
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -8339,7 +8385,9 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 8`] = 
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -8677,7 +8725,9 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 9`] = 
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -9015,7 +9065,9 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 10`] =
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -9555,7 +9607,9 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 11`] =
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -9893,7 +9947,9 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 12`] =
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -10231,7 +10287,9 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 13`] =
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -10771,7 +10829,9 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 14`] =
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -11320,7 +11380,9 @@ exports[`With cohort Selecting from search results adds a participant 2`] = `
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -11668,7 +11730,9 @@ exports[`With cohort Selecting from search results adds a participant 3`] = `
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -12059,7 +12123,9 @@ exports[`With cohort Selecting too many shows a warning, discard selection 2`] =
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -12409,7 +12475,9 @@ exports[`With cohort Selecting too many shows a warning, discard selection 3`] =
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -12696,7 +12764,9 @@ exports[`With cohort Selecting too many shows a warning, discard selection 4`] =
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -13076,7 +13146,9 @@ exports[`With cohort Selecting too many shows a warning, discard selection 5`] =
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -13472,7 +13544,9 @@ exports[`With cohort Selecting too many shows a warning, discard selection 6`] =
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -13949,7 +14023,9 @@ exports[`With cohort Selecting too many shows a warning, discard selection 7`] =
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -14352,7 +14428,9 @@ exports[`With cohort Selecting too many shows a warning, remove an invite 2`] = 
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -14700,7 +14778,9 @@ exports[`With cohort Selecting too many shows a warning, remove an invite 3`] = 
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -14985,7 +15065,9 @@ exports[`With cohort Selecting too many shows a warning, remove an invite 4`] = 
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -15363,7 +15445,9 @@ exports[`With cohort Selecting too many shows a warning, remove an invite 5`] = 
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -15760,7 +15844,9 @@ exports[`With cohort Selecting too many shows a warning, remove an invite 6`] = 
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -16238,7 +16324,9 @@ exports[`With cohort Selecting too many shows a warning, remove an invite 7`] = 
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -16755,7 +16843,9 @@ exports[`With cohort Typing in search shows filtered list of available users 2`]
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -17103,7 +17193,9 @@ exports[`With cohort Typing in search shows filtered list of available users 3`]
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -17401,7 +17493,9 @@ exports[`Without cohort Assign & unassign roles 2`] = `
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -17751,7 +17845,9 @@ exports[`Without cohort Assign & unassign roles 3`] = `
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -18131,7 +18227,9 @@ exports[`Without cohort Assign & unassign roles 4`] = `
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -18492,7 +18590,9 @@ exports[`Without cohort Assign & unassign roles 5`] = `
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -18883,7 +18983,9 @@ exports[`Without cohort Assigning roles enables Send Invites button 2`] = `
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -19233,7 +19335,9 @@ exports[`Without cohort Assigning roles enables Send Invites button 3`] = `
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -19613,7 +19717,9 @@ exports[`Without cohort Assigning roles enables Send Invites button 4`] = `
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -19974,7 +20080,9 @@ exports[`Without cohort Assigning roles enables Send Invites button 5`] = `
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -20333,7 +20441,9 @@ exports[`Without cohort Assigning roles enables Send Invites button 6`] = `
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -20684,7 +20794,9 @@ exports[`Without cohort Both Send Invites buttons are disabled 2`] = `
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -21045,7 +21157,9 @@ exports[`Without cohort Click in search shows default list of available users 2`
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -21395,7 +21509,9 @@ exports[`Without cohort Click in search shows default list of available users 3`
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -21756,7 +21872,9 @@ exports[`Without cohort Dismiss instructions 2`] = `
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -22078,7 +22196,9 @@ exports[`Without cohort Dismiss instructions 3`] = `
              roles. As host, you will participate in the scenario by filling one of the available roles.
           </p>
           <p>
-            There are 
+            There 
+            are
+             
             <strong>
               4
             </strong>
@@ -22438,7 +22558,9 @@ exports[`Without cohort Select & unselect participant 2`] = `
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -22788,7 +22910,9 @@ exports[`Without cohort Select & unselect participant 3`] = `
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -23168,7 +23292,9 @@ exports[`Without cohort Select & unselect participant 4`] = `
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -23450,7 +23576,9 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 2`]
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -23800,7 +23928,9 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 3`]
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -24180,7 +24310,9 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 4`]
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -24560,7 +24692,9 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 5`]
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -24921,7 +25055,9 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 6`]
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -25282,7 +25418,9 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 7`]
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -25641,7 +25779,9 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 8`]
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -25979,7 +26119,9 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 9`]
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -26317,7 +26459,9 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 10`
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -26857,7 +27001,9 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 11`
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -27195,7 +27341,9 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 12`
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -27533,7 +27681,9 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 13`
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -28073,7 +28223,9 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 14`
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -28626,7 +28778,9 @@ exports[`Without cohort Selecting from search results adds a participant 2`] = `
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -28976,7 +29130,9 @@ exports[`Without cohort Selecting from search results adds a participant 3`] = `
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -29367,7 +29523,9 @@ exports[`Without cohort Selecting too many shows a warning, discard selection 2`
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -29717,7 +29875,9 @@ exports[`Without cohort Selecting too many shows a warning, discard selection 3`
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -30004,7 +30164,9 @@ exports[`Without cohort Selecting too many shows a warning, discard selection 4`
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -30384,7 +30546,9 @@ exports[`Without cohort Selecting too many shows a warning, discard selection 5`
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -30780,7 +30944,9 @@ exports[`Without cohort Selecting too many shows a warning, discard selection 6`
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -31257,7 +31423,9 @@ exports[`Without cohort Selecting too many shows a warning, discard selection 7`
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -31664,7 +31832,9 @@ exports[`Without cohort Selecting too many shows a warning, remove an invite 2`]
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -32014,7 +32184,9 @@ exports[`Without cohort Selecting too many shows a warning, remove an invite 3`]
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -32301,7 +32473,9 @@ exports[`Without cohort Selecting too many shows a warning, remove an invite 4`]
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -32681,7 +32855,9 @@ exports[`Without cohort Selecting too many shows a warning, remove an invite 5`]
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -33077,7 +33253,9 @@ exports[`Without cohort Selecting too many shows a warning, remove an invite 6`]
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -33554,7 +33732,9 @@ exports[`Without cohort Selecting too many shows a warning, remove an invite 7`]
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -34075,7 +34255,9 @@ exports[`Without cohort Typing in search shows filtered list of available users 
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -34425,7 +34607,9 @@ exports[`Without cohort Typing in search shows filtered list of available users 
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>

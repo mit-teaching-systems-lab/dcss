@@ -3810,7 +3810,9 @@ exports[`Create a room for this scenario, user will invite, proceed 4`] = `
                   </li>
                 </ol>
                 <p>
-                  There are 
+                  There 
+                  are
+                   
                   <strong>
                     4
                   </strong>
@@ -4290,7 +4292,9 @@ exports[`Create a room for this scenario, user will invite, proceed 5`] = `
                   </li>
                 </ol>
                 <p>
-                  There are 
+                  There 
+                  are
+                   
                   <strong>
                     4
                   </strong>

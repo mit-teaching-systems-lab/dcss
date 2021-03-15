@@ -529,6 +529,7 @@ class ConditionalContentEditor extends React.Component {
             </Grid.Column>
           </Grid.Row>
         </Grid>
+        <div data-testid="conditional-content-editor" />
       </Container>
     ) : (
       <Segment>There are currently no active agents in this scenario</Segment>

@@ -51,7 +51,9 @@ exports[`Fallback: chat missing, use scenario and cohort to request chat 1`] = `
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -456,7 +458,9 @@ exports[`Fallback: chat missing, use scenario and cohort to request chat 4`] = `
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -861,7 +865,9 @@ exports[`Fallback: chat missing, use scenario to request chat 1`] = `
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -1266,7 +1272,9 @@ exports[`Fallback: chat missing, use scenario to request chat 4`] = `
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -1671,7 +1679,9 @@ exports[`Fallback: chat, scenario, cohort are not yet loaded, use provided props
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -2076,7 +2086,9 @@ exports[`Fallback: chat, scenario, cohort are not yet loaded, use provided props
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -2481,7 +2493,9 @@ exports[`Fallback: cohort expected, but not yet loaded 1`] = `
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -2848,7 +2862,9 @@ exports[`Fallback: cohort expected, but not yet loaded 4`] = `
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -3215,7 +3231,9 @@ exports[`Fallback: scenario missing 1`] = `
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -3620,7 +3638,9 @@ exports[`Fallback: scenario missing 4`] = `
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -4025,7 +4045,9 @@ exports[`Fallback: scenario object present, unloaded 1`] = `
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -4430,7 +4452,9 @@ exports[`Fallback: scenario object present, unloaded 4`] = `
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -4835,7 +4859,9 @@ exports[`Lobby visited by a non-facilitator user 1`] = `
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -5202,7 +5228,9 @@ exports[`Lobby visited by a non-facilitator user 4`] = `
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -5569,7 +5597,9 @@ exports[`With cohort, Receives RUN_CHAT_LINK, calls getChatUsersByChatId 1`] = `
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -5990,7 +6020,9 @@ exports[`With cohort, Receives RUN_CHAT_LINK, calls getChatUsersByChatId 4`] = `
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 4
               </strong>
@@ -6411,7 +6443,9 @@ exports[`Without cohort, Receives RUN_CHAT_LINK, calls getLinkedChatUsersByChatI
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 7
               </strong>
@@ -6885,7 +6919,9 @@ exports[`Without cohort, Receives RUN_CHAT_LINK, calls getLinkedChatUsersByChatI
               </li>
             </ol>
             <p>
-              There are 
+              There 
+              are
+               
               <strong>
                 7
               </strong>
@@ -7381,7 +7417,9 @@ exports[`props.asCard 1`] = `
                       </li>
                     </ol>
                     <p>
-                      There are 
+                      There 
+                      are
+                       
                       <strong>
                         4
                       </strong>
@@ -7827,7 +7865,9 @@ exports[`props.asCard 4`] = `
                       </li>
                     </ol>
                     <p>
-                      There are 
+                      There 
+                      are
+                       
                       <strong>
                         4
                       </strong>

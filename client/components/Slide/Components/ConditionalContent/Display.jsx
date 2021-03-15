@@ -117,12 +117,15 @@ class Display extends Component {
     const mustShowConditionalContent = Conditional.evaluate(data, where);
 
     return component && mustShowConditionalContent ? (
-      <ComponentDisplay
-        {...this.props.component}
-        onResponseChange={onResponseChange}
-        saveRunEvent={saveRunEventWithComponent}
-        run={run}
-      />
+      <Fragment>
+        <ComponentDisplay
+          {...this.props.component}
+          onResponseChange={onResponseChange}
+          saveRunEvent={saveRunEventWithComponent}
+          run={run}
+        />
+        <div data-testid="conditional-content-display" />
+      </Fragment>
     ) : null;
   }
 }
