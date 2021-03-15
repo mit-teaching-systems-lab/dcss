@@ -59,12 +59,12 @@ const operationDropdownOptions = terms.map(({ key, op, def, description }) => {
 const availableComponents = [
   'Text',
   'Suggestion',
-  'ResponseRecall'
+  'ResponseRecall',
   // 'AudioPrompt',
   // 'MultiPathResponse',
   // 'ConversationPrompt',
   // 'MultiButtonResponse',
-  // 'TextResponse'
+  'TextResponse'
 ];
 
 class ConditionalContentEditor extends React.Component {
