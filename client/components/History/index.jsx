@@ -241,21 +241,14 @@ class History extends Component {
             </Table.Header>
             <Table.Body key={Identity.key({ runsSlice })}>
               {runsSlice.map(run => {
-                const {
-                  created_at,
-                  ended_at,
-                  scenario_id,
-                  cohort_id
-                } = run;
+                const { created_at, ended_at, scenario_id, cohort_id } = run;
                 const cohort = cohortsById[cohort_id];
                 const scenario = scenariosById[scenario_id];
                 const completeOrIncomplete = ended_at
                   ? { positive: true }
                   : { negative: true };
 
-                const createdAt = (
-                  <span>{Moment(created_at).fromNow()}</span>
-                );
+                const createdAt = <span>{Moment(created_at).fromNow()}</span>;
                 const createdAtAlt = Moment(created_at).calendar();
 
                 const endedAt = ended_at ? (

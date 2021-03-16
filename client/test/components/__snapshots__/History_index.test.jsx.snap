@@ -1,31 +1,36 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Render 1 1 1`] = `
-<DocumentFragment>
+exports[`Render with scenario 1`] = `
+"<body>
   <div
-    aria-busy="true"
-    aria-live="polite"
-    class="ui card loading__single-card"
-    role="status"
-    style="width: 100%; height: 90%;"
-  >
+    id=\\"root\\"
+  />
+  <div>
     <div
-      aria-hidden="true"
-      class="content loading__content"
+      aria-busy=\\"true\\"
+      aria-live=\\"polite\\"
+      class=\\"ui card loading__single-card\\"
+      role=\\"status\\"
+      style=\\"width: 100%; height: 90%;\\"
     >
       <div
-        class="ui placeholder"
+        aria-hidden=\\"true\\"
+        class=\\"content loading__content\\"
       >
         <div
-          class="square image"
-        />
+          class=\\"ui placeholder\\"
+        >
+          <div
+            class=\\"square image\\"
+          />
+        </div>
       </div>
     </div>
   </div>
-</DocumentFragment>
+</body>"
 `;
 
-exports[`Render 1 1 2`] = `
+exports[`Render with scenario 2`] = `
 "<body>
   <div
     id=\\"root\\"
@@ -85,6 +90,55 @@ exports[`Render 1 1 2`] = `
             class=\\"\\"
           >
             <tr
+              class=\\"negative\\"
+            >
+              <td
+                aria-label=\\"Finish this \\\\\\"Multiplayer Scenario 2\\\\\\" to view your data\\"
+                class=\\"h__table-cell-first\\"
+              >
+                <i
+                  aria-hidden=\\"true\\"
+                  class=\\"file alternate outline disabled icon\\"
+                />
+              </td>
+              <td
+                class=\\"h__col-medium\\"
+                role=\\"button\\"
+                style=\\"cursor: pointer;\\"
+              >
+                <a
+                  href=\\"/cohort/6e4213d8d3\\"
+                >
+                  A New Cohort That Exists Within Inline Props
+                </a>
+              </td>
+              <td
+                class=\\"h__col-medium\\"
+                role=\\"button\\"
+                style=\\"cursor: pointer;\\"
+              >
+                <a
+                  href=\\"/cohort/6e4213d8d3/run/a5c52e7b6f/slide/0\\"
+                >
+                  Multiplayer Scenario 2
+                </a>
+              </td>
+              <td
+                alt=\\"03/31/2020\\"
+                class=\\"h__col-small\\"
+              >
+                <span>
+                  a year ago
+                </span>
+              </td>
+              <td
+                alt=\\"This run is not complete\\"
+                class=\\"h__col-small\\"
+              >
+                
+              </td>
+            </tr>
+            <tr
               class=\\"positive\\"
             >
               <td
@@ -115,9 +169,9 @@ exports[`Render 1 1 2`] = `
                 style=\\"cursor: pointer;\\"
               >
                 <a
-                  href=\\"/cohort/6e4213d8d3/run/bedda16e84/slide/0\\"
+                  href=\\"/cohort/6e4213d8d3/run/a5c52e7b6f/slide/0\\"
                 >
-                  Multi Button Prompt
+                  Multiplayer Scenario 2
                 </a>
               </td>
               <td
@@ -168,9 +222,9 @@ exports[`Render 1 1 2`] = `
                 style=\\"cursor: pointer;\\"
               >
                 <a
-                  href=\\"/cohort/6e4213d8d3/run/bedda16e84/slide/0\\"
+                  href=\\"/cohort/6e4213d8d3/run/a5c52e7b6f/slide/0\\"
                 >
-                  Multi Button Prompt
+                  Multiplayer Scenario 2
                 </a>
               </td>
               <td
@@ -194,7 +248,7 @@ exports[`Render 1 1 2`] = `
               class=\\"positive\\"
             >
               <td
-                aria-label=\\"View your data for this scenario run, from cohort \\\\\\"A New Cohort That Exists Within Inline Props\\\\\\"\\"
+                aria-label=\\"View your data for this run of scenario \\\\\\"Multiplayer Scenario 2\\\\\\"\\"
                 class=\\"h__table-cell-first\\"
                 role=\\"button\\"
                 style=\\"cursor: pointer;\\"
@@ -205,57 +259,11 @@ exports[`Render 1 1 2`] = `
                 />
               </td>
               <td
-                class=\\"h__col-medium\\"
+                class=\\"h__col-medium dt__cell-data-missing\\"
                 role=\\"button\\"
                 style=\\"cursor: pointer;\\"
               >
-                <a
-                  href=\\"/cohort/6e4213d8d3\\"
-                >
-                  A New Cohort That Exists Within Inline Props
-                </a>
-              </td>
-              <td
-                class=\\"h__col-medium\\"
-                role=\\"button\\"
-                style=\\"cursor: pointer;\\"
-              >
-                <a
-                  href=\\"/cohort/6e4213d8d3/run/bedda16e84/slide/0\\"
-                >
-                  Multi Button Prompt
-                </a>
-              </td>
-              <td
-                alt=\\"03/31/2020\\"
-                class=\\"h__col-small\\"
-              >
-                <span>
-                  a year ago
-                </span>
-              </td>
-              <td
-                alt=\\"03/31/2020\\"
-                class=\\"h__col-small\\"
-              >
-                <span>
-                  a year ago
-                </span>
-              </td>
-            </tr>
-            <tr
-              class=\\"positive\\"
-            >
-              <td
-                aria-label=\\"View your data for this scenario run, from cohort \\\\\\"A New Cohort That Exists Within Inline Props\\\\\\"\\"
-                class=\\"h__table-cell-first\\"
-                role=\\"button\\"
-                style=\\"cursor: pointer;\\"
-              >
-                <i
-                  aria-hidden=\\"true\\"
-                  class=\\"file alternate outline icon\\"
-                />
+                 
               </td>
               <td
                 class=\\"h__col-medium\\"
@@ -263,20 +271,9 @@ exports[`Render 1 1 2`] = `
                 style=\\"cursor: pointer;\\"
               >
                 <a
-                  href=\\"/cohort/6e4213d8d3\\"
+                  href=\\"/run/a5c52e7b6f/slide/0\\"
                 >
-                  A New Cohort That Exists Within Inline Props
-                </a>
-              </td>
-              <td
-                class=\\"h__col-medium\\"
-                role=\\"button\\"
-                style=\\"cursor: pointer;\\"
-              >
-                <a
-                  href=\\"/cohort/6e4213d8d3/run/bedda16e84/slide/0\\"
-                >
-                  Multi Button Prompt
+                  Multiplayer Scenario 2
                 </a>
               </td>
               <td
