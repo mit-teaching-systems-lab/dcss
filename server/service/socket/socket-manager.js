@@ -133,11 +133,12 @@ const makeRemoteSafeAuthPayload = data => {
 };
 
 class SocketManager {
-
   static isValidToken(remoteToken) {
     const tokens = Object.values(cache.clients).map(client => client.token);
     if (process.env.NODE_ENV !== 'production') {
-      return [...tokens, '8070cb2467d22a15dabafd5f5128cacc04af86f1'].includes(remoteToken);
+      return [...tokens, '8070cb2467d22a15dabafd5f5128cacc04af86f1'].includes(
+        remoteToken
+      );
     }
     return tokens.includes(remoteToken);
   }
