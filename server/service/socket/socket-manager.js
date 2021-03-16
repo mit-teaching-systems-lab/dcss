@@ -109,7 +109,7 @@ const extractTextContent = html => parse(html).textContent;
 
 const makeRemoteSafeAuthPayload = data => {
   const { agent = {}, chat = {}, run = {}, user } = data;
-  const payload = {
+  const auth = {
     agent: {
       id: agent.id,
       name: agent.name,
@@ -126,10 +126,22 @@ const makeRemoteSafeAuthPayload = data => {
       name: user.personalname || user.username
     }
   };
-  return payload;
+
+  const token = hash(auth);
+  auth.token = token;
+  return auth;
 };
 
 class SocketManager {
+
+  static isValidToken(remoteToken) {
+    const tokens = Object.values(cache.clients).map(client => client.token);
+    if (process.env.NODE_ENV !== 'production') {
+      return [...tokens, '8070cb2467d22a15dabafd5f5128cacc04af86f1'].includes(remoteToken);
+    }
+    return tokens.includes(remoteToken);
+  }
+
   constructor(server) {
     if (process.env.DB_CONFIG && process.env.DB_CONFIG === 'test') {
       return;

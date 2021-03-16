@@ -1,6 +1,5 @@
 const { Router } = require('express');
-const { requireUser } = require('../session/middleware');
-
+const { requireUserOrMediaRequestToken } = require('./middleware');
 const { uploadAudio, uploadImage, requestMedia } = require('./endpoints');
 
 const router = Router();
@@ -8,6 +7,6 @@ const router = Router();
 router.post('/audio', uploadAudio);
 router.post('/image', uploadImage);
 
-router.get('/*', [requireUser, requestMedia]);
+router.get('/*', [requireUserOrMediaRequestToken, requestMedia]);
 
 module.exports = router;
