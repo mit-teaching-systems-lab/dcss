@@ -571,10 +571,21 @@ async function getScenarioPrompts(scenario_id) {
     if (slide.components && slide.components.length) {
       accum.push(
         ...slide.components.reduce((accum, component) => {
-          if (component.responseId) {
+          // If the component itself is a prompt (identified by a responseId)
+          // OR, if the component embeds another component which is a prompt.
+          if (component.responseId ||
+              component.component && component.component.responseId) {
+
+            const pushable = component.component && component.component.responseId
+              ? component.component
+              : component;
+
+            const isConditional = pushable === component.component;
+
             accum.push({
               slide,
-              ...component
+              isConditional,
+              ...pushable
             });
           }
           return accum;

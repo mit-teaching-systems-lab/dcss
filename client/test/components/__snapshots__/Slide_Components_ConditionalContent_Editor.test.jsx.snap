@@ -269,6 +269,70 @@ exports[`Add a rule, prompts 1`] = `
                     tabindex=\\"0\\"
                   >
                     <i
+                      aria-label=\\"Prompt: Audio Input\\"
+                      class=\\"microphone icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Audio Input
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Choose Next Slide\\"
+                      class=\\"fork clockwise rotated icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Choose Next Slide
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Conversation\\"
+                      class=\\"conversation icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Conversation
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Multiple Buttons\\"
+                      class=\\"hand pointer outline icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Multiple Buttons
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
                       aria-label=\\"Prompt: Text Input\\"
                       class=\\"keyboard icon\\"
                     />
@@ -557,6 +621,70 @@ exports[`Add a rule, prompts 2`] = `
                       class=\\"ser__component-name\\"
                     >
                       Embed Previous Response
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Audio Input\\"
+                      class=\\"microphone icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Audio Input
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Choose Next Slide\\"
+                      class=\\"fork clockwise rotated icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Choose Next Slide
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Conversation\\"
+                      class=\\"conversation icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Conversation
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Multiple Buttons\\"
+                      class=\\"hand pointer outline icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Multiple Buttons
                     </span>
                   </a>
                   <a
@@ -1198,6 +1326,70 @@ exports[`Add a rule, prompts 3`] = `
                     tabindex=\\"0\\"
                   >
                     <i
+                      aria-label=\\"Prompt: Audio Input\\"
+                      class=\\"microphone icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Audio Input
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Choose Next Slide\\"
+                      class=\\"fork clockwise rotated icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Choose Next Slide
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Conversation\\"
+                      class=\\"conversation icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Conversation
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Multiple Buttons\\"
+                      class=\\"hand pointer outline icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Multiple Buttons
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
                       aria-label=\\"Prompt: Text Input\\"
                       class=\\"keyboard icon\\"
                     />
@@ -1830,6 +2022,70 @@ exports[`Add a rule, prompts 5`] = `
                     tabindex=\\"0\\"
                   >
                     <i
+                      aria-label=\\"Prompt: Audio Input\\"
+                      class=\\"microphone icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Audio Input
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Choose Next Slide\\"
+                      class=\\"fork clockwise rotated icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Choose Next Slide
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Conversation\\"
+                      class=\\"conversation icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Conversation
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Multiple Buttons\\"
+                      class=\\"hand pointer outline icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Multiple Buttons
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
                       aria-label=\\"Prompt: Text Input\\"
                       class=\\"keyboard icon\\"
                     />
@@ -2127,6 +2383,70 @@ exports[`Add a rule, scenario.agent 1`] = `
                     tabindex=\\"0\\"
                   >
                     <i
+                      aria-label=\\"Prompt: Audio Input\\"
+                      class=\\"microphone icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Audio Input
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Choose Next Slide\\"
+                      class=\\"fork clockwise rotated icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Choose Next Slide
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Conversation\\"
+                      class=\\"conversation icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Conversation
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Multiple Buttons\\"
+                      class=\\"hand pointer outline icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Multiple Buttons
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
                       aria-label=\\"Prompt: Text Input\\"
                       class=\\"keyboard icon\\"
                     />
@@ -2415,6 +2735,70 @@ exports[`Add a rule, scenario.agent 2`] = `
                       class=\\"ser__component-name\\"
                     >
                       Embed Previous Response
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Audio Input\\"
+                      class=\\"microphone icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Audio Input
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Choose Next Slide\\"
+                      class=\\"fork clockwise rotated icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Choose Next Slide
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Conversation\\"
+                      class=\\"conversation icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Conversation
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Multiple Buttons\\"
+                      class=\\"hand pointer outline icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Multiple Buttons
                     </span>
                   </a>
                   <a
@@ -3056,6 +3440,70 @@ exports[`Add a rule, scenario.agent 3`] = `
                     tabindex=\\"0\\"
                   >
                     <i
+                      aria-label=\\"Prompt: Audio Input\\"
+                      class=\\"microphone icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Audio Input
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Choose Next Slide\\"
+                      class=\\"fork clockwise rotated icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Choose Next Slide
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Conversation\\"
+                      class=\\"conversation icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Conversation
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Multiple Buttons\\"
+                      class=\\"hand pointer outline icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Multiple Buttons
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
                       aria-label=\\"Prompt: Text Input\\"
                       class=\\"keyboard icon\\"
                     />
@@ -3679,6 +4127,70 @@ exports[`Add a rule, scenario.agent 5`] = `
                       class=\\"ser__component-name\\"
                     >
                       Embed Previous Response
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Audio Input\\"
+                      class=\\"microphone icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Audio Input
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Choose Next Slide\\"
+                      class=\\"fork clockwise rotated icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Choose Next Slide
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Conversation\\"
+                      class=\\"conversation icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Conversation
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Multiple Buttons\\"
+                      class=\\"hand pointer outline icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Multiple Buttons
                     </span>
                   </a>
                   <a
@@ -5112,6 +5624,70 @@ exports[`Delete single rule 1`] = `
                     tabindex=\\"0\\"
                   >
                     <i
+                      aria-label=\\"Prompt: Audio Input\\"
+                      class=\\"microphone icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Audio Input
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Choose Next Slide\\"
+                      class=\\"fork clockwise rotated icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Choose Next Slide
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Conversation\\"
+                      class=\\"conversation icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Conversation
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Multiple Buttons\\"
+                      class=\\"hand pointer outline icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Multiple Buttons
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
                       aria-label=\\"Prompt: Text Input\\"
                       class=\\"keyboard icon\\"
                     />
@@ -6527,6 +7103,70 @@ exports[`Delete single rule 2`] = `
                       class=\\"ser__component-name\\"
                     >
                       Embed Previous Response
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Audio Input\\"
+                      class=\\"microphone icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Audio Input
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Choose Next Slide\\"
+                      class=\\"fork clockwise rotated icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Choose Next Slide
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Conversation\\"
+                      class=\\"conversation icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Conversation
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Multiple Buttons\\"
+                      class=\\"hand pointer outline icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Multiple Buttons
                     </span>
                   </a>
                   <a
@@ -7962,6 +8602,70 @@ exports[`Delete single rule 3`] = `
                     tabindex=\\"0\\"
                   >
                     <i
+                      aria-label=\\"Prompt: Audio Input\\"
+                      class=\\"microphone icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Audio Input
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Choose Next Slide\\"
+                      class=\\"fork clockwise rotated icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Choose Next Slide
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Conversation\\"
+                      class=\\"conversation icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Conversation
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Multiple Buttons\\"
+                      class=\\"hand pointer outline icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Multiple Buttons
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
                       aria-label=\\"Prompt: Text Input\\"
                       class=\\"keyboard icon\\"
                     />
@@ -9002,6 +9706,70 @@ exports[`Delete single rule 4`] = `
                     tabindex=\\"0\\"
                   >
                     <i
+                      aria-label=\\"Prompt: Audio Input\\"
+                      class=\\"microphone icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Audio Input
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Choose Next Slide\\"
+                      class=\\"fork clockwise rotated icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Choose Next Slide
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Conversation\\"
+                      class=\\"conversation icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Conversation
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Multiple Buttons\\"
+                      class=\\"hand pointer outline icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Multiple Buttons
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
                       aria-label=\\"Prompt: Text Input\\"
                       class=\\"keyboard icon\\"
                     />
@@ -9981,6 +10749,70 @@ exports[`Delete single rule 5`] = `
                     tabindex=\\"0\\"
                   >
                     <i
+                      aria-label=\\"Prompt: Audio Input\\"
+                      class=\\"microphone icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Audio Input
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Choose Next Slide\\"
+                      class=\\"fork clockwise rotated icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Choose Next Slide
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Conversation\\"
+                      class=\\"conversation icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Conversation
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Multiple Buttons\\"
+                      class=\\"hand pointer outline icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Multiple Buttons
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
                       aria-label=\\"Prompt: Text Input\\"
                       class=\\"keyboard icon\\"
                     />
@@ -10281,6 +11113,70 @@ exports[`Missing props 1`] = `
                       class=\\"ser__component-name\\"
                     >
                       Embed Previous Response
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Audio Input\\"
+                      class=\\"microphone icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Audio Input
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Choose Next Slide\\"
+                      class=\\"fork clockwise rotated icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Choose Next Slide
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Conversation\\"
+                      class=\\"conversation icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Conversation
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Multiple Buttons\\"
+                      class=\\"hand pointer outline icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Multiple Buttons
                     </span>
                   </a>
                   <a
@@ -11714,6 +12610,70 @@ exports[`Render 1 1 1`] = `
                     tabindex=\\"0\\"
                   >
                     <i
+                      aria-label=\\"Prompt: Audio Input\\"
+                      class=\\"microphone icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Audio Input
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Choose Next Slide\\"
+                      class=\\"fork clockwise rotated icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Choose Next Slide
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Conversation\\"
+                      class=\\"conversation icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Conversation
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Multiple Buttons\\"
+                      class=\\"hand pointer outline icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Multiple Buttons
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
                       aria-label=\\"Prompt: Text Input\\"
                       class=\\"keyboard icon\\"
                     />
@@ -12000,6 +12960,70 @@ exports[`Rules empty 1`] = `
                       class=\\"ser__component-name\\"
                     >
                       Embed Previous Response
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Audio Input\\"
+                      class=\\"microphone icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Audio Input
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Choose Next Slide\\"
+                      class=\\"fork clockwise rotated icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Choose Next Slide
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Conversation\\"
+                      class=\\"conversation icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Conversation
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Multiple Buttons\\"
+                      class=\\"hand pointer outline icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Multiple Buttons
                     </span>
                   </a>
                   <a
@@ -13433,6 +14457,70 @@ exports[`Save single rule 1`] = `
                     tabindex=\\"0\\"
                   >
                     <i
+                      aria-label=\\"Prompt: Audio Input\\"
+                      class=\\"microphone icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Audio Input
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Choose Next Slide\\"
+                      class=\\"fork clockwise rotated icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Choose Next Slide
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Conversation\\"
+                      class=\\"conversation icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Conversation
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Multiple Buttons\\"
+                      class=\\"hand pointer outline icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Multiple Buttons
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
                       aria-label=\\"Prompt: Text Input\\"
                       class=\\"keyboard icon\\"
                     />
@@ -14857,6 +15945,70 @@ exports[`Save single rule 2`] = `
                     tabindex=\\"0\\"
                   >
                     <i
+                      aria-label=\\"Prompt: Audio Input\\"
+                      class=\\"microphone icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Audio Input
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Choose Next Slide\\"
+                      class=\\"fork clockwise rotated icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Choose Next Slide
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Conversation\\"
+                      class=\\"conversation icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Conversation
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Multiple Buttons\\"
+                      class=\\"hand pointer outline icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Multiple Buttons
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
                       aria-label=\\"Prompt: Text Input\\"
                       class=\\"keyboard icon\\"
                     />
@@ -16272,6 +17424,70 @@ exports[`Save single rule 3`] = `
                       class=\\"ser__component-name\\"
                     >
                       Embed Previous Response
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Audio Input\\"
+                      class=\\"microphone icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Audio Input
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Choose Next Slide\\"
+                      class=\\"fork clockwise rotated icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Choose Next Slide
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Conversation\\"
+                      class=\\"conversation icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Conversation
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Multiple Buttons\\"
+                      class=\\"hand pointer outline icon\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Multiple Buttons
                     </span>
                   </a>
                   <a

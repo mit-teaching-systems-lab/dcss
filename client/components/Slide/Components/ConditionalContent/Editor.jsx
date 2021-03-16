@@ -60,10 +60,10 @@ const availableComponents = [
   'Text',
   'Suggestion',
   'ResponseRecall',
-  // 'AudioPrompt',
-  // 'MultiPathResponse',
-  // 'ConversationPrompt',
-  // 'MultiButtonResponse',
+  'AudioPrompt',
+  'MultiPathResponse',
+  'ConversationPrompt',
+  'MultiButtonResponse',
   'TextResponse'
 ];
 

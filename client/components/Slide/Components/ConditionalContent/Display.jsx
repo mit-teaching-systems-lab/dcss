@@ -11,6 +11,7 @@ import * as Components from '@components/Slide/Components';
 import Conditional, { terms } from '@utils/Conditional';
 import Identity from '@utils/Identity';
 import Payload from '@utils/Payload';
+import Storage from '@utils/Storage';
 
 class Display extends Component {
   constructor(props) {
@@ -62,11 +63,10 @@ class Display extends Component {
   }
 
   render() {
-    const { component, onResponseChange, run, saveRunEvent } = this.props;
-
-    const rules = this.props.rules.slice();
-
+    const { component, onResponseChange, responseId, run, saveRunEvent } = this.props;
     const { isReady, responses } = this.state;
+    const rules = this.props.rules.slice();
+    const emptyValue = { value: '' };
 
     if (!isReady) {
       return null;
@@ -77,7 +77,7 @@ class Display extends Component {
       : null;
 
     const saveRunEventWithComponent = (name, context) => {
-      saveRunEvent.call(this.props, name, {
+      saveRunEvent.call(component, name, {
         ...context,
         component
       });
@@ -116,14 +116,21 @@ class Display extends Component {
 
     const mustShowConditionalContent = Conditional.evaluate(data, where);
 
+    const persisted = run
+      ? Storage.get(`run/${run.id}/${responseId}`, emptyValue)
+      : emptyValue;
+
+    const componentProps = {
+      ...this.props.component,
+      persisted,
+      onResponseChange,
+      run,
+      saveRunEvent: saveRunEventWithComponent,
+    };
+
     return component && mustShowConditionalContent ? (
       <Fragment>
-        <ComponentDisplay
-          {...this.props.component}
-          onResponseChange={onResponseChange}
-          saveRunEvent={saveRunEventWithComponent}
-          run={run}
-        />
+        <ComponentDisplay {...componentProps} />
         <div data-testid="conditional-content-display" />
       </Fragment>
     ) : null;

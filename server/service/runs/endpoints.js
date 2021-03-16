@@ -123,9 +123,14 @@ async function getRunData(req, res) {
   try {
     for (const response of responses) {
       if (!prompts[response.scenario_id]) {
-        prompts[response.scenario_id] = [
-          await scenariosdb.getScenarioPrompts(response.scenario_id)
-        ];
+        // This was previously, and inexplicably, written as:
+        // prompts[response.scenario_id] = [
+        //   await scenariosdb.getScenarioPrompts(response.scenario_id)
+        // ];
+        //
+        prompts[response.scenario_id] = await scenariosdb.getScenarioPrompts(
+          response.scenario_id
+        );
       }
     }
 

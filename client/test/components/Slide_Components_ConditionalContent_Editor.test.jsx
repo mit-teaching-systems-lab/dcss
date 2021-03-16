@@ -2,7 +2,7 @@
 import React from 'react';
 jest.mock('react', () => ({
   ...jest.requireActual('react'),
-  useLayoutEffect: jest.requireActual('react').useEffect,
+  useLayoutEffect: jest.requireActual('react').useEffect
 }));
 
 import {
@@ -11,7 +11,7 @@ import {
   reduxer,
   serialize,
   snapshotter,
-  state,
+  state
 } from '../bootstrap';
 import { unmountComponentAtNode } from 'react-dom';
 
@@ -21,7 +21,7 @@ import {
   prettyDOM,
   render,
   screen,
-  waitFor,
+  waitFor
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
@@ -84,7 +84,7 @@ beforeEach(() => {
         id: 23,
         name: 'base-agent',
         title: 'All Your Base Are Belong To Us',
-        description: 'All Your Base Are Belong To Us',
+        description: 'All Your Base Are Belong To Us'
       },
       header: 'TextResponse-0',
       id: 'f5ad3049-5dc0-4855-83fd-f76050be4ef5',
@@ -96,18 +96,18 @@ beforeEach(() => {
       required: true,
       responseId: '2fe89809-2b7c-432a-9fbb-8dbb0b574a58',
       timeout: 0,
-      type: 'TextResponse',
+      type: 'TextResponse'
     },
     {
       agent: {
         id: 23,
         name: 'base-agent',
         title: 'All Your Base Are Belong To Us',
-        description: 'All Your Base Are Belong To Us',
+        description: 'All Your Base Are Belong To Us'
       },
       buttons: [
         { color: '#ff00ff', display: 'Yes', value: 'Yes' },
-        { color: '#ff0000', display: 'No', value: 'No' },
+        { color: '#ff0000', display: 'No', value: 'No' }
       ],
       header: 'MultiButtonResponse-1',
       id: 'b5de9c84-d9b8-4654-9291-5c5683df240c',
@@ -118,14 +118,14 @@ beforeEach(() => {
       required: true,
       responseId: 'b4de2abc-6d48-4c6f-b8bf-830b88e1c09e',
       timeout: 0,
-      type: 'MultiButtonResponse',
+      type: 'MultiButtonResponse'
     },
     {
       agent: {
         id: 23,
         name: 'base-agent',
         title: 'All Your Base Are Belong To Us',
-        description: 'All Your Base Are Belong To Us',
+        description: 'All Your Base Are Belong To Us'
       },
       header: 'AudioPrompt-2',
       id: 'bbc156a0-5885-4a9e-9810-d0fecbff17e6',
@@ -136,8 +136,8 @@ beforeEach(() => {
       required: true,
       responseId: '4f8c934d-c95f-4c95-ad41-64bdb36edde2',
       timeout: 0,
-      type: 'AudioPrompt',
-    },
+      type: 'AudioPrompt'
+    }
   ];
   scenario = {
     author: {
@@ -147,7 +147,7 @@ beforeEach(() => {
       email: 'super@email.com',
       is_anonymous: false,
       roles: ['participant', 'super_admin', 'facilitator', 'researcher'],
-      is_super: true,
+      is_super: true
     },
     categories: [],
     consent: { id: 57, prose: '' },
@@ -156,24 +156,24 @@ beforeEach(() => {
       id: 1,
       title: '',
       components: [
-        { html: '<h2>Thanks for participating!</h2>', type: 'Text' },
+        { html: '<h2>Thanks for participating!</h2>', type: 'Text' }
       ],
-      is_finish: true,
+      is_finish: true
     },
     lock: {
       scenario_id: 42,
       user_id: 999,
       created_at: '2020-02-31T23:54:19.934Z',
-      ended_at: null,
+      ended_at: null
     },
     slides: [
       {
         id: 1,
         title: '',
         components: [
-          { html: '<h2>Thanks for participating!</h2>', type: 'Text' },
+          { html: '<h2>Thanks for participating!</h2>', type: 'Text' }
         ],
-        is_finish: true,
+        is_finish: true
       },
       {
         id: 2,
@@ -182,7 +182,7 @@ beforeEach(() => {
           {
             id: 'b7e7a3f1-eb4e-4afa-8569-eb6677358c9e',
             html: '<p>paragraph</p>',
-            type: 'Text',
+            type: 'Text'
           },
           {
             agent: null,
@@ -194,16 +194,16 @@ beforeEach(() => {
             recallId: '',
             required: true,
             responseId: 'be99fe9b-fa0d-4ab7-8541-1bfd1ef0bf11',
-            placeholder: '',
+            placeholder: ''
           },
           {
             id: 'f96ac6de-ac6b-4e06-bd97-d97e12fe72c1',
             html: '<p>?</p>',
-            type: 'Text',
-          },
+            type: 'Text'
+          }
         ],
-        is_finish: false,
-      },
+        is_finish: false
+      }
     ],
     status: 1,
     title: 'Multiplayer Scenario 2',
@@ -216,8 +216,8 @@ beforeEach(() => {
         roles: ['super'],
         is_super: true,
         is_author: true,
-        is_reviewer: false,
-      },
+        is_reviewer: false
+      }
     ],
     id: 42,
     created_at: '2020-08-31T17:50:28.089Z',
@@ -236,9 +236,9 @@ beforeEach(() => {
         deleted_at: null,
         author_id: 3,
         is_read_only: true,
-        is_shared: true,
-      },
-    ],
+        is_shared: true
+      }
+    ]
   };
   scenario.agent = {
     id: 1,
@@ -253,7 +253,7 @@ beforeEach(() => {
     configuration: {
       bar: '2',
       baz: 'c',
-      foo: 'false',
+      foo: 'false'
     },
     interaction: {
       id: 1,
@@ -263,7 +263,7 @@ beforeEach(() => {
       created_at: '2021-02-25T15:09:05.001302-05:00',
       deleted_at: null,
       updated_at: null,
-      types: [],
+      types: []
     },
     owner: {
       id: 999,
@@ -272,7 +272,7 @@ beforeEach(() => {
       is_super: true,
       username: 'superuser',
       is_anonymous: false,
-      personalname: 'Super User',
+      personalname: 'Super User'
     },
     self: {
       id: 148,
@@ -283,11 +283,11 @@ beforeEach(() => {
       lastseen_at: '2021-02-25T13:08:57.323-05:00',
       is_anonymous: true,
       personalname: 'Emoji Analysis',
-      single_use_password: false,
+      single_use_password: false
     },
     socket: {
-      path: '/path/to/foo',
-    },
+      path: '/path/to/foo'
+    }
   };
   slideIndex = 0;
   value = {
@@ -298,18 +298,18 @@ beforeEach(() => {
     rules: [
       { key: '$gt', value: 1 },
       { key: '$and', value: undefined },
-      { key: '$lt', value: 10 },
+      { key: '$lt', value: 10 }
     ],
     persona: null,
     recallId: 'xyz-recallId',
     required: false,
     responseId: 'xyz-responseId',
     component: null,
-    type: 'ConditionalContent',
+    type: 'ConditionalContent'
   };
 
   scenarioActions.getScenarioPromptComponents.mockImplementation(
-    () => async (dispatch) => {
+    () => async dispatch => {
       dispatch({ type: GET_SCENARIO_PROMPT_COMPONENTS_SUCCESS, prompts });
       return prompts;
     }
@@ -341,7 +341,7 @@ test('Editor', () => {
 });
 
 /** @GENERATED: BEGIN **/
-test('Render 1 1', async (done) => {
+test('Render 1 1', async done => {
   const Component = Editor;
   const props = {
     ...commonProps,
@@ -349,11 +349,11 @@ test('Render 1 1', async (done) => {
     type: 'ConditionalContent',
     value,
     scenario,
-    onChange: jest.fn(),
+    onChange: jest.fn()
   };
 
   const state = {
-    ...commonState,
+    ...commonState
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
@@ -367,7 +367,7 @@ test('Render 1 1', async (done) => {
 
 /* INJECTION STARTS HERE */
 
-test('Missing props', async (done) => {
+test('Missing props', async done => {
   const Component = Editor;
 
   value.persona = null;
@@ -382,11 +382,11 @@ test('Missing props', async (done) => {
     scenario,
     slideIndex,
     onChange: jest.fn(),
-    value,
+    value
   };
 
   const state = {
-    ...commonState,
+    ...commonState
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
@@ -397,7 +397,7 @@ test('Missing props', async (done) => {
   done();
 });
 
-test('Rules empty', async (done) => {
+test('Rules empty', async done => {
   const Component = Editor;
 
   value.rules = [];
@@ -407,11 +407,11 @@ test('Rules empty', async (done) => {
     scenario,
     slideIndex,
     onChange: jest.fn(),
-    value,
+    value
   };
 
   const state = {
-    ...commonState,
+    ...commonState
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
@@ -422,7 +422,7 @@ test('Rules empty', async (done) => {
   done();
 });
 
-test('Save single rule', async (done) => {
+test('Save single rule', async done => {
   const Component = Editor;
 
   const props = {
@@ -430,11 +430,11 @@ test('Save single rule', async (done) => {
     scenario,
     slideIndex,
     onChange: jest.fn(),
-    value,
+    value
   };
 
   const state = {
-    ...commonState,
+    ...commonState
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
@@ -486,7 +486,7 @@ test('Save single rule', async (done) => {
   done();
 });
 
-test('Delete single rule', async (done) => {
+test('Delete single rule', async done => {
   const Component = Editor;
 
   const props = {
@@ -494,11 +494,11 @@ test('Delete single rule', async (done) => {
     scenario,
     slideIndex,
     onChange: jest.fn(),
-    value,
+    value
   };
 
   const state = {
-    ...commonState,
+    ...commonState
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
@@ -551,7 +551,7 @@ test('Delete single rule', async (done) => {
   done();
 });
 
-test('Add a rule, scenario.agent', async (done) => {
+test('Add a rule, scenario.agent', async done => {
   const Component = Editor;
 
   value.rules = [];
@@ -561,11 +561,11 @@ test('Add a rule, scenario.agent', async (done) => {
     scenario,
     slideIndex,
     onChange: jest.fn(),
-    value,
+    value
   };
 
   const state = {
-    ...commonState,
+    ...commonState
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
@@ -614,7 +614,7 @@ test('Add a rule, scenario.agent', async (done) => {
   done();
 });
 
-test('Add a rule, prompts', async (done) => {
+test('Add a rule, prompts', async done => {
   const Component = Editor;
 
   value.rules = [];
@@ -625,11 +625,11 @@ test('Add a rule, prompts', async (done) => {
     scenario,
     slideIndex,
     onChange: jest.fn(),
-    value,
+    value
   };
 
   const state = {
-    ...commonState,
+    ...commonState
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
@@ -677,4 +677,3 @@ test('Add a rule, prompts', async (done) => {
 
   done();
 });
-

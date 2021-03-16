@@ -3,13 +3,13 @@ const { asyncMiddleware } = require('../../../util/api');
 const { requestScenario } = require('../middleware');
 const db = require('./db');
 
-async function getSlidesAsync(req, res) {
+async function getSlides(req, res) {
   const { id } = requestScenario(req);
   const slides = await db.getScenarioSlides(id);
   res.json({ slides });
 }
 
-async function getPromptComponentsByScenarioIdAsync(req, res) {
+async function getPromptComponentsByScenarioId(req, res) {
   const { id } = requestScenario(req);
   const slides = await db.getScenarioSlides(id);
   const components = slides.reduce((accum, slide, index) => {
@@ -19,11 +19,22 @@ async function getPromptComponentsByScenarioIdAsync(req, res) {
     if (slide.components && slide.components.length) {
       accum.push(
         ...slide.components.reduce((accum, component) => {
-          if (component.responseId) {
+          // If the component itself is a prompt (identified by a responseId)
+          // OR, if the component embeds another component which is a prompt.
+          if (component.responseId ||
+              component.component && component.component.responseId) {
+
+            const pushable = component.component && component.component.responseId
+              ? component.component
+              : component;
+
+            const isConditional = pushable === component.component;
+
             accum.push({
               index,
               slide,
-              ...component
+              isConditional,
+              ...pushable
             });
           }
           return accum;
@@ -35,7 +46,7 @@ async function getPromptComponentsByScenarioIdAsync(req, res) {
   res.json({ components });
 }
 
-async function addSlideAsync(req, res) {
+async function addSlide(req, res) {
   const { id: scenario_id } = requestScenario(req);
   const { title, order, components, is_finish = false } = req.body;
   res.json({
@@ -49,7 +60,7 @@ async function addSlideAsync(req, res) {
   });
 }
 
-async function orderSlidesAsync(req, res) {
+async function orderSlides(req, res) {
   const { id: scenario_id } = requestScenario(req);
   const slide_ids = req.body.slides.map(id => {
     if (typeof id === 'object') return id.id;
@@ -60,7 +71,7 @@ async function orderSlidesAsync(req, res) {
   });
 }
 
-async function setSlideAsync(req, res) {
+async function setSlide(req, res) {
   // TODO: ensure slide id is part of scenario / author permissions / etc
   const { slide_id } = req.params;
   const {
@@ -81,7 +92,7 @@ async function setSlideAsync(req, res) {
   });
 }
 
-async function setAllSlidesAsync(req, res) {
+async function setAllSlides(req, res) {
   const { id: scenario_id } = requestScenario(req);
   const { slides } = req.body;
   res.json({
@@ -89,7 +100,7 @@ async function setAllSlidesAsync(req, res) {
   });
 }
 
-async function deleteSlideAsync(req, res) {
+async function deleteSlide(req, res) {
   // TODO: ensure slide id is part of scenario / author permissions / etc
   const { id: scenario_id } = requestScenario(req);
   const id = Number(req.params.slide_id);
@@ -109,12 +120,12 @@ async function deleteSlideAsync(req, res) {
   }
 }
 
-exports.getSlides = asyncMiddleware(getSlidesAsync);
+exports.getSlides = asyncMiddleware(getSlides);
 exports.getPromptComponentsByScenarioId = asyncMiddleware(
-  getPromptComponentsByScenarioIdAsync
+  getPromptComponentsByScenarioId
 );
-exports.addSlide = asyncMiddleware(addSlideAsync);
-exports.orderSlides = asyncMiddleware(orderSlidesAsync);
-exports.setSlide = asyncMiddleware(setSlideAsync);
-exports.setAllSlides = asyncMiddleware(setAllSlidesAsync);
-exports.deleteSlide = asyncMiddleware(deleteSlideAsync);
+exports.addSlide = asyncMiddleware(addSlide);
+exports.orderSlides = asyncMiddleware(orderSlides);
+exports.setSlide = asyncMiddleware(setSlide);
+exports.setAllSlides = asyncMiddleware(setAllSlides);
+exports.deleteSlide = asyncMiddleware(deleteSlide);

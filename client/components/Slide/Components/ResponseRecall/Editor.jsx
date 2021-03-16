@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Dropdown, Form, Table } from '@components/UI';
 import { type } from './meta';
 
-const ResponsePromptFormatted = ({ title, prompt, header }) => {
+const ResponsePromptFormatted = ({ title, prompt, header, isConditional }) => {
   return (
     <Table celled striped>
       <Table.Header>
@@ -22,6 +22,11 @@ const ResponsePromptFormatted = ({ title, prompt, header }) => {
             <Table.Cell>{header}</Table.Cell>
           </Table.Row>
         ) : null}
+        {isConditional ? (
+          <Table.Row>
+            <Table.Cell colSpan={2}>This prompt appears conditionally.</Table.Cell>
+          </Table.Row>
+        ) : null}
       </Table.Body>
     </Table>
   );
@@ -30,7 +35,8 @@ const ResponsePromptFormatted = ({ title, prompt, header }) => {
 ResponsePromptFormatted.propTypes = {
   title: PropTypes.string,
   prompt: PropTypes.string,
-  header: PropTypes.string
+  header: PropTypes.string,
+  isConditional: PropTypes.bool,
 };
 
 class ResponseRecallEditor extends React.Component {
@@ -82,7 +88,7 @@ class ResponseRecallEditor extends React.Component {
     }
 
     const prompts = components.reduce((accum, component, key) => {
-      const { header, index, prompt, responseId, slide } = component;
+      const { header, index, isConditional, prompt, responseId, slide } = component;
 
       // Don't include empty/incomplete prompts
       // Don't include prompts from THIS slide
@@ -102,6 +108,7 @@ class ResponseRecallEditor extends React.Component {
           title={title}
           prompt={prompt}
           header={header}
+          isConditional={isConditional}
         />
       );
 
