@@ -409,6 +409,19 @@ async function copyScenario(req, res) {
       });
 
       personas[index] = created;
+
+      for (const slide of slides) {
+        let needsUpdate = false;
+        for (const component of slide.components) {
+          if (component.persona && component.persona.id === persona.id) {
+            component.persona.id = created.id;
+            needsUpdate = true;
+          }
+        }
+        if (needsUpdate) {
+          await slidesdb.setSlide(slide.id, slide);
+        }
+      }
     }
 
     await db.setScenarioPersonas(scenario.id, personas);
