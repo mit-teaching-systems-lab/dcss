@@ -87,6 +87,12 @@ function makeDimensionsForComposer({ width: w, height: h } = {}) {
     minHeight: `${height}px`,
     maxHeight: `${height}px`
   };
+  // return {
+  //   width: `${width}px`,
+  //   height: `100%`,
+  //   minHeight: `${height}px`,
+  //   maxHeight: `${height}px`
+  // };
 }
 
 class Chat extends Component {
@@ -107,7 +113,7 @@ class Chat extends Component {
     Storage.get(`chat/*`, {
       dimensions: {
         width: 456,
-        height: 410
+        height: 590
       },
       position: {
         x: 0,
@@ -331,6 +337,8 @@ class Chat extends Component {
   sendNewMessage() {
     const { content } = this;
     if (isValidMessage(content)) {
+      console.log(content);
+
       this.props.socket.emit(
         CHAT_MESSAGE_CREATED,
         Payload.compose(

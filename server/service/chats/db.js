@@ -399,3 +399,22 @@ exports.archiveChatMessagesByChatId = async id => {
   // )
   // INSERT INTO chat_message_archive (SELECT * FROM rows);
 };
+
+exports.getChatUsersSharedResponses = async (id, response_id, list) => {
+  const result = await query(`
+    SELECT * FROM (
+      SELECT DISTINCT ON (user_id, response_id) *
+      FROM (
+        SELECT * FROM run_response_view ORDER BY id DESC
+      ) AS orrv
+    ) AS rrv
+    WHERE run_id IN (
+      SELECT run_id FROM run_chat
+      WHERE chat_id = ${id}
+    )
+    AND response_id = '${response_id}'
+    AND user_id IN (${list.join(',')})
+    ORDER BY id ASC;
+  `);
+  return result.rows;
+};

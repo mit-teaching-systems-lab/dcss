@@ -8,7 +8,7 @@ import {
   SET_RESPONSES_ERROR
 } from './types';
 
-export let getResponse = ({ id, responseId }) => async dispatch => {
+export let getResponse = (id, responseId) => async dispatch => {
   try {
     const res = await (await fetch(
       `/api/runs/${id}/response/${responseId}`

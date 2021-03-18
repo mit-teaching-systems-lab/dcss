@@ -1,3 +1,4 @@
+import QueryString from '@utils/QueryString';
 import {
   CREATE_CHAT_INVITE_SUCCESS,
   CREATE_CHAT_INVITE_ERROR,
@@ -9,6 +10,8 @@ import {
   GET_CHAT_MESSAGES_COUNT_SUCCESS,
   GET_CHAT_USERS_ERROR,
   GET_CHAT_USERS_SUCCESS,
+  GET_CHAT_USERS_SHARED_RESPONSES_ERROR,
+  GET_CHAT_USERS_SHARED_RESPONSES_SUCCESS,
   GET_CHATS_ERROR,
   GET_CHATS_SUCCESS,
   SET_CHAT_ERROR,
@@ -355,6 +358,31 @@ export let setMessageById = (id, params) => async dispatch => {
     return null;
   } catch (error) {
     dispatch({ type: SET_CHAT_MESSAGE_ERROR, error });
+    return null;
+  }
+};
+
+export let getChatUsersSharedResponses = (
+  id,
+  responseId,
+  list
+) => async dispatch => {
+  try {
+    const qs = QueryString.stringify({ list });
+    const res = await (await fetch(
+      `/api/chats/${id}/response/${responseId}/?${qs}`
+    )).json();
+
+    if (res.error) {
+      throw res;
+    }
+
+    let { responses } = res;
+
+    dispatch({ type: GET_CHAT_USERS_SHARED_RESPONSES_SUCCESS, responses });
+    return responses;
+  } catch (error) {
+    dispatch({ type: GET_CHAT_USERS_SHARED_RESPONSES_ERROR, error });
     return null;
   }
 };

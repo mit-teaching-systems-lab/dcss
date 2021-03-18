@@ -45,10 +45,7 @@ class Display extends Component {
     let { name = responseId, value = '' } = persisted;
 
     if (!value && run.id) {
-      const previous = await this.props.getResponse({
-        id: run.id,
-        responseId
-      });
+      const previous = await this.props.getResponse(run.id, responseId);
 
       if (previous && previous.response) {
         value = previous.response.value;
@@ -112,7 +109,6 @@ class Display extends Component {
       run
     } = this.props;
 
-    console.log(this.props);
     const { value } = this.state;
     const { onBlur, onFocus, onChange } = this;
     const fulfilled = value ? true : false;
@@ -127,7 +123,13 @@ class Display extends Component {
         <Header as="h3" tabIndex="0">
           {header}
         </Header>
-        {recallId && <ResponseRecall run={run} recallId={recallId} />}
+        {recallId ? (
+          <ResponseRecall
+            run={run}
+            recallId={recallId}
+            recallSharedWithRoles={recallSharedWithRoles}
+          />
+        ) : null}
 
         {isEmbeddedInSVG ? (
           <Form.TextArea />
@@ -160,6 +162,7 @@ Display.propTypes = {
   placeholder: PropTypes.string,
   prompt: PropTypes.string,
   recallId: PropTypes.string,
+  recallSharedWithRoles: PropTypes.array,
   required: PropTypes.bool,
   responseId: PropTypes.string,
   run: PropTypes.object,
@@ -173,7 +176,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  getResponse: params => dispatch(getResponse(params))
+  getResponse: (...params) => dispatch(getResponse(...params))
 });
 
 export default connect(

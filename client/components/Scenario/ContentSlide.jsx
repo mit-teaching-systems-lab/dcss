@@ -101,18 +101,14 @@ class ContentSlide extends React.Component {
 
     let {
       responsesById,
-      run: { id },
+      run,
       slide,
       slide: { components }
     } = this.props;
 
     for (let { responseId } of components) {
       if (responseId && !responsesById[responseId]) {
-        await this.props.getResponse({
-          id,
-          responseId,
-          source: 'ContentSlide'
-        });
+        await this.props.getResponse(run.id, responseId);
       }
     }
 
@@ -451,7 +447,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => ({
   getChat: id => dispatch(getChat(id)),
   getLinkedChatUsersByChatId: id => dispatch(getLinkedChatUsersByChatId(id)),
-  getResponse: params => dispatch(getResponse(params))
+  getResponse: (...params) => dispatch(getResponse(...params))
 });
 
 export default connect(

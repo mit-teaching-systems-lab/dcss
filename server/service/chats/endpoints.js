@@ -298,6 +298,20 @@ async function joinChat(req, res) {
   res.json({ chat });
 }
 
+async function getChatUsersSharedResponses(req, res) {
+  const id = Number(req.params.id);
+  const response_id = req.params.response_id;
+  const list = (req.query.list || []).map(Number);
+
+  if (!list.length) {
+    res.json({ responses: [] });
+    return;
+  }
+
+  const responses = await db.getChatUsersSharedResponses(id, response_id, list);
+  res.json({ responses });
+}
+
 exports.joinChat = asyncMiddleware(joinChat);
 exports.getChats = asyncMiddleware(getChats);
 exports.getChatsByUserId = asyncMiddleware(getChatsByUserId);
@@ -307,6 +321,9 @@ exports.getChatMessagesCountByChatId = asyncMiddleware(
   getChatMessagesCountByChatId
 );
 exports.getChatUsersByChatId = asyncMiddleware(getChatUsersByChatId);
+exports.getChatUsersSharedResponses = asyncMiddleware(
+  getChatUsersSharedResponses
+);
 exports.getLinkedChatUsersByChatId = asyncMiddleware(
   getLinkedChatUsersByChatId
 );

@@ -65,10 +65,7 @@ class AudioRecorder extends Component {
     }
 
     if (!value || !transcript) {
-      const previous = await this.props.getResponse({
-        id: run.id,
-        responseId
-      });
+      const previous = await this.props.getResponse(run.id, responseId);
 
       if (previous && previous.response) {
         value = previous.response.value;
@@ -405,7 +402,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  getResponse: params => dispatch(getResponse(params))
+  getResponse: (...params) => dispatch(getResponse(...params))
 });
 
 export default connect(

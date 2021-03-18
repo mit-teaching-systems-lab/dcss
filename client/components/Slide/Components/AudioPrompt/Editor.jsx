@@ -101,7 +101,13 @@ class AudioPromptEditor extends Component {
   }
 
   render() {
-    const { agent, header, prompt, recallId, recallSharedWithRoles } = this.state;
+    const {
+      agent,
+      header,
+      prompt,
+      recallId,
+      recallSharedWithRoles
+    } = this.state;
     const { scenario, slideIndex } = this.props;
     const { onChange, onRecallChange, updateState } = this;
 

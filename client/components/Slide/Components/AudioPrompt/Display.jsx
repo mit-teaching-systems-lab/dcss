@@ -47,10 +47,7 @@ class Display extends Component {
     };
 
     if (!value || !transcript) {
-      const previous = await this.props.getResponse({
-        id: run.id,
-        responseId
-      });
+      const previous = await this.props.getResponse(run.id, responseId);
 
       if (previous && previous.response) {
         value = previous.response.value;
@@ -107,6 +104,7 @@ class Display extends Component {
       persisted,
       prompt,
       recallId,
+      recallSharedWithRoles,
       responseId,
       required,
       run
@@ -122,7 +120,11 @@ class Display extends Component {
       </Header>
     );
     const recalledResponse = recallId ? (
-      <ResponseRecall run={run} recallId={recallId} />
+      <ResponseRecall
+        run={run}
+        recallId={recallId}
+        recallSharedWithRoles={recallSharedWithRoles}
+      />
     ) : null;
 
     return (
@@ -161,6 +163,7 @@ Display.propTypes = {
   placeholder: PropTypes.string,
   prompt: PropTypes.string,
   recallId: PropTypes.string,
+  recallSharedWithRoles: PropTypes.array,
   required: PropTypes.bool,
   responseId: PropTypes.string,
   run: PropTypes.object,
@@ -174,7 +177,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  getResponse: params => dispatch(getResponse(params))
+  getResponse: (...params) => dispatch(getResponse(...params))
 });
 
 export default connect(

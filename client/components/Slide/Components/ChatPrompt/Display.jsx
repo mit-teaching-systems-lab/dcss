@@ -109,10 +109,7 @@ class Display extends Component {
     let hasSubmittedResponse = false;
 
     if (!value && run.id) {
-      const previous = await this.props.getResponse({
-        id: run.id,
-        responseId
-      });
+      const previous = await this.props.getResponse(run.id, responseId);
 
       if (previous?.response?.value) {
         hasSubmittedResponse = true;
@@ -528,7 +525,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => ({
   getAgent: id => dispatch(getAgent(id)),
-  getResponse: params => dispatch(getResponse(params))
+  getResponse: (...params) => dispatch(getResponse(...params))
 });
 
 export default withSocket(

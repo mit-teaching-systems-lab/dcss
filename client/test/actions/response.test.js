@@ -79,7 +79,9 @@ describe('GET_RESPONSE_SUCCESS', () => {
 
     fetchImplementation(fetch, 200, { response });
 
-    const returnValue = await store.dispatch(actions.getResponse(request));
+    const returnValue = await store.dispatch(
+      actions.getResponse(1, responseId)
+    );
 
     expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
       Array [
@@ -117,7 +119,9 @@ describe('GET_RESPONSE_SUCCESS', () => {
 
     fetchImplementation(fetch, 200, { response: null });
 
-    const returnValue = await store.dispatch(actions.getResponse(request));
+    const returnValue = await store.dispatch(
+      actions.getResponse(1, responseId)
+    );
 
     expect(returnValue).toEqual({ response: null });
   });
@@ -129,7 +133,7 @@ test('GET_RESPONSE_ERROR', async () => {
 
   fetchImplementation(fetch, 200, { error });
 
-  const returnValue = await store.dispatch(actions.getResponse(request));
+  const returnValue = await store.dispatch(actions.getResponse(1, responseId));
 
   expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
     Array [

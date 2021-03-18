@@ -15,6 +15,7 @@ const {
   getChatsByUserId,
   getChatsByCohortId,
   getChatUsersByChatId,
+  getChatUsersSharedResponses,
   getLinkedChatUsersByChatId,
   getMessageById,
   joinChat,
@@ -46,6 +47,10 @@ router.get('/cohort/:id', [requireUser, getChatsByCohortId]);
 router.post('/:id/invite', [requireUser, createChatInvite]);
 router.post('/:id/join', [requireUser, joinChat]);
 
+router.get('/:id/response/:response_id/', [
+  requireUser,
+  getChatUsersSharedResponses
+]);
 router.get('/:id/messages/count', [requireUser, getChatMessagesCountByChatId]);
 router.get('/:id/messages', [requireUser, getChatMessagesByChatId]);
 router.get('/:id/users/linked', [requireUser, getLinkedChatUsersByChatId]);

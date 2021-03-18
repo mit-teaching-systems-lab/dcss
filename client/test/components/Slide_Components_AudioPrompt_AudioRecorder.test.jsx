@@ -93,8 +93,6 @@ beforeEach(() => {
 
   /** @GENERATED: BEGIN **/
 
-  responseActions.getResponse = jest.fn();
-
   responseActions.getResponse.mockImplementation(() => async dispatch => {
     const response = {
       id: 457,
@@ -117,7 +115,6 @@ beforeEach(() => {
     dispatch({ type: GET_RESPONSE_SUCCESS, response });
     return response;
   });
-  responseActions.getTranscriptionOutcome = jest.fn();
 
   responseActions.getTranscriptionOutcome.mockImplementation(
     () => async dispatch => {

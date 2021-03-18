@@ -141,7 +141,7 @@ test('GET_RESPONSES', () => {
 });
 test('GET_RESPONSE_ERROR', () => {
   expect(types.GET_RESPONSES_ERROR).toMatchInlineSnapshot(
-    `"GET_RESPONSE_ERROR"`
+    `"GET_RESPONSES_ERROR"`
   );
 });
 test('GET_RESPONSES_SUCCESS', () => {

@@ -38,10 +38,7 @@ class Display extends React.Component {
     let { name = responseId, value = '' } = persisted;
 
     if (!value && run.id) {
-      const previous = await this.props.getResponse({
-        id: run.id,
-        responseId
-      });
+      const previous = await this.props.getResponse(run.id, responseId);
 
       if (previous && previous.response) {
         value = previous.response.value;
@@ -84,7 +81,15 @@ class Display extends React.Component {
   }
 
   render() {
-    const { buttons, prompt, recallId, required, responseId, run } = this.props;
+    const {
+      buttons,
+      prompt,
+      recallId,
+      recallSharedWithRoles,
+      required,
+      responseId,
+      run
+    } = this.props;
     const { value, value: previousValue } = this.state;
     const { onClick } = this;
     const fulfilled = value ? true : false;
@@ -99,7 +104,13 @@ class Display extends React.Component {
         <Header as="h3" tabIndex="0">
           {header}
         </Header>
-        {recallId && <ResponseRecall run={run} recallId={recallId} />}
+        {recallId ? (
+          <ResponseRecall
+            run={run}
+            recallId={recallId}
+            recallSharedWithRoles={recallSharedWithRoles}
+          />
+        ) : null}
         <List>
           {buttons.map(({ color, display, value }, index) => {
             const selectedIcon =
@@ -147,6 +158,7 @@ Display.propTypes = {
   persisted: PropTypes.object,
   prompt: PropTypes.string,
   recallId: PropTypes.string,
+  recallSharedWithRoles: PropTypes.array,
   required: PropTypes.bool,
   responseId: PropTypes.string,
   run: PropTypes.object,
@@ -160,7 +172,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  getResponse: params => dispatch(getResponse(params))
+  getResponse: (...params) => dispatch(getResponse(...params))
 });
 
 export default connect(
