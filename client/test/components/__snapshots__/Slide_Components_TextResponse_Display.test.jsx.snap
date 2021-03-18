@@ -24,7 +24,7 @@ exports[`Render 2 1 1`] = `
         "entries": Array [
           Object {
             "hash": "",
-            "key": "p7zzze",
+            "key": "cxq3dz",
             "pathname": "/",
             "search": "",
             "state": undefined,
@@ -38,7 +38,7 @@ exports[`Render 2 1 1`] = `
         "listen": [Function],
         "location": Object {
           "hash": "",
-          "key": "p7zzze",
+          "key": "cxq3dz",
           "pathname": "/",
           "search": "",
           "state": undefined,
@@ -204,7 +204,7 @@ exports[`Render 3 1 1`] = `
         "entries": Array [
           Object {
             "hash": "",
-            "key": "cit2sq",
+            "key": "6l5ynq",
             "pathname": "/",
             "search": "",
             "state": undefined,
@@ -218,7 +218,7 @@ exports[`Render 3 1 1`] = `
         "listen": [Function],
         "location": Object {
           "hash": "",
-          "key": "cit2sq",
+          "key": "6l5ynq",
           "pathname": "/",
           "search": "",
           "state": undefined,
