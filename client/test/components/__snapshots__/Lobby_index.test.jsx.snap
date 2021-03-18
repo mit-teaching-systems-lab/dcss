@@ -332,7 +332,7 @@ exports[`Fallback: chat missing, use scenario and cohort to request chat 1`] = `
                 2 roles unassigned.
               </span>
               <button
-                class=\\"ui disabled right floated button primary\\"
+                class=\\"ui green disabled right floated button\\"
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
@@ -739,7 +739,7 @@ exports[`Fallback: chat missing, use scenario and cohort to request chat 4`] = `
                 2 roles unassigned.
               </span>
               <button
-                class=\\"ui disabled right floated button primary\\"
+                class=\\"ui green disabled right floated button\\"
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
@@ -1146,7 +1146,7 @@ exports[`Fallback: chat missing, use scenario to request chat 1`] = `
                 2 roles unassigned.
               </span>
               <button
-                class=\\"ui disabled right floated button primary\\"
+                class=\\"ui green disabled right floated button\\"
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
@@ -1553,7 +1553,7 @@ exports[`Fallback: chat missing, use scenario to request chat 4`] = `
                 2 roles unassigned.
               </span>
               <button
-                class=\\"ui disabled right floated button primary\\"
+                class=\\"ui green disabled right floated button\\"
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
@@ -1960,7 +1960,7 @@ exports[`Fallback: chat, scenario, cohort are not yet loaded, use provided props
                 2 roles unassigned.
               </span>
               <button
-                class=\\"ui disabled right floated button primary\\"
+                class=\\"ui green disabled right floated button\\"
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
@@ -2367,7 +2367,7 @@ exports[`Fallback: chat, scenario, cohort are not yet loaded, use provided props
                 2 roles unassigned.
               </span>
               <button
-                class=\\"ui disabled right floated button primary\\"
+                class=\\"ui green disabled right floated button\\"
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
@@ -2736,7 +2736,7 @@ exports[`Fallback: cohort expected, but not yet loaded 1`] = `
                 remove 1 to continue.
               </span>
               <button
-                class=\\"ui disabled right floated button primary\\"
+                class=\\"ui green disabled right floated button\\"
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
@@ -3105,7 +3105,7 @@ exports[`Fallback: cohort expected, but not yet loaded 4`] = `
                 remove 1 to continue.
               </span>
               <button
-                class=\\"ui disabled right floated button primary\\"
+                class=\\"ui green disabled right floated button\\"
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
@@ -3512,7 +3512,7 @@ exports[`Fallback: scenario missing 1`] = `
                 2 roles unassigned.
               </span>
               <button
-                class=\\"ui disabled right floated button primary\\"
+                class=\\"ui green disabled right floated button\\"
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
@@ -3919,7 +3919,7 @@ exports[`Fallback: scenario missing 4`] = `
                 2 roles unassigned.
               </span>
               <button
-                class=\\"ui disabled right floated button primary\\"
+                class=\\"ui green disabled right floated button\\"
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
@@ -4326,7 +4326,7 @@ exports[`Fallback: scenario object present, unloaded 1`] = `
                 2 roles unassigned.
               </span>
               <button
-                class=\\"ui disabled right floated button primary\\"
+                class=\\"ui green disabled right floated button\\"
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
@@ -4733,7 +4733,7 @@ exports[`Fallback: scenario object present, unloaded 4`] = `
                 2 roles unassigned.
               </span>
               <button
-                class=\\"ui disabled right floated button primary\\"
+                class=\\"ui green disabled right floated button\\"
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
@@ -5102,7 +5102,7 @@ exports[`Lobby visited by a non-facilitator user 1`] = `
                 remove 1 to continue.
               </span>
               <button
-                class=\\"ui disabled right floated button primary\\"
+                class=\\"ui green disabled right floated button\\"
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
@@ -5471,7 +5471,7 @@ exports[`Lobby visited by a non-facilitator user 4`] = `
                 remove 1 to continue.
               </span>
               <button
-                class=\\"ui disabled right floated button primary\\"
+                class=\\"ui green disabled right floated button\\"
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
@@ -5878,7 +5878,7 @@ exports[`With cohort, Receives RUN_CHAT_LINK, calls getChatUsersByChatId 1`] = `
                 2 roles unassigned.
               </span>
               <button
-                class=\\"ui disabled right floated button primary\\"
+                class=\\"ui green disabled right floated button\\"
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
@@ -6301,7 +6301,7 @@ exports[`With cohort, Receives RUN_CHAT_LINK, calls getChatUsersByChatId 4`] = `
                 2 roles unassigned.
               </span>
               <button
-                class=\\"ui disabled right floated button primary\\"
+                class=\\"ui green disabled right floated button\\"
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
@@ -6793,7 +6793,7 @@ exports[`Without cohort, Receives RUN_CHAT_LINK, calls getLinkedChatUsersByChatI
                 2 roles unassigned.
               </span>
               <button
-                class=\\"ui disabled right floated button primary\\"
+                class=\\"ui green disabled right floated button\\"
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
@@ -7269,7 +7269,7 @@ exports[`Without cohort, Receives RUN_CHAT_LINK, calls getLinkedChatUsersByChatI
                 2 roles unassigned.
               </span>
               <button
-                class=\\"ui disabled right floated button primary\\"
+                class=\\"ui green disabled right floated button\\"
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
@@ -7698,7 +7698,7 @@ exports[`props.asCard 1`] = `
                         2 roles unassigned.
                       </span>
                       <button
-                        class=\\"ui disabled right floated button primary\\"
+                        class=\\"ui green disabled right floated button\\"
                         disabled=\\"\\"
                         tabindex=\\"-1\\"
                       >
@@ -8146,7 +8146,7 @@ exports[`props.asCard 4`] = `
                         2 roles unassigned.
                       </span>
                       <button
-                        class=\\"ui disabled right floated button primary\\"
+                        class=\\"ui green disabled right floated button\\"
                         disabled=\\"\\"
                         tabindex=\\"-1\\"
                       >

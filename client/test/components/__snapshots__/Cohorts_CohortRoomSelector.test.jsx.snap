@@ -4091,7 +4091,7 @@ exports[`Create a room for this scenario, user will invite, proceed 4`] = `
                     1 role unassigned.
                   </span>
                   <button
-                    class=\\"ui disabled right floated button primary\\"
+                    class=\\"ui green disabled right floated button\\"
                     disabled=\\"\\"
                     tabindex=\\"-1\\"
                   >
@@ -4573,7 +4573,7 @@ exports[`Create a room for this scenario, user will invite, proceed 5`] = `
                     1 role unassigned.
                   </span>
                   <button
-                    class=\\"ui disabled right floated button primary\\"
+                    class=\\"ui green disabled right floated button\\"
                     disabled=\\"\\"
                     tabindex=\\"-1\\"
                   >

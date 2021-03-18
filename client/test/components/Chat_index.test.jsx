@@ -2250,9 +2250,9 @@ test('Rnd: onDragStop/onResizeStop', async done => {
                   onMount={[Function]}
                   options={
                     Object {
-                      "height": "51.325px",
-                      "maxHeight": "51.325px",
-                      "minHeight": "51.325px",
+                      "height": "109.82500000000002px",
+                      "maxHeight": "109.82500000000002px",
+                      "minHeight": "109.82500000000002px",
                       "width": "456px",
                     }
                   }
@@ -2282,7 +2282,7 @@ test('Rnd: onDragStop/onResizeStop', async done => {
       },
       "resizeHandleWrapperClass": "c__size-handle",
       "size": Object {
-        "height": 410,
+        "height": 590,
         "width": 456,
       },
       "style": Object {
@@ -2312,7 +2312,7 @@ test('Rnd: onDragStop/onResizeStop', async done => {
       "chat/*",
       Object {
         "dimensions": Object {
-          "height": 410,
+          "height": 590,
           "width": 456,
         },
         "position": Object {
@@ -2621,9 +2621,9 @@ test('Rnd: onDrag/onResize', async done => {
                   onMount={[Function]}
                   options={
                     Object {
-                      "height": "51.325px",
-                      "maxHeight": "51.325px",
-                      "minHeight": "51.325px",
+                      "height": "109.82500000000002px",
+                      "maxHeight": "109.82500000000002px",
+                      "minHeight": "109.82500000000002px",
                       "width": "456px",
                     }
                   }
@@ -2653,7 +2653,7 @@ test('Rnd: onDrag/onResize', async done => {
       },
       "resizeHandleWrapperClass": "c__size-handle",
       "size": Object {
-        "height": 410,
+        "height": 590,
         "width": 456,
       },
       "style": Object {

@@ -390,7 +390,7 @@ exports[`With cohort Assign & unassign roles 2`] = `
                 2 roles unassigned.
               </span>
               <button
-                class=\\"ui disabled right floated button primary\\"
+                class=\\"ui green disabled right floated button\\"
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
@@ -772,7 +772,7 @@ exports[`With cohort Assign & unassign roles 3`] = `
                 2 roles unassigned.
               </span>
               <button
-                class=\\"ui disabled right floated button primary\\"
+                class=\\"ui green disabled right floated button\\"
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
@@ -1135,7 +1135,7 @@ exports[`With cohort Assign & unassign roles 4`] = `
                 1 role unassigned.
               </span>
               <button
-                class=\\"ui disabled right floated button primary\\"
+                class=\\"ui green disabled right floated button\\"
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
@@ -1517,7 +1517,7 @@ exports[`With cohort Assign & unassign roles 5`] = `
                 2 roles unassigned.
               </span>
               <button
-                class=\\"ui disabled right floated button primary\\"
+                class=\\"ui green disabled right floated button\\"
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
@@ -1880,7 +1880,7 @@ exports[`With cohort Assigning roles enables Send Invites button 2`] = `
                 2 roles unassigned.
               </span>
               <button
-                class=\\"ui disabled right floated button primary\\"
+                class=\\"ui green disabled right floated button\\"
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
@@ -2262,7 +2262,7 @@ exports[`With cohort Assigning roles enables Send Invites button 3`] = `
                 2 roles unassigned.
               </span>
               <button
-                class=\\"ui disabled right floated button primary\\"
+                class=\\"ui green disabled right floated button\\"
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
@@ -2625,7 +2625,7 @@ exports[`With cohort Assigning roles enables Send Invites button 4`] = `
                 1 role unassigned.
               </span>
               <button
-                class=\\"ui disabled right floated button primary\\"
+                class=\\"ui green disabled right floated button\\"
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
@@ -2988,7 +2988,7 @@ exports[`With cohort Assigning roles enables Send Invites button 5`] = `
                 1 role unassigned.
               </span>
               <button
-                class=\\"ui disabled right floated button primary\\"
+                class=\\"ui green disabled right floated button\\"
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
@@ -3330,7 +3330,7 @@ exports[`With cohort Assigning roles enables Send Invites button 6`] = `
                 all roles assigned.
               </span>
               <button
-                class=\\"ui right floated button primary\\"
+                class=\\"ui green right floated button\\"
               >
                 Set roles & send invites
               </button>
@@ -3687,7 +3687,7 @@ exports[`With cohort Both Send Invites buttons are disabled 2`] = `
                 2 roles unassigned.
               </span>
               <button
-                class=\\"ui disabled right floated button primary\\"
+                class=\\"ui green disabled right floated button\\"
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
@@ -4046,7 +4046,7 @@ exports[`With cohort Click in search shows default list of available users 2`] =
                 2 roles unassigned.
               </span>
               <button
-                class=\\"ui disabled right floated button primary\\"
+                class=\\"ui green disabled right floated button\\"
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
@@ -4396,7 +4396,7 @@ exports[`With cohort Click in search shows default list of available users 3`] =
                 2 roles unassigned.
               </span>
               <button
-                class=\\"ui disabled right floated button primary\\"
+                class=\\"ui green disabled right floated button\\"
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
@@ -4759,7 +4759,7 @@ exports[`With cohort Dismiss instructions 2`] = `
                 2 roles unassigned.
               </span>
               <button
-                class=\\"ui disabled right floated button primary\\"
+                class=\\"ui green disabled right floated button\\"
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
@@ -5082,7 +5082,7 @@ exports[`With cohort Dismiss instructions 3`] = `
                 2 roles unassigned.
               </span>
               <button
-                class=\\"ui disabled right floated button primary\\"
+                class=\\"ui green disabled right floated button\\"
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
@@ -5445,7 +5445,7 @@ exports[`With cohort Select & unselect participant 2`] = `
                 2 roles unassigned.
               </span>
               <button
-                class=\\"ui disabled right floated button primary\\"
+                class=\\"ui green disabled right floated button\\"
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
@@ -5827,7 +5827,7 @@ exports[`With cohort Select & unselect participant 3`] = `
                 2 roles unassigned.
               </span>
               <button
-                class=\\"ui disabled right floated button primary\\"
+                class=\\"ui green disabled right floated button\\"
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
@@ -6100,7 +6100,7 @@ exports[`With cohort Select & unselect participant 4`] = `
                 2 roles unassigned.
               </span>
               <button
-                class=\\"ui disabled right floated button primary\\"
+                class=\\"ui green disabled right floated button\\"
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
@@ -6463,7 +6463,7 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 2`] = 
                 2 roles unassigned.
               </span>
               <button
-                class=\\"ui disabled right floated button primary\\"
+                class=\\"ui green disabled right floated button\\"
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
@@ -6845,7 +6845,7 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 3`] = 
                 2 roles unassigned.
               </span>
               <button
-                class=\\"ui disabled right floated button primary\\"
+                class=\\"ui green disabled right floated button\\"
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
@@ -7227,7 +7227,7 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 4`] = 
                 2 roles unassigned.
               </span>
               <button
-                class=\\"ui disabled right floated button primary\\"
+                class=\\"ui green disabled right floated button\\"
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
@@ -7590,7 +7590,7 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 5`] = 
                 1 role unassigned.
               </span>
               <button
-                class=\\"ui disabled right floated button primary\\"
+                class=\\"ui green disabled right floated button\\"
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
@@ -7953,7 +7953,7 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 6`] = 
                 1 role unassigned.
               </span>
               <button
-                class=\\"ui disabled right floated button primary\\"
+                class=\\"ui green disabled right floated button\\"
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
@@ -8316,7 +8316,7 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 7`] = 
                 1 role unassigned.
               </span>
               <button
-                class=\\"ui disabled right floated button primary\\"
+                class=\\"ui green disabled right floated button\\"
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
@@ -8658,7 +8658,7 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 8`] = 
                 all roles assigned.
               </span>
               <button
-                class=\\"ui right floated button primary\\"
+                class=\\"ui green right floated button\\"
               >
                 Set roles & send invites
               </button>
@@ -8998,7 +8998,7 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 9`] = 
                 all roles assigned.
               </span>
               <button
-                class=\\"ui right floated button primary\\"
+                class=\\"ui green right floated button\\"
               >
                 Set roles & send invites
               </button>
@@ -9338,7 +9338,7 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 10`] =
                 all roles assigned.
               </span>
               <button
-                class=\\"ui right floated button primary\\"
+                class=\\"ui green right floated button\\"
               >
                 Set roles & send invites
               </button>
@@ -9880,7 +9880,7 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 11`] =
                 all roles assigned.
               </span>
               <button
-                class=\\"ui right floated button primary\\"
+                class=\\"ui green right floated button\\"
               >
                 Set roles & send invites
               </button>
@@ -10220,7 +10220,7 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 12`] =
                 all roles assigned.
               </span>
               <button
-                class=\\"ui right floated button primary\\"
+                class=\\"ui green right floated button\\"
               >
                 Set roles & send invites
               </button>
@@ -10560,7 +10560,7 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 13`] =
                 all roles assigned.
               </span>
               <button
-                class=\\"ui right floated button primary\\"
+                class=\\"ui green right floated button\\"
               >
                 Set roles & send invites
               </button>
@@ -11102,7 +11102,7 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 14`] =
                 all roles assigned.
               </span>
               <button
-                class=\\"ui right floated button primary\\"
+                class=\\"ui green right floated button\\"
               >
                 Set roles & send invites
               </button>
@@ -11661,7 +11661,7 @@ exports[`With cohort Selecting from search results adds a participant 2`] = `
                 2 roles unassigned.
               </span>
               <button
-                class=\\"ui disabled right floated button primary\\"
+                class=\\"ui green disabled right floated button\\"
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
@@ -12041,7 +12041,7 @@ exports[`With cohort Selecting from search results adds a participant 3`] = `
                 2 roles unassigned.
               </span>
               <button
-                class=\\"ui disabled right floated button primary\\"
+                class=\\"ui green disabled right floated button\\"
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
@@ -12404,7 +12404,7 @@ exports[`With cohort Selecting too many shows a warning, discard selection 2`] =
                 2 roles unassigned.
               </span>
               <button
-                class=\\"ui disabled right floated button primary\\"
+                class=\\"ui green disabled right floated button\\"
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
@@ -12693,7 +12693,7 @@ exports[`With cohort Selecting too many shows a warning, discard selection 3`] =
                 2 roles unassigned.
               </span>
               <button
-                class=\\"ui disabled right floated button primary\\"
+                class=\\"ui green disabled right floated button\\"
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
@@ -13075,7 +13075,7 @@ exports[`With cohort Selecting too many shows a warning, discard selection 4`] =
                 2 roles unassigned.
               </span>
               <button
-                class=\\"ui disabled right floated button primary\\"
+                class=\\"ui green disabled right floated button\\"
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
@@ -13473,7 +13473,7 @@ exports[`With cohort Selecting too many shows a warning, discard selection 5`] =
                 2 roles unassigned.
               </span>
               <button
-                class=\\"ui disabled right floated button primary\\"
+                class=\\"ui green disabled right floated button\\"
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
@@ -13871,7 +13871,7 @@ exports[`With cohort Selecting too many shows a warning, discard selection 6`] =
                 2 roles unassigned.
               </span>
               <button
-                class=\\"ui disabled right floated button primary\\"
+                class=\\"ui green disabled right floated button\\"
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
@@ -14350,7 +14350,7 @@ exports[`With cohort Selecting too many shows a warning, discard selection 7`] =
                 2 roles unassigned.
               </span>
               <button
-                class=\\"ui disabled right floated button primary\\"
+                class=\\"ui green disabled right floated button\\"
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
@@ -14709,7 +14709,7 @@ exports[`With cohort Selecting too many shows a warning, remove an invite 2`] = 
                 2 roles unassigned.
               </span>
               <button
-                class=\\"ui disabled right floated button primary\\"
+                class=\\"ui green disabled right floated button\\"
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
@@ -14996,7 +14996,7 @@ exports[`With cohort Selecting too many shows a warning, remove an invite 3`] = 
                 2 roles unassigned.
               </span>
               <button
-                class=\\"ui disabled right floated button primary\\"
+                class=\\"ui green disabled right floated button\\"
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
@@ -15376,7 +15376,7 @@ exports[`With cohort Selecting too many shows a warning, remove an invite 4`] = 
                 2 roles unassigned.
               </span>
               <button
-                class=\\"ui disabled right floated button primary\\"
+                class=\\"ui green disabled right floated button\\"
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
@@ -15772,7 +15772,7 @@ exports[`With cohort Selecting too many shows a warning, remove an invite 5`] = 
                 2 roles unassigned.
               </span>
               <button
-                class=\\"ui disabled right floated button primary\\"
+                class=\\"ui green disabled right floated button\\"
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
@@ -16171,7 +16171,7 @@ exports[`With cohort Selecting too many shows a warning, remove an invite 6`] = 
                 2 roles unassigned.
               </span>
               <button
-                class=\\"ui disabled right floated button primary\\"
+                class=\\"ui green disabled right floated button\\"
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
@@ -16765,7 +16765,7 @@ exports[`With cohort Selecting too many shows a warning, remove an invite 7`] = 
                 remove 1 to continue.
               </span>
               <button
-                class=\\"ui disabled right floated button primary\\"
+                class=\\"ui green disabled right floated button\\"
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
@@ -17124,7 +17124,7 @@ exports[`With cohort Typing in search shows filtered list of available users 2`]
                 2 roles unassigned.
               </span>
               <button
-                class=\\"ui disabled right floated button primary\\"
+                class=\\"ui green disabled right floated button\\"
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
@@ -17411,7 +17411,7 @@ exports[`With cohort Typing in search shows filtered list of available users 3`]
                 2 roles unassigned.
               </span>
               <button
-                class=\\"ui disabled right floated button primary\\"
+                class=\\"ui green disabled right floated button\\"
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
@@ -17774,7 +17774,7 @@ exports[`Without cohort Assign & unassign roles 2`] = `
                 2 roles unassigned.
               </span>
               <button
-                class=\\"ui disabled right floated button primary\\"
+                class=\\"ui green disabled right floated button\\"
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
@@ -18156,7 +18156,7 @@ exports[`Without cohort Assign & unassign roles 3`] = `
                 2 roles unassigned.
               </span>
               <button
-                class=\\"ui disabled right floated button primary\\"
+                class=\\"ui green disabled right floated button\\"
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
@@ -18519,7 +18519,7 @@ exports[`Without cohort Assign & unassign roles 4`] = `
                 1 role unassigned.
               </span>
               <button
-                class=\\"ui disabled right floated button primary\\"
+                class=\\"ui green disabled right floated button\\"
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
@@ -18901,7 +18901,7 @@ exports[`Without cohort Assign & unassign roles 5`] = `
                 2 roles unassigned.
               </span>
               <button
-                class=\\"ui disabled right floated button primary\\"
+                class=\\"ui green disabled right floated button\\"
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
@@ -19264,7 +19264,7 @@ exports[`Without cohort Assigning roles enables Send Invites button 2`] = `
                 2 roles unassigned.
               </span>
               <button
-                class=\\"ui disabled right floated button primary\\"
+                class=\\"ui green disabled right floated button\\"
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
@@ -19646,7 +19646,7 @@ exports[`Without cohort Assigning roles enables Send Invites button 3`] = `
                 2 roles unassigned.
               </span>
               <button
-                class=\\"ui disabled right floated button primary\\"
+                class=\\"ui green disabled right floated button\\"
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
@@ -20009,7 +20009,7 @@ exports[`Without cohort Assigning roles enables Send Invites button 4`] = `
                 1 role unassigned.
               </span>
               <button
-                class=\\"ui disabled right floated button primary\\"
+                class=\\"ui green disabled right floated button\\"
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
@@ -20372,7 +20372,7 @@ exports[`Without cohort Assigning roles enables Send Invites button 5`] = `
                 1 role unassigned.
               </span>
               <button
-                class=\\"ui disabled right floated button primary\\"
+                class=\\"ui green disabled right floated button\\"
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
@@ -20714,7 +20714,7 @@ exports[`Without cohort Assigning roles enables Send Invites button 6`] = `
                 all roles assigned.
               </span>
               <button
-                class=\\"ui right floated button primary\\"
+                class=\\"ui green right floated button\\"
               >
                 Set roles & send invites
               </button>
@@ -21075,7 +21075,7 @@ exports[`Without cohort Both Send Invites buttons are disabled 2`] = `
                 2 roles unassigned.
               </span>
               <button
-                class=\\"ui disabled right floated button primary\\"
+                class=\\"ui green disabled right floated button\\"
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
@@ -21438,7 +21438,7 @@ exports[`Without cohort Click in search shows default list of available users 2`
                 2 roles unassigned.
               </span>
               <button
-                class=\\"ui disabled right floated button primary\\"
+                class=\\"ui green disabled right floated button\\"
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
@@ -21790,7 +21790,7 @@ exports[`Without cohort Click in search shows default list of available users 3`
                 2 roles unassigned.
               </span>
               <button
-                class=\\"ui disabled right floated button primary\\"
+                class=\\"ui green disabled right floated button\\"
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
@@ -22153,7 +22153,7 @@ exports[`Without cohort Dismiss instructions 2`] = `
                 2 roles unassigned.
               </span>
               <button
-                class=\\"ui disabled right floated button primary\\"
+                class=\\"ui green disabled right floated button\\"
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
@@ -22476,7 +22476,7 @@ exports[`Without cohort Dismiss instructions 3`] = `
                 2 roles unassigned.
               </span>
               <button
-                class=\\"ui disabled right floated button primary\\"
+                class=\\"ui green disabled right floated button\\"
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
@@ -22839,7 +22839,7 @@ exports[`Without cohort Select & unselect participant 2`] = `
                 2 roles unassigned.
               </span>
               <button
-                class=\\"ui disabled right floated button primary\\"
+                class=\\"ui green disabled right floated button\\"
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
@@ -23221,7 +23221,7 @@ exports[`Without cohort Select & unselect participant 3`] = `
                 2 roles unassigned.
               </span>
               <button
-                class=\\"ui disabled right floated button primary\\"
+                class=\\"ui green disabled right floated button\\"
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
@@ -23494,7 +23494,7 @@ exports[`Without cohort Select & unselect participant 4`] = `
                 2 roles unassigned.
               </span>
               <button
-                class=\\"ui disabled right floated button primary\\"
+                class=\\"ui green disabled right floated button\\"
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
@@ -23857,7 +23857,7 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 2`]
                 2 roles unassigned.
               </span>
               <button
-                class=\\"ui disabled right floated button primary\\"
+                class=\\"ui green disabled right floated button\\"
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
@@ -24239,7 +24239,7 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 3`]
                 2 roles unassigned.
               </span>
               <button
-                class=\\"ui disabled right floated button primary\\"
+                class=\\"ui green disabled right floated button\\"
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
@@ -24621,7 +24621,7 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 4`]
                 2 roles unassigned.
               </span>
               <button
-                class=\\"ui disabled right floated button primary\\"
+                class=\\"ui green disabled right floated button\\"
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
@@ -24984,7 +24984,7 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 5`]
                 1 role unassigned.
               </span>
               <button
-                class=\\"ui disabled right floated button primary\\"
+                class=\\"ui green disabled right floated button\\"
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
@@ -25347,7 +25347,7 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 6`]
                 1 role unassigned.
               </span>
               <button
-                class=\\"ui disabled right floated button primary\\"
+                class=\\"ui green disabled right floated button\\"
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
@@ -25710,7 +25710,7 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 7`]
                 1 role unassigned.
               </span>
               <button
-                class=\\"ui disabled right floated button primary\\"
+                class=\\"ui green disabled right floated button\\"
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
@@ -26052,7 +26052,7 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 8`]
                 all roles assigned.
               </span>
               <button
-                class=\\"ui right floated button primary\\"
+                class=\\"ui green right floated button\\"
               >
                 Set roles & send invites
               </button>
@@ -26392,7 +26392,7 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 9`]
                 all roles assigned.
               </span>
               <button
-                class=\\"ui right floated button primary\\"
+                class=\\"ui green right floated button\\"
               >
                 Set roles & send invites
               </button>
@@ -26732,7 +26732,7 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 10`
                 all roles assigned.
               </span>
               <button
-                class=\\"ui right floated button primary\\"
+                class=\\"ui green right floated button\\"
               >
                 Set roles & send invites
               </button>
@@ -27274,7 +27274,7 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 11`
                 all roles assigned.
               </span>
               <button
-                class=\\"ui right floated button primary\\"
+                class=\\"ui green right floated button\\"
               >
                 Set roles & send invites
               </button>
@@ -27614,7 +27614,7 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 12`
                 all roles assigned.
               </span>
               <button
-                class=\\"ui right floated button primary\\"
+                class=\\"ui green right floated button\\"
               >
                 Set roles & send invites
               </button>
@@ -27954,7 +27954,7 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 13`
                 all roles assigned.
               </span>
               <button
-                class=\\"ui right floated button primary\\"
+                class=\\"ui green right floated button\\"
               >
                 Set roles & send invites
               </button>
@@ -28496,7 +28496,7 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 14`
                 all roles assigned.
               </span>
               <button
-                class=\\"ui right floated button primary\\"
+                class=\\"ui green right floated button\\"
               >
                 Set roles & send invites
               </button>
@@ -29059,7 +29059,7 @@ exports[`Without cohort Selecting from search results adds a participant 2`] = `
                 2 roles unassigned.
               </span>
               <button
-                class=\\"ui disabled right floated button primary\\"
+                class=\\"ui green disabled right floated button\\"
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
@@ -29441,7 +29441,7 @@ exports[`Without cohort Selecting from search results adds a participant 3`] = `
                 2 roles unassigned.
               </span>
               <button
-                class=\\"ui disabled right floated button primary\\"
+                class=\\"ui green disabled right floated button\\"
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
@@ -29804,7 +29804,7 @@ exports[`Without cohort Selecting too many shows a warning, discard selection 2`
                 2 roles unassigned.
               </span>
               <button
-                class=\\"ui disabled right floated button primary\\"
+                class=\\"ui green disabled right floated button\\"
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
@@ -30093,7 +30093,7 @@ exports[`Without cohort Selecting too many shows a warning, discard selection 3`
                 2 roles unassigned.
               </span>
               <button
-                class=\\"ui disabled right floated button primary\\"
+                class=\\"ui green disabled right floated button\\"
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
@@ -30475,7 +30475,7 @@ exports[`Without cohort Selecting too many shows a warning, discard selection 4`
                 2 roles unassigned.
               </span>
               <button
-                class=\\"ui disabled right floated button primary\\"
+                class=\\"ui green disabled right floated button\\"
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
@@ -30873,7 +30873,7 @@ exports[`Without cohort Selecting too many shows a warning, discard selection 5`
                 2 roles unassigned.
               </span>
               <button
-                class=\\"ui disabled right floated button primary\\"
+                class=\\"ui green disabled right floated button\\"
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
@@ -31271,7 +31271,7 @@ exports[`Without cohort Selecting too many shows a warning, discard selection 6`
                 2 roles unassigned.
               </span>
               <button
-                class=\\"ui disabled right floated button primary\\"
+                class=\\"ui green disabled right floated button\\"
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
@@ -31750,7 +31750,7 @@ exports[`Without cohort Selecting too many shows a warning, discard selection 7`
                 2 roles unassigned.
               </span>
               <button
-                class=\\"ui disabled right floated button primary\\"
+                class=\\"ui green disabled right floated button\\"
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
@@ -32113,7 +32113,7 @@ exports[`Without cohort Selecting too many shows a warning, remove an invite 2`]
                 2 roles unassigned.
               </span>
               <button
-                class=\\"ui disabled right floated button primary\\"
+                class=\\"ui green disabled right floated button\\"
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
@@ -32402,7 +32402,7 @@ exports[`Without cohort Selecting too many shows a warning, remove an invite 3`]
                 2 roles unassigned.
               </span>
               <button
-                class=\\"ui disabled right floated button primary\\"
+                class=\\"ui green disabled right floated button\\"
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
@@ -32784,7 +32784,7 @@ exports[`Without cohort Selecting too many shows a warning, remove an invite 4`]
                 2 roles unassigned.
               </span>
               <button
-                class=\\"ui disabled right floated button primary\\"
+                class=\\"ui green disabled right floated button\\"
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
@@ -33182,7 +33182,7 @@ exports[`Without cohort Selecting too many shows a warning, remove an invite 5`]
                 2 roles unassigned.
               </span>
               <button
-                class=\\"ui disabled right floated button primary\\"
+                class=\\"ui green disabled right floated button\\"
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
@@ -33580,7 +33580,7 @@ exports[`Without cohort Selecting too many shows a warning, remove an invite 6`]
                 2 roles unassigned.
               </span>
               <button
-                class=\\"ui disabled right floated button primary\\"
+                class=\\"ui green disabled right floated button\\"
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
@@ -34173,7 +34173,7 @@ exports[`Without cohort Selecting too many shows a warning, remove an invite 7`]
                 remove 1 to continue.
               </span>
               <button
-                class=\\"ui disabled right floated button primary\\"
+                class=\\"ui green disabled right floated button\\"
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
@@ -34536,7 +34536,7 @@ exports[`Without cohort Typing in search shows filtered list of available users 
                 2 roles unassigned.
               </span>
               <button
-                class=\\"ui disabled right floated button primary\\"
+                class=\\"ui green disabled right floated button\\"
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
@@ -34825,7 +34825,7 @@ exports[`Without cohort Typing in search shows filtered list of available users 
                 2 roles unassigned.
               </span>
               <button
-                class=\\"ui disabled right floated button primary\\"
+                class=\\"ui green disabled right floated button\\"
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >

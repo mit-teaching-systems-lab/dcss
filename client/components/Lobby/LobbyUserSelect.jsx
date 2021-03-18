@@ -97,6 +97,10 @@ class LobbyUserSelect extends Component {
     this.renderInviteeList = this.renderInviteeList.bind(this);
   }
 
+  get isScenarioRun() {
+    return window.location.pathname.includes('/run/');
+  }
+
   async getChatUsers() {
     if (!this.props.chat) {
       return;
@@ -115,6 +119,12 @@ class LobbyUserSelect extends Component {
 
     if (this.props.chat) {
       for (let selection of this.state.selected) {
+        // If this user is not available at all, don't
+        // include them in the selected users lists
+        if (!this.props.usersById[selection.user.id]) {
+          continue;
+        }
+
         const chatUser = this.props.chat.usersById[selection.user.id];
         if (chatUser) {
           selected.push({
@@ -730,7 +740,7 @@ class LobbyUserSelect extends Component {
     const sendInvitesButtonProps = {
       ...sendInvitesButtonConditionalProps,
       disabled,
-      className: 'primary',
+      color: 'green',
       onClick: onSendInviteClick
     };
 
@@ -746,6 +756,20 @@ class LobbyUserSelect extends Component {
         instruction
       });
       Storage.merge(this.storageKey, { instruction });
+    };
+
+    const searchProps = {
+      autoFocus: !this.isScenarioRun,
+      fluid: true,
+      className: 'grid__menu-search l__search-input primary',
+      noResultsMessage: 'No users found',
+      onFocus: onSearchChange,
+      onMouseDown: onSearchChange,
+      onResultSelect: onResultSelect,
+      onSearchChange: onSearchChange,
+      resultRenderer: resultRenderer,
+      results: results,
+      value: search || ' '
     };
 
     return (
@@ -795,20 +819,7 @@ class LobbyUserSelect extends Component {
                 Search and select participants that you want to invite:
               </strong>
             </p>
-            <Search
-              fluid
-              autoFocus
-              key="x"
-              className="grid__menu-search l__search-input primary"
-              noResultsMessage="No users found"
-              onFocus={onSearchChange}
-              onMouseDown={onSearchChange}
-              onResultSelect={onResultSelect}
-              onSearchChange={onSearchChange}
-              resultRenderer={resultRenderer}
-              results={results}
-              value={search || ' '}
-            />
+            <Search {...searchProps} />
           </Grid.Row>
           <Grid.Row>
             <Grid.Column>
