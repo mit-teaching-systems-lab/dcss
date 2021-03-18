@@ -377,7 +377,7 @@ export class CohortRoomSelector extends React.Component {
           location.href = makeCohortScenarioChatJoinPath(
             cohort,
             scenario,
-            chat
+            this.state.lobby.chat
           );
           return;
         }
