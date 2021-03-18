@@ -138,9 +138,7 @@ class SocketManager {
   static isValidToken(remoteToken) {
     const tokens = Object.values(cache.clients).map(client => client.token);
     if (process.env.NODE_ENV !== 'production') {
-      return [...tokens, DEVELOPER_TOKEN].includes(
-        remoteToken
-      );
+      return [...tokens, DEVELOPER_TOKEN].includes(remoteToken);
     }
     return tokens.includes(remoteToken);
   }
