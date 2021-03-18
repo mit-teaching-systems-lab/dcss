@@ -111,6 +111,8 @@ class Display extends Component {
       responseId,
       run
     } = this.props;
+
+    console.log(this.props);
     const { value } = this.state;
     const { onBlur, onFocus, onChange } = this;
     const fulfilled = value ? true : false;

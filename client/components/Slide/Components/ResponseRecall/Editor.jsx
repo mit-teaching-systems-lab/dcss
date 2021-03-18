@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { Dropdown, Form, Table } from '@components/UI';
+import { Button, Dropdown, Form, Segment, Table } from '@components/UI';
 import { type } from './meta';
 
 const ResponsePromptFormatted = ({ title, prompt, header, isConditional }) => {
@@ -24,7 +24,9 @@ const ResponsePromptFormatted = ({ title, prompt, header, isConditional }) => {
         ) : null}
         {isConditional ? (
           <Table.Row>
-            <Table.Cell colSpan={2}>This prompt appears conditionally.</Table.Cell>
+            <Table.Cell colSpan={2}>
+              This prompt appears conditionally.
+            </Table.Cell>
           </Table.Row>
         ) : null}
       </Table.Body>
@@ -36,7 +38,7 @@ ResponsePromptFormatted.propTypes = {
   title: PropTypes.string,
   prompt: PropTypes.string,
   header: PropTypes.string,
-  isConditional: PropTypes.bool,
+  isConditional: PropTypes.bool
 };
 
 class ResponseRecallEditor extends React.Component {
@@ -67,18 +69,21 @@ class ResponseRecallEditor extends React.Component {
   }
 
   onChange(event, { name, value }) {
+    console.log(this.props.value);
     this.props.onChange({
       ...this.props.value,
       type,
       // recallId: selected value
+      // recallShares: []
       [name]: value
     });
   }
 
   render() {
     const {
+      scenario,
       slideId,
-      value: { recallId }
+      value: { recallId, recallShares }
     } = this.props;
     const { components } = this.state;
     const { onChange } = this;
@@ -87,8 +92,17 @@ class ResponseRecallEditor extends React.Component {
       return null;
     }
 
+    const isMultiParticipant = scenario.personas.length > 1;
+
     const prompts = components.reduce((accum, component, key) => {
-      const { header, index, isConditional, prompt, responseId, slide } = component;
+      const {
+        header,
+        index,
+        isConditional,
+        prompt,
+        responseId,
+        slide
+      } = component;
 
       // Don't include empty/incomplete prompts
       // Don't include prompts from THIS slide
@@ -127,17 +141,17 @@ class ResponseRecallEditor extends React.Component {
       prompts.push({
         key: 'recall-response-missing',
         text: 'No participant responses available',
-        value: -1
+        value: null
       });
     } else {
       prompts.unshift({
         key: 'recall-response-default',
         text: 'No participant response embed has been selected',
-        value: -1
+        value: null
       });
     }
 
-    const defaultValue = recallId || -1;
+    const defaultValue = recallId || null;
     const selectResponsePromptDropdown = (
       <Dropdown
         fluid
@@ -149,10 +163,14 @@ class ResponseRecallEditor extends React.Component {
       />
     );
 
-    const formFieldLabelled = (
+    const displayParticipantResponseLabel = isMultiParticipant
+      ? 'Select the prompt for which you want a response to be displayed: '
+      : "If you want to display a participant's response to another prompt: ";
+
+    const selectPromptFormFieldLabelled = (
       <Form.Field.Labelled
         style={{ marginBottom: '1rem' }}
-        label="If you want to display a participant's response to another prompt: "
+        label={displayParticipantResponseLabel}
         content={selectResponsePromptDropdown}
       />
     );
@@ -165,15 +183,81 @@ class ResponseRecallEditor extends React.Component {
       ? selectedPrompt.content
       : null;
 
+    const personaOptions = isMultiParticipant
+      ? scenario.personas.map(persona => ({
+          key: persona.id,
+          value: persona.id,
+          text: persona.name
+        }))
+      : null;
+
+    const selectPersonasLabel =
+      'Select personas that will share this response:';
+    const selectAllPersonasLabel = 'Select all personas';
+
+    const personasSelect = isMultiParticipant ? (
+      <Dropdown
+        fluid
+        multiple
+        search
+        selection
+        name="recallShares"
+        aria-label={selectPersonasLabel}
+        onChange={onChange}
+        options={personaOptions}
+        value={recallShares || []}
+      />
+    ) : null;
+
+    const selectPersonasFormFieldLabelled = isMultiParticipant ? (
+      <Form.Field.Labelled
+        label={selectPersonasLabel}
+        content={personasSelect}
+      />
+    ) : null;
+
+    const selectAllPersonas = isMultiParticipant ? (
+      <Button
+        fluid
+        icon="arrow left"
+        labelPosition="left"
+        className="icon-primary"
+        content={selectAllPersonasLabel}
+        onClick={() => {
+          const value = scenario.personas.map(({ id }) => id);
+          onChange(
+            {},
+            {
+              name: 'recallShares',
+              value
+            }
+          );
+        }}
+      />
+    ) : null;
+
+    const selectAllPersonasFormFieldLabelled = isMultiParticipant ? (
+      <Form.Field.Labelled label="&nbsp;" content={selectAllPersonas} />
+    ) : null;
+
+    const shareResponseGroup = isMultiParticipant ? (
+      <Form.Group widths="equal">
+        {selectPersonasFormFieldLabelled}
+        {selectAllPersonasFormFieldLabelled}
+      </Form.Group>
+    ) : null;
+
     return this.props.isEmbedded ? (
-      <Fragment>
-        {formFieldLabelled}
+      <Segment>
+        {selectPromptFormFieldLabelled}
         {selectedPromptContent}
-      </Fragment>
+        {shareResponseGroup}
+      </Segment>
     ) : (
       <Form>
-        {formFieldLabelled}
+        {selectPromptFormFieldLabelled}
         {selectedPromptContent}
+        {shareResponseGroup}
       </Form>
     );
   }
@@ -187,13 +271,15 @@ ResponseRecallEditor.propTypes = {
   onChange: PropTypes.func.isRequired,
   isEmbedded: PropTypes.bool,
   recallId: PropTypes.string,
+  recallShares: PropTypes.array,
   scenario: PropTypes.object,
   slideId: PropTypes.any,
   slideIndex: PropTypes.any,
   value: PropTypes.shape({
     id: PropTypes.string,
-    type: PropTypes.oneOf([type]),
     recallId: PropTypes.string,
+    recallShares: PropTypes.array,
+    type: PropTypes.oneOf([type]),
     components: PropTypes.array
   })
 };

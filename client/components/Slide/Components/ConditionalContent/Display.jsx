@@ -63,7 +63,13 @@ class Display extends Component {
   }
 
   render() {
-    const { component, onResponseChange, responseId, run, saveRunEvent } = this.props;
+    const {
+      component,
+      onResponseChange,
+      responseId,
+      run,
+      saveRunEvent
+    } = this.props;
     const { isReady, responses } = this.state;
     const rules = this.props.rules.slice();
     const emptyValue = { value: '' };
@@ -125,7 +131,7 @@ class Display extends Component {
       persisted,
       onResponseChange,
       run,
-      saveRunEvent: saveRunEventWithComponent,
+      saveRunEvent: saveRunEventWithComponent
     };
 
     return component && mustShowConditionalContent ? (

@@ -28,6 +28,7 @@ class ConversationPromptEditor extends Component {
       prompt = '',
       configuration = {},
       recallId = '',
+      recallShares,
       responseId,
       url
     } = props.value;
@@ -39,6 +40,7 @@ class ConversationPromptEditor extends Component {
       prompt,
       configuration,
       recallId,
+      recallShares,
       responseId,
       url
     };
@@ -61,6 +63,7 @@ class ConversationPromptEditor extends Component {
       prompt,
       configuration,
       recallId,
+      recallShares,
       responseId,
       url
     } = this.props.value;
@@ -72,6 +75,7 @@ class ConversationPromptEditor extends Component {
       prompt,
       configuration,
       recallId,
+      recallShares,
       responseId,
       url
     };
@@ -97,6 +101,7 @@ class ConversationPromptEditor extends Component {
       prompt,
       configuration,
       recallId,
+      recallShares,
       responseId,
       url
     } = this.state;
@@ -109,6 +114,7 @@ class ConversationPromptEditor extends Component {
       prompt,
       configuration,
       recallId,
+      recallShares,
       responseId,
       type,
       url
@@ -134,14 +140,22 @@ class ConversationPromptEditor extends Component {
     this.setState(state, this.delayedUpdateState);
   }
 
-  onRecallChange({ recallId }) {
-    this.setState({ recallId }, this.updateState);
+  onRecallChange({ recallId, recallShares }) {
+    this.setState({ recallId, recallShares }, this.updateState);
   }
 
   render() {
     const { scenario, slideIndex } = this.props;
     const { onChange, onRecallChange, updateState } = this;
-    const { agent, header, prompt, configuration, recallId, url } = this.state;
+    const {
+      agent,
+      header,
+      prompt,
+      configuration,
+      recallId,
+      recallShares,
+      url
+    } = this.state;
     const options = [
       {
         key: 'whole',
@@ -272,10 +286,11 @@ class ConversationPromptEditor extends Component {
         <Container fluid>
           <ResponseRecall
             isEmbedded={true}
-            value={{ recallId }}
+            onChange={onRecallChange}
+            parentResponseId={this.props.value.responseId}
             scenario={scenario}
             slideIndex={slideIndex}
-            onChange={onRecallChange}
+            value={{ recallId, recallShares }}
           />
 
           <Form.Input
@@ -373,6 +388,7 @@ ConversationPromptEditor.propTypes = {
     header: PropTypes.string,
     prompt: PropTypes.string,
     recallId: PropTypes.string,
+    recallShares: PropTypes.array,
     required: PropTypes.bool,
     responseId: PropTypes.string,
     type: PropTypes.oneOf([type]),

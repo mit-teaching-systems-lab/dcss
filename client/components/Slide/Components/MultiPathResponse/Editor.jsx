@@ -144,10 +144,8 @@ class MultiPathResponseEditor extends React.Component {
     });
   }
 
-  onRecallChange({ recallId }) {
-    // This is not a typed text input, so there should be no delay
-    // applied to saving this state to the server.
-    this.setState({ recallId }, this.updateState);
+  onRecallChange({ recallId, recallShares }) {
+    this.setState({ recallId, recallShares }, this.updateState);
   }
 
   onPathAddClick() {
@@ -266,7 +264,15 @@ class MultiPathResponseEditor extends React.Component {
       slideIndex,
       value: { id }
     } = this.props;
-    const { agent, header, prompt, paths, open, recallId } = this.state;
+    const {
+      agent,
+      header,
+      prompt,
+      paths,
+      open,
+      recallId,
+      recallShares
+    } = this.state;
 
     if (!slides.length) {
       return null;
@@ -337,10 +343,11 @@ class MultiPathResponseEditor extends React.Component {
         <Container fluid>
           <ResponseRecall
             isEmbedded={true}
-            value={{ recallId }}
-            slideIndex={slideIndex}
-            scenario={scenario}
             onChange={onRecallChange}
+            parentResponseId={this.props.value.responseId}
+            scenario={scenario}
+            slideIndex={slideIndex}
+            value={{ recallId, recallShares }}
           />
 
           <Form.TextArea
@@ -538,6 +545,7 @@ MultiPathResponseEditor.propTypes = {
     header: PropTypes.string,
     prompt: PropTypes.string,
     recallId: PropTypes.string,
+    recallShares: PropTypes.array,
     required: PropTypes.bool,
     responseId: PropTypes.string,
     type: PropTypes.oneOf([type])

@@ -35,6 +35,7 @@ class MultiButtonResponseEditor extends React.Component {
       header = '',
       prompt = '',
       recallId = '',
+      recallShares,
       responseId
     } = props.value;
 
@@ -44,6 +45,7 @@ class MultiButtonResponseEditor extends React.Component {
       header,
       prompt,
       recallId,
+      recallShares,
       responseId
     };
 
@@ -70,6 +72,7 @@ class MultiButtonResponseEditor extends React.Component {
       prompt,
       buttons,
       recallId,
+      recallShares,
       responseId
     } = this.props.value;
     const lastProps = {
@@ -78,6 +81,7 @@ class MultiButtonResponseEditor extends React.Component {
       prompt,
       buttons,
       recallId,
+      recallShares,
       responseId
     };
 
@@ -95,7 +99,15 @@ class MultiButtonResponseEditor extends React.Component {
   }
 
   updateState() {
-    const { agent, buttons, header, prompt, recallId, responseId } = this.state;
+    const {
+      agent,
+      buttons,
+      header,
+      prompt,
+      recallId,
+      recallShares,
+      responseId
+    } = this.state;
 
     this.props.onChange({
       ...this.props.value,
@@ -104,15 +116,14 @@ class MultiButtonResponseEditor extends React.Component {
       header,
       prompt,
       recallId,
+      recallShares,
       responseId,
       type
     });
   }
 
-  onRecallChange({ recallId }) {
-    // This is not a typed text input, so there should be no delay
-    // applied to saving this state to the server.
-    this.setState({ recallId }, this.updateState);
+  onRecallChange({ recallId, recallShares }) {
+    this.setState({ recallId, recallShares }, this.updateState);
   }
 
   onButtonAddClick() {
@@ -183,7 +194,15 @@ class MultiButtonResponseEditor extends React.Component {
 
   render() {
     const { scenario, slideIndex } = this.props;
-    const { agent, header, id, prompt, buttons, recallId } = this.state;
+    const {
+      agent,
+      header,
+      id,
+      prompt,
+      buttons,
+      recallId,
+      recallShares
+    } = this.state;
 
     const {
       onButtonAddClick,
@@ -201,10 +220,11 @@ class MultiButtonResponseEditor extends React.Component {
         <Container fluid>
           <ResponseRecall
             isEmbedded={true}
-            value={{ recallId }}
-            slideIndex={slideIndex}
-            scenario={scenario}
             onChange={onRecallChange}
+            parentResponseId={this.props.value.responseId}
+            scenario={scenario}
+            slideIndex={slideIndex}
+            value={{ recallId, recallShares }}
           />
           <Form.TextArea
             label="Optional prompt to display before buttons:"
@@ -365,6 +385,7 @@ MultiButtonResponseEditor.propTypes = {
     header: PropTypes.string,
     prompt: PropTypes.string,
     recallId: PropTypes.string,
+    recallShares: PropTypes.array,
     required: PropTypes.bool,
     responseId: PropTypes.string,
     type: PropTypes.oneOf([type])

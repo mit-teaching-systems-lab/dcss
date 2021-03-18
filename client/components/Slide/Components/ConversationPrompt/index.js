@@ -37,6 +37,7 @@ export const defaultValue = ({ responseId }) => ({
   persona: null,
   prompt: '',
   recallId: '',
+  recallShares: null,
   required: true,
   responseId,
   timeout: 0,

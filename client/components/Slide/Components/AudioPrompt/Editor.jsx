@@ -17,6 +17,7 @@ class AudioPromptEditor extends Component {
       header = '',
       prompt = '',
       recallId = '',
+      recallShares,
       responseId
     } = props.value;
 
@@ -25,6 +26,7 @@ class AudioPromptEditor extends Component {
       header,
       prompt,
       recallId,
+      recallShares,
       responseId
     };
     this.onChange = this.onChange.bind(this);
@@ -37,13 +39,21 @@ class AudioPromptEditor extends Component {
   componentWillUnmount() {
     clearTimeout(this.timeout);
 
-    const { agent, header, prompt, recallId, responseId } = this.props.value;
+    const {
+      agent,
+      header,
+      prompt,
+      recallId,
+      recallShares,
+      responseId
+    } = this.props.value;
 
     const lastProps = {
       agent,
       header,
       prompt,
       recallId,
+      recallShares,
       responseId
     };
 
@@ -61,7 +71,14 @@ class AudioPromptEditor extends Component {
   }
 
   updateState() {
-    const { agent, header, prompt, recallId, responseId } = this.state;
+    const {
+      agent,
+      header,
+      prompt,
+      recallId,
+      recallShares,
+      responseId
+    } = this.state;
 
     this.props.onChange({
       ...this.props.value,
@@ -69,6 +86,7 @@ class AudioPromptEditor extends Component {
       header,
       prompt,
       recallId,
+      recallShares,
       responseId,
       type
     });
@@ -78,12 +96,12 @@ class AudioPromptEditor extends Component {
     this.setState({ [name]: value }, this.delayedUpdateState);
   }
 
-  onRecallChange({ recallId }) {
-    this.setState({ recallId }, this.updateState);
+  onRecallChange({ recallId, recallShares }) {
+    this.setState({ recallId, recallShares }, this.updateState);
   }
 
   render() {
-    const { agent, header, prompt, recallId } = this.state;
+    const { agent, header, prompt, recallId, recallShares } = this.state;
     const { scenario, slideIndex } = this.props;
     const { onChange, onRecallChange, updateState } = this;
 
@@ -92,10 +110,11 @@ class AudioPromptEditor extends Component {
         <Container fluid>
           <ResponseRecall
             isEmbedded={true}
-            value={{ recallId }}
+            onChange={onRecallChange}
+            parentResponseId={this.props.value.responseId}
             scenario={scenario}
             slideIndex={slideIndex}
-            onChange={onRecallChange}
+            value={{ recallId, recallShares }}
           />
 
           <Form.TextArea
@@ -141,6 +160,7 @@ AudioPromptEditor.propTypes = {
     header: PropTypes.string,
     prompt: PropTypes.string,
     recallId: PropTypes.string,
+    recallShares: PropTypes.array,
     required: PropTypes.bool,
     responseId: PropTypes.string,
     type: PropTypes.oneOf([type, 'AudioResponse'])

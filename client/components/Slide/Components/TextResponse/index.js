@@ -10,6 +10,7 @@ export const defaultValue = ({ responseId }) => ({
   placeholder: '',
   prompt: '',
   recallId: '',
+  recallShares: null,
   required: true,
   responseId,
   timeout: 0,

@@ -111,6 +111,9 @@ class Display extends Component {
       required,
       run
     } = this.props;
+
+    console.log(this.props);
+
     const { onChange } = this;
     const isFulfilled = value ? true : false;
     const header = (

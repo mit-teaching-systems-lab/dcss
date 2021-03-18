@@ -148,6 +148,7 @@ class ConditionalContentEditor extends React.Component {
 
     component.id = uuid();
     component.required = false;
+    component.isConditional = true;
 
     if (component.responseId) {
       component.header = `Slide ${this.props.slideIndex +
@@ -544,6 +545,7 @@ ConditionalContentEditor.propTypes = {
     agent: PropTypes.object,
     id: PropTypes.string,
     recallId: PropTypes.string,
+    recallShares: PropTypes.array,
     rules: PropTypes.array,
     component: PropTypes.object,
     type: PropTypes.oneOf([type])

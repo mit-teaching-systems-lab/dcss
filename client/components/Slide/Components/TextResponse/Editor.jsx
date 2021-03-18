@@ -19,6 +19,7 @@ class TextResponseEditor extends React.Component {
       prompt = '',
       placeholder = '',
       recallId = '',
+      recallShares,
       responseId = ''
     } = props.value;
     this.state = {
@@ -27,6 +28,7 @@ class TextResponseEditor extends React.Component {
       prompt,
       placeholder,
       recallId,
+      recallShares,
       responseId
     };
 
@@ -42,7 +44,14 @@ class TextResponseEditor extends React.Component {
 
     let shouldCallUpdateState = false;
 
-    const fields = ['agent', 'header', 'placeholder', 'prompt', 'recallId'];
+    const fields = [
+      'agent',
+      'header',
+      'placeholder',
+      'prompt',
+      'recallId',
+      'recallShares'
+    ];
 
     for (let field of fields) {
       if (this.props.value[field] !== this.state[field]) {
@@ -70,6 +79,7 @@ class TextResponseEditor extends React.Component {
       prompt,
       placeholder,
       recallId,
+      recallShares,
       responseId
     } = this.state;
     this.props.onChange({
@@ -79,6 +89,7 @@ class TextResponseEditor extends React.Component {
       prompt,
       placeholder,
       recallId,
+      recallShares,
       responseId,
       type
     });
@@ -88,12 +99,19 @@ class TextResponseEditor extends React.Component {
     this.setState({ [name]: value }, this.delayedUpdateState);
   }
 
-  onRecallChange({ recallId }) {
-    this.setState({ recallId }, this.updateState);
+  onRecallChange({ recallId, recallShares }) {
+    this.setState({ recallId, recallShares }, this.updateState);
   }
 
   render() {
-    const { agent, header, prompt, placeholder, recallId } = this.state;
+    const {
+      agent,
+      header,
+      prompt,
+      placeholder,
+      recallId,
+      recallShares
+    } = this.state;
     const { scenario, slideIndex } = this.props;
     const { onChange, onRecallChange, updateState } = this;
     const promptAriaLabel = 'Optional prompt to display before the input:';
@@ -104,10 +122,11 @@ class TextResponseEditor extends React.Component {
         <Container fluid>
           <ResponseRecall
             isEmbedded={true}
-            value={{ recallId }}
-            slideIndex={slideIndex}
-            scenario={scenario}
             onChange={onRecallChange}
+            parentResponseId={this.props.value.responseId}
+            scenario={scenario}
+            slideIndex={slideIndex}
+            value={{ recallId, recallShares }}
           />
           <Form.TextArea
             name="prompt"
@@ -156,6 +175,7 @@ TextResponseEditor.propTypes = {
     header: PropTypes.string,
     prompt: PropTypes.string,
     recallId: PropTypes.string,
+    recallShares: PropTypes.array,
     required: PropTypes.bool,
     responseId: PropTypes.string,
     type: PropTypes.oneOf([type])

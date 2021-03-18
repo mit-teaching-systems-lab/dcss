@@ -96,6 +96,7 @@ test('Render 1', async () => {
       "id": "",
       "persona": null,
       "recallId": "",
+      "recallShares": null,
       "type": "ResponseRecall",
     }
   `);
@@ -109,6 +110,7 @@ test('Render 2', async () => {
       "id": "",
       "persona": null,
       "recallId": "",
+      "recallShares": null,
       "type": "ResponseRecall",
     }
   `);
@@ -122,6 +124,7 @@ test('Render 3', async () => {
       "id": "",
       "persona": null,
       "recallId": "",
+      "recallShares": null,
       "type": "ResponseRecall",
     }
   `);

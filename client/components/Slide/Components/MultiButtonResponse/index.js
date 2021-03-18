@@ -15,6 +15,7 @@ export const defaultValue = ({ responseId }) => ({
   ],
   persona: null,
   recallId: '',
+  recallShares: null,
   required: true,
   responseId,
   timeout: 0,
