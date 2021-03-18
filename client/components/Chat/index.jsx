@@ -337,8 +337,6 @@ class Chat extends Component {
   sendNewMessage() {
     const { content } = this;
     if (isValidMessage(content)) {
-      console.log(content);
-
       this.props.socket.emit(
         CHAT_MESSAGE_CREATED,
         Payload.compose(
