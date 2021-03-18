@@ -144,8 +144,8 @@ class MultiPathResponseEditor extends React.Component {
     });
   }
 
-  onRecallChange({ recallId, recallShares }) {
-    this.setState({ recallId, recallShares }, this.updateState);
+  onRecallChange({ recallId, recallSharedWithRoles }) {
+    this.setState({ recallId, recallSharedWithRoles }, this.updateState);
   }
 
   onPathAddClick() {
@@ -271,7 +271,7 @@ class MultiPathResponseEditor extends React.Component {
       paths,
       open,
       recallId,
-      recallShares
+      recallSharedWithRoles
     } = this.state;
 
     if (!slides.length) {
@@ -347,7 +347,7 @@ class MultiPathResponseEditor extends React.Component {
             parentResponseId={this.props.value.responseId}
             scenario={scenario}
             slideIndex={slideIndex}
-            value={{ recallId, recallShares }}
+            value={{ recallId, recallSharedWithRoles }}
           />
 
           <Form.TextArea
@@ -545,7 +545,7 @@ MultiPathResponseEditor.propTypes = {
     header: PropTypes.string,
     prompt: PropTypes.string,
     recallId: PropTypes.string,
-    recallShares: PropTypes.array,
+    recallSharedWithRoles: PropTypes.array,
     required: PropTypes.bool,
     responseId: PropTypes.string,
     type: PropTypes.oneOf([type])

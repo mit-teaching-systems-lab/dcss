@@ -545,7 +545,7 @@ ConditionalContentEditor.propTypes = {
     agent: PropTypes.object,
     id: PropTypes.string,
     recallId: PropTypes.string,
-    recallShares: PropTypes.array,
+    recallSharedWithRoles: PropTypes.array,
     rules: PropTypes.array,
     component: PropTypes.object,
     type: PropTypes.oneOf([type])

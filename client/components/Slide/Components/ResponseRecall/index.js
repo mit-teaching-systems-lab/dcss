@@ -7,6 +7,6 @@ export const defaultValue = () => ({
   id: '',
   persona: null,
   recallId: '',
-  recallShares: null,
+  recallSharedWithRoles: null,
   type
 });

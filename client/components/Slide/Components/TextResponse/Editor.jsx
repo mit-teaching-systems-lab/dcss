@@ -19,7 +19,7 @@ class TextResponseEditor extends React.Component {
       prompt = '',
       placeholder = '',
       recallId = '',
-      recallShares,
+      recallSharedWithRoles,
       responseId = ''
     } = props.value;
     this.state = {
@@ -28,7 +28,7 @@ class TextResponseEditor extends React.Component {
       prompt,
       placeholder,
       recallId,
-      recallShares,
+      recallSharedWithRoles,
       responseId
     };
 
@@ -50,7 +50,7 @@ class TextResponseEditor extends React.Component {
       'placeholder',
       'prompt',
       'recallId',
-      'recallShares'
+      'recallSharedWithRoles'
     ];
 
     for (let field of fields) {
@@ -79,7 +79,7 @@ class TextResponseEditor extends React.Component {
       prompt,
       placeholder,
       recallId,
-      recallShares,
+      recallSharedWithRoles,
       responseId
     } = this.state;
     this.props.onChange({
@@ -89,7 +89,7 @@ class TextResponseEditor extends React.Component {
       prompt,
       placeholder,
       recallId,
-      recallShares,
+      recallSharedWithRoles,
       responseId,
       type
     });
@@ -99,8 +99,8 @@ class TextResponseEditor extends React.Component {
     this.setState({ [name]: value }, this.delayedUpdateState);
   }
 
-  onRecallChange({ recallId, recallShares }) {
-    this.setState({ recallId, recallShares }, this.updateState);
+  onRecallChange({ recallId, recallSharedWithRoles }) {
+    this.setState({ recallId, recallSharedWithRoles }, this.updateState);
   }
 
   render() {
@@ -110,7 +110,7 @@ class TextResponseEditor extends React.Component {
       prompt,
       placeholder,
       recallId,
-      recallShares
+      recallSharedWithRoles
     } = this.state;
     const { scenario, slideIndex } = this.props;
     const { onChange, onRecallChange, updateState } = this;
@@ -126,7 +126,7 @@ class TextResponseEditor extends React.Component {
             parentResponseId={this.props.value.responseId}
             scenario={scenario}
             slideIndex={slideIndex}
-            value={{ recallId, recallShares }}
+            value={{ recallId, recallSharedWithRoles }}
           />
           <Form.TextArea
             name="prompt"
@@ -175,7 +175,7 @@ TextResponseEditor.propTypes = {
     header: PropTypes.string,
     prompt: PropTypes.string,
     recallId: PropTypes.string,
-    recallShares: PropTypes.array,
+    recallSharedWithRoles: PropTypes.array,
     required: PropTypes.bool,
     responseId: PropTypes.string,
     type: PropTypes.oneOf([type])

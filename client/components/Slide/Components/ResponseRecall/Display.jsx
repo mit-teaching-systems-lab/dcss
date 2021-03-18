@@ -239,6 +239,7 @@ Display.propTypes = {
   // to prevent the serialized form of this component
   // from being mis-indentified as a "Response" component.
   recallId: PropTypes.string,
+  recallSharedWithRoles: PropTypes.array,
   run: PropTypes.object,
   saveRunEvent: PropTypes.func,
   scenario: PropTypes.object,

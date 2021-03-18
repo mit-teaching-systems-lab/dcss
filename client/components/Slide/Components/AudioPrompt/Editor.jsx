@@ -17,7 +17,7 @@ class AudioPromptEditor extends Component {
       header = '',
       prompt = '',
       recallId = '',
-      recallShares,
+      recallSharedWithRoles,
       responseId
     } = props.value;
 
@@ -26,7 +26,7 @@ class AudioPromptEditor extends Component {
       header,
       prompt,
       recallId,
-      recallShares,
+      recallSharedWithRoles,
       responseId
     };
     this.onChange = this.onChange.bind(this);
@@ -44,7 +44,7 @@ class AudioPromptEditor extends Component {
       header,
       prompt,
       recallId,
-      recallShares,
+      recallSharedWithRoles,
       responseId
     } = this.props.value;
 
@@ -53,7 +53,7 @@ class AudioPromptEditor extends Component {
       header,
       prompt,
       recallId,
-      recallShares,
+      recallSharedWithRoles,
       responseId
     };
 
@@ -76,7 +76,7 @@ class AudioPromptEditor extends Component {
       header,
       prompt,
       recallId,
-      recallShares,
+      recallSharedWithRoles,
       responseId
     } = this.state;
 
@@ -86,7 +86,7 @@ class AudioPromptEditor extends Component {
       header,
       prompt,
       recallId,
-      recallShares,
+      recallSharedWithRoles,
       responseId,
       type
     });
@@ -96,12 +96,12 @@ class AudioPromptEditor extends Component {
     this.setState({ [name]: value }, this.delayedUpdateState);
   }
 
-  onRecallChange({ recallId, recallShares }) {
-    this.setState({ recallId, recallShares }, this.updateState);
+  onRecallChange({ recallId, recallSharedWithRoles }) {
+    this.setState({ recallId, recallSharedWithRoles }, this.updateState);
   }
 
   render() {
-    const { agent, header, prompt, recallId, recallShares } = this.state;
+    const { agent, header, prompt, recallId, recallSharedWithRoles } = this.state;
     const { scenario, slideIndex } = this.props;
     const { onChange, onRecallChange, updateState } = this;
 
@@ -114,7 +114,7 @@ class AudioPromptEditor extends Component {
             parentResponseId={this.props.value.responseId}
             scenario={scenario}
             slideIndex={slideIndex}
-            value={{ recallId, recallShares }}
+            value={{ recallId, recallSharedWithRoles }}
           />
 
           <Form.TextArea
@@ -160,7 +160,7 @@ AudioPromptEditor.propTypes = {
     header: PropTypes.string,
     prompt: PropTypes.string,
     recallId: PropTypes.string,
-    recallShares: PropTypes.array,
+    recallSharedWithRoles: PropTypes.array,
     required: PropTypes.bool,
     responseId: PropTypes.string,
     type: PropTypes.oneOf([type, 'AudioResponse'])

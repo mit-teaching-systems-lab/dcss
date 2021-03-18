@@ -74,7 +74,7 @@ class ResponseRecallEditor extends React.Component {
       ...this.props.value,
       type,
       // recallId: selected value
-      // recallShares: []
+      // recallSharedWithRoles: []
       [name]: value
     });
   }
@@ -83,7 +83,7 @@ class ResponseRecallEditor extends React.Component {
     const {
       scenario,
       slideId,
-      value: { recallId, recallShares }
+      value: { recallId, recallSharedWithRoles }
     } = this.props;
     const { components } = this.state;
     const { onChange } = this;
@@ -201,11 +201,11 @@ class ResponseRecallEditor extends React.Component {
         multiple
         search
         selection
-        name="recallShares"
+        name="recallSharedWithRoles"
         aria-label={selectPersonasLabel}
         onChange={onChange}
         options={personaOptions}
-        value={recallShares || []}
+        value={recallSharedWithRoles || []}
       />
     ) : null;
 
@@ -228,7 +228,7 @@ class ResponseRecallEditor extends React.Component {
           onChange(
             {},
             {
-              name: 'recallShares',
+              name: 'recallSharedWithRoles',
               value
             }
           );
@@ -271,14 +271,14 @@ ResponseRecallEditor.propTypes = {
   onChange: PropTypes.func.isRequired,
   isEmbedded: PropTypes.bool,
   recallId: PropTypes.string,
-  recallShares: PropTypes.array,
+  recallSharedWithRoles: PropTypes.array,
   scenario: PropTypes.object,
   slideId: PropTypes.any,
   slideIndex: PropTypes.any,
   value: PropTypes.shape({
     id: PropTypes.string,
     recallId: PropTypes.string,
-    recallShares: PropTypes.array,
+    recallSharedWithRoles: PropTypes.array,
     type: PropTypes.oneOf([type]),
     components: PropTypes.array
   })

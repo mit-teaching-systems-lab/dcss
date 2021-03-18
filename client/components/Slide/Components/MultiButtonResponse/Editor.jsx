@@ -35,7 +35,7 @@ class MultiButtonResponseEditor extends React.Component {
       header = '',
       prompt = '',
       recallId = '',
-      recallShares,
+      recallSharedWithRoles,
       responseId
     } = props.value;
 
@@ -45,7 +45,7 @@ class MultiButtonResponseEditor extends React.Component {
       header,
       prompt,
       recallId,
-      recallShares,
+      recallSharedWithRoles,
       responseId
     };
 
@@ -72,7 +72,7 @@ class MultiButtonResponseEditor extends React.Component {
       prompt,
       buttons,
       recallId,
-      recallShares,
+      recallSharedWithRoles,
       responseId
     } = this.props.value;
     const lastProps = {
@@ -81,7 +81,7 @@ class MultiButtonResponseEditor extends React.Component {
       prompt,
       buttons,
       recallId,
-      recallShares,
+      recallSharedWithRoles,
       responseId
     };
 
@@ -105,7 +105,7 @@ class MultiButtonResponseEditor extends React.Component {
       header,
       prompt,
       recallId,
-      recallShares,
+      recallSharedWithRoles,
       responseId
     } = this.state;
 
@@ -116,14 +116,14 @@ class MultiButtonResponseEditor extends React.Component {
       header,
       prompt,
       recallId,
-      recallShares,
+      recallSharedWithRoles,
       responseId,
       type
     });
   }
 
-  onRecallChange({ recallId, recallShares }) {
-    this.setState({ recallId, recallShares }, this.updateState);
+  onRecallChange({ recallId, recallSharedWithRoles }) {
+    this.setState({ recallId, recallSharedWithRoles }, this.updateState);
   }
 
   onButtonAddClick() {
@@ -201,7 +201,7 @@ class MultiButtonResponseEditor extends React.Component {
       prompt,
       buttons,
       recallId,
-      recallShares
+      recallSharedWithRoles
     } = this.state;
 
     const {
@@ -224,7 +224,7 @@ class MultiButtonResponseEditor extends React.Component {
             parentResponseId={this.props.value.responseId}
             scenario={scenario}
             slideIndex={slideIndex}
-            value={{ recallId, recallShares }}
+            value={{ recallId, recallSharedWithRoles }}
           />
           <Form.TextArea
             label="Optional prompt to display before buttons:"
@@ -385,7 +385,7 @@ MultiButtonResponseEditor.propTypes = {
     header: PropTypes.string,
     prompt: PropTypes.string,
     recallId: PropTypes.string,
-    recallShares: PropTypes.array,
+    recallSharedWithRoles: PropTypes.array,
     required: PropTypes.bool,
     responseId: PropTypes.string,
     type: PropTypes.oneOf([type])
