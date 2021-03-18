@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { getCohortChatsOverview } from '@actions/cohort';
-
+import { getScenariosByStatus } from '@actions/scenario';
+import { SCENARIO_IS_PUBLIC } from '@components/Scenario/constants';
 import { Button, Card, Grid, List, Text } from '@components/UI';
 import Username from '@components/User/Username';
 import Avatar from '@utils/Avatar';
@@ -41,6 +42,7 @@ class LobbyUserOverview extends Component {
   }
 
   async componentDidMount() {
+    await this.props.getScenariosByStatus(SCENARIO_IS_PUBLIC);
     await this.refresh();
   }
 
@@ -276,6 +278,7 @@ LobbyUserOverview.propTypes = {
   chat: PropTypes.object,
   cohort: PropTypes.object,
   getCohortChatsOverview: PropTypes.func,
+  getScenariosByStatus: PropTypes.func,
   onSelect: PropTypes.func,
   scenario: PropTypes.object,
   scenariosById: PropTypes.object,
@@ -310,7 +313,8 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  getCohortChatsOverview: id => dispatch(getCohortChatsOverview(id))
+  getCohortChatsOverview: id => dispatch(getCohortChatsOverview(id)),
+  getScenariosByStatus: params => dispatch(getScenariosByStatus(params))
 });
 
 export default withRouter(
