@@ -3,6 +3,10 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import pluralize from 'pluralize';
 import {
+  getChatsByCohortId,
+  setChat
+} from '@actions/chat';
+import {
   getCohort,
   getCohortScenarios,
   setCohortScenarios
@@ -294,6 +298,14 @@ export class CohortScenarios extends React.Component {
 
               const key = Identity.key(scenario);
 
+              const existingChat = chats.find(
+                chat =>
+                  chat.scenario_id === scenario.id &&
+                  chat.host_id === user.id &&
+                  chat.cohort_id === cohort.id &&
+                  chat.ended_at === null
+              );
+
               // const resolvedHeaderProps = isMultiParticipantScenario
               //   ? multiCardHeaderProps
               //   : singleCardHeaderProps;
@@ -303,8 +315,12 @@ export class CohortScenarios extends React.Component {
               //   ...resolvedHeaderProps
               // };
 
+              let finishMyRoomButtonDisplay = existingChat
+                ? 'Go to my room to finish scenario'
+                : 'Finish scenario';
+
               let finishButtonDisplay = isMultiParticipantScenario
-                ? 'Re-join to finish scenario'
+                ? finishMyRoomButtonDisplay
                 : 'Finish scenario';
 
               let runButtonDisplay = isMultiParticipantScenario
@@ -332,14 +348,6 @@ export class CohortScenarios extends React.Component {
               if (ended_at) {
                 runStartedMaybeFinished = `Finished ${endedAtDisplay}.`;
               }
-
-              const existingChat = chats.find(
-                chat =>
-                  chat.scenario_id === scenario.id &&
-                  chat.host_id === user.id &&
-                  chat.cohort_id === cohort.id &&
-                  chat.ended_at === null
-              );
 
               return (
                 <Card
@@ -389,24 +397,42 @@ export class CohortScenarios extends React.Component {
                         {runScenarioDisplay}
                       </Button>
                       {isMultiParticipantScenario && existingChat ? (
-                        <Button
-                          size="tiny"
-                          data-testid="see-my-room-lobby"
-                          onClick={() => {
-                            this.setState({
-                              room: {
-                                isOpen: true,
-                                lobby: {
-                                  isOpen: true
-                                },
-                                scenario
-                              }
-                            });
-                          }}
-                        >
-                          <Icon className="primary" name="group" />
-                          Go to my room&apos;s lobby
-                        </Button>
+                        <Fragment>
+                          <Button
+                            size="tiny"
+                            data-testid="see-my-room-lobby"
+                            onClick={() => {
+                              this.setState({
+                                room: {
+                                  isOpen: true,
+                                  lobby: {
+                                    isOpen: true,
+                                    chat: existingChat
+                                  },
+                                  scenario
+                                }
+                              });
+                            }}
+                          >
+                            <Icon className="primary" name="group" />
+                            Go to my room&apos;s lobby
+                          </Button>
+                          <Button
+                            size="tiny"
+                            data-testid="close-my-room"
+                            onClick={async () => {
+                              const time = new Date().toISOString();
+                              await this.props.setChat(existingChat.id, {
+                                deleted_at: time,
+                                ended_at: time
+                              });
+                              await this.props.getChatsByCohortId(cohort.id);
+                            }}
+                          >
+                            <Icon className="primary" name="close" />
+                            Close my room
+                          </Button>
+                        </Fragment>
                       ) : null}
                       {/*isFacilitator ? (
                         <Button
@@ -482,10 +508,12 @@ CohortScenarios.propTypes = {
   onClick: PropTypes.func,
   scenarios: PropTypes.array,
   getRuns: PropTypes.func,
+  getRuns: PropTypes.func,
   runs: PropTypes.array,
   user: PropTypes.object,
   getUsers: PropTypes.func,
-  usersById: PropTypes.object
+  setChat: PropTypes.func,
+  usersById: PropTypes.object,
 };
 
 const mapStateToProps = (state, ownProps) => {
@@ -502,7 +530,9 @@ const mapDispatchToProps = dispatch => ({
   getCohortScenarios: id => dispatch(getCohortScenarios(id)),
   setCohortScenarios: params => dispatch(setCohortScenarios(params)),
   getRuns: () => dispatch(getRuns()),
-  getUsers: () => dispatch(getUsers())
+  getUsers: () => dispatch(getUsers()),
+  setChat: (id, params) => dispatch(setChat(id, params)),
+  getChatsByCohortId: id => dispatch(getChatsByCohortId(id)),
 });
 
 export default connect(
