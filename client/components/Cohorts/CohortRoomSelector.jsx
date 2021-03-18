@@ -13,6 +13,7 @@ import Lobby from '@components/Lobby';
 import {
   Button,
   Card,
+  Confirm,
   Form,
   Grid,
   Header,
@@ -61,6 +62,9 @@ export class CohortRoomSelector extends React.Component {
     this.state = {
       isReady: false,
       isOpenToCohort: false,
+      confirm: {
+        isOpen: false,
+      },
       create: {
         isOpen: false
       },
@@ -287,12 +291,21 @@ export class CohortRoomSelector extends React.Component {
                       as={Button}
                       key={key}
                       onClick={async () => {
-                        await this.props.joinChat(chat.id, persona);
-                        location.href = makeCohortScenarioChatJoinPath(
-                          cohort,
-                          scenario,
-                          chat
-                        );
+                        const joined = await this.props.joinChat(chat.id, persona);
+                        if (joined) {
+                          location.href = makeCohortScenarioChatJoinPath(
+                            cohort,
+                            scenario,
+                            chat
+                          );
+                        } else {
+                          this.setState({
+                            confirm: {
+                              isOpen: true
+                            }
+                          });
+                          await this.props.getChatsByCohortId(cohort.id);
+                        }
                       }}
                     >
                       {content}
@@ -466,6 +479,14 @@ export class CohortRoomSelector extends React.Component {
       ? createOrLobbyHeader
       : `Create or join a room for ${scenario.title}`;
 
+    const onConfirmClose = () => {
+      this.setState({
+        confirm: {
+          isOpen: false
+        }
+      });
+    };
+
     return (
       <Modal.Accessible open>
         <Modal
@@ -598,6 +619,38 @@ export class CohortRoomSelector extends React.Component {
             </Button.Group>
           </Modal.Actions>
           <div data-testid="cohort-chat-selector" />
+
+          {this.state.confirm.isOpen ? (
+            <Modal.Accessible open>
+              <Modal
+                closeIcon
+                open
+                aria-modal="true"
+                role="dialog"
+                size="small"
+                onClose={onConfirmClose}
+              >
+                <Header
+                  icon="close"
+                  content="Could not join room"
+                />
+                <Modal.Content>
+                  Sorry, but that room is full. Please join another room, or create your own.
+                </Modal.Content>
+                <Modal.Actions>
+                  <Button
+                    fluid
+                    primary
+                    aria-label="Ok"
+                    onClick={onConfirmClose}
+                  >
+                    Ok
+                  </Button>
+                </Modal.Actions>
+                <div data-testid="confirm" />
+              </Modal>
+            </Modal.Accessible>
+          ) : null}
         </Modal>
       </Modal.Accessible>
     );

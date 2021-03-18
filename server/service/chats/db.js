@@ -217,21 +217,39 @@ exports.joinChat = async (chat_id, user_id, persona_id = null) => {
     return;
   }
   return await withClientTransaction(async client => {
-    const is_present = persona_id !== null;
-    const result = await client.query(sql`
-      INSERT INTO chat_user
-        (chat_id, user_id, is_present, persona_id)
-      VALUES
-        (${chat_id}, ${user_id}, ${is_present}, ${persona_id})
-      ON CONFLICT ON CONSTRAINT chat_user_pkey
-      DO
-        UPDATE SET is_present = TRUE, persona_id = ${persona_id}
-      RETURNING *;
+    const available = await client.query(sql`
+      SELECT persona.id AS id, persona.name
+      FROM scenario_persona sp
+      JOIN chat USING(scenario_id)
+      JOIN persona ON persona.id = sp.persona_id
+      WHERE chat.id = ${chat_id}
+      AND persona.id NOT IN (
+        SELECT persona_id
+        FROM chat_user
+        WHERE chat_id = ${chat_id}
+        AND persona_id IS NOT NULL
+      )
     `);
 
-    if (result.rowCount) {
-      return this.getChat(chat_id);
+    // There are, proceed with joining this room,
+    if (available.rowCount) {
+      const is_present = persona_id !== null;
+      const result = await client.query(sql`
+        INSERT INTO chat_user
+          (chat_id, user_id, is_present, persona_id)
+        VALUES
+          (${chat_id}, ${user_id}, ${is_present}, ${persona_id})
+        ON CONFLICT ON CONSTRAINT chat_user_pkey
+        DO
+          UPDATE SET is_present = TRUE, persona_id = ${persona_id}
+        RETURNING *;
+      `);
+
+      if (result.rowCount) {
+        return this.getChat(chat_id);
+      }
     }
+    // If there are not...
     return null;
   });
 };

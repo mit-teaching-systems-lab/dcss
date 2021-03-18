@@ -7,6 +7,9 @@ import {
   setChat
 } from '@actions/chat';
 import {
+  setRun
+} from '@actions/run';
+import {
   getCohort,
   getCohortScenarios,
   setCohortScenarios
@@ -315,12 +318,8 @@ export class CohortScenarios extends React.Component {
               //   ...resolvedHeaderProps
               // };
 
-              let finishMyRoomButtonDisplay = existingChat
-                ? 'Go to my room to finish scenario'
-                : 'Finish scenario';
-
               let finishButtonDisplay = isMultiParticipantScenario
-                ? finishMyRoomButtonDisplay
+                ? 'Go to my room to finish scenario'
                 : 'Finish scenario';
 
               let runButtonDisplay = isMultiParticipantScenario
@@ -426,6 +425,11 @@ export class CohortScenarios extends React.Component {
                                 deleted_at: time,
                                 ended_at: time
                               });
+                              if (run) {
+                                await this.props.setRun(run.id, {
+                                  ended_at: time
+                                });
+                              }
                               await this.props.getChatsByCohortId(cohort.id);
                             }}
                           >
@@ -532,6 +536,7 @@ const mapDispatchToProps = dispatch => ({
   getRuns: () => dispatch(getRuns()),
   getUsers: () => dispatch(getUsers()),
   setChat: (id, params) => dispatch(setChat(id, params)),
+  setRun: (id, params) => dispatch(setRun(id, params)),
   getChatsByCohortId: id => dispatch(getChatsByCohortId(id)),
 });
 
