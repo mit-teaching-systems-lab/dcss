@@ -14,7 +14,7 @@ exports[`Adds CHAT_CREATED, CHAT_ENDED, HOST_JOIN, JOIN_OR_PART, RUN_CHAT_LINK h
   >
     <div
       aria-modal=\\"true\\"
-      class=\\"ui modal transition visible active\\"
+      class=\\"ui fullscreen modal transition visible active\\"
       role=\\"dialog\\"
     >
       <i
@@ -101,7 +101,7 @@ exports[`Adds CHAT_CREATED, CHAT_ENDED, HOST_JOIN, JOIN_OR_PART, RUN_CHAT_LINK h
                 available.
               </p>
               <div
-                class=\\"ui three cards\\"
+                class=\\"ui stackable three cards\\"
               />
             </div>
           </div>
@@ -123,6 +123,9 @@ exports[`Adds CHAT_CREATED, CHAT_ENDED, HOST_JOIN, JOIN_OR_PART, RUN_CHAT_LINK h
       <div
         data-testid=\\"cohort-chat-selector\\"
       />
+      <div>
+        @components/Chat
+      </div>
     </div>
   </div>
 </body>"
@@ -142,7 +145,7 @@ exports[`Adds CHAT_CREATED, CHAT_ENDED, HOST_JOIN, JOIN_OR_PART, RUN_CHAT_LINK h
   >
     <div
       aria-modal=\\"true\\"
-      class=\\"ui modal transition visible active\\"
+      class=\\"ui fullscreen modal transition visible active\\"
       role=\\"dialog\\"
     >
       <i
@@ -229,7 +232,7 @@ exports[`Adds CHAT_CREATED, CHAT_ENDED, HOST_JOIN, JOIN_OR_PART, RUN_CHAT_LINK h
                 available.
               </p>
               <div
-                class=\\"ui three cards\\"
+                class=\\"ui stackable three cards\\"
               />
             </div>
           </div>
@@ -251,6 +254,9 @@ exports[`Adds CHAT_CREATED, CHAT_ENDED, HOST_JOIN, JOIN_OR_PART, RUN_CHAT_LINK h
       <div
         data-testid=\\"cohort-chat-selector\\"
       />
+      <div>
+        @components/Chat
+      </div>
     </div>
   </div>
 </body>"
@@ -270,7 +276,7 @@ exports[`Close default 1`] = `
   >
     <div
       aria-modal=\\"true\\"
-      class=\\"ui modal transition visible active\\"
+      class=\\"ui fullscreen modal transition visible active\\"
       role=\\"dialog\\"
     >
       <i
@@ -357,7 +363,7 @@ exports[`Close default 1`] = `
                 available.
               </p>
               <div
-                class=\\"ui three cards\\"
+                class=\\"ui stackable three cards\\"
               />
             </div>
           </div>
@@ -379,6 +385,9 @@ exports[`Close default 1`] = `
       <div
         data-testid=\\"cohort-chat-selector\\"
       />
+      <div>
+        @components/Chat
+      </div>
     </div>
   </div>
 </body>"
@@ -398,7 +407,7 @@ exports[`Close default 2`] = `
   >
     <div
       aria-modal=\\"true\\"
-      class=\\"ui modal transition visible active\\"
+      class=\\"ui fullscreen modal transition visible active\\"
       role=\\"dialog\\"
     >
       <i
@@ -485,7 +494,7 @@ exports[`Close default 2`] = `
                 available.
               </p>
               <div
-                class=\\"ui three cards\\"
+                class=\\"ui stackable three cards\\"
               />
             </div>
           </div>
@@ -507,6 +516,9 @@ exports[`Close default 2`] = `
       <div
         data-testid=\\"cohort-chat-selector\\"
       />
+      <div>
+        @components/Chat
+      </div>
     </div>
   </div>
 </body>"
@@ -526,7 +538,7 @@ exports[`Close default 3`] = `
   >
     <div
       aria-modal=\\"true\\"
-      class=\\"ui modal transition visible active\\"
+      class=\\"ui fullscreen modal transition visible active\\"
       role=\\"dialog\\"
     >
       <i
@@ -613,7 +625,7 @@ exports[`Close default 3`] = `
                 available.
               </p>
               <div
-                class=\\"ui three cards\\"
+                class=\\"ui stackable three cards\\"
               />
             </div>
           </div>
@@ -635,6 +647,9 @@ exports[`Close default 3`] = `
       <div
         data-testid=\\"cohort-chat-selector\\"
       />
+      <div>
+        @components/Chat
+      </div>
     </div>
   </div>
 </body>"
@@ -654,7 +669,7 @@ exports[`Close provided 1`] = `
   >
     <div
       aria-modal=\\"true\\"
-      class=\\"ui modal transition visible active\\"
+      class=\\"ui fullscreen modal transition visible active\\"
       role=\\"dialog\\"
     >
       <i
@@ -741,7 +756,7 @@ exports[`Close provided 1`] = `
                 available.
               </p>
               <div
-                class=\\"ui three cards\\"
+                class=\\"ui stackable three cards\\"
               />
             </div>
           </div>
@@ -763,6 +778,9 @@ exports[`Close provided 1`] = `
       <div
         data-testid=\\"cohort-chat-selector\\"
       />
+      <div>
+        @components/Chat
+      </div>
     </div>
   </div>
 </body>"
@@ -782,7 +800,7 @@ exports[`Close provided 2`] = `
   >
     <div
       aria-modal=\\"true\\"
-      class=\\"ui modal transition visible active\\"
+      class=\\"ui fullscreen modal transition visible active\\"
       role=\\"dialog\\"
     >
       <i
@@ -869,7 +887,7 @@ exports[`Close provided 2`] = `
                 available.
               </p>
               <div
-                class=\\"ui three cards\\"
+                class=\\"ui stackable three cards\\"
               />
             </div>
           </div>
@@ -891,6 +909,9 @@ exports[`Close provided 2`] = `
       <div
         data-testid=\\"cohort-chat-selector\\"
       />
+      <div>
+        @components/Chat
+      </div>
     </div>
   </div>
 </body>"
@@ -910,7 +931,7 @@ exports[`Close provided 3`] = `
   >
     <div
       aria-modal=\\"true\\"
-      class=\\"ui modal transition visible active\\"
+      class=\\"ui fullscreen modal transition visible active\\"
       role=\\"dialog\\"
     >
       <i
@@ -997,7 +1018,7 @@ exports[`Close provided 3`] = `
                 available.
               </p>
               <div
-                class=\\"ui three cards\\"
+                class=\\"ui stackable three cards\\"
               />
             </div>
           </div>
@@ -1019,6 +1040,151 @@ exports[`Close provided 3`] = `
       <div
         data-testid=\\"cohort-chat-selector\\"
       />
+      <div>
+        @components/Chat
+      </div>
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`Cohort does not match 1`] = `
+"<body
+  class=\\"\\"
+>
+  <div
+    id=\\"root\\"
+  />
+  <div />
+</body>"
+`;
+
+exports[`Cohort does not match 2`] = `
+"<body
+  class=\\"dimmable dimmed\\"
+>
+  <div
+    id=\\"root\\"
+  />
+  <div />
+  <div
+    class=\\"ui top aligned page modals dimmer transition visible active\\"
+    style=\\"display: flex;\\"
+  >
+    <div
+      aria-modal=\\"true\\"
+      class=\\"ui fullscreen modal transition visible active\\"
+      role=\\"dialog\\"
+    >
+      <i
+        aria-hidden=\\"true\\"
+        class=\\"close icon\\"
+      />
+      <div
+        class=\\"ui header\\"
+        tabindex=\\"0\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"group icon\\"
+        />
+        <div
+          class=\\"content\\"
+        >
+          Create or join a room for Some Other Scenario
+        </div>
+      </div>
+      <div
+        class=\\"scrolling content\\"
+        style=\\"height: calc(100vh - 10rem);\\"
+      >
+        <button
+          class=\\"ui large button\\"
+          tabindex=\\"0\\"
+        >
+          <i
+            class=\\"icons\\"
+          >
+            <i
+              aria-hidden=\\"true\\"
+              class=\\"group icon primary\\"
+            />
+            <i
+              aria-hidden=\\"true\\"
+              class=\\"plus top right corner icon\\"
+            />
+          </i>
+          Create a room for this scenario
+        </button>
+        <div
+          class=\\"ui padded grid\\"
+        >
+          <div
+            class=\\"row\\"
+          >
+            <div
+              class=\\"column c__grid-single-col-padding\\"
+            >
+              <p>
+                This scenario requires multiple particpants in order to complete. Runs of the scenario are completed in
+                 
+                <strong>
+                  Rooms
+                </strong>
+                . 
+                <strong>
+                  Rooms
+                </strong>
+                 shown here are open for you to join.
+              </p>
+              <p>
+                If there are no rooms here, and you can click
+                 
+                <strong>
+                  Create a room for this scenario
+                </strong>
+                 to host your own room. You will be able to invite other participants directly, or allow all members of this cohort to join freely.
+              </p>
+              <p
+                tabindex=\\"0\\"
+              >
+                There 
+                are
+                 
+                <strong>
+                  0
+                </strong>
+                 open 
+                rooms
+                 
+                available.
+              </p>
+              <div
+                class=\\"ui stackable three cards\\"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class=\\"actions c__action-btns__scenario-selector\\"
+      >
+        <div
+          class=\\"ui fluid buttons\\"
+        >
+          <button
+            class=\\"ui button\\"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+      <div
+        data-testid=\\"cohort-chat-selector\\"
+      />
+      <div>
+        @components/Chat
+      </div>
     </div>
   </div>
 </body>"
@@ -1038,7 +1204,7 @@ exports[`Create a room for this scenario, cancel 1`] = `
   >
     <div
       aria-modal=\\"true\\"
-      class=\\"ui modal transition visible active\\"
+      class=\\"ui fullscreen modal transition visible active\\"
       role=\\"dialog\\"
     >
       <i
@@ -1125,7 +1291,7 @@ exports[`Create a room for this scenario, cancel 1`] = `
                 available.
               </p>
               <div
-                class=\\"ui three cards\\"
+                class=\\"ui stackable three cards\\"
               />
             </div>
           </div>
@@ -1147,6 +1313,9 @@ exports[`Create a room for this scenario, cancel 1`] = `
       <div
         data-testid=\\"cohort-chat-selector\\"
       />
+      <div>
+        @components/Chat
+      </div>
     </div>
   </div>
 </body>"
@@ -1166,7 +1335,7 @@ exports[`Create a room for this scenario, cancel 2`] = `
   >
     <div
       aria-modal=\\"true\\"
-      class=\\"ui modal transition visible active\\"
+      class=\\"ui fullscreen modal transition visible active\\"
       role=\\"dialog\\"
     >
       <i
@@ -1253,7 +1422,7 @@ exports[`Create a room for this scenario, cancel 2`] = `
                 available.
               </p>
               <div
-                class=\\"ui three cards\\"
+                class=\\"ui stackable three cards\\"
               />
             </div>
           </div>
@@ -1275,6 +1444,9 @@ exports[`Create a room for this scenario, cancel 2`] = `
       <div
         data-testid=\\"cohort-chat-selector\\"
       />
+      <div>
+        @components/Chat
+      </div>
     </div>
   </div>
 </body>"
@@ -1294,7 +1466,7 @@ exports[`Create a room for this scenario, cancel 3`] = `
   >
     <div
       aria-modal=\\"true\\"
-      class=\\"ui modal transition visible active\\"
+      class=\\"ui fullscreen modal transition visible active\\"
       role=\\"dialog\\"
     >
       <i
@@ -1409,6 +1581,9 @@ exports[`Create a room for this scenario, cancel 3`] = `
       <div
         data-testid=\\"cohort-chat-selector\\"
       />
+      <div>
+        @components/Chat
+      </div>
     </div>
   </div>
 </body>"
@@ -1428,7 +1603,7 @@ exports[`Create a room for this scenario, cancel 4`] = `
   >
     <div
       aria-modal=\\"true\\"
-      class=\\"ui modal transition visible active\\"
+      class=\\"ui fullscreen modal transition visible active\\"
       role=\\"dialog\\"
     >
       <i
@@ -1515,7 +1690,7 @@ exports[`Create a room for this scenario, cancel 4`] = `
                 available.
               </p>
               <div
-                class=\\"ui three cards\\"
+                class=\\"ui stackable three cards\\"
               />
             </div>
           </div>
@@ -1537,6 +1712,9 @@ exports[`Create a room for this scenario, cancel 4`] = `
       <div
         data-testid=\\"cohort-chat-selector\\"
       />
+      <div>
+        @components/Chat
+      </div>
     </div>
   </div>
 </body>"
@@ -1556,7 +1734,7 @@ exports[`Create a room for this scenario, open to cohort, close 1`] = `
   >
     <div
       aria-modal=\\"true\\"
-      class=\\"ui modal transition visible active\\"
+      class=\\"ui fullscreen modal transition visible active\\"
       role=\\"dialog\\"
     >
       <i
@@ -1643,7 +1821,7 @@ exports[`Create a room for this scenario, open to cohort, close 1`] = `
                 available.
               </p>
               <div
-                class=\\"ui three cards\\"
+                class=\\"ui stackable three cards\\"
               />
             </div>
           </div>
@@ -1665,6 +1843,9 @@ exports[`Create a room for this scenario, open to cohort, close 1`] = `
       <div
         data-testid=\\"cohort-chat-selector\\"
       />
+      <div>
+        @components/Chat
+      </div>
     </div>
   </div>
 </body>"
@@ -1684,7 +1865,7 @@ exports[`Create a room for this scenario, open to cohort, close 2`] = `
   >
     <div
       aria-modal=\\"true\\"
-      class=\\"ui modal transition visible active\\"
+      class=\\"ui fullscreen modal transition visible active\\"
       role=\\"dialog\\"
     >
       <i
@@ -1771,7 +1952,7 @@ exports[`Create a room for this scenario, open to cohort, close 2`] = `
                 available.
               </p>
               <div
-                class=\\"ui three cards\\"
+                class=\\"ui stackable three cards\\"
               />
             </div>
           </div>
@@ -1793,6 +1974,9 @@ exports[`Create a room for this scenario, open to cohort, close 2`] = `
       <div
         data-testid=\\"cohort-chat-selector\\"
       />
+      <div>
+        @components/Chat
+      </div>
     </div>
   </div>
 </body>"
@@ -1812,7 +1996,7 @@ exports[`Create a room for this scenario, open to cohort, close 3`] = `
   >
     <div
       aria-modal=\\"true\\"
-      class=\\"ui modal transition visible active\\"
+      class=\\"ui fullscreen modal transition visible active\\"
       role=\\"dialog\\"
     >
       <i
@@ -1927,6 +2111,9 @@ exports[`Create a room for this scenario, open to cohort, close 3`] = `
       <div
         data-testid=\\"cohort-chat-selector\\"
       />
+      <div>
+        @components/Chat
+      </div>
     </div>
   </div>
 </body>"
@@ -1946,7 +2133,7 @@ exports[`Create a room for this scenario, open to cohort, close 4`] = `
   >
     <div
       aria-modal=\\"true\\"
-      class=\\"ui modal transition visible active\\"
+      class=\\"ui fullscreen modal transition visible active\\"
       role=\\"dialog\\"
     >
       <i
@@ -2007,7 +2194,7 @@ exports[`Create a room for this scenario, open to cohort, close 4`] = `
                 available.
               </p>
               <div
-                class=\\"ui three cards\\"
+                class=\\"ui stackable three cards\\"
               >
                 <div
                   class=\\"ui card\\"
@@ -2111,6 +2298,9 @@ exports[`Create a room for this scenario, open to cohort, close 4`] = `
       <div
         data-testid=\\"cohort-chat-selector\\"
       />
+      <div>
+        @components/Chat
+      </div>
     </div>
   </div>
 </body>"
@@ -2130,7 +2320,7 @@ exports[`Create a room for this scenario, open to cohort, close 5`] = `
   >
     <div
       aria-modal=\\"true\\"
-      class=\\"ui modal transition visible active\\"
+      class=\\"ui fullscreen modal transition visible active\\"
       role=\\"dialog\\"
     >
       <i
@@ -2191,7 +2381,7 @@ exports[`Create a room for this scenario, open to cohort, close 5`] = `
                 available.
               </p>
               <div
-                class=\\"ui three cards\\"
+                class=\\"ui stackable three cards\\"
               >
                 <div
                   class=\\"ui card\\"
@@ -2295,6 +2485,9 @@ exports[`Create a room for this scenario, open to cohort, close 5`] = `
       <div
         data-testid=\\"cohort-chat-selector\\"
       />
+      <div>
+        @components/Chat
+      </div>
     </div>
   </div>
 </body>"
@@ -2314,7 +2507,7 @@ exports[`Create a room for this scenario, open to cohort, close 6`] = `
   >
     <div
       aria-modal=\\"true\\"
-      class=\\"ui modal transition visible active\\"
+      class=\\"ui fullscreen modal transition visible active\\"
       role=\\"dialog\\"
     >
       <i
@@ -2401,7 +2594,7 @@ exports[`Create a room for this scenario, open to cohort, close 6`] = `
                 available.
               </p>
               <div
-                class=\\"ui three cards\\"
+                class=\\"ui stackable three cards\\"
               />
             </div>
           </div>
@@ -2423,6 +2616,9 @@ exports[`Create a room for this scenario, open to cohort, close 6`] = `
       <div
         data-testid=\\"cohort-chat-selector\\"
       />
+      <div>
+        @components/Chat
+      </div>
     </div>
   </div>
 </body>"
@@ -2442,7 +2638,7 @@ exports[`Create a room for this scenario, open to cohort, close 7`] = `
   >
     <div
       aria-modal=\\"true\\"
-      class=\\"ui modal transition visible active\\"
+      class=\\"ui fullscreen modal transition visible active\\"
       role=\\"dialog\\"
     >
       <i
@@ -2529,7 +2725,7 @@ exports[`Create a room for this scenario, open to cohort, close 7`] = `
                 available.
               </p>
               <div
-                class=\\"ui three cards\\"
+                class=\\"ui stackable three cards\\"
               />
             </div>
           </div>
@@ -2551,6 +2747,9 @@ exports[`Create a room for this scenario, open to cohort, close 7`] = `
       <div
         data-testid=\\"cohort-chat-selector\\"
       />
+      <div>
+        @components/Chat
+      </div>
     </div>
   </div>
 </body>"
@@ -2570,7 +2769,7 @@ exports[`Create a room for this scenario, open to cohort, close 8`] = `
   >
     <div
       aria-modal=\\"true\\"
-      class=\\"ui modal transition visible active\\"
+      class=\\"ui fullscreen modal transition visible active\\"
       role=\\"dialog\\"
     >
       <i
@@ -2685,6 +2884,9 @@ exports[`Create a room for this scenario, open to cohort, close 8`] = `
       <div
         data-testid=\\"cohort-chat-selector\\"
       />
+      <div>
+        @components/Chat
+      </div>
     </div>
   </div>
 </body>"
@@ -2704,7 +2906,7 @@ exports[`Create a room for this scenario, open to cohort, close 9`] = `
   >
     <div
       aria-modal=\\"true\\"
-      class=\\"ui modal transition visible active\\"
+      class=\\"ui fullscreen modal transition visible active\\"
       role=\\"dialog\\"
     >
       <i
@@ -2791,7 +2993,7 @@ exports[`Create a room for this scenario, open to cohort, close 9`] = `
                 available.
               </p>
               <div
-                class=\\"ui three cards\\"
+                class=\\"ui stackable three cards\\"
               />
             </div>
           </div>
@@ -2813,6 +3015,9 @@ exports[`Create a room for this scenario, open to cohort, close 9`] = `
       <div
         data-testid=\\"cohort-chat-selector\\"
       />
+      <div>
+        @components/Chat
+      </div>
     </div>
   </div>
 </body>"
@@ -2832,7 +3037,7 @@ exports[`Create a room for this scenario, open to cohort, proceed 1`] = `
   >
     <div
       aria-modal=\\"true\\"
-      class=\\"ui modal transition visible active\\"
+      class=\\"ui fullscreen modal transition visible active\\"
       role=\\"dialog\\"
     >
       <i
@@ -2919,7 +3124,7 @@ exports[`Create a room for this scenario, open to cohort, proceed 1`] = `
                 available.
               </p>
               <div
-                class=\\"ui three cards\\"
+                class=\\"ui stackable three cards\\"
               />
             </div>
           </div>
@@ -2941,6 +3146,9 @@ exports[`Create a room for this scenario, open to cohort, proceed 1`] = `
       <div
         data-testid=\\"cohort-chat-selector\\"
       />
+      <div>
+        @components/Chat
+      </div>
     </div>
   </div>
 </body>"
@@ -2960,7 +3168,7 @@ exports[`Create a room for this scenario, open to cohort, proceed 2`] = `
   >
     <div
       aria-modal=\\"true\\"
-      class=\\"ui modal transition visible active\\"
+      class=\\"ui fullscreen modal transition visible active\\"
       role=\\"dialog\\"
     >
       <i
@@ -3047,7 +3255,7 @@ exports[`Create a room for this scenario, open to cohort, proceed 2`] = `
                 available.
               </p>
               <div
-                class=\\"ui three cards\\"
+                class=\\"ui stackable three cards\\"
               />
             </div>
           </div>
@@ -3069,6 +3277,9 @@ exports[`Create a room for this scenario, open to cohort, proceed 2`] = `
       <div
         data-testid=\\"cohort-chat-selector\\"
       />
+      <div>
+        @components/Chat
+      </div>
     </div>
   </div>
 </body>"
@@ -3088,7 +3299,7 @@ exports[`Create a room for this scenario, open to cohort, proceed 3`] = `
   >
     <div
       aria-modal=\\"true\\"
-      class=\\"ui modal transition visible active\\"
+      class=\\"ui fullscreen modal transition visible active\\"
       role=\\"dialog\\"
     >
       <i
@@ -3203,6 +3414,9 @@ exports[`Create a room for this scenario, open to cohort, proceed 3`] = `
       <div
         data-testid=\\"cohort-chat-selector\\"
       />
+      <div>
+        @components/Chat
+      </div>
     </div>
   </div>
 </body>"
@@ -3222,7 +3436,7 @@ exports[`Create a room for this scenario, open to cohort, proceed 4`] = `
   >
     <div
       aria-modal=\\"true\\"
-      class=\\"ui modal transition visible active\\"
+      class=\\"ui fullscreen modal transition visible active\\"
       role=\\"dialog\\"
     >
       <i
@@ -3309,7 +3523,7 @@ exports[`Create a room for this scenario, open to cohort, proceed 4`] = `
                 available.
               </p>
               <div
-                class=\\"ui three cards\\"
+                class=\\"ui stackable three cards\\"
               />
             </div>
           </div>
@@ -3331,6 +3545,9 @@ exports[`Create a room for this scenario, open to cohort, proceed 4`] = `
       <div
         data-testid=\\"cohort-chat-selector\\"
       />
+      <div>
+        @components/Chat
+      </div>
     </div>
   </div>
 </body>"
@@ -3350,7 +3567,7 @@ exports[`Create a room for this scenario, user will invite, proceed 1`] = `
   >
     <div
       aria-modal=\\"true\\"
-      class=\\"ui modal transition visible active\\"
+      class=\\"ui fullscreen modal transition visible active\\"
       role=\\"dialog\\"
     >
       <i
@@ -3437,7 +3654,7 @@ exports[`Create a room for this scenario, user will invite, proceed 1`] = `
                 available.
               </p>
               <div
-                class=\\"ui three cards\\"
+                class=\\"ui stackable three cards\\"
               />
             </div>
           </div>
@@ -3459,6 +3676,9 @@ exports[`Create a room for this scenario, user will invite, proceed 1`] = `
       <div
         data-testid=\\"cohort-chat-selector\\"
       />
+      <div>
+        @components/Chat
+      </div>
     </div>
   </div>
 </body>"
@@ -3478,7 +3698,7 @@ exports[`Create a room for this scenario, user will invite, proceed 2`] = `
   >
     <div
       aria-modal=\\"true\\"
-      class=\\"ui modal transition visible active\\"
+      class=\\"ui fullscreen modal transition visible active\\"
       role=\\"dialog\\"
     >
       <i
@@ -3565,7 +3785,7 @@ exports[`Create a room for this scenario, user will invite, proceed 2`] = `
                 available.
               </p>
               <div
-                class=\\"ui three cards\\"
+                class=\\"ui stackable three cards\\"
               />
             </div>
           </div>
@@ -3587,6 +3807,9 @@ exports[`Create a room for this scenario, user will invite, proceed 2`] = `
       <div
         data-testid=\\"cohort-chat-selector\\"
       />
+      <div>
+        @components/Chat
+      </div>
     </div>
   </div>
 </body>"
@@ -3606,7 +3829,7 @@ exports[`Create a room for this scenario, user will invite, proceed 3`] = `
   >
     <div
       aria-modal=\\"true\\"
-      class=\\"ui modal transition visible active\\"
+      class=\\"ui fullscreen modal transition visible active\\"
       role=\\"dialog\\"
     >
       <i
@@ -3721,6 +3944,9 @@ exports[`Create a room for this scenario, user will invite, proceed 3`] = `
       <div
         data-testid=\\"cohort-chat-selector\\"
       />
+      <div>
+        @components/Chat
+      </div>
     </div>
   </div>
 </body>"
@@ -3740,7 +3966,7 @@ exports[`Create a room for this scenario, user will invite, proceed 4`] = `
   >
     <div
       aria-modal=\\"true\\"
-      class=\\"ui modal transition visible active\\"
+      class=\\"ui fullscreen modal transition visible active\\"
       role=\\"dialog\\"
     >
       <i
@@ -4203,6 +4429,9 @@ exports[`Create a room for this scenario, user will invite, proceed 4`] = `
       <div
         data-testid=\\"cohort-chat-selector\\"
       />
+      <div>
+        @components/Chat
+      </div>
     </div>
   </div>
 </body>"
@@ -4222,7 +4451,7 @@ exports[`Create a room for this scenario, user will invite, proceed 5`] = `
   >
     <div
       aria-modal=\\"true\\"
-      class=\\"ui modal transition visible active\\"
+      class=\\"ui fullscreen modal transition visible active\\"
       role=\\"dialog\\"
     >
       <i
@@ -4685,6 +4914,9 @@ exports[`Create a room for this scenario, user will invite, proceed 5`] = `
       <div
         data-testid=\\"cohort-chat-selector\\"
       />
+      <div>
+        @components/Chat
+      </div>
     </div>
   </div>
 </body>"
@@ -4695,6 +4927,7 @@ exports[`Emits CREATE_COHORT_CHANNEL on socket 1`] = `
   class=\\"dimmable dimmed\\"
 >
   <div
+    aria-hidden=\\"true\\"
     id=\\"root\\"
   />
   <div />
@@ -4704,7 +4937,7 @@ exports[`Emits CREATE_COHORT_CHANNEL on socket 1`] = `
   >
     <div
       aria-modal=\\"true\\"
-      class=\\"ui modal transition visible active\\"
+      class=\\"ui fullscreen modal transition visible active\\"
       role=\\"dialog\\"
     >
       <i
@@ -4791,7 +5024,7 @@ exports[`Emits CREATE_COHORT_CHANNEL on socket 1`] = `
                 available.
               </p>
               <div
-                class=\\"ui three cards\\"
+                class=\\"ui stackable three cards\\"
               />
             </div>
           </div>
@@ -4813,6 +5046,9 @@ exports[`Emits CREATE_COHORT_CHANNEL on socket 1`] = `
       <div
         data-testid=\\"cohort-chat-selector\\"
       />
+      <div>
+        @components/Chat
+      </div>
     </div>
   </div>
 </body>"
@@ -4823,6 +5059,7 @@ exports[`Emits CREATE_COHORT_CHANNEL on socket 2`] = `
   class=\\"dimmable dimmed\\"
 >
   <div
+    aria-hidden=\\"true\\"
     id=\\"root\\"
   />
   <div />
@@ -4832,7 +5069,7 @@ exports[`Emits CREATE_COHORT_CHANNEL on socket 2`] = `
   >
     <div
       aria-modal=\\"true\\"
-      class=\\"ui modal transition visible active\\"
+      class=\\"ui fullscreen modal transition visible active\\"
       role=\\"dialog\\"
     >
       <i
@@ -4919,7 +5156,7 @@ exports[`Emits CREATE_COHORT_CHANNEL on socket 2`] = `
                 available.
               </p>
               <div
-                class=\\"ui three cards\\"
+                class=\\"ui stackable three cards\\"
               />
             </div>
           </div>
@@ -4941,6 +5178,9 @@ exports[`Emits CREATE_COHORT_CHANNEL on socket 2`] = `
       <div
         data-testid=\\"cohort-chat-selector\\"
       />
+      <div>
+        @components/Chat
+      </div>
     </div>
   </div>
 </body>"
@@ -4960,7 +5200,7 @@ exports[`Has chats in state 1`] = `
   >
     <div
       aria-modal=\\"true\\"
-      class=\\"ui modal transition visible active\\"
+      class=\\"ui fullscreen modal transition visible active\\"
       role=\\"dialog\\"
     >
       <i
@@ -5047,7 +5287,7 @@ exports[`Has chats in state 1`] = `
                 available.
               </p>
               <div
-                class=\\"ui three cards\\"
+                class=\\"ui stackable three cards\\"
               />
             </div>
           </div>
@@ -5069,6 +5309,9 @@ exports[`Has chats in state 1`] = `
       <div
         data-testid=\\"cohort-chat-selector\\"
       />
+      <div>
+        @components/Chat
+      </div>
     </div>
   </div>
 </body>"
@@ -5088,7 +5331,7 @@ exports[`Has chats in state 2`] = `
   >
     <div
       aria-modal=\\"true\\"
-      class=\\"ui modal transition visible active\\"
+      class=\\"ui fullscreen modal transition visible active\\"
       role=\\"dialog\\"
     >
       <i
@@ -5175,7 +5418,7 @@ exports[`Has chats in state 2`] = `
                 available.
               </p>
               <div
-                class=\\"ui three cards\\"
+                class=\\"ui stackable three cards\\"
               />
             </div>
           </div>
@@ -5197,6 +5440,9 @@ exports[`Has chats in state 2`] = `
       <div
         data-testid=\\"cohort-chat-selector\\"
       />
+      <div>
+        @components/Chat
+      </div>
     </div>
   </div>
 </body>"
@@ -5216,7 +5462,7 @@ exports[`Has lobby prop, but not lobby.chat, chat is NOT found through heuristic
   >
     <div
       aria-modal=\\"true\\"
-      class=\\"ui modal transition visible active\\"
+      class=\\"ui fullscreen modal transition visible active\\"
       role=\\"dialog\\"
     >
       <i
@@ -5303,7 +5549,7 @@ exports[`Has lobby prop, but not lobby.chat, chat is NOT found through heuristic
                 available.
               </p>
               <div
-                class=\\"ui three cards\\"
+                class=\\"ui stackable three cards\\"
               />
             </div>
           </div>
@@ -5325,6 +5571,9 @@ exports[`Has lobby prop, but not lobby.chat, chat is NOT found through heuristic
       <div
         data-testid=\\"cohort-chat-selector\\"
       />
+      <div>
+        @components/Chat
+      </div>
     </div>
   </div>
 </body>"
@@ -5344,7 +5593,7 @@ exports[`Has lobby prop, but not lobby.chat, chat is NOT found through heuristic
   >
     <div
       aria-modal=\\"true\\"
-      class=\\"ui modal transition visible active\\"
+      class=\\"ui fullscreen modal transition visible active\\"
       role=\\"dialog\\"
     >
       <i
@@ -5431,7 +5680,7 @@ exports[`Has lobby prop, but not lobby.chat, chat is NOT found through heuristic
                 available.
               </p>
               <div
-                class=\\"ui three cards\\"
+                class=\\"ui stackable three cards\\"
               />
             </div>
           </div>
@@ -5453,6 +5702,9 @@ exports[`Has lobby prop, but not lobby.chat, chat is NOT found through heuristic
       <div
         data-testid=\\"cohort-chat-selector\\"
       />
+      <div>
+        @components/Chat
+      </div>
     </div>
   </div>
 </body>"
@@ -5472,7 +5724,7 @@ exports[`Has lobby prop, but not lobby.chat, chat is found through heuristic sea
   >
     <div
       aria-modal=\\"true\\"
-      class=\\"ui modal transition visible active\\"
+      class=\\"ui fullscreen modal transition visible active\\"
       role=\\"dialog\\"
     >
       <i
@@ -5533,7 +5785,7 @@ exports[`Has lobby prop, but not lobby.chat, chat is found through heuristic sea
                 available.
               </p>
               <div
-                class=\\"ui three cards\\"
+                class=\\"ui stackable three cards\\"
               >
                 <div
                   class=\\"ui card\\"
@@ -5637,6 +5889,9 @@ exports[`Has lobby prop, but not lobby.chat, chat is found through heuristic sea
       <div
         data-testid=\\"cohort-chat-selector\\"
       />
+      <div>
+        @components/Chat
+      </div>
     </div>
   </div>
 </body>"
@@ -5656,7 +5911,7 @@ exports[`Has no chats in state 1`] = `
   >
     <div
       aria-modal=\\"true\\"
-      class=\\"ui modal transition visible active\\"
+      class=\\"ui fullscreen modal transition visible active\\"
       role=\\"dialog\\"
     >
       <i
@@ -5743,7 +5998,7 @@ exports[`Has no chats in state 1`] = `
                 available.
               </p>
               <div
-                class=\\"ui three cards\\"
+                class=\\"ui stackable three cards\\"
               />
             </div>
           </div>
@@ -5765,6 +6020,9 @@ exports[`Has no chats in state 1`] = `
       <div
         data-testid=\\"cohort-chat-selector\\"
       />
+      <div>
+        @components/Chat
+      </div>
     </div>
   </div>
 </body>"
@@ -5784,7 +6042,7 @@ exports[`Has no chats in state 2`] = `
   >
     <div
       aria-modal=\\"true\\"
-      class=\\"ui modal transition visible active\\"
+      class=\\"ui fullscreen modal transition visible active\\"
       role=\\"dialog\\"
     >
       <i
@@ -5871,7 +6129,7 @@ exports[`Has no chats in state 2`] = `
                 available.
               </p>
               <div
-                class=\\"ui three cards\\"
+                class=\\"ui stackable three cards\\"
               />
             </div>
           </div>
@@ -5893,12 +6151,26 @@ exports[`Has no chats in state 2`] = `
       <div
         data-testid=\\"cohort-chat-selector\\"
       />
+      <div>
+        @components/Chat
+      </div>
     </div>
   </div>
 </body>"
 `;
 
-exports[`Has no cohort in state 1`] = `
+exports[`Scenario is missing personas 1`] = `
+"<body
+  class=\\"\\"
+>
+  <div
+    id=\\"root\\"
+  />
+  <div />
+</body>"
+`;
+
+exports[`Scenario is missing personas 2`] = `
 "<body
   class=\\"dimmable dimmed\\"
 >
@@ -5912,192 +6184,7 @@ exports[`Has no cohort in state 1`] = `
   >
     <div
       aria-modal=\\"true\\"
-      class=\\"ui modal transition visible active\\"
-      role=\\"dialog\\"
-    >
-      <i
-        aria-hidden=\\"true\\"
-        class=\\"close icon\\"
-      />
-      <div
-        class=\\"ui header\\"
-        tabindex=\\"0\\"
-      >
-        <i
-          aria-hidden=\\"true\\"
-          class=\\"group icon\\"
-        />
-        <div
-          class=\\"content\\"
-        >
-          Create or join a room for Some Other Scenario
-        </div>
-      </div>
-      <div
-        class=\\"scrolling content\\"
-        style=\\"height: calc(100vh - 10rem);\\"
-      >
-        <div
-          class=\\"ui padded grid\\"
-        >
-          <div
-            class=\\"row\\"
-          >
-            <div
-              class=\\"column c__grid-single-col-padding\\"
-            >
-              <p>
-                This scenario requires multiple particpants in order to complete. Runs of the scenario are completed in
-                 
-                <strong>
-                  Rooms
-                </strong>
-                . 
-                <strong>
-                  Rooms
-                </strong>
-                 shown here are open for you to join.
-              </p>
-              <p
-                tabindex=\\"0\\"
-              >
-                There 
-                is
-                 
-                <strong>
-                  1
-                </strong>
-                 open 
-                room
-                 
-                available.
-              </p>
-              <div
-                class=\\"ui three cards\\"
-              >
-                <div
-                  class=\\"ui card\\"
-                >
-                  <div
-                    class=\\"content c__chat-card\\"
-                  >
-                    <div
-                      class=\\"header\\"
-                    >
-                      This is your room
-                    </div>
-                    <div
-                      class=\\"description c__chat-card__meta\\"
-                    >
-                      <p>
-                        You are participating as 
-                        <strong>
-                          Teacher
-                        </strong>
-                        . Click
-                         
-                        <strong>
-                          Join Room
-                        </strong>
-                         to run the scenario.
-                        <br />
-                        <br />
-                        The following roles are not yet assigned.
-                      </p>
-                      <div
-                        class=\\"ui labels\\"
-                      >
-                        <button
-                          class=\\"ui button ui label fluid\\"
-                        >
-                          <span
-                            class=\\"ui medium text\\"
-                          >
-                            Student
-                          </span>
-                          <br />
-                          <span
-                            class=\\"ui small text\\"
-                          >
-                            A non-specific student, participating in a multi person scenario.
-                          </span>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    class=\\"extra content\\"
-                  >
-                    <button
-                      class=\\"ui fluid button primary\\"
-                    >
-                      Join room
-                    </button>
-                  </div>
-                  <div
-                    class=\\"extra content\\"
-                  >
-                    <div
-                      class=\\"ui fluid two buttons\\"
-                    >
-                      <button
-                        class=\\"ui compact button primary\\"
-                      >
-                        Send invites
-                      </button>
-                      <div
-                        class=\\"or\\"
-                      />
-                      <button
-                        class=\\"ui compact button\\"
-                      >
-                        Close room
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div
-        class=\\"actions c__action-btns__scenario-selector\\"
-      >
-        <div
-          class=\\"ui fluid buttons\\"
-        >
-          <button
-            class=\\"ui button\\"
-          >
-            Close
-          </button>
-        </div>
-      </div>
-      <div
-        data-testid=\\"cohort-chat-selector\\"
-      />
-    </div>
-  </div>
-</body>"
-`;
-
-exports[`Render 1 1 1`] = `
-"<body
-  class=\\"dimmable dimmed\\"
->
-  <div
-    aria-hidden=\\"true\\"
-    id=\\"root\\"
-  />
-  <div />
-  <div
-    class=\\"ui top aligned page modals dimmer transition visible active\\"
-    style=\\"display: flex;\\"
-  >
-    <div
-      aria-modal=\\"true\\"
-      class=\\"ui modal transition visible active\\"
+      class=\\"ui fullscreen modal transition visible active\\"
       role=\\"dialog\\"
     >
       <i
@@ -6184,7 +6271,7 @@ exports[`Render 1 1 1`] = `
                 available.
               </p>
               <div
-                class=\\"ui three cards\\"
+                class=\\"ui stackable three cards\\"
               />
             </div>
           </div>
@@ -6206,134 +6293,9 @@ exports[`Render 1 1 1`] = `
       <div
         data-testid=\\"cohort-chat-selector\\"
       />
-    </div>
-  </div>
-</body>"
-`;
-
-exports[`Render 2 1 1`] = `
-"<body
-  class=\\"dimmable dimmed\\"
->
-  <div
-    id=\\"root\\"
-  />
-  <div />
-  <div
-    class=\\"ui top aligned page modals dimmer transition visible active\\"
-    style=\\"display: flex;\\"
-  >
-    <div
-      aria-modal=\\"true\\"
-      class=\\"ui modal transition visible active\\"
-      role=\\"dialog\\"
-    >
-      <i
-        aria-hidden=\\"true\\"
-        class=\\"close icon\\"
-      />
-      <div
-        class=\\"ui header\\"
-        tabindex=\\"0\\"
-      >
-        <i
-          aria-hidden=\\"true\\"
-          class=\\"group icon\\"
-        />
-        <div
-          class=\\"content\\"
-        >
-          Create or join a room for Some Other Scenario
-        </div>
+      <div>
+        @components/Chat
       </div>
-      <div
-        class=\\"scrolling content\\"
-        style=\\"height: calc(100vh - 10rem);\\"
-      >
-        <button
-          class=\\"ui large button\\"
-          tabindex=\\"0\\"
-        >
-          <i
-            class=\\"icons\\"
-          >
-            <i
-              aria-hidden=\\"true\\"
-              class=\\"group icon primary\\"
-            />
-            <i
-              aria-hidden=\\"true\\"
-              class=\\"plus top right corner icon\\"
-            />
-          </i>
-          Create a room for this scenario
-        </button>
-        <div
-          class=\\"ui padded grid\\"
-        >
-          <div
-            class=\\"row\\"
-          >
-            <div
-              class=\\"column c__grid-single-col-padding\\"
-            >
-              <p>
-                This scenario requires multiple particpants in order to complete. Runs of the scenario are completed in
-                 
-                <strong>
-                  Rooms
-                </strong>
-                . 
-                <strong>
-                  Rooms
-                </strong>
-                 shown here are open for you to join.
-              </p>
-              <p>
-                If there are no rooms here, and you can click
-                 
-                <strong>
-                  Create a room for this scenario
-                </strong>
-                 to host your own room. You will be able to invite other participants directly, or allow all members of this cohort to join freely.
-              </p>
-              <p
-                tabindex=\\"0\\"
-              >
-                There 
-                are
-                 
-                <strong>
-                  0
-                </strong>
-                 open 
-                rooms
-                 
-                available.
-              </p>
-              <div
-                class=\\"ui three cards\\"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-      <div
-        class=\\"actions c__action-btns__scenario-selector\\"
-      >
-        <div
-          class=\\"ui fluid buttons\\"
-        >
-          <button
-            class=\\"ui button\\"
-          >
-            Close
-          </button>
-        </div>
-      </div>
-      <div
-        data-testid=\\"cohort-chat-selector\\"
-      />
     </div>
   </div>
 </body>"
@@ -6341,193 +6303,12 @@ exports[`Render 2 1 1`] = `
 
 exports[`User is not host, host does have role 1`] = `
 "<body
-  class=\\"dimmable dimmed\\"
+  class=\\"\\"
 >
   <div
     id=\\"root\\"
   />
   <div />
-  <div
-    class=\\"ui top aligned page modals dimmer transition visible active\\"
-    style=\\"display: flex;\\"
-  >
-    <div
-      aria-modal=\\"true\\"
-      class=\\"ui modal transition visible active\\"
-      role=\\"dialog\\"
-    >
-      <i
-        aria-hidden=\\"true\\"
-        class=\\"close icon\\"
-      />
-      <div
-        class=\\"ui header\\"
-        tabindex=\\"0\\"
-      >
-        <i
-          aria-hidden=\\"true\\"
-          class=\\"group icon\\"
-        />
-        <div
-          class=\\"content\\"
-        >
-          Create or join a room for Some Other Scenario
-        </div>
-      </div>
-      <div
-        class=\\"scrolling content\\"
-        style=\\"height: calc(100vh - 10rem);\\"
-      >
-        <button
-          class=\\"ui large button\\"
-          tabindex=\\"0\\"
-        >
-          <i
-            class=\\"icons\\"
-          >
-            <i
-              aria-hidden=\\"true\\"
-              class=\\"group icon primary\\"
-            />
-            <i
-              aria-hidden=\\"true\\"
-              class=\\"plus top right corner icon\\"
-            />
-          </i>
-          Create a room for this scenario
-        </button>
-        <div
-          class=\\"ui padded grid\\"
-        >
-          <div
-            class=\\"row\\"
-          >
-            <div
-              class=\\"column c__grid-single-col-padding\\"
-            >
-              <p>
-                This scenario requires multiple particpants in order to complete. Runs of the scenario are completed in
-                 
-                <strong>
-                  Rooms
-                </strong>
-                . 
-                <strong>
-                  Rooms
-                </strong>
-                 shown here are open for you to join.
-              </p>
-              <p>
-                If there are no rooms here, and you can click
-                 
-                <strong>
-                  Create a room for this scenario
-                </strong>
-                 to host your own room. You will be able to invite other participants directly, or allow all members of this cohort to join freely.
-              </p>
-              <p
-                tabindex=\\"0\\"
-              >
-                There 
-                is
-                 
-                <strong>
-                  1
-                </strong>
-                 open 
-                room
-                 
-                available.
-              </p>
-              <div
-                class=\\"ui three cards\\"
-              >
-                <div
-                  class=\\"ui card\\"
-                >
-                  <div
-                    class=\\"content c__chat-card\\"
-                  >
-                    <div
-                      class=\\"header\\"
-                    >
-                      <span
-                        aria-label=\\"Super User (super)\\"
-                        class=\\"ui medium text\\"
-                        title=\\"Super User (super)\\"
-                      >
-                        Super User
-                      </span>
-                      's
-                       
-                      <i
-                        aria-hidden=\\"true\\"
-                        class=\\"small icon chess queen\\"
-                        style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                        title=\\"Super\\"
-                      />
-                       room
-                    </div>
-                    <div
-                      class=\\"description c__chat-card__meta\\"
-                    >
-                      <p>
-                        Click on one of those roles to join the scenario room:
-                      </p>
-                      <div
-                        class=\\"ui labels\\"
-                      >
-                        <button
-                          class=\\"ui button ui label fluid\\"
-                        >
-                          <span
-                            class=\\"ui medium text\\"
-                          >
-                            Student
-                          </span>
-                          <br />
-                          <span
-                            class=\\"ui small text\\"
-                          >
-                            A non-specific student, participating in a multi person scenario.
-                          </span>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    class=\\"extra content\\"
-                  >
-                    <button
-                      class=\\"ui fluid button primary\\"
-                    >
-                      Join room
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div
-        class=\\"actions c__action-btns__scenario-selector\\"
-      >
-        <div
-          class=\\"ui fluid buttons\\"
-        >
-          <button
-            class=\\"ui button\\"
-          >
-            Close
-          </button>
-        </div>
-      </div>
-      <div
-        data-testid=\\"cohort-chat-selector\\"
-      />
-    </div>
-  </div>
 </body>"
 `;
 
@@ -6545,199 +6326,7 @@ exports[`User is not host, host does have role 2`] = `
   >
     <div
       aria-modal=\\"true\\"
-      class=\\"ui modal transition visible active\\"
-      role=\\"dialog\\"
-    >
-      <i
-        aria-hidden=\\"true\\"
-        class=\\"close icon\\"
-      />
-      <div
-        class=\\"ui header\\"
-        tabindex=\\"0\\"
-      >
-        <i
-          aria-hidden=\\"true\\"
-          class=\\"group icon\\"
-        />
-        <div
-          class=\\"content\\"
-        >
-          Create or join a room for Some Other Scenario
-        </div>
-      </div>
-      <div
-        class=\\"scrolling content\\"
-        style=\\"height: calc(100vh - 10rem);\\"
-      >
-        <button
-          class=\\"ui large button\\"
-          tabindex=\\"0\\"
-        >
-          <i
-            class=\\"icons\\"
-          >
-            <i
-              aria-hidden=\\"true\\"
-              class=\\"group icon primary\\"
-            />
-            <i
-              aria-hidden=\\"true\\"
-              class=\\"plus top right corner icon\\"
-            />
-          </i>
-          Create a room for this scenario
-        </button>
-        <div
-          class=\\"ui padded grid\\"
-        >
-          <div
-            class=\\"row\\"
-          >
-            <div
-              class=\\"column c__grid-single-col-padding\\"
-            >
-              <p>
-                This scenario requires multiple particpants in order to complete. Runs of the scenario are completed in
-                 
-                <strong>
-                  Rooms
-                </strong>
-                . 
-                <strong>
-                  Rooms
-                </strong>
-                 shown here are open for you to join.
-              </p>
-              <p>
-                If there are no rooms here, and you can click
-                 
-                <strong>
-                  Create a room for this scenario
-                </strong>
-                 to host your own room. You will be able to invite other participants directly, or allow all members of this cohort to join freely.
-              </p>
-              <p
-                tabindex=\\"0\\"
-              >
-                There 
-                is
-                 
-                <strong>
-                  1
-                </strong>
-                 open 
-                room
-                 
-                available.
-              </p>
-              <div
-                class=\\"ui three cards\\"
-              >
-                <div
-                  class=\\"ui card\\"
-                >
-                  <div
-                    class=\\"content c__chat-card\\"
-                  >
-                    <div
-                      class=\\"header\\"
-                    >
-                      <span
-                        aria-label=\\"Super User (super)\\"
-                        class=\\"ui medium text\\"
-                        title=\\"Super User (super)\\"
-                      >
-                        Super User
-                      </span>
-                      's
-                       
-                      <i
-                        aria-hidden=\\"true\\"
-                        class=\\"small icon chess queen\\"
-                        style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                        title=\\"Super\\"
-                      />
-                       room
-                    </div>
-                    <div
-                      class=\\"description c__chat-card__meta\\"
-                    >
-                      <p>
-                        Click on one of those roles to join the scenario room:
-                      </p>
-                      <div
-                        class=\\"ui labels\\"
-                      >
-                        <button
-                          class=\\"ui button ui label fluid\\"
-                        >
-                          <span
-                            class=\\"ui medium text\\"
-                          >
-                            Student
-                          </span>
-                          <br />
-                          <span
-                            class=\\"ui small text\\"
-                          >
-                            A non-specific student, participating in a multi person scenario.
-                          </span>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    class=\\"extra content\\"
-                  >
-                    <button
-                      class=\\"ui fluid button primary\\"
-                    >
-                      Join room
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div
-        class=\\"actions c__action-btns__scenario-selector\\"
-      >
-        <div
-          class=\\"ui fluid buttons\\"
-        >
-          <button
-            class=\\"ui button\\"
-          >
-            Close
-          </button>
-        </div>
-      </div>
-      <div
-        data-testid=\\"cohort-chat-selector\\"
-      />
-    </div>
-  </div>
-</body>"
-`;
-
-exports[`User is not host, host does have role, no roles remain 1`] = `
-"<body
-  class=\\"dimmable dimmed\\"
->
-  <div
-    id=\\"root\\"
-  />
-  <div />
-  <div
-    class=\\"ui top aligned page modals dimmer transition visible active\\"
-    style=\\"display: flex;\\"
-  >
-    <div
-      aria-modal=\\"true\\"
-      class=\\"ui modal transition visible active\\"
+      class=\\"ui fullscreen modal transition visible active\\"
       role=\\"dialog\\"
     >
       <i
@@ -6824,7 +6413,7 @@ exports[`User is not host, host does have role, no roles remain 1`] = `
                 available.
               </p>
               <div
-                class=\\"ui three cards\\"
+                class=\\"ui stackable three cards\\"
               />
             </div>
           </div>
@@ -6846,8 +6435,22 @@ exports[`User is not host, host does have role, no roles remain 1`] = `
       <div
         data-testid=\\"cohort-chat-selector\\"
       />
+      <div>
+        @components/Chat
+      </div>
     </div>
   </div>
+</body>"
+`;
+
+exports[`User is not host, host does have role, no roles remain 1`] = `
+"<body
+  class=\\"\\"
+>
+  <div
+    id=\\"root\\"
+  />
+  <div />
 </body>"
 `;
 
@@ -6865,7 +6468,7 @@ exports[`User is not host, host does have role, no roles remain 2`] = `
   >
     <div
       aria-modal=\\"true\\"
-      class=\\"ui modal transition visible active\\"
+      class=\\"ui fullscreen modal transition visible active\\"
       role=\\"dialog\\"
     >
       <i
@@ -6952,7 +6555,7 @@ exports[`User is not host, host does have role, no roles remain 2`] = `
                 available.
               </p>
               <div
-                class=\\"ui three cards\\"
+                class=\\"ui stackable three cards\\"
               />
             </div>
           </div>
@@ -6974,6 +6577,9 @@ exports[`User is not host, host does have role, no roles remain 2`] = `
       <div
         data-testid=\\"cohort-chat-selector\\"
       />
+      <div>
+        @components/Chat
+      </div>
     </div>
   </div>
 </body>"
@@ -6981,129 +6587,12 @@ exports[`User is not host, host does have role, no roles remain 2`] = `
 
 exports[`User is not host, host does not have role 1`] = `
 "<body
-  class=\\"dimmable dimmed\\"
+  class=\\"\\"
 >
   <div
     id=\\"root\\"
   />
   <div />
-  <div
-    class=\\"ui top aligned page modals dimmer transition visible active\\"
-    style=\\"display: flex;\\"
-  >
-    <div
-      aria-modal=\\"true\\"
-      class=\\"ui modal transition visible active\\"
-      role=\\"dialog\\"
-    >
-      <i
-        aria-hidden=\\"true\\"
-        class=\\"close icon\\"
-      />
-      <div
-        class=\\"ui header\\"
-        tabindex=\\"0\\"
-      >
-        <i
-          aria-hidden=\\"true\\"
-          class=\\"group icon\\"
-        />
-        <div
-          class=\\"content\\"
-        >
-          Create or join a room for Some Other Scenario
-        </div>
-      </div>
-      <div
-        class=\\"scrolling content\\"
-        style=\\"height: calc(100vh - 10rem);\\"
-      >
-        <button
-          class=\\"ui large button\\"
-          tabindex=\\"0\\"
-        >
-          <i
-            class=\\"icons\\"
-          >
-            <i
-              aria-hidden=\\"true\\"
-              class=\\"group icon primary\\"
-            />
-            <i
-              aria-hidden=\\"true\\"
-              class=\\"plus top right corner icon\\"
-            />
-          </i>
-          Create a room for this scenario
-        </button>
-        <div
-          class=\\"ui padded grid\\"
-        >
-          <div
-            class=\\"row\\"
-          >
-            <div
-              class=\\"column c__grid-single-col-padding\\"
-            >
-              <p>
-                This scenario requires multiple particpants in order to complete. Runs of the scenario are completed in
-                 
-                <strong>
-                  Rooms
-                </strong>
-                . 
-                <strong>
-                  Rooms
-                </strong>
-                 shown here are open for you to join.
-              </p>
-              <p>
-                If there are no rooms here, and you can click
-                 
-                <strong>
-                  Create a room for this scenario
-                </strong>
-                 to host your own room. You will be able to invite other participants directly, or allow all members of this cohort to join freely.
-              </p>
-              <p
-                tabindex=\\"0\\"
-              >
-                There 
-                are
-                 
-                <strong>
-                  0
-                </strong>
-                 open 
-                rooms
-                 
-                available.
-              </p>
-              <div
-                class=\\"ui three cards\\"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-      <div
-        class=\\"actions c__action-btns__scenario-selector\\"
-      >
-        <div
-          class=\\"ui fluid buttons\\"
-        >
-          <button
-            class=\\"ui button\\"
-          >
-            Close
-          </button>
-        </div>
-      </div>
-      <div
-        data-testid=\\"cohort-chat-selector\\"
-      />
-    </div>
-  </div>
 </body>"
 `;
 
@@ -7121,7 +6610,7 @@ exports[`User is not host, host does not have role 2`] = `
   >
     <div
       aria-modal=\\"true\\"
-      class=\\"ui modal transition visible active\\"
+      class=\\"ui fullscreen modal transition visible active\\"
       role=\\"dialog\\"
     >
       <i
@@ -7208,7 +6697,7 @@ exports[`User is not host, host does not have role 2`] = `
                 available.
               </p>
               <div
-                class=\\"ui three cards\\"
+                class=\\"ui stackable three cards\\"
               />
             </div>
           </div>
@@ -7230,6 +6719,9 @@ exports[`User is not host, host does not have role 2`] = `
       <div
         data-testid=\\"cohort-chat-selector\\"
       />
+      <div>
+        @components/Chat
+      </div>
     </div>
   </div>
 </body>"

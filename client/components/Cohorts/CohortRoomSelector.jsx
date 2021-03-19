@@ -9,6 +9,7 @@ import {
   getChatUsersByChatId,
   joinChat
 } from '@actions/chat';
+import Chat from '@components/Chat';
 import Lobby from '@components/Lobby';
 import {
   Button,
@@ -63,7 +64,7 @@ export class CohortRoomSelector extends React.Component {
       isReady: false,
       isOpenToCohort: false,
       confirm: {
-        isOpen: false,
+        isOpen: false
       },
       create: {
         isOpen: false
@@ -89,9 +90,14 @@ export class CohortRoomSelector extends React.Component {
   }
 
   async componentDidMount() {
-    await this.fetchChats();
-
     const { cohort } = this.props;
+
+    /* istanbul ignore else */
+    if (!cohort.chat.usersById[this.props.user.id]) {
+      await this.props.joinChat(cohort.chat.id, null);
+    }
+
+    await this.fetchChats();
 
     this.props.socket.emit(CREATE_COHORT_CHANNEL, { cohort });
     this.props.socket.on(CHAT_CREATED, this.fetchChats);
@@ -291,7 +297,10 @@ export class CohortRoomSelector extends React.Component {
                       as={Button}
                       key={key}
                       onClick={async () => {
-                        const joined = await this.props.joinChat(chat.id, persona);
+                        const joined = await this.props.joinChat(
+                          chat.id,
+                          persona
+                        );
                         if (joined) {
                           location.href = makeCohortScenarioChatJoinPath(
                             cohort,
@@ -494,6 +503,7 @@ export class CohortRoomSelector extends React.Component {
           open
           aria-modal="true"
           role="dialog"
+          size="fullscreen"
           centered={false}
           onClose={secondaryButtonProps.onClick}
         >
@@ -594,7 +604,9 @@ export class CohortRoomSelector extends React.Component {
                       {/* PREVIOUSLY
                         <Card.Group className="c__chat-cards" itemsPerRow={3}>
                       */}
-                      <Card.Group itemsPerRow={3}>{cards}</Card.Group>
+                      <Card.Group stackable itemsPerRow={3}>
+                        {cards}
+                      </Card.Group>
                     </Grid.Column>
                   </Grid.Row>
                 </Grid>
@@ -630,12 +642,10 @@ export class CohortRoomSelector extends React.Component {
                 size="small"
                 onClose={onConfirmClose}
               >
-                <Header
-                  icon="close"
-                  content="Could not join room"
-                />
+                <Header icon="close" content="Could not join room" />
                 <Modal.Content>
-                  Sorry, but that room is full. Please join another room, or create your own.
+                  Sorry, but that room is full. Please join another room, or
+                  create your own.
                 </Modal.Content>
                 <Modal.Actions>
                   <Button
@@ -651,6 +661,8 @@ export class CohortRoomSelector extends React.Component {
               </Modal>
             </Modal.Accessible>
           ) : null}
+
+          <Chat chat={this.props.cohort.chat} isMinimizable={false} />
         </Modal>
       </Modal.Accessible>
     );
@@ -664,6 +676,7 @@ CohortRoomSelector.propTypes = {
   chatsById: PropTypes.object,
   cohort: PropTypes.shape({
     id: PropTypes.any,
+    chat: PropTypes.object,
     name: PropTypes.string,
     roles: PropTypes.array,
     runs: PropTypes.array,
@@ -689,13 +702,16 @@ const mapStateToProps = (state, ownProps) => {
 
   if (state.chats && state.chats.length) {
     chats.push(
-      ...state.chats.filter(({ cohort_id, ended_at, host_id, is_open }) => {
-        const isKeeper = (is_open || host_id === user.id) && !ended_at;
-        if (cohort && cohort.id) {
-          return isKeeper && cohort.id === cohort_id;
-        } else {
-          return isKeeper;
-        }
+      ...state.chats.filter(chat => {
+        const { cohort_id, ended_at, host_id, is_open, scenario_id } = chat;
+        // Only list rooms that are:
+        //  - public (is_open)
+        //    - or private, but owned by the user
+        //  - still active (!ended_at)
+        //  - associated with a scenario (scenario_id)
+        const isKeeper =
+          (is_open || host_id === user.id) && !ended_at && scenario_id;
+        return isKeeper && cohort.id === cohort_id;
       })
     );
   }

@@ -92,6 +92,7 @@ export class Cohort extends React.Component {
         await this.props.getUsers();
       }
 
+      // This requests the chats that are created by and for participants
       await this.props.getChatsByCohortId(cohort.id);
 
       const notInCohort =

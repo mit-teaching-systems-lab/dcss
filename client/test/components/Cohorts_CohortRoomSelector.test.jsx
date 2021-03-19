@@ -83,6 +83,10 @@ jest.mock('@utils/Storage', () => {
   };
 });
 
+jest.mock('@components/Chat', () => {
+  return props => <div>@components/Chat</div>;
+});
+
 import {
   CREATE_CHAT_INVITE_SUCCESS,
   GET_CHAT_SUCCESS,
@@ -587,6 +591,90 @@ beforeEach(() => {
           }
         }
       }
+    },
+    chat: {
+      id: 1,
+      scenario_id: null,
+      cohort_id: 1,
+      host_id: 999,
+      created_at: '2020-12-08T21:51:33.659Z',
+      updated_at: null,
+      deleted_at: null,
+      ended_at: null,
+      users: [
+        {
+          username: 'super',
+          personalname: 'Super User',
+          email: 'super@email.com',
+          id: 999,
+          roles: ['participant', 'super_admin'],
+          is_anonymous: false,
+          is_super: true,
+          progress: {
+            completed: [1],
+            latestByScenarioId: {
+              1: {
+                is_complete: true,
+                event_id: 1909,
+                created_at: 1602454306144,
+                generic: 'arrived at a slide.',
+                name: 'slide-arrival',
+                url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+              }
+            }
+          }
+        },
+        {
+          id: 4,
+          username: 'credible-lyrebird',
+          personalname: null,
+          email: null,
+          is_anonymous: true,
+          single_use_password: false,
+          roles: ['participant', 'facilitator'],
+          is_super: false,
+          updated_at: '2020-12-10T17:50:19.074Z',
+          is_muted: false,
+          is_present: true
+        }
+      ],
+      usersById: {
+        4: {
+          id: 4,
+          username: 'credible-lyrebird',
+          personalname: null,
+          email: null,
+          is_anonymous: true,
+          single_use_password: false,
+          roles: ['participant', 'facilitator'],
+          is_super: false,
+          updated_at: '2020-12-10T17:50:19.074Z',
+          is_muted: false,
+          is_present: true
+        },
+        999: {
+          username: 'super',
+          personalname: 'Super User',
+          email: 'super@email.com',
+          id: 999,
+          roles: ['participant', 'super_admin'],
+          is_anonymous: false,
+          is_super: true,
+          progress: {
+            completed: [1],
+            latestByScenarioId: {
+              1: {
+                is_complete: true,
+                event_id: 1909,
+                created_at: 1602454306144,
+                generic: 'arrived at a slide.',
+                name: 'slide-arrival',
+                url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+              }
+            }
+          }
+        }
+      }
     }
   };
 
@@ -792,57 +880,6 @@ test('CohortRoomSelector', () => {
   expect(CohortRoomSelector).toBeDefined();
 });
 
-/** @GENERATED: BEGIN **/
-test('Render 1 1', async done => {
-  const Component = CohortRoomSelector;
-  const props = {
-    ...commonProps,
-    chat,
-    cohort,
-    scenario
-  };
-
-  const state = {
-    ...commonState
-  };
-
-  state.chat = chat;
-  state.scenario = scenario;
-  state.user = user;
-  const ConnectedRoutedComponent = reduxer(Component, props, state);
-
-  await render(<ConnectedRoutedComponent {...props} />);
-  expect(serialize()).toMatchSnapshot();
-
-  done();
-});
-/** @GENERATED: END **/
-
-/** @GENERATED: BEGIN **/
-test('Render 2 1', async done => {
-  const Component = CohortRoomSelector;
-  const props = {
-    ...commonProps,
-    chat,
-    scenario
-  };
-
-  const state = {
-    ...commonState
-  };
-
-  state.chat = chat;
-  state.scenario = scenario;
-  state.user = user;
-  const ConnectedRoutedComponent = reduxer(Component, props, state);
-
-  await render(<ConnectedRoutedComponent {...props} />);
-  expect(serialize()).toMatchSnapshot();
-
-  done();
-});
-/** @GENERATED: END **/
-
 /* INJECTION STARTS HERE */
 
 test('Emits CREATE_COHORT_CHANNEL on socket', async done => {
@@ -850,10 +887,7 @@ test('Emits CREATE_COHORT_CHANNEL on socket', async done => {
 
   const props = {
     ...commonProps,
-    chat,
-    cohort,
-    scenario,
-    user
+    scenario
   };
 
   const state = {
@@ -894,10 +928,7 @@ test(`Adds ${socketEvents.join(', ')} handlers`, async done => {
 
   const props = {
     ...commonProps,
-    chat,
-    cohort,
-    scenario,
-    user
+    scenario
   };
 
   const state = {
@@ -961,10 +992,7 @@ test('Has chats in state', async done => {
 
   const props = {
     ...commonProps,
-    chat,
-    cohort,
-    scenario,
-    user
+    scenario
   };
 
   const state = {
@@ -1025,44 +1053,6 @@ test('Has no chats in state', async done => {
 
   await render(<ConnectedRoutedComponent {...props} />);
   expect(serialize()).toMatchSnapshot();
-  await waitFor(async () =>
-    expect(
-      await screen.findByTestId('cohort-chat-selector')
-    ).toBeInTheDocument()
-  );
-  expect(serialize()).toMatchSnapshot();
-  done();
-});
-
-test('Has no cohort in state', async done => {
-  const Component = CohortRoomSelector;
-
-  const props = {
-    ...commonProps,
-    chat,
-    cohort,
-    scenario,
-    user
-  };
-
-  const state = {
-    ...commonState,
-    chat,
-    chats,
-    cohort: {},
-    scenario,
-    user,
-    users,
-    usersById
-  };
-
-  const emitter = new Emitter();
-
-  globalThis.mockSocket.emit.mockImplementation(emitter.emit);
-
-  const ConnectedRoutedComponent = reduxer(Component, props, state);
-
-  await render(<ConnectedRoutedComponent {...props} />);
   await waitFor(async () =>
     expect(
       await screen.findByTestId('cohort-chat-selector')
@@ -1920,6 +1910,176 @@ test('User is not host, host does have role, no roles remain', async done => {
     chatsById,
     cohort,
     scenario: altScenario,
+    user,
+    users,
+    usersById
+  };
+
+  state.user = {
+    ...user,
+    id: 333,
+    persona_id: null
+  };
+
+  chatActions.getChatsByCohortId.mockImplementation(() => async dispatch => {
+    dispatch({ type: GET_CHATS_SUCCESS, chats });
+    return chats;
+  });
+
+  const emitter = new Emitter();
+
+  globalThis.mockSocket.emit.mockImplementation(emitter.emit);
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  await render(<ConnectedRoutedComponent {...props} />);
+  expect(serialize()).toMatchSnapshot();
+  await waitFor(async () =>
+    expect(
+      await screen.findByTestId('cohort-chat-selector')
+    ).toBeInTheDocument()
+  );
+  expect(serialize()).toMatchSnapshot();
+
+  done();
+});
+
+test('Scenario is missing personas', async done => {
+  const Component = CohortRoomSelector;
+
+  const buttons = {
+    secondary: {
+      onClick: jest.fn()
+    }
+  };
+
+  const chat = {
+    id: 1,
+    scenario_id: 42,
+    cohort_id: 1,
+    host_id: 999,
+    created_at: '2020-12-08T21:51:33.659Z',
+    updated_at: null,
+    deleted_at: null,
+    ended_at: null,
+    is_open: true,
+    users: [superUser, participantUser],
+    usersById: {
+      [superUser.id]: superUser,
+      [participantUser.id]: participantUser
+    }
+  };
+
+  const altScenario = {
+    ...scenario,
+    personas: []
+  };
+
+  const chats = [chat];
+  const chatsById = chats.reduce((accum, chat) => {
+    accum[chat.id] = chat;
+    return accum;
+  }, {});
+
+  const props = {
+    ...commonProps,
+    buttons,
+    chat,
+    cohort,
+    scenario: altScenario
+  };
+
+  const state = {
+    ...commonState,
+    chat,
+    chats,
+    chatsById,
+    cohort,
+    user,
+    users,
+    usersById
+  };
+
+  state.user = {
+    ...user,
+    id: 333,
+    persona_id: null
+  };
+
+  chatActions.getChatsByCohortId.mockImplementation(() => async dispatch => {
+    dispatch({ type: GET_CHATS_SUCCESS, chats });
+    return chats;
+  });
+
+  const emitter = new Emitter();
+
+  globalThis.mockSocket.emit.mockImplementation(emitter.emit);
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  await render(<ConnectedRoutedComponent {...props} />);
+  expect(serialize()).toMatchSnapshot();
+  await waitFor(async () =>
+    expect(
+      await screen.findByTestId('cohort-chat-selector')
+    ).toBeInTheDocument()
+  );
+  expect(serialize()).toMatchSnapshot();
+
+  done();
+});
+
+test('Cohort does not match', async done => {
+  const Component = CohortRoomSelector;
+
+  const buttons = {
+    secondary: {
+      onClick: jest.fn()
+    }
+  };
+
+  const chat = {
+    id: 1,
+    scenario_id: 42,
+    cohort_id: 9001,
+    host_id: 999,
+    created_at: '2020-12-08T21:51:33.659Z',
+    updated_at: null,
+    deleted_at: null,
+    ended_at: null,
+    is_open: true,
+    users: [superUser, participantUser],
+    usersById: {
+      [superUser.id]: superUser,
+      [participantUser.id]: participantUser
+    }
+  };
+
+  const altScenario = {
+    ...scenario,
+    personas: []
+  };
+
+  const chats = [chat];
+  const chatsById = chats.reduce((accum, chat) => {
+    accum[chat.id] = chat;
+    return accum;
+  }, {});
+
+  const props = {
+    ...commonProps,
+    buttons,
+    chat,
+    cohort,
+    scenario: altScenario
+  };
+
+  const state = {
+    ...commonState,
+    chat,
+    chats,
+    chatsById,
+    cohort,
     user,
     users,
     usersById

@@ -143,20 +143,16 @@ test('Delete, No, then Yes', async done => {
   const deletable = deletables[0];
 
   userEvent.click(deletable);
-  await waitForPopper();
   expect(serialize()).toMatchSnapshot();
 
   userEvent.click(await screen.findByRole('button', { name: /No/i }));
-  await waitForPopper();
   await waitFor(() => expect(props.onCancel).toHaveBeenCalled());
   expect(serialize()).toMatchSnapshot();
 
   userEvent.click(deletable);
-  await waitForPopper();
   expect(serialize()).toMatchSnapshot();
 
   userEvent.click(await screen.findByRole('button', { name: /Yes/i }));
-  await waitForPopper();
   await waitFor(() => expect(props.onConfirm).toHaveBeenCalled());
   expect(serialize()).toMatchSnapshot();
 

@@ -47,9 +47,10 @@ const {
   CHAT_IS_CLOSED_TIMEOUT
 } = require('./states');
 const authdb = require('../session/db');
-const agentdb = require('../agents/db');
-const chatdb = require('../chats/db');
-const rundb = require('../runs/db');
+const agentsdb = require('../agents/db');
+const chatsdb = require('../chats/db');
+const cohortsdb = require('../cohorts/db');
+const runsdb = require('../runs/db');
 const chatutil = require('../chats/util');
 
 function socketlog(...args) {
@@ -227,7 +228,7 @@ class SocketManager {
       if (!notifier.listenerCount('join_or_part_chat')) {
         notifier.on('join_or_part_chat', async data => {
           console.log('join_or_part_chat', data);
-          const user = await chatdb.getChatUserByChatId(
+          const user = await chatsdb.getChatUserByChatId(
             data.chat_id,
             data.user_id
           );
@@ -249,18 +250,18 @@ class SocketManager {
               ? 'has joined the chat.'
               : 'has left the chat.';
 
-            await chatdb.updateJoinPartMessages(data.chat_id, data.user_id, {
+            await chatsdb.updateJoinPartMessages(data.chat_id, data.user_id, {
               deleted_at: new Date().toISOString()
             });
 
-            await chatdb.insertNewJoinPartMessage(
+            await chatsdb.insertNewJoinPartMessage(
               data.chat_id,
               data.user_id,
               message
             );
           }
 
-          const chat = await chatdb.getChat(data.chat_id);
+          const chat = await chatsdb.getChat(data.chat_id);
 
           // The host joined and has a persona selected.
           if (
@@ -279,8 +280,8 @@ class SocketManager {
       if (!notifier.listenerCount('run_chat_link')) {
         notifier.on('run_chat_link', async data => {
           console.log('run_chat_link', data);
-          const chat = await chatdb.getChat(data.chat_id);
-          const user = await chatdb.getChatUserByChatId(
+          const chat = await chatsdb.getChat(data.chat_id);
+          const user = await chatsdb.getChatUserByChatId(
             data.chat_id,
             data.user_id
           );
@@ -288,6 +289,25 @@ class SocketManager {
             chat,
             user
           });
+
+          // Check if this user is in a cohort, message the room so they know
+          // the user is in a scenario chat now.
+          // if (chat.cohort_id) {
+          //   const cohort = await cohortsdb.getCohort(chat.cohort_id);
+          //   this.io.to(cohort.chat_id).emit(CHAT_MESSAGE_CREATED, {
+          //     id: data.id,
+          //     chat_id: chat.id,
+          //     user_id: data.user_id,
+          //     content: '<p class="join-part-slide">has joined the chat.</p>',
+          //     created_at: '2021-03-19T15:16:48.731297-04:00',
+          //     updated_at: null,
+          //     deleted_at: null,
+          //     is_quotable: false,
+          //     is_joinpart: true,
+          //     response_id: '',
+          //     recipient_id: null
+          //   });
+          // }
         });
         // console.log('run_chat_link listener is registered');
       }
@@ -416,7 +436,7 @@ class SocketManager {
           const room = `${chat.id}-user-${user.id}`;
           socket.join(room);
 
-          const agent = await agentdb.getAgent(payload.agent.id);
+          const agent = await agentsdb.getAgent(payload.agent.id);
           const auth = makeRemoteSafeAuthPayload({ agent, chat, user });
 
           const options = {
@@ -431,7 +451,7 @@ class SocketManager {
           const client = new Socket.Client(agent.endpoint, options);
 
           if (client) {
-            await chatdb.joinChat(chat.id, agent.self.id);
+            await chatsdb.joinChat(chat.id, agent.self.id);
           }
 
           client.on('response', async response => {
@@ -440,7 +460,7 @@ class SocketManager {
               // This is NOT a response to a chat message
               return;
             }
-            await agentdb.insertNewAgentResponse(
+            await agentsdb.insertNewAgentResponse(
               // agent_id
               agent.id,
               // chat_id
@@ -463,7 +483,7 @@ class SocketManager {
           client.on('interjection', async ({ message }) => {
             console.log('interjection', message);
 
-            await chatdb.insertNewAgentMessage(
+            await chatsdb.insertNewAgentMessage(
               chat.id,
               agent.self.id, // This comes from the agent!!
               message,
@@ -481,7 +501,7 @@ class SocketManager {
 
       socket.on(RUN_AGENT_START, async ({ run, user }) => {
         console.log(RUN_AGENT_START, { run, user });
-        const prompts = await agentdb.getScenarioAgentPrompts(run.scenario_id);
+        const prompts = await agentsdb.getScenarioAgentPrompts(run.scenario_id);
 
         for (const prompt of prompts) {
           const { agent } = prompt;
@@ -509,7 +529,7 @@ class SocketManager {
                 // not a regular prompt component
                 return;
               }
-              await agentdb.insertNewAgentResponse(
+              await agentsdb.insertNewAgentResponse(
                 // agent_id
                 agent.id,
                 // chat_id
@@ -541,7 +561,7 @@ class SocketManager {
         console.log(RUN_AGENT_END, { agent, run, user });
         // socket.join(user.id);
 
-        // const agents = await agentdb.getScenarioAgents(run.scenario_id);
+        // const agents = await agentsdb.getScenarioAgents(run.scenario_id);
 
         // console.log(agents);
       });
@@ -593,8 +613,8 @@ class SocketManager {
       // Chat
       socket.on(USER_JOIN, async ({ chat, user }) => {
         console.log(USER_JOIN, { chat, user });
-        const chatUser = await chatdb.getChatUserByChatId(chat.id, user.id);
-        chatdb.joinChat(chat.id, user.id, chatUser.persona_id);
+        const chatUser = await chatsdb.getChatUserByChatId(chat.id, user.id);
+        chatsdb.joinChat(chat.id, user.id, chatUser.persona_id);
       });
 
       socket.on(USER_JOIN_SLIDE, async ({ chat, user, run }) => {
@@ -609,11 +629,11 @@ class SocketManager {
             return;
           }
 
-          await chatdb.updateJoinPartMessages(chat.id, user.id, {
+          await chatsdb.updateJoinPartMessages(chat.id, user.id, {
             deleted_at: new Date().toISOString()
           });
 
-          await chatdb.insertNewJoinPartMessage(chat.id, user.id, message);
+          await chatsdb.insertNewJoinPartMessage(chat.id, user.id, message);
 
           const rollKey = `${chat.id}-slide-${run.activeRunSlideIndex}`;
 
@@ -635,7 +655,7 @@ class SocketManager {
             cache.rolls[rollKey].push(user.id);
           }
 
-          const users = await chatdb.getLinkedChatUsersByChatId(chat.id);
+          const users = await chatsdb.getLinkedChatUsersByChatId(chat.id);
           const quorum = users.every(({ id }) =>
             cache.rolls[rollKey].includes(id)
           );
@@ -681,11 +701,11 @@ class SocketManager {
       });
 
       socket.on(USER_PART, ({ chat, user }) => {
-        chatdb.partChat(chat.id, user.id);
+        chatsdb.partChat(chat.id, user.id);
       });
 
       socket.on(CHAT_MESSAGE_CREATED, ({ chat, user, content, response }) => {
-        chatdb.createNewChatMessage(chat.id, user.id, content, response.id);
+        chatsdb.createNewChatMessage(chat.id, user.id, content, response.id);
       });
 
       socket.on(CHAT_CLOSED_FOR_SLIDE, ({ chat, user, slide, result }) => {

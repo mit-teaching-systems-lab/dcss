@@ -48,7 +48,7 @@ exports[`Calls onChange when RTE is cleared 1`] = `
           >
             <div>
               <textarea
-                id=\\"x15\\"
+                id=\\"x18\\"
                 name=\\"content\\"
                 options=\\"[object Object]\\"
               >
@@ -361,7 +361,7 @@ exports[`Calls onChange when RTE is cleared 2`] = `
           >
             <div>
               <textarea
-                id=\\"x15\\"
+                id=\\"x18\\"
                 name=\\"content\\"
                 options=\\"[object Object]\\"
               >
@@ -473,7 +473,7 @@ exports[`Calls onInput when RTE receives new content 1`] = `
           >
             <div>
               <textarea
-                id=\\"x22\\"
+                id=\\"x25\\"
                 name=\\"content\\"
                 options=\\"[object Object]\\"
               >
@@ -786,7 +786,7 @@ exports[`Calls onInput when RTE receives new content 4`] = `
           >
             <div>
               <textarea
-                id=\\"x22\\"
+                id=\\"x25\\"
                 name=\\"content\\"
                 options=\\"[object Object]\\"
               >
@@ -879,7 +879,7 @@ exports[`Calls onKeyDown, responds when key is {enter} 1`] = `
           >
             <div>
               <textarea
-                id=\\"x23\\"
+                id=\\"x26\\"
                 name=\\"content\\"
                 options=\\"[object Object]\\"
               >
@@ -1192,7 +1192,7 @@ exports[`Calls onKeyDown, responds when key is {enter} 4`] = `
           >
             <div>
               <textarea
-                id=\\"x23\\"
+                id=\\"x26\\"
                 name=\\"content\\"
                 options=\\"[object Object]\\"
               >
@@ -1228,7 +1228,7 @@ exports[`Calls onKeyDown, responds when key is {enter} 4`] = `
 </body>"
 `;
 
-exports[`Chat has ended 1`] = `
+exports[`Chat has ended (chat in props) 1`] = `
 "<body>
   <div
     id=\\"root\\"
@@ -1247,7 +1247,26 @@ exports[`Chat has ended 1`] = `
 </body>"
 `;
 
-exports[`Chat id provided via props, but not yet loaded 1`] = `
+exports[`Chat has ended (chat in state) 1`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <button
+      aria-label=\\"Chat is closed\\"
+      class=\\"ui icon button close c__container-modal-minmax\\"
+    >
+      <i
+        aria-hidden=\\"true\\"
+        class=\\"discussions icon\\"
+      />
+    </button>
+  </div>
+</body>"
+`;
+
+exports[`Chat id provided, but not yet loaded (chat in state) 1`] = `
 "<body>
   <div
     id=\\"root\\"
@@ -1304,7 +1323,7 @@ exports[`Click to Minimize and Maximize 1`] = `
           >
             <div>
               <textarea
-                id=\\"x28\\"
+                id=\\"x31\\"
                 name=\\"content\\"
                 options=\\"[object Object]\\"
               >
@@ -1426,7 +1445,7 @@ exports[`Empty, many {shift}{enter}, attempts to send, does not submit 1`] = `
           >
             <div>
               <textarea
-                id=\\"x20\\"
+                id=\\"x23\\"
                 name=\\"content\\"
                 options=\\"[object Object]\\"
               >
@@ -1739,7 +1758,7 @@ exports[`Empty, many {shift}{enter}, attempts to send, does not submit 2`] = `
           >
             <div>
               <textarea
-                id=\\"x20\\"
+                id=\\"x23\\"
                 name=\\"content\\"
                 options=\\"[object Object]\\"
               >
@@ -1816,90 +1835,6 @@ exports[`Layout on desktop 1`] = `
           <div
             class=\\"cm__container-outer\\"
             style=\\"width: calc(\${dimensions.width}px);\\"
-          />
-          <div
-            class=\\"cc__container-outer\\"
-            style=\\"width: calc(\${dimensions.width}px);\\"
-          >
-            <div>
-              <textarea
-                id=\\"x4\\"
-                name=\\"content\\"
-                options=\\"[object Object]\\"
-              >
-                &lt;p&gt;&lt;br&gt;&lt;/p&gt;
-              </textarea>
-              <button
-                aria-label=\\"Send message\\"
-              >
-                THIS BUTTON IS PROVIDED BY THE MOCK
-              </button>
-              <div
-                class=\\"se-wrapper\\"
-              >
-                <div>
-                  a
-                </div>
-                <div>
-                  b
-                </div>
-                <div>
-                  c
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          data-testid=\\"chat-main\\"
-        />
-      </div>
-    </div>
-  </div>
-</body>"
-`;
-
-exports[`Layout on desktop 2`] = `
-"<body>
-  <div
-    id=\\"root\\"
-  />
-  <div>
-    <div>
-      <div
-        class=\\"ui modal transition visible active c__container-modal resizable\\"
-        role=\\"dialog\\"
-      >
-        <button
-          aria-label=\\"Click to minimize the chat window\\"
-          class=\\"ui icon button close c__container-modal-minmax\\"
-        >
-          <i
-            aria-hidden=\\"true\\"
-            class=\\"window minimize icon\\"
-          />
-        </button>
-        <div
-          class=\\"ui header c__drag-handle\\"
-          tabindex=\\"0\\"
-        >
-          <i
-            aria-hidden=\\"true\\"
-            class=\\"discussions icon\\"
-          />
-          <div
-            class=\\"content\\"
-          >
-            Discussion
-          </div>
-        </div>
-        <div
-          class=\\"content inner visible\\"
-          tabindex=\\"0\\"
-        >
-          <div
-            class=\\"cm__container-outer\\"
-            style=\\"width: calc(\${dimensions.width}px);\\"
           >
             <iframe
               aria-hidden=\\"true\\"
@@ -2136,7 +2071,7 @@ exports[`Layout on desktop 2`] = `
           >
             <div>
               <textarea
-                id=\\"x4\\"
+                id=\\"x2\\"
                 name=\\"content\\"
                 options=\\"[object Object]\\"
               >
@@ -2213,14 +2148,243 @@ exports[`Layout on mobile 1`] = `
           <div
             class=\\"cm__container-outer\\"
             style=\\"width: calc(\${dimensions.width}px);\\"
-          />
+          >
+            <iframe
+              aria-hidden=\\"true\\"
+              frameborder=\\"0\\"
+              src=\\"about:blank\\"
+              style=\\"display: block; opacity: 0; position: absolute; top: 0px; left: 0px; height: 100%; width: 100%; overflow: hidden; pointer-events: none; z-index: -1;\\"
+              tabindex=\\"-1\\"
+            />
+            <div
+              class=\\"cm__container-inner\\"
+              data-testid=\\"scrolling-container-outer\\"
+            >
+              <div
+                class=\\"ui large comments\\"
+              >
+                <div
+                  class=\\"comment cmm__comment\\"
+                  data-testid=\\"comment\\"
+                >
+                  <div
+                    class=\\"avatar\\"
+                  >
+                    <img
+                      src=\\"https://www.gravatar.com/avatar/386d1fcf0e6b4236c9d7064d7bb9af1a?d=robohash\\"
+                    />
+                  </div>
+                  <div
+                    class=\\"cmm__content content\\"
+                  >
+                    <span
+                      class=\\"author\\"
+                      tabindex=\\"0\\"
+                    >
+                      <span
+                        aria-label=\\"Super User (super)\\"
+                        class=\\"ui medium text\\"
+                        title=\\"Super User (super)\\"
+                      >
+                        Super User
+                      </span>
+                      
+                       
+                      <i
+                        aria-hidden=\\"true\\"
+                        class=\\"small icon chess queen\\"
+                        style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                        title=\\"Super\\"
+                      />
+                    </span>
+                    <div
+                      class=\\"metadata\\"
+                    >
+                      
+                       
+                      <span
+                        aria-label=\\"2020-12-09T16:39:10.359Z\\"
+                        tabindex=\\"0\\"
+                      >
+                        11:39 AM
+                      </span>
+                    </div>
+                    <div
+                      class=\\"actions\\"
+                    >
+                      <div
+                        class=\\"ui mini buttons\\"
+                      >
+                        <button
+                          aria-label=\\"Quote this message\\"
+                          class=\\"ui mini icon button icon-primary\\"
+                        >
+                          <i
+                            aria-hidden=\\"true\\"
+                            class=\\"quote left icon\\"
+                          />
+                        </button>
+                      </div>
+                    </div>
+                    <div
+                      class=\\"text\\"
+                    >
+                      <div>
+                        <p>
+                          Hello
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class=\\"comment cmm__comment\\"
+                  data-testid=\\"comment\\"
+                >
+                  <div
+                    class=\\"avatar\\"
+                  >
+                    <img
+                      src=\\"https://robohash.org/credible-lyrebird?bgset=bg1&size=50x50\\"
+                    />
+                  </div>
+                  <div
+                    class=\\"cmm__content content\\"
+                  >
+                    <span
+                      class=\\"author\\"
+                      tabindex=\\"0\\"
+                    >
+                      <span
+                        aria-label=\\"credible-lyrebird\\"
+                        class=\\"ui medium text\\"
+                        title=\\"credible-lyrebird\\"
+                      >
+                        credible-lyrebird
+                      </span>
+                      
+                       
+                      <i
+                        aria-hidden=\\"true\\"
+                        class=\\"small icon chalkboard teacher\\"
+                        style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                        title=\\"Facilitator\\"
+                      />
+                    </span>
+                    <div
+                      class=\\"metadata\\"
+                    >
+                      
+                       
+                      <span
+                        aria-label=\\"2020-12-09T16:40:10.359Z\\"
+                        tabindex=\\"0\\"
+                      >
+                        11:40 AM
+                      </span>
+                    </div>
+                    <div
+                      class=\\"actions\\"
+                    >
+                      <div
+                        class=\\"ui mini buttons\\"
+                      />
+                    </div>
+                    <div
+                      class=\\"text\\"
+                    >
+                      <div>
+                        <p>
+                          <span
+                            style=\\"color: rgb(140, 140, 140);\\"
+                          >
+                            <em>
+                              has joined the chat.
+                            </em>
+                          </span>
+                          <br />
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class=\\"comment cmm__comment cmm__nometadata\\"
+                  data-testid=\\"comment\\"
+                >
+                  <div
+                    class=\\"cmm__content content\\"
+                  >
+                    <div
+                      class=\\"actions\\"
+                    >
+                      <div
+                        class=\\"ui mini buttons\\"
+                      >
+                        <button
+                          aria-label=\\"Quote this message\\"
+                          class=\\"ui mini icon button icon-primary\\"
+                        >
+                          <i
+                            aria-hidden=\\"true\\"
+                            class=\\"quote left icon\\"
+                          />
+                        </button>
+                      </div>
+                    </div>
+                    <div
+                      class=\\"text\\"
+                    >
+                      <div>
+                        <p>
+                          Hi!
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class=\\"comment cmm__comment cmm__nometadata\\"
+                  data-testid=\\"comment\\"
+                >
+                  <div
+                    class=\\"cmm__content content\\"
+                  >
+                    <div
+                      class=\\"actions\\"
+                    >
+                      <div
+                        class=\\"ui mini buttons\\"
+                      />
+                    </div>
+                    <div
+                      class=\\"text\\"
+                    >
+                      <div>
+                        <p>
+                          <span
+                            style=\\"color: rgb(140, 140, 140);\\"
+                          >
+                            <em>
+                              has left the chat.
+                            </em>
+                          </span>
+                          <br />
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
           <div
             class=\\"cc__container-outer\\"
             style=\\"width: calc(\${dimensions.width}px);\\"
           >
             <div>
               <textarea
-                id=\\"x3\\"
+                id=\\"x1\\"
                 name=\\"content\\"
                 options=\\"[object Object]\\"
               >
@@ -2256,7 +2420,7 @@ exports[`Layout on mobile 1`] = `
 </body>"
 `;
 
-exports[`Layout on mobile 2`] = `
+exports[`Provided header 1`] = `
 "<body>
   <div
     id=\\"root\\"
@@ -2277,18 +2441,10 @@ exports[`Layout on mobile 2`] = `
           />
         </button>
         <div
-          class=\\"ui header c__drag-handle\\"
+          class=\\"ui header c__drag-handle cpd__drag-handle\\"
           tabindex=\\"0\\"
         >
-          <i
-            aria-hidden=\\"true\\"
-            class=\\"discussions icon\\"
-          />
-          <div
-            class=\\"content\\"
-          >
-            Discussion
-          </div>
+          Foo
         </div>
         <div
           class=\\"content inner visible\\"
@@ -2533,95 +2689,11 @@ exports[`Layout on mobile 2`] = `
           >
             <div>
               <textarea
-                id=\\"x3\\"
+                id=\\"x38\\"
                 name=\\"content\\"
                 options=\\"[object Object]\\"
               >
-                &lt;p&gt;&lt;br&gt;&lt;/p&gt;
-              </textarea>
-              <button
-                aria-label=\\"Send message\\"
-              >
-                THIS BUTTON IS PROVIDED BY THE MOCK
-              </button>
-              <div
-                class=\\"se-wrapper\\"
-              >
-                <div>
-                  a
-                </div>
-                <div>
-                  b
-                </div>
-                <div>
-                  c
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          data-testid=\\"chat-main\\"
-        />
-      </div>
-    </div>
-  </div>
-</body>"
-`;
-
-exports[`No chat id, defaults to 1. This test should fail when the feature is completed 1`] = `
-"<body>
-  <div
-    id=\\"root\\"
-  />
-  <div>
-    <div>
-      <div
-        class=\\"ui modal transition visible active c__container-modal resizable\\"
-        role=\\"dialog\\"
-      >
-        <button
-          aria-label=\\"Click to minimize the chat window\\"
-          class=\\"ui icon button close c__container-modal-minmax\\"
-        >
-          <i
-            aria-hidden=\\"true\\"
-            class=\\"window minimize icon\\"
-          />
-        </button>
-        <div
-          class=\\"ui header c__drag-handle\\"
-          tabindex=\\"0\\"
-        >
-          <i
-            aria-hidden=\\"true\\"
-            class=\\"discussions icon\\"
-          />
-          <div
-            class=\\"content\\"
-          >
-            Discussion
-          </div>
-        </div>
-        <div
-          class=\\"content inner visible\\"
-          tabindex=\\"0\\"
-        >
-          <div
-            class=\\"cm__container-outer\\"
-            style=\\"width: calc(\${dimensions.width}px);\\"
-          />
-          <div
-            class=\\"cc__container-outer\\"
-            style=\\"width: calc(\${dimensions.width}px);\\"
-          >
-            <div>
-              <textarea
-                id=\\"x2\\"
-                name=\\"content\\"
-                options=\\"[object Object]\\"
-              >
-                &lt;p&gt;&lt;br&gt;&lt;/p&gt;
+                &lt;p&gt;credible-lyrebird wrote:&lt;blockquote&gt;&lt;p&gt;Hi!&lt;/p&gt;&lt;/blockquote&gt;&lt;/p&gt;
               </textarea>
               <button
                 aria-label=\\"Send message\\"
@@ -2701,7 +2773,7 @@ exports[`Receives new message, minimized, mobile 1`] = `
           >
             <div>
               <textarea
-                id=\\"x31\\"
+                id=\\"x34\\"
                 name=\\"content\\"
                 options=\\"[object Object]\\"
               >
@@ -3201,7 +3273,7 @@ exports[`Receives new message, minimized, mobile 3`] = `
           >
             <div>
               <textarea
-                id=\\"x31\\"
+                id=\\"x34\\"
                 name=\\"content\\"
                 options=\\"[object Object]\\"
               >
@@ -3323,7 +3395,7 @@ exports[`Receives new message, minimized, not mobile 1`] = `
           >
             <div>
               <textarea
-                id=\\"x30\\"
+                id=\\"x33\\"
                 name=\\"content\\"
                 options=\\"[object Object]\\"
               >
@@ -3848,7 +3920,7 @@ exports[`Receives new message, minimized, not mobile 3`] = `
           >
             <div>
               <textarea
-                id=\\"x30\\"
+                id=\\"x33\\"
                 name=\\"content\\"
                 options=\\"[object Object]\\"
               >
@@ -3970,7 +4042,7 @@ exports[`Receives new message, not minimized 1`] = `
           >
             <div>
               <textarea
-                id=\\"x29\\"
+                id=\\"x32\\"
                 name=\\"content\\"
                 options=\\"[object Object]\\"
               >
@@ -4495,7 +4567,7 @@ exports[`Receives new message, not minimized 3`] = `
           >
             <div>
               <textarea
-                id=\\"x29\\"
+                id=\\"x32\\"
                 name=\\"content\\"
                 options=\\"[object Object]\\"
               >
@@ -5094,7 +5166,7 @@ exports[`Receives new message, not minimized 4`] = `
           >
             <div>
               <textarea
-                id=\\"x29\\"
+                id=\\"x32\\"
                 name=\\"content\\"
                 options=\\"[object Object]\\"
               >
@@ -5129,94 +5201,8 @@ exports[`Receives new message, not minimized 4`] = `
   </div>
 </body>"
 `;
-
-exports[`Render 1 1 1`] = `<DocumentFragment />`;
 
 exports[`Rnd: onDrag/onResize 1`] = `
-"<body>
-  <div
-    id=\\"root\\"
-  />
-  <div>
-    <div>
-      <div
-        class=\\"ui modal transition visible active c__container-modal resizable\\"
-        role=\\"dialog\\"
-      >
-        <button
-          aria-label=\\"Click to minimize the chat window\\"
-          class=\\"ui icon button close c__container-modal-minmax\\"
-        >
-          <i
-            aria-hidden=\\"true\\"
-            class=\\"window minimize icon\\"
-          />
-        </button>
-        <div
-          class=\\"ui header c__drag-handle\\"
-          tabindex=\\"0\\"
-        >
-          <i
-            aria-hidden=\\"true\\"
-            class=\\"discussions icon\\"
-          />
-          <div
-            class=\\"content\\"
-          >
-            Discussion
-          </div>
-        </div>
-        <div
-          class=\\"content inner visible\\"
-          tabindex=\\"0\\"
-        >
-          <div
-            class=\\"cm__container-outer\\"
-            style=\\"width: calc(\${dimensions.width}px);\\"
-          />
-          <div
-            class=\\"cc__container-outer\\"
-            style=\\"width: calc(\${dimensions.width}px);\\"
-          >
-            <div>
-              <textarea
-                id=\\"x27\\"
-                name=\\"content\\"
-                options=\\"[object Object]\\"
-              >
-                &lt;p&gt;credible-lyrebird wrote:&lt;blockquote&gt;&lt;p&gt;Hi!&lt;/p&gt;&lt;/blockquote&gt;&lt;/p&gt;
-              </textarea>
-              <button
-                aria-label=\\"Send message\\"
-              >
-                THIS BUTTON IS PROVIDED BY THE MOCK
-              </button>
-              <div
-                class=\\"se-wrapper\\"
-              >
-                <div>
-                  a
-                </div>
-                <div>
-                  b
-                </div>
-                <div>
-                  c
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          data-testid=\\"chat-main\\"
-        />
-      </div>
-    </div>
-  </div>
-</body>"
-`;
-
-exports[`Rnd: onDrag/onResize 2`] = `
 "<body>
   <div
     id=\\"root\\"
@@ -5493,7 +5479,7 @@ exports[`Rnd: onDrag/onResize 2`] = `
           >
             <div>
               <textarea
-                id=\\"x27\\"
+                id=\\"x30\\"
                 name=\\"content\\"
                 options=\\"[object Object]\\"
               >
@@ -5570,90 +5556,6 @@ exports[`Rnd: onDragStop/onResizeStop 1`] = `
           <div
             class=\\"cm__container-outer\\"
             style=\\"width: calc(\${dimensions.width}px);\\"
-          />
-          <div
-            class=\\"cc__container-outer\\"
-            style=\\"width: calc(\${dimensions.width}px);\\"
-          >
-            <div>
-              <textarea
-                id=\\"x26\\"
-                name=\\"content\\"
-                options=\\"[object Object]\\"
-              >
-                &lt;p&gt;credible-lyrebird wrote:&lt;blockquote&gt;&lt;p&gt;Hi!&lt;/p&gt;&lt;/blockquote&gt;&lt;/p&gt;
-              </textarea>
-              <button
-                aria-label=\\"Send message\\"
-              >
-                THIS BUTTON IS PROVIDED BY THE MOCK
-              </button>
-              <div
-                class=\\"se-wrapper\\"
-              >
-                <div>
-                  a
-                </div>
-                <div>
-                  b
-                </div>
-                <div>
-                  c
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          data-testid=\\"chat-main\\"
-        />
-      </div>
-    </div>
-  </div>
-</body>"
-`;
-
-exports[`Rnd: onDragStop/onResizeStop 2`] = `
-"<body>
-  <div
-    id=\\"root\\"
-  />
-  <div>
-    <div>
-      <div
-        class=\\"ui modal transition visible active c__container-modal resizable\\"
-        role=\\"dialog\\"
-      >
-        <button
-          aria-label=\\"Click to minimize the chat window\\"
-          class=\\"ui icon button close c__container-modal-minmax\\"
-        >
-          <i
-            aria-hidden=\\"true\\"
-            class=\\"window minimize icon\\"
-          />
-        </button>
-        <div
-          class=\\"ui header c__drag-handle\\"
-          tabindex=\\"0\\"
-        >
-          <i
-            aria-hidden=\\"true\\"
-            class=\\"discussions icon\\"
-          />
-          <div
-            class=\\"content\\"
-          >
-            Discussion
-          </div>
-        </div>
-        <div
-          class=\\"content inner visible\\"
-          tabindex=\\"0\\"
-        >
-          <div
-            class=\\"cm__container-outer\\"
-            style=\\"width: calc(\${dimensions.width}px);\\"
           >
             <iframe
               aria-hidden=\\"true\\"
@@ -5890,7 +5792,7 @@ exports[`Rnd: onDragStop/onResizeStop 2`] = `
           >
             <div>
               <textarea
-                id=\\"x26\\"
+                id=\\"x29\\"
                 name=\\"content\\"
                 options=\\"[object Object]\\"
               >
@@ -5974,7 +5876,7 @@ exports[`Types, clicks Send Message 1`] = `
           >
             <div>
               <textarea
-                id=\\"x24\\"
+                id=\\"x27\\"
                 name=\\"content\\"
                 options=\\"[object Object]\\"
               >
@@ -6287,7 +6189,7 @@ exports[`Types, clicks Send Message 4`] = `
           >
             <div>
               <textarea
-                id=\\"x24\\"
+                id=\\"x27\\"
                 name=\\"content\\"
                 options=\\"[object Object]\\"
               >
@@ -6371,7 +6273,7 @@ exports[`Types, followed by {enter} 1`] = `
           >
             <div>
               <textarea
-                id=\\"x18\\"
+                id=\\"x21\\"
                 name=\\"content\\"
                 options=\\"[object Object]\\"
               >
@@ -6684,7 +6586,7 @@ exports[`Types, followed by {enter} 4`] = `
           >
             <div>
               <textarea
-                id=\\"x18\\"
+                id=\\"x21\\"
                 name=\\"content\\"
                 options=\\"[object Object]\\"
               >
@@ -6768,7 +6670,7 @@ exports[`Types, followed by {shift}{enter}, attempts to send, does submit 1`] = 
           >
             <div>
               <textarea
-                id=\\"x21\\"
+                id=\\"x24\\"
                 name=\\"content\\"
                 options=\\"[object Object]\\"
               >
@@ -7086,7 +6988,7 @@ exports[`Types, followed by {shift}{enter}, attempts to send, does submit 3`] = 
           >
             <div>
               <textarea
-                id=\\"x21\\"
+                id=\\"x24\\"
                 name=\\"content\\"
                 options=\\"[object Object]\\"
               >
@@ -7175,7 +7077,7 @@ exports[`Types, followed by {shift}{enter}, does not submit 1`] = `
           >
             <div>
               <textarea
-                id=\\"x19\\"
+                id=\\"x22\\"
                 name=\\"content\\"
                 options=\\"[object Object]\\"
               >
@@ -7488,7 +7390,7 @@ exports[`Types, followed by {shift}{enter}, does not submit 4`] = `
           >
             <div>
               <textarea
-                id=\\"x19\\"
+                id=\\"x22\\"
                 name=\\"content\\"
                 options=\\"[object Object]\\"
               >
@@ -7572,7 +7474,7 @@ exports[`Types, then attempts to send empty string 1`] = `
           >
             <div>
               <textarea
-                id=\\"x16\\"
+                id=\\"x19\\"
                 name=\\"content\\"
                 options=\\"[object Object]\\"
               />
@@ -7883,7 +7785,7 @@ exports[`Types, then attempts to send empty string 2`] = `
           >
             <div>
               <textarea
-                id=\\"x16\\"
+                id=\\"x19\\"
                 name=\\"content\\"
                 options=\\"[object Object]\\"
               />
@@ -7965,7 +7867,7 @@ exports[`Types, then attempts to send string containing only a space character 1
           >
             <div>
               <textarea
-                id=\\"x17\\"
+                id=\\"x20\\"
                 name=\\"content\\"
                 options=\\"[object Object]\\"
               />
@@ -8276,7 +8178,7 @@ exports[`Types, then attempts to send string containing only a space character 2
           >
             <div>
               <textarea
-                id=\\"x17\\"
+                id=\\"x20\\"
                 name=\\"content\\"
                 options=\\"[object Object]\\"
               />
@@ -8310,7 +8212,801 @@ exports[`Types, then attempts to send string containing only a space character 2
 </body>"
 `;
 
-exports[`componentDidMount Adds CHAT_ENDED handler 1`] = `
+exports[`componentDidMount Adds CHAT_ENDED handler (chat in props) 1`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <div>
+      <div
+        class=\\"ui modal transition visible active c__container-modal resizable\\"
+        role=\\"dialog\\"
+      >
+        <button
+          aria-label=\\"Click to minimize the chat window\\"
+          class=\\"ui icon button close c__container-modal-minmax\\"
+        >
+          <i
+            aria-hidden=\\"true\\"
+            class=\\"window minimize icon\\"
+          />
+        </button>
+        <div
+          class=\\"ui header c__drag-handle\\"
+          tabindex=\\"0\\"
+        >
+          <i
+            aria-hidden=\\"true\\"
+            class=\\"discussions icon\\"
+          />
+          <div
+            class=\\"content\\"
+          >
+            Discussion
+          </div>
+        </div>
+        <div
+          class=\\"content inner visible\\"
+          tabindex=\\"0\\"
+        >
+          <div
+            class=\\"cm__container-outer\\"
+            style=\\"width: calc(\${dimensions.width}px);\\"
+          />
+          <div
+            class=\\"cc__container-outer\\"
+            style=\\"width: calc(\${dimensions.width}px);\\"
+          >
+            <div>
+              <textarea
+                id=\\"x3\\"
+                name=\\"content\\"
+                options=\\"[object Object]\\"
+              >
+                &lt;p&gt;&lt;br&gt;&lt;/p&gt;
+              </textarea>
+              <button
+                aria-label=\\"Send message\\"
+              >
+                THIS BUTTON IS PROVIDED BY THE MOCK
+              </button>
+              <div
+                class=\\"se-wrapper\\"
+              >
+                <div>
+                  a
+                </div>
+                <div>
+                  b
+                </div>
+                <div>
+                  c
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          data-testid=\\"chat-main\\"
+        />
+      </div>
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`componentDidMount Adds CHAT_ENDED handler (chat in props) 3`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <div>
+      <div
+        class=\\"ui modal transition visible active c__container-modal resizable\\"
+        role=\\"dialog\\"
+      >
+        <button
+          aria-label=\\"Click to minimize the chat window\\"
+          class=\\"ui icon button close c__container-modal-minmax\\"
+        >
+          <i
+            aria-hidden=\\"true\\"
+            class=\\"window minimize icon\\"
+          />
+        </button>
+        <div
+          class=\\"ui header c__drag-handle\\"
+          tabindex=\\"0\\"
+        >
+          <i
+            aria-hidden=\\"true\\"
+            class=\\"discussions icon\\"
+          />
+          <div
+            class=\\"content\\"
+          >
+            Discussion
+          </div>
+        </div>
+        <div
+          class=\\"content inner visible\\"
+          tabindex=\\"0\\"
+        >
+          <div
+            class=\\"cm__container-outer\\"
+            style=\\"width: calc(\${dimensions.width}px);\\"
+          >
+            <iframe
+              aria-hidden=\\"true\\"
+              frameborder=\\"0\\"
+              src=\\"about:blank\\"
+              style=\\"display: block; opacity: 0; position: absolute; top: 0px; left: 0px; height: 100%; width: 100%; overflow: hidden; pointer-events: none; z-index: -1;\\"
+              tabindex=\\"-1\\"
+            />
+            <div
+              class=\\"cm__container-inner\\"
+              data-testid=\\"scrolling-container-outer\\"
+            >
+              <div
+                class=\\"ui large comments\\"
+              >
+                <div
+                  class=\\"comment cmm__comment\\"
+                  data-testid=\\"comment\\"
+                >
+                  <div
+                    class=\\"avatar\\"
+                  >
+                    <img
+                      src=\\"https://www.gravatar.com/avatar/386d1fcf0e6b4236c9d7064d7bb9af1a?d=robohash\\"
+                    />
+                  </div>
+                  <div
+                    class=\\"cmm__content content\\"
+                  >
+                    <span
+                      class=\\"author\\"
+                      tabindex=\\"0\\"
+                    >
+                      <span
+                        aria-label=\\"Super User (super)\\"
+                        class=\\"ui medium text\\"
+                        title=\\"Super User (super)\\"
+                      >
+                        Super User
+                      </span>
+                      
+                       
+                      <i
+                        aria-hidden=\\"true\\"
+                        class=\\"small icon chess queen\\"
+                        style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                        title=\\"Super\\"
+                      />
+                    </span>
+                    <div
+                      class=\\"metadata\\"
+                    >
+                      
+                       
+                      <span
+                        aria-label=\\"2020-12-09T16:39:10.359Z\\"
+                        tabindex=\\"0\\"
+                      >
+                        11:39 AM
+                      </span>
+                    </div>
+                    <div
+                      class=\\"actions\\"
+                    >
+                      <div
+                        class=\\"ui mini buttons\\"
+                      >
+                        <button
+                          aria-label=\\"Quote this message\\"
+                          class=\\"ui mini icon button icon-primary\\"
+                        >
+                          <i
+                            aria-hidden=\\"true\\"
+                            class=\\"quote left icon\\"
+                          />
+                        </button>
+                      </div>
+                    </div>
+                    <div
+                      class=\\"text\\"
+                    >
+                      <div>
+                        <p>
+                          Hello
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class=\\"comment cmm__comment\\"
+                  data-testid=\\"comment\\"
+                >
+                  <div
+                    class=\\"avatar\\"
+                  >
+                    <img
+                      src=\\"https://robohash.org/credible-lyrebird?bgset=bg1&size=50x50\\"
+                    />
+                  </div>
+                  <div
+                    class=\\"cmm__content content\\"
+                  >
+                    <span
+                      class=\\"author\\"
+                      tabindex=\\"0\\"
+                    >
+                      <span
+                        aria-label=\\"credible-lyrebird\\"
+                        class=\\"ui medium text\\"
+                        title=\\"credible-lyrebird\\"
+                      >
+                        credible-lyrebird
+                      </span>
+                      
+                       
+                      <i
+                        aria-hidden=\\"true\\"
+                        class=\\"small icon chalkboard teacher\\"
+                        style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                        title=\\"Facilitator\\"
+                      />
+                    </span>
+                    <div
+                      class=\\"metadata\\"
+                    >
+                      
+                       
+                      <span
+                        aria-label=\\"2020-12-09T16:40:10.359Z\\"
+                        tabindex=\\"0\\"
+                      >
+                        11:40 AM
+                      </span>
+                    </div>
+                    <div
+                      class=\\"actions\\"
+                    >
+                      <div
+                        class=\\"ui mini buttons\\"
+                      />
+                    </div>
+                    <div
+                      class=\\"text\\"
+                    >
+                      <div>
+                        <p>
+                          <span
+                            style=\\"color: rgb(140, 140, 140);\\"
+                          >
+                            <em>
+                              has joined the chat.
+                            </em>
+                          </span>
+                          <br />
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class=\\"comment cmm__comment cmm__nometadata\\"
+                  data-testid=\\"comment\\"
+                >
+                  <div
+                    class=\\"cmm__content content\\"
+                  >
+                    <div
+                      class=\\"actions\\"
+                    >
+                      <div
+                        class=\\"ui mini buttons\\"
+                      >
+                        <button
+                          aria-label=\\"Quote this message\\"
+                          class=\\"ui mini icon button icon-primary\\"
+                        >
+                          <i
+                            aria-hidden=\\"true\\"
+                            class=\\"quote left icon\\"
+                          />
+                        </button>
+                      </div>
+                    </div>
+                    <div
+                      class=\\"text\\"
+                    >
+                      <div>
+                        <p>
+                          Hi!
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class=\\"comment cmm__comment cmm__nometadata\\"
+                  data-testid=\\"comment\\"
+                >
+                  <div
+                    class=\\"cmm__content content\\"
+                  >
+                    <div
+                      class=\\"actions\\"
+                    >
+                      <div
+                        class=\\"ui mini buttons\\"
+                      />
+                    </div>
+                    <div
+                      class=\\"text\\"
+                    >
+                      <div>
+                        <p>
+                          <span
+                            style=\\"color: rgb(140, 140, 140);\\"
+                          >
+                            <em>
+                              has left the chat.
+                            </em>
+                          </span>
+                          <br />
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"cc__container-outer\\"
+            style=\\"width: calc(\${dimensions.width}px);\\"
+          >
+            <div>
+              <textarea
+                id=\\"x3\\"
+                name=\\"content\\"
+                options=\\"[object Object]\\"
+              >
+                &lt;p&gt;&lt;br&gt;&lt;/p&gt;
+              </textarea>
+              <button
+                aria-label=\\"Send message\\"
+              >
+                THIS BUTTON IS PROVIDED BY THE MOCK
+              </button>
+              <div
+                class=\\"se-wrapper\\"
+              >
+                <div>
+                  a
+                </div>
+                <div>
+                  b
+                </div>
+                <div>
+                  c
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          data-testid=\\"chat-main\\"
+        />
+      </div>
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`componentDidMount Adds CHAT_ENDED handler (chat in state) 1`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <div>
+      <div
+        class=\\"ui modal transition visible active c__container-modal resizable\\"
+        role=\\"dialog\\"
+      >
+        <button
+          aria-label=\\"Click to minimize the chat window\\"
+          class=\\"ui icon button close c__container-modal-minmax\\"
+        >
+          <i
+            aria-hidden=\\"true\\"
+            class=\\"window minimize icon\\"
+          />
+        </button>
+        <div
+          class=\\"ui header c__drag-handle\\"
+          tabindex=\\"0\\"
+        >
+          <i
+            aria-hidden=\\"true\\"
+            class=\\"discussions icon\\"
+          />
+          <div
+            class=\\"content\\"
+          >
+            Discussion
+          </div>
+        </div>
+        <div
+          class=\\"content inner visible\\"
+          tabindex=\\"0\\"
+        >
+          <div
+            class=\\"cm__container-outer\\"
+            style=\\"width: calc(\${dimensions.width}px);\\"
+          />
+          <div
+            class=\\"cc__container-outer\\"
+            style=\\"width: calc(\${dimensions.width}px);\\"
+          >
+            <div>
+              <textarea
+                id=\\"x4\\"
+                name=\\"content\\"
+                options=\\"[object Object]\\"
+              >
+                &lt;p&gt;&lt;br&gt;&lt;/p&gt;
+              </textarea>
+              <button
+                aria-label=\\"Send message\\"
+              >
+                THIS BUTTON IS PROVIDED BY THE MOCK
+              </button>
+              <div
+                class=\\"se-wrapper\\"
+              >
+                <div>
+                  a
+                </div>
+                <div>
+                  b
+                </div>
+                <div>
+                  c
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          data-testid=\\"chat-main\\"
+        />
+      </div>
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`componentDidMount Adds CHAT_ENDED handler (chat in state) 3`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <div>
+      <div
+        class=\\"ui modal transition visible active c__container-modal resizable\\"
+        role=\\"dialog\\"
+      >
+        <button
+          aria-label=\\"Click to minimize the chat window\\"
+          class=\\"ui icon button close c__container-modal-minmax\\"
+        >
+          <i
+            aria-hidden=\\"true\\"
+            class=\\"window minimize icon\\"
+          />
+        </button>
+        <div
+          class=\\"ui header c__drag-handle\\"
+          tabindex=\\"0\\"
+        >
+          <i
+            aria-hidden=\\"true\\"
+            class=\\"discussions icon\\"
+          />
+          <div
+            class=\\"content\\"
+          >
+            Discussion
+          </div>
+        </div>
+        <div
+          class=\\"content inner visible\\"
+          tabindex=\\"0\\"
+        >
+          <div
+            class=\\"cm__container-outer\\"
+            style=\\"width: calc(\${dimensions.width}px);\\"
+          >
+            <iframe
+              aria-hidden=\\"true\\"
+              frameborder=\\"0\\"
+              src=\\"about:blank\\"
+              style=\\"display: block; opacity: 0; position: absolute; top: 0px; left: 0px; height: 100%; width: 100%; overflow: hidden; pointer-events: none; z-index: -1;\\"
+              tabindex=\\"-1\\"
+            />
+            <div
+              class=\\"cm__container-inner\\"
+              data-testid=\\"scrolling-container-outer\\"
+            >
+              <div
+                class=\\"ui large comments\\"
+              >
+                <div
+                  class=\\"comment cmm__comment\\"
+                  data-testid=\\"comment\\"
+                >
+                  <div
+                    class=\\"avatar\\"
+                  >
+                    <img
+                      src=\\"https://www.gravatar.com/avatar/386d1fcf0e6b4236c9d7064d7bb9af1a?d=robohash\\"
+                    />
+                  </div>
+                  <div
+                    class=\\"cmm__content content\\"
+                  >
+                    <span
+                      class=\\"author\\"
+                      tabindex=\\"0\\"
+                    >
+                      <span
+                        aria-label=\\"Super User (super)\\"
+                        class=\\"ui medium text\\"
+                        title=\\"Super User (super)\\"
+                      >
+                        Super User
+                      </span>
+                      
+                       
+                      <i
+                        aria-hidden=\\"true\\"
+                        class=\\"small icon chess queen\\"
+                        style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                        title=\\"Super\\"
+                      />
+                    </span>
+                    <div
+                      class=\\"metadata\\"
+                    >
+                      
+                       
+                      <span
+                        aria-label=\\"2020-12-09T16:39:10.359Z\\"
+                        tabindex=\\"0\\"
+                      >
+                        11:39 AM
+                      </span>
+                    </div>
+                    <div
+                      class=\\"actions\\"
+                    >
+                      <div
+                        class=\\"ui mini buttons\\"
+                      >
+                        <button
+                          aria-label=\\"Quote this message\\"
+                          class=\\"ui mini icon button icon-primary\\"
+                        >
+                          <i
+                            aria-hidden=\\"true\\"
+                            class=\\"quote left icon\\"
+                          />
+                        </button>
+                      </div>
+                    </div>
+                    <div
+                      class=\\"text\\"
+                    >
+                      <div>
+                        <p>
+                          Hello
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class=\\"comment cmm__comment\\"
+                  data-testid=\\"comment\\"
+                >
+                  <div
+                    class=\\"avatar\\"
+                  >
+                    <img
+                      src=\\"https://robohash.org/credible-lyrebird?bgset=bg1&size=50x50\\"
+                    />
+                  </div>
+                  <div
+                    class=\\"cmm__content content\\"
+                  >
+                    <span
+                      class=\\"author\\"
+                      tabindex=\\"0\\"
+                    >
+                      <span
+                        aria-label=\\"credible-lyrebird\\"
+                        class=\\"ui medium text\\"
+                        title=\\"credible-lyrebird\\"
+                      >
+                        credible-lyrebird
+                      </span>
+                      
+                       
+                      <i
+                        aria-hidden=\\"true\\"
+                        class=\\"small icon chalkboard teacher\\"
+                        style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                        title=\\"Facilitator\\"
+                      />
+                    </span>
+                    <div
+                      class=\\"metadata\\"
+                    >
+                      
+                       
+                      <span
+                        aria-label=\\"2020-12-09T16:40:10.359Z\\"
+                        tabindex=\\"0\\"
+                      >
+                        11:40 AM
+                      </span>
+                    </div>
+                    <div
+                      class=\\"actions\\"
+                    >
+                      <div
+                        class=\\"ui mini buttons\\"
+                      />
+                    </div>
+                    <div
+                      class=\\"text\\"
+                    >
+                      <div>
+                        <p>
+                          <span
+                            style=\\"color: rgb(140, 140, 140);\\"
+                          >
+                            <em>
+                              has joined the chat.
+                            </em>
+                          </span>
+                          <br />
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class=\\"comment cmm__comment cmm__nometadata\\"
+                  data-testid=\\"comment\\"
+                >
+                  <div
+                    class=\\"cmm__content content\\"
+                  >
+                    <div
+                      class=\\"actions\\"
+                    >
+                      <div
+                        class=\\"ui mini buttons\\"
+                      >
+                        <button
+                          aria-label=\\"Quote this message\\"
+                          class=\\"ui mini icon button icon-primary\\"
+                        >
+                          <i
+                            aria-hidden=\\"true\\"
+                            class=\\"quote left icon\\"
+                          />
+                        </button>
+                      </div>
+                    </div>
+                    <div
+                      class=\\"text\\"
+                    >
+                      <div>
+                        <p>
+                          Hi!
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class=\\"comment cmm__comment cmm__nometadata\\"
+                  data-testid=\\"comment\\"
+                >
+                  <div
+                    class=\\"cmm__content content\\"
+                  >
+                    <div
+                      class=\\"actions\\"
+                    >
+                      <div
+                        class=\\"ui mini buttons\\"
+                      />
+                    </div>
+                    <div
+                      class=\\"text\\"
+                    >
+                      <div>
+                        <p>
+                          <span
+                            style=\\"color: rgb(140, 140, 140);\\"
+                          >
+                            <em>
+                              has left the chat.
+                            </em>
+                          </span>
+                          <br />
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"cc__container-outer\\"
+            style=\\"width: calc(\${dimensions.width}px);\\"
+          >
+            <div>
+              <textarea
+                id=\\"x4\\"
+                name=\\"content\\"
+                options=\\"[object Object]\\"
+              >
+                &lt;p&gt;&lt;br&gt;&lt;/p&gt;
+              </textarea>
+              <button
+                aria-label=\\"Send message\\"
+              >
+                THIS BUTTON IS PROVIDED BY THE MOCK
+              </button>
+              <div
+                class=\\"se-wrapper\\"
+              >
+                <div>
+                  a
+                </div>
+                <div>
+                  b
+                </div>
+                <div>
+                  c
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          data-testid=\\"chat-main\\"
+        />
+      </div>
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`componentDidMount Adds JOIN_OR_PART handler (chat in props) 1`] = `
 "<body>
   <div
     id=\\"root\\"
@@ -8394,7 +9090,7 @@ exports[`componentDidMount Adds CHAT_ENDED handler 1`] = `
 </body>"
 `;
 
-exports[`componentDidMount Adds CHAT_ENDED handler 3`] = `
+exports[`componentDidMount Adds JOIN_OR_PART handler (chat in props) 3`] = `
 "<body>
   <div
     id=\\"root\\"
@@ -8707,7 +9403,7 @@ exports[`componentDidMount Adds CHAT_ENDED handler 3`] = `
 </body>"
 `;
 
-exports[`componentDidMount Adds JOIN_OR_PART handler 1`] = `
+exports[`componentDidMount Adds JOIN_OR_PART handler (chat in state) 1`] = `
 "<body>
   <div
     id=\\"root\\"
@@ -8791,7 +9487,7 @@ exports[`componentDidMount Adds JOIN_OR_PART handler 1`] = `
 </body>"
 `;
 
-exports[`componentDidMount Adds JOIN_OR_PART handler 3`] = `
+exports[`componentDidMount Adds JOIN_OR_PART handler (chat in state) 3`] = `
 "<body>
   <div
     id=\\"root\\"
@@ -9104,7 +9800,7 @@ exports[`componentDidMount Adds JOIN_OR_PART handler 3`] = `
 </body>"
 `;
 
-exports[`componentDidMount Adds onbeforeunload handler 1`] = `
+exports[`componentDidMount Adds onbeforeunload handler (chat in props) 1`] = `
 "<body>
   <div
     id=\\"root\\"
@@ -9188,7 +9884,7 @@ exports[`componentDidMount Adds onbeforeunload handler 1`] = `
 </body>"
 `;
 
-exports[`componentDidMount Adds onbeforeunload handler 2`] = `
+exports[`componentDidMount Adds onbeforeunload handler (chat in props) 2`] = `
 "<body>
   <div
     id=\\"root\\"
@@ -9501,7 +10197,7 @@ exports[`componentDidMount Adds onbeforeunload handler 2`] = `
 </body>"
 `;
 
-exports[`componentDidMount Emits CREATE_CHAT_CHANNEL on socket 1`] = `
+exports[`componentDidMount Adds onbeforeunload handler (chat in state) 1`] = `
 "<body>
   <div
     id=\\"root\\"
@@ -9542,243 +10238,14 @@ exports[`componentDidMount Emits CREATE_CHAT_CHANNEL on socket 1`] = `
           <div
             class=\\"cm__container-outer\\"
             style=\\"width: calc(\${dimensions.width}px);\\"
-          >
-            <iframe
-              aria-hidden=\\"true\\"
-              frameborder=\\"0\\"
-              src=\\"about:blank\\"
-              style=\\"display: block; opacity: 0; position: absolute; top: 0px; left: 0px; height: 100%; width: 100%; overflow: hidden; pointer-events: none; z-index: -1;\\"
-              tabindex=\\"-1\\"
-            />
-            <div
-              class=\\"cm__container-inner\\"
-              data-testid=\\"scrolling-container-outer\\"
-            >
-              <div
-                class=\\"ui large comments\\"
-              >
-                <div
-                  class=\\"comment cmm__comment\\"
-                  data-testid=\\"comment\\"
-                >
-                  <div
-                    class=\\"avatar\\"
-                  >
-                    <img
-                      src=\\"https://www.gravatar.com/avatar/386d1fcf0e6b4236c9d7064d7bb9af1a?d=robohash\\"
-                    />
-                  </div>
-                  <div
-                    class=\\"cmm__content content\\"
-                  >
-                    <span
-                      class=\\"author\\"
-                      tabindex=\\"0\\"
-                    >
-                      <span
-                        aria-label=\\"Super User (super)\\"
-                        class=\\"ui medium text\\"
-                        title=\\"Super User (super)\\"
-                      >
-                        Super User
-                      </span>
-                      
-                       
-                      <i
-                        aria-hidden=\\"true\\"
-                        class=\\"small icon chess queen\\"
-                        style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                        title=\\"Super\\"
-                      />
-                    </span>
-                    <div
-                      class=\\"metadata\\"
-                    >
-                      
-                       
-                      <span
-                        aria-label=\\"2020-12-09T16:39:10.359Z\\"
-                        tabindex=\\"0\\"
-                      >
-                        11:39 AM
-                      </span>
-                    </div>
-                    <div
-                      class=\\"actions\\"
-                    >
-                      <div
-                        class=\\"ui mini buttons\\"
-                      >
-                        <button
-                          aria-label=\\"Quote this message\\"
-                          class=\\"ui mini icon button icon-primary\\"
-                        >
-                          <i
-                            aria-hidden=\\"true\\"
-                            class=\\"quote left icon\\"
-                          />
-                        </button>
-                      </div>
-                    </div>
-                    <div
-                      class=\\"text\\"
-                    >
-                      <div>
-                        <p>
-                          Hello
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  class=\\"comment cmm__comment\\"
-                  data-testid=\\"comment\\"
-                >
-                  <div
-                    class=\\"avatar\\"
-                  >
-                    <img
-                      src=\\"https://robohash.org/credible-lyrebird?bgset=bg1&size=50x50\\"
-                    />
-                  </div>
-                  <div
-                    class=\\"cmm__content content\\"
-                  >
-                    <span
-                      class=\\"author\\"
-                      tabindex=\\"0\\"
-                    >
-                      <span
-                        aria-label=\\"credible-lyrebird\\"
-                        class=\\"ui medium text\\"
-                        title=\\"credible-lyrebird\\"
-                      >
-                        credible-lyrebird
-                      </span>
-                      
-                       
-                      <i
-                        aria-hidden=\\"true\\"
-                        class=\\"small icon chalkboard teacher\\"
-                        style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                        title=\\"Facilitator\\"
-                      />
-                    </span>
-                    <div
-                      class=\\"metadata\\"
-                    >
-                      
-                       
-                      <span
-                        aria-label=\\"2020-12-09T16:40:10.359Z\\"
-                        tabindex=\\"0\\"
-                      >
-                        11:40 AM
-                      </span>
-                    </div>
-                    <div
-                      class=\\"actions\\"
-                    >
-                      <div
-                        class=\\"ui mini buttons\\"
-                      />
-                    </div>
-                    <div
-                      class=\\"text\\"
-                    >
-                      <div>
-                        <p>
-                          <span
-                            style=\\"color: rgb(140, 140, 140);\\"
-                          >
-                            <em>
-                              has joined the chat.
-                            </em>
-                          </span>
-                          <br />
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  class=\\"comment cmm__comment cmm__nometadata\\"
-                  data-testid=\\"comment\\"
-                >
-                  <div
-                    class=\\"cmm__content content\\"
-                  >
-                    <div
-                      class=\\"actions\\"
-                    >
-                      <div
-                        class=\\"ui mini buttons\\"
-                      >
-                        <button
-                          aria-label=\\"Quote this message\\"
-                          class=\\"ui mini icon button icon-primary\\"
-                        >
-                          <i
-                            aria-hidden=\\"true\\"
-                            class=\\"quote left icon\\"
-                          />
-                        </button>
-                      </div>
-                    </div>
-                    <div
-                      class=\\"text\\"
-                    >
-                      <div>
-                        <p>
-                          Hi!
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  class=\\"comment cmm__comment cmm__nometadata\\"
-                  data-testid=\\"comment\\"
-                >
-                  <div
-                    class=\\"cmm__content content\\"
-                  >
-                    <div
-                      class=\\"actions\\"
-                    >
-                      <div
-                        class=\\"ui mini buttons\\"
-                      />
-                    </div>
-                    <div
-                      class=\\"text\\"
-                    >
-                      <div>
-                        <p>
-                          <span
-                            style=\\"color: rgb(140, 140, 140);\\"
-                          >
-                            <em>
-                              has left the chat.
-                            </em>
-                          </span>
-                          <br />
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          />
           <div
             class=\\"cc__container-outer\\"
             style=\\"width: calc(\${dimensions.width}px);\\"
           >
             <div>
               <textarea
-                id=\\"x9\\"
+                id=\\"x8\\"
                 name=\\"content\\"
                 options=\\"[object Object]\\"
               >
@@ -9814,320 +10281,7 @@ exports[`componentDidMount Emits CREATE_CHAT_CHANNEL on socket 1`] = `
 </body>"
 `;
 
-exports[`componentDidMount Emits CREATE_CHAT_CHANNEL on socket 3`] = `
-"<body>
-  <div
-    id=\\"root\\"
-  />
-  <div>
-    <div>
-      <div
-        class=\\"ui modal transition visible active c__container-modal resizable\\"
-        role=\\"dialog\\"
-      >
-        <button
-          aria-label=\\"Click to minimize the chat window\\"
-          class=\\"ui icon button close c__container-modal-minmax\\"
-        >
-          <i
-            aria-hidden=\\"true\\"
-            class=\\"window minimize icon\\"
-          />
-        </button>
-        <div
-          class=\\"ui header c__drag-handle\\"
-          tabindex=\\"0\\"
-        >
-          <i
-            aria-hidden=\\"true\\"
-            class=\\"discussions icon\\"
-          />
-          <div
-            class=\\"content\\"
-          >
-            Discussion
-          </div>
-        </div>
-        <div
-          class=\\"content inner visible\\"
-          tabindex=\\"0\\"
-        >
-          <div
-            class=\\"cm__container-outer\\"
-            style=\\"width: calc(\${dimensions.width}px);\\"
-          >
-            <iframe
-              aria-hidden=\\"true\\"
-              frameborder=\\"0\\"
-              src=\\"about:blank\\"
-              style=\\"display: block; opacity: 0; position: absolute; top: 0px; left: 0px; height: 100%; width: 100%; overflow: hidden; pointer-events: none; z-index: -1;\\"
-              tabindex=\\"-1\\"
-            />
-            <div
-              class=\\"cm__container-inner\\"
-              data-testid=\\"scrolling-container-outer\\"
-            >
-              <div
-                class=\\"ui large comments\\"
-              >
-                <div
-                  class=\\"comment cmm__comment\\"
-                  data-testid=\\"comment\\"
-                >
-                  <div
-                    class=\\"avatar\\"
-                  >
-                    <img
-                      src=\\"https://www.gravatar.com/avatar/386d1fcf0e6b4236c9d7064d7bb9af1a?d=robohash\\"
-                    />
-                  </div>
-                  <div
-                    class=\\"cmm__content content\\"
-                  >
-                    <span
-                      class=\\"author\\"
-                      tabindex=\\"0\\"
-                    >
-                      <span
-                        aria-label=\\"Super User (super)\\"
-                        class=\\"ui medium text\\"
-                        title=\\"Super User (super)\\"
-                      >
-                        Super User
-                      </span>
-                      
-                       
-                      <i
-                        aria-hidden=\\"true\\"
-                        class=\\"small icon chess queen\\"
-                        style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                        title=\\"Super\\"
-                      />
-                    </span>
-                    <div
-                      class=\\"metadata\\"
-                    >
-                      
-                       
-                      <span
-                        aria-label=\\"2020-12-09T16:39:10.359Z\\"
-                        tabindex=\\"0\\"
-                      >
-                        11:39 AM
-                      </span>
-                    </div>
-                    <div
-                      class=\\"actions\\"
-                    >
-                      <div
-                        class=\\"ui mini buttons\\"
-                      >
-                        <button
-                          aria-label=\\"Quote this message\\"
-                          class=\\"ui mini icon button icon-primary\\"
-                        >
-                          <i
-                            aria-hidden=\\"true\\"
-                            class=\\"quote left icon\\"
-                          />
-                        </button>
-                      </div>
-                    </div>
-                    <div
-                      class=\\"text\\"
-                    >
-                      <div>
-                        <p>
-                          Hello
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  class=\\"comment cmm__comment\\"
-                  data-testid=\\"comment\\"
-                >
-                  <div
-                    class=\\"avatar\\"
-                  >
-                    <img
-                      src=\\"https://robohash.org/credible-lyrebird?bgset=bg1&size=50x50\\"
-                    />
-                  </div>
-                  <div
-                    class=\\"cmm__content content\\"
-                  >
-                    <span
-                      class=\\"author\\"
-                      tabindex=\\"0\\"
-                    >
-                      <span
-                        aria-label=\\"credible-lyrebird\\"
-                        class=\\"ui medium text\\"
-                        title=\\"credible-lyrebird\\"
-                      >
-                        credible-lyrebird
-                      </span>
-                      
-                       
-                      <i
-                        aria-hidden=\\"true\\"
-                        class=\\"small icon chalkboard teacher\\"
-                        style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                        title=\\"Facilitator\\"
-                      />
-                    </span>
-                    <div
-                      class=\\"metadata\\"
-                    >
-                      
-                       
-                      <span
-                        aria-label=\\"2020-12-09T16:40:10.359Z\\"
-                        tabindex=\\"0\\"
-                      >
-                        11:40 AM
-                      </span>
-                    </div>
-                    <div
-                      class=\\"actions\\"
-                    >
-                      <div
-                        class=\\"ui mini buttons\\"
-                      />
-                    </div>
-                    <div
-                      class=\\"text\\"
-                    >
-                      <div>
-                        <p>
-                          <span
-                            style=\\"color: rgb(140, 140, 140);\\"
-                          >
-                            <em>
-                              has joined the chat.
-                            </em>
-                          </span>
-                          <br />
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  class=\\"comment cmm__comment cmm__nometadata\\"
-                  data-testid=\\"comment\\"
-                >
-                  <div
-                    class=\\"cmm__content content\\"
-                  >
-                    <div
-                      class=\\"actions\\"
-                    >
-                      <div
-                        class=\\"ui mini buttons\\"
-                      >
-                        <button
-                          aria-label=\\"Quote this message\\"
-                          class=\\"ui mini icon button icon-primary\\"
-                        >
-                          <i
-                            aria-hidden=\\"true\\"
-                            class=\\"quote left icon\\"
-                          />
-                        </button>
-                      </div>
-                    </div>
-                    <div
-                      class=\\"text\\"
-                    >
-                      <div>
-                        <p>
-                          Hi!
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  class=\\"comment cmm__comment cmm__nometadata\\"
-                  data-testid=\\"comment\\"
-                >
-                  <div
-                    class=\\"cmm__content content\\"
-                  >
-                    <div
-                      class=\\"actions\\"
-                    >
-                      <div
-                        class=\\"ui mini buttons\\"
-                      />
-                    </div>
-                    <div
-                      class=\\"text\\"
-                    >
-                      <div>
-                        <p>
-                          <span
-                            style=\\"color: rgb(140, 140, 140);\\"
-                          >
-                            <em>
-                              has left the chat.
-                            </em>
-                          </span>
-                          <br />
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div
-            class=\\"cc__container-outer\\"
-            style=\\"width: calc(\${dimensions.width}px);\\"
-          >
-            <div>
-              <textarea
-                id=\\"x9\\"
-                name=\\"content\\"
-                options=\\"[object Object]\\"
-              >
-                &lt;p&gt;&lt;br&gt;&lt;/p&gt;
-              </textarea>
-              <button
-                aria-label=\\"Send message\\"
-              >
-                THIS BUTTON IS PROVIDED BY THE MOCK
-              </button>
-              <div
-                class=\\"se-wrapper\\"
-              >
-                <div>
-                  a
-                </div>
-                <div>
-                  b
-                </div>
-                <div>
-                  c
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          data-testid=\\"chat-main\\"
-        />
-      </div>
-    </div>
-  </div>
-</body>"
-`;
-
-exports[`componentDidMount Emits CREATE_USER_CHANNEL on socket 1`] = `
+exports[`componentDidMount Adds onbeforeunload handler (chat in state) 2`] = `
 "<body>
   <div
     id=\\"root\\"
@@ -10440,7 +10594,7 @@ exports[`componentDidMount Emits CREATE_USER_CHANNEL on socket 1`] = `
 </body>"
 `;
 
-exports[`componentDidMount Emits CREATE_USER_CHANNEL on socket 3`] = `
+exports[`componentDidMount Emits CREATE_CHAT_CHANNEL on socket (chat in props) 1`] = `
 "<body>
   <div
     id=\\"root\\"
@@ -10717,7 +10871,2198 @@ exports[`componentDidMount Emits CREATE_USER_CHANNEL on socket 3`] = `
           >
             <div>
               <textarea
-                id=\\"x8\\"
+                id=\\"x11\\"
+                name=\\"content\\"
+                options=\\"[object Object]\\"
+              >
+                &lt;p&gt;&lt;br&gt;&lt;/p&gt;
+              </textarea>
+              <button
+                aria-label=\\"Send message\\"
+              >
+                THIS BUTTON IS PROVIDED BY THE MOCK
+              </button>
+              <div
+                class=\\"se-wrapper\\"
+              >
+                <div>
+                  a
+                </div>
+                <div>
+                  b
+                </div>
+                <div>
+                  c
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          data-testid=\\"chat-main\\"
+        />
+      </div>
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`componentDidMount Emits CREATE_CHAT_CHANNEL on socket (chat in props) 3`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <div>
+      <div
+        class=\\"ui modal transition visible active c__container-modal resizable\\"
+        role=\\"dialog\\"
+      >
+        <button
+          aria-label=\\"Click to minimize the chat window\\"
+          class=\\"ui icon button close c__container-modal-minmax\\"
+        >
+          <i
+            aria-hidden=\\"true\\"
+            class=\\"window minimize icon\\"
+          />
+        </button>
+        <div
+          class=\\"ui header c__drag-handle\\"
+          tabindex=\\"0\\"
+        >
+          <i
+            aria-hidden=\\"true\\"
+            class=\\"discussions icon\\"
+          />
+          <div
+            class=\\"content\\"
+          >
+            Discussion
+          </div>
+        </div>
+        <div
+          class=\\"content inner visible\\"
+          tabindex=\\"0\\"
+        >
+          <div
+            class=\\"cm__container-outer\\"
+            style=\\"width: calc(\${dimensions.width}px);\\"
+          >
+            <iframe
+              aria-hidden=\\"true\\"
+              frameborder=\\"0\\"
+              src=\\"about:blank\\"
+              style=\\"display: block; opacity: 0; position: absolute; top: 0px; left: 0px; height: 100%; width: 100%; overflow: hidden; pointer-events: none; z-index: -1;\\"
+              tabindex=\\"-1\\"
+            />
+            <div
+              class=\\"cm__container-inner\\"
+              data-testid=\\"scrolling-container-outer\\"
+            >
+              <div
+                class=\\"ui large comments\\"
+              >
+                <div
+                  class=\\"comment cmm__comment\\"
+                  data-testid=\\"comment\\"
+                >
+                  <div
+                    class=\\"avatar\\"
+                  >
+                    <img
+                      src=\\"https://www.gravatar.com/avatar/386d1fcf0e6b4236c9d7064d7bb9af1a?d=robohash\\"
+                    />
+                  </div>
+                  <div
+                    class=\\"cmm__content content\\"
+                  >
+                    <span
+                      class=\\"author\\"
+                      tabindex=\\"0\\"
+                    >
+                      <span
+                        aria-label=\\"Super User (super)\\"
+                        class=\\"ui medium text\\"
+                        title=\\"Super User (super)\\"
+                      >
+                        Super User
+                      </span>
+                      
+                       
+                      <i
+                        aria-hidden=\\"true\\"
+                        class=\\"small icon chess queen\\"
+                        style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                        title=\\"Super\\"
+                      />
+                    </span>
+                    <div
+                      class=\\"metadata\\"
+                    >
+                      
+                       
+                      <span
+                        aria-label=\\"2020-12-09T16:39:10.359Z\\"
+                        tabindex=\\"0\\"
+                      >
+                        11:39 AM
+                      </span>
+                    </div>
+                    <div
+                      class=\\"actions\\"
+                    >
+                      <div
+                        class=\\"ui mini buttons\\"
+                      >
+                        <button
+                          aria-label=\\"Quote this message\\"
+                          class=\\"ui mini icon button icon-primary\\"
+                        >
+                          <i
+                            aria-hidden=\\"true\\"
+                            class=\\"quote left icon\\"
+                          />
+                        </button>
+                      </div>
+                    </div>
+                    <div
+                      class=\\"text\\"
+                    >
+                      <div>
+                        <p>
+                          Hello
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class=\\"comment cmm__comment\\"
+                  data-testid=\\"comment\\"
+                >
+                  <div
+                    class=\\"avatar\\"
+                  >
+                    <img
+                      src=\\"https://robohash.org/credible-lyrebird?bgset=bg1&size=50x50\\"
+                    />
+                  </div>
+                  <div
+                    class=\\"cmm__content content\\"
+                  >
+                    <span
+                      class=\\"author\\"
+                      tabindex=\\"0\\"
+                    >
+                      <span
+                        aria-label=\\"credible-lyrebird\\"
+                        class=\\"ui medium text\\"
+                        title=\\"credible-lyrebird\\"
+                      >
+                        credible-lyrebird
+                      </span>
+                      
+                       
+                      <i
+                        aria-hidden=\\"true\\"
+                        class=\\"small icon chalkboard teacher\\"
+                        style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                        title=\\"Facilitator\\"
+                      />
+                    </span>
+                    <div
+                      class=\\"metadata\\"
+                    >
+                      
+                       
+                      <span
+                        aria-label=\\"2020-12-09T16:40:10.359Z\\"
+                        tabindex=\\"0\\"
+                      >
+                        11:40 AM
+                      </span>
+                    </div>
+                    <div
+                      class=\\"actions\\"
+                    >
+                      <div
+                        class=\\"ui mini buttons\\"
+                      />
+                    </div>
+                    <div
+                      class=\\"text\\"
+                    >
+                      <div>
+                        <p>
+                          <span
+                            style=\\"color: rgb(140, 140, 140);\\"
+                          >
+                            <em>
+                              has joined the chat.
+                            </em>
+                          </span>
+                          <br />
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class=\\"comment cmm__comment cmm__nometadata\\"
+                  data-testid=\\"comment\\"
+                >
+                  <div
+                    class=\\"cmm__content content\\"
+                  >
+                    <div
+                      class=\\"actions\\"
+                    >
+                      <div
+                        class=\\"ui mini buttons\\"
+                      >
+                        <button
+                          aria-label=\\"Quote this message\\"
+                          class=\\"ui mini icon button icon-primary\\"
+                        >
+                          <i
+                            aria-hidden=\\"true\\"
+                            class=\\"quote left icon\\"
+                          />
+                        </button>
+                      </div>
+                    </div>
+                    <div
+                      class=\\"text\\"
+                    >
+                      <div>
+                        <p>
+                          Hi!
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class=\\"comment cmm__comment cmm__nometadata\\"
+                  data-testid=\\"comment\\"
+                >
+                  <div
+                    class=\\"cmm__content content\\"
+                  >
+                    <div
+                      class=\\"actions\\"
+                    >
+                      <div
+                        class=\\"ui mini buttons\\"
+                      />
+                    </div>
+                    <div
+                      class=\\"text\\"
+                    >
+                      <div>
+                        <p>
+                          <span
+                            style=\\"color: rgb(140, 140, 140);\\"
+                          >
+                            <em>
+                              has left the chat.
+                            </em>
+                          </span>
+                          <br />
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"cc__container-outer\\"
+            style=\\"width: calc(\${dimensions.width}px);\\"
+          >
+            <div>
+              <textarea
+                id=\\"x11\\"
+                name=\\"content\\"
+                options=\\"[object Object]\\"
+              >
+                &lt;p&gt;&lt;br&gt;&lt;/p&gt;
+              </textarea>
+              <button
+                aria-label=\\"Send message\\"
+              >
+                THIS BUTTON IS PROVIDED BY THE MOCK
+              </button>
+              <div
+                class=\\"se-wrapper\\"
+              >
+                <div>
+                  a
+                </div>
+                <div>
+                  b
+                </div>
+                <div>
+                  c
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          data-testid=\\"chat-main\\"
+        />
+      </div>
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`componentDidMount Emits CREATE_CHAT_CHANNEL on socket (chat in state) 1`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <div>
+      <div
+        class=\\"ui modal transition visible active c__container-modal resizable\\"
+        role=\\"dialog\\"
+      >
+        <button
+          aria-label=\\"Click to minimize the chat window\\"
+          class=\\"ui icon button close c__container-modal-minmax\\"
+        >
+          <i
+            aria-hidden=\\"true\\"
+            class=\\"window minimize icon\\"
+          />
+        </button>
+        <div
+          class=\\"ui header c__drag-handle\\"
+          tabindex=\\"0\\"
+        >
+          <i
+            aria-hidden=\\"true\\"
+            class=\\"discussions icon\\"
+          />
+          <div
+            class=\\"content\\"
+          >
+            Discussion
+          </div>
+        </div>
+        <div
+          class=\\"content inner visible\\"
+          tabindex=\\"0\\"
+        >
+          <div
+            class=\\"cm__container-outer\\"
+            style=\\"width: calc(\${dimensions.width}px);\\"
+          >
+            <iframe
+              aria-hidden=\\"true\\"
+              frameborder=\\"0\\"
+              src=\\"about:blank\\"
+              style=\\"display: block; opacity: 0; position: absolute; top: 0px; left: 0px; height: 100%; width: 100%; overflow: hidden; pointer-events: none; z-index: -1;\\"
+              tabindex=\\"-1\\"
+            />
+            <div
+              class=\\"cm__container-inner\\"
+              data-testid=\\"scrolling-container-outer\\"
+            >
+              <div
+                class=\\"ui large comments\\"
+              >
+                <div
+                  class=\\"comment cmm__comment\\"
+                  data-testid=\\"comment\\"
+                >
+                  <div
+                    class=\\"avatar\\"
+                  >
+                    <img
+                      src=\\"https://www.gravatar.com/avatar/386d1fcf0e6b4236c9d7064d7bb9af1a?d=robohash\\"
+                    />
+                  </div>
+                  <div
+                    class=\\"cmm__content content\\"
+                  >
+                    <span
+                      class=\\"author\\"
+                      tabindex=\\"0\\"
+                    >
+                      <span
+                        aria-label=\\"Super User (super)\\"
+                        class=\\"ui medium text\\"
+                        title=\\"Super User (super)\\"
+                      >
+                        Super User
+                      </span>
+                      
+                       
+                      <i
+                        aria-hidden=\\"true\\"
+                        class=\\"small icon chess queen\\"
+                        style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                        title=\\"Super\\"
+                      />
+                    </span>
+                    <div
+                      class=\\"metadata\\"
+                    >
+                      
+                       
+                      <span
+                        aria-label=\\"2020-12-09T16:39:10.359Z\\"
+                        tabindex=\\"0\\"
+                      >
+                        11:39 AM
+                      </span>
+                    </div>
+                    <div
+                      class=\\"actions\\"
+                    >
+                      <div
+                        class=\\"ui mini buttons\\"
+                      >
+                        <button
+                          aria-label=\\"Quote this message\\"
+                          class=\\"ui mini icon button icon-primary\\"
+                        >
+                          <i
+                            aria-hidden=\\"true\\"
+                            class=\\"quote left icon\\"
+                          />
+                        </button>
+                      </div>
+                    </div>
+                    <div
+                      class=\\"text\\"
+                    >
+                      <div>
+                        <p>
+                          Hello
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class=\\"comment cmm__comment\\"
+                  data-testid=\\"comment\\"
+                >
+                  <div
+                    class=\\"avatar\\"
+                  >
+                    <img
+                      src=\\"https://robohash.org/credible-lyrebird?bgset=bg1&size=50x50\\"
+                    />
+                  </div>
+                  <div
+                    class=\\"cmm__content content\\"
+                  >
+                    <span
+                      class=\\"author\\"
+                      tabindex=\\"0\\"
+                    >
+                      <span
+                        aria-label=\\"credible-lyrebird\\"
+                        class=\\"ui medium text\\"
+                        title=\\"credible-lyrebird\\"
+                      >
+                        credible-lyrebird
+                      </span>
+                      
+                       
+                      <i
+                        aria-hidden=\\"true\\"
+                        class=\\"small icon chalkboard teacher\\"
+                        style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                        title=\\"Facilitator\\"
+                      />
+                    </span>
+                    <div
+                      class=\\"metadata\\"
+                    >
+                      
+                       
+                      <span
+                        aria-label=\\"2020-12-09T16:40:10.359Z\\"
+                        tabindex=\\"0\\"
+                      >
+                        11:40 AM
+                      </span>
+                    </div>
+                    <div
+                      class=\\"actions\\"
+                    >
+                      <div
+                        class=\\"ui mini buttons\\"
+                      />
+                    </div>
+                    <div
+                      class=\\"text\\"
+                    >
+                      <div>
+                        <p>
+                          <span
+                            style=\\"color: rgb(140, 140, 140);\\"
+                          >
+                            <em>
+                              has joined the chat.
+                            </em>
+                          </span>
+                          <br />
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class=\\"comment cmm__comment cmm__nometadata\\"
+                  data-testid=\\"comment\\"
+                >
+                  <div
+                    class=\\"cmm__content content\\"
+                  >
+                    <div
+                      class=\\"actions\\"
+                    >
+                      <div
+                        class=\\"ui mini buttons\\"
+                      >
+                        <button
+                          aria-label=\\"Quote this message\\"
+                          class=\\"ui mini icon button icon-primary\\"
+                        >
+                          <i
+                            aria-hidden=\\"true\\"
+                            class=\\"quote left icon\\"
+                          />
+                        </button>
+                      </div>
+                    </div>
+                    <div
+                      class=\\"text\\"
+                    >
+                      <div>
+                        <p>
+                          Hi!
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class=\\"comment cmm__comment cmm__nometadata\\"
+                  data-testid=\\"comment\\"
+                >
+                  <div
+                    class=\\"cmm__content content\\"
+                  >
+                    <div
+                      class=\\"actions\\"
+                    >
+                      <div
+                        class=\\"ui mini buttons\\"
+                      />
+                    </div>
+                    <div
+                      class=\\"text\\"
+                    >
+                      <div>
+                        <p>
+                          <span
+                            style=\\"color: rgb(140, 140, 140);\\"
+                          >
+                            <em>
+                              has left the chat.
+                            </em>
+                          </span>
+                          <br />
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"cc__container-outer\\"
+            style=\\"width: calc(\${dimensions.width}px);\\"
+          >
+            <div>
+              <textarea
+                id=\\"x12\\"
+                name=\\"content\\"
+                options=\\"[object Object]\\"
+              >
+                &lt;p&gt;&lt;br&gt;&lt;/p&gt;
+              </textarea>
+              <button
+                aria-label=\\"Send message\\"
+              >
+                THIS BUTTON IS PROVIDED BY THE MOCK
+              </button>
+              <div
+                class=\\"se-wrapper\\"
+              >
+                <div>
+                  a
+                </div>
+                <div>
+                  b
+                </div>
+                <div>
+                  c
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          data-testid=\\"chat-main\\"
+        />
+      </div>
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`componentDidMount Emits CREATE_CHAT_CHANNEL on socket (chat in state) 3`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <div>
+      <div
+        class=\\"ui modal transition visible active c__container-modal resizable\\"
+        role=\\"dialog\\"
+      >
+        <button
+          aria-label=\\"Click to minimize the chat window\\"
+          class=\\"ui icon button close c__container-modal-minmax\\"
+        >
+          <i
+            aria-hidden=\\"true\\"
+            class=\\"window minimize icon\\"
+          />
+        </button>
+        <div
+          class=\\"ui header c__drag-handle\\"
+          tabindex=\\"0\\"
+        >
+          <i
+            aria-hidden=\\"true\\"
+            class=\\"discussions icon\\"
+          />
+          <div
+            class=\\"content\\"
+          >
+            Discussion
+          </div>
+        </div>
+        <div
+          class=\\"content inner visible\\"
+          tabindex=\\"0\\"
+        >
+          <div
+            class=\\"cm__container-outer\\"
+            style=\\"width: calc(\${dimensions.width}px);\\"
+          >
+            <iframe
+              aria-hidden=\\"true\\"
+              frameborder=\\"0\\"
+              src=\\"about:blank\\"
+              style=\\"display: block; opacity: 0; position: absolute; top: 0px; left: 0px; height: 100%; width: 100%; overflow: hidden; pointer-events: none; z-index: -1;\\"
+              tabindex=\\"-1\\"
+            />
+            <div
+              class=\\"cm__container-inner\\"
+              data-testid=\\"scrolling-container-outer\\"
+            >
+              <div
+                class=\\"ui large comments\\"
+              >
+                <div
+                  class=\\"comment cmm__comment\\"
+                  data-testid=\\"comment\\"
+                >
+                  <div
+                    class=\\"avatar\\"
+                  >
+                    <img
+                      src=\\"https://www.gravatar.com/avatar/386d1fcf0e6b4236c9d7064d7bb9af1a?d=robohash\\"
+                    />
+                  </div>
+                  <div
+                    class=\\"cmm__content content\\"
+                  >
+                    <span
+                      class=\\"author\\"
+                      tabindex=\\"0\\"
+                    >
+                      <span
+                        aria-label=\\"Super User (super)\\"
+                        class=\\"ui medium text\\"
+                        title=\\"Super User (super)\\"
+                      >
+                        Super User
+                      </span>
+                      
+                       
+                      <i
+                        aria-hidden=\\"true\\"
+                        class=\\"small icon chess queen\\"
+                        style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                        title=\\"Super\\"
+                      />
+                    </span>
+                    <div
+                      class=\\"metadata\\"
+                    >
+                      
+                       
+                      <span
+                        aria-label=\\"2020-12-09T16:39:10.359Z\\"
+                        tabindex=\\"0\\"
+                      >
+                        11:39 AM
+                      </span>
+                    </div>
+                    <div
+                      class=\\"actions\\"
+                    >
+                      <div
+                        class=\\"ui mini buttons\\"
+                      >
+                        <button
+                          aria-label=\\"Quote this message\\"
+                          class=\\"ui mini icon button icon-primary\\"
+                        >
+                          <i
+                            aria-hidden=\\"true\\"
+                            class=\\"quote left icon\\"
+                          />
+                        </button>
+                      </div>
+                    </div>
+                    <div
+                      class=\\"text\\"
+                    >
+                      <div>
+                        <p>
+                          Hello
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class=\\"comment cmm__comment\\"
+                  data-testid=\\"comment\\"
+                >
+                  <div
+                    class=\\"avatar\\"
+                  >
+                    <img
+                      src=\\"https://robohash.org/credible-lyrebird?bgset=bg1&size=50x50\\"
+                    />
+                  </div>
+                  <div
+                    class=\\"cmm__content content\\"
+                  >
+                    <span
+                      class=\\"author\\"
+                      tabindex=\\"0\\"
+                    >
+                      <span
+                        aria-label=\\"credible-lyrebird\\"
+                        class=\\"ui medium text\\"
+                        title=\\"credible-lyrebird\\"
+                      >
+                        credible-lyrebird
+                      </span>
+                      
+                       
+                      <i
+                        aria-hidden=\\"true\\"
+                        class=\\"small icon chalkboard teacher\\"
+                        style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                        title=\\"Facilitator\\"
+                      />
+                    </span>
+                    <div
+                      class=\\"metadata\\"
+                    >
+                      
+                       
+                      <span
+                        aria-label=\\"2020-12-09T16:40:10.359Z\\"
+                        tabindex=\\"0\\"
+                      >
+                        11:40 AM
+                      </span>
+                    </div>
+                    <div
+                      class=\\"actions\\"
+                    >
+                      <div
+                        class=\\"ui mini buttons\\"
+                      />
+                    </div>
+                    <div
+                      class=\\"text\\"
+                    >
+                      <div>
+                        <p>
+                          <span
+                            style=\\"color: rgb(140, 140, 140);\\"
+                          >
+                            <em>
+                              has joined the chat.
+                            </em>
+                          </span>
+                          <br />
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class=\\"comment cmm__comment cmm__nometadata\\"
+                  data-testid=\\"comment\\"
+                >
+                  <div
+                    class=\\"cmm__content content\\"
+                  >
+                    <div
+                      class=\\"actions\\"
+                    >
+                      <div
+                        class=\\"ui mini buttons\\"
+                      >
+                        <button
+                          aria-label=\\"Quote this message\\"
+                          class=\\"ui mini icon button icon-primary\\"
+                        >
+                          <i
+                            aria-hidden=\\"true\\"
+                            class=\\"quote left icon\\"
+                          />
+                        </button>
+                      </div>
+                    </div>
+                    <div
+                      class=\\"text\\"
+                    >
+                      <div>
+                        <p>
+                          Hi!
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class=\\"comment cmm__comment cmm__nometadata\\"
+                  data-testid=\\"comment\\"
+                >
+                  <div
+                    class=\\"cmm__content content\\"
+                  >
+                    <div
+                      class=\\"actions\\"
+                    >
+                      <div
+                        class=\\"ui mini buttons\\"
+                      />
+                    </div>
+                    <div
+                      class=\\"text\\"
+                    >
+                      <div>
+                        <p>
+                          <span
+                            style=\\"color: rgb(140, 140, 140);\\"
+                          >
+                            <em>
+                              has left the chat.
+                            </em>
+                          </span>
+                          <br />
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"cc__container-outer\\"
+            style=\\"width: calc(\${dimensions.width}px);\\"
+          >
+            <div>
+              <textarea
+                id=\\"x12\\"
+                name=\\"content\\"
+                options=\\"[object Object]\\"
+              >
+                &lt;p&gt;&lt;br&gt;&lt;/p&gt;
+              </textarea>
+              <button
+                aria-label=\\"Send message\\"
+              >
+                THIS BUTTON IS PROVIDED BY THE MOCK
+              </button>
+              <div
+                class=\\"se-wrapper\\"
+              >
+                <div>
+                  a
+                </div>
+                <div>
+                  b
+                </div>
+                <div>
+                  c
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          data-testid=\\"chat-main\\"
+        />
+      </div>
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`componentDidMount Emits CREATE_USER_CHANNEL on socket (chat in props) 1`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <div>
+      <div
+        class=\\"ui modal transition visible active c__container-modal resizable\\"
+        role=\\"dialog\\"
+      >
+        <button
+          aria-label=\\"Click to minimize the chat window\\"
+          class=\\"ui icon button close c__container-modal-minmax\\"
+        >
+          <i
+            aria-hidden=\\"true\\"
+            class=\\"window minimize icon\\"
+          />
+        </button>
+        <div
+          class=\\"ui header c__drag-handle\\"
+          tabindex=\\"0\\"
+        >
+          <i
+            aria-hidden=\\"true\\"
+            class=\\"discussions icon\\"
+          />
+          <div
+            class=\\"content\\"
+          >
+            Discussion
+          </div>
+        </div>
+        <div
+          class=\\"content inner visible\\"
+          tabindex=\\"0\\"
+        >
+          <div
+            class=\\"cm__container-outer\\"
+            style=\\"width: calc(\${dimensions.width}px);\\"
+          >
+            <iframe
+              aria-hidden=\\"true\\"
+              frameborder=\\"0\\"
+              src=\\"about:blank\\"
+              style=\\"display: block; opacity: 0; position: absolute; top: 0px; left: 0px; height: 100%; width: 100%; overflow: hidden; pointer-events: none; z-index: -1;\\"
+              tabindex=\\"-1\\"
+            />
+            <div
+              class=\\"cm__container-inner\\"
+              data-testid=\\"scrolling-container-outer\\"
+            >
+              <div
+                class=\\"ui large comments\\"
+              >
+                <div
+                  class=\\"comment cmm__comment\\"
+                  data-testid=\\"comment\\"
+                >
+                  <div
+                    class=\\"avatar\\"
+                  >
+                    <img
+                      src=\\"https://www.gravatar.com/avatar/386d1fcf0e6b4236c9d7064d7bb9af1a?d=robohash\\"
+                    />
+                  </div>
+                  <div
+                    class=\\"cmm__content content\\"
+                  >
+                    <span
+                      class=\\"author\\"
+                      tabindex=\\"0\\"
+                    >
+                      <span
+                        aria-label=\\"Super User (super)\\"
+                        class=\\"ui medium text\\"
+                        title=\\"Super User (super)\\"
+                      >
+                        Super User
+                      </span>
+                      
+                       
+                      <i
+                        aria-hidden=\\"true\\"
+                        class=\\"small icon chess queen\\"
+                        style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                        title=\\"Super\\"
+                      />
+                    </span>
+                    <div
+                      class=\\"metadata\\"
+                    >
+                      
+                       
+                      <span
+                        aria-label=\\"2020-12-09T16:39:10.359Z\\"
+                        tabindex=\\"0\\"
+                      >
+                        11:39 AM
+                      </span>
+                    </div>
+                    <div
+                      class=\\"actions\\"
+                    >
+                      <div
+                        class=\\"ui mini buttons\\"
+                      >
+                        <button
+                          aria-label=\\"Quote this message\\"
+                          class=\\"ui mini icon button icon-primary\\"
+                        >
+                          <i
+                            aria-hidden=\\"true\\"
+                            class=\\"quote left icon\\"
+                          />
+                        </button>
+                      </div>
+                    </div>
+                    <div
+                      class=\\"text\\"
+                    >
+                      <div>
+                        <p>
+                          Hello
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class=\\"comment cmm__comment\\"
+                  data-testid=\\"comment\\"
+                >
+                  <div
+                    class=\\"avatar\\"
+                  >
+                    <img
+                      src=\\"https://robohash.org/credible-lyrebird?bgset=bg1&size=50x50\\"
+                    />
+                  </div>
+                  <div
+                    class=\\"cmm__content content\\"
+                  >
+                    <span
+                      class=\\"author\\"
+                      tabindex=\\"0\\"
+                    >
+                      <span
+                        aria-label=\\"credible-lyrebird\\"
+                        class=\\"ui medium text\\"
+                        title=\\"credible-lyrebird\\"
+                      >
+                        credible-lyrebird
+                      </span>
+                      
+                       
+                      <i
+                        aria-hidden=\\"true\\"
+                        class=\\"small icon chalkboard teacher\\"
+                        style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                        title=\\"Facilitator\\"
+                      />
+                    </span>
+                    <div
+                      class=\\"metadata\\"
+                    >
+                      
+                       
+                      <span
+                        aria-label=\\"2020-12-09T16:40:10.359Z\\"
+                        tabindex=\\"0\\"
+                      >
+                        11:40 AM
+                      </span>
+                    </div>
+                    <div
+                      class=\\"actions\\"
+                    >
+                      <div
+                        class=\\"ui mini buttons\\"
+                      />
+                    </div>
+                    <div
+                      class=\\"text\\"
+                    >
+                      <div>
+                        <p>
+                          <span
+                            style=\\"color: rgb(140, 140, 140);\\"
+                          >
+                            <em>
+                              has joined the chat.
+                            </em>
+                          </span>
+                          <br />
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class=\\"comment cmm__comment cmm__nometadata\\"
+                  data-testid=\\"comment\\"
+                >
+                  <div
+                    class=\\"cmm__content content\\"
+                  >
+                    <div
+                      class=\\"actions\\"
+                    >
+                      <div
+                        class=\\"ui mini buttons\\"
+                      >
+                        <button
+                          aria-label=\\"Quote this message\\"
+                          class=\\"ui mini icon button icon-primary\\"
+                        >
+                          <i
+                            aria-hidden=\\"true\\"
+                            class=\\"quote left icon\\"
+                          />
+                        </button>
+                      </div>
+                    </div>
+                    <div
+                      class=\\"text\\"
+                    >
+                      <div>
+                        <p>
+                          Hi!
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class=\\"comment cmm__comment cmm__nometadata\\"
+                  data-testid=\\"comment\\"
+                >
+                  <div
+                    class=\\"cmm__content content\\"
+                  >
+                    <div
+                      class=\\"actions\\"
+                    >
+                      <div
+                        class=\\"ui mini buttons\\"
+                      />
+                    </div>
+                    <div
+                      class=\\"text\\"
+                    >
+                      <div>
+                        <p>
+                          <span
+                            style=\\"color: rgb(140, 140, 140);\\"
+                          >
+                            <em>
+                              has left the chat.
+                            </em>
+                          </span>
+                          <br />
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"cc__container-outer\\"
+            style=\\"width: calc(\${dimensions.width}px);\\"
+          >
+            <div>
+              <textarea
+                id=\\"x9\\"
+                name=\\"content\\"
+                options=\\"[object Object]\\"
+              >
+                &lt;p&gt;&lt;br&gt;&lt;/p&gt;
+              </textarea>
+              <button
+                aria-label=\\"Send message\\"
+              >
+                THIS BUTTON IS PROVIDED BY THE MOCK
+              </button>
+              <div
+                class=\\"se-wrapper\\"
+              >
+                <div>
+                  a
+                </div>
+                <div>
+                  b
+                </div>
+                <div>
+                  c
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          data-testid=\\"chat-main\\"
+        />
+      </div>
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`componentDidMount Emits CREATE_USER_CHANNEL on socket (chat in props) 3`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <div>
+      <div
+        class=\\"ui modal transition visible active c__container-modal resizable\\"
+        role=\\"dialog\\"
+      >
+        <button
+          aria-label=\\"Click to minimize the chat window\\"
+          class=\\"ui icon button close c__container-modal-minmax\\"
+        >
+          <i
+            aria-hidden=\\"true\\"
+            class=\\"window minimize icon\\"
+          />
+        </button>
+        <div
+          class=\\"ui header c__drag-handle\\"
+          tabindex=\\"0\\"
+        >
+          <i
+            aria-hidden=\\"true\\"
+            class=\\"discussions icon\\"
+          />
+          <div
+            class=\\"content\\"
+          >
+            Discussion
+          </div>
+        </div>
+        <div
+          class=\\"content inner visible\\"
+          tabindex=\\"0\\"
+        >
+          <div
+            class=\\"cm__container-outer\\"
+            style=\\"width: calc(\${dimensions.width}px);\\"
+          >
+            <iframe
+              aria-hidden=\\"true\\"
+              frameborder=\\"0\\"
+              src=\\"about:blank\\"
+              style=\\"display: block; opacity: 0; position: absolute; top: 0px; left: 0px; height: 100%; width: 100%; overflow: hidden; pointer-events: none; z-index: -1;\\"
+              tabindex=\\"-1\\"
+            />
+            <div
+              class=\\"cm__container-inner\\"
+              data-testid=\\"scrolling-container-outer\\"
+            >
+              <div
+                class=\\"ui large comments\\"
+              >
+                <div
+                  class=\\"comment cmm__comment\\"
+                  data-testid=\\"comment\\"
+                >
+                  <div
+                    class=\\"avatar\\"
+                  >
+                    <img
+                      src=\\"https://www.gravatar.com/avatar/386d1fcf0e6b4236c9d7064d7bb9af1a?d=robohash\\"
+                    />
+                  </div>
+                  <div
+                    class=\\"cmm__content content\\"
+                  >
+                    <span
+                      class=\\"author\\"
+                      tabindex=\\"0\\"
+                    >
+                      <span
+                        aria-label=\\"Super User (super)\\"
+                        class=\\"ui medium text\\"
+                        title=\\"Super User (super)\\"
+                      >
+                        Super User
+                      </span>
+                      
+                       
+                      <i
+                        aria-hidden=\\"true\\"
+                        class=\\"small icon chess queen\\"
+                        style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                        title=\\"Super\\"
+                      />
+                    </span>
+                    <div
+                      class=\\"metadata\\"
+                    >
+                      
+                       
+                      <span
+                        aria-label=\\"2020-12-09T16:39:10.359Z\\"
+                        tabindex=\\"0\\"
+                      >
+                        11:39 AM
+                      </span>
+                    </div>
+                    <div
+                      class=\\"actions\\"
+                    >
+                      <div
+                        class=\\"ui mini buttons\\"
+                      >
+                        <button
+                          aria-label=\\"Quote this message\\"
+                          class=\\"ui mini icon button icon-primary\\"
+                        >
+                          <i
+                            aria-hidden=\\"true\\"
+                            class=\\"quote left icon\\"
+                          />
+                        </button>
+                      </div>
+                    </div>
+                    <div
+                      class=\\"text\\"
+                    >
+                      <div>
+                        <p>
+                          Hello
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class=\\"comment cmm__comment\\"
+                  data-testid=\\"comment\\"
+                >
+                  <div
+                    class=\\"avatar\\"
+                  >
+                    <img
+                      src=\\"https://robohash.org/credible-lyrebird?bgset=bg1&size=50x50\\"
+                    />
+                  </div>
+                  <div
+                    class=\\"cmm__content content\\"
+                  >
+                    <span
+                      class=\\"author\\"
+                      tabindex=\\"0\\"
+                    >
+                      <span
+                        aria-label=\\"credible-lyrebird\\"
+                        class=\\"ui medium text\\"
+                        title=\\"credible-lyrebird\\"
+                      >
+                        credible-lyrebird
+                      </span>
+                      
+                       
+                      <i
+                        aria-hidden=\\"true\\"
+                        class=\\"small icon chalkboard teacher\\"
+                        style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                        title=\\"Facilitator\\"
+                      />
+                    </span>
+                    <div
+                      class=\\"metadata\\"
+                    >
+                      
+                       
+                      <span
+                        aria-label=\\"2020-12-09T16:40:10.359Z\\"
+                        tabindex=\\"0\\"
+                      >
+                        11:40 AM
+                      </span>
+                    </div>
+                    <div
+                      class=\\"actions\\"
+                    >
+                      <div
+                        class=\\"ui mini buttons\\"
+                      />
+                    </div>
+                    <div
+                      class=\\"text\\"
+                    >
+                      <div>
+                        <p>
+                          <span
+                            style=\\"color: rgb(140, 140, 140);\\"
+                          >
+                            <em>
+                              has joined the chat.
+                            </em>
+                          </span>
+                          <br />
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class=\\"comment cmm__comment cmm__nometadata\\"
+                  data-testid=\\"comment\\"
+                >
+                  <div
+                    class=\\"cmm__content content\\"
+                  >
+                    <div
+                      class=\\"actions\\"
+                    >
+                      <div
+                        class=\\"ui mini buttons\\"
+                      >
+                        <button
+                          aria-label=\\"Quote this message\\"
+                          class=\\"ui mini icon button icon-primary\\"
+                        >
+                          <i
+                            aria-hidden=\\"true\\"
+                            class=\\"quote left icon\\"
+                          />
+                        </button>
+                      </div>
+                    </div>
+                    <div
+                      class=\\"text\\"
+                    >
+                      <div>
+                        <p>
+                          Hi!
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class=\\"comment cmm__comment cmm__nometadata\\"
+                  data-testid=\\"comment\\"
+                >
+                  <div
+                    class=\\"cmm__content content\\"
+                  >
+                    <div
+                      class=\\"actions\\"
+                    >
+                      <div
+                        class=\\"ui mini buttons\\"
+                      />
+                    </div>
+                    <div
+                      class=\\"text\\"
+                    >
+                      <div>
+                        <p>
+                          <span
+                            style=\\"color: rgb(140, 140, 140);\\"
+                          >
+                            <em>
+                              has left the chat.
+                            </em>
+                          </span>
+                          <br />
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"cc__container-outer\\"
+            style=\\"width: calc(\${dimensions.width}px);\\"
+          >
+            <div>
+              <textarea
+                id=\\"x9\\"
+                name=\\"content\\"
+                options=\\"[object Object]\\"
+              >
+                &lt;p&gt;&lt;br&gt;&lt;/p&gt;
+              </textarea>
+              <button
+                aria-label=\\"Send message\\"
+              >
+                THIS BUTTON IS PROVIDED BY THE MOCK
+              </button>
+              <div
+                class=\\"se-wrapper\\"
+              >
+                <div>
+                  a
+                </div>
+                <div>
+                  b
+                </div>
+                <div>
+                  c
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          data-testid=\\"chat-main\\"
+        />
+      </div>
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`componentDidMount Emits CREATE_USER_CHANNEL on socket (chat in state) 1`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <div>
+      <div
+        class=\\"ui modal transition visible active c__container-modal resizable\\"
+        role=\\"dialog\\"
+      >
+        <button
+          aria-label=\\"Click to minimize the chat window\\"
+          class=\\"ui icon button close c__container-modal-minmax\\"
+        >
+          <i
+            aria-hidden=\\"true\\"
+            class=\\"window minimize icon\\"
+          />
+        </button>
+        <div
+          class=\\"ui header c__drag-handle\\"
+          tabindex=\\"0\\"
+        >
+          <i
+            aria-hidden=\\"true\\"
+            class=\\"discussions icon\\"
+          />
+          <div
+            class=\\"content\\"
+          >
+            Discussion
+          </div>
+        </div>
+        <div
+          class=\\"content inner visible\\"
+          tabindex=\\"0\\"
+        >
+          <div
+            class=\\"cm__container-outer\\"
+            style=\\"width: calc(\${dimensions.width}px);\\"
+          >
+            <iframe
+              aria-hidden=\\"true\\"
+              frameborder=\\"0\\"
+              src=\\"about:blank\\"
+              style=\\"display: block; opacity: 0; position: absolute; top: 0px; left: 0px; height: 100%; width: 100%; overflow: hidden; pointer-events: none; z-index: -1;\\"
+              tabindex=\\"-1\\"
+            />
+            <div
+              class=\\"cm__container-inner\\"
+              data-testid=\\"scrolling-container-outer\\"
+            >
+              <div
+                class=\\"ui large comments\\"
+              >
+                <div
+                  class=\\"comment cmm__comment\\"
+                  data-testid=\\"comment\\"
+                >
+                  <div
+                    class=\\"avatar\\"
+                  >
+                    <img
+                      src=\\"https://www.gravatar.com/avatar/386d1fcf0e6b4236c9d7064d7bb9af1a?d=robohash\\"
+                    />
+                  </div>
+                  <div
+                    class=\\"cmm__content content\\"
+                  >
+                    <span
+                      class=\\"author\\"
+                      tabindex=\\"0\\"
+                    >
+                      <span
+                        aria-label=\\"Super User (super)\\"
+                        class=\\"ui medium text\\"
+                        title=\\"Super User (super)\\"
+                      >
+                        Super User
+                      </span>
+                      
+                       
+                      <i
+                        aria-hidden=\\"true\\"
+                        class=\\"small icon chess queen\\"
+                        style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                        title=\\"Super\\"
+                      />
+                    </span>
+                    <div
+                      class=\\"metadata\\"
+                    >
+                      
+                       
+                      <span
+                        aria-label=\\"2020-12-09T16:39:10.359Z\\"
+                        tabindex=\\"0\\"
+                      >
+                        11:39 AM
+                      </span>
+                    </div>
+                    <div
+                      class=\\"actions\\"
+                    >
+                      <div
+                        class=\\"ui mini buttons\\"
+                      >
+                        <button
+                          aria-label=\\"Quote this message\\"
+                          class=\\"ui mini icon button icon-primary\\"
+                        >
+                          <i
+                            aria-hidden=\\"true\\"
+                            class=\\"quote left icon\\"
+                          />
+                        </button>
+                      </div>
+                    </div>
+                    <div
+                      class=\\"text\\"
+                    >
+                      <div>
+                        <p>
+                          Hello
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class=\\"comment cmm__comment\\"
+                  data-testid=\\"comment\\"
+                >
+                  <div
+                    class=\\"avatar\\"
+                  >
+                    <img
+                      src=\\"https://robohash.org/credible-lyrebird?bgset=bg1&size=50x50\\"
+                    />
+                  </div>
+                  <div
+                    class=\\"cmm__content content\\"
+                  >
+                    <span
+                      class=\\"author\\"
+                      tabindex=\\"0\\"
+                    >
+                      <span
+                        aria-label=\\"credible-lyrebird\\"
+                        class=\\"ui medium text\\"
+                        title=\\"credible-lyrebird\\"
+                      >
+                        credible-lyrebird
+                      </span>
+                      
+                       
+                      <i
+                        aria-hidden=\\"true\\"
+                        class=\\"small icon chalkboard teacher\\"
+                        style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                        title=\\"Facilitator\\"
+                      />
+                    </span>
+                    <div
+                      class=\\"metadata\\"
+                    >
+                      
+                       
+                      <span
+                        aria-label=\\"2020-12-09T16:40:10.359Z\\"
+                        tabindex=\\"0\\"
+                      >
+                        11:40 AM
+                      </span>
+                    </div>
+                    <div
+                      class=\\"actions\\"
+                    >
+                      <div
+                        class=\\"ui mini buttons\\"
+                      />
+                    </div>
+                    <div
+                      class=\\"text\\"
+                    >
+                      <div>
+                        <p>
+                          <span
+                            style=\\"color: rgb(140, 140, 140);\\"
+                          >
+                            <em>
+                              has joined the chat.
+                            </em>
+                          </span>
+                          <br />
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class=\\"comment cmm__comment cmm__nometadata\\"
+                  data-testid=\\"comment\\"
+                >
+                  <div
+                    class=\\"cmm__content content\\"
+                  >
+                    <div
+                      class=\\"actions\\"
+                    >
+                      <div
+                        class=\\"ui mini buttons\\"
+                      >
+                        <button
+                          aria-label=\\"Quote this message\\"
+                          class=\\"ui mini icon button icon-primary\\"
+                        >
+                          <i
+                            aria-hidden=\\"true\\"
+                            class=\\"quote left icon\\"
+                          />
+                        </button>
+                      </div>
+                    </div>
+                    <div
+                      class=\\"text\\"
+                    >
+                      <div>
+                        <p>
+                          Hi!
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class=\\"comment cmm__comment cmm__nometadata\\"
+                  data-testid=\\"comment\\"
+                >
+                  <div
+                    class=\\"cmm__content content\\"
+                  >
+                    <div
+                      class=\\"actions\\"
+                    >
+                      <div
+                        class=\\"ui mini buttons\\"
+                      />
+                    </div>
+                    <div
+                      class=\\"text\\"
+                    >
+                      <div>
+                        <p>
+                          <span
+                            style=\\"color: rgb(140, 140, 140);\\"
+                          >
+                            <em>
+                              has left the chat.
+                            </em>
+                          </span>
+                          <br />
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"cc__container-outer\\"
+            style=\\"width: calc(\${dimensions.width}px);\\"
+          >
+            <div>
+              <textarea
+                id=\\"x10\\"
+                name=\\"content\\"
+                options=\\"[object Object]\\"
+              >
+                &lt;p&gt;&lt;br&gt;&lt;/p&gt;
+              </textarea>
+              <button
+                aria-label=\\"Send message\\"
+              >
+                THIS BUTTON IS PROVIDED BY THE MOCK
+              </button>
+              <div
+                class=\\"se-wrapper\\"
+              >
+                <div>
+                  a
+                </div>
+                <div>
+                  b
+                </div>
+                <div>
+                  c
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          data-testid=\\"chat-main\\"
+        />
+      </div>
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`componentDidMount Emits CREATE_USER_CHANNEL on socket (chat in state) 3`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <div>
+      <div
+        class=\\"ui modal transition visible active c__container-modal resizable\\"
+        role=\\"dialog\\"
+      >
+        <button
+          aria-label=\\"Click to minimize the chat window\\"
+          class=\\"ui icon button close c__container-modal-minmax\\"
+        >
+          <i
+            aria-hidden=\\"true\\"
+            class=\\"window minimize icon\\"
+          />
+        </button>
+        <div
+          class=\\"ui header c__drag-handle\\"
+          tabindex=\\"0\\"
+        >
+          <i
+            aria-hidden=\\"true\\"
+            class=\\"discussions icon\\"
+          />
+          <div
+            class=\\"content\\"
+          >
+            Discussion
+          </div>
+        </div>
+        <div
+          class=\\"content inner visible\\"
+          tabindex=\\"0\\"
+        >
+          <div
+            class=\\"cm__container-outer\\"
+            style=\\"width: calc(\${dimensions.width}px);\\"
+          >
+            <iframe
+              aria-hidden=\\"true\\"
+              frameborder=\\"0\\"
+              src=\\"about:blank\\"
+              style=\\"display: block; opacity: 0; position: absolute; top: 0px; left: 0px; height: 100%; width: 100%; overflow: hidden; pointer-events: none; z-index: -1;\\"
+              tabindex=\\"-1\\"
+            />
+            <div
+              class=\\"cm__container-inner\\"
+              data-testid=\\"scrolling-container-outer\\"
+            >
+              <div
+                class=\\"ui large comments\\"
+              >
+                <div
+                  class=\\"comment cmm__comment\\"
+                  data-testid=\\"comment\\"
+                >
+                  <div
+                    class=\\"avatar\\"
+                  >
+                    <img
+                      src=\\"https://www.gravatar.com/avatar/386d1fcf0e6b4236c9d7064d7bb9af1a?d=robohash\\"
+                    />
+                  </div>
+                  <div
+                    class=\\"cmm__content content\\"
+                  >
+                    <span
+                      class=\\"author\\"
+                      tabindex=\\"0\\"
+                    >
+                      <span
+                        aria-label=\\"Super User (super)\\"
+                        class=\\"ui medium text\\"
+                        title=\\"Super User (super)\\"
+                      >
+                        Super User
+                      </span>
+                      
+                       
+                      <i
+                        aria-hidden=\\"true\\"
+                        class=\\"small icon chess queen\\"
+                        style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                        title=\\"Super\\"
+                      />
+                    </span>
+                    <div
+                      class=\\"metadata\\"
+                    >
+                      
+                       
+                      <span
+                        aria-label=\\"2020-12-09T16:39:10.359Z\\"
+                        tabindex=\\"0\\"
+                      >
+                        11:39 AM
+                      </span>
+                    </div>
+                    <div
+                      class=\\"actions\\"
+                    >
+                      <div
+                        class=\\"ui mini buttons\\"
+                      >
+                        <button
+                          aria-label=\\"Quote this message\\"
+                          class=\\"ui mini icon button icon-primary\\"
+                        >
+                          <i
+                            aria-hidden=\\"true\\"
+                            class=\\"quote left icon\\"
+                          />
+                        </button>
+                      </div>
+                    </div>
+                    <div
+                      class=\\"text\\"
+                    >
+                      <div>
+                        <p>
+                          Hello
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class=\\"comment cmm__comment\\"
+                  data-testid=\\"comment\\"
+                >
+                  <div
+                    class=\\"avatar\\"
+                  >
+                    <img
+                      src=\\"https://robohash.org/credible-lyrebird?bgset=bg1&size=50x50\\"
+                    />
+                  </div>
+                  <div
+                    class=\\"cmm__content content\\"
+                  >
+                    <span
+                      class=\\"author\\"
+                      tabindex=\\"0\\"
+                    >
+                      <span
+                        aria-label=\\"credible-lyrebird\\"
+                        class=\\"ui medium text\\"
+                        title=\\"credible-lyrebird\\"
+                      >
+                        credible-lyrebird
+                      </span>
+                      
+                       
+                      <i
+                        aria-hidden=\\"true\\"
+                        class=\\"small icon chalkboard teacher\\"
+                        style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                        title=\\"Facilitator\\"
+                      />
+                    </span>
+                    <div
+                      class=\\"metadata\\"
+                    >
+                      
+                       
+                      <span
+                        aria-label=\\"2020-12-09T16:40:10.359Z\\"
+                        tabindex=\\"0\\"
+                      >
+                        11:40 AM
+                      </span>
+                    </div>
+                    <div
+                      class=\\"actions\\"
+                    >
+                      <div
+                        class=\\"ui mini buttons\\"
+                      />
+                    </div>
+                    <div
+                      class=\\"text\\"
+                    >
+                      <div>
+                        <p>
+                          <span
+                            style=\\"color: rgb(140, 140, 140);\\"
+                          >
+                            <em>
+                              has joined the chat.
+                            </em>
+                          </span>
+                          <br />
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class=\\"comment cmm__comment cmm__nometadata\\"
+                  data-testid=\\"comment\\"
+                >
+                  <div
+                    class=\\"cmm__content content\\"
+                  >
+                    <div
+                      class=\\"actions\\"
+                    >
+                      <div
+                        class=\\"ui mini buttons\\"
+                      >
+                        <button
+                          aria-label=\\"Quote this message\\"
+                          class=\\"ui mini icon button icon-primary\\"
+                        >
+                          <i
+                            aria-hidden=\\"true\\"
+                            class=\\"quote left icon\\"
+                          />
+                        </button>
+                      </div>
+                    </div>
+                    <div
+                      class=\\"text\\"
+                    >
+                      <div>
+                        <p>
+                          Hi!
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class=\\"comment cmm__comment cmm__nometadata\\"
+                  data-testid=\\"comment\\"
+                >
+                  <div
+                    class=\\"cmm__content content\\"
+                  >
+                    <div
+                      class=\\"actions\\"
+                    >
+                      <div
+                        class=\\"ui mini buttons\\"
+                      />
+                    </div>
+                    <div
+                      class=\\"text\\"
+                    >
+                      <div>
+                        <p>
+                          <span
+                            style=\\"color: rgb(140, 140, 140);\\"
+                          >
+                            <em>
+                              has left the chat.
+                            </em>
+                          </span>
+                          <br />
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"cc__container-outer\\"
+            style=\\"width: calc(\${dimensions.width}px);\\"
+          >
+            <div>
+              <textarea
+                id=\\"x10\\"
                 name=\\"content\\"
                 options=\\"[object Object]\\"
               >
@@ -11030,7 +13375,7 @@ exports[`componentWillUnmount Calls onbeforeunload handler when beforeunload occ
           >
             <div>
               <textarea
-                id=\\"x11\\"
+                id=\\"x14\\"
                 name=\\"content\\"
                 options=\\"[object Object]\\"
               >
@@ -11343,7 +13688,7 @@ exports[`componentWillUnmount Calls onbeforeunload handler when beforeunload occ
           >
             <div>
               <textarea
-                id=\\"x11\\"
+                id=\\"x14\\"
                 name=\\"content\\"
                 options=\\"[object Object]\\"
               >
@@ -11656,7 +14001,7 @@ exports[`componentWillUnmount Calls onbeforeunload handler when unmount occurs 1
           >
             <div>
               <textarea
-                id=\\"x12\\"
+                id=\\"x15\\"
                 name=\\"content\\"
                 options=\\"[object Object]\\"
               >
@@ -11978,7 +14323,7 @@ exports[`componentWillUnmount Removes onbeforeunload handler 1`] = `
           >
             <div>
               <textarea
-                id=\\"x10\\"
+                id=\\"x13\\"
                 name=\\"content\\"
                 options=\\"[object Object]\\"
               >
@@ -12291,7 +14636,7 @@ exports[`componentWillUnmount Removes onbeforeunload handler 2`] = `
           >
             <div>
               <textarea
-                id=\\"x10\\"
+                id=\\"x13\\"
                 name=\\"content\\"
                 options=\\"[object Object]\\"
               >
@@ -12384,7 +14729,7 @@ exports[`onQuote 1`] = `
           >
             <div>
               <textarea
-                id=\\"x25\\"
+                id=\\"x28\\"
                 name=\\"content\\"
                 options=\\"[object Object]\\"
               >
@@ -12697,7 +15042,7 @@ exports[`onQuote 3`] = `
           >
             <div>
               <textarea
-                id=\\"x25\\"
+                id=\\"x28\\"
                 name=\\"content\\"
                 options=\\"[object Object]\\"
               >
@@ -13024,7 +15369,7 @@ exports[`onQuote 5`] = `
           >
             <div>
               <textarea
-                id=\\"x25\\"
+                id=\\"x28\\"
                 name=\\"content\\"
                 options=\\"[object Object]\\"
               >

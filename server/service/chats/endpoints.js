@@ -293,7 +293,7 @@ async function joinChat(req, res) {
   const chat = await db.joinChat(
     Number(req.params.id),
     req.session.user.id,
-    req.body.persona.id
+    req.body.persona ? req.body.persona.id : null
   );
   res.json({ chat });
 }

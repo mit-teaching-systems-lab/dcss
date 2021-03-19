@@ -2,13 +2,8 @@ import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import pluralize from 'pluralize';
-import {
-  getChatsByCohortId,
-  setChat
-} from '@actions/chat';
-import {
-  setRun
-} from '@actions/run';
+import { getChatsByCohortId, setChat } from '@actions/chat';
+import { setRun } from '@actions/run';
 import {
   getCohort,
   getCohortScenarios,
@@ -517,7 +512,7 @@ CohortScenarios.propTypes = {
   user: PropTypes.object,
   getUsers: PropTypes.func,
   setChat: PropTypes.func,
-  usersById: PropTypes.object,
+  usersById: PropTypes.object
 };
 
 const mapStateToProps = (state, ownProps) => {
@@ -537,7 +532,7 @@ const mapDispatchToProps = dispatch => ({
   getUsers: () => dispatch(getUsers()),
   setChat: (id, params) => dispatch(setChat(id, params)),
   setRun: (id, params) => dispatch(setRun(id, params)),
-  getChatsByCohortId: id => dispatch(getChatsByCohortId(id)),
+  getChatsByCohortId: id => dispatch(getChatsByCohortId(id))
 });
 
 export default connect(

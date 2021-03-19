@@ -197,6 +197,11 @@
 }
 */
 
+.cm__container-inner > .ui.large.comments {
+  max-width: unset !important;
+}
+
+
 .resizable {
   height: 100% !important;
   width: 100% !important;

@@ -1,7 +1,8 @@
 const { sql, updateQuery } = require('../../util/sqlHelpers');
 const { query, withClientTransaction } = require('../../util/db');
 // const rolesDb = require('../roles/db');
-const scenarioDb = require('../scenarios/db');
+const chatsdb = require('../chats/db');
+const scenariosdb = require('../scenarios/db');
 const runDb = require('../runs/db');
 
 async function getCohortScenariosIdList(id) {
@@ -21,7 +22,7 @@ async function getCohortScenarios(id) {
   const scenarioIds = await getCohortScenariosIdList(id);
   const scenarios = [];
   for (let scenarioId of scenarioIds) {
-    scenarios.push(await scenarioDb.getScenario(scenarioId));
+    scenarios.push(await scenariosdb.getScenario(scenarioId));
   }
   return scenarios;
 }
@@ -239,9 +240,31 @@ async function __getAggregatedCohort(cohort) {
   const runs = await getCohortRuns(cohort.id);
   const scenarios = await getCohortScenariosIdList(cohort.id);
   const cohortUsers = await getCohortUsers(cohort.id);
+  let chat;
+
+  if (!cohort.chat_id) {
+    const owner = cohortUsers.users.find(({ is_owner }) => is_owner);
+    const scenario_id = null;
+    const is_open = false;
+    const chatCreated = await chatsdb.createChat(
+      owner.id,
+      scenario_id,
+      cohort.id,
+      is_open
+    );
+    await setCohort(cohort.id, {
+      chat_id: chatCreated.id
+    });
+    chat = await chatsdb.joinChat(chatCreated.id, owner.id);
+    cohort.chat_id = chat.id;
+  } else {
+    chat = await chatsdb.getChat(cohort.chat_id);
+  }
+
   return {
     ...cohort,
     ...cohortUsers,
+    chat,
     runs,
     scenarios
   };
@@ -256,6 +279,7 @@ async function getCohort(id) {
       cohort.updated_at,
       cohort.deleted_at,
       cohort.is_archived,
+      cohort.chat_id,
       cur.roles
     FROM cohort
     INNER JOIN (
@@ -669,6 +693,7 @@ async function getCohortChatsOverview(id) {
     FROM chat
     JOIN ccu ON ccu.id = chat.id
     WHERE chat.cohort_id = ${id}
+    AND chat.scenario_id IS NOT NULL
     AND chat.ended_at IS NULL
   `);
 

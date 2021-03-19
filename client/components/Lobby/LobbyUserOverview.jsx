@@ -38,7 +38,6 @@ class LobbyUserOverview extends Component {
     this.timeout = setTimeout(async () => {
       await this.refresh;
     }, 5000);
-    console.log('REFRESHED');
   }
 
   async componentDidMount() {
@@ -107,14 +106,14 @@ class LobbyUserOverview extends Component {
       const key = Identity.key({ chat, index });
       const host = this.props.usersById[chat.host_id];
       const scenario = this.props.scenariosById[chat.scenario_id];
-      const ownerDisplay = (
+      const ownerDisplay = scenario ? (
         <Fragment>
           <strong>
             <Username user={host} possessive />
           </strong>{' '}
           {scenario.name} room
         </Fragment>
-      );
+      ) : null;
       const avatar = new Avatar(host);
       const personasInUse = chat.users.reduce((accum, user) => {
         if (user.is_present && user.persona_id !== null) {

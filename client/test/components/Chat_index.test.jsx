@@ -269,6 +269,7 @@ jest.mock('../../actions/user');
 let user;
 let superUser;
 let chatUsers;
+let chatUsersById;
 let chat;
 let chats;
 let chatsById;
@@ -345,6 +346,11 @@ beforeEach(() => {
     }
   ];
 
+  chatUsersById = chatUsers.reduce((accum, chatUser) => {
+    accum[chatUser.id] = chatUser;
+    return accum;
+  }, {});
+
   chat = {
     id: 1,
     scenario_id: 42,
@@ -354,7 +360,8 @@ beforeEach(() => {
     updated_at: null,
     deleted_at: null,
     ended_at: null,
-    users: chatUsers
+    users: chatUsers,
+    usersById: chatUsersById
   };
 
   chats = [chat];
@@ -506,50 +513,7 @@ test('Chat', () => {
   expect(Chat).toBeDefined();
 });
 
-/** @GENERATED: BEGIN **/
-test('Render 1 1', async done => {
-  const Component = Chat;
-  const props = {
-    ...commonProps,
-    chat
-  };
-
-  const state = {
-    ...commonState
-  };
-
-  const ConnectedRoutedComponent = reduxer(Component, props, state);
-
-  const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
-  expect(asFragment()).toMatchSnapshot();
-
-  done();
-});
-/** @GENERATED: END **/
-
 /* INJECTION STARTS HERE */
-
-test('No chat id, defaults to 1. This test should fail when the feature is completed', async done => {
-  const Component = Chat;
-
-  const props = {
-    ...commonProps
-  };
-
-  const state = {
-    ...commonState,
-    chat: {
-      id: null
-    }
-  };
-
-  const ConnectedRoutedComponent = reduxer(Component, props, state);
-
-  await render(<ConnectedRoutedComponent {...props} />);
-  expect(serialize()).toMatchSnapshot();
-
-  done();
-});
 
 test('Layout on mobile', async done => {
   const Component = Chat;
@@ -560,7 +524,7 @@ test('Layout on mobile', async done => {
 
   const props = {
     ...commonProps,
-    id: 1
+    chat
   };
 
   const state = {
@@ -573,10 +537,8 @@ test('Layout on mobile', async done => {
   const ConnectedRoutedComponent = reduxer(Component, props, state);
 
   await render(<ConnectedRoutedComponent {...props} />);
-  expect(serialize()).toMatchSnapshot();
-
   await waitFor(() =>
-    expect(screen.queryAllByTestId('chat-main').length).toBe(1)
+    expect(screen.getByTestId('chat-main')).toBeInTheDocument()
   );
   expect(serialize()).toMatchSnapshot();
 
@@ -588,23 +550,18 @@ test('Layout on desktop', async done => {
 
   const props = {
     ...commonProps,
-    id: 1
+    chat
   };
 
   const state = {
-    ...commonState,
-    chat: {
-      id: null
-    }
+    ...commonState
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
 
   await render(<ConnectedRoutedComponent {...props} />);
-  expect(serialize()).toMatchSnapshot();
-
   await waitFor(() =>
-    expect(screen.queryAllByTestId('chat-main').length).toBe(1)
+    expect(screen.getByTestId('chat-main')).toBeInTheDocument()
   );
   expect(serialize()).toMatchSnapshot();
 
@@ -612,38 +569,12 @@ test('Layout on desktop', async done => {
 });
 
 describe('componentDidMount', () => {
-  test('Adds CHAT_ENDED handler', async done => {
+  test('Adds CHAT_ENDED handler (chat in props)', async done => {
     const Component = Chat;
 
     const props = {
-      ...commonProps
-    };
-
-    const state = {
-      ...commonState
-    };
-
-    const ConnectedRoutedComponent = reduxer(Component, props, state);
-
-    await render(<ConnectedRoutedComponent {...props} />);
-    expect(serialize()).toMatchSnapshot();
-
-    await waitFor(() => expect(globalThis.mockSocket.on).toHaveBeenCalled());
-    expect(globalThis.mockSocket.on.mock.calls[0]).toMatchInlineSnapshot(`
-      Array [
-        "chat-ended",
-        [Function],
-      ]
-    `);
-    expect(serialize()).toMatchSnapshot();
-
-    done();
-  });
-  test('Adds JOIN_OR_PART handler', async done => {
-    const Component = Chat;
-
-    const props = {
-      ...commonProps
+      ...commonProps,
+      chat
     };
 
     const state = {
@@ -667,7 +598,7 @@ describe('componentDidMount', () => {
     done();
   });
 
-  test('Adds onbeforeunload handler', async done => {
+  test('Adds CHAT_ENDED handler (chat in state)', async done => {
     const Component = Chat;
 
     const props = {
@@ -676,9 +607,94 @@ describe('componentDidMount', () => {
 
     const state = {
       ...commonState,
-      chat: {
-        id: null
-      }
+      chat
+    };
+
+    const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+    await render(<ConnectedRoutedComponent {...props} />);
+    expect(serialize()).toMatchSnapshot();
+
+    await waitFor(() => expect(globalThis.mockSocket.on).toHaveBeenCalled());
+    expect(globalThis.mockSocket.on.mock.calls[0]).toMatchInlineSnapshot(`
+      Array [
+        "chat-ended",
+        [Function],
+      ]
+    `);
+    expect(serialize()).toMatchSnapshot();
+
+    done();
+  });
+
+  test('Adds JOIN_OR_PART handler (chat in props)', async done => {
+    const Component = Chat;
+
+    const props = {
+      ...commonProps,
+      chat
+    };
+
+    const state = {
+      ...commonState
+    };
+
+    const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+    await render(<ConnectedRoutedComponent {...props} />);
+    expect(serialize()).toMatchSnapshot();
+
+    await waitFor(() => expect(globalThis.mockSocket.on).toHaveBeenCalled());
+    expect(globalThis.mockSocket.on.mock.calls[0]).toMatchInlineSnapshot(`
+      Array [
+        "chat-ended",
+        [Function],
+      ]
+    `);
+    expect(serialize()).toMatchSnapshot();
+
+    done();
+  });
+
+  test('Adds JOIN_OR_PART handler (chat in state)', async done => {
+    const Component = Chat;
+
+    const props = {
+      ...commonProps
+    };
+
+    const state = {
+      ...commonState,
+      chat
+    };
+
+    const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+    await render(<ConnectedRoutedComponent {...props} />);
+    expect(serialize()).toMatchSnapshot();
+
+    await waitFor(() => expect(globalThis.mockSocket.on).toHaveBeenCalled());
+    expect(globalThis.mockSocket.on.mock.calls[0]).toMatchInlineSnapshot(`
+      Array [
+        "chat-ended",
+        [Function],
+      ]
+    `);
+    expect(serialize()).toMatchSnapshot();
+
+    done();
+  });
+
+  test('Adds onbeforeunload handler (chat in props)', async done => {
+    const Component = Chat;
+
+    const props = {
+      ...commonProps,
+      chat
+    };
+
+    const state = {
+      ...commonState
     };
 
     const ConnectedRoutedComponent = reduxer(Component, props, state);
@@ -697,11 +713,40 @@ describe('componentDidMount', () => {
     done();
   });
 
-  test('Emits CREATE_USER_CHANNEL on socket', async done => {
+  test('Adds onbeforeunload handler (chat in state)', async done => {
     const Component = Chat;
 
     const props = {
       ...commonProps
+    };
+
+    const state = {
+      ...commonState,
+      chat
+    };
+
+    const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+    await render(<ConnectedRoutedComponent {...props} />);
+    expect(serialize()).toMatchSnapshot();
+
+    await waitFor(() =>
+      expect(window.addEventListener).toHaveBeenCalledWith(
+        'beforeunload',
+        expect.any(Function)
+      )
+    );
+    expect(serialize()).toMatchSnapshot();
+
+    done();
+  });
+
+  test('Emits CREATE_USER_CHANNEL on socket (chat in props)', async done => {
+    const Component = Chat;
+
+    const props = {
+      ...commonProps,
+      chat
     };
 
     const state = {
@@ -715,7 +760,7 @@ describe('componentDidMount', () => {
     );
 
     await waitFor(() =>
-      expect(screen.queryAllByTestId('chat-main').length).toBe(1)
+      expect(screen.getByTestId('chat-main')).toBeInTheDocument()
     );
 
     expect(serialize()).toMatchSnapshot();
@@ -728,7 +773,7 @@ describe('componentDidMount', () => {
           Object {
             "agent": Object {},
             "chat": Object {
-              "host_id": 2,
+              "host_id": 999,
               "id": 1,
             },
             "prompt": Object {
@@ -747,7 +792,7 @@ describe('componentDidMount', () => {
           Object {
             "agent": Object {},
             "chat": Object {
-              "host_id": 2,
+              "host_id": 999,
               "id": 1,
             },
             "prompt": Object {
@@ -768,7 +813,7 @@ describe('componentDidMount', () => {
     done();
   });
 
-  test('Emits CREATE_CHAT_CHANNEL on socket', async done => {
+  test('Emits CREATE_USER_CHANNEL on socket (chat in state)', async done => {
     const Component = Chat;
 
     const props = {
@@ -776,7 +821,8 @@ describe('componentDidMount', () => {
     };
 
     const state = {
-      ...commonState
+      ...commonState,
+      chat
     };
 
     const ConnectedRoutedComponent = reduxer(Component, props, state);
@@ -786,7 +832,7 @@ describe('componentDidMount', () => {
     );
 
     await waitFor(() =>
-      expect(screen.queryAllByTestId('chat-main').length).toBe(1)
+      expect(screen.getByTestId('chat-main')).toBeInTheDocument()
     );
 
     expect(serialize()).toMatchSnapshot();
@@ -799,7 +845,7 @@ describe('componentDidMount', () => {
           Object {
             "agent": Object {},
             "chat": Object {
-              "host_id": 2,
+              "host_id": 999,
               "id": 1,
             },
             "prompt": Object {
@@ -818,7 +864,151 @@ describe('componentDidMount', () => {
           Object {
             "agent": Object {},
             "chat": Object {
-              "host_id": 2,
+              "host_id": 999,
+              "id": 1,
+            },
+            "prompt": Object {
+              "id": null,
+            },
+            "response": Object {
+              "id": undefined,
+            },
+            "user": Object {
+              "id": null,
+            },
+          },
+        ],
+      ]
+    `);
+    expect(serialize()).toMatchSnapshot();
+
+    done();
+  });
+
+  test('Emits CREATE_CHAT_CHANNEL on socket (chat in props)', async done => {
+    const Component = Chat;
+
+    const props = {
+      ...commonProps,
+      chat
+    };
+
+    const state = {
+      ...commonState
+    };
+
+    const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+    const { asFragment, unmount } = render(
+      <ConnectedRoutedComponent {...props} />
+    );
+
+    await waitFor(() =>
+      expect(screen.getByTestId('chat-main')).toBeInTheDocument()
+    );
+
+    expect(serialize()).toMatchSnapshot();
+
+    expect(globalThis.mockSocket.emit).toHaveBeenCalledTimes(2);
+    expect(globalThis.mockSocket.emit.mock.calls).toMatchInlineSnapshot(`
+      Array [
+        Array [
+          "create-chat-channel",
+          Object {
+            "agent": Object {},
+            "chat": Object {
+              "host_id": 999,
+              "id": 1,
+            },
+            "prompt": Object {
+              "id": null,
+            },
+            "response": Object {
+              "id": undefined,
+            },
+            "user": Object {
+              "id": null,
+            },
+          },
+        ],
+        Array [
+          "create-user-channel",
+          Object {
+            "agent": Object {},
+            "chat": Object {
+              "host_id": 999,
+              "id": 1,
+            },
+            "prompt": Object {
+              "id": null,
+            },
+            "response": Object {
+              "id": undefined,
+            },
+            "user": Object {
+              "id": null,
+            },
+          },
+        ],
+      ]
+    `);
+    expect(serialize()).toMatchSnapshot();
+
+    done();
+  });
+
+  test('Emits CREATE_CHAT_CHANNEL on socket (chat in state)', async done => {
+    const Component = Chat;
+
+    const props = {
+      ...commonProps
+    };
+
+    const state = {
+      ...commonState,
+      chat
+    };
+
+    const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+    const { asFragment, unmount } = render(
+      <ConnectedRoutedComponent {...props} />
+    );
+
+    await waitFor(() =>
+      expect(screen.getByTestId('chat-main')).toBeInTheDocument()
+    );
+
+    expect(serialize()).toMatchSnapshot();
+
+    expect(globalThis.mockSocket.emit).toHaveBeenCalledTimes(2);
+    expect(globalThis.mockSocket.emit.mock.calls).toMatchInlineSnapshot(`
+      Array [
+        Array [
+          "create-chat-channel",
+          Object {
+            "agent": Object {},
+            "chat": Object {
+              "host_id": 999,
+              "id": 1,
+            },
+            "prompt": Object {
+              "id": null,
+            },
+            "response": Object {
+              "id": undefined,
+            },
+            "user": Object {
+              "id": null,
+            },
+          },
+        ],
+        Array [
+          "create-user-channel",
+          Object {
+            "agent": Object {},
+            "chat": Object {
+              "host_id": 999,
               "id": 1,
             },
             "prompt": Object {
@@ -845,7 +1035,8 @@ describe('componentWillUnmount', () => {
     const Component = Chat;
 
     const props = {
-      ...commonProps
+      ...commonProps,
+      chat
     };
 
     const state = {
@@ -859,7 +1050,7 @@ describe('componentWillUnmount', () => {
     );
 
     await waitFor(() =>
-      expect(screen.queryAllByTestId('chat-main').length).toBe(1)
+      expect(screen.getByTestId('chat-main')).toBeInTheDocument()
     );
 
     expect(serialize()).toMatchSnapshot();
@@ -889,7 +1080,8 @@ describe('componentWillUnmount', () => {
     const Component = Chat;
 
     const props = {
-      ...commonProps
+      ...commonProps,
+      chat
     };
 
     const state = {
@@ -906,7 +1098,7 @@ describe('componentWillUnmount', () => {
     );
 
     await waitFor(() =>
-      expect(screen.queryAllByTestId('chat-main').length).toBe(1)
+      expect(screen.getByTestId('chat-main')).toBeInTheDocument()
     );
 
     expect(serialize()).toMatchSnapshot();
@@ -926,7 +1118,7 @@ describe('componentWillUnmount', () => {
           Object {
             "agent": Object {},
             "chat": Object {
-              "host_id": 2,
+              "host_id": 999,
               "id": 1,
             },
             "prompt": Object {
@@ -945,7 +1137,7 @@ describe('componentWillUnmount', () => {
           Object {
             "agent": Object {},
             "chat": Object {
-              "host_id": 2,
+              "host_id": 999,
               "id": 1,
             },
             "prompt": Object {
@@ -974,7 +1166,7 @@ describe('componentWillUnmount', () => {
           Object {
             "agent": Object {},
             "chat": Object {
-              "host_id": 2,
+              "host_id": 999,
               "id": 1,
             },
             "prompt": Object {
@@ -993,7 +1185,7 @@ describe('componentWillUnmount', () => {
           Object {
             "agent": Object {},
             "chat": Object {
-              "host_id": 2,
+              "host_id": 999,
               "id": 1,
             },
             "prompt": Object {
@@ -1019,7 +1211,8 @@ describe('componentWillUnmount', () => {
     const Component = Chat;
 
     const props = {
-      ...commonProps
+      ...commonProps,
+      chat
     };
 
     const state = {
@@ -1036,7 +1229,7 @@ describe('componentWillUnmount', () => {
     );
 
     await waitFor(() =>
-      expect(screen.queryAllByTestId('chat-main').length).toBe(1)
+      expect(screen.getByTestId('chat-main')).toBeInTheDocument()
     );
 
     expect(serialize()).toMatchSnapshot();
@@ -1056,7 +1249,7 @@ describe('componentWillUnmount', () => {
           Object {
             "agent": Object {},
             "chat": Object {
-              "host_id": 2,
+              "host_id": 999,
               "id": 1,
             },
             "prompt": Object {
@@ -1075,7 +1268,7 @@ describe('componentWillUnmount', () => {
           Object {
             "agent": Object {},
             "chat": Object {
-              "host_id": 2,
+              "host_id": 999,
               "id": 1,
             },
             "prompt": Object {
@@ -1104,7 +1297,7 @@ describe('componentWillUnmount', () => {
           Object {
             "agent": Object {},
             "chat": Object {
-              "host_id": 2,
+              "host_id": 999,
               "id": 1,
             },
             "prompt": Object {
@@ -1123,7 +1316,7 @@ describe('componentWillUnmount', () => {
           Object {
             "agent": Object {},
             "chat": Object {
-              "host_id": 2,
+              "host_id": 999,
               "id": 1,
             },
             "prompt": Object {
@@ -1973,10 +2166,8 @@ test('Rnd: onDragStop/onResizeStop', async done => {
   const ConnectedRoutedComponent = reduxer(Component, props, state);
 
   await render(<ConnectedRoutedComponent {...props} />);
-  expect(serialize()).toMatchSnapshot();
-
   await waitFor(() =>
-    expect(screen.queryAllByTestId('chat-main').length).toBe(1)
+    expect(screen.getByTestId('chat-main')).toBeInTheDocument()
   );
   expect(serialize()).toMatchSnapshot();
 
@@ -2242,7 +2433,7 @@ test('Rnd: onDragStop/onResizeStop', async done => {
               >
                 <ChatComposer
                   defaultValue="<p>credible-lyrebird wrote:<blockquote><p>Hi!</p></blockquote></p>"
-                  id="x26"
+                  id="x29"
                   name="content"
                   onChange={[Function]}
                   onInput={[Function]}
@@ -2309,7 +2500,7 @@ test('Rnd: onDragStop/onResizeStop', async done => {
 
   expect(Storage.merge.mock.calls[0]).toMatchInlineSnapshot(`
     Array [
-      "chat/*",
+      "chat/scenario/*",
       Object {
         "dimensions": Object {
           "height": 590,
@@ -2344,10 +2535,8 @@ test('Rnd: onDrag/onResize', async done => {
   const ConnectedRoutedComponent = reduxer(Component, props, state);
 
   await render(<ConnectedRoutedComponent {...props} />);
-  expect(serialize()).toMatchSnapshot();
-
   await waitFor(() =>
-    expect(screen.queryAllByTestId('chat-main').length).toBe(1)
+    expect(screen.getByTestId('chat-main')).toBeInTheDocument()
   );
   expect(serialize()).toMatchSnapshot();
 
@@ -2613,7 +2802,7 @@ test('Rnd: onDrag/onResize', async done => {
               >
                 <ChatComposer
                   defaultValue="<p>credible-lyrebird wrote:<blockquote><p>Hi!</p></blockquote></p>"
-                  id="x27"
+                  id="x30"
                   name="content"
                   onChange={[Function]}
                   onInput={[Function]}
@@ -3042,7 +3231,7 @@ test('Receives new message, minimized, mobile', async done => {
   done();
 });
 
-test('Chat id provided via props, but not yet loaded', async done => {
+test('Chat id provided, but not yet loaded (chat in state)', async done => {
   const Component = Chat;
 
   const props = {
@@ -3066,7 +3255,7 @@ test('Chat id provided via props, but not yet loaded', async done => {
   done();
 });
 
-test('Chat has ended', async done => {
+test('Chat has ended (chat in props)', async done => {
   const Component = Chat;
 
   chat.ended_at = 'anything but null';
@@ -3074,6 +3263,37 @@ test('Chat has ended', async done => {
   const props = {
     ...commonProps,
     chat
+  };
+
+  const state = {
+    ...commonState
+  };
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  await render(<ConnectedRoutedComponent {...props} />);
+  expect(serialize()).toMatchSnapshot();
+
+  await waitFor(async () =>
+    expect(await screen.getByLabelText('Chat is closed')).toBeInTheDocument()
+  );
+
+  window.alert = jest.fn();
+
+  userEvent.click(await screen.getByLabelText('Chat is closed'));
+  await waitForPopper();
+
+  expect(window.alert).toHaveBeenCalled();
+  done();
+});
+
+test('Chat has ended (chat in state)', async done => {
+  const Component = Chat;
+
+  chat.ended_at = 'anything but null';
+
+  const props = {
+    ...commonProps
   };
 
   const state = {
@@ -3096,5 +3316,28 @@ test('Chat has ended', async done => {
   await waitForPopper();
 
   expect(window.alert).toHaveBeenCalled();
+  done();
+});
+
+test('Provided header', async done => {
+  const Component = Chat;
+
+  const props = {
+    ...commonProps,
+    header: 'Foo'
+  };
+
+  const state = {
+    ...commonState,
+    chat
+  };
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  await render(<ConnectedRoutedComponent {...props} />);
+  await waitFor(() =>
+    expect(screen.getByTestId('chat-main')).toBeInTheDocument()
+  );
+  expect(serialize()).toMatchSnapshot();
   done();
 });

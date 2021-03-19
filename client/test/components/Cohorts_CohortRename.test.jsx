@@ -330,6 +330,90 @@ beforeEach(() => {
           }
         }
       }
+    },
+    chat: {
+      id: 1,
+      scenario_id: null,
+      cohort_id: 1,
+      host_id: 999,
+      created_at: '2020-12-08T21:51:33.659Z',
+      updated_at: null,
+      deleted_at: null,
+      ended_at: null,
+      users: [
+        {
+          username: 'super',
+          personalname: 'Super User',
+          email: 'super@email.com',
+          id: 999,
+          roles: ['participant', 'super_admin'],
+          is_anonymous: false,
+          is_super: true,
+          progress: {
+            completed: [1],
+            latestByScenarioId: {
+              1: {
+                is_complete: true,
+                event_id: 1909,
+                created_at: 1602454306144,
+                generic: 'arrived at a slide.',
+                name: 'slide-arrival',
+                url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+              }
+            }
+          }
+        },
+        {
+          id: 4,
+          username: 'credible-lyrebird',
+          personalname: null,
+          email: null,
+          is_anonymous: true,
+          single_use_password: false,
+          roles: ['participant', 'facilitator'],
+          is_super: false,
+          updated_at: '2020-12-10T17:50:19.074Z',
+          is_muted: false,
+          is_present: true
+        }
+      ],
+      usersById: {
+        4: {
+          id: 4,
+          username: 'credible-lyrebird',
+          personalname: null,
+          email: null,
+          is_anonymous: true,
+          single_use_password: false,
+          roles: ['participant', 'facilitator'],
+          is_super: false,
+          updated_at: '2020-12-10T17:50:19.074Z',
+          is_muted: false,
+          is_present: true
+        },
+        999: {
+          username: 'super',
+          personalname: 'Super User',
+          email: 'super@email.com',
+          id: 999,
+          roles: ['participant', 'super_admin'],
+          is_anonymous: false,
+          is_super: true,
+          progress: {
+            completed: [1],
+            latestByScenarioId: {
+              1: {
+                is_complete: true,
+                event_id: 1909,
+                created_at: 1602454306144,
+                generic: 'arrived at a slide.',
+                name: 'slide-arrival',
+                url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+              }
+            }
+          }
+        }
+      }
     }
   };
 

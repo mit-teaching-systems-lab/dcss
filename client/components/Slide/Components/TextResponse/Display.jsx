@@ -103,6 +103,7 @@ class Display extends Component {
       isEmbeddedInSVG,
       prompt,
       placeholder,
+      recallSharedWithRoles,
       recallId,
       required,
       responseId,

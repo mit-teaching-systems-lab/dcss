@@ -1,12 +1,25 @@
 const { asyncMiddleware } = require('../../util/api');
 const db = require('./db');
-const { getUserById } = require('../session/db');
-const { getScenarioPrompts } = require('../scenarios/db');
+const chatsdb = require('../chats/db');
+const sessiondb = require('../session/db');
+const scenariosdb = require('../scenarios/db');
 
 async function createCohort(req, res) {
+  const scenario_id = null;
+  const is_open = false;
   const user_id = req.session.user.id;
   const { name } = req.body;
-  const cohort = await db.createCohort(name, user_id);
+  const cohortCreated = await db.createCohort(name, user_id);
+  const chatCreated = await chatsdb.createChat(
+    user_id,
+    scenario_id,
+    cohortCreated.id,
+    is_open
+  );
+  const chat = await chatsdb.joinChat(chatCreated.id, user_id);
+  const cohort = await db.setCohort(cohortCreated.id, {
+    chat_id: chatCreated.id
+  });
   res.json({ cohort });
 }
 
@@ -147,7 +160,7 @@ async function setCohortScenarios(req, res) {
 
 async function getCohortData(req, res) {
   const { id, scenario_id } = req.params;
-  const prompts = await getScenarioPrompts(scenario_id);
+  const prompts = await scenariosdb.getScenarioPrompts(scenario_id);
   const responses = await db.getCohortRunResponses({ id, scenario_id });
   res.json({ prompts, responses });
 }
@@ -164,7 +177,7 @@ async function getCohortParticipantData(req, res) {
   for (const response of responses) {
     if (!prompts[response.scenario_id]) {
       prompts[response.scenario_id] = [
-        ...(await getScenarioPrompts(response.scenario_id))
+        ...(await scenariosdb.getScenarioPrompts(response.scenario_id))
       ];
     }
   }
@@ -173,7 +186,7 @@ async function getCohortParticipantData(req, res) {
 
 async function addCohortUserRole(req, res) {
   const { cohort_id, user_id, roles } = req.body;
-  const user = await getUserById(user_id);
+  const user = await sessiondb.getUserById(user_id);
   if (!user.id || !roles.length) {
     const error = new Error('User and roles must be defined.');
     error.status = 409;
@@ -199,7 +212,7 @@ async function addCohortUserRole(req, res) {
 
 async function deleteCohortUserRole(req, res) {
   const { cohort_id, user_id, roles } = req.body;
-  const user = await getUserById(user_id);
+  const user = await sessiondb.getUserById(user_id);
   if (!user.id || !roles.length) {
     const error = new Error('User and roles must be defined.');
     error.status = 409;

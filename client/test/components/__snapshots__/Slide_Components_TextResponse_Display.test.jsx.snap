@@ -1,363 +1,112 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Render 1 1 1`] = `"<div class=\\"ui segment\\"><h3 tabindex=\\"0\\" class=\\"ui header\\"> </h3><form class=\\"ui form\\"><div class=\\"field\\"><textarea name=\\"ABC\\" rows=\\"3\\"></textarea></div></form></div>"`;
+exports[`Render 1 1 1`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <div
+      class=\\"ui segment\\"
+    >
+      <h3
+        class=\\"ui header\\"
+        tabindex=\\"0\\"
+      >
+        
+         
+      </h3>
+      <form
+        class=\\"ui form\\"
+      >
+        <div
+          class=\\"field\\"
+        >
+          <textarea
+            name=\\"ABC\\"
+            rows=\\"3\\"
+          />
+        </div>
+      </form>
+    </div>
+  </div>
+</body>"
+`;
 
 exports[`Render 2 1 1`] = `
-<Provider
-  store={
-    Object {
-      "dispatch": [Function],
-      "getState": [Function],
-      "replaceReducer": [Function],
-      "subscribe": [Function],
-      Symbol(observable): [Function],
-    }
-  }
->
-  <Router
-    history={
-      Object {
-        "action": "POP",
-        "block": [Function],
-        "canGo": [Function],
-        "createHref": [Function],
-        "entries": Array [
-          Object {
-            "hash": "",
-            "key": "tcd0ld",
-            "pathname": "/",
-            "search": "",
-            "state": undefined,
-          },
-        ],
-        "go": [Function],
-        "goBack": [Function],
-        "goForward": [Function],
-        "index": 0,
-        "length": 1,
-        "listen": [Function],
-        "location": Object {
-          "hash": "",
-          "key": "tcd0ld",
-          "pathname": "/",
-          "search": "",
-          "state": undefined,
-        },
-        "push": [Function],
-        "replace": [Function],
-      }
-    }
-  >
-    <Connect(Display)
-      agent={null}
-      header=""
-      onChange={[Function]}
-      prompt=""
-      recallId="XYZ"
-      responseId="ABC"
-      scenario={
-        Object {
-          "author": Object {
-            "email": "super@email.com",
-            "id": 999,
-            "is_anonymous": false,
-            "is_super": true,
-            "personalname": "Super User",
-            "roles": Array [
-              "participant",
-              "super_admin",
-              "facilitator",
-              "researcher",
-            ],
-            "username": "super",
-          },
-          "categories": Array [],
-          "consent": Object {
-            "id": 57,
-            "prose": "",
-          },
-          "created_at": "2020-08-31T17:50:28.089Z",
-          "deleted_at": null,
-          "description": "This is the description of 'A Multiplayer Scenario'",
-          "finish": Object {
-            "components": Array [
-              Object {
-                "html": "<h2>Thanks for participating!</h2>",
-                "type": "Text",
-              },
-            ],
-            "id": 1,
-            "is_finish": true,
-            "title": "",
-          },
-          "id": 42,
-          "labels": Array [
-            "a",
-            "b",
-          ],
-          "lock": Object {
-            "created_at": "2020-02-31T23:54:19.934Z",
-            "ended_at": null,
-            "scenario_id": 42,
-            "user_id": 999,
-          },
-          "personas": Array [
-            Object {
-              "author_id": 3,
-              "color": "#FFFFFF",
-              "created_at": "2020-12-01T15:49:04.962Z",
-              "deleted_at": null,
-              "description": "The default user participating in a single person scenario.",
-              "id": 1,
-              "is_read_only": true,
-              "is_shared": true,
-              "name": "Participant",
-              "updated_at": null,
-            },
-          ],
-          "slides": Array [
-            Object {
-              "components": Array [
-                Object {
-                  "html": "<h2>Thanks for participating!</h2>",
-                  "type": "Text",
-                },
-              ],
-              "id": 1,
-              "is_finish": true,
-              "title": "",
-            },
-            Object {
-              "components": Array [
-                Object {
-                  "html": "<p>paragraph</p>",
-                  "id": "b7e7a3f1-eb4e-4afa-8569-eb6677358c9e",
-                  "type": "Text",
-                },
-                Object {
-                  "agent": null,
-                  "header": "TextResponse-1",
-                  "id": "aede9380-c7a3-4ef7-add7-838fd5ec854f",
-                  "placeholder": "",
-                  "prompt": "",
-                  "recallId": "",
-                  "required": true,
-                  "responseId": "be99fe9b-fa0d-4ab7-8541-1bfd1ef0bf11",
-                  "timeout": 0,
-                  "type": "TextResponse",
-                },
-                Object {
-                  "html": "<p>?</p>",
-                  "id": "f96ac6de-ac6b-4e06-bd97-d97e12fe72c1",
-                  "type": "Text",
-                },
-              ],
-              "id": 2,
-              "is_finish": false,
-              "title": "",
-            },
-          ],
-          "status": 1,
-          "title": "Multiplayer Scenario 2",
-          "updated_at": null,
-          "users": Array [
-            Object {
-              "email": "super@email.com",
-              "id": 999,
-              "is_author": true,
-              "is_reviewer": false,
-              "is_super": true,
-              "personalname": "Super User",
-              "roles": Array [
-                "super",
-              ],
-              "username": "super",
-            },
-          ],
-        }
-      }
-      type="TextResponse"
-    />
-  </Router>
-</Provider>
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <div
+      class=\\"ui segment\\"
+    >
+      <h3
+        class=\\"ui header\\"
+        tabindex=\\"0\\"
+      >
+        
+         
+      </h3>
+      <div
+        class=\\"ui floating message\\"
+        style=\\"white-space: pre-wrap; overflow-wrap: break-word;\\"
+      >
+        <div
+          class=\\"content\\"
+        >
+          <p>
+            Participant response will appear here during scenario run.
+          </p>
+        </div>
+      </div>
+      <form
+        class=\\"ui form\\"
+      >
+        <div
+          class=\\"field\\"
+        >
+          <textarea
+            name=\\"ABC\\"
+            rows=\\"3\\"
+          />
+        </div>
+      </form>
+    </div>
+  </div>
+</body>"
 `;
 
 exports[`Render 3 1 1`] = `
-<Provider
-  store={
-    Object {
-      "dispatch": [Function],
-      "getState": [Function],
-      "replaceReducer": [Function],
-      "subscribe": [Function],
-      Symbol(observable): [Function],
-    }
-  }
->
-  <Router
-    history={
-      Object {
-        "action": "POP",
-        "block": [Function],
-        "canGo": [Function],
-        "createHref": [Function],
-        "entries": Array [
-          Object {
-            "hash": "",
-            "key": "2970r7",
-            "pathname": "/",
-            "search": "",
-            "state": undefined,
-          },
-        ],
-        "go": [Function],
-        "goBack": [Function],
-        "goForward": [Function],
-        "index": 0,
-        "length": 1,
-        "listen": [Function],
-        "location": Object {
-          "hash": "",
-          "key": "2970r7",
-          "pathname": "/",
-          "search": "",
-          "state": undefined,
-        },
-        "push": [Function],
-        "replace": [Function],
-      }
-    }
-  >
-    <Connect(Display)
-      agent={null}
-      header=""
-      onChange={[Function]}
-      prompt=""
-      recallId="XYZ"
-      responseId="ABC"
-      scenario={
-        Object {
-          "author": Object {
-            "email": "super@email.com",
-            "id": 999,
-            "is_anonymous": false,
-            "is_super": true,
-            "personalname": "Super User",
-            "roles": Array [
-              "participant",
-              "super_admin",
-              "facilitator",
-              "researcher",
-            ],
-            "username": "super",
-          },
-          "categories": Array [],
-          "consent": Object {
-            "id": 57,
-            "prose": "",
-          },
-          "created_at": "2020-08-31T17:50:28.089Z",
-          "deleted_at": null,
-          "description": "This is the description of 'A Multiplayer Scenario'",
-          "finish": Object {
-            "components": Array [
-              Object {
-                "html": "<h2>Thanks for participating!</h2>",
-                "type": "Text",
-              },
-            ],
-            "id": 1,
-            "is_finish": true,
-            "title": "",
-          },
-          "id": 42,
-          "labels": Array [
-            "a",
-            "b",
-          ],
-          "lock": Object {
-            "created_at": "2020-02-31T23:54:19.934Z",
-            "ended_at": null,
-            "scenario_id": 42,
-            "user_id": 999,
-          },
-          "personas": Array [
-            Object {
-              "author_id": 3,
-              "color": "#FFFFFF",
-              "created_at": "2020-12-01T15:49:04.962Z",
-              "deleted_at": null,
-              "description": "The default user participating in a single person scenario.",
-              "id": 1,
-              "is_read_only": true,
-              "is_shared": true,
-              "name": "Participant",
-              "updated_at": null,
-            },
-          ],
-          "slides": Array [
-            Object {
-              "components": Array [
-                Object {
-                  "html": "<h2>Thanks for participating!</h2>",
-                  "type": "Text",
-                },
-              ],
-              "id": 1,
-              "is_finish": true,
-              "title": "",
-            },
-            Object {
-              "components": Array [
-                Object {
-                  "html": "<p>paragraph</p>",
-                  "id": "b7e7a3f1-eb4e-4afa-8569-eb6677358c9e",
-                  "type": "Text",
-                },
-                Object {
-                  "agent": null,
-                  "header": "TextResponse-1",
-                  "id": "aede9380-c7a3-4ef7-add7-838fd5ec854f",
-                  "placeholder": "",
-                  "prompt": "",
-                  "recallId": "",
-                  "required": true,
-                  "responseId": "be99fe9b-fa0d-4ab7-8541-1bfd1ef0bf11",
-                  "timeout": 0,
-                  "type": "TextResponse",
-                },
-                Object {
-                  "html": "<p>?</p>",
-                  "id": "f96ac6de-ac6b-4e06-bd97-d97e12fe72c1",
-                  "type": "Text",
-                },
-              ],
-              "id": 2,
-              "is_finish": false,
-              "title": "",
-            },
-          ],
-          "status": 1,
-          "title": "Multiplayer Scenario 2",
-          "updated_at": null,
-          "users": Array [
-            Object {
-              "email": "super@email.com",
-              "id": 999,
-              "is_author": true,
-              "is_reviewer": false,
-              "is_super": true,
-              "personalname": "Super User",
-              "roles": Array [
-                "super",
-              ],
-              "username": "super",
-            },
-          ],
-        }
-      }
-      type="TextResponse"
-    />
-  </Router>
-</Provider>
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <div
+      class=\\"ui segment\\"
+    >
+      <h3
+        class=\\"ui header\\"
+        tabindex=\\"0\\"
+      >
+        
+         
+      </h3>
+      <form
+        class=\\"ui form\\"
+      >
+        <div
+          class=\\"field\\"
+        >
+          <textarea
+            name=\\"ABC\\"
+            rows=\\"3\\"
+          />
+        </div>
+      </form>
+    </div>
+  </div>
+</body>"
 `;

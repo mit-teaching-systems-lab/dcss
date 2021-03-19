@@ -105,6 +105,7 @@ test('Render 1 1', async done => {
     header: '',
     prompt: '',
     responseId: 'ABC',
+    recallSharedWithRoles: [],
     recallId: '',
     onChange() {},
     scenario: {
@@ -234,6 +235,7 @@ test('Render 2 1', async done => {
     header: '',
     prompt: '',
     responseId: 'ABC',
+    recallSharedWithRoles: [],
     recallId: 'XYZ',
     onChange() {},
     scenario: {
@@ -364,6 +366,7 @@ test('Render 3 1', async done => {
     header: '',
     prompt: '',
     responseId: 'ABC',
+    recallSharedWithRoles: [],
     recallId: 'XYZ',
     onChange() {},
     scenario: {
@@ -494,6 +497,7 @@ test('Render 4 1', async done => {
     header: '',
     prompt: '',
     responseId: 'ABC',
+    recallSharedWithRoles: [],
     recallId: 'XYZ',
     onChange() {},
     scenario: {

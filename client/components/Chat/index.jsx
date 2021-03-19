@@ -110,7 +110,9 @@ class Chat extends Component {
 
     // chat/* settings are persisted for placement and size,
     // so they are shared across all instances of the chat window.
-    Storage.get(`chat/*`, {
+    const subKey = chat.scenario_id ? 'scenario' : 'cohort';
+    // This will behave as though we're setting a conditional default
+    Storage.get(`chat/${subKey}/*`, {
       dimensions: {
         width: 456,
         height: 590
@@ -382,7 +384,7 @@ class Chat extends Component {
       onQuote,
       sendNewMessage
     } = this;
-    const { agent, chat, prompt } = this.props;
+    const { agent, chat, isMinimizable, prompt } = this.props;
     const { id, isClosed, isMinimized, isReady } = this.state;
     const defaultValue = content || '';
 
@@ -404,7 +406,8 @@ class Chat extends Component {
     }
 
     // Layout.isForMobile()?
-    const { dimensions, position } = Storage.get(`chat/*`);
+    const subKey = chat.scenario_id ? 'scenario' : 'cohort';
+    const { dimensions, position } = Storage.get(`chat/${subKey}/*`);
 
     // console.log(dimensions, position);
     const onDragResizeStop = ({ width, height, x, y }) => {
@@ -413,7 +416,7 @@ class Chat extends Component {
       }
 
       // console.log(width, height, x, y);
-      Storage.merge(`chat/*`, {
+      Storage.merge(`chat/${subKey}/*`, {
         dimensions: { width, height },
         position: { x, y }
       });
@@ -510,7 +513,7 @@ class Chat extends Component {
       minMaxButton
     ) : (
       <ChatDraggableResizableDialog {...draggableResizableProps}>
-        {minMaxButton}
+        {isMinimizable ? minMaxButton : null}
         <div tabIndex="0" className={draggableClassName}>
           {headerContents}
         </div>
@@ -539,6 +542,7 @@ Chat.propTypes = {
   getChatUsersByChatId: PropTypes.func,
   setChatUsersByChatId: PropTypes.func,
   header: PropTypes.node,
+  isMinimizable: PropTypes.bool,
   prompt: PropTypes.object,
   run: PropTypes.object,
   saveRunEvent: PropTypes.func,
@@ -547,11 +551,22 @@ Chat.propTypes = {
   user: PropTypes.object
 };
 
+Chat.defaultProps = {
+  isMinimizable: true
+};
+
 const mapStateToProps = (state, ownProps) => {
-  const { chat, cohort, run, scenario, user } = state;
+  const { cohort, run, scenario, user } = state;
   const prompt = {
     id: ownProps.responseId || null
   };
+  const chat =
+    ownProps.chat && ownProps.chat.id
+      ? ownProps.chat
+      : state.chat && state.chat.id
+      ? state.chat
+      : null;
+
   return {
     chat,
     cohort,

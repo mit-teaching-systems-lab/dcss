@@ -275,6 +275,7 @@ class ChatMessages extends Component {
       // This is NOT an "else" to the previous condition.
       /* istanbul ignore else */
       if (scrollingContainer) {
+        /* istanbul ignore else */
         if (process.env.JEST_WORKER_ID) {
           const { isViewingNewest } = this.state;
           if (
@@ -427,9 +428,9 @@ class ChatMessages extends Component {
                       />
                     );
 
-                    const role = scenario.personas.find(
-                      p => p.id === user.persona_id
-                    );
+                    const role = scenario
+                      ? scenario.personas.find(p => p.id === user.persona_id)
+                      : null;
                     const mustShowAuthorAndMetadata =
                       index === 0 || previousUserId !== user.id;
 
@@ -569,8 +570,19 @@ ChatMessages.propTypes = {
   user: PropTypes.object
 };
 
-const mapStateToProps = state => {
-  const { chat, cohort, run, scenario, user } = state;
+const mapStateToProps = (state, ownProps) => {
+  const { cohort, user } = state;
+  const chat =
+    ownProps.chat && ownProps.chat.id
+      ? ownProps.chat
+      : state.chat && state.chat.id
+      ? state.chat
+      : null;
+  const run =
+    chat.scenario_id && window.location.href.includes('/run/')
+      ? state.run
+      : null;
+  const scenario = chat.scenario_id ? state.scenario : null;
   return {
     chat,
     cohort,

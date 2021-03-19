@@ -123,7 +123,29 @@ exports.getChat = async id => {
     FROM chat
     WHERE id = ${id}
   `);
-  return result.rowCount ? result.rows[0] : null;
+  //
+  // Previously:
+  // return result.rowCount ? result.rows[0] : null;
+  //
+
+  const chat = result.rowCount ? result.rows[0] : null;
+
+  if (chat) {
+    const users = await this.getChatUsersByChatId(id);
+    const usersById = users.reduce(
+      (accum, user) => ({
+        ...accum,
+        [user.id]: user
+      }),
+      {}
+    );
+    return {
+      ...chat,
+      users,
+      usersById
+    };
+  }
+  return chat;
 };
 
 exports.createNewChatMessage = async (
@@ -231,25 +253,36 @@ exports.joinChat = async (chat_id, user_id, persona_id = null) => {
       )
     `);
 
-    // There are, proceed with joining this room,
-    if (available.rowCount) {
-      const is_present = persona_id !== null;
-      const result = await client.query(sql`
-        INSERT INTO chat_user
-          (chat_id, user_id, is_present, persona_id)
-        VALUES
-          (${chat_id}, ${user_id}, ${is_present}, ${persona_id})
-        ON CONFLICT ON CONSTRAINT chat_user_pkey
-        DO
-          UPDATE SET is_present = TRUE, persona_id = ${persona_id}
-        RETURNING *;
-      `);
-
-      if (result.rowCount) {
-        return this.getChat(chat_id);
-      }
+    // If a persona_id exists, but there are no
+    // persona roles available, then this user cannot
+    // join the room.
+    if (persona_id && !available.rowCount) {
+      return null;
     }
-    // If there are not...
+
+    const chat = await this.getChat(chat_id);
+
+    // If this chat is associated with a scenario, then mark
+    // all participants as present.
+    // Otherwise, only mark them present if persona_id is set.
+    const is_present = chat.scenario_id === null || persona_id !== null;
+
+    // There are persona roles, proceed with joining this room
+    const result = await client.query(sql`
+      INSERT INTO chat_user
+        (chat_id, user_id, is_present, persona_id)
+      VALUES
+        (${chat_id}, ${user_id}, ${is_present}, ${persona_id})
+      ON CONFLICT ON CONSTRAINT chat_user_pkey
+      DO
+        UPDATE SET is_present = TRUE, persona_id = ${persona_id}
+      RETURNING *;
+    `);
+
+    if (result.rowCount) {
+      return chat;
+    }
+
     return null;
   });
 };

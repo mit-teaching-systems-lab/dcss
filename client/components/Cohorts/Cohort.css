@@ -105,6 +105,10 @@
   padding: 1rem;
 }
 
+.c__bordertop {
+  border-top: 1px solid #dadada;
+}
+
 @media only screen and (max-width: 767px) {
   .ui.container.c__table-container {
     width: auto !important;

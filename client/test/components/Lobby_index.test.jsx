@@ -91,6 +91,7 @@ import {
   GET_COHORT_CHATS_OVERVIEW_SUCCESS,
   GET_INVITES_SUCCESS,
   GET_SCENARIO_SUCCESS,
+  GET_SCENARIOS_SUCCESS,
   GET_USERS_COUNT_SUCCESS,
   GET_USERS_SUCCESS
 } from '../../actions/types';
@@ -118,6 +119,7 @@ let cohort;
 let invites;
 let invitesById;
 let scenario;
+let scenarios;
 let users;
 let usersById;
 
@@ -561,8 +563,93 @@ beforeEach(() => {
           }
         }
       }
+    },
+    chat: {
+      id: 1,
+      scenario_id: null,
+      cohort_id: 1,
+      host_id: 999,
+      created_at: '2020-12-08T21:51:33.659Z',
+      updated_at: null,
+      deleted_at: null,
+      ended_at: null,
+      users: [
+        {
+          username: 'super',
+          personalname: 'Super User',
+          email: 'super@email.com',
+          id: 999,
+          roles: ['participant', 'super_admin'],
+          is_anonymous: false,
+          is_super: true,
+          progress: {
+            completed: [1],
+            latestByScenarioId: {
+              1: {
+                is_complete: true,
+                event_id: 1909,
+                created_at: 1602454306144,
+                generic: 'arrived at a slide.',
+                name: 'slide-arrival',
+                url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+              }
+            }
+          }
+        },
+        {
+          id: 4,
+          username: 'credible-lyrebird',
+          personalname: null,
+          email: null,
+          is_anonymous: true,
+          single_use_password: false,
+          roles: ['participant', 'facilitator'],
+          is_super: false,
+          updated_at: '2020-12-10T17:50:19.074Z',
+          is_muted: false,
+          is_present: true
+        }
+      ],
+      usersById: {
+        4: {
+          id: 4,
+          username: 'credible-lyrebird',
+          personalname: null,
+          email: null,
+          is_anonymous: true,
+          single_use_password: false,
+          roles: ['participant', 'facilitator'],
+          is_super: false,
+          updated_at: '2020-12-10T17:50:19.074Z',
+          is_muted: false,
+          is_present: true
+        },
+        999: {
+          username: 'super',
+          personalname: 'Super User',
+          email: 'super@email.com',
+          id: 999,
+          roles: ['participant', 'super_admin'],
+          is_anonymous: false,
+          is_super: true,
+          progress: {
+            completed: [1],
+            latestByScenarioId: {
+              1: {
+                is_complete: true,
+                event_id: 1909,
+                created_at: 1602454306144,
+                generic: 'arrived at a slide.',
+                name: 'slide-arrival',
+                url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+              }
+            }
+          }
+        }
+      }
     }
   };
+  cohort.chat = null;
 
   invites = [
     {
@@ -708,6 +795,8 @@ beforeEach(() => {
     }
   ];
 
+  scenarios = [scenario];
+
   invitesById = invites.reduce((accum, invite) => {
     accum[invite.id] = invite;
     return accum;
@@ -768,6 +857,13 @@ beforeEach(() => {
     return scenario;
   });
 
+  scenarioActions.getScenariosByStatus.mockImplementation(
+    () => async dispatch => {
+      dispatch({ type: GET_SCENARIOS_SUCCESS, scenarios });
+      return scenarios;
+    }
+  );
+
   Storage.get.mockImplementation((key, defaultValue) => defaultValue);
   Storage.merge.mockImplementation((key, defaultValue) => defaultValue);
 
@@ -807,6 +903,400 @@ test('Lobby visited by a non-facilitator user', async done => {
 
   const props = {
     ...commonProps,
+    chat,
+    cohort,
+    scenario,
+    user
+  };
+
+  const state = {
+    ...commonState,
+    chat,
+    cohort,
+    user,
+    users,
+    usersById
+  };
+
+  chatActions.getChatUsersByChatId.mockImplementation(() => async dispatch => {
+    dispatch({ type: GET_CHAT_USERS_SUCCESS, users });
+    return users;
+  });
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  await render(<ConnectedRoutedComponent {...props} />);
+  await waitFor(() =>
+    expect(screen.getByTestId('lobby-main')).toBeInTheDocument()
+  );
+  expect(serialize()).toMatchSnapshot();
+
+  await waitFor(() => expect(globalThis.mockSocket.emit).toHaveBeenCalled());
+  expect(globalThis.mockSocket.emit.mock.calls).toMatchInlineSnapshot(`
+    Array [
+      Array [
+        "create-user-channel",
+        Object {
+          "user": Object {
+            "email": "participant@email.com",
+            "id": 333,
+            "is_anonymous": false,
+            "is_muted": false,
+            "is_present": true,
+            "is_super": false,
+            "persona_id": null,
+            "personalname": "Participant User",
+            "progress": Object {
+              "completed": Array [],
+              "latestByScenarioId": Object {
+                "1": Object {
+                  "created_at": 1602454306144,
+                  "event_id": 1903,
+                  "generic": "arrived at a slide.",
+                  "is_complete": false,
+                  "name": "slide-arrival",
+                  "scenario_id": 99,
+                  "url": "http://localhost:3000/cohort/1/run/99/slide/1",
+                },
+              },
+            },
+            "roles": Array [
+              "participant",
+            ],
+            "username": "participant",
+          },
+        },
+      ],
+    ]
+  `);
+  await waitFor(() => expect(globalThis.mockSocket.on).toHaveBeenCalled());
+  expect(globalThis.mockSocket.on.mock.calls).toMatchInlineSnapshot(`
+    Array [
+      Array [
+        "run-chat-link",
+        [Function],
+      ],
+    ]
+  `);
+  expect(serialize()).toMatchSnapshot();
+  await waitFor(() => {
+    expect(chatActions.getChatUsersByChatId).toHaveBeenCalled();
+    expect(chatActions.getLinkedChatUsersByChatId).not.toHaveBeenCalled();
+  });
+  done();
+});
+
+test('Lobby visited in a cohort', async done => {
+  const Component = Lobby;
+
+  delete window.location;
+  // eslint-disable-next-line
+  window.location = {
+    pathname: '/cohort/'
+  };
+
+  user = {
+    ...participantUser
+  };
+
+  const props = {
+    ...commonProps,
+    chat,
+    cohort,
+    scenario,
+    user
+  };
+
+  const state = {
+    ...commonState,
+    chat,
+    cohort,
+    user,
+    users,
+    usersById
+  };
+
+  chatActions.getChatUsersByChatId.mockImplementation(() => async dispatch => {
+    dispatch({ type: GET_CHAT_USERS_SUCCESS, users });
+    return users;
+  });
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  await render(<ConnectedRoutedComponent {...props} />);
+  await waitFor(() =>
+    expect(screen.getByTestId('lobby-main')).toBeInTheDocument()
+  );
+  expect(serialize()).toMatchSnapshot();
+
+  await waitFor(() => expect(globalThis.mockSocket.emit).toHaveBeenCalled());
+  expect(globalThis.mockSocket.emit.mock.calls).toMatchInlineSnapshot(`
+    Array [
+      Array [
+        "create-user-channel",
+        Object {
+          "user": Object {
+            "email": "participant@email.com",
+            "id": 333,
+            "is_anonymous": false,
+            "is_muted": false,
+            "is_present": true,
+            "is_super": false,
+            "persona_id": null,
+            "personalname": "Participant User",
+            "progress": Object {
+              "completed": Array [],
+              "latestByScenarioId": Object {
+                "1": Object {
+                  "created_at": 1602454306144,
+                  "event_id": 1903,
+                  "generic": "arrived at a slide.",
+                  "is_complete": false,
+                  "name": "slide-arrival",
+                  "scenario_id": 99,
+                  "url": "http://localhost:3000/cohort/1/run/99/slide/1",
+                },
+              },
+            },
+            "roles": Array [
+              "participant",
+            ],
+            "username": "participant",
+          },
+        },
+      ],
+    ]
+  `);
+  await waitFor(() => expect(globalThis.mockSocket.on).toHaveBeenCalled());
+  expect(globalThis.mockSocket.on.mock.calls).toMatchInlineSnapshot(`
+    Array [
+      Array [
+        "run-chat-link",
+        [Function],
+      ],
+    ]
+  `);
+  expect(serialize()).toMatchSnapshot();
+  await waitFor(() => {
+    expect(chatActions.getChatUsersByChatId).toHaveBeenCalled();
+    expect(chatActions.getLinkedChatUsersByChatId).not.toHaveBeenCalled();
+  });
+  done();
+});
+
+test('Lobby visited in a cohort, asCard: true', async done => {
+  const Component = Lobby;
+
+  delete window.location;
+  // eslint-disable-next-line
+  window.location = {
+    pathname: '/cohort/'
+  };
+
+  user = {
+    ...participantUser
+  };
+
+  const props = {
+    ...commonProps,
+    asCard: true,
+    chat,
+    cohort,
+    scenario,
+    user
+  };
+
+  const state = {
+    ...commonState,
+    chat,
+    cohort,
+    user,
+    users,
+    usersById
+  };
+
+  chatActions.getChatUsersByChatId.mockImplementation(() => async dispatch => {
+    dispatch({ type: GET_CHAT_USERS_SUCCESS, users });
+    return users;
+  });
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  await render(<ConnectedRoutedComponent {...props} />);
+  await waitFor(() =>
+    expect(screen.getByTestId('lobby-main')).toBeInTheDocument()
+  );
+  expect(serialize()).toMatchSnapshot();
+
+  await waitFor(() => expect(globalThis.mockSocket.emit).toHaveBeenCalled());
+  expect(globalThis.mockSocket.emit.mock.calls).toMatchInlineSnapshot(`
+    Array [
+      Array [
+        "create-user-channel",
+        Object {
+          "user": Object {
+            "email": "participant@email.com",
+            "id": 333,
+            "is_anonymous": false,
+            "is_muted": false,
+            "is_present": true,
+            "is_super": false,
+            "persona_id": null,
+            "personalname": "Participant User",
+            "progress": Object {
+              "completed": Array [],
+              "latestByScenarioId": Object {
+                "1": Object {
+                  "created_at": 1602454306144,
+                  "event_id": 1903,
+                  "generic": "arrived at a slide.",
+                  "is_complete": false,
+                  "name": "slide-arrival",
+                  "scenario_id": 99,
+                  "url": "http://localhost:3000/cohort/1/run/99/slide/1",
+                },
+              },
+            },
+            "roles": Array [
+              "participant",
+            ],
+            "username": "participant",
+          },
+        },
+      ],
+    ]
+  `);
+  await waitFor(() => expect(globalThis.mockSocket.on).toHaveBeenCalled());
+  expect(globalThis.mockSocket.on.mock.calls).toMatchInlineSnapshot(`
+    Array [
+      Array [
+        "run-chat-link",
+        [Function],
+      ],
+    ]
+  `);
+  expect(serialize()).toMatchSnapshot();
+  await waitFor(() => {
+    expect(chatActions.getChatUsersByChatId).toHaveBeenCalled();
+    expect(chatActions.getLinkedChatUsersByChatId).not.toHaveBeenCalled();
+  });
+  done();
+});
+
+test('Lobby visited in a run', async done => {
+  const Component = Lobby;
+
+  delete window.location;
+  // eslint-disable-next-line
+  window.location = {
+    pathname: '/run/'
+  };
+
+  user = {
+    ...participantUser
+  };
+
+  const props = {
+    ...commonProps,
+    chat,
+    cohort,
+    scenario,
+    user
+  };
+
+  const state = {
+    ...commonState,
+    chat,
+    cohort,
+    user,
+    users,
+    usersById
+  };
+
+  chatActions.getChatUsersByChatId.mockImplementation(() => async dispatch => {
+    dispatch({ type: GET_CHAT_USERS_SUCCESS, users });
+    return users;
+  });
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  await render(<ConnectedRoutedComponent {...props} />);
+  await waitFor(() =>
+    expect(screen.getByTestId('lobby-main')).toBeInTheDocument()
+  );
+  expect(serialize()).toMatchSnapshot();
+
+  await waitFor(() => expect(globalThis.mockSocket.emit).toHaveBeenCalled());
+  expect(globalThis.mockSocket.emit.mock.calls).toMatchInlineSnapshot(`
+    Array [
+      Array [
+        "create-user-channel",
+        Object {
+          "user": Object {
+            "email": "participant@email.com",
+            "id": 333,
+            "is_anonymous": false,
+            "is_muted": false,
+            "is_present": true,
+            "is_super": false,
+            "persona_id": null,
+            "personalname": "Participant User",
+            "progress": Object {
+              "completed": Array [],
+              "latestByScenarioId": Object {
+                "1": Object {
+                  "created_at": 1602454306144,
+                  "event_id": 1903,
+                  "generic": "arrived at a slide.",
+                  "is_complete": false,
+                  "name": "slide-arrival",
+                  "scenario_id": 99,
+                  "url": "http://localhost:3000/cohort/1/run/99/slide/1",
+                },
+              },
+            },
+            "roles": Array [
+              "participant",
+            ],
+            "username": "participant",
+          },
+        },
+      ],
+    ]
+  `);
+  await waitFor(() => expect(globalThis.mockSocket.on).toHaveBeenCalled());
+  expect(globalThis.mockSocket.on.mock.calls).toMatchInlineSnapshot(`
+    Array [
+      Array [
+        "run-chat-link",
+        [Function],
+      ],
+    ]
+  `);
+  expect(serialize()).toMatchSnapshot();
+  await waitFor(() => {
+    expect(chatActions.getChatUsersByChatId).toHaveBeenCalled();
+    expect(chatActions.getLinkedChatUsersByChatId).not.toHaveBeenCalled();
+  });
+  done();
+});
+
+test('Lobby visited in a run, asCard: true', async done => {
+  const Component = Lobby;
+
+  delete window.location;
+  // eslint-disable-next-line
+  window.location = {
+    pathname: '/run/'
+  };
+
+  user = {
+    ...participantUser
+  };
+
+  const props = {
+    ...commonProps,
+    asCard: true,
     chat,
     cohort,
     scenario,
@@ -1106,6 +1596,7 @@ test('Fallback: chat, scenario, cohort are not yet loaded, use provided props', 
           ],
         },
         Object {
+          "chat": null,
           "created_at": "2020-08-31T14:01:08.656Z",
           "id": 1,
           "is_archived": false,

@@ -183,7 +183,6 @@ class Lobby extends Component {
       scenario,
       selection,
       onSelect: selection => {
-        console.log(selection);
         this.setState({
           selection
         });

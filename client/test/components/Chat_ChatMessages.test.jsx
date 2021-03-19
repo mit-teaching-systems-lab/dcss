@@ -118,9 +118,11 @@ import * as userActions from '../../actions/user';
 jest.mock('../../actions/chat');
 jest.mock('../../actions/user');
 
+let agent;
 let user;
 let superUser;
 let chatUsers;
+let chatUsersById;
 let chat;
 let chats;
 let chatsById;
@@ -129,7 +131,10 @@ let message2;
 let message3;
 let message4;
 let message5;
+let message6;
+let message7;
 let messages;
+let scenario;
 
 const expectDateString = expect.stringMatching(/[0-9]{4}-[0-9]{2}-[0-9]{2}.*/i);
 
@@ -167,6 +172,186 @@ beforeEach(() => {
 
   /** @GENERATED: BEGIN **/
 
+  scenario = {
+    author: {
+      id: 999,
+      username: 'super',
+      personalname: 'Super User',
+      email: 'super@email.com',
+      is_anonymous: false,
+      roles: ['participant', 'super_admin', 'facilitator', 'researcher'],
+      is_super: true
+    },
+    categories: [],
+    consent: { id: 57, prose: '' },
+    description: "This is the description of 'A Multiplayer Scenario'",
+    finish: {
+      id: 1,
+      title: '',
+      components: [
+        { html: '<h2>Thanks for participating!</h2>', type: 'Text' }
+      ],
+      is_finish: true
+    },
+    lock: {
+      scenario_id: 42,
+      user_id: 999,
+      created_at: '2020-02-31T23:54:19.934Z',
+      ended_at: null
+    },
+    slides: [
+      {
+        id: 1,
+        title: '',
+        components: [
+          { html: '<h2>Thanks for participating!</h2>', type: 'Text' }
+        ],
+        is_finish: true
+      },
+      {
+        id: 2,
+        title: '',
+        components: [
+          {
+            id: 'b7e7a3f1-eb4e-4afa-8569-eb6677358c9e',
+            html: '<p>paragraph</p>',
+            type: 'Text'
+          },
+          {
+            agent: null,
+            id: 'aede9380-c7a3-4ef7-add7-838fd5ec854f',
+            type: 'TextResponse',
+            header: 'TextResponse-1',
+            prompt: '',
+            timeout: 0,
+            recallId: '',
+            required: true,
+            responseId: 'be99fe9b-fa0d-4ab7-8541-1bfd1ef0bf11',
+            placeholder: ''
+          },
+          {
+            id: 'f96ac6de-ac6b-4e06-bd97-d97e12fe72c1',
+            html: '<p>?</p>',
+            type: 'Text'
+          }
+        ],
+        is_finish: false
+      }
+    ],
+    status: 1,
+    title: 'Multiplayer Scenario 2',
+    users: [
+      {
+        id: 999,
+        email: 'super@email.com',
+        username: 'super',
+        personalname: 'Super User',
+        roles: ['super'],
+        is_super: true,
+        is_author: true,
+        is_reviewer: false
+      }
+    ],
+    id: 42,
+    created_at: '2020-08-31T17:50:28.089Z',
+    updated_at: null,
+    deleted_at: null,
+    labels: ['a', 'b'],
+    personas: [
+      {
+        id: 1,
+        name: 'Participant',
+        description:
+          'The default user participating in a single person scenario.',
+        color: '#FFFFFF',
+        created_at: '2020-12-01T15:49:04.962Z',
+        updated_at: null,
+        deleted_at: null,
+        author_id: 3,
+        is_read_only: true,
+        is_shared: true
+      }
+    ]
+  };
+  scenario.personas = [
+    {
+      id: 2,
+      name: 'Teacher',
+      description:
+        'A non-specific teacher, participating in a multi person scenario.',
+      color: '#3f59a9',
+      created_at: '2020-12-01T15:49:04.962Z',
+      updated_at: null,
+      deleted_at: null,
+      author_id: 3,
+      is_read_only: true,
+      is_shared: true
+    },
+    {
+      id: 3,
+      name: 'Student',
+      description:
+        'A non-specific student, participating in a multi person scenario.',
+      color: '#e59235',
+      created_at: '2020-12-01T15:49:04.962Z',
+      updated_at: null,
+      deleted_at: null,
+      author_id: 3,
+      is_read_only: true,
+      is_shared: true
+    }
+  ];
+
+  agent = {
+    id: 1,
+    created_at: '2021-02-25T17:31:33.826Z',
+    updated_at: '2021-02-25T20:09:04.999Z',
+    deleted_at: null,
+    is_active: true,
+    title: 'Emoji Analysis',
+    name: 'emoji-analysis',
+    description: 'Detects the presense of an emoji character in your text',
+    endpoint: 'ws://emoji-analysis-production.herokuapp.com',
+    configuration: {
+      bar: '2',
+      baz: 'c',
+      foo: 'false'
+    },
+    interaction: {
+      id: 1,
+      name: 'ChatPrompt',
+      description:
+        'It will appear as an option for scenario authors to include in chat discussions within multi-participant scenarios. It receives participant chat messages.',
+      created_at: '2021-02-25T15:09:05.001302-05:00',
+      deleted_at: null,
+      updated_at: null,
+      types: []
+    },
+    owner: {
+      id: 999,
+      email: 'super@email.com',
+      roles: ['participant', 'super_admin', 'facilitator', 'researcher'],
+      is_super: true,
+      username: 'superuser',
+      is_anonymous: false,
+      personalname: 'Super User'
+    },
+    self: {
+      id: 148,
+      email: null,
+      roles: null,
+      is_super: false,
+      username: 'ebe565050b31cbb4e7eacc39b23e2167',
+      lastseen_at: '2021-02-25T13:08:57.323-05:00',
+      is_anonymous: true,
+      personalname: 'Emoji Analysis',
+      single_use_password: false
+    },
+    socket: {
+      path: '/path/to/foo'
+    }
+  };
+
   user = superUser = {
     username: 'super',
     personalname: 'Super User',
@@ -194,6 +379,11 @@ beforeEach(() => {
     }
   ];
 
+  chatUsersById = chatUsers.reduce((accum, chatUser) => {
+    accum[chatUser.id] = chatUser;
+    return accum;
+  }, {});
+
   chat = {
     id: 1,
     scenario_id: 42,
@@ -203,7 +393,8 @@ beforeEach(() => {
     updated_at: null,
     deleted_at: null,
     ended_at: null,
-    users: chatUsers
+    users: chatUsers,
+    usersById: chatUsersById
   };
 
   chats = [chat];
@@ -232,6 +423,7 @@ beforeEach(() => {
     deleted_at: null,
     id: 7,
     is_quotable: false,
+    is_joinpart: true,
     updated_at: null,
     user_id: 4
   };
@@ -270,7 +462,40 @@ beforeEach(() => {
     user_id: 999
   };
 
-  messages = [message1, message2, message3, message4, message5];
+  message6 = {
+    chat_id: 1,
+    content: '<p>user and recipient are the same</p>',
+    created_at: '2020-12-09T16:41:10.359Z',
+    deleted_at: '2020-12-09T16:44:10.359Z',
+    id: 10,
+    is_quotable: false,
+    updated_at: null,
+    user_id: 999,
+    recipient_id: 999
+  };
+
+  message7 = {
+    chat_id: 1,
+    content:
+      '<p>user and recipient are the same, but not the same viewing user</p>',
+    created_at: '2020-12-09T16:41:10.359Z',
+    deleted_at: '2020-12-09T16:44:10.359Z',
+    id: 10,
+    is_quotable: false,
+    updated_at: null,
+    user_id: 4,
+    recipient_id: 4
+  };
+
+  messages = [
+    message1,
+    message2,
+    message3,
+    message4,
+    message5,
+    message6,
+    message7
+  ];
 
   chatActions.getChat.mockImplementation(() => async dispatch => {
     dispatch({ type: GET_CHAT_SUCCESS, chat });
@@ -340,34 +565,121 @@ test('ChatMessages', () => {
   expect(ChatMessages).toBeDefined();
 });
 
-/** @GENERATED: BEGIN **/
-test('Render 1 1', async done => {
+/* INJECTION STARTS HERE */
+
+test('Chat has an agent', async done => {
   const Component = ChatMessages;
+
   const props = {
     ...commonProps,
+    agent,
     chat
   };
 
   const state = {
     ...commonState
   };
-
   const ConnectedRoutedComponent = reduxer(Component, props, state);
+  const emitter = new Emitter();
 
-  const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
-  expect(asFragment()).toMatchSnapshot();
+  globalThis.mockSocket.emit.mockImplementation(emitter.emit);
+  globalThis.mockSocket.on.mockImplementation(emitter.on);
+  globalThis.mockSocket.off.mockImplementation(emitter.off);
 
+  await render(<ConnectedRoutedComponent {...props} />);
+  expect(serialize()).toMatchSnapshot();
+
+  await waitFor(() => expect(globalThis.mockSocket.emit).toHaveBeenCalled());
+  expect(globalThis.mockSocket.emit.mock.calls).toMatchInlineSnapshot(`
+    Array [
+      Array [
+        "chat-agent-start",
+        Object {
+          "agent": Object {
+            "configuration": Object {
+              "bar": "2",
+              "baz": "c",
+              "foo": "false",
+            },
+            "created_at": "2021-02-25T17:31:33.826Z",
+            "deleted_at": null,
+            "description": "Detects the presense of an emoji character in your text",
+            "endpoint": "ws://emoji-analysis-production.herokuapp.com",
+            "id": 1,
+            "interaction": Object {
+              "created_at": "2021-02-25T15:09:05.001302-05:00",
+              "deleted_at": null,
+              "description": "It will appear as an option for scenario authors to include in chat discussions within multi-participant scenarios. It receives participant chat messages.",
+              "id": 1,
+              "name": "ChatPrompt",
+              "types": Array [],
+              "updated_at": null,
+            },
+            "is_active": true,
+            "name": "emoji-analysis",
+            "owner": Object {
+              "email": "super@email.com",
+              "id": 999,
+              "is_anonymous": false,
+              "is_super": true,
+              "personalname": "Super User",
+              "roles": Array [
+                "participant",
+                "super_admin",
+                "facilitator",
+                "researcher",
+              ],
+              "username": "superuser",
+            },
+            "self": Object {
+              "email": null,
+              "id": 148,
+              "is_anonymous": true,
+              "is_super": false,
+              "lastseen_at": "2021-02-25T13:08:57.323-05:00",
+              "personalname": "Emoji Analysis",
+              "roles": null,
+              "single_use_password": false,
+              "username": "ebe565050b31cbb4e7eacc39b23e2167",
+            },
+            "socket": Object {
+              "path": "/path/to/foo",
+            },
+            "title": "Emoji Analysis",
+            "updated_at": "2021-02-25T20:09:04.999Z",
+          },
+          "chat": Object {
+            "host_id": 999,
+            "id": 1,
+          },
+          "prompt": undefined,
+          "response": Object {
+            "id": undefined,
+          },
+          "run": null,
+          "user": Object {
+            "email": null,
+            "id": null,
+            "is_anonymous": false,
+            "is_super": true,
+            "personalname": null,
+            "roles": Array [],
+            "username": null,
+          },
+        },
+      ],
+    ]
+  `);
+  expect(serialize()).toMatchSnapshot();
   done();
 });
-/** @GENERATED: END **/
 
-/* INJECTION STARTS HERE */
-
-test('Message count is 0', async done => {
+test('Message count is 0 (chat in props)', async done => {
   const Component = ChatMessages;
 
   const props = {
-    ...(commonProps || {})
+    ...commonProps,
+    chat
   };
 
   const state = {
@@ -384,17 +696,74 @@ test('Message count is 0', async done => {
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
 
-  const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
-  expect(asFragment()).toMatchSnapshot();
+  await render(<ConnectedRoutedComponent {...props} />);
+  expect(serialize()).toMatchSnapshot();
 
   done();
 });
 
-test('User is missing from chat.usersById', async done => {
+test('Message count is 0 (chat in state)', async done => {
   const Component = ChatMessages;
 
   const props = {
-    ...(commonProps || {})
+    ...commonProps
+  };
+
+  const state = {
+    ...commonState,
+    chat
+  };
+
+  chatActions.getChatMessagesCountByChatId.mockImplementation(
+    () => async dispatch => {
+      const count = 0;
+      dispatch({ type: GET_CHAT_MESSAGES_COUNT_SUCCESS, count });
+      return count;
+    }
+  );
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  await render(<ConnectedRoutedComponent {...props} />);
+  expect(serialize()).toMatchSnapshot();
+
+  done();
+});
+
+test('User is missing from chat.usersById (chat in props)', async done => {
+  const Component = ChatMessages;
+
+  const props = {
+    ...commonProps,
+    chat: {
+      ...chat,
+      usersById: {
+        999: chatUsers[0]
+      }
+    }
+  };
+
+  const state = {
+    ...commonState
+  };
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  await render(<ConnectedRoutedComponent {...props} />);
+  await waitFor(() => expect(globalThis.mockSocket.on).toHaveBeenCalled());
+  expect(serialize()).toMatchSnapshot();
+
+  expect(chatActions.getChatMessagesByChatId).toHaveBeenCalled();
+  expect(chatActions.getChatMessagesCountByChatId).toHaveBeenCalled();
+
+  done();
+});
+
+test('User is missing from chat.usersById (chat in state)', async done => {
+  const Component = ChatMessages;
+
+  const props = {
+    ...commonProps
   };
 
   const state = {
@@ -409,9 +778,9 @@ test('User is missing from chat.usersById', async done => {
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
 
-  const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
+  await render(<ConnectedRoutedComponent {...props} />);
   await waitFor(() => expect(globalThis.mockSocket.on).toHaveBeenCalled());
-  expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
 
   expect(chatActions.getChatMessagesByChatId).toHaveBeenCalled();
   expect(chatActions.getChatMessagesCountByChatId).toHaveBeenCalled();
@@ -423,7 +792,7 @@ test('Receives message that was deleted', async done => {
   const Component = ChatMessages;
 
   const props = {
-    ...(commonProps || {})
+    ...commonProps
   };
 
   const state = {
@@ -467,8 +836,8 @@ test('Receives message that was deleted', async done => {
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
 
-  const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
-  expect(asFragment()).toMatchSnapshot();
+  await render(<ConnectedRoutedComponent {...props} />);
+  expect(serialize()).toMatchSnapshot();
 
   await waitFor(() => expect(globalThis.mockSocket.on).toHaveBeenCalled());
   expect(globalThis.mockSocket.on.mock.calls).toMatchInlineSnapshot(`
@@ -483,7 +852,7 @@ test('Receives message that was deleted', async done => {
       ],
     ]
   `);
-  expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
 
   globalThis.mockSocket.emit('chat-message-created', {
     chat_id: 1,
@@ -500,7 +869,7 @@ test('Receives message that was deleted', async done => {
     expect(screen.queryAllByTestId('comment').length).toBe(11)
   );
   expect(screen.queryByLabelText('See new message')).toBe(null);
-  expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
 
   expect(chatActions.getChatMessagesByChatId).toHaveBeenCalled();
   expect(chatActions.getChatMessagesCountByChatId).toHaveBeenCalled();
@@ -508,15 +877,17 @@ test('Receives message that was deleted', async done => {
   done();
 });
 
-test('Receives new message at end of messages', async done => {
+test('Receives new message at end of messages (chat in props)', async done => {
   const Component = ChatMessages;
 
   const props = {
-    ...(commonProps || {})
+    ...commonProps,
+    chat
   };
 
   const state = {
-    ...commonState
+    ...commonState,
+    scenario
   };
 
   const emitter = new Emitter();
@@ -555,8 +926,8 @@ test('Receives new message at end of messages', async done => {
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
 
-  const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
-  expect(asFragment()).toMatchSnapshot();
+  await render(<ConnectedRoutedComponent {...props} />);
+  expect(serialize()).toMatchSnapshot();
 
   await waitFor(() => expect(globalThis.mockSocket.on).toHaveBeenCalled());
   expect(globalThis.mockSocket.on.mock.calls).toMatchInlineSnapshot(`
@@ -571,7 +942,7 @@ test('Receives new message at end of messages', async done => {
       ],
     ]
   `);
-  expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
 
   globalThis.mockSocket.emit('chat-message-created', {
     chat_id: 1,
@@ -588,7 +959,96 @@ test('Receives new message at end of messages', async done => {
     expect(screen.queryAllByTestId('comment').length).toBe(12)
   );
   expect(screen.queryByLabelText('See new message')).toBe(null);
-  expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
+
+  expect(chatActions.getChatMessagesByChatId).toHaveBeenCalled();
+  expect(chatActions.getChatMessagesCountByChatId).toHaveBeenCalled();
+
+  done();
+});
+
+test('Receives new message at end of messages (chat in state)', async done => {
+  const Component = ChatMessages;
+
+  const props = {
+    ...commonProps
+  };
+
+  const state = {
+    ...commonState,
+    chat
+  };
+
+  const emitter = new Emitter();
+
+  globalThis.mockSocket.emit.mockImplementation(emitter.emit);
+  globalThis.mockSocket.on.mockImplementation(emitter.on);
+  globalThis.mockSocket.off.mockImplementation(emitter.off);
+
+  const messages = Array.from({ length: 11 }, (v, i) => {
+    return {
+      chat_id: 1,
+      content: '<p>Hello</p>',
+      created_at: '2020-12-09T16:39:10.359Z',
+      deleted_at: null,
+      id: i,
+      is_quotable: true,
+      updated_at: null,
+      user_id: 999
+    };
+  });
+
+  chatActions.getChatMessagesByChatId.mockImplementation(
+    () => async dispatch => {
+      dispatch({ type: GET_CHAT_MESSAGES_SUCCESS, messages });
+      return messages;
+    }
+  );
+
+  chatActions.getChatMessagesCountByChatId.mockImplementation(
+    () => async dispatch => {
+      const count = messages.length;
+      dispatch({ type: GET_CHAT_MESSAGES_COUNT_SUCCESS, count });
+      return count;
+    }
+  );
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  await render(<ConnectedRoutedComponent {...props} />);
+  expect(serialize()).toMatchSnapshot();
+
+  await waitFor(() => expect(globalThis.mockSocket.on).toHaveBeenCalled());
+  expect(globalThis.mockSocket.on.mock.calls).toMatchInlineSnapshot(`
+    Array [
+      Array [
+        "chat-message-created",
+        [Function],
+      ],
+      Array [
+        "chat-message-updated",
+        [Function],
+      ],
+    ]
+  `);
+  expect(serialize()).toMatchSnapshot();
+
+  globalThis.mockSocket.emit('chat-message-created', {
+    chat_id: 1,
+    content: '<p>A new message</p>',
+    created_at: '2020-12-15T09:40:10.359Z',
+    deleted_at: null,
+    id: messages.length,
+    is_quotable: true,
+    updated_at: null,
+    user_id: 4
+  });
+
+  await waitFor(() =>
+    expect(screen.queryAllByTestId('comment').length).toBe(12)
+  );
+  expect(screen.queryByLabelText('See new message')).toBe(null);
+  expect(serialize()).toMatchSnapshot();
 
   expect(chatActions.getChatMessagesByChatId).toHaveBeenCalled();
   expect(chatActions.getChatMessagesCountByChatId).toHaveBeenCalled();
@@ -600,7 +1060,7 @@ test('Receives new message, user does not exist yet.', async done => {
   const Component = ChatMessages;
 
   const props = {
-    ...(commonProps || {})
+    ...commonProps
   };
 
   const state = {
@@ -664,8 +1124,8 @@ test('Receives new message, user does not exist yet.', async done => {
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
 
-  const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
-  expect(asFragment()).toMatchSnapshot();
+  await render(<ConnectedRoutedComponent {...props} />);
+  expect(serialize()).toMatchSnapshot();
 
   await waitFor(() => expect(globalThis.mockSocket.on).toHaveBeenCalled());
   expect(globalThis.mockSocket.on.mock.calls).toMatchInlineSnapshot(`
@@ -680,7 +1140,7 @@ test('Receives new message, user does not exist yet.', async done => {
       ],
     ]
   `);
-  expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
 
   globalThis.mockSocket.emit('chat-message-created', {
     chat_id: 1,
@@ -697,7 +1157,7 @@ test('Receives new message, user does not exist yet.', async done => {
     expect(screen.queryAllByTestId('comment').length).toBe(12)
   );
   expect(screen.queryByLabelText('See new message')).toBe(null);
-  expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
 
   expect(chatActions.getChatMessagesByChatId).toHaveBeenCalled();
   expect(chatActions.getChatMessagesCountByChatId).toHaveBeenCalled();
@@ -706,11 +1166,123 @@ test('Receives new message, user does not exist yet.', async done => {
   done();
 });
 
-test('Receives new message after scrolling', async done => {
+test('Receives new message, user does not exist yet. (chat in state)', async done => {
   const Component = ChatMessages;
 
   const props = {
-    ...(commonProps || {})
+    ...commonProps
+  };
+
+  const state = {
+    ...commonState,
+    chat
+  };
+
+  const emitter = new Emitter();
+
+  globalThis.mockSocket.emit.mockImplementation(emitter.emit);
+  globalThis.mockSocket.on.mockImplementation(emitter.on);
+  globalThis.mockSocket.off.mockImplementation(emitter.off);
+
+  const messages = Array.from({ length: 11 }, (v, i) => {
+    return {
+      chat_id: 1,
+      content: '<p>Hello</p>',
+      created_at: '2020-12-09T16:39:10.359Z',
+      deleted_at: null,
+      id: i,
+      is_quotable: true,
+      updated_at: null,
+      user_id: 999
+    };
+  });
+
+  chatActions.getChatMessagesByChatId.mockImplementation(
+    () => async dispatch => {
+      dispatch({ type: GET_CHAT_MESSAGES_SUCCESS, messages });
+      return messages;
+    }
+  );
+
+  chatActions.getChatMessagesCountByChatId.mockImplementation(
+    () => async dispatch => {
+      const count = messages.length;
+      dispatch({ type: GET_CHAT_MESSAGES_COUNT_SUCCESS, count });
+      return count;
+    }
+  );
+
+  chatActions.getChatUsersByChatId.mockImplementation(() => async dispatch => {
+    const users = [
+      ...chatUsers,
+      {
+        id: 5,
+        username: 'another-user',
+        personalname: null,
+        email: null,
+        is_anonymous: true,
+        single_use_password: false,
+        roles: ['participant'],
+        is_super: false,
+        updated_at: '2020-12-10T17:50:19.074Z',
+        is_muted: false,
+        is_present: true
+      }
+    ];
+    dispatch({ type: GET_CHAT_USERS_SUCCESS, users });
+    return users;
+  });
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  await render(<ConnectedRoutedComponent {...props} />);
+  expect(serialize()).toMatchSnapshot();
+
+  await waitFor(() => expect(globalThis.mockSocket.on).toHaveBeenCalled());
+  expect(globalThis.mockSocket.on.mock.calls).toMatchInlineSnapshot(`
+    Array [
+      Array [
+        "chat-message-created",
+        [Function],
+      ],
+      Array [
+        "chat-message-updated",
+        [Function],
+      ],
+    ]
+  `);
+  expect(serialize()).toMatchSnapshot();
+
+  globalThis.mockSocket.emit('chat-message-created', {
+    chat_id: 1,
+    content: '<p>A new message</p>',
+    created_at: '2020-12-15T09:40:10.359Z',
+    deleted_at: null,
+    id: messages.length,
+    is_quotable: true,
+    updated_at: null,
+    user_id: 5
+  });
+
+  await waitFor(() =>
+    expect(screen.queryAllByTestId('comment').length).toBe(12)
+  );
+  expect(screen.queryByLabelText('See new message')).toBe(null);
+  expect(serialize()).toMatchSnapshot();
+
+  expect(chatActions.getChatMessagesByChatId).toHaveBeenCalled();
+  expect(chatActions.getChatMessagesCountByChatId).toHaveBeenCalled();
+  expect(chatActions.getChatUsersByChatId).toHaveBeenCalled();
+
+  done();
+});
+
+test('Receives new message after scrolling (chat in props)', async done => {
+  const Component = ChatMessages;
+
+  const props = {
+    ...commonProps,
+    chat
   };
 
   const state = {
@@ -753,8 +1325,8 @@ test('Receives new message after scrolling', async done => {
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
 
-  const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
-  expect(asFragment()).toMatchSnapshot();
+  await render(<ConnectedRoutedComponent {...props} />);
+  expect(serialize()).toMatchSnapshot();
 
   await waitFor(() => expect(globalThis.mockSocket.on).toHaveBeenCalled());
   expect(globalThis.mockSocket.on.mock.calls).toMatchInlineSnapshot(`
@@ -769,14 +1341,14 @@ test('Receives new message after scrolling', async done => {
       ],
     ]
   `);
-  expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
 
   const scrollingContainerOuter = await screen.findByTestId(
     'scrolling-container-outer'
   );
 
   fireEvent.scroll(scrollingContainerOuter, { target: { scrollY: -200 } });
-  expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
 
   globalThis.mockSocket.emit('chat-message-created', {
     chat_id: 1,
@@ -794,22 +1366,123 @@ test('Receives new message after scrolling', async done => {
   );
 
   const seeNewMessage = await screen.findByLabelText('See new message');
-  expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
 
   userEvent.click(seeNewMessage);
   await waitForPopper();
 
   expect(screen.queryByLabelText('See new message')).toBe(null);
-  expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
 
   done();
 });
 
-test('Show hidden messages', async done => {
+test('Receives new message after scrolling (chat in state)', async done => {
   const Component = ChatMessages;
 
   const props = {
-    ...(commonProps || {})
+    ...commonProps
+  };
+
+  const state = {
+    ...commonState,
+    chat
+  };
+
+  const emitter = new Emitter();
+
+  globalThis.mockSocket.emit.mockImplementation(emitter.emit);
+  globalThis.mockSocket.on.mockImplementation(emitter.on);
+  globalThis.mockSocket.off.mockImplementation(emitter.off);
+
+  const messages = Array.from({ length: 11 }, (v, i) => {
+    return {
+      chat_id: 1,
+      content: '<p>Hello</p>',
+      created_at: '2020-12-09T16:39:10.359Z',
+      deleted_at: null,
+      id: i,
+      is_quotable: true,
+      updated_at: null,
+      user_id: 999
+    };
+  });
+
+  chatActions.getChatMessagesByChatId.mockImplementation(
+    () => async dispatch => {
+      dispatch({ type: GET_CHAT_MESSAGES_SUCCESS, messages });
+      return messages;
+    }
+  );
+
+  chatActions.getChatMessagesCountByChatId.mockImplementation(
+    () => async dispatch => {
+      const count = messages.length;
+      dispatch({ type: GET_CHAT_MESSAGES_COUNT_SUCCESS, count });
+      return count;
+    }
+  );
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  await render(<ConnectedRoutedComponent {...props} />);
+  expect(serialize()).toMatchSnapshot();
+
+  await waitFor(() => expect(globalThis.mockSocket.on).toHaveBeenCalled());
+  expect(globalThis.mockSocket.on.mock.calls).toMatchInlineSnapshot(`
+    Array [
+      Array [
+        "chat-message-created",
+        [Function],
+      ],
+      Array [
+        "chat-message-updated",
+        [Function],
+      ],
+    ]
+  `);
+  expect(serialize()).toMatchSnapshot();
+
+  const scrollingContainerOuter = await screen.findByTestId(
+    'scrolling-container-outer'
+  );
+
+  fireEvent.scroll(scrollingContainerOuter, { target: { scrollY: -200 } });
+  expect(serialize()).toMatchSnapshot();
+
+  globalThis.mockSocket.emit('chat-message-created', {
+    chat_id: 1,
+    content: '<p>A new message</p>',
+    created_at: '2020-12-15T09:40:10.359Z',
+    deleted_at: null,
+    id: messages.length,
+    is_quotable: true,
+    updated_at: null,
+    user_id: 4
+  });
+
+  await waitFor(() =>
+    expect(screen.queryAllByTestId('comment').length).toBe(12)
+  );
+
+  const seeNewMessage = await screen.findByLabelText('See new message');
+  expect(serialize()).toMatchSnapshot();
+
+  userEvent.click(seeNewMessage);
+  await waitForPopper();
+
+  expect(screen.queryByLabelText('See new message')).toBe(null);
+  expect(serialize()).toMatchSnapshot();
+
+  done();
+});
+
+test('Show hidden messages (chat in props)', async done => {
+  const Component = ChatMessages;
+
+  const props = {
+    ...commonProps,
+    chat
   };
 
   const state = {
@@ -847,8 +1520,8 @@ test('Show hidden messages', async done => {
   const ConnectedRoutedComponent = reduxer(Component, props, state);
 
   const rendered = render(<ConnectedRoutedComponent {...props} />);
-  const { asFragment, container } = rendered;
-  expect(asFragment()).toMatchSnapshot();
+  const { container } = rendered;
+  expect(serialize()).toMatchSnapshot();
 
   await waitFor(() => expect(globalThis.mockSocket.on).toHaveBeenCalled());
   expect(globalThis.mockSocket.on.mock.calls).toMatchInlineSnapshot(`
@@ -867,7 +1540,7 @@ test('Show hidden messages', async done => {
   expect(chatActions.getChatMessagesCountByChatId).toHaveBeenCalled();
   expect(chatActions.getChatMessagesByChatId).toHaveBeenCalled();
 
-  expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
 
   expect((await screen.findAllByTestId('comment')).length).toBe(20);
   expect(screen.queryByLabelText('See more messages')).not.toBe(null);
@@ -918,11 +1591,13 @@ test('Show hidden messages', async done => {
   done();
 });
 
-test('Receives new message after scrolling without existing messages', async done => {
+test('Receives new message, has props.onMessageReceived', async done => {
   const Component = ChatMessages;
 
   const props = {
-    ...(commonProps || {})
+    ...commonProps,
+    chat,
+    onMessageReceived: jest.fn()
   };
 
   const state = {
@@ -954,8 +1629,68 @@ test('Receives new message after scrolling without existing messages', async don
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
 
-  const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
-  expect(asFragment()).toMatchSnapshot();
+  await render(<ConnectedRoutedComponent {...props} />);
+  expect(serialize()).toMatchSnapshot();
+
+  globalThis.mockSocket.emit('chat-message-created', {
+    chat_id: 1,
+    content: '<p>A new message</p>',
+    created_at: '2020-12-15T09:40:10.359Z',
+    deleted_at: null,
+    id: messages.length,
+    is_quotable: true,
+    updated_at: null,
+    user_id: 4
+  });
+
+  await waitFor(() =>
+    expect(screen.queryAllByTestId('comment').length).toBe(1)
+  );
+
+  expect(props.onMessageReceived).toHaveBeenCalled();
+
+  done();
+});
+
+test('Receives new message after scrolling without existing messages (chat in props)', async done => {
+  const Component = ChatMessages;
+
+  const props = {
+    ...commonProps,
+    chat
+  };
+
+  const state = {
+    ...commonState
+  };
+
+  const emitter = new Emitter();
+
+  globalThis.mockSocket.emit.mockImplementation(emitter.emit);
+  globalThis.mockSocket.on.mockImplementation(emitter.on);
+  globalThis.mockSocket.off.mockImplementation(emitter.off);
+
+  const messages = [];
+
+  chatActions.getChatMessagesByChatId.mockImplementation(
+    () => async dispatch => {
+      dispatch({ type: GET_CHAT_MESSAGES_SUCCESS, messages });
+      return messages;
+    }
+  );
+
+  chatActions.getChatMessagesCountByChatId.mockImplementation(
+    () => async dispatch => {
+      const count = messages.length;
+      dispatch({ type: GET_CHAT_MESSAGES_COUNT_SUCCESS, count });
+      return count;
+    }
+  );
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  await render(<ConnectedRoutedComponent {...props} />);
+  expect(serialize()).toMatchSnapshot();
 
   await waitFor(() => expect(globalThis.mockSocket.on).toHaveBeenCalled());
   expect(globalThis.mockSocket.on.mock.calls).toMatchInlineSnapshot(`
@@ -970,14 +1705,14 @@ test('Receives new message after scrolling without existing messages', async don
       ],
     ]
   `);
-  expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
 
   const scrollingContainerOuter = await screen.findByTestId(
     'scrolling-container-outer'
   );
 
   fireEvent.scroll(scrollingContainerOuter, { target: { scrollY: -200 } });
-  expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
 
   globalThis.mockSocket.emit('chat-message-created', {
     chat_id: 1,
@@ -995,22 +1730,23 @@ test('Receives new message after scrolling without existing messages', async don
   );
 
   const seeNewMessage = await screen.findByLabelText('See new message');
-  expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
 
   userEvent.click(seeNewMessage);
   await waitForPopper();
 
   expect(screen.queryByLabelText('See new message')).toBe(null);
-  expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
 
   done();
 });
 
-test('Receives new message for different chat', async done => {
+test('Receives new message for different chat (chat in props)', async done => {
   const Component = ChatMessages;
 
   const props = {
-    ...(commonProps || {})
+    ...commonProps,
+    chat
   };
 
   const state = {
@@ -1053,8 +1789,8 @@ test('Receives new message for different chat', async done => {
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
 
-  const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
-  expect(asFragment()).toMatchSnapshot();
+  await render(<ConnectedRoutedComponent {...props} />);
+  expect(serialize()).toMatchSnapshot();
 
   await waitFor(() => expect(globalThis.mockSocket.on).toHaveBeenCalled());
   expect(globalThis.mockSocket.on.mock.calls).toMatchInlineSnapshot(`
@@ -1070,7 +1806,7 @@ test('Receives new message for different chat', async done => {
     ]
   `);
   expect(screen.queryAllByTestId('comment').length).toBe(11);
-  expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
 
   globalThis.mockSocket.emit('chat-message-created', {
     chat_id: 2,
@@ -1087,16 +1823,17 @@ test('Receives new message for different chat', async done => {
     expect(screen.queryAllByTestId('comment').length).toBe(11)
   );
   expect(screen.queryByLabelText('See new message')).toBe(null);
-  expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
 
   done();
 });
 
-test('Receives new message just before unmount', async done => {
+test('Receives updated message for different chat (chat in props)', async done => {
   const Component = ChatMessages;
 
   const props = {
-    ...(commonProps || {})
+    ...commonProps,
+    chat
   };
 
   const state = {
@@ -1139,10 +1876,8 @@ test('Receives new message just before unmount', async done => {
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
 
-  const { asFragment, unmount } = render(
-    <ConnectedRoutedComponent {...props} />
-  );
-  expect(asFragment()).toMatchSnapshot();
+  await render(<ConnectedRoutedComponent {...props} />);
+  expect(serialize()).toMatchSnapshot();
 
   await waitFor(() => expect(globalThis.mockSocket.on).toHaveBeenCalled());
   expect(globalThis.mockSocket.on.mock.calls).toMatchInlineSnapshot(`
@@ -1158,7 +1893,94 @@ test('Receives new message just before unmount', async done => {
     ]
   `);
   expect(screen.queryAllByTestId('comment').length).toBe(11);
-  expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
+
+  globalThis.mockSocket.emit('chat-message-updated', {
+    chat_id: 2,
+    content: '<p>A new message</p>',
+    created_at: '2020-12-15T09:40:10.359Z',
+    deleted_at: null,
+    id: messages.length,
+    is_quotable: true,
+    updated_at: null,
+    user_id: 4
+  });
+
+  await waitFor(() =>
+    expect(screen.queryAllByTestId('comment').length).toBe(11)
+  );
+  expect(screen.queryByLabelText('See new message')).toBe(null);
+  expect(serialize()).toMatchSnapshot();
+
+  done();
+});
+
+test('Receives new message just before unmount (chat in props)', async done => {
+  const Component = ChatMessages;
+
+  const props = {
+    ...commonProps,
+    chat
+  };
+
+  const state = {
+    ...commonState
+  };
+
+  const emitter = new Emitter();
+
+  globalThis.mockSocket.emit.mockImplementation(emitter.emit);
+  globalThis.mockSocket.on.mockImplementation(emitter.on);
+  globalThis.mockSocket.off.mockImplementation(emitter.off);
+
+  const messages = Array.from({ length: 11 }, (v, i) => {
+    return {
+      chat_id: 1,
+      content: '<p>Hello</p>',
+      created_at: '2020-12-09T16:39:10.359Z',
+      deleted_at: null,
+      id: i,
+      is_quotable: true,
+      updated_at: null,
+      user_id: 999
+    };
+  });
+
+  chatActions.getChatMessagesByChatId.mockImplementation(
+    () => async dispatch => {
+      dispatch({ type: GET_CHAT_MESSAGES_SUCCESS, messages });
+      return messages;
+    }
+  );
+
+  chatActions.getChatMessagesCountByChatId.mockImplementation(
+    () => async dispatch => {
+      const count = messages.length;
+      dispatch({ type: GET_CHAT_MESSAGES_COUNT_SUCCESS, count });
+      return count;
+    }
+  );
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  const { unmount } = render(<ConnectedRoutedComponent {...props} />);
+  expect(serialize()).toMatchSnapshot();
+
+  await waitFor(() => expect(globalThis.mockSocket.on).toHaveBeenCalled());
+  expect(globalThis.mockSocket.on.mock.calls).toMatchInlineSnapshot(`
+    Array [
+      Array [
+        "chat-message-created",
+        [Function],
+      ],
+      Array [
+        "chat-message-updated",
+        [Function],
+      ],
+    ]
+  `);
+  expect(screen.queryAllByTestId('comment').length).toBe(11);
+  expect(serialize()).toMatchSnapshot();
 
   globalThis.mockSocket.emit('chat-message-created', {
     chat_id: 1,
@@ -1176,7 +1998,7 @@ test('Receives new message just before unmount', async done => {
   await waitFor(() =>
     expect(screen.queryAllByTestId('comment').length).toBe(0)
   );
-  expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
 
   done();
 });
@@ -1185,7 +2007,7 @@ test('Calls onQuote', async done => {
   const Component = ChatMessages;
 
   const props = {
-    ...(commonProps || {}),
+    ...commonProps,
     onQuote: jest.fn()
   };
 
@@ -1195,8 +2017,8 @@ test('Calls onQuote', async done => {
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
 
-  const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
-  expect(asFragment()).toMatchSnapshot();
+  await render(<ConnectedRoutedComponent {...props} />);
+  expect(serialize()).toMatchSnapshot();
 
   await waitFor(() => expect(globalThis.mockSocket.on).toHaveBeenCalled());
   expect(globalThis.mockSocket.on.mock.calls).toMatchInlineSnapshot(`
@@ -1212,7 +2034,7 @@ test('Calls onQuote', async done => {
     ]
   `);
   expect(screen.queryAllByTestId('comment').length).toBe(4);
-  expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
 
   const quotables = await screen.findAllByLabelText('Quote this message');
 
@@ -1256,7 +2078,7 @@ test('Message can be deleted', async done => {
   const Component = ChatMessages;
 
   const props = {
-    ...(commonProps || {}),
+    ...commonProps,
     onDelete: jest.fn()
   };
 
@@ -1306,8 +2128,8 @@ test('Message can be deleted', async done => {
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
 
-  const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
-  expect(asFragment()).toMatchSnapshot();
+  await render(<ConnectedRoutedComponent {...props} />);
+  expect(serialize()).toMatchSnapshot();
 
   await waitFor(() => expect(globalThis.mockSocket.on).toHaveBeenCalled());
   expect(globalThis.mockSocket.on.mock.calls).toMatchInlineSnapshot(`
@@ -1323,7 +2145,7 @@ test('Message can be deleted', async done => {
     ]
   `);
   expect(screen.queryAllByTestId('comment').length).toBe(2);
-  expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
 
   expect(screen.queryAllByLabelText('Delete this message').length).toBe(1);
 
@@ -1331,19 +2153,19 @@ test('Message can be deleted', async done => {
 
   userEvent.click(deletable);
   await waitForPopper();
-  expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
 
   userEvent.click(await screen.findByRole('button', { name: /No/i }));
   await waitForPopper();
-  expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
 
   userEvent.click(deletable);
   await waitForPopper();
-  expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
 
   userEvent.click(await screen.findByRole('button', { name: /Yes/i }));
   await waitForPopper();
-  expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
 
   await waitFor(() => expect(chatActions.setMessageById).toHaveBeenCalled());
   expect(chatActions.setMessageById.mock.calls[0][0]).toBe(6);
@@ -1356,11 +2178,12 @@ test('Message can be deleted', async done => {
   done();
 });
 
-test('Does a corrective scroll when view is resized', async done => {
+test('Does a corrective scroll when view is resized (chat in props)', async done => {
   const Component = ChatMessages;
 
   const props = {
-    ...(commonProps || {})
+    ...commonProps,
+    chat
   };
 
   const state = {
@@ -1397,8 +2220,8 @@ test('Does a corrective scroll when view is resized', async done => {
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
 
-  const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
-  expect(asFragment()).toMatchSnapshot();
+  await render(<ConnectedRoutedComponent {...props} />);
+  expect(serialize()).toMatchSnapshot();
 
   globalThis.onResize();
 
@@ -1407,11 +2230,12 @@ test('Does a corrective scroll when view is resized', async done => {
   done();
 });
 
-test('Receives new message, user missing (unloaded)', async done => {
+test('Receives new message, user missing (unloaded) (chat in props)', async done => {
   const Component = ChatMessages;
 
   const props = {
-    ...(commonProps || {})
+    ...commonProps,
+    chat
   };
 
   const state = {
@@ -1454,10 +2278,8 @@ test('Receives new message, user missing (unloaded)', async done => {
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
 
-  const { asFragment, unmount } = render(
-    <ConnectedRoutedComponent {...props} />
-  );
-  expect(asFragment()).toMatchSnapshot();
+  const { unmount } = render(<ConnectedRoutedComponent {...props} />);
+  expect(serialize()).toMatchSnapshot();
 
   await waitFor(() => expect(globalThis.mockSocket.on).toHaveBeenCalled());
   expect(globalThis.mockSocket.on.mock.calls).toMatchInlineSnapshot(`
@@ -1473,7 +2295,7 @@ test('Receives new message, user missing (unloaded)', async done => {
     ]
   `);
   expect(screen.queryAllByTestId('comment').length).toBe(11);
-  expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
 
   globalThis.mockSocket.emit('chat-message-created', {
     chat_id: 1,
@@ -1498,16 +2320,17 @@ test('Receives new message, user missing (unloaded)', async done => {
       ],
     ]
   `);
-  expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
 
   done();
 });
 
-test('Receives deleted message', async done => {
+test('Receives deleted message (chat in props)', async done => {
   const Component = ChatMessages;
 
   const props = {
-    ...(commonProps || {})
+    ...commonProps,
+    chat
   };
 
   const state = {
@@ -1550,8 +2373,8 @@ test('Receives deleted message', async done => {
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
 
-  const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
-  expect(asFragment()).toMatchSnapshot();
+  await render(<ConnectedRoutedComponent {...props} />);
+  expect(serialize()).toMatchSnapshot();
 
   await waitFor(() => expect(globalThis.mockSocket.on).toHaveBeenCalled());
   expect(globalThis.mockSocket.on.mock.calls).toMatchInlineSnapshot(`
@@ -1566,7 +2389,7 @@ test('Receives deleted message', async done => {
       ],
     ]
   `);
-  expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
 
   globalThis.mockSocket.emit('chat-message-updated', {
     chat_id: 1,
@@ -1584,7 +2407,7 @@ test('Receives deleted message', async done => {
     expect(screen.queryAllByTestId('comment').length).toBe(10)
   );
   expect(screen.queryByLabelText('See new message')).toBe(null);
-  expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
 
   expect(chatActions.getChatMessagesByChatId).toHaveBeenCalled();
   expect(chatActions.getChatMessagesCountByChatId).toHaveBeenCalled();
@@ -1592,11 +2415,102 @@ test('Receives deleted message', async done => {
   done();
 });
 
-test('Receives updated message', async done => {
+test('Receives deleted message (chat in state)', async done => {
   const Component = ChatMessages;
 
   const props = {
-    ...(commonProps || {})
+    ...commonProps
+  };
+
+  const state = {
+    ...commonState,
+    chat
+  };
+
+  const emitter = new Emitter();
+
+  globalThis.mockSocket.emit.mockImplementation(emitter.emit);
+  globalThis.mockSocket.on.mockImplementation(emitter.on);
+  globalThis.mockSocket.off.mockImplementation(emitter.off);
+
+  const messages = Array.from({ length: 11 }, (v, i) => {
+    return {
+      chat_id: 1,
+      content: '<p>Hello</p>',
+      created_at: '2020-12-09T16:39:10.359Z',
+      deleted_at: null,
+      id: i,
+      is_quotable: true,
+      updated_at: null,
+      user_id: 999
+    };
+  });
+
+  chatActions.getChatMessagesByChatId.mockImplementation(
+    () => async dispatch => {
+      dispatch({ type: GET_CHAT_MESSAGES_SUCCESS, messages });
+      return messages;
+    }
+  );
+
+  chatActions.getChatMessagesCountByChatId.mockImplementation(
+    () => async dispatch => {
+      const count = messages.length;
+      dispatch({ type: GET_CHAT_MESSAGES_COUNT_SUCCESS, count });
+      return count;
+    }
+  );
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  await render(<ConnectedRoutedComponent {...props} />);
+  expect(serialize()).toMatchSnapshot();
+
+  await waitFor(() => expect(globalThis.mockSocket.on).toHaveBeenCalled());
+  expect(globalThis.mockSocket.on.mock.calls).toMatchInlineSnapshot(`
+    Array [
+      Array [
+        "chat-message-created",
+        [Function],
+      ],
+      Array [
+        "chat-message-updated",
+        [Function],
+      ],
+    ]
+  `);
+  expect(serialize()).toMatchSnapshot();
+
+  globalThis.mockSocket.emit('chat-message-updated', {
+    chat_id: 1,
+    content: '<p>A new message</p>',
+    created_at: '2020-12-15T09:40:10.359Z',
+    deleted_at: '2020-12-15T09:40:10.359Z',
+    id: 0,
+    is_quotable: true,
+    updated_at: '2020-12-15T09:40:10.359Z',
+    user_id: 4
+  });
+
+  await waitFor(() =>
+    // 11 - 1 newly deleted message
+    expect(screen.queryAllByTestId('comment').length).toBe(10)
+  );
+  expect(screen.queryByLabelText('See new message')).toBe(null);
+  expect(serialize()).toMatchSnapshot();
+
+  expect(chatActions.getChatMessagesByChatId).toHaveBeenCalled();
+  expect(chatActions.getChatMessagesCountByChatId).toHaveBeenCalled();
+
+  done();
+});
+
+test('Receives updated message (chat in props)', async done => {
+  const Component = ChatMessages;
+
+  const props = {
+    ...commonProps,
+    chat
   };
 
   const state = {
@@ -1639,8 +2553,8 @@ test('Receives updated message', async done => {
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
 
-  const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
-  expect(asFragment()).toMatchSnapshot();
+  await render(<ConnectedRoutedComponent {...props} />);
+  expect(serialize()).toMatchSnapshot();
 
   await waitFor(() => expect(globalThis.mockSocket.on).toHaveBeenCalled());
   expect(globalThis.mockSocket.on.mock.calls).toMatchInlineSnapshot(`
@@ -1655,7 +2569,7 @@ test('Receives updated message', async done => {
       ],
     ]
   `);
-  expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
 
   globalThis.mockSocket.emit('chat-message-updated', {
     chat_id: 1,
@@ -1672,7 +2586,96 @@ test('Receives updated message', async done => {
     expect(screen.queryAllByTestId('comment').length).toBe(11)
   );
   expect(screen.queryByLabelText('See new message')).toBe(null);
-  expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
+
+  expect(chatActions.getChatMessagesByChatId).toHaveBeenCalled();
+  expect(chatActions.getChatMessagesCountByChatId).toHaveBeenCalled();
+
+  done();
+});
+
+test('Receives updated message (chat in state)', async done => {
+  const Component = ChatMessages;
+
+  const props = {
+    ...commonProps
+  };
+
+  const state = {
+    ...commonState,
+    chat
+  };
+
+  const emitter = new Emitter();
+
+  globalThis.mockSocket.emit.mockImplementation(emitter.emit);
+  globalThis.mockSocket.on.mockImplementation(emitter.on);
+  globalThis.mockSocket.off.mockImplementation(emitter.off);
+
+  const messages = Array.from({ length: 11 }, (v, i) => {
+    return {
+      chat_id: 1,
+      content: '<p>Hello</p>',
+      created_at: '2020-12-09T16:39:10.359Z',
+      deleted_at: null,
+      id: i,
+      is_quotable: true,
+      updated_at: null,
+      user_id: 999
+    };
+  });
+
+  chatActions.getChatMessagesByChatId.mockImplementation(
+    () => async dispatch => {
+      dispatch({ type: GET_CHAT_MESSAGES_SUCCESS, messages });
+      return messages;
+    }
+  );
+
+  chatActions.getChatMessagesCountByChatId.mockImplementation(
+    () => async dispatch => {
+      const count = messages.length;
+      dispatch({ type: GET_CHAT_MESSAGES_COUNT_SUCCESS, count });
+      return count;
+    }
+  );
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  await render(<ConnectedRoutedComponent {...props} />);
+  expect(serialize()).toMatchSnapshot();
+
+  await waitFor(() => expect(globalThis.mockSocket.on).toHaveBeenCalled());
+  expect(globalThis.mockSocket.on.mock.calls).toMatchInlineSnapshot(`
+    Array [
+      Array [
+        "chat-message-created",
+        [Function],
+      ],
+      Array [
+        "chat-message-updated",
+        [Function],
+      ],
+    ]
+  `);
+  expect(serialize()).toMatchSnapshot();
+
+  globalThis.mockSocket.emit('chat-message-updated', {
+    chat_id: 1,
+    content: '<p>a new message</p>',
+    created_at: '2020-12-15T09:40:10.359Z',
+    deleted_at: null,
+    id: 0,
+    is_quotable: true,
+    updated_at: '2020-12-15T09:40:10.359Z',
+    user_id: 4
+  });
+
+  await waitFor(() =>
+    expect(screen.queryAllByTestId('comment').length).toBe(11)
+  );
+  expect(screen.queryByLabelText('See new message')).toBe(null);
+  expect(serialize()).toMatchSnapshot();
 
   expect(chatActions.getChatMessagesByChatId).toHaveBeenCalled();
   expect(chatActions.getChatMessagesCountByChatId).toHaveBeenCalled();

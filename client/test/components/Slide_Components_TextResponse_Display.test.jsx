@@ -34,8 +34,6 @@ async function waitForPopper() {
 
 /** @GENERATED: BEGIN **/
 
-import { mount, shallow } from 'enzyme';
-
 import Display from '../../components/Slide/Components/TextResponse/Display.jsx';
 /** @GENERATED: END **/
 
@@ -105,6 +103,7 @@ test('Render 1 1', async done => {
     header: '',
     prompt: '',
     responseId: 'ABC',
+    recallSharedWithRoles: [],
     recallId: '',
     onChange() {},
     scenario: {
@@ -216,8 +215,8 @@ test('Render 1 1', async done => {
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
 
-  const component = shallow(<ConnectedRoutedComponent {...props} />);
-  expect(snapshotter(component)).toMatchSnapshot();
+  await render(<ConnectedRoutedComponent {...props} />);
+  expect(serialize()).toMatchSnapshot();
 
   done();
 });
@@ -233,6 +232,7 @@ test('Render 2 1', async done => {
     header: '',
     prompt: '',
     responseId: 'ABC',
+    recallSharedWithRoles: [],
     recallId: 'XYZ',
     onChange() {},
     scenario: {
@@ -344,9 +344,8 @@ test('Render 2 1', async done => {
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
 
-  const component = shallow(<ConnectedRoutedComponent {...props} />);
-  component.setProps({ html: 'something else' });
-  expect(snapshotter(component)).toMatchSnapshot();
+  await render(<ConnectedRoutedComponent {...props} />);
+  expect(serialize()).toMatchSnapshot();
 
   done();
 });
@@ -362,6 +361,7 @@ test('Render 3 1', async done => {
     header: '',
     prompt: '',
     responseId: 'ABC',
+    recallSharedWithRoles: [],
     recallId: 'XYZ',
     onChange() {},
     scenario: {
@@ -478,9 +478,8 @@ test('Render 3 1', async done => {
     pathname: '/run/'
   };
 
-  const component = shallow(<ConnectedRoutedComponent {...props} />);
-  component.setProps({ html: 'something else' });
-  expect(snapshotter(component)).toMatchSnapshot();
+  await render(<ConnectedRoutedComponent {...props} />);
+  expect(serialize()).toMatchSnapshot();
 
   done();
 });

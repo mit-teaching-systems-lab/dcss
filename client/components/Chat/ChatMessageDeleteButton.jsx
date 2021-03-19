@@ -27,6 +27,7 @@ class ChatMessageDeleteButton extends Component {
 
   onConfirm() {
     this.setState({ open: false });
+    /* istanbul ignore else */
     if (this.props.onConfirm) {
       this.props.onConfirm();
     }
