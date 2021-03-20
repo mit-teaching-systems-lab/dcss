@@ -426,6 +426,7 @@ export class CohortScenarios extends React.Component {
                                 });
                               }
                               await this.props.getChatsByCohortId(cohort.id);
+                              await this.props.getRuns();
                             }}
                           >
                             <Icon className="primary" name="close" />
