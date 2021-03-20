@@ -1,7 +1,8 @@
 import {
   GET_RUN_SUCCESS,
   GET_RUNS_SUCCESS,
-  SET_RUN_SUCCESS
+  SET_RUN_SUCCESS,
+  SET_RUN
 } from '@actions/types';
 
 import { runInitialState } from './initial-states';
@@ -12,6 +13,7 @@ export const run = (state = runInitialState, action) => {
   switch (type) {
     case GET_RUN_SUCCESS:
     case SET_RUN_SUCCESS:
+    case SET_RUN:
       return {
         ...state,
         ...run

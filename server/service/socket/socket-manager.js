@@ -356,6 +356,9 @@ class SocketManager {
       if (!notifier.listenerCount('chat_ended')) {
         notifier.on('chat_ended', async chat => {
           console.log('chat_ended', chat);
+          // This cannot be specifically bound to a room
+          // created by CREATE_CHAT_CHANNEL, because it
+          // needs to be accessible from cohort room selector
           this.io.emit(CHAT_ENDED, {
             chat
           });

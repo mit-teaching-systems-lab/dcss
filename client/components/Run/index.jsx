@@ -17,12 +17,15 @@ import { getRun, getRunByIdentifiers, setRun } from '@actions/run';
 import { getScenario } from '@actions/scenario';
 import Lobby from '@components/Lobby';
 import Scenario from '@components/Scenario';
-import { Title } from '@components/UI';
+import { Button, Header, Modal, Title } from '@components/UI';
 import withRunEventCapturing, {
   PROMPT_RESPONSE_SUBMITTED,
   SCENARIO_ARRIVAL
 } from '@hoc/withRunEventCapturing';
-import withSocket, { RUN_AGENT_START, RUN_END } from '@hoc/withSocket';
+import withSocket, {
+  CHAT_ENDED,
+  RUN_AGENT_START
+} from '@hoc/withSocket';
 import Identity from '@utils/Identity';
 import Payload from '@utils/Payload';
 import QueryString from '@utils/QueryString';
@@ -39,6 +42,9 @@ class Run extends Component {
     this.state = {
       isReady: false,
       baseurl: url.replace(/\/slide\/\d.*$/g, ''),
+      confirm: {
+        isOpen: false
+      },
       lobby: {
         isOpen: false,
         isUnassigned: false
@@ -47,6 +53,7 @@ class Run extends Component {
 
     this.responses = new Map();
     this.onChange = this.onChange.bind(this);
+    this.onChatEnded = this.onChatEnded.bind(this);
     this.onResponseChange = this.onResponseChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
     this.submitIfPendingResponses = this.submitIfPendingResponses.bind(this);
@@ -60,6 +67,8 @@ class Run extends Component {
 
   componentWillUnmount() {
     window.removeEventListener('beforeunload', this.submitIfPendingResponses);
+    window.removeEventListener('beforeunload', this.submitIfPendingResponses);
+    this.props.socket.off(CHAT_ENDED, this.onChatEnded);
   }
 
   get isCohortScenarioRun() {
@@ -231,6 +240,34 @@ class Run extends Component {
     }
 
     window.addEventListener('beforeunload', this.submitIfPendingResponses);
+
+    this.props.socket.on(CHAT_ENDED, this.onChatEnded);
+  }
+
+  async onChatEnded({ chat }) {
+
+    if (this.props.run.ended_at) {
+      return;
+    }
+
+    // CHAT_ENDED is not emitted to the channel created by
+    // CREATE_CHAT_CHANNEL, per socket-manager:
+    //    "This cannot be specifically bound to a room
+    //      created by CREATE_CHAT_CHANNEL, because it
+    //      needs to be accessible from cohort room selector"
+    //
+    // Therefore, this check MUST exist to prevent
+    // a global "chat ended" event from occuring.
+
+    if (chat.id !== this.props.chat.id) {
+      return;
+    }
+
+    this.setState({
+      confirm: {
+        isOpen: true
+      }
+    });
   }
 
   onResponseChange(event, data) {
@@ -289,7 +326,7 @@ class Run extends Component {
       scenario,
       user
     } = this.props;
-    const { isReady, baseurl, lobby } = this.state;
+    const { isReady, baseurl, confirm, lobby } = this.state;
 
     if (!isReady || !this.props.run) {
       return null;
@@ -352,21 +389,90 @@ class Run extends Component {
         />
       );
     }
+
+    if (confirm.isOpen) {
+
+      const whereAmIGoing = this.isCohortScenarioRun
+        ? 'your cohort'
+        : 'the main scenario list';
+
+      const cohortIdHash = Identity.toHash(this.props.cohort.id);
+      const onConfirmEnd = () => {
+        // clearTimeout(timeout);
+
+        this.props.setRun(this.props.run.id, {
+          ended_at: new Date().toISOString()
+        });
+
+        location.href = this.isCohortScenarioRun
+          ? `/cohort/${cohortIdHash}`
+          : `/scenarios`;
+      };
+
+      const onConfirmContinueClose = () => {
+        this.setState({
+          confirm: {
+            isOpen: false
+          }
+        });
+      };
+
+      // const timeout = setTimeout(() => {
+        // onConfirmEnd();
+      // }, 10000);
+
+      runViewContents = (
+        <Modal.Accessible open>
+          <Modal
+            closeIcon
+            open
+            aria-modal="true"
+            role="dialog"
+            size="small"
+            onClose={onConfirmEnd}
+          >
+            <Header
+              icon="trash alternate outline"
+              content="This scenario run was closed"
+            />
+            <Modal.Content>
+              <p>
+              This scenario run was closed by the host (the person that created it). Please click &quot;Exit this scenario&quot; to return to {whereAmIGoing}. </p>
+
+              <p>Alternatively, you may continue, however you may not be able to complete all of the tasks and requirements of this scenario. Click &quot;Continue alone&quot; to stay and attempt to complete the scenario on your own.
+              </p>
+            </Modal.Content>
+            <Modal.Actions>
+              <Button.Group fluid widths={2}>
+                <Button
+                  primary
+                  aria-label="Exit this scenario"
+                  onClick={() => {
+                    onConfirmEnd();
+                  }}
+                >
+                  Exit this scenario
+                </Button>
+                <Button.Or />
+                <Button
+                  aria-label="Continue alone"
+                  onClick={() => {
+                    onConfirmContinueClose();
+                  }}
+                >
+                  Continue alone
+                </Button>
+              </Button.Group>
+            </Modal.Actions>
+            <div data-testid="run-confirm-ended" />
+          </Modal>
+        </Modal.Accessible>
+      );
+    }
+
     return (
       <Fragment>
         <Title content={runViewTitle} />
-        {this.props.user.is_super && false ? (
-          <div style={{ zIndex: 9001, position: 'absolute' }}>
-            Run: {this.props.run.id}
-            <br />
-            Scenario: {this.props.scenario.id}
-            <br />
-            Cohort: {this.props.cohort.id || 'n/a'}
-            <br />
-            Chat: {(this.props.chat && this.props.chat.id) || 'n/a'}
-            <br />
-          </div>
-        ) : null}
         {runViewContents}
       </Fragment>
     );
