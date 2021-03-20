@@ -572,6 +572,11 @@ ChatMessages.propTypes = {
 
 const mapStateToProps = (state, ownProps) => {
   const { cohort, user } = state;
+  //
+  // This is VITAL to support displaying arbitrary chats
+  // that are NOT the current state.chat, by allowing an
+  // an explicitly provided chat object to take precedence.
+  //
   const chat =
     ownProps.chat && ownProps.chat.id
       ? ownProps.chat

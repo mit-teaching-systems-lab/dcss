@@ -560,6 +560,12 @@ const mapStateToProps = (state, ownProps) => {
   const prompt = {
     id: ownProps.responseId || null
   };
+
+  //
+  // This is VITAL to support displaying arbitrary chats
+  // that are NOT the current state.chat, by allowing an
+  // an explicitly provided chat object to take precedence.
+  //
   const chat =
     ownProps.chat && ownProps.chat.id
       ? ownProps.chat
