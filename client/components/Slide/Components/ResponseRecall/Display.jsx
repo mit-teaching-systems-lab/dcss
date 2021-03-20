@@ -1,7 +1,6 @@
 import { type } from './meta';
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import Identity from '@utils/Identity';
 import { Message, Segment } from '@components/UI';
 import Username from '@components/User/Username';
 import AudioPlayer from '../AudioPrompt/AudioPlayer';
@@ -10,15 +9,15 @@ import { connect } from 'react-redux';
 import { getChatUsersSharedResponses } from '@actions/chat';
 import { getResponse } from '@actions/response';
 import '../AudioPrompt/AudioPrompt.css';
+import Identity from '@utils/Identity';
+import Payload from '@utils/Payload';
 import {
   AUDIO_PLAYBACK_MANUAL_PAUSE,
   AUDIO_PLAYBACK_MANUAL_PLAY
 } from '@hoc/withRunEventCapturing';
 import withSocket, {
-  CHAT_AGENT_PAUSE,
-  CHAT_AGENT_START,
-  CHAT_MESSAGE_CREATED,
-  CHAT_MESSAGE_UPDATED
+  SHARED_RESPONSE_CREATED,
+  CREATE_SHARED_RESPONSE_CHANNEL,
 } from '@hoc/withSocket';
 
 const style = {
@@ -35,7 +34,6 @@ class Display extends Component {
     this.state = {
       responses: response ? [response] : []
     };
-
     this.refresh = this.refresh.bind(this);
   }
 
@@ -54,11 +52,8 @@ class Display extends Component {
       run
     } = this.props;
 
-    if (
-      this.props.chat &&
-      this.props.recallSharedWithRoles &&
-      this.props.recallSharedWithRoles.length
-    ) {
+
+    if (this.props.recallSharedWithRoles && this.props.recallSharedWithRoles.length) {
       const list = this.props.chat.users.reduce((accum, { id, persona_id }) => {
         if (this.props.recallSharedWithRoles.includes(persona_id)) {
           return [...accum, id];
@@ -95,9 +90,25 @@ class Display extends Component {
   }
 
   async componentDidMount() {
-    console.log("????????????????");
     await this.refresh();
 
+    if (
+      this.props.recallSharedWithRoles &&
+      this.props.recallSharedWithRoles.length
+    ) {
+      const response = {
+        id: this.props.recallId
+      };
+      const basePayload = Payload.compose(this.props);
+      const responsePayload = {
+        ...basePayload,
+        response,
+        slide,
+      };
+
+      this.props.socket.on(SHARED_RESPONSE_CREATED, this.refresh);
+      this.props.socket.emit(CREATE_SHARED_RESPONSE_CHANNEL, responsePayload);
+    }
     // TODO:
     //
     //  - add withSocket
@@ -287,8 +298,8 @@ Display.propTypes = {
 };
 
 const mapStateToProps = state => {
-  const { chat, scenario, run, responsesById } = state;
-  return { chat, scenario, run, responsesById };
+  const { chat, scenario, run, responsesById, user } = state;
+  return { chat, scenario, run, responsesById, user };
 };
 
 const mapDispatchToProps = dispatch => ({

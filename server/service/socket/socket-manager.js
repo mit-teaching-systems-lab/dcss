@@ -18,6 +18,7 @@ const {
   CREATE_CHAT_SLIDE_CHANNEL,
   CREATE_CHAT_USER_CHANNEL,
   CREATE_COHORT_CHANNEL,
+  CREATE_SHARED_RESPONSE_CHANNEL,
   CREATE_USER_CHANNEL,
   DISCONNECT,
   HEART_BEAT,
@@ -29,6 +30,7 @@ const {
   RUN_AGENT_START,
   RUN_CHAT_LINK,
   SET_INVITATION,
+  SHARED_RESPONSE_CREATED,
   TIMER_END,
   TIMER_START,
   TIMER_STOP,
@@ -399,6 +401,13 @@ class SocketManager {
         notifier.on('run_response_created', async data => {
           console.log('run_response_created', data);
           sendRunResponseToAgent(data);
+          const {
+            run_id,
+            response_id,
+          } = data;
+          const chat = await runsdb.getChatByRunId(run_id);
+          const room = `${chat.id}-response-${response_id}`;
+          this.io.to(room).emit(SHARED_RESPONSE_CREATED, data);
         });
       }
 
@@ -564,6 +573,11 @@ class SocketManager {
         // const agents = await agentsdb.getScenarioAgents(run.scenario_id);
 
         // console.log(agents);
+      });
+
+      socket.on(CREATE_SHARED_RESPONSE_CHANNEL, ({ chat, response }) => {
+        console.log(CREATE_SHARED_RESPONSE_CHANNEL, { chat, response });
+        socket.join(`${chat.id}-response-${response.id}`);
       });
 
       socket.on(CREATE_USER_CHANNEL, ({ user }) => {

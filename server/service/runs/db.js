@@ -46,6 +46,14 @@ exports.getRunByIdentifiers = async function(
   return result.rows[0] || null;
 };
 
+exports.getChatByRunId = async (run_id) => {
+  const result = await query(`
+    SELECT chat_id AS id FROM run_chat WHERE run_id = ${run_id};
+  `);
+
+  return result.rows[0] || null;
+};
+
 exports.createRun = async function(user_id, scenario_id, consent_id) {
   return await withClientTransaction(async client => {
     const insert = await client.query(sql`
