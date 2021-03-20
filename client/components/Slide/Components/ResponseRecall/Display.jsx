@@ -14,6 +14,12 @@ import {
   AUDIO_PLAYBACK_MANUAL_PAUSE,
   AUDIO_PLAYBACK_MANUAL_PLAY
 } from '@hoc/withRunEventCapturing';
+import withSocket, {
+  CHAT_AGENT_PAUSE,
+  CHAT_AGENT_START,
+  CHAT_MESSAGE_CREATED,
+  CHAT_MESSAGE_UPDATED
+} from '@hoc/withSocket';
 
 const style = {
   whiteSpace: 'pre-wrap',
@@ -89,6 +95,7 @@ class Display extends Component {
   }
 
   async componentDidMount() {
+    console.log("????????????????");
     await this.refresh();
 
     // TODO:
@@ -149,6 +156,8 @@ class Display extends Component {
         />
       );
     }
+
+    console.log("responses", responses);
 
     return responses.reduce((accum, response) => {
       let rvalue = this.isScenarioRun
@@ -288,7 +297,9 @@ const mapDispatchToProps = dispatch => ({
     dispatch(getChatUsersSharedResponses(...params))
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Display);
+export default withSocket(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Display)
+);
