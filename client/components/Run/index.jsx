@@ -67,7 +67,6 @@ class Run extends Component {
 
   componentWillUnmount() {
     window.removeEventListener('beforeunload', this.submitIfPendingResponses);
-    window.removeEventListener('beforeunload', this.submitIfPendingResponses);
     this.props.socket.off(CHAT_ENDED, this.onChatEnded);
   }
 
