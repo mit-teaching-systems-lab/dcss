@@ -33,6 +33,7 @@ import withSocket, {
   RUN_CHAT_LINK
 } from '@hoc/withSocket';
 import Identity from '@utils/Identity';
+import Layout from '@utils/Layout';
 import Storage from '@utils/Storage';
 import './Cohort.css';
 
@@ -662,7 +663,9 @@ export class CohortRoomSelector extends React.Component {
             </Modal.Accessible>
           ) : null}
 
-          <Chat chat={this.props.cohort.chat} isMinimizable={false} />
+          {Layout.isNotForMobile() ? (
+            <Chat chat={this.props.cohort.chat} isMinimizable={false} />
+          ) : null}
         </Modal>
       </Modal.Accessible>
     );
