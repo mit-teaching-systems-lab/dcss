@@ -94,7 +94,7 @@ class Timer extends Component {
   }
 
   render() {
-    const { auto, chat, slide, timeout, user } = this.props;
+    const { auto, chat, isAllowedToStartTimer, slide, timeout, user } = this.props;
     const { isActive } = this.state;
 
     if (!this.isScenarioRun) {
@@ -122,8 +122,9 @@ class Timer extends Component {
       </Ref>
     );
 
-    const startTimerOrWaiting =
-      !isActive && auto ? 'Waiting for participants' : 'Start discussion timer';
+    const startTimerOrWaiting = !isAllowedToStartTimer && !isActive && auto
+      ? 'Waiting for participants'
+      : 'Start discussion timer';
 
     const startOrClockText = isActive ? timerDisplay : startTimerOrWaiting;
 
@@ -140,7 +141,7 @@ class Timer extends Component {
       </Menu.Item>
     );
 
-    return isUserHost ? (
+    return isUserHost && isAllowedToStartTimer ? (
       startOrStopButton
     ) : (
       <Menu.Item className="cpd__timer">
@@ -152,8 +153,9 @@ class Timer extends Component {
 }
 
 Timer.propTypes = {
-  chat: PropTypes.object,
   auto: PropTypes.bool,
+  chat: PropTypes.object,
+  isAllowedToStartTimer: PropTypes.bool,
   required: PropTypes.bool,
   responseId: PropTypes.string,
   onTimerEnd: PropTypes.func,

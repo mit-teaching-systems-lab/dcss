@@ -213,12 +213,12 @@ class Display extends Component {
           index: this.slideIndex
         };
 
-        if (auto && timeout) {
-          this.props.socket.emit(TIMER_START, { chat, slide, timeout });
-        }
-
         this.setState({
           isActive: true
+        }, () => {
+          if (auto && timeout) {
+            this.props.socket.emit(TIMER_START, { chat, slide, timeout });
+          }
         });
       }
     }
@@ -292,6 +292,7 @@ class Display extends Component {
       isRestart,
       slide,
       timeout,
+      isAllowedToStartTimer: isActive,
       onTimerEnd: params => {
         this.props.socket.emit(CHAT_CLOSED_FOR_SLIDE, params);
       },
