@@ -133,10 +133,12 @@ class ChatMessages extends Component {
       );
     }
 
-    this.setState({
-      isReady: true,
-      messages
-    });
+    if (this.isComponentMounted) {
+      this.setState({
+        isReady: true,
+        messages
+      });
+    }
   }
 
   componentWillUnmount() {
