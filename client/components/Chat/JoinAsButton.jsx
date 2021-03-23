@@ -25,8 +25,7 @@ function JoinAsButton(props) {
 
   return (
     <Button
-      compact
-      size="mini"
+      size="tiny"
       data-testid="join-scenario-as"
       as={NavLink}
       key={Identity.key(persona)}

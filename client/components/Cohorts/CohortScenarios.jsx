@@ -366,9 +366,26 @@ export class CohortScenarios extends React.Component {
                     {!isFacilitator ? (
                       <Card.Meta>{runStartedMaybeFinished}</Card.Meta>
                     ) : null}
-                    <Card.Meta>
+                    {isMultiParticipantScenario && !existingChat ? (
+                      <Card.Meta>
+                        {scenario.personas.map(persona => {
+                          return (
+                            <JoinAsButton
+                              key={Identity.key(persona)}
+                              cohort={cohort}
+                              persona={persona}
+                              scenario={scenario}
+                            />
+                          );
+                        })}
+                      </Card.Meta>
+                    ) : null}
+                    <Card.Meta
+                      className={isMultiParticipantScenario && !existingChat ? 'c__card-meta-no-margin-top' : ''}
+                    >
                       <Button
-                        size="tiny"
+                        compact
+                        size="mini"
                         data-testid="run-cohort-as-participant"
                         onClick={() => {
                           if (isMultiParticipantScenario) {
@@ -394,7 +411,8 @@ export class CohortScenarios extends React.Component {
                       {isMultiParticipantScenario && existingChat ? (
                         <Fragment>
                           <Button
-                            size="tiny"
+                            compact
+                            size="mini"
                             data-testid="see-my-room-lobby"
                             onClick={() => {
                               this.setState({
@@ -413,7 +431,8 @@ export class CohortScenarios extends React.Component {
                             Go to my room&apos;s lobby
                           </Button>
                           <Button
-                            size="tiny"
+                            compact
+                            size="mini"
                             data-testid="close-my-room"
                             onClick={async () => {
                               const time = new Date().toISOString();
@@ -435,31 +454,7 @@ export class CohortScenarios extends React.Component {
                           </Button>
                         </Fragment>
                       ) : null}
-                      {/*isFacilitator ? (
-                        <Button
-                          size="tiny"
-                          data-testid="copy-cohort-scenario-link"
-                          onClick={onCohortScenarioUrlCopyClick}
-                        >
-                          <Icon className="primary" name="clipboard outline" />
-                          Copy scenario link to clipboard
-                        </Button>
-                      ) : null*/}
                     </Card.Meta>
-                    {isMultiParticipantScenario && !existingChat ? (
-                      <Card.Meta className="c__join-as">
-                        {scenario.personas.map(persona => {
-                          return (
-                            <JoinAsButton
-                              key={Identity.key(persona)}
-                              cohort={cohort}
-                              persona={persona}
-                              scenario={scenario}
-                            />
-                          );
-                        })}
-                      </Card.Meta>
-                    ) : null}
                   </Card.Content>
                   <div className="c__scenario-extra">
                     <Gate
