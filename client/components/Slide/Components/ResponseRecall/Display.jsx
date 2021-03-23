@@ -46,7 +46,7 @@ class Display extends Component {
       return;
     }
     let {
-      recallId: responseId,
+      recallId,
       // eslint-disable-next-line no-unused-vars
       responsesById,
       run
@@ -64,7 +64,7 @@ class Display extends Component {
       if (list.length) {
         const responses = await this.props.getChatUsersSharedResponses(
           this.props.chat.id,
-          responseId,
+          recallId,
           list
         );
 
@@ -73,11 +73,11 @@ class Display extends Component {
         });
       }
     } else {
-      if (!responseId || responseId === -1) {
+      if (!recallId || recallId === -1) {
         return;
       }
 
-      const { response } = await this.props.getResponse(run.id, responseId);
+      const { response } = await this.props.getResponse(run.id, recallId);
 
       if (!response) {
         return;
@@ -103,18 +103,11 @@ class Display extends Component {
       const responsePayload = {
         ...basePayload,
         response,
-        slide,
       };
 
       this.props.socket.on(SHARED_RESPONSE_CREATED, this.refresh);
       this.props.socket.emit(CREATE_SHARED_RESPONSE_CHANNEL, responsePayload);
     }
-    // TODO:
-    //
-    //  - add withSocket
-    //  - register handler for new responses
-    //    - on new response, refresh
-    //
   }
 
   render() {
@@ -259,11 +252,16 @@ class Display extends Component {
         );
 
         messageProps.attached = 'bottom';
+        messageProps.header = messageProps.content;
+        messageProps.content = null;
+        const personaName = persona
+          ? <Fragment>({persona.name})</Fragment>
+          : null;
 
         accum.push(
           <Fragment key={key}>
             <Segment attached="top" size="large">
-              <Username user={chatUser} /> ({persona.name}):
+              <Username user={chatUser} /> {personaName}:
             </Segment>
             <Message {...messageProps} />
           </Fragment>
@@ -291,6 +289,7 @@ Display.propTypes = {
   // from being mis-indentified as a "Response" component.
   recallId: PropTypes.string,
   recallSharedWithRoles: PropTypes.array,
+  chat: PropTypes.object,
   run: PropTypes.object,
   saveRunEvent: PropTypes.func,
   scenario: PropTypes.object,
