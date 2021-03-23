@@ -1,10 +1,14 @@
 export default {
   compose(props, data = {}) {
-    let { agent, chat, prompt, response, user } = props;
+    let { agent, chat, cohort, prompt, response, user } = props;
 
     // These may be null, so we can't rely on default params
     if (!agent) {
       agent = {};
+    }
+
+    if (!cohort) {
+      cohort = {};
     }
 
     if (!chat) {
@@ -78,6 +82,9 @@ export default {
       chat: {
         id: chat.id,
         host_id: chat.host_id
+      },
+      cohort: {
+        id: cohort.id
       },
       prompt: {
         id: prompt.id

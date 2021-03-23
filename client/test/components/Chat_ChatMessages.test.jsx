@@ -652,6 +652,9 @@ test('Chat has an agent', async done => {
             "host_id": 999,
             "id": 1,
           },
+          "cohort": Object {
+            "id": 2,
+          },
           "prompt": undefined,
           "response": Object {
             "id": undefined,

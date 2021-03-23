@@ -371,3 +371,7 @@
 .c__chat-card__meta button {
   text-align: unset !important;
 }
+
+.c__join-as {
+  margin-top: unset !important;
+}

@@ -34,6 +34,7 @@ import withSocket, {
 } from '@hoc/withSocket';
 import Identity from '@utils/Identity';
 import Layout from '@utils/Layout';
+import Payload from '@utils/Payload';
 import Storage from '@utils/Storage';
 import './Cohort.css';
 
@@ -100,7 +101,7 @@ export class CohortRoomSelector extends React.Component {
 
     await this.fetchChats();
 
-    this.props.socket.emit(CREATE_COHORT_CHANNEL, { cohort });
+    this.props.socket.emit(CREATE_COHORT_CHANNEL, Payload.compose({ cohort }));
     this.props.socket.on(CHAT_CREATED, this.fetchChats);
     this.props.socket.on(CHAT_ENDED, this.fetchChats);
     this.props.socket.on(HOST_JOIN, this.fetchChats);

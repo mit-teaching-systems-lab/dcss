@@ -11,6 +11,7 @@ import {
 } from '@actions/cohort';
 import { getRuns } from '@actions/run';
 import { getUsers } from '@actions/users';
+import JoinAsButton from '@components/Chat/JoinAsButton';
 import CohortScenariosSelector from '@components/Cohorts/CohortScenariosSelector';
 import CohortRoomSelector from '@components/Cohorts/CohortRoomSelector';
 import Gate from '@components/Gate';
@@ -445,6 +446,20 @@ export class CohortScenarios extends React.Component {
                         </Button>
                       ) : null*/}
                     </Card.Meta>
+                    {isMultiParticipantScenario && !existingChat ? (
+                      <Card.Meta className="c__join-as">
+                        {scenario.personas.map(persona => {
+                          return (
+                            <JoinAsButton
+                              key={Identity.key(persona)}
+                              cohort={cohort}
+                              persona={persona}
+                              scenario={scenario}
+                            />
+                          );
+                        })}
+                      </Card.Meta>
+                    ) : null}
                   </Card.Content>
                   <div className="c__scenario-extra">
                     <Gate

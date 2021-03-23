@@ -112,6 +112,43 @@ exports[`Facilitator has an option to open scenarios selector 2`] = `
                 Create or join a room to re-run scenario
               </button>
             </div>
+            <div
+              class="meta c__join-as"
+            >
+              <a
+                class="ui mini compact button"
+                data-testid="join-scenario-as"
+                href="/chat/join/1765cf2e64/as/6e4213d8d3/cohort/6e4213d8d3"
+                role="button"
+              >
+                Join as 
+                <strong>
+                  Participant
+                </strong>
+              </a>
+              <a
+                class="ui mini compact button"
+                data-testid="join-scenario-as"
+                href="/chat/join/1765cf2e64/as/6c4adee67a/cohort/6e4213d8d3"
+                role="button"
+              >
+                Join as 
+                <strong>
+                  Teacher
+                </strong>
+              </a>
+              <a
+                class="ui mini compact button"
+                data-testid="join-scenario-as"
+                href="/chat/join/1765cf2e64/as/cc5d157543/cohort/6e4213d8d3"
+                role="button"
+              >
+                Join as 
+                <strong>
+                  Student
+                </strong>
+              </a>
+            </div>
           </div>
           <div
             class="c__scenario-extra"
@@ -196,6 +233,43 @@ exports[`Facilitator has an option to open scenarios selector 3`] = `
                 Create or join a room to re-run scenario
               </button>
             </div>
+            <div
+              class="meta c__join-as"
+            >
+              <a
+                class="ui mini compact button"
+                data-testid="join-scenario-as"
+                href="/chat/join/1765cf2e64/as/6e4213d8d3/cohort/6e4213d8d3"
+                role="button"
+              >
+                Join as 
+                <strong>
+                  Participant
+                </strong>
+              </a>
+              <a
+                class="ui mini compact button"
+                data-testid="join-scenario-as"
+                href="/chat/join/1765cf2e64/as/6c4adee67a/cohort/6e4213d8d3"
+                role="button"
+              >
+                Join as 
+                <strong>
+                  Teacher
+                </strong>
+              </a>
+              <a
+                class="ui mini compact button"
+                data-testid="join-scenario-as"
+                href="/chat/join/1765cf2e64/as/cc5d157543/cohort/6e4213d8d3"
+                role="button"
+              >
+                Join as 
+                <strong>
+                  Student
+                </strong>
+              </a>
+            </div>
           </div>
           <div
             class="c__scenario-extra"
@@ -279,6 +353,43 @@ exports[`Facilitator has an option to open scenarios selector 4`] = `
                 />
                 Create or join a room to re-run scenario
               </button>
+            </div>
+            <div
+              class="meta c__join-as"
+            >
+              <a
+                class="ui mini compact button"
+                data-testid="join-scenario-as"
+                href="/chat/join/1765cf2e64/as/6e4213d8d3/cohort/6e4213d8d3"
+                role="button"
+              >
+                Join as 
+                <strong>
+                  Participant
+                </strong>
+              </a>
+              <a
+                class="ui mini compact button"
+                data-testid="join-scenario-as"
+                href="/chat/join/1765cf2e64/as/6c4adee67a/cohort/6e4213d8d3"
+                role="button"
+              >
+                Join as 
+                <strong>
+                  Teacher
+                </strong>
+              </a>
+              <a
+                class="ui mini compact button"
+                data-testid="join-scenario-as"
+                href="/chat/join/1765cf2e64/as/cc5d157543/cohort/6e4213d8d3"
+                role="button"
+              >
+                Join as 
+                <strong>
+                  Student
+                </strong>
+              </a>
             </div>
           </div>
           <div
@@ -563,6 +674,43 @@ exports[`Open Edit scenarios 2`] = `
                 Create or join a room to re-run scenario
               </button>
             </div>
+            <div
+              class="meta c__join-as"
+            >
+              <a
+                class="ui mini compact button"
+                data-testid="join-scenario-as"
+                href="/chat/join/1765cf2e64/as/6e4213d8d3/cohort/6e4213d8d3"
+                role="button"
+              >
+                Join as 
+                <strong>
+                  Participant
+                </strong>
+              </a>
+              <a
+                class="ui mini compact button"
+                data-testid="join-scenario-as"
+                href="/chat/join/1765cf2e64/as/6c4adee67a/cohort/6e4213d8d3"
+                role="button"
+              >
+                Join as 
+                <strong>
+                  Teacher
+                </strong>
+              </a>
+              <a
+                class="ui mini compact button"
+                data-testid="join-scenario-as"
+                href="/chat/join/1765cf2e64/as/cc5d157543/cohort/6e4213d8d3"
+                role="button"
+              >
+                Join as 
+                <strong>
+                  Student
+                </strong>
+              </a>
+            </div>
           </div>
           <div
             class="c__scenario-extra"
@@ -647,6 +795,43 @@ exports[`Open Edit scenarios 3`] = `
                 Create or join a room to re-run scenario
               </button>
             </div>
+            <div
+              class="meta c__join-as"
+            >
+              <a
+                class="ui mini compact button"
+                data-testid="join-scenario-as"
+                href="/chat/join/1765cf2e64/as/6e4213d8d3/cohort/6e4213d8d3"
+                role="button"
+              >
+                Join as 
+                <strong>
+                  Participant
+                </strong>
+              </a>
+              <a
+                class="ui mini compact button"
+                data-testid="join-scenario-as"
+                href="/chat/join/1765cf2e64/as/6c4adee67a/cohort/6e4213d8d3"
+                role="button"
+              >
+                Join as 
+                <strong>
+                  Teacher
+                </strong>
+              </a>
+              <a
+                class="ui mini compact button"
+                data-testid="join-scenario-as"
+                href="/chat/join/1765cf2e64/as/cc5d157543/cohort/6e4213d8d3"
+                role="button"
+              >
+                Join as 
+                <strong>
+                  Student
+                </strong>
+              </a>
+            </div>
           </div>
           <div
             class="c__scenario-extra"
@@ -730,6 +915,43 @@ exports[`Open Edit scenarios 4`] = `
                 />
                 Create or join a room to re-run scenario
               </button>
+            </div>
+            <div
+              class="meta c__join-as"
+            >
+              <a
+                class="ui mini compact button"
+                data-testid="join-scenario-as"
+                href="/chat/join/1765cf2e64/as/6e4213d8d3/cohort/6e4213d8d3"
+                role="button"
+              >
+                Join as 
+                <strong>
+                  Participant
+                </strong>
+              </a>
+              <a
+                class="ui mini compact button"
+                data-testid="join-scenario-as"
+                href="/chat/join/1765cf2e64/as/6c4adee67a/cohort/6e4213d8d3"
+                role="button"
+              >
+                Join as 
+                <strong>
+                  Teacher
+                </strong>
+              </a>
+              <a
+                class="ui mini compact button"
+                data-testid="join-scenario-as"
+                href="/chat/join/1765cf2e64/as/cc5d157543/cohort/6e4213d8d3"
+                role="button"
+              >
+                Join as 
+                <strong>
+                  Student
+                </strong>
+              </a>
             </div>
           </div>
           <div
@@ -838,6 +1060,43 @@ exports[`Participant does not have an option to open scenarios selector 2`] = `
             Create or join a room to re-run scenario
           </button>
         </div>
+        <div
+          class="meta c__join-as"
+        >
+          <a
+            class="ui mini compact button"
+            data-testid="join-scenario-as"
+            href="/chat/join/1765cf2e64/as/6e4213d8d3/cohort/6e4213d8d3"
+            role="button"
+          >
+            Join as 
+            <strong>
+              Participant
+            </strong>
+          </a>
+          <a
+            class="ui mini compact button"
+            data-testid="join-scenario-as"
+            href="/chat/join/1765cf2e64/as/6c4adee67a/cohort/6e4213d8d3"
+            role="button"
+          >
+            Join as 
+            <strong>
+              Teacher
+            </strong>
+          </a>
+          <a
+            class="ui mini compact button"
+            data-testid="join-scenario-as"
+            href="/chat/join/1765cf2e64/as/cc5d157543/cohort/6e4213d8d3"
+            role="button"
+          >
+            Join as 
+            <strong>
+              Student
+            </strong>
+          </a>
+        </div>
       </div>
       <div
         class="c__scenario-extra"
@@ -944,6 +1203,43 @@ exports[`Render 1 1 2`] = `
                 />
                 Create or join a room to run scenario
               </button>
+            </div>
+            <div
+              class="meta c__join-as"
+            >
+              <a
+                class="ui mini compact button"
+                data-testid="join-scenario-as"
+                href="/chat/join/1765cf2e64/as/6e4213d8d3/cohort/6e4213d8d3"
+                role="button"
+              >
+                Join as 
+                <strong>
+                  Participant
+                </strong>
+              </a>
+              <a
+                class="ui mini compact button"
+                data-testid="join-scenario-as"
+                href="/chat/join/1765cf2e64/as/6c4adee67a/cohort/6e4213d8d3"
+                role="button"
+              >
+                Join as 
+                <strong>
+                  Teacher
+                </strong>
+              </a>
+              <a
+                class="ui mini compact button"
+                data-testid="join-scenario-as"
+                href="/chat/join/1765cf2e64/as/cc5d157543/cohort/6e4213d8d3"
+                role="button"
+              >
+                Join as 
+                <strong>
+                  Student
+                </strong>
+              </a>
             </div>
           </div>
           <div
@@ -1054,6 +1350,43 @@ exports[`Render 2 1 2`] = `
                 Create or join a room to re-run scenario
               </button>
             </div>
+            <div
+              class="meta c__join-as"
+            >
+              <a
+                class="ui mini compact button"
+                data-testid="join-scenario-as"
+                href="/chat/join/1765cf2e64/as/6e4213d8d3/cohort/6e4213d8d3"
+                role="button"
+              >
+                Join as 
+                <strong>
+                  Participant
+                </strong>
+              </a>
+              <a
+                class="ui mini compact button"
+                data-testid="join-scenario-as"
+                href="/chat/join/1765cf2e64/as/6c4adee67a/cohort/6e4213d8d3"
+                role="button"
+              >
+                Join as 
+                <strong>
+                  Teacher
+                </strong>
+              </a>
+              <a
+                class="ui mini compact button"
+                data-testid="join-scenario-as"
+                href="/chat/join/1765cf2e64/as/cc5d157543/cohort/6e4213d8d3"
+                role="button"
+              >
+                Join as 
+                <strong>
+                  Student
+                </strong>
+              </a>
+            </div>
           </div>
           <div
             class="c__scenario-extra"
@@ -1163,6 +1496,43 @@ exports[`Run as participant 2`] = `
                 Create or join a room to re-run scenario
               </button>
             </div>
+            <div
+              class="meta c__join-as"
+            >
+              <a
+                class="ui mini compact button"
+                data-testid="join-scenario-as"
+                href="/chat/join/1765cf2e64/as/6e4213d8d3/cohort/6e4213d8d3"
+                role="button"
+              >
+                Join as 
+                <strong>
+                  Participant
+                </strong>
+              </a>
+              <a
+                class="ui mini compact button"
+                data-testid="join-scenario-as"
+                href="/chat/join/1765cf2e64/as/6c4adee67a/cohort/6e4213d8d3"
+                role="button"
+              >
+                Join as 
+                <strong>
+                  Teacher
+                </strong>
+              </a>
+              <a
+                class="ui mini compact button"
+                data-testid="join-scenario-as"
+                href="/chat/join/1765cf2e64/as/cc5d157543/cohort/6e4213d8d3"
+                role="button"
+              >
+                Join as 
+                <strong>
+                  Student
+                </strong>
+              </a>
+            </div>
           </div>
           <div
             class="c__scenario-extra"
@@ -1246,6 +1616,43 @@ exports[`Run as participant 4`] = `
                 />
                 Create or join a room to re-run scenario
               </button>
+            </div>
+            <div
+              class="meta c__join-as"
+            >
+              <a
+                class="ui mini compact button"
+                data-testid="join-scenario-as"
+                href="/chat/join/1765cf2e64/as/6e4213d8d3/cohort/6e4213d8d3"
+                role="button"
+              >
+                Join as 
+                <strong>
+                  Participant
+                </strong>
+              </a>
+              <a
+                class="ui mini compact button"
+                data-testid="join-scenario-as"
+                href="/chat/join/1765cf2e64/as/6c4adee67a/cohort/6e4213d8d3"
+                role="button"
+              >
+                Join as 
+                <strong>
+                  Teacher
+                </strong>
+              </a>
+              <a
+                class="ui mini compact button"
+                data-testid="join-scenario-as"
+                href="/chat/join/1765cf2e64/as/cc5d157543/cohort/6e4213d8d3"
+                role="button"
+              >
+                Join as 
+                <strong>
+                  Student
+                </strong>
+              </a>
             </div>
           </div>
           <div
@@ -1356,6 +1763,43 @@ exports[`Scenarios have multi-participant/single-participant icons 2`] = `
                 Create or join a room to re-run scenario
               </button>
             </div>
+            <div
+              class="meta c__join-as"
+            >
+              <a
+                class="ui mini compact button"
+                data-testid="join-scenario-as"
+                href="/chat/join/1765cf2e64/as/6e4213d8d3/cohort/6e4213d8d3"
+                role="button"
+              >
+                Join as 
+                <strong>
+                  Participant
+                </strong>
+              </a>
+              <a
+                class="ui mini compact button"
+                data-testid="join-scenario-as"
+                href="/chat/join/1765cf2e64/as/6c4adee67a/cohort/6e4213d8d3"
+                role="button"
+              >
+                Join as 
+                <strong>
+                  Teacher
+                </strong>
+              </a>
+              <a
+                class="ui mini compact button"
+                data-testid="join-scenario-as"
+                href="/chat/join/1765cf2e64/as/cc5d157543/cohort/6e4213d8d3"
+                role="button"
+              >
+                Join as 
+                <strong>
+                  Student
+                </strong>
+              </a>
+            </div>
           </div>
           <div
             class="c__scenario-extra"
@@ -1440,6 +1884,43 @@ exports[`Scenarios have multi-participant/single-participant icons 3`] = `
                 Create or join a room to re-run scenario
               </button>
             </div>
+            <div
+              class="meta c__join-as"
+            >
+              <a
+                class="ui mini compact button"
+                data-testid="join-scenario-as"
+                href="/chat/join/1765cf2e64/as/6e4213d8d3/cohort/6e4213d8d3"
+                role="button"
+              >
+                Join as 
+                <strong>
+                  Participant
+                </strong>
+              </a>
+              <a
+                class="ui mini compact button"
+                data-testid="join-scenario-as"
+                href="/chat/join/1765cf2e64/as/6c4adee67a/cohort/6e4213d8d3"
+                role="button"
+              >
+                Join as 
+                <strong>
+                  Teacher
+                </strong>
+              </a>
+              <a
+                class="ui mini compact button"
+                data-testid="join-scenario-as"
+                href="/chat/join/1765cf2e64/as/cc5d157543/cohort/6e4213d8d3"
+                role="button"
+              >
+                Join as 
+                <strong>
+                  Student
+                </strong>
+              </a>
+            </div>
           </div>
           <div
             class="c__scenario-extra"
@@ -1523,6 +2004,43 @@ exports[`Scenarios have multi-participant/single-participant icons 4`] = `
                 />
                 Create or join a room to re-run scenario
               </button>
+            </div>
+            <div
+              class="meta c__join-as"
+            >
+              <a
+                class="ui mini compact button"
+                data-testid="join-scenario-as"
+                href="/chat/join/1765cf2e64/as/6e4213d8d3/cohort/6e4213d8d3"
+                role="button"
+              >
+                Join as 
+                <strong>
+                  Participant
+                </strong>
+              </a>
+              <a
+                class="ui mini compact button"
+                data-testid="join-scenario-as"
+                href="/chat/join/1765cf2e64/as/6c4adee67a/cohort/6e4213d8d3"
+                role="button"
+              >
+                Join as 
+                <strong>
+                  Teacher
+                </strong>
+              </a>
+              <a
+                class="ui mini compact button"
+                data-testid="join-scenario-as"
+                href="/chat/join/1765cf2e64/as/cc5d157543/cohort/6e4213d8d3"
+                role="button"
+              >
+                Join as 
+                <strong>
+                  Student
+                </strong>
+              </a>
             </div>
           </div>
           <div

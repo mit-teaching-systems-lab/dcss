@@ -1,6 +1,7 @@
 const { sql, updateQuery } = require('../../util/sqlHelpers');
 const { query, withClientTransaction } = require('../../util/db');
 const { INVITE_STATUS } = require('../invites/db');
+const scenariosdb = require('../scenarios/db');
 const sessiondb = require('../session/db');
 
 exports.getChatByIdentifiers = async (host_id, identifiers) => {
@@ -233,6 +234,133 @@ exports.updateJoinPartMessages = async (chat_id, user_id, updates) => {
     return result.rows;
   });
 };
+
+exports.checkRoster = async (chat_id, scenario_id) => {
+  const chat = await this.getChat(chat_id);
+  const scenario = await scenariosdb.getScenario(scenario_id);
+  return scenario.personas.every(p =>
+    chat.users.find(u => u.persona_id === p.id)
+  );
+};
+
+exports.joinOrCreateChatFromPool = async (cohort_id, scenario_id, persona_id, user_id) => {
+
+  // Check if this user is actually already a HOST
+  //    in a chat that matches the requirements of this request
+  let result = await query(`
+    SELECT chat.*
+    FROM chat
+    JOIN chat_user cu ON cu.chat_id = chat.id
+    WHERE chat.ended_at IS NULL
+    AND chat.host_id = ${user_id}
+    AND cu.persona_id = ${persona_id}
+    AND chat.scenario_id = ${scenario_id}
+    ${cohort_id ? `AND chat.cohort_id = ${cohort_id}` : ''}
+    ORDER BY chat.id ASC
+    LIMIT 1
+  `);
+
+  if (result.rowCount) {
+    const existing = result.rows[0];
+    const isCompleteRoster = await this.checkRoster(
+      existing.id, existing.scenario_id
+    );
+    return isCompleteRoster
+      ? this.getChat(existing.id)
+      : null;
+  }
+
+  // Check if this user is already in any chat that matches the
+  // requirements of this requst
+  result = await query(`
+    SELECT chat.*
+    FROM chat
+    JOIN chat_user cu ON cu.chat_id = chat.id
+    WHERE chat.ended_at IS NULL
+    AND cu.user_id = ${user_id}
+    AND cu.persona_id = ${persona_id}
+    AND chat.scenario_id = ${scenario_id}
+    ${cohort_id ? `AND chat.cohort_id = ${cohort_id}` : ''}
+    ORDER BY chat.id ASC
+    LIMIT 1
+  `);
+
+  if (result.rowCount) {
+    const existing = result.rows[0];
+    const isCompleteRoster = await this.checkRoster(
+      existing.id, existing.scenario_id
+    );
+
+    return isCompleteRoster
+      ? this.getChat(existing.id)
+      : null;
+  }
+
+  // Find a chat that has this persona available
+  result = await query(`
+    WITH available AS (
+      SELECT chat.id AS chat_id, persona.id AS persona_id, persona.name
+      FROM scenario_persona sp
+      JOIN chat USING(scenario_id)
+      JOIN persona ON persona.id = sp.persona_id
+      WHERE chat.ended_at IS NULL
+      AND persona.id NOT IN (
+        SELECT persona_id
+        FROM chat_user
+        WHERE chat_id = chat.id
+        AND persona_id IS NOT NULL
+      )
+      AND persona.id = ${persona_id}
+      AND sp.scenario_id = ${scenario_id}
+      ${cohort_id ? `AND chat.cohort_id = ${cohort_id}` : ''}
+      ORDER BY chat.id ASC
+      LIMIT 1
+    )
+    INSERT INTO chat_user (chat_id, user_id, is_present, persona_id)
+    SELECT chat_id, ${user_id} AS user_id, true AS is_present, persona_id
+    FROM available
+    ON CONFLICT DO NOTHING
+    RETURNING *;
+  `);
+
+  const is_open = true;
+  const is_present = true;
+
+  // If no match was found, then create a chat and return
+  // null, which will move the user into "waiting"
+  if (!result.rowCount) {
+    const created = await this.createChat(user_id, scenario_id, cohort_id, is_open);
+
+    // TODO: reduce duplication
+    await query(`
+      INSERT INTO chat_user
+        (chat_id, user_id, is_present, persona_id)
+      VALUES
+        (${created.id}, ${user_id}, ${is_present}, ${persona_id})
+      ON CONFLICT DO NOTHING;
+    `);
+
+    return null;
+  }
+
+  // TODO: reduce duplication
+  await query(`
+    INSERT INTO chat_user
+      (chat_id, user_id, is_present, persona_id)
+    VALUES
+      (${result.rows[0].chat_id}, ${user_id}, ${is_present}, ${persona_id})
+    ON CONFLICT DO NOTHING;
+  `);
+
+  const chat = await this.getChat(result.rows[0].chat_id);
+  const isCompleteRoster = await this.checkRoster(
+    chat.id, scenario_id
+  );
+
+  return isCompleteRoster
+    ? chat
+    : null;
+}
 
 exports.joinChat = async (chat_id, user_id, persona_id = null) => {
   if (!chat_id || !user_id) {

@@ -5,6 +5,7 @@ import { Route, Switch } from 'react-router-dom';
 
 import Admin from '@components/Admin';
 import Chat from '@components/Chat';
+import JoinAs from '@components/Chat/JoinAs';
 import Cohort from '@components/Cohorts/Cohort';
 import Cohorts from '@components/Cohorts';
 import Gate from '@components/Gate';
@@ -66,6 +67,7 @@ const Routes = ({ isLoggedIn, user }) => {
   );
   const routeRenderDownloads = (props = {}) => <Downloads {...props} />;
   const routeRenderRun = (props = {}) => <Run {...props} />;
+  const routeRenderChatJoinAs = (props = {}) => <JoinAs {...props} />;
   const routeRenderUserSettings = (props = {}) => (
     <UserSettings {...props} user={user} open={true} />
   );
@@ -93,10 +95,6 @@ const Routes = ({ isLoggedIn, user }) => {
   return (
     <Switch>
       <Route exact path="/" component={ScenariosListAll} />
-
-      <InterceptAnonymizableRoute path="/chat" isLoggedIn={isLoggedIn}>
-        <Route render={routeRenderChat} />
-      </InterceptAnonymizableRoute>
 
       <InterceptAnonymizableRoute
         path="/invite/:status/:code"
@@ -147,6 +145,28 @@ const Routes = ({ isLoggedIn, user }) => {
       >
         <Route component={History} />
       </RedirectRouteForInactiveSession>
+
+      <InterceptAnonymizableRoute
+        path="/chat/join/:scenarioId/as/:personaId/cohort/:cohortId"
+        isLoggedIn={isLoggedIn}
+      >
+        <Route render={routeRenderChatJoinAs} />
+      </InterceptAnonymizableRoute>
+
+      <InterceptAnonymizableRoute
+        path="/chat/join/:scenarioId/as/:personaId"
+        isLoggedIn={isLoggedIn}
+      >
+        <Route render={routeRenderChatJoinAs} />
+      </InterceptAnonymizableRoute>
+
+      {/*
+      <InterceptAnonymizableRoute path="/chat" isLoggedIn={isLoggedIn}>
+        <Route render={routeRenderChat} />
+      </InterceptAnonymizableRoute>
+      */}
+
+
 
       <InterceptAnonymizableRoute
         path="/run/:scenarioId/code/:code/slide/:activeRunSlideIndex"

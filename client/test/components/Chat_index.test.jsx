@@ -776,6 +776,9 @@ describe('componentDidMount', () => {
               "host_id": 999,
               "id": 1,
             },
+            "cohort": Object {
+              "id": 2,
+            },
             "prompt": Object {
               "id": null,
             },
@@ -794,6 +797,9 @@ describe('componentDidMount', () => {
             "chat": Object {
               "host_id": 999,
               "id": 1,
+            },
+            "cohort": Object {
+              "id": 2,
             },
             "prompt": Object {
               "id": null,
@@ -848,6 +854,9 @@ describe('componentDidMount', () => {
               "host_id": 999,
               "id": 1,
             },
+            "cohort": Object {
+              "id": 2,
+            },
             "prompt": Object {
               "id": null,
             },
@@ -866,6 +875,9 @@ describe('componentDidMount', () => {
             "chat": Object {
               "host_id": 999,
               "id": 1,
+            },
+            "cohort": Object {
+              "id": 2,
             },
             "prompt": Object {
               "id": null,
@@ -920,6 +932,9 @@ describe('componentDidMount', () => {
               "host_id": 999,
               "id": 1,
             },
+            "cohort": Object {
+              "id": 2,
+            },
             "prompt": Object {
               "id": null,
             },
@@ -938,6 +953,9 @@ describe('componentDidMount', () => {
             "chat": Object {
               "host_id": 999,
               "id": 1,
+            },
+            "cohort": Object {
+              "id": 2,
             },
             "prompt": Object {
               "id": null,
@@ -992,6 +1010,9 @@ describe('componentDidMount', () => {
               "host_id": 999,
               "id": 1,
             },
+            "cohort": Object {
+              "id": 2,
+            },
             "prompt": Object {
               "id": null,
             },
@@ -1010,6 +1031,9 @@ describe('componentDidMount', () => {
             "chat": Object {
               "host_id": 999,
               "id": 1,
+            },
+            "cohort": Object {
+              "id": 2,
             },
             "prompt": Object {
               "id": null,
@@ -1121,6 +1145,9 @@ describe('componentWillUnmount', () => {
               "host_id": 999,
               "id": 1,
             },
+            "cohort": Object {
+              "id": 2,
+            },
             "prompt": Object {
               "id": null,
             },
@@ -1139,6 +1166,9 @@ describe('componentWillUnmount', () => {
             "chat": Object {
               "host_id": 999,
               "id": 1,
+            },
+            "cohort": Object {
+              "id": 2,
             },
             "prompt": Object {
               "id": null,
@@ -1169,6 +1199,9 @@ describe('componentWillUnmount', () => {
               "host_id": 999,
               "id": 1,
             },
+            "cohort": Object {
+              "id": 2,
+            },
             "prompt": Object {
               "id": null,
             },
@@ -1187,6 +1220,9 @@ describe('componentWillUnmount', () => {
             "chat": Object {
               "host_id": 999,
               "id": 1,
+            },
+            "cohort": Object {
+              "id": 2,
             },
             "prompt": Object {
               "id": null,
@@ -1252,6 +1288,9 @@ describe('componentWillUnmount', () => {
               "host_id": 999,
               "id": 1,
             },
+            "cohort": Object {
+              "id": 2,
+            },
             "prompt": Object {
               "id": null,
             },
@@ -1270,6 +1309,9 @@ describe('componentWillUnmount', () => {
             "chat": Object {
               "host_id": 999,
               "id": 1,
+            },
+            "cohort": Object {
+              "id": 2,
             },
             "prompt": Object {
               "id": null,
@@ -1300,6 +1342,9 @@ describe('componentWillUnmount', () => {
               "host_id": 999,
               "id": 1,
             },
+            "cohort": Object {
+              "id": 2,
+            },
             "prompt": Object {
               "id": null,
             },
@@ -1318,6 +1363,9 @@ describe('componentWillUnmount', () => {
             "chat": Object {
               "host_id": 999,
               "id": 1,
+            },
+            "cohort": Object {
+              "id": 2,
             },
             "prompt": Object {
               "id": null,
@@ -1653,6 +1701,9 @@ test('Types, followed by {enter}', async done => {
             "host_id": 2,
             "id": 1,
           },
+          "cohort": Object {
+            "id": 2,
+          },
           "content": "typing enter",
           "prompt": Object {
             "id": null,
@@ -1729,6 +1780,9 @@ test('Types, followed by {shift}{enter}, does not submit', async done => {
           "chat": Object {
             "host_id": 2,
             "id": 1,
+          },
+          "cohort": Object {
+            "id": 2,
           },
           "content": "typing shift+enter
     ",
@@ -1847,6 +1901,9 @@ test('Types, followed by {shift}{enter}, attempts to send, does submit', async d
             "host_id": 2,
             "id": 1,
           },
+          "cohort": Object {
+            "id": 2,
+          },
           "content": "typing enter",
           "prompt": Object {
             "id": null,
@@ -1917,6 +1974,9 @@ test('Calls onInput when RTE receives new content', async done => {
           "chat": Object {
             "host_id": 2,
             "id": 1,
+          },
+          "cohort": Object {
+            "id": 2,
           },
           "content": "<p><br></p>typing in the chat",
           "prompt": Object {
@@ -1993,6 +2053,9 @@ test('Calls onKeyDown, responds when key is {enter}', async done => {
             "host_id": 2,
             "id": 1,
           },
+          "cohort": Object {
+            "id": 2,
+          },
           "content": "typing in the chat",
           "prompt": Object {
             "id": null,
@@ -2068,6 +2131,9 @@ test('Types, clicks Send Message', async done => {
           "chat": Object {
             "host_id": 2,
             "id": 1,
+          },
+          "cohort": Object {
+            "id": 2,
           },
           "content": "typing in the chat",
           "prompt": Object {
@@ -2330,6 +2396,9 @@ test('Rnd: onDragStop/onResizeStop', async done => {
                                 "host_id": 2,
                                 "id": 1,
                               },
+                              "cohort": Object {
+                                "id": 2,
+                              },
                               "prompt": Object {
                                 "id": null,
                               },
@@ -2348,6 +2417,9 @@ test('Rnd: onDragStop/onResizeStop', async done => {
                               "chat": Object {
                                 "host_id": 2,
                                 "id": 1,
+                              },
+                              "cohort": Object {
+                                "id": 2,
                               },
                               "prompt": Object {
                                 "id": null,
@@ -2699,6 +2771,9 @@ test('Rnd: onDrag/onResize', async done => {
                                 "host_id": 2,
                                 "id": 1,
                               },
+                              "cohort": Object {
+                                "id": 2,
+                              },
                               "prompt": Object {
                                 "id": null,
                               },
@@ -2717,6 +2792,9 @@ test('Rnd: onDrag/onResize', async done => {
                               "chat": Object {
                                 "host_id": 2,
                                 "id": 1,
+                              },
+                              "cohort": Object {
+                                "id": 2,
                               },
                               "prompt": Object {
                                 "id": null,

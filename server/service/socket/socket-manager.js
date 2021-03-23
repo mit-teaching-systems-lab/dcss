@@ -14,6 +14,8 @@ const {
   CHAT_MESSAGE_CREATED,
   CHAT_MESSAGE_UPDATED,
   CHAT_STATE,
+  CHAT_USER_AWAITING_MATCH,
+  CHAT_USER_MATCHED,
   CREATE_CHAT_CHANNEL,
   CREATE_CHAT_SLIDE_CHANNEL,
   CREATE_CHAT_USER_CHANNEL,
@@ -53,6 +55,7 @@ const agentsdb = require('../agents/db');
 const chatsdb = require('../chats/db');
 const cohortsdb = require('../cohorts/db');
 const runsdb = require('../runs/db');
+const scenariosdb = require('../scenarios/db');
 const chatutil = require('../chats/util');
 
 function socketlog(...args) {
@@ -99,6 +102,9 @@ const cache = {
     /*
       [chat.id-slide-slide.id] = interval;
     */
+  },
+  waiting: {
+
   }
 };
 
@@ -511,6 +517,35 @@ class SocketManager {
         }
       });
 
+      socket.on(CHAT_USER_AWAITING_MATCH, async props => {
+        console.log(CHAT_USER_AWAITING_MATCH, props);
+        const {
+          cohort, persona, scenario, user
+        } = props;
+
+        const room = cohort.id
+          ? `${cohort.id}-${scenario.id}-${persona.id}-${user.id}`
+          : `${scenario.id}-${persona.id}-${user.id}`;
+
+        socket.join(room);
+
+        // This will return null until the the chat has
+        // a complete set of participants.
+        const chat = await chatsdb.joinOrCreateChatFromPool(
+          cohort.id, scenario.id, persona.id, user.id
+        );
+
+        if (chat) {
+          for (let chatUser of chat.users) {
+            const room = chat.cohort_id
+              ? `${chat.cohort_id}-${chat.scenario_id}-${chatUser.persona_id}-${chatUser.id}`
+              : `${chat.scenario_id}-${chatUser.persona_id}-${chatUser.id}`;
+
+            this.io.to(room).emit(CHAT_USER_MATCHED, chat);
+          }
+        }
+      });
+
       socket.on(RUN_AGENT_START, async ({ run, user }) => {
         console.log(RUN_AGENT_START, { run, user });
         const prompts = await agentsdb.getScenarioAgentPrompts(run.scenario_id);
@@ -634,7 +669,7 @@ class SocketManager {
         chatsdb.joinChat(chat.id, user.id, chatUser.persona_id);
       });
 
-      socket.on(USER_JOIN_SLIDE, async ({ chat, user, run }) => {
+      socket.on(USER_JOIN_SLIDE, async ({ chat, user, scenario, run }) => {
         console.log(USER_JOIN_SLIDE, chat, user, run);
 
         if (run) {
@@ -672,10 +707,20 @@ class SocketManager {
             cache.rolls[rollKey].push(user.id);
           }
 
+          const personas = await scenariosdb.getScenarioPersonas(scenario.id);
           const users = await chatsdb.getLinkedChatUsersByChatId(chat.id);
-          const quorum = users.every(({ id }) =>
+          const isCompleteRollCall = users.every(({ id }) =>
             cache.rolls[rollKey].includes(id)
           );
+
+          const personaIds = personas.map(({ id }) => id);
+          const isCompleteRoster = users.every(({ persona_id }) =>
+            personaIds.includes(persona_id)
+          );
+
+          // isCompleteRollCall: All users are on the same slide
+          // isCompleteRoster: All expected roles are filled by users
+          const quorum = isCompleteRollCall && isCompleteRoster;
 
           if (quorum) {
             // const room = `${chat.id}-user-${chat.host_id}`;

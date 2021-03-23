@@ -657,6 +657,7 @@ exports.softDeleteScenario = softDeleteScenario;
 exports.getHistoryForScenario = getHistoryForScenario;
 exports.getScenarioById = getScenario;
 exports.getScenarioByRun = getScenarioByRun;
+exports.getScenarioPersonas = getScenarioPersonas;
 exports.getScenarioPrompts = getScenarioPrompts;
 
 // Scenarios

@@ -147,7 +147,10 @@ class Display extends Component {
     };
     const userJoinPayload = {
       ...basePayload,
-      run: Storage.get(this.storageKey)
+      run: Storage.get(this.storageKey),
+      scenario: {
+        id: this.props.scenario.id
+      }
     };
 
     this.props.socket.emit(CREATE_USER_CHANNEL, basePayload);
