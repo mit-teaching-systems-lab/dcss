@@ -18,7 +18,7 @@ import Gate from '@components/Gate';
 import Loading from '@components/Loading';
 import { notify } from '@components/Notification';
 import Sortable from '@components/Sortable';
-import { Button, Card, Container, Icon, Text } from '@components/UI';
+import { Button, Card, Comment, Container, Icon, Image, Text } from '@components/UI';
 import Identity from '@utils/Identity';
 import Layout from '@utils/Layout';
 import Moment from '@utils/Moment';
@@ -362,27 +362,38 @@ export class CohortScenarios extends React.Component {
                       <Text.Truncate lines={2}>
                         {scenario.description}
                       </Text.Truncate>
+                      {isMultiParticipantScenario ? (
+                        <Fragment>
+                          <Text>
+                            This is a multi-participant scenario, with <strong>{scenario.personas.length}</strong> roles:
+                          </Text>
+                          <Comment.Group>
+                            {scenario.personas.map(persona => {
+                              return (
+                                <Comment
+                                  key={Identity.key(persona)}
+                                >
+                                  <JoinAsButton
+                                    className="c__join-persona-button"
+                                    cohort={cohort}
+                                    persona={persona}
+                                    scenario={scenario}
+                                  />
+                                  <Comment.Content className="c__join-persona-content">
+                                    <Comment.Author>{persona.name}</Comment.Author>
+                                    <Comment.Text>{persona.description}</Comment.Text>
+                                  </Comment.Content>
+                                </Comment>
+                              );
+                            })}
+                          </Comment.Group>
+                        </Fragment>
+                      ) : null}
                     </Card.Description>
                     {!isFacilitator ? (
                       <Card.Meta>{runStartedMaybeFinished}</Card.Meta>
                     ) : null}
-                    {isMultiParticipantScenario && !existingChat ? (
-                      <Card.Meta>
-                        {scenario.personas.map(persona => {
-                          return (
-                            <JoinAsButton
-                              key={Identity.key(persona)}
-                              cohort={cohort}
-                              persona={persona}
-                              scenario={scenario}
-                            />
-                          );
-                        })}
-                      </Card.Meta>
-                    ) : null}
-                    <Card.Meta
-                      className={isMultiParticipantScenario && !existingChat ? 'c__card-meta-no-margin-top' : ''}
-                    >
+                    <Card.Meta>
                       <Button
                         compact
                         size="mini"

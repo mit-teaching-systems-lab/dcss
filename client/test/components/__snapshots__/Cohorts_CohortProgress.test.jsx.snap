@@ -245,7 +245,7 @@ exports[`Open Manage participants 2`] = `
           </div>
         </div>
         <div
-          class="content"
+          class="content c__scenario-extra"
         >
           <button
             class="ui large primary button c__participant-card__responses"
@@ -324,7 +324,7 @@ exports[`Open Manage participants 2`] = `
           </div>
         </div>
         <div
-          class="content"
+          class="content c__scenario-extra"
         >
           <button
             class="ui large primary button c__participant-card__responses"
@@ -403,7 +403,7 @@ exports[`Open Manage participants 2`] = `
           </div>
         </div>
         <div
-          class="content"
+          class="content c__scenario-extra"
         >
           <button
             class="ui large primary button c__participant-card__responses"
@@ -476,7 +476,7 @@ exports[`Open Manage participants 2`] = `
           </div>
         </div>
         <div
-          class="content"
+          class="content c__scenario-extra"
         >
           <button
             class="ui large primary button c__participant-card__responses"
@@ -549,7 +549,7 @@ exports[`Open Manage participants 2`] = `
           </div>
         </div>
         <div
-          class="content"
+          class="content c__scenario-extra"
         >
           <button
             class="ui large primary button c__participant-card__responses"
@@ -687,7 +687,7 @@ exports[`Open Manage participants 3`] = `
           </div>
         </div>
         <div
-          class="content"
+          class="content c__scenario-extra"
         >
           <button
             class="ui large primary button c__participant-card__responses"
@@ -766,7 +766,7 @@ exports[`Open Manage participants 3`] = `
           </div>
         </div>
         <div
-          class="content"
+          class="content c__scenario-extra"
         >
           <button
             class="ui large primary button c__participant-card__responses"
@@ -845,7 +845,7 @@ exports[`Open Manage participants 3`] = `
           </div>
         </div>
         <div
-          class="content"
+          class="content c__scenario-extra"
         >
           <button
             class="ui large primary button c__participant-card__responses"
@@ -918,7 +918,7 @@ exports[`Open Manage participants 3`] = `
           </div>
         </div>
         <div
-          class="content"
+          class="content c__scenario-extra"
         >
           <button
             class="ui large primary button c__participant-card__responses"
@@ -991,7 +991,7 @@ exports[`Open Manage participants 3`] = `
           </div>
         </div>
         <div
-          class="content"
+          class="content c__scenario-extra"
         >
           <button
             class="ui large primary button c__participant-card__responses"
@@ -1129,7 +1129,7 @@ exports[`Open Manage participants 4`] = `
           </div>
         </div>
         <div
-          class="content"
+          class="content c__scenario-extra"
         >
           <button
             class="ui large primary button c__participant-card__responses"
@@ -1208,7 +1208,7 @@ exports[`Open Manage participants 4`] = `
           </div>
         </div>
         <div
-          class="content"
+          class="content c__scenario-extra"
         >
           <button
             class="ui large primary button c__participant-card__responses"
@@ -1287,7 +1287,7 @@ exports[`Open Manage participants 4`] = `
           </div>
         </div>
         <div
-          class="content"
+          class="content c__scenario-extra"
         >
           <button
             class="ui large primary button c__participant-card__responses"
@@ -1360,7 +1360,7 @@ exports[`Open Manage participants 4`] = `
           </div>
         </div>
         <div
-          class="content"
+          class="content c__scenario-extra"
         >
           <button
             class="ui large primary button c__participant-card__responses"
@@ -1433,7 +1433,7 @@ exports[`Open Manage participants 4`] = `
           </div>
         </div>
         <div
-          class="content"
+          class="content c__scenario-extra"
         >
           <button
             class="ui large primary button c__participant-card__responses"
@@ -1571,7 +1571,7 @@ exports[`Open Manage participants 5`] = `
           </div>
         </div>
         <div
-          class="content"
+          class="content c__scenario-extra"
         >
           <button
             class="ui large primary button c__participant-card__responses"
@@ -1650,7 +1650,7 @@ exports[`Open Manage participants 5`] = `
           </div>
         </div>
         <div
-          class="content"
+          class="content c__scenario-extra"
         >
           <button
             class="ui large primary button c__participant-card__responses"
@@ -1729,7 +1729,7 @@ exports[`Open Manage participants 5`] = `
           </div>
         </div>
         <div
-          class="content"
+          class="content c__scenario-extra"
         >
           <button
             class="ui large primary button c__participant-card__responses"
@@ -1802,7 +1802,7 @@ exports[`Open Manage participants 5`] = `
           </div>
         </div>
         <div
-          class="content"
+          class="content c__scenario-extra"
         >
           <button
             class="ui large primary button c__participant-card__responses"
@@ -1875,7 +1875,7 @@ exports[`Open Manage participants 5`] = `
           </div>
         </div>
         <div
-          class="content"
+          class="content c__scenario-extra"
         >
           <button
             class="ui large primary button c__participant-card__responses"
@@ -2063,7 +2063,7 @@ exports[`Search participants 2`] = `
           </div>
         </div>
         <div
-          class="content"
+          class="content c__scenario-extra"
         >
           <button
             class="ui large primary button c__participant-card__responses"
@@ -2142,7 +2142,7 @@ exports[`Search participants 2`] = `
           </div>
         </div>
         <div
-          class="content"
+          class="content c__scenario-extra"
         >
           <button
             class="ui large primary button c__participant-card__responses"
@@ -2221,7 +2221,7 @@ exports[`Search participants 2`] = `
           </div>
         </div>
         <div
-          class="content"
+          class="content c__scenario-extra"
         >
           <button
             class="ui large primary button c__participant-card__responses"
@@ -2294,7 +2294,7 @@ exports[`Search participants 2`] = `
           </div>
         </div>
         <div
-          class="content"
+          class="content c__scenario-extra"
         >
           <button
             class="ui large primary button c__participant-card__responses"
@@ -2367,7 +2367,7 @@ exports[`Search participants 2`] = `
           </div>
         </div>
         <div
-          class="content"
+          class="content c__scenario-extra"
         >
           <button
             class="ui large primary button c__participant-card__responses"
@@ -2505,7 +2505,7 @@ exports[`Search participants 3`] = `
           </div>
         </div>
         <div
-          class="content"
+          class="content c__scenario-extra"
         >
           <button
             class="ui large primary button c__participant-card__responses"
@@ -2584,7 +2584,7 @@ exports[`Search participants 3`] = `
           </div>
         </div>
         <div
-          class="content"
+          class="content c__scenario-extra"
         >
           <button
             class="ui large primary button c__participant-card__responses"
@@ -2663,7 +2663,7 @@ exports[`Search participants 3`] = `
           </div>
         </div>
         <div
-          class="content"
+          class="content c__scenario-extra"
         >
           <button
             class="ui large primary button c__participant-card__responses"
@@ -2736,7 +2736,7 @@ exports[`Search participants 3`] = `
           </div>
         </div>
         <div
-          class="content"
+          class="content c__scenario-extra"
         >
           <button
             class="ui large primary button c__participant-card__responses"
@@ -2809,7 +2809,7 @@ exports[`Search participants 3`] = `
           </div>
         </div>
         <div
-          class="content"
+          class="content c__scenario-extra"
         >
           <button
             class="ui large primary button c__participant-card__responses"
@@ -2947,7 +2947,7 @@ exports[`Search participants 4`] = `
           </div>
         </div>
         <div
-          class="content"
+          class="content c__scenario-extra"
         >
           <button
             class="ui large primary button c__participant-card__responses"
@@ -3026,7 +3026,7 @@ exports[`Search participants 4`] = `
           </div>
         </div>
         <div
-          class="content"
+          class="content c__scenario-extra"
         >
           <button
             class="ui large primary button c__participant-card__responses"
@@ -3164,7 +3164,7 @@ exports[`Search participants 5`] = `
           </div>
         </div>
         <div
-          class="content"
+          class="content c__scenario-extra"
         >
           <button
             class="ui large primary button c__participant-card__responses"
@@ -3243,7 +3243,7 @@ exports[`Search participants 5`] = `
           </div>
         </div>
         <div
-          class="content"
+          class="content c__scenario-extra"
         >
           <button
             class="ui large primary button c__participant-card__responses"
@@ -3381,7 +3381,7 @@ exports[`Search participants 6`] = `
           </div>
         </div>
         <div
-          class="content"
+          class="content c__scenario-extra"
         >
           <button
             class="ui large primary button c__participant-card__responses"
@@ -3460,7 +3460,7 @@ exports[`Search participants 6`] = `
           </div>
         </div>
         <div
-          class="content"
+          class="content c__scenario-extra"
         >
           <button
             class="ui large primary button c__participant-card__responses"
@@ -3539,7 +3539,7 @@ exports[`Search participants 6`] = `
           </div>
         </div>
         <div
-          class="content"
+          class="content c__scenario-extra"
         >
           <button
             class="ui large primary button c__participant-card__responses"
@@ -3612,7 +3612,7 @@ exports[`Search participants 6`] = `
           </div>
         </div>
         <div
-          class="content"
+          class="content c__scenario-extra"
         >
           <button
             class="ui large primary button c__participant-card__responses"
@@ -3685,7 +3685,7 @@ exports[`Search participants 6`] = `
           </div>
         </div>
         <div
-          class="content"
+          class="content c__scenario-extra"
         >
           <button
             class="ui large primary button c__participant-card__responses"
@@ -3823,7 +3823,7 @@ exports[`Search participants 7`] = `
           </div>
         </div>
         <div
-          class="content"
+          class="content c__scenario-extra"
         >
           <button
             class="ui large primary button c__participant-card__responses"
@@ -3961,7 +3961,7 @@ exports[`Search participants 8`] = `
           </div>
         </div>
         <div
-          class="content"
+          class="content c__scenario-extra"
         >
           <button
             class="ui large primary button c__participant-card__responses"
@@ -4099,7 +4099,7 @@ exports[`Search participants 9`] = `
           </div>
         </div>
         <div
-          class="content"
+          class="content c__scenario-extra"
         >
           <button
             class="ui large primary button c__participant-card__responses"
@@ -4237,7 +4237,7 @@ exports[`Search participants 10`] = `
           </div>
         </div>
         <div
-          class="content"
+          class="content c__scenario-extra"
         >
           <button
             class="ui large primary button c__participant-card__responses"
@@ -4375,7 +4375,7 @@ exports[`Search participants 11`] = `
           </div>
         </div>
         <div
-          class="content"
+          class="content c__scenario-extra"
         >
           <button
             class="ui large primary button c__participant-card__responses"
@@ -4454,7 +4454,7 @@ exports[`Search participants 11`] = `
           </div>
         </div>
         <div
-          class="content"
+          class="content c__scenario-extra"
         >
           <button
             class="ui large primary button c__participant-card__responses"
@@ -4533,7 +4533,7 @@ exports[`Search participants 11`] = `
           </div>
         </div>
         <div
-          class="content"
+          class="content c__scenario-extra"
         >
           <button
             class="ui large primary button c__participant-card__responses"
@@ -4606,7 +4606,7 @@ exports[`Search participants 11`] = `
           </div>
         </div>
         <div
-          class="content"
+          class="content c__scenario-extra"
         >
           <button
             class="ui large primary button c__participant-card__responses"
@@ -4679,7 +4679,7 @@ exports[`Search participants 11`] = `
           </div>
         </div>
         <div
-          class="content"
+          class="content c__scenario-extra"
         >
           <button
             class="ui large primary button c__participant-card__responses"
@@ -4817,7 +4817,7 @@ exports[`Search participants 12`] = `
           </div>
         </div>
         <div
-          class="content"
+          class="content c__scenario-extra"
         >
           <button
             class="ui large primary button c__participant-card__responses"
@@ -4896,7 +4896,7 @@ exports[`Search participants 12`] = `
           </div>
         </div>
         <div
-          class="content"
+          class="content c__scenario-extra"
         >
           <button
             class="ui large primary button c__participant-card__responses"
@@ -4975,7 +4975,7 @@ exports[`Search participants 12`] = `
           </div>
         </div>
         <div
-          class="content"
+          class="content c__scenario-extra"
         >
           <button
             class="ui large primary button c__participant-card__responses"
@@ -5048,7 +5048,7 @@ exports[`Search participants 12`] = `
           </div>
         </div>
         <div
-          class="content"
+          class="content c__scenario-extra"
         >
           <button
             class="ui large primary button c__participant-card__responses"
@@ -5121,7 +5121,7 @@ exports[`Search participants 12`] = `
           </div>
         </div>
         <div
-          class="content"
+          class="content c__scenario-extra"
         >
           <button
             class="ui large primary button c__participant-card__responses"
@@ -5259,7 +5259,7 @@ exports[`Search participants 13`] = `
           </div>
         </div>
         <div
-          class="content"
+          class="content c__scenario-extra"
         >
           <button
             class="ui large primary button c__participant-card__responses"
@@ -5338,7 +5338,7 @@ exports[`Search participants 13`] = `
           </div>
         </div>
         <div
-          class="content"
+          class="content c__scenario-extra"
         >
           <button
             class="ui large primary button c__participant-card__responses"
@@ -5417,7 +5417,7 @@ exports[`Search participants 13`] = `
           </div>
         </div>
         <div
-          class="content"
+          class="content c__scenario-extra"
         >
           <button
             class="ui large primary button c__participant-card__responses"
@@ -5490,7 +5490,7 @@ exports[`Search participants 13`] = `
           </div>
         </div>
         <div
-          class="content"
+          class="content c__scenario-extra"
         >
           <button
             class="ui large primary button c__participant-card__responses"
@@ -5563,7 +5563,7 @@ exports[`Search participants 13`] = `
           </div>
         </div>
         <div
-          class="content"
+          class="content c__scenario-extra"
         >
           <button
             class="ui large primary button c__participant-card__responses"

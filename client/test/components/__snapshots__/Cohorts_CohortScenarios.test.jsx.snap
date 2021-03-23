@@ -97,12 +97,112 @@ exports[`Facilitator has an option to open scenarios selector 2`] = `
               <p>
                 This is the description of 'Some Other Scenario'…
               </p>
+              <span
+                class="ui medium text"
+              >
+                This is a multi-participant scenario, with 
+                <strong>
+                  3
+                </strong>
+                 roles:
+              </span>
+              <div
+                class="ui comments"
+              >
+                <div
+                  class="comment"
+                >
+                  <a
+                    class="ui tiny button c__join-persona-button"
+                    data-testid="join-scenario-as"
+                    href="/chat/join/1765cf2e64/as/6e4213d8d3/cohort/6e4213d8d3"
+                    role="button"
+                  >
+                    Join as 
+                    <strong>
+                      Participant
+                    </strong>
+                  </a>
+                  <div
+                    class="c__join-persona-content content"
+                  >
+                    <div
+                      class="author"
+                    >
+                      Participant
+                    </div>
+                    <div
+                      class="text"
+                    >
+                      The default user participating in a single person scenario.
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="comment"
+                >
+                  <a
+                    class="ui tiny button c__join-persona-button"
+                    data-testid="join-scenario-as"
+                    href="/chat/join/1765cf2e64/as/6c4adee67a/cohort/6e4213d8d3"
+                    role="button"
+                  >
+                    Join as 
+                    <strong>
+                      Teacher
+                    </strong>
+                  </a>
+                  <div
+                    class="c__join-persona-content content"
+                  >
+                    <div
+                      class="author"
+                    >
+                      Teacher
+                    </div>
+                    <div
+                      class="text"
+                    >
+                      A non-specific teacher, participating in a multi person scenario.
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="comment"
+                >
+                  <a
+                    class="ui tiny button c__join-persona-button"
+                    data-testid="join-scenario-as"
+                    href="/chat/join/1765cf2e64/as/cc5d157543/cohort/6e4213d8d3"
+                    role="button"
+                  >
+                    Join as 
+                    <strong>
+                      Student
+                    </strong>
+                  </a>
+                  <div
+                    class="c__join-persona-content content"
+                  >
+                    <div
+                      class="author"
+                    >
+                      Student
+                    </div>
+                    <div
+                      class="text"
+                    >
+                      A non-specific student, participating in a multi person scenario.
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
             <div
               class="meta"
             >
               <button
-                class="ui tiny button"
+                class="ui mini compact button"
                 data-testid="run-cohort-as-participant"
               >
                 <i
@@ -111,43 +211,6 @@ exports[`Facilitator has an option to open scenarios selector 2`] = `
                 />
                 Create or join a room to re-run scenario
               </button>
-            </div>
-            <div
-              class="meta c__join-as"
-            >
-              <a
-                class="ui mini compact button"
-                data-testid="join-scenario-as"
-                href="/chat/join/1765cf2e64/as/6e4213d8d3/cohort/6e4213d8d3"
-                role="button"
-              >
-                Join as 
-                <strong>
-                  Participant
-                </strong>
-              </a>
-              <a
-                class="ui mini compact button"
-                data-testid="join-scenario-as"
-                href="/chat/join/1765cf2e64/as/6c4adee67a/cohort/6e4213d8d3"
-                role="button"
-              >
-                Join as 
-                <strong>
-                  Teacher
-                </strong>
-              </a>
-              <a
-                class="ui mini compact button"
-                data-testid="join-scenario-as"
-                href="/chat/join/1765cf2e64/as/cc5d157543/cohort/6e4213d8d3"
-                role="button"
-              >
-                Join as 
-                <strong>
-                  Student
-                </strong>
-              </a>
             </div>
           </div>
           <div
@@ -218,12 +281,112 @@ exports[`Facilitator has an option to open scenarios selector 3`] = `
               <p>
                 This is the description of 'Some Other Scenario'…
               </p>
+              <span
+                class="ui medium text"
+              >
+                This is a multi-participant scenario, with 
+                <strong>
+                  3
+                </strong>
+                 roles:
+              </span>
+              <div
+                class="ui comments"
+              >
+                <div
+                  class="comment"
+                >
+                  <a
+                    class="ui tiny button c__join-persona-button"
+                    data-testid="join-scenario-as"
+                    href="/chat/join/1765cf2e64/as/6e4213d8d3/cohort/6e4213d8d3"
+                    role="button"
+                  >
+                    Join as 
+                    <strong>
+                      Participant
+                    </strong>
+                  </a>
+                  <div
+                    class="c__join-persona-content content"
+                  >
+                    <div
+                      class="author"
+                    >
+                      Participant
+                    </div>
+                    <div
+                      class="text"
+                    >
+                      The default user participating in a single person scenario.
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="comment"
+                >
+                  <a
+                    class="ui tiny button c__join-persona-button"
+                    data-testid="join-scenario-as"
+                    href="/chat/join/1765cf2e64/as/6c4adee67a/cohort/6e4213d8d3"
+                    role="button"
+                  >
+                    Join as 
+                    <strong>
+                      Teacher
+                    </strong>
+                  </a>
+                  <div
+                    class="c__join-persona-content content"
+                  >
+                    <div
+                      class="author"
+                    >
+                      Teacher
+                    </div>
+                    <div
+                      class="text"
+                    >
+                      A non-specific teacher, participating in a multi person scenario.
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="comment"
+                >
+                  <a
+                    class="ui tiny button c__join-persona-button"
+                    data-testid="join-scenario-as"
+                    href="/chat/join/1765cf2e64/as/cc5d157543/cohort/6e4213d8d3"
+                    role="button"
+                  >
+                    Join as 
+                    <strong>
+                      Student
+                    </strong>
+                  </a>
+                  <div
+                    class="c__join-persona-content content"
+                  >
+                    <div
+                      class="author"
+                    >
+                      Student
+                    </div>
+                    <div
+                      class="text"
+                    >
+                      A non-specific student, participating in a multi person scenario.
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
             <div
               class="meta"
             >
               <button
-                class="ui tiny button"
+                class="ui mini compact button"
                 data-testid="run-cohort-as-participant"
               >
                 <i
@@ -232,43 +395,6 @@ exports[`Facilitator has an option to open scenarios selector 3`] = `
                 />
                 Create or join a room to re-run scenario
               </button>
-            </div>
-            <div
-              class="meta c__join-as"
-            >
-              <a
-                class="ui mini compact button"
-                data-testid="join-scenario-as"
-                href="/chat/join/1765cf2e64/as/6e4213d8d3/cohort/6e4213d8d3"
-                role="button"
-              >
-                Join as 
-                <strong>
-                  Participant
-                </strong>
-              </a>
-              <a
-                class="ui mini compact button"
-                data-testid="join-scenario-as"
-                href="/chat/join/1765cf2e64/as/6c4adee67a/cohort/6e4213d8d3"
-                role="button"
-              >
-                Join as 
-                <strong>
-                  Teacher
-                </strong>
-              </a>
-              <a
-                class="ui mini compact button"
-                data-testid="join-scenario-as"
-                href="/chat/join/1765cf2e64/as/cc5d157543/cohort/6e4213d8d3"
-                role="button"
-              >
-                Join as 
-                <strong>
-                  Student
-                </strong>
-              </a>
             </div>
           </div>
           <div
@@ -339,12 +465,112 @@ exports[`Facilitator has an option to open scenarios selector 4`] = `
               <p>
                 This is the description of 'Some Other Scenario'…
               </p>
+              <span
+                class="ui medium text"
+              >
+                This is a multi-participant scenario, with 
+                <strong>
+                  3
+                </strong>
+                 roles:
+              </span>
+              <div
+                class="ui comments"
+              >
+                <div
+                  class="comment"
+                >
+                  <a
+                    class="ui tiny button c__join-persona-button"
+                    data-testid="join-scenario-as"
+                    href="/chat/join/1765cf2e64/as/6e4213d8d3/cohort/6e4213d8d3"
+                    role="button"
+                  >
+                    Join as 
+                    <strong>
+                      Participant
+                    </strong>
+                  </a>
+                  <div
+                    class="c__join-persona-content content"
+                  >
+                    <div
+                      class="author"
+                    >
+                      Participant
+                    </div>
+                    <div
+                      class="text"
+                    >
+                      The default user participating in a single person scenario.
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="comment"
+                >
+                  <a
+                    class="ui tiny button c__join-persona-button"
+                    data-testid="join-scenario-as"
+                    href="/chat/join/1765cf2e64/as/6c4adee67a/cohort/6e4213d8d3"
+                    role="button"
+                  >
+                    Join as 
+                    <strong>
+                      Teacher
+                    </strong>
+                  </a>
+                  <div
+                    class="c__join-persona-content content"
+                  >
+                    <div
+                      class="author"
+                    >
+                      Teacher
+                    </div>
+                    <div
+                      class="text"
+                    >
+                      A non-specific teacher, participating in a multi person scenario.
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="comment"
+                >
+                  <a
+                    class="ui tiny button c__join-persona-button"
+                    data-testid="join-scenario-as"
+                    href="/chat/join/1765cf2e64/as/cc5d157543/cohort/6e4213d8d3"
+                    role="button"
+                  >
+                    Join as 
+                    <strong>
+                      Student
+                    </strong>
+                  </a>
+                  <div
+                    class="c__join-persona-content content"
+                  >
+                    <div
+                      class="author"
+                    >
+                      Student
+                    </div>
+                    <div
+                      class="text"
+                    >
+                      A non-specific student, participating in a multi person scenario.
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
             <div
               class="meta"
             >
               <button
-                class="ui tiny button"
+                class="ui mini compact button"
                 data-testid="run-cohort-as-participant"
               >
                 <i
@@ -353,43 +579,6 @@ exports[`Facilitator has an option to open scenarios selector 4`] = `
                 />
                 Create or join a room to re-run scenario
               </button>
-            </div>
-            <div
-              class="meta c__join-as"
-            >
-              <a
-                class="ui mini compact button"
-                data-testid="join-scenario-as"
-                href="/chat/join/1765cf2e64/as/6e4213d8d3/cohort/6e4213d8d3"
-                role="button"
-              >
-                Join as 
-                <strong>
-                  Participant
-                </strong>
-              </a>
-              <a
-                class="ui mini compact button"
-                data-testid="join-scenario-as"
-                href="/chat/join/1765cf2e64/as/6c4adee67a/cohort/6e4213d8d3"
-                role="button"
-              >
-                Join as 
-                <strong>
-                  Teacher
-                </strong>
-              </a>
-              <a
-                class="ui mini compact button"
-                data-testid="join-scenario-as"
-                href="/chat/join/1765cf2e64/as/cc5d157543/cohort/6e4213d8d3"
-                role="button"
-              >
-                Join as 
-                <strong>
-                  Student
-                </strong>
-              </a>
             </div>
           </div>
           <div
@@ -659,12 +848,112 @@ exports[`Open Edit scenarios 2`] = `
               <p>
                 This is the description of 'Some Other Scenario'…
               </p>
+              <span
+                class="ui medium text"
+              >
+                This is a multi-participant scenario, with 
+                <strong>
+                  3
+                </strong>
+                 roles:
+              </span>
+              <div
+                class="ui comments"
+              >
+                <div
+                  class="comment"
+                >
+                  <a
+                    class="ui tiny button c__join-persona-button"
+                    data-testid="join-scenario-as"
+                    href="/chat/join/1765cf2e64/as/6e4213d8d3/cohort/6e4213d8d3"
+                    role="button"
+                  >
+                    Join as 
+                    <strong>
+                      Participant
+                    </strong>
+                  </a>
+                  <div
+                    class="c__join-persona-content content"
+                  >
+                    <div
+                      class="author"
+                    >
+                      Participant
+                    </div>
+                    <div
+                      class="text"
+                    >
+                      The default user participating in a single person scenario.
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="comment"
+                >
+                  <a
+                    class="ui tiny button c__join-persona-button"
+                    data-testid="join-scenario-as"
+                    href="/chat/join/1765cf2e64/as/6c4adee67a/cohort/6e4213d8d3"
+                    role="button"
+                  >
+                    Join as 
+                    <strong>
+                      Teacher
+                    </strong>
+                  </a>
+                  <div
+                    class="c__join-persona-content content"
+                  >
+                    <div
+                      class="author"
+                    >
+                      Teacher
+                    </div>
+                    <div
+                      class="text"
+                    >
+                      A non-specific teacher, participating in a multi person scenario.
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="comment"
+                >
+                  <a
+                    class="ui tiny button c__join-persona-button"
+                    data-testid="join-scenario-as"
+                    href="/chat/join/1765cf2e64/as/cc5d157543/cohort/6e4213d8d3"
+                    role="button"
+                  >
+                    Join as 
+                    <strong>
+                      Student
+                    </strong>
+                  </a>
+                  <div
+                    class="c__join-persona-content content"
+                  >
+                    <div
+                      class="author"
+                    >
+                      Student
+                    </div>
+                    <div
+                      class="text"
+                    >
+                      A non-specific student, participating in a multi person scenario.
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
             <div
               class="meta"
             >
               <button
-                class="ui tiny button"
+                class="ui mini compact button"
                 data-testid="run-cohort-as-participant"
               >
                 <i
@@ -673,43 +962,6 @@ exports[`Open Edit scenarios 2`] = `
                 />
                 Create or join a room to re-run scenario
               </button>
-            </div>
-            <div
-              class="meta c__join-as"
-            >
-              <a
-                class="ui mini compact button"
-                data-testid="join-scenario-as"
-                href="/chat/join/1765cf2e64/as/6e4213d8d3/cohort/6e4213d8d3"
-                role="button"
-              >
-                Join as 
-                <strong>
-                  Participant
-                </strong>
-              </a>
-              <a
-                class="ui mini compact button"
-                data-testid="join-scenario-as"
-                href="/chat/join/1765cf2e64/as/6c4adee67a/cohort/6e4213d8d3"
-                role="button"
-              >
-                Join as 
-                <strong>
-                  Teacher
-                </strong>
-              </a>
-              <a
-                class="ui mini compact button"
-                data-testid="join-scenario-as"
-                href="/chat/join/1765cf2e64/as/cc5d157543/cohort/6e4213d8d3"
-                role="button"
-              >
-                Join as 
-                <strong>
-                  Student
-                </strong>
-              </a>
             </div>
           </div>
           <div
@@ -780,12 +1032,112 @@ exports[`Open Edit scenarios 3`] = `
               <p>
                 This is the description of 'Some Other Scenario'…
               </p>
+              <span
+                class="ui medium text"
+              >
+                This is a multi-participant scenario, with 
+                <strong>
+                  3
+                </strong>
+                 roles:
+              </span>
+              <div
+                class="ui comments"
+              >
+                <div
+                  class="comment"
+                >
+                  <a
+                    class="ui tiny button c__join-persona-button"
+                    data-testid="join-scenario-as"
+                    href="/chat/join/1765cf2e64/as/6e4213d8d3/cohort/6e4213d8d3"
+                    role="button"
+                  >
+                    Join as 
+                    <strong>
+                      Participant
+                    </strong>
+                  </a>
+                  <div
+                    class="c__join-persona-content content"
+                  >
+                    <div
+                      class="author"
+                    >
+                      Participant
+                    </div>
+                    <div
+                      class="text"
+                    >
+                      The default user participating in a single person scenario.
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="comment"
+                >
+                  <a
+                    class="ui tiny button c__join-persona-button"
+                    data-testid="join-scenario-as"
+                    href="/chat/join/1765cf2e64/as/6c4adee67a/cohort/6e4213d8d3"
+                    role="button"
+                  >
+                    Join as 
+                    <strong>
+                      Teacher
+                    </strong>
+                  </a>
+                  <div
+                    class="c__join-persona-content content"
+                  >
+                    <div
+                      class="author"
+                    >
+                      Teacher
+                    </div>
+                    <div
+                      class="text"
+                    >
+                      A non-specific teacher, participating in a multi person scenario.
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="comment"
+                >
+                  <a
+                    class="ui tiny button c__join-persona-button"
+                    data-testid="join-scenario-as"
+                    href="/chat/join/1765cf2e64/as/cc5d157543/cohort/6e4213d8d3"
+                    role="button"
+                  >
+                    Join as 
+                    <strong>
+                      Student
+                    </strong>
+                  </a>
+                  <div
+                    class="c__join-persona-content content"
+                  >
+                    <div
+                      class="author"
+                    >
+                      Student
+                    </div>
+                    <div
+                      class="text"
+                    >
+                      A non-specific student, participating in a multi person scenario.
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
             <div
               class="meta"
             >
               <button
-                class="ui tiny button"
+                class="ui mini compact button"
                 data-testid="run-cohort-as-participant"
               >
                 <i
@@ -794,43 +1146,6 @@ exports[`Open Edit scenarios 3`] = `
                 />
                 Create or join a room to re-run scenario
               </button>
-            </div>
-            <div
-              class="meta c__join-as"
-            >
-              <a
-                class="ui mini compact button"
-                data-testid="join-scenario-as"
-                href="/chat/join/1765cf2e64/as/6e4213d8d3/cohort/6e4213d8d3"
-                role="button"
-              >
-                Join as 
-                <strong>
-                  Participant
-                </strong>
-              </a>
-              <a
-                class="ui mini compact button"
-                data-testid="join-scenario-as"
-                href="/chat/join/1765cf2e64/as/6c4adee67a/cohort/6e4213d8d3"
-                role="button"
-              >
-                Join as 
-                <strong>
-                  Teacher
-                </strong>
-              </a>
-              <a
-                class="ui mini compact button"
-                data-testid="join-scenario-as"
-                href="/chat/join/1765cf2e64/as/cc5d157543/cohort/6e4213d8d3"
-                role="button"
-              >
-                Join as 
-                <strong>
-                  Student
-                </strong>
-              </a>
             </div>
           </div>
           <div
@@ -901,12 +1216,112 @@ exports[`Open Edit scenarios 4`] = `
               <p>
                 This is the description of 'Some Other Scenario'…
               </p>
+              <span
+                class="ui medium text"
+              >
+                This is a multi-participant scenario, with 
+                <strong>
+                  3
+                </strong>
+                 roles:
+              </span>
+              <div
+                class="ui comments"
+              >
+                <div
+                  class="comment"
+                >
+                  <a
+                    class="ui tiny button c__join-persona-button"
+                    data-testid="join-scenario-as"
+                    href="/chat/join/1765cf2e64/as/6e4213d8d3/cohort/6e4213d8d3"
+                    role="button"
+                  >
+                    Join as 
+                    <strong>
+                      Participant
+                    </strong>
+                  </a>
+                  <div
+                    class="c__join-persona-content content"
+                  >
+                    <div
+                      class="author"
+                    >
+                      Participant
+                    </div>
+                    <div
+                      class="text"
+                    >
+                      The default user participating in a single person scenario.
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="comment"
+                >
+                  <a
+                    class="ui tiny button c__join-persona-button"
+                    data-testid="join-scenario-as"
+                    href="/chat/join/1765cf2e64/as/6c4adee67a/cohort/6e4213d8d3"
+                    role="button"
+                  >
+                    Join as 
+                    <strong>
+                      Teacher
+                    </strong>
+                  </a>
+                  <div
+                    class="c__join-persona-content content"
+                  >
+                    <div
+                      class="author"
+                    >
+                      Teacher
+                    </div>
+                    <div
+                      class="text"
+                    >
+                      A non-specific teacher, participating in a multi person scenario.
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="comment"
+                >
+                  <a
+                    class="ui tiny button c__join-persona-button"
+                    data-testid="join-scenario-as"
+                    href="/chat/join/1765cf2e64/as/cc5d157543/cohort/6e4213d8d3"
+                    role="button"
+                  >
+                    Join as 
+                    <strong>
+                      Student
+                    </strong>
+                  </a>
+                  <div
+                    class="c__join-persona-content content"
+                  >
+                    <div
+                      class="author"
+                    >
+                      Student
+                    </div>
+                    <div
+                      class="text"
+                    >
+                      A non-specific student, participating in a multi person scenario.
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
             <div
               class="meta"
             >
               <button
-                class="ui tiny button"
+                class="ui mini compact button"
                 data-testid="run-cohort-as-participant"
               >
                 <i
@@ -915,43 +1330,6 @@ exports[`Open Edit scenarios 4`] = `
                 />
                 Create or join a room to re-run scenario
               </button>
-            </div>
-            <div
-              class="meta c__join-as"
-            >
-              <a
-                class="ui mini compact button"
-                data-testid="join-scenario-as"
-                href="/chat/join/1765cf2e64/as/6e4213d8d3/cohort/6e4213d8d3"
-                role="button"
-              >
-                Join as 
-                <strong>
-                  Participant
-                </strong>
-              </a>
-              <a
-                class="ui mini compact button"
-                data-testid="join-scenario-as"
-                href="/chat/join/1765cf2e64/as/6c4adee67a/cohort/6e4213d8d3"
-                role="button"
-              >
-                Join as 
-                <strong>
-                  Teacher
-                </strong>
-              </a>
-              <a
-                class="ui mini compact button"
-                data-testid="join-scenario-as"
-                href="/chat/join/1765cf2e64/as/cc5d157543/cohort/6e4213d8d3"
-                role="button"
-              >
-                Join as 
-                <strong>
-                  Student
-                </strong>
-              </a>
             </div>
           </div>
           <div
@@ -1040,6 +1418,106 @@ exports[`Participant does not have an option to open scenarios selector 2`] = `
           <p>
             This is the description of 'Some Other Scenario'…
           </p>
+          <span
+            class="ui medium text"
+          >
+            This is a multi-participant scenario, with 
+            <strong>
+              3
+            </strong>
+             roles:
+          </span>
+          <div
+            class="ui comments"
+          >
+            <div
+              class="comment"
+            >
+              <a
+                class="ui tiny button c__join-persona-button"
+                data-testid="join-scenario-as"
+                href="/chat/join/1765cf2e64/as/6e4213d8d3/cohort/6e4213d8d3"
+                role="button"
+              >
+                Join as 
+                <strong>
+                  Participant
+                </strong>
+              </a>
+              <div
+                class="c__join-persona-content content"
+              >
+                <div
+                  class="author"
+                >
+                  Participant
+                </div>
+                <div
+                  class="text"
+                >
+                  The default user participating in a single person scenario.
+                </div>
+              </div>
+            </div>
+            <div
+              class="comment"
+            >
+              <a
+                class="ui tiny button c__join-persona-button"
+                data-testid="join-scenario-as"
+                href="/chat/join/1765cf2e64/as/6c4adee67a/cohort/6e4213d8d3"
+                role="button"
+              >
+                Join as 
+                <strong>
+                  Teacher
+                </strong>
+              </a>
+              <div
+                class="c__join-persona-content content"
+              >
+                <div
+                  class="author"
+                >
+                  Teacher
+                </div>
+                <div
+                  class="text"
+                >
+                  A non-specific teacher, participating in a multi person scenario.
+                </div>
+              </div>
+            </div>
+            <div
+              class="comment"
+            >
+              <a
+                class="ui tiny button c__join-persona-button"
+                data-testid="join-scenario-as"
+                href="/chat/join/1765cf2e64/as/cc5d157543/cohort/6e4213d8d3"
+                role="button"
+              >
+                Join as 
+                <strong>
+                  Student
+                </strong>
+              </a>
+              <div
+                class="c__join-persona-content content"
+              >
+                <div
+                  class="author"
+                >
+                  Student
+                </div>
+                <div
+                  class="text"
+                >
+                  A non-specific student, participating in a multi person scenario.
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
         <div
           class="meta"
@@ -1050,7 +1528,7 @@ exports[`Participant does not have an option to open scenarios selector 2`] = `
           class="meta"
         >
           <button
-            class="ui tiny button"
+            class="ui mini compact button"
             data-testid="run-cohort-as-participant"
           >
             <i
@@ -1059,43 +1537,6 @@ exports[`Participant does not have an option to open scenarios selector 2`] = `
             />
             Create or join a room to re-run scenario
           </button>
-        </div>
-        <div
-          class="meta c__join-as"
-        >
-          <a
-            class="ui mini compact button"
-            data-testid="join-scenario-as"
-            href="/chat/join/1765cf2e64/as/6e4213d8d3/cohort/6e4213d8d3"
-            role="button"
-          >
-            Join as 
-            <strong>
-              Participant
-            </strong>
-          </a>
-          <a
-            class="ui mini compact button"
-            data-testid="join-scenario-as"
-            href="/chat/join/1765cf2e64/as/6c4adee67a/cohort/6e4213d8d3"
-            role="button"
-          >
-            Join as 
-            <strong>
-              Teacher
-            </strong>
-          </a>
-          <a
-            class="ui mini compact button"
-            data-testid="join-scenario-as"
-            href="/chat/join/1765cf2e64/as/cc5d157543/cohort/6e4213d8d3"
-            role="button"
-          >
-            Join as 
-            <strong>
-              Student
-            </strong>
-          </a>
         </div>
       </div>
       <div
@@ -1189,12 +1630,112 @@ exports[`Render 1 1 2`] = `
               <p>
                 This is the description of 'Some Other Scenario'…
               </p>
+              <span
+                class="ui medium text"
+              >
+                This is a multi-participant scenario, with 
+                <strong>
+                  3
+                </strong>
+                 roles:
+              </span>
+              <div
+                class="ui comments"
+              >
+                <div
+                  class="comment"
+                >
+                  <a
+                    class="ui tiny button c__join-persona-button"
+                    data-testid="join-scenario-as"
+                    href="/chat/join/1765cf2e64/as/6e4213d8d3/cohort/6e4213d8d3"
+                    role="button"
+                  >
+                    Join as 
+                    <strong>
+                      Participant
+                    </strong>
+                  </a>
+                  <div
+                    class="c__join-persona-content content"
+                  >
+                    <div
+                      class="author"
+                    >
+                      Participant
+                    </div>
+                    <div
+                      class="text"
+                    >
+                      The default user participating in a single person scenario.
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="comment"
+                >
+                  <a
+                    class="ui tiny button c__join-persona-button"
+                    data-testid="join-scenario-as"
+                    href="/chat/join/1765cf2e64/as/6c4adee67a/cohort/6e4213d8d3"
+                    role="button"
+                  >
+                    Join as 
+                    <strong>
+                      Teacher
+                    </strong>
+                  </a>
+                  <div
+                    class="c__join-persona-content content"
+                  >
+                    <div
+                      class="author"
+                    >
+                      Teacher
+                    </div>
+                    <div
+                      class="text"
+                    >
+                      A non-specific teacher, participating in a multi person scenario.
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="comment"
+                >
+                  <a
+                    class="ui tiny button c__join-persona-button"
+                    data-testid="join-scenario-as"
+                    href="/chat/join/1765cf2e64/as/cc5d157543/cohort/6e4213d8d3"
+                    role="button"
+                  >
+                    Join as 
+                    <strong>
+                      Student
+                    </strong>
+                  </a>
+                  <div
+                    class="c__join-persona-content content"
+                  >
+                    <div
+                      class="author"
+                    >
+                      Student
+                    </div>
+                    <div
+                      class="text"
+                    >
+                      A non-specific student, participating in a multi person scenario.
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
             <div
               class="meta"
             >
               <button
-                class="ui tiny button"
+                class="ui mini compact button"
                 data-testid="run-cohort-as-participant"
               >
                 <i
@@ -1203,43 +1744,6 @@ exports[`Render 1 1 2`] = `
                 />
                 Create or join a room to run scenario
               </button>
-            </div>
-            <div
-              class="meta c__join-as"
-            >
-              <a
-                class="ui mini compact button"
-                data-testid="join-scenario-as"
-                href="/chat/join/1765cf2e64/as/6e4213d8d3/cohort/6e4213d8d3"
-                role="button"
-              >
-                Join as 
-                <strong>
-                  Participant
-                </strong>
-              </a>
-              <a
-                class="ui mini compact button"
-                data-testid="join-scenario-as"
-                href="/chat/join/1765cf2e64/as/6c4adee67a/cohort/6e4213d8d3"
-                role="button"
-              >
-                Join as 
-                <strong>
-                  Teacher
-                </strong>
-              </a>
-              <a
-                class="ui mini compact button"
-                data-testid="join-scenario-as"
-                href="/chat/join/1765cf2e64/as/cc5d157543/cohort/6e4213d8d3"
-                role="button"
-              >
-                Join as 
-                <strong>
-                  Student
-                </strong>
-              </a>
             </div>
           </div>
           <div
@@ -1335,12 +1839,112 @@ exports[`Render 2 1 2`] = `
               <p>
                 This is the description of 'Some Other Scenario'…
               </p>
+              <span
+                class="ui medium text"
+              >
+                This is a multi-participant scenario, with 
+                <strong>
+                  3
+                </strong>
+                 roles:
+              </span>
+              <div
+                class="ui comments"
+              >
+                <div
+                  class="comment"
+                >
+                  <a
+                    class="ui tiny button c__join-persona-button"
+                    data-testid="join-scenario-as"
+                    href="/chat/join/1765cf2e64/as/6e4213d8d3/cohort/6e4213d8d3"
+                    role="button"
+                  >
+                    Join as 
+                    <strong>
+                      Participant
+                    </strong>
+                  </a>
+                  <div
+                    class="c__join-persona-content content"
+                  >
+                    <div
+                      class="author"
+                    >
+                      Participant
+                    </div>
+                    <div
+                      class="text"
+                    >
+                      The default user participating in a single person scenario.
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="comment"
+                >
+                  <a
+                    class="ui tiny button c__join-persona-button"
+                    data-testid="join-scenario-as"
+                    href="/chat/join/1765cf2e64/as/6c4adee67a/cohort/6e4213d8d3"
+                    role="button"
+                  >
+                    Join as 
+                    <strong>
+                      Teacher
+                    </strong>
+                  </a>
+                  <div
+                    class="c__join-persona-content content"
+                  >
+                    <div
+                      class="author"
+                    >
+                      Teacher
+                    </div>
+                    <div
+                      class="text"
+                    >
+                      A non-specific teacher, participating in a multi person scenario.
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="comment"
+                >
+                  <a
+                    class="ui tiny button c__join-persona-button"
+                    data-testid="join-scenario-as"
+                    href="/chat/join/1765cf2e64/as/cc5d157543/cohort/6e4213d8d3"
+                    role="button"
+                  >
+                    Join as 
+                    <strong>
+                      Student
+                    </strong>
+                  </a>
+                  <div
+                    class="c__join-persona-content content"
+                  >
+                    <div
+                      class="author"
+                    >
+                      Student
+                    </div>
+                    <div
+                      class="text"
+                    >
+                      A non-specific student, participating in a multi person scenario.
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
             <div
               class="meta"
             >
               <button
-                class="ui tiny button"
+                class="ui mini compact button"
                 data-testid="run-cohort-as-participant"
               >
                 <i
@@ -1349,43 +1953,6 @@ exports[`Render 2 1 2`] = `
                 />
                 Create or join a room to re-run scenario
               </button>
-            </div>
-            <div
-              class="meta c__join-as"
-            >
-              <a
-                class="ui mini compact button"
-                data-testid="join-scenario-as"
-                href="/chat/join/1765cf2e64/as/6e4213d8d3/cohort/6e4213d8d3"
-                role="button"
-              >
-                Join as 
-                <strong>
-                  Participant
-                </strong>
-              </a>
-              <a
-                class="ui mini compact button"
-                data-testid="join-scenario-as"
-                href="/chat/join/1765cf2e64/as/6c4adee67a/cohort/6e4213d8d3"
-                role="button"
-              >
-                Join as 
-                <strong>
-                  Teacher
-                </strong>
-              </a>
-              <a
-                class="ui mini compact button"
-                data-testid="join-scenario-as"
-                href="/chat/join/1765cf2e64/as/cc5d157543/cohort/6e4213d8d3"
-                role="button"
-              >
-                Join as 
-                <strong>
-                  Student
-                </strong>
-              </a>
             </div>
           </div>
           <div
@@ -1481,12 +2048,112 @@ exports[`Run as participant 2`] = `
               <p>
                 This is the description of 'Some Other Scenario'…
               </p>
+              <span
+                class="ui medium text"
+              >
+                This is a multi-participant scenario, with 
+                <strong>
+                  3
+                </strong>
+                 roles:
+              </span>
+              <div
+                class="ui comments"
+              >
+                <div
+                  class="comment"
+                >
+                  <a
+                    class="ui tiny button c__join-persona-button"
+                    data-testid="join-scenario-as"
+                    href="/chat/join/1765cf2e64/as/6e4213d8d3/cohort/6e4213d8d3"
+                    role="button"
+                  >
+                    Join as 
+                    <strong>
+                      Participant
+                    </strong>
+                  </a>
+                  <div
+                    class="c__join-persona-content content"
+                  >
+                    <div
+                      class="author"
+                    >
+                      Participant
+                    </div>
+                    <div
+                      class="text"
+                    >
+                      The default user participating in a single person scenario.
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="comment"
+                >
+                  <a
+                    class="ui tiny button c__join-persona-button"
+                    data-testid="join-scenario-as"
+                    href="/chat/join/1765cf2e64/as/6c4adee67a/cohort/6e4213d8d3"
+                    role="button"
+                  >
+                    Join as 
+                    <strong>
+                      Teacher
+                    </strong>
+                  </a>
+                  <div
+                    class="c__join-persona-content content"
+                  >
+                    <div
+                      class="author"
+                    >
+                      Teacher
+                    </div>
+                    <div
+                      class="text"
+                    >
+                      A non-specific teacher, participating in a multi person scenario.
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="comment"
+                >
+                  <a
+                    class="ui tiny button c__join-persona-button"
+                    data-testid="join-scenario-as"
+                    href="/chat/join/1765cf2e64/as/cc5d157543/cohort/6e4213d8d3"
+                    role="button"
+                  >
+                    Join as 
+                    <strong>
+                      Student
+                    </strong>
+                  </a>
+                  <div
+                    class="c__join-persona-content content"
+                  >
+                    <div
+                      class="author"
+                    >
+                      Student
+                    </div>
+                    <div
+                      class="text"
+                    >
+                      A non-specific student, participating in a multi person scenario.
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
             <div
               class="meta"
             >
               <button
-                class="ui tiny button"
+                class="ui mini compact button"
                 data-testid="run-cohort-as-participant"
               >
                 <i
@@ -1495,43 +2162,6 @@ exports[`Run as participant 2`] = `
                 />
                 Create or join a room to re-run scenario
               </button>
-            </div>
-            <div
-              class="meta c__join-as"
-            >
-              <a
-                class="ui mini compact button"
-                data-testid="join-scenario-as"
-                href="/chat/join/1765cf2e64/as/6e4213d8d3/cohort/6e4213d8d3"
-                role="button"
-              >
-                Join as 
-                <strong>
-                  Participant
-                </strong>
-              </a>
-              <a
-                class="ui mini compact button"
-                data-testid="join-scenario-as"
-                href="/chat/join/1765cf2e64/as/6c4adee67a/cohort/6e4213d8d3"
-                role="button"
-              >
-                Join as 
-                <strong>
-                  Teacher
-                </strong>
-              </a>
-              <a
-                class="ui mini compact button"
-                data-testid="join-scenario-as"
-                href="/chat/join/1765cf2e64/as/cc5d157543/cohort/6e4213d8d3"
-                role="button"
-              >
-                Join as 
-                <strong>
-                  Student
-                </strong>
-              </a>
             </div>
           </div>
           <div
@@ -1602,12 +2232,112 @@ exports[`Run as participant 4`] = `
               <p>
                 This is the description of 'Some Other Scenario'…
               </p>
+              <span
+                class="ui medium text"
+              >
+                This is a multi-participant scenario, with 
+                <strong>
+                  3
+                </strong>
+                 roles:
+              </span>
+              <div
+                class="ui comments"
+              >
+                <div
+                  class="comment"
+                >
+                  <a
+                    class="ui tiny button c__join-persona-button"
+                    data-testid="join-scenario-as"
+                    href="/chat/join/1765cf2e64/as/6e4213d8d3/cohort/6e4213d8d3"
+                    role="button"
+                  >
+                    Join as 
+                    <strong>
+                      Participant
+                    </strong>
+                  </a>
+                  <div
+                    class="c__join-persona-content content"
+                  >
+                    <div
+                      class="author"
+                    >
+                      Participant
+                    </div>
+                    <div
+                      class="text"
+                    >
+                      The default user participating in a single person scenario.
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="comment"
+                >
+                  <a
+                    class="ui tiny button c__join-persona-button"
+                    data-testid="join-scenario-as"
+                    href="/chat/join/1765cf2e64/as/6c4adee67a/cohort/6e4213d8d3"
+                    role="button"
+                  >
+                    Join as 
+                    <strong>
+                      Teacher
+                    </strong>
+                  </a>
+                  <div
+                    class="c__join-persona-content content"
+                  >
+                    <div
+                      class="author"
+                    >
+                      Teacher
+                    </div>
+                    <div
+                      class="text"
+                    >
+                      A non-specific teacher, participating in a multi person scenario.
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="comment"
+                >
+                  <a
+                    class="ui tiny button c__join-persona-button"
+                    data-testid="join-scenario-as"
+                    href="/chat/join/1765cf2e64/as/cc5d157543/cohort/6e4213d8d3"
+                    role="button"
+                  >
+                    Join as 
+                    <strong>
+                      Student
+                    </strong>
+                  </a>
+                  <div
+                    class="c__join-persona-content content"
+                  >
+                    <div
+                      class="author"
+                    >
+                      Student
+                    </div>
+                    <div
+                      class="text"
+                    >
+                      A non-specific student, participating in a multi person scenario.
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
             <div
               class="meta"
             >
               <button
-                class="ui tiny button"
+                class="ui mini compact button"
                 data-testid="run-cohort-as-participant"
               >
                 <i
@@ -1616,43 +2346,6 @@ exports[`Run as participant 4`] = `
                 />
                 Create or join a room to re-run scenario
               </button>
-            </div>
-            <div
-              class="meta c__join-as"
-            >
-              <a
-                class="ui mini compact button"
-                data-testid="join-scenario-as"
-                href="/chat/join/1765cf2e64/as/6e4213d8d3/cohort/6e4213d8d3"
-                role="button"
-              >
-                Join as 
-                <strong>
-                  Participant
-                </strong>
-              </a>
-              <a
-                class="ui mini compact button"
-                data-testid="join-scenario-as"
-                href="/chat/join/1765cf2e64/as/6c4adee67a/cohort/6e4213d8d3"
-                role="button"
-              >
-                Join as 
-                <strong>
-                  Teacher
-                </strong>
-              </a>
-              <a
-                class="ui mini compact button"
-                data-testid="join-scenario-as"
-                href="/chat/join/1765cf2e64/as/cc5d157543/cohort/6e4213d8d3"
-                role="button"
-              >
-                Join as 
-                <strong>
-                  Student
-                </strong>
-              </a>
             </div>
           </div>
           <div
@@ -1748,12 +2441,112 @@ exports[`Scenarios have multi-participant/single-participant icons 2`] = `
               <p>
                 This is the description of 'Some Other Scenario'…
               </p>
+              <span
+                class="ui medium text"
+              >
+                This is a multi-participant scenario, with 
+                <strong>
+                  3
+                </strong>
+                 roles:
+              </span>
+              <div
+                class="ui comments"
+              >
+                <div
+                  class="comment"
+                >
+                  <a
+                    class="ui tiny button c__join-persona-button"
+                    data-testid="join-scenario-as"
+                    href="/chat/join/1765cf2e64/as/6e4213d8d3/cohort/6e4213d8d3"
+                    role="button"
+                  >
+                    Join as 
+                    <strong>
+                      Participant
+                    </strong>
+                  </a>
+                  <div
+                    class="c__join-persona-content content"
+                  >
+                    <div
+                      class="author"
+                    >
+                      Participant
+                    </div>
+                    <div
+                      class="text"
+                    >
+                      The default user participating in a single person scenario.
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="comment"
+                >
+                  <a
+                    class="ui tiny button c__join-persona-button"
+                    data-testid="join-scenario-as"
+                    href="/chat/join/1765cf2e64/as/6c4adee67a/cohort/6e4213d8d3"
+                    role="button"
+                  >
+                    Join as 
+                    <strong>
+                      Teacher
+                    </strong>
+                  </a>
+                  <div
+                    class="c__join-persona-content content"
+                  >
+                    <div
+                      class="author"
+                    >
+                      Teacher
+                    </div>
+                    <div
+                      class="text"
+                    >
+                      A non-specific teacher, participating in a multi person scenario.
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="comment"
+                >
+                  <a
+                    class="ui tiny button c__join-persona-button"
+                    data-testid="join-scenario-as"
+                    href="/chat/join/1765cf2e64/as/cc5d157543/cohort/6e4213d8d3"
+                    role="button"
+                  >
+                    Join as 
+                    <strong>
+                      Student
+                    </strong>
+                  </a>
+                  <div
+                    class="c__join-persona-content content"
+                  >
+                    <div
+                      class="author"
+                    >
+                      Student
+                    </div>
+                    <div
+                      class="text"
+                    >
+                      A non-specific student, participating in a multi person scenario.
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
             <div
               class="meta"
             >
               <button
-                class="ui tiny button"
+                class="ui mini compact button"
                 data-testid="run-cohort-as-participant"
               >
                 <i
@@ -1762,43 +2555,6 @@ exports[`Scenarios have multi-participant/single-participant icons 2`] = `
                 />
                 Create or join a room to re-run scenario
               </button>
-            </div>
-            <div
-              class="meta c__join-as"
-            >
-              <a
-                class="ui mini compact button"
-                data-testid="join-scenario-as"
-                href="/chat/join/1765cf2e64/as/6e4213d8d3/cohort/6e4213d8d3"
-                role="button"
-              >
-                Join as 
-                <strong>
-                  Participant
-                </strong>
-              </a>
-              <a
-                class="ui mini compact button"
-                data-testid="join-scenario-as"
-                href="/chat/join/1765cf2e64/as/6c4adee67a/cohort/6e4213d8d3"
-                role="button"
-              >
-                Join as 
-                <strong>
-                  Teacher
-                </strong>
-              </a>
-              <a
-                class="ui mini compact button"
-                data-testid="join-scenario-as"
-                href="/chat/join/1765cf2e64/as/cc5d157543/cohort/6e4213d8d3"
-                role="button"
-              >
-                Join as 
-                <strong>
-                  Student
-                </strong>
-              </a>
             </div>
           </div>
           <div
@@ -1869,12 +2625,112 @@ exports[`Scenarios have multi-participant/single-participant icons 3`] = `
               <p>
                 This is the description of 'Some Other Scenario'…
               </p>
+              <span
+                class="ui medium text"
+              >
+                This is a multi-participant scenario, with 
+                <strong>
+                  3
+                </strong>
+                 roles:
+              </span>
+              <div
+                class="ui comments"
+              >
+                <div
+                  class="comment"
+                >
+                  <a
+                    class="ui tiny button c__join-persona-button"
+                    data-testid="join-scenario-as"
+                    href="/chat/join/1765cf2e64/as/6e4213d8d3/cohort/6e4213d8d3"
+                    role="button"
+                  >
+                    Join as 
+                    <strong>
+                      Participant
+                    </strong>
+                  </a>
+                  <div
+                    class="c__join-persona-content content"
+                  >
+                    <div
+                      class="author"
+                    >
+                      Participant
+                    </div>
+                    <div
+                      class="text"
+                    >
+                      The default user participating in a single person scenario.
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="comment"
+                >
+                  <a
+                    class="ui tiny button c__join-persona-button"
+                    data-testid="join-scenario-as"
+                    href="/chat/join/1765cf2e64/as/6c4adee67a/cohort/6e4213d8d3"
+                    role="button"
+                  >
+                    Join as 
+                    <strong>
+                      Teacher
+                    </strong>
+                  </a>
+                  <div
+                    class="c__join-persona-content content"
+                  >
+                    <div
+                      class="author"
+                    >
+                      Teacher
+                    </div>
+                    <div
+                      class="text"
+                    >
+                      A non-specific teacher, participating in a multi person scenario.
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="comment"
+                >
+                  <a
+                    class="ui tiny button c__join-persona-button"
+                    data-testid="join-scenario-as"
+                    href="/chat/join/1765cf2e64/as/cc5d157543/cohort/6e4213d8d3"
+                    role="button"
+                  >
+                    Join as 
+                    <strong>
+                      Student
+                    </strong>
+                  </a>
+                  <div
+                    class="c__join-persona-content content"
+                  >
+                    <div
+                      class="author"
+                    >
+                      Student
+                    </div>
+                    <div
+                      class="text"
+                    >
+                      A non-specific student, participating in a multi person scenario.
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
             <div
               class="meta"
             >
               <button
-                class="ui tiny button"
+                class="ui mini compact button"
                 data-testid="run-cohort-as-participant"
               >
                 <i
@@ -1883,43 +2739,6 @@ exports[`Scenarios have multi-participant/single-participant icons 3`] = `
                 />
                 Create or join a room to re-run scenario
               </button>
-            </div>
-            <div
-              class="meta c__join-as"
-            >
-              <a
-                class="ui mini compact button"
-                data-testid="join-scenario-as"
-                href="/chat/join/1765cf2e64/as/6e4213d8d3/cohort/6e4213d8d3"
-                role="button"
-              >
-                Join as 
-                <strong>
-                  Participant
-                </strong>
-              </a>
-              <a
-                class="ui mini compact button"
-                data-testid="join-scenario-as"
-                href="/chat/join/1765cf2e64/as/6c4adee67a/cohort/6e4213d8d3"
-                role="button"
-              >
-                Join as 
-                <strong>
-                  Teacher
-                </strong>
-              </a>
-              <a
-                class="ui mini compact button"
-                data-testid="join-scenario-as"
-                href="/chat/join/1765cf2e64/as/cc5d157543/cohort/6e4213d8d3"
-                role="button"
-              >
-                Join as 
-                <strong>
-                  Student
-                </strong>
-              </a>
             </div>
           </div>
           <div
@@ -1990,12 +2809,112 @@ exports[`Scenarios have multi-participant/single-participant icons 4`] = `
               <p>
                 This is the description of 'Some Other Scenario'…
               </p>
+              <span
+                class="ui medium text"
+              >
+                This is a multi-participant scenario, with 
+                <strong>
+                  3
+                </strong>
+                 roles:
+              </span>
+              <div
+                class="ui comments"
+              >
+                <div
+                  class="comment"
+                >
+                  <a
+                    class="ui tiny button c__join-persona-button"
+                    data-testid="join-scenario-as"
+                    href="/chat/join/1765cf2e64/as/6e4213d8d3/cohort/6e4213d8d3"
+                    role="button"
+                  >
+                    Join as 
+                    <strong>
+                      Participant
+                    </strong>
+                  </a>
+                  <div
+                    class="c__join-persona-content content"
+                  >
+                    <div
+                      class="author"
+                    >
+                      Participant
+                    </div>
+                    <div
+                      class="text"
+                    >
+                      The default user participating in a single person scenario.
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="comment"
+                >
+                  <a
+                    class="ui tiny button c__join-persona-button"
+                    data-testid="join-scenario-as"
+                    href="/chat/join/1765cf2e64/as/6c4adee67a/cohort/6e4213d8d3"
+                    role="button"
+                  >
+                    Join as 
+                    <strong>
+                      Teacher
+                    </strong>
+                  </a>
+                  <div
+                    class="c__join-persona-content content"
+                  >
+                    <div
+                      class="author"
+                    >
+                      Teacher
+                    </div>
+                    <div
+                      class="text"
+                    >
+                      A non-specific teacher, participating in a multi person scenario.
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="comment"
+                >
+                  <a
+                    class="ui tiny button c__join-persona-button"
+                    data-testid="join-scenario-as"
+                    href="/chat/join/1765cf2e64/as/cc5d157543/cohort/6e4213d8d3"
+                    role="button"
+                  >
+                    Join as 
+                    <strong>
+                      Student
+                    </strong>
+                  </a>
+                  <div
+                    class="c__join-persona-content content"
+                  >
+                    <div
+                      class="author"
+                    >
+                      Student
+                    </div>
+                    <div
+                      class="text"
+                    >
+                      A non-specific student, participating in a multi person scenario.
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
             <div
               class="meta"
             >
               <button
-                class="ui tiny button"
+                class="ui mini compact button"
                 data-testid="run-cohort-as-participant"
               >
                 <i
@@ -2004,43 +2923,6 @@ exports[`Scenarios have multi-participant/single-participant icons 4`] = `
                 />
                 Create or join a room to re-run scenario
               </button>
-            </div>
-            <div
-              class="meta c__join-as"
-            >
-              <a
-                class="ui mini compact button"
-                data-testid="join-scenario-as"
-                href="/chat/join/1765cf2e64/as/6e4213d8d3/cohort/6e4213d8d3"
-                role="button"
-              >
-                Join as 
-                <strong>
-                  Participant
-                </strong>
-              </a>
-              <a
-                class="ui mini compact button"
-                data-testid="join-scenario-as"
-                href="/chat/join/1765cf2e64/as/6c4adee67a/cohort/6e4213d8d3"
-                role="button"
-              >
-                Join as 
-                <strong>
-                  Teacher
-                </strong>
-              </a>
-              <a
-                class="ui mini compact button"
-                data-testid="join-scenario-as"
-                href="/chat/join/1765cf2e64/as/cc5d157543/cohort/6e4213d8d3"
-                role="button"
-              >
-                Join as 
-                <strong>
-                  Student
-                </strong>
-              </a>
             </div>
           </div>
           <div

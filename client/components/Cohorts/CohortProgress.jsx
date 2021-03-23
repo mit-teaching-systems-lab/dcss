@@ -324,7 +324,7 @@ export class CohortProgress extends React.Component {
                     </p>
                   </Card.Description>
                 </Card.Content>
-                <Card.Content>
+                <Card.Content className="c__scenario-extra">
                   <Button
                     className="c__participant-card__responses"
                     primary

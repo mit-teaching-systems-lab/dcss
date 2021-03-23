@@ -63,6 +63,7 @@
 }
 
 .c__scenario-extra {
+  height: 100%;
   padding: 1rem;
 }
 
@@ -372,6 +373,15 @@
   text-align: unset !important;
 }
 
-.c__card-meta-no-margin-top {
-  margin-top: unset !important;
+.c__join-persona-button {
+  display: block;
+  width: 10.5em;
+  height: auto;
+  float: left;
+  margin: .2em 0 0;
+}
+
+.c__join-persona-content {
+  display: inline-block !important;
+  margin-left: 1em;
 }

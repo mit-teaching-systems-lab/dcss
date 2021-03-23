@@ -7,6 +7,7 @@ import './Chat.css';
 
 function JoinAsButton(props) {
   const {
+    className = '',
     cohort,
     persona,
     scenario
@@ -28,6 +29,7 @@ function JoinAsButton(props) {
       size="tiny"
       data-testid="join-scenario-as"
       as={NavLink}
+      className={className}
       key={Identity.key(persona)}
       to={href}
     >
@@ -37,6 +39,7 @@ function JoinAsButton(props) {
 }
 
 JoinAsButton.propTypes = {
+  className: PropTypes.string,
   cohort: PropTypes.object,
   persona: PropTypes.object,
   scenario: PropTypes.object,

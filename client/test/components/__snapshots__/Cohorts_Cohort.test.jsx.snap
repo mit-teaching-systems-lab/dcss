@@ -301,7 +301,7 @@ exports[`Archive cohort 1`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -385,7 +385,7 @@ exports[`Archive cohort 1`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -469,7 +469,7 @@ exports[`Archive cohort 1`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -547,7 +547,7 @@ exports[`Archive cohort 1`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -625,7 +625,7 @@ exports[`Archive cohort 1`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -954,7 +954,7 @@ exports[`Archive cohort 2`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -1038,7 +1038,7 @@ exports[`Archive cohort 2`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -1122,7 +1122,7 @@ exports[`Archive cohort 2`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -1200,7 +1200,7 @@ exports[`Archive cohort 2`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -1278,7 +1278,7 @@ exports[`Archive cohort 2`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -1607,7 +1607,7 @@ exports[`Archive cohort 3`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -1691,7 +1691,7 @@ exports[`Archive cohort 3`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -1775,7 +1775,7 @@ exports[`Archive cohort 3`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -1853,7 +1853,7 @@ exports[`Archive cohort 3`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -1931,7 +1931,7 @@ exports[`Archive cohort 3`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -2327,7 +2327,7 @@ exports[`Archive cohort 4`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -2411,7 +2411,7 @@ exports[`Archive cohort 4`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -2495,7 +2495,7 @@ exports[`Archive cohort 4`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -2573,7 +2573,7 @@ exports[`Archive cohort 4`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -2651,7 +2651,7 @@ exports[`Archive cohort 4`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -2980,7 +2980,7 @@ exports[`Archive cohort 5`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -3064,7 +3064,7 @@ exports[`Archive cohort 5`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -3148,7 +3148,7 @@ exports[`Archive cohort 5`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -3226,7 +3226,7 @@ exports[`Archive cohort 5`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -3304,7 +3304,7 @@ exports[`Archive cohort 5`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -3686,7 +3686,7 @@ exports[`Archive cohort 6`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -3770,7 +3770,7 @@ exports[`Archive cohort 6`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -3854,7 +3854,7 @@ exports[`Archive cohort 6`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -3932,7 +3932,7 @@ exports[`Archive cohort 6`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -4010,7 +4010,7 @@ exports[`Archive cohort 6`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -4404,7 +4404,7 @@ exports[`Cohort is archived 1`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -4518,7 +4518,7 @@ exports[`Cohort is archived 1`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -4632,7 +4632,7 @@ exports[`Cohort is archived 1`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -4740,7 +4740,7 @@ exports[`Cohort is archived 1`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -4848,7 +4848,7 @@ exports[`Cohort is archived 1`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -5267,7 +5267,7 @@ exports[`Copy cohort 1`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -5351,7 +5351,7 @@ exports[`Copy cohort 1`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -5435,7 +5435,7 @@ exports[`Copy cohort 1`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -5513,7 +5513,7 @@ exports[`Copy cohort 1`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -5591,7 +5591,7 @@ exports[`Copy cohort 1`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -5920,7 +5920,7 @@ exports[`Copy cohort 2`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -6004,7 +6004,7 @@ exports[`Copy cohort 2`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -6088,7 +6088,7 @@ exports[`Copy cohort 2`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -6166,7 +6166,7 @@ exports[`Copy cohort 2`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -6244,7 +6244,7 @@ exports[`Copy cohort 2`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -6573,7 +6573,7 @@ exports[`Copy cohort 3`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -6657,7 +6657,7 @@ exports[`Copy cohort 3`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -6741,7 +6741,7 @@ exports[`Copy cohort 3`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -6819,7 +6819,7 @@ exports[`Copy cohort 3`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -6897,7 +6897,7 @@ exports[`Copy cohort 3`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -7293,7 +7293,7 @@ exports[`Copy cohort 4`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -7377,7 +7377,7 @@ exports[`Copy cohort 4`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -7461,7 +7461,7 @@ exports[`Copy cohort 4`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -7539,7 +7539,7 @@ exports[`Copy cohort 4`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -7617,7 +7617,7 @@ exports[`Copy cohort 4`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -7946,7 +7946,7 @@ exports[`Copy cohort 5`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -8030,7 +8030,7 @@ exports[`Copy cohort 5`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -8114,7 +8114,7 @@ exports[`Copy cohort 5`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -8192,7 +8192,7 @@ exports[`Copy cohort 5`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -8270,7 +8270,7 @@ exports[`Copy cohort 5`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -8666,7 +8666,7 @@ exports[`Copy cohort 6`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -8750,7 +8750,7 @@ exports[`Copy cohort 6`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -8834,7 +8834,7 @@ exports[`Copy cohort 6`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -8912,7 +8912,7 @@ exports[`Copy cohort 6`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -8990,7 +8990,7 @@ exports[`Copy cohort 6`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -9384,7 +9384,7 @@ exports[`Copy cohort url 1`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -9498,7 +9498,7 @@ exports[`Copy cohort url 1`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -9612,7 +9612,7 @@ exports[`Copy cohort url 1`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -9720,7 +9720,7 @@ exports[`Copy cohort url 1`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -9828,7 +9828,7 @@ exports[`Copy cohort url 1`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -10155,7 +10155,7 @@ exports[`Copy cohort url 2`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -10269,7 +10269,7 @@ exports[`Copy cohort url 2`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -10383,7 +10383,7 @@ exports[`Copy cohort url 2`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -10491,7 +10491,7 @@ exports[`Copy cohort url 2`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -10599,7 +10599,7 @@ exports[`Copy cohort url 2`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -10926,7 +10926,7 @@ exports[`Copy cohort url 3`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -11040,7 +11040,7 @@ exports[`Copy cohort url 3`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -11154,7 +11154,7 @@ exports[`Copy cohort url 3`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -11262,7 +11262,7 @@ exports[`Copy cohort url 3`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -11370,7 +11370,7 @@ exports[`Copy cohort url 3`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -11699,7 +11699,7 @@ exports[`Delete cohort 1`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -11783,7 +11783,7 @@ exports[`Delete cohort 1`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -11867,7 +11867,7 @@ exports[`Delete cohort 1`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -11945,7 +11945,7 @@ exports[`Delete cohort 1`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -12023,7 +12023,7 @@ exports[`Delete cohort 1`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -12352,7 +12352,7 @@ exports[`Delete cohort 2`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -12436,7 +12436,7 @@ exports[`Delete cohort 2`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -12520,7 +12520,7 @@ exports[`Delete cohort 2`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -12598,7 +12598,7 @@ exports[`Delete cohort 2`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -12676,7 +12676,7 @@ exports[`Delete cohort 2`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -13005,7 +13005,7 @@ exports[`Delete cohort 3`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -13089,7 +13089,7 @@ exports[`Delete cohort 3`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -13173,7 +13173,7 @@ exports[`Delete cohort 3`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -13251,7 +13251,7 @@ exports[`Delete cohort 3`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -13329,7 +13329,7 @@ exports[`Delete cohort 3`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -13725,7 +13725,7 @@ exports[`Delete cohort 4`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -13809,7 +13809,7 @@ exports[`Delete cohort 4`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -13893,7 +13893,7 @@ exports[`Delete cohort 4`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -13971,7 +13971,7 @@ exports[`Delete cohort 4`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -14049,7 +14049,7 @@ exports[`Delete cohort 4`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -14378,7 +14378,7 @@ exports[`Delete cohort 5`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -14462,7 +14462,7 @@ exports[`Delete cohort 5`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -14546,7 +14546,7 @@ exports[`Delete cohort 5`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -14624,7 +14624,7 @@ exports[`Delete cohort 5`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -14702,7 +14702,7 @@ exports[`Delete cohort 5`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -15098,7 +15098,7 @@ exports[`Delete cohort 6`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -15182,7 +15182,7 @@ exports[`Delete cohort 6`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -15266,7 +15266,7 @@ exports[`Delete cohort 6`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -15344,7 +15344,7 @@ exports[`Delete cohort 6`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -15422,7 +15422,7 @@ exports[`Delete cohort 6`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -15973,7 +15973,7 @@ exports[`Rename cohort 1`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -16087,7 +16087,7 @@ exports[`Rename cohort 1`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -16201,7 +16201,7 @@ exports[`Rename cohort 1`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -16309,7 +16309,7 @@ exports[`Rename cohort 1`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -16417,7 +16417,7 @@ exports[`Rename cohort 1`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -16744,7 +16744,7 @@ exports[`Rename cohort 2`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -16858,7 +16858,7 @@ exports[`Rename cohort 2`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -16972,7 +16972,7 @@ exports[`Rename cohort 2`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -17080,7 +17080,7 @@ exports[`Rename cohort 2`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -17188,7 +17188,7 @@ exports[`Rename cohort 2`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -17518,7 +17518,7 @@ exports[`Rename cohort 3`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -17632,7 +17632,7 @@ exports[`Rename cohort 3`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -17746,7 +17746,7 @@ exports[`Rename cohort 3`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -17854,7 +17854,7 @@ exports[`Rename cohort 3`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -17962,7 +17962,7 @@ exports[`Rename cohort 3`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -18364,7 +18364,7 @@ exports[`Rename cohort 4`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -18478,7 +18478,7 @@ exports[`Rename cohort 4`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -18592,7 +18592,7 @@ exports[`Rename cohort 4`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -18700,7 +18700,7 @@ exports[`Rename cohort 4`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -18808,7 +18808,7 @@ exports[`Rename cohort 4`] = `
                   </div>
                 </div>
                 <div
-                  class=\\"content\\"
+                  class=\\"content c__scenario-extra\\"
                 >
                   <button
                     class=\\"ui large primary button c__participant-card__responses\\"
@@ -19219,7 +19219,7 @@ exports[`Render 1 1 3`] = `
                 </div>
               </div>
               <div
-                class="content"
+                class="content c__scenario-extra"
               >
                 <button
                   class="ui large primary button c__participant-card__responses"
@@ -19298,7 +19298,7 @@ exports[`Render 1 1 3`] = `
                 </div>
               </div>
               <div
-                class="content"
+                class="content c__scenario-extra"
               >
                 <button
                   class="ui large primary button c__participant-card__responses"
@@ -19377,7 +19377,7 @@ exports[`Render 1 1 3`] = `
                 </div>
               </div>
               <div
-                class="content"
+                class="content c__scenario-extra"
               >
                 <button
                   class="ui large primary button c__participant-card__responses"
@@ -19450,7 +19450,7 @@ exports[`Render 1 1 3`] = `
                 </div>
               </div>
               <div
-                class="content"
+                class="content c__scenario-extra"
               >
                 <button
                   class="ui large primary button c__participant-card__responses"
@@ -19523,7 +19523,7 @@ exports[`Render 1 1 3`] = `
                 </div>
               </div>
               <div
-                class="content"
+                class="content c__scenario-extra"
               >
                 <button
                   class="ui large primary button c__participant-card__responses"
@@ -19861,7 +19861,7 @@ exports[`Render 2 1 3`] = `
                 </div>
               </div>
               <div
-                class="content"
+                class="content c__scenario-extra"
               >
                 <button
                   class="ui large primary button c__participant-card__responses"
@@ -19940,7 +19940,7 @@ exports[`Render 2 1 3`] = `
                 </div>
               </div>
               <div
-                class="content"
+                class="content c__scenario-extra"
               >
                 <button
                   class="ui large primary button c__participant-card__responses"
@@ -20019,7 +20019,7 @@ exports[`Render 2 1 3`] = `
                 </div>
               </div>
               <div
-                class="content"
+                class="content c__scenario-extra"
               >
                 <button
                   class="ui large primary button c__participant-card__responses"
@@ -20092,7 +20092,7 @@ exports[`Render 2 1 3`] = `
                 </div>
               </div>
               <div
-                class="content"
+                class="content c__scenario-extra"
               >
                 <button
                   class="ui large primary button c__participant-card__responses"
@@ -20165,7 +20165,7 @@ exports[`Render 2 1 3`] = `
                 </div>
               </div>
               <div
-                class="content"
+                class="content c__scenario-extra"
               >
                 <button
                   class="ui large primary button c__participant-card__responses"
@@ -20503,7 +20503,7 @@ exports[`Render 3 1 3`] = `
                 </div>
               </div>
               <div
-                class="content"
+                class="content c__scenario-extra"
               >
                 <button
                   class="ui large primary button c__participant-card__responses"
@@ -20582,7 +20582,7 @@ exports[`Render 3 1 3`] = `
                 </div>
               </div>
               <div
-                class="content"
+                class="content c__scenario-extra"
               >
                 <button
                   class="ui large primary button c__participant-card__responses"
@@ -20661,7 +20661,7 @@ exports[`Render 3 1 3`] = `
                 </div>
               </div>
               <div
-                class="content"
+                class="content c__scenario-extra"
               >
                 <button
                   class="ui large primary button c__participant-card__responses"
@@ -20734,7 +20734,7 @@ exports[`Render 3 1 3`] = `
                 </div>
               </div>
               <div
-                class="content"
+                class="content c__scenario-extra"
               >
                 <button
                   class="ui large primary button c__participant-card__responses"
@@ -20807,7 +20807,7 @@ exports[`Render 3 1 3`] = `
                 </div>
               </div>
               <div
-                class="content"
+                class="content c__scenario-extra"
               >
                 <button
                   class="ui large primary button c__participant-card__responses"
@@ -21505,7 +21505,7 @@ exports[`Render 9 1 3`] = `
                 </div>
               </div>
               <div
-                class="content"
+                class="content c__scenario-extra"
               >
                 <button
                   class="ui large primary button c__participant-card__responses"
@@ -21584,7 +21584,7 @@ exports[`Render 9 1 3`] = `
                 </div>
               </div>
               <div
-                class="content"
+                class="content c__scenario-extra"
               >
                 <button
                   class="ui large primary button c__participant-card__responses"
@@ -21663,7 +21663,7 @@ exports[`Render 9 1 3`] = `
                 </div>
               </div>
               <div
-                class="content"
+                class="content c__scenario-extra"
               >
                 <button
                   class="ui large primary button c__participant-card__responses"
@@ -21736,7 +21736,7 @@ exports[`Render 9 1 3`] = `
                 </div>
               </div>
               <div
-                class="content"
+                class="content c__scenario-extra"
               >
                 <button
                   class="ui large primary button c__participant-card__responses"
@@ -21809,7 +21809,7 @@ exports[`Render 9 1 3`] = `
                 </div>
               </div>
               <div
-                class="content"
+                class="content c__scenario-extra"
               >
                 <button
                   class="ui large primary button c__participant-card__responses"
