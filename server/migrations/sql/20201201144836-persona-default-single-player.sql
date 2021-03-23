@@ -26,6 +26,7 @@ BEGIN
   END IF;
 END $$;
 
+DELETE FROM persona;
 
 INSERT INTO persona (id, name, description, color, author_id, is_read_only, is_shared)
 VALUES
