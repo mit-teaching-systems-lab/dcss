@@ -415,8 +415,10 @@ class SocketManager {
             response_id,
           } = data;
           const chat = await runsdb.getChatByRunId(run_id);
-          const room = `${chat.id}-response-${response_id}`;
-          this.io.to(room).emit(SHARED_RESPONSE_CREATED, data);
+          if (chat) {
+            const room = `${chat.id}-response-${response_id}`;
+            this.io.to(room).emit(SHARED_RESPONSE_CREATED, data);
+          }
         });
       }
 
