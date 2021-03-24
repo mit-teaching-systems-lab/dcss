@@ -34,6 +34,7 @@ class Display extends Component {
     this.state = {
       responses: response ? [response] : []
     };
+    this.roleToUserMap = {};
     this.refresh = this.refresh.bind(this);
   }
 
@@ -56,6 +57,7 @@ class Display extends Component {
     if (this.props.recallSharedWithRoles && this.props.recallSharedWithRoles.length) {
       const list = this.props.chat.users.reduce((accum, { id, persona_id }) => {
         if (this.props.recallSharedWithRoles.includes(persona_id)) {
+          this.roleToUserMap[persona_id] = id;
           return [...accum, id];
         }
         return accum;
@@ -163,7 +165,11 @@ class Display extends Component {
 
     console.log("responses", responses);
 
-    return responses.reduce((accum, response) => {
+    const roleToUserMapMissing = {
+      ...this.roleToUserMap
+    };
+
+    const rendered = responses.reduce((accum, response) => {
       let rvalue = this.isScenarioRun
         ? response
           ? response.isSkip
@@ -258,6 +264,10 @@ class Display extends Component {
           ? <Fragment>({persona.name})</Fragment>
           : null;
 
+        if (persona) {
+          delete roleToUserMapMissing[persona.id];
+        }
+
         accum.push(
           <Fragment key={key}>
             <Segment attached="top" size="large">
@@ -272,6 +282,31 @@ class Display extends Component {
 
       return accum;
     }, []);
+
+    const missing = Object.values(roleToUserMapMissing);
+
+    for (const id of missing) {
+      const chatUser = this.props.chat.usersById[id];
+      const persona = this.props.scenario.personas.find(
+        persona => persona.id === chatUser.persona_id
+      );
+
+      const personaName = persona
+        ? <Fragment>({persona.name})</Fragment>
+        : null;
+
+      rendered.push(
+        <Segment key={Identity.key(id)}>
+          Awaiting a response from <Username user={chatUser} /> {personaName}
+        </Segment>
+      );
+    }
+
+    return (
+      <Fragment>
+        {rendered}
+      </Fragment>
+    );
   }
 }
 
