@@ -116,7 +116,7 @@ class ResponseRecallEditor extends React.Component {
       }
 
       const quotedSlideTitle = slide.title ? ` "${slide.title}"` : ``;
-      const title = `Slide #${index} ${quotedSlideTitle}`;
+      const title = `Slide #${slide.slide_number} ${quotedSlideTitle}`;
       const content = (
         <ResponsePromptFormatted
           title={title}
@@ -126,7 +126,7 @@ class ResponseRecallEditor extends React.Component {
         />
       );
 
-      const text = `Slide #${index}: "${prompt}"`;
+      const text = `Slide #${slide.slide_number}: "${prompt}"`;
       accum.push({
         key: `recall-response-${key}`,
         text,

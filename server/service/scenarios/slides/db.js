@@ -3,11 +3,18 @@ const { query } = require('../../../util/db');
 
 exports.getScenarioSlides = async scenarioId => {
   const results = await query(sql`
-        SELECT id, title, components, is_finish, has_chat_enabled
-        FROM slide
-        WHERE scenario_id = ${scenarioId}
-        ORDER BY "order";
-    `);
+    SELECT
+      id,
+      title,
+      components,
+      is_finish,
+      has_chat_enabled,
+      ROW_NUMBER() OVER (ORDER BY "order") AS slide_number
+    FROM slide
+    WHERE scenario_id = ${scenarioId}
+    AND is_finish IS FALSE
+    ORDER BY "order";
+  `);
   return results.rows;
 };
 
