@@ -456,7 +456,7 @@ class Display extends Component {
               size="small"
               onClose={onMarkCompleteClose}
             >
-              <Header icon="checkmark" content={`Close this discussion?`} />
+              <Header icon="checkmark" content={`Close this discussion as ${this.state.markComplete.result}?`} />
               <Modal.Content>
                 Are you sure you want to mark this discussion{' '}
                 {this.state.markComplete.result}? Doing so will end the
