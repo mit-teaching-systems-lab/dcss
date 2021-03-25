@@ -352,6 +352,14 @@ class ConditionalContentEditor extends React.Component {
                         ) {
                           return false;
                         }
+                        // Comparison expressions cannot appear in sequence
+                        if (
+                          !isLogical &&
+                          (lastRule && !Conditional.isLogicalOp(lastRule.key))
+                        ) {
+                          return false;
+                        }
+
                         return true;
                       });
 

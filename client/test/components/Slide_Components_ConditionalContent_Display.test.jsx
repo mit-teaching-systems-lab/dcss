@@ -34,6 +34,22 @@ async function waitForPopper() {
 
 /** @GENERATED: BEGIN **/
 
+import { GET_AGENT_RESPONSES_SUCCESS } from '../../actions/types';
+import * as agentActions from '../../actions/agent';
+jest.mock('../../actions/agent');
+
+import Storage from '@utils/Storage';
+jest.mock('@utils/Storage', () => {
+  return {
+    ...jest.requireActual('@utils/Storage'),
+    get: jest.fn(),
+    set: jest.fn(),
+    merge: jest.fn()
+  };
+});
+
+let responses;
+let run;
 let scenario;
 let slideIndex;
 let value;
@@ -72,6 +88,90 @@ beforeEach(() => {
 
   /** @GENERATED: BEGIN **/
 
+  responses = [
+    {
+      id: 43,
+      run_id: 527,
+      chat_id: null,
+      agent_id: 23,
+      response: {
+        id: 904,
+        auth: {
+          run: {
+            id: 527
+          },
+          chat: {},
+          user: {
+            id: 2
+          },
+          agent: {
+            id: 23,
+            name: 'base-agent',
+            configuration: {}
+          }
+        },
+        value:
+          'audio/527/52f01bd3-dade-4234-9f5d-a31eb9be9558/2/4da5d201-a9b1-42f7-b4db-defde02a5fd6.mp3',
+        result: false,
+        transcript: 'this is Rick again ',
+        response_id: '52f01bd3-dade-4234-9f5d-a31eb9be9558'
+      },
+      created_at: '2021-03-07T17:10:10.79867-05:00',
+      deleted_at: null,
+      updated_at: null,
+      response_id: 904,
+      recipient_id: 2,
+      interaction_id: 11,
+      prompt_response_id: '52f01bd3-dade-4234-9f5d-a31eb9be9558'
+    },
+    {
+      id: 38,
+      run_id: 527,
+      chat_id: null,
+      agent_id: 23,
+      response: {
+        id: 899,
+        auth: {
+          run: {
+            id: 527
+          },
+          chat: {},
+          user: {
+            id: 2
+          },
+          agent: {
+            id: 23,
+            name: 'base-agent',
+            configuration: {}
+          },
+          response: {}
+        },
+        value: '🎂🎂🎂',
+        result: true,
+        transcript: null,
+        response_id: '16b011f7-62cc-47bb-a33f-4cb292d285bd'
+      },
+      created_at: '2021-03-07T16:58:51.711856-05:00',
+      deleted_at: null,
+      updated_at: null,
+      response_id: 899,
+      recipient_id: 2,
+      interaction_id: 11,
+      prompt_response_id: '16b011f7-62cc-47bb-a33f-4cb292d285bd'
+    }
+  ];
+  run = {
+    id: 60,
+    user_id: 999,
+    scenario_id: 42,
+    created_at: '2020-09-01T15:59:39.571Z',
+    updated_at: '2020-09-01T15:59:47.121Z',
+    ended_at: null,
+    consent_id: 57,
+    consent_acknowledged_by_user: true,
+    consent_granted_by_user: true,
+    referrer_params: null
+  };
   scenario = {
     author: {
       id: 999,
@@ -224,12 +324,12 @@ beforeEach(() => {
   };
   slideIndex = 0;
   value = {
-    agent: null,
+    agent: scenario.agent,
     disableRequireCheckbox: true,
     header: '',
     id: 'XYZ',
     rules: [
-      { key: '$gt', value: 1 },
+      { key: '$gte', value: 1 },
       { key: '$and', value: undefined },
       { key: '$lt', value: 10 }
     ],
@@ -237,9 +337,18 @@ beforeEach(() => {
     recallId: 'xyz-recallId',
     required: false,
     responseId: 'xyz-responseId',
-    component: null,
+    component: {
+      type: 'Text',
+      html: '',
+      id: '1'
+    },
     type: 'ConditionalContent'
   };
+
+  agentActions.getAgentResponses.mockImplementation(() => async dispatch => {
+    dispatch({ type: GET_AGENT_RESPONSES_SUCCESS, responses });
+    return responses;
+  });
 
   /** @GENERATED: END **/
 
@@ -289,7 +398,122 @@ test('Render 1 1', async done => {
 
 /* INJECTION STARTS HERE */
 
-test('Rules undefined', async done => {
+test('Not a scenario run', async done => {
+  const Component = Display;
+
+  const props = {
+    ...commonProps,
+    ...value,
+    run, // shouldn't matter!
+    onResponseChange: jest.fn()
+  };
+
+  const state = {
+    ...commonState
+  };
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  await render(<ConnectedRoutedComponent {...props} />);
+  expect(serialize()).toMatchSnapshot();
+
+  done();
+});
+
+test('run object missing', async done => {
+  const Component = Display;
+
+  const props = {
+    ...commonProps,
+    ...value,
+    onResponseChange: jest.fn()
+  };
+
+  const state = {
+    ...commonState
+  };
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  await render(<ConnectedRoutedComponent {...props} />);
+  expect(serialize()).toMatchSnapshot();
+
+  done();
+});
+
+test('No agent', async done => {
+  const Component = Display;
+
+  value.agent = null;
+
+  const props = {
+    ...commonProps,
+    ...value,
+    run,
+    onResponseChange: jest.fn()
+  };
+
+  const state = {
+    ...commonState
+  };
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  await render(<ConnectedRoutedComponent {...props} />);
+  expect(serialize()).toMatchSnapshot();
+
+  done();
+});
+
+test('No agent id', async done => {
+  const Component = Display;
+
+  value.agent.id = null;
+
+  const props = {
+    ...commonProps,
+    ...value,
+    run,
+    onResponseChange: jest.fn()
+  };
+
+  const state = {
+    ...commonState
+  };
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  await render(<ConnectedRoutedComponent {...props} />);
+  expect(serialize()).toMatchSnapshot();
+
+  done();
+});
+
+test('Invalid/missing component', async done => {
+  const Component = Display;
+
+  value.component = null;
+
+  const props = {
+    ...commonProps,
+    ...value,
+    run,
+    onResponseChange: jest.fn()
+  };
+
+  const state = {
+    ...commonState
+  };
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  await render(<ConnectedRoutedComponent {...props} />);
+  expect(serialize()).toMatchSnapshot();
+
+  done();
+});
+
+test('No rules', async done => {
   const Component = Display;
 
   value.rules.length = 0;
@@ -297,6 +521,7 @@ test('Rules undefined', async done => {
   const props = {
     ...commonProps,
     ...value,
+    run,
     onResponseChange: jest.fn()
   };
 
@@ -317,14 +542,13 @@ test('Rules undefined', async done => {
   done();
 });
 
-test('Rules empty', async done => {
+test('Rules complete', async done => {
   const Component = Display;
-
-  value.rules.length = 0;
 
   const props = {
     ...commonProps,
     ...value,
+    run,
     onResponseChange: jest.fn()
   };
 
@@ -340,6 +564,11 @@ test('Rules empty', async done => {
   };
 
   await render(<ConnectedRoutedComponent {...props} />);
+  await waitFor(() =>
+    expect(
+      screen.getByTestId('conditional-content-display')
+    ).toBeInTheDocument()
+  );
   expect(serialize()).toMatchSnapshot();
 
   done();

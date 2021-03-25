@@ -1,5 +1,50 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Invalid/missing component 1`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div />
+</body>"
+`;
+
+exports[`No agent 1`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div />
+</body>"
+`;
+
+exports[`No agent id 1`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div />
+</body>"
+`;
+
+exports[`No rules 1`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div />
+</body>"
+`;
+
+exports[`Not a scenario run 1`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div />
+</body>"
+`;
+
 exports[`Render 1 1 1`] = `
 "<body>
   <div
@@ -9,16 +54,23 @@ exports[`Render 1 1 1`] = `
 </body>"
 `;
 
-exports[`Rules empty 1`] = `
+exports[`Rules complete 1`] = `
 "<body>
   <div
     id=\\"root\\"
   />
-  <div />
+  <div>
+    <div
+      class=\\"sun-editor-editable rt__container\\"
+    />
+    <div
+      data-testid=\\"conditional-content-display\\"
+    />
+  </div>
 </body>"
 `;
 
-exports[`Rules undefined 1`] = `
+exports[`run object missing 1`] = `
 "<body>
   <div
     id=\\"root\\"
