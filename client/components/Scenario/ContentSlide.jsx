@@ -6,6 +6,7 @@ import { getResponse } from '@actions/response';
 import SlideComponents from '@components/SlideComponents';
 import { Button, Card, Icon, Popup } from '@components/UI';
 import { POINTER_SELECT, SLIDE_ARRIVAL } from '@hoc/withRunEventCapturing';
+import Layout from '@utils/Layout';
 import Storage from '@utils/Storage';
 
 const hasValidNavigationOverrider = component => {
@@ -27,6 +28,10 @@ const hasValidPromptOptions = component => {
 
 const hasValidPrompt = component => {
   return component.responseId && hasValidPromptOptions(component);
+};
+
+const hasChatPrompt = component => {
+  return component.type === 'ChatPrompt';
 };
 
 const slideContainsOnlyNonRequiredChatPrompt = components => {
@@ -281,11 +286,12 @@ class ContentSlide extends React.Component {
       return null;
     }
 
-    const cardClass = this.isScenarioRun
+    const centeredCardClass = this.isScenarioRun
       ? 'scenario__slide-card unset-position'
       : 'scenario__slide-card-preview';
 
     const slideComponentsProps = run ? { run, saveRunEvent } : {};
+    const hasChat = slide.components.some(hasChatPrompt);
     const hasPrompt = slide.components.some(hasValidPrompt);
     const hasOwnNavigation = slide.components.some(hasValidNavigationOverrider);
 
@@ -367,14 +373,21 @@ class ContentSlide extends React.Component {
       scenarioCardContentClass += ` no-title`;
     }
 
+    const centeredOrMarginOverrideCardClass = hasChat
+      ? `${centeredCardClass} margin-override`
+      : centeredCardClass;
+
+    const resolvedCardClass = Layout.isNotForMobile()
+      ? centeredOrMarginOverrideCardClass
+      : centeredCardClass;
+
     return (
       <Card
         centered
         id={slide.id}
         key={slide.id}
-        className={cardClass}
+        className={resolvedCardClass}
         onPointerUp={onPointerUp}
-        style={{ position: 'unset !important' }}
       >
         {slide.title ? (
           <Card.Content className="scenario__slide-card-header">

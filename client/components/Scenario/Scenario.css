@@ -26,6 +26,10 @@
   position: unset !important;
 }
 
+.ui.card.scenario__slide-card.margin-override {
+  margin-left: calc(100vw/8) !important;
+}
+
 .ui.card.scenario__slide-card-preview {
   font-size: 16px;
   width: 93vw;

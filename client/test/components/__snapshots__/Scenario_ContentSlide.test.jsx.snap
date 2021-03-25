@@ -4,7 +4,6 @@ exports[`Render 1 1 1`] = `
 <DocumentFragment>
   <div
     class="ui centered card scenario__slide-card-preview"
-    style="position: unset !important;"
   >
     <div
       class="content scenario__slide-card-content-preview no-title"
