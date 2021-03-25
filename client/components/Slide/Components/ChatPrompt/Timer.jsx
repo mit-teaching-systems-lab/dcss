@@ -108,7 +108,6 @@ class Timer extends Component {
       return null;
     }
 
-    const isUserHost = chat.host_id === user.id;
     const timerValue = timeout ? Media.secToTime(timeout) : '';
 
     const startOrAutoIcon = auto ? (
@@ -149,7 +148,7 @@ class Timer extends Component {
       </Menu.Item>
     );
 
-    return isUserHost && isAllowedToStartTimer ? (
+    return isAllowedToStartTimer ? (
       startOrStopButton
     ) : (
       <Menu.Item className="cpd__timer">

@@ -457,9 +457,7 @@ class Display extends Component {
           <Menu.Item className="ch__padding">
             {dropdownOrResultOfDiscussion}
           </Menu.Item>
-          <Menu.Item className="ch__padding">
-            {header}
-          </Menu.Item>
+          <Menu.Item className="ch__padding">{header}</Menu.Item>
         </Menu>
       );
     }
@@ -493,16 +491,19 @@ class Display extends Component {
               />
               <Modal.Content>
                 <p>
-                  Are you sure you want to mark this discussion{' '}{this.state.markComplete.result}?
+                  Are you sure you want to mark this discussion{' '}
+                  {this.state.markComplete.result}?
                 </p>
 
                 <p tabIndex="0" className="cpe__paragraph">
                   <Icon name="attention" />
-                  Clicking <strong>Yes</strong> will end the discussion <strong>on this slide only</strong>, but for all participants.
+                  Clicking <strong>Yes</strong> will end the discussion{' '}
+                  <strong>on this slide only</strong>, but for all participants.
                 </p>
                 <p tabIndex="0" className="cpe__paragraph">
                   <Icon name="attention" />
-                  Clicking <strong>No</strong> will not end the discussion, and not mark the conversation as complete.
+                  Clicking <strong>No</strong> will not end the discussion, and
+                  not mark the conversation as complete.
                 </p>
               </Modal.Content>
               <Modal.Actions>
