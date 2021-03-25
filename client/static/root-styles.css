@@ -280,7 +280,7 @@ button {
 
 .grid__bottom-row {
   bottom: 0 !important;
-  padding-top: 0em !important;
+  /*padding-top: 0em !important;*/
   position: absolute;
   top: unset;
 }
