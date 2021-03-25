@@ -128,11 +128,13 @@ class ChatPromptEditor extends React.Component {
   }
 
   onChange(event, { name, value, checked }) {
-    console.log('???????????????');
     if (name === 'auto') {
       value = checked;
     }
-    this.setState({ [name]: value }, this.updateState);
+
+    const updateState = name === 'welcome' ? this.delayedUpdateState : this.updateState;
+
+    this.setState({ [name]: value }, updateState);
   }
 
   enforceRequiredWhenTimerIsSet() {

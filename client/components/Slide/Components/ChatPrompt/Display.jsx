@@ -267,7 +267,8 @@ class Display extends Component {
       required,
       responseId,
       timeout,
-      user
+      user,
+      welcome
     } = this.props;
     const { isReady, isRestart, isActive, hasSubmittedResponse } = this.state;
 
@@ -315,9 +316,14 @@ class Display extends Component {
     );
 
     const header = !defaultValue && timeout ? timerRender : null;
+    const banner = welcome ? {
+      message: welcome,
+      type: 'inline'
+    } : null;
 
     const chatProps = {
       agent,
+      banner,
       chat,
       header,
       key,

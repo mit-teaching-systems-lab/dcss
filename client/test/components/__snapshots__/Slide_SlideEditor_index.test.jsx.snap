@@ -39957,12 +39957,12 @@ exports[`Multiple personas, toggle chat off 2`] = `
                                   class=\\"field\\"
                                 >
                                   <label>
-                                    Optional prompt to display for this discussion:
+                                    Optional welcome message to display in the chat:
                                   </label>
                                   <textarea
-                                    aria-label=\\"Optional prompt to display for this discussion:\\"
-                                    name=\\"prompt\\"
-                                    rows=\\"1\\"
+                                    aria-label=\\"Optional welcome message to display in the chat:\\"
+                                    name=\\"welcome\\"
+                                    rows=\\"2\\"
                                   />
                                 </div>
                                 <div
@@ -44507,12 +44507,12 @@ exports[`Multiple personas, toggle chat on 3`] = `
                                   class=\\"field\\"
                                 >
                                   <label>
-                                    Optional prompt to display for this discussion:
+                                    Optional welcome message to display in the chat:
                                   </label>
                                   <textarea
-                                    aria-label=\\"Optional prompt to display for this discussion:\\"
-                                    name=\\"prompt\\"
-                                    rows=\\"1\\"
+                                    aria-label=\\"Optional welcome message to display in the chat:\\"
+                                    name=\\"welcome\\"
+                                    rows=\\"2\\"
                                   />
                                 </div>
                                 <div

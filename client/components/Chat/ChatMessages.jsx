@@ -238,7 +238,7 @@ class ChatMessages extends Component {
   }
 
   render() {
-    const { chat, isMinimized, scenario } = this.props;
+    const { banner, chat, isMinimized, scenario } = this.props;
     const { hasNewMessages, isReady, slice } = this.state;
 
     const joinPartMessages = [];
@@ -380,6 +380,19 @@ class ChatMessages extends Component {
                   size="large"
                   style={{ marginTop: '1.4em !important' }}
                 >
+                  {banner ? (
+                    <Comment
+                      className="cmm__comment"
+                      data-testid="comment-banner"
+                    >
+                      <Comment.Content className="cmm__content">
+                        <Comment.Text>
+                          {banner.message}
+                        </Comment.Text>
+                      </Comment.Content>
+                    </Comment>
+                  ) : null}
+
                   {messagesSlice.reduce((accum, message, index) => {
                     const user = chat.usersById[message.user_id];
 
@@ -554,6 +567,7 @@ class ChatMessages extends Component {
 ChatMessages.propTypes = {
   // This must always come from ChatPrompt/Display -> Chat
   agent: PropTypes.object,
+  banner: PropTypes.object,
   chat: PropTypes.object,
   getChatMessagesByChatId: PropTypes.func,
   getChatMessagesCountByChatId: PropTypes.func,

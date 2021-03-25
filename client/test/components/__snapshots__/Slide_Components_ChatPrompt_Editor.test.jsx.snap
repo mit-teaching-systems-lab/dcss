@@ -139,15 +139,13 @@ exports[`Render 1 1 1`] = `
               class="field"
             >
               <label>
-                Optional prompt to display for this discussion:
+                Optional welcome message to display in the chat:
               </label>
               <textarea
-                aria-label="Optional prompt to display for this discussion:"
-                name="prompt"
-                rows="1"
-              >
-                xyz-prompt
-              </textarea>
+                aria-label="Optional welcome message to display in the chat:"
+                name="welcome"
+                rows="2"
+              />
             </div>
             <div
               class="field"

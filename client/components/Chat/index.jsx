@@ -384,7 +384,7 @@ class Chat extends Component {
       onQuote,
       sendNewMessage
     } = this;
-    const { agent, chat, isMinimizable, prompt } = this.props;
+    const { agent, banner, chat, isMinimizable, prompt } = this.props;
     const { id, isClosed, isMinimized, isReady } = this.state;
     const defaultValue = content || '';
 
@@ -450,6 +450,7 @@ class Chat extends Component {
     const slice = Layout.isForMobile() ? -10 : -20;
     const cmProps = {
       agent,
+      banner,
       chat,
       isMinimized,
       onQuote,
@@ -536,6 +537,7 @@ class Chat extends Component {
 Chat.propTypes = {
   // This must always come from ChatPrompt/Display
   agent: PropTypes.object,
+  banner: PropTypes.object,
   chat: PropTypes.object,
   cohort: PropTypes.object,
   getChat: PropTypes.func,
