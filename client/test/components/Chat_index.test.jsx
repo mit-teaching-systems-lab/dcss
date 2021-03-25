@@ -1637,7 +1637,7 @@ test('Types, then attempts to send string containing only a space character', as
 
   expect(globalThis.onChange).toHaveBeenCalledTimes(1);
   expect(globalThis.rte.setContents).toHaveBeenCalledTimes(0);
-  expect(globalThis.mockSocket.emit).toHaveBeenCalledTimes(0);
+  expect(globalThis.mockSocket.emit).toHaveBeenCalledTimes(1);
   expect(serialize()).toMatchSnapshot();
 
   done();
@@ -1690,9 +1690,32 @@ test('Types, followed by {enter}', async done => {
       ],
     ]
   `);
-  expect(globalThis.mockSocket.emit).toHaveBeenCalledTimes(1);
+  expect(globalThis.mockSocket.emit).toHaveBeenCalledTimes(3);
   expect(globalThis.mockSocket.emit.mock.calls).toMatchInlineSnapshot(`
     Array [
+      Array [
+        "user-typing",
+        Object {
+          "agent": Object {},
+          "chat": Object {
+            "host_id": 2,
+            "id": 1,
+          },
+          "cohort": Object {
+            "id": 2,
+          },
+          "isTyping": true,
+          "prompt": Object {
+            "id": null,
+          },
+          "response": Object {
+            "id": undefined,
+          },
+          "user": Object {
+            "id": null,
+          },
+        },
+      ],
       Array [
         "chat-message-created",
         Object {
@@ -1705,6 +1728,29 @@ test('Types, followed by {enter}', async done => {
             "id": 2,
           },
           "content": "typing enter",
+          "prompt": Object {
+            "id": null,
+          },
+          "response": Object {
+            "id": undefined,
+          },
+          "user": Object {
+            "id": null,
+          },
+        },
+      ],
+      Array [
+        "user-typing",
+        Object {
+          "agent": Object {},
+          "chat": Object {
+            "host_id": 2,
+            "id": 1,
+          },
+          "cohort": Object {
+            "id": 2,
+          },
+          "isTyping": false,
           "prompt": Object {
             "id": null,
           },
@@ -1770,9 +1816,32 @@ test('Types, followed by {shift}{enter}, does not submit', async done => {
       ],
     ]
   `);
-  expect(globalThis.mockSocket.emit).toHaveBeenCalledTimes(1);
+  expect(globalThis.mockSocket.emit).toHaveBeenCalledTimes(2);
   expect(globalThis.mockSocket.emit.mock.calls).toMatchInlineSnapshot(`
     Array [
+      Array [
+        "user-typing",
+        Object {
+          "agent": Object {},
+          "chat": Object {
+            "host_id": 2,
+            "id": 1,
+          },
+          "cohort": Object {
+            "id": 2,
+          },
+          "isTyping": true,
+          "prompt": Object {
+            "id": null,
+          },
+          "response": Object {
+            "id": undefined,
+          },
+          "user": Object {
+            "id": null,
+          },
+        },
+      ],
       Array [
         "chat-message-created",
         Object {
@@ -1845,7 +1914,7 @@ test('Empty, many {shift}{enter}, attempts to send, does not submit', async done
 
   expect(globalThis.onChange).toHaveBeenCalled();
   expect(globalThis.rte.setContents).toHaveBeenCalledTimes(0);
-  expect(globalThis.mockSocket.emit).toHaveBeenCalledTimes(0);
+  expect(globalThis.mockSocket.emit).toHaveBeenCalledTimes(1);
   expect(serialize()).toMatchSnapshot();
 
   done();
@@ -1890,9 +1959,32 @@ test('Types, followed by {shift}{enter}, attempts to send, does submit', async d
   await waitForPopper();
 
   expect(globalThis.onChange).toHaveBeenCalled();
-  expect(globalThis.mockSocket.emit).toHaveBeenCalledTimes(1);
+  expect(globalThis.mockSocket.emit).toHaveBeenCalledTimes(3);
   expect(globalThis.mockSocket.emit.mock.calls).toMatchInlineSnapshot(`
     Array [
+      Array [
+        "user-typing",
+        Object {
+          "agent": Object {},
+          "chat": Object {
+            "host_id": 2,
+            "id": 1,
+          },
+          "cohort": Object {
+            "id": 2,
+          },
+          "isTyping": true,
+          "prompt": Object {
+            "id": null,
+          },
+          "response": Object {
+            "id": undefined,
+          },
+          "user": Object {
+            "id": null,
+          },
+        },
+      ],
       Array [
         "chat-message-created",
         Object {
@@ -1905,6 +1997,29 @@ test('Types, followed by {shift}{enter}, attempts to send, does submit', async d
             "id": 2,
           },
           "content": "typing enter",
+          "prompt": Object {
+            "id": null,
+          },
+          "response": Object {
+            "id": undefined,
+          },
+          "user": Object {
+            "id": null,
+          },
+        },
+      ],
+      Array [
+        "user-typing",
+        Object {
+          "agent": Object {},
+          "chat": Object {
+            "host_id": 2,
+            "id": 1,
+          },
+          "cohort": Object {
+            "id": 2,
+          },
+          "isTyping": false,
           "prompt": Object {
             "id": null,
           },
@@ -1964,9 +2079,32 @@ test('Calls onInput when RTE receives new content', async done => {
       ],
     ]
   `);
-  expect(globalThis.mockSocket.emit).toHaveBeenCalledTimes(1);
+  expect(globalThis.mockSocket.emit).toHaveBeenCalledTimes(2);
   expect(globalThis.mockSocket.emit.mock.calls).toMatchInlineSnapshot(`
     Array [
+      Array [
+        "user-typing",
+        Object {
+          "agent": Object {},
+          "chat": Object {
+            "host_id": 2,
+            "id": 1,
+          },
+          "cohort": Object {
+            "id": 2,
+          },
+          "isTyping": true,
+          "prompt": Object {
+            "id": null,
+          },
+          "response": Object {
+            "id": undefined,
+          },
+          "user": Object {
+            "id": null,
+          },
+        },
+      ],
       Array [
         "chat-message-created",
         Object {
@@ -2042,9 +2180,32 @@ test('Calls onKeyDown, responds when key is {enter}', async done => {
       ],
     ]
   `);
-  expect(globalThis.mockSocket.emit).toHaveBeenCalledTimes(1);
+  expect(globalThis.mockSocket.emit).toHaveBeenCalledTimes(3);
   expect(globalThis.mockSocket.emit.mock.calls).toMatchInlineSnapshot(`
     Array [
+      Array [
+        "user-typing",
+        Object {
+          "agent": Object {},
+          "chat": Object {
+            "host_id": 2,
+            "id": 1,
+          },
+          "cohort": Object {
+            "id": 2,
+          },
+          "isTyping": true,
+          "prompt": Object {
+            "id": null,
+          },
+          "response": Object {
+            "id": undefined,
+          },
+          "user": Object {
+            "id": null,
+          },
+        },
+      ],
       Array [
         "chat-message-created",
         Object {
@@ -2057,6 +2218,29 @@ test('Calls onKeyDown, responds when key is {enter}', async done => {
             "id": 2,
           },
           "content": "typing in the chat",
+          "prompt": Object {
+            "id": null,
+          },
+          "response": Object {
+            "id": undefined,
+          },
+          "user": Object {
+            "id": null,
+          },
+        },
+      ],
+      Array [
+        "user-typing",
+        Object {
+          "agent": Object {},
+          "chat": Object {
+            "host_id": 2,
+            "id": 1,
+          },
+          "cohort": Object {
+            "id": 2,
+          },
+          "isTyping": false,
           "prompt": Object {
             "id": null,
           },
@@ -2121,9 +2305,32 @@ test('Types, clicks Send Message', async done => {
       ],
     ]
   `);
-  expect(globalThis.mockSocket.emit).toHaveBeenCalledTimes(1);
+  expect(globalThis.mockSocket.emit).toHaveBeenCalledTimes(3);
   expect(globalThis.mockSocket.emit.mock.calls).toMatchInlineSnapshot(`
     Array [
+      Array [
+        "user-typing",
+        Object {
+          "agent": Object {},
+          "chat": Object {
+            "host_id": 2,
+            "id": 1,
+          },
+          "cohort": Object {
+            "id": 2,
+          },
+          "isTyping": true,
+          "prompt": Object {
+            "id": null,
+          },
+          "response": Object {
+            "id": undefined,
+          },
+          "user": Object {
+            "id": null,
+          },
+        },
+      ],
       Array [
         "chat-message-created",
         Object {
@@ -2136,6 +2343,29 @@ test('Types, clicks Send Message', async done => {
             "id": 2,
           },
           "content": "typing in the chat",
+          "prompt": Object {
+            "id": null,
+          },
+          "response": Object {
+            "id": undefined,
+          },
+          "user": Object {
+            "id": null,
+          },
+        },
+      ],
+      Array [
+        "user-typing",
+        Object {
+          "agent": Object {},
+          "chat": Object {
+            "host_id": 2,
+            "id": 1,
+          },
+          "cohort": Object {
+            "id": 2,
+          },
+          "isTyping": false,
           "prompt": Object {
             "id": null,
           },
@@ -2277,11 +2507,6 @@ test('Rnd: onDragStop/onResizeStop', async done => {
             >
               <div
                 className="cm__container-outer"
-                style={
-                  Object {
-                    "width": "calc(\${dimensions.width}px)",
-                  }
-                }
               >
                 <Memo(Connect(ChatMessages))
                   chat={
@@ -2357,6 +2582,11 @@ test('Rnd: onDragStop/onResizeStop', async done => {
                       },
                     }
                   }
+                  dimensions={
+                    Object {
+                      "width": 328,
+                    }
+                  }
                   isMinimized={false}
                   onMessageReceived={[Function]}
                   onQuote={[Function]}
@@ -2383,8 +2613,9 @@ test('Rnd: onDragStop/onResizeStop', async done => {
                           [Function],
                           [Function],
                         ],
+                        "user-typing-update": [Function],
                       },
-                      "_eventsCount": 4,
+                      "_eventsCount": 5,
                       "disconnect": [MockFunction],
                       "emit": [MockFunction] {
                         "calls": Array [
@@ -2467,8 +2698,16 @@ test('Rnd: onDragStop/onResizeStop', async done => {
                             "chat-message-updated",
                             [Function],
                           ],
+                          Array [
+                            "user-typing-update",
+                            [Function],
+                          ],
                         ],
                         "results": Array [
+                          Object {
+                            "type": "return",
+                            "value": undefined,
+                          },
                           Object {
                             "type": "return",
                             "value": undefined,
@@ -2497,11 +2736,6 @@ test('Rnd: onDragStop/onResizeStop', async done => {
               </div>
               <div
                 className="cc__container-outer"
-                style={
-                  Object {
-                    "width": "calc(\${dimensions.width}px)",
-                  }
-                }
               >
                 <ChatComposer
                   defaultValue="<p>credible-lyrebird wrote:<blockquote><p>Hi!</p></blockquote></p>"
@@ -2652,11 +2886,6 @@ test('Rnd: onDrag/onResize', async done => {
             >
               <div
                 className="cm__container-outer"
-                style={
-                  Object {
-                    "width": "calc(\${dimensions.width}px)",
-                  }
-                }
               >
                 <Memo(Connect(ChatMessages))
                   chat={
@@ -2732,6 +2961,11 @@ test('Rnd: onDrag/onResize', async done => {
                       },
                     }
                   }
+                  dimensions={
+                    Object {
+                      "width": 328,
+                    }
+                  }
                   isMinimized={false}
                   onMessageReceived={[Function]}
                   onQuote={[Function]}
@@ -2758,8 +2992,9 @@ test('Rnd: onDrag/onResize', async done => {
                           [Function],
                           [Function],
                         ],
+                        "user-typing-update": [Function],
                       },
-                      "_eventsCount": 4,
+                      "_eventsCount": 5,
                       "disconnect": [MockFunction],
                       "emit": [MockFunction] {
                         "calls": Array [
@@ -2842,8 +3077,16 @@ test('Rnd: onDrag/onResize', async done => {
                             "chat-message-updated",
                             [Function],
                           ],
+                          Array [
+                            "user-typing-update",
+                            [Function],
+                          ],
                         ],
                         "results": Array [
+                          Object {
+                            "type": "return",
+                            "value": undefined,
+                          },
                           Object {
                             "type": "return",
                             "value": undefined,
@@ -2872,11 +3115,6 @@ test('Rnd: onDrag/onResize', async done => {
               </div>
               <div
                 className="cc__container-outer"
-                style={
-                  Object {
-                    "width": "calc(\${dimensions.width}px)",
-                  }
-                }
               >
                 <ChatComposer
                   defaultValue="<p>credible-lyrebird wrote:<blockquote><p>Hi!</p></blockquote></p>"
@@ -3057,6 +3295,10 @@ test('Receives new message, not minimized', async done => {
         "chat-message-updated",
         [Function],
       ],
+      Array [
+        "user-typing-update",
+        [Function],
+      ],
     ]
   `);
   expect(serialize()).toMatchSnapshot();
@@ -3159,6 +3401,10 @@ test('Receives new message, minimized, not mobile', async done => {
       ],
       Array [
         "chat-message-updated",
+        [Function],
+      ],
+      Array [
+        "user-typing-update",
         [Function],
       ],
     ]
@@ -3275,6 +3521,10 @@ test('Receives new message, minimized, mobile', async done => {
       ],
       Array [
         "chat-message-updated",
+        [Function],
+      ],
+      Array [
+        "user-typing-update",
         [Function],
       ],
     ]

@@ -40,7 +40,9 @@ const {
   USER_JOIN,
   USER_PART,
   USER_JOIN_SLIDE,
-  USER_PART_SLIDE
+  USER_PART_SLIDE,
+  USER_TYPING,
+  USER_TYPING_UPDATE
 } = require('./types');
 const {
   CHAT_IS_PENDING,
@@ -103,9 +105,7 @@ const cache = {
       [chat.id-slide-slide.id] = interval;
     */
   },
-  waiting: {
-
-  }
+  waiting: {}
 };
 
 const closeResultToStateMap = {
@@ -410,10 +410,7 @@ class SocketManager {
         notifier.on('run_response_created', async data => {
           console.log('run_response_created', data);
           sendRunResponseToAgent(data);
-          const {
-            run_id,
-            response_id,
-          } = data;
+          const { run_id, response_id } = data;
           const chat = await runsdb.getChatByRunId(run_id);
           if (chat) {
             const room = `${chat.id}-response-${response_id}`;
@@ -521,9 +518,7 @@ class SocketManager {
 
       socket.on(CHAT_USER_AWAITING_MATCH, async props => {
         console.log(CHAT_USER_AWAITING_MATCH, props);
-        const {
-          cohort, persona, scenario, user
-        } = props;
+        const { cohort, persona, scenario, user } = props;
 
         const room = cohort.id
           ? `${cohort.id}-${scenario.id}-${persona.id}-${user.id}`
@@ -534,7 +529,10 @@ class SocketManager {
         // This will return null until the the chat has
         // a complete set of participants.
         const chat = await chatsdb.joinOrCreateChatFromPool(
-          cohort.id, scenario.id, persona.id, user.id
+          cohort.id,
+          scenario.id,
+          persona.id,
+          user.id
         );
 
         if (chat) {
@@ -665,6 +663,10 @@ class SocketManager {
       });
 
       // Chat
+      socket.on(USER_TYPING, payload => {
+        this.io.to(payload.chat.id).emit(USER_TYPING_UPDATE, payload);
+      });
+
       socket.on(USER_JOIN, async ({ chat, user }) => {
         console.log(USER_JOIN, { chat, user });
         const chatUser = await chatsdb.getChatUserByChatId(chat.id, user.id);

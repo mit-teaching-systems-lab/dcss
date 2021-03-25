@@ -21,8 +21,8 @@ exports.USER_JOIN = 'user-join';
 exports.USER_PART = 'user-part';
 exports.USER_JOIN_SLIDE = 'user-join-slide';
 exports.USER_PART_SLIDE = 'user-part-slide';
-exports.USER_IS_TYPING = 'user-is-typing';
-exports.USER_NOT_TYPING = 'user-not-typing';
+exports.USER_TYPING = 'user-typing';
+exports.USER_TYPING_UPDATE = 'user-typing-update';
 
 // Client <- Server
 exports.NEW_INVITATION = 'new-invitation';

@@ -98,6 +98,30 @@
   /*border-left: 1px solid;*/
 }
 
+.cmm__content-banner {
+  margin: 0.5em !important;
+}
+
+.cmm__content-typing {
+  background: #fff !important;
+  bottom: 0;
+  position: sticky !important;
+  width: 100%;
+  z-index: 2000;
+}
+
+.cmm__comment-empty {
+  height: 2em;
+}
+
+.cmm__content-typing.cmm__comment:hover {
+  background-color: #fff !important;
+}
+
+.cmm__content-typing > .cmm__content.content {
+  margin: 0.5em !important;
+}
+
 .cmm__comment {
   margin: 0em !important;
   padding: 0.2em 0 !important;

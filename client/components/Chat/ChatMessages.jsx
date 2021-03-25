@@ -6,7 +6,8 @@ import withSocket, {
   CHAT_AGENT_PAUSE,
   CHAT_AGENT_START,
   CHAT_MESSAGE_CREATED,
-  CHAT_MESSAGE_UPDATED
+  CHAT_MESSAGE_UPDATED,
+  USER_TYPING_UPDATE
 } from '@hoc/withSocket';
 import {
   getChatMessagesByChatId,
@@ -86,7 +87,8 @@ class ChatMessages extends Component {
       isViewingNewest: true,
       hasNewMessages: true,
       messages: [],
-      slice: this.props.slice || -20
+      slice: this.props.slice || -20,
+      typing: null
     };
 
     this.wasPreviouslyMinimized = false;
@@ -94,6 +96,7 @@ class ChatMessages extends Component {
     this.onMessageDelete = this.onMessageDelete.bind(this);
     this.onMessageReceived = this.onMessageReceived.bind(this);
     this.onMessageUpdated = this.onMessageUpdated.bind(this);
+    this.onTypingUpdate = this.onTypingUpdate.bind(this);
   }
 
   shouldComponentUpdate(newProps) {
@@ -122,6 +125,7 @@ class ChatMessages extends Component {
     this.isComponentMounted = true;
     this.props.socket.on(CHAT_MESSAGE_CREATED, this.onMessageReceived);
     this.props.socket.on(CHAT_MESSAGE_UPDATED, this.onMessageUpdated);
+    this.props.socket.on(USER_TYPING_UPDATE, this.onTypingUpdate);
 
     if (agent) {
       this.props.socket.emit(
@@ -146,6 +150,7 @@ class ChatMessages extends Component {
     this.isComponentMounted = false;
     this.props.socket.off(CHAT_MESSAGE_CREATED, this.onMessageReceived);
     this.props.socket.off(CHAT_MESSAGE_UPDATED, this.onMessageUpdated);
+    this.props.socket.off(USER_TYPING_UPDATE, this.onTypingUpdate);
 
     if (agent && agent.id) {
       this.props.socket.emit(
@@ -237,9 +242,21 @@ class ChatMessages extends Component {
     await this.onMessageReceived(message);
   }
 
+  onTypingUpdate({ chat, user, isTyping }) {
+    if (user.id === this.props.user.id) {
+      return;
+    }
+
+    const typing = isTyping ? user : null;
+
+    this.setState({
+      typing
+    });
+  }
+
   render() {
-    const { banner, chat, isMinimized, scenario } = this.props;
-    const { hasNewMessages, isReady, slice } = this.state;
+    const { banner, chat, dimensions, isMinimized, scenario } = this.props;
+    const { hasNewMessages, isReady, slice, typing } = this.state;
 
     const joinPartMessages = [];
     const sourceMessages = this.state.messages.reduce((accum, message) => {
@@ -385,10 +402,8 @@ class ChatMessages extends Component {
                       className="cmm__comment"
                       data-testid="comment-banner"
                     >
-                      <Comment.Content className="cmm__content">
-                        <Comment.Text>
-                          {banner.message}
-                        </Comment.Text>
+                      <Comment.Content className="cmm__content cmm__content-banner">
+                        <Comment.Text>{banner.message}</Comment.Text>
                       </Comment.Content>
                     </Comment>
                   ) : null}
@@ -411,7 +426,10 @@ class ChatMessages extends Component {
                     const rteProps = {
                       defaultValue,
                       options: {
-                        width: '100%'
+                        // width: '100%'
+                      },
+                      style: {
+                        maxWidth: `${dimensions.width}px`
                       }
                     };
 
@@ -540,8 +558,25 @@ class ChatMessages extends Component {
                     accum.push(comment);
                     return accum;
                   }, [])}
+
+                  <Comment
+                    className="cmm__comment cmm__comment-empty"
+                    data-testid="comment-empty"
+                  ></Comment>
                 </Comment.Group>
               </Ref>
+            ) : null}
+            {typing ? (
+              <Comment
+                className="cmm__comment cmm__content-typing"
+                data-testid="comment-typing"
+              >
+                <Comment.Content className="cmm__content">
+                  <Comment.Text>
+                    {<Username user={typing} />} is typing...
+                  </Comment.Text>
+                </Comment.Content>
+              </Comment>
             ) : null}
           </div>
         </ResizeDetector>
@@ -569,6 +604,7 @@ ChatMessages.propTypes = {
   agent: PropTypes.object,
   banner: PropTypes.object,
   chat: PropTypes.object,
+  dimensions: PropTypes.object,
   getChatMessagesByChatId: PropTypes.func,
   getChatMessagesCountByChatId: PropTypes.func,
   getChatUsersByChatId: PropTypes.func,
@@ -584,6 +620,10 @@ ChatMessages.propTypes = {
   slice: PropTypes.number,
   socket: PropTypes.object,
   user: PropTypes.object
+};
+
+ChatMessages.defaultProps = {
+  dimensions: {}
 };
 
 const mapStateToProps = (state, ownProps) => {

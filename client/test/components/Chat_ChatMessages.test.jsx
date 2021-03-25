@@ -853,6 +853,10 @@ test('Receives message that was deleted', async done => {
         "chat-message-updated",
         [Function],
       ],
+      Array [
+        "user-typing-update",
+        [Function],
+      ],
     ]
   `);
   expect(serialize()).toMatchSnapshot();
@@ -943,6 +947,10 @@ test('Receives new message at end of messages (chat in props)', async done => {
         "chat-message-updated",
         [Function],
       ],
+      Array [
+        "user-typing-update",
+        [Function],
+      ],
     ]
   `);
   expect(serialize()).toMatchSnapshot();
@@ -1030,6 +1038,10 @@ test('Receives new message at end of messages (chat in state)', async done => {
       ],
       Array [
         "chat-message-updated",
+        [Function],
+      ],
+      Array [
+        "user-typing-update",
         [Function],
       ],
     ]
@@ -1139,6 +1151,10 @@ test('Receives new message, user does not exist yet.', async done => {
       ],
       Array [
         "chat-message-updated",
+        [Function],
+      ],
+      Array [
+        "user-typing-update",
         [Function],
       ],
     ]
@@ -1252,6 +1268,10 @@ test('Receives new message, user does not exist yet. (chat in state)', async don
         "chat-message-updated",
         [Function],
       ],
+      Array [
+        "user-typing-update",
+        [Function],
+      ],
     ]
   `);
   expect(serialize()).toMatchSnapshot();
@@ -1340,6 +1360,10 @@ test('Receives new message after scrolling (chat in props)', async done => {
       ],
       Array [
         "chat-message-updated",
+        [Function],
+      ],
+      Array [
+        "user-typing-update",
         [Function],
       ],
     ]
@@ -1442,6 +1466,10 @@ test('Receives new message after scrolling (chat in state)', async done => {
         "chat-message-updated",
         [Function],
       ],
+      Array [
+        "user-typing-update",
+        [Function],
+      ],
     ]
   `);
   expect(serialize()).toMatchSnapshot();
@@ -1535,6 +1563,10 @@ test('Show hidden messages (chat in props)', async done => {
       ],
       Array [
         "chat-message-updated",
+        [Function],
+      ],
+      Array [
+        "user-typing-update",
         [Function],
       ],
     ]
@@ -1706,6 +1738,10 @@ test('Receives new message after scrolling without existing messages (chat in pr
         "chat-message-updated",
         [Function],
       ],
+      Array [
+        "user-typing-update",
+        [Function],
+      ],
     ]
   `);
   expect(serialize()).toMatchSnapshot();
@@ -1806,6 +1842,10 @@ test('Receives new message for different chat (chat in props)', async done => {
         "chat-message-updated",
         [Function],
       ],
+      Array [
+        "user-typing-update",
+        [Function],
+      ],
     ]
   `);
   expect(screen.queryAllByTestId('comment').length).toBe(11);
@@ -1891,6 +1931,10 @@ test('Receives updated message for different chat (chat in props)', async done =
       ],
       Array [
         "chat-message-updated",
+        [Function],
+      ],
+      Array [
+        "user-typing-update",
         [Function],
       ],
     ]
@@ -1980,6 +2024,10 @@ test('Receives new message just before unmount (chat in props)', async done => {
         "chat-message-updated",
         [Function],
       ],
+      Array [
+        "user-typing-update",
+        [Function],
+      ],
     ]
   `);
   expect(screen.queryAllByTestId('comment').length).toBe(11);
@@ -2032,6 +2080,10 @@ test('Calls onQuote', async done => {
       ],
       Array [
         "chat-message-updated",
+        [Function],
+      ],
+      Array [
+        "user-typing-update",
         [Function],
       ],
     ]
@@ -2143,6 +2195,10 @@ test('Message can be deleted', async done => {
       ],
       Array [
         "chat-message-updated",
+        [Function],
+      ],
+      Array [
+        "user-typing-update",
         [Function],
       ],
     ]
@@ -2295,6 +2351,10 @@ test('Receives new message, user missing (unloaded) (chat in props)', async done
         "chat-message-updated",
         [Function],
       ],
+      Array [
+        "user-typing-update",
+        [Function],
+      ],
     ]
   `);
   expect(screen.queryAllByTestId('comment').length).toBe(11);
@@ -2390,6 +2450,10 @@ test('Receives deleted message (chat in props)', async done => {
         "chat-message-updated",
         [Function],
       ],
+      Array [
+        "user-typing-update",
+        [Function],
+      ],
     ]
   `);
   expect(serialize()).toMatchSnapshot();
@@ -2478,6 +2542,10 @@ test('Receives deleted message (chat in state)', async done => {
       ],
       Array [
         "chat-message-updated",
+        [Function],
+      ],
+      Array [
+        "user-typing-update",
         [Function],
       ],
     ]
@@ -2570,6 +2638,10 @@ test('Receives updated message (chat in props)', async done => {
         "chat-message-updated",
         [Function],
       ],
+      Array [
+        "user-typing-update",
+        [Function],
+      ],
     ]
   `);
   expect(serialize()).toMatchSnapshot();
@@ -2657,6 +2729,10 @@ test('Receives updated message (chat in state)', async done => {
       ],
       Array [
         "chat-message-updated",
+        [Function],
+      ],
+      Array [
+        "user-typing-update",
         [Function],
       ],
     ]

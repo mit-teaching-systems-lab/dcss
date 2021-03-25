@@ -12,7 +12,8 @@ import withSocket, {
   USER_JOIN,
   USER_PART,
   USER_JOIN_SLIDE,
-  USER_PART_SLIDE
+  USER_PART_SLIDE,
+  USER_TYPING
 } from '@hoc/withSocket';
 // This will be used when run event traces are added.
 // import withRunEventCapturing, {
@@ -39,6 +40,7 @@ import './Chat.css';
 
 const TEMPORARY_CHAT_ID = 1;
 const NEW_MESSAGE_CONTENT_HTML = `<p><br></p>`;
+const TYPING_TIMEOUT = 400;
 
 const innerMinClassName = 'content hidden';
 const innerMaxClassName = 'content inner visible';
@@ -136,6 +138,9 @@ class Chat extends Component {
     this.hasUnloaded = false;
     this.hasPendingSend = false;
     this.content = content;
+    this.typingTimeout = null;
+    this.isTyping = false;
+    this.lastTypingTime = 0;
     this.buffer = '';
     this.rte = null;
     this.cRef = null;
@@ -281,6 +286,44 @@ class Chat extends Component {
 
   onInput(event, rte, content) {
     this.onChange(content);
+
+    if (!this.isTyping) {
+      this.isTyping = true;
+      this.props.socket.emit(
+        USER_TYPING,
+        Payload.compose(
+          this.props,
+          {
+            isTyping: true
+          }
+        )
+      );
+    }
+
+    this.lastTypingTime = Date.now();
+
+    if (this.typingTimeout) {
+      clearTimeout(this.typingTimeout);
+      this.typingTimeout = null;
+    }
+
+    this.typingTimeout = setTimeout(() => {
+      const nowTypingTime = Date.now();
+      const diff = nowTypingTime - this.lastTypingTime;
+      if (diff >= TYPING_TIMEOUT && this.isTyping) {
+        this.typingTimeout = null;
+        this.isTyping = false;
+        this.props.socket.emit(
+          USER_TYPING,
+          Payload.compose(
+            this.props,
+            {
+              isTyping: false
+            }
+          )
+        );
+      }
+    }, TYPING_TIMEOUT);
   }
 
   onKeyDown(event) {
@@ -290,6 +333,16 @@ class Chat extends Component {
       if (isValidMessage(content)) {
         this.hasPendingSend = true;
         this.sendNewMessage();
+        this.isTyping = false;
+        this.props.socket.emit(
+          USER_TYPING,
+          Payload.compose(
+            this.props,
+            {
+              isTyping: false
+            }
+          )
+        );
       }
       return false;
     }
@@ -446,12 +499,21 @@ class Chat extends Component {
       position
     };
 
+    const style = {
+      // 64px is the width of the avatar and padding combined
+      width: `${dimensions.width - 64}px`
+    };
+
     // ChatMessage props
     const slice = Layout.isForMobile() ? -10 : -20;
     const cmProps = {
       agent,
       banner,
       chat,
+      dimensions: {
+        // 64px is the width of the avatar and padding combined
+        width: dimensions.width - 64 * 2
+      },
       isMinimized,
       onQuote,
       onMessageReceived,
@@ -475,10 +537,6 @@ class Chat extends Component {
       onMount,
       options,
       sendNewMessage
-    };
-
-    const style = {
-      width: 'calc(${dimensions.width}px)'
     };
 
     const minMaxClassName = this.state.isNotifying ? 'c__notice' : '';
@@ -520,10 +578,10 @@ class Chat extends Component {
         </div>
         <Ref innerRef={node => (this.cRef = node)}>
           <div tabIndex="0" className={innerMinMaxClassName}>
-            <div className="cm__container-outer" style={style}>
+            <div className="cm__container-outer">
               <ChatMessages {...cmProps} />
             </div>
-            <div className="cc__container-outer" style={style}>
+            <div className="cc__container-outer">
               <ChatComposer {...ccProps} />
             </div>
           </div>
