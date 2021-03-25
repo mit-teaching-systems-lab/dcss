@@ -38,6 +38,7 @@ function ChatMinMax(props) {
       inverted
       aria-label={minMaxAriaLabel}
       content={minMaxAriaLabel}
+      open={isMinimized}
       trigger={trigger}
     />
   );

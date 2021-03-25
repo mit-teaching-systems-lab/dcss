@@ -378,9 +378,10 @@ class Display extends Component {
     };
 
     const onMarkCompleteChange = (event, { name, value }) => {
+      const isOpen = !!value;
       this.setState({
         markComplete: {
-          isOpen: true,
+          isOpen,
           [name]: value
         }
       });
@@ -436,7 +437,7 @@ class Display extends Component {
         name="result"
         placeholder="Mark discussion as..."
         closeOnChange={true}
-        defaultValue={defaultValue}
+        value={defaultValue}
         options={options}
         onChange={onMarkCompleteChange}
       />
@@ -449,6 +450,10 @@ class Display extends Component {
     const discussionNotRequired = !required ? (
       <Menu.Item>&nbsp;</Menu.Item>
     ) : null;
+
+    chatProps.header = required
+      ? dropdownOrResultOfDiscussion
+      : null;
 
     return (
       <Fragment>
@@ -474,12 +479,22 @@ class Display extends Component {
             >
               <Header
                 icon="checkmark"
-                content={`Close this discussion as ${this.state.markComplete.result}?`}
+                tabIndex="0"
+                content={`Mark this discussion as ${this.state.markComplete.result}?`}
               />
               <Modal.Content>
-                Are you sure you want to mark this discussion{' '}
-                {this.state.markComplete.result}? Doing so will end the
-                discussion on this slide for all active participants.
+                <p>
+                  Are you sure you want to mark this discussion{' '}{this.state.markComplete.result}?
+                </p>
+
+                <p tabIndex="0" className="cpe__paragraph">
+                  <Icon name="attention" />
+                  Clicking <strong>Yes</strong> will end the discussion <strong>on this slide only</strong>, but for all participants.
+                </p>
+                <p tabIndex="0" className="cpe__paragraph">
+                  <Icon name="attention" />
+                  Clicking <strong>No</strong> will not end the discussion, and not mark the conversation as complete.
+                </p>
               </Modal.Content>
               <Modal.Actions>
                 <Button.Group fluid>

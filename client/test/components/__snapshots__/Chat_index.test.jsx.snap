@@ -1373,6 +1373,21 @@ exports[`Click to Minimize and Maximize 2`] = `
       />
     </button>
   </div>
+  <div
+    style=\\"display: flex; position: absolute; left: 0px; top: 0px; bottom: 0px; transform: translate(0px, 0px);\\"
+  >
+    <div
+      aria-label=\\"Click to maximize the chat window\\"
+      class=\\"ui top left inverted popup transition visible\\"
+      style=\\"position: initial;\\"
+    >
+      <div
+        class=\\"content\\"
+      >
+        Click to maximize the chat window
+      </div>
+    </div>
+  </div>
 </body>"
 `;
 
@@ -1391,6 +1406,21 @@ exports[`Click to Minimize and Maximize 3`] = `
         class=\\"discussions icon\\"
       />
     </button>
+  </div>
+  <div
+    style=\\"display: flex; position: absolute; left: 0px; top: 0px; bottom: 0px; transform: translate(0px, 0px);\\"
+  >
+    <div
+      aria-label=\\"Click to maximize the chat window\\"
+      class=\\"ui top left inverted popup transition visible\\"
+      style=\\"position: initial;\\"
+    >
+      <div
+        class=\\"content\\"
+      >
+        Click to maximize the chat window
+      </div>
+    </div>
   </div>
 </body>"
 `;
@@ -3329,6 +3359,21 @@ exports[`Receives new message, minimized, mobile 4`] = `
       />
     </button>
   </div>
+  <div
+    style=\\"display: flex; position: absolute; left: 0px; top: 0px; bottom: 0px; transform: translate(0px, 0px);\\"
+  >
+    <div
+      aria-label=\\"Click to maximize the chat window\\"
+      class=\\"ui top left inverted popup transition visible\\"
+      style=\\"position: initial;\\"
+    >
+      <div
+        class=\\"content\\"
+      >
+        Click to maximize the chat window
+      </div>
+    </div>
+  </div>
 </body>"
 `;
 
@@ -3347,6 +3392,21 @@ exports[`Receives new message, minimized, mobile 5`] = `
         class=\\"discussions icon\\"
       />
     </button>
+  </div>
+  <div
+    style=\\"display: flex; position: absolute; left: 0px; top: 0px; bottom: 0px; transform: translate(0px, 0px);\\"
+  >
+    <div
+      aria-label=\\"Click to maximize the chat window\\"
+      class=\\"ui top left inverted popup transition visible\\"
+      style=\\"position: initial;\\"
+    >
+      <div
+        class=\\"content\\"
+      >
+        Click to maximize the chat window
+      </div>
+    </div>
   </div>
 </body>"
 `;
@@ -3976,6 +4036,21 @@ exports[`Receives new message, minimized, not mobile 4`] = `
       />
     </button>
   </div>
+  <div
+    style=\\"display: flex; position: absolute; left: 0px; top: 0px; bottom: 0px; transform: translate(0px, 0px);\\"
+  >
+    <div
+      aria-label=\\"Click to maximize the chat window\\"
+      class=\\"ui top left inverted popup transition visible\\"
+      style=\\"position: initial;\\"
+    >
+      <div
+        class=\\"content\\"
+      >
+        Click to maximize the chat window
+      </div>
+    </div>
+  </div>
 </body>"
 `;
 
@@ -3994,6 +4069,21 @@ exports[`Receives new message, minimized, not mobile 5`] = `
         class=\\"discussions icon\\"
       />
     </button>
+  </div>
+  <div
+    style=\\"display: flex; position: absolute; left: 0px; top: 0px; bottom: 0px; transform: translate(0px, 0px);\\"
+  >
+    <div
+      aria-label=\\"Click to maximize the chat window\\"
+      class=\\"ui top left inverted popup transition visible\\"
+      style=\\"position: initial;\\"
+    >
+      <div
+        class=\\"content\\"
+      >
+        Click to maximize the chat window
+      </div>
+    </div>
   </div>
 </body>"
 `;
