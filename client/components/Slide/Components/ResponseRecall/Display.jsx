@@ -165,8 +165,6 @@ class Display extends Component {
       );
     }
 
-    console.log('responses', responses);
-
     const roleToUserMapMissing = {
       ...this.roleToUserMap
     };
