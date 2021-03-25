@@ -216,13 +216,16 @@ class Display extends Component {
           index: this.slideIndex
         };
 
-        this.setState({
-          isActive: true
-        }, () => {
-          if (auto && timeout) {
-            this.props.socket.emit(TIMER_START, { chat, slide, timeout });
+        this.setState(
+          {
+            isActive: true
+          },
+          () => {
+            if (auto && timeout) {
+              this.props.socket.emit(TIMER_START, { chat, slide, timeout });
+            }
           }
-        });
+        );
       }
     }
   }
@@ -316,10 +319,12 @@ class Display extends Component {
     );
 
     const header = !defaultValue && timeout ? timerRender : null;
-    const banner = welcome ? {
-      message: welcome,
-      type: 'inline'
-    } : null;
+    const banner = welcome
+      ? {
+          message: welcome,
+          type: 'inline'
+        }
+      : null;
 
     const chatProps = {
       agent,
@@ -467,7 +472,10 @@ class Display extends Component {
               size="small"
               onClose={onMarkCompleteClose}
             >
-              <Header icon="checkmark" content={`Close this discussion as ${this.state.markComplete.result}?`} />
+              <Header
+                icon="checkmark"
+                content={`Close this discussion as ${this.state.markComplete.result}?`}
+              />
               <Modal.Content>
                 Are you sure you want to mark this discussion{' '}
                 {this.state.markComplete.result}? Doing so will end the

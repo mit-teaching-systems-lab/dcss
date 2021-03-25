@@ -46,7 +46,7 @@ exports.getRunByIdentifiers = async function(
   return result.rows[0] || null;
 };
 
-exports.getChatByRunId = async (run_id) => {
+exports.getChatByRunId = async run_id => {
   const result = await query(`
     SELECT chat_id AS id FROM run_chat WHERE run_id = ${run_id};
   `);

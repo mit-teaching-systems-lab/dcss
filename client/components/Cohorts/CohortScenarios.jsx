@@ -18,7 +18,15 @@ import Gate from '@components/Gate';
 import Loading from '@components/Loading';
 import { notify } from '@components/Notification';
 import Sortable from '@components/Sortable';
-import { Button, Card, Comment, Container, Icon, Image, Text } from '@components/UI';
+import {
+  Button,
+  Card,
+  Comment,
+  Container,
+  Icon,
+  Image,
+  Text
+} from '@components/UI';
 import Identity from '@utils/Identity';
 import Layout from '@utils/Layout';
 import Moment from '@utils/Moment';
@@ -365,14 +373,13 @@ export class CohortScenarios extends React.Component {
                       {isMultiParticipantScenario ? (
                         <Fragment>
                           <Text>
-                            This is a multi-participant scenario, with <strong>{scenario.personas.length}</strong> roles:
+                            This is a multi-participant scenario, with{' '}
+                            <strong>{scenario.personas.length}</strong> roles:
                           </Text>
                           <Comment.Group className="c__join-persona-container">
                             {scenario.personas.map(persona => {
                               return (
-                                <Comment
-                                  key={Identity.key(persona)}
-                                >
+                                <Comment key={Identity.key(persona)}>
                                   <JoinAsButton
                                     className="c__join-persona-button"
                                     cohort={cohort}
@@ -380,8 +387,12 @@ export class CohortScenarios extends React.Component {
                                     scenario={scenario}
                                   />
                                   <Comment.Content className="c__join-persona-content">
-                                    <Comment.Author>{persona.name}</Comment.Author>
-                                    <Comment.Text>{persona.description}</Comment.Text>
+                                    <Comment.Author>
+                                      {persona.name}
+                                    </Comment.Author>
+                                    <Comment.Text>
+                                      {persona.description}
+                                    </Comment.Text>
                                   </Comment.Content>
                                 </Comment>
                               );

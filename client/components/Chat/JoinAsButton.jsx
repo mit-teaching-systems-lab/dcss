@@ -6,16 +6,9 @@ import Identity from '@utils/Identity';
 import './Chat.css';
 
 function JoinAsButton(props) {
-  const {
-    className = '',
-    cohort,
-    persona,
-    scenario
-  } = props;
+  const { className = '', cohort, persona, scenario } = props;
 
-  const cohortIdHash = cohort
-    ? Identity.toHash(props.cohort.id)
-    : null;
+  const cohortIdHash = cohort ? Identity.toHash(props.cohort.id) : null;
 
   const personaIdHash = Identity.toHash(props.persona.id);
   const scenarioIdHash = Identity.toHash(props.scenario.id);
@@ -42,7 +35,7 @@ JoinAsButton.propTypes = {
   className: PropTypes.string,
   cohort: PropTypes.object,
   persona: PropTypes.object,
-  scenario: PropTypes.object,
+  scenario: PropTypes.object
 };
 
 export default JoinAsButton;

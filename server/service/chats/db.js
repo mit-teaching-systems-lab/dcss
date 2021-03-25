@@ -243,8 +243,12 @@ exports.checkRoster = async (chat_id, scenario_id) => {
   );
 };
 
-exports.joinOrCreateChatFromPool = async (cohort_id, scenario_id, persona_id, user_id) => {
-
+exports.joinOrCreateChatFromPool = async (
+  cohort_id,
+  scenario_id,
+  persona_id,
+  user_id
+) => {
   // Check if this user is actually already a HOST
   //    in a chat that matches the requirements of this request
   let result = await query(`
@@ -263,11 +267,10 @@ exports.joinOrCreateChatFromPool = async (cohort_id, scenario_id, persona_id, us
   if (result.rowCount) {
     const existing = result.rows[0];
     const isCompleteRoster = await this.checkRoster(
-      existing.id, existing.scenario_id
+      existing.id,
+      existing.scenario_id
     );
-    return isCompleteRoster
-      ? this.getChat(existing.id)
-      : null;
+    return isCompleteRoster ? this.getChat(existing.id) : null;
   }
 
   // Check if this user is already in any chat that matches the
@@ -288,12 +291,11 @@ exports.joinOrCreateChatFromPool = async (cohort_id, scenario_id, persona_id, us
   if (result.rowCount) {
     const existing = result.rows[0];
     const isCompleteRoster = await this.checkRoster(
-      existing.id, existing.scenario_id
+      existing.id,
+      existing.scenario_id
     );
 
-    return isCompleteRoster
-      ? this.getChat(existing.id)
-      : null;
+    return isCompleteRoster ? this.getChat(existing.id) : null;
   }
 
   // Find a chat that has this persona available
@@ -329,7 +331,12 @@ exports.joinOrCreateChatFromPool = async (cohort_id, scenario_id, persona_id, us
   // If no match was found, then create a chat and return
   // null, which will move the user into "waiting"
   if (!result.rowCount) {
-    const created = await this.createChat(user_id, scenario_id, cohort_id, is_open);
+    const created = await this.createChat(
+      user_id,
+      scenario_id,
+      cohort_id,
+      is_open
+    );
 
     // TODO: reduce duplication
     await query(`
@@ -353,14 +360,10 @@ exports.joinOrCreateChatFromPool = async (cohort_id, scenario_id, persona_id, us
   `);
 
   const chat = await this.getChat(result.rows[0].chat_id);
-  const isCompleteRoster = await this.checkRoster(
-    chat.id, scenario_id
-  );
+  const isCompleteRoster = await this.checkRoster(chat.id, scenario_id);
 
-  return isCompleteRoster
-    ? chat
-    : null;
-}
+  return isCompleteRoster ? chat : null;
+};
 
 exports.joinChat = async (chat_id, user_id, persona_id = null) => {
   if (!chat_id || !user_id) {

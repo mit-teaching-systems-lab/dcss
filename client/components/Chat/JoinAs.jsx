@@ -15,7 +15,7 @@ import Scenario from '@components/Scenario';
 import { Button, Header, Icon, Modal, Title } from '@components/UI';
 import withSocket, {
   CHAT_USER_AWAITING_MATCH,
-  CHAT_USER_MATCHED,
+  CHAT_USER_MATCHED
 } from '@hoc/withSocket';
 import Identity from '@utils/Identity';
 import Payload from '@utils/Payload';
@@ -55,22 +55,19 @@ class JoinAs extends Component {
   }
 
   async componentDidMount() {
-
     if (this.props.persona.id && !this.props.persona.created_at) {
       // This way we can get the scenario AND the persona
       await this.props.getScenario(this.props.scenario.id);
     }
 
-    const {
+    const { cohort, persona, scenario, user } = this.props;
+
+    this.props.socket.on(CHAT_USER_MATCHED, this.onChatUserMatched);
+    this.props.socket.emit(CHAT_USER_AWAITING_MATCH, {
       cohort,
       persona,
       scenario,
       user
-    } = this.props;
-
-    this.props.socket.on(CHAT_USER_MATCHED, this.onChatUserMatched);
-    this.props.socket.emit(CHAT_USER_AWAITING_MATCH, {
-      cohort, persona, scenario, user
     });
 
     this.setState({
@@ -79,7 +76,7 @@ class JoinAs extends Component {
   }
 
   async onChatUserMatched(chat) {
-    console.log("onChatUserMatched", chat);
+    console.log('onChatUserMatched', chat);
     const redirect = makeCohortScenarioChatJoinPath(
       this.props.cohort,
       this.props.scenario,
@@ -94,13 +91,9 @@ class JoinAs extends Component {
       chat.id
     );
 
-    await this.props.linkRunToCohort(
-      this.props.cohort.id, run.id
-    );
+    await this.props.linkRunToCohort(this.props.cohort.id, run.id);
 
-    await this.props.linkRunToChat(
-      chat.id, run.id
-    );
+    await this.props.linkRunToChat(chat.id, run.id);
 
     this.props.history.push(redirect);
   }
@@ -111,12 +104,10 @@ class JoinAs extends Component {
     }
 
     const onClose = () => {
-      console.log("return to scenarios or cohort");
+      console.log('return to scenarios or cohort');
     };
 
-    const {
-      persona
-    } = this.props;
+    const { persona } = this.props;
 
     const titleAndContent = `Please wait while we find an open ${persona.name} role for you`;
 
@@ -146,8 +137,7 @@ class JoinAs extends Component {
           <Modal.Actions style={{ borderTop: '0px' }}>
             <Button.Group fluid>
               <Button disabled onClick={onClose}>
-                Cancel my request to join this scenario
-                (not yet implemented)
+                Cancel my request to join this scenario (not yet implemented)
               </Button>
             </Button.Group>
           </Modal.Actions>
@@ -188,29 +178,33 @@ const mapStateToProps = (state, ownProps) => {
   const { params } = ownProps.match || { params: {} };
   const { user } = state;
   const cohortId = Identity.fromHashOrId(ownProps.cohortId || params.cohortId);
-  const personaId = Identity.fromHashOrId(ownProps.personaId || params.personaId);
+  const personaId = Identity.fromHashOrId(
+    ownProps.personaId || params.personaId
+  );
   const scenarioId = Identity.fromHashOrId(
     ownProps.scenarioId || params.scenarioId
   );
   console.log(ownProps);
   console.log(cohortId, scenarioId, personaId);
 
-  const scenario = state.scenario && state.scenario.id === scenarioId
-    ? state.scenario
-    : {
-      id: scenarioId
-    };
+  const scenario =
+    state.scenario && state.scenario.id === scenarioId
+      ? state.scenario
+      : {
+          id: scenarioId
+        };
 
-  const personaFromScenario = scenario && scenario.personas && scenario.personas.length
-    ? state.scenario.personas.find(({ id }) => id === personaId)
-    : null;
+  const personaFromScenario =
+    scenario && scenario.personas && scenario.personas.length
+      ? state.scenario.personas.find(({ id }) => id === personaId)
+      : null;
 
-  let persona = state.persona && state.persona.id === personaId
-    ? state.persona
-    : personaFromScenario || {
-      id: personaId
-    };
-
+  let persona =
+    state.persona && state.persona.id === personaId
+      ? state.persona
+      : personaFromScenario || {
+          id: personaId
+        };
 
   return {
     cohort: {

@@ -166,8 +166,6 @@ const Routes = ({ isLoggedIn, user }) => {
       </InterceptAnonymizableRoute>
       */}
 
-
-
       <InterceptAnonymizableRoute
         path="/run/:scenarioId/code/:code/slide/:activeRunSlideIndex"
         isLoggedIn={isLoggedIn}

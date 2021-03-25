@@ -28,7 +28,7 @@ class ChatPromptEditor extends React.Component {
       required = false,
       responseId = '',
       timeout = 0,
-      welcome = '',
+      welcome = ''
     } = props.value;
     this.state = {
       agent,
@@ -38,7 +38,7 @@ class ChatPromptEditor extends React.Component {
       required: timeout ? true : required,
       responseId,
       timeout,
-      welcome,
+      welcome
     };
 
     this.enforceRequiredWhenTimerIsSet = this.enforceRequiredWhenTimerIsSet.bind(
@@ -67,7 +67,7 @@ class ChatPromptEditor extends React.Component {
       'prompt',
       // 'required',
       'timeout',
-      'welcome',
+      'welcome'
     ];
 
     for (let field of fields) {
@@ -110,7 +110,7 @@ class ChatPromptEditor extends React.Component {
       responseId,
       timeout,
       type,
-      welcome,
+      welcome
     });
   }
 
@@ -132,7 +132,8 @@ class ChatPromptEditor extends React.Component {
       value = checked;
     }
 
-    const updateState = name === 'welcome' ? this.delayedUpdateState : this.updateState;
+    const updateState =
+      name === 'welcome' ? this.delayedUpdateState : this.updateState;
 
     this.setState({ [name]: value }, updateState);
   }
@@ -276,7 +277,7 @@ ChatPromptEditor.propTypes = {
     responseId: PropTypes.string,
     timeout: PropTypes.number,
     type: PropTypes.oneOf([type]),
-    welcome: PropTypes.string,
+    welcome: PropTypes.string
   })
 };
 

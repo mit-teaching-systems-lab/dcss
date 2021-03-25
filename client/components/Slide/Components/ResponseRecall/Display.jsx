@@ -17,7 +17,7 @@ import {
 } from '@hoc/withRunEventCapturing';
 import withSocket, {
   SHARED_RESPONSE_CREATED,
-  CREATE_SHARED_RESPONSE_CHANNEL,
+  CREATE_SHARED_RESPONSE_CHANNEL
 } from '@hoc/withSocket';
 
 const style = {
@@ -53,8 +53,10 @@ class Display extends Component {
       run
     } = this.props;
 
-
-    if (this.props.recallSharedWithRoles && this.props.recallSharedWithRoles.length) {
+    if (
+      this.props.recallSharedWithRoles &&
+      this.props.recallSharedWithRoles.length
+    ) {
       const list = this.props.chat.users.reduce((accum, { id, persona_id }) => {
         if (this.props.recallSharedWithRoles.includes(persona_id)) {
           this.roleToUserMap[persona_id] = id;
@@ -104,7 +106,7 @@ class Display extends Component {
       const basePayload = Payload.compose(this.props);
       const responsePayload = {
         ...basePayload,
-        response,
+        response
       };
 
       this.props.socket.on(SHARED_RESPONSE_CREATED, this.refresh);
@@ -163,7 +165,7 @@ class Display extends Component {
       );
     }
 
-    console.log("responses", responses);
+    console.log('responses', responses);
 
     const roleToUserMapMissing = {
       ...this.roleToUserMap
@@ -260,9 +262,9 @@ class Display extends Component {
         messageProps.attached = 'bottom';
         messageProps.header = messageProps.content;
         messageProps.content = null;
-        const personaName = persona
-          ? <Fragment>({persona.name})</Fragment>
-          : null;
+        const personaName = persona ? (
+          <Fragment>({persona.name})</Fragment>
+        ) : null;
 
         if (persona) {
           delete roleToUserMapMissing[persona.id];
@@ -277,9 +279,7 @@ class Display extends Component {
           </Fragment>
         );
       } else {
-        accum.push(
-          <Message key={key} {...messageProps} />
-        );
+        accum.push(<Message key={key} {...messageProps} />);
       }
 
       return accum;
@@ -293,9 +293,9 @@ class Display extends Component {
         persona => persona.id === chatUser.persona_id
       );
 
-      const personaName = persona
-        ? <Fragment>({persona.name})</Fragment>
-        : null;
+      const personaName = persona ? (
+        <Fragment>({persona.name})</Fragment>
+      ) : null;
 
       rendered.push(
         <Segment key={Identity.key(id)}>
@@ -304,11 +304,7 @@ class Display extends Component {
       );
     }
 
-    return (
-      <Fragment>
-        {rendered}
-      </Fragment>
-    );
+    return <Fragment>{rendered}</Fragment>;
   }
 }
 

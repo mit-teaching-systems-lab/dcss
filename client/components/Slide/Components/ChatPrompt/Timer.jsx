@@ -94,7 +94,14 @@ class Timer extends Component {
   }
 
   render() {
-    const { auto, chat, isAllowedToStartTimer, slide, timeout, user } = this.props;
+    const {
+      auto,
+      chat,
+      isAllowedToStartTimer,
+      slide,
+      timeout,
+      user
+    } = this.props;
     const { isActive } = this.state;
 
     if (!this.isScenarioRun) {
@@ -122,9 +129,10 @@ class Timer extends Component {
       </Ref>
     );
 
-    const startTimerOrWaiting = !isAllowedToStartTimer && !isActive && auto
-      ? 'Waiting for participants'
-      : 'Start discussion timer';
+    const startTimerOrWaiting =
+      !isAllowedToStartTimer && !isActive && auto
+        ? 'Waiting for participants'
+        : 'Start discussion timer';
 
     const startOrClockText = isActive ? timerDisplay : startTimerOrWaiting;
 

@@ -22,10 +22,7 @@ import withRunEventCapturing, {
   PROMPT_RESPONSE_SUBMITTED,
   SCENARIO_ARRIVAL
 } from '@hoc/withRunEventCapturing';
-import withSocket, {
-  CHAT_ENDED,
-  RUN_AGENT_START
-} from '@hoc/withSocket';
+import withSocket, { CHAT_ENDED, RUN_AGENT_START } from '@hoc/withSocket';
 import Identity from '@utils/Identity';
 import Payload from '@utils/Payload';
 import QueryString from '@utils/QueryString';
@@ -244,7 +241,6 @@ class Run extends Component {
   }
 
   async onChatEnded({ chat }) {
-
     if (this.props.run.ended_at) {
       return;
     }
@@ -390,7 +386,6 @@ class Run extends Component {
     }
 
     if (confirm.isOpen) {
-
       const whereAmIGoing = this.isCohortScenarioRun
         ? 'your cohort'
         : 'the main scenario list';
@@ -417,7 +412,7 @@ class Run extends Component {
       };
 
       // const timeout = setTimeout(() => {
-        // onConfirmEnd();
+      // onConfirmEnd();
       // }, 10000);
 
       runViewContents = (
@@ -436,9 +431,16 @@ class Run extends Component {
             />
             <Modal.Content>
               <p>
-              This scenario run was closed by the host (the person that created it). Please click &quot;Exit this scenario&quot; to return to {whereAmIGoing}. </p>
+                This scenario run was closed by the host (the person that
+                created it). Please click &quot;Exit this scenario&quot; to
+                return to {whereAmIGoing}.{' '}
+              </p>
 
-              <p>Alternatively, you may continue, however you may not be able to complete all of the tasks and requirements of this scenario. Click &quot;Continue alone&quot; to stay and attempt to complete the scenario on your own.
+              <p>
+                Alternatively, you may continue, however you may not be able to
+                complete all of the tasks and requirements of this scenario.
+                Click &quot;Continue alone&quot; to stay and attempt to complete
+                the scenario on your own.
               </p>
             </Modal.Content>
             <Modal.Actions>

@@ -246,7 +246,11 @@ class RichTextEditor extends Component {
     return mode === 'editor' ? (
       <textarea ref={ref} style={style} />
     ) : (
-      <div className={className} dangerouslySetInnerHTML={{ __html }} />
+      <div
+        className={className}
+        style={style}
+        dangerouslySetInnerHTML={{ __html }}
+      />
     );
   }
 }

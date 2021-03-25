@@ -47,7 +47,6 @@ const slideContainsOnlyNonRequiredChatPrompt = components => {
   return returnValue;
 };
 
-
 class ContentSlide extends React.Component {
   constructor(props) {
     super(props);
