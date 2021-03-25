@@ -38,13 +38,11 @@ const slideContainsOnlyNonRequiredChatPrompt = components => {
   let returnValue = false;
 
   for (const component of components) {
-    if (hasValidPrompt(component)) {
-      if (component.type !== 'ChatPrompt') {
-        return false;
-      } else {
-        if (!component.required && !component.auto) {
-          returnValue = true;
-        }
+    if (component.type !== 'ChatPrompt') {
+      return false;
+    } else {
+      if (!component.required && !component.auto) {
+        returnValue = true;
       }
     }
   }
@@ -329,6 +327,7 @@ class ContentSlide extends React.Component {
       ? 'Submit and continue'
       : 'Go to the next slide';
 
+    let skipButtonColor = 'yellow';
     let skipButtonTip =
       skipOrKeep === 'skip'
         ? 'Skip these prompts and continue'
@@ -348,6 +347,7 @@ class ContentSlide extends React.Component {
       fwdButtonTip = 'Finish';
     } else {
       if (slideContainsOnlyNonRequiredChatPrompt(slide.components)) {
+        skipButtonColor = 'green';
         skipButtonContent = 'Continue';
         skipButtonTip = 'Click here to continue to the next slide';
         fwdButtonTip = 'Continue';
@@ -430,8 +430,8 @@ class ContentSlide extends React.Component {
                     content={skipButtonTip}
                     trigger={
                       <Button
-                        color="yellow"
                         aria-label={skipButtonTip}
+                        color={skipButtonColor}
                         name={skipOrKeep}
                         onClick={onSkip}
                         content={skipButtonContent}
