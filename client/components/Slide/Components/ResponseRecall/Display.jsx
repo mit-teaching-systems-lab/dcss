@@ -179,7 +179,7 @@ class Display extends Component {
         : 'Participant response transcriptions will appear here.';
 
       if (!rvalue) {
-        return null;
+        return accum;
       }
 
       let content = rvalue;
@@ -277,7 +277,9 @@ class Display extends Component {
           </Fragment>
         );
       } else {
-        accum.push(<Message key={key} {...messageProps} />);
+        accum.push(
+          <Message key={key} {...messageProps} />
+        );
       }
 
       return accum;
