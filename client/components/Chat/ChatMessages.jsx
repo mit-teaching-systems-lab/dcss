@@ -573,9 +573,7 @@ class ChatMessages extends Component {
               >
                 <Comment.Content className="cmm__content">
                   <Comment.Text>
-                    <em>
-                      {<Username user={typing} />} is typing...
-                    </em>
+                    <em>{<Username user={typing} />} is typing...</em>
                   </Comment.Text>
                 </Comment.Content>
               </Comment>
