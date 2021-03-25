@@ -367,7 +367,7 @@ export class CohortScenarios extends React.Component {
                           <Text>
                             This is a multi-participant scenario, with <strong>{scenario.personas.length}</strong> roles:
                           </Text>
-                          <Comment.Group>
+                          <Comment.Group className="c__join-persona-container">
                             {scenario.personas.map(persona => {
                               return (
                                 <Comment

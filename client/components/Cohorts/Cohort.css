@@ -373,6 +373,10 @@
   text-align: unset !important;
 }
 
+.c__join-persona-container {
+  /*max-width: unset;*/
+}
+
 .c__join-persona-button {
   display: block;
   width: 10.5em;
