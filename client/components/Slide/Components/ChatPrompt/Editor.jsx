@@ -27,7 +27,8 @@ class ChatPromptEditor extends React.Component {
       prompt = '',
       required = false,
       responseId = '',
-      timeout = 0
+      timeout = 0,
+      welcome = '',
     } = props.value;
     this.state = {
       agent,
@@ -36,7 +37,8 @@ class ChatPromptEditor extends React.Component {
       prompt,
       required: timeout ? true : required,
       responseId,
-      timeout
+      timeout,
+      welcome,
     };
 
     this.enforceRequiredWhenTimerIsSet = this.enforceRequiredWhenTimerIsSet.bind(
@@ -64,7 +66,8 @@ class ChatPromptEditor extends React.Component {
       'header',
       'prompt',
       // 'required',
-      'timeout'
+      'timeout',
+      'welcome',
     ];
 
     for (let field of fields) {
@@ -92,6 +95,7 @@ class ChatPromptEditor extends React.Component {
       auto,
       header,
       prompt,
+      welcome,
       timeout,
       required,
       responseId
@@ -105,7 +109,8 @@ class ChatPromptEditor extends React.Component {
       required,
       responseId,
       timeout,
-      type
+      type,
+      welcome,
     });
   }
 
@@ -138,7 +143,7 @@ class ChatPromptEditor extends React.Component {
   }
 
   render() {
-    const { agent, auto, header, prompt, timeout } = this.state;
+    const { agent, auto, header, prompt, timeout, welcome } = this.state;
     const { onChange, onTimerChange, updateState } = this;
     const timeoutString = timeout ? Media.secToTime(timeout) : '';
     const [hh = 0, mm = 0, ss = 0] = timeoutString
@@ -146,6 +151,7 @@ class ChatPromptEditor extends React.Component {
       .map(v => Number(v));
     const promptAriaLabel = 'Optional prompt to display for this discussion:';
     const timeoutAriaLabel = 'Max duration for this discussion:';
+    const welcomeAriaLabel = 'Optional welcome message to display in the chat:';
     const autoAriaLabel =
       'Automatically start the discussion timer when participants arrive?';
     const timeDisplay = [
@@ -219,12 +225,23 @@ class ChatPromptEditor extends React.Component {
             </Grid.Row>
             <Grid.Row columns={1}>
               <Grid.Column>
+                {/*
                 <Form.TextArea
                   name="prompt"
                   label={promptAriaLabel}
                   aria-label={promptAriaLabel}
                   rows={1}
                   value={prompt}
+                  onChange={onChange}
+                  onBlur={updateState}
+                />
+                */}
+                <Form.TextArea
+                  name="welcome"
+                  label={welcomeAriaLabel}
+                  aria-label={welcomeAriaLabel}
+                  rows={2}
+                  value={welcome}
                   onChange={onChange}
                   onBlur={updateState}
                 />
@@ -256,7 +273,8 @@ ChatPromptEditor.propTypes = {
     required: PropTypes.bool,
     responseId: PropTypes.string,
     timeout: PropTypes.number,
-    type: PropTypes.oneOf([type])
+    type: PropTypes.oneOf([type]),
+    welcome: PropTypes.string,
   })
 };
 

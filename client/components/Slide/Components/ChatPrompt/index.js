@@ -18,6 +18,7 @@ export const defaultValue = ({ responseId }) => ({
   },
   auto: true,
   prompt: '',
+  welcome: '',
   required: false,
   responseId,
   timeout: 0,

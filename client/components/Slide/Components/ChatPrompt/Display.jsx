@@ -264,6 +264,7 @@ class Display extends Component {
       chat,
       auto,
       isEmbeddedInSVG,
+      required,
       responseId,
       timeout,
       user
@@ -434,10 +435,14 @@ class Display extends Component {
 
     const discussionIsOpen = !hasSubmittedResponse && !defaultValue;
 
+    const discussionNotRequired = !required ? (
+      <Menu.Item>&nbsp;</Menu.Item>
+    ) : null;
+
     return (
       <Fragment>
         <Menu borderless>
-          {dropdownOrResultOfDiscussion}
+          {required ? dropdownOrResultOfDiscussion : discussionNotRequired}
           {discussionIsOpen && timeout ? timerRender : null}
           {/*!isUserHost && !defaultValue && timeout ? timerRender : null*/}
           <Menu.Menu position="right">
@@ -511,6 +516,7 @@ Display.propTypes = {
   socket: PropTypes.object,
   timeout: PropTypes.number,
   type: PropTypes.oneOf([type]).isRequired,
+  welcome: PropTypes.string,
   user: PropTypes.object
 };
 
