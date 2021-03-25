@@ -29,6 +29,25 @@ const hasValidPrompt = component => {
   return component.responseId && hasValidPromptOptions(component);
 };
 
+const slideContainsOnlyNonRequiredChatPrompt = components => {
+  let returnValue = false;
+
+  for (const component of components) {
+    if (hasValidPrompt(component)) {
+      if (component.type !== 'ChatPrompt') {
+        return false;
+      } else {
+        if (!component.required && !component.auto) {
+          returnValue = true;
+        }
+      }
+    }
+  }
+
+  return returnValue;
+};
+
+
 class ContentSlide extends React.Component {
   constructor(props) {
     super(props);
@@ -322,6 +341,12 @@ class ContentSlide extends React.Component {
         skipOrKeep === 'skip' ? 'Skip and finish' : 'Keep and finish';
       skipButtonTip = 'Skip these prompts and finish';
       fwdButtonTip = 'Finish';
+    } else {
+      if (slideContainsOnlyNonRequiredChatPrompt(slide.components)) {
+        skipButtonContent = 'Continue';
+        skipButtonTip = 'Click here to continue to the next slide';
+        fwdButtonTip = 'Continue';
+      }
     }
 
     const onResponseChange = (event, data) => {
