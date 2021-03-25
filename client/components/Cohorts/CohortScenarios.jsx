@@ -479,7 +479,7 @@ export class CohortScenarios extends React.Component {
                         name={scenario.title}
                         onClick={onAddTabClick}
                       >
-                        View reponses
+                        View responses
                       </Button>
                     </Gate>
                   </div>

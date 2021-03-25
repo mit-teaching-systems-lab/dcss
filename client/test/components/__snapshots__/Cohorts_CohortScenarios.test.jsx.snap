@@ -107,7 +107,7 @@ exports[`Facilitator has an option to open scenarios selector 2`] = `
                  roles:
               </span>
               <div
-                class="ui comments"
+                class="ui comments c__join-persona-container"
               >
                 <div
                   class="comment"
@@ -221,7 +221,7 @@ exports[`Facilitator has an option to open scenarios selector 2`] = `
               data-testid="view-cohort-responses"
               name="Some Other Scenario"
             >
-              View reponses
+              View responses
             </button>
           </div>
         </div>
@@ -291,7 +291,7 @@ exports[`Facilitator has an option to open scenarios selector 3`] = `
                  roles:
               </span>
               <div
-                class="ui comments"
+                class="ui comments c__join-persona-container"
               >
                 <div
                   class="comment"
@@ -405,7 +405,7 @@ exports[`Facilitator has an option to open scenarios selector 3`] = `
               data-testid="view-cohort-responses"
               name="Some Other Scenario"
             >
-              View reponses
+              View responses
             </button>
           </div>
         </div>
@@ -475,7 +475,7 @@ exports[`Facilitator has an option to open scenarios selector 4`] = `
                  roles:
               </span>
               <div
-                class="ui comments"
+                class="ui comments c__join-persona-container"
               >
                 <div
                   class="comment"
@@ -589,7 +589,7 @@ exports[`Facilitator has an option to open scenarios selector 4`] = `
               data-testid="view-cohort-responses"
               name="Some Other Scenario"
             >
-              View reponses
+              View responses
             </button>
           </div>
         </div>
@@ -858,7 +858,7 @@ exports[`Open Edit scenarios 2`] = `
                  roles:
               </span>
               <div
-                class="ui comments"
+                class="ui comments c__join-persona-container"
               >
                 <div
                   class="comment"
@@ -972,7 +972,7 @@ exports[`Open Edit scenarios 2`] = `
               data-testid="view-cohort-responses"
               name="Some Other Scenario"
             >
-              View reponses
+              View responses
             </button>
           </div>
         </div>
@@ -1042,7 +1042,7 @@ exports[`Open Edit scenarios 3`] = `
                  roles:
               </span>
               <div
-                class="ui comments"
+                class="ui comments c__join-persona-container"
               >
                 <div
                   class="comment"
@@ -1156,7 +1156,7 @@ exports[`Open Edit scenarios 3`] = `
               data-testid="view-cohort-responses"
               name="Some Other Scenario"
             >
-              View reponses
+              View responses
             </button>
           </div>
         </div>
@@ -1226,7 +1226,7 @@ exports[`Open Edit scenarios 4`] = `
                  roles:
               </span>
               <div
-                class="ui comments"
+                class="ui comments c__join-persona-container"
               >
                 <div
                   class="comment"
@@ -1340,7 +1340,7 @@ exports[`Open Edit scenarios 4`] = `
               data-testid="view-cohort-responses"
               name="Some Other Scenario"
             >
-              View reponses
+              View responses
             </button>
           </div>
         </div>
@@ -1428,7 +1428,7 @@ exports[`Participant does not have an option to open scenarios selector 2`] = `
              roles:
           </span>
           <div
-            class="ui comments"
+            class="ui comments c__join-persona-container"
           >
             <div
               class="comment"
@@ -1547,7 +1547,7 @@ exports[`Participant does not have an option to open scenarios selector 2`] = `
           data-testid="view-cohort-responses"
           name="Some Other Scenario"
         >
-          View reponses
+          View responses
         </button>
       </div>
     </div>
@@ -1640,7 +1640,7 @@ exports[`Render 1 1 2`] = `
                  roles:
               </span>
               <div
-                class="ui comments"
+                class="ui comments c__join-persona-container"
               >
                 <div
                   class="comment"
@@ -1754,7 +1754,7 @@ exports[`Render 1 1 2`] = `
               data-testid="view-cohort-responses"
               name="Some Other Scenario"
             >
-              View reponses
+              View responses
             </button>
           </div>
         </div>
@@ -1849,7 +1849,7 @@ exports[`Render 2 1 2`] = `
                  roles:
               </span>
               <div
-                class="ui comments"
+                class="ui comments c__join-persona-container"
               >
                 <div
                   class="comment"
@@ -1963,7 +1963,7 @@ exports[`Render 2 1 2`] = `
               data-testid="view-cohort-responses"
               name="Some Other Scenario"
             >
-              View reponses
+              View responses
             </button>
           </div>
         </div>
@@ -2058,7 +2058,7 @@ exports[`Run as participant 2`] = `
                  roles:
               </span>
               <div
-                class="ui comments"
+                class="ui comments c__join-persona-container"
               >
                 <div
                   class="comment"
@@ -2172,7 +2172,7 @@ exports[`Run as participant 2`] = `
               data-testid="view-cohort-responses"
               name="Some Other Scenario"
             >
-              View reponses
+              View responses
             </button>
           </div>
         </div>
@@ -2242,7 +2242,7 @@ exports[`Run as participant 4`] = `
                  roles:
               </span>
               <div
-                class="ui comments"
+                class="ui comments c__join-persona-container"
               >
                 <div
                   class="comment"
@@ -2356,7 +2356,7 @@ exports[`Run as participant 4`] = `
               data-testid="view-cohort-responses"
               name="Some Other Scenario"
             >
-              View reponses
+              View responses
             </button>
           </div>
         </div>
@@ -2451,7 +2451,7 @@ exports[`Scenarios have multi-participant/single-participant icons 2`] = `
                  roles:
               </span>
               <div
-                class="ui comments"
+                class="ui comments c__join-persona-container"
               >
                 <div
                   class="comment"
@@ -2565,7 +2565,7 @@ exports[`Scenarios have multi-participant/single-participant icons 2`] = `
               data-testid="view-cohort-responses"
               name="Some Other Scenario"
             >
-              View reponses
+              View responses
             </button>
           </div>
         </div>
@@ -2635,7 +2635,7 @@ exports[`Scenarios have multi-participant/single-participant icons 3`] = `
                  roles:
               </span>
               <div
-                class="ui comments"
+                class="ui comments c__join-persona-container"
               >
                 <div
                   class="comment"
@@ -2749,7 +2749,7 @@ exports[`Scenarios have multi-participant/single-participant icons 3`] = `
               data-testid="view-cohort-responses"
               name="Some Other Scenario"
             >
-              View reponses
+              View responses
             </button>
           </div>
         </div>
@@ -2819,7 +2819,7 @@ exports[`Scenarios have multi-participant/single-participant icons 4`] = `
                  roles:
               </span>
               <div
-                class="ui comments"
+                class="ui comments c__join-persona-container"
               >
                 <div
                   class="comment"
@@ -2933,7 +2933,7 @@ exports[`Scenarios have multi-participant/single-participant icons 4`] = `
               data-testid="view-cohort-responses"
               name="Some Other Scenario"
             >
-              View reponses
+              View responses
             </button>
           </div>
         </div>
