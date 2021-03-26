@@ -437,7 +437,7 @@ class Display extends Component {
         name="result"
         placeholder="Mark discussion as..."
         closeOnChange={true}
-        value={defaultValue}
+        defaultValue={defaultValue}
         options={options}
         onChange={onMarkCompleteChange}
       />
@@ -451,9 +451,18 @@ class Display extends Component {
       <Menu.Item>&nbsp;</Menu.Item>
     ) : null;
 
-    chatProps.header = required
-      ? dropdownOrResultOfDiscussion
-      : null;
+    if (required) {
+      chatProps.header = (
+        <Menu secondary borderless>
+          <Menu.Item className="ch__padding">
+            {dropdownOrResultOfDiscussion}
+          </Menu.Item>
+          <Menu.Item className="ch__padding">
+            {header}
+          </Menu.Item>
+        </Menu>
+      );
+    }
 
     return (
       <Fragment>

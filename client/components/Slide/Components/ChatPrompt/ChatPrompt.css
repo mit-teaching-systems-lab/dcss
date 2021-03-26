@@ -48,3 +48,7 @@
   /*padding: unset !important;*/
   /*padding: 1.25rem 1rem !important;*/
 }
+
+.ch__padding {
+  padding: 0 !important;
+}
