@@ -29,7 +29,7 @@ exports.getScenarioSlides = async scenarioId => {
     LIMIT 1;
   `);
 
-  return [ ...results.rows, ...finish.rows ];
+  return [...results.rows, ...finish.rows];
 };
 
 // exports.getCollaboratorSlides = async user_id => {
