@@ -15,7 +15,21 @@ exports.getScenarioSlides = async scenarioId => {
     AND is_finish IS FALSE
     ORDER BY "order";
   `);
-  return results.rows;
+
+  const finish = await query(sql`
+    SELECT
+      id,
+      title,
+      components,
+      is_finish,
+      has_chat_enabled
+    FROM slide
+    WHERE scenario_id = ${scenarioId}
+    AND is_finish IS NOT FALSE
+    LIMIT 1;
+  `);
+
+  return [ ...results.rows, ...finish.rows ];
 };
 
 // exports.getCollaboratorSlides = async user_id => {
