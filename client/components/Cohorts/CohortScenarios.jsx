@@ -352,6 +352,10 @@ export class CohortScenarios extends React.Component {
                 runStartedMaybeFinished = `Finished ${endedAtDisplay}.`;
               }
 
+              const gotoMyRoomButtonSize = existingChat
+                ? ''
+                : 'mini';
+
               return (
                 <Card
                   className="c__scenario-card"
@@ -370,7 +374,7 @@ export class CohortScenarios extends React.Component {
                       <Text.Truncate lines={2}>
                         {scenario.description}
                       </Text.Truncate>
-                      {isMultiParticipantScenario ? (
+                      {isMultiParticipantScenario && !existingChat ? (
                         <Fragment>
                           <Text>
                             This is a multi-participant scenario, with{' '}
@@ -407,8 +411,8 @@ export class CohortScenarios extends React.Component {
                     <Card.Meta>
                       <Button
                         compact
-                        size="mini"
                         data-testid="run-cohort-as-participant"
+                        size={gotoMyRoomButtonSize}
                         onClick={() => {
                           if (isMultiParticipantScenario) {
                             if (created_at && !ended_at) {
@@ -434,8 +438,8 @@ export class CohortScenarios extends React.Component {
                         <Fragment>
                           <Button
                             compact
-                            size="mini"
                             data-testid="see-my-room-lobby"
+                            size={gotoMyRoomButtonSize}
                             onClick={() => {
                               this.setState({
                                 room: {
@@ -454,8 +458,8 @@ export class CohortScenarios extends React.Component {
                           </Button>
                           <Button
                             compact
-                            size="mini"
                             data-testid="close-my-room"
+                            size={gotoMyRoomButtonSize}
                             onClick={async () => {
                               const time = new Date().toISOString();
                               await this.props.setChat(existingChat.id, {
