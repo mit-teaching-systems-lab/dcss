@@ -164,8 +164,8 @@ class ResponseRecallEditor extends React.Component {
     );
 
     const displayParticipantResponseLabel = isMultiParticipant
-      ? 'Select the prompt for which you want a response to be displayed: '
-      : "If you want to display a participant's response to another prompt: ";
+      ? `Select the prompt for which you want a response to be displayed: `
+      : `If you want to display a participant's response to another prompt: `;
 
     const selectPromptFormFieldLabelled = (
       <Form.Field.Labelled
