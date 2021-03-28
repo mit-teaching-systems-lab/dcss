@@ -14,7 +14,8 @@ const ComponentsMenuOrder = [
   'MultiPathResponse',
   'ConversationPrompt',
   'MultiButtonResponse',
-  'TextResponse'
+  'TextResponse',
+  'AnnotationPrompt'
 ];
 
 export const ComponentItem = ({ position = 'left center', item, onClick }) => {

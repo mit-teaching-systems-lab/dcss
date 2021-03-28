@@ -27,3 +27,6 @@ export { MultiPathResponse };
 
 import * as TextResponse from './TextResponse';
 export { TextResponse };
+
+import * as AnnotationPrompt from './AnnotationPrompt';
+export { AnnotationPrompt };
