@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { saveRunEvent } from '@actions/run';
 
+export const ANSWER_ANNOTATION = 'answer-annotation';
 export const AUDIO_RECORD_PERMISSION_GRANTED =
   'audio-record-permission-granted';
 export const AUDIO_RECORD_PERMISSION_DENIED = 'audio-record-permission-denied';
