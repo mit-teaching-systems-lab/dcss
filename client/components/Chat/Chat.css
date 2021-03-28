@@ -105,7 +105,7 @@
 .cmm__content-typing {
   background: #fff !important;
   bottom: 0;
-  position: sticky !important;
+  position: absolute !important;
   width: 100%;
   z-index: 2000;
 }
