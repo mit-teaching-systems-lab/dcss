@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render 1 1 1`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <a
+      class=\\"ui tiny button x\\"
+      data-testid=\\"join-scenario-as\\"
+      href=\\"/chat/join/a5c52e7b6f/as/6c4adee67a/cohort/6e4213d8d3\\"
+      role=\\"button\\"
+    >
+      Join as 
+      <strong>
+        Teacher
+      </strong>
+    </a>
+  </div>
+</body>"
+`;
+
+exports[`Render 2 1 1`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <a
+      class=\\"ui tiny button\\"
+      data-testid=\\"join-scenario-as\\"
+      href=\\"/chat/join/a5c52e7b6f/as/6c4adee67a/cohort/6e4213d8d3\\"
+      role=\\"button\\"
+    >
+      Join as 
+      <strong>
+        Teacher
+      </strong>
+    </a>
+  </div>
+</body>"
+`;

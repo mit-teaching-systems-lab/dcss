@@ -607,6 +607,22 @@ exports[`Add a non-response-prompt component 1`] = `
                       Prompt: Text Input
                     </span>
                   </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Annotation\\"
+                      class=\\"icon pen fancy\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Annotation
+                    </span>
+                  </a>
                 </div>
               </div>
             </div>
@@ -1223,6 +1239,22 @@ exports[`Add a non-response-prompt component 2`] = `
                       class=\\"ser__component-name\\"
                     >
                       Prompt: Text Input
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Annotation\\"
+                      class=\\"icon pen fancy\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Annotation
                     </span>
                   </a>
                 </div>
@@ -1843,6 +1875,22 @@ exports[`Add a non-response-prompt component 3`] = `
                       Prompt: Text Input
                     </span>
                   </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Annotation\\"
+                      class=\\"icon pen fancy\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Annotation
+                    </span>
+                  </a>
                 </div>
               </div>
             </div>
@@ -2423,6 +2471,22 @@ exports[`Add a non-response-prompt component at the end 1`] = `
                       Prompt: Text Input
                     </span>
                   </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Annotation\\"
+                      class=\\"icon pen fancy\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Annotation
+                    </span>
+                  </a>
                 </div>
               </div>
             </div>
@@ -3001,6 +3065,22 @@ exports[`Add a non-response-prompt component at the end 2`] = `
                       class=\\"ser__component-name\\"
                     >
                       Prompt: Text Input
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Annotation\\"
+                      class=\\"icon pen fancy\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Annotation
                     </span>
                   </a>
                 </div>
@@ -3621,6 +3701,22 @@ exports[`Add a non-response-prompt component at the end 3`] = `
                       Prompt: Text Input
                     </span>
                   </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Annotation\\"
+                      class=\\"icon pen fancy\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Annotation
+                    </span>
+                  </a>
                 </div>
               </div>
             </div>
@@ -4237,6 +4333,22 @@ exports[`Add a non-response-prompt component at the end 4`] = `
                       class=\\"ser__component-name\\"
                     >
                       Prompt: Text Input
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Annotation\\"
+                      class=\\"icon pen fancy\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Annotation
                     </span>
                   </a>
                 </div>
@@ -5053,6 +5165,22 @@ exports[`Add a non-response-prompt component at the end 5`] = `
                       Prompt: Text Input
                     </span>
                   </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Annotation\\"
+                      class=\\"icon pen fancy\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Annotation
+                    </span>
+                  </a>
                 </div>
               </div>
             </div>
@@ -5650,6 +5778,22 @@ exports[`Add a response-prompt component 1`] = `
                       class=\\"ser__component-name\\"
                     >
                       Prompt: Text Input
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Annotation\\"
+                      class=\\"icon pen fancy\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Annotation
                     </span>
                   </a>
                 </div>
@@ -6270,6 +6414,22 @@ exports[`Add a response-prompt component that has disableRequireCheckbox 1`] = `
                       Prompt: Text Input
                     </span>
                   </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Annotation\\"
+                      class=\\"icon pen fancy\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Annotation
+                    </span>
+                  </a>
                 </div>
               </div>
             </div>
@@ -6888,6 +7048,22 @@ exports[`Add a response-prompt component to a slide without a title 1`] = `
                       Prompt: Text Input
                     </span>
                   </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Annotation\\"
+                      class=\\"icon pen fancy\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Annotation
+                    </span>
+                  </a>
                 </div>
               </div>
             </div>
@@ -7504,6 +7680,22 @@ exports[`Change title 1`] = `
                       Prompt: Text Input
                     </span>
                   </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Annotation\\"
+                      class=\\"icon pen fancy\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Annotation
+                    </span>
+                  </a>
                 </div>
               </div>
             </div>
@@ -8118,6 +8310,22 @@ exports[`Change title 2`] = `
                       class=\\"ser__component-name\\"
                     >
                       Prompt: Text Input
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Annotation\\"
+                      class=\\"icon pen fancy\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Annotation
                     </span>
                   </a>
                 </div>
@@ -8748,6 +8956,22 @@ exports[`Change title 3`] = `
                       class=\\"ser__component-name\\"
                     >
                       Prompt: Text Input
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Annotation\\"
+                      class=\\"icon pen fancy\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Annotation
                     </span>
                   </a>
                 </div>
@@ -9382,6 +9606,22 @@ exports[`Click to activate component 1`] = `
                       Prompt: Text Input
                     </span>
                   </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Annotation\\"
+                      class=\\"icon pen fancy\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Annotation
+                    </span>
+                  </a>
                 </div>
               </div>
             </div>
@@ -10000,6 +10240,22 @@ exports[`Click to activate component 2`] = `
                       Prompt: Text Input
                     </span>
                   </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Annotation\\"
+                      class=\\"icon pen fancy\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Annotation
+                    </span>
+                  </a>
                 </div>
               </div>
             </div>
@@ -10616,6 +10872,22 @@ exports[`Click to activate component 3`] = `
                       class=\\"ser__component-name\\"
                     >
                       Prompt: Text Input
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Annotation\\"
+                      class=\\"icon pen fancy\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Annotation
                     </span>
                   </a>
                 </div>
@@ -11347,6 +11619,22 @@ exports[`Component is missing an id 1`] = `
                       Prompt: Text Input
                     </span>
                   </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Annotation\\"
+                      class=\\"icon pen fancy\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Annotation
+                    </span>
+                  </a>
                 </div>
               </div>
             </div>
@@ -12076,6 +12364,22 @@ exports[`Delete a component from the beginning 1`] = `
                       Prompt: Text Input
                     </span>
                   </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Annotation\\"
+                      class=\\"icon pen fancy\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Annotation
+                    </span>
+                  </a>
                 </div>
               </div>
             </div>
@@ -12694,6 +12998,22 @@ exports[`Delete a component from the beginning 2`] = `
                       Prompt: Text Input
                     </span>
                   </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Annotation\\"
+                      class=\\"icon pen fancy\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Annotation
+                    </span>
+                  </a>
                 </div>
               </div>
             </div>
@@ -13310,6 +13630,22 @@ exports[`Delete a component from the beginning 3`] = `
                       class=\\"ser__component-name\\"
                     >
                       Prompt: Text Input
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Annotation\\"
+                      class=\\"icon pen fancy\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Annotation
                     </span>
                   </a>
                 </div>
@@ -13932,6 +14268,22 @@ exports[`Delete a component from the beginning 4`] = `
                       Prompt: Text Input
                     </span>
                   </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Annotation\\"
+                      class=\\"icon pen fancy\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Annotation
+                    </span>
+                  </a>
                 </div>
               </div>
             </div>
@@ -14548,6 +14900,22 @@ exports[`Delete a component from the end 1`] = `
                       class=\\"ser__component-name\\"
                     >
                       Prompt: Text Input
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Annotation\\"
+                      class=\\"icon pen fancy\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Annotation
                     </span>
                   </a>
                 </div>
@@ -15168,6 +15536,22 @@ exports[`Delete a component from the end 2`] = `
                       Prompt: Text Input
                     </span>
                   </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Annotation\\"
+                      class=\\"icon pen fancy\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Annotation
+                    </span>
+                  </a>
                 </div>
               </div>
             </div>
@@ -15784,6 +16168,22 @@ exports[`Delete a component from the end 3`] = `
                       class=\\"ser__component-name\\"
                     >
                       Prompt: Text Input
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Annotation\\"
+                      class=\\"icon pen fancy\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Annotation
                     </span>
                   </a>
                 </div>
@@ -16406,6 +16806,22 @@ exports[`Delete a component from the end 4`] = `
                       Prompt: Text Input
                     </span>
                   </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Annotation\\"
+                      class=\\"icon pen fancy\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Annotation
+                    </span>
+                  </a>
                 </div>
               </div>
             </div>
@@ -17022,6 +17438,22 @@ exports[`Delete a component from the middle 1`] = `
                       class=\\"ser__component-name\\"
                     >
                       Prompt: Text Input
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Annotation\\"
+                      class=\\"icon pen fancy\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Annotation
                     </span>
                   </a>
                 </div>
@@ -17642,6 +18074,22 @@ exports[`Delete a component from the middle 2`] = `
                       Prompt: Text Input
                     </span>
                   </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Annotation\\"
+                      class=\\"icon pen fancy\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Annotation
+                    </span>
+                  </a>
                 </div>
               </div>
             </div>
@@ -18260,6 +18708,22 @@ exports[`Delete a component from the middle 3`] = `
                       Prompt: Text Input
                     </span>
                   </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Annotation\\"
+                      class=\\"icon pen fancy\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Annotation
+                    </span>
+                  </a>
                 </div>
               </div>
             </div>
@@ -18741,6 +19205,22 @@ exports[`Delete a component from the middle 4`] = `
                       class=\\"ser__component-name\\"
                     >
                       Prompt: Text Input
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Annotation\\"
+                      class=\\"icon pen fancy\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Annotation
                     </span>
                   </a>
                 </div>
@@ -19361,6 +19841,22 @@ exports[`Delete, no 1`] = `
                       Prompt: Text Input
                     </span>
                   </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Annotation\\"
+                      class=\\"icon pen fancy\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Annotation
+                    </span>
+                  </a>
                 </div>
               </div>
             </div>
@@ -19977,6 +20473,22 @@ exports[`Delete, no 2`] = `
                       class=\\"ser__component-name\\"
                     >
                       Prompt: Text Input
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Annotation\\"
+                      class=\\"icon pen fancy\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Annotation
                     </span>
                   </a>
                 </div>
@@ -20658,6 +21170,22 @@ exports[`Delete, no 3`] = `
                       Prompt: Text Input
                     </span>
                   </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Annotation\\"
+                      class=\\"icon pen fancy\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Annotation
+                    </span>
+                  </a>
                 </div>
               </div>
             </div>
@@ -21272,6 +21800,22 @@ exports[`Delete, yes 1`] = `
                       class=\\"ser__component-name\\"
                     >
                       Prompt: Text Input
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Annotation\\"
+                      class=\\"icon pen fancy\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Annotation
                     </span>
                   </a>
                 </div>
@@ -21890,6 +22434,22 @@ exports[`Delete, yes 2`] = `
                       class=\\"ser__component-name\\"
                     >
                       Prompt: Text Input
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Annotation\\"
+                      class=\\"icon pen fancy\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Annotation
                     </span>
                   </a>
                 </div>
@@ -22571,6 +23131,22 @@ exports[`Delete, yes 3`] = `
                       Prompt: Text Input
                     </span>
                   </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Annotation\\"
+                      class=\\"icon pen fancy\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Annotation
+                    </span>
+                  </a>
                 </div>
               </div>
             </div>
@@ -23189,6 +23765,22 @@ exports[`Duplicate 1`] = `
                       Prompt: Text Input
                     </span>
                   </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Annotation\\"
+                      class=\\"icon pen fancy\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Annotation
+                    </span>
+                  </a>
                 </div>
               </div>
             </div>
@@ -23805,6 +24397,22 @@ exports[`Duplicate 2`] = `
                       class=\\"ser__component-name\\"
                     >
                       Prompt: Text Input
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Annotation\\"
+                      class=\\"icon pen fancy\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Annotation
                     </span>
                   </a>
                 </div>
@@ -24437,6 +25045,22 @@ exports[`Duplicate a non-response-prompt component 1`] = `
                       class=\\"ser__component-name\\"
                     >
                       Prompt: Text Input
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Annotation\\"
+                      class=\\"icon pen fancy\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Annotation
                     </span>
                   </a>
                 </div>
@@ -25116,6 +25740,22 @@ exports[`Duplicate a non-response-prompt component 2`] = `
                       Prompt: Text Input
                     </span>
                   </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Annotation\\"
+                      class=\\"icon pen fancy\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Annotation
+                    </span>
+                  </a>
                 </div>
               </div>
             </div>
@@ -25746,6 +26386,22 @@ exports[`Duplicate a response-prompt component 1`] = `
                       class=\\"ser__component-name\\"
                     >
                       Prompt: Text Input
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Annotation\\"
+                      class=\\"icon pen fancy\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Annotation
                     </span>
                   </a>
                 </div>
@@ -26562,6 +27218,22 @@ exports[`Duplicate a response-prompt component 2`] = `
                       Prompt: Text Input
                     </span>
                   </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Annotation\\"
+                      class=\\"icon pen fancy\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Annotation
+                    </span>
+                  </a>
                 </div>
               </div>
             </div>
@@ -27156,6 +27828,22 @@ exports[`Edit a component 1`] = `
                       Prompt: Text Input
                     </span>
                   </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Annotation\\"
+                      class=\\"icon pen fancy\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Annotation
+                    </span>
+                  </a>
                 </div>
               </div>
             </div>
@@ -27457,6 +28145,22 @@ exports[`Missing props 1`] = `
                       class=\\"ser__component-name\\"
                     >
                       Prompt: Text Input
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Annotation\\"
+                      class=\\"icon pen fancy\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Annotation
                     </span>
                   </a>
                 </div>
@@ -28077,6 +28781,22 @@ exports[`Move a component down 1`] = `
                       Prompt: Text Input
                     </span>
                   </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Annotation\\"
+                      class=\\"icon pen fancy\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Annotation
+                    </span>
+                  </a>
                 </div>
               </div>
             </div>
@@ -28693,6 +29413,22 @@ exports[`Move a component down 2`] = `
                       class=\\"ser__component-name\\"
                     >
                       Prompt: Text Input
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Annotation\\"
+                      class=\\"icon pen fancy\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Annotation
                     </span>
                   </a>
                 </div>
@@ -29313,6 +30049,22 @@ exports[`Move a component down 3`] = `
                       Prompt: Text Input
                     </span>
                   </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Annotation\\"
+                      class=\\"icon pen fancy\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Annotation
+                    </span>
+                  </a>
                 </div>
               </div>
             </div>
@@ -29929,6 +30681,22 @@ exports[`Move a component up 1`] = `
                       class=\\"ser__component-name\\"
                     >
                       Prompt: Text Input
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Annotation\\"
+                      class=\\"icon pen fancy\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Annotation
                     </span>
                   </a>
                 </div>
@@ -30549,6 +31317,22 @@ exports[`Move a component up 2`] = `
                       Prompt: Text Input
                     </span>
                   </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Annotation\\"
+                      class=\\"icon pen fancy\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Annotation
+                    </span>
+                  </a>
                 </div>
               </div>
             </div>
@@ -31165,6 +31949,22 @@ exports[`Move a component up 3`] = `
                       class=\\"ser__component-name\\"
                     >
                       Prompt: Text Input
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Annotation\\"
+                      class=\\"icon pen fancy\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Annotation
                     </span>
                   </a>
                 </div>
@@ -32222,6 +33022,22 @@ exports[`Multiple personas 1`] = `
                       Prompt: Text Input
                     </span>
                   </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Annotation\\"
+                      class=\\"icon pen fancy\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Annotation
+                    </span>
+                  </a>
                 </div>
               </div>
             </div>
@@ -33275,6 +34091,22 @@ exports[`Multiple personas 2`] = `
                       class=\\"ser__component-name\\"
                     >
                       Prompt: Text Input
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Annotation\\"
+                      class=\\"icon pen fancy\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Annotation
                     </span>
                   </a>
                 </div>
@@ -34332,6 +35164,22 @@ exports[`Multiple personas, assign a persona to a component 1`] = `
                       Prompt: Text Input
                     </span>
                   </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Annotation\\"
+                      class=\\"icon pen fancy\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Annotation
+                    </span>
+                  </a>
                 </div>
               </div>
             </div>
@@ -35385,6 +36233,22 @@ exports[`Multiple personas, assign a persona to a component 2`] = `
                       class=\\"ser__component-name\\"
                     >
                       Prompt: Text Input
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Annotation\\"
+                      class=\\"icon pen fancy\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Annotation
                     </span>
                   </a>
                 </div>
@@ -36442,6 +37306,22 @@ exports[`Multiple personas, assign a persona to a component 3`] = `
                       Prompt: Text Input
                     </span>
                   </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Annotation\\"
+                      class=\\"icon pen fancy\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Annotation
+                    </span>
+                  </a>
                 </div>
               </div>
             </div>
@@ -37497,6 +38377,22 @@ exports[`Multiple personas, assign a persona to a component 4`] = `
                       Prompt: Text Input
                     </span>
                   </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Annotation\\"
+                      class=\\"icon pen fancy\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Annotation
+                    </span>
+                  </a>
                 </div>
               </div>
             </div>
@@ -38550,6 +39446,22 @@ exports[`Multiple personas, assign a persona to a component 5`] = `
                       class=\\"ser__component-name\\"
                     >
                       Prompt: Text Input
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Annotation\\"
+                      class=\\"icon pen fancy\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Annotation
                     </span>
                   </a>
                 </div>
@@ -39643,6 +40555,22 @@ exports[`Multiple personas, toggle chat off 1`] = `
                       class=\\"ser__component-name\\"
                     >
                       Prompt: Text Input
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Annotation\\"
+                      class=\\"icon pen fancy\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Annotation
                     </span>
                   </a>
                 </div>
@@ -40978,6 +41906,22 @@ exports[`Multiple personas, toggle chat off 2`] = `
                       Prompt: Text Input
                     </span>
                   </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Annotation\\"
+                      class=\\"icon pen fancy\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Annotation
+                    </span>
+                  </a>
                 </div>
               </div>
             </div>
@@ -42085,6 +43029,22 @@ exports[`Multiple personas, toggle chat off 3`] = `
                       Prompt: Text Input
                     </span>
                   </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Annotation\\"
+                      class=\\"icon pen fancy\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Annotation
+                    </span>
+                  </a>
                 </div>
               </div>
             </div>
@@ -43140,6 +44100,22 @@ exports[`Multiple personas, toggle chat on 1`] = `
                       Prompt: Text Input
                     </span>
                   </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Annotation\\"
+                      class=\\"icon pen fancy\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Annotation
+                    </span>
+                  </a>
                 </div>
               </div>
             </div>
@@ -44193,6 +45169,22 @@ exports[`Multiple personas, toggle chat on 2`] = `
                       class=\\"ser__component-name\\"
                     >
                       Prompt: Text Input
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Annotation\\"
+                      class=\\"icon pen fancy\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Annotation
                     </span>
                   </a>
                 </div>
@@ -45528,6 +46520,22 @@ exports[`Multiple personas, toggle chat on 3`] = `
                       Prompt: Text Input
                     </span>
                   </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Annotation\\"
+                      class=\\"icon pen fancy\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Annotation
+                    </span>
+                  </a>
                 </div>
               </div>
             </div>
@@ -46597,6 +47605,22 @@ exports[`Multiple personas, with an assigned component 1`] = `
                       Prompt: Text Input
                     </span>
                   </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Annotation\\"
+                      class=\\"icon pen fancy\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Annotation
+                    </span>
+                  </a>
                 </div>
               </div>
             </div>
@@ -47652,6 +48676,22 @@ exports[`Multiple personas, with an assigned component 2`] = `
                       Prompt: Text Input
                     </span>
                   </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Annotation\\"
+                      class=\\"icon pen fancy\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Annotation
+                    </span>
+                  </a>
                 </div>
               </div>
             </div>
@@ -47938,6 +48978,22 @@ exports[`No slide components 1`] = `
                       class=\\"ser__component-name\\"
                     >
                       Prompt: Text Input
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Annotation\\"
+                      class=\\"icon pen fancy\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Annotation
                     </span>
                   </a>
                 </div>
@@ -48558,6 +49614,22 @@ exports[`Preview 1`] = `
                       Prompt: Text Input
                     </span>
                   </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Annotation\\"
+                      class=\\"icon pen fancy\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Annotation
+                    </span>
+                  </a>
                 </div>
               </div>
             </div>
@@ -48869,6 +49941,22 @@ exports[`Preview 2`] = `
                       class=\\"ser__component-name\\"
                     >
                       Prompt: Text Input
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Annotation\\"
+                      class=\\"icon pen fancy\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Annotation
                     </span>
                   </a>
                 </div>
@@ -49489,6 +50577,22 @@ exports[`Preview 3`] = `
                       Prompt: Text Input
                     </span>
                   </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Annotation\\"
+                      class=\\"icon pen fancy\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Annotation
+                    </span>
+                  </a>
                 </div>
               </div>
             </div>
@@ -50105,6 +51209,22 @@ exports[`Save 1`] = `
                       Prompt: Text Input
                     </span>
                   </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Annotation\\"
+                      class=\\"icon pen fancy\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Annotation
+                    </span>
+                  </a>
                 </div>
               </div>
             </div>
@@ -50719,6 +51839,22 @@ exports[`Save 2`] = `
                       class=\\"ser__component-name\\"
                     >
                       Prompt: Text Input
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Annotation\\"
+                      class=\\"icon pen fancy\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Annotation
                     </span>
                   </a>
                 </div>
@@ -51351,6 +52487,22 @@ exports[`Save, onChange is missing 1`] = `
                       Prompt: Text Input
                     </span>
                   </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Annotation\\"
+                      class=\\"icon pen fancy\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Annotation
+                    </span>
+                  </a>
                 </div>
               </div>
             </div>
@@ -51965,6 +53117,22 @@ exports[`Save, onChange is missing 2`] = `
                       class=\\"ser__component-name\\"
                     >
                       Prompt: Text Input
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Annotation\\"
+                      class=\\"icon pen fancy\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Annotation
                     </span>
                   </a>
                 </div>
@@ -52597,6 +53765,22 @@ exports[`Single persona 1`] = `
                       Prompt: Text Input
                     </span>
                   </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Annotation\\"
+                      class=\\"icon pen fancy\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Annotation
+                    </span>
+                  </a>
                 </div>
               </div>
             </div>
@@ -53215,6 +54399,22 @@ exports[`Toggle required on a prompt-response component 1`] = `
                       Prompt: Text Input
                     </span>
                   </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Annotation\\"
+                      class=\\"icon pen fancy\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Annotation
+                    </span>
+                  </a>
                 </div>
               </div>
             </div>
@@ -53830,6 +55030,22 @@ exports[`Toggle required on a prompt-response component 2`] = `
                       class=\\"ser__component-name\\"
                     >
                       Prompt: Text Input
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Annotation\\"
+                      class=\\"icon pen fancy\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Annotation
                     </span>
                   </a>
                 </div>
@@ -54462,6 +55678,22 @@ exports[`Toggle required on a prompt-response component 4`] = `
                       class=\\"ser__component-name\\"
                     >
                       Prompt: Text Input
+                    </span>
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    role=\\"button\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Annotation\\"
+                      class=\\"icon pen fancy\\"
+                    />
+                    <span
+                      class=\\"ser__component-name\\"
+                    >
+                      Prompt: Annotation
                     </span>
                   </a>
                 </div>

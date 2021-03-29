@@ -15,6 +15,7 @@ import Scenario from '@components/Scenario';
 import { Button, Header, Icon, Modal, Title } from '@components/UI';
 import withSocket, {
   CHAT_USER_AWAITING_MATCH,
+  CHAT_USER_CANCELED_MATCH_REQUEST,
   CHAT_USER_MATCHED
 } from '@hoc/withSocket';
 import Identity from '@utils/Identity';
@@ -102,12 +103,18 @@ class JoinAs extends Component {
     if (!this.state.isReady) {
       return null;
     }
+    const { persona } = this.props;
 
     const onClose = () => {
-      console.log('return to scenarios or cohort');
+      const { cohort, persona, scenario, user } = this.props;
+      this.props.socket.emit(CHAT_USER_CANCELED_MATCH_REQUEST, {
+        cohort,
+        persona,
+        scenario,
+        user
+      });
+      this.props.history.push(`/cohort/${Identity.toHash(cohort.id)}`);
     };
-
-    const { persona } = this.props;
 
     const titleAndContent = `Please wait while we find an open ${persona.name} role for you`;
 
@@ -136,8 +143,8 @@ class JoinAs extends Component {
           </Modal.Content>
           <Modal.Actions style={{ borderTop: '0px' }}>
             <Button.Group fluid>
-              <Button disabled onClick={onClose}>
-                Cancel my request to join this scenario (not yet implemented)
+              <Button onClick={onClose}>
+                Cancel my request to join this scenario
               </Button>
             </Button.Group>
           </Modal.Actions>

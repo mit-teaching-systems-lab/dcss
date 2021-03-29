@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render 1 1 1`] = `
+<DocumentFragment>
+  <div
+    class="ui floating message"
+  >
+    <div
+      class="content"
+    >
+      <p>
+        Participant responses will appear here during scenario run.
+      </p>
+    </div>
+  </div>
+</DocumentFragment>
+`;

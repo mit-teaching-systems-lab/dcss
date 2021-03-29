@@ -1413,6 +1413,11 @@ exports[`Participant does not have an option to open scenarios selector 2`] = `
           Some Other Scenario
         </div>
         <div
+          class="meta"
+        >
+          Finished a year ago (03/31/2020).
+        </div>
+        <div
           class="description"
         >
           <p>
@@ -1518,11 +1523,6 @@ exports[`Participant does not have an option to open scenarios selector 2`] = `
               </div>
             </div>
           </div>
-        </div>
-        <div
-          class="meta"
-        >
-          Finished a year ago (03/31/2020).
         </div>
         <div
           class="meta"

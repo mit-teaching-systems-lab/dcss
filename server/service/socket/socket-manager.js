@@ -15,6 +15,7 @@ const {
   CHAT_MESSAGE_UPDATED,
   CHAT_STATE,
   CHAT_USER_AWAITING_MATCH,
+  CHAT_USER_CANCELED_MATCH_REQUEST,
   CHAT_USER_MATCHED,
   CREATE_CHAT_CHANNEL,
   CREATE_CHAT_SLIDE_CHANNEL,
@@ -544,6 +545,17 @@ class SocketManager {
             this.io.to(room).emit(CHAT_USER_MATCHED, chat);
           }
         }
+      });
+
+      socket.on(CHAT_USER_CANCELED_MATCH_REQUEST, async props => {
+        console.log(CHAT_USER_CANCELED_MATCH_REQUEST, props);
+        const { cohort, persona, scenario, user } = props;
+        await chatsdb.leaveChatPool(
+          cohort.id,
+          scenario.id,
+          persona.id,
+          user.id
+        );
       });
 
       socket.on(RUN_AGENT_START, async ({ run, user }) => {

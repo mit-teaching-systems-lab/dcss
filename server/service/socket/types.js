@@ -6,6 +6,7 @@ exports.AGENT_DEACTIVATE = 'agent-deactivate';
 exports.CHAT_AGENT_PAUSE = 'chat-agent-pause';
 exports.CHAT_AGENT_START = 'chat-agent-start';
 exports.CHAT_USER_AWAITING_MATCH = 'chat-user-awaiting-match';
+exports.CHAT_USER_CANCELED_MATCH_REQUEST = 'chat-user-canceled-match-request';
 exports.AWAITING_AGENT = 'awaiting-agent';
 exports.CREATE_CHAT_CHANNEL = 'create-chat-channel';
 exports.CREATE_CHAT_SLIDE_CHANNEL = 'create-chat-slide-channel';

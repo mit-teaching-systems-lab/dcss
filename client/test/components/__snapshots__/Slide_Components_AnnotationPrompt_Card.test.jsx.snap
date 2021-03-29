@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render 1 1 1`] = `
+<DocumentFragment>
+  <i
+    aria-label="Prompt: Annotation"
+    class="icon pen fancy"
+  />
+  <span
+    class="ser__component-name"
+  >
+    Prompt: Annotation
+  </span>
+</DocumentFragment>
+`;

@@ -212,10 +212,8 @@ export class CohortScenarios extends React.Component {
                 runs.find(run => run.scenario_id === scenario.id) || {};
 
               const storageKey = `cohort/${cohort.id}/run/${scenario.id}`;
-
               const progress = Storage.get(storageKey);
               const slideIndex = progress ? progress.activeRunSlideIndex : 0;
-
               const hashCohortId = Identity.toHash(cohort.id);
               const hashScenarioId = Identity.toHash(scenario.id);
               const hashChatId = run.chat_id
@@ -352,9 +350,11 @@ export class CohortScenarios extends React.Component {
                 runStartedMaybeFinished = `Finished ${endedAtDisplay}.`;
               }
 
-              const gotoMyRoomButtonSize = existingChat
-                ? ''
-                : 'mini';
+              const gotoMyRoomButtonSize = existingChat ? '' : 'mini';
+
+              const existingRun = run.created_at && !run.ended_at;
+              const canShowJoinAsButtons =
+                isMultiParticipantScenario && !existingChat && !existingRun;
 
               return (
                 <Card
@@ -370,11 +370,14 @@ export class CohortScenarios extends React.Component {
                       />
                       {scenario.title}
                     </Card.Header>
+                    {!isFacilitator ? (
+                      <Card.Meta>{runStartedMaybeFinished}</Card.Meta>
+                    ) : null}
                     <Card.Description>
                       <Text.Truncate lines={2}>
                         {scenario.description}
                       </Text.Truncate>
-                      {isMultiParticipantScenario && !existingChat ? (
+                      {canShowJoinAsButtons ? (
                         <Fragment>
                           <Text>
                             This is a multi-participant scenario, with{' '}
@@ -405,9 +408,6 @@ export class CohortScenarios extends React.Component {
                         </Fragment>
                       ) : null}
                     </Card.Description>
-                    {!isFacilitator ? (
-                      <Card.Meta>{runStartedMaybeFinished}</Card.Meta>
-                    ) : null}
                     <Card.Meta>
                       <Button
                         compact

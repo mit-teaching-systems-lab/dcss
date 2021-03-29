@@ -310,6 +310,7 @@ exports.joinOrCreateChatFromPool = async (
         SELECT persona_id
         FROM chat_user
         WHERE chat_id = chat.id
+        AND ended_at IS NULL
         AND persona_id IS NOT NULL
       )
       AND persona.id = ${persona_id}
@@ -363,6 +364,48 @@ exports.joinOrCreateChatFromPool = async (
   const isCompleteRoster = await this.checkRoster(chat.id, scenario_id);
 
   return isCompleteRoster ? chat : null;
+};
+
+exports.leaveChatPool = async (cohort_id, scenario_id, persona_id, user_id) => {
+  // Check if this user is actually already a HOST
+  //    in a chat that matches the requirements of this request
+  let result = await query(`
+    SELECT chat.*
+    FROM chat
+    JOIN chat_user cu ON cu.chat_id = chat.id
+    WHERE chat.ended_at IS NULL
+    AND chat.host_id = ${user_id}
+    AND cu.persona_id = ${persona_id}
+    AND chat.scenario_id = ${scenario_id}
+    ${cohort_id ? `AND chat.cohort_id = ${cohort_id}` : ''}
+    ORDER BY chat.id ASC
+    LIMIT 1
+  `);
+
+  if (result.rowCount) {
+    const chat_id = result.rows[0].id;
+
+    await query(`
+      UPDATE chat
+      SET
+        deleted_at = NOW(),
+        ended_at = NOW()
+      WHERE id = ${chat_id}
+    `);
+
+    await query(`
+      UPDATE chat_user
+      SET
+        is_present = FALSE,
+        ended_at = NOW()
+      WHERE chat_id = ${chat_id}
+      AND user_id = ${user_id};
+    `);
+
+    return true;
+  }
+
+  return false;
 };
 
 exports.joinChat = async (chat_id, user_id, persona_id = null) => {

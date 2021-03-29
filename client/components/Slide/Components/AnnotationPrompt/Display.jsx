@@ -1,16 +1,21 @@
 import { type } from './meta';
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { Button, Card, Header, Message, Pagination, Segment } from '@components/UI';
+import {
+  Button,
+  Card,
+  Header,
+  Message,
+  Pagination,
+  Segment
+} from '@components/UI';
 import PromptRequiredLabel from '../PromptRequiredLabel';
 import Username from '@components/User/Username';
 import Transcript from '../AudioPrompt/Transcript';
 import { connect } from 'react-redux';
 import { getChatUsersSharedResponses } from '@actions/chat';
 import { getResponse } from '@actions/response';
-import {
-  ANSWER_ANNOTATION
-} from '@hoc/withRunEventCapturing';
+import { ANSWER_ANNOTATION } from '@hoc/withRunEventCapturing';
 import '../AudioPrompt/AudioPrompt.css';
 import Identity from '@utils/Identity';
 import Payload from '@utils/Payload';
@@ -102,15 +107,8 @@ class Display extends Component {
     });
   }
 
-  onClick(
-    event,
-    { isFulfilled, component, name, value, response }
-  ) {
-    const {
-      question,
-      responseId,
-      run
-    } = this.props;
+  onClick(event, { isFulfilled, component, name, value, response }) {
+    const { question, responseId, run } = this.props;
     const { created_at } = this;
     const ended_at = new Date().toISOString();
     let responses = this.state.responses.slice();
@@ -205,7 +203,7 @@ class Display extends Component {
       return null;
     }
 
-    const missingAnnotation = responses.find((response) => {
+    const missingAnnotation = responses.find(response => {
       if (!entries[response.response_id]) {
         return response;
       }
@@ -221,18 +219,21 @@ class Display extends Component {
       </Header>
     );
 
-    const slideAndComponentAssociatedWithPrompt = slides.reduce((accum, slide) => {
-      const component = slide.components.find(
-        ({ responseId }) => responseId === responseToAnnotate.response_id
-      );
-      if (component) {
-        return {
-          slide,
-          component
-        };
-      }
-      return accum;
-    }, undefined);
+    const slideAndComponentAssociatedWithPrompt = slides.reduce(
+      (accum, slide) => {
+        const component = slide.components.find(
+          ({ responseId }) => responseId === responseToAnnotate.response_id
+        );
+        if (component) {
+          return {
+            slide,
+            component
+          };
+        }
+        return accum;
+      },
+      undefined
+    );
 
     const existing = entries[responseToAnnotate.response_id];
 
@@ -245,12 +246,13 @@ class Display extends Component {
 
     const yesButton = {
       ...sharedButtonProps,
-      icon: existing && existing.annotation.value === 'Yes' ? 'checkmark' : null,
+      icon:
+        existing && existing.annotation.value === 'Yes' ? 'checkmark' : null,
       style: {
         background: 'rgb(115, 181, 128)'
       },
       value: 'Yes',
-      content: 'Yes',
+      content: 'Yes'
     };
 
     const noButton = {
@@ -261,23 +263,24 @@ class Display extends Component {
         color: '#fff'
       },
       value: 'No',
-      content: 'No',
+      content: 'No'
     };
 
     return responseToAnnotate ? (
       <Fragment>
-        <Segment
-          attached="top"
-          className="ap__border-bottom-zero"
-        >
+        <Segment attached="top" className="ap__border-bottom-zero">
           {header}
           <Card fluid>
             <Card.Content>
-              <Card.Header>{slideAndComponentAssociatedWithPrompt.component.prompt}</Card.Header>
-              <Card.Meta>(From slide #{slideAndComponentAssociatedWithPrompt.slide.slide_number})</Card.Meta>
+              <Card.Header>
+                {slideAndComponentAssociatedWithPrompt.component.prompt}
+              </Card.Header>
+              <Card.Meta>
+                (From slide #
+                {slideAndComponentAssociatedWithPrompt.slide.slide_number})
+              </Card.Meta>
               <Card.Description>
                 You answered:
-
                 <p>
                   <strong>
                     {responseToAnnotate.response.transcript ||
@@ -295,8 +298,6 @@ class Display extends Component {
               </Button.Group>
             </Card.Content>
           </Card>
-
-
         </Segment>
         <Pagination
           borderless
