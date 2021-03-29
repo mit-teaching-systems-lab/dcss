@@ -5,6 +5,11 @@ VALUES
 (
   'answer-annotation',
   '{participant} answered an annotation question.'
+),
+-- Placeholder --
+(
+  'event-name',
+  'The description field will be used to store prose that illustrates how and when the event will occur.'
 );
 
 -- Up above
