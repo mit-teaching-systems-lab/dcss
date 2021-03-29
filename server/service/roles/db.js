@@ -72,6 +72,23 @@ exports.addUserRoles = async (user_id, roles) => {
       VALUES (${user_id}, ${role})
       ON CONFLICT DO NOTHING;
     `);
+
+    // cascade newly granted researcher roles down to
+    // cohorts that the user owns.
+    if (role === 'researcher') {
+      await client.query(sql`
+        WITH cs AS (
+          SELECT cohort_id
+          FROM cohort_user_role cur
+          WHERE cur.role = 'owner'
+          AND cur.user_id = ${user_id}
+        )
+        INSERT INTO cohort_user_role (cohort_id, user_id, role)
+        SELECT cohort_id, ${user_id} AS user_id, 'researcher' AS role
+        FROM cs
+        ON CONFLICT DO NOTHING;
+      `);
+    }
     return { addedCount: result.rowCount };
   });
 };

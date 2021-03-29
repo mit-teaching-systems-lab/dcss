@@ -3,7 +3,8 @@ const { query, withClientTransaction } = require('../../util/db');
 // const rolesDb = require('../roles/db');
 const chatsdb = require('../chats/db');
 const scenariosdb = require('../scenarios/db');
-const runDb = require('../runs/db');
+const rolesdb = require('../roles/db');
+const runsdb = require('../runs/db');
 
 async function getCohortScenariosIdList(id) {
   const result = await query(sql`
@@ -46,6 +47,8 @@ async function createCohort(name, user_id) {
     );
   }
 
+  const { roles } = await rolesdb.getUserRoles(user_id);
+
   return await withClientTransaction(async client => {
     // create a cohort
     const create = await client.query(sql`
@@ -55,9 +58,18 @@ async function createCohort(name, user_id) {
     // assign user as owner
     await client.query(sql`
       INSERT INTO cohort_user_role (cohort_id, user_id, role)
-      VALUES (${cohort.id}, ${user_id}, 'owner'),
-      (${cohort.id}, ${user_id}, 'facilitator')
+      VALUES
+        (${cohort.id}, ${user_id}, 'owner'),
+        (${cohort.id}, ${user_id}, 'facilitator')
     `);
+
+    if (roles.includes('researcher')) {
+      await client.query(sql`
+        INSERT INTO cohort_user_role (cohort_id, user_id, role)
+        VALUES (${cohort.id}, ${user_id}, 'researcher')
+      `);
+    }
+
     return cohort;
   });
 }
@@ -132,7 +144,7 @@ async function getCohortScenariosRunEvents(id) {
 }
 
 async function getCohortProgress(id) {
-  const eventTypesByName = await runDb.getRunEventTypesByName();
+  const eventTypesByName = await runsdb.getRunEventTypesByName();
   const scenariosCompleted = await getCohortScenariosCompleted(id);
   const scenariosRunEvents = await getCohortScenariosRunEvents(id);
 
@@ -179,7 +191,7 @@ async function getCohortProgress(id) {
   };
 }
 
-async function getCohortUsers(id) {
+async function getCohortUsers(id, options = {}) {
   // const result = await client.query(sql`
   //   SELECT *
   //   FROM users
@@ -199,7 +211,13 @@ async function getCohortUsers(id) {
   //   WHERE array_length(lat.roles, 1) > 0;
   // `);
 
-  const { completedByUserId, eventsByUserId } = await getCohortProgress(id);
+  const {
+    includeRuns = false,
+    includeScenarios = true,
+    includeUsers = true,
+    includeProgress = true
+  } = options;
+
   const result = await query(sql`
     SELECT
       id,
@@ -217,6 +235,10 @@ async function getCohortUsers(id) {
     ) cur
     ON user_role_detail.id = cur.user_id;
   `);
+
+  const { completedByUserId, eventsByUserId } = includeProgress
+    ? (await getCohortProgress(id))
+    : { completedByUserId: {}, eventsByUserId: {} };
   const usersById = result.rows.reduce((accum, user) => {
     const completed = completedByUserId[user.id] || [];
     const latestByScenarioId = eventsByUserId[user.id] || {};
@@ -236,10 +258,24 @@ async function getCohortUsers(id) {
   };
 }
 
-async function __getAggregatedCohort(cohort) {
-  const runs = await getCohortRuns(cohort.id);
-  const scenarios = await getCohortScenariosIdList(cohort.id);
-  const cohortUsers = await getCohortUsers(cohort.id);
+async function __getAggregatedCohort(cohort, options = {}) {
+
+  const {
+    includeRuns = false,
+    includeScenarios = true,
+    includeUsers = true,
+    includeProgress = true
+  } = options;
+
+  const runs = includeRuns
+    ? (await getCohortRuns(cohort.id))
+    : [];
+  const scenarios = includeScenarios
+    ? (await getCohortScenariosIdList(cohort.id))
+    : [];
+  const cohortUsers = includeUsers
+    ? (await getCohortUsers(cohort.id, options))
+    : [];
   let chat;
 
   if (!cohort.chat_id) {
@@ -290,7 +326,12 @@ async function getCohort(id) {
     ) cur
     ON cohort.id = cur.cohort_id;
   `);
-  return result.rowCount ? __getAggregatedCohort(result.rows[0]) : {};
+  const options = {
+    includeRuns: true,
+    includeScenarios: true,
+    includeUsers: true
+  };
+  return result.rowCount ? __getAggregatedCohort(result.rows[0], options) : {};
 }
 //
 //
@@ -393,19 +434,31 @@ async function __getCohorts(user, direction = 'DESC', offset, limit) {
 }
 
 async function getCohorts(user) {
+  const options = {
+    includeRuns: false,
+    includeScenarios: true,
+    includeUsers: true,
+    includeProgress: false
+  };
   const records = await __getCohorts(user);
   const cohorts = [];
   for (const record of records) {
-    cohorts.push(await __getAggregatedCohort(record));
+    cohorts.push(await __getAggregatedCohort(record, options));
   }
   return cohorts;
 }
 
 async function getCohortsSlice(user, direction, offset, limit) {
+  const options = {
+    includeRuns: false,
+    includeScenarios: true,
+    includeUsers: true,
+    includeProgress: false
+  };
   const records = await __getCohorts(user, direction, offset, limit);
   const cohorts = [];
   for (const record of records) {
-    cohorts.push(await __getAggregatedCohort(record));
+    cohorts.push(await __getAggregatedCohort(record, options));
   }
   return cohorts;
 }
