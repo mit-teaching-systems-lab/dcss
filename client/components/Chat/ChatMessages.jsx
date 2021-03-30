@@ -566,20 +566,20 @@ class ChatMessages extends Component {
                 </Comment.Group>
               </Ref>
             ) : null}
-            {typing ? (
-              <Comment
-                className="cmm__comment cmm__content-typing"
-                data-testid="comment-typing"
-              >
-                <Comment.Content className="cmm__content">
-                  <Comment.Text>
-                    <em>{<Username user={typing} />} is typing...</em>
-                  </Comment.Text>
-                </Comment.Content>
-              </Comment>
-            ) : null}
           </div>
         </ResizeDetector>
+        {typing ? (
+          <Comment
+            className="cmm__comment cmm__content-typing"
+            data-testid="comment-typing"
+          >
+            <Comment.Content className="cmm__content">
+              <Comment.Text>
+                <em>{<Username user={typing} />} is typing...</em>
+              </Comment.Text>
+            </Comment.Content>
+          </Comment>
+        ) : null}
         {!this.state.isViewingNewest && hasNewMessages ? (
           <div className="cm__new-message">
             <Button
