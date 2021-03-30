@@ -389,6 +389,9 @@ class Display extends Component {
 
     const onMarkCompleteClose = () => {
       this.setState({
+        value: {
+          result: null
+        },
         markComplete: {
           isOpen: false,
           result: null
