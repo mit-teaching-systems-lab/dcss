@@ -38,12 +38,8 @@ const slideContainsOnlyNonRequiredChatPrompt = components => {
   let returnValue = false;
 
   for (const component of components) {
-    if (component.type !== 'ChatPrompt') {
-      return false;
-    } else {
-      if (!component.required && !component.auto) {
-        returnValue = true;
-      }
+    if (component.type === 'ChatPrompt' && !component.required && !component.auto) {
+      returnValue = true;
     }
   }
 
