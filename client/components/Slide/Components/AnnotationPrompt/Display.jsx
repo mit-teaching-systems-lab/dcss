@@ -146,7 +146,7 @@ class Display extends Component {
 
     Storage.set(`run/${run.id}/${responseId}`, data);
 
-    const nextActivePage = activePage;
+    let nextActivePage = activePage;
 
     const missingAnnotation = responses.find((response, index) => {
       if (!entries[response.response_id]) {
