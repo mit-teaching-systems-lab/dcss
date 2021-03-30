@@ -38,7 +38,7 @@ const slideContainsOnlyNonRequiredChatPrompt = components => {
   let returnValue = false;
 
   for (const component of components) {
-    if (component.type === 'ChatPrompt' && !component.required && !component.auto) {
+    if (component.type === 'ChatPrompt' && !component.required) {
       returnValue = true;
     } else {
       // If there are any other prompts, then return false
@@ -346,6 +346,11 @@ class ContentSlide extends React.Component {
         skipOrKeep === 'skip' ? 'Skip and finish' : 'Keep and finish';
       skipButtonTip = 'Skip these prompts and finish';
       fwdButtonTip = 'Finish';
+      if (slideContainsOnlyNonRequiredChatPrompt(slide.components)) {
+        skipButtonColor = 'green';
+        skipButtonContent = 'Finish';
+        skipButtonTip = 'Finish';
+      }
     } else {
       if (slideContainsOnlyNonRequiredChatPrompt(slide.components)) {
         skipButtonColor = 'green';
