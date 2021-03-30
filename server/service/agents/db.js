@@ -151,16 +151,31 @@ async function getAgent(id) {
 }
 
 async function getAgentResponses(agent_id, run_id, recipient_id) {
+  // SELECT *
+  // FROM (
+  //   SELECT DISTINCT ON (recipient_id, prompt_response_id) *
+  //   FROM agent_response
+  // ) AS s
+  // WHERE agent_id = ${agent_id}
+  // AND run_id = ${run_id}
+  // AND recipient_id = ${recipient_id}
+  // ORDER BY created_at DESC;
   const result = await query(sql`
-    SELECT * FROM (
-      SELECT DISTINCT ON (recipient_id, prompt_response_id) * FROM agent_response
-    ) AS s
-    WHERE agent_id = ${agent_id}
-    AND run_id = ${run_id}
-    AND recipient_id = ${recipient_id}
-    ORDER BY created_at DESC;
+    SELECT *
+    FROM agent_response
+    WHERE agent_id = 32
+    AND run_id = 813
+    AND recipient_id = 2
+    ORDER BY created_at ASC;
   `);
-  return result.rows;
+
+  const responses = {};
+
+  for (let row of result.rows) {
+    responses[row.prompt_response_id] = row;
+  }
+
+  return Object.values(responses);
 }
 
 async function insertNewAgentResponse(

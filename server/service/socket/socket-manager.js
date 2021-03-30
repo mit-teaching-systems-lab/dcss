@@ -402,8 +402,7 @@ class SocketManager {
       if (!notifier.listenerCount('agent_response_created')) {
         notifier.on('agent_response_created', async data => {
           console.log('agent_response_created', data);
-          const room = `${data.run_id}-${data.user_id}-${data.response_id}`;
-          this.io.to(room).emit(AGENT_RESPONSE_CREATED, data);
+          this.io.to(data.recipient_id).emit(AGENT_RESPONSE_CREATED, data);
         });
       }
 
