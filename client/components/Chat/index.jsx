@@ -501,7 +501,7 @@ class Chat extends Component {
 
     const style = {
       // 64px is the width of the avatar and padding combined
-      width: `${dimensions.width - 64}px`
+      width: `${dimensions.width - 34}px`
     };
 
     // ChatMessage props
@@ -568,6 +568,7 @@ class Chat extends Component {
       ? `${defaultDraggableClassName} cpd__drag-handle`
       : defaultDraggableClassName;
 
+// max-width: 426px;
     return isMinimized ? (
       minMaxButton
     ) : (
@@ -581,7 +582,7 @@ class Chat extends Component {
             <div className="cm__container-outer">
               <ChatMessages {...cmProps} />
             </div>
-            <div className="cc__container-outer">
+            <div className="cc__container-outer" style={{maxWidth: style.width}}>
               <ChatComposer {...ccProps} />
             </div>
           </div>
