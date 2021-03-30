@@ -781,8 +781,8 @@ class SocketManager {
         chatsdb.partChat(chat.id, user.id);
       });
 
-      socket.on(CHAT_MESSAGE_CREATED, ({ chat, user, content, response }) => {
-        chatsdb.createNewChatMessage(chat.id, user.id, content, response.id);
+      socket.on(CHAT_MESSAGE_CREATED, ({ chat, user, content, prompt }) => {
+        chatsdb.createNewChatMessage(chat.id, user.id, content, prompt.id);
       });
 
       socket.on(CHAT_CLOSED_FOR_SLIDE, ({ chat, user, slide, result }) => {
