@@ -40,6 +40,11 @@ const slideContainsOnlyNonRequiredChatPrompt = components => {
   for (const component of components) {
     if (component.type === 'ChatPrompt' && !component.required && !component.auto) {
       returnValue = true;
+    } else {
+      // If there are any other prompts, then return false
+      if (component.responseId) {
+        return false;
+      }
     }
   }
 
