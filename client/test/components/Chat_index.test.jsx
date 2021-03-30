@@ -2736,6 +2736,11 @@ test('Rnd: onDragStop/onResizeStop', async done => {
               </div>
               <div
                 className="cc__container-outer"
+                style={
+                  Object {
+                    "maxWidth": "422px",
+                  }
+                }
               >
                 <ChatComposer
                   defaultValue="<p>credible-lyrebird wrote:<blockquote><p>Hi!</p></blockquote></p>"
@@ -3115,6 +3120,11 @@ test('Rnd: onDrag/onResize', async done => {
               </div>
               <div
                 className="cc__container-outer"
+                style={
+                  Object {
+                    "maxWidth": "422px",
+                  }
+                }
               >
                 <ChatComposer
                   defaultValue="<p>credible-lyrebird wrote:<blockquote><p>Hi!</p></blockquote></p>"

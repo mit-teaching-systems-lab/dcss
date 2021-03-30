@@ -43,6 +43,7 @@ exports[`Calls onChange when RTE is cleared 1`] = `
           />
           <div
             class=\\"cc__container-outer\\"
+            style=\\"max-width: 422px;\\"
           >
             <div>
               <textarea
@@ -358,6 +359,7 @@ exports[`Calls onChange when RTE is cleared 2`] = `
           </div>
           <div
             class=\\"cc__container-outer\\"
+            style=\\"max-width: 422px;\\"
           >
             <div>
               <textarea
@@ -468,6 +470,7 @@ exports[`Calls onInput when RTE receives new content 1`] = `
           />
           <div
             class=\\"cc__container-outer\\"
+            style=\\"max-width: 422px;\\"
           >
             <div>
               <textarea
@@ -783,6 +786,7 @@ exports[`Calls onInput when RTE receives new content 4`] = `
           </div>
           <div
             class=\\"cc__container-outer\\"
+            style=\\"max-width: 422px;\\"
           >
             <div>
               <textarea
@@ -874,6 +878,7 @@ exports[`Calls onKeyDown, responds when key is {enter} 1`] = `
           />
           <div
             class=\\"cc__container-outer\\"
+            style=\\"max-width: 422px;\\"
           >
             <div>
               <textarea
@@ -1189,6 +1194,7 @@ exports[`Calls onKeyDown, responds when key is {enter} 4`] = `
           </div>
           <div
             class=\\"cc__container-outer\\"
+            style=\\"max-width: 422px;\\"
           >
             <div>
               <textarea
@@ -1318,6 +1324,7 @@ exports[`Click to Minimize and Maximize 1`] = `
           />
           <div
             class=\\"cc__container-outer\\"
+            style=\\"max-width: 422px;\\"
           >
             <div>
               <textarea
@@ -1468,6 +1475,7 @@ exports[`Empty, many {shift}{enter}, attempts to send, does not submit 1`] = `
           />
           <div
             class=\\"cc__container-outer\\"
+            style=\\"max-width: 422px;\\"
           >
             <div>
               <textarea
@@ -1783,6 +1791,7 @@ exports[`Empty, many {shift}{enter}, attempts to send, does not submit 2`] = `
           </div>
           <div
             class=\\"cc__container-outer\\"
+            style=\\"max-width: 422px;\\"
           >
             <div>
               <textarea
@@ -2098,6 +2107,7 @@ exports[`Layout on desktop 1`] = `
           </div>
           <div
             class=\\"cc__container-outer\\"
+            style=\\"max-width: 422px;\\"
           >
             <div>
               <textarea
@@ -2413,6 +2423,7 @@ exports[`Layout on mobile 1`] = `
           </div>
           <div
             class=\\"cc__container-outer\\"
+            style=\\"max-width: 422px;\\"
           >
             <div>
               <textarea
@@ -2720,6 +2731,7 @@ exports[`Provided header 1`] = `
           </div>
           <div
             class=\\"cc__container-outer\\"
+            style=\\"max-width: 422px;\\"
           >
             <div>
               <textarea
@@ -2802,6 +2814,7 @@ exports[`Receives new message, minimized, mobile 1`] = `
           />
           <div
             class=\\"cc__container-outer\\"
+            style=\\"max-width: 422px;\\"
           >
             <div>
               <textarea
@@ -3304,6 +3317,7 @@ exports[`Receives new message, minimized, mobile 3`] = `
           </div>
           <div
             class=\\"cc__container-outer\\"
+            style=\\"max-width: 422px;\\"
           >
             <div>
               <textarea
@@ -3454,6 +3468,7 @@ exports[`Receives new message, minimized, not mobile 1`] = `
           />
           <div
             class=\\"cc__container-outer\\"
+            style=\\"max-width: 422px;\\"
           >
             <div>
               <textarea
@@ -3981,6 +3996,7 @@ exports[`Receives new message, minimized, not mobile 3`] = `
           </div>
           <div
             class=\\"cc__container-outer\\"
+            style=\\"max-width: 422px;\\"
           >
             <div>
               <textarea
@@ -4131,6 +4147,7 @@ exports[`Receives new message, not minimized 1`] = `
           />
           <div
             class=\\"cc__container-outer\\"
+            style=\\"max-width: 422px;\\"
           >
             <div>
               <textarea
@@ -4658,6 +4675,7 @@ exports[`Receives new message, not minimized 3`] = `
           </div>
           <div
             class=\\"cc__container-outer\\"
+            style=\\"max-width: 422px;\\"
           >
             <div>
               <textarea
@@ -5259,6 +5277,7 @@ exports[`Receives new message, not minimized 4`] = `
           </div>
           <div
             class=\\"cc__container-outer\\"
+            style=\\"max-width: 422px;\\"
           >
             <div>
               <textarea
@@ -5574,6 +5593,7 @@ exports[`Rnd: onDrag/onResize 1`] = `
           </div>
           <div
             class=\\"cc__container-outer\\"
+            style=\\"max-width: 422px;\\"
           >
             <div>
               <textarea
@@ -5889,6 +5909,7 @@ exports[`Rnd: onDragStop/onResizeStop 1`] = `
           </div>
           <div
             class=\\"cc__container-outer\\"
+            style=\\"max-width: 422px;\\"
           >
             <div>
               <textarea
@@ -5971,6 +5992,7 @@ exports[`Types, clicks Send Message 1`] = `
           />
           <div
             class=\\"cc__container-outer\\"
+            style=\\"max-width: 422px;\\"
           >
             <div>
               <textarea
@@ -6286,6 +6308,7 @@ exports[`Types, clicks Send Message 4`] = `
           </div>
           <div
             class=\\"cc__container-outer\\"
+            style=\\"max-width: 422px;\\"
           >
             <div>
               <textarea
@@ -6368,6 +6391,7 @@ exports[`Types, followed by {enter} 1`] = `
           />
           <div
             class=\\"cc__container-outer\\"
+            style=\\"max-width: 422px;\\"
           >
             <div>
               <textarea
@@ -6683,6 +6707,7 @@ exports[`Types, followed by {enter} 4`] = `
           </div>
           <div
             class=\\"cc__container-outer\\"
+            style=\\"max-width: 422px;\\"
           >
             <div>
               <textarea
@@ -6765,6 +6790,7 @@ exports[`Types, followed by {shift}{enter}, attempts to send, does submit 1`] = 
           />
           <div
             class=\\"cc__container-outer\\"
+            style=\\"max-width: 422px;\\"
           >
             <div>
               <textarea
@@ -7085,6 +7111,7 @@ exports[`Types, followed by {shift}{enter}, attempts to send, does submit 3`] = 
           </div>
           <div
             class=\\"cc__container-outer\\"
+            style=\\"max-width: 422px;\\"
           >
             <div>
               <textarea
@@ -7172,6 +7199,7 @@ exports[`Types, followed by {shift}{enter}, does not submit 1`] = `
           />
           <div
             class=\\"cc__container-outer\\"
+            style=\\"max-width: 422px;\\"
           >
             <div>
               <textarea
@@ -7487,6 +7515,7 @@ exports[`Types, followed by {shift}{enter}, does not submit 4`] = `
           </div>
           <div
             class=\\"cc__container-outer\\"
+            style=\\"max-width: 422px;\\"
           >
             <div>
               <textarea
@@ -7569,6 +7598,7 @@ exports[`Types, then attempts to send empty string 1`] = `
           />
           <div
             class=\\"cc__container-outer\\"
+            style=\\"max-width: 422px;\\"
           >
             <div>
               <textarea
@@ -7882,6 +7912,7 @@ exports[`Types, then attempts to send empty string 2`] = `
           </div>
           <div
             class=\\"cc__container-outer\\"
+            style=\\"max-width: 422px;\\"
           >
             <div>
               <textarea
@@ -7962,6 +7993,7 @@ exports[`Types, then attempts to send string containing only a space character 1
           />
           <div
             class=\\"cc__container-outer\\"
+            style=\\"max-width: 422px;\\"
           >
             <div>
               <textarea
@@ -8275,6 +8307,7 @@ exports[`Types, then attempts to send string containing only a space character 2
           </div>
           <div
             class=\\"cc__container-outer\\"
+            style=\\"max-width: 422px;\\"
           >
             <div>
               <textarea
@@ -8355,6 +8388,7 @@ exports[`componentDidMount Adds CHAT_ENDED handler (chat in props) 1`] = `
           />
           <div
             class=\\"cc__container-outer\\"
+            style=\\"max-width: 422px;\\"
           >
             <div>
               <textarea
@@ -8670,6 +8704,7 @@ exports[`componentDidMount Adds CHAT_ENDED handler (chat in props) 3`] = `
           </div>
           <div
             class=\\"cc__container-outer\\"
+            style=\\"max-width: 422px;\\"
           >
             <div>
               <textarea
@@ -8752,6 +8787,7 @@ exports[`componentDidMount Adds CHAT_ENDED handler (chat in state) 1`] = `
           />
           <div
             class=\\"cc__container-outer\\"
+            style=\\"max-width: 422px;\\"
           >
             <div>
               <textarea
@@ -9067,6 +9103,7 @@ exports[`componentDidMount Adds CHAT_ENDED handler (chat in state) 3`] = `
           </div>
           <div
             class=\\"cc__container-outer\\"
+            style=\\"max-width: 422px;\\"
           >
             <div>
               <textarea
@@ -9149,6 +9186,7 @@ exports[`componentDidMount Adds JOIN_OR_PART handler (chat in props) 1`] = `
           />
           <div
             class=\\"cc__container-outer\\"
+            style=\\"max-width: 422px;\\"
           >
             <div>
               <textarea
@@ -9464,6 +9502,7 @@ exports[`componentDidMount Adds JOIN_OR_PART handler (chat in props) 3`] = `
           </div>
           <div
             class=\\"cc__container-outer\\"
+            style=\\"max-width: 422px;\\"
           >
             <div>
               <textarea
@@ -9546,6 +9585,7 @@ exports[`componentDidMount Adds JOIN_OR_PART handler (chat in state) 1`] = `
           />
           <div
             class=\\"cc__container-outer\\"
+            style=\\"max-width: 422px;\\"
           >
             <div>
               <textarea
@@ -9861,6 +9901,7 @@ exports[`componentDidMount Adds JOIN_OR_PART handler (chat in state) 3`] = `
           </div>
           <div
             class=\\"cc__container-outer\\"
+            style=\\"max-width: 422px;\\"
           >
             <div>
               <textarea
@@ -9943,6 +9984,7 @@ exports[`componentDidMount Adds onbeforeunload handler (chat in props) 1`] = `
           />
           <div
             class=\\"cc__container-outer\\"
+            style=\\"max-width: 422px;\\"
           >
             <div>
               <textarea
@@ -10258,6 +10300,7 @@ exports[`componentDidMount Adds onbeforeunload handler (chat in props) 2`] = `
           </div>
           <div
             class=\\"cc__container-outer\\"
+            style=\\"max-width: 422px;\\"
           >
             <div>
               <textarea
@@ -10340,6 +10383,7 @@ exports[`componentDidMount Adds onbeforeunload handler (chat in state) 1`] = `
           />
           <div
             class=\\"cc__container-outer\\"
+            style=\\"max-width: 422px;\\"
           >
             <div>
               <textarea
@@ -10655,6 +10699,7 @@ exports[`componentDidMount Adds onbeforeunload handler (chat in state) 2`] = `
           </div>
           <div
             class=\\"cc__container-outer\\"
+            style=\\"max-width: 422px;\\"
           >
             <div>
               <textarea
@@ -10970,6 +11015,7 @@ exports[`componentDidMount Emits CREATE_CHAT_CHANNEL on socket (chat in props) 1
           </div>
           <div
             class=\\"cc__container-outer\\"
+            style=\\"max-width: 422px;\\"
           >
             <div>
               <textarea
@@ -11285,6 +11331,7 @@ exports[`componentDidMount Emits CREATE_CHAT_CHANNEL on socket (chat in props) 3
           </div>
           <div
             class=\\"cc__container-outer\\"
+            style=\\"max-width: 422px;\\"
           >
             <div>
               <textarea
@@ -11600,6 +11647,7 @@ exports[`componentDidMount Emits CREATE_CHAT_CHANNEL on socket (chat in state) 1
           </div>
           <div
             class=\\"cc__container-outer\\"
+            style=\\"max-width: 422px;\\"
           >
             <div>
               <textarea
@@ -11915,6 +11963,7 @@ exports[`componentDidMount Emits CREATE_CHAT_CHANNEL on socket (chat in state) 3
           </div>
           <div
             class=\\"cc__container-outer\\"
+            style=\\"max-width: 422px;\\"
           >
             <div>
               <textarea
@@ -12230,6 +12279,7 @@ exports[`componentDidMount Emits CREATE_USER_CHANNEL on socket (chat in props) 1
           </div>
           <div
             class=\\"cc__container-outer\\"
+            style=\\"max-width: 422px;\\"
           >
             <div>
               <textarea
@@ -12545,6 +12595,7 @@ exports[`componentDidMount Emits CREATE_USER_CHANNEL on socket (chat in props) 3
           </div>
           <div
             class=\\"cc__container-outer\\"
+            style=\\"max-width: 422px;\\"
           >
             <div>
               <textarea
@@ -12860,6 +12911,7 @@ exports[`componentDidMount Emits CREATE_USER_CHANNEL on socket (chat in state) 1
           </div>
           <div
             class=\\"cc__container-outer\\"
+            style=\\"max-width: 422px;\\"
           >
             <div>
               <textarea
@@ -13175,6 +13227,7 @@ exports[`componentDidMount Emits CREATE_USER_CHANNEL on socket (chat in state) 3
           </div>
           <div
             class=\\"cc__container-outer\\"
+            style=\\"max-width: 422px;\\"
           >
             <div>
               <textarea
@@ -13490,6 +13543,7 @@ exports[`componentWillUnmount Calls onbeforeunload handler when beforeunload occ
           </div>
           <div
             class=\\"cc__container-outer\\"
+            style=\\"max-width: 422px;\\"
           >
             <div>
               <textarea
@@ -13805,6 +13859,7 @@ exports[`componentWillUnmount Calls onbeforeunload handler when beforeunload occ
           </div>
           <div
             class=\\"cc__container-outer\\"
+            style=\\"max-width: 422px;\\"
           >
             <div>
               <textarea
@@ -14120,6 +14175,7 @@ exports[`componentWillUnmount Calls onbeforeunload handler when unmount occurs 1
           </div>
           <div
             class=\\"cc__container-outer\\"
+            style=\\"max-width: 422px;\\"
           >
             <div>
               <textarea
@@ -14444,6 +14500,7 @@ exports[`componentWillUnmount Removes onbeforeunload handler 1`] = `
           </div>
           <div
             class=\\"cc__container-outer\\"
+            style=\\"max-width: 422px;\\"
           >
             <div>
               <textarea
@@ -14759,6 +14816,7 @@ exports[`componentWillUnmount Removes onbeforeunload handler 2`] = `
           </div>
           <div
             class=\\"cc__container-outer\\"
+            style=\\"max-width: 422px;\\"
           >
             <div>
               <textarea
@@ -14850,6 +14908,7 @@ exports[`onQuote 1`] = `
           />
           <div
             class=\\"cc__container-outer\\"
+            style=\\"max-width: 422px;\\"
           >
             <div>
               <textarea
@@ -15165,6 +15224,7 @@ exports[`onQuote 3`] = `
           </div>
           <div
             class=\\"cc__container-outer\\"
+            style=\\"max-width: 422px;\\"
           >
             <div>
               <textarea
@@ -15494,6 +15554,7 @@ exports[`onQuote 5`] = `
           </div>
           <div
             class=\\"cc__container-outer\\"
+            style=\\"max-width: 422px;\\"
           >
             <div>
               <textarea
