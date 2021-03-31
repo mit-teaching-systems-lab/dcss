@@ -668,9 +668,11 @@ class SocketManager {
 
       socket.on(HEART_BEAT, ({ id }) => {
         console.log(HEART_BEAT, { id });
-        authdb.updateUser(id, {
-          lastseen_at: new Date().toISOString()
-        });
+        if (id) {
+          authdb.updateUser(id, {
+            lastseen_at: new Date().toISOString()
+          });
+        }
       });
 
       // Chat
