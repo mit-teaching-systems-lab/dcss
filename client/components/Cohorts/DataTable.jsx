@@ -290,7 +290,7 @@ export class DataTable extends React.Component {
         {tables.map(({ prompts, rows }, index) => {
           const tableKeyBase = `data-table-${index}`;
           return (
-            <div key={`${tableKeyBase}-container`} className="dt__scroll">
+            <div className="dt__scroll" key={`${tableKeyBase}-container`}>
               <Table
                 striped
                 selectable
@@ -305,8 +305,8 @@ export class DataTable extends React.Component {
                     </Table.HeaderCell>
                     {prompts.map(({ header, prompt }, index) => (
                       <Table.HeaderCell
-                        key={`${tableKeyBase}-prompt-${index}`}
                         scope="col"
+                        key={`${tableKeyBase}-prompt-${index}`}
                       >
                         {header || prompt}
                       </Table.HeaderCell>
