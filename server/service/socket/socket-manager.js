@@ -850,35 +850,6 @@ class SocketManager {
           timeout
         });
       });
-
-      // socket.on(TIMER_END, ({ chat, user, slide, result }) => {
-      //   const room = `${chat.id}-${slide.index}`;
-
-      //   clearInterval(cache.timers[room]);
-
-      //   this.io.to(room).emit(TIMER_END, {
-      //     chat,
-      //     slide,
-      //     result
-      //   });
-      // });
-
-      //       socket.on(TIMER_TICK, ({ chat, user, slide }) => {
-      // console.log(TIMER_TICK, { chat, user, slide });
-      //         const room = `${chat.id}-${slide.index}`;
-      //         socket.broadcast.to(room).emit(TIMER_TICK, {
-      //           chat
-      //         });
-      //       });
-
-      //
-      // socket.on(DISCONNECT, () => {
-      // console.log(DISCONNECT, ();
-      //   socketlog(USER_PART, socket.user);
-      //   socket.broadcast.emit(USER_PART, {
-      //     user: socket.user
-      //   });
-      // });
     });
   }
 }
