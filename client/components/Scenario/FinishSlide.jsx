@@ -13,7 +13,9 @@ class FinishSlide extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isConfirmBoxOpen: this.isScenarioRun ? true : false
+      confirm: {
+        isOpen: this.isScenarioRun ? true : false
+      }
     };
     this.onCancel = this.onCancel.bind(this);
     this.onConfirm = this.onConfirm.bind(this);
@@ -50,7 +52,11 @@ class FinishSlide extends React.Component {
     if (!this.isScenarioRun) {
       return;
     }
-    this.setState({ isConfirmBoxOpen: false });
+    this.setState({
+      confirm: {
+        isOpen: false
+      }
+    });
     this.props.onChange(event, {
       ended_at: new Date().toISOString()
     });
@@ -73,10 +79,9 @@ class FinishSlide extends React.Component {
   render() {
     const { onCancel, onConfirm } = this;
     const { cohortId, scenarioId, slide } = this.props;
-    const { isConfirmBoxOpen } = this.state;
     const components = (slide && slide.components) || [{ html: '' }];
     const className = `scenario__slide-card${
-      isConfirmBoxOpen ? '-hidden' : ''
+      this.state.confirm.isOpen ? '-hidden' : ''
     }`;
 
     const scenarioCardContentClass = this.isScenarioRun
@@ -89,13 +94,13 @@ class FinishSlide extends React.Component {
 
     const rerunUrl = `/run/${Identity.toHash(scenarioId)}/slide/0`;
 
-    const returnToX = this.isCohortScenarioRun ? (
-      <Button primary to={baseReturnToXUrl} as={NavLink}>
-        Return to cohort
-      </Button>
-    ) : (
-      <Button primary to="/scenarios" as={NavLink}>
-        Return to scenarios
+    const returnToWhere = this.isCohortScenarioRun
+      ? 'cohort'
+      : 'scenarios';
+
+    const returnToX = (
+      <Button primary onClick={() => (location.href = baseReturnToXUrl)}>
+        Return to {returnToWhere}
       </Button>
     );
 
@@ -144,13 +149,13 @@ class FinishSlide extends React.Component {
               ))}
           </Card.Content>
         </Card>
-        {isConfirmBoxOpen ? (
-          <Modal.Accessible open={isConfirmBoxOpen}>
+        {this.state.confirm.isOpen ? (
+          <Modal.Accessible open={this.state.confirm.isOpen}>
             <Modal
               role="dialog"
               size="tiny"
               aria-modal="true"
-              open={isConfirmBoxOpen}
+              open={this.state.confirm.isOpen}
             >
               <Header aria-label={ariaLabel}>
                 <Icon.Group className="em__icon-group-margin">

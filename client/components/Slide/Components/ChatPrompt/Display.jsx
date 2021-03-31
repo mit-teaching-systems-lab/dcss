@@ -6,7 +6,9 @@ import { type } from './meta';
 import { getAgent } from '@actions/agent';
 import { getResponse } from '@actions/response';
 import Chat from '@components/Chat';
-import { Button, Dropdown, Header, Icon, Menu, Modal } from '@components/UI';
+import {
+  Button, Checkbox,
+  Dropdown, Form, Header, Icon, Menu, Modal } from '@components/UI';
 import Identity from '@utils/Identity';
 import Media from '@utils/Media';
 import Payload from '@utils/Payload';
@@ -71,6 +73,7 @@ class Display extends Component {
       isActive: false,
       hasSubmittedResponse: false,
       markComplete: {
+        ack: false,
         isOpen: false,
         result: null
       },
@@ -370,6 +373,7 @@ class Display extends Component {
             time
           },
           markComplete: {
+            ack: false,
             isOpen: false,
             result: null
           }
@@ -381,6 +385,7 @@ class Display extends Component {
       const isOpen = !!value;
       this.setState({
         markComplete: {
+          ack: false,
           isOpen,
           [name]: value
         }
@@ -393,6 +398,7 @@ class Display extends Component {
           result: null
         },
         markComplete: {
+          ack: false,
           isOpen: false,
           result: null
         }
@@ -493,27 +499,47 @@ class Display extends Component {
                 content={`Mark this discussion as ${this.state.markComplete.result}?`}
               />
               <Modal.Content>
-                <p>
-                  Are you sure you want to mark this discussion{' '}
-                  {this.state.markComplete.result}?
-                </p>
+                <Form>
+                  <p>
+                    Are you sure you want to mark this discussion{' '}
+                    {this.state.markComplete.result}?
+                  </p>
 
-                <p tabIndex="0" className="cpe__paragraph">
-                  <Icon name="attention" />
-                  Clicking <strong>Yes</strong> will end the discussion{' '}
-                  <strong>on this slide only</strong>, but for all participants.
-                </p>
-                <p tabIndex="0" className="cpe__paragraph">
-                  <Icon name="attention" />
-                  Clicking <strong>No</strong> will not end the discussion, and
-                  not mark the conversation as complete.
-                </p>
+                  <p tabIndex="0" className="cpe__paragraph">
+                    <Icon name="attention" />
+                    Clicking <strong>Yes</strong> will end this discussion for all
+                    participants,{' '}<strong>on this slide only</strong>.{' '}
+                    <strong>The chat will close and you will not be able to send messages on slide.</strong>
+                  </p>
+                  <p tabIndex="0" className="cpe__paragraph">
+                    <Icon name="attention" />
+                    Clicking <strong>No</strong> will not end the discussion, and
+                    not mark the conversation as complete.
+                  </p>
+
+                  <p tabIndex="0" className="cpe__paragraph">
+                    <Checkbox
+                      autoComplete="off"
+                      label="I understand and want to continue"
+                      checked={this.state.markComplete.ack}
+                      onChange={(event, {checked}) => {
+                        this.setState({
+                          markComplete: {
+                            ...this.state.markComplete,
+                            ack: checked
+                          }
+                        });
+                      }}
+                    />
+                  </p>
+                </Form>
               </Modal.Content>
               <Modal.Actions>
                 <Button.Group fluid>
                   <Button
                     primary
                     aria-label="Yes"
+                    disabled={!this.state.markComplete.ack}
                     onClick={() => {
                       onChatCompleteChange();
                     }}
