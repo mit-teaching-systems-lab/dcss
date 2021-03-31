@@ -263,6 +263,27 @@ async function getMessageById(req, res) {
   res.json({ message });
 }
 
+async function getChatTranscriptsByAssociationId(req, res) {
+  const id = Number(req.params.id);
+  const association = req.params.association;
+  let messages;
+
+  if (association === 'chat') {
+    messages = await db.getChatTranscriptsByChatId(id);
+  }
+
+  if (association === 'cohort') {
+    messages = await db.getChatTranscriptsByCohortId(id);
+  }
+
+  if (association === 'scenario') {
+    console.log("???????????????????");
+    messages = await db.getChatTranscriptsByScenarioId(id);
+  }
+
+  res.json({ messages });
+}
+
 async function setMessageById(req, res) {
   const id = Number(req.params.id);
   const {
@@ -320,6 +341,7 @@ exports.getChatMessagesByChatId = asyncMiddleware(getChatMessagesByChatId);
 exports.getChatMessagesCountByChatId = asyncMiddleware(
   getChatMessagesCountByChatId
 );
+exports.getChatTranscriptsByAssociationId = asyncMiddleware(getChatTranscriptsByAssociationId);
 exports.getChatUsersByChatId = asyncMiddleware(getChatUsersByChatId);
 exports.getChatUsersSharedResponses = asyncMiddleware(
   getChatUsersSharedResponses

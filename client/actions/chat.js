@@ -8,6 +8,8 @@ import {
   GET_CHAT_MESSAGES_SUCCESS,
   GET_CHAT_MESSAGES_COUNT_ERROR,
   GET_CHAT_MESSAGES_COUNT_SUCCESS,
+  GET_CHAT_TRANSCRIPTS_ERROR,
+  GET_CHAT_TRANSCRIPTS_SUCCESS,
   GET_CHAT_USERS_ERROR,
   GET_CHAT_USERS_SUCCESS,
   GET_CHAT_USERS_SHARED_RESPONSES_ERROR,
@@ -275,6 +277,57 @@ export let getChats = () => async dispatch => {
     return chats;
   } catch (error) {
     dispatch({ type: GET_CHATS_ERROR, error });
+    return null;
+  }
+};
+
+export let getChatTranscriptsByChatId = id => async dispatch => {
+  try {
+    const res = await (await fetch(`/api/chats/transcripts/chat/${id}`)).json();
+
+    if (res.error) {
+      throw res;
+    }
+
+    const { messages = [] } = res;
+    dispatch({ type: GET_CHAT_TRANSCRIPTS_SUCCESS, messages });
+    return messages;
+  } catch (error) {
+    dispatch({ type: GET_CHAT_TRANSCRIPTS_ERROR, error });
+    return null;
+  }
+};
+
+export let getChatTranscriptsByCohortId = id => async dispatch => {
+  try {
+    const res = await (await fetch(`/api/chats/transcripts/cohort/${id}`)).json();
+
+    if (res.error) {
+      throw res;
+    }
+
+    const { messages = [] } = res;
+    dispatch({ type: GET_CHAT_TRANSCRIPTS_SUCCESS, messages });
+    return messages;
+  } catch (error) {
+    dispatch({ type: GET_CHAT_TRANSCRIPTS_ERROR, error });
+    return null;
+  }
+};
+
+export let getChatTranscriptsByScenarioId = id => async dispatch => {
+  try {
+    const res = await (await fetch(`/api/chats/transcripts/scenario/${id}`)).json();
+
+    if (res.error) {
+      throw res;
+    }
+
+    const { messages = [] } = res;
+    dispatch({ type: GET_CHAT_TRANSCRIPTS_SUCCESS, messages });
+    return messages;
+  } catch (error) {
+    dispatch({ type: GET_CHAT_TRANSCRIPTS_ERROR, error });
     return null;
   }
 };

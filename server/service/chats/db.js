@@ -1,3 +1,4 @@
+const { parse } = require('node-html-parser');
 const { sql, updateQuery } = require('../../util/sqlHelpers');
 const { query, withClientTransaction } = require('../../util/db');
 const { INVITE_STATUS } = require('../invites/db');
@@ -615,16 +616,6 @@ exports.deleteChatById = async id => {
   });
 };
 
-exports.archiveChatMessagesByChatId = async id => {
-  // WITH rows AS (
-  //    DELETE FROM chat_message
-  //    WHERE
-  //       chat_id = ${id}
-  //    RETURNING *
-  // )
-  // INSERT INTO chat_message_archive (SELECT * FROM rows);
-};
-
 exports.getChatUsersSharedResponses = async (id, response_id, list) => {
   const result = await query(`
     SELECT DISTINCT ON (user_id) *
@@ -643,4 +634,82 @@ exports.getChatUsersSharedResponses = async (id, response_id, list) => {
     ) AS x
   `);
   return result.rows;
+};
+
+const normalizeTranscriptRecord = record => {
+  const {
+    textContent
+  } = parse(record.content);
+  return {
+    ...record,
+    textContent
+  }
+};
+
+const isRelevant = record => {
+  if (record.is_joinpart && record.deleted_at) {
+    return false;
+  }
+  return true;
+}
+
+
+exports.getChatTranscriptsByChatId = async (chat_id) => {
+  const result = await query(sql`
+    SELECT
+      id, cma.chat_id, user_id, *
+    FROM chat_message_archive cma
+    WHERE chat_id = ${chat_id}
+  `);
+
+  const records = result.rowCount
+    ? result.rows.map(normalizeTranscriptRecord)
+    : [];
+
+  return records;
+};
+
+exports.getChatTranscriptsByCohortId = async (cohort_id) => {
+  const result = await query(sql`
+    WITH ci AS (
+      SELECT DISTINCT rc.chat_id
+      FROM cohort_run cr
+      JOIN run_chat rc ON rc.run_id = cr.run_id
+      WHERE cr.cohort_id = ${cohort_id}
+      ORDER BY rc.chat_id ASC
+    )
+    SELECT
+      id, cma.chat_id, user_id, *
+    FROM chat_message_archive cma
+    JOIN ci ON ci.chat_id = cma.chat_id
+
+  `);
+
+  const records = result.rowCount
+    ? result.rows.map(normalizeTranscriptRecord)
+    : [];
+
+  return records;
+};
+
+exports.getChatTranscriptsByScenarioId = async (scenario_id) => {
+  const result = await query(sql`
+    WITH ci AS (
+      SELECT DISTINCT rc.chat_id
+      FROM run r
+      JOIN run_chat rc ON rc.run_id = r.id
+      WHERE r.scenario_id = ${scenario_id}
+      ORDER BY rc.chat_id ASC
+    )
+    SELECT
+      *
+    FROM chat_message_archive cma
+    JOIN ci ON ci.chat_id = cma.chat_id;
+  `);
+
+  const records = result.rowCount
+    ? result.rows.map(normalizeTranscriptRecord)
+    : [];
+
+  return records;
 };

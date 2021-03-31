@@ -15,6 +15,11 @@ import {
   Table,
   Title
 } from '@components/UI';
+import {
+  getChatTranscriptsByChatId,
+  getChatTranscriptsByCohortId,
+  getChatTranscriptsByScenarioId
+} from '@actions/chat';
 import { getCohorts } from '@actions/cohort';
 import { getHistoryForScenario } from '@actions/history';
 import { getScenariosIncrementally } from '@actions/scenario';
@@ -160,6 +165,32 @@ class Downloads extends Component {
 
         files.push([`${file}.csv`, csv]);
       }
+    }
+
+    const transcripts = cohort
+      ? await this.props.getChatTranscriptsByCohortId(cohort.id)
+      : await this.props.getChatTranscriptsByScenarioId(scenario.id);
+
+    if (transcripts.length) {
+      const fields = [
+        'id',
+        'chat_id',
+        'user_id',
+        'content',
+        'created_at',
+        'updated_at',
+        'deleted_at',
+        'is_quotable',
+        'is_joinpart',
+        'response_id',
+        'recipient_id',
+        'textContent',
+      ];
+
+      const parser = new Parser({ fields });
+      const csv = parser.parse(transcripts);
+
+      files.push(['chat-messages.csv', csv]);
     }
 
     return files;
@@ -656,6 +687,9 @@ Downloads.propTypes = {
   }).isRequired,
   scenarios: PropTypes.array,
   scenariosById: PropTypes.object,
+  getChatTranscriptsByChatId: PropTypes.func,
+  getChatTranscriptsByCohortId: PropTypes.func,
+  getChatTranscriptsByScenarioId: PropTypes.func,
   getCohorts: PropTypes.func,
   getScenariosIncrementally: PropTypes.func,
   getHistoryForScenario: PropTypes.func,
@@ -688,6 +722,9 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = dispatch => ({
+  getChatTranscriptsByChatId: id => dispatch(getChatTranscriptsByChatId(id)),
+  getChatTranscriptsByCohortId: id => dispatch(getChatTranscriptsByCohortId(id)),
+  getChatTranscriptsByScenarioId: id => dispatch(getChatTranscriptsByScenarioId(id)),
   getCohorts: () => dispatch(getCohorts()),
   getScenariosIncrementally: updater =>
     dispatch(getScenariosIncrementally(updater)),
