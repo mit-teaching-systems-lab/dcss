@@ -148,9 +148,13 @@ class Display extends Component {
       ...basePayload,
       slide
     };
+    const stored = Storage.get(this.storageKey);
     const userJoinPayload = {
       ...basePayload,
-      run: Storage.get(this.storageKey),
+      run: {
+        ...stored,
+        ...run,
+      },
       scenario: {
         id: this.props.scenario.id
       }
@@ -186,12 +190,18 @@ class Display extends Component {
   }
 
   onBeforeUnload() {
+    const persisted = Storage.get(this.storageKey);
+    const run = {
+      ...persisted,
+      ...this.props.run,
+    };
+
     this.props.socket.emit(
       USER_PART_SLIDE,
       Payload.compose(
         this.props,
         {
-          run: Storage.get(this.storageKey)
+          run
         }
       )
     );
@@ -272,6 +282,7 @@ class Display extends Component {
       isEmbeddedInSVG,
       required,
       responseId,
+      run,
       timeout,
       user,
       welcome
@@ -362,11 +373,14 @@ class Display extends Component {
       const { result } = this.state.markComplete;
 
       if (result) {
+
         this.props.socket.emit(CHAT_CLOSED_FOR_SLIDE, {
           chat,
           slide,
-          result
+          result,
+          run
         });
+
         this.setState({
           value: {
             result,
@@ -418,26 +432,6 @@ class Display extends Component {
         <strong>{defaultValue}</strong>.
       </Menu.Item>
     ) : null;
-
-    //
-    // TODO: This is guarded by the "isActive" flag
-    //
-    // const dropdownOrResultOfDiscussion = !defaultValue ? (
-    //   <Dropdown
-    //     item
-    //     className="cpd__dropdown"
-    //     name="result"
-    //     placeholder="Mark discussion as..."
-    //     disabled={!isActive}
-    //     closeOnChange={true}
-    //     defaultValue={defaultValue}
-    //     options={options}
-    //     onChange={onMarkCompleteChange}
-    //   />
-    // ) : (
-    //   resultOfDiscussion
-    // );
-    //
 
     const dropdownOrResultOfDiscussion = !defaultValue ? (
       <Dropdown

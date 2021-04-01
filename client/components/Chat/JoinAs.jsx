@@ -191,8 +191,6 @@ const mapStateToProps = (state, ownProps) => {
   const scenarioId = Identity.fromHashOrId(
     ownProps.scenarioId || params.scenarioId
   );
-  console.log(ownProps);
-  console.log(cohortId, scenarioId, personaId);
 
   const scenario =
     state.scenario && state.scenario.id === scenarioId

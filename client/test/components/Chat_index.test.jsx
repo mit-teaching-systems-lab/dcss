@@ -1734,6 +1734,18 @@ test('Types, followed by {enter}', async done => {
           "response": Object {
             "id": undefined,
           },
+          "run": Object {
+            "consent_acknowledged_by_user": true,
+            "consent_granted_by_user": true,
+            "consent_id": 57,
+            "created_at": "2020-09-01T15:59:39.571Z",
+            "ended_at": null,
+            "id": 60,
+            "referrer_params": null,
+            "scenario_id": 42,
+            "updated_at": "2020-09-01T15:59:47.121Z",
+            "user_id": 2,
+          },
           "user": Object {
             "id": null,
           },
@@ -1860,6 +1872,18 @@ test('Types, followed by {shift}{enter}, does not submit', async done => {
           },
           "response": Object {
             "id": undefined,
+          },
+          "run": Object {
+            "consent_acknowledged_by_user": true,
+            "consent_granted_by_user": true,
+            "consent_id": 57,
+            "created_at": "2020-09-01T15:59:39.571Z",
+            "ended_at": null,
+            "id": 60,
+            "referrer_params": null,
+            "scenario_id": 42,
+            "updated_at": "2020-09-01T15:59:47.121Z",
+            "user_id": 2,
           },
           "user": Object {
             "id": null,
@@ -2003,6 +2027,18 @@ test('Types, followed by {shift}{enter}, attempts to send, does submit', async d
           "response": Object {
             "id": undefined,
           },
+          "run": Object {
+            "consent_acknowledged_by_user": true,
+            "consent_granted_by_user": true,
+            "consent_id": 57,
+            "created_at": "2020-09-01T15:59:39.571Z",
+            "ended_at": null,
+            "id": 60,
+            "referrer_params": null,
+            "scenario_id": 42,
+            "updated_at": "2020-09-01T15:59:47.121Z",
+            "user_id": 2,
+          },
           "user": Object {
             "id": null,
           },
@@ -2123,6 +2159,18 @@ test('Calls onInput when RTE receives new content', async done => {
           "response": Object {
             "id": undefined,
           },
+          "run": Object {
+            "consent_acknowledged_by_user": true,
+            "consent_granted_by_user": true,
+            "consent_id": 57,
+            "created_at": "2020-09-01T15:59:39.571Z",
+            "ended_at": null,
+            "id": 60,
+            "referrer_params": null,
+            "scenario_id": 42,
+            "updated_at": "2020-09-01T15:59:47.121Z",
+            "user_id": 2,
+          },
           "user": Object {
             "id": null,
           },
@@ -2223,6 +2271,18 @@ test('Calls onKeyDown, responds when key is {enter}', async done => {
           },
           "response": Object {
             "id": undefined,
+          },
+          "run": Object {
+            "consent_acknowledged_by_user": true,
+            "consent_granted_by_user": true,
+            "consent_id": 57,
+            "created_at": "2020-09-01T15:59:39.571Z",
+            "ended_at": null,
+            "id": 60,
+            "referrer_params": null,
+            "scenario_id": 42,
+            "updated_at": "2020-09-01T15:59:47.121Z",
+            "user_id": 2,
           },
           "user": Object {
             "id": null,
@@ -2348,6 +2408,18 @@ test('Types, clicks Send Message', async done => {
           },
           "response": Object {
             "id": undefined,
+          },
+          "run": Object {
+            "consent_acknowledged_by_user": true,
+            "consent_granted_by_user": true,
+            "consent_id": 57,
+            "created_at": "2020-09-01T15:59:39.571Z",
+            "ended_at": null,
+            "id": 60,
+            "referrer_params": null,
+            "scenario_id": 42,
+            "updated_at": "2020-09-01T15:59:47.121Z",
+            "user_id": 2,
           },
           "user": Object {
             "id": null,

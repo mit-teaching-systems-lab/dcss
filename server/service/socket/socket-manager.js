@@ -34,6 +34,7 @@ const {
   RUN_CHAT_LINK,
   SET_INVITATION,
   SHARED_RESPONSE_CREATED,
+  SHARED_RESPONSE_UPDATED,
   TIMER_END,
   TIMER_START,
   TIMER_STOP,
@@ -60,6 +61,15 @@ const cohortsdb = require('../cohorts/db');
 const runsdb = require('../runs/db');
 const scenariosdb = require('../scenarios/db');
 const chatutil = require('../chats/util');
+
+
+async function saveRunEvent(run_id, name, context) {
+  try {
+    await runsdb.saveRunEvent(run_id, name, context);
+  } catch (error) {
+    console.log('ERROR: Could not save run event. ', error);
+  }
+}
 
 function socketlog(...args) {
   console.log('');
@@ -372,7 +382,7 @@ class SocketManager {
         });
       }
 
-      const sendRunResponseToAgent = data => {
+      const sendRunResponseToAgent = async data => {
         const clientKey = `${data.run_id}-${data.user_id}-${data.response_id}`;
 
         // console.log('sendRunResponseToAgent, clientKey', clientKey);
@@ -395,6 +405,8 @@ class SocketManager {
               transcript,
               value
             });
+
+            await saveRunEvent(data.run_id, 'response-sent-to-agent', data);
           }
         }
       };
@@ -415,6 +427,7 @@ class SocketManager {
           if (chat) {
             const room = `${chat.id}-response-${response_id}`;
             this.io.to(room).emit(SHARED_RESPONSE_CREATED, data);
+            await saveRunEvent(data.run_id, SHARED_RESPONSE_CREATED, data);
           }
         });
       }
@@ -423,6 +436,13 @@ class SocketManager {
         notifier.on('run_response_updated', async data => {
           console.log('run_response_updated', data);
           sendRunResponseToAgent(data);
+          const { run_id, response_id } = data;
+          const chat = await runsdb.getChatByRunId(run_id);
+          if (chat) {
+            const room = `${chat.id}-response-${response_id}`;
+            this.io.to(room).emit(SHARED_RESPONSE_UPDATED, data);
+            await saveRunEvent(data.run_id, SHARED_RESPONSE_UPDATED, data);
+          }
         });
       }
 
@@ -495,18 +515,28 @@ class SocketManager {
               // response
               response
             );
+
+            await saveRunEvent(run.id, 'agent-response-received', {
+              ...payload,
+              response
+            });
           });
 
-          client.on('interjection', async ({ message }) => {
-            console.log('interjection', message);
+          client.on('interjection', async (response) => {
+            console.log('interjection', response.message);
 
             await chatsdb.insertNewAgentMessage(
               chat.id,
               agent.self.id, // This comes from the agent!!
-              message,
+              response.message,
               prompt.id,
               user.id // TODO: this should come from the interjection event
             );
+
+            await saveRunEvent(run.id, 'agent-interjection-received', {
+              ...payload,
+              response
+            });
           });
 
           cache.clients[room] = {
@@ -557,7 +587,8 @@ class SocketManager {
         );
       });
 
-      socket.on(RUN_AGENT_START, async ({ run, user }) => {
+      socket.on(RUN_AGENT_START, async (payload) => {
+        const { run, user } = payload;
         console.log(RUN_AGENT_START, { run, user });
         const prompts = await agentsdb.getScenarioAgentPrompts(run.scenario_id);
 
@@ -605,6 +636,11 @@ class SocketManager {
                 // response
                 response
               );
+
+              await saveRunEvent(run.id, 'agent-response-received', {
+                ...payload,
+                response
+              });
             });
 
             cache.clients[room] = {
@@ -756,6 +792,10 @@ class SocketManager {
               state: cache.discussions[rollKey]
             });
           }
+
+          await saveRunEvent(run.id, USER_JOIN_SLIDE, {
+            chat, user, scenario, run
+          });
         }
       });
 
@@ -776,6 +816,10 @@ class SocketManager {
             );
             // console.log('UPDATED ROLLS: ', cache.rolls[rollKey]);
           }
+
+          await saveRunEvent(run.id, USER_PART_SLIDE, {
+            chat, user, run
+          });
         }
       });
 
@@ -783,12 +827,20 @@ class SocketManager {
         chatsdb.partChat(chat.id, user.id);
       });
 
-      socket.on(CHAT_MESSAGE_CREATED, ({ chat, user, content, prompt }) => {
+      socket.on(CHAT_MESSAGE_CREATED, async ({ chat, user, content, prompt, run }) => {
+// getRunByChatAndUserId
+        console.log({ chat, user, content, prompt, run });
         chatsdb.createNewChatMessage(chat.id, user.id, content, prompt.id);
+
+        if (run) {
+          await saveRunEvent(run.id, CHAT_MESSAGE_CREATED, {
+            chat, user, content, prompt, run
+          });
+        }
       });
 
-      socket.on(CHAT_CLOSED_FOR_SLIDE, ({ chat, user, slide, result }) => {
-        console.log(CHAT_CLOSED_FOR_SLIDE, { chat, user, slide, result });
+      socket.on(CHAT_CLOSED_FOR_SLIDE, async ({ chat, user, slide, result, run }) => {
+        console.log(CHAT_CLOSED_FOR_SLIDE, { chat, user, slide, result, run });
         const room = `${chat.id}-slide-${slide.index}`;
         cache.rolls[room] = null;
 
@@ -810,6 +862,13 @@ class SocketManager {
         });
 
         cache.discussions[room] = closeResultToStateMap[result];
+
+
+        if (run) {
+          await saveRunEvent(run.id, CHAT_CLOSED_FOR_SLIDE, {
+            chat, user, slide, result, run
+          });
+        }
       });
 
       socket.on(TIMER_START, async ({ chat, user, slide, timeout }) => {

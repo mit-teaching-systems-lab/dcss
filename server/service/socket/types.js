@@ -48,6 +48,7 @@ exports.CHAT_CLOSED_FOR_SLIDE = 'chat-closed-for-slide';
 exports.CHAT_MESSAGE_CREATED = 'chat-message-created';
 exports.CHAT_MESSAGE_UPDATED = 'chat-message-updated';
 exports.SHARED_RESPONSE_CREATED = 'shared-response-created';
+exports.SHARED_RESPONSE_UPDATED = 'shared-response-updated';
 exports.TIMER_END = 'timer-end';
 exports.TIMER_START = 'timer-start';
 exports.TIMER_STOP = 'timer-stop';

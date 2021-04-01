@@ -391,13 +391,15 @@ class Chat extends Component {
 
   sendNewMessage() {
     const { content } = this;
+    const { run = null } = this.props;
     if (isValidMessage(content)) {
       this.props.socket.emit(
         CHAT_MESSAGE_CREATED,
         Payload.compose(
           this.props,
           {
-            content
+            content,
+            run
           }
         )
       );

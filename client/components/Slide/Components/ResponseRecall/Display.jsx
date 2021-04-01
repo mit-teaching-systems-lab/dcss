@@ -17,6 +17,7 @@ import {
 } from '@hoc/withRunEventCapturing';
 import withSocket, {
   SHARED_RESPONSE_CREATED,
+  SHARED_RESPONSE_UPDATED,
   CREATE_SHARED_RESPONSE_CHANNEL
 } from '@hoc/withSocket';
 
@@ -110,8 +111,14 @@ class Display extends Component {
       };
 
       this.props.socket.on(SHARED_RESPONSE_CREATED, this.refresh);
+      this.props.socket.on(SHARED_RESPONSE_UPDATED, this.refresh);
       this.props.socket.emit(CREATE_SHARED_RESPONSE_CHANNEL, responsePayload);
     }
+  }
+
+  componentWillUnmount() {
+    this.props.socket.off(SHARED_RESPONSE_CREATED, this.refresh);
+    this.props.socket.off(SHARED_RESPONSE_UPDATED, this.refresh);
   }
 
   render() {
