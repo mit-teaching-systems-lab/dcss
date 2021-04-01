@@ -90,8 +90,6 @@ exports.createChatInvite = async (
   });
 };
 
-// CREATE UNIQUE INDEX run_id_response_id on run_response (run_id, response_id);
-
 // TODO: merge this and the following function
 exports.getChatInviteForUser = async (id, user_id) => {
   const result = await query(sql`
