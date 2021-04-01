@@ -14,13 +14,11 @@ exports[`Render 1 1 1`] = `
         <div
           class="ui fluid buttons"
         >
-          <a
+          <button
             class="ui primary button"
-            href="/scenarios"
-            role="button"
           >
             Return to scenarios
-          </a>
+          </button>
           <div
             class="or"
           />

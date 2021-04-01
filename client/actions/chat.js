@@ -315,6 +315,23 @@ export let getChatTranscriptsByCohortId = id => async dispatch => {
   }
 };
 
+export let getChatTranscriptsByRunId = id => async dispatch => {
+  try {
+    const res = await (await fetch(`/api/chats/transcripts/run/${id}`)).json();
+
+    if (res.error) {
+      throw res;
+    }
+
+    const { messages = [] } = res;
+    dispatch({ type: GET_CHAT_TRANSCRIPTS_SUCCESS, messages });
+    return messages;
+  } catch (error) {
+    dispatch({ type: GET_CHAT_TRANSCRIPTS_ERROR, error });
+    return null;
+  }
+};
+
 export let getChatTranscriptsByScenarioId = id => async dispatch => {
   try {
     const res = await (await fetch(`/api/chats/transcripts/scenario/${id}`)).json();

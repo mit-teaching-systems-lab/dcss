@@ -656,10 +656,15 @@ const isRelevant = record => {
 
 exports.getChatTranscriptsByChatId = async (chat_id) => {
   const result = await query(sql`
-    SELECT
-      id, cma.chat_id, user_id, *
+    WITH ci AS (
+      SELECT chat_id, run_id
+      FROM run_chat
+      WHERE chat_id = ${chat_id}
+      ORDER BY chat_id ASC
+    )
+    SELECT DISTINCT ON (cma.id) *
     FROM chat_message_archive cma
-    WHERE chat_id = ${chat_id}
+    JOIN ci ON ci.chat_id = cma.chat_id
   `);
 
   const records = result.rowCount
@@ -672,14 +677,13 @@ exports.getChatTranscriptsByChatId = async (chat_id) => {
 exports.getChatTranscriptsByCohortId = async (cohort_id) => {
   const result = await query(sql`
     WITH ci AS (
-      SELECT DISTINCT rc.chat_id
+      SELECT rc.chat_id, rc.run_id
       FROM cohort_run cr
       JOIN run_chat rc ON rc.run_id = cr.run_id
       WHERE cr.cohort_id = ${cohort_id}
       ORDER BY rc.chat_id ASC
     )
-    SELECT
-      id, cma.chat_id, user_id, *
+    SELECT DISTINCT ON (cma.id) *
     FROM chat_message_archive cma
     JOIN ci ON ci.chat_id = cma.chat_id
 
@@ -694,17 +698,38 @@ exports.getChatTranscriptsByCohortId = async (cohort_id) => {
 
 exports.getChatTranscriptsByScenarioId = async (scenario_id) => {
   const result = await query(sql`
-    WITH ci AS (
-      SELECT DISTINCT rc.chat_id
-      FROM run r
-      JOIN run_chat rc ON rc.run_id = r.id
-      WHERE r.scenario_id = ${scenario_id}
-      ORDER BY rc.chat_id ASC
+    WITH rs AS (
+      SELECT chat_id, run_id
+      FROM run_chat rc
+      JOIN (
+        SELECT id
+        FROM run
+        WHERE scenario_id = ${scenario_id}
+      ) r ON rc.run_id = r.id
     )
-    SELECT
-      *
+    SELECT DISTINCT ON (cma.id) *
     FROM chat_message_archive cma
-    JOIN ci ON ci.chat_id = cma.chat_id;
+    JOIN rs ON rs.chat_id = cma.chat_id;
+  `);
+
+  const records = result.rowCount
+    ? result.rows.map(normalizeTranscriptRecord)
+    : [];
+
+  return records;
+};
+
+exports.getChatTranscriptsByRunId = async (run_id) => {
+  const result = await query(sql`
+    WITH ci AS (
+      SELECT DISTINCT chat_id, run_id
+      FROM run_chat
+      WHERE run_id = ${run_id}
+      ORDER BY chat_id ASC
+    )
+    SELECT DISTINCT ON (cma.id) *
+    FROM chat_message_archive cma
+    JOIN ci ON ci.chat_id = cma.chat_id
   `);
 
   const records = result.rowCount

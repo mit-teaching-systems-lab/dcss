@@ -5,22 +5,29 @@ import PropTypes from 'prop-types';
 import Identity from '@utils/Identity';
 import { Icon, Message, Table } from '@components/UI';
 import { diff } from 'deep-diff';
-import Moment from '@utils/Moment';
-import Media from '@utils/Media';
+import {
+  getChatTranscriptsByChatId,
+  getChatTranscriptsByCohortId,
+  getChatTranscriptsByRunId,
+  getChatTranscriptsByScenarioId
+} from '@actions/chat';
 import { getCohort, getCohortData } from '@actions/cohort';
 import { getRunData } from '@actions/run';
 import { getScenariosByStatus } from '@actions/scenario';
-import { getUser } from '@actions/user';
+import { getUsers } from '@actions/users';
 import Loading from '@components/Loading';
 import { SCENARIO_IS_PUBLIC } from '@components/Scenario/constants';
+import Username from '@components/User/Username';
 import CSV from '@utils/csv';
 import { makeHeader } from '@utils/data-table';
+import Moment from '@utils/Moment';
+import Media from '@utils/Media';
 import DataModal from './DataModal';
 import DataTableMenu from './DataTableMenu';
 import './DataTable.css';
 
 function reduceResponses(key, responses) {
-  const responsesReduced = responses.reduce((accum, response) => {
+  return responses.reduce((accum, response) => {
     const {
       [key]: property,
       content = '',
@@ -30,11 +37,21 @@ function reduceResponses(key, responses) {
       response_id
     } = response;
 
+    console.log(response);
+
     response.content = content;
     response.content += (is_skip
       ? '(skipped)'
       : ` ${transcript || (content === '' ? value : '')}`
     ).trim();
+
+    if (response.type === 'ChatPrompt') {
+      if (response.content === '(skipped)') {
+        response.content = '(messages attached)';
+      } else {
+        response.content += '(messages attached)';
+      }
+    }
 
     if (!accum[property]) {
       accum[property] = { [response_id]: response };
@@ -46,8 +63,6 @@ function reduceResponses(key, responses) {
     }
     return accum;
   }, {});
-
-  return responsesReduced;
 }
 
 export class DataTable extends React.Component {
@@ -59,10 +74,13 @@ export class DataTable extends React.Component {
       isReady: false,
       prompts: [],
       responses: [],
-      tables: []
+      tables: [],
+      transcriptsByRunId: {},
     };
 
     this.refresh = this.refresh.bind(this);
+    this.requestDownload = this.requestDownload.bind(this);
+    this.triggerDownload = this.triggerDownload.bind(this);
     this.onDataTableMenuClick = this.onDataTableMenuClick.bind(this);
   }
 
@@ -76,7 +94,7 @@ export class DataTable extends React.Component {
     }
 
     await this.props.getScenariosByStatus(SCENARIO_IS_PUBLIC);
-    await this.props.getUser();
+    await this.props.getUsers();
 
     if (participantId || runId || scenarioId) {
       await this.refresh();
@@ -88,14 +106,16 @@ export class DataTable extends React.Component {
 
   async refresh() {
     const {
-      getCohortData,
-      getRunData,
       source: { cohortId, participantId, runId, scenarioId }
     } = this.props;
     const isScenarioDataTable = scenarioId !== undefined;
     const { prompts, responses } = cohortId
-      ? await getCohortData(cohortId, participantId, scenarioId)
-      : await getRunData(runId);
+      ? await this.props.getCohortData(cohortId, participantId, scenarioId)
+      : await this.props.getRunData(runId);
+
+    const transcripts = cohortId
+      ? await this.props.getChatTranscriptsByCohortId(cohortId)
+      : await this.props.getChatTranscriptsByRunId(runId);
 
     const scenarios = cohortId
       ? this.props.cohort.scenarios
@@ -161,7 +181,20 @@ export class DataTable extends React.Component {
       }
     }
 
-    const newState = {};
+    const transcriptsByRunId = transcripts.reduce((accum, record) => {
+      if (!accum[record.run_id]) {
+        accum[record.run_id] = [];
+      }
+      accum[record.run_id].push(record);
+      accum[record.run_id].sort((a, b) =>
+        a.created_at > b.created_at
+      );
+      return accum;
+    }, {});
+
+    const newState = {
+      transcriptsByRunId
+    };
 
     if (
       this.state.prompts.length !== prompts.length ||
@@ -191,7 +224,7 @@ export class DataTable extends React.Component {
     this.setState(newState);
   }
 
-  download() {
+  async requestDownload() {
     const {
       cohort,
       scenarios,
@@ -201,9 +234,11 @@ export class DataTable extends React.Component {
     const { isScenarioDataTable, tables } = this.state;
     const users = cohortId ? cohort.users : [user];
 
+    const files = [];
     const prefix = cohortId ? `cohort-${cohortId}` : `run-${runId}`;
 
-    tables.forEach(({ prompts, rows }) => {
+    for (const { prompts, rows } of tables) {
+
       const subject = isScenarioDataTable
         ? scenarios.find(scenario => scenario.id === scenarioId).title
         : users.find(user => user.id === participantId).username;
@@ -247,11 +282,25 @@ export class DataTable extends React.Component {
         csv += `${prepared.join(',')}\n`;
       });
 
-      CSV.download(Identity.key({ prefix, subject }), csv);
-    });
+      files.push([`${Identity.key({ prefix, subject })}.csv`, csv]);
+    }
+
+    console.log(files);
+
+    return files;
   }
 
-  onDataTableMenuClick(event, props) {
+  async triggerDownload(files) {
+    if (Object.entries(files).length === 1) {
+      const [file, csv] = files[0];
+      CSV.download(file, csv);
+    } else {
+      CSV.downloadZipAsync(files);
+    }
+  }
+
+  async onDataTableMenuClick(event, props) {
+
     if (props.name === 'close') {
       this.props.onClick(event, props);
     }
@@ -261,7 +310,9 @@ export class DataTable extends React.Component {
     }
 
     if (props.name === 'download') {
-      this.download();
+      await this.triggerDownload(
+        await this.requestDownload()
+      );
     }
   }
 
@@ -277,6 +328,9 @@ export class DataTable extends React.Component {
     if (!isReady) {
       return <Loading />;
     }
+
+
+    const transcript = this.state.transcriptsByRunId[source.runId] || [];
 
     return (
       <Fragment>
@@ -331,6 +385,17 @@ export class DataTable extends React.Component {
                   })}
                 </Table.Body>
               </Table>
+
+              {transcript.map(message => {
+
+                const author = this.props.usersById[message.user_id];
+                return (
+                  <p>
+                    <Username user={author} />:{' '}
+                    {message.textContent}
+                  </p>
+                );
+              })}
             </div>
           );
         })}
@@ -436,25 +501,33 @@ DataTable.propTypes = {
     users: PropTypes.array
   }),
   onClick: PropTypes.func,
+  getChatTranscriptsByChatId: PropTypes.func,
+  getChatTranscriptsByCohortId: PropTypes.func,
+  getChatTranscriptsByRunId: PropTypes.func,
+  getChatTranscriptsByScenarioId: PropTypes.func,
   getCohort: PropTypes.func,
   getCohortData: PropTypes.func,
   getRunData: PropTypes.func,
   getScenariosByStatus: PropTypes.func,
-  getUser: PropTypes.func,
+  getUsers: PropTypes.func,
   user: PropTypes.object
 };
 
 const mapStateToProps = state => {
-  const { cohort, runsById, scenarios, user } = state;
-  return { cohort, runsById, scenarios, user };
+  const { cohort, runsById, scenarios, user, usersById } = state;
+  return { cohort, runsById, scenarios, user, usersById };
 };
 
 const mapDispatchToProps = dispatch => ({
+  getChatTranscriptsByChatId: id => dispatch(getChatTranscriptsByChatId(id)),
+  getChatTranscriptsByCohortId: id => dispatch(getChatTranscriptsByCohortId(id)),
+  getChatTranscriptsByRunId: id => dispatch(getChatTranscriptsByRunId(id)),
+  getChatTranscriptsByScenarioId: id => dispatch(getChatTranscriptsByScenarioId(id)),
   getCohort: id => dispatch(getCohort(id)),
   getCohortData: (...params) => dispatch(getCohortData(...params)),
   getRunData: (...params) => dispatch(getRunData(...params)),
   getScenariosByStatus: status => dispatch(getScenariosByStatus(status)),
-  getUser: () => dispatch(getUser())
+  getUsers: () => dispatch(getUsers())
 });
 
 export default withRouter(

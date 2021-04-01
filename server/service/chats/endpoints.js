@@ -276,8 +276,11 @@ async function getChatTranscriptsByAssociationId(req, res) {
     messages = await db.getChatTranscriptsByCohortId(id);
   }
 
+  if (association === 'run') {
+    messages = await db.getChatTranscriptsByRunId(id);
+  }
+
   if (association === 'scenario') {
-    console.log("???????????????????");
     messages = await db.getChatTranscriptsByScenarioId(id);
   }
 

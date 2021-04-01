@@ -517,21 +517,20 @@ class Display extends Component {
                     not mark the conversation as complete.
                   </p>
 
-                  <p tabIndex="0" className="cpe__paragraph">
-                    <Checkbox
-                      autoComplete="off"
-                      label="I understand and want to continue"
-                      checked={this.state.markComplete.ack}
-                      onChange={(event, {checked}) => {
-                        this.setState({
-                          markComplete: {
-                            ...this.state.markComplete,
-                            ack: checked
-                          }
-                        });
-                      }}
-                    />
-                  </p>
+                  <Checkbox
+                    autoComplete="off"
+                    className="cpe__paragraph"
+                    label="I understand and want to continue"
+                    checked={this.state.markComplete.ack}
+                    onChange={(event, {checked}) => {
+                      this.setState({
+                        markComplete: {
+                          ...this.state.markComplete,
+                          ack: checked
+                        }
+                      });
+                    }}
+                  />
                 </Form>
               </Modal.Content>
               <Modal.Actions>
