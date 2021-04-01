@@ -164,8 +164,11 @@ class Run extends Component {
         // was returned from the server, whether it is a new chat or
         // an existing chat.
 
-        // This will signal that Run should show the Lobby first.
-        lobby.isOpen = true;
+
+        if (this.props.scenario.personas.length !== chat.users.length) {
+          // This will signal that Run should show the Lobby first.
+          lobby.isOpen = true;
+        }
       }
     }
 
