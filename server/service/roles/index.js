@@ -18,7 +18,7 @@ const {
 } = require('./endpoints');
 
 router.get('/all', [
-  requireUserRole(['admin', 'super_admin', 'facilitator']),
+  requireUser,
   getAllUsers
 ]);
 

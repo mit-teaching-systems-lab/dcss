@@ -515,40 +515,36 @@ async function setCohortScenarios(id, scenarioIds) {
 async function getCohortRunResponses({ id, participant_id, scenario_id }) {
   // let responses = [];
 
+
   let andClause = participant_id
-    ? `run.user_id = ${participant_id}`
-    : `run.scenario_id = ${scenario_id}`;
+    ? `rrv.user_id = ${participant_id}`
+    : `rrv.scenario_id = ${scenario_id}`;
 
   let select = `
     SELECT
-      run.user_id as user_id,
+      rrv.id,
+      rrv.user_id,
       username,
-      run.id as run_id,
-      run.scenario_id as scenario_id,
-      run.referrer_params as referrer_params,
-      response_id,
-      run_response.response->>'value' as value,
-      run_response.response->>'content' as content,
-      audio_transcripts.transcript as transcript,
-      CASE run_response.response->>'isSkip'
-        WHEN 'false'
-          THEN FALSE
-          ELSE TRUE
-      END as is_skip,
-      run_response.response->>'type' as type,
-      run_response.created_at as created_at,
-      run_response.ended_at as ended_at,
-      run.consent_granted_by_user,
-      cohort_run.cohort_id
-    FROM run_response
-    JOIN cohort_run ON run_response.run_id = cohort_run.run_id
-    JOIN run ON run.id = cohort_run.run_id
-    JOIN users ON users.id = run.user_id
-    LEFT JOIN audio_transcripts ON audio_transcripts.key = run_response.response->>'value'
-    WHERE cohort_run.cohort_id = ${id}
+      rrv.run_id,
+      rrv.scenario_id,
+      rrv.response_id,
+      rrv.value,
+      rrv.content,
+      rrv.transcript,
+      rrv.is_skip,
+      rrv.type,
+      rrv.created_at,
+      rrv.ended_at,
+      rrv.consent_granted_by_user,
+      rrv.cohort_id
+    FROM run_response_view rrv
+    JOIN users ON users.id = rrv.user_id
+    WHERE rrv.cohort_id = ${id}
     AND ${andClause}
-    ORDER BY cohort_run.run_id DESC
+    ORDER BY rrv.run_id DESC;
   `;
+
+  console.log(select);
 
   let result = await query(select);
 
