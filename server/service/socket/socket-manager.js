@@ -58,10 +58,10 @@ const authdb = require('../session/db');
 const agentsdb = require('../agents/db');
 const chatsdb = require('../chats/db');
 const cohortsdb = require('../cohorts/db');
+const personasdb = require('../personas/db');
 const runsdb = require('../runs/db');
 const scenariosdb = require('../scenarios/db');
 const chatutil = require('../chats/util');
-
 
 async function saveRunEvent(run_id, name, context) {
   try {
@@ -143,7 +143,8 @@ const makeRemoteSafeAuthPayload = data => {
     },
     user: {
       id: user.id,
-      name: user.personalname || user.username
+      name: user.personalname || user.username,
+      role: user.role
     }
   };
 
@@ -178,21 +179,21 @@ class SocketManager {
       //
       //
       if (!notifier.listenerCount('new_notification')) {
-        notifier.on('new_notification', data => {
-          console.log('new_notification', data);
-          if (!cache.notifications.includes(data.id)) {
-            cache.notifications.push(data.id);
+        notifier.on('new_notification', record => {
+          console.log('new_notification', record);
+          if (!cache.notifications.includes(record.id)) {
+            cache.notifications.push(record.id);
 
             //
             //
-            // TODO: look at "data" and determine if
+            // TODO: look at "record" and determine if
             //        this is a specific user notification.
             //        if yes, then use "socket.to(user.id).emit(...)"
             //
             //
             //
 
-            socket.broadcast.emit(NOTIFICATION, data);
+            socket.broadcast.emit(NOTIFICATION, record);
           }
         });
         // console.log('new_notification listener is registered');
@@ -237,19 +238,19 @@ class SocketManager {
       }
 
       if (!notifier.listenerCount('chat_message_updated')) {
-        notifier.on('chat_message_updated', data => {
-          // console.log('chat_message_updated', data);
-          socket.broadcast.emit(CHAT_MESSAGE_UPDATED, data);
+        notifier.on('chat_message_updated', record => {
+          // console.log('chat_message_updated', record);
+          socket.broadcast.emit(CHAT_MESSAGE_UPDATED, record);
         });
         // console.log('chat_message_updated listener is registered');
       }
 
       if (!notifier.listenerCount('join_or_part_chat')) {
-        notifier.on('join_or_part_chat', async data => {
-          console.log('join_or_part_chat', data);
+        notifier.on('join_or_part_chat', async record => {
+          console.log('join_or_part_chat', record);
           const user = await chatsdb.getChatUserByChatId(
-            data.chat_id,
-            data.user_id
+            record.chat_id,
+            record.user_id
           );
 
           // If we allow late arriving agents to trigger JOIN_OR_PART,
@@ -258,36 +259,40 @@ class SocketManager {
           // will loop back to here causing an infinit loop.
           if (!user.is_agent) {
             // Send JOIN_OR_PART signal BEFORE creating the chat message announcement
-            this.io.to(data.chat_id).emit(JOIN_OR_PART, {
+            this.io.to(record.chat_id).emit(JOIN_OR_PART, {
               chat: {
-                id: data.chat_id
+                id: record.chat_id
               },
               user
             });
 
-            const message = data.is_present
+            const message = record.is_present
               ? 'has joined the chat.'
               : 'has left the chat.';
 
-            await chatsdb.updateJoinPartMessages(data.chat_id, data.user_id, {
-              deleted_at: new Date().toISOString()
-            });
+            await chatsdb.updateJoinPartMessages(
+              record.chat_id,
+              record.user_id,
+              {
+                deleted_at: new Date().toISOString()
+              }
+            );
 
             await chatsdb.insertNewJoinPartMessage(
-              data.chat_id,
-              data.user_id,
+              record.chat_id,
+              record.user_id,
               message
             );
           }
 
-          const chat = await chatsdb.getChat(data.chat_id);
+          const chat = await chatsdb.getChat(record.chat_id);
 
           // The host joined and has a persona selected.
           if (
             chat.cohort_id &&
-            data.persona_id &&
-            data.is_present &&
-            chat.host_id === data.user_id
+            record.persona_id &&
+            record.is_present &&
+            chat.host_id === record.user_id
           ) {
             this.io.to(chat.cohort_id).emit(HOST_JOIN);
           }
@@ -297,12 +302,12 @@ class SocketManager {
       }
 
       if (!notifier.listenerCount('run_chat_link')) {
-        notifier.on('run_chat_link', async data => {
-          console.log('run_chat_link', data);
-          const chat = await chatsdb.getChat(data.chat_id);
+        notifier.on('run_chat_link', async record => {
+          console.log('run_chat_link', record);
+          const chat = await chatsdb.getChat(record.chat_id);
           const user = await chatsdb.getChatUserByChatId(
-            data.chat_id,
-            data.user_id
+            record.chat_id,
+            record.user_id
           );
           this.io.to(chat.host_id).emit(RUN_CHAT_LINK, {
             chat,
@@ -314,9 +319,9 @@ class SocketManager {
           // if (chat.cohort_id) {
           //   const cohort = await cohortsdb.getCohort(chat.cohort_id);
           //   this.io.to(cohort.chat_id).emit(CHAT_MESSAGE_CREATED, {
-          //     id: data.id,
+          //     id: record.id,
           //     chat_id: chat.id,
-          //     user_id: data.user_id,
+          //     user_id: record.user_id,
           //     content: '<p class="join-part-slide">has joined the chat.</p>',
           //     created_at: '2021-03-19T15:16:48.731297-04:00',
           //     updated_at: null,
@@ -332,31 +337,31 @@ class SocketManager {
       }
 
       if (!notifier.listenerCount('new_invitation')) {
-        notifier.on('new_invitation', async data => {
-          console.log('new_invitation', data);
+        notifier.on('new_invitation', async record => {
+          console.log('new_invitation', record);
           this.io
-            .to(data.receiver_id)
+            .to(record.receiver_id)
             .emit(
               NEW_INVITATION,
-              await chatutil.makeChatInviteNotification(data)
+              await chatutil.makeChatInviteNotification(record)
             );
         });
       }
 
       if (!notifier.listenerCount('set_invitation')) {
-        notifier.on('set_invitation', async data => {
-          console.log('set_invitation', data);
+        notifier.on('set_invitation', async record => {
+          console.log('set_invitation', record);
           this.io
-            .to(data.receiver_id)
+            .to(record.receiver_id)
             .emit(
               SET_INVITATION,
-              await chatutil.makeChatInviteNotification(data)
+              await chatutil.makeChatInviteNotification(record)
             );
           this.io
-            .to(data.sender_id)
+            .to(record.sender_id)
             .emit(
               SET_INVITATION,
-              await chatutil.makeChatInviteNotification(data)
+              await chatutil.makeChatInviteNotification(record)
             );
         });
       }
@@ -382,22 +387,22 @@ class SocketManager {
         });
       }
 
-      const sendRunResponseToAgent = async data => {
-        const clientKey = `${data.run_id}-${data.user_id}-${data.response_id}`;
+      const sendRunResponseToAgent = async record => {
+        const clientKey = `${record.run_id}-${record.user_id}-${record.response_id}`;
 
         // console.log('sendRunResponseToAgent, clientKey', clientKey);
-        // console.log('sendRunResponseToAgent, data', data);
+        // console.log('sendRunResponseToAgent, record', record);
         // console.log(cache.clients[clientKey]);
 
         if (cache.clients[clientKey]) {
           const { client, auth } = cache.clients[clientKey];
-          const { id, response_id, transcript = '', value = '' } = data;
+          const { id, response_id, transcript = '', value = '' } = record;
 
           // console.log(auth);
-          // console.log(data);
+          // console.log(record);
 
           if (value) {
-            console.log('sendRunResponseToAgent: ', data);
+            console.log('sendRunResponseToAgent: ', record);
             client.emit('request', {
               auth,
               id,
@@ -406,57 +411,57 @@ class SocketManager {
               value
             });
 
-            await saveRunEvent(data.run_id, 'response-sent-to-agent', data);
+            await saveRunEvent(record.run_id, 'response-sent-to-agent', record);
           }
         }
       };
 
       if (!notifier.listenerCount('agent_response_created')) {
-        notifier.on('agent_response_created', async data => {
-          console.log('agent_response_created', data);
-          this.io.to(data.recipient_id).emit(AGENT_RESPONSE_CREATED, data);
+        notifier.on('agent_response_created', async record => {
+          console.log('agent_response_created', record);
+          this.io.to(record.recipient_id).emit(AGENT_RESPONSE_CREATED, record);
         });
       }
 
       if (!notifier.listenerCount('run_response_created')) {
-        notifier.on('run_response_created', async data => {
-          console.log('run_response_created', data);
-          sendRunResponseToAgent(data);
-          const { run_id, response_id } = data;
+        notifier.on('run_response_created', async record => {
+          console.log('run_response_created', record);
+          sendRunResponseToAgent(record);
+          const { run_id, response_id } = record;
           const chat = await runsdb.getChatByRunId(run_id);
           if (chat) {
             const room = `${chat.id}-response-${response_id}`;
-            this.io.to(room).emit(SHARED_RESPONSE_CREATED, data);
-            await saveRunEvent(data.run_id, SHARED_RESPONSE_CREATED, data);
+            this.io.to(room).emit(SHARED_RESPONSE_CREATED, record);
+            await saveRunEvent(record.run_id, SHARED_RESPONSE_CREATED, record);
           }
         });
       }
 
       if (!notifier.listenerCount('run_response_updated')) {
-        notifier.on('run_response_updated', async data => {
-          console.log('run_response_updated', data);
-          sendRunResponseToAgent(data);
-          const { run_id, response_id } = data;
+        notifier.on('run_response_updated', async record => {
+          console.log('run_response_updated', record);
+          sendRunResponseToAgent(record);
+          const { run_id, response_id } = record;
           const chat = await runsdb.getChatByRunId(run_id);
           if (chat) {
             const room = `${chat.id}-response-${response_id}`;
-            this.io.to(room).emit(SHARED_RESPONSE_UPDATED, data);
-            await saveRunEvent(data.run_id, SHARED_RESPONSE_UPDATED, data);
+            this.io.to(room).emit(SHARED_RESPONSE_UPDATED, record);
+            await saveRunEvent(record.run_id, SHARED_RESPONSE_UPDATED, record);
           }
         });
       }
 
       // if (!notifier.listenerCount('audio_transcript_created')) {
-      //   notifier.on('audio_transcript_created', async data => {
-      //     console.log('audio_transcript_created', data);
+      //   notifier.on('audio_transcript_created', async record => {
+      //     console.log('audio_transcript_created', record);
       //   });
       //   // console.log('chat_message_created listener is registered');
       // }
 
       // if (!notifier.listenerCount('audio_transcript_updated')) {
-      //   notifier.on('audio_transcript_updated', async data => {
-      //     console.log('audio_transcript_updated', data);
-      //     // socket.broadcast.emit(CHAT_MESSAGE_UPDATED, data);
+      //   notifier.on('audio_transcript_updated', async record => {
+      //     console.log('audio_transcript_updated', record);
+      //     // socket.broadcast.emit(CHAT_MESSAGE_UPDATED, record);
       //   });
       // }
 
@@ -474,7 +479,19 @@ class SocketManager {
           socket.join(room);
 
           const agent = await agentsdb.getAgent(payload.agent.id);
-          const auth = makeRemoteSafeAuthPayload({ agent, chat, user });
+          const role = user.persona_id
+            ? await personasdb.getPersonaById(user.persona_id)
+            : null;
+          const auth = makeRemoteSafeAuthPayload({
+            agent,
+            chat,
+            user: {
+              ...user,
+              role
+            }
+          });
+
+          console.log('CHAT_AGENT_START', auth);
 
           const options = {
             ...agent.socket,
@@ -522,7 +539,7 @@ class SocketManager {
             });
           });
 
-          client.on('interjection', async (response) => {
+          client.on('interjection', async response => {
             console.log('interjection', response.message);
 
             await chatsdb.insertNewAgentMessage(
@@ -587,7 +604,7 @@ class SocketManager {
         );
       });
 
-      socket.on(RUN_AGENT_START, async (payload) => {
+      socket.on(RUN_AGENT_START, async payload => {
         const { run, user } = payload;
         console.log(RUN_AGENT_START, { run, user });
         const prompts = await agentsdb.getScenarioAgentPrompts(run.scenario_id);
@@ -794,7 +811,10 @@ class SocketManager {
           }
 
           await saveRunEvent(run.id, USER_JOIN_SLIDE, {
-            chat, user, scenario, run
+            chat,
+            user,
+            scenario,
+            run
           });
         }
       });
@@ -818,7 +838,9 @@ class SocketManager {
           }
 
           await saveRunEvent(run.id, USER_PART_SLIDE, {
-            chat, user, run
+            chat,
+            user,
+            run
           });
         }
       });
@@ -827,19 +849,20 @@ class SocketManager {
         chatsdb.partChat(chat.id, user.id);
       });
 
-      socket.on(CHAT_MESSAGE_CREATED, async ({ chat, user, content, prompt, run }) => {
-// getRunByChatAndUserId
+      socket.on(CHAT_MESSAGE_CREATED, async payload => {
+        const { chat, user, content, prompt, run } = payload;
         console.log({ chat, user, content, prompt, run });
         chatsdb.createNewChatMessage(chat.id, user.id, content, prompt.id);
 
         if (run) {
           await saveRunEvent(run.id, CHAT_MESSAGE_CREATED, {
-            chat, user, content, prompt, run
+            ...payload
           });
         }
       });
 
-      socket.on(CHAT_CLOSED_FOR_SLIDE, async ({ chat, user, slide, result, run }) => {
+      socket.on(CHAT_CLOSED_FOR_SLIDE, async payload => {
+        const { chat, user, slide, result, run } = payload;
         console.log(CHAT_CLOSED_FOR_SLIDE, { chat, user, slide, result, run });
         const room = `${chat.id}-slide-${slide.index}`;
         cache.rolls[room] = null;
@@ -863,10 +886,9 @@ class SocketManager {
 
         cache.discussions[room] = closeResultToStateMap[result];
 
-
         if (run) {
           await saveRunEvent(run.id, CHAT_CLOSED_FOR_SLIDE, {
-            chat, user, slide, result, run
+            ...payload
           });
         }
       });
