@@ -8367,719 +8367,31 @@ exports[`Copy cohort 5`] = `
 
 exports[`Copy cohort 6`] = `
 "<body
-  class=\\"dimmable dimmed\\"
+  class=\\"\\"
 >
   <div
     id=\\"root\\"
   />
   <div>
-    <div>
-      <div
-        class=\\"ui top attached tabular c__tab-menu--overflow menu\\"
-      >
-        <a
-          class=\\"active item\\"
-          tabindex=\\"0\\"
-        >
-          A New Cohort That Exists Within Inline Props COPY
-        </a>
-      </div>
-      <div
-        class=\\"ui bottom attached segment\\"
-      >
-        <section
-          class=\\"c__section c__cohort-header\\"
-        >
-          <div
-            class=\\"c__cohort-url\\"
-          >
-            <div
-              class=\\"ui big labeled input\\"
-            >
-              <div
-                class=\\"ui label label\\"
-              >
-                Cohort link
-              </div>
-              <input
-                type=\\"text\\"
-                value=\\"undefined/cohort/6c4adee67a\\"
-              />
-            </div>
-             
-            <button
-              class=\\"ui small button\\"
-            >
-              <i
-                aria-hidden=\\"true\\"
-                class=\\"clipboard outline icon primary\\"
-              />
-              Copy cohort link to clipboard
-            </button>
-          </div>
-          <div
-            class=\\"c__cohort-user-actions\\"
-          >
-            <p
-              class=\\"c__activation-state\\"
-            >
-              Cohort is 
-              <span>
-                Active
-              </span>
-            </p>
-            <div
-              aria-expanded=\\"false\\"
-              class=\\"ui button labeled dropdown icon icon-primary\\"
-              role=\\"listbox\\"
-              tabindex=\\"0\\"
-            >
-              <div
-                aria-atomic=\\"true\\"
-                aria-live=\\"polite\\"
-                class=\\"divider text\\"
-                role=\\"alert\\"
-              >
-                Cohort tools
-              </div>
-              <i
-                aria-hidden=\\"true\\"
-                class=\\"setting icon\\"
-              />
-              <div
-                class=\\"left menu transition\\"
-              >
-                <div
-                  class=\\"item icon-primary\\"
-                  role=\\"option\\"
-                >
-                  <i
-                    aria-hidden=\\"true\\"
-                    class=\\"archive icon\\"
-                  />
-                  <span
-                    class=\\"text\\"
-                  >
-                    Archive cohort
-                  </span>
-                </div>
-                <div
-                  class=\\"item icon-primary\\"
-                  role=\\"option\\"
-                >
-                  <i
-                    aria-hidden=\\"true\\"
-                    class=\\"edit outline icon\\"
-                  />
-                  <span
-                    class=\\"text\\"
-                  >
-                    Rename cohort
-                  </span>
-                </div>
-                <div
-                  class=\\"item icon-primary\\"
-                  role=\\"option\\"
-                >
-                  <i
-                    aria-hidden=\\"true\\"
-                    class=\\"copy outline icon\\"
-                  />
-                  <span
-                    class=\\"text\\"
-                  >
-                    Copy cohort
-                  </span>
-                </div>
-                <div
-                  class=\\"item icon-primary\\"
-                  role=\\"option\\"
-                >
-                  <i
-                    aria-hidden=\\"true\\"
-                    class=\\"trash alternate outline icon\\"
-                  />
-                  <span
-                    class=\\"text\\"
-                  >
-                    Delete cohort
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-        <section
-          class=\\"c__section\\"
-        >
-          <h2
-            class=\\"ui header\\"
-          >
-            Cohort scenarios
-          </h2>
-          <div>
-            <button
-              authority=\\"[object Object]\\"
-              id=\\"2\\"
-            >
-              @components/Cohorts/CohortScenarios
-            </button>
-          </div>
-        </section>
-        <section
-          class=\\"c__section\\"
-        >
-          <h2
-            class=\\"ui header\\"
-          >
-            Cohort progress
-          </h2>
-          <h3
-            class=\\"ui header\\"
-          >
-            Track participant progress and responses to selected scenarios
-          </h3>
-          <div
-            class=\\"ui fluid container c__scenario-container\\"
-          >
-            <div
-              class=\\"ui stackable two column grid c__scenario-participant-header\\"
-            >
-              <div
-                class=\\"six wide column\\"
-              >
-                <p
-                  class=\\"c__scenario-header-num\\"
-                >
-                  <span>
-                    0
-                    /
-                    5
-                  </span>
-                   
-                  participants
-                   have completed all scenarios
-                </p>
-                <button
-                  aria-label=\\"Manage participants\\"
-                  class=\\"ui tiny button\\"
-                >
-                  Manage participants
-                </button>
-              </div>
-              <div
-                class=\\"ten wide column c__scenario-search-participants\\"
-              >
-                <div
-                  class=\\"ui big icon labeled input grid__menu-search\\"
-                >
-                  <div
-                    class=\\"ui label label\\"
-                  >
-                    Search participants
-                  </div>
-                  <input
-                    aria-label=\\"Search participants\\"
-                    type=\\"text\\"
-                  />
-                  <i
-                    aria-hidden=\\"true\\"
-                    class=\\"search icon\\"
-                  />
-                </div>
-              </div>
-            </div>
-            <div
-              class=\\"c__participant-list\\"
-            >
-              <div
-                class=\\"ui card c__participant-card\\"
-              >
-                <div
-                  class=\\"content\\"
-                >
-                  <div
-                    class=\\"header\\"
-                  >
-                    <span
-                      aria-label=\\"Super User (super)\\"
-                      class=\\"ui medium text\\"
-                      title=\\"Super User (super)\\"
-                    >
-                      Super User
-                    </span>
-                    
-                     
-                    <i
-                      aria-hidden=\\"true\\"
-                      class=\\"small icon chess queen\\"
-                      style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                      title=\\"Super\\"
-                    />
-                  </div>
-                  <p
-                    class=\\"c__participant-completion__group\\"
-                  >
-                    <span
-                      class=\\"c__participant-completion__subhed\\"
-                    >
-                      Last accessed
-                    </span>
-                    <time
-                      datetime=\\"2020-10-11T22:11:46.144Z\\"
-                    >
-                      6 months ago
-                    </time>
-                  </p>
-                </div>
-                <div
-                  class=\\"content\\"
-                >
-                  <div
-                    class=\\"description c__participant-completion\\"
-                  >
-                    <div
-                      class=\\"c__participant-status\\"
-                    >
-                      <i
-                        aria-hidden=\\"true\\"
-                        class=\\"circle icon primary\\"
-                      />
-                      <span
-                        class=\\"ui medium text\\"
-                      >
-                        In progress
-                      </span>
-                    </div>
-                    <p
-                      class=\\"c__participant-completion__scenarios-completed\\"
-                    >
-                      <span>
-                        0
-                        /
-                        1
-                         
-                      </span>
-                      scenario
-                       completed
-                    </p>
-                  </div>
-                </div>
-                <div
-                  class=\\"content c__scenario-extra\\"
-                >
-                  <button
-                    class=\\"ui large primary button c__participant-card__responses\\"
-                    data-testid=\\"view-participant-responses\\"
-                  >
-                    View responses
-                  </button>
-                </div>
-              </div>
-              <div
-                class=\\"ui card c__participant-card\\"
-              >
-                <div
-                  class=\\"content\\"
-                >
-                  <div
-                    class=\\"header\\"
-                  >
-                    <span
-                      aria-label=\\"Facilitator User (facilitator)\\"
-                      class=\\"ui medium text\\"
-                      title=\\"Facilitator User (facilitator)\\"
-                    >
-                      Facilitator User
-                    </span>
-                    
-                     
-                    <i
-                      aria-hidden=\\"true\\"
-                      class=\\"small icon chalkboard teacher\\"
-                      style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                      title=\\"Facilitator\\"
-                    />
-                  </div>
-                  <p
-                    class=\\"c__participant-completion__group\\"
-                  >
-                    <span
-                      class=\\"c__participant-completion__subhed\\"
-                    >
-                      Last accessed
-                    </span>
-                    <time
-                      datetime=\\"2020-10-11T22:11:46.144Z\\"
-                    >
-                      6 months ago
-                    </time>
-                  </p>
-                </div>
-                <div
-                  class=\\"content\\"
-                >
-                  <div
-                    class=\\"description c__participant-completion\\"
-                  >
-                    <div
-                      class=\\"c__participant-status\\"
-                    >
-                      <i
-                        aria-hidden=\\"true\\"
-                        class=\\"circle icon primary\\"
-                      />
-                      <span
-                        class=\\"ui medium text\\"
-                      >
-                        In progress
-                      </span>
-                    </div>
-                    <p
-                      class=\\"c__participant-completion__scenarios-completed\\"
-                    >
-                      <span>
-                        0
-                        /
-                        1
-                         
-                      </span>
-                      scenario
-                       completed
-                    </p>
-                  </div>
-                </div>
-                <div
-                  class=\\"content c__scenario-extra\\"
-                >
-                  <button
-                    class=\\"ui large primary button c__participant-card__responses\\"
-                    data-testid=\\"view-participant-responses\\"
-                  >
-                    View responses
-                  </button>
-                </div>
-              </div>
-              <div
-                class=\\"ui card c__participant-card\\"
-              >
-                <div
-                  class=\\"content\\"
-                >
-                  <div
-                    class=\\"header\\"
-                  >
-                    <span
-                      aria-label=\\"Researcher User (researcher)\\"
-                      class=\\"ui medium text\\"
-                      title=\\"Researcher User (researcher)\\"
-                    >
-                      Researcher User
-                    </span>
-                    
-                     
-                    <i
-                      aria-hidden=\\"true\\"
-                      class=\\"small icon user graduate\\"
-                      style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                      title=\\"Researcher\\"
-                    />
-                  </div>
-                  <p
-                    class=\\"c__participant-completion__group\\"
-                  >
-                    <span
-                      class=\\"c__participant-completion__subhed\\"
-                    >
-                      Last accessed
-                    </span>
-                    <time
-                      datetime=\\"2020-10-11T22:11:46.144Z\\"
-                    >
-                      6 months ago
-                    </time>
-                  </p>
-                </div>
-                <div
-                  class=\\"content\\"
-                >
-                  <div
-                    class=\\"description c__participant-completion\\"
-                  >
-                    <div
-                      class=\\"c__participant-status\\"
-                    >
-                      <i
-                        aria-hidden=\\"true\\"
-                        class=\\"circle icon primary\\"
-                      />
-                      <span
-                        class=\\"ui medium text\\"
-                      >
-                        In progress
-                      </span>
-                    </div>
-                    <p
-                      class=\\"c__participant-completion__scenarios-completed\\"
-                    >
-                      <span>
-                        0
-                        /
-                        1
-                         
-                      </span>
-                      scenario
-                       completed
-                    </p>
-                  </div>
-                </div>
-                <div
-                  class=\\"content c__scenario-extra\\"
-                >
-                  <button
-                    class=\\"ui large primary button c__participant-card__responses\\"
-                    data-testid=\\"view-participant-responses\\"
-                  >
-                    View responses
-                  </button>
-                </div>
-              </div>
-              <div
-                class=\\"ui card c__participant-card\\"
-              >
-                <div
-                  class=\\"content\\"
-                >
-                  <div
-                    class=\\"header\\"
-                  >
-                    <span
-                      aria-label=\\"Participant User (participant)\\"
-                      class=\\"ui medium text\\"
-                      title=\\"Participant User (participant)\\"
-                    >
-                      Participant User
-                    </span>
-                    
-                     
-                  </div>
-                  <p
-                    class=\\"c__participant-completion__group\\"
-                  >
-                    <span
-                      class=\\"c__participant-completion__subhed\\"
-                    >
-                      Last accessed
-                    </span>
-                    <time
-                      datetime=\\"2020-10-11T22:11:46.144Z\\"
-                    >
-                      6 months ago
-                    </time>
-                  </p>
-                </div>
-                <div
-                  class=\\"content\\"
-                >
-                  <div
-                    class=\\"description c__participant-completion\\"
-                  >
-                    <div
-                      class=\\"c__participant-status\\"
-                    >
-                      <i
-                        aria-hidden=\\"true\\"
-                        class=\\"circle icon primary\\"
-                      />
-                      <span
-                        class=\\"ui medium text\\"
-                      >
-                        In progress
-                      </span>
-                    </div>
-                    <p
-                      class=\\"c__participant-completion__scenarios-completed\\"
-                    >
-                      <span>
-                        0
-                        /
-                        1
-                         
-                      </span>
-                      scenario
-                       completed
-                    </p>
-                  </div>
-                </div>
-                <div
-                  class=\\"content c__scenario-extra\\"
-                >
-                  <button
-                    class=\\"ui large primary button c__participant-card__responses\\"
-                    data-testid=\\"view-participant-responses\\"
-                  >
-                    View responses
-                  </button>
-                </div>
-              </div>
-              <div
-                class=\\"ui card c__participant-card\\"
-              >
-                <div
-                  class=\\"content\\"
-                >
-                  <div
-                    class=\\"header\\"
-                  >
-                    <span
-                      aria-label=\\"anonymous\\"
-                      class=\\"ui medium text\\"
-                      title=\\"anonymous\\"
-                    >
-                      anonymous
-                    </span>
-                    
-                     
-                  </div>
-                  <p
-                    class=\\"c__participant-completion__group\\"
-                  >
-                    <span
-                      class=\\"c__participant-completion__subhed\\"
-                    >
-                      Last accessed
-                    </span>
-                    <time
-                      datetime=\\"2020-10-11T22:11:46.144Z\\"
-                    >
-                      6 months ago
-                    </time>
-                  </p>
-                </div>
-                <div
-                  class=\\"content\\"
-                >
-                  <div
-                    class=\\"description c__participant-completion\\"
-                  >
-                    <div
-                      class=\\"c__participant-status\\"
-                    >
-                      <i
-                        aria-hidden=\\"true\\"
-                        class=\\"circle icon primary\\"
-                      />
-                      <span
-                        class=\\"ui medium text\\"
-                      >
-                        In progress
-                      </span>
-                    </div>
-                    <p
-                      class=\\"c__participant-completion__scenarios-completed\\"
-                    >
-                      <span>
-                        0
-                        /
-                        1
-                         
-                      </span>
-                      scenario
-                       completed
-                    </p>
-                  </div>
-                </div>
-                <div
-                  class=\\"content c__scenario-extra\\"
-                >
-                  <button
-                    class=\\"ui large primary button c__participant-card__responses\\"
-                    data-testid=\\"view-participant-responses\\"
-                  >
-                    View responses
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div
-              data-testid=\\"cohort-progress\\"
-            />
-          </div>
-        </section>
-      </div>
-      <div
-        data-testid=\\"cohort-boundary-bottom\\"
-        hidden=\\"\\"
-        id=\\"boundary-bottom\\"
-        style=\\"background-color: red; height: 1px; width: 100vw; z-index: 9007199254740991;\\"
-      />
-    </div>
-  </div>
-  <div
-    class=\\"ui page modals dimmer transition visible active\\"
-    style=\\"display: flex;\\"
-  >
     <div
-      aria-modal=\\"true\\"
-      class=\\"ui small modal transition visible active\\"
-      role=\\"dialog\\"
+      aria-busy=\\"true\\"
+      aria-live=\\"polite\\"
+      class=\\"ui card loading__single-card\\"
+      role=\\"status\\"
+      style=\\"width: 100%; height: 90%;\\"
     >
-      <i
+      <div
         aria-hidden=\\"true\\"
-        class=\\"close icon\\"
-      />
-      <div
-        class=\\"ui header\\"
-      >
-        <i
-          aria-hidden=\\"true\\"
-          class=\\"group icon\\"
-        />
-        <div
-          class=\\"content\\"
-        >
-          Copy \\"A New Cohort That Exists Within Inline Props COPY\\"
-        </div>
-      </div>
-      <div
-        class=\\"content\\"
-      >
-        <span
-          class=\\"ui medium text\\"
-        >
-          Are you sure you want to 
-          copy
-           \\"
-          A New Cohort That Exists Within Inline Props COPY
-          \\"?
-        </span>
-      </div>
-      <div
-        class=\\"actions\\"
+        class=\\"content loading__content\\"
       >
         <div
-          class=\\"ui fluid buttons\\"
+          class=\\"ui placeholder\\"
         >
-          <button
-            aria-label=\\"Yes\\"
-            class=\\"ui primary button\\"
-          >
-            Yes
-          </button>
           <div
-            class=\\"or\\"
+            class=\\"square image\\"
           />
-          <button
-            aria-label=\\"No\\"
-            class=\\"ui button\\"
-          >
-            No
-          </button>
         </div>
       </div>
-      <div
-        data-testid=\\"cohort-rename\\"
-      />
     </div>
   </div>
 </body>"
@@ -15517,163 +14829,6 @@ exports[`Delete cohort 6`] = `
 </body>"
 `;
 
-exports[`Mock CohortScenarios 1`] = `
-"<body>
-  <div
-    id=\\"root\\"
-  />
-  <div>
-    <div
-      aria-busy=\\"true\\"
-      aria-live=\\"polite\\"
-      class=\\"ui card loading__single-card\\"
-      role=\\"status\\"
-      style=\\"width: 100%; height: 90%;\\"
-    >
-      <div
-        aria-hidden=\\"true\\"
-        class=\\"content loading__content\\"
-      >
-        <div
-          class=\\"ui placeholder\\"
-        >
-          <div
-            class=\\"square image\\"
-          />
-        </div>
-      </div>
-    </div>
-  </div>
-</body>"
-`;
-
-exports[`Mock CohortScenarios 3`] = `
-"<body>
-  <div
-    id=\\"root\\"
-  />
-  <div>
-    <div
-      aria-busy=\\"true\\"
-      aria-live=\\"polite\\"
-      class=\\"ui card loading__single-card\\"
-      role=\\"status\\"
-      style=\\"width: 100%; height: 90%;\\"
-    >
-      <div
-        aria-hidden=\\"true\\"
-        class=\\"content loading__content\\"
-      >
-        <div
-          class=\\"ui placeholder\\"
-        >
-          <div
-            class=\\"square image\\"
-          />
-        </div>
-      </div>
-    </div>
-  </div>
-</body>"
-`;
-
-exports[`Mock CohortScenarios 4`] = `
-"<body>
-  <div
-    id=\\"root\\"
-  />
-  <div>
-    <div>
-      <div
-        class=\\"ui top attached tabular c__tab-menu--overflow menu\\"
-      >
-        <a
-          class=\\"active item\\"
-          tabindex=\\"0\\"
-        >
-          A New Cohort That Exists In Bootstrap State For Testing
-        </a>
-      </div>
-      <div
-        class=\\"ui bottom attached segment\\"
-      >
-        <section
-          class=\\"c__section\\"
-        >
-          <h2
-            class=\\"ui header\\"
-          >
-            Cohort scenarios
-          </h2>
-          <div>
-            <button
-              authority=\\"[object Object]\\"
-              id=\\"2\\"
-            >
-              @components/Cohorts/CohortScenarios
-            </button>
-          </div>
-        </section>
-        <div>
-          @components/Cohorts/DataTable
-        </div>
-      </div>
-      <div
-        data-testid=\\"cohort-boundary-bottom\\"
-        hidden=\\"\\"
-        id=\\"boundary-bottom\\"
-        style=\\"background-color: red; height: 1px; width: 100vw; z-index: 9007199254740991;\\"
-      />
-    </div>
-  </div>
-</body>"
-`;
-
-exports[`Mock CohortScenarios 5`] = `
-"<body>
-  <div
-    id=\\"root\\"
-  />
-  <div>
-    <div>
-      <div
-        class=\\"ui top attached tabular c__tab-menu--overflow menu\\"
-      >
-        <a
-          class=\\"item\\"
-          tabindex=\\"0\\"
-        >
-          A New Cohort That Exists In Bootstrap State For Testing
-        </a>
-        <a
-          class=\\"active item\\"
-          tabindex=\\"0\\"
-        >
-          <i
-            aria-hidden=\\"true\\"
-            class=\\"content icon\\"
-          />
-          Cohort 2 Scenario Null
-        </a>
-      </div>
-      <div
-        class=\\"ui bottom attached segment\\"
-      >
-        <div>
-          @components/Cohorts/DataTable
-        </div>
-      </div>
-      <div
-        data-testid=\\"cohort-boundary-bottom\\"
-        hidden=\\"\\"
-        id=\\"boundary-bottom\\"
-        style=\\"background-color: red; height: 1px; width: 100vw; z-index: 9007199254740991;\\"
-      />
-    </div>
-  </div>
-</body>"
-`;
-
 exports[`Rename cohort 1`] = `
 "<body>
   <div
@@ -20869,7 +20024,7 @@ exports[`Render 4 1 3`] = `
         class="active item"
         tabindex="0"
       >
-        A New Cohort That Exists In Bootstrap State For Testing
+        A New Cohort That Exists Within Inline Props
       </a>
     </div>
     <div
@@ -20886,7 +20041,7 @@ exports[`Render 4 1 3`] = `
         <div>
           <button
             authority="[object Object]"
-            id="2"
+            id="1"
           >
             @components/Cohorts/CohortScenarios
           </button>
@@ -20941,7 +20096,7 @@ exports[`Render 5 1 3`] = `
         class="active item"
         tabindex="0"
       >
-        A New Cohort That Exists In Bootstrap State For Testing
+        A New Cohort That Exists Within Inline Props
       </a>
     </div>
     <div
@@ -20958,7 +20113,7 @@ exports[`Render 5 1 3`] = `
         <div>
           <button
             authority="[object Object]"
-            id="2"
+            id="1"
           >
             @components/Cohorts/CohortScenarios
           </button>
@@ -21013,7 +20168,7 @@ exports[`Render 6 1 3`] = `
         class="active item"
         tabindex="0"
       >
-        A New Cohort That Exists In Bootstrap State For Testing
+        A New Cohort That Exists Within Inline Props
       </a>
     </div>
     <div
@@ -21030,7 +20185,7 @@ exports[`Render 6 1 3`] = `
         <div>
           <button
             authority="[object Object]"
-            id="2"
+            id="1"
           >
             @components/Cohorts/CohortScenarios
           </button>
@@ -21085,12 +20240,134 @@ exports[`Render 7 1 3`] = `
         class="active item"
         tabindex="0"
       >
-        A New Cohort That Exists In Bootstrap State For Testing
+        A New Cohort That Exists Within Inline Props
       </a>
     </div>
     <div
       class="ui bottom attached segment"
     >
+      <section
+        class="c__section c__cohort-header"
+      >
+        <div
+          class="c__cohort-url"
+        >
+          <div
+            class="ui big labeled input"
+          >
+            <div
+              class="ui label label"
+            >
+              Cohort link
+            </div>
+            <input
+              type="text"
+              value="http://localhost/cohort/6e4213d8d3"
+            />
+          </div>
+           
+          <button
+            class="ui small button"
+          >
+            <i
+              aria-hidden="true"
+              class="clipboard outline icon primary"
+            />
+            Copy cohort link to clipboard
+          </button>
+        </div>
+        <div
+          class="c__cohort-user-actions"
+        >
+          <p
+            class="c__activation-state"
+          >
+            Cohort is 
+            <span>
+              Active
+            </span>
+          </p>
+          <div
+            aria-expanded="false"
+            class="ui button labeled dropdown icon icon-primary"
+            role="listbox"
+            tabindex="0"
+          >
+            <div
+              aria-atomic="true"
+              aria-live="polite"
+              class="divider text"
+              role="alert"
+            >
+              Cohort tools
+            </div>
+            <i
+              aria-hidden="true"
+              class="setting icon"
+            />
+            <div
+              class="left menu transition"
+            >
+              <div
+                class="item icon-primary"
+                role="option"
+              >
+                <i
+                  aria-hidden="true"
+                  class="archive icon"
+                />
+                <span
+                  class="text"
+                >
+                  Archive cohort
+                </span>
+              </div>
+              <div
+                class="item icon-primary"
+                role="option"
+              >
+                <i
+                  aria-hidden="true"
+                  class="edit outline icon"
+                />
+                <span
+                  class="text"
+                >
+                  Rename cohort
+                </span>
+              </div>
+              <div
+                class="item icon-primary"
+                role="option"
+              >
+                <i
+                  aria-hidden="true"
+                  class="copy outline icon"
+                />
+                <span
+                  class="text"
+                >
+                  Copy cohort
+                </span>
+              </div>
+              <div
+                class="item icon-primary"
+                role="option"
+              >
+                <i
+                  aria-hidden="true"
+                  class="trash alternate outline icon"
+                />
+                <span
+                  class="text"
+                >
+                  Delete cohort
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
       <section
         class="c__section"
       >
@@ -21102,15 +20379,463 @@ exports[`Render 7 1 3`] = `
         <div>
           <button
             authority="[object Object]"
-            id="2"
+            id="1"
           >
             @components/Cohorts/CohortScenarios
           </button>
         </div>
       </section>
-      <div>
-        @components/Cohorts/DataTable
-      </div>
+      <section
+        class="c__section"
+      >
+        <h2
+          class="ui header"
+        >
+          Cohort progress
+        </h2>
+        <h3
+          class="ui header"
+        >
+          Track participant progress and responses to selected scenarios
+        </h3>
+        <div
+          class="ui fluid container c__scenario-container"
+        >
+          <div
+            class="ui stackable two column grid c__scenario-participant-header"
+          >
+            <div
+              class="six wide column"
+            >
+              <p
+                class="c__scenario-header-num"
+              >
+                <span>
+                  0/5
+                </span>
+                 participants have completed all scenarios
+              </p>
+              <button
+                aria-label="Manage participants"
+                class="ui tiny button"
+              >
+                Manage participants
+              </button>
+            </div>
+            <div
+              class="ten wide column c__scenario-search-participants"
+            >
+              <div
+                class="ui big icon labeled input grid__menu-search"
+              >
+                <div
+                  class="ui label label"
+                >
+                  Search participants
+                </div>
+                <input
+                  aria-label="Search participants"
+                  type="text"
+                />
+                <i
+                  aria-hidden="true"
+                  class="search icon"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class="c__participant-list"
+          >
+            <div
+              class="ui card c__participant-card"
+            >
+              <div
+                class="content"
+              >
+                <div
+                  class="header"
+                >
+                  <span
+                    aria-label="Super User (super)"
+                    class="ui medium text"
+                    title="Super User (super)"
+                  >
+                    Super User
+                  </span>
+                   
+                  <i
+                    aria-hidden="true"
+                    class="small icon chess queen"
+                    style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+                    title="Super"
+                  />
+                </div>
+                <p
+                  class="c__participant-completion__group"
+                >
+                  <span
+                    class="c__participant-completion__subhed"
+                  >
+                    Last accessed
+                  </span>
+                  <time
+                    datetime="2020-10-11T22:11:46.144Z"
+                  >
+                    6 months ago
+                  </time>
+                </p>
+              </div>
+              <div
+                class="content"
+              >
+                <div
+                  class="description c__participant-completion"
+                >
+                  <div
+                    class="c__participant-status"
+                  >
+                    <i
+                      aria-hidden="true"
+                      class="circle icon primary"
+                    />
+                    <span
+                      class="ui medium text"
+                    >
+                      In progress
+                    </span>
+                  </div>
+                  <p
+                    class="c__participant-completion__scenarios-completed"
+                  >
+                    <span>
+                      0/1 
+                    </span>
+                    scenario completed
+                  </p>
+                </div>
+              </div>
+              <div
+                class="content c__scenario-extra"
+              >
+                <button
+                  class="ui large primary button c__participant-card__responses"
+                  data-testid="view-participant-responses"
+                >
+                  View responses
+                </button>
+              </div>
+            </div>
+            <div
+              class="ui card c__participant-card"
+            >
+              <div
+                class="content"
+              >
+                <div
+                  class="header"
+                >
+                  <span
+                    aria-label="Facilitator User (facilitator)"
+                    class="ui medium text"
+                    title="Facilitator User (facilitator)"
+                  >
+                    Facilitator User
+                  </span>
+                   
+                  <i
+                    aria-hidden="true"
+                    class="small icon chalkboard teacher"
+                    style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+                    title="Facilitator"
+                  />
+                </div>
+                <p
+                  class="c__participant-completion__group"
+                >
+                  <span
+                    class="c__participant-completion__subhed"
+                  >
+                    Last accessed
+                  </span>
+                  <time
+                    datetime="2020-10-11T22:11:46.144Z"
+                  >
+                    6 months ago
+                  </time>
+                </p>
+              </div>
+              <div
+                class="content"
+              >
+                <div
+                  class="description c__participant-completion"
+                >
+                  <div
+                    class="c__participant-status"
+                  >
+                    <i
+                      aria-hidden="true"
+                      class="circle icon primary"
+                    />
+                    <span
+                      class="ui medium text"
+                    >
+                      In progress
+                    </span>
+                  </div>
+                  <p
+                    class="c__participant-completion__scenarios-completed"
+                  >
+                    <span>
+                      0/1 
+                    </span>
+                    scenario completed
+                  </p>
+                </div>
+              </div>
+              <div
+                class="content c__scenario-extra"
+              >
+                <button
+                  class="ui large primary button c__participant-card__responses"
+                  data-testid="view-participant-responses"
+                >
+                  View responses
+                </button>
+              </div>
+            </div>
+            <div
+              class="ui card c__participant-card"
+            >
+              <div
+                class="content"
+              >
+                <div
+                  class="header"
+                >
+                  <span
+                    aria-label="Researcher User (researcher)"
+                    class="ui medium text"
+                    title="Researcher User (researcher)"
+                  >
+                    Researcher User
+                  </span>
+                   
+                  <i
+                    aria-hidden="true"
+                    class="small icon user graduate"
+                    style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+                    title="Researcher"
+                  />
+                </div>
+                <p
+                  class="c__participant-completion__group"
+                >
+                  <span
+                    class="c__participant-completion__subhed"
+                  >
+                    Last accessed
+                  </span>
+                  <time
+                    datetime="2020-10-11T22:11:46.144Z"
+                  >
+                    6 months ago
+                  </time>
+                </p>
+              </div>
+              <div
+                class="content"
+              >
+                <div
+                  class="description c__participant-completion"
+                >
+                  <div
+                    class="c__participant-status"
+                  >
+                    <i
+                      aria-hidden="true"
+                      class="circle icon primary"
+                    />
+                    <span
+                      class="ui medium text"
+                    >
+                      In progress
+                    </span>
+                  </div>
+                  <p
+                    class="c__participant-completion__scenarios-completed"
+                  >
+                    <span>
+                      0/1 
+                    </span>
+                    scenario completed
+                  </p>
+                </div>
+              </div>
+              <div
+                class="content c__scenario-extra"
+              >
+                <button
+                  class="ui large primary button c__participant-card__responses"
+                  data-testid="view-participant-responses"
+                >
+                  View responses
+                </button>
+              </div>
+            </div>
+            <div
+              class="ui card c__participant-card"
+            >
+              <div
+                class="content"
+              >
+                <div
+                  class="header"
+                >
+                  <span
+                    aria-label="Participant User (participant)"
+                    class="ui medium text"
+                    title="Participant User (participant)"
+                  >
+                    Participant User
+                  </span>
+                   
+                </div>
+                <p
+                  class="c__participant-completion__group"
+                >
+                  <span
+                    class="c__participant-completion__subhed"
+                  >
+                    Last accessed
+                  </span>
+                  <time
+                    datetime="2020-10-11T22:11:46.144Z"
+                  >
+                    6 months ago
+                  </time>
+                </p>
+              </div>
+              <div
+                class="content"
+              >
+                <div
+                  class="description c__participant-completion"
+                >
+                  <div
+                    class="c__participant-status"
+                  >
+                    <i
+                      aria-hidden="true"
+                      class="circle icon primary"
+                    />
+                    <span
+                      class="ui medium text"
+                    >
+                      In progress
+                    </span>
+                  </div>
+                  <p
+                    class="c__participant-completion__scenarios-completed"
+                  >
+                    <span>
+                      0/1 
+                    </span>
+                    scenario completed
+                  </p>
+                </div>
+              </div>
+              <div
+                class="content c__scenario-extra"
+              >
+                <button
+                  class="ui large primary button c__participant-card__responses"
+                  data-testid="view-participant-responses"
+                >
+                  View responses
+                </button>
+              </div>
+            </div>
+            <div
+              class="ui card c__participant-card"
+            >
+              <div
+                class="content"
+              >
+                <div
+                  class="header"
+                >
+                  <span
+                    aria-label="anonymous"
+                    class="ui medium text"
+                    title="anonymous"
+                  >
+                    anonymous
+                  </span>
+                   
+                </div>
+                <p
+                  class="c__participant-completion__group"
+                >
+                  <span
+                    class="c__participant-completion__subhed"
+                  >
+                    Last accessed
+                  </span>
+                  <time
+                    datetime="2020-10-11T22:11:46.144Z"
+                  >
+                    6 months ago
+                  </time>
+                </p>
+              </div>
+              <div
+                class="content"
+              >
+                <div
+                  class="description c__participant-completion"
+                >
+                  <div
+                    class="c__participant-status"
+                  >
+                    <i
+                      aria-hidden="true"
+                      class="circle icon primary"
+                    />
+                    <span
+                      class="ui medium text"
+                    >
+                      In progress
+                    </span>
+                  </div>
+                  <p
+                    class="c__participant-completion__scenarios-completed"
+                  >
+                    <span>
+                      0/1 
+                    </span>
+                    scenario completed
+                  </p>
+                </div>
+              </div>
+              <div
+                class="content c__scenario-extra"
+              >
+                <button
+                  class="ui large primary button c__participant-card__responses"
+                  data-testid="view-participant-responses"
+                >
+                  View responses
+                </button>
+              </div>
+            </div>
+          </div>
+          <div
+            data-testid="cohort-progress"
+          />
+        </div>
+      </section>
     </div>
     <div
       data-testid="cohort-boundary-bottom"
@@ -21149,47 +20874,25 @@ exports[`Render 8 1 1`] = `
 
 exports[`Render 8 1 3`] = `
 <DocumentFragment>
-  <div>
+  <div
+    aria-busy="true"
+    aria-live="polite"
+    class="ui card loading__single-card"
+    role="status"
+    style="width: 100%; height: 90%;"
+  >
     <div
-      class="ui top attached tabular c__tab-menu--overflow menu"
+      aria-hidden="true"
+      class="content loading__content"
     >
-      <a
-        class="active item"
-        tabindex="0"
+      <div
+        class="ui placeholder"
       >
-        A New Cohort That Exists In Bootstrap State For Testing
-      </a>
-    </div>
-    <div
-      class="ui bottom attached segment"
-    >
-      <section
-        class="c__section"
-      >
-        <h2
-          class="ui header"
-        >
-          Cohort scenarios
-        </h2>
-        <div>
-          <button
-            authority="[object Object]"
-            id="2"
-          >
-            @components/Cohorts/CohortScenarios
-          </button>
-        </div>
-      </section>
-      <div>
-        @components/Cohorts/DataTable
+        <div
+          class="square image"
+        />
       </div>
     </div>
-    <div
-      data-testid="cohort-boundary-bottom"
-      hidden=""
-      id="boundary-bottom"
-      style="background-color: red; height: 1px; width: 100vw; z-index: 9007199254740991;"
-    />
   </div>
 </DocumentFragment>
 `;

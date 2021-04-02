@@ -1384,3 +1384,329 @@ describe('CREATE_CHAT_INVITE_ERROR', () => {
     });
   });
 });
+
+describe('GET_CHAT_TRANSCRIPTS_SUCCESS', () => {
+  describe('getChatTranscriptsByChatId', () => {
+    let messages = [];
+
+    test('Receives messages', async () => {
+      fetchImplementation(fetch, 200, { messages });
+      const returnValue = await store.dispatch(
+        actions.getChatTranscriptsByChatId(1)
+      );
+      expect(fetch.mock.calls.length).toBe(1);
+      expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+        Array [
+          "/api/chats/transcripts/chat/1",
+        ]
+      `);
+      expect(returnValue).toEqual(messages);
+
+      await mockStore.dispatch(actions.getChatTranscriptsByChatId(1));
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "messages": Array [],
+            "type": "GET_CHAT_TRANSCRIPTS_SUCCESS",
+          },
+        ]
+      `);
+    });
+
+    test('Receives undefined', async () => {
+      fetchImplementation(fetch, 200, { messages: undefined });
+      const returnValue = await store.dispatch(
+        actions.getChatTranscriptsByChatId(1)
+      );
+      expect(fetch.mock.calls.length).toBe(1);
+      expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+        Array [
+          "/api/chats/transcripts/chat/1",
+        ]
+      `);
+      expect(returnValue).toMatchInlineSnapshot(`Array []`);
+
+      await mockStore.dispatch(actions.getChatTranscriptsByChatId(1));
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "messages": Array [],
+            "type": "GET_CHAT_TRANSCRIPTS_SUCCESS",
+          },
+        ]
+      `);
+    });
+  });
+  describe('getChatTranscriptsByCohortId', () => {
+    let messages = [];
+
+    test('Receives messages', async () => {
+      fetchImplementation(fetch, 200, { messages });
+      const returnValue = await store.dispatch(
+        actions.getChatTranscriptsByCohortId(1)
+      );
+      expect(fetch.mock.calls.length).toBe(1);
+      expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+        Array [
+          "/api/chats/transcripts/cohort/1",
+        ]
+      `);
+      expect(returnValue).toEqual(messages);
+
+      await mockStore.dispatch(actions.getChatTranscriptsByCohortId(1));
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "messages": Array [],
+            "type": "GET_CHAT_TRANSCRIPTS_SUCCESS",
+          },
+        ]
+      `);
+    });
+
+    test('Receives undefined', async () => {
+      fetchImplementation(fetch, 200, { messages: undefined });
+      const returnValue = await store.dispatch(
+        actions.getChatTranscriptsByCohortId(1)
+      );
+      expect(fetch.mock.calls.length).toBe(1);
+      expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+        Array [
+          "/api/chats/transcripts/cohort/1",
+        ]
+      `);
+      expect(returnValue).toMatchInlineSnapshot(`Array []`);
+
+      await mockStore.dispatch(actions.getChatTranscriptsByCohortId(1));
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "messages": Array [],
+            "type": "GET_CHAT_TRANSCRIPTS_SUCCESS",
+          },
+        ]
+      `);
+    });
+  });
+  describe('getChatTranscriptsByRunId', () => {
+    let messages = [];
+
+    test('Receives messages', async () => {
+      fetchImplementation(fetch, 200, { messages });
+      const returnValue = await store.dispatch(
+        actions.getChatTranscriptsByRunId(1)
+      );
+      expect(fetch.mock.calls.length).toBe(1);
+      expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+        Array [
+          "/api/chats/transcripts/run/1",
+        ]
+      `);
+      expect(returnValue).toEqual(messages);
+
+      await mockStore.dispatch(actions.getChatTranscriptsByRunId(1));
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "messages": Array [],
+            "type": "GET_CHAT_TRANSCRIPTS_SUCCESS",
+          },
+        ]
+      `);
+    });
+
+    test('Receives undefined', async () => {
+      fetchImplementation(fetch, 200, { messages: undefined });
+      const returnValue = await store.dispatch(
+        actions.getChatTranscriptsByRunId(1)
+      );
+      expect(fetch.mock.calls.length).toBe(1);
+      expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+        Array [
+          "/api/chats/transcripts/run/1",
+        ]
+      `);
+      expect(returnValue).toMatchInlineSnapshot(`Array []`);
+
+      await mockStore.dispatch(actions.getChatTranscriptsByRunId(1));
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "messages": Array [],
+            "type": "GET_CHAT_TRANSCRIPTS_SUCCESS",
+          },
+        ]
+      `);
+    });
+  });
+  describe('getChatTranscriptsByScenarioId', () => {
+    let messages = [];
+
+    test('Receives messages', async () => {
+      fetchImplementation(fetch, 200, { messages });
+      const returnValue = await store.dispatch(
+        actions.getChatTranscriptsByScenarioId(1)
+      );
+      expect(fetch.mock.calls.length).toBe(1);
+      expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+        Array [
+          "/api/chats/transcripts/scenario/1",
+        ]
+      `);
+      expect(returnValue).toEqual(messages);
+
+      await mockStore.dispatch(actions.getChatTranscriptsByScenarioId(1));
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "messages": Array [],
+            "type": "GET_CHAT_TRANSCRIPTS_SUCCESS",
+          },
+        ]
+      `);
+    });
+
+    test('Receives undefined', async () => {
+      fetchImplementation(fetch, 200, { messages: undefined });
+      const returnValue = await store.dispatch(
+        actions.getChatTranscriptsByScenarioId(1)
+      );
+      expect(fetch.mock.calls.length).toBe(1);
+      expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+        Array [
+          "/api/chats/transcripts/scenario/1",
+        ]
+      `);
+      expect(returnValue).toMatchInlineSnapshot(`Array []`);
+
+      await mockStore.dispatch(actions.getChatTranscriptsByScenarioId(1));
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "messages": Array [],
+            "type": "GET_CHAT_TRANSCRIPTS_SUCCESS",
+          },
+        ]
+      `);
+    });
+  });
+});
+
+describe('GET_CHAT_TRANSCRIPTS_ERROR', () => {
+  describe('getChatTranscriptsByChatId', () => {
+    let messages = [];
+
+    test('Receives an error', async () => {
+      fetchImplementation(fetch, 200, { error });
+      const returnValue = await store.dispatch(
+        actions.getChatTranscriptsByChatId(1)
+      );
+      expect(fetch.mock.calls.length).toBe(1);
+      expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+        Array [
+          "/api/chats/transcripts/chat/1",
+        ]
+      `);
+      expect(returnValue).toEqual(null);
+
+      await mockStore.dispatch(actions.getChatTranscriptsByChatId(1));
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "error": Object {
+              "error": [Error: something unexpected happened on the server],
+            },
+            "type": "GET_CHAT_TRANSCRIPTS_ERROR",
+          },
+        ]
+      `);
+    });
+  });
+  describe('getChatTranscriptsByCohortId', () => {
+    let messages = [];
+
+    test('Receives an error', async () => {
+      fetchImplementation(fetch, 200, { error });
+      const returnValue = await store.dispatch(
+        actions.getChatTranscriptsByCohortId(1)
+      );
+      expect(fetch.mock.calls.length).toBe(1);
+      expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+        Array [
+          "/api/chats/transcripts/cohort/1",
+        ]
+      `);
+      expect(returnValue).toEqual(null);
+
+      await mockStore.dispatch(actions.getChatTranscriptsByCohortId(1));
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "error": Object {
+              "error": [Error: something unexpected happened on the server],
+            },
+            "type": "GET_CHAT_TRANSCRIPTS_ERROR",
+          },
+        ]
+      `);
+    });
+  });
+  describe('getChatTranscriptsByRunId', () => {
+    let messages = [];
+
+    test('Receives an error', async () => {
+      fetchImplementation(fetch, 200, { error });
+      const returnValue = await store.dispatch(
+        actions.getChatTranscriptsByRunId(1)
+      );
+      expect(fetch.mock.calls.length).toBe(1);
+      expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+        Array [
+          "/api/chats/transcripts/run/1",
+        ]
+      `);
+      expect(returnValue).toEqual(null);
+
+      await mockStore.dispatch(actions.getChatTranscriptsByRunId(1));
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "error": Object {
+              "error": [Error: something unexpected happened on the server],
+            },
+            "type": "GET_CHAT_TRANSCRIPTS_ERROR",
+          },
+        ]
+      `);
+    });
+  });
+  describe('getChatTranscriptsByScenarioId', () => {
+    let messages = [];
+
+    test('Receives an error', async () => {
+      fetchImplementation(fetch, 200, { error });
+      const returnValue = await store.dispatch(
+        actions.getChatTranscriptsByScenarioId(1)
+      );
+      expect(fetch.mock.calls.length).toBe(1);
+      expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+        Array [
+          "/api/chats/transcripts/scenario/1",
+        ]
+      `);
+      expect(returnValue).toEqual(null);
+
+      await mockStore.dispatch(actions.getChatTranscriptsByScenarioId(1));
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "error": Object {
+              "error": [Error: something unexpected happened on the server],
+            },
+            "type": "GET_CHAT_TRANSCRIPTS_ERROR",
+          },
+        ]
+      `);
+    });
+  });
+});

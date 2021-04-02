@@ -785,6 +785,7 @@ describe('componentDidMount', () => {
             "response": Object {
               "id": undefined,
             },
+            "url": "http://localhost/",
             "user": Object {
               "id": null,
             },
@@ -807,6 +808,7 @@ describe('componentDidMount', () => {
             "response": Object {
               "id": undefined,
             },
+            "url": "http://localhost/",
             "user": Object {
               "id": null,
             },
@@ -863,6 +865,7 @@ describe('componentDidMount', () => {
             "response": Object {
               "id": undefined,
             },
+            "url": "http://localhost/",
             "user": Object {
               "id": null,
             },
@@ -885,6 +888,7 @@ describe('componentDidMount', () => {
             "response": Object {
               "id": undefined,
             },
+            "url": "http://localhost/",
             "user": Object {
               "id": null,
             },
@@ -941,6 +945,7 @@ describe('componentDidMount', () => {
             "response": Object {
               "id": undefined,
             },
+            "url": "http://localhost/",
             "user": Object {
               "id": null,
             },
@@ -963,6 +968,7 @@ describe('componentDidMount', () => {
             "response": Object {
               "id": undefined,
             },
+            "url": "http://localhost/",
             "user": Object {
               "id": null,
             },
@@ -1019,6 +1025,7 @@ describe('componentDidMount', () => {
             "response": Object {
               "id": undefined,
             },
+            "url": "http://localhost/",
             "user": Object {
               "id": null,
             },
@@ -1041,6 +1048,7 @@ describe('componentDidMount', () => {
             "response": Object {
               "id": undefined,
             },
+            "url": "http://localhost/",
             "user": Object {
               "id": null,
             },
@@ -1154,6 +1162,7 @@ describe('componentWillUnmount', () => {
             "response": Object {
               "id": undefined,
             },
+            "url": "http://localhost/",
             "user": Object {
               "id": null,
             },
@@ -1176,6 +1185,7 @@ describe('componentWillUnmount', () => {
             "response": Object {
               "id": undefined,
             },
+            "url": "http://localhost/",
             "user": Object {
               "id": null,
             },
@@ -1208,6 +1218,7 @@ describe('componentWillUnmount', () => {
             "response": Object {
               "id": undefined,
             },
+            "url": "http://localhost/",
             "user": Object {
               "id": null,
             },
@@ -1230,6 +1241,7 @@ describe('componentWillUnmount', () => {
             "response": Object {
               "id": undefined,
             },
+            "url": "http://localhost/",
             "user": Object {
               "id": null,
             },
@@ -1297,6 +1309,7 @@ describe('componentWillUnmount', () => {
             "response": Object {
               "id": undefined,
             },
+            "url": "http://localhost/",
             "user": Object {
               "id": null,
             },
@@ -1319,6 +1332,7 @@ describe('componentWillUnmount', () => {
             "response": Object {
               "id": undefined,
             },
+            "url": "http://localhost/",
             "user": Object {
               "id": null,
             },
@@ -1351,6 +1365,7 @@ describe('componentWillUnmount', () => {
             "response": Object {
               "id": undefined,
             },
+            "url": "http://localhost/",
             "user": Object {
               "id": null,
             },
@@ -1373,6 +1388,7 @@ describe('componentWillUnmount', () => {
             "response": Object {
               "id": undefined,
             },
+            "url": "http://localhost/",
             "user": Object {
               "id": null,
             },
@@ -1711,6 +1727,7 @@ test('Types, followed by {enter}', async done => {
           "response": Object {
             "id": undefined,
           },
+          "url": "http://localhost/",
           "user": Object {
             "id": null,
           },
@@ -1746,6 +1763,7 @@ test('Types, followed by {enter}', async done => {
             "updated_at": "2020-09-01T15:59:47.121Z",
             "user_id": 2,
           },
+          "url": "http://localhost/",
           "user": Object {
             "id": null,
           },
@@ -1769,6 +1787,7 @@ test('Types, followed by {enter}', async done => {
           "response": Object {
             "id": undefined,
           },
+          "url": "http://localhost/",
           "user": Object {
             "id": null,
           },
@@ -1849,6 +1868,7 @@ test('Types, followed by {shift}{enter}, does not submit', async done => {
           "response": Object {
             "id": undefined,
           },
+          "url": "http://localhost/",
           "user": Object {
             "id": null,
           },
@@ -1885,6 +1905,7 @@ test('Types, followed by {shift}{enter}, does not submit', async done => {
             "updated_at": "2020-09-01T15:59:47.121Z",
             "user_id": 2,
           },
+          "url": "http://localhost/",
           "user": Object {
             "id": null,
           },
@@ -2004,6 +2025,7 @@ test('Types, followed by {shift}{enter}, attempts to send, does submit', async d
           "response": Object {
             "id": undefined,
           },
+          "url": "http://localhost/",
           "user": Object {
             "id": null,
           },
@@ -2039,6 +2061,7 @@ test('Types, followed by {shift}{enter}, attempts to send, does submit', async d
             "updated_at": "2020-09-01T15:59:47.121Z",
             "user_id": 2,
           },
+          "url": "http://localhost/",
           "user": Object {
             "id": null,
           },
@@ -2062,6 +2085,7 @@ test('Types, followed by {shift}{enter}, attempts to send, does submit', async d
           "response": Object {
             "id": undefined,
           },
+          "url": "http://localhost/",
           "user": Object {
             "id": null,
           },
@@ -2136,6 +2160,7 @@ test('Calls onInput when RTE receives new content', async done => {
           "response": Object {
             "id": undefined,
           },
+          "url": "http://localhost/",
           "user": Object {
             "id": null,
           },
@@ -2171,6 +2196,7 @@ test('Calls onInput when RTE receives new content', async done => {
             "updated_at": "2020-09-01T15:59:47.121Z",
             "user_id": 2,
           },
+          "url": "http://localhost/",
           "user": Object {
             "id": null,
           },
@@ -2249,6 +2275,7 @@ test('Calls onKeyDown, responds when key is {enter}', async done => {
           "response": Object {
             "id": undefined,
           },
+          "url": "http://localhost/",
           "user": Object {
             "id": null,
           },
@@ -2284,6 +2311,7 @@ test('Calls onKeyDown, responds when key is {enter}', async done => {
             "updated_at": "2020-09-01T15:59:47.121Z",
             "user_id": 2,
           },
+          "url": "http://localhost/",
           "user": Object {
             "id": null,
           },
@@ -2307,6 +2335,7 @@ test('Calls onKeyDown, responds when key is {enter}', async done => {
           "response": Object {
             "id": undefined,
           },
+          "url": "http://localhost/",
           "user": Object {
             "id": null,
           },
@@ -2386,6 +2415,7 @@ test('Types, clicks Send Message', async done => {
           "response": Object {
             "id": undefined,
           },
+          "url": "http://localhost/",
           "user": Object {
             "id": null,
           },
@@ -2421,6 +2451,7 @@ test('Types, clicks Send Message', async done => {
             "updated_at": "2020-09-01T15:59:47.121Z",
             "user_id": 2,
           },
+          "url": "http://localhost/",
           "user": Object {
             "id": null,
           },
@@ -2444,6 +2475,7 @@ test('Types, clicks Send Message', async done => {
           "response": Object {
             "id": undefined,
           },
+          "url": "http://localhost/",
           "user": Object {
             "id": null,
           },
@@ -2708,6 +2740,7 @@ test('Rnd: onDragStop/onResizeStop', async done => {
                               "response": Object {
                                 "id": undefined,
                               },
+                              "url": "http://localhost/",
                               "user": Object {
                                 "id": null,
                               },
@@ -2730,6 +2763,7 @@ test('Rnd: onDragStop/onResizeStop', async done => {
                               "response": Object {
                                 "id": undefined,
                               },
+                              "url": "http://localhost/",
                               "user": Object {
                                 "id": null,
                               },
@@ -3092,6 +3126,7 @@ test('Rnd: onDrag/onResize', async done => {
                               "response": Object {
                                 "id": undefined,
                               },
+                              "url": "http://localhost/",
                               "user": Object {
                                 "id": null,
                               },
@@ -3114,6 +3149,7 @@ test('Rnd: onDrag/onResize', async done => {
                               "response": Object {
                                 "id": undefined,
                               },
+                              "url": "http://localhost/",
                               "user": Object {
                                 "id": null,
                               },

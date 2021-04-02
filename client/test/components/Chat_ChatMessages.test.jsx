@@ -660,6 +660,7 @@ test('Chat has an agent', async done => {
             "id": undefined,
           },
           "run": null,
+          "url": "http://localhost/",
           "user": Object {
             "email": null,
             "id": null,
