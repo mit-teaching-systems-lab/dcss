@@ -128,6 +128,11 @@ class ChatMessages extends Component {
     this.props.socket.on(USER_TYPING_UPDATE, this.onTypingUpdate);
 
     if (agent) {
+      const chatUser = chat.usersById[this.props.user.id];
+      const user = {
+        ...this.props.user,
+        ...chatUser
+      };
       this.props.socket.emit(
         CHAT_AGENT_START,
         Payload.compose(

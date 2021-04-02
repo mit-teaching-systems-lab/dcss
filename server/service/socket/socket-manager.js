@@ -129,6 +129,13 @@ const extractTextContent = html => parse(html).textContent;
 
 const makeRemoteSafeAuthPayload = data => {
   const { agent = {}, chat = {}, run = {}, user } = data;
+
+  const role = user.role ? {
+    id: user.role.id,
+    name: user.role.name,
+    description: user.role.description
+  } : null;
+
   const auth = {
     agent: {
       id: agent.id,
@@ -144,7 +151,7 @@ const makeRemoteSafeAuthPayload = data => {
     user: {
       id: user.id,
       name: user.personalname || user.username,
-      role: user.role
+      role
     }
   };
 
@@ -478,6 +485,7 @@ class SocketManager {
           const room = `${chat.id}-user-${user.id}`;
           socket.join(room);
 
+          console.log(user);
           const agent = await agentsdb.getAgent(payload.agent.id);
           const role = user.persona_id
             ? await personasdb.getPersonaById(user.persona_id)
