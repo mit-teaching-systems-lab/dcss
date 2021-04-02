@@ -1,6 +1,12 @@
+const getLocationHrefIfAvailable = () => {
+  const href = window && window.location && window.location.href;
+  return href || '';
+}
+
 export default {
   compose(props, data = {}) {
     let { agent, chat, cohort, prompt, response, user } = props;
+    let url = props.url || getLocationHrefIfAvailable();
 
     // These may be null, so we can't rely on default params
     if (!agent) {
@@ -95,6 +101,7 @@ export default {
       user: {
         id: user.id
       },
+      url,
       ...data
     };
     // console.log("Payload.compose(props, data) -> ", payload);
