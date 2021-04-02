@@ -6,17 +6,25 @@ import Moment from '@utils/Moment';
 import Media from '@utils/Media';
 import Identity from '@utils/Identity';
 import ContentSlide from '@components/Scenario/ContentSlide';
+import DataTableChatTranscript from '@components/Cohorts/DataTableChatTranscript';
 import AudioPlayer from '@components/Slide/Components/AudioPrompt/AudioPlayer';
 import Transcript from '@components/Slide/Components/AudioPrompt/Transcript';
 import './DataTable.css';
 import './Resizer.css';
 
 const DataModal = props => {
-  const { index, isScenarioDataTable, prompts, rows } = props;
+  const { index, isScenarioDataTable, prompts, rows, usersById } = props;
   const component = prompts[index];
-  const { header, prompt, slide } = component;
+  const { header, prompt, slide, responseId: response_id } = component;
   const ariaLabelledby = Identity.id();
   const ariaDescribedby = Identity.id();
+
+  console.log(transcript, usersById);
+
+  const transcript =
+    props.transcript && props.transcript.length
+      ? props.transcript.filter(message => message.response_id === response_id)
+      : null;
 
   return (
     <Modal
@@ -130,6 +138,17 @@ const DataModal = props => {
                       </Table.Row>
                     );
                   })}
+
+                  {transcript ? (
+                    <Table.Row>
+                      <Table.Cell colSpan={2}>
+                        <DataTableChatTranscript
+                          transcript={transcript}
+                          usersById={usersById}
+                        />
+                      </Table.Cell>
+                    </Table.Row>
+                  ) : null}
                 </Table.Body>
               </Table>
             </div>
@@ -151,7 +170,9 @@ DataModal.propTypes = {
   rows: PropTypes.array,
   rowKey: PropTypes.string,
   state: PropTypes.object,
-  trigger: PropTypes.node
+  transcript: PropTypes.array,
+  trigger: PropTypes.node,
+  usersById: PropTypes.object
 };
 
 export default DataModal;

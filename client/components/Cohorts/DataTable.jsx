@@ -1,9 +1,8 @@
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import { Parser } from 'json2csv';
 import PropTypes from 'prop-types';
-import Identity from '@utils/Identity';
-import { Icon, Message, Table } from '@components/UI';
 import { diff } from 'deep-diff';
 import {
   getChatTranscriptsByChatId,
@@ -15,15 +14,18 @@ import { getCohort, getCohortData } from '@actions/cohort';
 import { getRunData } from '@actions/run';
 import { getScenariosByStatus } from '@actions/scenario';
 import { getUsers } from '@actions/users';
+import DataModal from '@components/Cohorts/DataModal';
+import DataTableChatTranscript from '@components/Cohorts/DataTableChatTranscript';
+import DataTableMenu from '@components/Cohorts/DataTableMenu';
 import Loading from '@components/Loading';
 import { SCENARIO_IS_PUBLIC } from '@components/Scenario/constants';
+import { Icon, Message, Table } from '@components/UI';
 import Username from '@components/User/Username';
 import CSV from '@utils/csv';
 import { makeHeader } from '@utils/data-table';
+import Identity from '@utils/Identity';
 import Moment from '@utils/Moment';
 import Media from '@utils/Media';
-import DataModal from './DataModal';
-import DataTableMenu from './DataTableMenu';
 import './DataTable.css';
 
 function reduceResponses(key, responses) {
@@ -37,8 +39,6 @@ function reduceResponses(key, responses) {
       response_id
     } = response;
 
-    console.log(response);
-
     response.content = content;
     response.content += (is_skip
       ? '(skipped)'
@@ -46,11 +46,31 @@ function reduceResponses(key, responses) {
     ).trim();
 
     if (response.type === 'ChatPrompt') {
+      let contentOverride = '';
+
       if (response.content === '(skipped)') {
-        response.content = '(messages attached)';
+        contentOverride = '(messages attached)';
       } else {
-        response.content += '(messages attached)';
+        try {
+          const serialized = JSON.parse(response.content);
+          // contentOverride = `
+          //   Result: ${serialized.result}, Time: ${serialized.time}
+          // `.trim();
+          contentOverride = ['complete', 'incomplete'].includes(
+            serialized.result
+          )
+            ? `Marked as ${serialized.result}` // complete | incomplete
+            : serialized.result; // timeout
+        } catch (error) {
+          void error;
+          //
+          // nothing to do here.
+          //
+        }
+        contentOverride += ' (messages attached)';
       }
+
+      response.content = contentOverride.trim();
     }
 
     if (!accum[property]) {
@@ -75,7 +95,7 @@ export class DataTable extends React.Component {
       prompts: [],
       responses: [],
       tables: [],
-      transcriptsByRunId: {},
+      transcriptsByRunId: {}
     };
 
     this.refresh = this.refresh.bind(this);
@@ -108,6 +128,9 @@ export class DataTable extends React.Component {
     const {
       source: { cohortId, participantId, runId, scenarioId }
     } = this.props;
+
+    console.log(cohortId, participantId, runId, scenarioId);
+
     const isScenarioDataTable = scenarioId !== undefined;
     const { prompts, responses } = cohortId
       ? await this.props.getCohortData(cohortId, participantId, scenarioId)
@@ -123,6 +146,7 @@ export class DataTable extends React.Component {
 
     const tables = [];
     const rows = [];
+    const transcript = transcripts;
 
     if (isScenarioDataTable) {
       /*
@@ -144,7 +168,7 @@ export class DataTable extends React.Component {
         }
       }
 
-      tables.push({ prompts, rows });
+      tables.push({ prompts, rows, transcript });
     } else {
       /*
 
@@ -175,7 +199,8 @@ export class DataTable extends React.Component {
 
           tables.push({
             prompts: headers,
-            rows
+            rows,
+            transcript
           });
         }
       }
@@ -186,9 +211,7 @@ export class DataTable extends React.Component {
         accum[record.run_id] = [];
       }
       accum[record.run_id].push(record);
-      accum[record.run_id].sort((a, b) =>
-        a.created_at > b.created_at
-      );
+      accum[record.run_id].sort((a, b) => a.created_at > b.created_at);
       return accum;
     }, {});
 
@@ -237,8 +260,7 @@ export class DataTable extends React.Component {
     const files = [];
     const prefix = cohortId ? `cohort-${cohortId}` : `run-${runId}`;
 
-    for (const { prompts, rows } of tables) {
-
+    for (const { prompts, rows, transcript } of tables) {
       const subject = isScenarioDataTable
         ? scenarios.find(scenario => scenario.id === scenarioId).title
         : users.find(user => user.id === participantId).username;
@@ -283,9 +305,29 @@ export class DataTable extends React.Component {
       });
 
       files.push([`${Identity.key({ prefix, subject })}.csv`, csv]);
-    }
 
-    console.log(files);
+      if (transcript && transcript.length) {
+        const fields = [
+          'id',
+          'chat_id',
+          'user_id',
+          'textContent',
+          'content',
+          'created_at',
+          'updated_at',
+          'deleted_at',
+          'is_quotable',
+          'is_joinpart',
+          'response_id',
+          'recipient_id'
+        ];
+
+        const parser = new Parser({ fields });
+        const csv = parser.parse(transcript);
+
+        files.push(['chat-messages.csv', csv]);
+      }
+    }
 
     return files;
   }
@@ -300,7 +342,6 @@ export class DataTable extends React.Component {
   }
 
   async onDataTableMenuClick(event, props) {
-
     if (props.name === 'close') {
       this.props.onClick(event, props);
     }
@@ -310,15 +351,13 @@ export class DataTable extends React.Component {
     }
 
     if (props.name === 'download') {
-      await this.triggerDownload(
-        await this.requestDownload()
-      );
+      await this.triggerDownload(await this.requestDownload());
     }
   }
 
   render() {
     const { isScenarioDataTable, isReady, tables } = this.state;
-    const { leftColVisible = true, source } = this.props;
+    const { leftColVisible = true, source, usersById } = this.props;
     const { onDataTableMenuClick } = this;
     const leftColHeader = isScenarioDataTable ? 'Participant' : 'Scenario';
     const leftColHidden = !leftColVisible
@@ -329,9 +368,6 @@ export class DataTable extends React.Component {
       return <Loading />;
     }
 
-
-    const transcript = this.state.transcriptsByRunId[source.runId] || [];
-
     return (
       <Fragment>
         {!tables.length ? (
@@ -341,8 +377,14 @@ export class DataTable extends React.Component {
         ) : (
           <DataTableMenu source={source} onClick={onDataTableMenuClick} />
         )}
-        {tables.map(({ prompts, rows }, index) => {
+        {tables.map(({ prompts, rows, transcript }, index) => {
+          const messages = source.runId
+            ? this.state.transcriptsByRunId[source.runId]
+            : transcript;
+
           const tableKeyBase = `data-table-${index}`;
+          const colSpan = rows && rows.length && rows[0].length;
+
           return (
             <div className="dt__scroll" key={`${tableKeyBase}-container`}>
               <Table
@@ -372,6 +414,7 @@ export class DataTable extends React.Component {
                     const key = `${tableKeyBase}-row-${index}`;
                     return (
                       <DataTableRow
+                        key={key}
                         isScenarioDataTable={isScenarioDataTable}
                         leftColVisible={leftColVisible}
                         prompts={prompts}
@@ -379,23 +422,24 @@ export class DataTable extends React.Component {
                         rows={rows}
                         rowKey={key}
                         rowIndex={index}
-                        key={key}
+                        transcript={transcript}
+                        usersById={usersById}
                       />
                     );
                   })}
+
+                  <Table.Row>
+                    <Table.Cell colSpan={colSpan}>
+                      {messages && messages.length ? (
+                        <DataTableChatTranscript
+                          transcript={messages}
+                          usersById={usersById}
+                        />
+                      ) : null}
+                    </Table.Cell>
+                  </Table.Row>
                 </Table.Body>
               </Table>
-
-              {transcript.map(message => {
-
-                const author = this.props.usersById[message.user_id];
-                return (
-                  <p>
-                    <Username user={author} />:{' '}
-                    {message.textContent}
-                  </p>
-                );
-              })}
             </div>
           );
         })}
@@ -405,7 +449,14 @@ export class DataTable extends React.Component {
 }
 
 const DataTableRow = props => {
-  const { cells, isScenarioDataTable, leftColVisible, rowKey } = props;
+  const {
+    cells,
+    isScenarioDataTable,
+    leftColVisible,
+    rowKey,
+    transcript,
+    usersById
+  } = props;
   const leftColHidden = !leftColVisible
     ? { className: 'dt__left-col-hidden' }
     : {};
@@ -429,7 +480,7 @@ const DataTableRow = props => {
             {content && content !== response.value ? (
               content
             ) : (
-              <audio src={`/api/media/${response.value}`} controls="controls" />
+              <audio controls="controls" src={`/api/media/${response.value}`} />
             )}
             <Icon name="microphone" />
           </Fragment>
@@ -444,28 +495,30 @@ const DataTableRow = props => {
           Moment.globalFormat
         );
 
+        const trigger = (
+          <Table.Cell
+            className={className}
+            key={cellKey}
+            name="cell"
+            style={{
+              cursor: 'pointer'
+            }}
+            verticalAlign="top"
+          >
+            <p>{display}</p>
+
+            {display ? <p style={{ color: 'grey' }}>{duration}</p> : null}
+          </Table.Cell>
+        );
+
         return (
           <DataModal
             {...props}
             index={cellIndex}
             isScenarioDataTable={isScenarioDataTable}
             key={modalKey}
-            trigger={
-              <Table.Cell
-                className={className}
-                key={cellKey}
-                name="cell"
-                style={{
-                  cursor: 'pointer'
-                }}
-                verticalAlign="top"
-              >
-                <p>{display}</p>
-
-                {display && <p style={{ color: 'grey' }}>{duration}</p>}
-              </Table.Cell>
-            }
-          ></DataModal>
+            trigger={trigger}
+          />
         );
       })}
     </Table.Row>
@@ -481,7 +534,9 @@ DataTableRow.propTypes = {
   prompts: PropTypes.array,
   rows: PropTypes.array,
   rowKey: PropTypes.string,
-  state: PropTypes.object
+  state: PropTypes.object,
+  transcript: PropTypes.array,
+  usersById: PropTypes.object
 };
 
 DataTable.propTypes = {
@@ -520,9 +575,11 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => ({
   getChatTranscriptsByChatId: id => dispatch(getChatTranscriptsByChatId(id)),
-  getChatTranscriptsByCohortId: id => dispatch(getChatTranscriptsByCohortId(id)),
+  getChatTranscriptsByCohortId: id =>
+    dispatch(getChatTranscriptsByCohortId(id)),
   getChatTranscriptsByRunId: id => dispatch(getChatTranscriptsByRunId(id)),
-  getChatTranscriptsByScenarioId: id => dispatch(getChatTranscriptsByScenarioId(id)),
+  getChatTranscriptsByScenarioId: id =>
+    dispatch(getChatTranscriptsByScenarioId(id)),
   getCohort: id => dispatch(getCohort(id)),
   getCohortData: (...params) => dispatch(getCohortData(...params)),
   getRunData: (...params) => dispatch(getRunData(...params)),
