@@ -300,7 +300,9 @@ export let getChatTranscriptsByChatId = id => async dispatch => {
 
 export let getChatTranscriptsByCohortId = id => async dispatch => {
   try {
-    const res = await (await fetch(`/api/chats/transcripts/cohort/${id}`)).json();
+    const res = await (await fetch(
+      `/api/chats/transcripts/cohort/${id}`
+    )).json();
 
     if (res.error) {
       throw res;
@@ -334,7 +336,9 @@ export let getChatTranscriptsByRunId = id => async dispatch => {
 
 export let getChatTranscriptsByScenarioId = id => async dispatch => {
   try {
-    const res = await (await fetch(`/api/chats/transcripts/scenario/${id}`)).json();
+    const res = await (await fetch(
+      `/api/chats/transcripts/scenario/${id}`
+    )).json();
 
     if (res.error) {
       throw res;

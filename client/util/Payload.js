@@ -1,7 +1,7 @@
 const getLocationHrefIfAvailable = () => {
   const href = window && window.location && window.location.href;
   return href || '';
-}
+};
 
 export default {
   compose(props, data = {}) {

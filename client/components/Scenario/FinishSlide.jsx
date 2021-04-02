@@ -94,9 +94,7 @@ class FinishSlide extends React.Component {
 
     const rerunUrl = `/run/${Identity.toHash(scenarioId)}/slide/0`;
 
-    const returnToWhere = this.isCohortScenarioRun
-      ? 'cohort'
-      : 'scenarios';
+    const returnToWhere = this.isCohortScenarioRun ? 'cohort' : 'scenarios';
 
     const returnToX = (
       <Button primary onClick={() => (location.href = baseReturnToXUrl)}>

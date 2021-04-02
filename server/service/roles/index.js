@@ -17,10 +17,7 @@ const {
   setUserRoles
 } = require('./endpoints');
 
-router.get('/all', [
-  requireUser,
-  getAllUsers
-]);
+router.get('/all', [requireUser, getAllUsers]);
 
 router.get('/available', [requireUser, getAvailableUsers]);
 

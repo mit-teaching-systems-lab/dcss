@@ -64,6 +64,9 @@ router.get('/link/:id/run/:run_id', [requireUser, linkRunToChat]);
 router.get('/messages/:id', [requireUser, getMessageById]);
 router.put('/messages/:id', [requireUser, validateRequestBody, setMessageById]);
 
-router.get('/transcripts/:association/:id', [requireUser, getChatTranscriptsByAssociationId]);
+router.get('/transcripts/:association/:id', [
+  requireUser,
+  getChatTranscriptsByAssociationId
+]);
 
 module.exports = router;

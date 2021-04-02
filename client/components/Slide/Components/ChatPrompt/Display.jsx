@@ -7,8 +7,15 @@ import { getAgent } from '@actions/agent';
 import { getResponse } from '@actions/response';
 import Chat from '@components/Chat';
 import {
-  Button, Checkbox,
-  Dropdown, Form, Header, Icon, Menu, Modal } from '@components/UI';
+  Button,
+  Checkbox,
+  Dropdown,
+  Form,
+  Header,
+  Icon,
+  Menu,
+  Modal
+} from '@components/UI';
 import Identity from '@utils/Identity';
 import Media from '@utils/Media';
 import Payload from '@utils/Payload';
@@ -153,7 +160,7 @@ class Display extends Component {
       ...basePayload,
       run: {
         ...stored,
-        ...run,
+        ...run
       },
       scenario: {
         id: this.props.scenario.id
@@ -193,7 +200,7 @@ class Display extends Component {
     const persisted = Storage.get(this.storageKey);
     const run = {
       ...persisted,
-      ...this.props.run,
+      ...this.props.run
     };
 
     this.props.socket.emit(
@@ -249,21 +256,23 @@ class Display extends Component {
     const ended_at = new Date().toISOString();
     const time = this.ticks;
 
+    const isFulfilled = true;
     const value = {
       result,
       time
     };
 
-    this.props.saveRunEvent(resultToRunEventMap[result], {
-      prompt: this.props.prompt,
-      responseId: this.props.responseId,
-      content: chat,
-      value: slide
-    });
+    // this.props.saveRunEvent(resultToRunEventMap[result], {
+    //   prompt: this.props.prompt,
+    //   responseId: this.props.responseId,
+    //   content: chat,
+    //   value: slide
+    // });
 
     this.props.onResponseChange(emptyEvent, {
       created_at,
       ended_at,
+      isFulfilled,
       name,
       type,
       value
@@ -373,7 +382,6 @@ class Display extends Component {
       const { result } = this.state.markComplete;
 
       if (result) {
-
         this.props.socket.emit(CHAT_CLOSED_FOR_SLIDE, {
           chat,
           slide,
@@ -501,14 +509,17 @@ class Display extends Component {
 
                   <p tabIndex="0" className="cpe__paragraph">
                     <Icon name="attention" />
-                    Clicking <strong>Yes</strong> will end this discussion for all
-                    participants,{' '}<strong>on this slide only</strong>.{' '}
-                    <strong>The chat will close and you will not be able to send messages on slide.</strong>
+                    Clicking <strong>Yes</strong> will end this discussion for
+                    all participants, <strong>on this slide only</strong>.{' '}
+                    <strong>
+                      The chat will close and you will not be able to send
+                      messages on slide.
+                    </strong>
                   </p>
                   <p tabIndex="0" className="cpe__paragraph">
                     <Icon name="attention" />
-                    Clicking <strong>No</strong> will not end the discussion, and
-                    not mark the conversation as complete.
+                    Clicking <strong>No</strong> will not end the discussion,
+                    and not mark the conversation as complete.
                   </p>
 
                   <Checkbox
@@ -516,7 +527,7 @@ class Display extends Component {
                     className="cpe__paragraph"
                     label="I understand and want to continue"
                     checked={this.state.markComplete.ack}
-                    onChange={(event, {checked}) => {
+                    onChange={(event, { checked }) => {
                       this.setState({
                         markComplete: {
                           ...this.state.markComplete,

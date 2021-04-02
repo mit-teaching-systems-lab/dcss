@@ -237,7 +237,7 @@ async function getCohortUsers(id, options = {}) {
   `);
 
   const { completedByUserId, eventsByUserId } = includeProgress
-    ? (await getCohortProgress(id))
+    ? await getCohortProgress(id)
     : { completedByUserId: {}, eventsByUserId: {} };
   const usersById = result.rows.reduce((accum, user) => {
     const completed = completedByUserId[user.id] || [];
@@ -259,7 +259,6 @@ async function getCohortUsers(id, options = {}) {
 }
 
 async function __getAggregatedCohort(cohort, options = {}) {
-
   const {
     includeRuns = false,
     includeScenarios = true,
@@ -267,14 +266,12 @@ async function __getAggregatedCohort(cohort, options = {}) {
     includeProgress = true
   } = options;
 
-  const runs = includeRuns
-    ? (await getCohortRuns(cohort.id))
-    : [];
+  const runs = includeRuns ? await getCohortRuns(cohort.id) : [];
   const scenarios = includeScenarios
-    ? (await getCohortScenariosIdList(cohort.id))
+    ? await getCohortScenariosIdList(cohort.id)
     : [];
   const cohortUsers = includeUsers
-    ? (await getCohortUsers(cohort.id, options))
+    ? await getCohortUsers(cohort.id, options)
     : [];
   let chat;
 
@@ -514,7 +511,6 @@ async function setCohortScenarios(id, scenarioIds) {
 
 async function getCohortRunResponses({ id, participant_id, scenario_id }) {
   // let responses = [];
-
 
   let andClause = participant_id
     ? `rrv.user_id = ${participant_id}`

@@ -344,7 +344,9 @@ exports.getChatMessagesByChatId = asyncMiddleware(getChatMessagesByChatId);
 exports.getChatMessagesCountByChatId = asyncMiddleware(
   getChatMessagesCountByChatId
 );
-exports.getChatTranscriptsByAssociationId = asyncMiddleware(getChatTranscriptsByAssociationId);
+exports.getChatTranscriptsByAssociationId = asyncMiddleware(
+  getChatTranscriptsByAssociationId
+);
 exports.getChatUsersByChatId = asyncMiddleware(getChatUsersByChatId);
 exports.getChatUsersSharedResponses = asyncMiddleware(
   getChatUsersSharedResponses

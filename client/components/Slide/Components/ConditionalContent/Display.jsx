@@ -60,7 +60,9 @@ class Display extends Component {
 
   onAgentResponseReceived(response) {
     const responses = [...this.state.responses];
-    const index = responses.findIndex(r => r.prompt_response_id === response.prompt_response_id);
+    const index = responses.findIndex(
+      r => r.prompt_response_id === response.prompt_response_id
+    );
 
     if (index !== -1) {
       responses[index] = response;

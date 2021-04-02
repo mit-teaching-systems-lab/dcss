@@ -176,6 +176,7 @@ class Downloads extends Component {
         'id',
         'chat_id',
         'user_id',
+        'textContent',
         'content',
         'created_at',
         'updated_at',
@@ -183,8 +184,7 @@ class Downloads extends Component {
         'is_quotable',
         'is_joinpart',
         'response_id',
-        'recipient_id',
-        'textContent',
+        'recipient_id'
       ];
 
       const parser = new Parser({ fields });
@@ -723,8 +723,10 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => ({
   getChatTranscriptsByChatId: id => dispatch(getChatTranscriptsByChatId(id)),
-  getChatTranscriptsByCohortId: id => dispatch(getChatTranscriptsByCohortId(id)),
-  getChatTranscriptsByScenarioId: id => dispatch(getChatTranscriptsByScenarioId(id)),
+  getChatTranscriptsByCohortId: id =>
+    dispatch(getChatTranscriptsByCohortId(id)),
+  getChatTranscriptsByScenarioId: id =>
+    dispatch(getChatTranscriptsByScenarioId(id)),
   getCohorts: () => dispatch(getCohorts()),
   getScenariosIncrementally: updater =>
     dispatch(getScenariosIncrementally(updater)),

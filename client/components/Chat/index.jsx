@@ -570,7 +570,7 @@ class Chat extends Component {
       ? `${defaultDraggableClassName} cpd__drag-handle`
       : defaultDraggableClassName;
 
-// max-width: 426px;
+    // max-width: 426px;
     return isMinimized ? (
       minMaxButton
     ) : (
@@ -584,7 +584,10 @@ class Chat extends Component {
             <div className="cm__container-outer">
               <ChatMessages {...cmProps} />
             </div>
-            <div className="cc__container-outer" style={{maxWidth: style.width}}>
+            <div
+              className="cc__container-outer"
+              style={{ maxWidth: style.width }}
+            >
               <ChatComposer {...ccProps} />
             </div>
           </div>

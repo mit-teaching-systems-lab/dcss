@@ -635,13 +635,11 @@ exports.getChatUsersSharedResponses = async (id, response_id, list) => {
 };
 
 const normalizeTranscriptRecord = record => {
-  const {
-    textContent
-  } = parse(record.content);
+  const { textContent } = parse(record.content);
   return {
     ...record,
     textContent
-  }
+  };
 };
 
 const isRelevant = record => {
@@ -649,10 +647,9 @@ const isRelevant = record => {
     return false;
   }
   return true;
-}
+};
 
-
-exports.getChatTranscriptsByChatId = async (chat_id) => {
+exports.getChatTranscriptsByChatId = async chat_id => {
   const result = await query(sql`
     WITH ci AS (
       SELECT chat_id, run_id
@@ -672,7 +669,7 @@ exports.getChatTranscriptsByChatId = async (chat_id) => {
   return records;
 };
 
-exports.getChatTranscriptsByCohortId = async (cohort_id) => {
+exports.getChatTranscriptsByCohortId = async cohort_id => {
   const result = await query(sql`
     WITH ci AS (
       SELECT rc.chat_id, rc.run_id
@@ -694,7 +691,7 @@ exports.getChatTranscriptsByCohortId = async (cohort_id) => {
   return records;
 };
 
-exports.getChatTranscriptsByScenarioId = async (scenario_id) => {
+exports.getChatTranscriptsByScenarioId = async scenario_id => {
   const result = await query(sql`
     WITH rs AS (
       SELECT chat_id, run_id
@@ -717,7 +714,7 @@ exports.getChatTranscriptsByScenarioId = async (scenario_id) => {
   return records;
 };
 
-exports.getChatTranscriptsByRunId = async (run_id) => {
+exports.getChatTranscriptsByRunId = async run_id => {
   const result = await query(sql`
     WITH ci AS (
       SELECT DISTINCT chat_id, run_id
