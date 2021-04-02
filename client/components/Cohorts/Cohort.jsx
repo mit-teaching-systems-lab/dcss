@@ -74,9 +74,9 @@ export class Cohort extends React.Component {
     if (!this.props.user.id) {
       this.props.history.push('/logout');
     } else {
-      if (!this.props.cohort || !this.props.cohort.id) {
-        await this.props.getCohort(this.props.id);
-      }
+      await this.props.getCohort(
+        this.props.id || (this.props.cohort && this.props.cohort.id)
+      );
 
       const { authority, cohort, user } = this.props;
 
@@ -175,7 +175,7 @@ export class Cohort extends React.Component {
     } = this.state;
     const { onClick, onTabClick, onDataTableClick } = this;
 
-    if (!isReady) {
+    if (!isReady || !cohort) {
       return <Loading />;
     }
 
@@ -265,7 +265,7 @@ export class Cohort extends React.Component {
       });
     };
 
-    const onDeleteOrArchiveConfirm = async () => {
+    const onCopyDeleteOrArchiveConfirm = async () => {
       const isArchive = copyDeleteOrArchiveAction === 'archive';
       const isCopy = copyDeleteOrArchiveAction === 'copy';
       const isDelete = copyDeleteOrArchiveAction === 'delete';
@@ -404,7 +404,7 @@ export class Cohort extends React.Component {
                   <Button
                     primary
                     aria-label="Yes"
-                    onClick={onDeleteOrArchiveConfirm}
+                    onClick={onCopyDeleteOrArchiveConfirm}
                   >
                     Yes
                   </Button>
@@ -469,7 +469,10 @@ Cohort.propTypes = {
 
 const mapStateToProps = (state, ownProps) => {
   const id = Identity.fromHashOrId(ownProps.match.params.id || ownProps.id);
-  const { chats, cohort, user } = state;
+  const { chats, user } = state;
+
+  const cohort = state.cohort && state.cohort.id === id ? state.cohort : null;
+
   const participant = cohort
     ? cohort.users.find(participant => participant.id === user.id)
     : null;

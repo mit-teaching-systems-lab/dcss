@@ -246,17 +246,24 @@ export class CohortProgress extends React.Component {
               statusText = 'Not started';
             } else {
               const lastEvent = eventsValues[eventsValues.length - 1];
-              lastAccessedAt = new Date(
-                Number(lastEvent.created_at)
-              ).toISOString();
-              lastAccessedAgo = Moment(lastAccessedAt).fromNow();
+
+              lastAccessedAt = lastEvent.created_at
+                ? new Date(Number(lastEvent.created_at)).toISOString()
+                : null;
+
+              lastAccessedAgo = lastAccessedAt
+                ? Moment(lastAccessedAt).fromNow()
+                : null;
+
               lastScenarioViewed = this.props.scenariosById[
                 lastEvent.scenario_id
               ];
-              lastUrlVisited = lastEvent.url;
-              lastSlideViewed = lastUrlVisited.slice(
-                lastUrlVisited.indexOf('/slide') + 7
-              );
+
+              lastUrlVisited = lastEvent.url || null;
+              lastSlideViewed = lastUrlVisited
+                ? lastUrlVisited.slice(lastUrlVisited.indexOf('/slide') + 7)
+                : null;
+
               lastEventDescription = sentenceCase(lastEvent.description);
             }
 
@@ -265,7 +272,9 @@ export class CohortProgress extends React.Component {
                 <span className="c__participant-completion__subhed">
                   Last accessed
                 </span>
-                <time dateTime={lastAccessedAt}>{lastAccessedAgo}</time>
+                {lastAccessedAt ? (
+                  <time dateTime={lastAccessedAt}>{lastAccessedAgo}</time>
+                ) : null}
               </p>
             ) : null;
 
@@ -308,12 +317,14 @@ export class CohortProgress extends React.Component {
                           </span>
                           {lastEventDescription}
                         </p>
-                        <p className="c__participant-completion__group">
-                          <span className="c__participant-completion__subhed">
-                            Current slide
-                          </span>
-                          {lastSlideViewed}
-                        </p>
+                        {lastSlideViewed ? (
+                          <p className="c__participant-completion__group">
+                            <span className="c__participant-completion__subhed">
+                              Current slide
+                            </span>
+                            {lastSlideViewed}
+                          </p>
+                        ) : null}
                       </Fragment>
                     ) : null}
                     <p className="c__participant-completion__scenarios-completed">

@@ -350,8 +350,7 @@ export class CohortScenarios extends React.Component {
                 runStartedMaybeFinished = `Finished ${endedAtDisplay}.`;
               }
 
-              const gotoMyRoomButtonSize = existingChat ? '' : 'mini';
-
+              const gotoMyRoomButtonSize = existingChat ? 'medium' : 'mini';
               const existingRun = run.created_at && !run.ended_at;
               const canShowJoinAsButtons =
                 isMultiParticipantScenario && !existingChat && !existingRun;
