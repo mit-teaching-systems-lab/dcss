@@ -13,6 +13,10 @@ const hasValidNavigationOverrider = component => {
   return component.disableDefaultNavigation && component.paths.length;
 };
 
+const hasNonmatchingPersonaId = (component, chatUser) => {
+  return component.persona && component.persona.id !== chatUser.persona_id;
+}
+
 const hasValidPromptOptions = component => {
   if (component.paths && component.paths.length === 0) {
     return false;
@@ -56,8 +60,14 @@ class ContentSlide extends React.Component {
     super(props);
 
     const {
+      chat,
+      run,
       slide: { components }
     } = this.props;
+
+    const chatUser = chat && chat.id === run.chat_id && chat.users && chat.users.length
+      ? chat.usersById[this.props.user.id]
+      : null;
 
     const required = components.reduce((accum, component) => {
       if (component.required) {
@@ -72,6 +82,10 @@ class ContentSlide extends React.Component {
         }
 
         if (hasValidNavigationOverrider(component)) {
+          mustTrackRequiredPrompt = false;
+        }
+
+        if (hasNonmatchingPersonaId(component, chatUser)) {
           mustTrackRequiredPrompt = false;
         }
 
