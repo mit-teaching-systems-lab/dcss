@@ -90,7 +90,16 @@ exports.setRun = async function(id, data) {
 };
 
 exports.saveRunEvent = async (run_id, name, context) => {
+
+  if (!run_id) {
+    console.log(name, context);
+    return;
+  }
+
   return await withClientTransaction(async client => {
+    if (!context.timestamp) {
+      context.timestamp = Date.now();
+    }
     const result = await client.query(sql`
       INSERT INTO run_event (run_id, name, context)
       VALUES (${run_id}, ${name}, ${context})
