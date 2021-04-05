@@ -513,7 +513,7 @@ class Display extends Component {
                     all participants, <strong>on this slide only</strong>.{' '}
                     <strong>
                       The chat will close and you will not be able to send
-                      messages on slide.
+                      messages on this slide.
                     </strong>
                   </p>
                   <p tabIndex="0" className="cpe__paragraph">
