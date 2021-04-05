@@ -428,7 +428,7 @@ class ConditionalContentEditor extends React.Component {
                                 aria-label={`Enter the value for expression ${index +
                                   1}`}
                                 index={index}
-                                value={value || ''}
+                                value={value}
                                 onChange={onRuleDetailChange}
                                 options={options}
                                 key={`rule-value-${baseKey}`}
