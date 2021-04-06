@@ -540,8 +540,6 @@ async function getCohortRunResponses({ id, participant_id, scenario_id }) {
     ORDER BY rrv.run_id DESC;
   `;
 
-  console.log(select);
-
   let result = await query(select);
 
   // if (participant_id) {
