@@ -15,7 +15,7 @@ const hasValidNavigationOverrider = component => {
 
 const hasNonmatchingPersonaId = (component, chatUser) => {
   return component.persona && component.persona.id !== chatUser.persona_id;
-}
+};
 
 const hasValidPromptOptions = component => {
   if (component.paths && component.paths.length === 0) {
@@ -65,9 +65,10 @@ class ContentSlide extends React.Component {
       slide: { components }
     } = this.props;
 
-    const chatUser = chat && chat.id === run.chat_id && chat.users && chat.users.length
-      ? chat.usersById[this.props.user.id]
-      : null;
+    const chatUser =
+      chat && chat.id === run.chat_id && chat.users && chat.users.length
+        ? chat.usersById[this.props.user.id]
+        : null;
 
     const required = components.reduce((accum, component) => {
       if (component.required) {

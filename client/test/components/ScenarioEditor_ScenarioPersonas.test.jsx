@@ -1287,7 +1287,7 @@ test('Add an existing', async done => {
   expect(asFragment()).toMatchSnapshot();
 
   // Confirm add
-  userEvent.click(await screen.findByRole('button', { name: /Yes/i }));
+  userEvent.click(await screen.findByRole('button', { name: 'Yes' }));
   expect(asFragment()).toMatchSnapshot();
 
   expect(personaActions.createPersona.mock.calls.length).toBe(1);
