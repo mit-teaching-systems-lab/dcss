@@ -16,7 +16,8 @@ import { Button, Header, Icon, Modal, Title } from '@components/UI';
 import withSocket, {
   CHAT_USER_AWAITING_MATCH,
   CHAT_USER_CANCELED_MATCH_REQUEST,
-  CHAT_USER_MATCHED
+  CHAT_USER_MATCHED,
+  PING
 } from '@hoc/withSocket';
 import Identity from '@utils/Identity';
 import Payload from '@utils/Payload';
@@ -44,10 +45,14 @@ class JoinAs extends Component {
     this.state = {
       isReady: false
     };
+    this.interval = null;
     this.onChatUserMatched = this.onChatUserMatched.bind(this);
   }
 
   componentWillUnmount() {
+    if (this.interval) {
+      clearInterval(this.interval);
+    }
     this.props.socket.off(CHAT_USER_MATCHED, this.onChatUserMatched);
   }
 
@@ -71,20 +76,21 @@ class JoinAs extends Component {
       user
     });
 
+    this.interval = setInterval(() => {
+      this.props.socket.emit(PING);
+    }, 10000);
+
     this.setState({
       isReady: true
     });
   }
 
   async onChatUserMatched(chat) {
-    console.log('onChatUserMatched', chat);
     const redirect = makeCohortScenarioChatJoinPath(
       this.props.cohort,
       this.props.scenario,
       chat
     );
-
-    console.log(redirect);
 
     const run = await this.props.getRun(
       this.props.scenario.id,
@@ -93,7 +99,6 @@ class JoinAs extends Component {
     );
 
     await this.props.linkRunToCohort(this.props.cohort.id, run.id);
-
     await this.props.linkRunToChat(chat.id, run.id);
 
     this.props.history.push(redirect);
@@ -142,7 +147,11 @@ class JoinAs extends Component {
             </Icon.Group>
           </Modal.Content>
           <Modal.Actions style={{ borderTop: '0px' }}>
-            <Button.Group fluid>
+            <Button.Group fluid widths={2}>
+              <Button primary onClick={() => location.href = location.href}>
+                Refresh my request to join this scenario
+              </Button>
+              <Button.Or />
               <Button onClick={onClose}>
                 Cancel my request to join this scenario
               </Button>
