@@ -90,7 +90,6 @@ exports.setRun = async function(id, data) {
 };
 
 exports.saveRunEvent = async (run_id, name, context) => {
-
   if (!run_id) {
     console.log(name, context);
     return;

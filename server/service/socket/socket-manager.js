@@ -132,11 +132,13 @@ const extractTextContent = html => parse(html).textContent;
 const makeRemoteSafeAuthPayload = data => {
   const { agent = {}, chat = {}, run = {}, user } = data;
 
-  const role = user.role ? {
-    id: user.role.id,
-    name: user.role.name,
-    description: user.role.description
-  } : null;
+  const role = user.role
+    ? {
+        id: user.role.id,
+        name: user.role.name,
+        description: user.role.description
+      }
+    : null;
 
   const auth = {
     agent: {

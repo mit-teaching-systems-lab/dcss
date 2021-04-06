@@ -148,7 +148,7 @@ class JoinAs extends Component {
           </Modal.Content>
           <Modal.Actions style={{ borderTop: '0px' }}>
             <Button.Group fluid widths={2}>
-              <Button primary onClick={() => location.href = location.href}>
+              <Button primary onClick={() => (location.href = location.href)}>
                 Refresh my request to join this scenario
               </Button>
               <Button.Or />

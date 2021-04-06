@@ -55,4 +55,3 @@ exports.TIMER_END = 'timer-end';
 exports.TIMER_START = 'timer-start';
 exports.TIMER_STOP = 'timer-stop';
 exports.TIMER_TICK = 'timer-tick';
-
