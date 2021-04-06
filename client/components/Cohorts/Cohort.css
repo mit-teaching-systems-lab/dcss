@@ -388,4 +388,5 @@
 .c__join-persona-content {
   display: inline-block !important;
   margin-left: 1em;
+  max-width: 400px;
 }
