@@ -29,6 +29,8 @@ const {
   JOIN_OR_PART,
   NEW_INVITATION,
   NOTIFICATION,
+  PING,
+  PONG,
   RUN_AGENT_END,
   RUN_AGENT_START,
   RUN_CHAT_LINK,
@@ -473,9 +475,14 @@ class SocketManager {
       // }
 
       // Site
-      socket.on(CHAT_AGENT_PAUSE, async props => {
-        console.log(CHAT_AGENT_PAUSE, props);
+      socket.on(PING, () => {
+        socket.emit(PONG);
       });
+
+      // Currently unused
+      // socket.on(CHAT_AGENT_PAUSE, async props => {
+      //   console.log(CHAT_AGENT_PAUSE, props);
+      // });
 
       socket.on(CHAT_AGENT_START, async payload => {
         console.log(CHAT_AGENT_START, payload);

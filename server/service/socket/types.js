@@ -16,7 +16,6 @@ exports.CREATE_SHARED_RESPONSE_CHANNEL = 'create-shared-response-channel';
 exports.CREATE_USER_CHANNEL = 'create-user-channel';
 exports.DISCONNECT = 'disconnect';
 exports.HEART_BEAT = 'heart-beat';
-exports.PING = 'ping';
 exports.RUN_AGENT_START = 'run-agent-start';
 exports.RUN_AGENT_END = 'run-agent-end';
 exports.USER_JOIN = 'user-join';
@@ -30,6 +29,8 @@ exports.USER_TYPING_UPDATE = 'user-typing-update';
 exports.NEW_INVITATION = 'new-invitation';
 exports.SET_INVITATION = 'set-invitation';
 exports.NOTIFICATION = 'notification';
+exports.PING = 'ping';
+exports.PONG = 'pong';
 
 // Server -> Client
 exports.AGENT_JOINED = 'agent-joined';
