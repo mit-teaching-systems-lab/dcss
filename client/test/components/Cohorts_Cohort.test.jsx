@@ -365,6 +365,8 @@ beforeEach(() => {
           completed: [1],
           latestByScenarioId: {
             1: {
+              description: '',
+              is_run: true,
               is_complete: true,
               event_id: 1909,
               created_at: 1602454306144,
@@ -388,6 +390,8 @@ beforeEach(() => {
           completed: [],
           latestByScenarioId: {
             1: {
+              description: '',
+              is_run: true,
               is_complete: false,
               scenario_id: 99,
               event_id: 1905,
@@ -411,6 +415,8 @@ beforeEach(() => {
           completed: [],
           latestByScenarioId: {
             1: {
+              description: '',
+              is_run: true,
               is_complete: false,
               scenario_id: 99,
               event_id: 1904,
@@ -434,6 +440,8 @@ beforeEach(() => {
           completed: [],
           latestByScenarioId: {
             1: {
+              description: '',
+              is_run: true,
               is_complete: false,
               scenario_id: 99,
               event_id: 1903,
@@ -457,6 +465,8 @@ beforeEach(() => {
           completed: [],
           latestByScenarioId: {
             1: {
+              description: '',
+              is_run: true,
               is_complete: false,
               scenario_id: 99,
               event_id: 1902,
@@ -483,6 +493,8 @@ beforeEach(() => {
           completed: [1],
           latestByScenarioId: {
             1: {
+              description: '',
+              is_run: true,
               is_complete: true,
               event_id: 1909,
               created_at: 1602454306144,
@@ -506,6 +518,8 @@ beforeEach(() => {
           completed: [],
           latestByScenarioId: {
             1: {
+              description: '',
+              is_run: true,
               is_complete: false,
               scenario_id: 99,
               event_id: 1905,
@@ -529,6 +543,8 @@ beforeEach(() => {
           completed: [],
           latestByScenarioId: {
             1: {
+              description: '',
+              is_run: true,
               is_complete: false,
               scenario_id: 99,
               event_id: 1904,
@@ -552,6 +568,8 @@ beforeEach(() => {
           completed: [],
           latestByScenarioId: {
             1: {
+              description: '',
+              is_run: true,
               is_complete: false,
               scenario_id: 99,
               event_id: 1903,
@@ -575,6 +593,8 @@ beforeEach(() => {
           completed: [],
           latestByScenarioId: {
             1: {
+              description: '',
+              is_run: true,
               is_complete: false,
               scenario_id: 99,
               event_id: 1902,
@@ -609,6 +629,8 @@ beforeEach(() => {
             completed: [1],
             latestByScenarioId: {
               1: {
+                description: '',
+                is_run: true,
                 is_complete: true,
                 event_id: 1909,
                 created_at: 1602454306144,
@@ -659,6 +681,8 @@ beforeEach(() => {
             completed: [1],
             latestByScenarioId: {
               1: {
+                description: '',
+                is_run: true,
                 is_complete: true,
                 event_id: 1909,
                 created_at: 1602454306144,
@@ -732,6 +756,8 @@ beforeEach(() => {
         completed: [1],
         latestByScenarioId: {
           1: {
+            description: '',
+            is_run: true,
             is_complete: true,
             event_id: 1909,
             created_at: 1602454306144,
@@ -761,6 +787,8 @@ beforeEach(() => {
           completed: [1],
           latestByScenarioId: {
             1: {
+              description: '',
+              is_run: true,
               is_complete: true,
               event_id: 1909,
               created_at: 1602454306144,
@@ -784,6 +812,8 @@ beforeEach(() => {
           completed: [],
           latestByScenarioId: {
             1: {
+              description: '',
+              is_run: true,
               is_complete: false,
               scenario_id: 99,
               event_id: 1905,
@@ -807,6 +837,8 @@ beforeEach(() => {
           completed: [],
           latestByScenarioId: {
             1: {
+              description: '',
+              is_run: true,
               is_complete: false,
               scenario_id: 99,
               event_id: 1904,
@@ -830,6 +862,8 @@ beforeEach(() => {
           completed: [],
           latestByScenarioId: {
             1: {
+              description: '',
+              is_run: true,
               is_complete: false,
               scenario_id: 99,
               event_id: 1903,
@@ -853,6 +887,8 @@ beforeEach(() => {
           completed: [],
           latestByScenarioId: {
             1: {
+              description: '',
+              is_run: true,
               is_complete: false,
               scenario_id: 99,
               event_id: 1902,
@@ -988,6 +1024,8 @@ test('Render 2 1', async done => {
             completed: [1],
             latestByScenarioId: {
               1: {
+                description: '',
+                is_run: true,
                 is_complete: true,
                 event_id: 1909,
                 created_at: 1602454306144,
@@ -1011,6 +1049,8 @@ test('Render 2 1', async done => {
             completed: [],
             latestByScenarioId: {
               1: {
+                description: '',
+                is_run: true,
                 is_complete: false,
                 scenario_id: 99,
                 event_id: 1905,
@@ -1034,6 +1074,8 @@ test('Render 2 1', async done => {
             completed: [],
             latestByScenarioId: {
               1: {
+                description: '',
+                is_run: true,
                 is_complete: false,
                 scenario_id: 99,
                 event_id: 1904,
@@ -1057,6 +1099,8 @@ test('Render 2 1', async done => {
             completed: [],
             latestByScenarioId: {
               1: {
+                description: '',
+                is_run: true,
                 is_complete: false,
                 scenario_id: 99,
                 event_id: 1903,
@@ -1080,6 +1124,8 @@ test('Render 2 1', async done => {
             completed: [],
             latestByScenarioId: {
               1: {
+                description: '',
+                is_run: true,
                 is_complete: false,
                 scenario_id: 99,
                 event_id: 1902,
@@ -1106,6 +1152,8 @@ test('Render 2 1', async done => {
             completed: [1],
             latestByScenarioId: {
               1: {
+                description: '',
+                is_run: true,
                 is_complete: true,
                 event_id: 1909,
                 created_at: 1602454306144,
@@ -1129,6 +1177,8 @@ test('Render 2 1', async done => {
             completed: [],
             latestByScenarioId: {
               1: {
+                description: '',
+                is_run: true,
                 is_complete: false,
                 scenario_id: 99,
                 event_id: 1905,
@@ -1152,6 +1202,8 @@ test('Render 2 1', async done => {
             completed: [],
             latestByScenarioId: {
               1: {
+                description: '',
+                is_run: true,
                 is_complete: false,
                 scenario_id: 99,
                 event_id: 1904,
@@ -1175,6 +1227,8 @@ test('Render 2 1', async done => {
             completed: [],
             latestByScenarioId: {
               1: {
+                description: '',
+                is_run: true,
                 is_complete: false,
                 scenario_id: 99,
                 event_id: 1903,
@@ -1198,6 +1252,8 @@ test('Render 2 1', async done => {
             completed: [],
             latestByScenarioId: {
               1: {
+                description: '',
+                is_run: true,
                 is_complete: false,
                 scenario_id: 99,
                 event_id: 1902,
@@ -1232,6 +1288,8 @@ test('Render 2 1', async done => {
               completed: [1],
               latestByScenarioId: {
                 1: {
+                  description: '',
+                  is_run: true,
                   is_complete: true,
                   event_id: 1909,
                   created_at: 1602454306144,
@@ -1282,6 +1340,8 @@ test('Render 2 1', async done => {
               completed: [1],
               latestByScenarioId: {
                 1: {
+                  description: '',
+                  is_run: true,
                   is_complete: true,
                   event_id: 1909,
                   created_at: 1602454306144,
@@ -1372,6 +1432,8 @@ test('Render 3 1', async done => {
             completed: [1],
             latestByScenarioId: {
               1: {
+                description: '',
+                is_run: true,
                 is_complete: true,
                 event_id: 1909,
                 created_at: 1602454306144,
@@ -1395,6 +1457,8 @@ test('Render 3 1', async done => {
             completed: [],
             latestByScenarioId: {
               1: {
+                description: '',
+                is_run: true,
                 is_complete: false,
                 scenario_id: 99,
                 event_id: 1905,
@@ -1418,6 +1482,8 @@ test('Render 3 1', async done => {
             completed: [],
             latestByScenarioId: {
               1: {
+                description: '',
+                is_run: true,
                 is_complete: false,
                 scenario_id: 99,
                 event_id: 1904,
@@ -1441,6 +1507,8 @@ test('Render 3 1', async done => {
             completed: [],
             latestByScenarioId: {
               1: {
+                description: '',
+                is_run: true,
                 is_complete: false,
                 scenario_id: 99,
                 event_id: 1903,
@@ -1464,6 +1532,8 @@ test('Render 3 1', async done => {
             completed: [],
             latestByScenarioId: {
               1: {
+                description: '',
+                is_run: true,
                 is_complete: false,
                 scenario_id: 99,
                 event_id: 1902,
@@ -1490,6 +1560,8 @@ test('Render 3 1', async done => {
             completed: [1],
             latestByScenarioId: {
               1: {
+                description: '',
+                is_run: true,
                 is_complete: true,
                 event_id: 1909,
                 created_at: 1602454306144,
@@ -1513,6 +1585,8 @@ test('Render 3 1', async done => {
             completed: [],
             latestByScenarioId: {
               1: {
+                description: '',
+                is_run: true,
                 is_complete: false,
                 scenario_id: 99,
                 event_id: 1905,
@@ -1536,6 +1610,8 @@ test('Render 3 1', async done => {
             completed: [],
             latestByScenarioId: {
               1: {
+                description: '',
+                is_run: true,
                 is_complete: false,
                 scenario_id: 99,
                 event_id: 1904,
@@ -1559,6 +1635,8 @@ test('Render 3 1', async done => {
             completed: [],
             latestByScenarioId: {
               1: {
+                description: '',
+                is_run: true,
                 is_complete: false,
                 scenario_id: 99,
                 event_id: 1903,
@@ -1582,6 +1660,8 @@ test('Render 3 1', async done => {
             completed: [],
             latestByScenarioId: {
               1: {
+                description: '',
+                is_run: true,
                 is_complete: false,
                 scenario_id: 99,
                 event_id: 1902,
@@ -1616,6 +1696,8 @@ test('Render 3 1', async done => {
               completed: [1],
               latestByScenarioId: {
                 1: {
+                  description: '',
+                  is_run: true,
                   is_complete: true,
                   event_id: 1909,
                   created_at: 1602454306144,
@@ -1666,6 +1748,8 @@ test('Render 3 1', async done => {
               completed: [1],
               latestByScenarioId: {
                 1: {
+                  description: '',
+                  is_run: true,
                   is_complete: true,
                   event_id: 1909,
                   created_at: 1602454306144,
@@ -1732,6 +1816,8 @@ test('Render 4 1', async done => {
         completed: [],
         latestByScenarioId: {
           1: {
+            description: '',
+            is_run: true,
             is_complete: false,
             scenario_id: 99,
             event_id: 1901,
@@ -1795,6 +1881,8 @@ test('Render 5 1', async done => {
         completed: [],
         latestByScenarioId: {
           1: {
+            description: '',
+            is_run: true,
             is_complete: false,
             scenario_id: 99,
             event_id: 1901,
@@ -1848,6 +1936,8 @@ test('Render 5 1', async done => {
             completed: [1],
             latestByScenarioId: {
               1: {
+                description: '',
+                is_run: true,
                 is_complete: true,
                 event_id: 1909,
                 created_at: 1602454306144,
@@ -1871,6 +1961,8 @@ test('Render 5 1', async done => {
             completed: [],
             latestByScenarioId: {
               1: {
+                description: '',
+                is_run: true,
                 is_complete: false,
                 scenario_id: 99,
                 event_id: 1905,
@@ -1894,6 +1986,8 @@ test('Render 5 1', async done => {
             completed: [],
             latestByScenarioId: {
               1: {
+                description: '',
+                is_run: true,
                 is_complete: false,
                 scenario_id: 99,
                 event_id: 1904,
@@ -1917,6 +2011,8 @@ test('Render 5 1', async done => {
             completed: [],
             latestByScenarioId: {
               1: {
+                description: '',
+                is_run: true,
                 is_complete: false,
                 scenario_id: 99,
                 event_id: 1903,
@@ -1940,6 +2036,8 @@ test('Render 5 1', async done => {
             completed: [],
             latestByScenarioId: {
               1: {
+                description: '',
+                is_run: true,
                 is_complete: false,
                 scenario_id: 99,
                 event_id: 1902,
@@ -1966,6 +2064,8 @@ test('Render 5 1', async done => {
             completed: [1],
             latestByScenarioId: {
               1: {
+                description: '',
+                is_run: true,
                 is_complete: true,
                 event_id: 1909,
                 created_at: 1602454306144,
@@ -1989,6 +2089,8 @@ test('Render 5 1', async done => {
             completed: [],
             latestByScenarioId: {
               1: {
+                description: '',
+                is_run: true,
                 is_complete: false,
                 scenario_id: 99,
                 event_id: 1905,
@@ -2012,6 +2114,8 @@ test('Render 5 1', async done => {
             completed: [],
             latestByScenarioId: {
               1: {
+                description: '',
+                is_run: true,
                 is_complete: false,
                 scenario_id: 99,
                 event_id: 1904,
@@ -2035,6 +2139,8 @@ test('Render 5 1', async done => {
             completed: [],
             latestByScenarioId: {
               1: {
+                description: '',
+                is_run: true,
                 is_complete: false,
                 scenario_id: 99,
                 event_id: 1903,
@@ -2058,6 +2164,8 @@ test('Render 5 1', async done => {
             completed: [],
             latestByScenarioId: {
               1: {
+                description: '',
+                is_run: true,
                 is_complete: false,
                 scenario_id: 99,
                 event_id: 1902,
@@ -2092,6 +2200,8 @@ test('Render 5 1', async done => {
               completed: [1],
               latestByScenarioId: {
                 1: {
+                  description: '',
+                  is_run: true,
                   is_complete: true,
                   event_id: 1909,
                   created_at: 1602454306144,
@@ -2142,6 +2252,8 @@ test('Render 5 1', async done => {
               completed: [1],
               latestByScenarioId: {
                 1: {
+                  description: '',
+                  is_run: true,
                   is_complete: true,
                   event_id: 1909,
                   created_at: 1602454306144,
@@ -2210,6 +2322,8 @@ test('Render 6 1', async done => {
         completed: [],
         latestByScenarioId: {
           1: {
+            description: '',
+            is_run: true,
             is_complete: false,
             scenario_id: 99,
             event_id: 1901,
@@ -2277,6 +2391,8 @@ test('Render 7 1', async done => {
         completed: [],
         latestByScenarioId: {
           1: {
+            description: '',
+            is_run: true,
             is_complete: false,
             scenario_id: 99,
             event_id: 1905,
@@ -2364,6 +2480,8 @@ test('Render 8 1', async done => {
             completed: [1],
             latestByScenarioId: {
               1: {
+                description: '',
+                is_run: true,
                 is_complete: true,
                 event_id: 1909,
                 created_at: 1602454306144,
@@ -2387,6 +2505,8 @@ test('Render 8 1', async done => {
             completed: [],
             latestByScenarioId: {
               1: {
+                description: '',
+                is_run: true,
                 is_complete: false,
                 scenario_id: 99,
                 event_id: 1905,
@@ -2410,6 +2530,8 @@ test('Render 8 1', async done => {
             completed: [],
             latestByScenarioId: {
               1: {
+                description: '',
+                is_run: true,
                 is_complete: false,
                 scenario_id: 99,
                 event_id: 1904,
@@ -2433,6 +2555,8 @@ test('Render 8 1', async done => {
             completed: [],
             latestByScenarioId: {
               1: {
+                description: '',
+                is_run: true,
                 is_complete: false,
                 scenario_id: 99,
                 event_id: 1903,
@@ -2456,6 +2580,8 @@ test('Render 8 1', async done => {
             completed: [],
             latestByScenarioId: {
               1: {
+                description: '',
+                is_run: true,
                 is_complete: false,
                 scenario_id: 99,
                 event_id: 1902,
@@ -2482,6 +2608,8 @@ test('Render 8 1', async done => {
             completed: [1],
             latestByScenarioId: {
               1: {
+                description: '',
+                is_run: true,
                 is_complete: true,
                 event_id: 1909,
                 created_at: 1602454306144,
@@ -2505,6 +2633,8 @@ test('Render 8 1', async done => {
             completed: [],
             latestByScenarioId: {
               1: {
+                description: '',
+                is_run: true,
                 is_complete: false,
                 scenario_id: 99,
                 event_id: 1905,
@@ -2528,6 +2658,8 @@ test('Render 8 1', async done => {
             completed: [],
             latestByScenarioId: {
               1: {
+                description: '',
+                is_run: true,
                 is_complete: false,
                 scenario_id: 99,
                 event_id: 1904,
@@ -2551,6 +2683,8 @@ test('Render 8 1', async done => {
             completed: [],
             latestByScenarioId: {
               1: {
+                description: '',
+                is_run: true,
                 is_complete: false,
                 scenario_id: 99,
                 event_id: 1903,
@@ -2574,6 +2708,8 @@ test('Render 8 1', async done => {
             completed: [],
             latestByScenarioId: {
               1: {
+                description: '',
+                is_run: true,
                 is_complete: false,
                 scenario_id: 99,
                 event_id: 1902,
@@ -2608,6 +2744,8 @@ test('Render 8 1', async done => {
               completed: [1],
               latestByScenarioId: {
                 1: {
+                  description: '',
+                  is_run: true,
                   is_complete: true,
                   event_id: 1909,
                   created_at: 1602454306144,
@@ -2658,6 +2796,8 @@ test('Render 8 1', async done => {
               completed: [1],
               latestByScenarioId: {
                 1: {
+                  description: '',
+                  is_run: true,
                   is_complete: true,
                   event_id: 1909,
                   created_at: 1602454306144,
@@ -2690,6 +2830,8 @@ test('Render 8 1', async done => {
         completed: [],
         latestByScenarioId: {
           1: {
+            description: '',
+            is_run: true,
             is_complete: false,
             scenario_id: 99,
             event_id: 1905,
@@ -2776,6 +2918,8 @@ test('Render 9 1', async done => {
             completed: [1],
             latestByScenarioId: {
               1: {
+                description: '',
+                is_run: true,
                 is_complete: true,
                 event_id: 1909,
                 created_at: 1602454306144,
@@ -2799,6 +2943,8 @@ test('Render 9 1', async done => {
             completed: [],
             latestByScenarioId: {
               1: {
+                description: '',
+                is_run: true,
                 is_complete: false,
                 scenario_id: 99,
                 event_id: 1905,
@@ -2822,6 +2968,8 @@ test('Render 9 1', async done => {
             completed: [],
             latestByScenarioId: {
               1: {
+                description: '',
+                is_run: true,
                 is_complete: false,
                 scenario_id: 99,
                 event_id: 1904,
@@ -2845,6 +2993,8 @@ test('Render 9 1', async done => {
             completed: [],
             latestByScenarioId: {
               1: {
+                description: '',
+                is_run: true,
                 is_complete: false,
                 scenario_id: 99,
                 event_id: 1903,
@@ -2868,6 +3018,8 @@ test('Render 9 1', async done => {
             completed: [],
             latestByScenarioId: {
               1: {
+                description: '',
+                is_run: true,
                 is_complete: false,
                 scenario_id: 99,
                 event_id: 1902,
@@ -2894,6 +3046,8 @@ test('Render 9 1', async done => {
             completed: [1],
             latestByScenarioId: {
               1: {
+                description: '',
+                is_run: true,
                 is_complete: true,
                 event_id: 1909,
                 created_at: 1602454306144,
@@ -2917,6 +3071,8 @@ test('Render 9 1', async done => {
             completed: [],
             latestByScenarioId: {
               1: {
+                description: '',
+                is_run: true,
                 is_complete: false,
                 scenario_id: 99,
                 event_id: 1905,
@@ -2940,6 +3096,8 @@ test('Render 9 1', async done => {
             completed: [],
             latestByScenarioId: {
               1: {
+                description: '',
+                is_run: true,
                 is_complete: false,
                 scenario_id: 99,
                 event_id: 1904,
@@ -2963,6 +3121,8 @@ test('Render 9 1', async done => {
             completed: [],
             latestByScenarioId: {
               1: {
+                description: '',
+                is_run: true,
                 is_complete: false,
                 scenario_id: 99,
                 event_id: 1903,
@@ -2986,6 +3146,8 @@ test('Render 9 1', async done => {
             completed: [],
             latestByScenarioId: {
               1: {
+                description: '',
+                is_run: true,
                 is_complete: false,
                 scenario_id: 99,
                 event_id: 1902,
@@ -3020,6 +3182,8 @@ test('Render 9 1', async done => {
               completed: [1],
               latestByScenarioId: {
                 1: {
+                  description: '',
+                  is_run: true,
                   is_complete: true,
                   event_id: 1909,
                   created_at: 1602454306144,
@@ -3070,6 +3234,8 @@ test('Render 9 1', async done => {
               completed: [1],
               latestByScenarioId: {
                 1: {
+                  description: '',
+                  is_run: true,
                   is_complete: true,
                   event_id: 1909,
                   created_at: 1602454306144,
@@ -3101,6 +3267,8 @@ test('Render 9 1', async done => {
         completed: [1],
         latestByScenarioId: {
           1: {
+            description: '',
+            is_run: true,
             is_complete: true,
             event_id: 1909,
             created_at: 1602454306144,

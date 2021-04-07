@@ -111,13 +111,13 @@ class Timer extends Component {
     const timerValue = timeout ? Media.secToTime(timeout) : '';
 
     const startOrAutoIcon = auto ? (
-      <Icon name="clock outline" style={{ color: 'grey' }} />
+      <Icon name="stopwatch" style={{ color: 'grey' }} />
     ) : (
       <Icon className="icon-primary" name="play" />
     );
 
     const startOrClockIcon = isActive ? (
-      <Icon className="icon-primary" name="clock outline" />
+      <Icon className="icon-primary" name="stopwatch" />
     ) : (
       startOrAutoIcon
     );
@@ -152,7 +152,7 @@ class Timer extends Component {
       startOrStopButton
     ) : (
       <Menu.Item className="cpd__timer">
-        <Icon className="icon-primary" name="clock outline" />
+        <Icon className="icon-primary" name="stopwatch" />
         {timerDisplay}
       </Menu.Item>
     );

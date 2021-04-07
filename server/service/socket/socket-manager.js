@@ -56,6 +56,8 @@ const {
   CHAT_IS_CLOSED_INCOMPLETE,
   CHAT_IS_CLOSED_TIMEOUT
 } = require('./states');
+
+const EVENT_TYPES = require('../runs/event-types');
 const authdb = require('../session/db');
 const agentsdb = require('../agents/db');
 const chatsdb = require('../chats/db');
@@ -65,9 +67,17 @@ const runsdb = require('../runs/db');
 const scenariosdb = require('../scenarios/db');
 const chatutil = require('../chats/util');
 
-async function saveRunEvent(run_id, name, context) {
+async function saveRunEvent(run_id, user_id, name, context) {
   try {
-    await runsdb.saveRunEvent(run_id, name, context);
+    await runsdb.saveRunEvent(run_id, user_id, name, context);
+  } catch (error) {
+    console.log('ERROR: Could not save run event. ', error);
+  }
+}
+
+async function saveUserEvent(user_id, name, context) {
+  try {
+    await runsdb.saveUserEvent(user_id, name, context);
   } catch (error) {
     console.log('ERROR: Could not save run event. ', error);
   }
@@ -422,7 +432,12 @@ class SocketManager {
               value
             });
 
-            await saveRunEvent(record.run_id, 'response-sent-to-agent', record);
+            await saveRunEvent(
+              record.run_id,
+              record.user_id,
+              EVENT_TYPES.RESPONSE_SENT_TO_AGENT,
+              record
+            );
           }
         }
       };
@@ -443,7 +458,12 @@ class SocketManager {
           if (chat) {
             const room = `${chat.id}-response-${response_id}`;
             this.io.to(room).emit(SHARED_RESPONSE_CREATED, record);
-            await saveRunEvent(record.run_id, SHARED_RESPONSE_CREATED, record);
+            await saveRunEvent(
+              record.run_id,
+              record.user_id,
+              EVENT_TYPES.SHARED_RESPONSE_CREATED,
+              record
+            );
           }
         });
       }
@@ -457,7 +477,12 @@ class SocketManager {
           if (chat) {
             const room = `${chat.id}-response-${response_id}`;
             this.io.to(room).emit(SHARED_RESPONSE_UPDATED, record);
-            await saveRunEvent(record.run_id, SHARED_RESPONSE_UPDATED, record);
+            await saveRunEvent(
+              record.run_id,
+              record.user_id,
+              EVENT_TYPES.SHARED_RESPONSE_UPDATED,
+              record
+            );
           }
         });
       }
@@ -550,10 +575,15 @@ class SocketManager {
               response
             );
 
-            await saveRunEvent(run.id, 'agent-response-received', {
-              ...payload,
-              response
-            });
+            await saveRunEvent(
+              run.id,
+              user.id,
+              EVENT_TYPES.AGENT_RESPONSE_RECEIVED,
+              {
+                ...payload,
+                response
+              }
+            );
           });
 
           client.on('interjection', async response => {
@@ -567,10 +597,15 @@ class SocketManager {
               user.id // TODO: this should come from the interjection event
             );
 
-            await saveRunEvent(run.id, 'agent-interjection-received', {
-              ...payload,
-              response
-            });
+            await saveRunEvent(
+              run.id,
+              user.id,
+              EVENT_TYPES.AGENT_INTERJECTION_RECEIVED,
+              {
+                ...payload,
+                response
+              }
+            );
           });
 
           cache.clients[room] = {
@@ -599,6 +634,8 @@ class SocketManager {
           user.id
         );
 
+        await saveUserEvent(user.id, EVENT_TYPES.USER_JOIN_POOL, props);
+
         if (chat) {
           for (let chatUser of chat.users) {
             const room = chat.cohort_id
@@ -619,6 +656,8 @@ class SocketManager {
           persona.id,
           user.id
         );
+
+        await saveUserEvent(user.id, EVENT_TYPES.USER_PART_POOL, props);
       });
 
       socket.on(RUN_AGENT_START, async payload => {
@@ -671,10 +710,15 @@ class SocketManager {
                 response
               );
 
-              await saveRunEvent(run.id, 'agent-response-received', {
-                ...payload,
-                response
-              });
+              await saveRunEvent(
+                run.id,
+                user.id,
+                EVENT_TYPES.AGENT_RESPONSE_RECEIVED,
+                {
+                  ...payload,
+                  response
+                }
+              );
             });
 
             cache.clients[room] = {
@@ -827,7 +871,7 @@ class SocketManager {
             });
           }
 
-          await saveRunEvent(run.id, USER_JOIN_SLIDE, {
+          await saveRunEvent(run.id, user.id, EVENT_TYPES.USER_JOIN_SLIDE, {
             chat,
             user,
             scenario,
@@ -854,7 +898,7 @@ class SocketManager {
             // console.log('UPDATED ROLLS: ', cache.rolls[rollKey]);
           }
 
-          await saveRunEvent(run.id, USER_PART_SLIDE, {
+          await saveRunEvent(run.id, user.id, EVENT_TYPES.USER_PART_SLIDE, {
             chat,
             user,
             run
@@ -872,9 +916,14 @@ class SocketManager {
         chatsdb.createNewChatMessage(chat.id, user.id, content, prompt.id);
 
         if (run) {
-          await saveRunEvent(run.id, CHAT_MESSAGE_CREATED, {
-            ...payload
-          });
+          await saveRunEvent(
+            run.id,
+            user.id,
+            EVENT_TYPES.CHAT_MESSAGE_CREATED,
+            {
+              ...payload
+            }
+          );
         }
       });
 
@@ -904,9 +953,14 @@ class SocketManager {
         cache.discussions[room] = closeResultToStateMap[result];
 
         if (run) {
-          await saveRunEvent(run.id, CHAT_CLOSED_FOR_SLIDE, {
-            ...payload
-          });
+          await saveRunEvent(
+            run.id,
+            user.id,
+            EVENT_TYPES.CHAT_CLOSED_FOR_SLIDE,
+            {
+              ...payload
+            }
+          );
         }
       });
 

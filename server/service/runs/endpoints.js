@@ -184,7 +184,7 @@ async function saveRunEvent(req, res) {
   const { id } = await runForRequest(req);
   const { name, context } = req.body;
   try {
-    const event = await db.saveRunEvent(id, name, context);
+    const event = await db.saveRunEvent(id, req.session.user.id, name, context);
     res.status(201).json({ event });
   } catch (error) {
     res.status(500).json({ error });

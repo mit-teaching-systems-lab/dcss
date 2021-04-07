@@ -390,3 +390,26 @@
   margin-left: 1em;
   max-width: 400px;
 }
+
+/*
+These colors come directly from tol-rainbow: Tol's Rainbow palette (cbf)
+*/
+.c__progress-orange {
+  color: #dbab3b;
+}
+
+.c__progress-green {
+  color: #83ba6d;
+}
+
+.c__progress-red {
+  color: #d92120;
+}
+
+.c__progress-blue {
+  color: #447cbf;
+}
+
+.c__progress-purple {
+  color: #781c81;
+}

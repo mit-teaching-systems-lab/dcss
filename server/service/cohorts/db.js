@@ -119,7 +119,7 @@ async function getCohortScenariosRunEvents(id) {
       r.event_id,
       r.run_id,
       scenario_id,
-      user_id,
+      r.user_id,
       name,
       context::jsonb->>'url' as url,
       context::jsonb->>'timestamp' as created_at,
@@ -129,7 +129,14 @@ async function getCohortScenariosRunEvents(id) {
       END as is_complete
     FROM cohort_run
     JOIN (
-      SELECT run_event.id as event_id, *
+      SELECT
+        run_event.id as event_id,
+        run_event.run_id,
+        run.user_id,
+        run.scenario_id,
+        name,
+        context,
+        run.ended_at
       FROM run
       JOIN run_event
       ON run.id = run_event.run_id
@@ -143,10 +150,39 @@ async function getCohortScenariosRunEvents(id) {
   return result.rows;
 }
 
+async function getCohortUsersEvents(id) {
+  let select = `
+    SELECT
+      re.id AS event_id,
+      re.user_id,
+      name,
+      context::jsonb->>'url' AS url,
+      context::jsonb->>'timestamp' AS created_at,
+      (context::jsonb->>'cohort')::JSONB AS cohort,
+      (context::jsonb->>'persona')::JSONB AS persona,
+      JSON_BUILD_OBJECT('id', s.id, 'title', s.title) AS scenario,
+      FALSE AS is_complete
+    FROM (
+      SELECT DISTINCT ON (user_id) *
+       FROM run_event
+       WHERE run_id IS NULL
+       GROUP BY user_id, id
+      ORDER BY user_id, id DESC
+    ) AS re
+    JOIN scenario s ON s.id = (context::jsonb->'scenario'->>'id')::INTEGER
+    WHERE (context::jsonb->'cohort'->>'id')::INTEGER = ${id}
+    ORDER BY re.id ASC;
+  `;
+
+  let result = await query(select);
+  return result.rows;
+}
+
 async function getCohortProgress(id) {
   const eventTypesByName = await runsdb.getRunEventTypesByName();
   const scenariosCompleted = await getCohortScenariosCompleted(id);
   const scenariosRunEvents = await getCohortScenariosRunEvents(id);
+  const userEvents = await getCohortUsersEvents(id);
 
   const completedByUserId = scenariosCompleted.reduce(
     (accum, { user_id, completed }) => {
@@ -156,10 +192,11 @@ async function getCohortProgress(id) {
     {}
   );
 
-  const eventsByUserId = scenariosRunEvents.reduce((accum, event) => {
+  let eventsByUserId = userEvents.reduce((accum, event) => {
     const {
       event_id,
-      scenario_id,
+      scenario,
+      persona,
       name,
       url,
       created_at,
@@ -171,11 +208,22 @@ async function getCohortProgress(id) {
       accum[user_id] = {};
     }
 
-    const description = eventTypesByName[name].generic;
+    const scenario_id = scenario.id;
+    const initial = eventTypesByName[name].template.replace(
+      /^\{participant\}\s/g,
+      ''
+    );
+    const description = initial
+      .replace('{scenario}', `"${scenario.title}"`)
+      .replace('{persona}', `"${persona.name}"`);
+
+    const is_run = false;
+
     accum[user_id][scenario_id] = {
       scenario_id,
       event_id,
       is_complete,
+      is_run,
       created_at,
       name,
       description,
@@ -184,6 +232,36 @@ async function getCohortProgress(id) {
 
     return accum;
   }, {});
+
+  scenariosRunEvents.forEach(event => {
+    const {
+      event_id,
+      scenario_id,
+      name,
+      url,
+      created_at,
+      is_complete,
+      user_id
+    } = event;
+
+    if (!eventsByUserId[user_id]) {
+      eventsByUserId[user_id] = {};
+    }
+
+    const is_run = true;
+    const description = eventTypesByName[name].generic;
+
+    eventsByUserId[user_id][scenario_id] = {
+      scenario_id,
+      event_id,
+      is_complete,
+      is_run,
+      created_at,
+      name,
+      description,
+      url
+    };
+  });
 
   return {
     completedByUserId,

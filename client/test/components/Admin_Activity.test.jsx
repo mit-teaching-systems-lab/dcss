@@ -179,6 +179,8 @@ test('Render 3 1', async done => {
         completed: [1],
         latestByScenarioId: {
           1: {
+            description: '',
+            is_run: true,
             is_complete: true,
             event_id: 1909,
             created_at: 1602454306144,
@@ -223,6 +225,8 @@ test('Render 4 1', async done => {
         completed: [1],
         latestByScenarioId: {
           1: {
+            description: '',
+            is_run: true,
             is_complete: true,
             event_id: 1909,
             created_at: 1602454306144,

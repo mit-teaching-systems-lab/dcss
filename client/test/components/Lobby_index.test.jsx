@@ -182,6 +182,8 @@ beforeEach(() => {
       completed: [],
       latestByScenarioId: {
         1: {
+          description: '',
+          is_run: true,
           is_complete: false,
           scenario_id: 99,
           event_id: 1905,
@@ -205,6 +207,8 @@ beforeEach(() => {
       completed: [],
       latestByScenarioId: {
         1: {
+          description: '',
+          is_run: true,
           is_complete: false,
           scenario_id: 99,
           event_id: 1904,
@@ -228,6 +232,8 @@ beforeEach(() => {
       completed: [],
       latestByScenarioId: {
         1: {
+          description: '',
+          is_run: true,
           is_complete: false,
           scenario_id: 99,
           event_id: 1903,
@@ -251,6 +257,8 @@ beforeEach(() => {
       completed: [],
       latestByScenarioId: {
         1: {
+          description: '',
+          is_run: true,
           is_complete: false,
           scenario_id: 99,
           event_id: 1902,
@@ -342,6 +350,8 @@ beforeEach(() => {
           completed: [1],
           latestByScenarioId: {
             1: {
+              description: '',
+              is_run: true,
               is_complete: true,
               event_id: 1909,
               created_at: 1602454306144,
@@ -365,6 +375,8 @@ beforeEach(() => {
           completed: [],
           latestByScenarioId: {
             1: {
+              description: '',
+              is_run: true,
               is_complete: false,
               scenario_id: 99,
               event_id: 1905,
@@ -388,6 +400,8 @@ beforeEach(() => {
           completed: [],
           latestByScenarioId: {
             1: {
+              description: '',
+              is_run: true,
               is_complete: false,
               scenario_id: 99,
               event_id: 1904,
@@ -411,6 +425,8 @@ beforeEach(() => {
           completed: [],
           latestByScenarioId: {
             1: {
+              description: '',
+              is_run: true,
               is_complete: false,
               scenario_id: 99,
               event_id: 1903,
@@ -434,6 +450,8 @@ beforeEach(() => {
           completed: [],
           latestByScenarioId: {
             1: {
+              description: '',
+              is_run: true,
               is_complete: false,
               scenario_id: 99,
               event_id: 1902,
@@ -460,6 +478,8 @@ beforeEach(() => {
           completed: [1],
           latestByScenarioId: {
             1: {
+              description: '',
+              is_run: true,
               is_complete: true,
               event_id: 1909,
               created_at: 1602454306144,
@@ -483,6 +503,8 @@ beforeEach(() => {
           completed: [],
           latestByScenarioId: {
             1: {
+              description: '',
+              is_run: true,
               is_complete: false,
               scenario_id: 99,
               event_id: 1905,
@@ -506,6 +528,8 @@ beforeEach(() => {
           completed: [],
           latestByScenarioId: {
             1: {
+              description: '',
+              is_run: true,
               is_complete: false,
               scenario_id: 99,
               event_id: 1904,
@@ -529,6 +553,8 @@ beforeEach(() => {
           completed: [],
           latestByScenarioId: {
             1: {
+              description: '',
+              is_run: true,
               is_complete: false,
               scenario_id: 99,
               event_id: 1903,
@@ -552,6 +578,8 @@ beforeEach(() => {
           completed: [],
           latestByScenarioId: {
             1: {
+              description: '',
+              is_run: true,
               is_complete: false,
               scenario_id: 99,
               event_id: 1902,
@@ -586,6 +614,8 @@ beforeEach(() => {
             completed: [1],
             latestByScenarioId: {
               1: {
+                description: '',
+                is_run: true,
                 is_complete: true,
                 event_id: 1909,
                 created_at: 1602454306144,
@@ -636,6 +666,8 @@ beforeEach(() => {
             completed: [1],
             latestByScenarioId: {
               1: {
+                description: '',
+                is_run: true,
                 is_complete: true,
                 event_id: 1909,
                 created_at: 1602454306144,
@@ -951,9 +983,11 @@ test('Lobby visited by a non-facilitator user', async done => {
               "latestByScenarioId": Object {
                 "1": Object {
                   "created_at": 1602454306144,
+                  "description": "",
                   "event_id": 1903,
                   "generic": "arrived at a slide.",
                   "is_complete": false,
+                  "is_run": true,
                   "name": "slide-arrival",
                   "scenario_id": 99,
                   "url": "http://localhost:3000/cohort/1/run/99/slide/1",
@@ -1049,9 +1083,11 @@ test('Lobby visited in a cohort', async done => {
               "latestByScenarioId": Object {
                 "1": Object {
                   "created_at": 1602454306144,
+                  "description": "",
                   "event_id": 1903,
                   "generic": "arrived at a slide.",
                   "is_complete": false,
+                  "is_run": true,
                   "name": "slide-arrival",
                   "scenario_id": 99,
                   "url": "http://localhost:3000/cohort/1/run/99/slide/1",
@@ -1148,9 +1184,11 @@ test('Lobby visited in a cohort, asCard: true', async done => {
               "latestByScenarioId": Object {
                 "1": Object {
                   "created_at": 1602454306144,
+                  "description": "",
                   "event_id": 1903,
                   "generic": "arrived at a slide.",
                   "is_complete": false,
+                  "is_run": true,
                   "name": "slide-arrival",
                   "scenario_id": 99,
                   "url": "http://localhost:3000/cohort/1/run/99/slide/1",
@@ -1246,9 +1284,11 @@ test('Lobby visited in a run', async done => {
               "latestByScenarioId": Object {
                 "1": Object {
                   "created_at": 1602454306144,
+                  "description": "",
                   "event_id": 1903,
                   "generic": "arrived at a slide.",
                   "is_complete": false,
+                  "is_run": true,
                   "name": "slide-arrival",
                   "scenario_id": 99,
                   "url": "http://localhost:3000/cohort/1/run/99/slide/1",
@@ -1345,9 +1385,11 @@ test('Lobby visited in a run, asCard: true', async done => {
               "latestByScenarioId": Object {
                 "1": Object {
                   "created_at": 1602454306144,
+                  "description": "",
                   "event_id": 1903,
                   "generic": "arrived at a slide.",
                   "is_complete": false,
+                  "is_run": true,
                   "name": "slide-arrival",
                   "scenario_id": 99,
                   "url": "http://localhost:3000/cohort/1/run/99/slide/1",
@@ -1638,9 +1680,11 @@ test('Fallback: chat, scenario, cohort are not yet loaded, use provided props', 
                 "latestByScenarioId": Object {
                   "1": Object {
                     "created_at": 1602454306144,
+                    "description": "",
                     "event_id": 1909,
                     "generic": "arrived at a slide.",
                     "is_complete": true,
+                    "is_run": true,
                     "name": "slide-arrival",
                     "url": "http://localhost:3000/cohort/1/run/99/slide/1",
                   },
@@ -1664,9 +1708,11 @@ test('Fallback: chat, scenario, cohort are not yet loaded, use provided props', 
                 "latestByScenarioId": Object {
                   "1": Object {
                     "created_at": 1602454306144,
+                    "description": "",
                     "event_id": 1905,
                     "generic": "arrived at a slide.",
                     "is_complete": false,
+                    "is_run": true,
                     "name": "slide-arrival",
                     "scenario_id": 99,
                     "url": "http://localhost:3000/cohort/1/run/99/slide/1",
@@ -1692,9 +1738,11 @@ test('Fallback: chat, scenario, cohort are not yet loaded, use provided props', 
                 "latestByScenarioId": Object {
                   "1": Object {
                     "created_at": 1602454306144,
+                    "description": "",
                     "event_id": 1904,
                     "generic": "arrived at a slide.",
                     "is_complete": false,
+                    "is_run": true,
                     "name": "slide-arrival",
                     "scenario_id": 99,
                     "url": "http://localhost:3000/cohort/1/run/99/slide/1",
@@ -1718,9 +1766,11 @@ test('Fallback: chat, scenario, cohort are not yet loaded, use provided props', 
                 "latestByScenarioId": Object {
                   "1": Object {
                     "created_at": 1602454306144,
+                    "description": "",
                     "event_id": 1903,
                     "generic": "arrived at a slide.",
                     "is_complete": false,
+                    "is_run": true,
                     "name": "slide-arrival",
                     "scenario_id": 99,
                     "url": "http://localhost:3000/cohort/1/run/99/slide/1",
@@ -1743,9 +1793,11 @@ test('Fallback: chat, scenario, cohort are not yet loaded, use provided props', 
                 "latestByScenarioId": Object {
                   "1": Object {
                     "created_at": 1602454306144,
+                    "description": "",
                     "event_id": 1902,
                     "generic": "arrived at a slide.",
                     "is_complete": false,
+                    "is_run": true,
                     "name": "slide-arrival",
                     "scenario_id": 99,
                     "url": "http://localhost:3000/cohort/1/run/99/slide/1",
@@ -1770,9 +1822,11 @@ test('Fallback: chat, scenario, cohort are not yet loaded, use provided props', 
                 "latestByScenarioId": Object {
                   "1": Object {
                     "created_at": 1602454306144,
+                    "description": "",
                     "event_id": 1902,
                     "generic": "arrived at a slide.",
                     "is_complete": false,
+                    "is_run": true,
                     "name": "slide-arrival",
                     "scenario_id": 99,
                     "url": "http://localhost:3000/cohort/1/run/99/slide/1",
@@ -1795,9 +1849,11 @@ test('Fallback: chat, scenario, cohort are not yet loaded, use provided props', 
                 "latestByScenarioId": Object {
                   "1": Object {
                     "created_at": 1602454306144,
+                    "description": "",
                     "event_id": 1903,
                     "generic": "arrived at a slide.",
                     "is_complete": false,
+                    "is_run": true,
                     "name": "slide-arrival",
                     "scenario_id": 99,
                     "url": "http://localhost:3000/cohort/1/run/99/slide/1",
@@ -1820,9 +1876,11 @@ test('Fallback: chat, scenario, cohort are not yet loaded, use provided props', 
                 "latestByScenarioId": Object {
                   "1": Object {
                     "created_at": 1602454306144,
+                    "description": "",
                     "event_id": 1904,
                     "generic": "arrived at a slide.",
                     "is_complete": false,
+                    "is_run": true,
                     "name": "slide-arrival",
                     "scenario_id": 99,
                     "url": "http://localhost:3000/cohort/1/run/99/slide/1",
@@ -1847,9 +1905,11 @@ test('Fallback: chat, scenario, cohort are not yet loaded, use provided props', 
                 "latestByScenarioId": Object {
                   "1": Object {
                     "created_at": 1602454306144,
+                    "description": "",
                     "event_id": 1905,
                     "generic": "arrived at a slide.",
                     "is_complete": false,
+                    "is_run": true,
                     "name": "slide-arrival",
                     "scenario_id": 99,
                     "url": "http://localhost:3000/cohort/1/run/99/slide/1",
@@ -1877,9 +1937,11 @@ test('Fallback: chat, scenario, cohort are not yet loaded, use provided props', 
                 "latestByScenarioId": Object {
                   "1": Object {
                     "created_at": 1602454306144,
+                    "description": "",
                     "event_id": 1909,
                     "generic": "arrived at a slide.",
                     "is_complete": true,
+                    "is_run": true,
                     "name": "slide-arrival",
                     "url": "http://localhost:3000/cohort/1/run/99/slide/1",
                   },

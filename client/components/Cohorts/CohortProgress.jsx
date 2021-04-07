@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import escapeRegExp from 'lodash.escaperegexp';
 import pluralize from 'pluralize';
-import { sentenceCase } from 'change-case';
+import { upperCaseFirst } from 'change-case';
 import {
   Button,
   Card,
@@ -40,7 +40,9 @@ export class CohortProgress extends React.Component {
 
     this.state = {
       isReady: false,
-      manageIsOpen: false,
+      manage: {
+        isOpen: false
+      },
       refresh,
       search: '',
       participants: []
@@ -67,7 +69,7 @@ export class CohortProgress extends React.Component {
       if (!this.state.search && document.visibilityState === 'visible') {
         await this.fetchCohort();
       }
-    }, 10000);
+    }, 5000);
   }
 
   async componentDidMount() {
@@ -192,7 +194,9 @@ export class CohortProgress extends React.Component {
         aria-label={manageButtonAriaLabel}
         onClick={() => {
           this.setState({
-            manageIsOpen: true
+            manage: {
+              isOpen: true
+            }
           });
         }}
       >
@@ -237,13 +241,18 @@ export class CohortProgress extends React.Component {
             let lastScenarioViewed = null;
             let lastUrlVisited = null;
             let lastEventDescription = null;
+            let lastEventWasCancelation = null;
             let lastSlideViewed = null;
             let statusText = isComplete ? 'Complete' : 'In progress';
             let statusIcon = isComplete ? 'check' : 'circle';
+            let statusIconClassName = isComplete
+              ? 'c__progress-green'
+              : 'c__progress-purple';
 
             if (!eventsCount) {
-              statusIcon = 'wait';
+              statusIcon = 'warning sign';
               statusText = 'Not started';
+              statusIconClassName = 'c__progress-red';
             } else {
               const lastEvent = eventsValues[eventsValues.length - 1];
 
@@ -264,8 +273,26 @@ export class CohortProgress extends React.Component {
                 ? lastUrlVisited.slice(lastUrlVisited.indexOf('/slide') + 7)
                 : null;
 
-              lastEventDescription = sentenceCase(lastEvent.description);
+              const description = lastEvent.description || '';
+
+              lastEventDescription = upperCaseFirst(description);
+              lastEventWasCancelation = description.includes('cancel');
+
+              if (!lastEvent.is_run) {
+                statusText = 'Waiting';
+                statusIcon = 'clock';
+                statusIconClassName = 'c__progress-orange';
+
+                if (lastEventWasCancelation) {
+                  statusText = 'Canceled';
+                  statusIcon = 'question';
+                  statusIconClassName = 'c__progress-blue';
+                }
+              }
             }
+
+            //             statusIcon = 'wait';
+            // statusText = 'Not started';
 
             const lastAccessedDisplay = lastAccessedAt ? (
               <p className="c__participant-completion__group">
@@ -300,17 +327,19 @@ export class CohortProgress extends React.Component {
                 <Card.Content>
                   <Card.Description className="c__participant-completion">
                     <div className="c__participant-status">
-                      <Icon className="primary" name={statusIcon} />
+                      <Icon className={statusIconClassName} name={statusIcon} />
                       <Text size="medium">{statusText}</Text>
                     </div>
                     {!isComplete && lastScenarioViewed ? (
                       <Fragment>
-                        <p className="c__participant-completion__group">
-                          <span className="c__participant-completion__subhed">
-                            Current scenario
-                          </span>
-                          {lastScenarioViewed.title}
-                        </p>
+                        {!lastEventWasCancelation ? (
+                          <p className="c__participant-completion__group">
+                            <span className="c__participant-completion__subhed">
+                              Current scenario
+                            </span>
+                            {lastScenarioViewed.title}
+                          </p>
+                        ) : null}
                         <p className="c__participant-completion__group">
                           <span className="c__participant-completion__subhed">
                             Last activity
@@ -351,13 +380,15 @@ export class CohortProgress extends React.Component {
           })}
         </div>
 
-        {this.state.manageIsOpen ? (
+        {this.state.manage.isOpen ? (
           <CohortParticipants
             id={cohort.id}
             authority={authority}
             onClose={() => {
               this.setState({
-                manageIsOpen: false
+                manage: {
+                  isOpen: false
+                }
               });
             }}
           />

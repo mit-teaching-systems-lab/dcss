@@ -142,6 +142,8 @@ beforeEach(() => {
           completed: [1],
           latestByScenarioId: {
             1: {
+              description: '',
+              is_run: true,
               is_complete: true,
               event_id: 1909,
               created_at: 1602454306144,
@@ -165,6 +167,8 @@ beforeEach(() => {
           completed: [],
           latestByScenarioId: {
             1: {
+              description: '',
+              is_run: true,
               is_complete: false,
               scenario_id: 99,
               event_id: 1905,
@@ -188,6 +192,8 @@ beforeEach(() => {
           completed: [],
           latestByScenarioId: {
             1: {
+              description: '',
+              is_run: true,
               is_complete: false,
               scenario_id: 99,
               event_id: 1904,
@@ -211,6 +217,8 @@ beforeEach(() => {
           completed: [],
           latestByScenarioId: {
             1: {
+              description: '',
+              is_run: true,
               is_complete: false,
               scenario_id: 99,
               event_id: 1903,
@@ -234,6 +242,8 @@ beforeEach(() => {
           completed: [],
           latestByScenarioId: {
             1: {
+              description: '',
+              is_run: true,
               is_complete: false,
               scenario_id: 99,
               event_id: 1902,
@@ -260,6 +270,8 @@ beforeEach(() => {
           completed: [1],
           latestByScenarioId: {
             1: {
+              description: '',
+              is_run: true,
               is_complete: true,
               event_id: 1909,
               created_at: 1602454306144,
@@ -283,6 +295,8 @@ beforeEach(() => {
           completed: [],
           latestByScenarioId: {
             1: {
+              description: '',
+              is_run: true,
               is_complete: false,
               scenario_id: 99,
               event_id: 1905,
@@ -306,6 +320,8 @@ beforeEach(() => {
           completed: [],
           latestByScenarioId: {
             1: {
+              description: '',
+              is_run: true,
               is_complete: false,
               scenario_id: 99,
               event_id: 1904,
@@ -329,6 +345,8 @@ beforeEach(() => {
           completed: [],
           latestByScenarioId: {
             1: {
+              description: '',
+              is_run: true,
               is_complete: false,
               scenario_id: 99,
               event_id: 1903,
@@ -352,6 +370,8 @@ beforeEach(() => {
           completed: [],
           latestByScenarioId: {
             1: {
+              description: '',
+              is_run: true,
               is_complete: false,
               scenario_id: 99,
               event_id: 1902,
@@ -386,6 +406,8 @@ beforeEach(() => {
             completed: [1],
             latestByScenarioId: {
               1: {
+                description: '',
+                is_run: true,
                 is_complete: true,
                 event_id: 1909,
                 created_at: 1602454306144,
@@ -436,6 +458,8 @@ beforeEach(() => {
             completed: [1],
             latestByScenarioId: {
               1: {
+                description: '',
+                is_run: true,
                 is_complete: true,
                 event_id: 1909,
                 created_at: 1602454306144,

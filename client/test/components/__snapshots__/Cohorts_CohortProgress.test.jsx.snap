@@ -226,7 +226,7 @@ exports[`Open Manage participants 2`] = `
             >
               <i
                 aria-hidden="true"
-                class="circle icon primary"
+                class="circle icon c__progress-purple"
               />
               <span
                 class="ui medium text"
@@ -305,7 +305,7 @@ exports[`Open Manage participants 2`] = `
             >
               <i
                 aria-hidden="true"
-                class="circle icon primary"
+                class="circle icon c__progress-purple"
               />
               <span
                 class="ui medium text"
@@ -384,7 +384,7 @@ exports[`Open Manage participants 2`] = `
             >
               <i
                 aria-hidden="true"
-                class="circle icon primary"
+                class="circle icon c__progress-purple"
               />
               <span
                 class="ui medium text"
@@ -457,7 +457,7 @@ exports[`Open Manage participants 2`] = `
             >
               <i
                 aria-hidden="true"
-                class="circle icon primary"
+                class="circle icon c__progress-purple"
               />
               <span
                 class="ui medium text"
@@ -530,7 +530,7 @@ exports[`Open Manage participants 2`] = `
             >
               <i
                 aria-hidden="true"
-                class="circle icon primary"
+                class="circle icon c__progress-purple"
               />
               <span
                 class="ui medium text"
@@ -668,7 +668,7 @@ exports[`Open Manage participants 3`] = `
             >
               <i
                 aria-hidden="true"
-                class="circle icon primary"
+                class="circle icon c__progress-purple"
               />
               <span
                 class="ui medium text"
@@ -747,7 +747,7 @@ exports[`Open Manage participants 3`] = `
             >
               <i
                 aria-hidden="true"
-                class="circle icon primary"
+                class="circle icon c__progress-purple"
               />
               <span
                 class="ui medium text"
@@ -826,7 +826,7 @@ exports[`Open Manage participants 3`] = `
             >
               <i
                 aria-hidden="true"
-                class="circle icon primary"
+                class="circle icon c__progress-purple"
               />
               <span
                 class="ui medium text"
@@ -899,7 +899,7 @@ exports[`Open Manage participants 3`] = `
             >
               <i
                 aria-hidden="true"
-                class="circle icon primary"
+                class="circle icon c__progress-purple"
               />
               <span
                 class="ui medium text"
@@ -972,7 +972,7 @@ exports[`Open Manage participants 3`] = `
             >
               <i
                 aria-hidden="true"
-                class="circle icon primary"
+                class="circle icon c__progress-purple"
               />
               <span
                 class="ui medium text"
@@ -1110,7 +1110,7 @@ exports[`Open Manage participants 4`] = `
             >
               <i
                 aria-hidden="true"
-                class="circle icon primary"
+                class="circle icon c__progress-purple"
               />
               <span
                 class="ui medium text"
@@ -1189,7 +1189,7 @@ exports[`Open Manage participants 4`] = `
             >
               <i
                 aria-hidden="true"
-                class="circle icon primary"
+                class="circle icon c__progress-purple"
               />
               <span
                 class="ui medium text"
@@ -1268,7 +1268,7 @@ exports[`Open Manage participants 4`] = `
             >
               <i
                 aria-hidden="true"
-                class="circle icon primary"
+                class="circle icon c__progress-purple"
               />
               <span
                 class="ui medium text"
@@ -1341,7 +1341,7 @@ exports[`Open Manage participants 4`] = `
             >
               <i
                 aria-hidden="true"
-                class="circle icon primary"
+                class="circle icon c__progress-purple"
               />
               <span
                 class="ui medium text"
@@ -1414,7 +1414,7 @@ exports[`Open Manage participants 4`] = `
             >
               <i
                 aria-hidden="true"
-                class="circle icon primary"
+                class="circle icon c__progress-purple"
               />
               <span
                 class="ui medium text"
@@ -1552,7 +1552,7 @@ exports[`Open Manage participants 5`] = `
             >
               <i
                 aria-hidden="true"
-                class="circle icon primary"
+                class="circle icon c__progress-purple"
               />
               <span
                 class="ui medium text"
@@ -1631,7 +1631,7 @@ exports[`Open Manage participants 5`] = `
             >
               <i
                 aria-hidden="true"
-                class="circle icon primary"
+                class="circle icon c__progress-purple"
               />
               <span
                 class="ui medium text"
@@ -1710,7 +1710,7 @@ exports[`Open Manage participants 5`] = `
             >
               <i
                 aria-hidden="true"
-                class="circle icon primary"
+                class="circle icon c__progress-purple"
               />
               <span
                 class="ui medium text"
@@ -1783,7 +1783,7 @@ exports[`Open Manage participants 5`] = `
             >
               <i
                 aria-hidden="true"
-                class="circle icon primary"
+                class="circle icon c__progress-purple"
               />
               <span
                 class="ui medium text"
@@ -1856,7 +1856,7 @@ exports[`Open Manage participants 5`] = `
             >
               <i
                 aria-hidden="true"
-                class="circle icon primary"
+                class="circle icon c__progress-purple"
               />
               <span
                 class="ui medium text"
@@ -2044,7 +2044,7 @@ exports[`Search participants 2`] = `
             >
               <i
                 aria-hidden="true"
-                class="circle icon primary"
+                class="circle icon c__progress-purple"
               />
               <span
                 class="ui medium text"
@@ -2123,7 +2123,7 @@ exports[`Search participants 2`] = `
             >
               <i
                 aria-hidden="true"
-                class="circle icon primary"
+                class="circle icon c__progress-purple"
               />
               <span
                 class="ui medium text"
@@ -2202,7 +2202,7 @@ exports[`Search participants 2`] = `
             >
               <i
                 aria-hidden="true"
-                class="circle icon primary"
+                class="circle icon c__progress-purple"
               />
               <span
                 class="ui medium text"
@@ -2275,7 +2275,7 @@ exports[`Search participants 2`] = `
             >
               <i
                 aria-hidden="true"
-                class="circle icon primary"
+                class="circle icon c__progress-purple"
               />
               <span
                 class="ui medium text"
@@ -2348,7 +2348,7 @@ exports[`Search participants 2`] = `
             >
               <i
                 aria-hidden="true"
-                class="circle icon primary"
+                class="circle icon c__progress-purple"
               />
               <span
                 class="ui medium text"
@@ -2486,7 +2486,7 @@ exports[`Search participants 3`] = `
             >
               <i
                 aria-hidden="true"
-                class="circle icon primary"
+                class="circle icon c__progress-purple"
               />
               <span
                 class="ui medium text"
@@ -2565,7 +2565,7 @@ exports[`Search participants 3`] = `
             >
               <i
                 aria-hidden="true"
-                class="circle icon primary"
+                class="circle icon c__progress-purple"
               />
               <span
                 class="ui medium text"
@@ -2644,7 +2644,7 @@ exports[`Search participants 3`] = `
             >
               <i
                 aria-hidden="true"
-                class="circle icon primary"
+                class="circle icon c__progress-purple"
               />
               <span
                 class="ui medium text"
@@ -2717,7 +2717,7 @@ exports[`Search participants 3`] = `
             >
               <i
                 aria-hidden="true"
-                class="circle icon primary"
+                class="circle icon c__progress-purple"
               />
               <span
                 class="ui medium text"
@@ -2790,7 +2790,7 @@ exports[`Search participants 3`] = `
             >
               <i
                 aria-hidden="true"
-                class="circle icon primary"
+                class="circle icon c__progress-purple"
               />
               <span
                 class="ui medium text"
@@ -2928,7 +2928,7 @@ exports[`Search participants 4`] = `
             >
               <i
                 aria-hidden="true"
-                class="circle icon primary"
+                class="circle icon c__progress-purple"
               />
               <span
                 class="ui medium text"
@@ -3007,7 +3007,7 @@ exports[`Search participants 4`] = `
             >
               <i
                 aria-hidden="true"
-                class="circle icon primary"
+                class="circle icon c__progress-purple"
               />
               <span
                 class="ui medium text"
@@ -3145,7 +3145,7 @@ exports[`Search participants 5`] = `
             >
               <i
                 aria-hidden="true"
-                class="circle icon primary"
+                class="circle icon c__progress-purple"
               />
               <span
                 class="ui medium text"
@@ -3224,7 +3224,7 @@ exports[`Search participants 5`] = `
             >
               <i
                 aria-hidden="true"
-                class="circle icon primary"
+                class="circle icon c__progress-purple"
               />
               <span
                 class="ui medium text"
@@ -3362,7 +3362,7 @@ exports[`Search participants 6`] = `
             >
               <i
                 aria-hidden="true"
-                class="circle icon primary"
+                class="circle icon c__progress-purple"
               />
               <span
                 class="ui medium text"
@@ -3441,7 +3441,7 @@ exports[`Search participants 6`] = `
             >
               <i
                 aria-hidden="true"
-                class="circle icon primary"
+                class="circle icon c__progress-purple"
               />
               <span
                 class="ui medium text"
@@ -3520,7 +3520,7 @@ exports[`Search participants 6`] = `
             >
               <i
                 aria-hidden="true"
-                class="circle icon primary"
+                class="circle icon c__progress-purple"
               />
               <span
                 class="ui medium text"
@@ -3593,7 +3593,7 @@ exports[`Search participants 6`] = `
             >
               <i
                 aria-hidden="true"
-                class="circle icon primary"
+                class="circle icon c__progress-purple"
               />
               <span
                 class="ui medium text"
@@ -3666,7 +3666,7 @@ exports[`Search participants 6`] = `
             >
               <i
                 aria-hidden="true"
-                class="circle icon primary"
+                class="circle icon c__progress-purple"
               />
               <span
                 class="ui medium text"
@@ -3804,7 +3804,7 @@ exports[`Search participants 7`] = `
             >
               <i
                 aria-hidden="true"
-                class="circle icon primary"
+                class="circle icon c__progress-purple"
               />
               <span
                 class="ui medium text"
@@ -3942,7 +3942,7 @@ exports[`Search participants 8`] = `
             >
               <i
                 aria-hidden="true"
-                class="circle icon primary"
+                class="circle icon c__progress-purple"
               />
               <span
                 class="ui medium text"
@@ -4080,7 +4080,7 @@ exports[`Search participants 9`] = `
             >
               <i
                 aria-hidden="true"
-                class="circle icon primary"
+                class="circle icon c__progress-purple"
               />
               <span
                 class="ui medium text"
@@ -4218,7 +4218,7 @@ exports[`Search participants 10`] = `
             >
               <i
                 aria-hidden="true"
-                class="circle icon primary"
+                class="circle icon c__progress-purple"
               />
               <span
                 class="ui medium text"
@@ -4356,7 +4356,7 @@ exports[`Search participants 11`] = `
             >
               <i
                 aria-hidden="true"
-                class="circle icon primary"
+                class="circle icon c__progress-purple"
               />
               <span
                 class="ui medium text"
@@ -4435,7 +4435,7 @@ exports[`Search participants 11`] = `
             >
               <i
                 aria-hidden="true"
-                class="circle icon primary"
+                class="circle icon c__progress-purple"
               />
               <span
                 class="ui medium text"
@@ -4514,7 +4514,7 @@ exports[`Search participants 11`] = `
             >
               <i
                 aria-hidden="true"
-                class="circle icon primary"
+                class="circle icon c__progress-purple"
               />
               <span
                 class="ui medium text"
@@ -4587,7 +4587,7 @@ exports[`Search participants 11`] = `
             >
               <i
                 aria-hidden="true"
-                class="circle icon primary"
+                class="circle icon c__progress-purple"
               />
               <span
                 class="ui medium text"
@@ -4660,7 +4660,7 @@ exports[`Search participants 11`] = `
             >
               <i
                 aria-hidden="true"
-                class="circle icon primary"
+                class="circle icon c__progress-purple"
               />
               <span
                 class="ui medium text"
@@ -4798,7 +4798,7 @@ exports[`Search participants 12`] = `
             >
               <i
                 aria-hidden="true"
-                class="circle icon primary"
+                class="circle icon c__progress-purple"
               />
               <span
                 class="ui medium text"
@@ -4877,7 +4877,7 @@ exports[`Search participants 12`] = `
             >
               <i
                 aria-hidden="true"
-                class="circle icon primary"
+                class="circle icon c__progress-purple"
               />
               <span
                 class="ui medium text"
@@ -4956,7 +4956,7 @@ exports[`Search participants 12`] = `
             >
               <i
                 aria-hidden="true"
-                class="circle icon primary"
+                class="circle icon c__progress-purple"
               />
               <span
                 class="ui medium text"
@@ -5029,7 +5029,7 @@ exports[`Search participants 12`] = `
             >
               <i
                 aria-hidden="true"
-                class="circle icon primary"
+                class="circle icon c__progress-purple"
               />
               <span
                 class="ui medium text"
@@ -5102,7 +5102,7 @@ exports[`Search participants 12`] = `
             >
               <i
                 aria-hidden="true"
-                class="circle icon primary"
+                class="circle icon c__progress-purple"
               />
               <span
                 class="ui medium text"
@@ -5240,7 +5240,7 @@ exports[`Search participants 13`] = `
             >
               <i
                 aria-hidden="true"
-                class="circle icon primary"
+                class="circle icon c__progress-purple"
               />
               <span
                 class="ui medium text"
@@ -5319,7 +5319,7 @@ exports[`Search participants 13`] = `
             >
               <i
                 aria-hidden="true"
-                class="circle icon primary"
+                class="circle icon c__progress-purple"
               />
               <span
                 class="ui medium text"
@@ -5398,7 +5398,7 @@ exports[`Search participants 13`] = `
             >
               <i
                 aria-hidden="true"
-                class="circle icon primary"
+                class="circle icon c__progress-purple"
               />
               <span
                 class="ui medium text"
@@ -5471,7 +5471,7 @@ exports[`Search participants 13`] = `
             >
               <i
                 aria-hidden="true"
-                class="circle icon primary"
+                class="circle icon c__progress-purple"
               />
               <span
                 class="ui medium text"
@@ -5544,7 +5544,7 @@ exports[`Search participants 13`] = `
             >
               <i
                 aria-hidden="true"
-                class="circle icon primary"
+                class="circle icon c__progress-purple"
               />
               <span
                 class="ui medium text"

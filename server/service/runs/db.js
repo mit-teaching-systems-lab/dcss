@@ -89,7 +89,7 @@ exports.setRun = async function(id, data) {
   return result.rows[0];
 };
 
-exports.saveRunEvent = async (run_id, name, context) => {
+exports.saveRunEvent = async (run_id, user_id, name, context) => {
   if (!run_id) {
     console.log(name, context);
     return;
@@ -100,8 +100,28 @@ exports.saveRunEvent = async (run_id, name, context) => {
       context.timestamp = Date.now();
     }
     const result = await client.query(sql`
-      INSERT INTO run_event (run_id, name, context)
-      VALUES (${run_id}, ${name}, ${context})
+      INSERT INTO run_event (run_id, user_id, name, context)
+      VALUES (${run_id}, ${user_id}, ${name}, ${context})
+      ON CONFLICT DO NOTHING
+      RETURNING *;
+    `);
+    return result.rows[0];
+  });
+};
+
+exports.saveUserEvent = async (user_id, name, context) => {
+  if (!user_id) {
+    console.log(name, context);
+    return;
+  }
+
+  return await withClientTransaction(async client => {
+    if (!context.timestamp) {
+      context.timestamp = Date.now();
+    }
+    const result = await client.query(sql`
+      INSERT INTO run_event (user_id, name, context)
+      VALUES (${user_id}, ${name}, ${context})
       ON CONFLICT DO NOTHING
       RETURNING *;
     `);
