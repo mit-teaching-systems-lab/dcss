@@ -56,7 +56,10 @@ class JoinAs extends Component {
       clearInterval(this.interval);
     }
     this.props.socket.off(CHAT_USER_MATCHED, this.onChatUserMatched);
-    this.props.socket.off(FACILITATOR_CANCELED_MATCH_REQUEST, this.onMatchRequestCanceled);
+    this.props.socket.off(
+      FACILITATOR_CANCELED_MATCH_REQUEST,
+      this.onMatchRequestCanceled
+    );
   }
 
   get isCohortScenarioRun() {
@@ -72,7 +75,10 @@ class JoinAs extends Component {
     const { cohort, persona, scenario, user } = this.props;
 
     this.props.socket.on(CHAT_USER_MATCHED, this.onChatUserMatched);
-    this.props.socket.on(FACILITATOR_CANCELED_MATCH_REQUEST, this.onMatchRequestCanceled);
+    this.props.socket.on(
+      FACILITATOR_CANCELED_MATCH_REQUEST,
+      this.onMatchRequestCanceled
+    );
     this.props.socket.emit(CHAT_USER_AWAITING_MATCH, {
       cohort,
       persona,

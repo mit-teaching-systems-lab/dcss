@@ -255,17 +255,12 @@ export class CohortProgress extends React.Component {
 
     const clearParticipantsPoolExplanation = this.state.clear.participant ? (
       <p>
-        Are you sure you want to cancel
-        {' '}
+        Are you sure you want to cancel{' '}
         <strong>
           {<Username user={this.state.clear.participant} />}&apos;s
-        </strong>
-        {' '}
-        request to join
-        {' '}
-        <strong>
-          {this.state.clear.scenario.title}</strong> as <strong>{this.state.clear.persona.name}
-        </strong>?
+        </strong>{' '}
+        request to join <strong>{this.state.clear.scenario.title}</strong> as{' '}
+        <strong>{this.state.clear.persona.name}</strong>?
       </p>
     ) : (
       <p>
@@ -360,9 +355,7 @@ export class CohortProgress extends React.Component {
                   statusIcon = 'question';
                   statusIconClassName = 'c__progress-blue';
                 } else {
-                  const {
-                    persona
-                  } = lastEvent;
+                  const { persona } = lastEvent;
                   const scenario = this.props.scenariosById[
                     lastEvent.scenario_id
                   ];
@@ -370,7 +363,7 @@ export class CohortProgress extends React.Component {
                     lastAccessedAgo,
                     participant,
                     persona,
-                    scenario,
+                    scenario
                   };
                   clearables.push(cancelRequestProps);
                   mustShowCancelRequestButton = true;
@@ -422,9 +415,9 @@ export class CohortProgress extends React.Component {
                             this.setState({
                               clear: {
                                 isOpen: true,
-                                ...cancelRequestProps,
+                                ...cancelRequestProps
                               }
-                            })
+                            });
                           }}
                         />
                       ) : null}
@@ -507,33 +500,35 @@ export class CohortProgress extends React.Component {
                       </Table.Row>
                     </Table.Header>
                     <Table.Body>
-                    {clearables.map(clearable => {
-                      const { lastAccessedAgo, participant, scenario, persona } = clearable;
-                      return (
-                        <Table.Row
-                          key={Identity.key({ participant, scenario, persona })}
-                        >
-                          <Table.Cell>
-                            <Header as='h4' image>
-                              <Username user={participant} />
-                            </Header>
-                          </Table.Cell>
-                          <Table.Cell>
-                            {scenario.title}
-                          </Table.Cell>
-                          <Table.Cell>
-                            {persona.name}
-                          </Table.Cell>
-                          <Table.Cell>
-                            {lastAccessedAgo}
-                          </Table.Cell>
-                        </Table.Row>
-                      );
-                    })}
+                      {clearables.map(clearable => {
+                        const {
+                          lastAccessedAgo,
+                          participant,
+                          scenario,
+                          persona
+                        } = clearable;
+                        return (
+                          <Table.Row
+                            key={Identity.key({
+                              participant,
+                              scenario,
+                              persona
+                            })}
+                          >
+                            <Table.Cell>
+                              <Header as="h4" image>
+                                <Username user={participant} />
+                              </Header>
+                            </Table.Cell>
+                            <Table.Cell>{scenario.title}</Table.Cell>
+                            <Table.Cell>{persona.name}</Table.Cell>
+                            <Table.Cell>{lastAccessedAgo}</Table.Cell>
+                          </Table.Row>
+                        );
+                      })}
                     </Table.Body>
                   </Table>
                 ) : null}
-
               </Modal.Content>
               <Modal.Actions>
                 <Button.Group fluid>
@@ -541,7 +536,6 @@ export class CohortProgress extends React.Component {
                     primary
                     aria-label="Yes"
                     onClick={() => {
-
                       if (this.state.clear.participant) {
                         clearables = [this.state.clear];
                       }
