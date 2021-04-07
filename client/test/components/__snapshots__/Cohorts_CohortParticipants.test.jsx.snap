@@ -31,7 +31,7 @@ exports[`Modal close 1`] = `
         <div
           class=\\"content\\"
         >
-          Manage 5 participants
+          Manage participants access
         </div>
       </div>
       <div
@@ -413,7 +413,7 @@ exports[`Modal close 2`] = `
         <div
           class=\\"content\\"
         >
-          Manage 5 participants
+          Manage participants access
         </div>
       </div>
       <div
@@ -795,7 +795,7 @@ exports[`Pagination 1`] = `
         <div
           class=\\"content\\"
         >
-          Manage 5 participants
+          Manage participants access
         </div>
       </div>
       <div
@@ -1177,7 +1177,7 @@ exports[`Pagination 2`] = `
         <div
           class=\\"content\\"
         >
-          Manage 5 participants
+          Manage participants access
         </div>
       </div>
       <div
@@ -1559,7 +1559,7 @@ exports[`Pagination 3`] = `
         <div
           class=\\"content\\"
         >
-          Manage 5 participants
+          Manage participants access
         </div>
       </div>
       <div
@@ -1933,7 +1933,7 @@ exports[`Pagination 4`] = `
         <div
           class=\\"content\\"
         >
-          Manage 5 participants
+          Manage participants access
         </div>
       </div>
       <div
@@ -2262,7 +2262,7 @@ exports[`Pagination 5`] = `
         <div
           class=\\"content\\"
         >
-          Manage 5 participants
+          Manage participants access
         </div>
       </div>
       <div
@@ -2644,7 +2644,7 @@ exports[`Participant only 1`] = `
         <div
           class=\\"content\\"
         >
-          Manage 5 participants
+          Manage participants access
         </div>
       </div>
       <div
@@ -2958,7 +2958,7 @@ exports[`Researcher only 1`] = `
         <div
           class=\\"content\\"
         >
-          Manage 5 participants
+          Manage participants access
         </div>
       </div>
       <div
@@ -3361,7 +3361,7 @@ exports[`Search participants 1`] = `
         <div
           class=\\"content\\"
         >
-          Manage 5 participants
+          Manage participants access
         </div>
       </div>
       <div
@@ -3852,7 +3852,7 @@ exports[`Search participants 2`] = `
         <div
           class=\\"content\\"
         >
-          Manage 5 participants
+          Manage participants access
         </div>
       </div>
       <div
@@ -4343,7 +4343,7 @@ exports[`Search participants 3`] = `
         <div
           class=\\"content\\"
         >
-          Manage 5 participants
+          Manage participants access
         </div>
       </div>
       <div
@@ -4834,7 +4834,7 @@ exports[`Search participants 4`] = `
         <div
           class=\\"content\\"
         >
-          Manage 5 participants
+          Manage participants access
         </div>
       </div>
       <div
@@ -5197,7 +5197,7 @@ exports[`Search participants 5`] = `
         <div
           class=\\"content\\"
         >
-          Manage 5 participants
+          Manage participants access
         </div>
       </div>
       <div
@@ -5560,7 +5560,7 @@ exports[`Search participants 6`] = `
         <div
           class=\\"content\\"
         >
-          Manage 5 participants
+          Manage participants access
         </div>
       </div>
       <div
@@ -6051,7 +6051,7 @@ exports[`Search participants 7`] = `
         <div
           class=\\"content\\"
         >
-          Manage 5 participants
+          Manage participants access
         </div>
       </div>
       <div
@@ -6367,7 +6367,7 @@ exports[`Search participants 8`] = `
         <div
           class=\\"content\\"
         >
-          Manage 5 participants
+          Manage participants access
         </div>
       </div>
       <div
@@ -6683,7 +6683,7 @@ exports[`Search participants 9`] = `
         <div
           class=\\"content\\"
         >
-          Manage 5 participants
+          Manage participants access
         </div>
       </div>
       <div
@@ -6997,7 +6997,7 @@ exports[`Search participants 10`] = `
         <div
           class=\\"content\\"
         >
-          Manage 5 participants
+          Manage participants access
         </div>
       </div>
       <div
@@ -7311,7 +7311,7 @@ exports[`Search participants 11`] = `
         <div
           class=\\"content\\"
         >
-          Manage 5 participants
+          Manage participants access
         </div>
       </div>
       <div
@@ -7802,7 +7802,7 @@ exports[`Search participants 12`] = `
         <div
           class=\\"content\\"
         >
-          Manage 5 participants
+          Manage participants access
         </div>
       </div>
       <div
@@ -8293,7 +8293,7 @@ exports[`Search participants 13`] = `
         <div
           class=\\"content\\"
         >
-          Manage 5 participants
+          Manage participants access
         </div>
       </div>
       <div
@@ -8784,7 +8784,7 @@ exports[`Super admin 1`] = `
         <div
           class=\\"content\\"
         >
-          Manage 5 participants
+          Manage participants access
         </div>
       </div>
       <div
@@ -9275,7 +9275,7 @@ exports[`Super admin 2`] = `
         <div
           class=\\"content\\"
         >
-          Manage 5 participants
+          Manage participants access
         </div>
       </div>
       <div

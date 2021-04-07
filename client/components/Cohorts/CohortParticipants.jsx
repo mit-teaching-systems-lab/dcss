@@ -145,7 +145,7 @@ export class CohortParticipants extends React.Component {
     };
 
     const count = this.props.cohort.users.length;
-    const headerContent = `Manage ${count} ${pluralize('participant', count)}`;
+    const headerContent = `Manage ${pluralize('participant', count)} access`;
     const searcInputAriaLabel = 'Search participants';
 
     return (

@@ -17,6 +17,7 @@ import withSocket, {
   CHAT_USER_AWAITING_MATCH,
   CHAT_USER_CANCELED_MATCH_REQUEST,
   CHAT_USER_MATCHED,
+  FACILITATOR_CANCELED_MATCH_REQUEST,
   PING
 } from '@hoc/withSocket';
 import Identity from '@utils/Identity';
@@ -47,6 +48,7 @@ class JoinAs extends Component {
     };
     this.interval = null;
     this.onChatUserMatched = this.onChatUserMatched.bind(this);
+    this.onMatchRequestCanceled = this.onMatchRequestCanceled.bind(this);
   }
 
   componentWillUnmount() {
@@ -54,6 +56,7 @@ class JoinAs extends Component {
       clearInterval(this.interval);
     }
     this.props.socket.off(CHAT_USER_MATCHED, this.onChatUserMatched);
+    this.props.socket.off(FACILITATOR_CANCELED_MATCH_REQUEST, this.onMatchRequestCanceled);
   }
 
   get isCohortScenarioRun() {
@@ -69,6 +72,7 @@ class JoinAs extends Component {
     const { cohort, persona, scenario, user } = this.props;
 
     this.props.socket.on(CHAT_USER_MATCHED, this.onChatUserMatched);
+    this.props.socket.on(FACILITATOR_CANCELED_MATCH_REQUEST, this.onMatchRequestCanceled);
     this.props.socket.emit(CHAT_USER_AWAITING_MATCH, {
       cohort,
       persona,
@@ -104,6 +108,14 @@ class JoinAs extends Component {
     this.props.history.push(redirect);
   }
 
+  onMatchRequestCanceled() {
+    const redirect = this.props.cohort.id
+      ? `/cohort/${Identity.toHash(this.props.cohort.id)}`
+      : `/scenarios`;
+
+    location.href = redirect;
+  }
+
   render() {
     if (!this.state.isReady) {
       return null;
@@ -118,7 +130,7 @@ class JoinAs extends Component {
         scenario,
         user
       });
-      this.props.history.push(`/cohort/${Identity.toHash(cohort.id)}`);
+      this.onMatchRequestCanceled();
     };
 
     const titleAndContent = `Please wait while we find an open ${persona.name} role for you`;

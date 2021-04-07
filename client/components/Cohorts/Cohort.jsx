@@ -211,7 +211,7 @@ export class Cohort extends React.Component {
       </p>
     );
 
-    const cohortUserActions = (
+    const cohortTools = (
       <Dropdown
         text="Cohort tools"
         icon="setting"
@@ -328,7 +328,7 @@ export class Cohort extends React.Component {
                 </div>
                 <div className="c__cohort-user-actions">
                   {cohortActivationState}
-                  {cohortUserActions}
+                  {cohortTools}
                 </div>
               </section>
             ) : null}

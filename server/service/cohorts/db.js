@@ -227,6 +227,7 @@ async function getCohortProgress(id) {
       created_at,
       name,
       description,
+      persona,
       url
     };
 

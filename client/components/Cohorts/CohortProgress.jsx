@@ -9,8 +9,12 @@ import {
   Card,
   Container,
   Grid,
+  Header,
   Icon,
+  Image,
   Input,
+  Modal,
+  Table,
   Text
 } from '@components/UI';
 import { getCohort } from '@actions/cohort';
@@ -20,6 +24,9 @@ import Username from '@components/User/Username';
 import Identity from '@utils/Identity';
 import Moment from '@utils/Moment';
 import Storage from '@utils/Storage';
+import withSocket, {
+  FACILITATOR_CANCELED_MATCH_REQUEST
+} from '@hoc/withSocket';
 
 import './Cohort.css';
 
@@ -40,6 +47,12 @@ export class CohortProgress extends React.Component {
 
     this.state = {
       isReady: false,
+      clear: {
+        isOpen: false,
+        participant: null,
+        scenario: null,
+        persona: null
+      },
       manage: {
         isOpen: false
       },
@@ -175,7 +188,8 @@ export class CohortProgress extends React.Component {
     );
 
     const searchInputAriaLabel = 'Search participants';
-    const manageButtonAriaLabel = 'Manage participants';
+    const manageButtonAriaLabel = 'Manage participant';
+    const clearButtonAriaLabel = 'Cancel all participant join requests';
 
     const searchParticipantsInCohort = (
       <Input
@@ -204,12 +218,68 @@ export class CohortProgress extends React.Component {
       </Button>
     );
 
+    let clearables = [];
+    const clearParticipantsPoolButton = (
+      <Button
+        size="tiny"
+        aria-label={clearButtonAriaLabel}
+        onClick={() => {
+          this.setState({
+            clear: {
+              isOpen: true,
+              participant: null,
+              scenario: null,
+              persona: null
+            }
+          });
+        }}
+      >
+        {clearButtonAriaLabel}
+      </Button>
+    );
+
+    const onConfirmClearPoolClose = () => {
+      this.setState({
+        clear: {
+          isOpen: false,
+          participant: null,
+          scenario: null,
+          persona: null
+        }
+      });
+    };
+
+    const clearParticipantsPoolHeader = this.state.clear.participant
+      ? `Cancel ${this.state.clear.participant.username}'s join request?`
+      : `${clearButtonAriaLabel}?`;
+
+    const clearParticipantsPoolExplanation = this.state.clear.participant ? (
+      <p>
+        Are you sure you want to cancel
+        {' '}
+        <strong>
+          {<Username user={this.state.clear.participant} />}&apos;s
+        </strong>
+        {' '}
+        request to join
+        {' '}
+        <strong>
+          {this.state.clear.scenario.title}</strong> as <strong>{this.state.clear.persona.name}
+        </strong>?
+      </p>
+    ) : (
+      <p>
+        Are you sure you want to cancel all of these participant join requests?
+      </p>
+    );
+
     return (
       <Container fluid className="c__scenario-container">
         <Grid stackable className="c__scenario-participant-header" columns={2}>
           <Grid.Column width={6}>
             {usersInCohortHeader}
             {manageParticipantsButton}
+            {clearParticipantsPoolButton}
           </Grid.Column>
           <Grid.Column className="c__scenario-search-participants" width={10}>
             {searchParticipantsInCohort}
@@ -243,6 +313,8 @@ export class CohortProgress extends React.Component {
             let lastEventDescription = null;
             let lastEventWasCancelation = null;
             let lastSlideViewed = null;
+            let mustShowCancelRequestButton = false;
+            let cancelRequestProps = {};
             let statusText = isComplete ? 'Complete' : 'In progress';
             let statusIcon = isComplete ? 'check' : 'circle';
             let statusIconClassName = isComplete
@@ -287,12 +359,24 @@ export class CohortProgress extends React.Component {
                   statusText = 'Canceled';
                   statusIcon = 'question';
                   statusIconClassName = 'c__progress-blue';
+                } else {
+                  const {
+                    persona
+                  } = lastEvent;
+                  const scenario = this.props.scenariosById[
+                    lastEvent.scenario_id
+                  ];
+                  cancelRequestProps = {
+                    lastAccessedAgo,
+                    participant,
+                    persona,
+                    scenario,
+                  };
+                  clearables.push(cancelRequestProps);
+                  mustShowCancelRequestButton = true;
                 }
               }
             }
-
-            //             statusIcon = 'wait';
-            // statusText = 'Not started';
 
             const lastAccessedDisplay = lastAccessedAt ? (
               <p className="c__participant-completion__group">
@@ -318,17 +402,32 @@ export class CohortProgress extends React.Component {
                 className="c__participant-card"
                 key={Identity.key(participant)}
               >
-                <Card.Content>
+                <Card.Content className="c__scenario-content">
                   <Card.Header>
                     <Username user={participant} />
                   </Card.Header>
                   {lastAccessedDisplay}
                 </Card.Content>
-                <Card.Content>
+                <Card.Content className="c__scenario-content">
                   <Card.Description className="c__participant-completion">
                     <div className="c__participant-status">
                       <Icon className={statusIconClassName} name={statusIcon} />
-                      <Text size="medium">{statusText}</Text>
+                      <Text size="medium">{statusText}</Text>{' '}
+                      {mustShowCancelRequestButton ? (
+                        <Button
+                          compact
+                          size="mini"
+                          content="Cancel request"
+                          onClick={() => {
+                            this.setState({
+                              clear: {
+                                isOpen: true,
+                                ...cancelRequestProps,
+                              }
+                            })
+                          }}
+                        />
+                      ) : null}
                     </div>
                     {!isComplete && lastScenarioViewed ? (
                       <Fragment>
@@ -380,6 +479,106 @@ export class CohortProgress extends React.Component {
           })}
         </div>
 
+        {this.state.clear.isOpen ? (
+          <Modal.Accessible open>
+            <Modal
+              closeIcon
+              open
+              aria-modal="true"
+              role="dialog"
+              size="small"
+              onClose={onConfirmClearPoolClose}
+            >
+              <Header
+                icon="trash alternate outline"
+                content={clearParticipantsPoolHeader}
+              />
+              <Modal.Content>
+                {clearParticipantsPoolExplanation}
+
+                {!this.state.clear.participant ? (
+                  <Table celled basic="very">
+                    <Table.Header>
+                      <Table.Row>
+                        <Table.HeaderCell>Participant</Table.HeaderCell>
+                        <Table.HeaderCell>Scenario</Table.HeaderCell>
+                        <Table.HeaderCell>Role</Table.HeaderCell>
+                        <Table.HeaderCell>Requested</Table.HeaderCell>
+                      </Table.Row>
+                    </Table.Header>
+                    <Table.Body>
+                    {clearables.map(clearable => {
+                      const { lastAccessedAgo, participant, scenario, persona } = clearable;
+                      return (
+                        <Table.Row
+                          key={Identity.key({ participant, scenario, persona })}
+                        >
+                          <Table.Cell>
+                            <Header as='h4' image>
+                              <Username user={participant} />
+                            </Header>
+                          </Table.Cell>
+                          <Table.Cell>
+                            {scenario.title}
+                          </Table.Cell>
+                          <Table.Cell>
+                            {persona.name}
+                          </Table.Cell>
+                          <Table.Cell>
+                            {lastAccessedAgo}
+                          </Table.Cell>
+                        </Table.Row>
+                      );
+                    })}
+                    </Table.Body>
+                  </Table>
+                ) : null}
+
+              </Modal.Content>
+              <Modal.Actions>
+                <Button.Group fluid>
+                  <Button
+                    primary
+                    aria-label="Yes"
+                    onClick={() => {
+
+                      if (this.state.clear.participant) {
+                        clearables = [this.state.clear];
+                      }
+
+                      clearables.forEach(clearable => {
+                        const {
+                          persona,
+                          scenario,
+                          participant: user
+                        } = clearable;
+                        this.props.socket.emit(
+                          FACILITATOR_CANCELED_MATCH_REQUEST,
+                          {
+                            cohort,
+                            persona,
+                            scenario,
+                            user
+                          }
+                        );
+                      });
+
+                      onConfirmClearPoolClose();
+                    }}
+                  >
+                    Yes
+                  </Button>
+                  <Button.Or />
+                  <Button aria-label="No" onClick={onConfirmClearPoolClose}>
+                    No
+                  </Button>
+                </Button.Group>
+              </Modal.Actions>
+              <div data-testid="cohort-confirm-clear" />
+            </Modal>
+          </Modal.Accessible>
+        ) : null}
+
         {this.state.manage.isOpen ? (
           <CohortParticipants
             id={cohort.id}
@@ -420,7 +619,9 @@ const mapDispatchToProps = dispatch => ({
   getCohort: id => dispatch(getCohort(id))
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(CohortProgress);
+export default withSocket(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(CohortProgress)
+);

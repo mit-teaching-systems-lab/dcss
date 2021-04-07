@@ -847,7 +847,7 @@ test('Open Manage participants', async done => {
   expect(setTimeout).toHaveBeenCalledTimes(1);
   expect(asFragment()).toMatchSnapshot();
 
-  userEvent.click(await screen.findByLabelText('Manage participants'));
+  userEvent.click(await screen.findByLabelText(/Manage participant/));
   await screen.findByTestId('cohort-participants');
   expect(asFragment()).toMatchSnapshot();
 

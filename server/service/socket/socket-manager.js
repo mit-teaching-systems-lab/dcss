@@ -24,6 +24,7 @@ const {
   CREATE_SHARED_RESPONSE_CHANNEL,
   CREATE_USER_CHANNEL,
   DISCONNECT,
+  FACILITATOR_CANCELED_MATCH_REQUEST,
   HEART_BEAT,
   HOST_JOIN,
   JOIN_OR_PART,
@@ -658,6 +659,25 @@ class SocketManager {
         );
 
         await saveUserEvent(user.id, EVENT_TYPES.USER_PART_POOL, props);
+      });
+
+      socket.on(FACILITATOR_CANCELED_MATCH_REQUEST, async props => {
+        console.log(FACILITATOR_CANCELED_MATCH_REQUEST, props);
+        const { cohort, persona, scenario, user } = props;
+        await chatsdb.leaveChatPool(
+          cohort.id,
+          scenario.id,
+          persona.id,
+          user.id
+        );
+
+        await saveUserEvent(user.id, EVENT_TYPES.USER_PART_POOL, props);
+
+        const room = cohort.id
+          ? `${cohort.id}-${scenario.id}-${persona.id}-${user.id}`
+          : `${scenario.id}-${persona.id}-${user.id}`;
+
+        this.io.to(room).emit(FACILITATOR_CANCELED_MATCH_REQUEST);
       });
 
       socket.on(RUN_AGENT_START, async payload => {
