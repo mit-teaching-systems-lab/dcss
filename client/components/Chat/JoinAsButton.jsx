@@ -19,7 +19,8 @@ function JoinAsButton(props) {
 
   return (
     <Button
-      size="tiny"
+      fluid
+      size="small"
       data-testid="join-scenario-as"
       as={NavLink}
       className={className}
