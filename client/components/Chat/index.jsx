@@ -379,10 +379,16 @@ class Chat extends Component {
     if (this.hasUnmounted) {
       return;
     }
-    this.setState({
+    const update = {
       isMinimized: !this.state.isMinimized,
       isNotifying: false
-    });
+    };
+
+    this.setState(update);
+
+    if (this.props.onMinMaxChange) {
+      this.props.onMinMaxChange(update);
+    }
   }
 
   onMount(rte) {
@@ -543,12 +549,14 @@ class Chat extends Component {
 
     const minMaxClassName = this.state.isNotifying ? 'c__notice' : '';
 
+    const minMaxButtonProps = {
+      className: minMaxClassName,
+      onChange: onMinMaxClick,
+      isMinimized,
+    };
+
     const minMaxButton = (
-      <ChatMinMax
-        className={minMaxClassName}
-        isMinimized={isMinimized}
-        onChange={onMinMaxClick}
-      />
+      <ChatMinMax {...minMaxButtonProps} />
     );
 
     const defaultHeaderContents = (
@@ -609,6 +617,7 @@ Chat.propTypes = {
   setChatUsersByChatId: PropTypes.func,
   header: PropTypes.node,
   isMinimizable: PropTypes.bool,
+  onMinMaxChange: PropTypes.func,
   prompt: PropTypes.object,
   run: PropTypes.object,
   saveRunEvent: PropTypes.func,

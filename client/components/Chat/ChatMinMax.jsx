@@ -18,20 +18,22 @@ function ChatMinMax(props) {
       props.onChange({ isMinimized: newIsMinimized });
     }
   };
-  const minMaxIcon = isMinimized ? maxIcon : minIcon;
-  const minMaxAriaLabel = isMinimized ? maxAriaLabel : minAriaLabel;
   const className = isMinimized
     ? `close c__container-modal-minmax ${props.className}`
     : 'close c__container-modal-minmax';
+  const icon = isMinimized ? maxIcon : minIcon;
+  const size = props.size || 'medium';
+  const minMaxAriaLabel = isMinimized ? maxAriaLabel : minAriaLabel;
 
-  const trigger = (
-    <Button
-      className={className}
-      aria-label={minMaxAriaLabel}
-      icon={minMaxIcon}
-      onClick={onClick}
-    />
-  );
+  const triggerProps = {
+    'aria-label': minMaxAriaLabel,
+    className,
+    icon,
+    onClick,
+    size
+  };
+
+  const trigger = <Button {...triggerProps} />;
 
   return (
     <Popup
@@ -47,7 +49,8 @@ function ChatMinMax(props) {
 ChatMinMax.propTypes = {
   className: PropTypes.string,
   isMinimized: PropTypes.bool,
-  onChange: PropTypes.func
+  onChange: PropTypes.func,
+  size: PropTypes.string,
 };
 
 export default ChatMinMax;
