@@ -15,21 +15,40 @@
 
 .c__section {
   margin: 0 auto 3rem auto;
-  /*max-width: 70rem;*/
 }
 
-.c__scenario-header-num span {
-  font-weight: bold;
+.c__section:first-child {
+  margin: 0 auto 1rem auto;
 }
 
-.c__cohort-url .ui.button {
+.c__by-the-numbers-heading {
+  font-size: 16px;
+  line-height: 2.2em;
+  margin: 0 !important;
+}
+
+.c__cohort-header-left .ui.button {
   display: block;
   margin-top: 0.5rem;
 }
 
-.c__cohort-url .ui.input input[type="text"] {
+.c__cohort-header-left .ui.input input[type="text"] {
   width: 100%;
 }
+
+.c__join-as-role-card {
+  margin: 1.5em 0;
+  display: grid !important;
+  grid-column-gap: 1rem;
+  grid-row-gap: 1rem;
+  grid-template-columns: 1.25fr 3fr;
+  width: 100% !important;
+}
+
+.c__join-as-role-card > div > p {
+  color: rgba(0, 0, 0, 0.87) !important;
+}
+
 
 .c__participant-card {
   align-items: center;
@@ -105,7 +124,7 @@
   padding: 1rem !important;
 }
 
-.c__scenario-container {
+.c__section-container {
   background-color: var(--color-gray);
   padding: 1rem;
 }
@@ -133,23 +152,23 @@
     display: block !important;
   }
 
-  .c__cohort-user-actions {
+  .c__cohort-header-right {
     margin-top: 1.5rem;
     text-align: left !important;
   }
 
-  .c__cohort-url > .ui.big.labeled.input {
+  .c__cohort-header-left > .ui.big.labeled.input {
     width: 100% !important;
   }
 
-  .c__cohort-url > .ui.big.labeled.input > input {
+  .c__cohort-header-left > .ui.big.labeled.input > input {
     width: 64%;
     border: 1px solid rgba(34, 36, 38, 0.15) !important;
     border-radius: 4px !important;
     font-size: 1rem !important;
   }
 
-  .c__cohort-url > .ui.big.labeled.input > .ui.label.label {
+  .c__cohort-header-left > .ui.big.labeled.input > .ui.label.label {
     display: none;
   }
 }
@@ -281,7 +300,7 @@
   margin-top: auto;
 }
 
-.c__scenario-participant-header {
+.c__section-container-header {
   margin-bottom: 1rem !important;
 }
 
@@ -314,13 +333,16 @@
 
 .c__cohort-header {
   display: grid;
-  grid-template-columns: 3fr 2fr;
+  grid-template-columns: 3fr 1fr;
   grid-gap: 1rem;
   justify-content: space-between;
 }
 
-.c__cohort-user-actions {
+.c__cohort-header-right {
   text-align: right;
+}
+.c__activation-state {
+  padding-right: 0.5em;
 }
 
 .c__activation-state span {
@@ -346,7 +368,7 @@
   padding: 0 !important;
 }
 
-.c__grid-single-col-padding {
+.c__grid-element-unpadded {
   padding: unset !important;
 }
 
@@ -378,7 +400,7 @@
 }
 
 .c__join-persona-container {
-  /*max-width: unset;*/
+  max-width: unset !important;
 }
 
 .c__join-persona-button {
@@ -392,7 +414,9 @@
 .c__join-persona-content {
   display: inline-block !important;
   margin-left: 1em;
+  /* Previously:
   max-width: 400px;
+  */
 }
 
 /*

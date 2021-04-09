@@ -21,8 +21,9 @@ import Sortable from '@components/Sortable';
 import {
   Button,
   Card,
-  Comment,
   Container,
+  Divider,
+  Grid,
   Icon,
   Image,
   Text
@@ -125,24 +126,21 @@ export class CohortScenarios extends React.Component {
     );
 
     const scenariosInCohortHeader = isFacilitator ? (
-      <Fragment>
-        <p className="c__scenario-header-num">
-          <span>{cohortScenarios.length}</span>{' '}
-          {pluralize('scenario', cohortScenarios.length)} selected
-        </p>
-        <p>
-          <Button size="tiny" onClick={onEditScenariosClick}>
-            Edit selected scenarios
-          </Button>
-        </p>
-      </Fragment>
+      <p className="c__by-the-numbers-heading" tabIndex={0}>
+        <strong>{cohortScenarios.length}</strong>{' '}
+        {pluralize('scenario', cohortScenarios.length)} selected
+      </p>
     ) : (
-      <p className="c__scenario-header-num">
-        <span>{cohort.name}</span> includes{' '}
-        <span>{cohortScenarios.length}</span>{' '}
+      <p className="c__by-the-numbers-heading" tabIndex={0}>
+        <strong>{cohort.name}</strong> includes{' '}
+        <strong>{cohortScenarios.length}</strong>{' '}
         {pluralize('scenario', cohortScenarios.length)}
       </p>
     );
+
+    const editScenariosButton = isFacilitator ? (
+      <Button onClick={onEditScenariosClick}>Add or remove scenarios</Button>
+    ) : null;
 
     const onCohortScenariosSelectorClose = () => {
       this.setState({
@@ -187,8 +185,24 @@ export class CohortScenarios extends React.Component {
     };
 
     return (
-      <Container fluid className="c__scenario-container">
-        {scenariosInCohortHeader}
+      <Container fluid className="c__section-container">
+        <Grid stackable className="c__section-container-header" columns={2}>
+          <Grid.Row>
+            <Grid.Column width={8}>{scenariosInCohortHeader}</Grid.Column>
+            <Grid.Column textAlign="right" width={8}>
+              {isFacilitator ? editScenariosButton : null}
+            </Grid.Column>
+          </Grid.Row>
+          {/*
+          isFacilitator ? (
+            <Grid.Row className="c__grid-element-unpadded">
+              <Grid.Column>
+                {editScenariosButton}
+              </Grid.Column>
+            </Grid.Row>
+            ) : null
+          */}
+        </Grid>
 
         {cohortScenarios.length ? (
           <Sortable
@@ -382,28 +396,30 @@ export class CohortScenarios extends React.Component {
                             This is a multi-participant scenario, with{' '}
                             <strong>{scenario.personas.length}</strong> roles:
                           </Text>
-                          <Comment.Group className="c__join-persona-container">
+
+                          <div className="c__join-as-role-card">
                             {scenario.personas.map(persona => {
                               return (
-                                <Comment key={Identity.key(persona)}>
-                                  <JoinAsButton
-                                    className="c__join-persona-button"
-                                    cohort={cohort}
-                                    persona={persona}
-                                    scenario={scenario}
-                                  />
-                                  <Comment.Content className="c__join-persona-content">
-                                    <Comment.Author>
-                                      {persona.name}
-                                    </Comment.Author>
-                                    <Comment.Text>
-                                      {persona.description}
-                                    </Comment.Text>
-                                  </Comment.Content>
-                                </Comment>
+                                <Fragment key={Identity.key(persona)}>
+                                  <div>
+                                    <JoinAsButton
+                                      className="c__join-persona-button"
+                                      cohort={cohort}
+                                      persona={persona}
+                                      scenario={scenario}
+                                    />
+                                  </div>
+                                  <div>
+                                    <p>
+                                      <strong>{persona.name}</strong>
+                                    </p>
+                                    <p>{persona.description}</p>
+                                  </div>
+                                </Fragment>
                               );
                             })}
-                          </Comment.Group>
+                          </div>
+                          <Divider />
                         </Fragment>
                       ) : null}
                     </Card.Description>

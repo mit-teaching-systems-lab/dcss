@@ -468,7 +468,9 @@ class Chat extends Component {
 
     // Layout.isForMobile()?
     const subKey = chat.scenario_id ? 'scenario' : 'cohort';
-    const { dimensions, position } = Storage.get(`chat/${subKey}/*`);
+    const { dimensions = { width: 0, height: 0 }, position } = Storage.get(
+      `chat/${subKey}/*`
+    );
 
     // console.log(dimensions, position);
     const onDragResizeStop = ({ width, height, x, y }) => {
@@ -552,12 +554,10 @@ class Chat extends Component {
     const minMaxButtonProps = {
       className: minMaxClassName,
       onChange: onMinMaxClick,
-      isMinimized,
+      isMinimized
     };
 
-    const minMaxButton = (
-      <ChatMinMax {...minMaxButtonProps} />
-    );
+    const minMaxButton = <ChatMinMax {...minMaxButtonProps} />;
 
     const defaultHeaderContents = (
       <Fragment>

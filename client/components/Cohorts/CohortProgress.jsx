@@ -178,17 +178,17 @@ export class CohortProgress extends React.Component {
     }, 0);
 
     const usersInCohortHeader = (
-      <p className="c__scenario-header-num">
-        <span>
+      <p className="c__by-the-numbers-heading">
+        <strong>
           {completedCount}&#47;{sourceParticipants.length}
-        </span>{' '}
+        </strong>{' '}
         {pluralize('participant', sourceParticipants.length)} have completed all
         scenarios
       </p>
     );
 
     const searchInputAriaLabel = 'Search participants';
-    const manageButtonAriaLabel = 'Manage participant';
+    const manageButtonAriaLabel = 'Manage participant access';
     const clearButtonAriaLabel = 'Cancel all participant join requests';
 
     const searchParticipantsInCohort = (
@@ -197,7 +197,6 @@ export class CohortProgress extends React.Component {
         label={searchInputAriaLabel}
         className="grid__menu-search"
         icon="search"
-        size="big"
         onChange={onParticipantSearchChange}
       />
     );
@@ -269,16 +268,18 @@ export class CohortProgress extends React.Component {
     );
 
     return (
-      <Container fluid className="c__scenario-container">
-        <Grid stackable className="c__scenario-participant-header" columns={2}>
-          <Grid.Column width={6}>
-            {usersInCohortHeader}
-            {manageParticipantsButton}
-            {clearParticipantsPoolButton}
-          </Grid.Column>
-          <Grid.Column className="c__scenario-search-participants" width={10}>
-            {searchParticipantsInCohort}
-          </Grid.Column>
+      <Container fluid className="c__section-container">
+        <Grid stackable className="c__section-container-header" columns={2}>
+          <Grid.Row>
+            <Grid.Column width={8}>{usersInCohortHeader}</Grid.Column>
+            <Grid.Column width={8}>{searchParticipantsInCohort}</Grid.Column>
+          </Grid.Row>
+          <Grid.Row className="c__grid-element-unpadded">
+            <Grid.Column width={16}>
+              {manageParticipantsButton}
+              {clearParticipantsPoolButton}
+            </Grid.Column>
+          </Grid.Row>
         </Grid>
 
         <div className="c__participant-list">
@@ -316,6 +317,9 @@ export class CohortProgress extends React.Component {
               ? 'c__progress-green'
               : 'c__progress-purple';
 
+            let completedOrCurrentScenario = '';
+            let mustShowLastActivityAndSlide = true;
+
             if (!eventsCount) {
               statusIcon = 'warning sign';
               statusText = 'Not started';
@@ -323,50 +327,56 @@ export class CohortProgress extends React.Component {
             } else {
               const lastEvent = eventsValues[eventsValues.length - 1];
 
-              lastAccessedAt = lastEvent.created_at
-                ? new Date(Number(lastEvent.created_at)).toISOString()
-                : null;
-
-              lastAccessedAgo = lastAccessedAt
-                ? Moment(lastAccessedAt).fromNow()
-                : null;
-
               lastScenarioViewed = this.props.scenariosById[
                 lastEvent.scenario_id
               ];
 
-              lastUrlVisited = lastEvent.url || null;
-              lastSlideViewed = lastUrlVisited
-                ? lastUrlVisited.slice(lastUrlVisited.indexOf('/slide') + 7)
-                : null;
+              if (progress.completed.includes(lastEvent.scenario_id)) {
+                completedOrCurrentScenario = `Completed scenario`;
+                mustShowLastActivityAndSlide = false;
+              } else {
+                completedOrCurrentScenario = `Current scenario`;
+                lastAccessedAt = lastEvent.created_at
+                  ? new Date(Number(lastEvent.created_at)).toISOString()
+                  : null;
 
-              const description = lastEvent.description || '';
+                lastAccessedAgo = lastAccessedAt
+                  ? Moment(lastAccessedAt).fromNow()
+                  : null;
 
-              lastEventDescription = upperCaseFirst(description);
-              lastEventWasCancelation = description.includes('cancel');
+                lastUrlVisited = lastEvent.url || null;
+                lastSlideViewed = lastUrlVisited
+                  ? lastUrlVisited.slice(lastUrlVisited.indexOf('/slide') + 7)
+                  : null;
 
-              if (!lastEvent.is_run) {
-                statusText = 'Waiting';
-                statusIcon = 'clock';
-                statusIconClassName = 'c__progress-orange';
+                const description = lastEvent.description || '';
 
-                if (lastEventWasCancelation) {
-                  statusText = 'Canceled';
-                  statusIcon = 'question';
-                  statusIconClassName = 'c__progress-blue';
-                } else {
-                  const { persona } = lastEvent;
-                  const scenario = this.props.scenariosById[
-                    lastEvent.scenario_id
-                  ];
-                  cancelRequestProps = {
-                    lastAccessedAgo,
-                    participant,
-                    persona,
-                    scenario
-                  };
-                  clearables.push(cancelRequestProps);
-                  mustShowCancelRequestButton = true;
+                lastEventDescription = upperCaseFirst(description);
+                lastEventWasCancelation = description.includes('cancel');
+
+                if (!lastEvent.is_run) {
+                  statusText = 'Waiting';
+                  statusIcon = 'clock';
+                  statusIconClassName = 'c__progress-orange';
+
+                  if (lastEventWasCancelation) {
+                    statusText = 'Canceled';
+                    statusIcon = 'question';
+                    statusIconClassName = 'c__progress-blue';
+                  } else {
+                    const { persona } = lastEvent;
+                    const scenario = this.props.scenariosById[
+                      lastEvent.scenario_id
+                    ];
+                    cancelRequestProps = {
+                      lastAccessedAgo,
+                      participant,
+                      persona,
+                      scenario
+                    };
+                    clearables.push(cancelRequestProps);
+                    mustShowCancelRequestButton = true;
+                  }
                 }
               }
             }
@@ -427,18 +437,20 @@ export class CohortProgress extends React.Component {
                         {!lastEventWasCancelation ? (
                           <p className="c__participant-completion__group">
                             <span className="c__participant-completion__subhed">
-                              Current scenario
+                              {completedOrCurrentScenario}
                             </span>
                             {lastScenarioViewed.title}
                           </p>
                         ) : null}
-                        <p className="c__participant-completion__group">
-                          <span className="c__participant-completion__subhed">
-                            Last activity
-                          </span>
-                          {lastEventDescription}
-                        </p>
-                        {lastSlideViewed ? (
+                        {mustShowLastActivityAndSlide ? (
+                          <p className="c__participant-completion__group">
+                            <span className="c__participant-completion__subhed">
+                              Last activity
+                            </span>
+                            {lastEventDescription}
+                          </p>
+                        ) : null}
+                        {mustShowLastActivityAndSlide && lastSlideViewed ? (
                           <p className="c__participant-completion__group">
                             <span className="c__participant-completion__subhed">
                               Current slide

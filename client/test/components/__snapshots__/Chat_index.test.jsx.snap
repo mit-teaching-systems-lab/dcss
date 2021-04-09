@@ -13,7 +13,7 @@ exports[`Calls onChange when RTE is cleared 1`] = `
       >
         <button
           aria-label=\\"Click to minimize the chat window\\"
-          class=\\"ui icon button close c__container-modal-minmax\\"
+          class=\\"ui medium icon button close c__container-modal-minmax\\"
         >
           <i
             aria-hidden=\\"true\\"
@@ -96,7 +96,7 @@ exports[`Calls onChange when RTE is cleared 2`] = `
       >
         <button
           aria-label=\\"Click to minimize the chat window\\"
-          class=\\"ui icon button close c__container-modal-minmax\\"
+          class=\\"ui medium icon button close c__container-modal-minmax\\"
         >
           <i
             aria-hidden=\\"true\\"
@@ -440,7 +440,7 @@ exports[`Calls onInput when RTE receives new content 1`] = `
       >
         <button
           aria-label=\\"Click to minimize the chat window\\"
-          class=\\"ui icon button close c__container-modal-minmax\\"
+          class=\\"ui medium icon button close c__container-modal-minmax\\"
         >
           <i
             aria-hidden=\\"true\\"
@@ -523,7 +523,7 @@ exports[`Calls onInput when RTE receives new content 4`] = `
       >
         <button
           aria-label=\\"Click to minimize the chat window\\"
-          class=\\"ui icon button close c__container-modal-minmax\\"
+          class=\\"ui medium icon button close c__container-modal-minmax\\"
         >
           <i
             aria-hidden=\\"true\\"
@@ -848,7 +848,7 @@ exports[`Calls onKeyDown, responds when key is {enter} 1`] = `
       >
         <button
           aria-label=\\"Click to minimize the chat window\\"
-          class=\\"ui icon button close c__container-modal-minmax\\"
+          class=\\"ui medium icon button close c__container-modal-minmax\\"
         >
           <i
             aria-hidden=\\"true\\"
@@ -931,7 +931,7 @@ exports[`Calls onKeyDown, responds when key is {enter} 4`] = `
       >
         <button
           aria-label=\\"Click to minimize the chat window\\"
-          class=\\"ui icon button close c__container-modal-minmax\\"
+          class=\\"ui medium icon button close c__container-modal-minmax\\"
         >
           <i
             aria-hidden=\\"true\\"
@@ -1294,7 +1294,7 @@ exports[`Click to Minimize and Maximize 1`] = `
       >
         <button
           aria-label=\\"Click to minimize the chat window\\"
-          class=\\"ui icon button close c__container-modal-minmax\\"
+          class=\\"ui medium icon button close c__container-modal-minmax\\"
         >
           <i
             aria-hidden=\\"true\\"
@@ -1372,7 +1372,7 @@ exports[`Click to Minimize and Maximize 2`] = `
   <div>
     <button
       aria-label=\\"Click to maximize the chat window\\"
-      class=\\"ui icon button close c__container-modal-minmax \\"
+      class=\\"ui medium icon button close c__container-modal-minmax \\"
     >
       <i
         aria-hidden=\\"true\\"
@@ -1406,7 +1406,7 @@ exports[`Click to Minimize and Maximize 3`] = `
   <div>
     <button
       aria-label=\\"Click to maximize the chat window\\"
-      class=\\"ui icon button close c__container-modal-minmax \\"
+      class=\\"ui medium icon button close c__container-modal-minmax \\"
     >
       <i
         aria-hidden=\\"true\\"
@@ -1445,7 +1445,7 @@ exports[`Empty, many {shift}{enter}, attempts to send, does not submit 1`] = `
       >
         <button
           aria-label=\\"Click to minimize the chat window\\"
-          class=\\"ui icon button close c__container-modal-minmax\\"
+          class=\\"ui medium icon button close c__container-modal-minmax\\"
         >
           <i
             aria-hidden=\\"true\\"
@@ -1528,7 +1528,7 @@ exports[`Empty, many {shift}{enter}, attempts to send, does not submit 2`] = `
       >
         <button
           aria-label=\\"Click to minimize the chat window\\"
-          class=\\"ui icon button close c__container-modal-minmax\\"
+          class=\\"ui medium icon button close c__container-modal-minmax\\"
         >
           <i
             aria-hidden=\\"true\\"
@@ -1844,7 +1844,7 @@ exports[`Layout on desktop 1`] = `
       >
         <button
           aria-label=\\"Click to minimize the chat window\\"
-          class=\\"ui icon button close c__container-modal-minmax\\"
+          class=\\"ui medium icon button close c__container-modal-minmax\\"
         >
           <i
             aria-hidden=\\"true\\"
@@ -2160,7 +2160,7 @@ exports[`Layout on mobile 1`] = `
       >
         <button
           aria-label=\\"Click to minimize the chat window\\"
-          class=\\"ui icon button close c__container-modal-minmax\\"
+          class=\\"ui medium icon button close c__container-modal-minmax\\"
         >
           <i
             aria-hidden=\\"true\\"
@@ -2476,7 +2476,7 @@ exports[`Provided header 1`] = `
       >
         <button
           aria-label=\\"Click to minimize the chat window\\"
-          class=\\"ui icon button close c__container-modal-minmax\\"
+          class=\\"ui medium icon button close c__container-modal-minmax\\"
         >
           <i
             aria-hidden=\\"true\\"
@@ -2784,7 +2784,7 @@ exports[`Receives new message, minimized, mobile 1`] = `
       >
         <button
           aria-label=\\"Click to minimize the chat window\\"
-          class=\\"ui icon button close c__container-modal-minmax\\"
+          class=\\"ui medium icon button close c__container-modal-minmax\\"
         >
           <i
             aria-hidden=\\"true\\"
@@ -2867,7 +2867,7 @@ exports[`Receives new message, minimized, mobile 3`] = `
       >
         <button
           aria-label=\\"Click to minimize the chat window\\"
-          class=\\"ui icon button close c__container-modal-minmax\\"
+          class=\\"ui medium icon button close c__container-modal-minmax\\"
         >
           <i
             aria-hidden=\\"true\\"
@@ -3365,7 +3365,7 @@ exports[`Receives new message, minimized, mobile 4`] = `
   <div>
     <button
       aria-label=\\"Click to maximize the chat window\\"
-      class=\\"ui icon button close c__container-modal-minmax \\"
+      class=\\"ui medium icon button close c__container-modal-minmax \\"
     >
       <i
         aria-hidden=\\"true\\"
@@ -3399,7 +3399,7 @@ exports[`Receives new message, minimized, mobile 5`] = `
   <div>
     <button
       aria-label=\\"Click to maximize the chat window\\"
-      class=\\"ui icon button close c__container-modal-minmax c__notice\\"
+      class=\\"ui medium icon button close c__container-modal-minmax c__notice\\"
     >
       <i
         aria-hidden=\\"true\\"
@@ -3438,7 +3438,7 @@ exports[`Receives new message, minimized, not mobile 1`] = `
       >
         <button
           aria-label=\\"Click to minimize the chat window\\"
-          class=\\"ui icon button close c__container-modal-minmax\\"
+          class=\\"ui medium icon button close c__container-modal-minmax\\"
         >
           <i
             aria-hidden=\\"true\\"
@@ -3521,7 +3521,7 @@ exports[`Receives new message, minimized, not mobile 3`] = `
       >
         <button
           aria-label=\\"Click to minimize the chat window\\"
-          class=\\"ui icon button close c__container-modal-minmax\\"
+          class=\\"ui medium icon button close c__container-modal-minmax\\"
         >
           <i
             aria-hidden=\\"true\\"
@@ -4044,7 +4044,7 @@ exports[`Receives new message, minimized, not mobile 4`] = `
   <div>
     <button
       aria-label=\\"Click to maximize the chat window\\"
-      class=\\"ui icon button close c__container-modal-minmax \\"
+      class=\\"ui medium icon button close c__container-modal-minmax \\"
     >
       <i
         aria-hidden=\\"true\\"
@@ -4078,7 +4078,7 @@ exports[`Receives new message, minimized, not mobile 5`] = `
   <div>
     <button
       aria-label=\\"Click to maximize the chat window\\"
-      class=\\"ui icon button close c__container-modal-minmax c__notice\\"
+      class=\\"ui medium icon button close c__container-modal-minmax c__notice\\"
     >
       <i
         aria-hidden=\\"true\\"
@@ -4117,7 +4117,7 @@ exports[`Receives new message, not minimized 1`] = `
       >
         <button
           aria-label=\\"Click to minimize the chat window\\"
-          class=\\"ui icon button close c__container-modal-minmax\\"
+          class=\\"ui medium icon button close c__container-modal-minmax\\"
         >
           <i
             aria-hidden=\\"true\\"
@@ -4200,7 +4200,7 @@ exports[`Receives new message, not minimized 3`] = `
       >
         <button
           aria-label=\\"Click to minimize the chat window\\"
-          class=\\"ui icon button close c__container-modal-minmax\\"
+          class=\\"ui medium icon button close c__container-modal-minmax\\"
         >
           <i
             aria-hidden=\\"true\\"
@@ -4728,7 +4728,7 @@ exports[`Receives new message, not minimized 4`] = `
       >
         <button
           aria-label=\\"Click to minimize the chat window\\"
-          class=\\"ui icon button close c__container-modal-minmax\\"
+          class=\\"ui medium icon button close c__container-modal-minmax\\"
         >
           <i
             aria-hidden=\\"true\\"
@@ -5330,7 +5330,7 @@ exports[`Rnd: onDrag/onResize 1`] = `
       >
         <button
           aria-label=\\"Click to minimize the chat window\\"
-          class=\\"ui icon button close c__container-modal-minmax\\"
+          class=\\"ui medium icon button close c__container-modal-minmax\\"
         >
           <i
             aria-hidden=\\"true\\"
@@ -5646,7 +5646,7 @@ exports[`Rnd: onDragStop/onResizeStop 1`] = `
       >
         <button
           aria-label=\\"Click to minimize the chat window\\"
-          class=\\"ui icon button close c__container-modal-minmax\\"
+          class=\\"ui medium icon button close c__container-modal-minmax\\"
         >
           <i
             aria-hidden=\\"true\\"
@@ -5962,7 +5962,7 @@ exports[`Types, clicks Send Message 1`] = `
       >
         <button
           aria-label=\\"Click to minimize the chat window\\"
-          class=\\"ui icon button close c__container-modal-minmax\\"
+          class=\\"ui medium icon button close c__container-modal-minmax\\"
         >
           <i
             aria-hidden=\\"true\\"
@@ -6045,7 +6045,7 @@ exports[`Types, clicks Send Message 4`] = `
       >
         <button
           aria-label=\\"Click to minimize the chat window\\"
-          class=\\"ui icon button close c__container-modal-minmax\\"
+          class=\\"ui medium icon button close c__container-modal-minmax\\"
         >
           <i
             aria-hidden=\\"true\\"
@@ -6361,7 +6361,7 @@ exports[`Types, followed by {enter} 1`] = `
       >
         <button
           aria-label=\\"Click to minimize the chat window\\"
-          class=\\"ui icon button close c__container-modal-minmax\\"
+          class=\\"ui medium icon button close c__container-modal-minmax\\"
         >
           <i
             aria-hidden=\\"true\\"
@@ -6444,7 +6444,7 @@ exports[`Types, followed by {enter} 4`] = `
       >
         <button
           aria-label=\\"Click to minimize the chat window\\"
-          class=\\"ui icon button close c__container-modal-minmax\\"
+          class=\\"ui medium icon button close c__container-modal-minmax\\"
         >
           <i
             aria-hidden=\\"true\\"
@@ -6760,7 +6760,7 @@ exports[`Types, followed by {shift}{enter}, attempts to send, does submit 1`] = 
       >
         <button
           aria-label=\\"Click to minimize the chat window\\"
-          class=\\"ui icon button close c__container-modal-minmax\\"
+          class=\\"ui medium icon button close c__container-modal-minmax\\"
         >
           <i
             aria-hidden=\\"true\\"
@@ -6848,7 +6848,7 @@ exports[`Types, followed by {shift}{enter}, attempts to send, does submit 3`] = 
       >
         <button
           aria-label=\\"Click to minimize the chat window\\"
-          class=\\"ui icon button close c__container-modal-minmax\\"
+          class=\\"ui medium icon button close c__container-modal-minmax\\"
         >
           <i
             aria-hidden=\\"true\\"
@@ -7169,7 +7169,7 @@ exports[`Types, followed by {shift}{enter}, does not submit 1`] = `
       >
         <button
           aria-label=\\"Click to minimize the chat window\\"
-          class=\\"ui icon button close c__container-modal-minmax\\"
+          class=\\"ui medium icon button close c__container-modal-minmax\\"
         >
           <i
             aria-hidden=\\"true\\"
@@ -7252,7 +7252,7 @@ exports[`Types, followed by {shift}{enter}, does not submit 4`] = `
       >
         <button
           aria-label=\\"Click to minimize the chat window\\"
-          class=\\"ui icon button close c__container-modal-minmax\\"
+          class=\\"ui medium icon button close c__container-modal-minmax\\"
         >
           <i
             aria-hidden=\\"true\\"
@@ -7568,7 +7568,7 @@ exports[`Types, then attempts to send empty string 1`] = `
       >
         <button
           aria-label=\\"Click to minimize the chat window\\"
-          class=\\"ui icon button close c__container-modal-minmax\\"
+          class=\\"ui medium icon button close c__container-modal-minmax\\"
         >
           <i
             aria-hidden=\\"true\\"
@@ -7649,7 +7649,7 @@ exports[`Types, then attempts to send empty string 2`] = `
       >
         <button
           aria-label=\\"Click to minimize the chat window\\"
-          class=\\"ui icon button close c__container-modal-minmax\\"
+          class=\\"ui medium icon button close c__container-modal-minmax\\"
         >
           <i
             aria-hidden=\\"true\\"
@@ -7963,7 +7963,7 @@ exports[`Types, then attempts to send string containing only a space character 1
       >
         <button
           aria-label=\\"Click to minimize the chat window\\"
-          class=\\"ui icon button close c__container-modal-minmax\\"
+          class=\\"ui medium icon button close c__container-modal-minmax\\"
         >
           <i
             aria-hidden=\\"true\\"
@@ -8044,7 +8044,7 @@ exports[`Types, then attempts to send string containing only a space character 2
       >
         <button
           aria-label=\\"Click to minimize the chat window\\"
-          class=\\"ui icon button close c__container-modal-minmax\\"
+          class=\\"ui medium icon button close c__container-modal-minmax\\"
         >
           <i
             aria-hidden=\\"true\\"
@@ -8358,7 +8358,7 @@ exports[`componentDidMount Adds CHAT_ENDED handler (chat in props) 1`] = `
       >
         <button
           aria-label=\\"Click to minimize the chat window\\"
-          class=\\"ui icon button close c__container-modal-minmax\\"
+          class=\\"ui medium icon button close c__container-modal-minmax\\"
         >
           <i
             aria-hidden=\\"true\\"
@@ -8441,7 +8441,7 @@ exports[`componentDidMount Adds CHAT_ENDED handler (chat in props) 3`] = `
       >
         <button
           aria-label=\\"Click to minimize the chat window\\"
-          class=\\"ui icon button close c__container-modal-minmax\\"
+          class=\\"ui medium icon button close c__container-modal-minmax\\"
         >
           <i
             aria-hidden=\\"true\\"
@@ -8757,7 +8757,7 @@ exports[`componentDidMount Adds CHAT_ENDED handler (chat in state) 1`] = `
       >
         <button
           aria-label=\\"Click to minimize the chat window\\"
-          class=\\"ui icon button close c__container-modal-minmax\\"
+          class=\\"ui medium icon button close c__container-modal-minmax\\"
         >
           <i
             aria-hidden=\\"true\\"
@@ -8840,7 +8840,7 @@ exports[`componentDidMount Adds CHAT_ENDED handler (chat in state) 3`] = `
       >
         <button
           aria-label=\\"Click to minimize the chat window\\"
-          class=\\"ui icon button close c__container-modal-minmax\\"
+          class=\\"ui medium icon button close c__container-modal-minmax\\"
         >
           <i
             aria-hidden=\\"true\\"
@@ -9156,7 +9156,7 @@ exports[`componentDidMount Adds JOIN_OR_PART handler (chat in props) 1`] = `
       >
         <button
           aria-label=\\"Click to minimize the chat window\\"
-          class=\\"ui icon button close c__container-modal-minmax\\"
+          class=\\"ui medium icon button close c__container-modal-minmax\\"
         >
           <i
             aria-hidden=\\"true\\"
@@ -9239,7 +9239,7 @@ exports[`componentDidMount Adds JOIN_OR_PART handler (chat in props) 3`] = `
       >
         <button
           aria-label=\\"Click to minimize the chat window\\"
-          class=\\"ui icon button close c__container-modal-minmax\\"
+          class=\\"ui medium icon button close c__container-modal-minmax\\"
         >
           <i
             aria-hidden=\\"true\\"
@@ -9555,7 +9555,7 @@ exports[`componentDidMount Adds JOIN_OR_PART handler (chat in state) 1`] = `
       >
         <button
           aria-label=\\"Click to minimize the chat window\\"
-          class=\\"ui icon button close c__container-modal-minmax\\"
+          class=\\"ui medium icon button close c__container-modal-minmax\\"
         >
           <i
             aria-hidden=\\"true\\"
@@ -9638,7 +9638,7 @@ exports[`componentDidMount Adds JOIN_OR_PART handler (chat in state) 3`] = `
       >
         <button
           aria-label=\\"Click to minimize the chat window\\"
-          class=\\"ui icon button close c__container-modal-minmax\\"
+          class=\\"ui medium icon button close c__container-modal-minmax\\"
         >
           <i
             aria-hidden=\\"true\\"
@@ -9954,7 +9954,7 @@ exports[`componentDidMount Adds onbeforeunload handler (chat in props) 1`] = `
       >
         <button
           aria-label=\\"Click to minimize the chat window\\"
-          class=\\"ui icon button close c__container-modal-minmax\\"
+          class=\\"ui medium icon button close c__container-modal-minmax\\"
         >
           <i
             aria-hidden=\\"true\\"
@@ -10037,7 +10037,7 @@ exports[`componentDidMount Adds onbeforeunload handler (chat in props) 2`] = `
       >
         <button
           aria-label=\\"Click to minimize the chat window\\"
-          class=\\"ui icon button close c__container-modal-minmax\\"
+          class=\\"ui medium icon button close c__container-modal-minmax\\"
         >
           <i
             aria-hidden=\\"true\\"
@@ -10353,7 +10353,7 @@ exports[`componentDidMount Adds onbeforeunload handler (chat in state) 1`] = `
       >
         <button
           aria-label=\\"Click to minimize the chat window\\"
-          class=\\"ui icon button close c__container-modal-minmax\\"
+          class=\\"ui medium icon button close c__container-modal-minmax\\"
         >
           <i
             aria-hidden=\\"true\\"
@@ -10436,7 +10436,7 @@ exports[`componentDidMount Adds onbeforeunload handler (chat in state) 2`] = `
       >
         <button
           aria-label=\\"Click to minimize the chat window\\"
-          class=\\"ui icon button close c__container-modal-minmax\\"
+          class=\\"ui medium icon button close c__container-modal-minmax\\"
         >
           <i
             aria-hidden=\\"true\\"
@@ -10752,7 +10752,7 @@ exports[`componentDidMount Emits CREATE_CHAT_CHANNEL on socket (chat in props) 1
       >
         <button
           aria-label=\\"Click to minimize the chat window\\"
-          class=\\"ui icon button close c__container-modal-minmax\\"
+          class=\\"ui medium icon button close c__container-modal-minmax\\"
         >
           <i
             aria-hidden=\\"true\\"
@@ -11068,7 +11068,7 @@ exports[`componentDidMount Emits CREATE_CHAT_CHANNEL on socket (chat in props) 3
       >
         <button
           aria-label=\\"Click to minimize the chat window\\"
-          class=\\"ui icon button close c__container-modal-minmax\\"
+          class=\\"ui medium icon button close c__container-modal-minmax\\"
         >
           <i
             aria-hidden=\\"true\\"
@@ -11384,7 +11384,7 @@ exports[`componentDidMount Emits CREATE_CHAT_CHANNEL on socket (chat in state) 1
       >
         <button
           aria-label=\\"Click to minimize the chat window\\"
-          class=\\"ui icon button close c__container-modal-minmax\\"
+          class=\\"ui medium icon button close c__container-modal-minmax\\"
         >
           <i
             aria-hidden=\\"true\\"
@@ -11700,7 +11700,7 @@ exports[`componentDidMount Emits CREATE_CHAT_CHANNEL on socket (chat in state) 3
       >
         <button
           aria-label=\\"Click to minimize the chat window\\"
-          class=\\"ui icon button close c__container-modal-minmax\\"
+          class=\\"ui medium icon button close c__container-modal-minmax\\"
         >
           <i
             aria-hidden=\\"true\\"
@@ -12016,7 +12016,7 @@ exports[`componentDidMount Emits CREATE_USER_CHANNEL on socket (chat in props) 1
       >
         <button
           aria-label=\\"Click to minimize the chat window\\"
-          class=\\"ui icon button close c__container-modal-minmax\\"
+          class=\\"ui medium icon button close c__container-modal-minmax\\"
         >
           <i
             aria-hidden=\\"true\\"
@@ -12332,7 +12332,7 @@ exports[`componentDidMount Emits CREATE_USER_CHANNEL on socket (chat in props) 3
       >
         <button
           aria-label=\\"Click to minimize the chat window\\"
-          class=\\"ui icon button close c__container-modal-minmax\\"
+          class=\\"ui medium icon button close c__container-modal-minmax\\"
         >
           <i
             aria-hidden=\\"true\\"
@@ -12648,7 +12648,7 @@ exports[`componentDidMount Emits CREATE_USER_CHANNEL on socket (chat in state) 1
       >
         <button
           aria-label=\\"Click to minimize the chat window\\"
-          class=\\"ui icon button close c__container-modal-minmax\\"
+          class=\\"ui medium icon button close c__container-modal-minmax\\"
         >
           <i
             aria-hidden=\\"true\\"
@@ -12964,7 +12964,7 @@ exports[`componentDidMount Emits CREATE_USER_CHANNEL on socket (chat in state) 3
       >
         <button
           aria-label=\\"Click to minimize the chat window\\"
-          class=\\"ui icon button close c__container-modal-minmax\\"
+          class=\\"ui medium icon button close c__container-modal-minmax\\"
         >
           <i
             aria-hidden=\\"true\\"
@@ -13280,7 +13280,7 @@ exports[`componentWillUnmount Calls onbeforeunload handler when beforeunload occ
       >
         <button
           aria-label=\\"Click to minimize the chat window\\"
-          class=\\"ui icon button close c__container-modal-minmax\\"
+          class=\\"ui medium icon button close c__container-modal-minmax\\"
         >
           <i
             aria-hidden=\\"true\\"
@@ -13596,7 +13596,7 @@ exports[`componentWillUnmount Calls onbeforeunload handler when beforeunload occ
       >
         <button
           aria-label=\\"Click to minimize the chat window\\"
-          class=\\"ui icon button close c__container-modal-minmax\\"
+          class=\\"ui medium icon button close c__container-modal-minmax\\"
         >
           <i
             aria-hidden=\\"true\\"
@@ -13912,7 +13912,7 @@ exports[`componentWillUnmount Calls onbeforeunload handler when unmount occurs 1
       >
         <button
           aria-label=\\"Click to minimize the chat window\\"
-          class=\\"ui icon button close c__container-modal-minmax\\"
+          class=\\"ui medium icon button close c__container-modal-minmax\\"
         >
           <i
             aria-hidden=\\"true\\"
@@ -14237,7 +14237,7 @@ exports[`componentWillUnmount Removes onbeforeunload handler 1`] = `
       >
         <button
           aria-label=\\"Click to minimize the chat window\\"
-          class=\\"ui icon button close c__container-modal-minmax\\"
+          class=\\"ui medium icon button close c__container-modal-minmax\\"
         >
           <i
             aria-hidden=\\"true\\"
@@ -14553,7 +14553,7 @@ exports[`componentWillUnmount Removes onbeforeunload handler 2`] = `
       >
         <button
           aria-label=\\"Click to minimize the chat window\\"
-          class=\\"ui icon button close c__container-modal-minmax\\"
+          class=\\"ui medium icon button close c__container-modal-minmax\\"
         >
           <i
             aria-hidden=\\"true\\"
@@ -14878,7 +14878,7 @@ exports[`onQuote 1`] = `
       >
         <button
           aria-label=\\"Click to minimize the chat window\\"
-          class=\\"ui icon button close c__container-modal-minmax\\"
+          class=\\"ui medium icon button close c__container-modal-minmax\\"
         >
           <i
             aria-hidden=\\"true\\"
@@ -14961,7 +14961,7 @@ exports[`onQuote 3`] = `
       >
         <button
           aria-label=\\"Click to minimize the chat window\\"
-          class=\\"ui icon button close c__container-modal-minmax\\"
+          class=\\"ui medium icon button close c__container-modal-minmax\\"
         >
           <i
             aria-hidden=\\"true\\"
@@ -15291,7 +15291,7 @@ exports[`onQuote 5`] = `
       >
         <button
           aria-label=\\"Click to minimize the chat window\\"
-          class=\\"ui icon button close c__container-modal-minmax\\"
+          class=\\"ui medium icon button close c__container-modal-minmax\\"
         >
           <i
             aria-hidden=\\"true\\"

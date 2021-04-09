@@ -25,6 +25,7 @@ import {
 } from '@actions/cohort';
 import { getUser } from '@actions/user';
 import { getUsers } from '@actions/users';
+import Chat from '@components/Chat';
 import DataTable from '@components/Cohorts/DataTable';
 import CohortProgress from '@components/Cohorts/CohortProgress';
 import CohortRename from '@components/Cohorts/CohortRename';
@@ -35,6 +36,9 @@ import Boundary from '@components/Boundary';
 import Identity from '@utils/Identity';
 
 import './Cohort.css';
+
+const minAriaLabel = 'Click to minimize the group discussion window';
+const maxAriaLabel = 'Click to maximize the group discussion window';
 
 export class Cohort extends React.Component {
   constructor(props) {
@@ -55,10 +59,21 @@ export class Cohort extends React.Component {
 
     this.state = {
       isReady: false,
-      archiveIsOpen: false,
-      copyIsOpen: false,
-      deleteIsOpen: false,
-      renameIsOpen: false,
+      archive: {
+        isOpen: false
+      },
+      chat: {
+        isMinimized: false
+      },
+      copy: {
+        isOpen: false
+      },
+      delete: {
+        isOpen: false
+      },
+      rename: {
+        isOpen: false
+      },
       activeTabKey,
       tabs
     };
@@ -164,15 +179,7 @@ export class Cohort extends React.Component {
 
   render() {
     const { authority, cohort, user } = this.props;
-    const {
-      isReady,
-      activeTabKey,
-      tabs,
-      copyIsOpen,
-      renameIsOpen,
-      deleteIsOpen,
-      archiveIsOpen
-    } = this.state;
+    const { isReady, activeTabKey, tabs } = this.state;
     const { onClick, onTabClick, onDataTableClick } = this;
 
     if (!isReady || !cohort) {
@@ -194,21 +201,20 @@ export class Cohort extends React.Component {
     // Everytime there is a render, save the state.
     Storage.set(this.storageKey, { activeTabKey, tabs });
 
-    const menuItemShowCohortUrl = (
-      <Input label="Cohort link" size="big" type="text" defaultValue={url} />
-    );
-
     const menuItemCopyCohortUrl = (
-      <Button size="small" onClick={onCohortUrlCopyClick}>
+      <Button onClick={onCohortUrlCopyClick}>
         <Icon name="clipboard outline" className="primary" />
         Copy cohort link to clipboard
       </Button>
     );
 
-    const cohortActivationState = (
-      <p className="c__activation-state">
-        Cohort is <span>{cohort.is_archived ? 'Archived' : 'Active'}</span>
-      </p>
+    const menuItemShowCohortUrl = (
+      <Input
+        type="text"
+        labelPosition="right"
+        label={menuItemCopyCohortUrl}
+        defaultValue={url}
+      />
     );
 
     const cohortTools = (
@@ -225,50 +231,54 @@ export class Cohort extends React.Component {
               text="Archive cohort"
               icon="archive"
               className="icon-primary"
-              onClick={() => this.setState({ archiveIsOpen: true })}
+              onClick={() => this.setState({ archive: { isOpen: true } })}
             />
           ) : null}
           <Dropdown.Item
             text="Rename cohort"
             icon="edit outline"
             className="icon-primary"
-            onClick={() => this.setState({ renameIsOpen: true })}
+            onClick={() => this.setState({ rename: { isOpen: true } })}
           />
           <Dropdown.Item
             text="Copy cohort"
             icon="copy outline"
             className="icon-primary"
-            onClick={() => this.setState({ copyIsOpen: true })}
+            onClick={() => this.setState({ copy: { isOpen: true } })}
           />
           <Dropdown.Item
             text="Delete cohort"
             icon="trash alternate outline"
             className="icon-primary"
-            onClick={() => this.setState({ deleteIsOpen: true })}
+            onClick={() => this.setState({ delete: { isOpen: true } })}
           />
         </Dropdown.Menu>
       </Dropdown>
     );
 
-    const copyDeleteOrArchiveIsOpen =
-      copyIsOpen || deleteIsOpen || archiveIsOpen;
-    const cohortActionKind = copyIsOpen
+    const cohortToolsActionIsOpen =
+      this.state.copy.isOpen ||
+      this.state.delete.isOpen ||
+      this.state.archive.isOpen;
+    const cohortActionKind = this.state.copy.isOpen
       ? 'Copy'
-      : deleteIsOpen
+      : this.state.delete.isOpen
       ? 'Delete'
       : 'Archive';
-    const copyDeleteOrArchiveModalHeader = `${cohortActionKind} "${cohort.name}"`;
-    const copyDeleteOrArchiveAction = cohortActionKind.toLowerCase();
-    const onCopyDeleteOrArchiveClose = () => {
+    const cohortToolsActionModalHeader = `${cohortActionKind} "${cohort.name}"`;
+    const cohortToolsActionAction = cohortActionKind.toLowerCase();
+    const onCohortToolActionClose = () => {
       this.setState({
-        [`${copyDeleteOrArchiveAction}IsOpen`]: false
+        [cohortToolsActionAction]: {
+          isOpen: false
+        }
       });
     };
 
-    const onCopyDeleteOrArchiveConfirm = async () => {
-      const isArchive = copyDeleteOrArchiveAction === 'archive';
-      const isCopy = copyDeleteOrArchiveAction === 'copy';
-      const isDelete = copyDeleteOrArchiveAction === 'delete';
+    const onCohortToolActionConfirm = async () => {
+      const isArchive = cohortToolsActionAction === 'archive';
+      const isCopy = cohortToolsActionAction === 'copy';
+      const isDelete = cohortToolsActionAction === 'delete';
       const prop = isArchive ? 'is_archived' : 'deleted_at';
       const value = isArchive ? true : new Date().toISOString();
 
@@ -281,7 +291,7 @@ export class Cohort extends React.Component {
           // Hard location change to force state purge
           location.href = '/cohorts';
         } else {
-          onCopyDeleteOrArchiveClose();
+          onCohortToolActionClose();
         }
       }
 
@@ -292,6 +302,57 @@ export class Cohort extends React.Component {
       }
     };
 
+    // <Menu.Item.Tabbable
+    //   key="chat"
+    //   name="chat"
+    // >
+    //   <Chat chat={this.props.cohort.chat} />
+    // </Menu.Item.Tabbable>
+    // {!cohort.is_archived ? (
+    //   <Chat chat={this.props.cohort.chat} />
+    // ) : null}
+    // {isFacilitator ? cohortTools : null}
+
+    const chatMinMaxAriaLabel = this.state.chatIsMinimized
+      ? maxAriaLabel
+      : minAriaLabel;
+
+    const chatMinMaxIcon = 'discussion';
+
+    const chatMinMaxTriggerProps = {
+      'aria-label': chatMinMaxAriaLabel,
+      icon: chatMinMaxIcon,
+      content: 'Group discussion'
+    };
+
+    const chatMinMaxTrigger = <Button {...chatMinMaxTriggerProps} />;
+    const groupChat = (
+      <Chat
+        chat={this.props.cohort.chat}
+        onMinMaxChange={({ isMinimized }) => {
+          this.setState({
+            chat: {
+              isMinimized
+            }
+          });
+        }}
+      />
+    );
+
+    /*
+      This will be used when cohort-wide chat is enabled.
+    (
+      <section className="c__section c__cohort-header">
+        <div className="c__cohort-header-left">
+
+        </div>
+        <div className="c__cohort-header-right">
+          {groupChat}
+        </div>
+      </section>
+    )};
+    */
+
     return (
       <div>
         <Title content={cohort.name} />
@@ -300,9 +361,10 @@ export class Cohort extends React.Component {
             key="cohort"
             name="cohort"
             active={activeTabKey === 'cohort'}
-            content={cohort.name}
             onClick={onTabClick}
-          />
+          >
+            <Icon className="chalkboard teacher primary" />
+          </Menu.Item.Tabbable>
 
           {tabs.map(({ menuItem }) => {
             const { content, key, icon } = menuItem;
@@ -321,19 +383,31 @@ export class Cohort extends React.Component {
 
         {activeTabKey === 'cohort' ? (
           <Segment attached="bottom">
+            <section className="c__section c__cohort-header">
+              <div className="c__cohort-header-left">
+                <Header as="h1">{cohort.name}</Header>
+              </div>
+              <div className="c__cohort-header-right c__activation-state">
+                Cohort is{' '}
+                <span>{cohort.is_archived ? 'Archived' : 'Active'}</span>
+              </div>
+            </section>
+
             {isFacilitator ? (
               <section className="c__section c__cohort-header">
-                <div className="c__cohort-url">
-                  {menuItemShowCohortUrl} {menuItemCopyCohortUrl}
+                <div className="c__cohort-header-left">
+                  {menuItemShowCohortUrl}
                 </div>
-                <div className="c__cohort-user-actions">
-                  {cohortActivationState}
+                <div className="c__cohort-header-right">
+                  {/* this is causing issues, so is disabled for now */}
+                  {/* groupChat */}
                   {cohortTools}
                 </div>
               </section>
             ) : null}
+
             <section className="c__section">
-              <Header as="h2">Cohort scenarios</Header>
+              {/*<Header as="h3">Cohort scenarios</Header>*/}
               <CohortScenarios
                 key="cohort-scenarios"
                 id={cohort.id}
@@ -344,8 +418,8 @@ export class Cohort extends React.Component {
             {isFacilitator ? (
               <Fragment>
                 <section className="c__section">
-                  <Header as="h2">Cohort progress</Header>
-                  <Header as="h3">
+                  {/*<Header as="h3">Cohort progress</Header>*/}
+                  <Header as="h4">
                     Track participant progress and responses to selected
                     scenarios
                   </Header>
@@ -376,13 +450,13 @@ export class Cohort extends React.Component {
           </Segment>
         )}
 
-        {renameIsOpen ? (
+        {this.state.rename.isOpen ? (
           <CohortRename
-            onClose={() => this.setState({ renameIsOpen: false })}
+            onClose={() => this.setState({ rename: { isOpen: false } })}
           />
         ) : null}
 
-        {copyDeleteOrArchiveIsOpen ? (
+        {cohortToolsActionIsOpen ? (
           <Modal.Accessible open>
             <Modal
               closeIcon
@@ -390,12 +464,12 @@ export class Cohort extends React.Component {
               aria-modal="true"
               role="dialog"
               size="small"
-              onClose={onCopyDeleteOrArchiveClose}
+              onClose={onCohortToolActionClose}
             >
-              <Header icon="group" content={copyDeleteOrArchiveModalHeader} />
+              <Header icon="group" content={cohortToolsActionModalHeader} />
               <Modal.Content>
                 <Text>
-                  Are you sure you want to {copyDeleteOrArchiveAction} &quot;
+                  Are you sure you want to {cohortToolsActionAction} &quot;
                   {cohort.name}&quot;?
                 </Text>
               </Modal.Content>
@@ -404,12 +478,12 @@ export class Cohort extends React.Component {
                   <Button
                     primary
                     aria-label="Yes"
-                    onClick={onCopyDeleteOrArchiveConfirm}
+                    onClick={onCohortToolActionConfirm}
                   >
                     Yes
                   </Button>
                   <Button.Or />
-                  <Button aria-label="No" onClick={onCopyDeleteOrArchiveClose}>
+                  <Button aria-label="No" onClick={onCohortToolActionClose}>
                     No
                   </Button>
                 </Button.Group>

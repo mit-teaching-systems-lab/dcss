@@ -50,7 +50,7 @@ ChatMinMax.propTypes = {
   className: PropTypes.string,
   isMinimized: PropTypes.bool,
   onChange: PropTypes.func,
-  size: PropTypes.string,
+  size: PropTypes.string
 };
 
 export default ChatMinMax;

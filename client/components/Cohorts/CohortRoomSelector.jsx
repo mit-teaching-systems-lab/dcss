@@ -516,7 +516,7 @@ export class CohortRoomSelector extends React.Component {
                 {this.state.create.isOpen ? (
                   <Grid padded>
                     <Grid.Row>
-                      <Grid.Column className="c__grid-single-col-padding">
+                      <Grid.Column className="c__grid-element-unpadded">
                         <p tabIndex="0">
                           Is your room open to anyone in your cohort?
                         </p>
@@ -585,7 +585,7 @@ export class CohortRoomSelector extends React.Component {
                 ) : null}
                 <Grid padded>
                   <Grid.Row>
-                    <Grid.Column className="c__grid-single-col-padding">
+                    <Grid.Column className="c__grid-element-unpadded">
                       <p>
                         This scenario requires multiple particpants in order to
                         complete. Runs of the scenario are completed in{' '}

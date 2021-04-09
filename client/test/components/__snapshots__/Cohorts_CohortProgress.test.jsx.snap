@@ -128,54 +128,66 @@ exports[`Open Manage participants 1`] = `
 exports[`Open Manage participants 2`] = `
 <DocumentFragment>
   <div
-    class="ui fluid container c__scenario-container"
+    class="ui fluid container c__section-container"
   >
     <div
-      class="ui stackable two column grid c__scenario-participant-header"
+      class="ui stackable two column grid c__section-container-header"
     >
       <div
-        class="six wide column"
-      >
-        <p
-          class="c__scenario-header-num"
-        >
-          <span>
-            0/5
-          </span>
-           participants have completed all scenarios
-        </p>
-        <button
-          aria-label="Manage participant"
-          class="ui tiny button"
-        >
-          Manage participant
-        </button>
-        <button
-          aria-label="Cancel all participant join requests"
-          class="ui tiny button"
-        >
-          Cancel all participant join requests
-        </button>
-      </div>
-      <div
-        class="ten wide column c__scenario-search-participants"
+        class="row"
       >
         <div
-          class="ui big icon labeled input grid__menu-search"
+          class="eight wide column"
+        >
+          <p
+            class="c__by-the-numbers-heading"
+          >
+            <strong>
+              0/5
+            </strong>
+             participants have completed all scenarios
+          </p>
+        </div>
+        <div
+          class="eight wide column"
         >
           <div
-            class="ui label label"
+            class="ui icon labeled input grid__menu-search"
           >
-            Search participants
+            <div
+              class="ui label label"
+            >
+              Search participants
+            </div>
+            <input
+              aria-label="Search participants"
+              type="text"
+            />
+            <i
+              aria-hidden="true"
+              class="search icon"
+            />
           </div>
-          <input
-            aria-label="Search participants"
-            type="text"
-          />
-          <i
-            aria-hidden="true"
-            class="search icon"
-          />
+        </div>
+      </div>
+      <div
+        class="row c__grid-element-unpadded"
+      >
+        <div
+          class="sixteen wide column"
+        >
+          <button
+            aria-label="Manage participant access"
+            class="ui tiny button"
+          >
+            Manage participant access
+          </button>
+          <button
+            aria-label="Cancel all participant join requests"
+            class="ui tiny button"
+          >
+            Cancel all participant join requests
+          </button>
         </div>
       </div>
     </div>
@@ -222,7 +234,7 @@ exports[`Open Manage participants 2`] = `
           </p>
         </div>
         <div
-          class="content"
+          class="content c__scenario-content"
         >
           <div
             class="description c__participant-completion"
@@ -302,7 +314,7 @@ exports[`Open Manage participants 2`] = `
           </p>
         </div>
         <div
-          class="content"
+          class="content c__scenario-content"
         >
           <div
             class="description c__participant-completion"
@@ -382,7 +394,7 @@ exports[`Open Manage participants 2`] = `
           </p>
         </div>
         <div
-          class="content"
+          class="content c__scenario-content"
         >
           <div
             class="description c__participant-completion"
@@ -456,7 +468,7 @@ exports[`Open Manage participants 2`] = `
           </p>
         </div>
         <div
-          class="content"
+          class="content c__scenario-content"
         >
           <div
             class="description c__participant-completion"
@@ -530,7 +542,7 @@ exports[`Open Manage participants 2`] = `
           </p>
         </div>
         <div
-          class="content"
+          class="content c__scenario-content"
         >
           <div
             class="description c__participant-completion"
@@ -581,54 +593,66 @@ exports[`Open Manage participants 2`] = `
 exports[`Open Manage participants 3`] = `
 <DocumentFragment>
   <div
-    class="ui fluid container c__scenario-container"
+    class="ui fluid container c__section-container"
   >
     <div
-      class="ui stackable two column grid c__scenario-participant-header"
+      class="ui stackable two column grid c__section-container-header"
     >
       <div
-        class="six wide column"
-      >
-        <p
-          class="c__scenario-header-num"
-        >
-          <span>
-            0/5
-          </span>
-           participants have completed all scenarios
-        </p>
-        <button
-          aria-label="Manage participant"
-          class="ui tiny button"
-        >
-          Manage participant
-        </button>
-        <button
-          aria-label="Cancel all participant join requests"
-          class="ui tiny button"
-        >
-          Cancel all participant join requests
-        </button>
-      </div>
-      <div
-        class="ten wide column c__scenario-search-participants"
+        class="row"
       >
         <div
-          class="ui big icon labeled input grid__menu-search"
+          class="eight wide column"
+        >
+          <p
+            class="c__by-the-numbers-heading"
+          >
+            <strong>
+              0/5
+            </strong>
+             participants have completed all scenarios
+          </p>
+        </div>
+        <div
+          class="eight wide column"
         >
           <div
-            class="ui label label"
+            class="ui icon labeled input grid__menu-search"
           >
-            Search participants
+            <div
+              class="ui label label"
+            >
+              Search participants
+            </div>
+            <input
+              aria-label="Search participants"
+              type="text"
+            />
+            <i
+              aria-hidden="true"
+              class="search icon"
+            />
           </div>
-          <input
-            aria-label="Search participants"
-            type="text"
-          />
-          <i
-            aria-hidden="true"
-            class="search icon"
-          />
+        </div>
+      </div>
+      <div
+        class="row c__grid-element-unpadded"
+      >
+        <div
+          class="sixteen wide column"
+        >
+          <button
+            aria-label="Manage participant access"
+            class="ui tiny button"
+          >
+            Manage participant access
+          </button>
+          <button
+            aria-label="Cancel all participant join requests"
+            class="ui tiny button"
+          >
+            Cancel all participant join requests
+          </button>
         </div>
       </div>
     </div>
@@ -675,7 +699,7 @@ exports[`Open Manage participants 3`] = `
           </p>
         </div>
         <div
-          class="content"
+          class="content c__scenario-content"
         >
           <div
             class="description c__participant-completion"
@@ -755,7 +779,7 @@ exports[`Open Manage participants 3`] = `
           </p>
         </div>
         <div
-          class="content"
+          class="content c__scenario-content"
         >
           <div
             class="description c__participant-completion"
@@ -835,7 +859,7 @@ exports[`Open Manage participants 3`] = `
           </p>
         </div>
         <div
-          class="content"
+          class="content c__scenario-content"
         >
           <div
             class="description c__participant-completion"
@@ -909,7 +933,7 @@ exports[`Open Manage participants 3`] = `
           </p>
         </div>
         <div
-          class="content"
+          class="content c__scenario-content"
         >
           <div
             class="description c__participant-completion"
@@ -983,7 +1007,7 @@ exports[`Open Manage participants 3`] = `
           </p>
         </div>
         <div
-          class="content"
+          class="content c__scenario-content"
         >
           <div
             class="description c__participant-completion"
@@ -1034,54 +1058,66 @@ exports[`Open Manage participants 3`] = `
 exports[`Open Manage participants 4`] = `
 <DocumentFragment>
   <div
-    class="ui fluid container c__scenario-container"
+    class="ui fluid container c__section-container"
   >
     <div
-      class="ui stackable two column grid c__scenario-participant-header"
+      class="ui stackable two column grid c__section-container-header"
     >
       <div
-        class="six wide column"
-      >
-        <p
-          class="c__scenario-header-num"
-        >
-          <span>
-            0/5
-          </span>
-           participants have completed all scenarios
-        </p>
-        <button
-          aria-label="Manage participant"
-          class="ui tiny button"
-        >
-          Manage participant
-        </button>
-        <button
-          aria-label="Cancel all participant join requests"
-          class="ui tiny button"
-        >
-          Cancel all participant join requests
-        </button>
-      </div>
-      <div
-        class="ten wide column c__scenario-search-participants"
+        class="row"
       >
         <div
-          class="ui big icon labeled input grid__menu-search"
+          class="eight wide column"
+        >
+          <p
+            class="c__by-the-numbers-heading"
+          >
+            <strong>
+              0/5
+            </strong>
+             participants have completed all scenarios
+          </p>
+        </div>
+        <div
+          class="eight wide column"
         >
           <div
-            class="ui label label"
+            class="ui icon labeled input grid__menu-search"
           >
-            Search participants
+            <div
+              class="ui label label"
+            >
+              Search participants
+            </div>
+            <input
+              aria-label="Search participants"
+              type="text"
+            />
+            <i
+              aria-hidden="true"
+              class="search icon"
+            />
           </div>
-          <input
-            aria-label="Search participants"
-            type="text"
-          />
-          <i
-            aria-hidden="true"
-            class="search icon"
-          />
+        </div>
+      </div>
+      <div
+        class="row c__grid-element-unpadded"
+      >
+        <div
+          class="sixteen wide column"
+        >
+          <button
+            aria-label="Manage participant access"
+            class="ui tiny button"
+          >
+            Manage participant access
+          </button>
+          <button
+            aria-label="Cancel all participant join requests"
+            class="ui tiny button"
+          >
+            Cancel all participant join requests
+          </button>
         </div>
       </div>
     </div>
@@ -1128,7 +1164,7 @@ exports[`Open Manage participants 4`] = `
           </p>
         </div>
         <div
-          class="content"
+          class="content c__scenario-content"
         >
           <div
             class="description c__participant-completion"
@@ -1208,7 +1244,7 @@ exports[`Open Manage participants 4`] = `
           </p>
         </div>
         <div
-          class="content"
+          class="content c__scenario-content"
         >
           <div
             class="description c__participant-completion"
@@ -1288,7 +1324,7 @@ exports[`Open Manage participants 4`] = `
           </p>
         </div>
         <div
-          class="content"
+          class="content c__scenario-content"
         >
           <div
             class="description c__participant-completion"
@@ -1362,7 +1398,7 @@ exports[`Open Manage participants 4`] = `
           </p>
         </div>
         <div
-          class="content"
+          class="content c__scenario-content"
         >
           <div
             class="description c__participant-completion"
@@ -1436,7 +1472,7 @@ exports[`Open Manage participants 4`] = `
           </p>
         </div>
         <div
-          class="content"
+          class="content c__scenario-content"
         >
           <div
             class="description c__participant-completion"
@@ -1487,54 +1523,66 @@ exports[`Open Manage participants 4`] = `
 exports[`Open Manage participants 5`] = `
 <DocumentFragment>
   <div
-    class="ui fluid container c__scenario-container"
+    class="ui fluid container c__section-container"
   >
     <div
-      class="ui stackable two column grid c__scenario-participant-header"
+      class="ui stackable two column grid c__section-container-header"
     >
       <div
-        class="six wide column"
-      >
-        <p
-          class="c__scenario-header-num"
-        >
-          <span>
-            0/5
-          </span>
-           participants have completed all scenarios
-        </p>
-        <button
-          aria-label="Manage participant"
-          class="ui tiny button"
-        >
-          Manage participant
-        </button>
-        <button
-          aria-label="Cancel all participant join requests"
-          class="ui tiny button"
-        >
-          Cancel all participant join requests
-        </button>
-      </div>
-      <div
-        class="ten wide column c__scenario-search-participants"
+        class="row"
       >
         <div
-          class="ui big icon labeled input grid__menu-search"
+          class="eight wide column"
+        >
+          <p
+            class="c__by-the-numbers-heading"
+          >
+            <strong>
+              0/5
+            </strong>
+             participants have completed all scenarios
+          </p>
+        </div>
+        <div
+          class="eight wide column"
         >
           <div
-            class="ui label label"
+            class="ui icon labeled input grid__menu-search"
           >
-            Search participants
+            <div
+              class="ui label label"
+            >
+              Search participants
+            </div>
+            <input
+              aria-label="Search participants"
+              type="text"
+            />
+            <i
+              aria-hidden="true"
+              class="search icon"
+            />
           </div>
-          <input
-            aria-label="Search participants"
-            type="text"
-          />
-          <i
-            aria-hidden="true"
-            class="search icon"
-          />
+        </div>
+      </div>
+      <div
+        class="row c__grid-element-unpadded"
+      >
+        <div
+          class="sixteen wide column"
+        >
+          <button
+            aria-label="Manage participant access"
+            class="ui tiny button"
+          >
+            Manage participant access
+          </button>
+          <button
+            aria-label="Cancel all participant join requests"
+            class="ui tiny button"
+          >
+            Cancel all participant join requests
+          </button>
         </div>
       </div>
     </div>
@@ -1581,7 +1629,7 @@ exports[`Open Manage participants 5`] = `
           </p>
         </div>
         <div
-          class="content"
+          class="content c__scenario-content"
         >
           <div
             class="description c__participant-completion"
@@ -1661,7 +1709,7 @@ exports[`Open Manage participants 5`] = `
           </p>
         </div>
         <div
-          class="content"
+          class="content c__scenario-content"
         >
           <div
             class="description c__participant-completion"
@@ -1741,7 +1789,7 @@ exports[`Open Manage participants 5`] = `
           </p>
         </div>
         <div
-          class="content"
+          class="content c__scenario-content"
         >
           <div
             class="description c__participant-completion"
@@ -1815,7 +1863,7 @@ exports[`Open Manage participants 5`] = `
           </p>
         </div>
         <div
-          class="content"
+          class="content c__scenario-content"
         >
           <div
             class="description c__participant-completion"
@@ -1889,7 +1937,7 @@ exports[`Open Manage participants 5`] = `
           </p>
         </div>
         <div
-          class="content"
+          class="content c__scenario-content"
         >
           <div
             class="description c__participant-completion"
@@ -1990,54 +2038,66 @@ exports[`Search participants 1`] = `
 exports[`Search participants 2`] = `
 <DocumentFragment>
   <div
-    class="ui fluid container c__scenario-container"
+    class="ui fluid container c__section-container"
   >
     <div
-      class="ui stackable two column grid c__scenario-participant-header"
+      class="ui stackable two column grid c__section-container-header"
     >
       <div
-        class="six wide column"
-      >
-        <p
-          class="c__scenario-header-num"
-        >
-          <span>
-            0/5
-          </span>
-           participants have completed all scenarios
-        </p>
-        <button
-          aria-label="Manage participant"
-          class="ui tiny button"
-        >
-          Manage participant
-        </button>
-        <button
-          aria-label="Cancel all participant join requests"
-          class="ui tiny button"
-        >
-          Cancel all participant join requests
-        </button>
-      </div>
-      <div
-        class="ten wide column c__scenario-search-participants"
+        class="row"
       >
         <div
-          class="ui big icon labeled input grid__menu-search"
+          class="eight wide column"
+        >
+          <p
+            class="c__by-the-numbers-heading"
+          >
+            <strong>
+              0/5
+            </strong>
+             participants have completed all scenarios
+          </p>
+        </div>
+        <div
+          class="eight wide column"
         >
           <div
-            class="ui label label"
+            class="ui icon labeled input grid__menu-search"
           >
-            Search participants
+            <div
+              class="ui label label"
+            >
+              Search participants
+            </div>
+            <input
+              aria-label="Search participants"
+              type="text"
+            />
+            <i
+              aria-hidden="true"
+              class="search icon"
+            />
           </div>
-          <input
-            aria-label="Search participants"
-            type="text"
-          />
-          <i
-            aria-hidden="true"
-            class="search icon"
-          />
+        </div>
+      </div>
+      <div
+        class="row c__grid-element-unpadded"
+      >
+        <div
+          class="sixteen wide column"
+        >
+          <button
+            aria-label="Manage participant access"
+            class="ui tiny button"
+          >
+            Manage participant access
+          </button>
+          <button
+            aria-label="Cancel all participant join requests"
+            class="ui tiny button"
+          >
+            Cancel all participant join requests
+          </button>
         </div>
       </div>
     </div>
@@ -2084,7 +2144,7 @@ exports[`Search participants 2`] = `
           </p>
         </div>
         <div
-          class="content"
+          class="content c__scenario-content"
         >
           <div
             class="description c__participant-completion"
@@ -2164,7 +2224,7 @@ exports[`Search participants 2`] = `
           </p>
         </div>
         <div
-          class="content"
+          class="content c__scenario-content"
         >
           <div
             class="description c__participant-completion"
@@ -2244,7 +2304,7 @@ exports[`Search participants 2`] = `
           </p>
         </div>
         <div
-          class="content"
+          class="content c__scenario-content"
         >
           <div
             class="description c__participant-completion"
@@ -2318,7 +2378,7 @@ exports[`Search participants 2`] = `
           </p>
         </div>
         <div
-          class="content"
+          class="content c__scenario-content"
         >
           <div
             class="description c__participant-completion"
@@ -2392,7 +2452,7 @@ exports[`Search participants 2`] = `
           </p>
         </div>
         <div
-          class="content"
+          class="content c__scenario-content"
         >
           <div
             class="description c__participant-completion"
@@ -2443,54 +2503,66 @@ exports[`Search participants 2`] = `
 exports[`Search participants 3`] = `
 <DocumentFragment>
   <div
-    class="ui fluid container c__scenario-container"
+    class="ui fluid container c__section-container"
   >
     <div
-      class="ui stackable two column grid c__scenario-participant-header"
+      class="ui stackable two column grid c__section-container-header"
     >
       <div
-        class="six wide column"
-      >
-        <p
-          class="c__scenario-header-num"
-        >
-          <span>
-            0/5
-          </span>
-           participants have completed all scenarios
-        </p>
-        <button
-          aria-label="Manage participant"
-          class="ui tiny button"
-        >
-          Manage participant
-        </button>
-        <button
-          aria-label="Cancel all participant join requests"
-          class="ui tiny button"
-        >
-          Cancel all participant join requests
-        </button>
-      </div>
-      <div
-        class="ten wide column c__scenario-search-participants"
+        class="row"
       >
         <div
-          class="ui big icon labeled input grid__menu-search"
+          class="eight wide column"
+        >
+          <p
+            class="c__by-the-numbers-heading"
+          >
+            <strong>
+              0/5
+            </strong>
+             participants have completed all scenarios
+          </p>
+        </div>
+        <div
+          class="eight wide column"
         >
           <div
-            class="ui label label"
+            class="ui icon labeled input grid__menu-search"
           >
-            Search participants
+            <div
+              class="ui label label"
+            >
+              Search participants
+            </div>
+            <input
+              aria-label="Search participants"
+              type="text"
+            />
+            <i
+              aria-hidden="true"
+              class="search icon"
+            />
           </div>
-          <input
-            aria-label="Search participants"
-            type="text"
-          />
-          <i
-            aria-hidden="true"
-            class="search icon"
-          />
+        </div>
+      </div>
+      <div
+        class="row c__grid-element-unpadded"
+      >
+        <div
+          class="sixteen wide column"
+        >
+          <button
+            aria-label="Manage participant access"
+            class="ui tiny button"
+          >
+            Manage participant access
+          </button>
+          <button
+            aria-label="Cancel all participant join requests"
+            class="ui tiny button"
+          >
+            Cancel all participant join requests
+          </button>
         </div>
       </div>
     </div>
@@ -2537,7 +2609,7 @@ exports[`Search participants 3`] = `
           </p>
         </div>
         <div
-          class="content"
+          class="content c__scenario-content"
         >
           <div
             class="description c__participant-completion"
@@ -2617,7 +2689,7 @@ exports[`Search participants 3`] = `
           </p>
         </div>
         <div
-          class="content"
+          class="content c__scenario-content"
         >
           <div
             class="description c__participant-completion"
@@ -2697,7 +2769,7 @@ exports[`Search participants 3`] = `
           </p>
         </div>
         <div
-          class="content"
+          class="content c__scenario-content"
         >
           <div
             class="description c__participant-completion"
@@ -2771,7 +2843,7 @@ exports[`Search participants 3`] = `
           </p>
         </div>
         <div
-          class="content"
+          class="content c__scenario-content"
         >
           <div
             class="description c__participant-completion"
@@ -2845,7 +2917,7 @@ exports[`Search participants 3`] = `
           </p>
         </div>
         <div
-          class="content"
+          class="content c__scenario-content"
         >
           <div
             class="description c__participant-completion"
@@ -2896,54 +2968,66 @@ exports[`Search participants 3`] = `
 exports[`Search participants 4`] = `
 <DocumentFragment>
   <div
-    class="ui fluid container c__scenario-container"
+    class="ui fluid container c__section-container"
   >
     <div
-      class="ui stackable two column grid c__scenario-participant-header"
+      class="ui stackable two column grid c__section-container-header"
     >
       <div
-        class="six wide column"
-      >
-        <p
-          class="c__scenario-header-num"
-        >
-          <span>
-            0/2
-          </span>
-           participants have completed all scenarios
-        </p>
-        <button
-          aria-label="Manage participant"
-          class="ui tiny button"
-        >
-          Manage participant
-        </button>
-        <button
-          aria-label="Cancel all participant join requests"
-          class="ui tiny button"
-        >
-          Cancel all participant join requests
-        </button>
-      </div>
-      <div
-        class="ten wide column c__scenario-search-participants"
+        class="row"
       >
         <div
-          class="ui big icon labeled input grid__menu-search"
+          class="eight wide column"
+        >
+          <p
+            class="c__by-the-numbers-heading"
+          >
+            <strong>
+              0/2
+            </strong>
+             participants have completed all scenarios
+          </p>
+        </div>
+        <div
+          class="eight wide column"
         >
           <div
-            class="ui label label"
+            class="ui icon labeled input grid__menu-search"
           >
-            Search participants
+            <div
+              class="ui label label"
+            >
+              Search participants
+            </div>
+            <input
+              aria-label="Search participants"
+              type="text"
+            />
+            <i
+              aria-hidden="true"
+              class="search icon"
+            />
           </div>
-          <input
-            aria-label="Search participants"
-            type="text"
-          />
-          <i
-            aria-hidden="true"
-            class="search icon"
-          />
+        </div>
+      </div>
+      <div
+        class="row c__grid-element-unpadded"
+      >
+        <div
+          class="sixteen wide column"
+        >
+          <button
+            aria-label="Manage participant access"
+            class="ui tiny button"
+          >
+            Manage participant access
+          </button>
+          <button
+            aria-label="Cancel all participant join requests"
+            class="ui tiny button"
+          >
+            Cancel all participant join requests
+          </button>
         </div>
       </div>
     </div>
@@ -2990,7 +3074,7 @@ exports[`Search participants 4`] = `
           </p>
         </div>
         <div
-          class="content"
+          class="content c__scenario-content"
         >
           <div
             class="description c__participant-completion"
@@ -3070,7 +3154,7 @@ exports[`Search participants 4`] = `
           </p>
         </div>
         <div
-          class="content"
+          class="content c__scenario-content"
         >
           <div
             class="description c__participant-completion"
@@ -3121,54 +3205,66 @@ exports[`Search participants 4`] = `
 exports[`Search participants 5`] = `
 <DocumentFragment>
   <div
-    class="ui fluid container c__scenario-container"
+    class="ui fluid container c__section-container"
   >
     <div
-      class="ui stackable two column grid c__scenario-participant-header"
+      class="ui stackable two column grid c__section-container-header"
     >
       <div
-        class="six wide column"
-      >
-        <p
-          class="c__scenario-header-num"
-        >
-          <span>
-            0/2
-          </span>
-           participants have completed all scenarios
-        </p>
-        <button
-          aria-label="Manage participant"
-          class="ui tiny button"
-        >
-          Manage participant
-        </button>
-        <button
-          aria-label="Cancel all participant join requests"
-          class="ui tiny button"
-        >
-          Cancel all participant join requests
-        </button>
-      </div>
-      <div
-        class="ten wide column c__scenario-search-participants"
+        class="row"
       >
         <div
-          class="ui big icon labeled input grid__menu-search"
+          class="eight wide column"
+        >
+          <p
+            class="c__by-the-numbers-heading"
+          >
+            <strong>
+              0/2
+            </strong>
+             participants have completed all scenarios
+          </p>
+        </div>
+        <div
+          class="eight wide column"
         >
           <div
-            class="ui label label"
+            class="ui icon labeled input grid__menu-search"
           >
-            Search participants
+            <div
+              class="ui label label"
+            >
+              Search participants
+            </div>
+            <input
+              aria-label="Search participants"
+              type="text"
+            />
+            <i
+              aria-hidden="true"
+              class="search icon"
+            />
           </div>
-          <input
-            aria-label="Search participants"
-            type="text"
-          />
-          <i
-            aria-hidden="true"
-            class="search icon"
-          />
+        </div>
+      </div>
+      <div
+        class="row c__grid-element-unpadded"
+      >
+        <div
+          class="sixteen wide column"
+        >
+          <button
+            aria-label="Manage participant access"
+            class="ui tiny button"
+          >
+            Manage participant access
+          </button>
+          <button
+            aria-label="Cancel all participant join requests"
+            class="ui tiny button"
+          >
+            Cancel all participant join requests
+          </button>
         </div>
       </div>
     </div>
@@ -3215,7 +3311,7 @@ exports[`Search participants 5`] = `
           </p>
         </div>
         <div
-          class="content"
+          class="content c__scenario-content"
         >
           <div
             class="description c__participant-completion"
@@ -3295,7 +3391,7 @@ exports[`Search participants 5`] = `
           </p>
         </div>
         <div
-          class="content"
+          class="content c__scenario-content"
         >
           <div
             class="description c__participant-completion"
@@ -3346,54 +3442,66 @@ exports[`Search participants 5`] = `
 exports[`Search participants 6`] = `
 <DocumentFragment>
   <div
-    class="ui fluid container c__scenario-container"
+    class="ui fluid container c__section-container"
   >
     <div
-      class="ui stackable two column grid c__scenario-participant-header"
+      class="ui stackable two column grid c__section-container-header"
     >
       <div
-        class="six wide column"
-      >
-        <p
-          class="c__scenario-header-num"
-        >
-          <span>
-            0/5
-          </span>
-           participants have completed all scenarios
-        </p>
-        <button
-          aria-label="Manage participant"
-          class="ui tiny button"
-        >
-          Manage participant
-        </button>
-        <button
-          aria-label="Cancel all participant join requests"
-          class="ui tiny button"
-        >
-          Cancel all participant join requests
-        </button>
-      </div>
-      <div
-        class="ten wide column c__scenario-search-participants"
+        class="row"
       >
         <div
-          class="ui big icon labeled input grid__menu-search"
+          class="eight wide column"
+        >
+          <p
+            class="c__by-the-numbers-heading"
+          >
+            <strong>
+              0/5
+            </strong>
+             participants have completed all scenarios
+          </p>
+        </div>
+        <div
+          class="eight wide column"
         >
           <div
-            class="ui label label"
+            class="ui icon labeled input grid__menu-search"
           >
-            Search participants
+            <div
+              class="ui label label"
+            >
+              Search participants
+            </div>
+            <input
+              aria-label="Search participants"
+              type="text"
+            />
+            <i
+              aria-hidden="true"
+              class="search icon"
+            />
           </div>
-          <input
-            aria-label="Search participants"
-            type="text"
-          />
-          <i
-            aria-hidden="true"
-            class="search icon"
-          />
+        </div>
+      </div>
+      <div
+        class="row c__grid-element-unpadded"
+      >
+        <div
+          class="sixteen wide column"
+        >
+          <button
+            aria-label="Manage participant access"
+            class="ui tiny button"
+          >
+            Manage participant access
+          </button>
+          <button
+            aria-label="Cancel all participant join requests"
+            class="ui tiny button"
+          >
+            Cancel all participant join requests
+          </button>
         </div>
       </div>
     </div>
@@ -3440,7 +3548,7 @@ exports[`Search participants 6`] = `
           </p>
         </div>
         <div
-          class="content"
+          class="content c__scenario-content"
         >
           <div
             class="description c__participant-completion"
@@ -3520,7 +3628,7 @@ exports[`Search participants 6`] = `
           </p>
         </div>
         <div
-          class="content"
+          class="content c__scenario-content"
         >
           <div
             class="description c__participant-completion"
@@ -3600,7 +3708,7 @@ exports[`Search participants 6`] = `
           </p>
         </div>
         <div
-          class="content"
+          class="content c__scenario-content"
         >
           <div
             class="description c__participant-completion"
@@ -3674,7 +3782,7 @@ exports[`Search participants 6`] = `
           </p>
         </div>
         <div
-          class="content"
+          class="content c__scenario-content"
         >
           <div
             class="description c__participant-completion"
@@ -3748,7 +3856,7 @@ exports[`Search participants 6`] = `
           </p>
         </div>
         <div
-          class="content"
+          class="content c__scenario-content"
         >
           <div
             class="description c__participant-completion"
@@ -3799,54 +3907,66 @@ exports[`Search participants 6`] = `
 exports[`Search participants 7`] = `
 <DocumentFragment>
   <div
-    class="ui fluid container c__scenario-container"
+    class="ui fluid container c__section-container"
   >
     <div
-      class="ui stackable two column grid c__scenario-participant-header"
+      class="ui stackable two column grid c__section-container-header"
     >
       <div
-        class="six wide column"
-      >
-        <p
-          class="c__scenario-header-num"
-        >
-          <span>
-            0/1
-          </span>
-           participant have completed all scenarios
-        </p>
-        <button
-          aria-label="Manage participant"
-          class="ui tiny button"
-        >
-          Manage participant
-        </button>
-        <button
-          aria-label="Cancel all participant join requests"
-          class="ui tiny button"
-        >
-          Cancel all participant join requests
-        </button>
-      </div>
-      <div
-        class="ten wide column c__scenario-search-participants"
+        class="row"
       >
         <div
-          class="ui big icon labeled input grid__menu-search"
+          class="eight wide column"
+        >
+          <p
+            class="c__by-the-numbers-heading"
+          >
+            <strong>
+              0/1
+            </strong>
+             participant have completed all scenarios
+          </p>
+        </div>
+        <div
+          class="eight wide column"
         >
           <div
-            class="ui label label"
+            class="ui icon labeled input grid__menu-search"
           >
-            Search participants
+            <div
+              class="ui label label"
+            >
+              Search participants
+            </div>
+            <input
+              aria-label="Search participants"
+              type="text"
+            />
+            <i
+              aria-hidden="true"
+              class="search icon"
+            />
           </div>
-          <input
-            aria-label="Search participants"
-            type="text"
-          />
-          <i
-            aria-hidden="true"
-            class="search icon"
-          />
+        </div>
+      </div>
+      <div
+        class="row c__grid-element-unpadded"
+      >
+        <div
+          class="sixteen wide column"
+        >
+          <button
+            aria-label="Manage participant access"
+            class="ui tiny button"
+          >
+            Manage participant access
+          </button>
+          <button
+            aria-label="Cancel all participant join requests"
+            class="ui tiny button"
+          >
+            Cancel all participant join requests
+          </button>
         </div>
       </div>
     </div>
@@ -3893,7 +4013,7 @@ exports[`Search participants 7`] = `
           </p>
         </div>
         <div
-          class="content"
+          class="content c__scenario-content"
         >
           <div
             class="description c__participant-completion"
@@ -3944,54 +4064,66 @@ exports[`Search participants 7`] = `
 exports[`Search participants 8`] = `
 <DocumentFragment>
   <div
-    class="ui fluid container c__scenario-container"
+    class="ui fluid container c__section-container"
   >
     <div
-      class="ui stackable two column grid c__scenario-participant-header"
+      class="ui stackable two column grid c__section-container-header"
     >
       <div
-        class="six wide column"
-      >
-        <p
-          class="c__scenario-header-num"
-        >
-          <span>
-            0/1
-          </span>
-           participant have completed all scenarios
-        </p>
-        <button
-          aria-label="Manage participant"
-          class="ui tiny button"
-        >
-          Manage participant
-        </button>
-        <button
-          aria-label="Cancel all participant join requests"
-          class="ui tiny button"
-        >
-          Cancel all participant join requests
-        </button>
-      </div>
-      <div
-        class="ten wide column c__scenario-search-participants"
+        class="row"
       >
         <div
-          class="ui big icon labeled input grid__menu-search"
+          class="eight wide column"
+        >
+          <p
+            class="c__by-the-numbers-heading"
+          >
+            <strong>
+              0/1
+            </strong>
+             participant have completed all scenarios
+          </p>
+        </div>
+        <div
+          class="eight wide column"
         >
           <div
-            class="ui label label"
+            class="ui icon labeled input grid__menu-search"
           >
-            Search participants
+            <div
+              class="ui label label"
+            >
+              Search participants
+            </div>
+            <input
+              aria-label="Search participants"
+              type="text"
+            />
+            <i
+              aria-hidden="true"
+              class="search icon"
+            />
           </div>
-          <input
-            aria-label="Search participants"
-            type="text"
-          />
-          <i
-            aria-hidden="true"
-            class="search icon"
-          />
+        </div>
+      </div>
+      <div
+        class="row c__grid-element-unpadded"
+      >
+        <div
+          class="sixteen wide column"
+        >
+          <button
+            aria-label="Manage participant access"
+            class="ui tiny button"
+          >
+            Manage participant access
+          </button>
+          <button
+            aria-label="Cancel all participant join requests"
+            class="ui tiny button"
+          >
+            Cancel all participant join requests
+          </button>
         </div>
       </div>
     </div>
@@ -4038,7 +4170,7 @@ exports[`Search participants 8`] = `
           </p>
         </div>
         <div
-          class="content"
+          class="content c__scenario-content"
         >
           <div
             class="description c__participant-completion"
@@ -4089,54 +4221,66 @@ exports[`Search participants 8`] = `
 exports[`Search participants 9`] = `
 <DocumentFragment>
   <div
-    class="ui fluid container c__scenario-container"
+    class="ui fluid container c__section-container"
   >
     <div
-      class="ui stackable two column grid c__scenario-participant-header"
+      class="ui stackable two column grid c__section-container-header"
     >
       <div
-        class="six wide column"
-      >
-        <p
-          class="c__scenario-header-num"
-        >
-          <span>
-            0/1
-          </span>
-           participant have completed all scenarios
-        </p>
-        <button
-          aria-label="Manage participant"
-          class="ui tiny button"
-        >
-          Manage participant
-        </button>
-        <button
-          aria-label="Cancel all participant join requests"
-          class="ui tiny button"
-        >
-          Cancel all participant join requests
-        </button>
-      </div>
-      <div
-        class="ten wide column c__scenario-search-participants"
+        class="row"
       >
         <div
-          class="ui big icon labeled input grid__menu-search"
+          class="eight wide column"
+        >
+          <p
+            class="c__by-the-numbers-heading"
+          >
+            <strong>
+              0/1
+            </strong>
+             participant have completed all scenarios
+          </p>
+        </div>
+        <div
+          class="eight wide column"
         >
           <div
-            class="ui label label"
+            class="ui icon labeled input grid__menu-search"
           >
-            Search participants
+            <div
+              class="ui label label"
+            >
+              Search participants
+            </div>
+            <input
+              aria-label="Search participants"
+              type="text"
+            />
+            <i
+              aria-hidden="true"
+              class="search icon"
+            />
           </div>
-          <input
-            aria-label="Search participants"
-            type="text"
-          />
-          <i
-            aria-hidden="true"
-            class="search icon"
-          />
+        </div>
+      </div>
+      <div
+        class="row c__grid-element-unpadded"
+      >
+        <div
+          class="sixteen wide column"
+        >
+          <button
+            aria-label="Manage participant access"
+            class="ui tiny button"
+          >
+            Manage participant access
+          </button>
+          <button
+            aria-label="Cancel all participant join requests"
+            class="ui tiny button"
+          >
+            Cancel all participant join requests
+          </button>
         </div>
       </div>
     </div>
@@ -4183,7 +4327,7 @@ exports[`Search participants 9`] = `
           </p>
         </div>
         <div
-          class="content"
+          class="content c__scenario-content"
         >
           <div
             class="description c__participant-completion"
@@ -4234,54 +4378,66 @@ exports[`Search participants 9`] = `
 exports[`Search participants 10`] = `
 <DocumentFragment>
   <div
-    class="ui fluid container c__scenario-container"
+    class="ui fluid container c__section-container"
   >
     <div
-      class="ui stackable two column grid c__scenario-participant-header"
+      class="ui stackable two column grid c__section-container-header"
     >
       <div
-        class="six wide column"
-      >
-        <p
-          class="c__scenario-header-num"
-        >
-          <span>
-            0/1
-          </span>
-           participant have completed all scenarios
-        </p>
-        <button
-          aria-label="Manage participant"
-          class="ui tiny button"
-        >
-          Manage participant
-        </button>
-        <button
-          aria-label="Cancel all participant join requests"
-          class="ui tiny button"
-        >
-          Cancel all participant join requests
-        </button>
-      </div>
-      <div
-        class="ten wide column c__scenario-search-participants"
+        class="row"
       >
         <div
-          class="ui big icon labeled input grid__menu-search"
+          class="eight wide column"
+        >
+          <p
+            class="c__by-the-numbers-heading"
+          >
+            <strong>
+              0/1
+            </strong>
+             participant have completed all scenarios
+          </p>
+        </div>
+        <div
+          class="eight wide column"
         >
           <div
-            class="ui label label"
+            class="ui icon labeled input grid__menu-search"
           >
-            Search participants
+            <div
+              class="ui label label"
+            >
+              Search participants
+            </div>
+            <input
+              aria-label="Search participants"
+              type="text"
+            />
+            <i
+              aria-hidden="true"
+              class="search icon"
+            />
           </div>
-          <input
-            aria-label="Search participants"
-            type="text"
-          />
-          <i
-            aria-hidden="true"
-            class="search icon"
-          />
+        </div>
+      </div>
+      <div
+        class="row c__grid-element-unpadded"
+      >
+        <div
+          class="sixteen wide column"
+        >
+          <button
+            aria-label="Manage participant access"
+            class="ui tiny button"
+          >
+            Manage participant access
+          </button>
+          <button
+            aria-label="Cancel all participant join requests"
+            class="ui tiny button"
+          >
+            Cancel all participant join requests
+          </button>
         </div>
       </div>
     </div>
@@ -4328,7 +4484,7 @@ exports[`Search participants 10`] = `
           </p>
         </div>
         <div
-          class="content"
+          class="content c__scenario-content"
         >
           <div
             class="description c__participant-completion"
@@ -4379,54 +4535,66 @@ exports[`Search participants 10`] = `
 exports[`Search participants 11`] = `
 <DocumentFragment>
   <div
-    class="ui fluid container c__scenario-container"
+    class="ui fluid container c__section-container"
   >
     <div
-      class="ui stackable two column grid c__scenario-participant-header"
+      class="ui stackable two column grid c__section-container-header"
     >
       <div
-        class="six wide column"
-      >
-        <p
-          class="c__scenario-header-num"
-        >
-          <span>
-            0/5
-          </span>
-           participants have completed all scenarios
-        </p>
-        <button
-          aria-label="Manage participant"
-          class="ui tiny button"
-        >
-          Manage participant
-        </button>
-        <button
-          aria-label="Cancel all participant join requests"
-          class="ui tiny button"
-        >
-          Cancel all participant join requests
-        </button>
-      </div>
-      <div
-        class="ten wide column c__scenario-search-participants"
+        class="row"
       >
         <div
-          class="ui big icon labeled input grid__menu-search"
+          class="eight wide column"
+        >
+          <p
+            class="c__by-the-numbers-heading"
+          >
+            <strong>
+              0/5
+            </strong>
+             participants have completed all scenarios
+          </p>
+        </div>
+        <div
+          class="eight wide column"
         >
           <div
-            class="ui label label"
+            class="ui icon labeled input grid__menu-search"
           >
-            Search participants
+            <div
+              class="ui label label"
+            >
+              Search participants
+            </div>
+            <input
+              aria-label="Search participants"
+              type="text"
+            />
+            <i
+              aria-hidden="true"
+              class="search icon"
+            />
           </div>
-          <input
-            aria-label="Search participants"
-            type="text"
-          />
-          <i
-            aria-hidden="true"
-            class="search icon"
-          />
+        </div>
+      </div>
+      <div
+        class="row c__grid-element-unpadded"
+      >
+        <div
+          class="sixteen wide column"
+        >
+          <button
+            aria-label="Manage participant access"
+            class="ui tiny button"
+          >
+            Manage participant access
+          </button>
+          <button
+            aria-label="Cancel all participant join requests"
+            class="ui tiny button"
+          >
+            Cancel all participant join requests
+          </button>
         </div>
       </div>
     </div>
@@ -4473,7 +4641,7 @@ exports[`Search participants 11`] = `
           </p>
         </div>
         <div
-          class="content"
+          class="content c__scenario-content"
         >
           <div
             class="description c__participant-completion"
@@ -4553,7 +4721,7 @@ exports[`Search participants 11`] = `
           </p>
         </div>
         <div
-          class="content"
+          class="content c__scenario-content"
         >
           <div
             class="description c__participant-completion"
@@ -4633,7 +4801,7 @@ exports[`Search participants 11`] = `
           </p>
         </div>
         <div
-          class="content"
+          class="content c__scenario-content"
         >
           <div
             class="description c__participant-completion"
@@ -4707,7 +4875,7 @@ exports[`Search participants 11`] = `
           </p>
         </div>
         <div
-          class="content"
+          class="content c__scenario-content"
         >
           <div
             class="description c__participant-completion"
@@ -4781,7 +4949,7 @@ exports[`Search participants 11`] = `
           </p>
         </div>
         <div
-          class="content"
+          class="content c__scenario-content"
         >
           <div
             class="description c__participant-completion"
@@ -4832,54 +5000,66 @@ exports[`Search participants 11`] = `
 exports[`Search participants 12`] = `
 <DocumentFragment>
   <div
-    class="ui fluid container c__scenario-container"
+    class="ui fluid container c__section-container"
   >
     <div
-      class="ui stackable two column grid c__scenario-participant-header"
+      class="ui stackable two column grid c__section-container-header"
     >
       <div
-        class="six wide column"
-      >
-        <p
-          class="c__scenario-header-num"
-        >
-          <span>
-            0/5
-          </span>
-           participants have completed all scenarios
-        </p>
-        <button
-          aria-label="Manage participant"
-          class="ui tiny button"
-        >
-          Manage participant
-        </button>
-        <button
-          aria-label="Cancel all participant join requests"
-          class="ui tiny button"
-        >
-          Cancel all participant join requests
-        </button>
-      </div>
-      <div
-        class="ten wide column c__scenario-search-participants"
+        class="row"
       >
         <div
-          class="ui big icon labeled input grid__menu-search"
+          class="eight wide column"
+        >
+          <p
+            class="c__by-the-numbers-heading"
+          >
+            <strong>
+              0/5
+            </strong>
+             participants have completed all scenarios
+          </p>
+        </div>
+        <div
+          class="eight wide column"
         >
           <div
-            class="ui label label"
+            class="ui icon labeled input grid__menu-search"
           >
-            Search participants
+            <div
+              class="ui label label"
+            >
+              Search participants
+            </div>
+            <input
+              aria-label="Search participants"
+              type="text"
+            />
+            <i
+              aria-hidden="true"
+              class="search icon"
+            />
           </div>
-          <input
-            aria-label="Search participants"
-            type="text"
-          />
-          <i
-            aria-hidden="true"
-            class="search icon"
-          />
+        </div>
+      </div>
+      <div
+        class="row c__grid-element-unpadded"
+      >
+        <div
+          class="sixteen wide column"
+        >
+          <button
+            aria-label="Manage participant access"
+            class="ui tiny button"
+          >
+            Manage participant access
+          </button>
+          <button
+            aria-label="Cancel all participant join requests"
+            class="ui tiny button"
+          >
+            Cancel all participant join requests
+          </button>
         </div>
       </div>
     </div>
@@ -4926,7 +5106,7 @@ exports[`Search participants 12`] = `
           </p>
         </div>
         <div
-          class="content"
+          class="content c__scenario-content"
         >
           <div
             class="description c__participant-completion"
@@ -5006,7 +5186,7 @@ exports[`Search participants 12`] = `
           </p>
         </div>
         <div
-          class="content"
+          class="content c__scenario-content"
         >
           <div
             class="description c__participant-completion"
@@ -5086,7 +5266,7 @@ exports[`Search participants 12`] = `
           </p>
         </div>
         <div
-          class="content"
+          class="content c__scenario-content"
         >
           <div
             class="description c__participant-completion"
@@ -5160,7 +5340,7 @@ exports[`Search participants 12`] = `
           </p>
         </div>
         <div
-          class="content"
+          class="content c__scenario-content"
         >
           <div
             class="description c__participant-completion"
@@ -5234,7 +5414,7 @@ exports[`Search participants 12`] = `
           </p>
         </div>
         <div
-          class="content"
+          class="content c__scenario-content"
         >
           <div
             class="description c__participant-completion"
@@ -5285,54 +5465,66 @@ exports[`Search participants 12`] = `
 exports[`Search participants 13`] = `
 <DocumentFragment>
   <div
-    class="ui fluid container c__scenario-container"
+    class="ui fluid container c__section-container"
   >
     <div
-      class="ui stackable two column grid c__scenario-participant-header"
+      class="ui stackable two column grid c__section-container-header"
     >
       <div
-        class="six wide column"
-      >
-        <p
-          class="c__scenario-header-num"
-        >
-          <span>
-            0/5
-          </span>
-           participants have completed all scenarios
-        </p>
-        <button
-          aria-label="Manage participant"
-          class="ui tiny button"
-        >
-          Manage participant
-        </button>
-        <button
-          aria-label="Cancel all participant join requests"
-          class="ui tiny button"
-        >
-          Cancel all participant join requests
-        </button>
-      </div>
-      <div
-        class="ten wide column c__scenario-search-participants"
+        class="row"
       >
         <div
-          class="ui big icon labeled input grid__menu-search"
+          class="eight wide column"
+        >
+          <p
+            class="c__by-the-numbers-heading"
+          >
+            <strong>
+              0/5
+            </strong>
+             participants have completed all scenarios
+          </p>
+        </div>
+        <div
+          class="eight wide column"
         >
           <div
-            class="ui label label"
+            class="ui icon labeled input grid__menu-search"
           >
-            Search participants
+            <div
+              class="ui label label"
+            >
+              Search participants
+            </div>
+            <input
+              aria-label="Search participants"
+              type="text"
+            />
+            <i
+              aria-hidden="true"
+              class="search icon"
+            />
           </div>
-          <input
-            aria-label="Search participants"
-            type="text"
-          />
-          <i
-            aria-hidden="true"
-            class="search icon"
-          />
+        </div>
+      </div>
+      <div
+        class="row c__grid-element-unpadded"
+      >
+        <div
+          class="sixteen wide column"
+        >
+          <button
+            aria-label="Manage participant access"
+            class="ui tiny button"
+          >
+            Manage participant access
+          </button>
+          <button
+            aria-label="Cancel all participant join requests"
+            class="ui tiny button"
+          >
+            Cancel all participant join requests
+          </button>
         </div>
       </div>
     </div>
@@ -5379,7 +5571,7 @@ exports[`Search participants 13`] = `
           </p>
         </div>
         <div
-          class="content"
+          class="content c__scenario-content"
         >
           <div
             class="description c__participant-completion"
@@ -5459,7 +5651,7 @@ exports[`Search participants 13`] = `
           </p>
         </div>
         <div
-          class="content"
+          class="content c__scenario-content"
         >
           <div
             class="description c__participant-completion"
@@ -5539,7 +5731,7 @@ exports[`Search participants 13`] = `
           </p>
         </div>
         <div
-          class="content"
+          class="content c__scenario-content"
         >
           <div
             class="description c__participant-completion"
@@ -5613,7 +5805,7 @@ exports[`Search participants 13`] = `
           </p>
         </div>
         <div
-          class="content"
+          class="content c__scenario-content"
         >
           <div
             class="description c__participant-completion"
@@ -5687,7 +5879,7 @@ exports[`Search participants 13`] = `
           </p>
         </div>
         <div
-          class="content"
+          class="content c__scenario-content"
         >
           <div
             class="description c__participant-completion"

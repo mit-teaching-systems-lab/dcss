@@ -1249,7 +1249,7 @@ test('No scenarios returned from request', async done => {
   expect(asFragment()).toMatchSnapshot();
 
   const button = await screen.findByRole('button', {
-    name: /edit selected scenarios/i
+    name: /add or remove scenarios/i
   });
   expect(asFragment()).toMatchSnapshot();
   done();
@@ -1296,7 +1296,7 @@ test('No scenarios in cohort', async done => {
   expect(asFragment()).toMatchSnapshot();
 
   const button = await screen.findByRole('button', {
-    name: /edit selected scenarios/i
+    name: /add or remove scenarios/i
   });
   expect(asFragment()).toMatchSnapshot();
   done();
@@ -1331,7 +1331,7 @@ test('Facilitator has an option to open scenarios selector', async done => {
   expect(asFragment()).toMatchSnapshot();
 
   const button = await screen.findByRole('button', {
-    name: /edit selected scenarios/i
+    name: /add or remove scenarios/i
   });
   expect(asFragment()).toMatchSnapshot();
 
@@ -1370,7 +1370,7 @@ test('Scenarios have multi-participant/single-participant icons', async done => 
   expect(asFragment()).toMatchSnapshot();
 
   const button = await screen.findByRole('button', {
-    name: /edit selected scenarios/i
+    name: /add or remove scenarios/i
   });
   expect(asFragment()).toMatchSnapshot();
 
@@ -1409,7 +1409,7 @@ test('Participant does not have an option to open scenarios selector', async don
   expect(asFragment()).toMatchSnapshot();
 
   const buttons = await screen.queryAllByRole('button', {
-    name: /Edit selected scenarios/i
+    name: /Add or remove scenarios/i
   });
 
   expect(buttons.length).toBe(0);
@@ -1662,7 +1662,7 @@ test('Open Edit scenarios', async done => {
   await screen.findByTestId('cohort-scenarios');
   expect(asFragment()).toMatchSnapshot();
 
-  const editScenariosButton = screen.getByText(/Edit selected scenarios/i);
+  const editScenariosButton = screen.getByText(/Add or remove scenarios/i);
 
   userEvent.click(editScenariosButton);
   await screen.findByTestId('cohort-scenarios-selector');

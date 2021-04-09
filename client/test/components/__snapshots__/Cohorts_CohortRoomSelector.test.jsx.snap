@@ -64,7 +64,7 @@ exports[`Adds CHAT_CREATED, CHAT_ENDED, HOST_JOIN, JOIN_OR_PART, RUN_CHAT_LINK h
             class=\\"row\\"
           >
             <div
-              class=\\"column c__grid-single-col-padding\\"
+              class=\\"column c__grid-element-unpadded\\"
             >
               <p>
                 This scenario requires multiple particpants in order to complete. Runs of the scenario are completed in
@@ -195,7 +195,7 @@ exports[`Adds CHAT_CREATED, CHAT_ENDED, HOST_JOIN, JOIN_OR_PART, RUN_CHAT_LINK h
             class=\\"row\\"
           >
             <div
-              class=\\"column c__grid-single-col-padding\\"
+              class=\\"column c__grid-element-unpadded\\"
             >
               <p>
                 This scenario requires multiple particpants in order to complete. Runs of the scenario are completed in
@@ -326,7 +326,7 @@ exports[`Close default 1`] = `
             class=\\"row\\"
           >
             <div
-              class=\\"column c__grid-single-col-padding\\"
+              class=\\"column c__grid-element-unpadded\\"
             >
               <p>
                 This scenario requires multiple particpants in order to complete. Runs of the scenario are completed in
@@ -457,7 +457,7 @@ exports[`Close default 2`] = `
             class=\\"row\\"
           >
             <div
-              class=\\"column c__grid-single-col-padding\\"
+              class=\\"column c__grid-element-unpadded\\"
             >
               <p>
                 This scenario requires multiple particpants in order to complete. Runs of the scenario are completed in
@@ -588,7 +588,7 @@ exports[`Close default 3`] = `
             class=\\"row\\"
           >
             <div
-              class=\\"column c__grid-single-col-padding\\"
+              class=\\"column c__grid-element-unpadded\\"
             >
               <p>
                 This scenario requires multiple particpants in order to complete. Runs of the scenario are completed in
@@ -719,7 +719,7 @@ exports[`Close provided 1`] = `
             class=\\"row\\"
           >
             <div
-              class=\\"column c__grid-single-col-padding\\"
+              class=\\"column c__grid-element-unpadded\\"
             >
               <p>
                 This scenario requires multiple particpants in order to complete. Runs of the scenario are completed in
@@ -850,7 +850,7 @@ exports[`Close provided 2`] = `
             class=\\"row\\"
           >
             <div
-              class=\\"column c__grid-single-col-padding\\"
+              class=\\"column c__grid-element-unpadded\\"
             >
               <p>
                 This scenario requires multiple particpants in order to complete. Runs of the scenario are completed in
@@ -981,7 +981,7 @@ exports[`Close provided 3`] = `
             class=\\"row\\"
           >
             <div
-              class=\\"column c__grid-single-col-padding\\"
+              class=\\"column c__grid-element-unpadded\\"
             >
               <p>
                 This scenario requires multiple particpants in order to complete. Runs of the scenario are completed in
@@ -1123,7 +1123,7 @@ exports[`Cohort does not match 2`] = `
             class=\\"row\\"
           >
             <div
-              class=\\"column c__grid-single-col-padding\\"
+              class=\\"column c__grid-element-unpadded\\"
             >
               <p>
                 This scenario requires multiple particpants in order to complete. Runs of the scenario are completed in
@@ -1254,7 +1254,7 @@ exports[`Create a room for this scenario, cancel 1`] = `
             class=\\"row\\"
           >
             <div
-              class=\\"column c__grid-single-col-padding\\"
+              class=\\"column c__grid-element-unpadded\\"
             >
               <p>
                 This scenario requires multiple particpants in order to complete. Runs of the scenario are completed in
@@ -1385,7 +1385,7 @@ exports[`Create a room for this scenario, cancel 2`] = `
             class=\\"row\\"
           >
             <div
-              class=\\"column c__grid-single-col-padding\\"
+              class=\\"column c__grid-element-unpadded\\"
             >
               <p>
                 This scenario requires multiple particpants in order to complete. Runs of the scenario are completed in
@@ -1498,7 +1498,7 @@ exports[`Create a room for this scenario, cancel 3`] = `
             class=\\"row\\"
           >
             <div
-              class=\\"column c__grid-single-col-padding\\"
+              class=\\"column c__grid-element-unpadded\\"
             >
               <p
                 tabindex=\\"0\\"
@@ -1653,7 +1653,7 @@ exports[`Create a room for this scenario, cancel 4`] = `
             class=\\"row\\"
           >
             <div
-              class=\\"column c__grid-single-col-padding\\"
+              class=\\"column c__grid-element-unpadded\\"
             >
               <p>
                 This scenario requires multiple particpants in order to complete. Runs of the scenario are completed in
@@ -1784,7 +1784,7 @@ exports[`Create a room for this scenario, open to cohort, close 1`] = `
             class=\\"row\\"
           >
             <div
-              class=\\"column c__grid-single-col-padding\\"
+              class=\\"column c__grid-element-unpadded\\"
             >
               <p>
                 This scenario requires multiple particpants in order to complete. Runs of the scenario are completed in
@@ -1915,7 +1915,7 @@ exports[`Create a room for this scenario, open to cohort, close 2`] = `
             class=\\"row\\"
           >
             <div
-              class=\\"column c__grid-single-col-padding\\"
+              class=\\"column c__grid-element-unpadded\\"
             >
               <p>
                 This scenario requires multiple particpants in order to complete. Runs of the scenario are completed in
@@ -2028,7 +2028,7 @@ exports[`Create a room for this scenario, open to cohort, close 3`] = `
             class=\\"row\\"
           >
             <div
-              class=\\"column c__grid-single-col-padding\\"
+              class=\\"column c__grid-element-unpadded\\"
             >
               <p
                 tabindex=\\"0\\"
@@ -2165,7 +2165,7 @@ exports[`Create a room for this scenario, open to cohort, close 4`] = `
             class=\\"row\\"
           >
             <div
-              class=\\"column c__grid-single-col-padding\\"
+              class=\\"column c__grid-element-unpadded\\"
             >
               <p>
                 This scenario requires multiple particpants in order to complete. Runs of the scenario are completed in
@@ -2352,7 +2352,7 @@ exports[`Create a room for this scenario, open to cohort, close 5`] = `
             class=\\"row\\"
           >
             <div
-              class=\\"column c__grid-single-col-padding\\"
+              class=\\"column c__grid-element-unpadded\\"
             >
               <p>
                 This scenario requires multiple particpants in order to complete. Runs of the scenario are completed in
@@ -2557,7 +2557,7 @@ exports[`Create a room for this scenario, open to cohort, close 6`] = `
             class=\\"row\\"
           >
             <div
-              class=\\"column c__grid-single-col-padding\\"
+              class=\\"column c__grid-element-unpadded\\"
             >
               <p>
                 This scenario requires multiple particpants in order to complete. Runs of the scenario are completed in
@@ -2688,7 +2688,7 @@ exports[`Create a room for this scenario, open to cohort, close 7`] = `
             class=\\"row\\"
           >
             <div
-              class=\\"column c__grid-single-col-padding\\"
+              class=\\"column c__grid-element-unpadded\\"
             >
               <p>
                 This scenario requires multiple particpants in order to complete. Runs of the scenario are completed in
@@ -2801,7 +2801,7 @@ exports[`Create a room for this scenario, open to cohort, close 8`] = `
             class=\\"row\\"
           >
             <div
-              class=\\"column c__grid-single-col-padding\\"
+              class=\\"column c__grid-element-unpadded\\"
             >
               <p
                 tabindex=\\"0\\"
@@ -2956,7 +2956,7 @@ exports[`Create a room for this scenario, open to cohort, close 9`] = `
             class=\\"row\\"
           >
             <div
-              class=\\"column c__grid-single-col-padding\\"
+              class=\\"column c__grid-element-unpadded\\"
             >
               <p>
                 This scenario requires multiple particpants in order to complete. Runs of the scenario are completed in
@@ -3087,7 +3087,7 @@ exports[`Create a room for this scenario, open to cohort, proceed 1`] = `
             class=\\"row\\"
           >
             <div
-              class=\\"column c__grid-single-col-padding\\"
+              class=\\"column c__grid-element-unpadded\\"
             >
               <p>
                 This scenario requires multiple particpants in order to complete. Runs of the scenario are completed in
@@ -3218,7 +3218,7 @@ exports[`Create a room for this scenario, open to cohort, proceed 2`] = `
             class=\\"row\\"
           >
             <div
-              class=\\"column c__grid-single-col-padding\\"
+              class=\\"column c__grid-element-unpadded\\"
             >
               <p>
                 This scenario requires multiple particpants in order to complete. Runs of the scenario are completed in
@@ -3331,7 +3331,7 @@ exports[`Create a room for this scenario, open to cohort, proceed 3`] = `
             class=\\"row\\"
           >
             <div
-              class=\\"column c__grid-single-col-padding\\"
+              class=\\"column c__grid-element-unpadded\\"
             >
               <p
                 tabindex=\\"0\\"
@@ -3486,7 +3486,7 @@ exports[`Create a room for this scenario, open to cohort, proceed 4`] = `
             class=\\"row\\"
           >
             <div
-              class=\\"column c__grid-single-col-padding\\"
+              class=\\"column c__grid-element-unpadded\\"
             >
               <p>
                 This scenario requires multiple particpants in order to complete. Runs of the scenario are completed in
@@ -3617,7 +3617,7 @@ exports[`Create a room for this scenario, user will invite, proceed 1`] = `
             class=\\"row\\"
           >
             <div
-              class=\\"column c__grid-single-col-padding\\"
+              class=\\"column c__grid-element-unpadded\\"
             >
               <p>
                 This scenario requires multiple particpants in order to complete. Runs of the scenario are completed in
@@ -3748,7 +3748,7 @@ exports[`Create a room for this scenario, user will invite, proceed 2`] = `
             class=\\"row\\"
           >
             <div
-              class=\\"column c__grid-single-col-padding\\"
+              class=\\"column c__grid-element-unpadded\\"
             >
               <p>
                 This scenario requires multiple particpants in order to complete. Runs of the scenario are completed in
@@ -3861,7 +3861,7 @@ exports[`Create a room for this scenario, user will invite, proceed 3`] = `
             class=\\"row\\"
           >
             <div
-              class=\\"column c__grid-single-col-padding\\"
+              class=\\"column c__grid-element-unpadded\\"
             >
               <p
                 tabindex=\\"0\\"
@@ -4987,7 +4987,7 @@ exports[`Emits CREATE_COHORT_CHANNEL on socket 1`] = `
             class=\\"row\\"
           >
             <div
-              class=\\"column c__grid-single-col-padding\\"
+              class=\\"column c__grid-element-unpadded\\"
             >
               <p>
                 This scenario requires multiple particpants in order to complete. Runs of the scenario are completed in
@@ -5119,7 +5119,7 @@ exports[`Emits CREATE_COHORT_CHANNEL on socket 2`] = `
             class=\\"row\\"
           >
             <div
-              class=\\"column c__grid-single-col-padding\\"
+              class=\\"column c__grid-element-unpadded\\"
             >
               <p>
                 This scenario requires multiple particpants in order to complete. Runs of the scenario are completed in
@@ -5250,7 +5250,7 @@ exports[`Has chats in state 1`] = `
             class=\\"row\\"
           >
             <div
-              class=\\"column c__grid-single-col-padding\\"
+              class=\\"column c__grid-element-unpadded\\"
             >
               <p>
                 This scenario requires multiple particpants in order to complete. Runs of the scenario are completed in
@@ -5381,7 +5381,7 @@ exports[`Has chats in state 2`] = `
             class=\\"row\\"
           >
             <div
-              class=\\"column c__grid-single-col-padding\\"
+              class=\\"column c__grid-element-unpadded\\"
             >
               <p>
                 This scenario requires multiple particpants in order to complete. Runs of the scenario are completed in
@@ -5512,7 +5512,7 @@ exports[`Has lobby prop, but not lobby.chat, chat is NOT found through heuristic
             class=\\"row\\"
           >
             <div
-              class=\\"column c__grid-single-col-padding\\"
+              class=\\"column c__grid-element-unpadded\\"
             >
               <p>
                 This scenario requires multiple particpants in order to complete. Runs of the scenario are completed in
@@ -5643,7 +5643,7 @@ exports[`Has lobby prop, but not lobby.chat, chat is NOT found through heuristic
             class=\\"row\\"
           >
             <div
-              class=\\"column c__grid-single-col-padding\\"
+              class=\\"column c__grid-element-unpadded\\"
             >
               <p>
                 This scenario requires multiple particpants in order to complete. Runs of the scenario are completed in
@@ -5756,7 +5756,7 @@ exports[`Has lobby prop, but not lobby.chat, chat is found through heuristic sea
             class=\\"row\\"
           >
             <div
-              class=\\"column c__grid-single-col-padding\\"
+              class=\\"column c__grid-element-unpadded\\"
             >
               <p>
                 This scenario requires multiple particpants in order to complete. Runs of the scenario are completed in
@@ -5961,7 +5961,7 @@ exports[`Has no chats in state 1`] = `
             class=\\"row\\"
           >
             <div
-              class=\\"column c__grid-single-col-padding\\"
+              class=\\"column c__grid-element-unpadded\\"
             >
               <p>
                 This scenario requires multiple particpants in order to complete. Runs of the scenario are completed in
@@ -6092,7 +6092,7 @@ exports[`Has no chats in state 2`] = `
             class=\\"row\\"
           >
             <div
-              class=\\"column c__grid-single-col-padding\\"
+              class=\\"column c__grid-element-unpadded\\"
             >
               <p>
                 This scenario requires multiple particpants in order to complete. Runs of the scenario are completed in
@@ -6234,7 +6234,7 @@ exports[`Scenario is missing personas 2`] = `
             class=\\"row\\"
           >
             <div
-              class=\\"column c__grid-single-col-padding\\"
+              class=\\"column c__grid-element-unpadded\\"
             >
               <p>
                 This scenario requires multiple particpants in order to complete. Runs of the scenario are completed in
@@ -6376,7 +6376,7 @@ exports[`User is not host, host does have role 2`] = `
             class=\\"row\\"
           >
             <div
-              class=\\"column c__grid-single-col-padding\\"
+              class=\\"column c__grid-element-unpadded\\"
             >
               <p>
                 This scenario requires multiple particpants in order to complete. Runs of the scenario are completed in
@@ -6518,7 +6518,7 @@ exports[`User is not host, host does have role, no roles remain 2`] = `
             class=\\"row\\"
           >
             <div
-              class=\\"column c__grid-single-col-padding\\"
+              class=\\"column c__grid-element-unpadded\\"
             >
               <p>
                 This scenario requires multiple particpants in order to complete. Runs of the scenario are completed in
@@ -6660,7 +6660,7 @@ exports[`User is not host, host does not have role 2`] = `
             class=\\"row\\"
           >
             <div
-              class=\\"column c__grid-single-col-padding\\"
+              class=\\"column c__grid-element-unpadded\\"
             >
               <p>
                 This scenario requires multiple particpants in order to complete. Runs of the scenario are completed in

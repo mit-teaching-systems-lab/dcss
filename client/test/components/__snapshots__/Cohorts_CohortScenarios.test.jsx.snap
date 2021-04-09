@@ -53,23 +53,38 @@ exports[`Facilitator has an option to open scenarios selector 1`] = `
 exports[`Facilitator has an option to open scenarios selector 2`] = `
 <DocumentFragment>
   <div
-    class="ui fluid container c__scenario-container"
+    class="ui fluid container c__section-container"
   >
-    <p
-      class="c__scenario-header-num"
+    <div
+      class="ui stackable two column grid c__section-container-header"
     >
-      <span>
-        1
-      </span>
-       scenario selected
-    </p>
-    <p>
-      <button
-        class="ui tiny button"
+      <div
+        class="row"
       >
-        Edit selected scenarios
-      </button>
-    </p>
+        <div
+          class="eight wide column"
+        >
+          <p
+            class="c__by-the-numbers-heading"
+            tabindex="0"
+          >
+            <strong>
+              1
+            </strong>
+             scenario selected
+          </p>
+        </div>
+        <div
+          class="right aligned eight wide column"
+        >
+          <button
+            class="ui button"
+          >
+            Add or remove scenarios
+          </button>
+        </div>
+      </div>
+    </div>
     <div
       class="c__scenario-list"
     >
@@ -107,13 +122,11 @@ exports[`Facilitator has an option to open scenarios selector 2`] = `
                  roles:
               </span>
               <div
-                class="ui comments c__join-persona-container"
+                class="c__join-as-role-card"
               >
-                <div
-                  class="comment"
-                >
+                <div>
                   <a
-                    class="ui tiny button c__join-persona-button"
+                    class="ui small fluid button c__join-persona-button"
                     data-testid="join-scenario-as"
                     href="/chat/join/1765cf2e64/as/6e4213d8d3/cohort/6e4213d8d3"
                     role="button"
@@ -123,26 +136,20 @@ exports[`Facilitator has an option to open scenarios selector 2`] = `
                       Participant
                     </strong>
                   </a>
-                  <div
-                    class="c__join-persona-content content"
-                  >
-                    <div
-                      class="author"
-                    >
-                      Participant
-                    </div>
-                    <div
-                      class="text"
-                    >
-                      The default user participating in a single person scenario.
-                    </div>
-                  </div>
                 </div>
-                <div
-                  class="comment"
-                >
+                <div>
+                  <p>
+                    <strong>
+                      Participant
+                    </strong>
+                  </p>
+                  <p>
+                    The default user participating in a single person scenario.
+                  </p>
+                </div>
+                <div>
                   <a
-                    class="ui tiny button c__join-persona-button"
+                    class="ui small fluid button c__join-persona-button"
                     data-testid="join-scenario-as"
                     href="/chat/join/1765cf2e64/as/6c4adee67a/cohort/6e4213d8d3"
                     role="button"
@@ -152,26 +159,20 @@ exports[`Facilitator has an option to open scenarios selector 2`] = `
                       Teacher
                     </strong>
                   </a>
-                  <div
-                    class="c__join-persona-content content"
-                  >
-                    <div
-                      class="author"
-                    >
-                      Teacher
-                    </div>
-                    <div
-                      class="text"
-                    >
-                      A non-specific teacher, participating in a multi person scenario.
-                    </div>
-                  </div>
                 </div>
-                <div
-                  class="comment"
-                >
+                <div>
+                  <p>
+                    <strong>
+                      Teacher
+                    </strong>
+                  </p>
+                  <p>
+                    A non-specific teacher, participating in a multi person scenario.
+                  </p>
+                </div>
+                <div>
                   <a
-                    class="ui tiny button c__join-persona-button"
+                    class="ui small fluid button c__join-persona-button"
                     data-testid="join-scenario-as"
                     href="/chat/join/1765cf2e64/as/cc5d157543/cohort/6e4213d8d3"
                     role="button"
@@ -181,22 +182,21 @@ exports[`Facilitator has an option to open scenarios selector 2`] = `
                       Student
                     </strong>
                   </a>
-                  <div
-                    class="c__join-persona-content content"
-                  >
-                    <div
-                      class="author"
-                    >
+                </div>
+                <div>
+                  <p>
+                    <strong>
                       Student
-                    </div>
-                    <div
-                      class="text"
-                    >
-                      A non-specific student, participating in a multi person scenario.
-                    </div>
-                  </div>
+                    </strong>
+                  </p>
+                  <p>
+                    A non-specific student, participating in a multi person scenario.
+                  </p>
                 </div>
               </div>
+              <div
+                class="ui divider"
+              />
             </div>
             <div
               class="meta"
@@ -237,23 +237,38 @@ exports[`Facilitator has an option to open scenarios selector 2`] = `
 exports[`Facilitator has an option to open scenarios selector 3`] = `
 <DocumentFragment>
   <div
-    class="ui fluid container c__scenario-container"
+    class="ui fluid container c__section-container"
   >
-    <p
-      class="c__scenario-header-num"
+    <div
+      class="ui stackable two column grid c__section-container-header"
     >
-      <span>
-        1
-      </span>
-       scenario selected
-    </p>
-    <p>
-      <button
-        class="ui tiny button"
+      <div
+        class="row"
       >
-        Edit selected scenarios
-      </button>
-    </p>
+        <div
+          class="eight wide column"
+        >
+          <p
+            class="c__by-the-numbers-heading"
+            tabindex="0"
+          >
+            <strong>
+              1
+            </strong>
+             scenario selected
+          </p>
+        </div>
+        <div
+          class="right aligned eight wide column"
+        >
+          <button
+            class="ui button"
+          >
+            Add or remove scenarios
+          </button>
+        </div>
+      </div>
+    </div>
     <div
       class="c__scenario-list"
     >
@@ -291,13 +306,11 @@ exports[`Facilitator has an option to open scenarios selector 3`] = `
                  roles:
               </span>
               <div
-                class="ui comments c__join-persona-container"
+                class="c__join-as-role-card"
               >
-                <div
-                  class="comment"
-                >
+                <div>
                   <a
-                    class="ui tiny button c__join-persona-button"
+                    class="ui small fluid button c__join-persona-button"
                     data-testid="join-scenario-as"
                     href="/chat/join/1765cf2e64/as/6e4213d8d3/cohort/6e4213d8d3"
                     role="button"
@@ -307,26 +320,20 @@ exports[`Facilitator has an option to open scenarios selector 3`] = `
                       Participant
                     </strong>
                   </a>
-                  <div
-                    class="c__join-persona-content content"
-                  >
-                    <div
-                      class="author"
-                    >
-                      Participant
-                    </div>
-                    <div
-                      class="text"
-                    >
-                      The default user participating in a single person scenario.
-                    </div>
-                  </div>
                 </div>
-                <div
-                  class="comment"
-                >
+                <div>
+                  <p>
+                    <strong>
+                      Participant
+                    </strong>
+                  </p>
+                  <p>
+                    The default user participating in a single person scenario.
+                  </p>
+                </div>
+                <div>
                   <a
-                    class="ui tiny button c__join-persona-button"
+                    class="ui small fluid button c__join-persona-button"
                     data-testid="join-scenario-as"
                     href="/chat/join/1765cf2e64/as/6c4adee67a/cohort/6e4213d8d3"
                     role="button"
@@ -336,26 +343,20 @@ exports[`Facilitator has an option to open scenarios selector 3`] = `
                       Teacher
                     </strong>
                   </a>
-                  <div
-                    class="c__join-persona-content content"
-                  >
-                    <div
-                      class="author"
-                    >
-                      Teacher
-                    </div>
-                    <div
-                      class="text"
-                    >
-                      A non-specific teacher, participating in a multi person scenario.
-                    </div>
-                  </div>
                 </div>
-                <div
-                  class="comment"
-                >
+                <div>
+                  <p>
+                    <strong>
+                      Teacher
+                    </strong>
+                  </p>
+                  <p>
+                    A non-specific teacher, participating in a multi person scenario.
+                  </p>
+                </div>
+                <div>
                   <a
-                    class="ui tiny button c__join-persona-button"
+                    class="ui small fluid button c__join-persona-button"
                     data-testid="join-scenario-as"
                     href="/chat/join/1765cf2e64/as/cc5d157543/cohort/6e4213d8d3"
                     role="button"
@@ -365,22 +366,21 @@ exports[`Facilitator has an option to open scenarios selector 3`] = `
                       Student
                     </strong>
                   </a>
-                  <div
-                    class="c__join-persona-content content"
-                  >
-                    <div
-                      class="author"
-                    >
+                </div>
+                <div>
+                  <p>
+                    <strong>
                       Student
-                    </div>
-                    <div
-                      class="text"
-                    >
-                      A non-specific student, participating in a multi person scenario.
-                    </div>
-                  </div>
+                    </strong>
+                  </p>
+                  <p>
+                    A non-specific student, participating in a multi person scenario.
+                  </p>
                 </div>
               </div>
+              <div
+                class="ui divider"
+              />
             </div>
             <div
               class="meta"
@@ -421,23 +421,38 @@ exports[`Facilitator has an option to open scenarios selector 3`] = `
 exports[`Facilitator has an option to open scenarios selector 4`] = `
 <DocumentFragment>
   <div
-    class="ui fluid container c__scenario-container"
+    class="ui fluid container c__section-container"
   >
-    <p
-      class="c__scenario-header-num"
+    <div
+      class="ui stackable two column grid c__section-container-header"
     >
-      <span>
-        1
-      </span>
-       scenario selected
-    </p>
-    <p>
-      <button
-        class="ui tiny button"
+      <div
+        class="row"
       >
-        Edit selected scenarios
-      </button>
-    </p>
+        <div
+          class="eight wide column"
+        >
+          <p
+            class="c__by-the-numbers-heading"
+            tabindex="0"
+          >
+            <strong>
+              1
+            </strong>
+             scenario selected
+          </p>
+        </div>
+        <div
+          class="right aligned eight wide column"
+        >
+          <button
+            class="ui button"
+          >
+            Add or remove scenarios
+          </button>
+        </div>
+      </div>
+    </div>
     <div
       class="c__scenario-list"
     >
@@ -475,13 +490,11 @@ exports[`Facilitator has an option to open scenarios selector 4`] = `
                  roles:
               </span>
               <div
-                class="ui comments c__join-persona-container"
+                class="c__join-as-role-card"
               >
-                <div
-                  class="comment"
-                >
+                <div>
                   <a
-                    class="ui tiny button c__join-persona-button"
+                    class="ui small fluid button c__join-persona-button"
                     data-testid="join-scenario-as"
                     href="/chat/join/1765cf2e64/as/6e4213d8d3/cohort/6e4213d8d3"
                     role="button"
@@ -491,26 +504,20 @@ exports[`Facilitator has an option to open scenarios selector 4`] = `
                       Participant
                     </strong>
                   </a>
-                  <div
-                    class="c__join-persona-content content"
-                  >
-                    <div
-                      class="author"
-                    >
-                      Participant
-                    </div>
-                    <div
-                      class="text"
-                    >
-                      The default user participating in a single person scenario.
-                    </div>
-                  </div>
                 </div>
-                <div
-                  class="comment"
-                >
+                <div>
+                  <p>
+                    <strong>
+                      Participant
+                    </strong>
+                  </p>
+                  <p>
+                    The default user participating in a single person scenario.
+                  </p>
+                </div>
+                <div>
                   <a
-                    class="ui tiny button c__join-persona-button"
+                    class="ui small fluid button c__join-persona-button"
                     data-testid="join-scenario-as"
                     href="/chat/join/1765cf2e64/as/6c4adee67a/cohort/6e4213d8d3"
                     role="button"
@@ -520,26 +527,20 @@ exports[`Facilitator has an option to open scenarios selector 4`] = `
                       Teacher
                     </strong>
                   </a>
-                  <div
-                    class="c__join-persona-content content"
-                  >
-                    <div
-                      class="author"
-                    >
-                      Teacher
-                    </div>
-                    <div
-                      class="text"
-                    >
-                      A non-specific teacher, participating in a multi person scenario.
-                    </div>
-                  </div>
                 </div>
-                <div
-                  class="comment"
-                >
+                <div>
+                  <p>
+                    <strong>
+                      Teacher
+                    </strong>
+                  </p>
+                  <p>
+                    A non-specific teacher, participating in a multi person scenario.
+                  </p>
+                </div>
+                <div>
                   <a
-                    class="ui tiny button c__join-persona-button"
+                    class="ui small fluid button c__join-persona-button"
                     data-testid="join-scenario-as"
                     href="/chat/join/1765cf2e64/as/cc5d157543/cohort/6e4213d8d3"
                     role="button"
@@ -549,22 +550,21 @@ exports[`Facilitator has an option to open scenarios selector 4`] = `
                       Student
                     </strong>
                   </a>
-                  <div
-                    class="c__join-persona-content content"
-                  >
-                    <div
-                      class="author"
-                    >
+                </div>
+                <div>
+                  <p>
+                    <strong>
                       Student
-                    </div>
-                    <div
-                      class="text"
-                    >
-                      A non-specific student, participating in a multi person scenario.
-                    </div>
-                  </div>
+                    </strong>
+                  </p>
+                  <p>
+                    A non-specific student, participating in a multi person scenario.
+                  </p>
                 </div>
               </div>
+              <div
+                class="ui divider"
+              />
             </div>
             <div
               class="meta"
@@ -630,23 +630,38 @@ exports[`No scenarios in cohort 1`] = `
 exports[`No scenarios in cohort 2`] = `
 <DocumentFragment>
   <div
-    class="ui fluid container c__scenario-container"
+    class="ui fluid container c__section-container"
   >
-    <p
-      class="c__scenario-header-num"
+    <div
+      class="ui stackable two column grid c__section-container-header"
     >
-      <span>
-        0
-      </span>
-       scenarios selected
-    </p>
-    <p>
-      <button
-        class="ui tiny button"
+      <div
+        class="row"
       >
-        Edit selected scenarios
-      </button>
-    </p>
+        <div
+          class="eight wide column"
+        >
+          <p
+            class="c__by-the-numbers-heading"
+            tabindex="0"
+          >
+            <strong>
+              0
+            </strong>
+             scenarios selected
+          </p>
+        </div>
+        <div
+          class="right aligned eight wide column"
+        >
+          <button
+            class="ui button"
+          >
+            Add or remove scenarios
+          </button>
+        </div>
+      </div>
+    </div>
     <p>
       There are no scenarios selected for this cohort.
     </p>
@@ -660,23 +675,38 @@ exports[`No scenarios in cohort 2`] = `
 exports[`No scenarios in cohort 3`] = `
 <DocumentFragment>
   <div
-    class="ui fluid container c__scenario-container"
+    class="ui fluid container c__section-container"
   >
-    <p
-      class="c__scenario-header-num"
+    <div
+      class="ui stackable two column grid c__section-container-header"
     >
-      <span>
-        0
-      </span>
-       scenarios selected
-    </p>
-    <p>
-      <button
-        class="ui tiny button"
+      <div
+        class="row"
       >
-        Edit selected scenarios
-      </button>
-    </p>
+        <div
+          class="eight wide column"
+        >
+          <p
+            class="c__by-the-numbers-heading"
+            tabindex="0"
+          >
+            <strong>
+              0
+            </strong>
+             scenarios selected
+          </p>
+        </div>
+        <div
+          class="right aligned eight wide column"
+        >
+          <button
+            class="ui button"
+          >
+            Add or remove scenarios
+          </button>
+        </div>
+      </div>
+    </div>
     <p>
       There are no scenarios selected for this cohort.
     </p>
@@ -715,23 +745,38 @@ exports[`No scenarios returned from request 1`] = `
 exports[`No scenarios returned from request 2`] = `
 <DocumentFragment>
   <div
-    class="ui fluid container c__scenario-container"
+    class="ui fluid container c__section-container"
   >
-    <p
-      class="c__scenario-header-num"
+    <div
+      class="ui stackable two column grid c__section-container-header"
     >
-      <span>
-        1
-      </span>
-       scenario selected
-    </p>
-    <p>
-      <button
-        class="ui tiny button"
+      <div
+        class="row"
       >
-        Edit selected scenarios
-      </button>
-    </p>
+        <div
+          class="eight wide column"
+        >
+          <p
+            class="c__by-the-numbers-heading"
+            tabindex="0"
+          >
+            <strong>
+              1
+            </strong>
+             scenario selected
+          </p>
+        </div>
+        <div
+          class="right aligned eight wide column"
+        >
+          <button
+            class="ui button"
+          >
+            Add or remove scenarios
+          </button>
+        </div>
+      </div>
+    </div>
     <div
       class="c__scenario-list"
     >
@@ -747,23 +792,38 @@ exports[`No scenarios returned from request 2`] = `
 exports[`No scenarios returned from request 3`] = `
 <DocumentFragment>
   <div
-    class="ui fluid container c__scenario-container"
+    class="ui fluid container c__section-container"
   >
-    <p
-      class="c__scenario-header-num"
+    <div
+      class="ui stackable two column grid c__section-container-header"
     >
-      <span>
-        1
-      </span>
-       scenario selected
-    </p>
-    <p>
-      <button
-        class="ui tiny button"
+      <div
+        class="row"
       >
-        Edit selected scenarios
-      </button>
-    </p>
+        <div
+          class="eight wide column"
+        >
+          <p
+            class="c__by-the-numbers-heading"
+            tabindex="0"
+          >
+            <strong>
+              1
+            </strong>
+             scenario selected
+          </p>
+        </div>
+        <div
+          class="right aligned eight wide column"
+        >
+          <button
+            class="ui button"
+          >
+            Add or remove scenarios
+          </button>
+        </div>
+      </div>
+    </div>
     <div
       class="c__scenario-list"
     >
@@ -804,23 +864,38 @@ exports[`Open Edit scenarios 1`] = `
 exports[`Open Edit scenarios 2`] = `
 <DocumentFragment>
   <div
-    class="ui fluid container c__scenario-container"
+    class="ui fluid container c__section-container"
   >
-    <p
-      class="c__scenario-header-num"
+    <div
+      class="ui stackable two column grid c__section-container-header"
     >
-      <span>
-        1
-      </span>
-       scenario selected
-    </p>
-    <p>
-      <button
-        class="ui tiny button"
+      <div
+        class="row"
       >
-        Edit selected scenarios
-      </button>
-    </p>
+        <div
+          class="eight wide column"
+        >
+          <p
+            class="c__by-the-numbers-heading"
+            tabindex="0"
+          >
+            <strong>
+              1
+            </strong>
+             scenario selected
+          </p>
+        </div>
+        <div
+          class="right aligned eight wide column"
+        >
+          <button
+            class="ui button"
+          >
+            Add or remove scenarios
+          </button>
+        </div>
+      </div>
+    </div>
     <div
       class="c__scenario-list"
     >
@@ -858,13 +933,11 @@ exports[`Open Edit scenarios 2`] = `
                  roles:
               </span>
               <div
-                class="ui comments c__join-persona-container"
+                class="c__join-as-role-card"
               >
-                <div
-                  class="comment"
-                >
+                <div>
                   <a
-                    class="ui tiny button c__join-persona-button"
+                    class="ui small fluid button c__join-persona-button"
                     data-testid="join-scenario-as"
                     href="/chat/join/1765cf2e64/as/6e4213d8d3/cohort/6e4213d8d3"
                     role="button"
@@ -874,26 +947,20 @@ exports[`Open Edit scenarios 2`] = `
                       Participant
                     </strong>
                   </a>
-                  <div
-                    class="c__join-persona-content content"
-                  >
-                    <div
-                      class="author"
-                    >
-                      Participant
-                    </div>
-                    <div
-                      class="text"
-                    >
-                      The default user participating in a single person scenario.
-                    </div>
-                  </div>
                 </div>
-                <div
-                  class="comment"
-                >
+                <div>
+                  <p>
+                    <strong>
+                      Participant
+                    </strong>
+                  </p>
+                  <p>
+                    The default user participating in a single person scenario.
+                  </p>
+                </div>
+                <div>
                   <a
-                    class="ui tiny button c__join-persona-button"
+                    class="ui small fluid button c__join-persona-button"
                     data-testid="join-scenario-as"
                     href="/chat/join/1765cf2e64/as/6c4adee67a/cohort/6e4213d8d3"
                     role="button"
@@ -903,26 +970,20 @@ exports[`Open Edit scenarios 2`] = `
                       Teacher
                     </strong>
                   </a>
-                  <div
-                    class="c__join-persona-content content"
-                  >
-                    <div
-                      class="author"
-                    >
-                      Teacher
-                    </div>
-                    <div
-                      class="text"
-                    >
-                      A non-specific teacher, participating in a multi person scenario.
-                    </div>
-                  </div>
                 </div>
-                <div
-                  class="comment"
-                >
+                <div>
+                  <p>
+                    <strong>
+                      Teacher
+                    </strong>
+                  </p>
+                  <p>
+                    A non-specific teacher, participating in a multi person scenario.
+                  </p>
+                </div>
+                <div>
                   <a
-                    class="ui tiny button c__join-persona-button"
+                    class="ui small fluid button c__join-persona-button"
                     data-testid="join-scenario-as"
                     href="/chat/join/1765cf2e64/as/cc5d157543/cohort/6e4213d8d3"
                     role="button"
@@ -932,22 +993,21 @@ exports[`Open Edit scenarios 2`] = `
                       Student
                     </strong>
                   </a>
-                  <div
-                    class="c__join-persona-content content"
-                  >
-                    <div
-                      class="author"
-                    >
+                </div>
+                <div>
+                  <p>
+                    <strong>
                       Student
-                    </div>
-                    <div
-                      class="text"
-                    >
-                      A non-specific student, participating in a multi person scenario.
-                    </div>
-                  </div>
+                    </strong>
+                  </p>
+                  <p>
+                    A non-specific student, participating in a multi person scenario.
+                  </p>
                 </div>
               </div>
+              <div
+                class="ui divider"
+              />
             </div>
             <div
               class="meta"
@@ -988,23 +1048,38 @@ exports[`Open Edit scenarios 2`] = `
 exports[`Open Edit scenarios 3`] = `
 <DocumentFragment>
   <div
-    class="ui fluid container c__scenario-container"
+    class="ui fluid container c__section-container"
   >
-    <p
-      class="c__scenario-header-num"
+    <div
+      class="ui stackable two column grid c__section-container-header"
     >
-      <span>
-        1
-      </span>
-       scenario selected
-    </p>
-    <p>
-      <button
-        class="ui tiny button"
+      <div
+        class="row"
       >
-        Edit selected scenarios
-      </button>
-    </p>
+        <div
+          class="eight wide column"
+        >
+          <p
+            class="c__by-the-numbers-heading"
+            tabindex="0"
+          >
+            <strong>
+              1
+            </strong>
+             scenario selected
+          </p>
+        </div>
+        <div
+          class="right aligned eight wide column"
+        >
+          <button
+            class="ui button"
+          >
+            Add or remove scenarios
+          </button>
+        </div>
+      </div>
+    </div>
     <div
       class="c__scenario-list"
     >
@@ -1042,13 +1117,11 @@ exports[`Open Edit scenarios 3`] = `
                  roles:
               </span>
               <div
-                class="ui comments c__join-persona-container"
+                class="c__join-as-role-card"
               >
-                <div
-                  class="comment"
-                >
+                <div>
                   <a
-                    class="ui tiny button c__join-persona-button"
+                    class="ui small fluid button c__join-persona-button"
                     data-testid="join-scenario-as"
                     href="/chat/join/1765cf2e64/as/6e4213d8d3/cohort/6e4213d8d3"
                     role="button"
@@ -1058,26 +1131,20 @@ exports[`Open Edit scenarios 3`] = `
                       Participant
                     </strong>
                   </a>
-                  <div
-                    class="c__join-persona-content content"
-                  >
-                    <div
-                      class="author"
-                    >
-                      Participant
-                    </div>
-                    <div
-                      class="text"
-                    >
-                      The default user participating in a single person scenario.
-                    </div>
-                  </div>
                 </div>
-                <div
-                  class="comment"
-                >
+                <div>
+                  <p>
+                    <strong>
+                      Participant
+                    </strong>
+                  </p>
+                  <p>
+                    The default user participating in a single person scenario.
+                  </p>
+                </div>
+                <div>
                   <a
-                    class="ui tiny button c__join-persona-button"
+                    class="ui small fluid button c__join-persona-button"
                     data-testid="join-scenario-as"
                     href="/chat/join/1765cf2e64/as/6c4adee67a/cohort/6e4213d8d3"
                     role="button"
@@ -1087,26 +1154,20 @@ exports[`Open Edit scenarios 3`] = `
                       Teacher
                     </strong>
                   </a>
-                  <div
-                    class="c__join-persona-content content"
-                  >
-                    <div
-                      class="author"
-                    >
-                      Teacher
-                    </div>
-                    <div
-                      class="text"
-                    >
-                      A non-specific teacher, participating in a multi person scenario.
-                    </div>
-                  </div>
                 </div>
-                <div
-                  class="comment"
-                >
+                <div>
+                  <p>
+                    <strong>
+                      Teacher
+                    </strong>
+                  </p>
+                  <p>
+                    A non-specific teacher, participating in a multi person scenario.
+                  </p>
+                </div>
+                <div>
                   <a
-                    class="ui tiny button c__join-persona-button"
+                    class="ui small fluid button c__join-persona-button"
                     data-testid="join-scenario-as"
                     href="/chat/join/1765cf2e64/as/cc5d157543/cohort/6e4213d8d3"
                     role="button"
@@ -1116,22 +1177,21 @@ exports[`Open Edit scenarios 3`] = `
                       Student
                     </strong>
                   </a>
-                  <div
-                    class="c__join-persona-content content"
-                  >
-                    <div
-                      class="author"
-                    >
+                </div>
+                <div>
+                  <p>
+                    <strong>
                       Student
-                    </div>
-                    <div
-                      class="text"
-                    >
-                      A non-specific student, participating in a multi person scenario.
-                    </div>
-                  </div>
+                    </strong>
+                  </p>
+                  <p>
+                    A non-specific student, participating in a multi person scenario.
+                  </p>
                 </div>
               </div>
+              <div
+                class="ui divider"
+              />
             </div>
             <div
               class="meta"
@@ -1172,23 +1232,38 @@ exports[`Open Edit scenarios 3`] = `
 exports[`Open Edit scenarios 4`] = `
 <DocumentFragment>
   <div
-    class="ui fluid container c__scenario-container"
+    class="ui fluid container c__section-container"
   >
-    <p
-      class="c__scenario-header-num"
+    <div
+      class="ui stackable two column grid c__section-container-header"
     >
-      <span>
-        1
-      </span>
-       scenario selected
-    </p>
-    <p>
-      <button
-        class="ui tiny button"
+      <div
+        class="row"
       >
-        Edit selected scenarios
-      </button>
-    </p>
+        <div
+          class="eight wide column"
+        >
+          <p
+            class="c__by-the-numbers-heading"
+            tabindex="0"
+          >
+            <strong>
+              1
+            </strong>
+             scenario selected
+          </p>
+        </div>
+        <div
+          class="right aligned eight wide column"
+        >
+          <button
+            class="ui button"
+          >
+            Add or remove scenarios
+          </button>
+        </div>
+      </div>
+    </div>
     <div
       class="c__scenario-list"
     >
@@ -1226,13 +1301,11 @@ exports[`Open Edit scenarios 4`] = `
                  roles:
               </span>
               <div
-                class="ui comments c__join-persona-container"
+                class="c__join-as-role-card"
               >
-                <div
-                  class="comment"
-                >
+                <div>
                   <a
-                    class="ui tiny button c__join-persona-button"
+                    class="ui small fluid button c__join-persona-button"
                     data-testid="join-scenario-as"
                     href="/chat/join/1765cf2e64/as/6e4213d8d3/cohort/6e4213d8d3"
                     role="button"
@@ -1242,26 +1315,20 @@ exports[`Open Edit scenarios 4`] = `
                       Participant
                     </strong>
                   </a>
-                  <div
-                    class="c__join-persona-content content"
-                  >
-                    <div
-                      class="author"
-                    >
-                      Participant
-                    </div>
-                    <div
-                      class="text"
-                    >
-                      The default user participating in a single person scenario.
-                    </div>
-                  </div>
                 </div>
-                <div
-                  class="comment"
-                >
+                <div>
+                  <p>
+                    <strong>
+                      Participant
+                    </strong>
+                  </p>
+                  <p>
+                    The default user participating in a single person scenario.
+                  </p>
+                </div>
+                <div>
                   <a
-                    class="ui tiny button c__join-persona-button"
+                    class="ui small fluid button c__join-persona-button"
                     data-testid="join-scenario-as"
                     href="/chat/join/1765cf2e64/as/6c4adee67a/cohort/6e4213d8d3"
                     role="button"
@@ -1271,26 +1338,20 @@ exports[`Open Edit scenarios 4`] = `
                       Teacher
                     </strong>
                   </a>
-                  <div
-                    class="c__join-persona-content content"
-                  >
-                    <div
-                      class="author"
-                    >
-                      Teacher
-                    </div>
-                    <div
-                      class="text"
-                    >
-                      A non-specific teacher, participating in a multi person scenario.
-                    </div>
-                  </div>
                 </div>
-                <div
-                  class="comment"
-                >
+                <div>
+                  <p>
+                    <strong>
+                      Teacher
+                    </strong>
+                  </p>
+                  <p>
+                    A non-specific teacher, participating in a multi person scenario.
+                  </p>
+                </div>
+                <div>
                   <a
-                    class="ui tiny button c__join-persona-button"
+                    class="ui small fluid button c__join-persona-button"
                     data-testid="join-scenario-as"
                     href="/chat/join/1765cf2e64/as/cc5d157543/cohort/6e4213d8d3"
                     role="button"
@@ -1300,22 +1361,21 @@ exports[`Open Edit scenarios 4`] = `
                       Student
                     </strong>
                   </a>
-                  <div
-                    class="c__join-persona-content content"
-                  >
-                    <div
-                      class="author"
-                    >
+                </div>
+                <div>
+                  <p>
+                    <strong>
                       Student
-                    </div>
-                    <div
-                      class="text"
-                    >
-                      A non-specific student, participating in a multi person scenario.
-                    </div>
-                  </div>
+                    </strong>
+                  </p>
+                  <p>
+                    A non-specific student, participating in a multi person scenario.
+                  </p>
                 </div>
               </div>
+              <div
+                class="ui divider"
+              />
             </div>
             <div
               class="meta"
@@ -1381,20 +1441,36 @@ exports[`Participant does not have an option to open scenarios selector 1`] = `
 exports[`Participant does not have an option to open scenarios selector 2`] = `
 <DocumentFragment>
   <div
-    class="ui fluid container c__scenario-container"
+    class="ui fluid container c__section-container"
   >
-    <p
-      class="c__scenario-header-num"
+    <div
+      class="ui stackable two column grid c__section-container-header"
     >
-      <span>
-        A New Cohort That Exists Within Inline Props
-      </span>
-       includes 
-      <span>
-        1
-      </span>
-       scenario
-    </p>
+      <div
+        class="row"
+      >
+        <div
+          class="eight wide column"
+        >
+          <p
+            class="c__by-the-numbers-heading"
+            tabindex="0"
+          >
+            <strong>
+              A New Cohort That Exists Within Inline Props
+            </strong>
+             includes 
+            <strong>
+              1
+            </strong>
+             scenario
+          </p>
+        </div>
+        <div
+          class="right aligned eight wide column"
+        />
+      </div>
+    </div>
     <div
       class="ui card c__scenario-card"
       style="cursor: auto;"
@@ -1433,13 +1509,11 @@ exports[`Participant does not have an option to open scenarios selector 2`] = `
              roles:
           </span>
           <div
-            class="ui comments c__join-persona-container"
+            class="c__join-as-role-card"
           >
-            <div
-              class="comment"
-            >
+            <div>
               <a
-                class="ui tiny button c__join-persona-button"
+                class="ui small fluid button c__join-persona-button"
                 data-testid="join-scenario-as"
                 href="/chat/join/1765cf2e64/as/6e4213d8d3/cohort/6e4213d8d3"
                 role="button"
@@ -1449,26 +1523,20 @@ exports[`Participant does not have an option to open scenarios selector 2`] = `
                   Participant
                 </strong>
               </a>
-              <div
-                class="c__join-persona-content content"
-              >
-                <div
-                  class="author"
-                >
-                  Participant
-                </div>
-                <div
-                  class="text"
-                >
-                  The default user participating in a single person scenario.
-                </div>
-              </div>
             </div>
-            <div
-              class="comment"
-            >
+            <div>
+              <p>
+                <strong>
+                  Participant
+                </strong>
+              </p>
+              <p>
+                The default user participating in a single person scenario.
+              </p>
+            </div>
+            <div>
               <a
-                class="ui tiny button c__join-persona-button"
+                class="ui small fluid button c__join-persona-button"
                 data-testid="join-scenario-as"
                 href="/chat/join/1765cf2e64/as/6c4adee67a/cohort/6e4213d8d3"
                 role="button"
@@ -1478,26 +1546,20 @@ exports[`Participant does not have an option to open scenarios selector 2`] = `
                   Teacher
                 </strong>
               </a>
-              <div
-                class="c__join-persona-content content"
-              >
-                <div
-                  class="author"
-                >
-                  Teacher
-                </div>
-                <div
-                  class="text"
-                >
-                  A non-specific teacher, participating in a multi person scenario.
-                </div>
-              </div>
             </div>
-            <div
-              class="comment"
-            >
+            <div>
+              <p>
+                <strong>
+                  Teacher
+                </strong>
+              </p>
+              <p>
+                A non-specific teacher, participating in a multi person scenario.
+              </p>
+            </div>
+            <div>
               <a
-                class="ui tiny button c__join-persona-button"
+                class="ui small fluid button c__join-persona-button"
                 data-testid="join-scenario-as"
                 href="/chat/join/1765cf2e64/as/cc5d157543/cohort/6e4213d8d3"
                 role="button"
@@ -1507,22 +1569,21 @@ exports[`Participant does not have an option to open scenarios selector 2`] = `
                   Student
                 </strong>
               </a>
-              <div
-                class="c__join-persona-content content"
-              >
-                <div
-                  class="author"
-                >
+            </div>
+            <div>
+              <p>
+                <strong>
                   Student
-                </div>
-                <div
-                  class="text"
-                >
-                  A non-specific student, participating in a multi person scenario.
-                </div>
-              </div>
+                </strong>
+              </p>
+              <p>
+                A non-specific student, participating in a multi person scenario.
+              </p>
             </div>
           </div>
+          <div
+            class="ui divider"
+          />
         </div>
         <div
           class="meta"
@@ -1586,23 +1647,38 @@ exports[`Render 1 1 1`] = `
 exports[`Render 1 1 2`] = `
 <DocumentFragment>
   <div
-    class="ui fluid container c__scenario-container"
+    class="ui fluid container c__section-container"
   >
-    <p
-      class="c__scenario-header-num"
+    <div
+      class="ui stackable two column grid c__section-container-header"
     >
-      <span>
-        1
-      </span>
-       scenario selected
-    </p>
-    <p>
-      <button
-        class="ui tiny button"
+      <div
+        class="row"
       >
-        Edit selected scenarios
-      </button>
-    </p>
+        <div
+          class="eight wide column"
+        >
+          <p
+            class="c__by-the-numbers-heading"
+            tabindex="0"
+          >
+            <strong>
+              1
+            </strong>
+             scenario selected
+          </p>
+        </div>
+        <div
+          class="right aligned eight wide column"
+        >
+          <button
+            class="ui button"
+          >
+            Add or remove scenarios
+          </button>
+        </div>
+      </div>
+    </div>
     <div
       class="c__scenario-list"
     >
@@ -1640,13 +1716,11 @@ exports[`Render 1 1 2`] = `
                  roles:
               </span>
               <div
-                class="ui comments c__join-persona-container"
+                class="c__join-as-role-card"
               >
-                <div
-                  class="comment"
-                >
+                <div>
                   <a
-                    class="ui tiny button c__join-persona-button"
+                    class="ui small fluid button c__join-persona-button"
                     data-testid="join-scenario-as"
                     href="/chat/join/1765cf2e64/as/6e4213d8d3/cohort/6e4213d8d3"
                     role="button"
@@ -1656,26 +1730,20 @@ exports[`Render 1 1 2`] = `
                       Participant
                     </strong>
                   </a>
-                  <div
-                    class="c__join-persona-content content"
-                  >
-                    <div
-                      class="author"
-                    >
-                      Participant
-                    </div>
-                    <div
-                      class="text"
-                    >
-                      The default user participating in a single person scenario.
-                    </div>
-                  </div>
                 </div>
-                <div
-                  class="comment"
-                >
+                <div>
+                  <p>
+                    <strong>
+                      Participant
+                    </strong>
+                  </p>
+                  <p>
+                    The default user participating in a single person scenario.
+                  </p>
+                </div>
+                <div>
                   <a
-                    class="ui tiny button c__join-persona-button"
+                    class="ui small fluid button c__join-persona-button"
                     data-testid="join-scenario-as"
                     href="/chat/join/1765cf2e64/as/6c4adee67a/cohort/6e4213d8d3"
                     role="button"
@@ -1685,26 +1753,20 @@ exports[`Render 1 1 2`] = `
                       Teacher
                     </strong>
                   </a>
-                  <div
-                    class="c__join-persona-content content"
-                  >
-                    <div
-                      class="author"
-                    >
-                      Teacher
-                    </div>
-                    <div
-                      class="text"
-                    >
-                      A non-specific teacher, participating in a multi person scenario.
-                    </div>
-                  </div>
                 </div>
-                <div
-                  class="comment"
-                >
+                <div>
+                  <p>
+                    <strong>
+                      Teacher
+                    </strong>
+                  </p>
+                  <p>
+                    A non-specific teacher, participating in a multi person scenario.
+                  </p>
+                </div>
+                <div>
                   <a
-                    class="ui tiny button c__join-persona-button"
+                    class="ui small fluid button c__join-persona-button"
                     data-testid="join-scenario-as"
                     href="/chat/join/1765cf2e64/as/cc5d157543/cohort/6e4213d8d3"
                     role="button"
@@ -1714,22 +1776,21 @@ exports[`Render 1 1 2`] = `
                       Student
                     </strong>
                   </a>
-                  <div
-                    class="c__join-persona-content content"
-                  >
-                    <div
-                      class="author"
-                    >
+                </div>
+                <div>
+                  <p>
+                    <strong>
                       Student
-                    </div>
-                    <div
-                      class="text"
-                    >
-                      A non-specific student, participating in a multi person scenario.
-                    </div>
-                  </div>
+                    </strong>
+                  </p>
+                  <p>
+                    A non-specific student, participating in a multi person scenario.
+                  </p>
                 </div>
               </div>
+              <div
+                class="ui divider"
+              />
             </div>
             <div
               class="meta"
@@ -1795,23 +1856,38 @@ exports[`Render 2 1 1`] = `
 exports[`Render 2 1 2`] = `
 <DocumentFragment>
   <div
-    class="ui fluid container c__scenario-container"
+    class="ui fluid container c__section-container"
   >
-    <p
-      class="c__scenario-header-num"
+    <div
+      class="ui stackable two column grid c__section-container-header"
     >
-      <span>
-        1
-      </span>
-       scenario selected
-    </p>
-    <p>
-      <button
-        class="ui tiny button"
+      <div
+        class="row"
       >
-        Edit selected scenarios
-      </button>
-    </p>
+        <div
+          class="eight wide column"
+        >
+          <p
+            class="c__by-the-numbers-heading"
+            tabindex="0"
+          >
+            <strong>
+              1
+            </strong>
+             scenario selected
+          </p>
+        </div>
+        <div
+          class="right aligned eight wide column"
+        >
+          <button
+            class="ui button"
+          >
+            Add or remove scenarios
+          </button>
+        </div>
+      </div>
+    </div>
     <div
       class="c__scenario-list"
     >
@@ -1849,13 +1925,11 @@ exports[`Render 2 1 2`] = `
                  roles:
               </span>
               <div
-                class="ui comments c__join-persona-container"
+                class="c__join-as-role-card"
               >
-                <div
-                  class="comment"
-                >
+                <div>
                   <a
-                    class="ui tiny button c__join-persona-button"
+                    class="ui small fluid button c__join-persona-button"
                     data-testid="join-scenario-as"
                     href="/chat/join/1765cf2e64/as/6e4213d8d3/cohort/6e4213d8d3"
                     role="button"
@@ -1865,26 +1939,20 @@ exports[`Render 2 1 2`] = `
                       Participant
                     </strong>
                   </a>
-                  <div
-                    class="c__join-persona-content content"
-                  >
-                    <div
-                      class="author"
-                    >
-                      Participant
-                    </div>
-                    <div
-                      class="text"
-                    >
-                      The default user participating in a single person scenario.
-                    </div>
-                  </div>
                 </div>
-                <div
-                  class="comment"
-                >
+                <div>
+                  <p>
+                    <strong>
+                      Participant
+                    </strong>
+                  </p>
+                  <p>
+                    The default user participating in a single person scenario.
+                  </p>
+                </div>
+                <div>
                   <a
-                    class="ui tiny button c__join-persona-button"
+                    class="ui small fluid button c__join-persona-button"
                     data-testid="join-scenario-as"
                     href="/chat/join/1765cf2e64/as/6c4adee67a/cohort/6e4213d8d3"
                     role="button"
@@ -1894,26 +1962,20 @@ exports[`Render 2 1 2`] = `
                       Teacher
                     </strong>
                   </a>
-                  <div
-                    class="c__join-persona-content content"
-                  >
-                    <div
-                      class="author"
-                    >
-                      Teacher
-                    </div>
-                    <div
-                      class="text"
-                    >
-                      A non-specific teacher, participating in a multi person scenario.
-                    </div>
-                  </div>
                 </div>
-                <div
-                  class="comment"
-                >
+                <div>
+                  <p>
+                    <strong>
+                      Teacher
+                    </strong>
+                  </p>
+                  <p>
+                    A non-specific teacher, participating in a multi person scenario.
+                  </p>
+                </div>
+                <div>
                   <a
-                    class="ui tiny button c__join-persona-button"
+                    class="ui small fluid button c__join-persona-button"
                     data-testid="join-scenario-as"
                     href="/chat/join/1765cf2e64/as/cc5d157543/cohort/6e4213d8d3"
                     role="button"
@@ -1923,22 +1985,21 @@ exports[`Render 2 1 2`] = `
                       Student
                     </strong>
                   </a>
-                  <div
-                    class="c__join-persona-content content"
-                  >
-                    <div
-                      class="author"
-                    >
+                </div>
+                <div>
+                  <p>
+                    <strong>
                       Student
-                    </div>
-                    <div
-                      class="text"
-                    >
-                      A non-specific student, participating in a multi person scenario.
-                    </div>
-                  </div>
+                    </strong>
+                  </p>
+                  <p>
+                    A non-specific student, participating in a multi person scenario.
+                  </p>
                 </div>
               </div>
+              <div
+                class="ui divider"
+              />
             </div>
             <div
               class="meta"
@@ -2004,23 +2065,38 @@ exports[`Run as participant 1`] = `
 exports[`Run as participant 2`] = `
 <DocumentFragment>
   <div
-    class="ui fluid container c__scenario-container"
+    class="ui fluid container c__section-container"
   >
-    <p
-      class="c__scenario-header-num"
+    <div
+      class="ui stackable two column grid c__section-container-header"
     >
-      <span>
-        1
-      </span>
-       scenario selected
-    </p>
-    <p>
-      <button
-        class="ui tiny button"
+      <div
+        class="row"
       >
-        Edit selected scenarios
-      </button>
-    </p>
+        <div
+          class="eight wide column"
+        >
+          <p
+            class="c__by-the-numbers-heading"
+            tabindex="0"
+          >
+            <strong>
+              1
+            </strong>
+             scenario selected
+          </p>
+        </div>
+        <div
+          class="right aligned eight wide column"
+        >
+          <button
+            class="ui button"
+          >
+            Add or remove scenarios
+          </button>
+        </div>
+      </div>
+    </div>
     <div
       class="c__scenario-list"
     >
@@ -2058,13 +2134,11 @@ exports[`Run as participant 2`] = `
                  roles:
               </span>
               <div
-                class="ui comments c__join-persona-container"
+                class="c__join-as-role-card"
               >
-                <div
-                  class="comment"
-                >
+                <div>
                   <a
-                    class="ui tiny button c__join-persona-button"
+                    class="ui small fluid button c__join-persona-button"
                     data-testid="join-scenario-as"
                     href="/chat/join/1765cf2e64/as/6e4213d8d3/cohort/6e4213d8d3"
                     role="button"
@@ -2074,26 +2148,20 @@ exports[`Run as participant 2`] = `
                       Participant
                     </strong>
                   </a>
-                  <div
-                    class="c__join-persona-content content"
-                  >
-                    <div
-                      class="author"
-                    >
-                      Participant
-                    </div>
-                    <div
-                      class="text"
-                    >
-                      The default user participating in a single person scenario.
-                    </div>
-                  </div>
                 </div>
-                <div
-                  class="comment"
-                >
+                <div>
+                  <p>
+                    <strong>
+                      Participant
+                    </strong>
+                  </p>
+                  <p>
+                    The default user participating in a single person scenario.
+                  </p>
+                </div>
+                <div>
                   <a
-                    class="ui tiny button c__join-persona-button"
+                    class="ui small fluid button c__join-persona-button"
                     data-testid="join-scenario-as"
                     href="/chat/join/1765cf2e64/as/6c4adee67a/cohort/6e4213d8d3"
                     role="button"
@@ -2103,26 +2171,20 @@ exports[`Run as participant 2`] = `
                       Teacher
                     </strong>
                   </a>
-                  <div
-                    class="c__join-persona-content content"
-                  >
-                    <div
-                      class="author"
-                    >
-                      Teacher
-                    </div>
-                    <div
-                      class="text"
-                    >
-                      A non-specific teacher, participating in a multi person scenario.
-                    </div>
-                  </div>
                 </div>
-                <div
-                  class="comment"
-                >
+                <div>
+                  <p>
+                    <strong>
+                      Teacher
+                    </strong>
+                  </p>
+                  <p>
+                    A non-specific teacher, participating in a multi person scenario.
+                  </p>
+                </div>
+                <div>
                   <a
-                    class="ui tiny button c__join-persona-button"
+                    class="ui small fluid button c__join-persona-button"
                     data-testid="join-scenario-as"
                     href="/chat/join/1765cf2e64/as/cc5d157543/cohort/6e4213d8d3"
                     role="button"
@@ -2132,22 +2194,21 @@ exports[`Run as participant 2`] = `
                       Student
                     </strong>
                   </a>
-                  <div
-                    class="c__join-persona-content content"
-                  >
-                    <div
-                      class="author"
-                    >
+                </div>
+                <div>
+                  <p>
+                    <strong>
                       Student
-                    </div>
-                    <div
-                      class="text"
-                    >
-                      A non-specific student, participating in a multi person scenario.
-                    </div>
-                  </div>
+                    </strong>
+                  </p>
+                  <p>
+                    A non-specific student, participating in a multi person scenario.
+                  </p>
                 </div>
               </div>
+              <div
+                class="ui divider"
+              />
             </div>
             <div
               class="meta"
@@ -2188,23 +2249,38 @@ exports[`Run as participant 2`] = `
 exports[`Run as participant 4`] = `
 <DocumentFragment>
   <div
-    class="ui fluid container c__scenario-container"
+    class="ui fluid container c__section-container"
   >
-    <p
-      class="c__scenario-header-num"
+    <div
+      class="ui stackable two column grid c__section-container-header"
     >
-      <span>
-        1
-      </span>
-       scenario selected
-    </p>
-    <p>
-      <button
-        class="ui tiny button"
+      <div
+        class="row"
       >
-        Edit selected scenarios
-      </button>
-    </p>
+        <div
+          class="eight wide column"
+        >
+          <p
+            class="c__by-the-numbers-heading"
+            tabindex="0"
+          >
+            <strong>
+              1
+            </strong>
+             scenario selected
+          </p>
+        </div>
+        <div
+          class="right aligned eight wide column"
+        >
+          <button
+            class="ui button"
+          >
+            Add or remove scenarios
+          </button>
+        </div>
+      </div>
+    </div>
     <div
       class="c__scenario-list"
     >
@@ -2242,13 +2318,11 @@ exports[`Run as participant 4`] = `
                  roles:
               </span>
               <div
-                class="ui comments c__join-persona-container"
+                class="c__join-as-role-card"
               >
-                <div
-                  class="comment"
-                >
+                <div>
                   <a
-                    class="ui tiny button c__join-persona-button"
+                    class="ui small fluid button c__join-persona-button"
                     data-testid="join-scenario-as"
                     href="/chat/join/1765cf2e64/as/6e4213d8d3/cohort/6e4213d8d3"
                     role="button"
@@ -2258,26 +2332,20 @@ exports[`Run as participant 4`] = `
                       Participant
                     </strong>
                   </a>
-                  <div
-                    class="c__join-persona-content content"
-                  >
-                    <div
-                      class="author"
-                    >
-                      Participant
-                    </div>
-                    <div
-                      class="text"
-                    >
-                      The default user participating in a single person scenario.
-                    </div>
-                  </div>
                 </div>
-                <div
-                  class="comment"
-                >
+                <div>
+                  <p>
+                    <strong>
+                      Participant
+                    </strong>
+                  </p>
+                  <p>
+                    The default user participating in a single person scenario.
+                  </p>
+                </div>
+                <div>
                   <a
-                    class="ui tiny button c__join-persona-button"
+                    class="ui small fluid button c__join-persona-button"
                     data-testid="join-scenario-as"
                     href="/chat/join/1765cf2e64/as/6c4adee67a/cohort/6e4213d8d3"
                     role="button"
@@ -2287,26 +2355,20 @@ exports[`Run as participant 4`] = `
                       Teacher
                     </strong>
                   </a>
-                  <div
-                    class="c__join-persona-content content"
-                  >
-                    <div
-                      class="author"
-                    >
-                      Teacher
-                    </div>
-                    <div
-                      class="text"
-                    >
-                      A non-specific teacher, participating in a multi person scenario.
-                    </div>
-                  </div>
                 </div>
-                <div
-                  class="comment"
-                >
+                <div>
+                  <p>
+                    <strong>
+                      Teacher
+                    </strong>
+                  </p>
+                  <p>
+                    A non-specific teacher, participating in a multi person scenario.
+                  </p>
+                </div>
+                <div>
                   <a
-                    class="ui tiny button c__join-persona-button"
+                    class="ui small fluid button c__join-persona-button"
                     data-testid="join-scenario-as"
                     href="/chat/join/1765cf2e64/as/cc5d157543/cohort/6e4213d8d3"
                     role="button"
@@ -2316,22 +2378,21 @@ exports[`Run as participant 4`] = `
                       Student
                     </strong>
                   </a>
-                  <div
-                    class="c__join-persona-content content"
-                  >
-                    <div
-                      class="author"
-                    >
+                </div>
+                <div>
+                  <p>
+                    <strong>
                       Student
-                    </div>
-                    <div
-                      class="text"
-                    >
-                      A non-specific student, participating in a multi person scenario.
-                    </div>
-                  </div>
+                    </strong>
+                  </p>
+                  <p>
+                    A non-specific student, participating in a multi person scenario.
+                  </p>
                 </div>
               </div>
+              <div
+                class="ui divider"
+              />
             </div>
             <div
               class="meta"
@@ -2397,23 +2458,38 @@ exports[`Scenarios have multi-participant/single-participant icons 1`] = `
 exports[`Scenarios have multi-participant/single-participant icons 2`] = `
 <DocumentFragment>
   <div
-    class="ui fluid container c__scenario-container"
+    class="ui fluid container c__section-container"
   >
-    <p
-      class="c__scenario-header-num"
+    <div
+      class="ui stackable two column grid c__section-container-header"
     >
-      <span>
-        1
-      </span>
-       scenario selected
-    </p>
-    <p>
-      <button
-        class="ui tiny button"
+      <div
+        class="row"
       >
-        Edit selected scenarios
-      </button>
-    </p>
+        <div
+          class="eight wide column"
+        >
+          <p
+            class="c__by-the-numbers-heading"
+            tabindex="0"
+          >
+            <strong>
+              1
+            </strong>
+             scenario selected
+          </p>
+        </div>
+        <div
+          class="right aligned eight wide column"
+        >
+          <button
+            class="ui button"
+          >
+            Add or remove scenarios
+          </button>
+        </div>
+      </div>
+    </div>
     <div
       class="c__scenario-list"
     >
@@ -2451,13 +2527,11 @@ exports[`Scenarios have multi-participant/single-participant icons 2`] = `
                  roles:
               </span>
               <div
-                class="ui comments c__join-persona-container"
+                class="c__join-as-role-card"
               >
-                <div
-                  class="comment"
-                >
+                <div>
                   <a
-                    class="ui tiny button c__join-persona-button"
+                    class="ui small fluid button c__join-persona-button"
                     data-testid="join-scenario-as"
                     href="/chat/join/1765cf2e64/as/6e4213d8d3/cohort/6e4213d8d3"
                     role="button"
@@ -2467,26 +2541,20 @@ exports[`Scenarios have multi-participant/single-participant icons 2`] = `
                       Participant
                     </strong>
                   </a>
-                  <div
-                    class="c__join-persona-content content"
-                  >
-                    <div
-                      class="author"
-                    >
-                      Participant
-                    </div>
-                    <div
-                      class="text"
-                    >
-                      The default user participating in a single person scenario.
-                    </div>
-                  </div>
                 </div>
-                <div
-                  class="comment"
-                >
+                <div>
+                  <p>
+                    <strong>
+                      Participant
+                    </strong>
+                  </p>
+                  <p>
+                    The default user participating in a single person scenario.
+                  </p>
+                </div>
+                <div>
                   <a
-                    class="ui tiny button c__join-persona-button"
+                    class="ui small fluid button c__join-persona-button"
                     data-testid="join-scenario-as"
                     href="/chat/join/1765cf2e64/as/6c4adee67a/cohort/6e4213d8d3"
                     role="button"
@@ -2496,26 +2564,20 @@ exports[`Scenarios have multi-participant/single-participant icons 2`] = `
                       Teacher
                     </strong>
                   </a>
-                  <div
-                    class="c__join-persona-content content"
-                  >
-                    <div
-                      class="author"
-                    >
-                      Teacher
-                    </div>
-                    <div
-                      class="text"
-                    >
-                      A non-specific teacher, participating in a multi person scenario.
-                    </div>
-                  </div>
                 </div>
-                <div
-                  class="comment"
-                >
+                <div>
+                  <p>
+                    <strong>
+                      Teacher
+                    </strong>
+                  </p>
+                  <p>
+                    A non-specific teacher, participating in a multi person scenario.
+                  </p>
+                </div>
+                <div>
                   <a
-                    class="ui tiny button c__join-persona-button"
+                    class="ui small fluid button c__join-persona-button"
                     data-testid="join-scenario-as"
                     href="/chat/join/1765cf2e64/as/cc5d157543/cohort/6e4213d8d3"
                     role="button"
@@ -2525,22 +2587,21 @@ exports[`Scenarios have multi-participant/single-participant icons 2`] = `
                       Student
                     </strong>
                   </a>
-                  <div
-                    class="c__join-persona-content content"
-                  >
-                    <div
-                      class="author"
-                    >
+                </div>
+                <div>
+                  <p>
+                    <strong>
                       Student
-                    </div>
-                    <div
-                      class="text"
-                    >
-                      A non-specific student, participating in a multi person scenario.
-                    </div>
-                  </div>
+                    </strong>
+                  </p>
+                  <p>
+                    A non-specific student, participating in a multi person scenario.
+                  </p>
                 </div>
               </div>
+              <div
+                class="ui divider"
+              />
             </div>
             <div
               class="meta"
@@ -2581,23 +2642,38 @@ exports[`Scenarios have multi-participant/single-participant icons 2`] = `
 exports[`Scenarios have multi-participant/single-participant icons 3`] = `
 <DocumentFragment>
   <div
-    class="ui fluid container c__scenario-container"
+    class="ui fluid container c__section-container"
   >
-    <p
-      class="c__scenario-header-num"
+    <div
+      class="ui stackable two column grid c__section-container-header"
     >
-      <span>
-        1
-      </span>
-       scenario selected
-    </p>
-    <p>
-      <button
-        class="ui tiny button"
+      <div
+        class="row"
       >
-        Edit selected scenarios
-      </button>
-    </p>
+        <div
+          class="eight wide column"
+        >
+          <p
+            class="c__by-the-numbers-heading"
+            tabindex="0"
+          >
+            <strong>
+              1
+            </strong>
+             scenario selected
+          </p>
+        </div>
+        <div
+          class="right aligned eight wide column"
+        >
+          <button
+            class="ui button"
+          >
+            Add or remove scenarios
+          </button>
+        </div>
+      </div>
+    </div>
     <div
       class="c__scenario-list"
     >
@@ -2635,13 +2711,11 @@ exports[`Scenarios have multi-participant/single-participant icons 3`] = `
                  roles:
               </span>
               <div
-                class="ui comments c__join-persona-container"
+                class="c__join-as-role-card"
               >
-                <div
-                  class="comment"
-                >
+                <div>
                   <a
-                    class="ui tiny button c__join-persona-button"
+                    class="ui small fluid button c__join-persona-button"
                     data-testid="join-scenario-as"
                     href="/chat/join/1765cf2e64/as/6e4213d8d3/cohort/6e4213d8d3"
                     role="button"
@@ -2651,26 +2725,20 @@ exports[`Scenarios have multi-participant/single-participant icons 3`] = `
                       Participant
                     </strong>
                   </a>
-                  <div
-                    class="c__join-persona-content content"
-                  >
-                    <div
-                      class="author"
-                    >
-                      Participant
-                    </div>
-                    <div
-                      class="text"
-                    >
-                      The default user participating in a single person scenario.
-                    </div>
-                  </div>
                 </div>
-                <div
-                  class="comment"
-                >
+                <div>
+                  <p>
+                    <strong>
+                      Participant
+                    </strong>
+                  </p>
+                  <p>
+                    The default user participating in a single person scenario.
+                  </p>
+                </div>
+                <div>
                   <a
-                    class="ui tiny button c__join-persona-button"
+                    class="ui small fluid button c__join-persona-button"
                     data-testid="join-scenario-as"
                     href="/chat/join/1765cf2e64/as/6c4adee67a/cohort/6e4213d8d3"
                     role="button"
@@ -2680,26 +2748,20 @@ exports[`Scenarios have multi-participant/single-participant icons 3`] = `
                       Teacher
                     </strong>
                   </a>
-                  <div
-                    class="c__join-persona-content content"
-                  >
-                    <div
-                      class="author"
-                    >
-                      Teacher
-                    </div>
-                    <div
-                      class="text"
-                    >
-                      A non-specific teacher, participating in a multi person scenario.
-                    </div>
-                  </div>
                 </div>
-                <div
-                  class="comment"
-                >
+                <div>
+                  <p>
+                    <strong>
+                      Teacher
+                    </strong>
+                  </p>
+                  <p>
+                    A non-specific teacher, participating in a multi person scenario.
+                  </p>
+                </div>
+                <div>
                   <a
-                    class="ui tiny button c__join-persona-button"
+                    class="ui small fluid button c__join-persona-button"
                     data-testid="join-scenario-as"
                     href="/chat/join/1765cf2e64/as/cc5d157543/cohort/6e4213d8d3"
                     role="button"
@@ -2709,22 +2771,21 @@ exports[`Scenarios have multi-participant/single-participant icons 3`] = `
                       Student
                     </strong>
                   </a>
-                  <div
-                    class="c__join-persona-content content"
-                  >
-                    <div
-                      class="author"
-                    >
+                </div>
+                <div>
+                  <p>
+                    <strong>
                       Student
-                    </div>
-                    <div
-                      class="text"
-                    >
-                      A non-specific student, participating in a multi person scenario.
-                    </div>
-                  </div>
+                    </strong>
+                  </p>
+                  <p>
+                    A non-specific student, participating in a multi person scenario.
+                  </p>
                 </div>
               </div>
+              <div
+                class="ui divider"
+              />
             </div>
             <div
               class="meta"
@@ -2765,23 +2826,38 @@ exports[`Scenarios have multi-participant/single-participant icons 3`] = `
 exports[`Scenarios have multi-participant/single-participant icons 4`] = `
 <DocumentFragment>
   <div
-    class="ui fluid container c__scenario-container"
+    class="ui fluid container c__section-container"
   >
-    <p
-      class="c__scenario-header-num"
+    <div
+      class="ui stackable two column grid c__section-container-header"
     >
-      <span>
-        1
-      </span>
-       scenario selected
-    </p>
-    <p>
-      <button
-        class="ui tiny button"
+      <div
+        class="row"
       >
-        Edit selected scenarios
-      </button>
-    </p>
+        <div
+          class="eight wide column"
+        >
+          <p
+            class="c__by-the-numbers-heading"
+            tabindex="0"
+          >
+            <strong>
+              1
+            </strong>
+             scenario selected
+          </p>
+        </div>
+        <div
+          class="right aligned eight wide column"
+        >
+          <button
+            class="ui button"
+          >
+            Add or remove scenarios
+          </button>
+        </div>
+      </div>
+    </div>
     <div
       class="c__scenario-list"
     >
@@ -2819,13 +2895,11 @@ exports[`Scenarios have multi-participant/single-participant icons 4`] = `
                  roles:
               </span>
               <div
-                class="ui comments c__join-persona-container"
+                class="c__join-as-role-card"
               >
-                <div
-                  class="comment"
-                >
+                <div>
                   <a
-                    class="ui tiny button c__join-persona-button"
+                    class="ui small fluid button c__join-persona-button"
                     data-testid="join-scenario-as"
                     href="/chat/join/1765cf2e64/as/6e4213d8d3/cohort/6e4213d8d3"
                     role="button"
@@ -2835,26 +2909,20 @@ exports[`Scenarios have multi-participant/single-participant icons 4`] = `
                       Participant
                     </strong>
                   </a>
-                  <div
-                    class="c__join-persona-content content"
-                  >
-                    <div
-                      class="author"
-                    >
-                      Participant
-                    </div>
-                    <div
-                      class="text"
-                    >
-                      The default user participating in a single person scenario.
-                    </div>
-                  </div>
                 </div>
-                <div
-                  class="comment"
-                >
+                <div>
+                  <p>
+                    <strong>
+                      Participant
+                    </strong>
+                  </p>
+                  <p>
+                    The default user participating in a single person scenario.
+                  </p>
+                </div>
+                <div>
                   <a
-                    class="ui tiny button c__join-persona-button"
+                    class="ui small fluid button c__join-persona-button"
                     data-testid="join-scenario-as"
                     href="/chat/join/1765cf2e64/as/6c4adee67a/cohort/6e4213d8d3"
                     role="button"
@@ -2864,26 +2932,20 @@ exports[`Scenarios have multi-participant/single-participant icons 4`] = `
                       Teacher
                     </strong>
                   </a>
-                  <div
-                    class="c__join-persona-content content"
-                  >
-                    <div
-                      class="author"
-                    >
-                      Teacher
-                    </div>
-                    <div
-                      class="text"
-                    >
-                      A non-specific teacher, participating in a multi person scenario.
-                    </div>
-                  </div>
                 </div>
-                <div
-                  class="comment"
-                >
+                <div>
+                  <p>
+                    <strong>
+                      Teacher
+                    </strong>
+                  </p>
+                  <p>
+                    A non-specific teacher, participating in a multi person scenario.
+                  </p>
+                </div>
+                <div>
                   <a
-                    class="ui tiny button c__join-persona-button"
+                    class="ui small fluid button c__join-persona-button"
                     data-testid="join-scenario-as"
                     href="/chat/join/1765cf2e64/as/cc5d157543/cohort/6e4213d8d3"
                     role="button"
@@ -2893,22 +2955,21 @@ exports[`Scenarios have multi-participant/single-participant icons 4`] = `
                       Student
                     </strong>
                   </a>
-                  <div
-                    class="c__join-persona-content content"
-                  >
-                    <div
-                      class="author"
-                    >
+                </div>
+                <div>
+                  <p>
+                    <strong>
                       Student
-                    </div>
-                    <div
-                      class="text"
-                    >
-                      A non-specific student, participating in a multi person scenario.
-                    </div>
-                  </div>
+                    </strong>
+                  </p>
+                  <p>
+                    A non-specific student, participating in a multi person scenario.
+                  </p>
                 </div>
               </div>
+              <div
+                class="ui divider"
+              />
             </div>
             <div
               class="meta"
