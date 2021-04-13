@@ -5,7 +5,16 @@ const getLocationHrefIfAvailable = () => {
 
 export default {
   compose(props, data = {}) {
-    let { agent, chat, cohort, prompt, response, user } = props;
+    let {
+      agent,
+      chat,
+      cohort,
+      persona,
+      prompt,
+      response,
+      scenario,
+      user
+    } = props;
     let url = props.url || getLocationHrefIfAvailable();
 
     // These may be null, so we can't rely on default params
@@ -21,12 +30,20 @@ export default {
       chat = {};
     }
 
+    if (!persona) {
+      persona = {};
+    }
+
     if (!prompt) {
       prompt = {};
     }
 
     if (!response) {
       response = {};
+    }
+
+    if (!scenario) {
+      scenario = {};
     }
 
     if (!user) {
@@ -92,11 +109,17 @@ export default {
       cohort: {
         id: cohort.id
       },
+      persona: {
+        id: persona.id
+      },
       prompt: {
         id: prompt.id
       },
       response: {
         id: response.id
+      },
+      scenario: {
+        id: scenario.id
       },
       user: {
         id: user.id

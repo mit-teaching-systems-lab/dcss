@@ -6,7 +6,11 @@ import interval from 'interval-promise';
 import { getInvites } from '@actions/invite';
 import { getPermissions, getSession } from '@actions/session';
 import Notification from '@components/Notification';
-import withSocket, { HEART_BEAT } from '@hoc/withSocket';
+import withSocket, {
+  CREATE_USER_CHANNEL,
+  HEART_BEAT,
+  REDIRECT
+} from '@hoc/withSocket';
 import BackButtonHistory from './BackButtonHistory';
 import Navigation from './Navigation';
 import Routes from './Routes';
@@ -30,6 +34,7 @@ class App extends Component {
     this.heartBeat = this.heartBeat.bind(this);
     this.heartBeat.cancel = () => {};
     this.onLoad = this.onLoad.bind(this);
+    this.onRedirect = this.onRedirect.bind(this);
   }
 
   async componentDidMount() {
@@ -58,6 +63,13 @@ class App extends Component {
       isReady = true;
     }
 
+    const { user } = this.props;
+
+    this.props.socket.on(REDIRECT, this.onRedirect);
+    this.props.socket.emit(CREATE_USER_CHANNEL, {
+      user
+    });
+
     this.setState({
       isReady
     });
@@ -65,12 +77,19 @@ class App extends Component {
 
   componentWillUnmount() {
     window.removeEventListener('load', this.onLoad);
+    this.props.socket.off(REDIRECT, this.onRedirect);
     this.heartBeat.cancel();
   }
 
   onLoad() {
     if (Layout.isForMobile()) {
       window.scrollTo(0, 1);
+    }
+  }
+
+  onRedirect({ href }) {
+    if (href) {
+      location.href = href;
     }
   }
 

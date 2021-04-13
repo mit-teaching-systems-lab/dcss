@@ -7,25 +7,30 @@ import { upperCaseFirst } from 'change-case';
 import {
   Button,
   Card,
+  Checkbox,
   Container,
+  Dropdown,
   Grid,
   Header,
   Icon,
   Image,
   Input,
+  List,
   Modal,
   Table,
   Text
 } from '@components/UI';
-import { getCohort } from '@actions/cohort';
+import { getCohort, getCohortScenarios } from '@actions/cohort';
 import CohortParticipants from '@components/Cohorts/CohortParticipants';
 import Loading from '@components/Loading';
 import Username from '@components/User/Username';
 import Identity from '@utils/Identity';
 import Moment from '@utils/Moment';
+import Payload from '@utils/Payload';
 import Storage from '@utils/Storage';
 import withSocket, {
-  FACILITATOR_CANCELED_MATCH_REQUEST
+  FACILITATOR_CANCELED_MATCH_REQUEST,
+  FACILITATOR_CREATED_MATCH_REQUEST
 } from '@hoc/withSocket';
 
 import './Cohort.css';
@@ -47,7 +52,13 @@ export class CohortProgress extends React.Component {
 
     this.state = {
       isReady: false,
-      clear: {
+      assignment: {
+        isOpen: false,
+        participants: [],
+        persona: null,
+        scenario: null
+      },
+      cancel: {
         isOpen: false,
         participant: null,
         scenario: null,
@@ -66,7 +77,19 @@ export class CohortProgress extends React.Component {
   }
 
   async fetchCohort() {
+    if (this.hasUnmounted) {
+      return;
+    }
+
     await this.props.getCohort(this.props.id);
+
+    const hasScenariosLoaded = this.props.cohort.scenarios.every(
+      id => this.props.scenariosById[id]
+    );
+
+    if (!hasScenariosLoaded) {
+      await this.props.getCohortScenarios(this.props.id);
+    }
 
     /* istanbul ignore else */
     if (!this.state.isReady) {
@@ -87,7 +110,6 @@ export class CohortProgress extends React.Component {
 
   async componentDidMount() {
     await this.fetchCohort();
-
     /* istanbul ignore if */
     if (this.state.refresh) {
       // TODO: allow updating to paused.
@@ -95,7 +117,8 @@ export class CohortProgress extends React.Component {
     }
   }
 
-  async componentWillUnmount() {
+  componentWillUnmount() {
+    this.hasUnmounted = true;
     clearInterval(this.interval);
   }
 
@@ -189,7 +212,7 @@ export class CohortProgress extends React.Component {
 
     const searchInputAriaLabel = 'Search participants';
     const manageButtonAriaLabel = 'Manage participant access';
-    const clearButtonAriaLabel = 'Cancel all participant join requests';
+    const cancelButtonAriaLabel = 'Cancel all participant join requests';
 
     const searchParticipantsInCohort = (
       <Input
@@ -217,14 +240,14 @@ export class CohortProgress extends React.Component {
       </Button>
     );
 
-    let clearables = [];
-    const clearParticipantsPoolButton = (
+    let cancelables = [];
+    const cancelParticipantsPoolButton = (
       <Button
         size="tiny"
-        aria-label={clearButtonAriaLabel}
+        aria-label={cancelButtonAriaLabel}
         onClick={() => {
           this.setState({
-            clear: {
+            cancel: {
               isOpen: true,
               participant: null,
               scenario: null,
@@ -233,13 +256,13 @@ export class CohortProgress extends React.Component {
           });
         }}
       >
-        {clearButtonAriaLabel}
+        {cancelButtonAriaLabel}
       </Button>
     );
 
-    const onConfirmClearPoolClose = () => {
+    const onConfirmCancelPoolClose = () => {
       this.setState({
-        clear: {
+        cancel: {
           isOpen: false,
           participant: null,
           scenario: null,
@@ -248,24 +271,224 @@ export class CohortProgress extends React.Component {
       });
     };
 
-    const clearParticipantsPoolHeader = this.state.clear.participant
-      ? `Cancel ${this.state.clear.participant.username}'s join request?`
-      : `${clearButtonAriaLabel}?`;
+    const cancelParticipantsPoolHeader = this.state.cancel.participant
+      ? `Cancel ${this.state.cancel.participant.username}'s join request?`
+      : `${cancelButtonAriaLabel}?`;
 
-    const clearParticipantsPoolExplanation = this.state.clear.participant ? (
+    const cancelParticipantsPoolExplanation = this.state.cancel.participant ? (
       <p>
         Are you sure you want to cancel{' '}
         <strong>
-          {<Username user={this.state.clear.participant} />}&apos;s
+          {<Username user={this.state.cancel.participant} />}&apos;s
         </strong>{' '}
-        request to join <strong>{this.state.clear.scenario.title}</strong> as{' '}
-        <strong>{this.state.clear.persona.name}</strong>?
+        request to join <strong>{this.state.cancel.scenario.title}</strong> as{' '}
+        <strong>{this.state.cancel.persona.name}</strong>?
       </p>
     ) : (
       <p>
         Are you sure you want to cancel all of these participant join requests?
       </p>
     );
+
+    const scenarioAssignmentSelectDropdownOptions = cohort.scenarios.reduce(
+      (accum, id) => {
+        const scenario = this.props.scenariosById[id];
+        if (scenario.personas.length > 1) {
+          accum.push({
+            key: scenario.id,
+            text: scenario.title,
+            value: scenario.id
+          });
+        }
+        return accum;
+      },
+      []
+    );
+
+    scenarioAssignmentSelectDropdownOptions.unshift({
+      key: '',
+      value: null,
+      text: ''
+    });
+
+    const scenarioAssignmentSelectDropdownValue = this.state.assignment.scenario
+      ? this.state.assignment.scenario.id
+      : null;
+
+    const scenarioAssignmentSelectDropdown = scenarioAssignmentSelectDropdownOptions.length ? (
+      <Dropdown
+        selection
+        className="tiny c__assignment-dropdown"
+        placeholder="Select a scenario"
+        options={scenarioAssignmentSelectDropdownOptions}
+        value={scenarioAssignmentSelectDropdownValue}
+        onChange={(e, { value }) => {
+          const assignment = this.state.assignment;
+          this.setState({
+            assignment: {
+              ...assignment,
+              persona: null,
+              scenario: this.props.scenariosById[value]
+            }
+          });
+        }}
+      />
+    ) : null;
+
+    const personaAssignmentSelectDropdownOptions = this.state.assignment
+      .scenario
+      ? this.state.assignment.scenario.personas.reduce((accum, persona) => {
+          return [
+            ...accum,
+            {
+              key: persona.id,
+              text: persona.name,
+              value: persona.id
+            }
+          ];
+        }, [])
+      : [];
+
+    if (personaAssignmentSelectDropdownOptions.length) {
+      personaAssignmentSelectDropdownOptions.unshift({
+        key: '',
+        value: null,
+        text: ''
+      });
+    }
+
+    const personaAssignmentSelectDropdownValue = this.state.assignment.persona
+      ? this.state.assignment.persona.id
+      : null;
+
+    const personaAssignmentSelectDropdown = personaAssignmentSelectDropdownOptions.length ? (
+      <Dropdown
+        selection
+        className="tiny c__assignment-dropdown"
+        placeholder="Select a persona"
+        options={personaAssignmentSelectDropdownOptions}
+        value={personaAssignmentSelectDropdownValue}
+        onChange={(e, { value }) => {
+          const assignment = this.state.assignment;
+          const persona = assignment.scenario.personas.find(
+            p => p.id === value
+          );
+          if (persona) {
+            this.setState({
+              assignment: {
+                ...assignment,
+                persona
+              }
+            });
+          }
+        }}
+      />
+    ) : null;
+
+    const pluralizedAssignmentButton = this.state.assignment.participants.length
+      ? pluralize(
+          'Assign selected participant',
+          this.state.assignment.participants.length
+        )
+      : 'Select participants below';
+
+    const personaAssignButton = this.state.assignment.persona ? (
+      <Button
+        size="tiny"
+        content={pluralizedAssignmentButton}
+        disabled={this.state.assignment.participants.length === 0}
+        onClick={() => {
+          const assignment = this.state.assignment;
+          this.setState({
+            assignment: {
+              ...assignment,
+              isOpen: true
+            }
+          });
+        }}
+      />
+    ) : null;
+
+    const isInAssignmentState =
+      this.state.assignment.scenario && this.state.assignment.persona;
+
+    const onConfirmAssignmentReset = () => {
+      this.setState(
+        {
+          assignment: {
+            isOpen: false,
+            participants: [],
+            scenario: null,
+            persona: null
+          }
+        },
+        () => {
+          this.fetchCohort();
+        }
+      );
+    };
+
+    const onConfirmAssignmentClose = () => {
+      const assignment = this.state.assignment;
+      this.setState({
+        assignment: {
+          ...assignment,
+          isOpen: false
+        }
+      });
+    };
+
+    const pluralizedParticipant = isInAssignmentState
+      ? pluralize('participant', this.state.assignment.participants.length)
+      : null;
+
+    const pluralizeThisOrThese = isInAssignmentState
+      ? pluralize('this', this.state.assignment.participants.length)
+      : null;
+
+    const assignmentParticipantsHeader = `Assign ${pluralizeThisOrThese} ${pluralizedParticipant}?`;
+
+    const isAwaitingMoreThanOneOtherParticipant = isInAssignmentState
+      ? this.state.assignment.scenario.personas.length > 2
+      : false;
+
+    const pluralizedAwaitParticipants = `participant${
+      isAwaitingMoreThanOneOtherParticipant ? 's' : ''
+    }`;
+
+    const pluralizedAMatchingParticipant = isAwaitingMoreThanOneOtherParticipant
+      ? `matching ${pluralizedAwaitParticipants}`
+      : `a matching ${pluralizedAwaitParticipants}`;
+
+    const assignmentParticipantsExplanation = this.state.assignment.participants
+      .length ? (
+      <Fragment>
+        <p>
+          Are you sure you want to send the following {pluralizedParticipant} to{' '}
+          <strong>{this.state.assignment.scenario.title}</strong> as{' '}
+          <strong>{this.state.assignment.persona.name}</strong>?
+        </p>
+        <p>
+          If you click <strong>Yes</strong>, {pluralizeThisOrThese} selected{' '}
+          {pluralizedParticipant} will be automatically redirected to await{' '}
+          {pluralizedAMatchingParticipant} to complete the scenario.
+        </p>
+        <List className="cp__list" relaxed="very">
+          {this.state.assignment.participants.map(id => {
+            const participant = this.props.cohort.usersById[id];
+            return (
+              <List.Item key={Identity.key(participant)}>
+                <List.Content>
+                  <List.Header>
+                    <Username user={participant} />
+                  </List.Header>
+                </List.Content>
+              </List.Item>
+            );
+          })}
+        </List>
+      </Fragment>
+    ) : null;
 
     return (
       <Container fluid className="c__section-container">
@@ -277,7 +500,10 @@ export class CohortProgress extends React.Component {
           <Grid.Row className="c__grid-element-unpadded">
             <Grid.Column width={16}>
               {manageParticipantsButton}
-              {clearParticipantsPoolButton}
+              {cancelParticipantsPoolButton}
+              {scenarioAssignmentSelectDropdown}
+              {personaAssignmentSelectDropdown}
+              {personaAssignButton}
             </Grid.Column>
           </Grid.Row>
         </Grid>
@@ -320,29 +546,44 @@ export class CohortProgress extends React.Component {
             let completedOrCurrentScenario = '';
             let mustShowLastActivityAndSlide = true;
 
+            let lastEvent = null;
+            let lastUserEvent = eventsValues.reduce((accum, lue) => {
+              if (lue.is_run) {
+                return accum;
+              }
+              if (!accum || accum.created_at < lue.created_at) {
+                return {
+                  ...lue
+                };
+              }
+              return accum;
+            }, null);
+
             if (!eventsCount) {
               statusIcon = 'warning sign';
               statusText = 'Not started';
               statusIconClassName = 'c__progress-red';
             } else {
-              const lastEvent = eventsValues[eventsValues.length - 1];
+              lastEvent =
+                eventsValues[eventsValues.length - 1] || lastUserEvent;
 
               lastScenarioViewed = this.props.scenariosById[
                 lastEvent.scenario_id
               ];
 
+              lastAccessedAt = lastEvent.created_at
+                ? new Date(Number(lastEvent.created_at)).toISOString()
+                : null;
+
+              lastAccessedAgo = lastAccessedAt
+                ? Moment(lastAccessedAt).fromNow()
+                : null;
+
               if (progress.completed.includes(lastEvent.scenario_id)) {
-                completedOrCurrentScenario = `Completed scenario`;
+                completedOrCurrentScenario = `Last Completed scenario`;
                 mustShowLastActivityAndSlide = false;
               } else {
                 completedOrCurrentScenario = `Current scenario`;
-                lastAccessedAt = lastEvent.created_at
-                  ? new Date(Number(lastEvent.created_at)).toISOString()
-                  : null;
-
-                lastAccessedAgo = lastAccessedAt
-                  ? Moment(lastAccessedAt).fromNow()
-                  : null;
 
                 lastUrlVisited = lastEvent.url || null;
                 lastSlideViewed = lastUrlVisited
@@ -374,7 +615,7 @@ export class CohortProgress extends React.Component {
                       persona,
                       scenario
                     };
-                    clearables.push(cancelRequestProps);
+                    cancelables.push(cancelRequestProps);
                     mustShowCancelRequestButton = true;
                   }
                 }
@@ -400,6 +641,10 @@ export class CohortProgress extends React.Component {
               });
             };
 
+            const isChecked =
+              isInAssignmentState &&
+              this.state.assignment.participants.includes(participant.id);
+
             return (
               <Card
                 className="c__participant-card"
@@ -410,20 +655,46 @@ export class CohortProgress extends React.Component {
                     <Username user={participant} />
                   </Card.Header>
                   {lastAccessedDisplay}
+                  {isInAssignmentState &&
+                  participant.id !== this.props.user.id ? (
+                    <Checkbox
+                      className="c__assignment-checkbox"
+                      label="Select for assignment"
+                      checked={isChecked}
+                      onChange={(e, { checked }) => {
+                        const assignment = this.state.assignment;
+                        const participants = assignment.participants.slice();
+                        if (checked) {
+                          participants.push(participant.id);
+                        } else {
+                          participants.splice(
+                            participants.indexOf(participant.id),
+                            1
+                          );
+                        }
+                        this.setState({
+                          assignment: {
+                            ...assignment,
+                            participants
+                          }
+                        });
+                      }}
+                    />
+                  ) : null}
                 </Card.Content>
                 <Card.Content className="c__scenario-content">
                   <Card.Description className="c__participant-completion">
                     <div className="c__participant-status">
                       <Icon className={statusIconClassName} name={statusIcon} />
                       <Text size="medium">{statusText}</Text>{' '}
-                      {mustShowCancelRequestButton ? (
+                      {mustShowCancelRequestButton && cancelables.length ? (
                         <Button
                           compact
                           size="mini"
                           content="Cancel request"
                           onClick={() => {
                             this.setState({
-                              clear: {
+                              cancel: {
                                 isOpen: true,
                                 ...cancelRequestProps
                               }
@@ -445,7 +716,7 @@ export class CohortProgress extends React.Component {
                         {mustShowLastActivityAndSlide ? (
                           <p className="c__participant-completion__group">
                             <span className="c__participant-completion__subhed">
-                              Last activity
+                              Last scenario activity
                             </span>
                             {lastEventDescription}
                           </p>
@@ -459,6 +730,14 @@ export class CohortProgress extends React.Component {
                           </p>
                         ) : null}
                       </Fragment>
+                    ) : null}
+                    {lastUserEvent ? (
+                      <p className="c__participant-completion__group">
+                        <span className="c__participant-completion__subhed">
+                          Last action
+                        </span>
+                        {upperCaseFirst(lastUserEvent.description)}
+                      </p>
                     ) : null}
                     <p className="c__participant-completion__scenarios-completed">
                       <span>
@@ -484,7 +763,7 @@ export class CohortProgress extends React.Component {
           })}
         </div>
 
-        {this.state.clear.isOpen ? (
+        {this.state.assignment.isOpen ? (
           <Modal.Accessible open>
             <Modal
               closeIcon
@@ -492,16 +771,66 @@ export class CohortProgress extends React.Component {
               aria-modal="true"
               role="dialog"
               size="small"
-              onClose={onConfirmClearPoolClose}
+              onClose={onConfirmAssignmentClose}
+            >
+              <Header icon="check" content={assignmentParticipantsHeader} />
+              <Modal.Content>{assignmentParticipantsExplanation}</Modal.Content>
+              <Modal.Actions>
+                <Button.Group fluid>
+                  <Button
+                    primary
+                    aria-label="Yes"
+                    onClick={() => {
+                      this.state.assignment.participants.forEach(id => {
+                        const persona = this.state.assignment.persona;
+                        const scenario = this.state.assignment.scenario;
+                        const user = this.props.cohort.usersById[id];
+
+                        this.props.socket.emit(
+                          FACILITATOR_CREATED_MATCH_REQUEST,
+                          Payload.compose({
+                            cohort,
+                            persona,
+                            scenario,
+                            user
+                          })
+                        );
+                      });
+
+                      onConfirmAssignmentReset();
+                    }}
+                  >
+                    Yes
+                  </Button>
+                  <Button.Or />
+                  <Button aria-label="No" onClick={onConfirmAssignmentClose}>
+                    No
+                  </Button>
+                </Button.Group>
+              </Modal.Actions>
+              <div data-testid="cohort-confirm-assignment" />
+            </Modal>
+          </Modal.Accessible>
+        ) : null}
+
+        {this.state.cancel.isOpen ? (
+          <Modal.Accessible open>
+            <Modal
+              closeIcon
+              open
+              aria-modal="true"
+              role="dialog"
+              size="small"
+              onClose={onConfirmCancelPoolClose}
             >
               <Header
                 icon="trash alternate outline"
-                content={clearParticipantsPoolHeader}
+                content={cancelParticipantsPoolHeader}
               />
               <Modal.Content>
-                {clearParticipantsPoolExplanation}
+                {cancelParticipantsPoolExplanation}
 
-                {!this.state.clear.participant ? (
+                {!this.state.cancel.participant ? (
                   <Table celled basic="very">
                     <Table.Header>
                       <Table.Row>
@@ -512,13 +841,13 @@ export class CohortProgress extends React.Component {
                       </Table.Row>
                     </Table.Header>
                     <Table.Body>
-                      {clearables.map(clearable => {
+                      {cancelables.map(cancelable => {
                         const {
                           lastAccessedAgo,
                           participant,
                           scenario,
                           persona
-                        } = clearable;
+                        } = cancelable;
                         return (
                           <Table.Row
                             key={Identity.key({
@@ -548,39 +877,39 @@ export class CohortProgress extends React.Component {
                     primary
                     aria-label="Yes"
                     onClick={() => {
-                      if (this.state.clear.participant) {
-                        clearables = [this.state.clear];
+                      if (this.state.cancel.participant) {
+                        cancelables = [this.state.cancel];
                       }
 
-                      clearables.forEach(clearable => {
+                      cancelables.forEach(cancelable => {
                         const {
                           persona,
                           scenario,
                           participant: user
-                        } = clearable;
+                        } = cancelable;
                         this.props.socket.emit(
                           FACILITATOR_CANCELED_MATCH_REQUEST,
-                          {
+                          Payload.compose({
                             cohort,
                             persona,
                             scenario,
                             user
-                          }
+                          })
                         );
                       });
 
-                      onConfirmClearPoolClose();
+                      onConfirmCancelPoolClose();
                     }}
                   >
                     Yes
                   </Button>
                   <Button.Or />
-                  <Button aria-label="No" onClick={onConfirmClearPoolClose}>
+                  <Button aria-label="No" onClick={onConfirmCancelPoolClose}>
                     No
                   </Button>
                 </Button.Group>
               </Modal.Actions>
-              <div data-testid="cohort-confirm-clear" />
+              <div data-testid="cohort-confirm-cancel" />
             </Modal>
           </Modal.Accessible>
         ) : null}
@@ -609,20 +938,23 @@ CohortProgress.propTypes = {
   authority: PropTypes.object,
   cohort: PropTypes.object,
   getCohort: PropTypes.func,
+  getCohortScenarios: PropTypes.func,
   id: PropTypes.any,
   onClick: PropTypes.func,
+  scenarios: PropTypes.array,
   scenariosById: PropTypes.object,
   user: PropTypes.object,
   usersById: PropTypes.object
 };
 
 const mapStateToProps = state => {
-  const { cohort, cohorts, scenariosById, user, usersById } = state;
-  return { cohort, cohorts, scenariosById, user, usersById };
+  const { cohort, cohorts, scenarios, scenariosById, user, usersById } = state;
+  return { cohort, cohorts, scenarios, scenariosById, user, usersById };
 };
 
 const mapDispatchToProps = dispatch => ({
-  getCohort: id => dispatch(getCohort(id))
+  getCohort: id => dispatch(getCohort(id)),
+  getCohortScenarios: id => dispatch(getCohortScenarios(id))
 });
 
 export default withSocket(

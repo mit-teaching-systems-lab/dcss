@@ -202,12 +202,14 @@ beforeEach(() => {
               latestByScenarioId: {
                 1: {
                   description: '',
-                  is_run: true,
+                  is_run: false,
                   is_complete: false,
                   scenario_id: 99,
                   event_id: 1903,
                   created_at: 1602454306144,
-                  generic: 'arrived at a slide.',
+                  generic:
+                    'requested to join {scenario} as {persona}, and is waiting to be matched.',
+                  persona: { id: 1, name: 'Teacher' },
                   name: 'slide-arrival',
                   url: 'http://localhost:3000/cohort/1/run/99/slide/1'
                 }
@@ -227,12 +229,14 @@ beforeEach(() => {
               latestByScenarioId: {
                 1: {
                   description: '',
-                  is_run: true,
+                  is_run: false,
                   is_complete: false,
                   scenario_id: 99,
                   event_id: 1902,
                   created_at: 1602454306144,
-                  generic: 'arrived at a slide.',
+                  generic:
+                    '{participant} canceled their request to join {scenario} as {persona}.',
+                  persona: { id: 2, name: 'Student' },
                   name: 'slide-arrival',
                   url: 'http://localhost:3000/cohort/1/run/99/slide/1'
                 }
@@ -330,12 +334,14 @@ beforeEach(() => {
               latestByScenarioId: {
                 1: {
                   description: '',
-                  is_run: true,
+                  is_run: false,
                   is_complete: false,
                   scenario_id: 99,
                   event_id: 1903,
                   created_at: 1602454306144,
-                  generic: 'arrived at a slide.',
+                  generic:
+                    'requested to join {scenario} as {persona}, and is waiting to be matched.',
+                  persona: { id: 1, name: 'Teacher' },
                   name: 'slide-arrival',
                   url: 'http://localhost:3000/cohort/1/run/99/slide/1'
                 }
@@ -355,12 +361,14 @@ beforeEach(() => {
               latestByScenarioId: {
                 1: {
                   description: '',
-                  is_run: true,
+                  is_run: false,
                   is_complete: false,
                   scenario_id: 99,
                   event_id: 1902,
                   created_at: 1602454306144,
-                  generic: 'arrived at a slide.',
+                  generic:
+                    '{participant} canceled their request to join {scenario} as {persona}.',
+                  persona: { id: 2, name: 'Student' },
                   name: 'slide-arrival',
                   url: 'http://localhost:3000/cohort/1/run/99/slide/1'
                 }
@@ -573,12 +581,14 @@ beforeEach(() => {
             latestByScenarioId: {
               1: {
                 description: '',
-                is_run: true,
+                is_run: false,
                 is_complete: false,
                 scenario_id: 99,
                 event_id: 1903,
                 created_at: 1602454306144,
-                generic: 'arrived at a slide.',
+                generic:
+                  'requested to join {scenario} as {persona}, and is waiting to be matched.',
+                persona: { id: 1, name: 'Teacher' },
                 name: 'slide-arrival',
                 url: 'http://localhost:3000/cohort/1/run/99/slide/1'
               }
@@ -598,12 +608,14 @@ beforeEach(() => {
             latestByScenarioId: {
               1: {
                 description: '',
-                is_run: true,
+                is_run: false,
                 is_complete: false,
                 scenario_id: 99,
                 event_id: 1902,
                 created_at: 1602454306144,
-                generic: 'arrived at a slide.',
+                generic:
+                  '{participant} canceled their request to join {scenario} as {persona}.',
+                persona: { id: 2, name: 'Student' },
                 name: 'slide-arrival',
                 url: 'http://localhost:3000/cohort/1/run/99/slide/1'
               }
@@ -701,12 +713,14 @@ beforeEach(() => {
             latestByScenarioId: {
               1: {
                 description: '',
-                is_run: true,
+                is_run: false,
                 is_complete: false,
                 scenario_id: 99,
                 event_id: 1903,
                 created_at: 1602454306144,
-                generic: 'arrived at a slide.',
+                generic:
+                  'requested to join {scenario} as {persona}, and is waiting to be matched.',
+                persona: { id: 1, name: 'Teacher' },
                 name: 'slide-arrival',
                 url: 'http://localhost:3000/cohort/1/run/99/slide/1'
               }
@@ -726,12 +740,14 @@ beforeEach(() => {
             latestByScenarioId: {
               1: {
                 description: '',
-                is_run: true,
+                is_run: false,
                 is_complete: false,
                 scenario_id: 99,
                 event_id: 1902,
                 created_at: 1602454306144,
-                generic: 'arrived at a slide.',
+                generic:
+                  '{participant} canceled their request to join {scenario} as {persona}.',
+                persona: { id: 2, name: 'Student' },
                 name: 'slide-arrival',
                 url: 'http://localhost:3000/cohort/1/run/99/slide/1'
               }
@@ -1169,3 +1185,99 @@ test('Render 1 2', async done => {
   done();
 });
 /** @GENERATED: END **/
+
+/* INJECTION STARTS HERE */
+
+test('User is not in any cohorts', async done => {
+  const Component = Cohorts;
+  const props = {
+    ...commonProps,
+    authority: {
+      isPartipant: true,
+      isFacilitator: false
+    }
+  };
+
+  const user = {
+    isLoggedIn: true,
+    username: 'participant',
+    permissions: ['view_own_cohorts', 'view_own_data'],
+    personalname: 'Participant User',
+    email: 'participant@email.com',
+    id: 333,
+    roles: ['participant'],
+    is_anonymous: false,
+    is_super: false
+  };
+
+  const state = {
+    ...commonState,
+    cohorts: [],
+    session: user,
+    user
+  };
+
+  cohortActions.getCohortsCount.mockImplementation(() => async dispatch => {
+    const count = 0;
+    dispatch({ type: GET_COHORTS_COUNT_SUCCESS, count });
+    return count;
+  });
+
+  cohortActions.getCohortsSlice.mockImplementation(() => async dispatch => {
+    const cohorts = [];
+    dispatch({ type: GET_COHORTS_SUCCESS, cohorts });
+    return cohorts;
+  });
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  await render(<ConnectedRoutedComponent {...props} />);
+  expect(serialize()).toMatchSnapshot();
+
+  done();
+});
+
+test('Not logged in', async done => {
+  const Component = Cohorts;
+
+  const user = {};
+  const props = {
+    ...commonProps,
+    user,
+    authority: {
+      isPartipant: true,
+      isFacilitator: false
+    }
+  };
+
+  const state = {
+    ...commonState,
+    cohorts: [],
+    session: user,
+    user
+  };
+
+  userActions.getUser.mockImplementation(() => async dispatch => {
+    dispatch({ type: GET_USER_SUCCESS, user });
+    return user;
+  });
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+  ConnectedRoutedComponent.history.push = jest.fn();
+  ConnectedRoutedComponent.history.push.mockImplementation(() => {});
+
+  await render(<ConnectedRoutedComponent {...props} />);
+  expect(serialize()).toMatchSnapshot();
+
+  await waitFor(() => {
+    expect(ConnectedRoutedComponent.history.push.mock.calls.length).toBe(1);
+    expect(ConnectedRoutedComponent.history.push.mock.calls[0])
+      .toMatchInlineSnapshot(`
+      Array [
+        "/logout",
+      ]
+    `);
+  });
+
+  done();
+});

@@ -18,9 +18,6 @@ const DataModal = props => {
   const { header, prompt, slide, responseId: response_id } = component;
   const ariaLabelledby = Identity.id();
   const ariaDescribedby = Identity.id();
-
-  console.log(transcript, usersById);
-
   const transcript =
     props.transcript && props.transcript.length
       ? props.transcript.filter(message => message.response_id === response_id)
@@ -37,7 +34,7 @@ const DataModal = props => {
       aria-describedby={ariaDescribedby}
       trigger={props.trigger}
     >
-      <Header id={ariaLabelledby} className="dtm__header">
+      <Header className="dtm__header" id={ariaLabelledby}>
         Responses In Context
       </Header>
       <Modal.Content id={ariaDescribedby} scrolling className="dtm__scroll">

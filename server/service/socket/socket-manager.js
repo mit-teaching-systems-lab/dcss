@@ -2,6 +2,7 @@ const { parse } = require('node-html-parser');
 const hash = require('object-hash');
 const Socket = require('./');
 const { notifier } = require('../../util/db');
+const Identity = require('../../util/identity');
 const {
   AGENT_RESPONSE_CREATED,
   CHAT_AGENT_PAUSE,
@@ -24,6 +25,7 @@ const {
   CREATE_SHARED_RESPONSE_CHANNEL,
   CREATE_USER_CHANNEL,
   DISCONNECT,
+  FACILITATOR_CREATED_MATCH_REQUEST,
   FACILITATOR_CANCELED_MATCH_REQUEST,
   HEART_BEAT,
   HOST_JOIN,
@@ -32,6 +34,7 @@ const {
   NOTIFICATION,
   PING,
   PONG,
+  REDIRECT,
   RUN_AGENT_END,
   RUN_AGENT_START,
   RUN_CHAT_LINK,
@@ -659,6 +662,40 @@ class SocketManager {
         );
 
         await saveUserEvent(user.id, EVENT_TYPES.USER_PART_POOL, props);
+      });
+
+      socket.on(FACILITATOR_CREATED_MATCH_REQUEST, async props => {
+        console.log(FACILITATOR_CREATED_MATCH_REQUEST, props);
+        const { cohort, persona, scenario, user } = props;
+
+        // Remove participant from pending roles that do not
+        // match the persona being assigned.
+        const personas = await scenariosdb.getScenarioPersonas(scenario.id);
+        for (let { id } of personas) {
+          if (id !== persona.id) {
+            await chatsdb.leaveChatPool(
+              cohort.id,
+              scenario.id,
+              id,
+              user.id
+            );
+          }
+        }
+
+        // This will be emitted directly to the user's own channel.
+        const room = user.id;
+
+        const scenarioIdHash = Identity.toHash(scenario.id);
+        const personaIdHash = Identity.toHash(persona.id);
+        const cohortIdHash = cohort ? Identity.toHash(cohort.id) : null;
+        let href = `/chat/join/${scenarioIdHash}/as/${personaIdHash}`;
+        if (cohortIdHash) {
+          href = `${href}/cohort/${cohortIdHash}`;
+        }
+
+        this.io.to(user.id).emit(REDIRECT, {
+          href
+        });
       });
 
       socket.on(FACILITATOR_CANCELED_MATCH_REQUEST, async props => {

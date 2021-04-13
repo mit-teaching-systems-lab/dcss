@@ -54,7 +54,9 @@ export class Cohorts extends React.Component {
       isReady: false,
       // Indicates when all cohorts have been loaded from the server
       isComplete: false,
-      createIsOpen: false,
+      create: {
+        isOpen: false
+      },
       results: [],
       page,
       search
@@ -118,11 +120,11 @@ export class Cohorts extends React.Component {
   }
 
   onCreateCohortCancel() {
-    this.setState({ createIsOpen: false });
+    this.setState({ create: { isOpen: false } });
   }
 
   onCreateCohortOpenClick() {
-    this.setState({ createIsOpen: true });
+    this.setState({ create: { isOpen: true } });
   }
 
   onSearchChange(event, props) {
@@ -233,7 +235,7 @@ export class Cohorts extends React.Component {
 
   render() {
     const { authority, user } = this.props;
-    const { page, isComplete, isReady, createIsOpen, search } = this.state;
+    const { page, isComplete, isReady, create, search } = this.state;
     const {
       onCreateCohortCancel,
       onCreateCohortOpenClick,
@@ -490,7 +492,7 @@ export class Cohorts extends React.Component {
           </Grid.Column>
         </Grid>
 
-        {createIsOpen ? (
+        {create.isOpen ? (
           <CohortCreateWizard onCancel={onCreateCohortCancel} />
         ) : null}
       </Fragment>

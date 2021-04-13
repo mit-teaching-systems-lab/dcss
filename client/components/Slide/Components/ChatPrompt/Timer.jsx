@@ -72,7 +72,7 @@ class Timer extends Component {
       return;
     }
 
-    const { chat } = this.props;
+    const { chat, user } = this.props;
 
     const slide = {
       index: this.slideIndex
@@ -83,7 +83,7 @@ class Timer extends Component {
     });
 
     if (this.props.onTimerEnd) {
-      this.props.onTimerEnd({ chat, slide, result });
+      this.props.onTimerEnd({ chat, slide, result, user });
     }
   }
 

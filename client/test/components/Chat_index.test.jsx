@@ -779,11 +779,17 @@ describe('componentDidMount', () => {
             "cohort": Object {
               "id": 2,
             },
+            "persona": Object {
+              "id": undefined,
+            },
             "prompt": Object {
               "id": null,
             },
             "response": Object {
               "id": undefined,
+            },
+            "scenario": Object {
+              "id": 42,
             },
             "url": "http://localhost/",
             "user": Object {
@@ -802,11 +808,17 @@ describe('componentDidMount', () => {
             "cohort": Object {
               "id": 2,
             },
+            "persona": Object {
+              "id": undefined,
+            },
             "prompt": Object {
               "id": null,
             },
             "response": Object {
               "id": undefined,
+            },
+            "scenario": Object {
+              "id": 42,
             },
             "url": "http://localhost/",
             "user": Object {
@@ -859,11 +871,17 @@ describe('componentDidMount', () => {
             "cohort": Object {
               "id": 2,
             },
+            "persona": Object {
+              "id": undefined,
+            },
             "prompt": Object {
               "id": null,
             },
             "response": Object {
               "id": undefined,
+            },
+            "scenario": Object {
+              "id": 42,
             },
             "url": "http://localhost/",
             "user": Object {
@@ -882,11 +900,17 @@ describe('componentDidMount', () => {
             "cohort": Object {
               "id": 2,
             },
+            "persona": Object {
+              "id": undefined,
+            },
             "prompt": Object {
               "id": null,
             },
             "response": Object {
               "id": undefined,
+            },
+            "scenario": Object {
+              "id": 42,
             },
             "url": "http://localhost/",
             "user": Object {
@@ -939,11 +963,17 @@ describe('componentDidMount', () => {
             "cohort": Object {
               "id": 2,
             },
+            "persona": Object {
+              "id": undefined,
+            },
             "prompt": Object {
               "id": null,
             },
             "response": Object {
               "id": undefined,
+            },
+            "scenario": Object {
+              "id": 42,
             },
             "url": "http://localhost/",
             "user": Object {
@@ -962,11 +992,17 @@ describe('componentDidMount', () => {
             "cohort": Object {
               "id": 2,
             },
+            "persona": Object {
+              "id": undefined,
+            },
             "prompt": Object {
               "id": null,
             },
             "response": Object {
               "id": undefined,
+            },
+            "scenario": Object {
+              "id": 42,
             },
             "url": "http://localhost/",
             "user": Object {
@@ -1019,11 +1055,17 @@ describe('componentDidMount', () => {
             "cohort": Object {
               "id": 2,
             },
+            "persona": Object {
+              "id": undefined,
+            },
             "prompt": Object {
               "id": null,
             },
             "response": Object {
               "id": undefined,
+            },
+            "scenario": Object {
+              "id": 42,
             },
             "url": "http://localhost/",
             "user": Object {
@@ -1042,11 +1084,17 @@ describe('componentDidMount', () => {
             "cohort": Object {
               "id": 2,
             },
+            "persona": Object {
+              "id": undefined,
+            },
             "prompt": Object {
               "id": null,
             },
             "response": Object {
               "id": undefined,
+            },
+            "scenario": Object {
+              "id": 42,
             },
             "url": "http://localhost/",
             "user": Object {
@@ -1156,11 +1204,17 @@ describe('componentWillUnmount', () => {
             "cohort": Object {
               "id": 2,
             },
+            "persona": Object {
+              "id": undefined,
+            },
             "prompt": Object {
               "id": null,
             },
             "response": Object {
               "id": undefined,
+            },
+            "scenario": Object {
+              "id": 42,
             },
             "url": "http://localhost/",
             "user": Object {
@@ -1179,11 +1233,17 @@ describe('componentWillUnmount', () => {
             "cohort": Object {
               "id": 2,
             },
+            "persona": Object {
+              "id": undefined,
+            },
             "prompt": Object {
               "id": null,
             },
             "response": Object {
               "id": undefined,
+            },
+            "scenario": Object {
+              "id": 42,
             },
             "url": "http://localhost/",
             "user": Object {
@@ -1212,11 +1272,17 @@ describe('componentWillUnmount', () => {
             "cohort": Object {
               "id": 2,
             },
+            "persona": Object {
+              "id": undefined,
+            },
             "prompt": Object {
               "id": null,
             },
             "response": Object {
               "id": undefined,
+            },
+            "scenario": Object {
+              "id": 42,
             },
             "url": "http://localhost/",
             "user": Object {
@@ -1235,11 +1301,17 @@ describe('componentWillUnmount', () => {
             "cohort": Object {
               "id": 2,
             },
+            "persona": Object {
+              "id": undefined,
+            },
             "prompt": Object {
               "id": null,
             },
             "response": Object {
               "id": undefined,
+            },
+            "scenario": Object {
+              "id": 42,
             },
             "url": "http://localhost/",
             "user": Object {
@@ -1303,11 +1375,17 @@ describe('componentWillUnmount', () => {
             "cohort": Object {
               "id": 2,
             },
+            "persona": Object {
+              "id": undefined,
+            },
             "prompt": Object {
               "id": null,
             },
             "response": Object {
               "id": undefined,
+            },
+            "scenario": Object {
+              "id": 42,
             },
             "url": "http://localhost/",
             "user": Object {
@@ -1326,11 +1404,17 @@ describe('componentWillUnmount', () => {
             "cohort": Object {
               "id": 2,
             },
+            "persona": Object {
+              "id": undefined,
+            },
             "prompt": Object {
               "id": null,
             },
             "response": Object {
               "id": undefined,
+            },
+            "scenario": Object {
+              "id": 42,
             },
             "url": "http://localhost/",
             "user": Object {
@@ -1359,11 +1443,17 @@ describe('componentWillUnmount', () => {
             "cohort": Object {
               "id": 2,
             },
+            "persona": Object {
+              "id": undefined,
+            },
             "prompt": Object {
               "id": null,
             },
             "response": Object {
               "id": undefined,
+            },
+            "scenario": Object {
+              "id": 42,
             },
             "url": "http://localhost/",
             "user": Object {
@@ -1382,11 +1472,17 @@ describe('componentWillUnmount', () => {
             "cohort": Object {
               "id": 2,
             },
+            "persona": Object {
+              "id": undefined,
+            },
             "prompt": Object {
               "id": null,
             },
             "response": Object {
               "id": undefined,
+            },
+            "scenario": Object {
+              "id": 42,
             },
             "url": "http://localhost/",
             "user": Object {
@@ -1721,11 +1817,17 @@ test('Types, followed by {enter}', async done => {
             "id": 2,
           },
           "isTyping": true,
+          "persona": Object {
+            "id": undefined,
+          },
           "prompt": Object {
             "id": null,
           },
           "response": Object {
             "id": undefined,
+          },
+          "scenario": Object {
+            "id": 42,
           },
           "url": "http://localhost/",
           "user": Object {
@@ -1745,6 +1847,9 @@ test('Types, followed by {enter}', async done => {
             "id": 2,
           },
           "content": "typing enter",
+          "persona": Object {
+            "id": undefined,
+          },
           "prompt": Object {
             "id": null,
           },
@@ -1762,6 +1867,9 @@ test('Types, followed by {enter}', async done => {
             "scenario_id": 42,
             "updated_at": "2020-09-01T15:59:47.121Z",
             "user_id": 2,
+          },
+          "scenario": Object {
+            "id": 42,
           },
           "url": "http://localhost/",
           "user": Object {
@@ -1781,11 +1889,17 @@ test('Types, followed by {enter}', async done => {
             "id": 2,
           },
           "isTyping": false,
+          "persona": Object {
+            "id": undefined,
+          },
           "prompt": Object {
             "id": null,
           },
           "response": Object {
             "id": undefined,
+          },
+          "scenario": Object {
+            "id": 42,
           },
           "url": "http://localhost/",
           "user": Object {
@@ -1862,11 +1976,17 @@ test('Types, followed by {shift}{enter}, does not submit', async done => {
             "id": 2,
           },
           "isTyping": true,
+          "persona": Object {
+            "id": undefined,
+          },
           "prompt": Object {
             "id": null,
           },
           "response": Object {
             "id": undefined,
+          },
+          "scenario": Object {
+            "id": 42,
           },
           "url": "http://localhost/",
           "user": Object {
@@ -1887,6 +2007,9 @@ test('Types, followed by {shift}{enter}, does not submit', async done => {
           },
           "content": "typing shift+enter
     ",
+          "persona": Object {
+            "id": undefined,
+          },
           "prompt": Object {
             "id": null,
           },
@@ -1904,6 +2027,9 @@ test('Types, followed by {shift}{enter}, does not submit', async done => {
             "scenario_id": 42,
             "updated_at": "2020-09-01T15:59:47.121Z",
             "user_id": 2,
+          },
+          "scenario": Object {
+            "id": 42,
           },
           "url": "http://localhost/",
           "user": Object {
@@ -2019,11 +2145,17 @@ test('Types, followed by {shift}{enter}, attempts to send, does submit', async d
             "id": 2,
           },
           "isTyping": true,
+          "persona": Object {
+            "id": undefined,
+          },
           "prompt": Object {
             "id": null,
           },
           "response": Object {
             "id": undefined,
+          },
+          "scenario": Object {
+            "id": 42,
           },
           "url": "http://localhost/",
           "user": Object {
@@ -2043,6 +2175,9 @@ test('Types, followed by {shift}{enter}, attempts to send, does submit', async d
             "id": 2,
           },
           "content": "typing enter",
+          "persona": Object {
+            "id": undefined,
+          },
           "prompt": Object {
             "id": null,
           },
@@ -2060,6 +2195,9 @@ test('Types, followed by {shift}{enter}, attempts to send, does submit', async d
             "scenario_id": 42,
             "updated_at": "2020-09-01T15:59:47.121Z",
             "user_id": 2,
+          },
+          "scenario": Object {
+            "id": 42,
           },
           "url": "http://localhost/",
           "user": Object {
@@ -2079,11 +2217,17 @@ test('Types, followed by {shift}{enter}, attempts to send, does submit', async d
             "id": 2,
           },
           "isTyping": false,
+          "persona": Object {
+            "id": undefined,
+          },
           "prompt": Object {
             "id": null,
           },
           "response": Object {
             "id": undefined,
+          },
+          "scenario": Object {
+            "id": 42,
           },
           "url": "http://localhost/",
           "user": Object {
@@ -2154,11 +2298,17 @@ test('Calls onInput when RTE receives new content', async done => {
             "id": 2,
           },
           "isTyping": true,
+          "persona": Object {
+            "id": undefined,
+          },
           "prompt": Object {
             "id": null,
           },
           "response": Object {
             "id": undefined,
+          },
+          "scenario": Object {
+            "id": 42,
           },
           "url": "http://localhost/",
           "user": Object {
@@ -2178,6 +2328,9 @@ test('Calls onInput when RTE receives new content', async done => {
             "id": 2,
           },
           "content": "<p><br></p>typing in the chat",
+          "persona": Object {
+            "id": undefined,
+          },
           "prompt": Object {
             "id": null,
           },
@@ -2195,6 +2348,9 @@ test('Calls onInput when RTE receives new content', async done => {
             "scenario_id": 42,
             "updated_at": "2020-09-01T15:59:47.121Z",
             "user_id": 2,
+          },
+          "scenario": Object {
+            "id": 42,
           },
           "url": "http://localhost/",
           "user": Object {
@@ -2269,11 +2425,17 @@ test('Calls onKeyDown, responds when key is {enter}', async done => {
             "id": 2,
           },
           "isTyping": true,
+          "persona": Object {
+            "id": undefined,
+          },
           "prompt": Object {
             "id": null,
           },
           "response": Object {
             "id": undefined,
+          },
+          "scenario": Object {
+            "id": 42,
           },
           "url": "http://localhost/",
           "user": Object {
@@ -2293,6 +2455,9 @@ test('Calls onKeyDown, responds when key is {enter}', async done => {
             "id": 2,
           },
           "content": "typing in the chat",
+          "persona": Object {
+            "id": undefined,
+          },
           "prompt": Object {
             "id": null,
           },
@@ -2310,6 +2475,9 @@ test('Calls onKeyDown, responds when key is {enter}', async done => {
             "scenario_id": 42,
             "updated_at": "2020-09-01T15:59:47.121Z",
             "user_id": 2,
+          },
+          "scenario": Object {
+            "id": 42,
           },
           "url": "http://localhost/",
           "user": Object {
@@ -2329,11 +2497,17 @@ test('Calls onKeyDown, responds when key is {enter}', async done => {
             "id": 2,
           },
           "isTyping": false,
+          "persona": Object {
+            "id": undefined,
+          },
           "prompt": Object {
             "id": null,
           },
           "response": Object {
             "id": undefined,
+          },
+          "scenario": Object {
+            "id": 42,
           },
           "url": "http://localhost/",
           "user": Object {
@@ -2409,11 +2583,17 @@ test('Types, clicks Send Message', async done => {
             "id": 2,
           },
           "isTyping": true,
+          "persona": Object {
+            "id": undefined,
+          },
           "prompt": Object {
             "id": null,
           },
           "response": Object {
             "id": undefined,
+          },
+          "scenario": Object {
+            "id": 42,
           },
           "url": "http://localhost/",
           "user": Object {
@@ -2433,6 +2613,9 @@ test('Types, clicks Send Message', async done => {
             "id": 2,
           },
           "content": "typing in the chat",
+          "persona": Object {
+            "id": undefined,
+          },
           "prompt": Object {
             "id": null,
           },
@@ -2450,6 +2633,9 @@ test('Types, clicks Send Message', async done => {
             "scenario_id": 42,
             "updated_at": "2020-09-01T15:59:47.121Z",
             "user_id": 2,
+          },
+          "scenario": Object {
+            "id": 42,
           },
           "url": "http://localhost/",
           "user": Object {
@@ -2469,11 +2655,17 @@ test('Types, clicks Send Message', async done => {
             "id": 2,
           },
           "isTyping": false,
+          "persona": Object {
+            "id": undefined,
+          },
           "prompt": Object {
             "id": null,
           },
           "response": Object {
             "id": undefined,
+          },
+          "scenario": Object {
+            "id": 42,
           },
           "url": "http://localhost/",
           "user": Object {
@@ -2734,11 +2926,17 @@ test('Rnd: onDragStop/onResizeStop', async done => {
                               "cohort": Object {
                                 "id": 2,
                               },
+                              "persona": Object {
+                                "id": undefined,
+                              },
                               "prompt": Object {
                                 "id": null,
                               },
                               "response": Object {
                                 "id": undefined,
+                              },
+                              "scenario": Object {
+                                "id": 42,
                               },
                               "url": "http://localhost/",
                               "user": Object {
@@ -2757,11 +2955,17 @@ test('Rnd: onDragStop/onResizeStop', async done => {
                               "cohort": Object {
                                 "id": 2,
                               },
+                              "persona": Object {
+                                "id": undefined,
+                              },
                               "prompt": Object {
                                 "id": null,
                               },
                               "response": Object {
                                 "id": undefined,
+                              },
+                              "scenario": Object {
+                                "id": 42,
                               },
                               "url": "http://localhost/",
                               "user": Object {
@@ -3120,11 +3324,17 @@ test('Rnd: onDrag/onResize', async done => {
                               "cohort": Object {
                                 "id": 2,
                               },
+                              "persona": Object {
+                                "id": undefined,
+                              },
                               "prompt": Object {
                                 "id": null,
                               },
                               "response": Object {
                                 "id": undefined,
+                              },
+                              "scenario": Object {
+                                "id": 42,
                               },
                               "url": "http://localhost/",
                               "user": Object {
@@ -3143,11 +3353,17 @@ test('Rnd: onDrag/onResize', async done => {
                               "cohort": Object {
                                 "id": 2,
                               },
+                              "persona": Object {
+                                "id": undefined,
+                              },
                               "prompt": Object {
                                 "id": null,
                               },
                               "response": Object {
                                 "id": undefined,
+                              },
+                              "scenario": Object {
+                                "id": 42,
                               },
                               "url": "http://localhost/",
                               "user": Object {

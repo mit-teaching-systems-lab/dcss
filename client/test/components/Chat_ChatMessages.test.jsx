@@ -655,11 +655,17 @@ test('Chat has an agent', async done => {
           "cohort": Object {
             "id": 2,
           },
+          "persona": Object {
+            "id": undefined,
+          },
           "prompt": undefined,
           "response": Object {
             "id": undefined,
           },
           "run": null,
+          "scenario": Object {
+            "id": 42,
+          },
           "url": "http://localhost/",
           "user": Object {
             "email": null,

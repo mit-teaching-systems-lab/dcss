@@ -288,12 +288,14 @@ test('Render 2 1', async done => {
         latestByScenarioId: {
           1: {
             description: '',
-            is_run: true,
+            is_run: false,
             is_complete: false,
             scenario_id: 99,
             event_id: 1902,
             created_at: 1602454306144,
-            generic: 'arrived at a slide.',
+            generic:
+              '{participant} canceled their request to join {scenario} as {persona}.',
+            persona: { id: 2, name: 'Student' },
             name: 'slide-arrival',
             url: 'http://localhost:3000/cohort/1/run/99/slide/1'
           }
@@ -727,12 +729,14 @@ test('Render 9 1', async done => {
         latestByScenarioId: {
           1: {
             description: '',
-            is_run: true,
+            is_run: false,
             is_complete: false,
             scenario_id: 99,
             event_id: 1902,
             created_at: 1602454306144,
-            generic: 'arrived at a slide.',
+            generic:
+              '{participant} canceled their request to join {scenario} as {persona}.',
+            persona: { id: 2, name: 'Student' },
             name: 'slide-arrival',
             url: 'http://localhost:3000/cohort/1/run/99/slide/1'
           }

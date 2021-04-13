@@ -122,7 +122,7 @@ async function getCohortScenariosRunEvents(id) {
       r.user_id,
       name,
       context::jsonb->>'url' as url,
-      context::jsonb->>'timestamp' as created_at,
+      (context::jsonb->>'timestamp')::JSONB as created_at,
       CASE WHEN r.ended_at IS NULL
         THEN FALSE
         ELSE TRUE
@@ -157,7 +157,7 @@ async function getCohortUsersEvents(id) {
       re.user_id,
       name,
       context::jsonb->>'url' AS url,
-      context::jsonb->>'timestamp' AS created_at,
+      (context::jsonb->>'timestamp')::JSONB AS created_at,
       (context::jsonb->>'cohort')::JSONB AS cohort,
       (context::jsonb->>'persona')::JSONB AS persona,
       JSON_BUILD_OBJECT('id', s.id, 'title', s.title) AS scenario,
@@ -251,17 +251,24 @@ async function getCohortProgress(id) {
 
     const is_run = true;
     const description = eventTypesByName[name].generic;
+    const mustUpdate = eventsByUserId[user_id][scenario_id]
+      ? eventsByUserId[user_id][scenario_id].created_at < created_at
+      : true;
 
-    eventsByUserId[user_id][scenario_id] = {
-      scenario_id,
-      event_id,
-      is_complete,
-      is_run,
-      created_at,
-      name,
-      description,
-      url
-    };
+    // Only update when this event is newer than
+    // the last user event
+    if (mustUpdate) {
+      eventsByUserId[user_id][scenario_id] = {
+        scenario_id,
+        event_id,
+        is_complete,
+        is_run,
+        created_at,
+        name,
+        description,
+        url
+      };
+    }
   });
 
   return {

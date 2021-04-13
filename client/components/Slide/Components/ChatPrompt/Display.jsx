@@ -386,7 +386,8 @@ class Display extends Component {
           chat,
           slide,
           result,
-          run
+          run,
+          user
         });
 
         this.setState({

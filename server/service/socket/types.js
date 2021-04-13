@@ -7,6 +7,7 @@ exports.CHAT_AGENT_PAUSE = 'chat-agent-pause';
 exports.CHAT_AGENT_START = 'chat-agent-start';
 exports.CHAT_USER_AWAITING_MATCH = 'chat-user-awaiting-match';
 exports.CHAT_USER_CANCELED_MATCH_REQUEST = 'chat-user-canceled-match-request';
+exports.FACILITATOR_CREATED_MATCH_REQUEST = 'facilitator-created-match-request';
 exports.FACILITATOR_CANCELED_MATCH_REQUEST =
   'facilitator-canceled-match-request';
 exports.AWAITING_AGENT = 'awaiting-agent';
@@ -45,6 +46,7 @@ exports.CHAT_STATE = 'chat-state';
 exports.CHAT_USER_MATCHED = 'chat-user-matched';
 exports.HOST_JOIN = 'host-join';
 exports.JOIN_OR_PART = 'join-or-part';
+exports.REDIRECT = 'redirect';
 exports.RUN_CHAT_LINK = 'run-chat-link';
 
 // Client -> Server -> Client
