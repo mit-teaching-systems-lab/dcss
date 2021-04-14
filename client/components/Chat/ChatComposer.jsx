@@ -83,6 +83,7 @@ function ChatComposer(props) {
     showPathLabel
   };
 
+  /* istanbul ignore next */
   if (maxWidth) {
     options.width = width;
     options.minWidth = minWidth;

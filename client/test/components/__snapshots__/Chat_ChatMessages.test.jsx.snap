@@ -590,6 +590,17 @@ exports[`Chat has an agent 3`] = `
 </body>"
 `;
 
+exports[`Displays banner 1`] = `
+"<body
+  class=\\"\\"
+>
+  <div
+    id=\\"root\\"
+  />
+  <div />
+</body>"
+`;
+
 exports[`Does a corrective scroll when view is resized (chat in props) 1`] = `
 "<body
   class=\\"\\"
@@ -18272,6 +18283,72 @@ exports[`Receives updated message for different chat (chat in props) 4`] = `
 </body>"
 `;
 
+exports[`Receives user is typing event (other user) 1`] = `
+"<body
+  class=\\"\\"
+>
+  <div
+    id=\\"root\\"
+  />
+  <div />
+</body>"
+`;
+
+exports[`Receives user is typing event (other user) 2`] = `
+"<body
+  class=\\"\\"
+>
+  <div
+    id=\\"root\\"
+  />
+  <div />
+</body>"
+`;
+
+exports[`Receives user is typing event (other user) 3`] = `
+"<body
+  class=\\"\\"
+>
+  <div
+    id=\\"root\\"
+  />
+  <div />
+</body>"
+`;
+
+exports[`Receives user is typing event (same user) 1`] = `
+"<body
+  class=\\"\\"
+>
+  <div
+    id=\\"root\\"
+  />
+  <div />
+</body>"
+`;
+
+exports[`Receives user is typing event (same user) 2`] = `
+"<body
+  class=\\"\\"
+>
+  <div
+    id=\\"root\\"
+  />
+  <div />
+</body>"
+`;
+
+exports[`Receives user is typing event (same user) 3`] = `
+"<body
+  class=\\"\\"
+>
+  <div
+    id=\\"root\\"
+  />
+  <div />
+</body>"
+`;
+
 exports[`Show hidden messages (chat in props) 1`] = `
 "<body>
   <div
@@ -19309,6 +19386,20 @@ exports[`User is missing from chat.usersById (chat in state) 1`] = `
         />
       </div>
     </div>
+  </div>
+</body>"
+`;
+
+exports[`isMinimized 1`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <div
+      class=\\"cm__container-inner\\"
+      data-testid=\\"scrolling-container-outer\\"
+    />
   </div>
 </body>"
 `;

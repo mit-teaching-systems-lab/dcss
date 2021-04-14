@@ -249,3 +249,44 @@ exports[`Rnd: onDragStop/onResizeStop without props.onDragResizeStop 4`] = `
   <div />
 </body>"
 `;
+
+exports[`isMinimized && Layout.isNotForMobile() 1`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <div
+      style=\\"position: relative; width: 100%;\\"
+    >
+      <div
+        class=\\"ui modal transition visible active c__container-modal c__minimized\\"
+        role=\\"dialog\\"
+      >
+        <div>
+          a
+        </div>
+      </div>
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`isMinimized 1`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <div
+      class=\\"ui modal transition visible active c__container-modal c__minimized\\"
+      role=\\"dialog\\"
+      style=\\"position: sticky;\\"
+    >
+      <div>
+        a
+      </div>
+    </div>
+  </div>
+</body>"
+`;

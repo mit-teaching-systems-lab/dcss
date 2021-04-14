@@ -488,4 +488,112 @@ describe('agents', () => {
       }
     `);
   });
+
+  test('GET_AGENTS_SUCCESS 4', () => {
+    const action = {
+      type: types.GET_AGENTS_SUCCESS,
+      agents: [
+        { id: 1, endpoint: 'ws://', description: 'This is a bot' },
+        { id: 1, endpoint: 'ws://', description: 'This is a bot' }, // this is intentional
+        {
+          id: 2,
+          name: 'DEF',
+          endpoint: 'ws://',
+          description: 'This is a different bot'
+        },
+        {
+          id: 3,
+          name: 'GHI',
+          endpoint: 'ws://',
+          description: 'This is a third bot'
+        }
+      ]
+    };
+    expect(reducer.agents(state, action)).toMatchInlineSnapshot(`
+      Array [
+        Object {
+          "description": "This is a bot",
+          "endpoint": "ws://",
+          "id": 1,
+        },
+        Object {
+          "description": "This is a different bot",
+          "endpoint": "ws://",
+          "id": 2,
+          "name": "DEF",
+        },
+        Object {
+          "description": "This is a third bot",
+          "endpoint": "ws://",
+          "id": 3,
+          "name": "GHI",
+        },
+      ]
+    `);
+    // This is intentional
+    expect(reducer.agents(state, action)).toMatchInlineSnapshot(`
+      Array [
+        Object {
+          "description": "This is a bot",
+          "endpoint": "ws://",
+          "id": 1,
+        },
+        Object {
+          "description": "This is a different bot",
+          "endpoint": "ws://",
+          "id": 2,
+          "name": "DEF",
+        },
+        Object {
+          "description": "This is a third bot",
+          "endpoint": "ws://",
+          "id": 3,
+          "name": "GHI",
+        },
+      ]
+    `);
+    expect(reducer.agentsById(state, action)).toMatchInlineSnapshot(`
+      Object {
+        "1": Object {
+          "description": "This is a bot",
+          "endpoint": "ws://",
+          "id": 1,
+        },
+        "2": Object {
+          "description": "This is a different bot",
+          "endpoint": "ws://",
+          "id": 2,
+          "name": "DEF",
+        },
+        "3": Object {
+          "description": "This is a third bot",
+          "endpoint": "ws://",
+          "id": 3,
+          "name": "GHI",
+        },
+      }
+    `);
+    // This is intentional
+    expect(reducer.agentsById(state, action)).toMatchInlineSnapshot(`
+      Object {
+        "1": Object {
+          "description": "This is a bot",
+          "endpoint": "ws://",
+          "id": 1,
+        },
+        "2": Object {
+          "description": "This is a different bot",
+          "endpoint": "ws://",
+          "id": 2,
+          "name": "DEF",
+        },
+        "3": Object {
+          "description": "This is a third bot",
+          "endpoint": "ws://",
+          "id": 3,
+          "name": "GHI",
+        },
+      }
+    `);
+  });
 });

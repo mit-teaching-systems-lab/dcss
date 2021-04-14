@@ -1,7 +1,7 @@
 import { GET_TRACES_SUCCESS } from '@actions/types';
 
 export const traces = (state = [], action) => {
-  const { traces, type } = action;
+  const { traces = [], type } = action;
 
   switch (type) {
     case GET_TRACES_SUCCESS: {
@@ -31,7 +31,7 @@ export const traces = (state = [], action) => {
 };
 
 export const tracesById = (state = {}, action) => {
-  const { traces, type } = action;
+  const { traces = [], type } = action;
 
   switch (type) {
     case GET_TRACES_SUCCESS: {

@@ -567,6 +567,35 @@ test('ChatMessages', () => {
 
 /* INJECTION STARTS HERE */
 
+test('isMinimized', async done => {
+  const Component = ChatMessages;
+
+  const props = {
+    ...commonProps,
+    isMinimized: true,
+    chat
+  };
+
+  const state = {
+    ...commonState
+  };
+
+  chatActions.getChatMessagesCountByChatId.mockImplementation(
+    () => async dispatch => {
+      const count = 0;
+      dispatch({ type: GET_CHAT_MESSAGES_COUNT_SUCCESS, count });
+      return count;
+    }
+  );
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  await render(<ConnectedRoutedComponent {...props} />);
+  expect(serialize()).toMatchSnapshot();
+
+  done();
+});
+
 test('Chat has an agent', async done => {
   const Component = ChatMessages;
 
@@ -2765,6 +2794,121 @@ test('Receives updated message (chat in state)', async done => {
 
   expect(chatActions.getChatMessagesByChatId).toHaveBeenCalled();
   expect(chatActions.getChatMessagesCountByChatId).toHaveBeenCalled();
+
+  done();
+});
+
+test('Receives user is typing event (other user)', async done => {
+  const Component = ChatMessages;
+
+  const props = {
+    ...commonProps
+  };
+
+  const state = {
+    ...commonState,
+    chat
+  };
+
+  const emitter = new Emitter();
+
+  globalThis.mockSocket.emit.mockImplementation(emitter.emit);
+  globalThis.mockSocket.on.mockImplementation(emitter.on);
+  globalThis.mockSocket.off.mockImplementation(emitter.off);
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  await render(<ConnectedRoutedComponent {...props} />);
+  expect(serialize()).toMatchSnapshot();
+
+  globalThis.mockSocket.emit('user-typing-update', {
+    chat: {},
+    user: {
+      id: 4
+    },
+    isTyping: true
+  });
+
+  expect(serialize()).toMatchSnapshot();
+
+  globalThis.mockSocket.emit('user-typing-update', {
+    chat: {},
+    user: {
+      id: 4
+    },
+    isTyping: false
+  });
+
+  expect(serialize()).toMatchSnapshot();
+
+  done();
+});
+
+test('Receives user is typing event (same user)', async done => {
+  const Component = ChatMessages;
+
+  const props = {
+    ...commonProps
+  };
+
+  const state = {
+    ...commonState,
+    chat
+  };
+
+  const emitter = new Emitter();
+
+  globalThis.mockSocket.emit.mockImplementation(emitter.emit);
+  globalThis.mockSocket.on.mockImplementation(emitter.on);
+  globalThis.mockSocket.off.mockImplementation(emitter.off);
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  await render(<ConnectedRoutedComponent {...props} />);
+  expect(serialize()).toMatchSnapshot();
+
+  globalThis.mockSocket.emit('user-typing-update', {
+    chat: {},
+    user: {
+      id: state.user.id
+    },
+    isTyping: true
+  });
+
+  expect(serialize()).toMatchSnapshot();
+
+  globalThis.mockSocket.emit('user-typing-update', {
+    chat: {},
+    user: {
+      id: state.user.id
+    },
+    isTyping: false
+  });
+
+  expect(serialize()).toMatchSnapshot();
+
+  done();
+});
+
+test('Displays banner', async done => {
+  const Component = ChatMessages;
+
+  const props = {
+    ...commonProps,
+    banner: {
+      message: 'Hello'
+    }
+  };
+
+  const state = {
+    ...commonState,
+    chat
+  };
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  await render(<ConnectedRoutedComponent {...props} />);
+  expect(serialize()).toMatchSnapshot();
 
   done();
 });

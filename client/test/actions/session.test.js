@@ -137,26 +137,69 @@ test('GET_PERMISSIONS_ERROR', async () => {
   expect(returnValue).toBe(null);
 });
 
-test('LOG_IN', async () => {
-  const error = false;
-  const message = '';
-  const username = 'foobar';
-  const password = 'foobar';
-  fetchImplementation(fetch, 200, { error, message });
+describe('LOG_IN', () => {
+  test('logIn returns no error or message', async () => {
+    const error = false;
+    const message = '';
+    const username = 'foobar';
+    const password = 'foobar';
+    fetchImplementation(fetch, 200, { error, message });
 
-  globalThis.SESSION_SECRET = '';
-  const returnValue = await store.dispatch(
-    actions.logIn({ username, password })
-  );
-  expect(fetch.mock.calls[0]).toEqual([
-    '/api/session/login',
-    {
-      headers: { 'Content-Type': 'application/json' },
-      method: 'POST',
-      body: '{"username":"foobar","password":"X"}'
-    }
-  ]);
-  expect(returnValue).toEqual({ error, message });
+    globalThis.SESSION_SECRET = '';
+    const returnValue = await store.dispatch(
+      actions.logIn({ username, password })
+    );
+    expect(fetch.mock.calls[0]).toEqual([
+      '/api/session/login',
+      {
+        headers: { 'Content-Type': 'application/json' },
+        method: 'POST',
+        body: '{"username":"foobar","password":"X"}'
+      }
+    ]);
+    expect(returnValue).toEqual({ error, message });
+  });
+
+  test('logIn returns an error or message', async () => {
+    const error = true;
+    const message = 'Something bad happened';
+    const username = 'foobar';
+    const password = 'foobar';
+    fetchImplementation(fetch, 200, { error, message });
+
+    globalThis.SESSION_SECRET = '';
+    const returnValue = await store.dispatch(
+      actions.logIn({ username, password })
+    );
+    expect(fetch.mock.calls[0]).toEqual([
+      '/api/session/login',
+      {
+        headers: { 'Content-Type': 'application/json' },
+        method: 'POST',
+        body: '{"username":"foobar","password":"X"}'
+      }
+    ]);
+    expect(returnValue).toEqual({ error, message });
+  });
+
+  test('logIn fetch response is empty', async () => {
+    const username = 'foobar';
+    const password = 'foobar';
+    fetchImplementation(fetch, 200, {});
+
+    globalThis.SESSION_SECRET = '';
+    const returnValue = await store.dispatch(
+      actions.logIn({ username, password })
+    );
+    expect(fetch.mock.calls[0]).toEqual([
+      '/api/session/login',
+      {
+        headers: { 'Content-Type': 'application/json' },
+        method: 'POST',
+        body: '{"username":"foobar","password":"X"}'
+      }
+    ]);
+  });
 });
 
 test('LOG_IN error', async () => {

@@ -37,6 +37,7 @@ import scrollIntoView from '@utils/scrollIntoView';
 
 import './Chat.css';
 
+/* istanbul ignore next */
 function isVisibleInScrollingContainer(element, isVisible, childRect) {
   if (!element) {
     return false;
@@ -60,6 +61,7 @@ function isVisibleInScrollingContainer(element, isVisible, childRect) {
   );
 }
 
+/* istanbul ignore next */
 function isVisibleOnScreen(container, element) {
   if (!container || !element) {
     return true;
@@ -142,6 +144,7 @@ class ChatMessages extends Component {
       );
     }
 
+    /* istanbul ignore else */
     if (this.isComponentMounted) {
       this.setState({
         isReady: true,
@@ -186,6 +189,7 @@ class ChatMessages extends Component {
           ...data
         };
 
+        /* istanbul ignore else */
         if (this.isComponentMounted) {
           this.setState({
             hasNewMessages: false,
@@ -202,6 +206,7 @@ class ChatMessages extends Component {
 
       messages.push(data);
 
+      /* istanbul ignore else */
       if (this.isComponentMounted) {
         this.setState({
           hasNewMessages: true,
@@ -231,6 +236,7 @@ class ChatMessages extends Component {
         return message;
       });
 
+      /* istanbul ignore else */
       if (this.isComponentMounted) {
         this.setState({
           messages
@@ -415,15 +421,6 @@ class ChatMessages extends Component {
 
                   {messagesSlice.reduce((accum, message, index) => {
                     const user = chat.usersById[message.user_id];
-
-                    if (!user) {
-                      return accum;
-                    }
-
-                    if (message.deleted_at) {
-                      return accum;
-                    }
-
                     const key = Identity.key(message);
                     const defaultValue = message.content;
                     const avatar = new Avatar(user);

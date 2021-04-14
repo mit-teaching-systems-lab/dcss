@@ -239,6 +239,18 @@ describe('GET_CHAT_SUCCESS', () => {
       await mockStore.dispatch(actions.setChat(1, {}));
       expect(mockStore.getActions()).toMatchInlineSnapshot(`Array []`);
     });
+
+    test('For a scenario and cohort', async () => {
+      fetchImplementation(fetch, 200, { chat });
+      const returnValue = await store.dispatch(
+        actions.createChat({ id: 1 }, { id: 2 })
+      );
+      expect(fetch.mock.calls.length).toBe(1);
+      expect(returnValue).toEqual(chat);
+
+      await mockStore.dispatch(actions.setChat(1, {}));
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`Array []`);
+    });
   });
 });
 
@@ -534,6 +546,64 @@ describe('GET_CHATS_SUCCESS', () => {
       expect(returnValue).toMatchInlineSnapshot(`Array []`);
 
       await mockStore.dispatch(actions.getChats());
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "chats": Array [],
+            "type": "GET_CHATS_SUCCESS",
+          },
+        ]
+      `);
+    });
+  });
+
+  describe('getChatsByCohortId', () => {
+    let chats = [...state.chats];
+
+    test('Receives chats', async () => {
+      fetchImplementation(fetch, 200, { chats });
+      const returnValue = await store.dispatch(actions.getChatsByCohortId(1));
+      expect(fetch.mock.calls.length).toBe(1);
+      expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+        Array [
+          "/api/chats/cohort/1",
+        ]
+      `);
+      expect(returnValue).toEqual(chats);
+
+      await mockStore.dispatch(actions.getChatsByCohortId(1));
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "chats": Array [
+              Object {
+                "created_at": "2020-12-08T21:51:33.659Z",
+                "deleted_at": null,
+                "ended_at": null,
+                "host_id": 2,
+                "id": 1,
+                "scenario_id": 42,
+                "updated_at": null,
+              },
+            ],
+            "type": "GET_CHATS_SUCCESS",
+          },
+        ]
+      `);
+    });
+
+    test('Receives undefined', async () => {
+      fetchImplementation(fetch, 200, { chats: undefined });
+      const returnValue = await store.dispatch(actions.getChatsByCohortId(1));
+      expect(fetch.mock.calls.length).toBe(1);
+      expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+        Array [
+          "/api/chats/cohort/1",
+        ]
+      `);
+      expect(returnValue).toMatchInlineSnapshot(`Array []`);
+
+      await mockStore.dispatch(actions.getChatsByCohortId(1));
       expect(mockStore.getActions()).toMatchInlineSnapshot(`
         Array [
           Object {
@@ -1704,6 +1774,344 @@ describe('GET_CHAT_TRANSCRIPTS_ERROR', () => {
               "error": [Error: something unexpected happened on the server],
             },
             "type": "GET_CHAT_TRANSCRIPTS_ERROR",
+          },
+        ]
+      `);
+    });
+  });
+});
+
+describe('GET_CHAT_USERS_SHARED_RESPONSES_SUCCESS', () => {
+  describe('getChatUsersSharedResponses', () => {
+    let responses = [];
+
+    test('Receives responses', async () => {
+      fetchImplementation(fetch, 200, { responses });
+      const returnValue = await store.dispatch(
+        actions.getChatUsersSharedResponses(1, 'XYZ', [999, 888, 777])
+      );
+      expect(fetch.mock.calls.length).toBe(1);
+      expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+        Array [
+          "/api/chats/1/response/XYZ/?list[]=999&list[]=888&list[]=777",
+        ]
+      `);
+      expect(returnValue).toEqual(responses);
+
+      await mockStore.dispatch(
+        actions.getChatUsersSharedResponses(1, 'XYZ', [999, 888, 777])
+      );
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "responses": Array [],
+            "type": "GET_CHAT_USERS_SHARED_RESPONSES_SUCCESS",
+          },
+        ]
+      `);
+    });
+
+    test('Receives undefined', async () => {
+      fetchImplementation(fetch, 200, { responses: undefined });
+      const returnValue = await store.dispatch(
+        actions.getChatUsersSharedResponses(1, 'XYZ', [999, 888, 777])
+      );
+      expect(fetch.mock.calls.length).toBe(1);
+      expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+        Array [
+          "/api/chats/1/response/XYZ/?list[]=999&list[]=888&list[]=777",
+        ]
+      `);
+      expect(returnValue).toMatchInlineSnapshot(`undefined`);
+
+      await mockStore.dispatch(
+        actions.getChatUsersSharedResponses(1, 'XYZ', [999, 888, 777])
+      );
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "responses": undefined,
+            "type": "GET_CHAT_USERS_SHARED_RESPONSES_SUCCESS",
+          },
+        ]
+      `);
+    });
+  });
+  describe('getChatTranscriptsByCohortId', () => {
+    let responses = [];
+
+    test('Receives responses', async () => {
+      fetchImplementation(fetch, 200, { responses });
+      const returnValue = await store.dispatch(
+        actions.getChatTranscriptsByCohortId(1)
+      );
+      expect(fetch.mock.calls.length).toBe(1);
+      expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+        Array [
+          "/api/chats/transcripts/cohort/1",
+        ]
+      `);
+      expect(returnValue).toEqual(responses);
+
+      await mockStore.dispatch(actions.getChatTranscriptsByCohortId(1));
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "messages": Array [],
+            "type": "GET_CHAT_TRANSCRIPTS_SUCCESS",
+          },
+        ]
+      `);
+    });
+
+    test('Receives undefined', async () => {
+      fetchImplementation(fetch, 200, { responses: undefined });
+      const returnValue = await store.dispatch(
+        actions.getChatTranscriptsByCohortId(1)
+      );
+      expect(fetch.mock.calls.length).toBe(1);
+      expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+        Array [
+          "/api/chats/transcripts/cohort/1",
+        ]
+      `);
+      expect(returnValue).toMatchInlineSnapshot(`Array []`);
+
+      await mockStore.dispatch(actions.getChatTranscriptsByCohortId(1));
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "messages": Array [],
+            "type": "GET_CHAT_TRANSCRIPTS_SUCCESS",
+          },
+        ]
+      `);
+    });
+  });
+  describe('getChatTranscriptsByRunId', () => {
+    let responses = [];
+
+    test('Receives responses', async () => {
+      fetchImplementation(fetch, 200, { responses });
+      const returnValue = await store.dispatch(
+        actions.getChatTranscriptsByRunId(1)
+      );
+      expect(fetch.mock.calls.length).toBe(1);
+      expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+        Array [
+          "/api/chats/transcripts/run/1",
+        ]
+      `);
+      expect(returnValue).toEqual(responses);
+
+      await mockStore.dispatch(actions.getChatTranscriptsByRunId(1));
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "messages": Array [],
+            "type": "GET_CHAT_TRANSCRIPTS_SUCCESS",
+          },
+        ]
+      `);
+    });
+
+    test('Receives undefined', async () => {
+      fetchImplementation(fetch, 200, { responses: undefined });
+      const returnValue = await store.dispatch(
+        actions.getChatTranscriptsByRunId(1)
+      );
+      expect(fetch.mock.calls.length).toBe(1);
+      expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+        Array [
+          "/api/chats/transcripts/run/1",
+        ]
+      `);
+      expect(returnValue).toMatchInlineSnapshot(`Array []`);
+
+      await mockStore.dispatch(actions.getChatTranscriptsByRunId(1));
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "messages": Array [],
+            "type": "GET_CHAT_TRANSCRIPTS_SUCCESS",
+          },
+        ]
+      `);
+    });
+  });
+  describe('getChatUsersSharedResponses', () => {
+    let responses = [];
+
+    test('Receives responses', async () => {
+      fetchImplementation(fetch, 200, { responses });
+      const returnValue = await store.dispatch(
+        actions.getChatUsersSharedResponses(1, 'XYZ', [999, 888, 777])
+      );
+      expect(fetch.mock.calls.length).toBe(1);
+      expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+        Array [
+          "/api/chats/1/response/XYZ/?list[]=999&list[]=888&list[]=777",
+        ]
+      `);
+      expect(returnValue).toEqual(responses);
+
+      await mockStore.dispatch(
+        actions.getChatUsersSharedResponses(1, 'XYZ', [999, 888, 777])
+      );
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "responses": Array [],
+            "type": "GET_CHAT_USERS_SHARED_RESPONSES_SUCCESS",
+          },
+        ]
+      `);
+    });
+
+    test('Receives undefined', async () => {
+      fetchImplementation(fetch, 200, { responses: undefined });
+      const returnValue = await store.dispatch(
+        actions.getChatUsersSharedResponses(1, 'XYZ', [999, 888, 777])
+      );
+      expect(fetch.mock.calls.length).toBe(1);
+      expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+        Array [
+          "/api/chats/1/response/XYZ/?list[]=999&list[]=888&list[]=777",
+        ]
+      `);
+      expect(returnValue).toMatchInlineSnapshot(`undefined`);
+
+      await mockStore.dispatch(
+        actions.getChatUsersSharedResponses(1, 'XYZ', [999, 888, 777])
+      );
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "responses": undefined,
+            "type": "GET_CHAT_USERS_SHARED_RESPONSES_SUCCESS",
+          },
+        ]
+      `);
+    });
+  });
+});
+
+describe('GET_CHAT_USERS_SHARED_RESPONSES_ERROR', () => {
+  describe('getChatUsersSharedResponses', () => {
+    let responses = [];
+
+    test('Receives an error', async () => {
+      fetchImplementation(fetch, 200, { error });
+      const returnValue = await store.dispatch(
+        actions.getChatUsersSharedResponses(1, 'XYZ', [999, 888, 777])
+      );
+      expect(fetch.mock.calls.length).toBe(1);
+      expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+        Array [
+          "/api/chats/1/response/XYZ/?list[]=999&list[]=888&list[]=777",
+        ]
+      `);
+      expect(returnValue).toEqual(null);
+
+      await mockStore.dispatch(
+        actions.getChatUsersSharedResponses(1, 'XYZ', [999, 888, 777])
+      );
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "error": Object {
+              "error": [Error: something unexpected happened on the server],
+            },
+            "type": "GET_CHAT_USERS_SHARED_RESPONSES_ERROR",
+          },
+        ]
+      `);
+    });
+  });
+  describe('getChatTranscriptsByCohortId', () => {
+    let responses = [];
+
+    test('Receives an error', async () => {
+      fetchImplementation(fetch, 200, { error });
+      const returnValue = await store.dispatch(
+        actions.getChatTranscriptsByCohortId(1)
+      );
+      expect(fetch.mock.calls.length).toBe(1);
+      expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+        Array [
+          "/api/chats/transcripts/cohort/1",
+        ]
+      `);
+      expect(returnValue).toEqual(null);
+
+      await mockStore.dispatch(actions.getChatTranscriptsByCohortId(1));
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "error": Object {
+              "error": [Error: something unexpected happened on the server],
+            },
+            "type": "GET_CHAT_TRANSCRIPTS_ERROR",
+          },
+        ]
+      `);
+    });
+  });
+  describe('getChatTranscriptsByRunId', () => {
+    let responses = [];
+
+    test('Receives an error', async () => {
+      fetchImplementation(fetch, 200, { error });
+      const returnValue = await store.dispatch(
+        actions.getChatTranscriptsByRunId(1)
+      );
+      expect(fetch.mock.calls.length).toBe(1);
+      expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+        Array [
+          "/api/chats/transcripts/run/1",
+        ]
+      `);
+      expect(returnValue).toEqual(null);
+
+      await mockStore.dispatch(actions.getChatTranscriptsByRunId(1));
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "error": Object {
+              "error": [Error: something unexpected happened on the server],
+            },
+            "type": "GET_CHAT_TRANSCRIPTS_ERROR",
+          },
+        ]
+      `);
+    });
+  });
+  describe('getChatUsersSharedResponses', () => {
+    let responses = [];
+
+    test('Receives an error', async () => {
+      fetchImplementation(fetch, 200, { error });
+      const returnValue = await store.dispatch(
+        actions.getChatUsersSharedResponses(1, 'XYZ', [999, 888, 777])
+      );
+      expect(fetch.mock.calls.length).toBe(1);
+      expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+        Array [
+          "/api/chats/1/response/XYZ/?list[]=999&list[]=888&list[]=777",
+        ]
+      `);
+      expect(returnValue).toEqual(null);
+
+      await mockStore.dispatch(
+        actions.getChatUsersSharedResponses(1, 'XYZ', [999, 888, 777])
+      );
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "error": Object {
+              "error": [Error: something unexpected happened on the server],
+            },
+            "type": "GET_CHAT_USERS_SHARED_RESPONSES_ERROR",
           },
         ]
       `);

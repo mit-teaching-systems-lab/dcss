@@ -62,11 +62,8 @@ class JoinAs extends Component {
     );
   }
 
-  get isCohortScenarioRun() {
-    return window.location.pathname.includes('/cohort/');
-  }
-
   async componentDidMount() {
+    /* istanbul ignore if */
     if (this.props.persona.id && !this.props.persona.created_at) {
       // This way we can get the scenario AND the persona
       await this.props.getScenario(this.props.scenario.id);

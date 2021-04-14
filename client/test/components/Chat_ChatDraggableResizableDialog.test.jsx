@@ -160,6 +160,54 @@ test('Render 1 1', async done => {
 
 /* INJECTION STARTS HERE */
 
+test('isMinimized', async done => {
+  const Component = ChatDraggableResizableDialog;
+
+  const children = <div>a</div>;
+
+  const props = {
+    ...commonProps,
+    isMinimized: true,
+    children
+  };
+
+  const state = {
+    ...commonState
+  };
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  await render(<ConnectedRoutedComponent {...props} />);
+  expect(serialize()).toMatchSnapshot();
+  done();
+});
+
+test('isMinimized && Layout.isNotForMobile()', async done => {
+  const Component = ChatDraggableResizableDialog;
+
+  Layout.isNotForMobile.mockImplementation(() => {
+    return true;
+  });
+
+  const children = <div>a</div>;
+
+  const props = {
+    ...commonProps,
+    isMinimized: true,
+    children
+  };
+
+  const state = {
+    ...commonState
+  };
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  await render(<ConnectedRoutedComponent {...props} />);
+  expect(serialize()).toMatchSnapshot();
+  done();
+});
+
 test('Default height and width when undefined', async done => {
   const Component = ChatDraggableResizableDialog;
 
