@@ -313,6 +313,10 @@ export class Cohort extends React.Component {
     // ) : null}
     // {isFacilitator ? cohortTools : null}
 
+    /*
+
+    // THIS FEATURE IS CURRENTLY DISABLED
+
     const chatMinMaxAriaLabel = this.state.chatIsMinimized
       ? maxAriaLabel
       : minAriaLabel;
@@ -338,7 +342,7 @@ export class Cohort extends React.Component {
         }}
       />
     );
-
+    */
     /*
       This will be used when cohort-wide chat is enabled.
     (
@@ -506,6 +510,7 @@ Cohort.propTypes = {
   copyCohort: PropTypes.func,
   cohort: PropTypes.shape({
     id: PropTypes.node,
+    chat: PropTypes.object,
     created_at: PropTypes.string,
     deleted_at: PropTypes.string,
     updated_at: PropTypes.string,

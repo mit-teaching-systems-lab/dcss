@@ -253,7 +253,7 @@ class ChatMessages extends Component {
     await this.onMessageReceived(message);
   }
 
-  onTypingUpdate({ chat, user, isTyping }) {
+  onTypingUpdate({ user, isTyping }) {
     if (user.id === this.props.user.id) {
       return;
     }

@@ -9,7 +9,6 @@ import withSocket, {
 } from '@hoc/withSocket';
 import * as Components from '@components/Slide/Components';
 import Conditional, { terms } from '@utils/Conditional';
-import Identity from '@utils/Identity';
 import Payload from '@utils/Payload';
 import Storage from '@utils/Storage';
 
@@ -162,6 +161,7 @@ Display.defaultProps = {
 
 Display.propTypes = {
   chat: PropTypes.object,
+  component: PropTypes.any,
   getAgentResponses: PropTypes.func,
   isEmbeddedInSVG: PropTypes.bool,
   id: PropTypes.string,
@@ -175,6 +175,7 @@ Display.propTypes = {
   responseId: PropTypes.string,
   run: PropTypes.object,
   saveRunEvent: PropTypes.func,
+  socket: PropTypes.object,
   type: PropTypes.oneOf([type, 'ConditionalContent']),
   user: PropTypes.object
 };

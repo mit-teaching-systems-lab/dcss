@@ -924,7 +924,6 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => ({
   createChatInvite: (id, params) => dispatch(createChatInvite(id, params)),
-  getChat: id => dispatch(getChat(id)),
   getChatUsersByChatId: id => dispatch(getChatUsersByChatId(id)),
   getLinkedChatUsersByChatId: id => dispatch(getLinkedChatUsersByChatId(id)),
   getInvites: () => dispatch(getInvites()),

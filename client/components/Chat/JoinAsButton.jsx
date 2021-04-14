@@ -6,7 +6,7 @@ import Identity from '@utils/Identity';
 import './Chat.css';
 
 function JoinAsButton(props) {
-  const { className = '', cohort, persona, scenario } = props;
+  const { className = '', cohort, persona } = props;
 
   const cohortIdHash = cohort ? Identity.toHash(props.cohort.id) : null;
 

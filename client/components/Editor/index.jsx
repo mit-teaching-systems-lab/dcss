@@ -637,6 +637,7 @@ Editor.propTypes = {
   endScenarioLock: PropTypes.func.isRequired,
   copyScenario: PropTypes.func.isRequired,
   deleteScenario: PropTypes.func.isRequired,
+  getAgents: PropTypes.func.isRequired,
   getPersonas: PropTypes.func.isRequired,
   personas: PropTypes.array,
   getScenario: PropTypes.func.isRequired,

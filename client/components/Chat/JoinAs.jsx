@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -7,12 +7,11 @@ import {
   joinChat,
   linkRunToChat
 } from '@actions/chat';
-import { linkRunToCohort, linkUserToCohort } from '@actions/cohort';
+import { linkRunToCohort } from '@actions/cohort';
 import { getUser } from '@actions/user';
-import { getRun, getRunByIdentifiers, setRun } from '@actions/run';
+import { getRun, setRun } from '@actions/run';
 import { getScenario } from '@actions/scenario';
-import Scenario from '@components/Scenario';
-import { Button, Header, Icon, Modal, Title } from '@components/UI';
+import { Button, Header, Icon, Modal } from '@components/UI';
 import withSocket, {
   CHAT_USER_AWAITING_MATCH,
   CHAT_USER_CANCELED_MATCH_REQUEST,
@@ -21,9 +20,6 @@ import withSocket, {
   PING
 } from '@hoc/withSocket';
 import Identity from '@utils/Identity';
-import Payload from '@utils/Payload';
-import QueryString from '@utils/QueryString';
-import Storage from '@utils/Storage';
 
 export const makeCohortScenarioChatJoinPath = (cohort, scenario, chat) => {
   const redirectCohortPart = `/cohort/${Identity.toHash(cohort.id)}`;
@@ -163,7 +159,7 @@ class JoinAs extends Component {
           </Modal.Content>
           <Modal.Actions style={{ borderTop: '0px' }}>
             <Button.Group fluid widths={2}>
-              <Button primary onClick={() => (location.href = location.href)}>
+              <Button primary onClick={() => location.reload()}>
                 Refresh my request to join this scenario
               </Button>
               <Button.Or />
@@ -188,7 +184,6 @@ JoinAs.propTypes = {
   joinChat: PropTypes.func,
   linkRunToChat: PropTypes.func,
   linkRunToCohort: PropTypes.func,
-  linkUserToCohort: PropTypes.func,
   match: PropTypes.shape({
     params: PropTypes.shape({
       cohortId: PropTypes.node,
@@ -200,6 +195,7 @@ JoinAs.propTypes = {
   persona: PropTypes.object,
   scenario: PropTypes.object,
   scenarioId: PropTypes.node,
+  getRun: PropTypes.func,
   setRun: PropTypes.func,
   socket: PropTypes.object,
   user: PropTypes.object
@@ -248,9 +244,6 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  getChat: id => dispatch(getChat(id)),
-  getChatByIdentifiers: (...params) =>
-    dispatch(getChatByIdentifiers(...params)),
   getLinkedChatUsersByChatId: id => dispatch(getLinkedChatUsersByChatId(id)),
   getRun: (...params) => dispatch(getRun(...params)),
   setRun: (...params) => dispatch(setRun(...params)),

@@ -300,6 +300,7 @@ Access.propTypes = {
     push: PropTypes.func.isRequired
   }).isRequired,
   id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  location: PropTypes.object,
   user: PropTypes.object,
   users: PropTypes.array,
   usersById: PropTypes.object

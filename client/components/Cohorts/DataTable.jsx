@@ -20,7 +20,6 @@ import DataTableMenu from '@components/Cohorts/DataTableMenu';
 import Loading from '@components/Loading';
 import { SCENARIO_IS_PUBLIC } from '@components/Scenario/constants';
 import { Icon, Message, Table } from '@components/UI';
-import Username from '@components/User/Username';
 import CSV from '@utils/csv';
 import { makeHeader } from '@utils/data-table';
 import Identity from '@utils/Identity';
@@ -128,8 +127,6 @@ export class DataTable extends React.Component {
     const {
       source: { cohortId, participantId, runId, scenarioId }
     } = this.props;
-
-    console.log(cohortId, participantId, runId, scenarioId);
 
     const isScenarioDataTable = scenarioId !== undefined;
     const { prompts, responses } = cohortId
@@ -449,14 +446,7 @@ export class DataTable extends React.Component {
 }
 
 const DataTableRow = props => {
-  const {
-    cells,
-    isScenarioDataTable,
-    leftColVisible,
-    rowKey,
-    transcript,
-    usersById
-  } = props;
+  const { cells, isScenarioDataTable, leftColVisible, rowKey } = props;
   const leftColHidden = !leftColVisible
     ? { className: 'dt__left-col-hidden' }
     : {};
@@ -565,7 +555,8 @@ DataTable.propTypes = {
   getRunData: PropTypes.func,
   getScenariosByStatus: PropTypes.func,
   getUsers: PropTypes.func,
-  user: PropTypes.object
+  user: PropTypes.object,
+  usersById: PropTypes.object
 };
 
 const mapStateToProps = state => {

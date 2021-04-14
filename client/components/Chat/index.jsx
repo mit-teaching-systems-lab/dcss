@@ -9,10 +9,6 @@ import withSocket, {
   CHAT_MESSAGE_CREATED,
   CREATE_CHAT_CHANNEL,
   CREATE_USER_CHANNEL,
-  USER_JOIN,
-  USER_PART,
-  USER_JOIN_SLIDE,
-  USER_PART_SLIDE,
   USER_TYPING
 } from '@hoc/withSocket';
 // This will be used when run event traces are added.
@@ -38,7 +34,6 @@ import Payload from '@utils/Payload';
 
 import './Chat.css';
 
-const TEMPORARY_CHAT_ID = 1;
 const NEW_MESSAGE_CONTENT_HTML = `<p><br></p>`;
 const TYPING_TIMEOUT = 400;
 

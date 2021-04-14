@@ -53,7 +53,6 @@ class LobbyUserOverview extends Component {
 
   renderUserList(users, options = {}) {
     const { onSelect } = options;
-    const { chat } = this.props;
     return (
       <List divided relaxed selection data-testid="lobby-cohort-chat-users">
         {users.reduce((accum, user, index) => {
@@ -114,7 +113,7 @@ class LobbyUserOverview extends Component {
           {scenario.name} room
         </Fragment>
       ) : null;
-      const avatar = new Avatar(host);
+      // const avatar = new Avatar(host);
       const personasInUse = chat.users.reduce((accum, user) => {
         if (user.is_present && user.persona_id !== null) {
           accum.push(user.persona_id);

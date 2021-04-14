@@ -146,13 +146,15 @@ class ChatPromptEditor extends React.Component {
   }
 
   render() {
-    const { agent, auto, header, prompt, timeout, welcome } = this.state;
+    const { agent, auto, header, timeout, welcome } = this.state;
     const { onChange, onTimerChange, updateState } = this;
     const timeoutString = timeout ? Media.secToTime(timeout) : '';
     const [hh = 0, mm = 0, ss = 0] = timeoutString
       .split(':')
       .map(v => Number(v));
-    const promptAriaLabel = 'Optional prompt to display for this discussion:';
+
+    // CURRENTLY UNUSED
+    // const promptAriaLabel = 'Optional prompt to display for this discussion:';
     const timeoutAriaLabel = 'Max duration for this discussion:';
     const welcomeAriaLabel = 'Optional welcome message to display in the chat:';
     const autoAriaLabel =
@@ -270,6 +272,7 @@ ChatPromptEditor.propTypes = {
   scenario: PropTypes.object,
   value: PropTypes.shape({
     id: PropTypes.string,
+    agent: PropTypes.object,
     auto: PropTypes.bool,
     header: PropTypes.string,
     prompt: PropTypes.string,

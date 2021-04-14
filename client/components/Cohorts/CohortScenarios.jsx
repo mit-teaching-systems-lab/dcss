@@ -25,7 +25,6 @@ import {
   Divider,
   Grid,
   Icon,
-  Image,
   Text
 } from '@components/UI';
 import Identity from '@utils/Identity';
@@ -553,17 +552,18 @@ CohortScenarios.propTypes = {
     scenarios: PropTypes.array,
     users: PropTypes.array
   }),
+  getChatsByCohortId: PropTypes.func,
   getCohort: PropTypes.func,
   getCohortScenarios: PropTypes.func,
   setCohortScenarios: PropTypes.func,
   onClick: PropTypes.func,
   scenarios: PropTypes.array,
   getRuns: PropTypes.func,
-  getRuns: PropTypes.func,
   runs: PropTypes.array,
   user: PropTypes.object,
   getUsers: PropTypes.func,
   setChat: PropTypes.func,
+  setRun: PropTypes.func,
   usersById: PropTypes.object
 };
 

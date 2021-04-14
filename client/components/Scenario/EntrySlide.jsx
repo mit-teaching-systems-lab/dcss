@@ -383,7 +383,8 @@ EntrySlide.propTypes = {
   permissions: PropTypes.object,
   run: PropTypes.object,
   saveRunEvent: PropTypes.func,
-  scenario: PropTypes.object
+  scenario: PropTypes.object,
+  user: PropTypes.object
 };
 
 const mapStateToProps = state => {

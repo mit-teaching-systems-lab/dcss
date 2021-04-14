@@ -46,12 +46,6 @@ import './ChatPrompt.css';
 
 const resultValues = ['complete', 'incomplete'];
 
-const resultToRunEventMap = {
-  complete: CHAT_CLOSE_COMPLETE,
-  incomplete: CHAT_CLOSE_INCOMPLETE,
-  timeout: CHAT_CLOSE_TIMEOUT
-};
-
 const closeStateToResultMap = {
   [STATES.CHAT_IS_CLOSED_COMPLETE]: 'complete',
   [STATES.CHAT_IS_CLOSED_INCOMPLETE]: 'incomplete',
@@ -250,7 +244,7 @@ class Display extends Component {
     }
   }
 
-  onChange({ chat, slide, result }) {
+  onChange({ result }) {
     const { responseId: name } = this.props;
     const { created_at } = this;
     const ended_at = new Date().toISOString();
@@ -309,7 +303,8 @@ class Display extends Component {
       );
     }
 
-    const isUserHost = chat.host_id === user.id;
+    // CURRENTLY UNUSED
+    // const isUserHost = chat.host_id === user.id;
     const key = Identity.key(chat);
     const { result: defaultValue, time } = this.state.value;
     const slide = {

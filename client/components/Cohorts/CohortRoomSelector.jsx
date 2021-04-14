@@ -14,7 +14,6 @@ import Lobby from '@components/Lobby';
 import {
   Button,
   Card,
-  Confirm,
   Form,
   Grid,
   Header,

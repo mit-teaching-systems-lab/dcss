@@ -13,7 +13,6 @@ import {
   Grid,
   Header,
   Icon,
-  Image,
   Input,
   List,
   Modal,
@@ -943,6 +942,7 @@ CohortProgress.propTypes = {
   onClick: PropTypes.func,
   scenarios: PropTypes.array,
   scenariosById: PropTypes.object,
+  socket: PropTypes.object,
   user: PropTypes.object,
   usersById: PropTypes.object
 };

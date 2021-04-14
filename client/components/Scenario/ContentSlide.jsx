@@ -230,6 +230,8 @@ class ContentSlide extends React.Component {
 
     const { run } = this.props;
 
+    console.log("onInterceptResponseChange required:", required);
+
     // console.log('isFulfillmentOverride', isFulfillmentOverride);
     // If we have a response change for a responseId that
     // was marked required, and the value isn't empty,

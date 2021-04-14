@@ -94,14 +94,7 @@ class Timer extends Component {
   }
 
   render() {
-    const {
-      auto,
-      chat,
-      isAllowedToStartTimer,
-      slide,
-      timeout,
-      user
-    } = this.props;
+    const { auto, chat, isAllowedToStartTimer, slide, timeout } = this.props;
     const { isActive } = this.state;
 
     if (!this.isScenarioRun) {
@@ -171,7 +164,7 @@ Timer.propTypes = {
   run: PropTypes.object,
   socket: PropTypes.object,
   slide: PropTypes.object,
-  timer: PropTypes.number,
+  timeout: PropTypes.number,
   timerStart: PropTypes.func,
   timerEnd: PropTypes.func,
   timerTick: PropTypes.func,

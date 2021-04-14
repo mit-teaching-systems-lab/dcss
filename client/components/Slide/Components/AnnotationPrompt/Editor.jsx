@@ -1,7 +1,7 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import DataHeader from '@components/Slide/Components/DataHeader';
-import { Button, Dropdown, Form, Segment, Table } from '@components/UI';
+import { Button, Dropdown, Form, Table } from '@components/UI';
 import Identity from '@utils/Identity';
 import { type } from './meta';
 
@@ -122,7 +122,6 @@ class AnnotationPromptEditor extends React.Component {
 
   render() {
     const {
-      scenario,
       slideId,
       value: { header = '', prompts = [], question = '' }
     } = this.props;
@@ -134,14 +133,7 @@ class AnnotationPromptEditor extends React.Component {
     }
 
     const reviewables = components.reduce((accum, component, key) => {
-      const {
-        header,
-        index,
-        isConditional,
-        prompt,
-        responseId,
-        slide
-      } = component;
+      const { header, isConditional, prompt, responseId, slide } = component;
 
       // Don't include empty/incomplete prompts
       // Don't include prompts from THIS slide
@@ -281,8 +273,10 @@ AnnotationPromptEditor.propTypes = {
   slideIndex: PropTypes.any,
   value: PropTypes.shape({
     id: PropTypes.string,
+    header: PropTypes.string,
     prompts: PropTypes.array,
     question: PropTypes.string,
+    responseId: PropTypes.string,
     type: PropTypes.oneOf([type])
   })
 };

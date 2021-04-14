@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Button, Grid, Header, Icon, Modal } from '@components/UI';
@@ -130,7 +130,8 @@ ScenarioPersonaConfirmation.propTypes = {
   onConfirm: PropTypes.func,
   onCancel: PropTypes.func,
   persona: PropTypes.object,
-  scenario: PropTypes.object
+  scenario: PropTypes.object,
+  unlinkPersonaFromScenario: PropTypes.func
 };
 
 const mapStateToProps = state => {

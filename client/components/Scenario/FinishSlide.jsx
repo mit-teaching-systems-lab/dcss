@@ -1,10 +1,9 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { NavLink } from 'react-router-dom';
 import { Button, Card, Header, Icon, Modal } from '@components/UI';
 import { SCENARIO_COMPLETE } from '@hoc/withRunEventCapturing';
-import withSocket, { RUN_AGENT_START, RUN_AGENT_END } from '@hoc/withSocket';
+import withSocket, { RUN_AGENT_END } from '@hoc/withSocket';
 import Payload from '@utils/Payload';
 import Identity from '@utils/Identity';
 import './Scenario.css';
@@ -88,9 +87,13 @@ class FinishSlide extends React.Component {
       ? 'scenario__slide-card-content'
       : 'scenario__slide-card-content-preview';
 
-    const baseReturnToXUrl = this.isCohortScenarioRun
+    const baseCohortUrl = this.isCohortScenarioRun
       ? `/cohort/${Identity.toHash(cohortId)}`
       : '';
+
+    const baseReturnToXUrl = this.isCohortScenarioRun
+      ? baseCohortUrl
+      : '/scenarios';
 
     const rerunUrl = `/run/${Identity.toHash(scenarioId)}/slide/0`;
 
@@ -103,7 +106,7 @@ class FinishSlide extends React.Component {
     );
 
     const rerunThisUrl = this.isCohortScenarioRun
-      ? `${baseReturnToXUrl}${rerunUrl}`
+      ? `${baseCohortUrl}${rerunUrl}`
       : rerunUrl;
 
     const rerunThisX = (
