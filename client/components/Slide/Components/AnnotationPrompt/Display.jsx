@@ -373,14 +373,14 @@ class Display extends Component {
               <Card.Description>
                 You answered:
                 {answerContentDisplay}
-                {answerRecorded.isEmpty ? (
+                {/*answerRecorded.isEmpty ? (
                   <Button
                     fluid
                     as="a"
                     content={`Return to slide #${slideAndComponentAssociatedWithPrompt.slide.slide_number} to respond to this prompt`}
                     href={urlToSlideWithThisComponent}
                   />
-                ) : null}
+                ) : null*/}
               </Card.Description>
             </Card.Content>
             <Card.Content extra>
