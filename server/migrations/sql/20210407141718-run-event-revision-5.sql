@@ -25,6 +25,3 @@ WHERE name IN (
   'user-join-pool',
   'user-part-pool'
 );
-
-
-
