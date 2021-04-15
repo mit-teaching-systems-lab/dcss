@@ -80,14 +80,35 @@ async function getResponse(req, res) {
 
   try {
     const response = await db.getResponse({ run_id, response_id, user_id });
-    const transcript = await db.getResponseTranscript({
+
+    if (!response) {
+      return res.json({ response });
+    }
+
+    const transcriptRecord = await db.getResponseTranscript({
       run_id,
       response_id,
       user_id
     });
 
-    if (response && transcript) {
-      Object.assign(response.response, transcript);
+    const type = response.response.type;
+
+    response.response.isEmpty = !response.response.value;
+    response.response.isAudioPlayback =
+      type === 'AudioPrompt' || type === 'ConversationPrompt';
+
+    if (response.response.isAudioPlayback) {
+      if (transcriptRecord) {
+        response.response.transcript = transcriptRecord.transcript;
+
+        if (
+          transcriptRecord.response &&
+          (!transcriptRecord.response.results.length &&
+            !transcriptRecord.response.result_index)
+        ) {
+          response.response.isEmpty = true;
+        }
+      }
     }
 
     res.json({ response });

@@ -48,6 +48,8 @@ exports.HOST_JOIN = 'host-join';
 exports.JOIN_OR_PART = 'join-or-part';
 exports.REDIRECT = 'redirect';
 exports.RUN_CHAT_LINK = 'run-chat-link';
+exports.RUN_RESPONSE_CREATED = 'run-response-created';
+exports.RUN_RESPONSE_UPDATED = 'run-response-updated';
 
 // Client -> Server -> Client
 exports.CHAT_CLOSED_FOR_SLIDE = 'chat-closed-for-slide';

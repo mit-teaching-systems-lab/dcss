@@ -1,6 +1,10 @@
 import { type } from './meta';
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+
+import AudioPlayer from '../AudioPrompt/AudioPlayer';
+import Transcript from '../AudioPrompt/Transcript';
 import {
   Button,
   Card,
@@ -10,15 +14,15 @@ import {
   Segment
 } from '@components/UI';
 import PromptRequiredLabel from '../PromptRequiredLabel';
-import Username from '@components/User/Username';
-import Transcript from '../AudioPrompt/Transcript';
-import { connect } from 'react-redux';
-import { getChatUsersSharedResponses } from '@actions/chat';
 import { getResponse } from '@actions/response';
 import { ANSWER_ANNOTATION } from '@hoc/withRunEventCapturing';
+import withSocket, {
+  RUN_RESPONSE_CREATED,
+  RUN_RESPONSE_UPDATED
+} from '@hoc/withSocket';
 import '../AudioPrompt/AudioPrompt.css';
 import Identity from '@utils/Identity';
-import Payload from '@utils/Payload';
+import Media, { IS_AUDIO_RECORDING_SUPPORTED } from '@utils/Media';
 import Storage from '@utils/Storage';
 
 import './AnnotationPrompt.css';
@@ -39,6 +43,7 @@ class Display extends Component {
 
     this.created_at = new Date().toISOString();
     this.onClick = this.onClick.bind(this);
+    this.onResponseReceived = this.onResponseReceived.bind(this);
     this.onPageChange = this.onPageChange.bind(this);
   }
 
@@ -50,11 +55,11 @@ class Display extends Component {
     if (!this.isScenarioRun) {
       return;
     }
-    let { onResponseChange, persisted = {}, responseId, run } = this.props;
-    let { name = responseId } = persisted;
+    let { onResponseChange, persisted = {}, responseId } = this.props;
+    let { value = [] } = persisted;
+
     let activePage = null;
     let entries = {};
-    let value = persisted.value || [];
 
     if (!value.length) {
       const previous = await this.props.getResponse(
@@ -76,7 +81,7 @@ class Display extends Component {
       );
       responses.push(previous);
 
-      if (value && value.length) {
+      if (Array.isArray(value)) {
         const entry = value.find((v, index) => {
           if (v && v.response.response_id === promptResponseId) {
             activePage = index + 1;
@@ -95,8 +100,12 @@ class Display extends Component {
     });
 
     if (!missingAnnotation) {
+      let name = responseId;
       onResponseChange({}, { name, value, isFulfilled: true });
     }
+
+    this.props.socket.on(RUN_RESPONSE_CREATED, this.onResponseReceived);
+    this.props.socket.on(RUN_RESPONSE_UPDATED, this.onResponseReceived);
 
     this.setState({
       isReady: true,
@@ -104,6 +113,40 @@ class Display extends Component {
       entries,
       responses,
       value
+    });
+  }
+
+  componentWillUnmount() {
+    this.props.socket.off(RUN_RESPONSE_CREATED, this.onResponseReceived);
+    this.props.socket.off(RUN_RESPONSE_UPDATED, this.onResponseReceived);
+  }
+
+  async onResponseReceived(record) {
+    const response = await this.props.getResponse(
+      this.props.run.id,
+      record.response_id
+    );
+
+    const entries = this.state.entries;
+    const responses = this.state.responses;
+    const index = responses.findIndex(
+      ({ response_id }) => response_id === record.response_id
+    );
+
+    if (index !== -1) {
+      responses[index] = {
+        ...response
+      };
+    } else {
+      responses.push(response);
+    }
+
+    this.setState({
+      responses,
+      entries: {
+        ...entries,
+        [record.response_id]: null
+      }
     });
   }
 
@@ -139,7 +182,7 @@ class Display extends Component {
       created_at,
       ended_at,
       isFulfilled,
-      name,
+      name: responseId,
       type,
       value: annotations
     };
@@ -181,7 +224,7 @@ class Display extends Component {
 
   render() {
     const { onClick, onPageChange } = this;
-    const { activePage, entries, isReady, responses, value } = this.state;
+    const { activePage, entries, isReady, responses } = this.state;
     const {
       isEmbeddedInSVG,
       question,
@@ -266,6 +309,54 @@ class Display extends Component {
       content: 'No'
     };
 
+    const emptyButton = {
+      ...sharedButtonProps,
+      icon:
+        existing && existing.annotation.value === 'No data'
+          ? 'checkmark'
+          : null,
+      value: 'No data',
+      content: 'No data'
+    };
+
+    const answerRecorded = responseToAnnotate && responseToAnnotate.response;
+    let answerContent = answerRecorded
+      ? answerRecorded.transcript ||
+        answerRecorded.content ||
+        answerRecorded.value
+      : null;
+
+    let answerContentDisplay = (
+      <p>
+        <strong>{answerContent}</strong>
+      </p>
+    );
+
+    if (answerRecorded.isAudioPlayback && IS_AUDIO_RECORDING_SUPPORTED) {
+      const src = Media.fileToMediaURL(answerRecorded.value);
+      const audioProps = {
+        controlsList: 'nodownload',
+        controls: true,
+        src
+      };
+
+      answerContentDisplay = (
+        <div>
+          <AudioPlayer {...audioProps} />
+          <Transcript
+            responseId={responseToAnnotate.response_id}
+            run={run}
+            transcript={answerRecorded.transcript}
+          />
+        </div>
+      );
+    }
+
+    const urlToSlideWithThisComponent = `${window.location.pathname.slice(
+      0,
+      window.location.pathname.lastIndexOf('/')
+    )}/${slideAndComponentAssociatedWithPrompt.slide.slide_number}`;
+
     return responseToAnnotate ? (
       <Fragment>
         <Segment attached="top" className="ap__border-bottom-zero">
@@ -281,20 +372,24 @@ class Display extends Component {
               </Card.Meta>
               <Card.Description>
                 You answered:
-                <p>
-                  <strong>
-                    {responseToAnnotate.response.transcript ||
-                      responseToAnnotate.response.content ||
-                      responseToAnnotate.response.value}
-                  </strong>
-                </p>
+                {answerContentDisplay}
+                {answerRecorded.isEmpty ? (
+                  <Button
+                    fluid
+                    as="a"
+                    content={`Return to slide #${slideAndComponentAssociatedWithPrompt.slide.slide_number} to respond to this prompt`}
+                    href={urlToSlideWithThisComponent}
+                  />
+                ) : null}
               </Card.Description>
             </Card.Content>
             <Card.Content extra>
-              <Button.Group fluid widths={2}>
+              <Button.Group fluid widths={3}>
                 <Button {...yesButton} />
                 <Button.Or />
                 <Button {...noButton} />
+                <Button.Or />
+                <Button {...emptyButton} />
               </Button.Group>
             </Card.Content>
           </Card>
@@ -329,11 +424,13 @@ Display.propTypes = {
   onResponseChange: PropTypes.func,
   persisted: PropTypes.object,
   prompts: PropTypes.array,
+  question: PropTypes.any,
   required: PropTypes.bool,
   responseId: PropTypes.string,
   run: PropTypes.object,
   saveRunEvent: PropTypes.func,
   scenario: PropTypes.object,
+  socket: PropTypes.object,
   type: PropTypes.oneOf([type])
 };
 
@@ -346,7 +443,9 @@ const mapDispatchToProps = dispatch => ({
   getResponse: (...params) => dispatch(getResponse(...params))
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Display);
+export default withSocket(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Display)
+);

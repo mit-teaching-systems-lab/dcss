@@ -41,6 +41,8 @@ const {
   SET_INVITATION,
   SHARED_RESPONSE_CREATED,
   SHARED_RESPONSE_UPDATED,
+  RUN_RESPONSE_CREATED,
+  RUN_RESPONSE_UPDATED,
   TIMER_END,
   TIMER_START,
   TIMER_STOP,
@@ -469,6 +471,7 @@ class SocketManager {
               record
             );
           }
+          this.io.to(record.user_id).emit(RUN_RESPONSE_CREATED, record);
         });
       }
 
@@ -488,6 +491,7 @@ class SocketManager {
               record
             );
           }
+          this.io.to(record.user_id).emit(RUN_RESPONSE_UPDATED, record);
         });
       }
 
@@ -673,12 +677,7 @@ class SocketManager {
         const personas = await scenariosdb.getScenarioPersonas(scenario.id);
         for (let { id } of personas) {
           if (id !== persona.id) {
-            await chatsdb.leaveChatPool(
-              cohort.id,
-              scenario.id,
-              id,
-              user.id
-            );
+            await chatsdb.leaveChatPool(cohort.id, scenario.id, id, user.id);
           }
         }
 
