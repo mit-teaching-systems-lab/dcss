@@ -46,6 +46,10 @@ export function isAudioPrompt(component) {
 const seen = {};
 
 export function fileToMediaURL(input) {
+  if (!input) {
+    return '';
+  }
+
   if (seen[input]) {
     return seen[input];
   }
