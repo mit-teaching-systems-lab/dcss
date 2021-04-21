@@ -332,7 +332,7 @@ class Display extends Component {
       </p>
     );
 
-    if (answerRecorded.isAudioPlayback && IS_AUDIO_RECORDING_SUPPORTED) {
+    if (answerRecorded && answerRecorded.isAudioPlayback && IS_AUDIO_RECORDING_SUPPORTED) {
       const src = Media.fileToMediaURL(answerRecorded.value);
       const audioProps = {
         controlsList: 'nodownload',
