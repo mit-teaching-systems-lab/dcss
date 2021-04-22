@@ -22,6 +22,7 @@ import withSocket, {
 } from '@hoc/withSocket';
 import '../AudioPrompt/AudioPrompt.css';
 import Identity from '@utils/Identity';
+import Layout from '@utils/Layout';
 import Media, { IS_AUDIO_RECORDING_SUPPORTED } from '@utils/Media';
 import Storage from '@utils/Storage';
 
@@ -357,6 +358,14 @@ class Display extends Component {
       window.location.pathname.lastIndexOf('/')
     )}/${slideAndComponentAssociatedWithPrompt.slide.slide_number}`;
 
+    const buttonGroupProps = {
+      fluid: true,
+    };
+
+    if (Layout.isNotForMobile()) {
+      buttonGroupProps.widths = 3;
+    }
+
     return responseToAnnotate ? (
       <Fragment>
         <Segment attached="top" className="ap__border-bottom-zero">
@@ -384,7 +393,7 @@ class Display extends Component {
               </Card.Description>
             </Card.Content>
             <Card.Content extra>
-              <Button.Group fluid widths={3}>
+              <Button.Group {...buttonGroupProps}>
                 <Button {...yesButton} />
                 <Button.Or />
                 <Button {...noButton} />

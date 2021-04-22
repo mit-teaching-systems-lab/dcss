@@ -4,29 +4,40 @@ const Multer = require('multer');
 const uuid = require('uuid/v4');
 
 const db = require('./db');
-const { getLastResponseOrderedById, updateResponse } = require('../runs/db');
+const runsdb = require('../runs/db');
+
 const { asyncMiddleware } = require('../../util/api');
-const { uploadToS3, requestFromS3 } = require('./s3');
+const { transferToS3, requestFromS3 } = require('./s3');
 const {
   requestRecognitionAsync,
   requestTranscriptionAsync
 } = require('./watson');
 
 async function updateResponseIfExists(value, identifiers) {
-  const previous = await getLastResponseOrderedById(identifiers);
+  const previous = await runsdb.getLastResponseOrderedById(identifiers);
 
-  if (previous && !previous.response.value) {
-    const response = {
-      ...previous.response,
-      value
+  if (previous) {
+    const updates = {
+      updated_at: new Date().toISOString()
     };
-    await updateResponse(previous.id, { response });
+
+    if (!previous.response.value) {
+      updates.response = {
+        ...previous.response,
+        value
+      };
+    }
+
+    await runsdb.updateResponse(previous.id, updates);
   }
 }
+
+const MAX_UPLOAD_MS = 10000;
 
 async function uploadAudioAsync(req, res) {
   const storage = Multer.memoryStorage();
   const upload = Multer({ storage });
+  const uploadStartedAt = Date.now();
 
   upload.single('recording')(req, res, async err => {
     if (err) {
@@ -54,8 +65,20 @@ async function uploadAudioAsync(req, res) {
       });
     }
 
+    const uploadCompletedAt = Date.now();
+    const uploadElapsedMs = uploadCompletedAt - uploadStartedAt;
+    let isExpectingResponse = true;
+
+    if (uploadElapsedMs > MAX_UPLOAD_MS) {
+      isExpectingResponse = false;
+      res.send({
+        s3Location: key,
+        transcript: ''
+      });
+    }
+
     try {
-      const s3Location = await uploadToS3(key, buffer);
+      const s3Location = await transferToS3(key, buffer);
       const identifiers = {
         run_id,
         response_id,
@@ -78,15 +101,19 @@ async function uploadAudioAsync(req, res) {
       // check again to ensure that the response receives the s3Location value.
       await updateResponseIfExists(s3Location, identifiers);
 
-      res.send({
-        s3Location,
-        transcript
-      });
+      if (isExpectingResponse) {
+        res.send({
+          s3Location,
+          transcript
+        });
+      }
     } catch (error) {
-      res.status = 200;
-      res.send({
-        error
-      });
+      if (isExpectingResponse) {
+        res.status = 200;
+        res.send({
+          error
+        });
+      }
     }
   });
 }
@@ -111,7 +138,7 @@ async function uploadImageAsync(req, res) {
     const key = `image/${req.session.user.id}/${name}`;
 
     try {
-      const s3Location = await uploadToS3(key, buffer);
+      const s3Location = await transferToS3(key, buffer);
       const url = `/api/media/${s3Location}`;
       const image = await db.addImage({ name, size, url, user_id });
 

@@ -8,7 +8,7 @@ const s3Params = {
   Bucket: process.env.S3_BUCKET
 };
 
-exports.uploadToS3 = async function(key, buffer) {
+exports.transferToS3 = async function(key, buffer) {
   let Key = key;
   if (process.env.ENV) {
     Key = `${process.env.ENV}/${key}`;
