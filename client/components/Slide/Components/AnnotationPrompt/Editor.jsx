@@ -1,16 +1,19 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import DataHeader from '@components/Slide/Components/DataHeader';
 import { Button, Dropdown, Form, Table } from '@components/UI';
+import * as Components from '@components/Slide/Components';
 import Identity from '@utils/Identity';
 import { type } from './meta';
 
 const AnnotationPromptFormatted = ({
-  title,
-  prompt,
   header,
-  isConditional
+  isConditional,
+  meta,
+  prompt,
+  title,
 }) => {
+  const name = meta.name.replace('Prompt: ', '');
   return (
     <Table celled striped>
       <Table.Header>
@@ -29,6 +32,10 @@ const AnnotationPromptFormatted = ({
             <Table.Cell>{header}</Table.Cell>
           </Table.Row>
         ) : null}
+        <Table.Row>
+          <Table.Cell collapsing>Type:</Table.Cell>
+          <Table.Cell>{name}</Table.Cell>
+        </Table.Row>
         {isConditional ? (
           <Table.Row>
             <Table.Cell colSpan={2}>
@@ -133,8 +140,8 @@ class AnnotationPromptEditor extends React.Component {
     }
 
     const reviewables = components.reduce((accum, component, key) => {
-      const { header, isConditional, prompt, responseId, slide } = component;
-
+      const { header, isConditional, prompt, responseId, slide, type } = component;
+      const { Card } = Components[type];
       // Don't include empty/incomplete prompts
       // Don't include prompts from THIS slide
       // Don't include components with `disableEmbed: true`
@@ -150,6 +157,7 @@ class AnnotationPromptEditor extends React.Component {
       const title = `Slide #${slide.slide_number} ${quotedSlideTitle}`;
       const content = (
         <AnnotationPromptFormatted
+          meta={Components[type]}
           title={title}
           prompt={prompt}
           header={header}
@@ -157,7 +165,14 @@ class AnnotationPromptEditor extends React.Component {
         />
       );
 
-      const text = `Slide #${slide.slide_number}: "${prompt}"`;
+      // Previously
+      // const text = `Slide #${slide.slide_number}: "${prompt}"`;
+      const text = (
+        <Fragment>
+          Slide #{slide.slide_number}: "{prompt}" {Card.Icon}
+        </Fragment>
+      );
+
       accum.push({
         key: `recall-response-${key}`,
         text,
