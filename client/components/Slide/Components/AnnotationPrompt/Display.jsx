@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 
 import AudioPlayer from '../AudioPrompt/AudioPlayer';
 import Transcript from '../AudioPrompt/Transcript';
+import Loading from '@components/Loading';
 import {
   Button,
   Card,
@@ -244,7 +245,16 @@ class Display extends Component {
     }
 
     if (!isReady) {
-      return null;
+      return (
+        <Fragment>
+          <Segment style={{height: '300px'}}>
+            <Header as="h3" tabIndex="0">
+              {question}
+            </Header>
+            <Loading />
+          </Segment>
+        </Fragment>
+      );
     }
 
     const missingAnnotation = responses.find(response => {
