@@ -228,9 +228,16 @@ class Downloads extends Component {
       if (user.is_super) {
         return true;
       }
-      return cohort.users.find(({ id, roles }) => {
-        return id === user.id && roles.includes('researcher');
-      });
+      return cohort.users.find(({ id, roles }) =>
+        id === user.id && roles.includes('researcher')
+      );
+    };
+
+    const hasAccessToScenario = scenario => {
+      if (user.is_super) {
+        return true;
+      }
+      return scenario.users.find(({ id }) => id === user.id);
     };
 
     const downloadZipIcon = (
@@ -451,11 +458,15 @@ class Downloads extends Component {
           const downloads = [];
 
           for (let cohort of cohorts) {
-            downloads.push(...(await requestDownload({ cohort })));
+            if (hasAccessToCohort(cohort)) {
+              downloads.push(...(await requestDownload({ cohort })));
+            }
           }
 
           for (let scenario of scenarios) {
-            downloads.push(...(await requestDownload({ scenario })));
+            if (hasAccessToScenario(scenario)) {
+              downloads.push(...(await requestDownload({ scenario })));
+            }
           }
 
           await triggerDownload(downloads);
