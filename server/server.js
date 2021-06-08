@@ -32,7 +32,7 @@ const { errorHandler } = require('./util/api');
 const app = express();
 const poolConfig = getDbConfig();
 
-app.use(bodyParser.json());
+app.use(bodyParser.json({ limit: '50mb' }));
 app.use(cors());
 
 app.use(
