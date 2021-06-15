@@ -181,15 +181,14 @@ const makeRemoteSafeAuthPayload = data => {
 };
 
 const DEVELOPER_TOKEN = '8070cb2467d22a15dabafd5f5128cacc04af86f1';
-const SUPER_TOKEN = 'da79d58278915fb4b6d702e31e6725f845a36f13';
 
 class SocketManager {
   static isValidToken(remoteToken) {
     const tokens = Object.values(cache.clients).map(client => client.token);
     if (process.env.NODE_ENV !== 'production') {
-      return [...tokens, DEVELOPER_TOKEN, SUPER_TOKEN].includes(remoteToken);
+      return [...tokens, DEVELOPER_TOKEN].includes(remoteToken);
     }
-    return [...tokens, SUPER_TOKEN].includes(remoteToken);
+    return tokens.includes(remoteToken);
   }
 
   constructor(server) {
