@@ -203,7 +203,7 @@ class Display extends Component {
     if (!missingAnnotation) {
       // This is necessary to "release" the hold made by required
       // response prompts.
-      data.isFulfilled = true;
+      data.isFulfilled = false;
       data.isFulfillmentOverride = true;
       this.props.onResponseChange(event, data);
     } else {
