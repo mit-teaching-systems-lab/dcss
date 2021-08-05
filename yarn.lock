@@ -18271,10 +18271,10 @@ stylehacks@^4.0.0:
     postcss "^7.0.0"
     postcss-selector-parser "^3.0.0"
 
-suneditor@2.36.5:
-  version "2.36.5"
-  resolved "https://registry.yarnpkg.com/suneditor/-/suneditor-2.36.5.tgz#5fba64ab45423d1d6f94594cc979e0b9e21ad596"
-  integrity sha512-lJNs+jV5XciZpMSuV3wr/CKy1Ocw2hOJ10TQ7pgFAUL6uGuS8AKzopk9Jry5qAfJqqQp98zQ166+rDoq6bp6yA==
+suneditor@2.41.3:
+  version "2.41.3"
+  resolved "https://registry.yarnpkg.com/suneditor/-/suneditor-2.41.3.tgz#2eb70d5c793ed50eab3ba2d282e984e076bb217e"
+  integrity sha512-V4Hz1PY2MhIhw2Lf1iInjEhuVp65B5EbqKb8GpBluZDfx3MnZnNm5v/+Ssr1rV9swTCUWOsl8Qo92KhLMZIllA==
 
 superagent@6.1.0:
   version "6.1.0"
