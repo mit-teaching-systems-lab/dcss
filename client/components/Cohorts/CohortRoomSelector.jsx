@@ -663,9 +663,9 @@ export class CohortRoomSelector extends React.Component {
             </Modal.Accessible>
           ) : null}
 
-          {Layout.isNotForMobile() ? (
-            <Chat chat={this.props.cohort.chat} isMinimizable={false} />
-          ) : null}
+          {/*Layout.isNotForMobile() ? (
+            <Chat chat={this.props.cohort.chat} isMinimizable={true} />
+          ) : null*/}
         </Modal>
       </Modal.Accessible>
     );
