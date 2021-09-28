@@ -157,7 +157,7 @@ export class DataTable extends React.Component {
       for (const user of this.props.cohort.users) {
         const scenarioResponses = reduced[user.username];
         if (scenarioResponses) {
-          const row = [user.username];
+          const row = [user.id, user.username];
           for (const prompt of prompts) {
             row.push(scenarioResponses[prompt.responseId]);
           }
@@ -187,7 +187,7 @@ export class DataTable extends React.Component {
           const participantResponses = reduced[scenarioId];
           if (participantResponses) {
             const prompts = headers;
-            const row = [scenario.title];
+            const row = [scenario.id, scenario.title];
             for (const prompt of prompts) {
               row.push(participantResponses[prompt.responseId]);
             }
@@ -262,10 +262,12 @@ export class DataTable extends React.Component {
         ? scenarios.find(scenario => scenario.id === scenarioId).title
         : users.find(user => user.id === participantId).username;
 
-      const leftColumnHeader = isScenarioDataTable ? 'Participant' : 'Scenario';
+      const firstColumnHeader = isScenarioDataTable ? 'Participant id' : 'Scenario id';
+      const secondColumnHeader = isScenarioDataTable ? 'Participant' : 'Scenario';
 
       const subjectAndPrompts = [
-        `"${leftColumnHeader}"`,
+        `"${firstColumnHeader}"`,
+        `"${secondColumnHeader}"`,
         ...prompts.map(prompt => `"${CSV.escape(makeHeader(prompt, prompts))}"`)
       ].join(',');
 
@@ -273,6 +275,11 @@ export class DataTable extends React.Component {
 
       rows.forEach(row => {
         const prepared = row.map(data => {
+
+          if (typeof data === 'number') {
+            return data;
+          }
+
           if (typeof data === 'string') {
             return `"${data}"`;
           }
@@ -285,9 +292,14 @@ export class DataTable extends React.Component {
             content += ` (${location.origin}/api/media/${response.value})`;
           }
 
-          const difference = Moment(response.ended_at).diff(
+          let difference = Moment(response.ended_at).diff(
             response.created_at
           );
+
+          if (difference < 0) {
+            difference = 0;
+          }
+
           const duration = Moment.duration(difference).format(
             Moment.globalFormat
           );
@@ -446,10 +458,11 @@ export class DataTable extends React.Component {
 }
 
 const DataTableRow = props => {
-  const { cells, isScenarioDataTable, leftColVisible, rowKey } = props;
+  const { cells: allCells, isScenarioDataTable, leftColVisible, rowKey } = props;
   const leftColHidden = !leftColVisible
     ? { className: 'dt__left-col-hidden' }
     : {};
+  const cells = allCells.slice(1);
   const subject = cells[0] || '';
 
   return (
