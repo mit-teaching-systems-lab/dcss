@@ -122,13 +122,11 @@ const cache = {
         CHAT_IS_CLOSED_INCOMPLETE | CHAT_IS_CLOSED_TIMEOUT
     */
   },
-  rolls: {
-    /*
-      [chat.id-slide-slide.id]: [
-        user.id
-      ]
-    */
-  },
+  rollCalls: new Map(/*
+    [
+      [chat.id-slide-slide.id, user.id]
+    ]
+  */),
   timers: {
     /*
       [chat.id-slide-slide.id] = interval;
@@ -800,13 +798,17 @@ class SocketManager {
       });
 
       socket.on(CREATE_USER_CHANNEL, ({ user }) => {
-        console.log(CREATE_USER_CHANNEL, { user });
-        socket.join(user.id);
+        if (user && user.id) {
+          console.log(CREATE_USER_CHANNEL, { user });
+          socket.join(user.id);
+        }
       });
 
       socket.on(CREATE_CHAT_CHANNEL, ({ chat }) => {
-        console.log(CREATE_CHAT_CHANNEL, { chat });
-        socket.join(chat.id);
+        if (chat && chat.id) {
+          console.log(CREATE_CHAT_CHANNEL, { chat });
+          socket.join(chat.id);
+        }
       });
 
       socket.on(CREATE_CHAT_SLIDE_CHANNEL, ({ chat, slide }) => {
@@ -874,30 +876,29 @@ class SocketManager {
 
           await chatsdb.insertNewJoinPartMessage(chat.id, user.id, message);
 
-          const rollKey = `${chat.id}-slide-${run.activeRunSlideIndex}`;
+          const rollCallKey = `${chat.id}-slide-${run.activeRunSlideIndex}`;
 
-          if (!cache.rolls[rollKey]) {
-            cache.rolls[rollKey] = [];
+          // If no roll call exists for this chat.id and this slide
+          if (!cache.rollCalls.has(rollCallKey)) {
+            cache.rollCalls.set(rollCallKey, new Set());
           }
 
-          // Remove them from other rolls.
-          Object.entries(cache.rolls).forEach(([key, roll]) => {
-            if (key !== rollKey && cache.rolls[key]) {
-              const index = cache.rolls[key].indexOf(user.id);
-              if (index !== -1) {
-                cache.rolls[key].splice(index, 1);
+          // Remove them from all other rosters.
+          cache.rollCalls.forEach((roster, key) => {
+            if (key !== rollCallKey) {
+              if (roster.delete(user.id)) {
+                cache.rollCalls.set(key, roster);
               }
             }
           });
 
-          if (!cache.rolls[rollKey].includes(user.id)) {
-            cache.rolls[rollKey].push(user.id);
-          }
+          // Add them to this roster (unique)
+          cache.rollCalls.get(rollCallKey).add(user.id);
 
           const personas = await scenariosdb.getScenarioPersonas(scenario.id);
           const users = await chatsdb.getLinkedChatUsersByChatId(chat.id);
           const isCompleteRollCall = users.every(({ id }) =>
-            cache.rolls[rollKey].includes(id)
+            cache.rollCalls.get(rollCallKey).has(id)
           );
 
           const personaIds = personas.map(({ id }) => id);
@@ -917,13 +918,13 @@ class SocketManager {
             //     id: chat.host_id
             //   }
             // });
-            cache.discussions[rollKey] = CHAT_IS_ACTIVE;
-            this.io.to(rollKey).emit(CHAT_STATE, {
+            cache.discussions[rollCallKey] = CHAT_IS_ACTIVE;
+            this.io.to(rollCallKey).emit(CHAT_STATE, {
               chat,
               slide: {
                 index: run.activeRunSlideIndex
               },
-              state: cache.discussions[rollKey]
+              state: cache.discussions[rollCallKey]
             });
           }
 
@@ -940,18 +941,17 @@ class SocketManager {
         console.log(USER_PART_SLIDE, chat, user, run);
 
         if (run) {
-          const rollKey = `${chat.id}-slide-${run.activeRunSlideIndex}`;
+          const rollCallKey = `${chat.id}-slide-${run.activeRunSlideIndex}`;
 
-          if (!cache.rolls[rollKey]) {
-            cache.rolls[rollKey] = [];
-          }
+          // If a roll call exists for this chat.id and this slide
+          if (cache.rollCalls.has(rollCallKey)) {
+            const rollCall = cache.rollCalls.get(rollCallKey);
 
-          if (cache.rolls[rollKey].includes(user.id)) {
-            cache.rolls[rollKey].splice(
-              cache.rolls[rollKey].indexOf(user.id),
-              1
-            );
-            // console.log('UPDATED ROLLS: ', cache.rolls[rollKey]);
+            if (rollCall.delete(user.id)) {
+              cache.rollCalls.set(rollCallKey, rollCall);
+              console.log('UPDATED ROLL: ', rollCall);
+              console.log('REMOVED: ', user);
+            }
           }
 
           await saveRunEvent(run.id, user.id, EVENT_TYPES.USER_PART_SLIDE, {
@@ -987,7 +987,7 @@ class SocketManager {
         const { chat, user, slide, result, run } = payload;
         console.log(CHAT_CLOSED_FOR_SLIDE, { chat, user, slide, result, run });
         const room = `${chat.id}-slide-${slide.index}`;
-        cache.rolls[room] = null;
+        cache.rollCalls.delete(room);
 
         if (cache.timers[room]) {
           clearInterval(cache.timers[room]);
