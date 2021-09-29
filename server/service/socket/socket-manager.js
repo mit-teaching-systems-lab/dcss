@@ -66,6 +66,7 @@ const {
 const EVENT_TYPES = require('../runs/event-types');
 const authdb = require('../session/db');
 const agentsdb = require('../agents/db');
+const db = require('./db');
 const chatsdb = require('../chats/db');
 const cohortsdb = require('../cohorts/db');
 const personasdb = require('../personas/db');
@@ -818,16 +819,17 @@ class SocketManager {
         }
       });
 
-      socket.on(CREATE_CHAT_SLIDE_CHANNEL, ({ chat, slide }) => {
+      socket.on(CREATE_CHAT_SLIDE_CHANNEL, async ({ chat, slide }) => {
         console.log(CREATE_CHAT_SLIDE_CHANNEL, { chat, slide });
         const room = `${chat.id}-slide-${slide.index}`;
         socket.join(room);
 
-        if (!cache.discussions[room]) {
-          cache.discussions[room] = CHAT_IS_PENDING;
-        }
+        let state = await db.getDiscussionState(room);
 
-        const state = cache.discussions[room];
+        if (!state) {
+          state = CHAT_IS_PENDING;
+          await db.setDiscussionState(room, CHAT_IS_PENDING);
+        }
 
         this.io.to(room).emit(CHAT_STATE, { chat, slide, state });
         console.log(CHAT_STATE, room, { chat, slide, state });
@@ -883,39 +885,27 @@ class SocketManager {
 
           await chatsdb.insertNewJoinPartMessage(chat.id, user.id, message);
 
-          const rollCallKey = `${chat.id}-slide-${run.activeRunSlideIndex}`;
+          const rollKey = `${chat.id}-slide-${run.activeRunSlideIndex}`;
 
-          // If no roll call exists for this chat.id and this slide
-          if (!cache.rollCalls.has(rollCallKey)) {
-            cache.rollCalls.set(rollCallKey, new Set());
-          }
-
-          // Remove them from all other rosters.
-          cache.rollCalls.forEach((roster, key) => {
-            if (key !== rollCallKey) {
-              if (roster.delete(user.id)) {
-                cache.rollCalls.set(key, roster);
-              }
-            }
-          });
+          // Remove the user from all other  rosters.
+          await db.removeUserFromRolls(user.id);
 
           // Add them to this roster (unique)
-          cache.rollCalls.get(rollCallKey).add(user.id);
+          await db.addUserToRoll(rollKey, user.id);
+          const roll = await db.getRollByRoomKey(rollKey);
 
           const personas = await scenariosdb.getScenarioPersonas(scenario.id);
           const users = await chatsdb.getLinkedChatUsersByChatId(chat.id);
-          const isCompleteRollCall = users.every(({ id }) =>
-            cache.rollCalls.get(rollCallKey).has(id)
-          );
+          const isCompleteRoll = users.every(({ id }) => roll.includes(id));
 
           const personaIds = personas.map(({ id }) => id);
           const isCompleteRoster = users.every(({ persona_id }) =>
             personaIds.includes(persona_id)
           );
 
-          // isCompleteRollCall: All users are on the same slide
+          // isCompleteRoll: All users are on the same slide
           // isCompleteRoster: All expected roles are filled by users
-          const quorum = isCompleteRollCall && isCompleteRoster;
+          const quorum = isCompleteRoll && isCompleteRoster;
 
           if (quorum) {
             // const room = `${chat.id}-user-${chat.host_id}`;
@@ -925,13 +915,15 @@ class SocketManager {
             //     id: chat.host_id
             //   }
             // });
-            cache.discussions[rollCallKey] = CHAT_IS_ACTIVE;
-            this.io.to(rollCallKey).emit(CHAT_STATE, {
+            const state = CHAT_IS_ACTIVE;
+            await db.setDiscussionState(rollKey, state);
+
+            this.io.to(rollKey).emit(CHAT_STATE, {
               chat,
               slide: {
                 index: run.activeRunSlideIndex
               },
-              state: cache.discussions[rollCallKey]
+              state
             });
           }
 
@@ -948,19 +940,8 @@ class SocketManager {
         console.log(USER_PART_SLIDE, chat, user, run);
 
         if (run) {
-          const rollCallKey = `${chat.id}-slide-${run.activeRunSlideIndex}`;
 
-          // If a roll call exists for this chat.id and this slide
-          if (cache.rollCalls.has(rollCallKey)) {
-            const rollCall = cache.rollCalls.get(rollCallKey);
-
-            if (rollCall.delete(user.id)) {
-              cache.rollCalls.set(rollCallKey, rollCall);
-              console.log('UPDATED ROLL: ', rollCall);
-              console.log('REMOVED: ', user);
-            }
-          }
-
+          await db.removeUserFromRolls(user.id);
           await saveRunEvent(run.id, user.id, EVENT_TYPES.USER_PART_SLIDE, {
             chat,
             user,
@@ -1013,7 +994,7 @@ class SocketManager {
           result
         });
 
-        cache.discussions[room] = closeResultToStateMap[result];
+        await db.setDiscussionState(room, closeResultToStateMap[result])
 
         if (run) {
           await saveRunEvent(
