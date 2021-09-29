@@ -26,13 +26,15 @@
   "staging": {
     "driver": "pg",
     "connectionString": { "ENV": "DATABASE_URL" },
-    "ssl": true,
-    "sslmode": "require"
+    "ssl": {
+      "rejectUnauthorized": false
+    }
   },
   "prod": {
     "driver": "pg",
     "connectionString": { "ENV": "DATABASE_URL" },
-    "ssl": true,
-    "sslmode": "require"
+    "ssl": {
+      "rejectUnauthorized": false
+    }
   }
 }
