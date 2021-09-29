@@ -375,7 +375,14 @@ class SocketManager {
 
       if (!notifier.listenerCount('set_invitation')) {
         notifier.on('set_invitation', async record => {
+
+          // If there is no update time, then ignore.
+          if (!record.updated_at) {
+            return;
+          }
+
           console.log('set_invitation', record);
+
           this.io
             .to(record.receiver_id)
             .emit(
