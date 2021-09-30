@@ -1,6 +1,5 @@
 const { sql, updateQuery } = require('../../util/sqlHelpers');
 const { query, withClientTransaction } = require('../../util/db');
-const cache = {};
 
 const INVITE_STATUS = {
   PENDING: 1,
@@ -55,31 +54,8 @@ async function __getAggregatedInvites(user_id) {
   return Object.values(invites);
 }
 
-// exports.getInvites = async (receiver_id, sender_id) => {
-//   const invites = [
-//     ...(receiver_id ? await __getAggregatedInvites({ receiver_id }) : []),
-//     ...(sender_id ? await __getAggregatedInvites({ sender_id }) : [])
-//   ];
-//   cache[id] = invites;
-//   return invites;
-// };
-
 exports.getInvites = async user_id => {
-  const invites = await getChatInvitesExclusive(user_id);
-  cache[user_id] = invites;
-  return invites;
-};
-
-exports.getInvitesForUser = async user_id => {
-  const result = await query(`
-    SELECT *
-    FROM invite
-    WHERE
-      receiver_id = ${user_id} OR sender_id = ${user_id}
-    AND
-      created_at > NOW() - interval '6 hours' OR expire_at > NOW()
-  `);
-  return result.rows;
+  return getChatInvitesExclusive(user_id);
 };
 
 // TODO: determine if these are necessary, if not remove.
@@ -98,16 +74,4 @@ exports.setInvite = async (id, updates) => {
     const result = await client.query(updateQuery('invite', { id }, updates));
     return result.rows[0];
   });
-};
-
-// This is not accessible from any endpoint, and is
-// only used by `setInviteById` in endpoints.js
-exports.cache = {
-  get(inviteId, userId) {
-    const invites = cache[userId];
-    if (!invites) {
-      return null;
-    }
-    return invites.find(({ id }) => id === inviteId) || null;
-  }
 };
