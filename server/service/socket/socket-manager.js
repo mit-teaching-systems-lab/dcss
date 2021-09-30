@@ -828,10 +828,12 @@ class SocketManager {
 
         if (!state) {
           state = CHAT_IS_PENDING;
-          await db.setDiscussionState(room, CHAT_IS_PENDING);
         }
 
         this.io.to(room).emit(CHAT_STATE, { chat, slide, state });
+
+        await db.setDiscussionState(room, CHAT_IS_PENDING);
+
         console.log(CHAT_STATE, room, { chat, slide, state });
       });
 
@@ -994,7 +996,7 @@ class SocketManager {
           result
         });
 
-        await db.setDiscussionState(room, closeResultToStateMap[result])
+        await db.setDiscussionState(room, closeResultToStateMap[result]);
 
         if (run) {
           await saveRunEvent(
