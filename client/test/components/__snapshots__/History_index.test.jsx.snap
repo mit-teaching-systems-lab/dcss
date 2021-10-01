@@ -128,7 +128,7 @@ exports[`Render with scenario 2`] = `
                 class=\\"h__col-small\\"
               >
                 <span>
-                  a year ago
+                  2 years ago
                 </span>
               </td>
               <td
@@ -179,7 +179,7 @@ exports[`Render with scenario 2`] = `
                 class=\\"h__col-small\\"
               >
                 <span>
-                  a year ago
+                  2 years ago
                 </span>
               </td>
               <td
@@ -187,7 +187,7 @@ exports[`Render with scenario 2`] = `
                 class=\\"h__col-small\\"
               >
                 <span>
-                  a year ago
+                  2 years ago
                 </span>
               </td>
             </tr>
@@ -232,7 +232,7 @@ exports[`Render with scenario 2`] = `
                 class=\\"h__col-small\\"
               >
                 <span>
-                  a year ago
+                  2 years ago
                 </span>
               </td>
               <td
@@ -240,7 +240,7 @@ exports[`Render with scenario 2`] = `
                 class=\\"h__col-small\\"
               >
                 <span>
-                  a year ago
+                  2 years ago
                 </span>
               </td>
             </tr>
@@ -281,7 +281,7 @@ exports[`Render with scenario 2`] = `
                 class=\\"h__col-small\\"
               >
                 <span>
-                  a year ago
+                  2 years ago
                 </span>
               </td>
               <td
@@ -289,7 +289,7 @@ exports[`Render with scenario 2`] = `
                 class=\\"h__col-small\\"
               >
                 <span>
-                  a year ago
+                  2 years ago
                 </span>
               </td>
             </tr>

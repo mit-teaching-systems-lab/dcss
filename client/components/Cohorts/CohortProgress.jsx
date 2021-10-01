@@ -525,7 +525,22 @@ export class CohortProgress extends React.Component {
               return accum;
             }, 0);
 
-            const isComplete = completedCount === cohort.scenarios.length;
+            const lastInProgressScenarioEvent = eventsValues.reduce((accum, eventValue) => {
+              if (!eventValue.is_complete) {
+                if (accum.created_at < eventValue.created_at) {
+                  return {
+                    ...eventValue
+                  };
+                }
+              }
+              return accum;
+            }, { created_at: 0 });
+
+            // Participant may  currently be actively running a scenario again.
+            // "isInProgress" should override "hasCompletedAllScenarios"
+            const isInProgress = lastInProgressScenarioEvent.created_at !== 0;
+            // Participant has completed all scenarios...
+            const hasCompletedAllScenarios = completedCount === cohort.scenarios.length && !isInProgress;
 
             let lastAccessedAt = null;
             let lastAccessedAgo = null;
@@ -536,9 +551,9 @@ export class CohortProgress extends React.Component {
             let lastSlideViewed = null;
             let mustShowCancelRequestButton = false;
             let cancelRequestProps = {};
-            let statusText = isComplete ? 'Complete' : 'In progress';
-            let statusIcon = isComplete ? 'check' : 'circle';
-            let statusIconClassName = isComplete
+            let statusText = hasCompletedAllScenarios ? 'Complete' : 'In progress';
+            let statusIcon = hasCompletedAllScenarios ? 'check' : 'circle';
+            let statusIconClassName = hasCompletedAllScenarios
               ? 'c__progress-green'
               : 'c__progress-purple';
 
@@ -547,9 +562,11 @@ export class CohortProgress extends React.Component {
 
             let lastEvent = null;
             let lastUserEvent = eventsValues.reduce((accum, lue) => {
-              if (lue.is_run) {
-                return accum;
-              }
+              // Previously this limited what data would display in the
+              // participant progress view
+              // if (lue.is_run) {
+              //   return accum;
+              // }
               if (!accum || accum.created_at < lue.created_at) {
                 return {
                   ...lue
@@ -578,7 +595,7 @@ export class CohortProgress extends React.Component {
                 ? Moment(lastAccessedAt).fromNow()
                 : null;
 
-              if (progress.completed.includes(lastEvent.scenario_id)) {
+              if (hasCompletedAllScenarios && progress.completed.includes(lastEvent.scenario_id)) {
                 completedOrCurrentScenario = `Last Completed scenario`;
                 mustShowLastActivityAndSlide = false;
               } else {
@@ -653,7 +670,14 @@ export class CohortProgress extends React.Component {
                   <Card.Header>
                     <Username user={participant} />
                   </Card.Header>
+                  <p className="c__participant-completion__scenarios-completed">
+                    <span>
+                      {completedCount}&#47;{cohortScenarios.length}{' '}
+                    </span>
+                    {pluralize('scenario', cohortScenarios.length)} completed
+                  </p>
                   {lastAccessedDisplay}
+
                   {isInAssignmentState &&
                   participant.id !== this.props.user.id ? (
                     <Checkbox
@@ -702,7 +726,7 @@ export class CohortProgress extends React.Component {
                         />
                       ) : null}
                     </div>
-                    {!isComplete && lastScenarioViewed ? (
+                    {!hasCompletedAllScenarios && lastScenarioViewed ? (
                       <Fragment>
                         {!lastEventWasCancelation ? (
                           <p className="c__participant-completion__group">
@@ -729,21 +753,21 @@ export class CohortProgress extends React.Component {
                           </p>
                         ) : null}
                       </Fragment>
-                    ) : null}
-                    {lastUserEvent ? (
+                    ) : (
+                      <p className="c__participant-completion__group">
+                        Participant is not presently in a scenario.
+                      </p>
+                    )}
+                    {/*
+                    lastUserEvent ? (
                       <p className="c__participant-completion__group">
                         <span className="c__participant-completion__subhed">
                           Last action
                         </span>
                         {upperCaseFirst(lastUserEvent.description)}
                       </p>
-                    ) : null}
-                    <p className="c__participant-completion__scenarios-completed">
-                      <span>
-                        {completedCount}&#47;{cohortScenarios.length}{' '}
-                      </span>
-                      {pluralize('scenario', cohortScenarios.length)} completed
-                    </p>
+                    ) : null
+                    */}
                   </Card.Description>
                 </Card.Content>
                 <Card.Content className="c__scenario-extra">

@@ -171,6 +171,18 @@ exports[`All users have not completed 1`] = `
               />
             </div>
             <p
+              class=\\"c__participant-completion__scenarios-completed\\"
+            >
+              <span>
+                0
+                /
+                1
+                 
+              </span>
+              scenario
+               completed
+            </p>
+            <p
               class=\\"c__participant-completion__group\\"
             >
               <span
@@ -181,7 +193,7 @@ exports[`All users have not completed 1`] = `
               <time
                 datetime=\\"2020-10-11T22:11:46.144Z\\"
               >
-                10 months ago
+                a year ago
               </time>
             </p>
           </div>
@@ -206,16 +218,9 @@ exports[`All users have not completed 1`] = `
                  
               </div>
               <p
-                class=\\"c__participant-completion__scenarios-completed\\"
+                class=\\"c__participant-completion__group\\"
               >
-                <span>
-                  0
-                  /
-                  1
-                   
-                </span>
-                scenario
-                 completed
+                Participant is not presently in a scenario.
               </p>
             </div>
           </div>
@@ -256,6 +261,18 @@ exports[`All users have not completed 1`] = `
               />
             </div>
             <p
+              class=\\"c__participant-completion__scenarios-completed\\"
+            >
+              <span>
+                0
+                /
+                1
+                 
+              </span>
+              scenario
+               completed
+            </p>
+            <p
               class=\\"c__participant-completion__group\\"
             >
               <span
@@ -266,7 +283,7 @@ exports[`All users have not completed 1`] = `
               <time
                 datetime=\\"2020-10-11T22:11:46.144Z\\"
               >
-                10 months ago
+                a year ago
               </time>
             </p>
           </div>
@@ -319,18 +336,6 @@ exports[`All users have not completed 1`] = `
                   Current slide
                 </span>
                 1
-              </p>
-              <p
-                class=\\"c__participant-completion__scenarios-completed\\"
-              >
-                <span>
-                  0
-                  /
-                  1
-                   
-                </span>
-                scenario
-                 completed
               </p>
             </div>
           </div>
@@ -371,6 +376,18 @@ exports[`All users have not completed 1`] = `
               />
             </div>
             <p
+              class=\\"c__participant-completion__scenarios-completed\\"
+            >
+              <span>
+                0
+                /
+                1
+                 
+              </span>
+              scenario
+               completed
+            </p>
+            <p
               class=\\"c__participant-completion__group\\"
             >
               <span
@@ -381,7 +398,7 @@ exports[`All users have not completed 1`] = `
               <time
                 datetime=\\"2020-10-11T22:11:46.144Z\\"
               >
-                10 months ago
+                a year ago
               </time>
             </p>
           </div>
@@ -435,18 +452,6 @@ exports[`All users have not completed 1`] = `
                 </span>
                 1
               </p>
-              <p
-                class=\\"c__participant-completion__scenarios-completed\\"
-              >
-                <span>
-                  0
-                  /
-                  1
-                   
-                </span>
-                scenario
-                 completed
-              </p>
             </div>
           </div>
           <div
@@ -480,6 +485,18 @@ exports[`All users have not completed 1`] = `
                
             </div>
             <p
+              class=\\"c__participant-completion__scenarios-completed\\"
+            >
+              <span>
+                0
+                /
+                1
+                 
+              </span>
+              scenario
+               completed
+            </p>
+            <p
               class=\\"c__participant-completion__group\\"
             >
               <span
@@ -490,7 +507,7 @@ exports[`All users have not completed 1`] = `
               <time
                 datetime=\\"2020-10-11T22:11:46.144Z\\"
               >
-                10 months ago
+                a year ago
               </time>
             </p>
           </div>
@@ -548,28 +565,6 @@ exports[`All users have not completed 1`] = `
                   Current slide
                 </span>
                 1
-              </p>
-              <p
-                class=\\"c__participant-completion__group\\"
-              >
-                <span
-                  class=\\"c__participant-completion__subhed\\"
-                >
-                  Last action
-                </span>
-                
-              </p>
-              <p
-                class=\\"c__participant-completion__scenarios-completed\\"
-              >
-                <span>
-                  0
-                  /
-                  1
-                   
-                </span>
-                scenario
-                 completed
               </p>
             </div>
           </div>
@@ -604,6 +599,18 @@ exports[`All users have not completed 1`] = `
                
             </div>
             <p
+              class=\\"c__participant-completion__scenarios-completed\\"
+            >
+              <span>
+                0
+                /
+                1
+                 
+              </span>
+              scenario
+               completed
+            </p>
+            <p
               class=\\"c__participant-completion__group\\"
             >
               <span
@@ -614,7 +621,7 @@ exports[`All users have not completed 1`] = `
               <time
                 datetime=\\"2020-10-11T22:11:46.144Z\\"
               >
-                10 months ago
+                a year ago
               </time>
             </p>
           </div>
@@ -672,28 +679,6 @@ exports[`All users have not completed 1`] = `
                   Current slide
                 </span>
                 1
-              </p>
-              <p
-                class=\\"c__participant-completion__group\\"
-              >
-                <span
-                  class=\\"c__participant-completion__subhed\\"
-                >
-                  Last action
-                </span>
-                
-              </p>
-              <p
-                class=\\"c__participant-completion__scenarios-completed\\"
-              >
-                <span>
-                  0
-                  /
-                  1
-                   
-                </span>
-                scenario
-                 completed
               </p>
             </div>
           </div>
@@ -888,6 +873,18 @@ exports[`Cancel all waiting participant match requests 1`] = `
               />
             </div>
             <p
+              class=\\"c__participant-completion__scenarios-completed\\"
+            >
+              <span>
+                0
+                /
+                1
+                 
+              </span>
+              scenario
+               completed
+            </p>
+            <p
               class=\\"c__participant-completion__group\\"
             >
               <span
@@ -898,7 +895,7 @@ exports[`Cancel all waiting participant match requests 1`] = `
               <time
                 datetime=\\"2020-10-11T22:11:46.144Z\\"
               >
-                10 months ago
+                a year ago
               </time>
             </p>
           </div>
@@ -923,16 +920,9 @@ exports[`Cancel all waiting participant match requests 1`] = `
                  
               </div>
               <p
-                class=\\"c__participant-completion__scenarios-completed\\"
+                class=\\"c__participant-completion__group\\"
               >
-                <span>
-                  0
-                  /
-                  1
-                   
-                </span>
-                scenario
-                 completed
+                Participant is not presently in a scenario.
               </p>
             </div>
           </div>
@@ -973,6 +963,18 @@ exports[`Cancel all waiting participant match requests 1`] = `
               />
             </div>
             <p
+              class=\\"c__participant-completion__scenarios-completed\\"
+            >
+              <span>
+                0
+                /
+                1
+                 
+              </span>
+              scenario
+               completed
+            </p>
+            <p
               class=\\"c__participant-completion__group\\"
             >
               <span
@@ -983,7 +985,7 @@ exports[`Cancel all waiting participant match requests 1`] = `
               <time
                 datetime=\\"2020-10-11T22:11:46.144Z\\"
               >
-                10 months ago
+                a year ago
               </time>
             </p>
           </div>
@@ -1036,18 +1038,6 @@ exports[`Cancel all waiting participant match requests 1`] = `
                   Current slide
                 </span>
                 1
-              </p>
-              <p
-                class=\\"c__participant-completion__scenarios-completed\\"
-              >
-                <span>
-                  0
-                  /
-                  1
-                   
-                </span>
-                scenario
-                 completed
               </p>
             </div>
           </div>
@@ -1088,6 +1078,18 @@ exports[`Cancel all waiting participant match requests 1`] = `
               />
             </div>
             <p
+              class=\\"c__participant-completion__scenarios-completed\\"
+            >
+              <span>
+                0
+                /
+                1
+                 
+              </span>
+              scenario
+               completed
+            </p>
+            <p
               class=\\"c__participant-completion__group\\"
             >
               <span
@@ -1098,7 +1100,7 @@ exports[`Cancel all waiting participant match requests 1`] = `
               <time
                 datetime=\\"2020-10-11T22:11:46.144Z\\"
               >
-                10 months ago
+                a year ago
               </time>
             </p>
           </div>
@@ -1152,18 +1154,6 @@ exports[`Cancel all waiting participant match requests 1`] = `
                 </span>
                 1
               </p>
-              <p
-                class=\\"c__participant-completion__scenarios-completed\\"
-              >
-                <span>
-                  0
-                  /
-                  1
-                   
-                </span>
-                scenario
-                 completed
-              </p>
             </div>
           </div>
           <div
@@ -1197,6 +1187,18 @@ exports[`Cancel all waiting participant match requests 1`] = `
                
             </div>
             <p
+              class=\\"c__participant-completion__scenarios-completed\\"
+            >
+              <span>
+                0
+                /
+                1
+                 
+              </span>
+              scenario
+               completed
+            </p>
+            <p
               class=\\"c__participant-completion__group\\"
             >
               <span
@@ -1207,7 +1209,7 @@ exports[`Cancel all waiting participant match requests 1`] = `
               <time
                 datetime=\\"2020-10-11T22:11:46.144Z\\"
               >
-                10 months ago
+                a year ago
               </time>
             </p>
           </div>
@@ -1265,28 +1267,6 @@ exports[`Cancel all waiting participant match requests 1`] = `
                   Current slide
                 </span>
                 1
-              </p>
-              <p
-                class=\\"c__participant-completion__group\\"
-              >
-                <span
-                  class=\\"c__participant-completion__subhed\\"
-                >
-                  Last action
-                </span>
-                
-              </p>
-              <p
-                class=\\"c__participant-completion__scenarios-completed\\"
-              >
-                <span>
-                  0
-                  /
-                  1
-                   
-                </span>
-                scenario
-                 completed
               </p>
             </div>
           </div>
@@ -1321,6 +1301,18 @@ exports[`Cancel all waiting participant match requests 1`] = `
                
             </div>
             <p
+              class=\\"c__participant-completion__scenarios-completed\\"
+            >
+              <span>
+                0
+                /
+                1
+                 
+              </span>
+              scenario
+               completed
+            </p>
+            <p
               class=\\"c__participant-completion__group\\"
             >
               <span
@@ -1331,7 +1323,7 @@ exports[`Cancel all waiting participant match requests 1`] = `
               <time
                 datetime=\\"2020-10-11T22:11:46.144Z\\"
               >
-                10 months ago
+                a year ago
               </time>
             </p>
           </div>
@@ -1389,28 +1381,6 @@ exports[`Cancel all waiting participant match requests 1`] = `
                   Current slide
                 </span>
                 1
-              </p>
-              <p
-                class=\\"c__participant-completion__group\\"
-              >
-                <span
-                  class=\\"c__participant-completion__subhed\\"
-                >
-                  Last action
-                </span>
-                
-              </p>
-              <p
-                class=\\"c__participant-completion__scenarios-completed\\"
-              >
-                <span>
-                  0
-                  /
-                  1
-                   
-                </span>
-                scenario
-                 completed
               </p>
             </div>
           </div>
@@ -1633,6 +1603,18 @@ exports[`Open Manage participants 2`] = `
               />
             </div>
             <p
+              class=\\"c__participant-completion__scenarios-completed\\"
+            >
+              <span>
+                0
+                /
+                1
+                 
+              </span>
+              scenario
+               completed
+            </p>
+            <p
               class=\\"c__participant-completion__group\\"
             >
               <span
@@ -1643,7 +1625,7 @@ exports[`Open Manage participants 2`] = `
               <time
                 datetime=\\"2020-10-11T22:11:46.144Z\\"
               >
-                10 months ago
+                a year ago
               </time>
             </p>
           </div>
@@ -1668,16 +1650,9 @@ exports[`Open Manage participants 2`] = `
                  
               </div>
               <p
-                class=\\"c__participant-completion__scenarios-completed\\"
+                class=\\"c__participant-completion__group\\"
               >
-                <span>
-                  0
-                  /
-                  1
-                   
-                </span>
-                scenario
-                 completed
+                Participant is not presently in a scenario.
               </p>
             </div>
           </div>
@@ -1718,6 +1693,18 @@ exports[`Open Manage participants 2`] = `
               />
             </div>
             <p
+              class=\\"c__participant-completion__scenarios-completed\\"
+            >
+              <span>
+                0
+                /
+                1
+                 
+              </span>
+              scenario
+               completed
+            </p>
+            <p
               class=\\"c__participant-completion__group\\"
             >
               <span
@@ -1728,7 +1715,7 @@ exports[`Open Manage participants 2`] = `
               <time
                 datetime=\\"2020-10-11T22:11:46.144Z\\"
               >
-                10 months ago
+                a year ago
               </time>
             </p>
           </div>
@@ -1781,18 +1768,6 @@ exports[`Open Manage participants 2`] = `
                   Current slide
                 </span>
                 1
-              </p>
-              <p
-                class=\\"c__participant-completion__scenarios-completed\\"
-              >
-                <span>
-                  0
-                  /
-                  1
-                   
-                </span>
-                scenario
-                 completed
               </p>
             </div>
           </div>
@@ -1833,6 +1808,18 @@ exports[`Open Manage participants 2`] = `
               />
             </div>
             <p
+              class=\\"c__participant-completion__scenarios-completed\\"
+            >
+              <span>
+                0
+                /
+                1
+                 
+              </span>
+              scenario
+               completed
+            </p>
+            <p
               class=\\"c__participant-completion__group\\"
             >
               <span
@@ -1843,7 +1830,7 @@ exports[`Open Manage participants 2`] = `
               <time
                 datetime=\\"2020-10-11T22:11:46.144Z\\"
               >
-                10 months ago
+                a year ago
               </time>
             </p>
           </div>
@@ -1897,18 +1884,6 @@ exports[`Open Manage participants 2`] = `
                 </span>
                 1
               </p>
-              <p
-                class=\\"c__participant-completion__scenarios-completed\\"
-              >
-                <span>
-                  0
-                  /
-                  1
-                   
-                </span>
-                scenario
-                 completed
-              </p>
             </div>
           </div>
           <div
@@ -1942,6 +1917,18 @@ exports[`Open Manage participants 2`] = `
                
             </div>
             <p
+              class=\\"c__participant-completion__scenarios-completed\\"
+            >
+              <span>
+                0
+                /
+                1
+                 
+              </span>
+              scenario
+               completed
+            </p>
+            <p
               class=\\"c__participant-completion__group\\"
             >
               <span
@@ -1952,7 +1939,7 @@ exports[`Open Manage participants 2`] = `
               <time
                 datetime=\\"2020-10-11T22:11:46.144Z\\"
               >
-                10 months ago
+                a year ago
               </time>
             </p>
           </div>
@@ -2010,28 +1997,6 @@ exports[`Open Manage participants 2`] = `
                   Current slide
                 </span>
                 1
-              </p>
-              <p
-                class=\\"c__participant-completion__group\\"
-              >
-                <span
-                  class=\\"c__participant-completion__subhed\\"
-                >
-                  Last action
-                </span>
-                
-              </p>
-              <p
-                class=\\"c__participant-completion__scenarios-completed\\"
-              >
-                <span>
-                  0
-                  /
-                  1
-                   
-                </span>
-                scenario
-                 completed
               </p>
             </div>
           </div>
@@ -2066,6 +2031,18 @@ exports[`Open Manage participants 2`] = `
                
             </div>
             <p
+              class=\\"c__participant-completion__scenarios-completed\\"
+            >
+              <span>
+                0
+                /
+                1
+                 
+              </span>
+              scenario
+               completed
+            </p>
+            <p
               class=\\"c__participant-completion__group\\"
             >
               <span
@@ -2076,7 +2053,7 @@ exports[`Open Manage participants 2`] = `
               <time
                 datetime=\\"2020-10-11T22:11:46.144Z\\"
               >
-                10 months ago
+                a year ago
               </time>
             </p>
           </div>
@@ -2134,28 +2111,6 @@ exports[`Open Manage participants 2`] = `
                   Current slide
                 </span>
                 1
-              </p>
-              <p
-                class=\\"c__participant-completion__group\\"
-              >
-                <span
-                  class=\\"c__participant-completion__subhed\\"
-                >
-                  Last action
-                </span>
-                
-              </p>
-              <p
-                class=\\"c__participant-completion__scenarios-completed\\"
-              >
-                <span>
-                  0
-                  /
-                  1
-                   
-                </span>
-                scenario
-                 completed
               </p>
             </div>
           </div>
@@ -2316,6 +2271,18 @@ exports[`Open Manage participants 3`] = `
               />
             </div>
             <p
+              class=\\"c__participant-completion__scenarios-completed\\"
+            >
+              <span>
+                0
+                /
+                1
+                 
+              </span>
+              scenario
+               completed
+            </p>
+            <p
               class=\\"c__participant-completion__group\\"
             >
               <span
@@ -2326,7 +2293,7 @@ exports[`Open Manage participants 3`] = `
               <time
                 datetime=\\"2020-10-11T22:11:46.144Z\\"
               >
-                10 months ago
+                a year ago
               </time>
             </p>
           </div>
@@ -2351,16 +2318,9 @@ exports[`Open Manage participants 3`] = `
                  
               </div>
               <p
-                class=\\"c__participant-completion__scenarios-completed\\"
+                class=\\"c__participant-completion__group\\"
               >
-                <span>
-                  0
-                  /
-                  1
-                   
-                </span>
-                scenario
-                 completed
+                Participant is not presently in a scenario.
               </p>
             </div>
           </div>
@@ -2401,6 +2361,18 @@ exports[`Open Manage participants 3`] = `
               />
             </div>
             <p
+              class=\\"c__participant-completion__scenarios-completed\\"
+            >
+              <span>
+                0
+                /
+                1
+                 
+              </span>
+              scenario
+               completed
+            </p>
+            <p
               class=\\"c__participant-completion__group\\"
             >
               <span
@@ -2411,7 +2383,7 @@ exports[`Open Manage participants 3`] = `
               <time
                 datetime=\\"2020-10-11T22:11:46.144Z\\"
               >
-                10 months ago
+                a year ago
               </time>
             </p>
           </div>
@@ -2464,18 +2436,6 @@ exports[`Open Manage participants 3`] = `
                   Current slide
                 </span>
                 1
-              </p>
-              <p
-                class=\\"c__participant-completion__scenarios-completed\\"
-              >
-                <span>
-                  0
-                  /
-                  1
-                   
-                </span>
-                scenario
-                 completed
               </p>
             </div>
           </div>
@@ -2516,6 +2476,18 @@ exports[`Open Manage participants 3`] = `
               />
             </div>
             <p
+              class=\\"c__participant-completion__scenarios-completed\\"
+            >
+              <span>
+                0
+                /
+                1
+                 
+              </span>
+              scenario
+               completed
+            </p>
+            <p
               class=\\"c__participant-completion__group\\"
             >
               <span
@@ -2526,7 +2498,7 @@ exports[`Open Manage participants 3`] = `
               <time
                 datetime=\\"2020-10-11T22:11:46.144Z\\"
               >
-                10 months ago
+                a year ago
               </time>
             </p>
           </div>
@@ -2580,18 +2552,6 @@ exports[`Open Manage participants 3`] = `
                 </span>
                 1
               </p>
-              <p
-                class=\\"c__participant-completion__scenarios-completed\\"
-              >
-                <span>
-                  0
-                  /
-                  1
-                   
-                </span>
-                scenario
-                 completed
-              </p>
             </div>
           </div>
           <div
@@ -2625,6 +2585,18 @@ exports[`Open Manage participants 3`] = `
                
             </div>
             <p
+              class=\\"c__participant-completion__scenarios-completed\\"
+            >
+              <span>
+                0
+                /
+                1
+                 
+              </span>
+              scenario
+               completed
+            </p>
+            <p
               class=\\"c__participant-completion__group\\"
             >
               <span
@@ -2635,7 +2607,7 @@ exports[`Open Manage participants 3`] = `
               <time
                 datetime=\\"2020-10-11T22:11:46.144Z\\"
               >
-                10 months ago
+                a year ago
               </time>
             </p>
           </div>
@@ -2693,28 +2665,6 @@ exports[`Open Manage participants 3`] = `
                   Current slide
                 </span>
                 1
-              </p>
-              <p
-                class=\\"c__participant-completion__group\\"
-              >
-                <span
-                  class=\\"c__participant-completion__subhed\\"
-                >
-                  Last action
-                </span>
-                
-              </p>
-              <p
-                class=\\"c__participant-completion__scenarios-completed\\"
-              >
-                <span>
-                  0
-                  /
-                  1
-                   
-                </span>
-                scenario
-                 completed
               </p>
             </div>
           </div>
@@ -2749,6 +2699,18 @@ exports[`Open Manage participants 3`] = `
                
             </div>
             <p
+              class=\\"c__participant-completion__scenarios-completed\\"
+            >
+              <span>
+                0
+                /
+                1
+                 
+              </span>
+              scenario
+               completed
+            </p>
+            <p
               class=\\"c__participant-completion__group\\"
             >
               <span
@@ -2759,7 +2721,7 @@ exports[`Open Manage participants 3`] = `
               <time
                 datetime=\\"2020-10-11T22:11:46.144Z\\"
               >
-                10 months ago
+                a year ago
               </time>
             </p>
           </div>
@@ -2817,28 +2779,6 @@ exports[`Open Manage participants 3`] = `
                   Current slide
                 </span>
                 1
-              </p>
-              <p
-                class=\\"c__participant-completion__group\\"
-              >
-                <span
-                  class=\\"c__participant-completion__subhed\\"
-                >
-                  Last action
-                </span>
-                
-              </p>
-              <p
-                class=\\"c__participant-completion__scenarios-completed\\"
-              >
-                <span>
-                  0
-                  /
-                  1
-                   
-                </span>
-                scenario
-                 completed
               </p>
             </div>
           </div>
@@ -3002,6 +2942,18 @@ exports[`Open Manage participants 4`] = `
               />
             </div>
             <p
+              class=\\"c__participant-completion__scenarios-completed\\"
+            >
+              <span>
+                0
+                /
+                1
+                 
+              </span>
+              scenario
+               completed
+            </p>
+            <p
               class=\\"c__participant-completion__group\\"
             >
               <span
@@ -3012,7 +2964,7 @@ exports[`Open Manage participants 4`] = `
               <time
                 datetime=\\"2020-10-11T22:11:46.144Z\\"
               >
-                10 months ago
+                a year ago
               </time>
             </p>
           </div>
@@ -3037,16 +2989,9 @@ exports[`Open Manage participants 4`] = `
                  
               </div>
               <p
-                class=\\"c__participant-completion__scenarios-completed\\"
+                class=\\"c__participant-completion__group\\"
               >
-                <span>
-                  0
-                  /
-                  1
-                   
-                </span>
-                scenario
-                 completed
+                Participant is not presently in a scenario.
               </p>
             </div>
           </div>
@@ -3087,6 +3032,18 @@ exports[`Open Manage participants 4`] = `
               />
             </div>
             <p
+              class=\\"c__participant-completion__scenarios-completed\\"
+            >
+              <span>
+                0
+                /
+                1
+                 
+              </span>
+              scenario
+               completed
+            </p>
+            <p
               class=\\"c__participant-completion__group\\"
             >
               <span
@@ -3097,7 +3054,7 @@ exports[`Open Manage participants 4`] = `
               <time
                 datetime=\\"2020-10-11T22:11:46.144Z\\"
               >
-                10 months ago
+                a year ago
               </time>
             </p>
           </div>
@@ -3150,18 +3107,6 @@ exports[`Open Manage participants 4`] = `
                   Current slide
                 </span>
                 1
-              </p>
-              <p
-                class=\\"c__participant-completion__scenarios-completed\\"
-              >
-                <span>
-                  0
-                  /
-                  1
-                   
-                </span>
-                scenario
-                 completed
               </p>
             </div>
           </div>
@@ -3202,6 +3147,18 @@ exports[`Open Manage participants 4`] = `
               />
             </div>
             <p
+              class=\\"c__participant-completion__scenarios-completed\\"
+            >
+              <span>
+                0
+                /
+                1
+                 
+              </span>
+              scenario
+               completed
+            </p>
+            <p
               class=\\"c__participant-completion__group\\"
             >
               <span
@@ -3212,7 +3169,7 @@ exports[`Open Manage participants 4`] = `
               <time
                 datetime=\\"2020-10-11T22:11:46.144Z\\"
               >
-                10 months ago
+                a year ago
               </time>
             </p>
           </div>
@@ -3266,18 +3223,6 @@ exports[`Open Manage participants 4`] = `
                 </span>
                 1
               </p>
-              <p
-                class=\\"c__participant-completion__scenarios-completed\\"
-              >
-                <span>
-                  0
-                  /
-                  1
-                   
-                </span>
-                scenario
-                 completed
-              </p>
             </div>
           </div>
           <div
@@ -3311,6 +3256,18 @@ exports[`Open Manage participants 4`] = `
                
             </div>
             <p
+              class=\\"c__participant-completion__scenarios-completed\\"
+            >
+              <span>
+                0
+                /
+                1
+                 
+              </span>
+              scenario
+               completed
+            </p>
+            <p
               class=\\"c__participant-completion__group\\"
             >
               <span
@@ -3321,7 +3278,7 @@ exports[`Open Manage participants 4`] = `
               <time
                 datetime=\\"2020-10-11T22:11:46.144Z\\"
               >
-                10 months ago
+                a year ago
               </time>
             </p>
           </div>
@@ -3379,28 +3336,6 @@ exports[`Open Manage participants 4`] = `
                   Current slide
                 </span>
                 1
-              </p>
-              <p
-                class=\\"c__participant-completion__group\\"
-              >
-                <span
-                  class=\\"c__participant-completion__subhed\\"
-                >
-                  Last action
-                </span>
-                
-              </p>
-              <p
-                class=\\"c__participant-completion__scenarios-completed\\"
-              >
-                <span>
-                  0
-                  /
-                  1
-                   
-                </span>
-                scenario
-                 completed
               </p>
             </div>
           </div>
@@ -3435,6 +3370,18 @@ exports[`Open Manage participants 4`] = `
                
             </div>
             <p
+              class=\\"c__participant-completion__scenarios-completed\\"
+            >
+              <span>
+                0
+                /
+                1
+                 
+              </span>
+              scenario
+               completed
+            </p>
+            <p
               class=\\"c__participant-completion__group\\"
             >
               <span
@@ -3445,7 +3392,7 @@ exports[`Open Manage participants 4`] = `
               <time
                 datetime=\\"2020-10-11T22:11:46.144Z\\"
               >
-                10 months ago
+                a year ago
               </time>
             </p>
           </div>
@@ -3503,28 +3450,6 @@ exports[`Open Manage participants 4`] = `
                   Current slide
                 </span>
                 1
-              </p>
-              <p
-                class=\\"c__participant-completion__group\\"
-              >
-                <span
-                  class=\\"c__participant-completion__subhed\\"
-                >
-                  Last action
-                </span>
-                
-              </p>
-              <p
-                class=\\"c__participant-completion__scenarios-completed\\"
-              >
-                <span>
-                  0
-                  /
-                  1
-                   
-                </span>
-                scenario
-                 completed
               </p>
             </div>
           </div>
@@ -4168,6 +4093,18 @@ exports[`Open Manage participants 5`] = `
               />
             </div>
             <p
+              class=\\"c__participant-completion__scenarios-completed\\"
+            >
+              <span>
+                0
+                /
+                1
+                 
+              </span>
+              scenario
+               completed
+            </p>
+            <p
               class=\\"c__participant-completion__group\\"
             >
               <span
@@ -4178,7 +4115,7 @@ exports[`Open Manage participants 5`] = `
               <time
                 datetime=\\"2020-10-11T22:11:46.144Z\\"
               >
-                10 months ago
+                a year ago
               </time>
             </p>
           </div>
@@ -4203,16 +4140,9 @@ exports[`Open Manage participants 5`] = `
                  
               </div>
               <p
-                class=\\"c__participant-completion__scenarios-completed\\"
+                class=\\"c__participant-completion__group\\"
               >
-                <span>
-                  0
-                  /
-                  1
-                   
-                </span>
-                scenario
-                 completed
+                Participant is not presently in a scenario.
               </p>
             </div>
           </div>
@@ -4253,6 +4183,18 @@ exports[`Open Manage participants 5`] = `
               />
             </div>
             <p
+              class=\\"c__participant-completion__scenarios-completed\\"
+            >
+              <span>
+                0
+                /
+                1
+                 
+              </span>
+              scenario
+               completed
+            </p>
+            <p
               class=\\"c__participant-completion__group\\"
             >
               <span
@@ -4263,7 +4205,7 @@ exports[`Open Manage participants 5`] = `
               <time
                 datetime=\\"2020-10-11T22:11:46.144Z\\"
               >
-                10 months ago
+                a year ago
               </time>
             </p>
           </div>
@@ -4316,18 +4258,6 @@ exports[`Open Manage participants 5`] = `
                   Current slide
                 </span>
                 1
-              </p>
-              <p
-                class=\\"c__participant-completion__scenarios-completed\\"
-              >
-                <span>
-                  0
-                  /
-                  1
-                   
-                </span>
-                scenario
-                 completed
               </p>
             </div>
           </div>
@@ -4368,6 +4298,18 @@ exports[`Open Manage participants 5`] = `
               />
             </div>
             <p
+              class=\\"c__participant-completion__scenarios-completed\\"
+            >
+              <span>
+                0
+                /
+                1
+                 
+              </span>
+              scenario
+               completed
+            </p>
+            <p
               class=\\"c__participant-completion__group\\"
             >
               <span
@@ -4378,7 +4320,7 @@ exports[`Open Manage participants 5`] = `
               <time
                 datetime=\\"2020-10-11T22:11:46.144Z\\"
               >
-                10 months ago
+                a year ago
               </time>
             </p>
           </div>
@@ -4432,18 +4374,6 @@ exports[`Open Manage participants 5`] = `
                 </span>
                 1
               </p>
-              <p
-                class=\\"c__participant-completion__scenarios-completed\\"
-              >
-                <span>
-                  0
-                  /
-                  1
-                   
-                </span>
-                scenario
-                 completed
-              </p>
             </div>
           </div>
           <div
@@ -4477,6 +4407,18 @@ exports[`Open Manage participants 5`] = `
                
             </div>
             <p
+              class=\\"c__participant-completion__scenarios-completed\\"
+            >
+              <span>
+                0
+                /
+                1
+                 
+              </span>
+              scenario
+               completed
+            </p>
+            <p
               class=\\"c__participant-completion__group\\"
             >
               <span
@@ -4487,7 +4429,7 @@ exports[`Open Manage participants 5`] = `
               <time
                 datetime=\\"2020-10-11T22:11:46.144Z\\"
               >
-                10 months ago
+                a year ago
               </time>
             </p>
           </div>
@@ -4545,28 +4487,6 @@ exports[`Open Manage participants 5`] = `
                   Current slide
                 </span>
                 1
-              </p>
-              <p
-                class=\\"c__participant-completion__group\\"
-              >
-                <span
-                  class=\\"c__participant-completion__subhed\\"
-                >
-                  Last action
-                </span>
-                
-              </p>
-              <p
-                class=\\"c__participant-completion__scenarios-completed\\"
-              >
-                <span>
-                  0
-                  /
-                  1
-                   
-                </span>
-                scenario
-                 completed
               </p>
             </div>
           </div>
@@ -4601,6 +4521,18 @@ exports[`Open Manage participants 5`] = `
                
             </div>
             <p
+              class=\\"c__participant-completion__scenarios-completed\\"
+            >
+              <span>
+                0
+                /
+                1
+                 
+              </span>
+              scenario
+               completed
+            </p>
+            <p
               class=\\"c__participant-completion__group\\"
             >
               <span
@@ -4611,7 +4543,7 @@ exports[`Open Manage participants 5`] = `
               <time
                 datetime=\\"2020-10-11T22:11:46.144Z\\"
               >
-                10 months ago
+                a year ago
               </time>
             </p>
           </div>
@@ -4669,28 +4601,6 @@ exports[`Open Manage participants 5`] = `
                   Current slide
                 </span>
                 1
-              </p>
-              <p
-                class=\\"c__participant-completion__group\\"
-              >
-                <span
-                  class=\\"c__participant-completion__subhed\\"
-                >
-                  Last action
-                </span>
-                
-              </p>
-              <p
-                class=\\"c__participant-completion__scenarios-completed\\"
-              >
-                <span>
-                  0
-                  /
-                  1
-                   
-                </span>
-                scenario
-                 completed
               </p>
             </div>
           </div>
@@ -4911,6 +4821,18 @@ exports[`Search participants 2`] = `
               />
             </div>
             <p
+              class=\\"c__participant-completion__scenarios-completed\\"
+            >
+              <span>
+                0
+                /
+                1
+                 
+              </span>
+              scenario
+               completed
+            </p>
+            <p
               class=\\"c__participant-completion__group\\"
             >
               <span
@@ -4921,7 +4843,7 @@ exports[`Search participants 2`] = `
               <time
                 datetime=\\"2020-10-11T22:11:46.144Z\\"
               >
-                10 months ago
+                a year ago
               </time>
             </p>
           </div>
@@ -4946,16 +4868,9 @@ exports[`Search participants 2`] = `
                  
               </div>
               <p
-                class=\\"c__participant-completion__scenarios-completed\\"
+                class=\\"c__participant-completion__group\\"
               >
-                <span>
-                  0
-                  /
-                  1
-                   
-                </span>
-                scenario
-                 completed
+                Participant is not presently in a scenario.
               </p>
             </div>
           </div>
@@ -4996,6 +4911,18 @@ exports[`Search participants 2`] = `
               />
             </div>
             <p
+              class=\\"c__participant-completion__scenarios-completed\\"
+            >
+              <span>
+                0
+                /
+                1
+                 
+              </span>
+              scenario
+               completed
+            </p>
+            <p
               class=\\"c__participant-completion__group\\"
             >
               <span
@@ -5006,7 +4933,7 @@ exports[`Search participants 2`] = `
               <time
                 datetime=\\"2020-10-11T22:11:46.144Z\\"
               >
-                10 months ago
+                a year ago
               </time>
             </p>
           </div>
@@ -5059,18 +4986,6 @@ exports[`Search participants 2`] = `
                   Current slide
                 </span>
                 1
-              </p>
-              <p
-                class=\\"c__participant-completion__scenarios-completed\\"
-              >
-                <span>
-                  0
-                  /
-                  1
-                   
-                </span>
-                scenario
-                 completed
               </p>
             </div>
           </div>
@@ -5111,6 +5026,18 @@ exports[`Search participants 2`] = `
               />
             </div>
             <p
+              class=\\"c__participant-completion__scenarios-completed\\"
+            >
+              <span>
+                0
+                /
+                1
+                 
+              </span>
+              scenario
+               completed
+            </p>
+            <p
               class=\\"c__participant-completion__group\\"
             >
               <span
@@ -5121,7 +5048,7 @@ exports[`Search participants 2`] = `
               <time
                 datetime=\\"2020-10-11T22:11:46.144Z\\"
               >
-                10 months ago
+                a year ago
               </time>
             </p>
           </div>
@@ -5175,18 +5102,6 @@ exports[`Search participants 2`] = `
                 </span>
                 1
               </p>
-              <p
-                class=\\"c__participant-completion__scenarios-completed\\"
-              >
-                <span>
-                  0
-                  /
-                  1
-                   
-                </span>
-                scenario
-                 completed
-              </p>
             </div>
           </div>
           <div
@@ -5220,6 +5135,18 @@ exports[`Search participants 2`] = `
                
             </div>
             <p
+              class=\\"c__participant-completion__scenarios-completed\\"
+            >
+              <span>
+                0
+                /
+                1
+                 
+              </span>
+              scenario
+               completed
+            </p>
+            <p
               class=\\"c__participant-completion__group\\"
             >
               <span
@@ -5230,7 +5157,7 @@ exports[`Search participants 2`] = `
               <time
                 datetime=\\"2020-10-11T22:11:46.144Z\\"
               >
-                10 months ago
+                a year ago
               </time>
             </p>
           </div>
@@ -5288,28 +5215,6 @@ exports[`Search participants 2`] = `
                   Current slide
                 </span>
                 1
-              </p>
-              <p
-                class=\\"c__participant-completion__group\\"
-              >
-                <span
-                  class=\\"c__participant-completion__subhed\\"
-                >
-                  Last action
-                </span>
-                
-              </p>
-              <p
-                class=\\"c__participant-completion__scenarios-completed\\"
-              >
-                <span>
-                  0
-                  /
-                  1
-                   
-                </span>
-                scenario
-                 completed
               </p>
             </div>
           </div>
@@ -5344,6 +5249,18 @@ exports[`Search participants 2`] = `
                
             </div>
             <p
+              class=\\"c__participant-completion__scenarios-completed\\"
+            >
+              <span>
+                0
+                /
+                1
+                 
+              </span>
+              scenario
+               completed
+            </p>
+            <p
               class=\\"c__participant-completion__group\\"
             >
               <span
@@ -5354,7 +5271,7 @@ exports[`Search participants 2`] = `
               <time
                 datetime=\\"2020-10-11T22:11:46.144Z\\"
               >
-                10 months ago
+                a year ago
               </time>
             </p>
           </div>
@@ -5412,28 +5329,6 @@ exports[`Search participants 2`] = `
                   Current slide
                 </span>
                 1
-              </p>
-              <p
-                class=\\"c__participant-completion__group\\"
-              >
-                <span
-                  class=\\"c__participant-completion__subhed\\"
-                >
-                  Last action
-                </span>
-                
-              </p>
-              <p
-                class=\\"c__participant-completion__scenarios-completed\\"
-              >
-                <span>
-                  0
-                  /
-                  1
-                   
-                </span>
-                scenario
-                 completed
               </p>
             </div>
           </div>
@@ -5594,6 +5489,18 @@ exports[`Search participants 3`] = `
               />
             </div>
             <p
+              class=\\"c__participant-completion__scenarios-completed\\"
+            >
+              <span>
+                0
+                /
+                1
+                 
+              </span>
+              scenario
+               completed
+            </p>
+            <p
               class=\\"c__participant-completion__group\\"
             >
               <span
@@ -5604,7 +5511,7 @@ exports[`Search participants 3`] = `
               <time
                 datetime=\\"2020-10-11T22:11:46.144Z\\"
               >
-                10 months ago
+                a year ago
               </time>
             </p>
           </div>
@@ -5629,16 +5536,9 @@ exports[`Search participants 3`] = `
                  
               </div>
               <p
-                class=\\"c__participant-completion__scenarios-completed\\"
+                class=\\"c__participant-completion__group\\"
               >
-                <span>
-                  0
-                  /
-                  1
-                   
-                </span>
-                scenario
-                 completed
+                Participant is not presently in a scenario.
               </p>
             </div>
           </div>
@@ -5679,6 +5579,18 @@ exports[`Search participants 3`] = `
               />
             </div>
             <p
+              class=\\"c__participant-completion__scenarios-completed\\"
+            >
+              <span>
+                0
+                /
+                1
+                 
+              </span>
+              scenario
+               completed
+            </p>
+            <p
               class=\\"c__participant-completion__group\\"
             >
               <span
@@ -5689,7 +5601,7 @@ exports[`Search participants 3`] = `
               <time
                 datetime=\\"2020-10-11T22:11:46.144Z\\"
               >
-                10 months ago
+                a year ago
               </time>
             </p>
           </div>
@@ -5742,18 +5654,6 @@ exports[`Search participants 3`] = `
                   Current slide
                 </span>
                 1
-              </p>
-              <p
-                class=\\"c__participant-completion__scenarios-completed\\"
-              >
-                <span>
-                  0
-                  /
-                  1
-                   
-                </span>
-                scenario
-                 completed
               </p>
             </div>
           </div>
@@ -5794,6 +5694,18 @@ exports[`Search participants 3`] = `
               />
             </div>
             <p
+              class=\\"c__participant-completion__scenarios-completed\\"
+            >
+              <span>
+                0
+                /
+                1
+                 
+              </span>
+              scenario
+               completed
+            </p>
+            <p
               class=\\"c__participant-completion__group\\"
             >
               <span
@@ -5804,7 +5716,7 @@ exports[`Search participants 3`] = `
               <time
                 datetime=\\"2020-10-11T22:11:46.144Z\\"
               >
-                10 months ago
+                a year ago
               </time>
             </p>
           </div>
@@ -5858,18 +5770,6 @@ exports[`Search participants 3`] = `
                 </span>
                 1
               </p>
-              <p
-                class=\\"c__participant-completion__scenarios-completed\\"
-              >
-                <span>
-                  0
-                  /
-                  1
-                   
-                </span>
-                scenario
-                 completed
-              </p>
             </div>
           </div>
           <div
@@ -5903,6 +5803,18 @@ exports[`Search participants 3`] = `
                
             </div>
             <p
+              class=\\"c__participant-completion__scenarios-completed\\"
+            >
+              <span>
+                0
+                /
+                1
+                 
+              </span>
+              scenario
+               completed
+            </p>
+            <p
               class=\\"c__participant-completion__group\\"
             >
               <span
@@ -5913,7 +5825,7 @@ exports[`Search participants 3`] = `
               <time
                 datetime=\\"2020-10-11T22:11:46.144Z\\"
               >
-                10 months ago
+                a year ago
               </time>
             </p>
           </div>
@@ -5971,28 +5883,6 @@ exports[`Search participants 3`] = `
                   Current slide
                 </span>
                 1
-              </p>
-              <p
-                class=\\"c__participant-completion__group\\"
-              >
-                <span
-                  class=\\"c__participant-completion__subhed\\"
-                >
-                  Last action
-                </span>
-                
-              </p>
-              <p
-                class=\\"c__participant-completion__scenarios-completed\\"
-              >
-                <span>
-                  0
-                  /
-                  1
-                   
-                </span>
-                scenario
-                 completed
               </p>
             </div>
           </div>
@@ -6027,6 +5917,18 @@ exports[`Search participants 3`] = `
                
             </div>
             <p
+              class=\\"c__participant-completion__scenarios-completed\\"
+            >
+              <span>
+                0
+                /
+                1
+                 
+              </span>
+              scenario
+               completed
+            </p>
+            <p
               class=\\"c__participant-completion__group\\"
             >
               <span
@@ -6037,7 +5939,7 @@ exports[`Search participants 3`] = `
               <time
                 datetime=\\"2020-10-11T22:11:46.144Z\\"
               >
-                10 months ago
+                a year ago
               </time>
             </p>
           </div>
@@ -6095,28 +5997,6 @@ exports[`Search participants 3`] = `
                   Current slide
                 </span>
                 1
-              </p>
-              <p
-                class=\\"c__participant-completion__group\\"
-              >
-                <span
-                  class=\\"c__participant-completion__subhed\\"
-                >
-                  Last action
-                </span>
-                
-              </p>
-              <p
-                class=\\"c__participant-completion__scenarios-completed\\"
-              >
-                <span>
-                  0
-                  /
-                  1
-                   
-                </span>
-                scenario
-                 completed
               </p>
             </div>
           </div>
@@ -6277,6 +6157,18 @@ exports[`Search participants 4`] = `
               />
             </div>
             <p
+              class=\\"c__participant-completion__scenarios-completed\\"
+            >
+              <span>
+                0
+                /
+                1
+                 
+              </span>
+              scenario
+               completed
+            </p>
+            <p
               class=\\"c__participant-completion__group\\"
             >
               <span
@@ -6287,7 +6179,7 @@ exports[`Search participants 4`] = `
               <time
                 datetime=\\"2020-10-11T22:11:46.144Z\\"
               >
-                10 months ago
+                a year ago
               </time>
             </p>
           </div>
@@ -6340,18 +6232,6 @@ exports[`Search participants 4`] = `
                   Current slide
                 </span>
                 1
-              </p>
-              <p
-                class=\\"c__participant-completion__scenarios-completed\\"
-              >
-                <span>
-                  0
-                  /
-                  1
-                   
-                </span>
-                scenario
-                 completed
               </p>
             </div>
           </div>
@@ -6392,6 +6272,18 @@ exports[`Search participants 4`] = `
               />
             </div>
             <p
+              class=\\"c__participant-completion__scenarios-completed\\"
+            >
+              <span>
+                0
+                /
+                1
+                 
+              </span>
+              scenario
+               completed
+            </p>
+            <p
               class=\\"c__participant-completion__group\\"
             >
               <span
@@ -6402,7 +6294,7 @@ exports[`Search participants 4`] = `
               <time
                 datetime=\\"2020-10-11T22:11:46.144Z\\"
               >
-                10 months ago
+                a year ago
               </time>
             </p>
           </div>
@@ -6455,18 +6347,6 @@ exports[`Search participants 4`] = `
                   Current slide
                 </span>
                 1
-              </p>
-              <p
-                class=\\"c__participant-completion__scenarios-completed\\"
-              >
-                <span>
-                  0
-                  /
-                  1
-                   
-                </span>
-                scenario
-                 completed
               </p>
             </div>
           </div>
@@ -6627,6 +6507,18 @@ exports[`Search participants 5`] = `
               />
             </div>
             <p
+              class=\\"c__participant-completion__scenarios-completed\\"
+            >
+              <span>
+                0
+                /
+                1
+                 
+              </span>
+              scenario
+               completed
+            </p>
+            <p
               class=\\"c__participant-completion__group\\"
             >
               <span
@@ -6637,7 +6529,7 @@ exports[`Search participants 5`] = `
               <time
                 datetime=\\"2020-10-11T22:11:46.144Z\\"
               >
-                10 months ago
+                a year ago
               </time>
             </p>
           </div>
@@ -6690,18 +6582,6 @@ exports[`Search participants 5`] = `
                   Current slide
                 </span>
                 1
-              </p>
-              <p
-                class=\\"c__participant-completion__scenarios-completed\\"
-              >
-                <span>
-                  0
-                  /
-                  1
-                   
-                </span>
-                scenario
-                 completed
               </p>
             </div>
           </div>
@@ -6742,6 +6622,18 @@ exports[`Search participants 5`] = `
               />
             </div>
             <p
+              class=\\"c__participant-completion__scenarios-completed\\"
+            >
+              <span>
+                0
+                /
+                1
+                 
+              </span>
+              scenario
+               completed
+            </p>
+            <p
               class=\\"c__participant-completion__group\\"
             >
               <span
@@ -6752,7 +6644,7 @@ exports[`Search participants 5`] = `
               <time
                 datetime=\\"2020-10-11T22:11:46.144Z\\"
               >
-                10 months ago
+                a year ago
               </time>
             </p>
           </div>
@@ -6805,18 +6697,6 @@ exports[`Search participants 5`] = `
                   Current slide
                 </span>
                 1
-              </p>
-              <p
-                class=\\"c__participant-completion__scenarios-completed\\"
-              >
-                <span>
-                  0
-                  /
-                  1
-                   
-                </span>
-                scenario
-                 completed
               </p>
             </div>
           </div>
@@ -6977,6 +6857,18 @@ exports[`Search participants 6`] = `
               />
             </div>
             <p
+              class=\\"c__participant-completion__scenarios-completed\\"
+            >
+              <span>
+                0
+                /
+                1
+                 
+              </span>
+              scenario
+               completed
+            </p>
+            <p
               class=\\"c__participant-completion__group\\"
             >
               <span
@@ -6987,7 +6879,7 @@ exports[`Search participants 6`] = `
               <time
                 datetime=\\"2020-10-11T22:11:46.144Z\\"
               >
-                10 months ago
+                a year ago
               </time>
             </p>
           </div>
@@ -7012,16 +6904,9 @@ exports[`Search participants 6`] = `
                  
               </div>
               <p
-                class=\\"c__participant-completion__scenarios-completed\\"
+                class=\\"c__participant-completion__group\\"
               >
-                <span>
-                  0
-                  /
-                  1
-                   
-                </span>
-                scenario
-                 completed
+                Participant is not presently in a scenario.
               </p>
             </div>
           </div>
@@ -7062,6 +6947,18 @@ exports[`Search participants 6`] = `
               />
             </div>
             <p
+              class=\\"c__participant-completion__scenarios-completed\\"
+            >
+              <span>
+                0
+                /
+                1
+                 
+              </span>
+              scenario
+               completed
+            </p>
+            <p
               class=\\"c__participant-completion__group\\"
             >
               <span
@@ -7072,7 +6969,7 @@ exports[`Search participants 6`] = `
               <time
                 datetime=\\"2020-10-11T22:11:46.144Z\\"
               >
-                10 months ago
+                a year ago
               </time>
             </p>
           </div>
@@ -7125,18 +7022,6 @@ exports[`Search participants 6`] = `
                   Current slide
                 </span>
                 1
-              </p>
-              <p
-                class=\\"c__participant-completion__scenarios-completed\\"
-              >
-                <span>
-                  0
-                  /
-                  1
-                   
-                </span>
-                scenario
-                 completed
               </p>
             </div>
           </div>
@@ -7177,6 +7062,18 @@ exports[`Search participants 6`] = `
               />
             </div>
             <p
+              class=\\"c__participant-completion__scenarios-completed\\"
+            >
+              <span>
+                0
+                /
+                1
+                 
+              </span>
+              scenario
+               completed
+            </p>
+            <p
               class=\\"c__participant-completion__group\\"
             >
               <span
@@ -7187,7 +7084,7 @@ exports[`Search participants 6`] = `
               <time
                 datetime=\\"2020-10-11T22:11:46.144Z\\"
               >
-                10 months ago
+                a year ago
               </time>
             </p>
           </div>
@@ -7241,18 +7138,6 @@ exports[`Search participants 6`] = `
                 </span>
                 1
               </p>
-              <p
-                class=\\"c__participant-completion__scenarios-completed\\"
-              >
-                <span>
-                  0
-                  /
-                  1
-                   
-                </span>
-                scenario
-                 completed
-              </p>
             </div>
           </div>
           <div
@@ -7286,6 +7171,18 @@ exports[`Search participants 6`] = `
                
             </div>
             <p
+              class=\\"c__participant-completion__scenarios-completed\\"
+            >
+              <span>
+                0
+                /
+                1
+                 
+              </span>
+              scenario
+               completed
+            </p>
+            <p
               class=\\"c__participant-completion__group\\"
             >
               <span
@@ -7296,7 +7193,7 @@ exports[`Search participants 6`] = `
               <time
                 datetime=\\"2020-10-11T22:11:46.144Z\\"
               >
-                10 months ago
+                a year ago
               </time>
             </p>
           </div>
@@ -7354,28 +7251,6 @@ exports[`Search participants 6`] = `
                   Current slide
                 </span>
                 1
-              </p>
-              <p
-                class=\\"c__participant-completion__group\\"
-              >
-                <span
-                  class=\\"c__participant-completion__subhed\\"
-                >
-                  Last action
-                </span>
-                
-              </p>
-              <p
-                class=\\"c__participant-completion__scenarios-completed\\"
-              >
-                <span>
-                  0
-                  /
-                  1
-                   
-                </span>
-                scenario
-                 completed
               </p>
             </div>
           </div>
@@ -7410,6 +7285,18 @@ exports[`Search participants 6`] = `
                
             </div>
             <p
+              class=\\"c__participant-completion__scenarios-completed\\"
+            >
+              <span>
+                0
+                /
+                1
+                 
+              </span>
+              scenario
+               completed
+            </p>
+            <p
               class=\\"c__participant-completion__group\\"
             >
               <span
@@ -7420,7 +7307,7 @@ exports[`Search participants 6`] = `
               <time
                 datetime=\\"2020-10-11T22:11:46.144Z\\"
               >
-                10 months ago
+                a year ago
               </time>
             </p>
           </div>
@@ -7478,28 +7365,6 @@ exports[`Search participants 6`] = `
                   Current slide
                 </span>
                 1
-              </p>
-              <p
-                class=\\"c__participant-completion__group\\"
-              >
-                <span
-                  class=\\"c__participant-completion__subhed\\"
-                >
-                  Last action
-                </span>
-                
-              </p>
-              <p
-                class=\\"c__participant-completion__scenarios-completed\\"
-              >
-                <span>
-                  0
-                  /
-                  1
-                   
-                </span>
-                scenario
-                 completed
               </p>
             </div>
           </div>
@@ -7660,6 +7525,18 @@ exports[`Search participants 7`] = `
               />
             </div>
             <p
+              class=\\"c__participant-completion__scenarios-completed\\"
+            >
+              <span>
+                0
+                /
+                1
+                 
+              </span>
+              scenario
+               completed
+            </p>
+            <p
               class=\\"c__participant-completion__group\\"
             >
               <span
@@ -7670,7 +7547,7 @@ exports[`Search participants 7`] = `
               <time
                 datetime=\\"2020-10-11T22:11:46.144Z\\"
               >
-                10 months ago
+                a year ago
               </time>
             </p>
           </div>
@@ -7723,18 +7600,6 @@ exports[`Search participants 7`] = `
                   Current slide
                 </span>
                 1
-              </p>
-              <p
-                class=\\"c__participant-completion__scenarios-completed\\"
-              >
-                <span>
-                  0
-                  /
-                  1
-                   
-                </span>
-                scenario
-                 completed
               </p>
             </div>
           </div>
@@ -7895,6 +7760,18 @@ exports[`Search participants 8`] = `
               />
             </div>
             <p
+              class=\\"c__participant-completion__scenarios-completed\\"
+            >
+              <span>
+                0
+                /
+                1
+                 
+              </span>
+              scenario
+               completed
+            </p>
+            <p
               class=\\"c__participant-completion__group\\"
             >
               <span
@@ -7905,7 +7782,7 @@ exports[`Search participants 8`] = `
               <time
                 datetime=\\"2020-10-11T22:11:46.144Z\\"
               >
-                10 months ago
+                a year ago
               </time>
             </p>
           </div>
@@ -7958,18 +7835,6 @@ exports[`Search participants 8`] = `
                   Current slide
                 </span>
                 1
-              </p>
-              <p
-                class=\\"c__participant-completion__scenarios-completed\\"
-              >
-                <span>
-                  0
-                  /
-                  1
-                   
-                </span>
-                scenario
-                 completed
               </p>
             </div>
           </div>
@@ -8130,6 +7995,18 @@ exports[`Search participants 9`] = `
               />
             </div>
             <p
+              class=\\"c__participant-completion__scenarios-completed\\"
+            >
+              <span>
+                0
+                /
+                1
+                 
+              </span>
+              scenario
+               completed
+            </p>
+            <p
               class=\\"c__participant-completion__group\\"
             >
               <span
@@ -8140,7 +8017,7 @@ exports[`Search participants 9`] = `
               <time
                 datetime=\\"2020-10-11T22:11:46.144Z\\"
               >
-                10 months ago
+                a year ago
               </time>
             </p>
           </div>
@@ -8193,18 +8070,6 @@ exports[`Search participants 9`] = `
                   Current slide
                 </span>
                 1
-              </p>
-              <p
-                class=\\"c__participant-completion__scenarios-completed\\"
-              >
-                <span>
-                  0
-                  /
-                  1
-                   
-                </span>
-                scenario
-                 completed
               </p>
             </div>
           </div>
@@ -8365,6 +8230,18 @@ exports[`Search participants 10`] = `
               />
             </div>
             <p
+              class=\\"c__participant-completion__scenarios-completed\\"
+            >
+              <span>
+                0
+                /
+                1
+                 
+              </span>
+              scenario
+               completed
+            </p>
+            <p
               class=\\"c__participant-completion__group\\"
             >
               <span
@@ -8375,7 +8252,7 @@ exports[`Search participants 10`] = `
               <time
                 datetime=\\"2020-10-11T22:11:46.144Z\\"
               >
-                10 months ago
+                a year ago
               </time>
             </p>
           </div>
@@ -8428,18 +8305,6 @@ exports[`Search participants 10`] = `
                   Current slide
                 </span>
                 1
-              </p>
-              <p
-                class=\\"c__participant-completion__scenarios-completed\\"
-              >
-                <span>
-                  0
-                  /
-                  1
-                   
-                </span>
-                scenario
-                 completed
               </p>
             </div>
           </div>
@@ -8600,6 +8465,18 @@ exports[`Search participants 11`] = `
               />
             </div>
             <p
+              class=\\"c__participant-completion__scenarios-completed\\"
+            >
+              <span>
+                0
+                /
+                1
+                 
+              </span>
+              scenario
+               completed
+            </p>
+            <p
               class=\\"c__participant-completion__group\\"
             >
               <span
@@ -8610,7 +8487,7 @@ exports[`Search participants 11`] = `
               <time
                 datetime=\\"2020-10-11T22:11:46.144Z\\"
               >
-                10 months ago
+                a year ago
               </time>
             </p>
           </div>
@@ -8635,16 +8512,9 @@ exports[`Search participants 11`] = `
                  
               </div>
               <p
-                class=\\"c__participant-completion__scenarios-completed\\"
+                class=\\"c__participant-completion__group\\"
               >
-                <span>
-                  0
-                  /
-                  1
-                   
-                </span>
-                scenario
-                 completed
+                Participant is not presently in a scenario.
               </p>
             </div>
           </div>
@@ -8685,6 +8555,18 @@ exports[`Search participants 11`] = `
               />
             </div>
             <p
+              class=\\"c__participant-completion__scenarios-completed\\"
+            >
+              <span>
+                0
+                /
+                1
+                 
+              </span>
+              scenario
+               completed
+            </p>
+            <p
               class=\\"c__participant-completion__group\\"
             >
               <span
@@ -8695,7 +8577,7 @@ exports[`Search participants 11`] = `
               <time
                 datetime=\\"2020-10-11T22:11:46.144Z\\"
               >
-                10 months ago
+                a year ago
               </time>
             </p>
           </div>
@@ -8748,18 +8630,6 @@ exports[`Search participants 11`] = `
                   Current slide
                 </span>
                 1
-              </p>
-              <p
-                class=\\"c__participant-completion__scenarios-completed\\"
-              >
-                <span>
-                  0
-                  /
-                  1
-                   
-                </span>
-                scenario
-                 completed
               </p>
             </div>
           </div>
@@ -8800,6 +8670,18 @@ exports[`Search participants 11`] = `
               />
             </div>
             <p
+              class=\\"c__participant-completion__scenarios-completed\\"
+            >
+              <span>
+                0
+                /
+                1
+                 
+              </span>
+              scenario
+               completed
+            </p>
+            <p
               class=\\"c__participant-completion__group\\"
             >
               <span
@@ -8810,7 +8692,7 @@ exports[`Search participants 11`] = `
               <time
                 datetime=\\"2020-10-11T22:11:46.144Z\\"
               >
-                10 months ago
+                a year ago
               </time>
             </p>
           </div>
@@ -8864,18 +8746,6 @@ exports[`Search participants 11`] = `
                 </span>
                 1
               </p>
-              <p
-                class=\\"c__participant-completion__scenarios-completed\\"
-              >
-                <span>
-                  0
-                  /
-                  1
-                   
-                </span>
-                scenario
-                 completed
-              </p>
             </div>
           </div>
           <div
@@ -8909,6 +8779,18 @@ exports[`Search participants 11`] = `
                
             </div>
             <p
+              class=\\"c__participant-completion__scenarios-completed\\"
+            >
+              <span>
+                0
+                /
+                1
+                 
+              </span>
+              scenario
+               completed
+            </p>
+            <p
               class=\\"c__participant-completion__group\\"
             >
               <span
@@ -8919,7 +8801,7 @@ exports[`Search participants 11`] = `
               <time
                 datetime=\\"2020-10-11T22:11:46.144Z\\"
               >
-                10 months ago
+                a year ago
               </time>
             </p>
           </div>
@@ -8977,28 +8859,6 @@ exports[`Search participants 11`] = `
                   Current slide
                 </span>
                 1
-              </p>
-              <p
-                class=\\"c__participant-completion__group\\"
-              >
-                <span
-                  class=\\"c__participant-completion__subhed\\"
-                >
-                  Last action
-                </span>
-                
-              </p>
-              <p
-                class=\\"c__participant-completion__scenarios-completed\\"
-              >
-                <span>
-                  0
-                  /
-                  1
-                   
-                </span>
-                scenario
-                 completed
               </p>
             </div>
           </div>
@@ -9033,6 +8893,18 @@ exports[`Search participants 11`] = `
                
             </div>
             <p
+              class=\\"c__participant-completion__scenarios-completed\\"
+            >
+              <span>
+                0
+                /
+                1
+                 
+              </span>
+              scenario
+               completed
+            </p>
+            <p
               class=\\"c__participant-completion__group\\"
             >
               <span
@@ -9043,7 +8915,7 @@ exports[`Search participants 11`] = `
               <time
                 datetime=\\"2020-10-11T22:11:46.144Z\\"
               >
-                10 months ago
+                a year ago
               </time>
             </p>
           </div>
@@ -9101,28 +8973,6 @@ exports[`Search participants 11`] = `
                   Current slide
                 </span>
                 1
-              </p>
-              <p
-                class=\\"c__participant-completion__group\\"
-              >
-                <span
-                  class=\\"c__participant-completion__subhed\\"
-                >
-                  Last action
-                </span>
-                
-              </p>
-              <p
-                class=\\"c__participant-completion__scenarios-completed\\"
-              >
-                <span>
-                  0
-                  /
-                  1
-                   
-                </span>
-                scenario
-                 completed
               </p>
             </div>
           </div>
@@ -9283,6 +9133,18 @@ exports[`Search participants 12`] = `
               />
             </div>
             <p
+              class=\\"c__participant-completion__scenarios-completed\\"
+            >
+              <span>
+                0
+                /
+                1
+                 
+              </span>
+              scenario
+               completed
+            </p>
+            <p
               class=\\"c__participant-completion__group\\"
             >
               <span
@@ -9293,7 +9155,7 @@ exports[`Search participants 12`] = `
               <time
                 datetime=\\"2020-10-11T22:11:46.144Z\\"
               >
-                10 months ago
+                a year ago
               </time>
             </p>
           </div>
@@ -9318,16 +9180,9 @@ exports[`Search participants 12`] = `
                  
               </div>
               <p
-                class=\\"c__participant-completion__scenarios-completed\\"
+                class=\\"c__participant-completion__group\\"
               >
-                <span>
-                  0
-                  /
-                  1
-                   
-                </span>
-                scenario
-                 completed
+                Participant is not presently in a scenario.
               </p>
             </div>
           </div>
@@ -9368,6 +9223,18 @@ exports[`Search participants 12`] = `
               />
             </div>
             <p
+              class=\\"c__participant-completion__scenarios-completed\\"
+            >
+              <span>
+                0
+                /
+                1
+                 
+              </span>
+              scenario
+               completed
+            </p>
+            <p
               class=\\"c__participant-completion__group\\"
             >
               <span
@@ -9378,7 +9245,7 @@ exports[`Search participants 12`] = `
               <time
                 datetime=\\"2020-10-11T22:11:46.144Z\\"
               >
-                10 months ago
+                a year ago
               </time>
             </p>
           </div>
@@ -9431,18 +9298,6 @@ exports[`Search participants 12`] = `
                   Current slide
                 </span>
                 1
-              </p>
-              <p
-                class=\\"c__participant-completion__scenarios-completed\\"
-              >
-                <span>
-                  0
-                  /
-                  1
-                   
-                </span>
-                scenario
-                 completed
               </p>
             </div>
           </div>
@@ -9483,6 +9338,18 @@ exports[`Search participants 12`] = `
               />
             </div>
             <p
+              class=\\"c__participant-completion__scenarios-completed\\"
+            >
+              <span>
+                0
+                /
+                1
+                 
+              </span>
+              scenario
+               completed
+            </p>
+            <p
               class=\\"c__participant-completion__group\\"
             >
               <span
@@ -9493,7 +9360,7 @@ exports[`Search participants 12`] = `
               <time
                 datetime=\\"2020-10-11T22:11:46.144Z\\"
               >
-                10 months ago
+                a year ago
               </time>
             </p>
           </div>
@@ -9547,18 +9414,6 @@ exports[`Search participants 12`] = `
                 </span>
                 1
               </p>
-              <p
-                class=\\"c__participant-completion__scenarios-completed\\"
-              >
-                <span>
-                  0
-                  /
-                  1
-                   
-                </span>
-                scenario
-                 completed
-              </p>
             </div>
           </div>
           <div
@@ -9592,6 +9447,18 @@ exports[`Search participants 12`] = `
                
             </div>
             <p
+              class=\\"c__participant-completion__scenarios-completed\\"
+            >
+              <span>
+                0
+                /
+                1
+                 
+              </span>
+              scenario
+               completed
+            </p>
+            <p
               class=\\"c__participant-completion__group\\"
             >
               <span
@@ -9602,7 +9469,7 @@ exports[`Search participants 12`] = `
               <time
                 datetime=\\"2020-10-11T22:11:46.144Z\\"
               >
-                10 months ago
+                a year ago
               </time>
             </p>
           </div>
@@ -9660,28 +9527,6 @@ exports[`Search participants 12`] = `
                   Current slide
                 </span>
                 1
-              </p>
-              <p
-                class=\\"c__participant-completion__group\\"
-              >
-                <span
-                  class=\\"c__participant-completion__subhed\\"
-                >
-                  Last action
-                </span>
-                
-              </p>
-              <p
-                class=\\"c__participant-completion__scenarios-completed\\"
-              >
-                <span>
-                  0
-                  /
-                  1
-                   
-                </span>
-                scenario
-                 completed
               </p>
             </div>
           </div>
@@ -9716,6 +9561,18 @@ exports[`Search participants 12`] = `
                
             </div>
             <p
+              class=\\"c__participant-completion__scenarios-completed\\"
+            >
+              <span>
+                0
+                /
+                1
+                 
+              </span>
+              scenario
+               completed
+            </p>
+            <p
               class=\\"c__participant-completion__group\\"
             >
               <span
@@ -9726,7 +9583,7 @@ exports[`Search participants 12`] = `
               <time
                 datetime=\\"2020-10-11T22:11:46.144Z\\"
               >
-                10 months ago
+                a year ago
               </time>
             </p>
           </div>
@@ -9784,28 +9641,6 @@ exports[`Search participants 12`] = `
                   Current slide
                 </span>
                 1
-              </p>
-              <p
-                class=\\"c__participant-completion__group\\"
-              >
-                <span
-                  class=\\"c__participant-completion__subhed\\"
-                >
-                  Last action
-                </span>
-                
-              </p>
-              <p
-                class=\\"c__participant-completion__scenarios-completed\\"
-              >
-                <span>
-                  0
-                  /
-                  1
-                   
-                </span>
-                scenario
-                 completed
               </p>
             </div>
           </div>
@@ -9966,6 +9801,18 @@ exports[`Search participants 13`] = `
               />
             </div>
             <p
+              class=\\"c__participant-completion__scenarios-completed\\"
+            >
+              <span>
+                0
+                /
+                1
+                 
+              </span>
+              scenario
+               completed
+            </p>
+            <p
               class=\\"c__participant-completion__group\\"
             >
               <span
@@ -9976,7 +9823,7 @@ exports[`Search participants 13`] = `
               <time
                 datetime=\\"2020-10-11T22:11:46.144Z\\"
               >
-                10 months ago
+                a year ago
               </time>
             </p>
           </div>
@@ -10001,16 +9848,9 @@ exports[`Search participants 13`] = `
                  
               </div>
               <p
-                class=\\"c__participant-completion__scenarios-completed\\"
+                class=\\"c__participant-completion__group\\"
               >
-                <span>
-                  0
-                  /
-                  1
-                   
-                </span>
-                scenario
-                 completed
+                Participant is not presently in a scenario.
               </p>
             </div>
           </div>
@@ -10051,6 +9891,18 @@ exports[`Search participants 13`] = `
               />
             </div>
             <p
+              class=\\"c__participant-completion__scenarios-completed\\"
+            >
+              <span>
+                0
+                /
+                1
+                 
+              </span>
+              scenario
+               completed
+            </p>
+            <p
               class=\\"c__participant-completion__group\\"
             >
               <span
@@ -10061,7 +9913,7 @@ exports[`Search participants 13`] = `
               <time
                 datetime=\\"2020-10-11T22:11:46.144Z\\"
               >
-                10 months ago
+                a year ago
               </time>
             </p>
           </div>
@@ -10114,18 +9966,6 @@ exports[`Search participants 13`] = `
                   Current slide
                 </span>
                 1
-              </p>
-              <p
-                class=\\"c__participant-completion__scenarios-completed\\"
-              >
-                <span>
-                  0
-                  /
-                  1
-                   
-                </span>
-                scenario
-                 completed
               </p>
             </div>
           </div>
@@ -10166,6 +10006,18 @@ exports[`Search participants 13`] = `
               />
             </div>
             <p
+              class=\\"c__participant-completion__scenarios-completed\\"
+            >
+              <span>
+                0
+                /
+                1
+                 
+              </span>
+              scenario
+               completed
+            </p>
+            <p
               class=\\"c__participant-completion__group\\"
             >
               <span
@@ -10176,7 +10028,7 @@ exports[`Search participants 13`] = `
               <time
                 datetime=\\"2020-10-11T22:11:46.144Z\\"
               >
-                10 months ago
+                a year ago
               </time>
             </p>
           </div>
@@ -10230,18 +10082,6 @@ exports[`Search participants 13`] = `
                 </span>
                 1
               </p>
-              <p
-                class=\\"c__participant-completion__scenarios-completed\\"
-              >
-                <span>
-                  0
-                  /
-                  1
-                   
-                </span>
-                scenario
-                 completed
-              </p>
             </div>
           </div>
           <div
@@ -10275,6 +10115,18 @@ exports[`Search participants 13`] = `
                
             </div>
             <p
+              class=\\"c__participant-completion__scenarios-completed\\"
+            >
+              <span>
+                0
+                /
+                1
+                 
+              </span>
+              scenario
+               completed
+            </p>
+            <p
               class=\\"c__participant-completion__group\\"
             >
               <span
@@ -10285,7 +10137,7 @@ exports[`Search participants 13`] = `
               <time
                 datetime=\\"2020-10-11T22:11:46.144Z\\"
               >
-                10 months ago
+                a year ago
               </time>
             </p>
           </div>
@@ -10343,28 +10195,6 @@ exports[`Search participants 13`] = `
                   Current slide
                 </span>
                 1
-              </p>
-              <p
-                class=\\"c__participant-completion__group\\"
-              >
-                <span
-                  class=\\"c__participant-completion__subhed\\"
-                >
-                  Last action
-                </span>
-                
-              </p>
-              <p
-                class=\\"c__participant-completion__scenarios-completed\\"
-              >
-                <span>
-                  0
-                  /
-                  1
-                   
-                </span>
-                scenario
-                 completed
               </p>
             </div>
           </div>
@@ -10399,6 +10229,18 @@ exports[`Search participants 13`] = `
                
             </div>
             <p
+              class=\\"c__participant-completion__scenarios-completed\\"
+            >
+              <span>
+                0
+                /
+                1
+                 
+              </span>
+              scenario
+               completed
+            </p>
+            <p
               class=\\"c__participant-completion__group\\"
             >
               <span
@@ -10409,7 +10251,7 @@ exports[`Search participants 13`] = `
               <time
                 datetime=\\"2020-10-11T22:11:46.144Z\\"
               >
-                10 months ago
+                a year ago
               </time>
             </p>
           </div>
@@ -10467,28 +10309,6 @@ exports[`Search participants 13`] = `
                   Current slide
                 </span>
                 1
-              </p>
-              <p
-                class=\\"c__participant-completion__group\\"
-              >
-                <span
-                  class=\\"c__participant-completion__subhed\\"
-                >
-                  Last action
-                </span>
-                
-              </p>
-              <p
-                class=\\"c__participant-completion__scenarios-completed\\"
-              >
-                <span>
-                  0
-                  /
-                  1
-                   
-                </span>
-                scenario
-                 completed
               </p>
             </div>
           </div>
