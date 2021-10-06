@@ -3,7 +3,7 @@ const hash = require('object-hash');
 const Identity = require('../../util/identity');
 const { notifier } = require('../../util/db');
 const { parse } = require('node-html-parser');
-const { RedisClient } = require('redis');
+const { createClient } = require('redis');
 const Socket = require('./');
 const {
   AGENT_RESPONSE_CREATED,
@@ -200,7 +200,11 @@ class SocketManager {
     this.io = new Socket.Server(server);
 
     if (process.env.REDIS_TLS_URL) {
-      const pubClient = new RedisClient({ url: process.env.REDIS_TLS_URL });
+      const pubClient = createClient(process.env.REDIS_URL, {
+        tls: {
+          rejectUnauthorized: false
+        }
+      });
       const subClient = pubClient.duplicate();
       this.io.adapter(createAdapter(pubClient, subClient));
     }
