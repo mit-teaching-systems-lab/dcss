@@ -30,7 +30,6 @@ import CSV from '@utils/csv';
 import Layout from '@utils/Layout';
 import Media from '@utils/Media';
 import { makeHeader } from '@utils/data-table';
-import shorten from '@utils/shorten';
 import '../Cohorts/Cohort.css';
 import '../Cohorts/DataTable.css';
 import './Downloads.css';
@@ -272,7 +271,7 @@ class Downloads extends Component {
         dropdownCohortSelectOptions.push({
           key: Identity.key({ cohort, index }),
           value: cohort.id,
-          text: shorten(cohort.name, 50)
+          text: cohort.name
         });
 
         if (filter && (filter.type !== 'cohort' || filter.id !== cohort.id)) {
@@ -369,7 +368,7 @@ class Downloads extends Component {
           dropdownScenarioSelectOptions.push({
             key: Identity.key({ scenario, index }),
             value: scenario.id,
-            text: shorten(scenario.title, 50)
+            text: scenario.title
           });
 
           if (
