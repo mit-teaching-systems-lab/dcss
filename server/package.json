@@ -43,6 +43,7 @@
   },
   "dependencies": {
     "@sendgrid/mail": "^7.3.0",
+    "@socket.io/redis-adapter": "^7.0.0",
     "aws-sdk": "^2.518.0",
     "babel-polyfill": "^6.26.0",
     "body-parser": "^1.19.0",
@@ -64,6 +65,7 @@
     "pg": "^8.5.1",
     "pg-format": "^1.0.4",
     "react-json-tree": "^0.12.0",
+    "redis": "^3.1.2",
     "s3-proxy": "^1.2.1",
     "socket.io": "^3.0.1",
     "socket.io-client": "^4.0.0",

@@ -1,8 +1,10 @@
-const { parse } = require('node-html-parser');
+const { createAdapter } = require('@socket.io/redis-adapter');
 const hash = require('object-hash');
-const Socket = require('./');
-const { notifier } = require('../../util/db');
 const Identity = require('../../util/identity');
+const { notifier } = require('../../util/db');
+const { parse } = require('node-html-parser');
+const { RedisClient } = require('redis');
+const Socket = require('./');
 const {
   AGENT_RESPONSE_CREATED,
   CHAT_AGENT_PAUSE,
@@ -196,6 +198,13 @@ class SocketManager {
     }
 
     this.io = new Socket.Server(server);
+
+    if (process.env.REDIS_TLS_URL) {
+      const pubClient = new RedisClient(process.env.REDIS_TLS_URL);
+      const subClient = pubClient.duplicate();
+      this.io.adapter(createAdapter(pubClient, subClient));
+    }
+
     this.io.on('connection', socket => {
       socketlog('Connected', socket.id);
 
