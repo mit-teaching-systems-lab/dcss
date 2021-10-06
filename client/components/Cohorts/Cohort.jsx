@@ -25,7 +25,7 @@ import {
 } from '@actions/cohort';
 import { getUser } from '@actions/user';
 import { getUsers } from '@actions/users';
-import Chat from '@components/Chat';
+// import Chat from '@components/Chat';
 import DataTable from '@components/Cohorts/DataTable';
 import CohortProgress from '@components/Cohorts/CohortProgress';
 import CohortRename from '@components/Cohorts/CohortRename';
@@ -37,8 +37,8 @@ import Identity from '@utils/Identity';
 
 import './Cohort.css';
 
-const minAriaLabel = 'Click to minimize the group discussion window';
-const maxAriaLabel = 'Click to maximize the group discussion window';
+// const minAriaLabel = 'Click to minimize the group discussion window';
+// const maxAriaLabel = 'Click to maximize the group discussion window';
 
 export class Cohort extends React.Component {
   constructor(props) {

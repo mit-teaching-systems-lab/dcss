@@ -337,15 +337,15 @@ export class CohortProgress extends React.Component {
     const personaAssignmentSelectDropdownOptions = this.state.assignment
       .scenario
       ? this.state.assignment.scenario.personas.reduce((accum, persona) => {
-          return [
-            ...accum,
-            {
-              key: persona.id,
-              text: persona.name,
-              value: persona.id
-            }
-          ];
-        }, [])
+        return [
+          ...accum,
+          {
+            key: persona.id,
+            text: persona.name,
+            value: persona.id
+          }
+        ];
+      }, [])
       : [];
 
     if (personaAssignmentSelectDropdownOptions.length) {
@@ -386,9 +386,9 @@ export class CohortProgress extends React.Component {
 
     const pluralizedAssignmentButton = this.state.assignment.participants.length
       ? pluralize(
-          'Assign selected participant',
-          this.state.assignment.participants.length
-        )
+        'Assign selected participant',
+        this.state.assignment.participants.length
+      )
       : 'Select participants below';
 
     const personaAssignButton = this.state.assignment.persona ? (
@@ -461,33 +461,33 @@ export class CohortProgress extends React.Component {
 
     const assignmentParticipantsExplanation = this.state.assignment.participants
       .length ? (
-      <Fragment>
-        <p>
+        <Fragment>
+          <p>
           Are you sure you want to send the following {pluralizedParticipant} to{' '}
-          <strong>{this.state.assignment.scenario.title}</strong> as{' '}
-          <strong>{this.state.assignment.persona.name}</strong>?
-        </p>
-        <p>
+            <strong>{this.state.assignment.scenario.title}</strong> as{' '}
+            <strong>{this.state.assignment.persona.name}</strong>?
+          </p>
+          <p>
           If you click <strong>Yes</strong>, {pluralizeThisOrThese} selected{' '}
-          {pluralizedParticipant} will be automatically redirected to await{' '}
-          {pluralizedAMatchingParticipant} to complete the scenario.
-        </p>
-        <List className="cp__list" relaxed="very">
-          {this.state.assignment.participants.map(id => {
-            const participant = this.props.cohort.usersById[id];
-            return (
-              <List.Item key={Identity.key(participant)}>
-                <List.Content>
-                  <List.Header>
-                    <Username user={participant} />
-                  </List.Header>
-                </List.Content>
-              </List.Item>
-            );
-          })}
-        </List>
-      </Fragment>
-    ) : null;
+            {pluralizedParticipant} will be automatically redirected to await{' '}
+            {pluralizedAMatchingParticipant} to complete the scenario.
+          </p>
+          <List className="cp__list" relaxed="very">
+            {this.state.assignment.participants.map(id => {
+              const participant = this.props.cohort.usersById[id];
+              return (
+                <List.Item key={Identity.key(participant)}>
+                  <List.Content>
+                    <List.Header>
+                      <Username user={participant} />
+                    </List.Header>
+                  </List.Content>
+                </List.Item>
+              );
+            })}
+          </List>
+        </Fragment>
+      ) : null;
 
     return (
       <Container fluid className="c__section-container">
@@ -525,22 +525,26 @@ export class CohortProgress extends React.Component {
               return accum;
             }, 0);
 
-            const lastInProgressScenarioEvent = eventsValues.reduce((accum, eventValue) => {
-              if (!eventValue.is_complete) {
-                if (accum.created_at < eventValue.created_at) {
-                  return {
-                    ...eventValue
-                  };
+            const lastInProgressScenarioEvent = eventsValues.reduce(
+              (accum, eventValue) => {
+                if (!eventValue.is_complete) {
+                  if (accum.created_at < eventValue.created_at) {
+                    return {
+                      ...eventValue
+                    };
+                  }
                 }
-              }
-              return accum;
-            }, { created_at: 0 });
+                return accum;
+              },
+              { created_at: 0 }
+            );
 
             // Participant may  currently be actively running a scenario again.
             // "isInProgress" should override "hasCompletedAllScenarios"
             const isInProgress = lastInProgressScenarioEvent.created_at !== 0;
             // Participant has completed all scenarios...
-            const hasCompletedAllScenarios = completedCount === cohort.scenarios.length && !isInProgress;
+            const hasCompletedAllScenarios =
+              completedCount === cohort.scenarios.length && !isInProgress;
 
             let lastAccessedAt = null;
             let lastAccessedAgo = null;
@@ -551,7 +555,9 @@ export class CohortProgress extends React.Component {
             let lastSlideViewed = null;
             let mustShowCancelRequestButton = false;
             let cancelRequestProps = {};
-            let statusText = hasCompletedAllScenarios ? 'Complete' : 'In progress';
+            let statusText = hasCompletedAllScenarios
+              ? 'Complete'
+              : 'In progress';
             let statusIcon = hasCompletedAllScenarios ? 'check' : 'circle';
             let statusIconClassName = hasCompletedAllScenarios
               ? 'c__progress-green'
@@ -595,7 +601,10 @@ export class CohortProgress extends React.Component {
                 ? Moment(lastAccessedAt).fromNow()
                 : null;
 
-              if (hasCompletedAllScenarios && progress.completed.includes(lastEvent.scenario_id)) {
+              if (
+                hasCompletedAllScenarios &&
+                progress.completed.includes(lastEvent.scenario_id)
+              ) {
                 completedOrCurrentScenario = `Last Completed scenario`;
                 mustShowLastActivityAndSlide = false;
               } else {
@@ -680,30 +689,30 @@ export class CohortProgress extends React.Component {
 
                   {isInAssignmentState &&
                   participant.id !== this.props.user.id ? (
-                    <Checkbox
-                      className="c__assignment-checkbox"
-                      label="Select for assignment"
-                      checked={isChecked}
-                      onChange={(e, { checked }) => {
-                        const assignment = this.state.assignment;
-                        const participants = assignment.participants.slice();
-                        if (checked) {
-                          participants.push(participant.id);
-                        } else {
-                          participants.splice(
-                            participants.indexOf(participant.id),
-                            1
-                          );
-                        }
-                        this.setState({
-                          assignment: {
-                            ...assignment,
-                            participants
+                      <Checkbox
+                        className="c__assignment-checkbox"
+                        label="Select for assignment"
+                        checked={isChecked}
+                        onChange={(e, { checked }) => {
+                          const assignment = this.state.assignment;
+                          const participants = assignment.participants.slice();
+                          if (checked) {
+                            participants.push(participant.id);
+                          } else {
+                            participants.splice(
+                              participants.indexOf(participant.id),
+                              1
+                            );
                           }
-                        });
-                      }}
-                    />
-                  ) : null}
+                          this.setState({
+                            assignment: {
+                              ...assignment,
+                              participants
+                            }
+                          });
+                        }}
+                      />
+                    ) : null}
                 </Card.Content>
                 <Card.Content className="c__scenario-content">
                   <Card.Description className="c__participant-completion">

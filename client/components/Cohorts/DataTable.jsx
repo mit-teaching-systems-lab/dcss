@@ -30,12 +30,11 @@ import './DataTable.css';
 function reduceResponses(key, responses) {
   return responses.reduce((accum, response) => {
     const {
-      [key]: property,
+      [key]: identity,
       content = '',
       value,
       transcript = '',
-      is_skip,
-      response_id
+      is_skip
     } = response;
 
     response.content = content;
@@ -72,14 +71,17 @@ function reduceResponses(key, responses) {
       response.content = contentOverride.trim();
     }
 
-    if (!accum[property]) {
-      accum[property] = { [response_id]: response };
-    } else {
-      // For now we limit to limit to most recent responses.
-      if (!accum[property][response_id]) {
-        accum[property][response_id] = response;
-      }
+    if (!accum[identity]) {
+      accum[identity] = [];
     }
+    // } else {
+    //   // For now we limit to most recent responses.
+    //   if (!accum[identity][response_id]) {
+    //     accum[identity][response_id] = response;
+    //   }
+    // }
+    accum[identity].push(response);
+
     return accum;
   }, {});
 }
@@ -185,13 +187,27 @@ export class DataTable extends React.Component {
             scenario => scenario.id === scenarioId
           );
           const participantResponses = reduced[scenarioId];
-          if (participantResponses) {
+          if (participantResponses && participantResponses.length) {
             const prompts = headers;
-            const row = [scenario.id, scenario.title];
-            for (const prompt of prompts) {
-              row.push(participantResponses[prompt.responseId]);
+            for (const pr of participantResponses) {
+              if (pr.scenario_id === scenario.id) {
+                const row = [scenario.id, scenario.title];
+                for (const prompt of prompts) {
+                  // THIS IS WRONG
+                  // if (prompt.type === "ChatPrompt") {
+                  //   row.push({
+                  //     content: '(messages attached)'
+                  //   });
+                  // }
+
+                  if (pr.response_id === prompt.responseId) {
+                    row.push(pr);
+                  }
+                }
+
+                rows.push(row);
+              }
             }
-            rows.push(row);
           }
 
           tables.push({
