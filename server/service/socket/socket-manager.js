@@ -200,7 +200,7 @@ class SocketManager {
     this.io = new Socket.Server(server);
 
     if (process.env.REDIS_TLS_URL) {
-      const pubClient = new RedisClient(process.env.REDIS_TLS_URL);
+      const pubClient = new RedisClient({ url: process.env.REDIS_TLS_URL });
       const subClient = pubClient.duplicate();
       this.io.adapter(createAdapter(pubClient, subClient));
     }
