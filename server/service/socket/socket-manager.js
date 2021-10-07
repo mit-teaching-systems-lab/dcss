@@ -1,4 +1,5 @@
 const { createAdapter } = require('@socket.io/redis-adapter');
+const { getRedisConfig } = require('../../util/redisConfig');
 const hash = require('object-hash');
 const Identity = require('../../util/identity');
 const { notifier } = require('../../util/db');
@@ -182,6 +183,7 @@ const makeRemoteSafeAuthPayload = data => {
 };
 
 const DEVELOPER_TOKEN = '8070cb2467d22a15dabafd5f5128cacc04af86f1';
+const REDIS_CONFIG = getRedisConfig();
 
 class SocketManager {
   static isValidToken(remoteToken) {
@@ -199,13 +201,11 @@ class SocketManager {
 
     this.io = new Socket.Server(server);
 
-    if (process.env.REDIS_TLS_URL) {
-      const pubClient = createClient(process.env.REDIS_URL, {
-        tls: {
-          rejectUnauthorized: false
-        }
-      });
+    if (REDIS_CONFIG) {
+      const pubClient = createClient(REDIS_CONFIG);
       const subClient = pubClient.duplicate();
+      console.log('pubClient', pubClient);
+      console.log('subClient', subClient);
       this.io.adapter(createAdapter(pubClient, subClient));
     }
 
