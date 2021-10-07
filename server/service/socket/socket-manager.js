@@ -995,13 +995,14 @@ class SocketManager {
         if (cache.timers[room]) {
           clearInterval(cache.timers[room]);
           cache.timers[room] = null;
-          this.io.to(room).emit(TIMER_END, {
-            chat,
-            user,
-            slide,
-            result
-          });
         }
+
+        this.io.to(room).emit(TIMER_END, {
+          chat,
+          user,
+          slide,
+          result
+        });
 
         this.io.to(room).emit(CHAT_CLOSED_FOR_SLIDE, {
           chat,
