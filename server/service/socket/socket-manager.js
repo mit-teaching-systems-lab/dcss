@@ -1030,6 +1030,9 @@ class SocketManager {
 
         socket.join(room);
 
+        // Only one node needs to cache the timer since we
+        // emit these events to this.io.to(room), of which
+        // broadcast is handled by the redis adapter
         if (!cache.timers[room]) {
           cache.timers[room] = setInterval(() => {
             timeout--;
