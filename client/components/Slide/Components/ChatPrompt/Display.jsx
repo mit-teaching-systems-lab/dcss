@@ -249,8 +249,6 @@ class Display extends Component {
     const { created_at } = this;
     const ended_at = new Date().toISOString();
     const time = this.ticks;
-
-    const isFulfilled = true;
     const value = {
       result,
       time
@@ -266,7 +264,6 @@ class Display extends Component {
     this.props.onResponseChange(emptyEvent, {
       created_at,
       ended_at,
-      isFulfilled,
       name,
       type,
       value
