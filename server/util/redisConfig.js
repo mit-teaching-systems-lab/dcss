@@ -2,13 +2,20 @@ exports.getRedisConfig = function() {
   // This is the environment variable Heroku exposes
   const url = process.env.REDIS_URL || null;
   if (url) {
-    return process.env.STAGING ? {
-      url,
+    const settings = {
       ssl: {
         rejectUnauthorized: false
-      },
-      sslmode: 'require'
-    } : url;
+      }
+    };
+
+    if (process.env.STAGING) {
+      settings.sslmode = 'require';
+    }
+
+    return {
+      ...settings,
+      url
+    };
   }
 
   return { host: 'localhost', port: 6379 };
