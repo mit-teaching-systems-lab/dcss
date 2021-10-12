@@ -65,6 +65,7 @@
     "eslint": "^7.3.0",
     "eslint-plugin-react": "^7.20.0",
     "events": "^3.2.0",
+    "fast-copy": "^2.1.1",
     "fetch-mock": "^9.10.7",
     "file-saver": "^2.0.2",
     "file-type": "^14.6.2",

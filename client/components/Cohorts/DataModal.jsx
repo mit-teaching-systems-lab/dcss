@@ -13,15 +13,18 @@ import './DataTable.css';
 import './Resizer.css';
 
 const DataModal = props => {
-  const { index, isScenarioDataTable, prompts, rows, usersById } = props;
+  const {
+    index,
+    messagesFromRun,
+    isScenarioDataTable,
+    prompts,
+    rows,
+    usersById
+  } = props;
   const component = prompts[index];
   const { header, prompt, slide, responseId: response_id } = component;
   const ariaLabelledby = Identity.id();
   const ariaDescribedby = Identity.id();
-  const transcript =
-    props.transcript && props.transcript.length
-      ? props.transcript.filter(message => message.response_id === response_id)
-      : null;
 
   return (
     <Modal
@@ -136,11 +139,12 @@ const DataModal = props => {
                     );
                   })}
 
-                  {transcript ? (
+                  {messagesFromRun && messagesFromRun.length ? (
                     <Table.Row>
                       <Table.Cell colSpan={2}>
                         <DataTableChatTranscript
-                          transcript={transcript}
+                          omitJoinPart={true}
+                          transcript={messagesFromRun}
                           usersById={usersById}
                         />
                       </Table.Cell>
@@ -157,6 +161,7 @@ const DataModal = props => {
 };
 
 DataModal.propTypes = {
+  messagesFromRun: PropTypes.array,
   isScenarioDataTable: PropTypes.bool,
   leftColVisible: PropTypes.bool,
   cells: PropTypes.array,

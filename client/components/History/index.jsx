@@ -11,6 +11,7 @@ import Loading from '@components/Loading';
 import DataTable from '@components/Cohorts/DataTable';
 import Identity from '@utils/Identity';
 import Moment from '@utils/Moment';
+import shorten from '@utils/shorten';
 
 import './History.css';
 
@@ -88,7 +89,8 @@ class History extends Component {
         const scenario = this.props.scenariosById[pane.scenarioId];
 
         pane.scenario = scenario;
-        pane.menuItem = scenario.title;
+        pane.menuItem = shorten(scenario.title, 50);
+        pane.fullTitle = scenario.title;
 
         if (pane.sources.length) {
           pane.sources.forEach(
@@ -129,7 +131,8 @@ class History extends Component {
     const index = panes.findIndex(
       pane => pane.scenario && pane.scenario.id === scenario.id
     );
-    const menuItem = scenario.title;
+    const menuItem = shorten(scenario.title, 50);
+    const fullTitle = scenario.title;
     const source = {
       participantId: this.props.user.id,
       runId
@@ -142,6 +145,7 @@ class History extends Component {
     } else {
       const key = Identity.key(scenario.id);
       panes.push({
+        fullTitle,
         menuItem,
         pane: {
           key,

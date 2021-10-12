@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import Identity from '@utils/Identity';
 import escapeRegExp from 'lodash.escaperegexp';
+import fastCopy from 'fast-copy';
 import PropTypes from 'prop-types';
 import { Parser } from 'json2csv';
 import { connect } from 'react-redux';
@@ -24,6 +25,7 @@ import { getCohorts } from '@actions/cohort';
 import { getHistoryForScenario } from '@actions/history';
 import { getScenariosIncrementally } from '@actions/scenario';
 import { getUser } from '@actions/user';
+import { getUsers } from '@actions/users';
 import EditorMenu from '@components/EditorMenu';
 import Loading from '@components/Loading';
 import CSV from '@utils/csv';
@@ -81,6 +83,8 @@ class Downloads extends Component {
 
   async componentDidMount() {
     await this.props.getUser();
+    await this.props.getCohorts();
+    await this.props.getUsers();
 
     if (!this.props.user.id) {
       this.props.history.push('/logout');
@@ -109,6 +113,7 @@ class Downloads extends Component {
       ? [scenario.id]
       : cohort.scenarios.map(v => (typeof v === 'number' ? v : v.id));
     const files = [];
+    const participants = [];
 
     for (let id of scenarios) {
       // TODO: change this to an object parameter
@@ -142,9 +147,14 @@ class Downloads extends Component {
           if (cohort) {
             record.cohort_id = cohort.id;
           }
+
+          if (!participants.includes(record.user_id)) {
+            participants.push(record.user_id);
+          }
         });
 
         const fields = [
+          'user_id',
           'username',
           'header',
           'content',
@@ -170,7 +180,9 @@ class Downloads extends Component {
       ? await this.props.getChatTranscriptsByCohortId(cohort.id)
       : await this.props.getChatTranscriptsByScenarioId(scenario.id);
 
-    if (transcripts.length) {
+    const hasChatMessages = transcripts.some(({ is_joinpart }) => !is_joinpart);
+
+    if (hasChatMessages) {
       const fields = [
         'id',
         'chat_id',
@@ -191,6 +203,99 @@ class Downloads extends Component {
 
       files.push(['chat-messages.csv', csv]);
     }
+
+    //
+    // Make meta data files
+    //
+    // meta-cohort.json:
+    //
+    //    Contains meta information about the cohort, if the responses came from a cohort
+    //    JSON parses to an object
+    //
+    if (!scenario) {
+      const metaCohort = fastCopy(cohort);
+
+      metaCohort.cohort_id = metaCohort.id;
+      delete metaCohort.id;
+      delete metaCohort.chat_id;
+      delete metaCohort.chat;
+      delete metaCohort.users;
+      delete metaCohort.usersById;
+      delete metaCohort.scenarios;
+      delete metaCohort.roles;
+      delete metaCohort.runs;
+      metaCohort.runs = metaCohort.runs.map(run => {
+        const copy = fastCopy(run);
+        delete copy.consent_acknowledged_by_user;
+        delete copy.consent_id;
+        delete copy.id;
+        delete copy.updated_at;
+        return copy;
+      });
+
+      files.push(['meta-cohort.json', JSON.stringify(metaCohort, null, 2)]);
+    }
+
+    // meta-participants.json:
+    //
+    //    Contains meta information about the participant(s) that produced the response data
+    //    JSON parses to an array of objects
+    //
+    const metaParticipants = participants.map(participantId => {
+      const copy = fastCopy(this.props.usersById[participantId]);
+      copy.participant_id = copy.id;
+      delete copy.id;
+      delete copy.progress;
+      delete copy.roles;
+      delete copy.single_use_password;
+      delete copy.lastseen_at;
+      delete copy.is_agent;
+      delete copy.is_owner;
+      delete copy.is_super;
+      return copy;
+    });
+
+    files.push([
+      'meta-participants.json',
+      JSON.stringify(metaParticipants, null, 2)
+    ]);
+
+    // meta-scenarios.json:
+    //
+    //    Contains meta information about the scenario(s) that produced the response data
+    //    JSON parses to an array objects
+    //
+    const metaScenarios = scenarios.map(scenarioId => {
+      const copy = fastCopy(this.props.scenariosById[scenarioId]);
+      copy.scenario_id = copy.id;
+      delete copy.id;
+      delete copy.author;
+      delete copy.consent;
+      delete copy.deleted_at;
+      delete copy.finish;
+      delete copy.lock;
+      delete copy.status;
+      copy.personas = copy.personas.map(persona => {
+        const copy = fastCopy(persona);
+        delete copy.color;
+        delete copy.created_at;
+        delete copy.deleted_at;
+        delete copy.updated_at;
+        delete copy.is_read_only;
+        delete copy.is_shared;
+        delete copy.is_default;
+        return copy;
+      });
+      copy.users = copy.users.map(user => {
+        const copy = fastCopy(user);
+        delete copy.is_reviewer;
+        delete copy.roles;
+        return copy;
+      });
+      return copy;
+    });
+
+    files.push(['meta-scenarios.json', JSON.stringify(metaScenarios, null, 2)]);
 
     return files;
   }
@@ -227,8 +332,8 @@ class Downloads extends Component {
       if (user.is_super) {
         return true;
       }
-      return cohort.users.find(({ id, roles }) =>
-        id === user.id && roles.includes('researcher')
+      return cohort.users.find(
+        ({ id, roles }) => id === user.id && roles.includes('researcher')
       );
     };
 
@@ -704,12 +809,21 @@ Downloads.propTypes = {
   getScenariosIncrementally: PropTypes.func,
   getHistoryForScenario: PropTypes.func,
   getUser: PropTypes.func,
+  getUsers: PropTypes.func,
   onClick: PropTypes.func,
-  user: PropTypes.object
+  user: PropTypes.object,
+  usersById: PropTypes.object
 };
 
 const mapStateToProps = (state, ownProps) => {
-  const { cohorts, cohortsById, scenarios, scenariosById, user } = state;
+  const {
+    cohorts,
+    cohortsById,
+    scenarios,
+    scenariosById,
+    user,
+    usersById
+  } = state;
   let { filter = null } = ownProps.location.state || {};
 
   if (!filter && ownProps.match.params) {
@@ -727,7 +841,8 @@ const mapStateToProps = (state, ownProps) => {
     filter,
     scenarios,
     scenariosById,
-    user
+    user,
+    usersById
   };
 };
 
@@ -742,7 +857,8 @@ const mapDispatchToProps = dispatch => ({
     dispatch(getScenariosIncrementally(updater)),
   getHistoryForScenario: (...params) =>
     dispatch(getHistoryForScenario(...params)),
-  getUser: () => dispatch(getUser())
+  getUser: () => dispatch(getUser()),
+  getUsers: () => dispatch(getUsers()),
 });
 
 export default withRouter(

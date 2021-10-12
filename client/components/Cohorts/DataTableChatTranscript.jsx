@@ -4,23 +4,32 @@ import Username from '@components/User/Username';
 import Identity from '@utils/Identity';
 
 const DataTableChatTranscript = props => {
-  const { transcript, usersById } = props;
+  const { omitJoinPart = false, transcript, usersById } = props;
 
   return transcript && transcript.length ? (
-    transcript.map(message => {
+    transcript.reduce((accum, message) => {
       const author = usersById[message.user_id];
-      return (
+      const __html = message.content;
+
+      if (omitJoinPart && message.is_joinpart) {
+        return accum;
+      }
+
+      accum.push(
         <p key={Identity.key(message)}>
-          <Username user={author} />: {message.textContent}
+          <Username user={author} />:
+          <span dangerouslySetInnerHTML={{ __html }} />
         </p>
       );
-    })
+      return accum;
+    }, [])
   ) : (
     <Fragment>No chat messages available</Fragment>
   );
 };
 
 DataTableChatTranscript.propTypes = {
+  omitJoinPart: PropTypes.bool,
   transcript: PropTypes.array,
   usersById: PropTypes.object
 };

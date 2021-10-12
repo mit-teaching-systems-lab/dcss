@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { Parser } from 'json2csv';
+import fastCopy from 'fast-copy';
 import PropTypes from 'prop-types';
 import { diff } from 'deep-diff';
 import {
@@ -72,15 +73,14 @@ function reduceResponses(key, responses) {
     }
 
     if (!accum[identity]) {
-      accum[identity] = [];
+      accum[identity] = {};
     }
-    // } else {
-    //   // For now we limit to most recent responses.
-    //   if (!accum[identity][response_id]) {
-    //     accum[identity][response_id] = response;
-    //   }
-    // }
-    accum[identity].push(response);
+
+    if (!accum[identity][response.run_id]) {
+      accum[identity][response.run_id] = {};
+    }
+
+    accum[identity][response.run_id][response.response_id] = response;
 
     return accum;
   }, {});
@@ -145,7 +145,8 @@ export class DataTable extends React.Component {
 
     const tables = [];
     const rows = [];
-    const transcript = transcripts;
+    const hasChatMessages = transcripts.some(({ is_joinpart }) => !is_joinpart);
+    const transcript = hasChatMessages ? transcripts : [];
 
     if (isScenarioDataTable) {
       /*
@@ -155,15 +156,23 @@ export class DataTable extends React.Component {
                     in this scenario.
       */
 
-      const reduced = reduceResponses('username', responses);
+      const reduced = reduceResponses('user_id', responses);
+
       for (const user of this.props.cohort.users) {
-        const scenarioResponses = reduced[user.username];
-        if (scenarioResponses) {
-          const row = [user.id, user.username];
-          for (const prompt of prompts) {
-            row.push(scenarioResponses[prompt.responseId]);
+        const runsForUser = reduced[user.id];
+        if (runsForUser) {
+          for (let responsesFromRun of Object.values(runsForUser)) {
+            const row = [user.id, user.username];
+
+            for (const prompt of prompts) {
+              const response = responsesFromRun[prompt.responseId] || {
+                content: '',
+                response_id: null
+              };
+              row.push(response);
+            }
+            rows.push(row);
           }
-          rows.push(row);
         }
       }
 
@@ -186,27 +195,21 @@ export class DataTable extends React.Component {
           const scenario = this.props.scenarios.find(
             scenario => scenario.id === scenarioId
           );
-          const participantResponses = reduced[scenarioId];
-          if (participantResponses && participantResponses.length) {
+          const runsForScenario = reduced[scenarioId];
+          if (runsForScenario) {
             const prompts = headers;
-            for (const pr of participantResponses) {
-              if (pr.scenario_id === scenario.id) {
-                const row = [scenario.id, scenario.title];
-                for (const prompt of prompts) {
-                  // THIS IS WRONG
-                  // if (prompt.type === "ChatPrompt") {
-                  //   row.push({
-                  //     content: '(messages attached)'
-                  //   });
-                  // }
 
-                  if (pr.response_id === prompt.responseId) {
-                    row.push(pr);
-                  }
-                }
+            for (let responsesFromRun of Object.values(runsForScenario)) {
+              const row = [scenario.id, scenario.title];
 
-                rows.push(row);
+              for (const prompt of prompts) {
+                const response = responsesFromRun[prompt.responseId] || {
+                  content: '',
+                  response_id: null
+                };
+                row.push(response);
               }
+              rows.push(row);
             }
           }
 
@@ -278,8 +281,12 @@ export class DataTable extends React.Component {
         ? scenarios.find(scenario => scenario.id === scenarioId).title
         : users.find(user => user.id === participantId).username;
 
-      const firstColumnHeader = isScenarioDataTable ? 'Participant id' : 'Scenario id';
-      const secondColumnHeader = isScenarioDataTable ? 'Participant' : 'Scenario';
+      const firstColumnHeader = isScenarioDataTable
+        ? 'Participant id'
+        : 'Scenario id';
+      const secondColumnHeader = isScenarioDataTable
+        ? 'Participant'
+        : 'Scenario';
 
       const subjectAndPrompts = [
         `"${firstColumnHeader}"`,
@@ -291,7 +298,6 @@ export class DataTable extends React.Component {
 
       rows.forEach(row => {
         const prepared = row.map(data => {
-
           if (typeof data === 'number') {
             return data;
           }
@@ -308,9 +314,7 @@ export class DataTable extends React.Component {
             content += ` (${location.origin}/api/media/${response.value})`;
           }
 
-          let difference = Moment(response.ended_at).diff(
-            response.created_at
-          );
+          let difference = Moment(response.ended_at).diff(response.created_at);
 
           if (difference < 0) {
             difference = 0;
@@ -353,6 +357,92 @@ export class DataTable extends React.Component {
         files.push(['chat-messages.csv', csv]);
       }
     }
+
+    //
+    // Make meta data files
+    //
+    // meta-cohort.json:
+    //
+    //    Contains meta information about the cohort, if the responses came from a cohort
+    //    JSON parses to an object
+    //
+    const metaCohort = fastCopy(this.props.cohort);
+
+    metaCohort.cohort_id = metaCohort.id;
+    delete metaCohort.id;
+    delete metaCohort.chat_id;
+    delete metaCohort.chat;
+    delete metaCohort.users;
+    delete metaCohort.usersById;
+    delete metaCohort.scenarios;
+    delete metaCohort.roles;
+    delete metaCohort.runs;
+    // metaCohort.runs = metaCohort.runs.map(run => {
+    //   const copy = fastCopy(run);
+    //   delete copy.consent_acknowledged_by_user;
+    //   delete copy.consent_id;
+    //   delete copy.id;
+    //   delete copy.updated_at;
+    //   return copy;
+    // });
+    files.push(['meta-cohort.json', JSON.stringify(metaCohort, null, 2)]);
+
+    // meta-participants.json:
+    //
+    //    Contains meta information about the participant(s) that produced the response data
+    //    JSON parses to an array of objects
+    //
+    const metaParticipants = this.props.cohort.users.map(user => {
+      const copy = fastCopy(user);
+      copy.participant_id = copy.id;
+      delete copy.id;
+      delete copy.is_owner;
+      delete copy.progress;
+      delete copy.roles;
+      return copy;
+    });
+
+    files.push(['meta-participants.json', JSON.stringify(metaParticipants, null, 2)]);
+
+    // meta-scenarios.json:
+    //
+    //    Contains meta information about the scenario(s) that produced the response data
+    //    JSON parses to an array objects
+    //
+    const metaScenarios = (isScenarioDataTable
+      ? [this.props.scenariosById[scenarioId]]
+      : cohort.scenarios.map(id => this.props.scenariosById[id])
+    ).map(scenario => {
+      const copy = fastCopy(scenario);
+      copy.scenario_id = copy.id;
+      delete copy.id;
+      delete copy.author;
+      delete copy.consent;
+      delete copy.deleted_at;
+      delete copy.finish;
+      delete copy.lock;
+      delete copy.status;
+      copy.personas = copy.personas.map(persona => {
+        const copy = fastCopy(persona);
+        delete copy.color;
+        delete copy.created_at;
+        delete copy.deleted_at;
+        delete copy.updated_at;
+        delete copy.is_read_only;
+        delete copy.is_shared;
+        delete copy.is_default;
+        return copy;
+      });
+      copy.users = copy.users.map(user => {
+        const copy = fastCopy(user);
+        delete copy.is_reviewer;
+        delete copy.roles;
+        return copy;
+      });
+      return copy;
+    });
+
+    files.push(['meta-scenarios.json', JSON.stringify(metaScenarios, null, 2)]);
 
     return files;
   }
@@ -435,11 +525,34 @@ export class DataTable extends React.Component {
                   </Table.Row>
                 </Table.Header>
                 <Table.Body>
-                  {rows.map((cells, index) => {
+                  {rows.reduce((accum, cells, index) => {
+                    const runId = cells.reduce((accum, cell) => {
+                      if (typeof cell !== 'object') {
+                        return accum;
+                      }
+                      if (accum === null) {
+                        return cell.run_id;
+                      }
+                      return accum;
+                    }, null);
+
+                    const chatId = messages.reduce((accum, message) => {
+                      if (accum === null && message.run_id === runId) {
+                        return message.chat_id;
+                      }
+                      return accum;
+                    }, null);
+
+                    const messagesFromRun =
+                      messages && messages.length
+                        ? messages.filter(message => message.chat_id === chatId)
+                        : null;
                     const key = `${tableKeyBase}-row-${index}`;
-                    return (
+
+                    accum.push(
                       <DataTableRow
                         key={key}
+                        messagesFromRun={messagesFromRun}
                         isScenarioDataTable={isScenarioDataTable}
                         leftColVisible={leftColVisible}
                         prompts={prompts}
@@ -451,8 +564,10 @@ export class DataTable extends React.Component {
                         usersById={usersById}
                       />
                     );
-                  })}
+                    return accum;
+                  }, [])}
 
+                  {/*
                   <Table.Row>
                     <Table.Cell colSpan={colSpan}>
                       {messages && messages.length ? (
@@ -463,6 +578,7 @@ export class DataTable extends React.Component {
                       ) : null}
                     </Table.Cell>
                   </Table.Row>
+                  */}
                 </Table.Body>
               </Table>
             </div>
@@ -474,77 +590,169 @@ export class DataTable extends React.Component {
 }
 
 const DataTableRow = props => {
-  const { cells: allCells, isScenarioDataTable, leftColVisible, rowKey } = props;
-  const leftColHidden = !leftColVisible
+  const {
+    cells: allCells,
+    messagesFromRun,
+    isScenarioDataTable,
+    leftColVisible,
+    prompts,
+    rowKey,
+    usersById
+  } = props;
+  const computedAttributes = !leftColVisible
     ? { className: 'dt__left-col-hidden' }
     : {};
+
+  // eslint-disable-next-line react/prop-types
+  const hasMessagesFromRun = messagesFromRun && messagesFromRun.length > 0;
+
+  if (hasMessagesFromRun) {
+    computedAttributes.rowSpan = '2';
+  }
+
   const cells = allCells.slice(1);
   const subject = cells[0] || '';
+  const rowCells = cells.slice(1);
+  const promptCountBySlideId = prompts.reduce((accum, prompt) => {
+    if (!accum[prompt.slide.id]) {
+      accum[prompt.slide.id] = 0;
+    }
+    accum[prompt.slide.id] = prompt.slide.components.reduce(
+      (accum, component) => {
+        if (component.responseId) {
+          accum += 1;
+        }
+        return accum;
+      },
+      0
+    );
+    return accum;
+  }, {});
 
   return (
-    <Table.Row>
-      <Table.HeaderCell verticalAlign="top" {...leftColHidden}>
-        <p>{subject}</p>
-      </Table.HeaderCell>
+    <Fragment>
+      <Table.Row>
+        <Table.HeaderCell verticalAlign="top" {...computedAttributes}>
+          <p>{subject}</p>
+        </Table.HeaderCell>
 
-      {cells.slice(1).map((response = {}, cellIndex) => {
-        const cellKey = `${rowKey}-cell-${cellIndex}`;
-        const modalKey = `${rowKey}-modal-${cellIndex}`;
-        const isAudioContent = Media.isAudioFile(response.value);
-        const { content = '' } = response;
+        {rowCells.map((response = {}, cellIndex) => {
+          const cellKey = `${rowKey}-cell-${cellIndex}`;
+          const modalKey = `${rowKey}-modal-${cellIndex}`;
+          const isAudioContent = Media.isAudioFile(response.value);
+          const { content = '' } = response;
 
-        // microphone
-        const display = isAudioContent ? (
-          <Fragment>
-            {content && content !== response.value ? (
-              content
-            ) : (
-              <audio controls="controls" src={`/api/media/${response.value}`} />
-            )}
-            <Icon name="microphone" />
-          </Fragment>
-        ) : (
-          content
-        );
+          // microphone
+          const display = isAudioContent ? (
+            <Fragment>
+              {content && content !== response.value ? (
+                content
+              ) : (
+                <audio
+                  controls="controls"
+                  src={`/api/media/${response.value}`}
+                />
+              )}
+              <Icon name="microphone" />
+            </Fragment>
+          ) : (
+            content
+          );
 
-        const className = !content ? 'dt__cell-data-missing' : '';
+          const className = !content ? 'dt__cell-data-missing' : '';
+          const difference = Moment(response.ended_at).diff(
+            response.created_at
+          );
+          const duration = Moment.duration(difference).format(
+            Moment.globalFormat
+          );
 
-        const difference = Moment(response.ended_at).diff(response.created_at);
-        const duration = Moment.duration(difference).format(
-          Moment.globalFormat
-        );
+          const trigger = (
+            <Table.Cell
+              className={className}
+              key={cellKey}
+              name="cell"
+              style={{
+                cursor: 'pointer'
+              }}
+              verticalAlign="top"
+            >
+              <p>{display}</p>
 
-        const trigger = (
-          <Table.Cell
-            className={className}
-            key={cellKey}
-            name="cell"
-            style={{
-              cursor: 'pointer'
-            }}
-            verticalAlign="top"
-          >
-            <p>{display}</p>
+              {display ? <p style={{ color: 'grey' }}>{duration}</p> : null}
+            </Table.Cell>
+          );
 
-            {display ? <p style={{ color: 'grey' }}>{duration}</p> : null}
-          </Table.Cell>
-        );
+          const dataModalProps = {
+            ...props,
+            rows: [cells]
+          };
+          return (
+            <DataModal
+              {...dataModalProps}
+              index={cellIndex}
+              messagesFromRun={messagesFromRun}
+              isScenarioDataTable={isScenarioDataTable}
+              key={modalKey}
+              trigger={trigger}
+            />
+          );
+        })}
+      </Table.Row>
 
-        return (
-          <DataModal
-            {...props}
-            index={cellIndex}
-            isScenarioDataTable={isScenarioDataTable}
-            key={modalKey}
-            trigger={trigger}
-          />
-        );
-      })}
-    </Table.Row>
+      {hasMessagesFromRun ? (
+        <Table.Row>
+          {rowCells.reduce((accum, rowCell, rowCellIndex) => {
+            if (rowCell.type === 'ChatPrompt') {
+              const { content } = rowCell;
+              const className = !content ? 'dt__cell-data-missing' : '';
+              const rowCellKey = Identity.key({ rowCell, rowCellIndex });
+              const slideId = prompts.reduce((accum, prompt) => {
+                if (!accum) {
+                  if (prompt.responseId === rowCell.response_id) {
+                    accum = prompt.slide.id;
+                  }
+                }
+                return accum;
+              }, null);
+              const colSpan = promptCountBySlideId[slideId];
+              const messagesFromSlide = messagesFromRun.reduce(
+                (accum, message) => {
+                  if (message.response_id === rowCell.response_id) {
+                    accum.push(message);
+                  }
+                  return accum;
+                },
+                []
+              );
+              accum.push(
+                <Table.Cell
+                  colSpan={colSpan}
+                  className={className}
+                  key={rowCellKey}
+                  name="cell"
+                  style={{
+                    cursor: 'pointer'
+                  }}
+                  verticalAlign="top"
+                >
+                  <DataTableChatTranscript
+                    transcript={messagesFromSlide}
+                    usersById={usersById}
+                  />
+                </Table.Cell>
+              );
+            }
+            return accum;
+          }, [])}
+        </Table.Row>
+      ) : null}
+    </Fragment>
   );
 };
 
 DataTableRow.propTypes = {
+  messagesFromRun: PropTypes.array,
   isScenarioDataTable: PropTypes.bool,
   leftColVisible: PropTypes.bool,
   cells: PropTypes.array,
@@ -562,6 +770,7 @@ DataTable.propTypes = {
   isScenarioDataTable: PropTypes.bool,
   leftColVisible: PropTypes.bool,
   scenarios: PropTypes.array,
+  scenariosById: PropTypes.object,
   source: PropTypes.object,
   runs: PropTypes.array,
   runsById: PropTypes.object,
@@ -589,8 +798,8 @@ DataTable.propTypes = {
 };
 
 const mapStateToProps = state => {
-  const { cohort, runsById, scenarios, user, usersById } = state;
-  return { cohort, runsById, scenarios, user, usersById };
+  const { cohort, runsById, scenarios, scenariosById, user, usersById } = state;
+  return { cohort, runsById, scenarios, scenariosById, user, usersById };
 };
 
 const mapDispatchToProps = dispatch => ({
