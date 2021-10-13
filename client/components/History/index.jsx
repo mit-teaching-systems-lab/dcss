@@ -75,7 +75,7 @@ class History extends Component {
       await this.props.getCohorts();
       await this.props.getRuns();
 
-      const count = await this.props.getScenariosCount();
+      const count = await this.props.getScenariosCount({ refresh: true });
       const limit = 20;
       let offset = 0;
       do {
@@ -459,7 +459,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => ({
   getCohorts: () => dispatch(getCohorts()),
   getRuns: () => dispatch(getRuns()),
-  getScenariosCount: () => dispatch(getScenariosCount()),
+  getScenariosCount: params => dispatch(getScenariosCount(params)),
   getScenariosSlice: (...params) => dispatch(getScenariosSlice(...params)),
   getUser: () => dispatch(getUser())
 });

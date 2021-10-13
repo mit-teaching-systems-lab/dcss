@@ -74,18 +74,28 @@ export let getScenarioPromptComponents = id => async dispatch => {
   }
 };
 
-export let getScenariosCount = () => async dispatch => {
+let cachedCount = 0;
+export let getScenariosCount = (options = { refresh: false }) => async dispatch => {
+  const { refresh } = options;
+  if (!refresh && cachedCount) {
+    const count = cachedCount;
+    dispatch({ type: GET_SCENARIOS_COUNT_SUCCESS, count });
+    return count;
+  }
   try {
-    const res = await (await fetch('/api/scenarios/count')).json();
+    const url = `/api/scenarios/count`;
+    const res = await (await fetch(url)).json();
     if (res.error) {
       throw res;
     }
     const count = Number(res.count);
 
     dispatch({ type: GET_SCENARIOS_COUNT_SUCCESS, count });
+    cachedCount = count;
     return count;
   } catch (error) {
     dispatch({ type: GET_SCENARIOS_COUNT_ERROR, error });
+    cachedCount = 0;
     return null;
   }
 };

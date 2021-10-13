@@ -90,7 +90,7 @@ class Downloads extends Component {
       await this.props.getCohorts();
       await this.props.getUsers();
 
-      const count = await this.props.getScenariosCount();
+      const count = await this.props.getScenariosCount({ refresh: true });
       const limit = 20;
       let offset = 0;
       do {
@@ -866,12 +866,12 @@ const mapDispatchToProps = dispatch => ({
   getChatTranscriptsByScenarioId: id =>
     dispatch(getChatTranscriptsByScenarioId(id)),
   getCohorts: () => dispatch(getCohorts()),
-  getScenariosCount: () => dispatch(getScenariosCount()),
+  getScenariosCount: params => dispatch(getScenariosCount(params)),
   getScenariosSlice: (...params) => dispatch(getScenariosSlice(...params)),
   getHistoryForScenario: (...params) =>
     dispatch(getHistoryForScenario(...params)),
   getUser: () => dispatch(getUser()),
-  getUsers: () => dispatch(getUsers()),
+  getUsers: () => dispatch(getUsers())
 });
 
 export default withRouter(

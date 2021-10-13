@@ -135,7 +135,7 @@ class ScenariosList extends Component {
 
   async componentDidMount() {
     const { search } = this.state;
-    const count = await this.props.getScenariosCount();
+    const count = await this.props.getScenariosCount({ refresh: true });
 
     await this.props.getLabelsByOccurrence();
 
@@ -637,7 +637,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => ({
   deleteScenario: id => dispatch(deleteScenario(id)),
-  getScenariosCount: () => dispatch(getScenariosCount()),
+  getScenariosCount: params => dispatch(getScenariosCount(params)),
   getScenariosSlice: (...params) => dispatch(getScenariosSlice(...params)),
   getLabelsByOccurrence: () => dispatch(getLabelsByOccurrence()),
   setLabelsInUse: params => dispatch(setLabelsInUse(params))
