@@ -292,7 +292,7 @@ export class CohortProgress extends React.Component {
     const scenarioAssignmentSelectDropdownOptions = cohort.scenarios.reduce(
       (accum, id) => {
         const scenario = this.props.scenariosById[id];
-        if (scenario.personas.length > 1) {
+        if (scenario && scenario.personas && scenario.personas.length > 1) {
           accum.push({
             key: scenario.id,
             text: scenario.title,
