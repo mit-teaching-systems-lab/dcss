@@ -539,7 +539,7 @@ export class DataTable extends React.Component {
                       return accum;
                     }, null);
 
-                    const chatId = messages.reduce((accum, message) => {
+                    const chatId = (messages || []).reduce((accum, message) => {
                       if (accum === null && message.run_id === runId) {
                         return message.chat_id;
                       }

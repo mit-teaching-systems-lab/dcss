@@ -23,7 +23,7 @@ import {
 } from '@actions/chat';
 import { getCohorts } from '@actions/cohort';
 import { getHistoryForScenario } from '@actions/history';
-import { getScenariosIncrementally } from '@actions/scenario';
+import { getScenariosCount, getScenariosSlice } from '@actions/scenario';
 import { getUser } from '@actions/user';
 import { getUsers } from '@actions/users';
 import EditorMenu from '@components/EditorMenu';
@@ -83,13 +83,20 @@ class Downloads extends Component {
 
   async componentDidMount() {
     await this.props.getUser();
-    await this.props.getCohorts();
-    await this.props.getUsers();
 
     if (!this.props.user.id) {
       this.props.history.push('/logout');
     } else {
-      await this.props.getScenariosIncrementally();
+      await this.props.getCohorts();
+      await this.props.getUsers();
+
+      const count = await this.props.getScenariosCount();
+      const limit = 20;
+      let offset = 0;
+      do {
+        await this.props.getScenariosSlice('DESC', offset, limit);
+        offset += limit;
+      } while (offset < count);
 
       this.setState({ isReady: true });
     }
@@ -240,6 +247,7 @@ class Downloads extends Component {
     //    Contains meta information about the participant(s) that produced the response data
     //    JSON parses to an array of objects
     //
+
     const metaParticipants = (participants || []).map(participantId => {
       const copy = fastCopy(this.props.usersById[participantId]);
       copy.participant_id = copy.id;
@@ -264,35 +272,40 @@ class Downloads extends Component {
     //    Contains meta information about the scenario(s) that produced the response data
     //    JSON parses to an array objects
     //
-    const metaScenarios = scenarios.map(scenarioId => {
-      const copy = fastCopy(this.props.scenariosById[scenarioId]);
-      copy.scenario_id = copy.id;
-      delete copy.id;
-      delete copy.author;
-      delete copy.consent;
-      delete copy.deleted_at;
-      delete copy.finish;
-      delete copy.lock;
-      delete copy.status;
-      copy.personas = copy.personas.map(persona => {
-        const copy = fastCopy(persona);
-        delete copy.color;
-        delete copy.created_at;
+    const metaScenarios = (scenarios || []).reduce((accum, scenarioId) => {
+      const source = this.props.scenariosById[scenarioId];
+      if (source) {
+        const copy = fastCopy(source);
+        copy.scenario_id = copy.id;
+        delete copy.id;
+        delete copy.author;
+        delete copy.consent;
         delete copy.deleted_at;
-        delete copy.updated_at;
-        delete copy.is_read_only;
-        delete copy.is_shared;
-        delete copy.is_default;
-        return copy;
-      });
-      copy.users = copy.users.map(user => {
-        const copy = fastCopy(user);
-        delete copy.is_reviewer;
-        delete copy.roles;
-        return copy;
-      });
-      return copy;
-    });
+        delete copy.finish;
+        delete copy.lock;
+        delete copy.status;
+        copy.personas = copy.personas.map(persona => {
+          const copy = fastCopy(persona);
+          delete copy.color;
+          delete copy.created_at;
+          delete copy.deleted_at;
+          delete copy.updated_at;
+          delete copy.is_read_only;
+          delete copy.is_shared;
+          delete copy.is_default;
+          return copy;
+        });
+        copy.users = copy.users.map(user => {
+          const copy = fastCopy(user);
+          delete copy.is_reviewer;
+          delete copy.roles;
+          return copy;
+        });
+
+        accum.push(copy);
+      }
+      return accum;
+    }, []);
 
     files.push(['meta-scenarios.json', JSON.stringify(metaScenarios, null, 2)]);
 
@@ -805,8 +818,9 @@ Downloads.propTypes = {
   getChatTranscriptsByCohortId: PropTypes.func,
   getChatTranscriptsByScenarioId: PropTypes.func,
   getCohorts: PropTypes.func,
-  getScenariosIncrementally: PropTypes.func,
   getHistoryForScenario: PropTypes.func,
+  getScenariosCount: PropTypes.func,
+  getScenariosSlice: PropTypes.func,
   getUser: PropTypes.func,
   getUsers: PropTypes.func,
   onClick: PropTypes.func,
@@ -852,8 +866,8 @@ const mapDispatchToProps = dispatch => ({
   getChatTranscriptsByScenarioId: id =>
     dispatch(getChatTranscriptsByScenarioId(id)),
   getCohorts: () => dispatch(getCohorts()),
-  getScenariosIncrementally: updater =>
-    dispatch(getScenariosIncrementally(updater)),
+  getScenariosCount: () => dispatch(getScenariosCount()),
+  getScenariosSlice: (...params) => dispatch(getScenariosSlice(...params)),
   getHistoryForScenario: (...params) =>
     dispatch(getHistoryForScenario(...params)),
   getUser: () => dispatch(getUser()),

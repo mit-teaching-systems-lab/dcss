@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom';
 import { Icon, Message, Pagination, Popup, Tab, Table } from '@components/UI';
 import { getRuns } from '@actions/run';
 import { getCohorts } from '@actions/cohort';
-import { getScenariosIncrementally } from '@actions/scenario';
+import { getScenariosCount, getScenariosSlice } from '@actions/scenario';
 import { getUser } from '@actions/user';
 import Loading from '@components/Loading';
 import DataTable from '@components/Cohorts/DataTable';
@@ -73,8 +73,15 @@ class History extends Component {
       this.props.history.push('/logout');
     } else {
       await this.props.getCohorts();
-      await this.props.getScenariosIncrementally();
       await this.props.getRuns();
+
+      const count = await this.props.getScenariosCount();
+      const limit = 20;
+      let offset = 0;
+      do {
+        await this.props.getScenariosSlice('DESC', offset, limit);
+        offset += limit;
+      } while (offset < count);
 
       const { panes } = this.state;
 
@@ -423,7 +430,8 @@ History.propTypes = {
   cohortsById: PropTypes.object,
   getCohorts: PropTypes.func,
   getRuns: PropTypes.func,
-  getScenariosIncrementally: PropTypes.func,
+  getScenariosCount: PropTypes.func,
+  getScenariosSlice: PropTypes.func,
   getUser: PropTypes.func,
   history: PropTypes.shape({
     push: PropTypes.func.isRequired
@@ -451,8 +459,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => ({
   getCohorts: () => dispatch(getCohorts()),
   getRuns: () => dispatch(getRuns()),
-  getScenariosIncrementally: updater =>
-    dispatch(getScenariosIncrementally(updater)),
+  getScenariosCount: () => dispatch(getScenariosCount()),
+  getScenariosSlice: (...params) => dispatch(getScenariosSlice(...params)),
   getUser: () => dispatch(getUser())
 });
 
