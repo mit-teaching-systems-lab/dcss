@@ -223,8 +223,7 @@ class Downloads extends Component {
       delete metaCohort.usersById;
       delete metaCohort.scenarios;
       delete metaCohort.roles;
-      delete metaCohort.runs;
-      metaCohort.runs = metaCohort.runs.map(run => {
+      metaCohort.runs = (metaCohort.runs || []).map(run => {
         const copy = fastCopy(run);
         delete copy.consent_acknowledged_by_user;
         delete copy.consent_id;
@@ -241,7 +240,7 @@ class Downloads extends Component {
     //    Contains meta information about the participant(s) that produced the response data
     //    JSON parses to an array of objects
     //
-    const metaParticipants = participants.map(participantId => {
+    const metaParticipants = (participants || []).map(participantId => {
       const copy = fastCopy(this.props.usersById[participantId]);
       copy.participant_id = copy.id;
       delete copy.id;

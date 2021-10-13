@@ -366,83 +366,86 @@ export class DataTable extends React.Component {
     //    Contains meta information about the cohort, if the responses came from a cohort
     //    JSON parses to an object
     //
-    const metaCohort = fastCopy(this.props.cohort);
 
-    metaCohort.cohort_id = metaCohort.id;
-    delete metaCohort.id;
-    delete metaCohort.chat_id;
-    delete metaCohort.chat;
-    delete metaCohort.users;
-    delete metaCohort.usersById;
-    delete metaCohort.scenarios;
-    delete metaCohort.roles;
-    delete metaCohort.runs;
-    // metaCohort.runs = metaCohort.runs.map(run => {
-    //   const copy = fastCopy(run);
-    //   delete copy.consent_acknowledged_by_user;
-    //   delete copy.consent_id;
-    //   delete copy.id;
-    //   delete copy.updated_at;
-    //   return copy;
-    // });
-    files.push(['meta-cohort.json', JSON.stringify(metaCohort, null, 2)]);
+    if (cohortId && this.props.cohort) {
+      const metaCohort = fastCopy(this.props.cohort);
 
-    // meta-participants.json:
-    //
-    //    Contains meta information about the participant(s) that produced the response data
-    //    JSON parses to an array of objects
-    //
-    const metaParticipants = this.props.cohort.users.map(user => {
-      const copy = fastCopy(user);
-      copy.participant_id = copy.id;
-      delete copy.id;
-      delete copy.is_owner;
-      delete copy.progress;
-      delete copy.roles;
-      return copy;
-    });
+      metaCohort.cohort_id = metaCohort.id;
+      delete metaCohort.id;
+      delete metaCohort.chat_id;
+      delete metaCohort.chat;
+      delete metaCohort.users;
+      delete metaCohort.usersById;
+      delete metaCohort.scenarios;
+      delete metaCohort.roles;
+      delete metaCohort.runs;
+      // metaCohort.runs = metaCohort.runs.map(run => {
+      //   const copy = fastCopy(run);
+      //   delete copy.consent_acknowledged_by_user;
+      //   delete copy.consent_id;
+      //   delete copy.id;
+      //   delete copy.updated_at;
+      //   return copy;
+      // });
+      files.push(['meta-cohort.json', JSON.stringify(metaCohort, null, 2)]);
 
-    files.push(['meta-participants.json', JSON.stringify(metaParticipants, null, 2)]);
-
-    // meta-scenarios.json:
-    //
-    //    Contains meta information about the scenario(s) that produced the response data
-    //    JSON parses to an array objects
-    //
-    const metaScenarios = (isScenarioDataTable
-      ? [this.props.scenariosById[scenarioId]]
-      : cohort.scenarios.map(id => this.props.scenariosById[id])
-    ).map(scenario => {
-      const copy = fastCopy(scenario);
-      copy.scenario_id = copy.id;
-      delete copy.id;
-      delete copy.author;
-      delete copy.consent;
-      delete copy.deleted_at;
-      delete copy.finish;
-      delete copy.lock;
-      delete copy.status;
-      copy.personas = copy.personas.map(persona => {
-        const copy = fastCopy(persona);
-        delete copy.color;
-        delete copy.created_at;
-        delete copy.deleted_at;
-        delete copy.updated_at;
-        delete copy.is_read_only;
-        delete copy.is_shared;
-        delete copy.is_default;
-        return copy;
-      });
-      copy.users = copy.users.map(user => {
+      // meta-participants.json:
+      //
+      //    Contains meta information about the participant(s) that produced the response data
+      //    JSON parses to an array of objects
+      //
+      const metaParticipants = (this.props.cohort.users || []).map(user => {
         const copy = fastCopy(user);
-        delete copy.is_reviewer;
+        copy.participant_id = copy.id;
+        delete copy.id;
+        delete copy.is_owner;
+        delete copy.progress;
         delete copy.roles;
         return copy;
       });
-      return copy;
-    });
 
-    files.push(['meta-scenarios.json', JSON.stringify(metaScenarios, null, 2)]);
+      files.push(['meta-participants.json', JSON.stringify(metaParticipants, null, 2)]);
+
+      // meta-scenarios.json:
+      //
+      //    Contains meta information about the scenario(s) that produced the response data
+      //    JSON parses to an array objects
+      //
+      const metaScenarios = (isScenarioDataTable
+        ? [this.props.scenariosById[scenarioId]]
+        : cohort.scenarios.map(id => this.props.scenariosById[id])
+      ).map(scenario => {
+        const copy = fastCopy(scenario);
+        copy.scenario_id = copy.id;
+        delete copy.id;
+        delete copy.author;
+        delete copy.consent;
+        delete copy.deleted_at;
+        delete copy.finish;
+        delete copy.lock;
+        delete copy.status;
+        copy.personas = (copy.personas || []).map(persona => {
+          const copy = fastCopy(persona);
+          delete copy.color;
+          delete copy.created_at;
+          delete copy.deleted_at;
+          delete copy.updated_at;
+          delete copy.is_read_only;
+          delete copy.is_shared;
+          delete copy.is_default;
+          return copy;
+        });
+        copy.users = (copy.users || []).map(user => {
+          const copy = fastCopy(user);
+          delete copy.is_reviewer;
+          delete copy.roles;
+          return copy;
+        });
+        return copy;
+      });
+
+      files.push(['meta-scenarios.json', JSON.stringify(metaScenarios, null, 2)]);
+    }
 
     return files;
   }
