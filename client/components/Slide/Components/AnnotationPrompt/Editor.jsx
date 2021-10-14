@@ -11,7 +11,7 @@ const AnnotationPromptFormatted = ({
   isConditional,
   meta,
   prompt,
-  title,
+  title
 }) => {
   const name = meta.name.replace('Prompt: ', '');
   return (
@@ -140,7 +140,14 @@ class AnnotationPromptEditor extends React.Component {
     }
 
     const reviewables = components.reduce((accum, component, key) => {
-      const { header, isConditional, prompt, responseId, slide, type } = component;
+      const {
+        header,
+        isConditional,
+        prompt,
+        responseId,
+        slide,
+        type
+      } = component;
       const { Card } = Components[type];
       // Don't include empty/incomplete prompts
       // Don't include prompts from THIS slide

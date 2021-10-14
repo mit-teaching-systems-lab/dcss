@@ -75,7 +75,9 @@ export let getScenarioPromptComponents = id => async dispatch => {
 };
 
 let cachedCount = 0;
-export let getScenariosCount = (options = { refresh: false }) => async dispatch => {
+export let getScenariosCount = (
+  options = { refresh: false }
+) => async dispatch => {
   const { refresh } = options;
   if (!refresh && cachedCount) {
     const count = cachedCount;
@@ -102,7 +104,7 @@ export let getScenariosCount = (options = { refresh: false }) => async dispatch 
 
 export let getScenarios = () => async (dispatch, getState) => {
   const state = getState();
-  const count = await store.dispatch(getScenariosCount());
+  const count = await store.dispatch(getScenariosCount({ refresh: true }));
 
   if (state.session.isLoggedIn && count === state.scenarios.length) {
     const { scenarios } = state;
@@ -127,7 +129,7 @@ export let getScenarios = () => async (dispatch, getState) => {
 
 export let getScenariosByStatus = status => async (dispatch, getState) => {
   const state = getState();
-  const count = await store.dispatch(getScenariosCount());
+  const count = await store.dispatch(getScenariosCount({ refresh: true }));
   if (state.session.isLoggedIn && count === state.scenarios.length) {
     const scenarios = state.scenarios.filter(
       scenario => scenario.status === status
@@ -180,7 +182,7 @@ export const getScenariosIncrementallyNext = async (
   dispatch,
   updater
 ) => {
-  const count = await store.dispatch(getScenariosCount());
+  const count = await store.dispatch(getScenariosCount({ refresh: true }));
   let captured = [];
   let scenarios = [];
   do {
@@ -240,7 +242,7 @@ export let getScenariosIncrementally = updater => async (
   getState
 ) => {
   const state = getState();
-  const count = await store.dispatch(getScenariosCount());
+  const count = await store.dispatch(getScenariosCount({ refresh: true }));
   if (state.session.isLoggedIn && count === state.scenarios.length) {
     const { scenarios } = state;
     dispatch({ type: GET_SCENARIOS_SUCCESS, scenarios });
@@ -266,6 +268,7 @@ export let getScenariosSlice = (
   limit = 30
 ) => async (dispatch, getState) => {
   const state = getState();
+  // This call does not refresh!
   const count = await store.dispatch(getScenariosCount());
   if (state.session.isLoggedIn && count === state.scenarios.length) {
     const { scenarios } = state;

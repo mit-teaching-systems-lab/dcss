@@ -389,7 +389,6 @@ class SocketManager {
 
       if (!notifier.listenerCount('set_invitation')) {
         notifier.on('set_invitation', async record => {
-
           // If there is no update time, then ignore.
           if (!record.updated_at) {
             return;
@@ -951,7 +950,6 @@ class SocketManager {
         console.log(USER_PART_SLIDE, chat, user, run);
 
         if (run) {
-
           await db.removeUserFromRolls(user.id);
           await saveRunEvent(run.id, user.id, EVENT_TYPES.USER_PART_SLIDE, {
             chat,

@@ -49,9 +49,7 @@ exports.getDiscussionState = async function(room_key) {
     SELECT state FROM chat_discussion
     WHERE room_key = ${room_key};
   `);
-  return result.rows.length
-    ? result.rows[0].state
-    : null;
+  return result.rows.length ? result.rows[0].state : null;
 };
 
 exports.setDiscussionState = async function(room_key, state) {

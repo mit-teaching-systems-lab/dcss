@@ -404,7 +404,10 @@ export class DataTable extends React.Component {
         return copy;
       });
 
-      files.push(['meta-participants.json', JSON.stringify(metaParticipants, null, 2)]);
+      files.push([
+        'meta-participants.json',
+        JSON.stringify(metaParticipants, null, 2)
+      ]);
 
       // meta-scenarios.json:
       //
@@ -444,7 +447,10 @@ export class DataTable extends React.Component {
         return copy;
       });
 
-      files.push(['meta-scenarios.json', JSON.stringify(metaScenarios, null, 2)]);
+      files.push([
+        'meta-scenarios.json',
+        JSON.stringify(metaScenarios, null, 2)
+      ]);
     }
 
     return files;

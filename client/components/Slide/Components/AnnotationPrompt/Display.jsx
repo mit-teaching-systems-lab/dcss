@@ -247,7 +247,7 @@ class Display extends Component {
     if (!isReady) {
       return (
         <Fragment>
-          <Segment style={{height: '300px'}}>
+          <Segment style={{ height: '300px' }}>
             <Header as="h3" tabIndex="0">
               {question}
             </Header>
@@ -343,7 +343,11 @@ class Display extends Component {
       </p>
     );
 
-    if (answerRecorded && answerRecorded.isAudioPlayback && IS_AUDIO_RECORDING_SUPPORTED) {
+    if (
+      answerRecorded &&
+      answerRecorded.isAudioPlayback &&
+      IS_AUDIO_RECORDING_SUPPORTED
+    ) {
       const src = Media.fileToMediaURL(answerRecorded.value);
       const audioProps = {
         controlsList: 'nodownload',
@@ -369,7 +373,7 @@ class Display extends Component {
     )}/${slideAndComponentAssociatedWithPrompt.slide.slide_number}`;
 
     const buttonGroupProps = {
-      fluid: true,
+      fluid: true
     };
 
     if (Layout.isNotForMobile()) {

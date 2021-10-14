@@ -687,6 +687,8 @@ describe('GET_SCENARIOS_SUCCESS', () => {
         };
       });
 
+      // Requires calling getScenariosCount first
+      await store.dispatch(actions.getScenariosCount({ refresh: true }));
       const returnValue = await store.dispatch(actions.getScenariosSlice());
       expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
         Array [
@@ -728,17 +730,14 @@ describe('GET_SCENARIOS_SUCCESS', () => {
         };
       });
 
+      await store.dispatch(actions.getScenariosCount({ refresh: true }));
       const returnValue = await store.dispatch(actions.getScenariosSlice());
       expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
-        Array [
-          "/api/scenarios/count",
-        ]
-      `);
-      expect(fetch.mock.calls[1]).toMatchInlineSnapshot(`
         Array [
           "/api/scenarios/slice/DESC/0/30",
         ]
       `);
+      expect(fetch.mock.calls[1]).toMatchInlineSnapshot(`undefined`);
 
       expect(store.getState().scenariosById).toEqual(makeById([]));
       expect(store.getState().scenarios).toEqual([]);
@@ -883,6 +882,7 @@ describe('GET_SCENARIOS_SUCCESS', () => {
       });
 
       fetchImplementation(fetch, 200, { count: 90 });
+      await store.dispatch(actions.getScenariosCount({ refresh: true }));
       const returnValue = await store.dispatch(actions.getScenariosSlice());
       expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
         Array [
@@ -1185,7 +1185,9 @@ test('GET_SCENARIOS_COUNT_SUCCESS', async () => {
 
   fetchImplementation(fetch, 200, { count });
 
-  const returnValue = await store.dispatch(actions.getScenariosCount());
+  const returnValue = await store.dispatch(
+    actions.getScenariosCount({ refresh: true })
+  );
   expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
     Array [
       "/api/scenarios/count",
@@ -1198,7 +1200,9 @@ test('GET_SCENARIOS_COUNT_SUCCESS', async () => {
 test('GET_SCENARIOS_COUNT_ERROR', async () => {
   fetchImplementation(fetch, 200, { error });
 
-  const returnValue = await store.dispatch(actions.getScenariosCount());
+  const returnValue = await store.dispatch(
+    actions.getScenariosCount({ refresh: true })
+  );
   expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
     Array [
       "/api/scenarios/count",

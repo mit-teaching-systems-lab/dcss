@@ -37,6 +37,7 @@ async function waitForPopper() {
 import {
   GET_COHORTS_SUCCESS,
   GET_RUNS_SUCCESS,
+  GET_SCENARIOS_COUNT_SUCCESS,
   GET_SCENARIOS_SUCCESS,
   GET_USER_SUCCESS,
   GET_USERS_SUCCESS
@@ -651,12 +652,17 @@ beforeEach(() => {
     return runs;
   });
 
-  scenarioActions.getScenariosIncrementally.mockImplementation(
-    () => async dispatch => {
-      dispatch({ type: GET_SCENARIOS_SUCCESS, scenarios });
-      return scenarios;
-    }
-  );
+  scenarioActions.getScenariosCount.mockImplementation(() => async dispatch => {
+    const count = scenarios.length;
+    dispatch({ type: GET_SCENARIOS_COUNT_SUCCESS, count });
+    return count;
+  });
+
+  scenarioActions.getScenariosSlice.mockImplementation(() => async dispatch => {
+    const count = scenarios.length;
+    dispatch({ type: GET_SCENARIOS_SUCCESS, scenarios });
+    return count;
+  });
 
   userActions.getUser.mockImplementation(() => async dispatch => {
     const user = {

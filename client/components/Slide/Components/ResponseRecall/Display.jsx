@@ -193,7 +193,10 @@ class Display extends Component {
 
       // The fallback value of an AudioPrompt or ConversationPrompt
       // will not be an mp3 file path.
-      if (response.type === 'AudioPrompt' || response.type === 'ConversationPrompt') {
+      if (
+        response.type === 'AudioPrompt' ||
+        response.type === 'ConversationPrompt'
+      ) {
         const { transcript } = response;
         const src = rvalue;
         const audioSrc = src ? { src } : {};
