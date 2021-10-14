@@ -1,12 +1,21 @@
 const { sql, updateQuery } = require('../../util/sqlHelpers');
 const { query, withClientTransaction } = require('../../util/db');
 
-exports.getRollByRoomKey = async function(room_key) {
+exports.getRollCallByRoomKey = async function(room_key) {
   const result = await query(sql`
     SELECT user_id FROM rollcall
     WHERE room_key = ${room_key};
   `);
-  return result.rows.map(({user_id}) => user_id);
+  return result.rows.map(({ user_id }) => user_id);
+};
+
+exports.removeRollCallByRoomKey = async function(room_key) {
+  return await withClientTransaction(async client => {
+    await client.query(sql`
+      DELETE FROM rollcall
+      WHERE room_key = ${room_key};
+    `);
+  });
 };
 
 exports.removeUserFromRolls = async function(user_id) {

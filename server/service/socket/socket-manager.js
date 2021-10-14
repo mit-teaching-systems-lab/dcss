@@ -448,7 +448,6 @@ class SocketManager {
           // console.log(record);
 
           if (value) {
-            console.log('sendRunResponseToAgent: ', record);
             client.emit('request', {
               auth,
               id,
@@ -546,7 +545,6 @@ class SocketManager {
           const room = `${chat.id}-user-${user.id}`;
           socket.join(room);
 
-          console.log(user);
           const agent = await agentsdb.getAgent(payload.agent.id);
           const role = user.persona_id
             ? await personasdb.getPersonaById(user.persona_id)
@@ -700,9 +698,6 @@ class SocketManager {
           }
         }
 
-        // This will be emitted directly to the user's own channel.
-        const room = user.id;
-
         const scenarioIdHash = Identity.toHash(scenario.id);
         const personaIdHash = Identity.toHash(persona.id);
         const cohortIdHash = cohort ? Identity.toHash(cohort.id) : null;
@@ -711,6 +706,7 @@ class SocketManager {
           href = `${href}/cohort/${cohortIdHash}`;
         }
 
+        // This will be emitted directly to the user's own channel.
         this.io.to(user.id).emit(REDIRECT, {
           href
         });
@@ -907,7 +903,7 @@ class SocketManager {
 
           // Add them to this roster (unique)
           await db.addUserToRoll(rollKey, user.id);
-          const roll = await db.getRollByRoomKey(rollKey);
+          const roll = await db.getRollCallByRoomKey(rollKey);
 
           const personas = await scenariosdb.getScenarioPersonas(scenario.id);
           const users = await chatsdb.getLinkedChatUsersByChatId(chat.id);
@@ -990,7 +986,9 @@ class SocketManager {
         const { chat, user, slide, result, run } = payload;
         console.log(CHAT_CLOSED_FOR_SLIDE, { chat, user, slide, result, run });
         const room = `${chat.id}-slide-${slide.index}`;
-        cache.rollCalls.delete(room);
+
+        // cache.rollCalls.delete(room);
+        // db.removeRollCallByRoomKey(room);
 
         if (cache.timers[room]) {
           clearInterval(cache.timers[room]);
@@ -1022,6 +1020,8 @@ class SocketManager {
             }
           );
         }
+
+        socket.leave(room);
       });
 
       socket.on(TIMER_START, async ({ chat, user, slide, timeout }) => {
