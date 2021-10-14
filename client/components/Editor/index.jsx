@@ -10,6 +10,7 @@ import {
   Menu,
   Modal,
   Segment,
+  Text,
   Title
 } from '@components/UI';
 import Storage from '@utils/Storage';
@@ -547,13 +548,13 @@ class Editor extends Component {
         );
       }
 
-      menuItemsForAttachedTabularBar.push(
-        <Menu.Menu key="menu-menu-item-tabs-right" position="right">
-          <Menu.Item.Tabbable className="editor__righttitle">
-            {this.props.scenario.title}
-          </Menu.Item.Tabbable>
-        </Menu.Menu>
-      );
+      // menuItemsForAttachedTabularBar.push(
+      //   <Menu.Menu key="menu-menu-item-tabs-right" position="right">
+      //     <Menu.Item.Tabbable className="editor__righttitle">
+      //       {this.props.scenario.title}
+      //     </Menu.Item.Tabbable>
+      //   </Menu.Menu>
+      // );
     }
 
     const right = [
@@ -565,8 +566,19 @@ class Editor extends Component {
 
     const isNotReviewer = scenarioUser && !scenarioUser.is_reviewer;
     const canDisplayEditorMenu = isNotNew && (isNotReviewer || user.is_super);
-
     const pageTitle = `Editing "${scenario.title}"`;
+
+    const roles =
+      scenario.personas.length > 1
+        ? scenario.personas.map(persona => persona.name)
+        : [];
+
+    const editorMenuHeaderContent = (
+      <Fragment>
+        <Text size="large">{scenario.title}</Text>
+        {roles.length ? <Text>&nbsp;({roles.join(', ')})</Text> : null}
+      </Fragment>
+    );
 
     return modal ? (
       modal
@@ -583,6 +595,7 @@ class Editor extends Component {
             <EditorMenu
               className="em__fullwidth"
               type="scenario"
+              header={editorMenuHeaderContent}
               items={{
                 save: {
                   onClick: (...args) => {

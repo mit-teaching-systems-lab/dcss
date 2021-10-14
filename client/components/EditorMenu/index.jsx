@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Icon, Menu, Popup } from '@components/UI';
 import ConfirmableDeleteButton from './ConfirmableDeleteButton';
 import './EditorMenu.css';
 
-export default class EditorMenu extends React.Component {
+export default class EditorMenu extends Component {
   shouldComponentUpdate(newProps) {
     if (newProps.isDragging) {
       return false;
@@ -31,6 +31,11 @@ export default class EditorMenu extends React.Component {
     void isDragging;
 
     // DO NOT CHANGE THE ORDER OF PROPS!
+    const menuHeaderProps = {
+      borderless: true,
+      className: 'em__header'
+    };
+    // DO NOT CHANGE THE ORDER OF PROPS!
     const menuProps = {
       ...props,
       ...draghandle,
@@ -39,74 +44,85 @@ export default class EditorMenu extends React.Component {
       className: menuClassName
     };
 
-    return (
-      <Menu {...menuProps}>
-        {items.left && (
-          <React.Fragment>
-            {items.left
-              .filter(item => item)
-              .map((item, index) => {
-                return item.props.name ? (
-                  <Popup
-                    inverted
-                    size="tiny"
-                    key={index}
-                    content={item.props.name}
-                    trigger={item}
-                  />
-                ) : (
-                  item
-                );
-              })}
-          </React.Fragment>
-        )}
-        {items.save && (
-          <Popup
-            inverted
-            size="tiny"
-            content={`Save this ${type}`}
-            trigger={
-              <Menu.Item.Tabbable
-                aria-label={`Save ${type}`}
-                disabled={items.save.disabled}
-                name={`save-${type}`}
-                onClick={items.save.onClick}
-              >
-                <Icon name="save outline" />
-              </Menu.Item.Tabbable>
-            }
-          />
-        )}
-        {items.delete && (
-          <ConfirmableDeleteButton
-            aria-label={`Delete this ${type}`}
-            disabled={items.delete.disabled}
-            name={`delete-${type}`}
-            itemType={type}
-            onConfirm={items.delete.onConfirm}
-          />
-        )}
+    if (this.props.header) {
+      menuProps.className = `${menuProps.className} em__header_button_bar`;
+    }
 
-        {items.right && (
-          <React.Fragment>
-            {items.right
-              .filter(item => item)
-              .map((item, index) => {
-                return item.props.name ? (
-                  <Popup
-                    inverted
-                    size="tiny"
-                    key={index}
-                    content={item.props.name}
-                    trigger={item}
-                  />
-                ) : (
-                  item
-                );
-              })}
-          </React.Fragment>
-        )}
-      </Menu>
+    return (
+      <Fragment>
+        {this.props.header ? (
+          <Menu {...menuHeaderProps}>
+            <Menu.Item.Tabbable>{this.props.header}</Menu.Item.Tabbable>
+          </Menu>
+        ) : null}
+        <Menu {...menuProps}>
+          {items.left && (
+            <Fragment>
+              {items.left
+                .filter(item => item)
+                .map((item, index) => {
+                  return item.props.name ? (
+                    <Popup
+                      inverted
+                      size="tiny"
+                      key={index}
+                      content={item.props.name}
+                      trigger={item}
+                    />
+                  ) : (
+                    item
+                  );
+                })}
+            </Fragment>
+          )}
+          {items.save && (
+            <Popup
+              inverted
+              size="tiny"
+              content={`Save this ${type}`}
+              trigger={
+                <Menu.Item.Tabbable
+                  aria-label={`Save ${type}`}
+                  disabled={items.save.disabled}
+                  name={`save-${type}`}
+                  onClick={items.save.onClick}
+                >
+                  <Icon name="save outline" />
+                </Menu.Item.Tabbable>
+              }
+            />
+          )}
+          {items.delete && (
+            <ConfirmableDeleteButton
+              aria-label={`Delete this ${type}`}
+              disabled={items.delete.disabled}
+              name={`delete-${type}`}
+              itemType={type}
+              onConfirm={items.delete.onConfirm}
+            />
+          )}
+
+          {items.right && (
+            <Fragment>
+              {items.right
+                .filter(item => item)
+                .map((item, index) => {
+                  return item.props.name ? (
+                    <Popup
+                      inverted
+                      size="tiny"
+                      key={index}
+                      content={item.props.name}
+                      trigger={item}
+                    />
+                  ) : (
+                    item
+                  );
+                })}
+            </Fragment>
+          )}
+        </Menu>
+      </Fragment>
     );
   }
 }
@@ -119,6 +135,7 @@ EditorMenu.propTypes = {
   draghandle: PropTypes.object,
   isDragging: PropTypes.bool,
   index: PropTypes.number,
+  header: PropTypes.any,
   items: function(props, propName) {
     const { items } = props;
     if (propName === 'items') {
