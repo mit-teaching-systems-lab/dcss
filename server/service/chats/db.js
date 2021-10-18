@@ -304,7 +304,10 @@ exports.joinOrCreateChatFromPool = async (
       FROM scenario_persona sp
       JOIN chat USING(scenario_id)
       JOIN persona ON persona.id = sp.persona_id
-      WHERE chat.ended_at IS NULL
+      WHERE
+        chat.ended_at IS NULL
+      AND
+        chat.is_open = TRUE
       AND persona.id NOT IN (
         SELECT persona_id
         FROM chat_user
