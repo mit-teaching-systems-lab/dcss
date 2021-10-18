@@ -29,6 +29,7 @@ import {
 import Username from '@components/User/Username';
 import Identity from '@utils/Identity';
 import Layout from '@utils/Layout';
+import Moment from '@utils/Moment';
 import Storage from '@utils/Storage';
 
 import './Lobby.css';
@@ -771,6 +772,7 @@ class LobbyUserSelect extends Component {
       results: results,
       value: search || ' '
     };
+    const lastRenderTime = Moment(Date.now()).calendar();
 
     return (
       <Fragment>
@@ -816,7 +818,7 @@ class LobbyUserSelect extends Component {
           <Grid.Row>
             <p>
               <strong>
-                Search and select participants that you want to invite:
+                Search and select participants that you want to invite (list updated {lastRenderTime}):
               </strong>
             </p>
             <Search {...searchProps} />
