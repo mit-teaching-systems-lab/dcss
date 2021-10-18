@@ -909,10 +909,14 @@ class SocketManager {
           const isCompleteRoll = users.every(({ id }) => roll.includes(id));
 
           const personaIds = personas.map(({ id }) => id);
-          const isCompleteRoster = users.every(({ persona_id }) =>
+          const allUsersHavePersonas = users.every(({ persona_id }) =>
             personaIds.includes(persona_id)
           );
+          const allPersonasHaveUsers = personaIds.every(persona_id =>
+            users.some(user => user.persona_id === persona_id)
+          );
 
+          const isCompleteRoster = allUsersHavePersonas && allPersonasHaveUsers;
           // isCompleteRoll: All users are on the same slide
           // isCompleteRoster: All expected roles are filled by users
           const quorum = isCompleteRoll && isCompleteRoster;
