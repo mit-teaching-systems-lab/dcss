@@ -349,9 +349,23 @@ export class CohortScenarios extends React.Component {
                 ? finishButtonDisplay
                 : runButtonDisplay;
 
-              let runScenarioDisplay = ended_at
+              let hasRoleInExistingChat =
+                existingChat &&
+                existingChat.users.some(
+                  ({ id, persona_id }) => id === user.id && persona_id !== null
+                );
+
+              let existingChatDisplay = hasRoleInExistingChat
+                ? finishButtonDisplay
+                : 'View open rooms';
+
+              let existingRunDisplay = ended_at
                 ? rerunButtonDisplay
                 : startButtonDisplay;
+
+              let runScenarioDisplay = existingChat
+                ? existingChatDisplay
+                : existingRunDisplay;
 
               let runStartedMaybeFinished = startedAtDisplay;
 
@@ -363,7 +377,7 @@ export class CohortScenarios extends React.Component {
                 runStartedMaybeFinished = `Finished ${endedAtDisplay}.`;
               }
 
-              const gotoMyRoomButtonSize = existingChat ? 'medium' : 'mini';
+              const gotoMyRoomButtonSize = 'medium';
               const existingRun = run.created_at && !run.ended_at;
               const canShowJoinAsButtons =
                 isMultiParticipantScenario && !existingChat && !existingRun;
@@ -450,26 +464,28 @@ export class CohortScenarios extends React.Component {
                       </Button>
                       {isMultiParticipantScenario && existingChat ? (
                         <Fragment>
-                          <Button
-                            compact
-                            data-testid="see-my-room-lobby"
-                            size={gotoMyRoomButtonSize}
-                            onClick={() => {
-                              this.setState({
-                                room: {
-                                  isOpen: true,
-                                  lobby: {
+                          {!existingChat.is_open ? (
+                            <Button
+                              compact
+                              data-testid="see-my-room-lobby"
+                              size={gotoMyRoomButtonSize}
+                              onClick={() => {
+                                this.setState({
+                                  room: {
                                     isOpen: true,
-                                    chat: existingChat
-                                  },
-                                  scenario
-                                }
-                              });
-                            }}
-                          >
-                            <Icon className="primary" name="group" />
-                            Go to my room&apos;s lobby
-                          </Button>
+                                    lobby: {
+                                      isOpen: true,
+                                      chat: existingChat
+                                    },
+                                    scenario
+                                  }
+                                });
+                              }}
+                            >
+                              <Icon className="primary" name="group" />
+                              Go to my room&apos;s lobby
+                            </Button>
+                          ) : null}
                           <Button
                             compact
                             data-testid="close-my-room"
