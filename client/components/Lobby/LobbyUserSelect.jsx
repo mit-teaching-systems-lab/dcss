@@ -774,7 +774,7 @@ class LobbyUserSelect extends Component {
     };
     const lastRenderTime = Moment(Date.now()).calendar();
 
-    return (
+    return chat.is_open ? null : (
       <Fragment>
         <Grid padded className="l__invite not-modal">
           <Grid.Row>
@@ -818,7 +818,8 @@ class LobbyUserSelect extends Component {
           <Grid.Row>
             <p>
               <strong>
-                Search and select participants that you want to invite (list updated {lastRenderTime}):
+                Search and select participants that you want to invite (list
+                updated {lastRenderTime}):
               </strong>
             </p>
             <Search {...searchProps} />
