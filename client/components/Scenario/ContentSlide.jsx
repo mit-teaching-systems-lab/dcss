@@ -1,11 +1,24 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { getChat, getLinkedChatUsersByChatId } from '@actions/chat';
+import { getChat, getLinkedChatUsersByChatId, setChat } from '@actions/chat';
+import { setRun } from '@actions/run';
 import { getResponse } from '@actions/response';
 import SlideComponents from '@components/SlideComponents';
-import { Button, Card, Icon, Popup } from '@components/UI';
+import {
+  Button,
+  Card,
+  Dropdown,
+  Header,
+  Icon,
+  Menu,
+  Modal,
+  Popup,
+  Text
+} from '@components/UI';
 import { POINTER_SELECT, SLIDE_ARRIVAL } from '@hoc/withRunEventCapturing';
+import Identity from '@utils/Identity';
 import Layout from '@utils/Layout';
 import Storage from '@utils/Storage';
 
@@ -99,6 +112,9 @@ class ContentSlide extends React.Component {
 
     this.state = {
       isReady: false,
+      confirmation: {
+        isOpen: false
+      },
       // Provides a reference to compare
       // prompt responseIds as the value
       // changes.
@@ -404,85 +420,196 @@ class ContentSlide extends React.Component {
       ? centeredOrMarginOverrideCardClass
       : centeredCardClass;
 
+    const onEndScenarioConfirm = async () => {
+      const time = new Date().toISOString();
+      const { chat, run } = this.props;
+      if (this.isMultiparticipant) {
+        this.props.setChat(chat.id, {
+          deleted_at: time,
+          ended_at: time
+        });
+      }
+      if (run) {
+        this.props.setRun(run.id, {
+          ended_at: time
+        });
+      }
+
+      const url = this.isCohortScenarioRun
+        ? `/cohort/${Identity.toHash(this.props.cohort.id)}`
+        : `/scenarios`;
+
+      await this.props.onSubmit();
+
+      this.props.history.push(url);
+    };
+
+    const onEndScenarioClose = () => {
+      this.setState({
+        confirmation: {
+          isOpen: false
+        }
+      });
+    };
+
     return (
-      <Card
-        centered
-        id={slide.id}
-        key={slide.id}
-        className={resolvedCardClass}
-        onPointerUp={onPointerUp}
-      >
-        {slide.title ? (
-          <Card.Content className="scenario__slide-card-header">
-            <Card.Header tabIndex="0">{slide.title}</Card.Header>
-          </Card.Content>
-        ) : null}
-        <Card.Content
-          tabIndex="0"
-          className={scenarioCardContentClass}
-          key={`content${slide.id}`}
+      <Fragment>
+        <Card
+          centered
+          id={slide.id}
+          key={slide.id}
+          className={resolvedCardClass}
+          onPointerUp={onPointerUp}
         >
-          <SlideComponents
-            {...slideComponentsProps}
-            components={slide.components}
-            onResponseChange={onResponseChange}
-          />
-        </Card.Content>
-        {!isContextual ? (
-          <Card.Content extra>
-            <Popup
-              inverted
-              size="tiny"
-              content="Go to the previous slide"
-              trigger={
-                <Button
-                  aria-label="Go to the previous slide"
-                  color="grey"
-                  content="Previous"
-                  floated="left"
-                  onClick={onBackClick}
-                />
-              }
-            />
-            {!hasOwnNavigation ? (
+          <Card.Content className="scenario__slide-card-header">
+            <Card.Header tabIndex="0">
               <Button.Group floated="right">
-                {hasPrompt && !hasPendingRequiredFields && !hasChanged ? (
-                  <Popup
-                    inverted
-                    size="tiny"
-                    content={skipButtonTip}
-                    trigger={
-                      <Button
-                        aria-label={skipButtonTip}
-                        color={skipButtonColor}
-                        name={skipOrKeep}
-                        onClick={onSkip}
-                        content={skipButtonContent}
-                      />
-                    }
-                  />
-                ) : (
-                  <Popup
-                    inverted
-                    size="tiny"
-                    content={fwdButtonTip}
-                    trigger={<Button {...fwdButtonProps} />}
-                  />
-                )}
+                <Dropdown item icon="bars" tabIndex={0}>
+                  <Dropdown.Menu>
+                    {this.isCohortScenarioRun ? (
+                      <Menu.Item.Tabbable
+                        tabIndex={0}
+                        onClick={() => {
+                          this.props.history.push(
+                            `/cohort/${Identity.toHash(this.props.cohort.id)}`
+                          );
+                        }}
+                      >
+                        Return to cohort
+                      </Menu.Item.Tabbable>
+                    ) : null}
+                    <Menu.Item.Tabbable
+                      tabIndex={0}
+                      onClick={() => {
+                        this.setState({
+                          confirmation: {
+                            isOpen: true
+                          }
+                        });
+                      }}
+                    >
+                      End scenario run
+                    </Menu.Item.Tabbable>
+                  </Dropdown.Menu>
+                </Dropdown>
               </Button.Group>
-            ) : null}
+              {slide.title || null}
+            </Card.Header>
           </Card.Content>
+
+          <Card.Content
+            tabIndex="0"
+            className={scenarioCardContentClass}
+            key={`content${slide.id}`}
+          >
+            <SlideComponents
+              {...slideComponentsProps}
+              components={slide.components}
+              onResponseChange={onResponseChange}
+            />
+          </Card.Content>
+          {!isContextual ? (
+            <Card.Content extra>
+              <Popup
+                inverted
+                size="tiny"
+                content="Go to the previous slide"
+                trigger={
+                  <Button
+                    aria-label="Go to the previous slide"
+                    color="grey"
+                    content="Previous"
+                    floated="left"
+                    onClick={onBackClick}
+                  />
+                }
+              />
+              {!hasOwnNavigation ? (
+                <Button.Group floated="right">
+                  {hasPrompt && !hasPendingRequiredFields && !hasChanged ? (
+                    <Popup
+                      inverted
+                      size="tiny"
+                      content={skipButtonTip}
+                      trigger={
+                        <Button
+                          aria-label={skipButtonTip}
+                          color={skipButtonColor}
+                          name={skipOrKeep}
+                          onClick={onSkip}
+                          content={skipButtonContent}
+                        />
+                      }
+                    />
+                  ) : (
+                    <Popup
+                      inverted
+                      size="tiny"
+                      content={fwdButtonTip}
+                      trigger={<Button {...fwdButtonProps} />}
+                    />
+                  )}
+                </Button.Group>
+              ) : null}
+            </Card.Content>
+          ) : null}
+        </Card>
+        {this.state.confirmation.isOpen ? (
+          <Modal.Accessible open>
+            <Modal
+              closeIcon
+              open
+              aria-modal="true"
+              role="dialog"
+              size="small"
+              onClose={onEndScenarioClose}
+            >
+              <Header icon="group" content="End this scenario?" />
+              <Modal.Content>
+                <Text>
+                  Are you sure you want to end this scenario run?{' '}
+                  {this.isMultiparticipant ? (
+                    <Fragment>
+                      <br />
+                      <br />
+                      If you are currently in an active chat, ending this
+                      scenario will close the chat for all other participants.
+                    </Fragment>
+                  ) : null}
+                </Text>
+              </Modal.Content>
+              <Modal.Actions>
+                <Button.Group fluid>
+                  <Button
+                    primary
+                    aria-label="Yes"
+                    onClick={onEndScenarioConfirm}
+                  >
+                    Yes
+                  </Button>
+                  <Button.Or />
+                  <Button aria-label="No" onClick={onEndScenarioClose}>
+                    No
+                  </Button>
+                </Button.Group>
+              </Modal.Actions>
+              <div data-testid="end-scenario-dialog" />
+            </Modal>
+          </Modal.Accessible>
         ) : null}
-      </Card>
+      </Fragment>
     );
   }
 }
 
 ContentSlide.propTypes = {
   chat: PropTypes.object,
+  cohort: PropTypes.object,
   getChat: PropTypes.func,
+  setChat: PropTypes.func,
   getLinkedChatUsersByChatId: PropTypes.func,
   getResponse: PropTypes.func,
+  history: PropTypes.object,
   isContextual: PropTypes.bool,
   isLastSlide: PropTypes.bool,
   onGotoClick: PropTypes.func,
@@ -490,27 +617,33 @@ ContentSlide.propTypes = {
   onNextClick: PropTypes.func,
   onRequiredPromptChange: PropTypes.func,
   onResponseChange: PropTypes.func,
+  onSubmit: PropTypes.func,
   responsesById: PropTypes.object,
   run: PropTypes.object,
   scenario: PropTypes.object,
+  setRun: PropTypes.func,
   slide: PropTypes.object,
   saveRunEvent: PropTypes.func,
   user: PropTypes.object
 };
 
 const mapStateToProps = (state, ownProps) => {
-  const { chat, run, responsesById, scenario, user } = state;
+  const { chat, cohort, run, responsesById, scenario, user } = state;
   const isContextual = ownProps.isContextual || false;
-  return { chat, isContextual, run, responsesById, scenario, user };
+  return { chat, cohort, isContextual, run, responsesById, scenario, user };
 };
 
 const mapDispatchToProps = dispatch => ({
   getChat: id => dispatch(getChat(id)),
   getLinkedChatUsersByChatId: id => dispatch(getLinkedChatUsersByChatId(id)),
-  getResponse: (...params) => dispatch(getResponse(...params))
+  getResponse: (...params) => dispatch(getResponse(...params)),
+  setChat: (id, params) => dispatch(setChat(id, params)),
+  setRun: (...params) => dispatch(setRun(...params))
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ContentSlide);
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(ContentSlide)
+);

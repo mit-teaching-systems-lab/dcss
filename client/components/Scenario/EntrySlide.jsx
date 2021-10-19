@@ -228,7 +228,7 @@ class EntrySlide extends React.Component {
       <Button.Group fluid>
         {consentIsRevocable && (
           <React.Fragment>
-            <Button onClick={this.onClick} {...revokeOrRestore}>
+            <Button tabIndex={0} onClick={this.onClick} {...revokeOrRestore}>
               {revokeOrRestore.negative
                 ? 'Revoke my consent'
                 : 'Restore my consent'}
@@ -236,7 +236,7 @@ class EntrySlide extends React.Component {
             <Button.Or />
           </React.Fragment>
         )}
-        <Button color="green" onClick={continueThisScenario}>
+        <Button tabIndex={0} color="green" onClick={continueThisScenario}>
           Continue this scenario
         </Button>
       </Button.Group>
@@ -286,7 +286,7 @@ class EntrySlide extends React.Component {
               {mustShowLobbyButton ? (
                 <Button
                   floated="right"
-                  tabIndex="0"
+                  tabIndex={0}
                   onClick={() => {
                     this.setState({
                       lobby: {
@@ -303,13 +303,13 @@ class EntrySlide extends React.Component {
             </Card.Header>
           </Card.Content>
           <Card.Content className="scenario__slide-card-content-lobby">
-            <p tabIndex="0" className="entryslide__description-inner-container">
+            <p tabIndex={0} className="entryslide__description-inner-container">
               {description}
             </p>
 
             {run && run.updated_at !== null ? (
               <Message
-                tabIndex="0"
+                tabIndex={0}
                 size="large"
                 color="olive"
                 header="In Progress"
@@ -318,7 +318,7 @@ class EntrySlide extends React.Component {
             ) : null}
             {consent ? (
               <Message
-                tabIndex="0"
+                tabIndex={0}
                 size="large"
                 color="yellow"
                 header="Consent Agreement"
@@ -329,11 +329,11 @@ class EntrySlide extends React.Component {
           <Card.Content extra>
             {!isConsentAgreementAcknowledged ? (
               <Button.Group fluid>
-                <Button onClick={this.onClick} positive>
+                <Button tabIndex={0} onClick={this.onClick} positive>
                   Yes, I consent
                 </Button>
                 <Button.Or />
-                <Button onClick={this.onClick} negative>
+                <Button tabIndex={0} onClick={this.onClick} negative>
                   No, I do not consent
                 </Button>
               </Button.Group>

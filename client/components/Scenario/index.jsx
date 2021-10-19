@@ -315,6 +315,7 @@ class Scenario extends Component {
           key={index}
           cohortId={cohortId}
           isLastSlide={isLastSlide}
+          onSubmit={this.props.onSubmit}
           onBackClick={this.getOnClickHandler('back')}
           onGotoClick={this.getOnClickHandler('goto')}
           onNextClick={this.getOnClickHandler(isLastSlide ? 'finish' : 'next')}
