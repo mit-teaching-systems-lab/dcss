@@ -139,7 +139,9 @@ exports[`With cohort Assign & unassign roles 2`] = `
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -486,7 +488,9 @@ exports[`With cohort Assign & unassign roles 3`] = `
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -868,7 +872,9 @@ exports[`With cohort Assign & unassign roles 4`] = `
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -1231,7 +1237,9 @@ exports[`With cohort Assign & unassign roles 5`] = `
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -1629,7 +1637,9 @@ exports[`With cohort Assigning roles enables Send Invites button 2`] = `
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -1976,7 +1986,9 @@ exports[`With cohort Assigning roles enables Send Invites button 3`] = `
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -2358,7 +2370,9 @@ exports[`With cohort Assigning roles enables Send Invites button 4`] = `
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -2721,7 +2735,9 @@ exports[`With cohort Assigning roles enables Send Invites button 5`] = `
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -3082,7 +3098,9 @@ exports[`With cohort Assigning roles enables Send Invites button 6`] = `
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -3436,7 +3454,9 @@ exports[`With cohort Both Send Invites buttons are disabled 2`] = `
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -3795,7 +3815,9 @@ exports[`With cohort Click in search shows default list of available users 2`] =
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -4145,7 +4167,9 @@ exports[`With cohort Click in search shows default list of available users 3`] =
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -4508,7 +4532,9 @@ exports[`With cohort Dismiss instructions 2`] = `
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -4831,7 +4857,9 @@ exports[`With cohort Dismiss instructions 3`] = `
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -5194,7 +5222,9 @@ exports[`With cohort Select & unselect participant 2`] = `
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -5541,7 +5571,9 @@ exports[`With cohort Select & unselect participant 3`] = `
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -5928,7 +5960,9 @@ exports[`With cohort Select & unselect participant 4`] = `
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -6212,7 +6246,9 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 2`] = 
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -6559,7 +6595,9 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 3`] = 
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -6941,7 +6979,9 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 4`] = 
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -7323,7 +7363,9 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 5`] = 
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -7686,7 +7728,9 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 6`] = 
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -8049,7 +8093,9 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 7`] = 
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -8410,7 +8456,9 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 8`] = 
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -8750,7 +8798,9 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 9`] = 
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -9090,7 +9140,9 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 10`] =
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -9632,7 +9684,9 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 11`] =
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -9972,7 +10026,9 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 12`] =
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -10312,7 +10368,9 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 13`] =
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -10854,7 +10912,9 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 14`] =
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -11410,7 +11470,9 @@ exports[`With cohort Selecting from search results adds a participant 2`] = `
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -11755,7 +11817,9 @@ exports[`With cohort Selecting from search results adds a participant 3`] = `
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -12153,7 +12217,9 @@ exports[`With cohort Selecting too many shows a warning, discard selection 2`] =
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -12505,7 +12571,9 @@ exports[`With cohort Selecting too many shows a warning, discard selection 3`] =
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -12789,7 +12857,9 @@ exports[`With cohort Selecting too many shows a warning, discard selection 4`] =
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -13171,7 +13241,9 @@ exports[`With cohort Selecting too many shows a warning, discard selection 5`] =
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -13569,7 +13641,9 @@ exports[`With cohort Selecting too many shows a warning, discard selection 6`] =
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -14048,7 +14122,9 @@ exports[`With cohort Selecting too many shows a warning, discard selection 7`] =
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -14458,7 +14534,9 @@ exports[`With cohort Selecting too many shows a warning, remove an invite 2`] = 
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -14808,7 +14886,9 @@ exports[`With cohort Selecting too many shows a warning, remove an invite 3`] = 
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -15090,7 +15170,9 @@ exports[`With cohort Selecting too many shows a warning, remove an invite 4`] = 
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -15470,7 +15552,9 @@ exports[`With cohort Selecting too many shows a warning, remove an invite 5`] = 
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -15869,7 +15953,9 @@ exports[`With cohort Selecting too many shows a warning, remove an invite 6`] = 
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -16349,7 +16435,9 @@ exports[`With cohort Selecting too many shows a warning, remove an invite 7`] = 
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -16873,7 +16961,9 @@ exports[`With cohort Typing in search shows filtered list of available users 2`]
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -17223,7 +17313,9 @@ exports[`With cohort Typing in search shows filtered list of available users 3`]
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -17523,7 +17615,9 @@ exports[`Without cohort Assign & unassign roles 2`] = `
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -17870,7 +17964,9 @@ exports[`Without cohort Assign & unassign roles 3`] = `
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -18252,7 +18348,9 @@ exports[`Without cohort Assign & unassign roles 4`] = `
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -18615,7 +18713,9 @@ exports[`Without cohort Assign & unassign roles 5`] = `
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -19013,7 +19113,9 @@ exports[`Without cohort Assigning roles enables Send Invites button 2`] = `
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -19360,7 +19462,9 @@ exports[`Without cohort Assigning roles enables Send Invites button 3`] = `
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -19742,7 +19846,9 @@ exports[`Without cohort Assigning roles enables Send Invites button 4`] = `
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -20105,7 +20211,9 @@ exports[`Without cohort Assigning roles enables Send Invites button 5`] = `
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -20466,7 +20574,9 @@ exports[`Without cohort Assigning roles enables Send Invites button 6`] = `
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -20824,7 +20934,9 @@ exports[`Without cohort Both Send Invites buttons are disabled 2`] = `
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -21187,7 +21299,9 @@ exports[`Without cohort Click in search shows default list of available users 2`
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -21539,7 +21653,9 @@ exports[`Without cohort Click in search shows default list of available users 3`
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -21902,7 +22018,9 @@ exports[`Without cohort Dismiss instructions 2`] = `
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -22225,7 +22343,9 @@ exports[`Without cohort Dismiss instructions 3`] = `
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -22588,7 +22708,9 @@ exports[`Without cohort Select & unselect participant 2`] = `
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -22935,7 +23057,9 @@ exports[`Without cohort Select & unselect participant 3`] = `
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -23322,7 +23446,9 @@ exports[`Without cohort Select & unselect participant 4`] = `
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -23606,7 +23732,9 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 2`]
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -23953,7 +24081,9 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 3`]
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -24335,7 +24465,9 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 4`]
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -24717,7 +24849,9 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 5`]
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -25080,7 +25214,9 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 6`]
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -25443,7 +25579,9 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 7`]
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -25804,7 +25942,9 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 8`]
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -26144,7 +26284,9 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 9`]
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -26484,7 +26626,9 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 10`
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -27026,7 +27170,9 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 11`
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -27366,7 +27512,9 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 12`
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -27706,7 +27854,9 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 13`
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -28248,7 +28398,9 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 14`
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -28808,7 +28960,9 @@ exports[`Without cohort Selecting from search results adds a participant 2`] = `
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -29155,7 +29309,9 @@ exports[`Without cohort Selecting from search results adds a participant 3`] = `
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -29553,7 +29709,9 @@ exports[`Without cohort Selecting too many shows a warning, discard selection 2`
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -29905,7 +30063,9 @@ exports[`Without cohort Selecting too many shows a warning, discard selection 3`
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -30189,7 +30349,9 @@ exports[`Without cohort Selecting too many shows a warning, discard selection 4`
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -30571,7 +30733,9 @@ exports[`Without cohort Selecting too many shows a warning, discard selection 5`
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -30969,7 +31133,9 @@ exports[`Without cohort Selecting too many shows a warning, discard selection 6`
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -31448,7 +31614,9 @@ exports[`Without cohort Selecting too many shows a warning, discard selection 7`
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -31862,7 +32030,9 @@ exports[`Without cohort Selecting too many shows a warning, remove an invite 2`]
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -32214,7 +32384,9 @@ exports[`Without cohort Selecting too many shows a warning, remove an invite 3`]
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -32498,7 +32670,9 @@ exports[`Without cohort Selecting too many shows a warning, remove an invite 4`]
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -32880,7 +33054,9 @@ exports[`Without cohort Selecting too many shows a warning, remove an invite 5`]
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -33278,7 +33454,9 @@ exports[`Without cohort Selecting too many shows a warning, remove an invite 6`]
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -33757,7 +33935,9 @@ exports[`Without cohort Selecting too many shows a warning, remove an invite 7`]
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -34285,7 +34465,9 @@ exports[`Without cohort Typing in search shows filtered list of available users 
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -34637,7 +34819,9 @@ exports[`Without cohort Typing in search shows filtered list of available users 
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div

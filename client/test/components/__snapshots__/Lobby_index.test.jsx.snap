@@ -81,7 +81,9 @@ exports[`Fallback: chat missing, use scenario and cohort to request chat 1`] = `
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -513,7 +515,9 @@ exports[`Fallback: chat missing, use scenario and cohort to request chat 4`] = `
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -945,7 +949,9 @@ exports[`Fallback: chat missing, use scenario to request chat 1`] = `
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -1377,7 +1383,9 @@ exports[`Fallback: chat missing, use scenario to request chat 4`] = `
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -1809,7 +1817,9 @@ exports[`Fallback: chat, scenario, cohort are not yet loaded, use provided props
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -2241,7 +2251,9 @@ exports[`Fallback: chat, scenario, cohort are not yet loaded, use provided props
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -2673,7 +2685,9 @@ exports[`Fallback: cohort expected, but not yet loaded 1`] = `
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -3067,7 +3081,9 @@ exports[`Fallback: cohort expected, but not yet loaded 4`] = `
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -3461,7 +3477,9 @@ exports[`Fallback: scenario missing 1`] = `
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -3893,7 +3911,9 @@ exports[`Fallback: scenario missing 4`] = `
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -4325,7 +4345,9 @@ exports[`Fallback: scenario object present, unloaded 1`] = `
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -4757,7 +4779,9 @@ exports[`Fallback: scenario object present, unloaded 4`] = `
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -5189,7 +5213,9 @@ exports[`Lobby visited by a non-facilitator user 1`] = `
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -5558,7 +5584,9 @@ exports[`Lobby visited by a non-facilitator user 4`] = `
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -5927,7 +5955,9 @@ exports[`Lobby visited in a cohort 1`] = `
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -6299,7 +6329,9 @@ exports[`Lobby visited in a cohort 4`] = `
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -6693,7 +6725,9 @@ exports[`Lobby visited in a cohort, asCard: true 1`] = `
               >
                 <p>
                   <strong>
-                    Search and select participants that you want to invite:
+                    Search and select participants that you want to invite (list updated 
+                    HH:mm A
+                    ):
                   </strong>
                 </p>
                 <div
@@ -7106,7 +7140,9 @@ exports[`Lobby visited in a cohort, asCard: true 4`] = `
               >
                 <p>
                   <strong>
-                    Search and select participants that you want to invite:
+                    Search and select participants that you want to invite (list updated 
+                    HH:mm A
+                    ):
                   </strong>
                 </p>
                 <div
@@ -7497,7 +7533,9 @@ exports[`Lobby visited in a run 1`] = `
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -7885,7 +7923,9 @@ exports[`Lobby visited in a run 4`] = `
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -8295,7 +8335,9 @@ exports[`Lobby visited in a run, asCard: true 1`] = `
               >
                 <p>
                   <strong>
-                    Search and select participants that you want to invite:
+                    Search and select participants that you want to invite (list updated 
+                    HH:mm A
+                    ):
                   </strong>
                 </p>
                 <div
@@ -8724,7 +8766,9 @@ exports[`Lobby visited in a run, asCard: true 4`] = `
               >
                 <p>
                   <strong>
-                    Search and select participants that you want to invite:
+                    Search and select participants that you want to invite (list updated 
+                    HH:mm A
+                    ):
                   </strong>
                 </p>
                 <div
@@ -9131,7 +9175,9 @@ exports[`With cohort, Receives RUN_CHAT_LINK, calls getChatUsersByChatId 1`] = `
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -9579,7 +9625,9 @@ exports[`With cohort, Receives RUN_CHAT_LINK, calls getChatUsersByChatId 4`] = `
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -10027,7 +10075,9 @@ exports[`Without cohort, Receives RUN_CHAT_LINK, calls getLinkedChatUsersByChatI
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -10528,7 +10578,9 @@ exports[`Without cohort, Receives RUN_CHAT_LINK, calls getLinkedChatUsersByChatI
       >
         <p>
           <strong>
-            Search and select participants that you want to invite:
+            Search and select participants that you want to invite (list updated 
+            HH:mm A
+            ):
           </strong>
         </p>
         <div
@@ -11051,7 +11103,9 @@ exports[`props.asCard 1`] = `
               >
                 <p>
                   <strong>
-                    Search and select participants that you want to invite:
+                    Search and select participants that you want to invite (list updated 
+                    HH:mm A
+                    ):
                   </strong>
                 </p>
                 <div
@@ -11524,7 +11578,9 @@ exports[`props.asCard 4`] = `
               >
                 <p>
                   <strong>
-                    Search and select participants that you want to invite:
+                    Search and select participants that you want to invite (list updated 
+                    HH:mm A
+                    ):
                   </strong>
                 </p>
                 <div

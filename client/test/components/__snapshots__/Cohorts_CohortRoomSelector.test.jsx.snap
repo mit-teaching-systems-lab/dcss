@@ -3979,7 +3979,9 @@ exports[`Create a room for this scenario, user will invite, proceed 4`] = `
           >
             <p>
               <strong>
-                Search and select participants that you want to invite:
+                Search and select participants that you want to invite (list updated 
+                HH:mm A
+                ):
               </strong>
             </p>
             <div
@@ -4461,7 +4463,9 @@ exports[`Create a room for this scenario, user will invite, proceed 5`] = `
           >
             <p>
               <strong>
-                Search and select participants that you want to invite:
+                Search and select participants that you want to invite (list updated 
+                HH:mm A
+                ):
               </strong>
             </p>
             <div

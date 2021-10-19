@@ -202,7 +202,7 @@ exports[`Facilitator has an option to open scenarios selector 2`] = `
               class="meta"
             >
               <button
-                class="ui mini compact button"
+                class="ui medium compact button"
                 data-testid="run-cohort-as-participant"
               >
                 <i
@@ -386,7 +386,7 @@ exports[`Facilitator has an option to open scenarios selector 3`] = `
               class="meta"
             >
               <button
-                class="ui mini compact button"
+                class="ui medium compact button"
                 data-testid="run-cohort-as-participant"
               >
                 <i
@@ -570,7 +570,7 @@ exports[`Facilitator has an option to open scenarios selector 4`] = `
               class="meta"
             >
               <button
-                class="ui mini compact button"
+                class="ui medium compact button"
                 data-testid="run-cohort-as-participant"
               >
                 <i
@@ -1013,7 +1013,7 @@ exports[`Open Edit scenarios 2`] = `
               class="meta"
             >
               <button
-                class="ui mini compact button"
+                class="ui medium compact button"
                 data-testid="run-cohort-as-participant"
               >
                 <i
@@ -1197,7 +1197,7 @@ exports[`Open Edit scenarios 3`] = `
               class="meta"
             >
               <button
-                class="ui mini compact button"
+                class="ui medium compact button"
                 data-testid="run-cohort-as-participant"
               >
                 <i
@@ -1381,7 +1381,7 @@ exports[`Open Edit scenarios 4`] = `
               class="meta"
             >
               <button
-                class="ui mini compact button"
+                class="ui medium compact button"
                 data-testid="run-cohort-as-participant"
               >
                 <i
@@ -1589,7 +1589,7 @@ exports[`Participant does not have an option to open scenarios selector 2`] = `
           class="meta"
         >
           <button
-            class="ui mini compact button"
+            class="ui medium compact button"
             data-testid="run-cohort-as-participant"
           >
             <i
@@ -1796,7 +1796,7 @@ exports[`Render 1 1 2`] = `
               class="meta"
             >
               <button
-                class="ui mini compact button"
+                class="ui medium compact button"
                 data-testid="run-cohort-as-participant"
               >
                 <i
@@ -2005,7 +2005,7 @@ exports[`Render 2 1 2`] = `
               class="meta"
             >
               <button
-                class="ui mini compact button"
+                class="ui medium compact button"
                 data-testid="run-cohort-as-participant"
               >
                 <i
@@ -2214,7 +2214,7 @@ exports[`Run as participant 2`] = `
               class="meta"
             >
               <button
-                class="ui mini compact button"
+                class="ui medium compact button"
                 data-testid="run-cohort-as-participant"
               >
                 <i
@@ -2398,7 +2398,7 @@ exports[`Run as participant 4`] = `
               class="meta"
             >
               <button
-                class="ui mini compact button"
+                class="ui medium compact button"
                 data-testid="run-cohort-as-participant"
               >
                 <i
@@ -2607,7 +2607,7 @@ exports[`Scenarios have multi-participant/single-participant icons 2`] = `
               class="meta"
             >
               <button
-                class="ui mini compact button"
+                class="ui medium compact button"
                 data-testid="run-cohort-as-participant"
               >
                 <i
@@ -2791,7 +2791,7 @@ exports[`Scenarios have multi-participant/single-participant icons 3`] = `
               class="meta"
             >
               <button
-                class="ui mini compact button"
+                class="ui medium compact button"
                 data-testid="run-cohort-as-participant"
               >
                 <i
@@ -2975,7 +2975,7 @@ exports[`Scenarios have multi-participant/single-participant icons 4`] = `
               class="meta"
             >
               <button
-                class="ui mini compact button"
+                class="ui medium compact button"
                 data-testid="run-cohort-as-participant"
               >
                 <i

@@ -65,6 +65,9 @@ jest.mock('@utils/Moment', () => {
     __esModule: true,
     default: function(time) {
       return {
+        calendar() {
+          return 'HH:mm A';
+        },
         format() {
           return 'HH:mm A';
         }

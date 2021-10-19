@@ -6,6 +6,40 @@ exports[`Render 1 1 1`] = `
     class="ui centered card scenario__slide-card-preview"
   >
     <div
+      class="content scenario__slide-card-header"
+    >
+      <div
+        class="header"
+        tabindex="0"
+      >
+        <div
+          class="ui right floated buttons"
+        >
+          <div
+            aria-expanded="false"
+            class="ui item dropdown"
+            role="listbox"
+            tabindex="0"
+          >
+            <i
+              aria-hidden="true"
+              class="bars icon"
+            />
+            <div
+              class="menu transition"
+            >
+              <a
+                class="item"
+                tabindex="0"
+              >
+                End scenario run
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
       class="content scenario__slide-card-content-preview no-title"
       tabindex="0"
     />

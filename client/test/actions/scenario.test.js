@@ -734,10 +734,14 @@ describe('GET_SCENARIOS_SUCCESS', () => {
       const returnValue = await store.dispatch(actions.getScenariosSlice());
       expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
         Array [
+          "/api/scenarios/count",
+        ]
+      `);
+      expect(fetch.mock.calls[1]).toMatchInlineSnapshot(`
+        Array [
           "/api/scenarios/slice/DESC/0/30",
         ]
       `);
-      expect(fetch.mock.calls[1]).toMatchInlineSnapshot(`undefined`);
 
       expect(store.getState().scenariosById).toEqual(makeById([]));
       expect(store.getState().scenarios).toEqual([]);
@@ -768,6 +772,7 @@ describe('GET_SCENARIOS_SUCCESS', () => {
         };
       });
 
+      await store.dispatch(actions.getScenariosCount({ refresh: true }));
       const returnValue = await store.dispatch(actions.getScenariosSlice());
       expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
         Array [
@@ -810,6 +815,7 @@ describe('GET_SCENARIOS_SUCCESS', () => {
         };
       });
 
+      await store.dispatch(actions.getScenariosCount({ refresh: true }));
       const returnValue = await store.dispatch(
         actions.getScenariosSlice('ASC')
       );
@@ -854,6 +860,7 @@ describe('GET_SCENARIOS_SUCCESS', () => {
         };
       });
 
+      await store.dispatch(actions.getScenariosCount({ refresh: true }));
       const returnValue = await store.dispatch(
         actions.getScenariosSlice('ASC')
       );
