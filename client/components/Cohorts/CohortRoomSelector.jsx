@@ -333,8 +333,12 @@ export class CohortRoomSelector extends React.Component {
           {isUserHost ? (
             <Card.Content extra>
               <Button.Group fluid widths={2}>
-                {miniSendInvitesButton}
-                <Button.Or />
+                {chat && !chat.is_open ? (
+                  <Fragment>
+                    {miniSendInvitesButton}
+                    <Button.Or />
+                  </Fragment>
+                ) : null}
                 {miniCloseChatButton}
               </Button.Group>
             </Card.Content>
