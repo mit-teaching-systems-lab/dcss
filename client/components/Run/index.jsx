@@ -196,6 +196,14 @@ class Run extends Component {
           const isUserRoleAssigned =
             isUserInChat && userInChat.persona_id != null;
           if (!isUserRoleAssigned) {
+            const allRolesFilled = this.props.scenario.personas.every(persona =>
+              this.props.chat.users.some(user => user.persona_id === persona.id)
+            );
+
+            if (allRolesFilled) {
+              // TODO: handle stale invites
+            }
+
             if (this.props.invite) {
               const persona = this.props.scenario.personas.find(
                 persona => persona.id === this.props.invite.persona_id
