@@ -423,24 +423,30 @@ class ContentSlide extends React.Component {
     const onEndScenarioConfirm = async () => {
       const time = new Date().toISOString();
       const { chat, run } = this.props;
+      const url = this.isCohortScenarioRun
+        ? `/cohort/${Identity.toHash(this.props.cohort.id)}`
+        : `/scenarios`;
+
+      // Ensure that any pending responses are captured.
+      await this.props.onSubmit();
+
+      // Close the chat for everyone
       if (this.isMultiparticipant) {
         this.props.setChat(chat.id, {
           deleted_at: time,
           ended_at: time
         });
       }
+
+      // Close this run (which will prompt other participants to
+      // either end or continue alone)
       if (run) {
         this.props.setRun(run.id, {
           ended_at: time
         });
       }
 
-      const url = this.isCohortScenarioRun
-        ? `/cohort/${Identity.toHash(this.props.cohort.id)}`
-        : `/scenarios`;
-
-      await this.props.onSubmit();
-
+      // Redirect to either cohort or scenarios lists
       this.props.history.push(url);
     };
 
@@ -463,36 +469,38 @@ class ContentSlide extends React.Component {
         >
           <Card.Content className="scenario__slide-card-header">
             <Card.Header tabIndex="0">
-              <Button.Group floated="right">
-                <Dropdown item icon="bars" tabIndex={0}>
-                  <Dropdown.Menu>
-                    {this.isCohortScenarioRun ? (
+              {this.isScenarioRun ? (
+                <Button.Group floated="right">
+                  <Dropdown item icon="bars" tabIndex={0}>
+                    <Dropdown.Menu>
+                      {this.isCohortScenarioRun ? (
+                        <Menu.Item.Tabbable
+                          tabIndex={0}
+                          onClick={() => {
+                            this.props.history.push(
+                              `/cohort/${Identity.toHash(this.props.cohort.id)}`
+                            );
+                          }}
+                        >
+                          Return to cohort
+                        </Menu.Item.Tabbable>
+                      ) : null}
                       <Menu.Item.Tabbable
                         tabIndex={0}
                         onClick={() => {
-                          this.props.history.push(
-                            `/cohort/${Identity.toHash(this.props.cohort.id)}`
-                          );
+                          this.setState({
+                            confirmation: {
+                              isOpen: true
+                            }
+                          });
                         }}
                       >
-                        Return to cohort
+                        End scenario run
                       </Menu.Item.Tabbable>
-                    ) : null}
-                    <Menu.Item.Tabbable
-                      tabIndex={0}
-                      onClick={() => {
-                        this.setState({
-                          confirmation: {
-                            isOpen: true
-                          }
-                        });
-                      }}
-                    >
-                      End scenario run
-                    </Menu.Item.Tabbable>
-                  </Dropdown.Menu>
-                </Dropdown>
-              </Button.Group>
+                    </Dropdown.Menu>
+                  </Dropdown>
+                </Button.Group>
+              ) : null}
               {slide.title || null}
             </Card.Header>
           </Card.Content>
