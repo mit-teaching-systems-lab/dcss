@@ -19,6 +19,7 @@ import {
   Table,
   Text
 } from '@components/UI';
+import { getChatsByCohortId } from '@actions/chat';
 import { getCohort, getCohortScenarios } from '@actions/cohort';
 import CohortParticipants from '@components/Cohorts/CohortParticipants';
 import Loading from '@components/Loading';
@@ -88,6 +89,7 @@ export class CohortProgress extends React.Component {
 
     if (!hasScenariosLoaded) {
       await this.props.getCohortScenarios(this.props.id);
+      await this.props.getChatsByCohortId(this.props.id);
     }
 
     /* istanbul ignore else */
@@ -670,6 +672,16 @@ export class CohortProgress extends React.Component {
               isInAssignmentState &&
               this.state.assignment.participants.includes(participant.id);
 
+            const participantNotUser =
+              participant && participant.id !== this.props.user.id;
+            const participantActiveChats = lastScenarioViewed
+              ? (this.props.chats || []).filter(
+                  chat =>
+                    chat.usersById[participant.id] &&
+                    chat.scenario_id === lastScenarioViewed.id
+                )
+              : [];
+
             return (
               <Card
                 className="c__participant-card"
@@ -687,8 +699,7 @@ export class CohortProgress extends React.Component {
                   </p>
                   {lastAccessedDisplay}
 
-                  {isInAssignmentState &&
-                  participant.id !== this.props.user.id ? (
+                  {isInAssignmentState && participantNotUser ? (
                     <Checkbox
                       className="c__assignment-checkbox"
                       label="Select for assignment"
@@ -779,6 +790,73 @@ export class CohortProgress extends React.Component {
                     */}
                   </Card.Description>
                 </Card.Content>
+
+                <Card.Content className="c__scenario-content">
+                  <Card.Description className="c__participant-completion">
+                    {participantActiveChats.length ? (
+                      participantActiveChats.map(chat => {
+                        const chatUser = chat.users.find(
+                          user => user.id === participant.id
+                        );
+                        const others = chat.users.filter(
+                          user => user.id !== participant.id
+                        );
+                        const scenario = this.props.scenariosById[
+                          chat.scenario_id
+                        ];
+
+                        const doingWhat = others.length
+                          ? 'Chatting'
+                          : 'Waiting';
+
+                        const persona = scenario.personas.find(
+                          persona => persona.id === chatUser.persona_id
+                        );
+
+                        return (
+                          <p
+                            key={Identity.key({
+                              chat,
+                              participant,
+                              lastEventDescription
+                            })}
+                          >
+                            {doingWhat} as <strong>{persona.name}</strong>
+                            {others.length ? (
+                              <Fragment>
+                                {' '}
+                                with{' '}
+                                {others.map(other => {
+                                  const persona = scenario.personas.find(
+                                    persona => persona.id === other.persona_id
+                                  );
+
+                                  return (
+                                    <Fragment
+                                      key={Identity.key({ other, persona })}
+                                    >
+                                      <strong>
+                                        <Username user={other} />
+                                      </strong>{' '}
+                                      as <strong>{persona.name}</strong>{' '}
+                                    </Fragment>
+                                  );
+                                })}
+                              </Fragment>
+                            ) : (
+                              <Fragment></Fragment>
+                            )}
+                          </p>
+                        );
+                      })
+                    ) : (
+                      <p className="c__participant-completion__group">
+                        Participant is not presently in a chat.
+                      </p>
+                    )}
+                  </Card.Description>
+                </Card.Content>
+
                 <Card.Content className="c__scenario-extra">
                   <Button
                     className="c__participant-card__responses"
@@ -893,8 +971,12 @@ export class CohortProgress extends React.Component {
                                 <Username user={participant} />
                               </Header>
                             </Table.Cell>
-                            <Table.Cell>{scenario.title}</Table.Cell>
-                            <Table.Cell>{persona.name}</Table.Cell>
+                            <Table.Cell>
+                              {scenario ? scenario.title : ''}
+                            </Table.Cell>
+                            <Table.Cell>
+                              {persona ? persona.name : ''}
+                            </Table.Cell>
                             <Table.Cell>{lastAccessedAgo}</Table.Cell>
                           </Table.Row>
                         );
@@ -969,6 +1051,8 @@ export class CohortProgress extends React.Component {
 CohortProgress.propTypes = {
   authority: PropTypes.object,
   cohort: PropTypes.object,
+  chats: PropTypes.array,
+  getChatsByCohortId: PropTypes.func,
   getCohort: PropTypes.func,
   getCohortScenarios: PropTypes.func,
   id: PropTypes.any,
@@ -981,11 +1065,32 @@ CohortProgress.propTypes = {
 };
 
 const mapStateToProps = state => {
-  const { cohort, cohorts, scenarios, scenariosById, user, usersById } = state;
-  return { cohort, cohorts, scenarios, scenariosById, user, usersById };
+  const {
+    chats: allChats,
+    cohort,
+    cohorts,
+    scenarios,
+    scenariosById,
+    user,
+    usersById
+  } = state;
+
+  // Get only the chats that:
+  //
+  // 1. Are associated with this cohort
+  // 2. Have not ended
+  // 3. Are associated with a scenario
+  //
+  const chats = allChats.filter(
+    ({ cohort_id, ended_at, scenario_id }) =>
+      cohort_id === cohort.id && !ended_at && scenario_id
+  );
+
+  return { chats, cohort, cohorts, scenarios, scenariosById, user, usersById };
 };
 
 const mapDispatchToProps = dispatch => ({
+  getChatsByCohortId: id => dispatch(getChatsByCohortId(id)),
   getCohort: id => dispatch(getCohort(id)),
   getCohortScenarios: id => dispatch(getCohortScenarios(id))
 });
