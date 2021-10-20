@@ -60,10 +60,14 @@ jest.mock('@hoc/withSocket', () => {
 });
 
 import {
+  GET_CHATS_SUCCESS,
   GET_COHORT_SUCCESS,
-  GET_COHORT_SCENARIOS_SUCCESS,
-  GET_COHORT_SCENARIOS_PROGRESS_SUCCESS
+  GET_COHORT_SCENARIOS_SUCCESS
 } from '../../actions/types';
+
+import * as chatActions from '../../actions/chat';
+jest.mock('../../actions/chat');
+
 import * as cohortActions from '../../actions/cohort';
 jest.mock('../../actions/cohort');
 
@@ -113,6 +117,11 @@ let scenario;
 let scenario2;
 let scenarios;
 let scenariosById;
+let user;
+let chatUsers;
+let chatUsersById;
+let chat;
+let chats;
 
 import CohortProgress from '../../components/Cohorts/CohortProgress.jsx';
 /** @GENERATED: END **/
@@ -153,6 +162,52 @@ beforeEach(() => {
   // Layout.isNotForMobile = jest.fn();
   Layout.isNotForMobile.mockImplementation(() => true);
 
+  user = {
+    username: 'super',
+    personalname: 'Super User',
+    email: 'super@email.com',
+    id: 999,
+    roles: ['participant', 'super_admin'],
+    is_anonymous: false,
+    is_super: true
+  };
+
+  chatUsers = [
+    user,
+    {
+      id: 4,
+      username: 'credible-lyrebird',
+      personalname: null,
+      email: null,
+      is_anonymous: true,
+      single_use_password: false,
+      roles: ['participant', 'facilitator'],
+      is_super: false,
+      updated_at: '2020-12-10T17:50:19.074Z',
+      is_muted: false,
+      is_present: true
+    }
+  ];
+
+  chatUsersById = chatUsers.reduce((accum, chatUser) => {
+    accum[chatUser.id] = chatUser;
+    return accum;
+  }, {});
+
+  chat = {
+    id: 1,
+    scenario_id: 42,
+    cohort_id: 1,
+    host_id: 999,
+    created_at: '2020-12-08T21:51:33.659Z',
+    updated_at: null,
+    deleted_at: null,
+    ended_at: null,
+    users: chatUsers,
+    usersById: chatUsersById
+  };
+
+  chats = [chat];
   cohort = {
     id: 1,
     created_at: '2020-08-31T14:01:08.656Z',
@@ -730,6 +785,11 @@ beforeEach(() => {
     accum[record.id] = record;
     return accum;
   }, {});
+
+  chatActions.getChatsByCohortId.mockImplementation(() => async dispatch => {
+    dispatch({ type: GET_CHATS_SUCCESS, chats });
+    return chats;
+  });
 
   cohortActions.getCohortScenarios.mockImplementation(() => async dispatch => {
     const scenarios = [scenario, scenario2];

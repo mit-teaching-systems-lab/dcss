@@ -71,6 +71,7 @@ exports[`Render 1 1 1`] = `
       >
         <button
           class="ui green button"
+          tabindex="0"
         >
           Continue this scenario
         </button>

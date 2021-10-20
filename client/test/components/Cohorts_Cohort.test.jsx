@@ -38,6 +38,7 @@ import * as tlr from '@testing-library/react';
 
 import {
   CREATE_COHORT_SUCCESS,
+  GET_CHATS_SUCCESS,
   SET_COHORT_USER_ROLE_SUCCESS,
   GET_COHORT_SUCCESS,
   GET_COHORT_SCENARIOS_SUCCESS,
@@ -45,9 +46,11 @@ import {
   GET_USERS_SUCCESS,
   SET_COHORT_SUCCESS
 } from '../../actions/types';
+import * as chatActions from '../../actions/chat';
 import * as cohortActions from '../../actions/cohort';
 import * as userActions from '../../actions/user';
 import * as usersActions from '../../actions/users';
+jest.mock('../../actions/chat');
 jest.mock('../../actions/cohort');
 jest.mock('../../actions/user');
 jest.mock('../../actions/users');
@@ -96,6 +99,11 @@ jest.mock('@components/Notification', () => {
   };
 });
 
+let chat;
+let chats;
+let chatsById;
+let chatUsers;
+let chatUsersById;
 let cohort;
 
 const scenario = {
@@ -296,6 +304,7 @@ const scenario2 = {
 };
 let scenarios;
 let scenariosById;
+let user;
 
 import Cohort from '../../components/Cohorts/Cohort.jsx';
 /** @GENERATED: END **/
@@ -714,6 +723,63 @@ beforeEach(() => {
     accum[record.id] = record;
     return accum;
   }, {});
+
+  user = {
+    username: 'super',
+    personalname: 'Super User',
+    email: 'super@email.com',
+    id: 999,
+    roles: ['participant', 'super_admin'],
+    is_anonymous: false,
+    is_super: true
+  };
+
+  chatUsers = [
+    user,
+    {
+      id: 4,
+      username: 'credible-lyrebird',
+      personalname: null,
+      email: null,
+      is_anonymous: true,
+      single_use_password: false,
+      roles: ['participant', 'facilitator'],
+      is_super: false,
+      updated_at: '2020-12-10T17:50:19.074Z',
+      is_muted: false,
+      is_present: true
+    }
+  ];
+
+  chatUsersById = chatUsers.reduce((accum, chatUser) => {
+    accum[chatUser.id] = chatUser;
+    return accum;
+  }, {});
+
+  chat = {
+    id: 1,
+    scenario_id: 42,
+    cohort_id: null,
+    host_id: 999,
+    created_at: '2020-12-08T21:51:33.659Z',
+    updated_at: null,
+    deleted_at: null,
+    ended_at: null,
+    users: chatUsers,
+    usersById: chatUsersById
+  };
+
+  chats = [chat];
+
+  chatsById = chats.reduce((accum, chat) => {
+    accum[chat.id] = chat;
+    return accum;
+  }, {});
+
+  chatActions.getChatsByCohortId.mockImplementation(() => async dispatch => {
+    dispatch({ type: GET_CHATS_SUCCESS, chats });
+    return chats;
+  });
 
   cohortActions.getCohort.mockImplementation(() => async dispatch => {
     dispatch({ type: GET_COHORT_SUCCESS, cohort });

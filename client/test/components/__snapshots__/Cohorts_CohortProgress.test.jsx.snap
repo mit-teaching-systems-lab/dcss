@@ -225,6 +225,19 @@ exports[`All users have not completed 1`] = `
             </div>
           </div>
           <div
+            class=\\"content c__scenario-content\\"
+          >
+            <div
+              class=\\"description c__participant-completion\\"
+            >
+              <p
+                class=\\"c__participant-completion__group\\"
+              >
+                Participant is not presently in a chat.
+              </p>
+            </div>
+          </div>
+          <div
             class=\\"content c__scenario-extra\\"
           >
             <button
@@ -336,6 +349,19 @@ exports[`All users have not completed 1`] = `
                   Current slide
                 </span>
                 1
+              </p>
+            </div>
+          </div>
+          <div
+            class=\\"content c__scenario-content\\"
+          >
+            <div
+              class=\\"description c__participant-completion\\"
+            >
+              <p
+                class=\\"c__participant-completion__group\\"
+              >
+                Participant is not presently in a chat.
               </p>
             </div>
           </div>
@@ -455,6 +481,19 @@ exports[`All users have not completed 1`] = `
             </div>
           </div>
           <div
+            class=\\"content c__scenario-content\\"
+          >
+            <div
+              class=\\"description c__participant-completion\\"
+            >
+              <p
+                class=\\"c__participant-completion__group\\"
+              >
+                Participant is not presently in a chat.
+              </p>
+            </div>
+          </div>
+          <div
             class=\\"content c__scenario-extra\\"
           >
             <button
@@ -569,6 +608,19 @@ exports[`All users have not completed 1`] = `
             </div>
           </div>
           <div
+            class=\\"content c__scenario-content\\"
+          >
+            <div
+              class=\\"description c__participant-completion\\"
+            >
+              <p
+                class=\\"c__participant-completion__group\\"
+              >
+                Participant is not presently in a chat.
+              </p>
+            </div>
+          </div>
+          <div
             class=\\"content c__scenario-extra\\"
           >
             <button
@@ -679,6 +731,19 @@ exports[`All users have not completed 1`] = `
                   Current slide
                 </span>
                 1
+              </p>
+            </div>
+          </div>
+          <div
+            class=\\"content c__scenario-content\\"
+          >
+            <div
+              class=\\"description c__participant-completion\\"
+            >
+              <p
+                class=\\"c__participant-completion__group\\"
+              >
+                Participant is not presently in a chat.
               </p>
             </div>
           </div>
@@ -927,6 +992,19 @@ exports[`Cancel all waiting participant match requests 1`] = `
             </div>
           </div>
           <div
+            class=\\"content c__scenario-content\\"
+          >
+            <div
+              class=\\"description c__participant-completion\\"
+            >
+              <p
+                class=\\"c__participant-completion__group\\"
+              >
+                Participant is not presently in a chat.
+              </p>
+            </div>
+          </div>
+          <div
             class=\\"content c__scenario-extra\\"
           >
             <button
@@ -1038,6 +1116,19 @@ exports[`Cancel all waiting participant match requests 1`] = `
                   Current slide
                 </span>
                 1
+              </p>
+            </div>
+          </div>
+          <div
+            class=\\"content c__scenario-content\\"
+          >
+            <div
+              class=\\"description c__participant-completion\\"
+            >
+              <p
+                class=\\"c__participant-completion__group\\"
+              >
+                Participant is not presently in a chat.
               </p>
             </div>
           </div>
@@ -1157,6 +1248,19 @@ exports[`Cancel all waiting participant match requests 1`] = `
             </div>
           </div>
           <div
+            class=\\"content c__scenario-content\\"
+          >
+            <div
+              class=\\"description c__participant-completion\\"
+            >
+              <p
+                class=\\"c__participant-completion__group\\"
+              >
+                Participant is not presently in a chat.
+              </p>
+            </div>
+          </div>
+          <div
             class=\\"content c__scenario-extra\\"
           >
             <button
@@ -1271,6 +1375,19 @@ exports[`Cancel all waiting participant match requests 1`] = `
             </div>
           </div>
           <div
+            class=\\"content c__scenario-content\\"
+          >
+            <div
+              class=\\"description c__participant-completion\\"
+            >
+              <p
+                class=\\"c__participant-completion__group\\"
+              >
+                Participant is not presently in a chat.
+              </p>
+            </div>
+          </div>
+          <div
             class=\\"content c__scenario-extra\\"
           >
             <button
@@ -1381,6 +1498,19 @@ exports[`Cancel all waiting participant match requests 1`] = `
                   Current slide
                 </span>
                 1
+              </p>
+            </div>
+          </div>
+          <div
+            class=\\"content c__scenario-content\\"
+          >
+            <div
+              class=\\"description c__participant-completion\\"
+            >
+              <p
+                class=\\"c__participant-completion__group\\"
+              >
+                Participant is not presently in a chat.
               </p>
             </div>
           </div>
@@ -1657,6 +1787,19 @@ exports[`Open Manage participants 2`] = `
             </div>
           </div>
           <div
+            class=\\"content c__scenario-content\\"
+          >
+            <div
+              class=\\"description c__participant-completion\\"
+            >
+              <p
+                class=\\"c__participant-completion__group\\"
+              >
+                Participant is not presently in a chat.
+              </p>
+            </div>
+          </div>
+          <div
             class=\\"content c__scenario-extra\\"
           >
             <button
@@ -1768,6 +1911,19 @@ exports[`Open Manage participants 2`] = `
                   Current slide
                 </span>
                 1
+              </p>
+            </div>
+          </div>
+          <div
+            class=\\"content c__scenario-content\\"
+          >
+            <div
+              class=\\"description c__participant-completion\\"
+            >
+              <p
+                class=\\"c__participant-completion__group\\"
+              >
+                Participant is not presently in a chat.
               </p>
             </div>
           </div>
@@ -1887,6 +2043,19 @@ exports[`Open Manage participants 2`] = `
             </div>
           </div>
           <div
+            class=\\"content c__scenario-content\\"
+          >
+            <div
+              class=\\"description c__participant-completion\\"
+            >
+              <p
+                class=\\"c__participant-completion__group\\"
+              >
+                Participant is not presently in a chat.
+              </p>
+            </div>
+          </div>
+          <div
             class=\\"content c__scenario-extra\\"
           >
             <button
@@ -2001,6 +2170,19 @@ exports[`Open Manage participants 2`] = `
             </div>
           </div>
           <div
+            class=\\"content c__scenario-content\\"
+          >
+            <div
+              class=\\"description c__participant-completion\\"
+            >
+              <p
+                class=\\"c__participant-completion__group\\"
+              >
+                Participant is not presently in a chat.
+              </p>
+            </div>
+          </div>
+          <div
             class=\\"content c__scenario-extra\\"
           >
             <button
@@ -2111,6 +2293,19 @@ exports[`Open Manage participants 2`] = `
                   Current slide
                 </span>
                 1
+              </p>
+            </div>
+          </div>
+          <div
+            class=\\"content c__scenario-content\\"
+          >
+            <div
+              class=\\"description c__participant-completion\\"
+            >
+              <p
+                class=\\"c__participant-completion__group\\"
+              >
+                Participant is not presently in a chat.
               </p>
             </div>
           </div>
@@ -2325,6 +2520,19 @@ exports[`Open Manage participants 3`] = `
             </div>
           </div>
           <div
+            class=\\"content c__scenario-content\\"
+          >
+            <div
+              class=\\"description c__participant-completion\\"
+            >
+              <p
+                class=\\"c__participant-completion__group\\"
+              >
+                Participant is not presently in a chat.
+              </p>
+            </div>
+          </div>
+          <div
             class=\\"content c__scenario-extra\\"
           >
             <button
@@ -2436,6 +2644,19 @@ exports[`Open Manage participants 3`] = `
                   Current slide
                 </span>
                 1
+              </p>
+            </div>
+          </div>
+          <div
+            class=\\"content c__scenario-content\\"
+          >
+            <div
+              class=\\"description c__participant-completion\\"
+            >
+              <p
+                class=\\"c__participant-completion__group\\"
+              >
+                Participant is not presently in a chat.
               </p>
             </div>
           </div>
@@ -2555,6 +2776,19 @@ exports[`Open Manage participants 3`] = `
             </div>
           </div>
           <div
+            class=\\"content c__scenario-content\\"
+          >
+            <div
+              class=\\"description c__participant-completion\\"
+            >
+              <p
+                class=\\"c__participant-completion__group\\"
+              >
+                Participant is not presently in a chat.
+              </p>
+            </div>
+          </div>
+          <div
             class=\\"content c__scenario-extra\\"
           >
             <button
@@ -2669,6 +2903,19 @@ exports[`Open Manage participants 3`] = `
             </div>
           </div>
           <div
+            class=\\"content c__scenario-content\\"
+          >
+            <div
+              class=\\"description c__participant-completion\\"
+            >
+              <p
+                class=\\"c__participant-completion__group\\"
+              >
+                Participant is not presently in a chat.
+              </p>
+            </div>
+          </div>
+          <div
             class=\\"content c__scenario-extra\\"
           >
             <button
@@ -2779,6 +3026,19 @@ exports[`Open Manage participants 3`] = `
                   Current slide
                 </span>
                 1
+              </p>
+            </div>
+          </div>
+          <div
+            class=\\"content c__scenario-content\\"
+          >
+            <div
+              class=\\"description c__participant-completion\\"
+            >
+              <p
+                class=\\"c__participant-completion__group\\"
+              >
+                Participant is not presently in a chat.
               </p>
             </div>
           </div>
@@ -2996,6 +3256,19 @@ exports[`Open Manage participants 4`] = `
             </div>
           </div>
           <div
+            class=\\"content c__scenario-content\\"
+          >
+            <div
+              class=\\"description c__participant-completion\\"
+            >
+              <p
+                class=\\"c__participant-completion__group\\"
+              >
+                Participant is not presently in a chat.
+              </p>
+            </div>
+          </div>
+          <div
             class=\\"content c__scenario-extra\\"
           >
             <button
@@ -3107,6 +3380,19 @@ exports[`Open Manage participants 4`] = `
                   Current slide
                 </span>
                 1
+              </p>
+            </div>
+          </div>
+          <div
+            class=\\"content c__scenario-content\\"
+          >
+            <div
+              class=\\"description c__participant-completion\\"
+            >
+              <p
+                class=\\"c__participant-completion__group\\"
+              >
+                Participant is not presently in a chat.
               </p>
             </div>
           </div>
@@ -3226,6 +3512,19 @@ exports[`Open Manage participants 4`] = `
             </div>
           </div>
           <div
+            class=\\"content c__scenario-content\\"
+          >
+            <div
+              class=\\"description c__participant-completion\\"
+            >
+              <p
+                class=\\"c__participant-completion__group\\"
+              >
+                Participant is not presently in a chat.
+              </p>
+            </div>
+          </div>
+          <div
             class=\\"content c__scenario-extra\\"
           >
             <button
@@ -3340,6 +3639,19 @@ exports[`Open Manage participants 4`] = `
             </div>
           </div>
           <div
+            class=\\"content c__scenario-content\\"
+          >
+            <div
+              class=\\"description c__participant-completion\\"
+            >
+              <p
+                class=\\"c__participant-completion__group\\"
+              >
+                Participant is not presently in a chat.
+              </p>
+            </div>
+          </div>
+          <div
             class=\\"content c__scenario-extra\\"
           >
             <button
@@ -3450,6 +3762,19 @@ exports[`Open Manage participants 4`] = `
                   Current slide
                 </span>
                 1
+              </p>
+            </div>
+          </div>
+          <div
+            class=\\"content c__scenario-content\\"
+          >
+            <div
+              class=\\"description c__participant-completion\\"
+            >
+              <p
+                class=\\"c__participant-completion__group\\"
+              >
+                Participant is not presently in a chat.
               </p>
             </div>
           </div>
@@ -4147,6 +4472,19 @@ exports[`Open Manage participants 5`] = `
             </div>
           </div>
           <div
+            class=\\"content c__scenario-content\\"
+          >
+            <div
+              class=\\"description c__participant-completion\\"
+            >
+              <p
+                class=\\"c__participant-completion__group\\"
+              >
+                Participant is not presently in a chat.
+              </p>
+            </div>
+          </div>
+          <div
             class=\\"content c__scenario-extra\\"
           >
             <button
@@ -4258,6 +4596,19 @@ exports[`Open Manage participants 5`] = `
                   Current slide
                 </span>
                 1
+              </p>
+            </div>
+          </div>
+          <div
+            class=\\"content c__scenario-content\\"
+          >
+            <div
+              class=\\"description c__participant-completion\\"
+            >
+              <p
+                class=\\"c__participant-completion__group\\"
+              >
+                Participant is not presently in a chat.
               </p>
             </div>
           </div>
@@ -4377,6 +4728,19 @@ exports[`Open Manage participants 5`] = `
             </div>
           </div>
           <div
+            class=\\"content c__scenario-content\\"
+          >
+            <div
+              class=\\"description c__participant-completion\\"
+            >
+              <p
+                class=\\"c__participant-completion__group\\"
+              >
+                Participant is not presently in a chat.
+              </p>
+            </div>
+          </div>
+          <div
             class=\\"content c__scenario-extra\\"
           >
             <button
@@ -4491,6 +4855,19 @@ exports[`Open Manage participants 5`] = `
             </div>
           </div>
           <div
+            class=\\"content c__scenario-content\\"
+          >
+            <div
+              class=\\"description c__participant-completion\\"
+            >
+              <p
+                class=\\"c__participant-completion__group\\"
+              >
+                Participant is not presently in a chat.
+              </p>
+            </div>
+          </div>
+          <div
             class=\\"content c__scenario-extra\\"
           >
             <button
@@ -4601,6 +4978,19 @@ exports[`Open Manage participants 5`] = `
                   Current slide
                 </span>
                 1
+              </p>
+            </div>
+          </div>
+          <div
+            class=\\"content c__scenario-content\\"
+          >
+            <div
+              class=\\"description c__participant-completion\\"
+            >
+              <p
+                class=\\"c__participant-completion__group\\"
+              >
+                Participant is not presently in a chat.
               </p>
             </div>
           </div>
@@ -4875,6 +5265,19 @@ exports[`Search participants 2`] = `
             </div>
           </div>
           <div
+            class=\\"content c__scenario-content\\"
+          >
+            <div
+              class=\\"description c__participant-completion\\"
+            >
+              <p
+                class=\\"c__participant-completion__group\\"
+              >
+                Participant is not presently in a chat.
+              </p>
+            </div>
+          </div>
+          <div
             class=\\"content c__scenario-extra\\"
           >
             <button
@@ -4986,6 +5389,19 @@ exports[`Search participants 2`] = `
                   Current slide
                 </span>
                 1
+              </p>
+            </div>
+          </div>
+          <div
+            class=\\"content c__scenario-content\\"
+          >
+            <div
+              class=\\"description c__participant-completion\\"
+            >
+              <p
+                class=\\"c__participant-completion__group\\"
+              >
+                Participant is not presently in a chat.
               </p>
             </div>
           </div>
@@ -5105,6 +5521,19 @@ exports[`Search participants 2`] = `
             </div>
           </div>
           <div
+            class=\\"content c__scenario-content\\"
+          >
+            <div
+              class=\\"description c__participant-completion\\"
+            >
+              <p
+                class=\\"c__participant-completion__group\\"
+              >
+                Participant is not presently in a chat.
+              </p>
+            </div>
+          </div>
+          <div
             class=\\"content c__scenario-extra\\"
           >
             <button
@@ -5219,6 +5648,19 @@ exports[`Search participants 2`] = `
             </div>
           </div>
           <div
+            class=\\"content c__scenario-content\\"
+          >
+            <div
+              class=\\"description c__participant-completion\\"
+            >
+              <p
+                class=\\"c__participant-completion__group\\"
+              >
+                Participant is not presently in a chat.
+              </p>
+            </div>
+          </div>
+          <div
             class=\\"content c__scenario-extra\\"
           >
             <button
@@ -5329,6 +5771,19 @@ exports[`Search participants 2`] = `
                   Current slide
                 </span>
                 1
+              </p>
+            </div>
+          </div>
+          <div
+            class=\\"content c__scenario-content\\"
+          >
+            <div
+              class=\\"description c__participant-completion\\"
+            >
+              <p
+                class=\\"c__participant-completion__group\\"
+              >
+                Participant is not presently in a chat.
               </p>
             </div>
           </div>
@@ -5543,6 +5998,19 @@ exports[`Search participants 3`] = `
             </div>
           </div>
           <div
+            class=\\"content c__scenario-content\\"
+          >
+            <div
+              class=\\"description c__participant-completion\\"
+            >
+              <p
+                class=\\"c__participant-completion__group\\"
+              >
+                Participant is not presently in a chat.
+              </p>
+            </div>
+          </div>
+          <div
             class=\\"content c__scenario-extra\\"
           >
             <button
@@ -5654,6 +6122,19 @@ exports[`Search participants 3`] = `
                   Current slide
                 </span>
                 1
+              </p>
+            </div>
+          </div>
+          <div
+            class=\\"content c__scenario-content\\"
+          >
+            <div
+              class=\\"description c__participant-completion\\"
+            >
+              <p
+                class=\\"c__participant-completion__group\\"
+              >
+                Participant is not presently in a chat.
               </p>
             </div>
           </div>
@@ -5773,6 +6254,19 @@ exports[`Search participants 3`] = `
             </div>
           </div>
           <div
+            class=\\"content c__scenario-content\\"
+          >
+            <div
+              class=\\"description c__participant-completion\\"
+            >
+              <p
+                class=\\"c__participant-completion__group\\"
+              >
+                Participant is not presently in a chat.
+              </p>
+            </div>
+          </div>
+          <div
             class=\\"content c__scenario-extra\\"
           >
             <button
@@ -5887,6 +6381,19 @@ exports[`Search participants 3`] = `
             </div>
           </div>
           <div
+            class=\\"content c__scenario-content\\"
+          >
+            <div
+              class=\\"description c__participant-completion\\"
+            >
+              <p
+                class=\\"c__participant-completion__group\\"
+              >
+                Participant is not presently in a chat.
+              </p>
+            </div>
+          </div>
+          <div
             class=\\"content c__scenario-extra\\"
           >
             <button
@@ -5997,6 +6504,19 @@ exports[`Search participants 3`] = `
                   Current slide
                 </span>
                 1
+              </p>
+            </div>
+          </div>
+          <div
+            class=\\"content c__scenario-content\\"
+          >
+            <div
+              class=\\"description c__participant-completion\\"
+            >
+              <p
+                class=\\"c__participant-completion__group\\"
+              >
+                Participant is not presently in a chat.
               </p>
             </div>
           </div>
@@ -6236,6 +6756,19 @@ exports[`Search participants 4`] = `
             </div>
           </div>
           <div
+            class=\\"content c__scenario-content\\"
+          >
+            <div
+              class=\\"description c__participant-completion\\"
+            >
+              <p
+                class=\\"c__participant-completion__group\\"
+              >
+                Participant is not presently in a chat.
+              </p>
+            </div>
+          </div>
+          <div
             class=\\"content c__scenario-extra\\"
           >
             <button
@@ -6347,6 +6880,19 @@ exports[`Search participants 4`] = `
                   Current slide
                 </span>
                 1
+              </p>
+            </div>
+          </div>
+          <div
+            class=\\"content c__scenario-content\\"
+          >
+            <div
+              class=\\"description c__participant-completion\\"
+            >
+              <p
+                class=\\"c__participant-completion__group\\"
+              >
+                Participant is not presently in a chat.
               </p>
             </div>
           </div>
@@ -6586,6 +7132,19 @@ exports[`Search participants 5`] = `
             </div>
           </div>
           <div
+            class=\\"content c__scenario-content\\"
+          >
+            <div
+              class=\\"description c__participant-completion\\"
+            >
+              <p
+                class=\\"c__participant-completion__group\\"
+              >
+                Participant is not presently in a chat.
+              </p>
+            </div>
+          </div>
+          <div
             class=\\"content c__scenario-extra\\"
           >
             <button
@@ -6697,6 +7256,19 @@ exports[`Search participants 5`] = `
                   Current slide
                 </span>
                 1
+              </p>
+            </div>
+          </div>
+          <div
+            class=\\"content c__scenario-content\\"
+          >
+            <div
+              class=\\"description c__participant-completion\\"
+            >
+              <p
+                class=\\"c__participant-completion__group\\"
+              >
+                Participant is not presently in a chat.
               </p>
             </div>
           </div>
@@ -6911,6 +7483,19 @@ exports[`Search participants 6`] = `
             </div>
           </div>
           <div
+            class=\\"content c__scenario-content\\"
+          >
+            <div
+              class=\\"description c__participant-completion\\"
+            >
+              <p
+                class=\\"c__participant-completion__group\\"
+              >
+                Participant is not presently in a chat.
+              </p>
+            </div>
+          </div>
+          <div
             class=\\"content c__scenario-extra\\"
           >
             <button
@@ -7022,6 +7607,19 @@ exports[`Search participants 6`] = `
                   Current slide
                 </span>
                 1
+              </p>
+            </div>
+          </div>
+          <div
+            class=\\"content c__scenario-content\\"
+          >
+            <div
+              class=\\"description c__participant-completion\\"
+            >
+              <p
+                class=\\"c__participant-completion__group\\"
+              >
+                Participant is not presently in a chat.
               </p>
             </div>
           </div>
@@ -7141,6 +7739,19 @@ exports[`Search participants 6`] = `
             </div>
           </div>
           <div
+            class=\\"content c__scenario-content\\"
+          >
+            <div
+              class=\\"description c__participant-completion\\"
+            >
+              <p
+                class=\\"c__participant-completion__group\\"
+              >
+                Participant is not presently in a chat.
+              </p>
+            </div>
+          </div>
+          <div
             class=\\"content c__scenario-extra\\"
           >
             <button
@@ -7255,6 +7866,19 @@ exports[`Search participants 6`] = `
             </div>
           </div>
           <div
+            class=\\"content c__scenario-content\\"
+          >
+            <div
+              class=\\"description c__participant-completion\\"
+            >
+              <p
+                class=\\"c__participant-completion__group\\"
+              >
+                Participant is not presently in a chat.
+              </p>
+            </div>
+          </div>
+          <div
             class=\\"content c__scenario-extra\\"
           >
             <button
@@ -7365,6 +7989,19 @@ exports[`Search participants 6`] = `
                   Current slide
                 </span>
                 1
+              </p>
+            </div>
+          </div>
+          <div
+            class=\\"content c__scenario-content\\"
+          >
+            <div
+              class=\\"description c__participant-completion\\"
+            >
+              <p
+                class=\\"c__participant-completion__group\\"
+              >
+                Participant is not presently in a chat.
               </p>
             </div>
           </div>
@@ -7604,6 +8241,19 @@ exports[`Search participants 7`] = `
             </div>
           </div>
           <div
+            class=\\"content c__scenario-content\\"
+          >
+            <div
+              class=\\"description c__participant-completion\\"
+            >
+              <p
+                class=\\"c__participant-completion__group\\"
+              >
+                Participant is not presently in a chat.
+              </p>
+            </div>
+          </div>
+          <div
             class=\\"content c__scenario-extra\\"
           >
             <button
@@ -7835,6 +8485,19 @@ exports[`Search participants 8`] = `
                   Current slide
                 </span>
                 1
+              </p>
+            </div>
+          </div>
+          <div
+            class=\\"content c__scenario-content\\"
+          >
+            <div
+              class=\\"description c__participant-completion\\"
+            >
+              <p
+                class=\\"c__participant-completion__group\\"
+              >
+                Participant is not presently in a chat.
               </p>
             </div>
           </div>
@@ -8074,6 +8737,19 @@ exports[`Search participants 9`] = `
             </div>
           </div>
           <div
+            class=\\"content c__scenario-content\\"
+          >
+            <div
+              class=\\"description c__participant-completion\\"
+            >
+              <p
+                class=\\"c__participant-completion__group\\"
+              >
+                Participant is not presently in a chat.
+              </p>
+            </div>
+          </div>
+          <div
             class=\\"content c__scenario-extra\\"
           >
             <button
@@ -8309,6 +8985,19 @@ exports[`Search participants 10`] = `
             </div>
           </div>
           <div
+            class=\\"content c__scenario-content\\"
+          >
+            <div
+              class=\\"description c__participant-completion\\"
+            >
+              <p
+                class=\\"c__participant-completion__group\\"
+              >
+                Participant is not presently in a chat.
+              </p>
+            </div>
+          </div>
+          <div
             class=\\"content c__scenario-extra\\"
           >
             <button
@@ -8519,6 +9208,19 @@ exports[`Search participants 11`] = `
             </div>
           </div>
           <div
+            class=\\"content c__scenario-content\\"
+          >
+            <div
+              class=\\"description c__participant-completion\\"
+            >
+              <p
+                class=\\"c__participant-completion__group\\"
+              >
+                Participant is not presently in a chat.
+              </p>
+            </div>
+          </div>
+          <div
             class=\\"content c__scenario-extra\\"
           >
             <button
@@ -8630,6 +9332,19 @@ exports[`Search participants 11`] = `
                   Current slide
                 </span>
                 1
+              </p>
+            </div>
+          </div>
+          <div
+            class=\\"content c__scenario-content\\"
+          >
+            <div
+              class=\\"description c__participant-completion\\"
+            >
+              <p
+                class=\\"c__participant-completion__group\\"
+              >
+                Participant is not presently in a chat.
               </p>
             </div>
           </div>
@@ -8749,6 +9464,19 @@ exports[`Search participants 11`] = `
             </div>
           </div>
           <div
+            class=\\"content c__scenario-content\\"
+          >
+            <div
+              class=\\"description c__participant-completion\\"
+            >
+              <p
+                class=\\"c__participant-completion__group\\"
+              >
+                Participant is not presently in a chat.
+              </p>
+            </div>
+          </div>
+          <div
             class=\\"content c__scenario-extra\\"
           >
             <button
@@ -8863,6 +9591,19 @@ exports[`Search participants 11`] = `
             </div>
           </div>
           <div
+            class=\\"content c__scenario-content\\"
+          >
+            <div
+              class=\\"description c__participant-completion\\"
+            >
+              <p
+                class=\\"c__participant-completion__group\\"
+              >
+                Participant is not presently in a chat.
+              </p>
+            </div>
+          </div>
+          <div
             class=\\"content c__scenario-extra\\"
           >
             <button
@@ -8973,6 +9714,19 @@ exports[`Search participants 11`] = `
                   Current slide
                 </span>
                 1
+              </p>
+            </div>
+          </div>
+          <div
+            class=\\"content c__scenario-content\\"
+          >
+            <div
+              class=\\"description c__participant-completion\\"
+            >
+              <p
+                class=\\"c__participant-completion__group\\"
+              >
+                Participant is not presently in a chat.
               </p>
             </div>
           </div>
@@ -9187,6 +9941,19 @@ exports[`Search participants 12`] = `
             </div>
           </div>
           <div
+            class=\\"content c__scenario-content\\"
+          >
+            <div
+              class=\\"description c__participant-completion\\"
+            >
+              <p
+                class=\\"c__participant-completion__group\\"
+              >
+                Participant is not presently in a chat.
+              </p>
+            </div>
+          </div>
+          <div
             class=\\"content c__scenario-extra\\"
           >
             <button
@@ -9298,6 +10065,19 @@ exports[`Search participants 12`] = `
                   Current slide
                 </span>
                 1
+              </p>
+            </div>
+          </div>
+          <div
+            class=\\"content c__scenario-content\\"
+          >
+            <div
+              class=\\"description c__participant-completion\\"
+            >
+              <p
+                class=\\"c__participant-completion__group\\"
+              >
+                Participant is not presently in a chat.
               </p>
             </div>
           </div>
@@ -9417,6 +10197,19 @@ exports[`Search participants 12`] = `
             </div>
           </div>
           <div
+            class=\\"content c__scenario-content\\"
+          >
+            <div
+              class=\\"description c__participant-completion\\"
+            >
+              <p
+                class=\\"c__participant-completion__group\\"
+              >
+                Participant is not presently in a chat.
+              </p>
+            </div>
+          </div>
+          <div
             class=\\"content c__scenario-extra\\"
           >
             <button
@@ -9531,6 +10324,19 @@ exports[`Search participants 12`] = `
             </div>
           </div>
           <div
+            class=\\"content c__scenario-content\\"
+          >
+            <div
+              class=\\"description c__participant-completion\\"
+            >
+              <p
+                class=\\"c__participant-completion__group\\"
+              >
+                Participant is not presently in a chat.
+              </p>
+            </div>
+          </div>
+          <div
             class=\\"content c__scenario-extra\\"
           >
             <button
@@ -9641,6 +10447,19 @@ exports[`Search participants 12`] = `
                   Current slide
                 </span>
                 1
+              </p>
+            </div>
+          </div>
+          <div
+            class=\\"content c__scenario-content\\"
+          >
+            <div
+              class=\\"description c__participant-completion\\"
+            >
+              <p
+                class=\\"c__participant-completion__group\\"
+              >
+                Participant is not presently in a chat.
               </p>
             </div>
           </div>
@@ -9855,6 +10674,19 @@ exports[`Search participants 13`] = `
             </div>
           </div>
           <div
+            class=\\"content c__scenario-content\\"
+          >
+            <div
+              class=\\"description c__participant-completion\\"
+            >
+              <p
+                class=\\"c__participant-completion__group\\"
+              >
+                Participant is not presently in a chat.
+              </p>
+            </div>
+          </div>
+          <div
             class=\\"content c__scenario-extra\\"
           >
             <button
@@ -9966,6 +10798,19 @@ exports[`Search participants 13`] = `
                   Current slide
                 </span>
                 1
+              </p>
+            </div>
+          </div>
+          <div
+            class=\\"content c__scenario-content\\"
+          >
+            <div
+              class=\\"description c__participant-completion\\"
+            >
+              <p
+                class=\\"c__participant-completion__group\\"
+              >
+                Participant is not presently in a chat.
               </p>
             </div>
           </div>
@@ -10085,6 +10930,19 @@ exports[`Search participants 13`] = `
             </div>
           </div>
           <div
+            class=\\"content c__scenario-content\\"
+          >
+            <div
+              class=\\"description c__participant-completion\\"
+            >
+              <p
+                class=\\"c__participant-completion__group\\"
+              >
+                Participant is not presently in a chat.
+              </p>
+            </div>
+          </div>
+          <div
             class=\\"content c__scenario-extra\\"
           >
             <button
@@ -10199,6 +11057,19 @@ exports[`Search participants 13`] = `
             </div>
           </div>
           <div
+            class=\\"content c__scenario-content\\"
+          >
+            <div
+              class=\\"description c__participant-completion\\"
+            >
+              <p
+                class=\\"c__participant-completion__group\\"
+              >
+                Participant is not presently in a chat.
+              </p>
+            </div>
+          </div>
+          <div
             class=\\"content c__scenario-extra\\"
           >
             <button
@@ -10309,6 +11180,19 @@ exports[`Search participants 13`] = `
                   Current slide
                 </span>
                 1
+              </p>
+            </div>
+          </div>
+          <div
+            class=\\"content c__scenario-content\\"
+          >
+            <div
+              class=\\"description c__participant-completion\\"
+            >
+              <p
+                class=\\"c__participant-completion__group\\"
+              >
+                Participant is not presently in a chat.
               </p>
             </div>
           </div>

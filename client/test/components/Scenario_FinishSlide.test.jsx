@@ -218,3 +218,62 @@ test('Render 1 1', async done => {
   done();
 });
 /** @GENERATED: END **/
+
+/** @GENERATED: BEGIN **/
+test('Render 2 1', async done => {
+  const Component = FinishSlide;
+  const props = {
+    ...commonProps,
+    run: {},
+    scenario,
+    slide: { components: [] }
+  };
+
+  const state = {
+    ...commonState
+  };
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  delete window.location;
+  window.location = {
+    // eslint-disable-next-line
+    pathname: '/run/'
+  };
+
+  const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
+  expect(asFragment()).toMatchSnapshot();
+
+  done();
+});
+/** @GENERATED: END **/
+
+/** @GENERATED: BEGIN **/
+test('Render 3 1', async done => {
+  const Component = FinishSlide;
+  const props = {
+    ...commonProps,
+    cohort: {},
+    run: {},
+    scenario,
+    slide: { components: [] }
+  };
+
+  const state = {
+    ...commonState
+  };
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  delete window.location;
+  window.location = {
+    // eslint-disable-next-line
+    pathname: '/cohort/xyz/run/xyz'
+  };
+
+  const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
+  expect(asFragment()).toMatchSnapshot();
+
+  done();
+});
+/** @GENERATED: END **/
