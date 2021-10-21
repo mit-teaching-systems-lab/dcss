@@ -2,7 +2,13 @@ import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import pluralize from 'pluralize';
-import { getChatsByCohortId, setChat } from '@actions/chat';
+import {
+  createChat,
+  getChatsByCohortId,
+  getChatUsersByChatId,
+  joinChat,
+  setChat
+} from '@actions/chat';
 import { setRun } from '@actions/run';
 import {
   getCohort,
@@ -11,7 +17,7 @@ import {
 } from '@actions/cohort';
 import { getRuns } from '@actions/run';
 import { getUsers } from '@actions/users';
-import JoinAsButton from '@components/Chat/JoinAsButton';
+import JoinAsPersona from '@components/Chat/JoinAsPersona';
 import CohortScenariosSelector from '@components/Cohorts/CohortScenariosSelector';
 import CohortRoomSelector from '@components/Cohorts/CohortRoomSelector';
 import Gate from '@components/Gate';
@@ -50,6 +56,7 @@ export class CohortScenarios extends React.Component {
       },
       visibleCount: 4
     };
+    this.fetchChats = this.fetchChats.bind(this);
     this.onEditScenariosClick = this.onEditScenariosClick.bind(this);
     this.onSortableChange = this.onSortableChange.bind(this);
     this.onSortableScroll = this.onSortableScroll.bind(this);
@@ -67,6 +74,13 @@ export class CohortScenarios extends React.Component {
     this.setState({
       isReady: true
     });
+  }
+
+  async fetchChats(data = {}) {
+    await this.props.getChatsByCohortId(this.props.cohort.id);
+    if (data.chat) {
+      await this.props.getChatUsersByChatId(data.chat.id);
+    }
   }
 
   /* istanbul ignore next */
@@ -107,10 +121,20 @@ export class CohortScenarios extends React.Component {
 
   render() {
     const {
+      fetchChats,
       onEditScenariosClick,
       onSortableChange /*, onSortableScroll */
     } = this;
-    const { authority, chats, cohort, onClick, runs, user } = this.props;
+    const {
+      createChat,
+      joinChat,
+      authority,
+      chats,
+      cohort,
+      onClick,
+      runs,
+      user
+    } = this.props;
     const { isReady } = this.state;
     const { isFacilitator } = authority;
 
@@ -379,7 +403,7 @@ export class CohortScenarios extends React.Component {
 
               const gotoMyRoomButtonSize = 'medium';
               const existingRun = run.created_at && !run.ended_at;
-              const canShowJoinAsButtons =
+              const canShowJoinAsPersonaButtons =
                 isMultiParticipantScenario && !existingChat && !existingRun;
 
               return (
@@ -403,7 +427,7 @@ export class CohortScenarios extends React.Component {
                       <Text.Truncate lines={2}>
                         {scenario.description}
                       </Text.Truncate>
-                      {canShowJoinAsButtons ? (
+                      {canShowJoinAsPersonaButtons ? (
                         <Fragment>
                           <Text>
                             This is a multi-participant scenario, with{' '}
@@ -411,7 +435,39 @@ export class CohortScenarios extends React.Component {
                           </Text>
 
                           <div className="c__join-as-role-card">
-                            {scenario.personas.map(persona => {
+                            <JoinAsPersona
+                              cohort={cohort}
+                              scenario={scenario}
+                              user={user}
+                              onClick={async data => {
+                                const { persona, isOpen, scenario } = data;
+
+                                const chat = await createChat(
+                                  scenario,
+                                  cohort,
+                                  isOpen
+                                );
+
+                                const joined = await joinChat(chat.id, persona);
+
+                                // This might not be necessary
+                                await fetchChats({ chat });
+
+                                if (joined) {
+                                  this.setState({
+                                    room: {
+                                      isOpen: true,
+                                      lobby: {
+                                        isOpen: true,
+                                        chat
+                                      },
+                                      scenario
+                                    }
+                                  });
+                                }
+                              }}
+                            />
+                            {/*scenario.personas.map(persona => {
                               return (
                                 <Fragment key={Identity.key(persona)}>
                                   <div>
@@ -430,7 +486,48 @@ export class CohortScenarios extends React.Component {
                                   </div>
                                 </Fragment>
                               );
-                            })}
+                            })*/}
+                            {/*
+
+                            <p tabIndex="0">
+                              Is your room open to anyone in your cohort?
+                            </p>
+                            <Form>
+                            <Form.Field>
+                                <div className="ui checked radio checkbox">
+                                  <input
+                                    tabIndex="0"
+                                    type="radio"
+                                    name="isOpenToCohort"
+                                    id="yes"
+                                    value="yes"
+                                    checked={this.state.isOpenToCohort === true}
+                                    onChange={onRoomAccessChange}
+                                  />
+                                  <label htmlFor="yes">
+                                    Yes, let anyone in my cohort join.
+                                  </label>
+                                </div>
+                              </Form.Field>
+
+                              <Form.Field>
+                                <div className="ui checked radio checkbox">
+                                  <input
+                                    tabIndex="0"
+                                    type="radio"
+                                    name="isOpenToCohort"
+                                    id="no"
+                                    value="no"
+                                    checked={this.state.isOpenToCohort === false}
+                                    onChange={onRoomAccessChange}
+                                  />
+                                  <label htmlFor="no">
+                                    No, I will invite participants.
+                                  </label>
+                                </div>
+                              </Form.Field>
+                            </Form>
+                            */}
                           </div>
                           <Divider />
                         </Fragment>
@@ -568,7 +665,10 @@ CohortScenarios.propTypes = {
     scenarios: PropTypes.array,
     users: PropTypes.array
   }),
+  createChat: PropTypes.func,
+  joinChat: PropTypes.func,
   getChatsByCohortId: PropTypes.func,
+  getChatUsersByChatId: PropTypes.func,
   getCohort: PropTypes.func,
   getCohortScenarios: PropTypes.func,
   setCohortScenarios: PropTypes.func,
@@ -598,9 +698,12 @@ const mapDispatchToProps = dispatch => ({
   setCohortScenarios: params => dispatch(setCohortScenarios(params)),
   getRuns: () => dispatch(getRuns()),
   getUsers: () => dispatch(getUsers()),
+  createChat: (...params) => dispatch(createChat(...params)),
+  joinChat: (...params) => dispatch(joinChat(...params)),
   setChat: (id, params) => dispatch(setChat(id, params)),
-  setRun: (id, params) => dispatch(setRun(id, params)),
-  getChatsByCohortId: id => dispatch(getChatsByCohortId(id))
+  getChatsByCohortId: id => dispatch(getChatsByCohortId(id)),
+  getChatUsersByChatId: id => dispatch(getChatUsersByChatId(id)),
+  setRun: (id, params) => dispatch(setRun(id, params))
 });
 
 export default connect(

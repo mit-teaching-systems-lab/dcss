@@ -813,6 +813,10 @@ export class CohortProgress extends React.Component {
                           persona => persona.id === chatUser.persona_id
                         );
 
+                        if (!persona) {
+                          return null;
+                        }
+
                         return (
                           <p
                             key={Identity.key({
