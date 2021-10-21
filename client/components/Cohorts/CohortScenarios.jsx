@@ -361,12 +361,20 @@ export class CohortScenarios extends React.Component {
                 ? 'Go to my room to finish scenario'
                 : 'Finish scenario';
 
+              // let runButtonDisplay = isMultiParticipantScenario
+              //   ? 'Create or join a room to run scenario'
+              //   : 'Run scenario';
+
               let runButtonDisplay = isMultiParticipantScenario
-                ? 'Create or join a room to run scenario'
+                ? null
                 : 'Run scenario';
 
+              // let rerunButtonDisplay = isMultiParticipantScenario
+              //   ? 'Create or join a room to re-run scenario'
+              //   : 'Re-run scenario';
+
               let rerunButtonDisplay = isMultiParticipantScenario
-                ? 'Create or join a room to re-run scenario'
+                ? null
                 : 'Re-run scenario';
 
               let startButtonDisplay = created_at
@@ -529,36 +537,37 @@ export class CohortScenarios extends React.Component {
                             </Form>
                             */}
                           </div>
-                          <Divider />
                         </Fragment>
                       ) : null}
                     </Card.Description>
                     <Card.Meta>
-                      <Button
-                        compact
-                        data-testid="run-cohort-as-participant"
-                        size={gotoMyRoomButtonSize}
-                        onClick={() => {
-                          if (isMultiParticipantScenario) {
-                            if (created_at && !ended_at) {
-                              location.href = url;
+                      {runScenarioDisplay ? (
+                        <Button
+                          compact
+                          data-testid="run-cohort-as-participant"
+                          size={gotoMyRoomButtonSize}
+                          onClick={() => {
+                            if (isMultiParticipantScenario) {
+                              if (created_at && !ended_at) {
+                                location.href = url;
+                              } else {
+                                this.setState({
+                                  room: {
+                                    isOpen: true,
+                                    lobby: null,
+                                    scenario
+                                  }
+                                });
+                              }
                             } else {
-                              this.setState({
-                                room: {
-                                  isOpen: true,
-                                  lobby: null,
-                                  scenario
-                                }
-                              });
+                              location.href = url;
                             }
-                          } else {
-                            location.href = url;
-                          }
-                        }}
-                      >
-                        <Icon className="primary" name="play" />
-                        {runScenarioDisplay}
-                      </Button>
+                          }}
+                        >
+                          <Icon className="primary" name="play" />
+                          {runScenarioDisplay}
+                        </Button>
+                      ) : null}
                       {isMultiParticipantScenario && existingChat ? (
                         <Fragment>
                           {!existingChat.is_open ? (
