@@ -204,8 +204,8 @@ class SocketManager {
     if (REDIS_CONFIG) {
       const pubClient = createClient(REDIS_CONFIG);
       const subClient = pubClient.duplicate();
-      console.log('pubClient', pubClient);
-      console.log('subClient', subClient);
+      // console.log('pubClient', pubClient);
+      // console.log('subClient', subClient);
       this.io.adapter(createAdapter(pubClient, subClient));
     }
 
