@@ -345,6 +345,8 @@ async function getCohortUsers(id, options = {}) {
 }
 
 async function __getAggregatedCohort(cohort, options = {}) {
+  console.log("__getAggregatedCohort: cohort", cohort);
+
   const {
     includeRuns = false,
     includeScenarios = true,
@@ -371,6 +373,9 @@ async function __getAggregatedCohort(cohort, options = {}) {
       cohort.id,
       is_open
     );
+    console.log("__getAggregatedCohort: owner", owner);
+    console.log("__getAggregatedCohort: chatCreated", chatCreated);
+
     await setCohort(cohort.id, {
       chat_id: chatCreated.id
     });

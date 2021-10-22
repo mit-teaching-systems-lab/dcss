@@ -232,6 +232,9 @@ async function getScenario(scenario_id) {
   `);
 
   const scenario = results.rows[0];
+
+  console.log('getScenario: scenario', scenario);
+
   const users = await getScenarioUsers(scenario.id);
   // TODO: phase out "author"
   const author = await getUserById(scenario.author_id);
