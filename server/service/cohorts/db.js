@@ -345,7 +345,7 @@ async function getCohortUsers(id, options = {}) {
 }
 
 async function __getAggregatedCohort(cohort, options = {}) {
-  console.log("__getAggregatedCohort: cohort", cohort);
+  // console.log("__getAggregatedCohort: cohort", cohort);
 
   const {
     includeRuns = false,
