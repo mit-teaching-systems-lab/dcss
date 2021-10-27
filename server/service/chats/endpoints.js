@@ -336,10 +336,18 @@ async function getChatUsersSharedResponses(req, res) {
   res.json({ responses });
 }
 
+async function getChatInvites(req, res) {
+  const id = Number(req.params.id);
+  const invites = await db.getChatInvites(id);
+  res.json({ invites });
+}
+
+
 exports.joinChat = asyncMiddleware(joinChat);
 exports.getChats = asyncMiddleware(getChats);
 exports.getChatsByUserId = asyncMiddleware(getChatsByUserId);
 exports.getChatsByCohortId = asyncMiddleware(getChatsByCohortId);
+exports.getChatInvites = asyncMiddleware(getChatInvites);
 exports.getChatMessagesByChatId = asyncMiddleware(getChatMessagesByChatId);
 exports.getChatMessagesCountByChatId = asyncMiddleware(
   getChatMessagesCountByChatId

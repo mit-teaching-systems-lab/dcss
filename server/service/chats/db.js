@@ -90,6 +90,16 @@ exports.createChatInvite = async (
   });
 };
 
+exports.getChatInvites = async chat_id => {
+  const result = await query(sql`
+    SELECT *
+    FROM chat_invite
+    WHERE expire_at IS NULL
+    AND chat_id = ${chat_id}
+  `);
+  return result.rows;
+};
+
 // TODO: merge this and the following function
 exports.getChatInviteForUser = async (id, user_id) => {
   const result = await query(sql`

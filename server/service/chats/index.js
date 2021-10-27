@@ -8,6 +8,7 @@ const { validateRequestBody } = require('../../util/requestValidation');
 const {
   createChat,
   createChatInvite,
+  getChatInvites,
   getChat,
   getChatMessagesByChatId,
   getChatMessagesCountByChatId,
@@ -52,6 +53,7 @@ router.get('/:id/response/:response_id/', [
   requireUser,
   getChatUsersSharedResponses
 ]);
+router.get('/:id/invites', [requireUser, getChatInvites]);
 router.get('/:id/messages/count', [requireUser, getChatMessagesCountByChatId]);
 router.get('/:id/messages', [requireUser, getChatMessagesByChatId]);
 router.get('/:id/users/linked', [requireUser, getLinkedChatUsersByChatId]);
