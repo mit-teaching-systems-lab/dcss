@@ -4,6 +4,8 @@ import {
   CREATE_CHAT_INVITE_ERROR,
   GET_CHAT_ERROR,
   GET_CHAT_SUCCESS,
+  GET_CHAT_INVITES_ERROR,
+  GET_CHAT_INVITES_SUCCESS,
   GET_CHAT_MESSAGES_ERROR,
   GET_CHAT_MESSAGES_SUCCESS,
   GET_CHAT_MESSAGES_COUNT_ERROR,
@@ -101,6 +103,22 @@ export let createChatInvite = (id, selection) => async dispatch => {
     return invite;
   } catch (error) {
     dispatch({ type: CREATE_CHAT_INVITE_ERROR, error });
+    return null;
+  }
+};
+
+export let getChatInvites = id => async dispatch => {
+  try {
+    const res = await (await fetch(`/api/chats/${id}/invites`)).json();
+
+    if (res.error) {
+      throw res;
+    }
+    const { invites } = res;
+    dispatch({ type: GET_CHAT_INVITES_SUCCESS, invites });
+    return invites;
+  } catch (error) {
+    dispatch({ type: GET_CHAT_INVITES_ERROR, error });
     return null;
   }
 };
