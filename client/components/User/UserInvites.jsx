@@ -22,17 +22,22 @@ import {
   Modal
 } from '@components/UI';
 import UserInvitesList, {
-  makeAcceptedInviteRedirectPath,
-  INVITE_STATUS_PENDING,
-  INVITE_STATUS_CANCEL,
-  INVITE_STATUS_DECLINE,
-  INVITE_STATUS_ACCEPT
+  makeAcceptedInviteRedirectPath
 } from '@components/User/UserInvitesList';
 import withSocket, {
   CREATE_USER_CHANNEL,
   NEW_INVITATION,
   SET_INVITATION
 } from '@hoc/withSocket';
+
+import Invites from '@utils/Invites';
+
+const {
+  INVITE_STATUS_PENDING,
+  INVITE_STATUS_CANCEL,
+  INVITE_STATUS_DECLINE,
+  INVITE_STATUS_ACCEPT
+} = Invites;
 
 // const isParticipantOnly = user => {
 //   const { roles = [] } = user;
