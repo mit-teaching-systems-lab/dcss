@@ -183,11 +183,16 @@ class LobbyUserSelect extends Component {
     });
     Storage.merge(this.storageKey, { selected });
 
-    const invite = this.props.invites.slice().reverse().find(invite => invite.sender_id === id);
+    const invite = this.props.invites
+      .slice()
+      .reverse()
+      .find(invite => invite.sender_id === id);
 
-    this.props.setInvite(invite.id, {
-      status: Invites.INVITE_STATUS_CANCEL
-    });
+    if (invite) {
+      this.props.setInvite(invite.id, {
+        status: Invites.INVITE_STATUS_CANCEL
+      });
+    }
   }
 
   onSelectedPersonaChange(event, { name: index, value: id }) {
@@ -354,8 +359,8 @@ class LobbyUserSelect extends Component {
 
           const listContentStyle = Layout.isForMobile()
             ? {
-                marginBottom: '0.5em'
-              }
+              marginBottom: '0.5em'
+            }
             : {};
           const nameAndButtonContent = (
             <List.Content
@@ -387,7 +392,7 @@ class LobbyUserSelect extends Component {
         <List.Item>{searchWidget}</List.Item>
       </List>
     ) : /* istanbul ignore next */
-    null;
+      null;
   }
 
   onResultSelect(event, { result }) {
@@ -708,11 +713,11 @@ class LobbyUserSelect extends Component {
     let remainingMessage = `${remainingCount} ${pluralRemaining} unassigned.`;
     let remainingTextProps = Layout.isForMobile()
       ? {
-          style: {
-            display: 'block',
-            marginBottom: '0.5em'
-          }
+        style: {
+          display: 'block',
+          marginBottom: '0.5em'
         }
+      }
       : {};
 
     if (remainingCount === 0) {
@@ -764,11 +769,11 @@ class LobbyUserSelect extends Component {
 
     const sendInvitesButtonConditionalProps = Layout.isNotForMobile()
       ? {
-          floated: 'right'
-        }
+        floated: 'right'
+      }
       : {
-          fluid: true
-        };
+        fluid: true
+      };
 
     const sendInvitesButtonProps = {
       ...sendInvitesButtonConditionalProps,
@@ -864,7 +869,9 @@ class LobbyUserSelect extends Component {
           <Grid.Row>
             <Grid.Column>
               <Card fluid>
-                <Card.Content>{this.renderInviteeList(searchWidget)}</Card.Content>
+                <Card.Content>
+                  {this.renderInviteeList(searchWidget)}
+                </Card.Content>
                 <Card.Content extra>
                   {tally}
                   {sendInvitesButton}
@@ -954,15 +961,24 @@ const mapStateToProps = (state, ownProps) => {
 
   const personasInUseById = chat
     ? chat.users.reduce(
-        (accum, user) => ({
-          ...accum,
-          [user.persona_id]: user
-        }),
-        {}
-      )
+      (accum, user) => ({
+        ...accum,
+        [user.persona_id]: user
+      }),
+      {}
+    )
     : {};
 
-  return { chat, cohort, invites, personasInUseById, scenario, user, users, usersById };
+  return {
+    chat,
+    cohort,
+    invites,
+    personasInUseById,
+    scenario,
+    user,
+    users,
+    usersById
+  };
 };
 
 const mapDispatchToProps = dispatch => ({
