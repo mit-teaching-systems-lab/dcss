@@ -12,7 +12,7 @@ import {
   getLinkedChatUsersByChatId,
   joinChat
 } from '@actions/chat';
-import { getInvites } from '@actions/invite';
+import { getInvites, setInvite } from '@actions/invite';
 
 import LobbyConfirmationDialog from '@components/Lobby/LobbyConfirmationDialog';
 import {
@@ -28,6 +28,7 @@ import {
 } from '@components/UI';
 import Username from '@components/User/Username';
 import Identity from '@utils/Identity';
+import Invites from '@utils/Invites';
 import Layout from '@utils/Layout';
 import Moment from '@utils/Moment';
 import Storage from '@utils/Storage';
@@ -181,6 +182,12 @@ class LobbyUserSelect extends Component {
       selected
     });
     Storage.merge(this.storageKey, { selected });
+
+    const invite = this.props.invites.slice().reverse().find(invite => invite.sender_id === id);
+
+    this.props.setInvite(invite.id, {
+      status: Invites.INVITE_STATUS_CANCEL
+    });
   }
 
   onSelectedPersonaChange(event, { name: index, value: id }) {
@@ -203,7 +210,7 @@ class LobbyUserSelect extends Component {
     }
   }
 
-  renderInviteeList() {
+  renderInviteeList(searchWidget) {
     const { onRemoveInviteeClick, onSelectedPersonaChange } = this;
     const {
       chat,
@@ -254,6 +261,8 @@ class LobbyUserSelect extends Component {
       .map(selection => selection.persona.id)
       .filter(Boolean);
 
+    let hasAutoFocused = false;
+
     return selected.length ? (
       <List divided selection data-testid="lobby-user-select-invitees">
         {selected.map((selection, index) => {
@@ -271,7 +280,9 @@ class LobbyUserSelect extends Component {
             );
           const isSelectedNotHost = selection.user.id !== user.id;
           const content = 'You are the host';
-          const wrappedUsernameContent = <span>{selectedUser.content}</span>;
+          const wrappedUsernameContent = (
+            <span tabIndex={0}>{selectedUser.content}</span>
+          );
           const selectedUserDisplay = isSelectedNotHost ? (
             wrappedUsernameContent
           ) : (
@@ -293,10 +304,21 @@ class LobbyUserSelect extends Component {
             : guestOrHostGuestInitialAction;
 
           const articleOrPossessivePronoun = isSelectedNotHost ? 'a' : 'your';
-
           const placeholder = `${action} ${articleOrPossessivePronoun} role`;
+          let searchInput = {};
+          let autoFocus = false;
+
+          // We only want to autofocus the FIRST unassigned participant
+          if (!hasAutoFocused && !selection.assigned && !selection.persona.id) {
+            hasAutoFocused = true;
+            autoFocus = true;
+            searchInput = {
+              autoFocus
+            };
+          }
           const dropdown = (
             <Dropdown
+              search
               selection
               fluid={Layout.isForMobile()}
               key={`${key}-dropdown`}
@@ -305,6 +327,8 @@ class LobbyUserSelect extends Component {
               onChange={onSelectedPersonaChange}
               options={options}
               placeholder={placeholder}
+              searchInput={searchInput}
+              tabIndex={0}
               value={selection.persona.id}
             />
           );
@@ -347,6 +371,7 @@ class LobbyUserSelect extends Component {
                   aria-label={`Remove ${selectedUser.title}`}
                   id={selectedUser.id}
                   onClick={onRemoveInviteeClick}
+                  tabIndex={0}
                 />
               ) : null}
               {selectedUserDisplay}
@@ -359,6 +384,7 @@ class LobbyUserSelect extends Component {
 
           return <List.Item key={key}>{contents}</List.Item>;
         })}
+        <List.Item>{searchWidget}</List.Item>
       </List>
     ) : /* istanbul ignore next */
     null;
@@ -569,6 +595,8 @@ class LobbyUserSelect extends Component {
           isOpen: false
         }
       });
+
+      this.props.onSetRolesAndInvites({ chat });
     };
 
     const secondaryOnClick = () => {
@@ -669,9 +697,13 @@ class LobbyUserSelect extends Component {
       results.push(...this.props.users);
     }
 
+    // Host searched and selected a participant, but has not assigned
+    // a role to them yet.
+    const hasAllRolesSelectedAndUnassigned = selectedCount === rolesCount;
+
     // If the host is the only person in the list,
     // disable invite sending.
-    const disabled = selectedCount !== rolesAssigned || selectedCount <= 1;
+    const disabled = !hasAllRolesSelectedAndUnassigned || selectedCount <= 1;
 
     let remainingMessage = `${remainingCount} ${pluralRemaining} unassigned.`;
     let remainingTextProps = Layout.isForMobile()
@@ -759,8 +791,10 @@ class LobbyUserSelect extends Component {
       Storage.merge(this.storageKey, { instruction });
     };
 
+    const autoFocus = !hasAllRolesSelectedAndUnassigned && !this.isScenarioRun;
+
     const searchProps = {
-      autoFocus: !this.isScenarioRun,
+      autoFocus,
       fluid: true,
       className: 'grid__menu-search l__search-input primary',
       noResultsMessage: 'No users found',
@@ -768,10 +802,13 @@ class LobbyUserSelect extends Component {
       onMouseDown: onSearchChange,
       onResultSelect: onResultSelect,
       onSearchChange: onSearchChange,
+      placeholder: 'Search for participants',
       resultRenderer: resultRenderer,
       results: results,
       value: search || ' '
     };
+
+    const searchWidget = <Search {...searchProps} />;
     const lastRenderTime = Moment(Date.now()).calendar();
 
     return chat.is_open ? null : (
@@ -790,11 +827,11 @@ class LobbyUserSelect extends Component {
                     the available roles.
                   </p>
                   <ol>
+                    <li>Choose your role.</li>
                     <li>
                       Search and select participants that you want to invite,
                       and assign their roles as you go.
                     </li>
-                    <li>Choose your role.</li>
                     <li>
                       Once all of the available roles are filled, click the{' '}
                       {miniSendInvitesButton} button to invite your selected
@@ -822,12 +859,12 @@ class LobbyUserSelect extends Component {
                 updated {lastRenderTime}):
               </strong>
             </p>
-            <Search {...searchProps} />
+            {/*searchWidget*/}
           </Grid.Row>
           <Grid.Row>
             <Grid.Column>
               <Card fluid>
-                <Card.Content>{this.renderInviteeList()}</Card.Content>
+                <Card.Content>{this.renderInviteeList(searchWidget)}</Card.Content>
                 <Card.Content extra>
                   {tally}
                   {sendInvitesButton}
@@ -853,9 +890,12 @@ LobbyUserSelect.propTypes = {
   createChatInvite: PropTypes.func,
   getChatUsersByChatId: PropTypes.func,
   getLinkedChatUsersByChatId: PropTypes.func,
+  invites: PropTypes.array,
   getInvites: PropTypes.func,
+  setInvite: PropTypes.func,
   joinChat: PropTypes.func,
   onSelect: PropTypes.func,
+  onSetRolesAndInvites: PropTypes.func,
   personasInUseById: PropTypes.object,
   selection: PropTypes.object,
   scenario: PropTypes.object,
@@ -865,7 +905,7 @@ LobbyUserSelect.propTypes = {
 };
 
 const mapStateToProps = (state, ownProps) => {
-  const { user } = state;
+  const { invites, user } = state;
 
   const chat = state.chat && state.chat.id ? state.chat : ownProps.chat || null;
 
@@ -922,7 +962,7 @@ const mapStateToProps = (state, ownProps) => {
       )
     : {};
 
-  return { chat, cohort, personasInUseById, scenario, user, users, usersById };
+  return { chat, cohort, invites, personasInUseById, scenario, user, users, usersById };
 };
 
 const mapDispatchToProps = dispatch => ({
@@ -930,6 +970,7 @@ const mapDispatchToProps = dispatch => ({
   getChatUsersByChatId: id => dispatch(getChatUsersByChatId(id)),
   getLinkedChatUsersByChatId: id => dispatch(getLinkedChatUsersByChatId(id)),
   getInvites: () => dispatch(getInvites()),
+  setInvite: (id, params) => dispatch(setInvite(id, params)),
   joinChat: (id, persona) => dispatch(joinChat(id, persona))
 });
 

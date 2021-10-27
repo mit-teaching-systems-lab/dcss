@@ -118,6 +118,7 @@ class LobbyUserWaiting extends Component {
 LobbyUserWaiting.propTypes = {
   chat: PropTypes.object,
   cohort: PropTypes.object,
+  onSetRolesAndInvites: PropTypes.func,
   scenario: PropTypes.object,
   user: PropTypes.object,
   users: PropTypes.array,

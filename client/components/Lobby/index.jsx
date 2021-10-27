@@ -159,7 +159,7 @@ class Lobby extends Component {
   // }
 
   render() {
-    const { chat, cohort, scenario, user } = this.props;
+    const { chat, cohort, onSetRolesAndInvites, scenario, user } = this.props;
     const { isReady, selection } = this.state;
 
     if (!isReady) {
@@ -173,6 +173,7 @@ class Lobby extends Component {
     const lobbyUserSelectOrWaitingProps = {
       chat,
       cohort,
+      onSetRolesAndInvites,
       scenario,
       selection
     };
@@ -284,6 +285,7 @@ Lobby.propTypes = {
   getUsers: PropTypes.func,
   onContinueClick: PropTypes.func,
   onRoleSelect: PropTypes.func,
+  onSetRolesAndInvites: PropTypes.func,
   socket: PropTypes.object,
   scenario: PropTypes.object,
   user: PropTypes.object,

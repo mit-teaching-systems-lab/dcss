@@ -589,7 +589,8 @@ export class CohortScenarios extends React.Component {
                               }}
                             >
                               <Icon className="primary" name="group" />
-                              Go to my room&apos;s lobby
+                              Invite participants to my room
+                              {/*Go to my room&apos;s lobby*/}
                             </Button>
                           ) : null}
                           <Button

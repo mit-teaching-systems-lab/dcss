@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
+import { getChatInvites } from '@actions/chat';
 import { getCohortChatsOverview } from '@actions/cohort';
 import { getScenariosByStatus } from '@actions/scenario';
 import { SCENARIO_IS_PUBLIC } from '@components/Scenario/constants';
@@ -30,10 +31,12 @@ class LobbyUserOverview extends Component {
       clearTimeout(this.timeout);
     }
     const chats = await this.props.getCohortChatsOverview(this.props.cohort.id);
+    const invites = await this.props.getChatInvites(this.props.chat.id);
     const isReady = true;
     this.setState({
       isReady,
-      chats
+      chats,
+      invites
     });
     this.timeout = setTimeout(async () => {
       await this.refresh;
@@ -275,6 +278,7 @@ class LobbyUserOverview extends Component {
 LobbyUserOverview.propTypes = {
   chat: PropTypes.object,
   cohort: PropTypes.object,
+  getChatInvites: PropTypes.func,
   getCohortChatsOverview: PropTypes.func,
   getScenariosByStatus: PropTypes.func,
   onSelect: PropTypes.func,
@@ -311,6 +315,7 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = dispatch => ({
+  getChatInvites: id => dispatch(getChatInvites(id)),
   getCohortChatsOverview: id => dispatch(getCohortChatsOverview(id)),
   getScenariosByStatus: params => dispatch(getScenariosByStatus(params))
 });

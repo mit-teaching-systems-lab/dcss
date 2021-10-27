@@ -4,10 +4,11 @@ import PropTypes from 'prop-types';
 import pluralize from 'pluralize';
 import {
   createChat,
-  setChat,
+  getChatInvites,
   getChatsByCohortId,
   getChatUsersByChatId,
-  joinChat
+  joinChat,
+  setChat
 } from '@actions/chat';
 import Chat from '@components/Chat';
 import Lobby from '@components/Lobby';
@@ -58,6 +59,7 @@ export class CohortRoomSelector extends React.Component {
     super(props);
 
     const lobby = this.props.lobby || {
+      invites: [],
       isOpen: false
     };
 
@@ -98,6 +100,18 @@ export class CohortRoomSelector extends React.Component {
       await this.props.joinChat(cohort.chat.id, null);
     }
 
+    const { lobby } = this.state;
+
+    if (lobby.isOpen) {
+      const invites = await this.props.getChatInvites(lobby.chat.id);
+      this.setState({
+        lobby: {
+          ...lobby,
+          invites
+        }
+      });
+    }
+
     await this.fetchChats();
 
     this.props.socket.emit(CREATE_COHORT_CHANNEL, Payload.compose({ cohort }));
@@ -135,7 +149,6 @@ export class CohortRoomSelector extends React.Component {
 
   render() {
     const { onCloseClick } = this;
-
     const { chat, chats, cohort, scenario, user } = this.props;
     const { isReady } = this.state;
 
@@ -378,12 +391,50 @@ export class CohortRoomSelector extends React.Component {
 
     let host = null;
 
+    // This means that either an invite has been sent and accepted
+    // or just an invite sent, but broadly that the host has chosen
+    // someone for all the roles.
+    let allRolesArePendingOrAccepted = false;
+
     // If this component received an explicit "lobby" object,
     // check to make sure that the host has a role before allowing
     // then to proceed to the room.
     if (this.state.lobby.isOpen && this.state.lobby.chat) {
       const chat = this.props.chatsById[this.state.lobby.chat.id];
       host = chat.usersById[user.id];
+
+      const personaIds = scenario.personas.map(({id}) => id);
+      const numberOfRolesToFill = personaIds.length;
+      let pendingOrAccepted = 0;
+
+      // First, check the chat users list. Count the number
+      // of users that are in the chat with assigned personas.
+      for (let chatUser of chat.users) {
+        if (personaIds.includes(chatUser.persona_id)) {
+          pendingOrAccepted++;
+        }
+      }
+
+      // If the number of users in the chat (with assigned personas)
+      // does not match the number of personas in the scenario,
+      // then check the invites list.
+      if (pendingOrAccepted < numberOfRolesToFill) {
+        for (let invite of this.state.lobby.invites) {
+          if (personaIds.includes(invite.persona_id)) {
+            pendingOrAccepted++;
+          }
+        }
+      }
+
+      // There could be more then one pending invitation for
+      // a given role, so after the checks above, we may have
+      // a greater number of pending or accepted roles.
+      //
+      // As long as we have the same number (or more), then
+      // the room can be joined by the host.
+      if (pendingOrAccepted >= numberOfRolesToFill) {
+        allRolesArePendingOrAccepted = true;
+      }
     }
 
     if (user.id === chat.host_id) {
@@ -392,8 +443,11 @@ export class CohortRoomSelector extends React.Component {
 
     // If the use is also the host, but has not selected a role,
     // then they cannot join the room yet.
+    //
+    // If "not all roles have been set", then the button
+    // must be disabled.
     const primaryButtonDisabled =
-      host && this.state.lobby.isOpen ? host.persona_id === null : false;
+      host && this.state.lobby.isOpen ? !allRolesArePendingOrAccepted : false;
 
     const primaryButtonProps = {
       content: primaryButtonContent,
@@ -568,6 +622,15 @@ export class CohortRoomSelector extends React.Component {
                     chat={this.state.lobby.chat}
                     cohort={cohort}
                     scenario={scenario}
+                    onSetRolesAndInvites={async ({ chat }) => {
+                      const invites = await this.props.getChatInvites(chat.id);
+                      this.setState({
+                        lobby: {
+                          ...this.state.lobby,
+                          invites
+                        }
+                      });
+                    }}
                   />
                 ) : null}
               </Fragment>
@@ -693,6 +756,7 @@ CohortRoomSelector.propTypes = {
   createChat: PropTypes.func,
   lobby: PropTypes.object,
   setChat: PropTypes.func,
+  getChatInvites: PropTypes.func,
   getChatsByCohortId: PropTypes.func,
   getChatUsersByChatId: PropTypes.func,
   header: PropTypes.any,
@@ -745,6 +809,7 @@ const mapDispatchToProps = dispatch => ({
   joinChat: (...params) => dispatch(joinChat(...params)),
   createChat: (...params) => dispatch(createChat(...params)),
   setChat: (id, params) => dispatch(setChat(id, params)),
+  getChatInvites: id => dispatch(getChatInvites(id)),
   getChatsByCohortId: id => dispatch(getChatsByCohortId(id)),
   getChatUsersByChatId: id => dispatch(getChatUsersByChatId(id))
 });
