@@ -10,48 +10,49 @@ import Username from '@components/User/Username';
 
 import Avatar from '@utils/Avatar';
 import Identity from '@utils/Identity';
+import Invites from '@utils/Invites';
 import Moment from '@utils/Moment';
 
-export const INVITE_STATUS_PENDING = 1;
-export const INVITE_STATUS_CANCEL = 2;
-export const INVITE_STATUS_DECLINE = 3;
-export const INVITE_STATUS_ACCEPT = 4;
+// export const INVITE_STATUS_PENDING = 1;
+// export const INVITE_STATUS_CANCEL = 2;
+// export const INVITE_STATUS_DECLINE = 3;
+// export const INVITE_STATUS_ACCEPT = 4;
 
-export const INVITE_STATUS_PENDING_NAME = 'pending';
-export const INVITE_STATUS_CANCEL_NAME = 'canceled';
-export const INVITE_STATUS_DECLINE_NAME = 'declined';
-export const INVITE_STATUS_ACCEPT_NAME = 'accepted';
+// export const INVITE_STATUS_PENDING_NAME = 'pending';
+// export const INVITE_STATUS_CANCEL_NAME = 'canceled';
+// export const INVITE_STATUS_DECLINE_NAME = 'declined';
+// export const INVITE_STATUS_ACCEPT_NAME = 'accepted';
 
-const INVITE_STATUS_MAP = {
-  pending: 1,
-  canceled: 2,
-  declined: 3,
-  accepted: 4
-};
+// const INVITE_STATUS_MAP = {
+//   pending: 1,
+//   canceled: 2,
+//   declined: 3,
+//   accepted: 4
+// };
 
-const INVITE_STATUS_CANCELED_MESSAGE = 'This invitation has been canceled.';
-const INVITE_STATUS_DECLINED_MESSAGE = 'This invitation has been declined.';
-const INVITE_STATUS_ACCEPTED_MESSAGE = 'This invitation has been accepted.';
+// const INVITE_STATUS_CANCELED_MESSAGE = 'This invitation has been canceled.';
+// const INVITE_STATUS_DECLINED_MESSAGE = 'This invitation has been declined.';
+// const INVITE_STATUS_ACCEPTED_MESSAGE = 'This invitation has been accepted.';
 
-const INVITE_STATUS_MESSAGES = {
-  '1': {
-    received:
-      'This invitation is pending. You may Accept, Decline or leave it unchanged.',
-    sent: 'This invitation is pending. You may Cancel it or leave it unchanged'
-  },
-  '2': {
-    received: INVITE_STATUS_CANCELED_MESSAGE,
-    sent: INVITE_STATUS_CANCELED_MESSAGE
-  },
-  '3': {
-    received: INVITE_STATUS_DECLINED_MESSAGE,
-    sent: INVITE_STATUS_DECLINED_MESSAGE
-  },
-  '4': {
-    received: INVITE_STATUS_ACCEPTED_MESSAGE,
-    sent: INVITE_STATUS_ACCEPTED_MESSAGE
-  }
-};
+// const INVITE_STATUS_MESSAGES_MAP = {
+//   '1': {
+//     received:
+//       'This invitation is pending. You may Accept, Decline or leave it unchanged.',
+//     sent: 'This invitation is pending. You may Cancel it or leave it unchanged'
+//   },
+//   '2': {
+//     received: INVITE_STATUS_CANCELED_MESSAGE,
+//     sent: INVITE_STATUS_CANCELED_MESSAGE
+//   },
+//   '3': {
+//     received: INVITE_STATUS_DECLINED_MESSAGE,
+//     sent: INVITE_STATUS_DECLINED_MESSAGE
+//   },
+//   '4': {
+//     received: INVITE_STATUS_ACCEPTED_MESSAGE,
+//     sent: INVITE_STATUS_ACCEPTED_MESSAGE
+//   }
+// };
 
 const Invite = Comment;
 
@@ -137,14 +138,14 @@ class UserInvitesList extends Component {
 
   onInviteChange(event, { value: invite }) {
     if (invite.status === 'accepted') {
-      const acceptUrl = `/invite/${INVITE_STATUS_ACCEPT}/${invite.code}`;
+      const acceptUrl = `/invite/${Invites.INVITE_STATUS_ACCEPT}/${invite.code}`;
       const redirect = makeAcceptedInviteRedirectPath(invite);
       this.props.history.push(acceptUrl, {
         redirect
       });
     } else {
       this.props.setInvite(invite.id, {
-        status: INVITE_STATUS_MAP[invite.status]
+        status: Invites.INVITE_STATUS_MAP[invite.status]
       });
     }
   }
@@ -196,7 +197,7 @@ class UserInvitesList extends Component {
 
             const cancel = {
               ...invite,
-              status: INVITE_STATUS_CANCEL_NAME
+              status: Invites.INVITE_STATUS_CANCEL_NAME
             };
 
             const cancelButton = (
@@ -213,7 +214,7 @@ class UserInvitesList extends Component {
 
             const decline = {
               ...invite,
-              status: INVITE_STATUS_DECLINE_NAME
+              status: Invites.INVITE_STATUS_DECLINE_NAME
             };
 
             const declineButton = (
@@ -230,7 +231,7 @@ class UserInvitesList extends Component {
 
             const accept = {
               ...invite,
-              status: INVITE_STATUS_ACCEPT_NAME
+              status: Invites.INVITE_STATUS_ACCEPT_NAME
             };
 
             const acceptButton = (
@@ -255,7 +256,7 @@ class UserInvitesList extends Component {
               : [cancelButton];
 
             const shouldShowButtons =
-              invite.status === INVITE_STATUS_PENDING_NAME;
+              invite.status === Invites.INVITE_STATUS_PENDING_NAME;
             const type = isRecipient ? 'received' : 'sent';
 
             accum.push(
@@ -276,8 +277,8 @@ class UserInvitesList extends Component {
                     ) : (
                       <Text>
                         {
-                          INVITE_STATUS_MESSAGES[
-                            INVITE_STATUS_MAP[invite.status]
+                          Invites.INVITE_STATUS_MESSAGES_MAP[
+                            Invites.INVITE_STATUS_MAP[invite.status]
                           ][type]
                         }{' '}
                         {invite.status === 'accepted' ? (
