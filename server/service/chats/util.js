@@ -1,5 +1,6 @@
 const { asyncMiddleware } = require('../../util/api');
 const { query } = require('../../util/db');
+const { sql } = require('../../util/sqlHelpers');
 const db = require('./db');
 const authdb = require('../session/db');
 const cohortdb = require('../cohorts/db');
