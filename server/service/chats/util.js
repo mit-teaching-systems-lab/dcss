@@ -1,4 +1,5 @@
 const { asyncMiddleware } = require('../../util/api');
+const { query } = require('../../util/db');
 const db = require('./db');
 const authdb = require('../session/db');
 const cohortdb = require('../cohorts/db');
@@ -8,23 +9,37 @@ const scenariodb = require('../scenarios/db');
 exports.makeChatInviteNotification = async invite => {
   const host = await authdb.getUserById(invite.sender_id);
   const chat = await db.getChat(invite.chat_id);
-  const scenario = await scenariodb.getScenarioById(chat.scenario_id);
+
+  if (!chat.scenario_id) {
+    const result = await query(sql`
+      SELECT scenario_id
+      FROM scenario_persona
+      WHERE scenario_persona = ${invite.persona_id}
+    `);
+
+    chat.scenario_id = result.rows.length ? result.rows[0].scenario_id : null;
+  }
+
+  const scenario = chat.scenario_id
+    ? await scenariodb.getScenarioById(chat.scenario_id)
+    : null;
   const cohort = chat.cohort_id
     ? await cohortdb.getCohortById(chat.cohort_id)
     : null;
 
   const hostname = host.personalname || host.username;
-  const persona = scenario.personas.find(
-    persona => persona.id === invite.persona_id
-  );
+  const persona = scenario
+    ? scenario.personas.find(persona => persona.id === invite.persona_id)
+    : null;
 
   const asRole = persona ? `, as <strong>${persona.name}</strong>` : '';
-  const inScenario = `the scenario <strong>${scenario.title}</strong>${asRole}`;
+  const inScenario = scenario ? `the scenario <strong>${scenario.title}</strong>${asRole}` : '';
   const place = cohort
     ? `${inScenario}, which is part of the cohort <strong>${cohort.name}</strong>`
     : inScenario;
 
-  const html = `<strong>${hostname}</strong> has invited you to join them in ${place}.`;
+  const joinIn = scenario ? ` in ${place}` : '';
+  const html = `<strong>${hostname}</strong> has invited you to join them${joinIn}.`;
 
   return {
     start_at: invite.created_at,
