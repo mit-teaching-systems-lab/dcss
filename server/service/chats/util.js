@@ -15,7 +15,7 @@ exports.makeChatInviteNotification = async invite => {
     const result = await query(sql`
       SELECT scenario_id
       FROM scenario_persona
-      WHERE scenario_persona = ${invite.persona_id}
+      WHERE persona_id = ${invite.persona_id}
     `);
 
     chat.scenario_id = result.rows.length ? result.rows[0].scenario_id : null;
