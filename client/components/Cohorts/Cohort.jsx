@@ -301,11 +301,9 @@ export class Cohort extends React.Component {
       this.state.copy.isOpen ||
       this.state.delete.isOpen ||
       this.state.archive.isOpen;
-    const cohortActionKind = this.state.copy.isOpen
-      ? 'Copy'
-      : this.state.delete.isOpen
-      ? 'Delete'
-      : 'Archive';
+
+    const deleteOrArchive = this.state.delete.isOpen ? 'Delete' : 'Archive';
+    const cohortActionKind = this.state.copy.isOpen ? 'Copy' : deleteOrArchive;
     const cohortToolsActionModalHeader = `${cohortActionKind} "${cohort.name}"`;
     const cohortToolsActionAction = cohortActionKind.toLowerCase();
     const onCohortToolActionClose = () => {
