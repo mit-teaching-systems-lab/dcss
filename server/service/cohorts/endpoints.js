@@ -41,8 +41,10 @@ async function getCohort(req, res) {
   if (!isUserSuperOwnerOrFacilitator) {
     const cohortUser = cohort.usersById[user.id];
 
-    isUserSuperOwnerOrFacilitator =
-      cohortUser.is_owner || cohortUser.roles.includes('facilitator');
+    if (cohortUser) {
+      isUserSuperOwnerOrFacilitator =
+        cohortUser.is_owner || cohortUser.roles.includes('facilitator');
+    }
   }
 
   if (!isUserSuperOwnerOrFacilitator) {
