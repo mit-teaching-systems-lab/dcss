@@ -15,6 +15,7 @@ import {
 import { invites, invitesById } from './invite';
 import { session } from './session';
 import { logs, logsById } from './logs';
+import { partnering, partneringById } from './partnering';
 import { persona, personas, personasById } from './persona';
 import { response, responses, responsesById } from './response';
 import { run, runs, runsById } from './run';
@@ -45,6 +46,8 @@ export default combineReducers({
   invitesById,
   logs,
   logsById,
+  partnering,
+  partneringById,
   persona,
   personas,
   personasById,

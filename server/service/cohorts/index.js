@@ -25,6 +25,7 @@ const {
   copyCohort,
   getCohort,
   getCohortScenarios,
+  getCohortScenarioPartnering,
   getCohorts,
   getCohortsCount,
   getCohortsSlice,
@@ -32,6 +33,7 @@ const {
   getCohortParticipantData,
   setCohort,
   setCohortScenarios,
+  setCohortScenarioPartnering,
   linkCohortToRun,
   joinCohort,
   quitCohort,
@@ -69,6 +71,16 @@ router.post('/:id/roles/add', [
   addCohortUserRole
 ]);
 router.get('/:id/overview', [requireUser, getCohortChatsOverview]);
+router.get('/:id/partnering', [requireUser, getCohortScenarioPartnering]);
+router.put('/:id/partnering', [
+  requireUser,
+  requireUserRole(requiredSiteRoles),
+  // TODO: activate this step
+  // requireCohortUserRole(requiredCohortRoles),
+  validateRequestBody,
+  setCohortScenarioPartnering
+]);
+
 router.get('/:id/scenarios', [requireUser, getCohortScenarios]);
 router.put('/:id/scenarios', [
   requireUser,

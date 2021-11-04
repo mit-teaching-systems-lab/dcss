@@ -72,7 +72,6 @@ export class CohortProgress extends React.Component {
       participants: []
     };
 
-    this.interval = null;
     this.onParticipantSearchChange = this.onParticipantSearchChange.bind(this);
   }
 
@@ -100,27 +99,8 @@ export class CohortProgress extends React.Component {
     }
   }
 
-  refresh() {
-    this.interval = setInterval(async () => {
-      /* istanbul ignore else */
-      if (!this.state.search && document.visibilityState === 'visible') {
-        await this.fetchCohort();
-      }
-    }, 5000);
-  }
-
   async componentDidMount() {
     await this.fetchCohort();
-    /* istanbul ignore if */
-    if (this.state.refresh) {
-      // TODO: allow updating to paused.
-      this.refresh();
-    }
-  }
-
-  componentWillUnmount() {
-    this.hasUnmounted = true;
-    clearInterval(this.interval);
   }
 
   onParticipantSearchChange(event, { value }) {

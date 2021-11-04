@@ -19,6 +19,8 @@ import {
   SET_COHORT_ERROR,
   SET_COHORT_SCENARIOS_ERROR,
   SET_COHORT_SCENARIOS_SUCCESS,
+  SET_COHORT_SCENARIO_PARTNERING_ERROR,
+  SET_COHORT_SCENARIO_PARTNERING_SUCCESS,
   SET_COHORT_SUCCESS,
   SET_COHORT_USER_ROLE_ERROR,
   SET_COHORT_USER_ROLE_SUCCESS
@@ -99,6 +101,39 @@ export let setCohortScenarios = cohort => async dispatch => {
     return cohort;
   } catch (error) {
     dispatch({ type: SET_COHORT_SCENARIOS_ERROR, error });
+    return null;
+  }
+};
+
+export let setCohortScenarioPartnering = cohort => async dispatch => {
+  try {
+    const partnering = [];
+
+    for (const [scenario_id, partnering_id] of Object.entries(
+      cohort.partnering
+    )) {
+      partnering.push({ scenario_id, partnering_id });
+    }
+
+    const body = JSON.stringify({
+      partnering
+    });
+    const res = await (await fetch(`/api/cohorts/${cohort.id}/partnering`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body
+    })).json();
+
+    if (res.error) {
+      throw res;
+    }
+
+    dispatch({ type: SET_COHORT_SCENARIO_PARTNERING_SUCCESS, partnering });
+    return partnering;
+  } catch (error) {
+    dispatch({ type: SET_COHORT_SCENARIO_PARTNERING_ERROR, error });
     return null;
   }
 };

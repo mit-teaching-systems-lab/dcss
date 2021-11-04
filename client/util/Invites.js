@@ -43,7 +43,6 @@ const INVITE_STATUS_MESSAGES_MAP = {
   }
 };
 
-
 export default {
   INVITE_STATUS_MAP,
   // Status Values

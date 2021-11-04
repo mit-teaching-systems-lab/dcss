@@ -298,10 +298,10 @@ async function getCohortUsers(id, options = {}) {
   // `);
 
   const {
+    includeProgress = true,
     includeRuns = false,
     includeScenarios = true,
-    includeUsers = true,
-    includeProgress = true
+    includeUsers = true
   } = options;
 
   const result = await query(sql`
@@ -344,12 +344,29 @@ async function getCohortUsers(id, options = {}) {
   };
 }
 
+async function getCohortScenarioPartnering(id, scenario_id) {
+  let selection = scenario_id
+    ? sql`
+      SELECT scenario_id, partnering_id
+      FROM cohort_scenario
+      WHERE cohort_id = ${Number(id)}
+      AND scenario_id = ${Number(scenario_id)};`
+    : sql`
+      SELECT scenario_id, partnering_id
+      FROM cohort_scenario
+      WHERE cohort_id = ${Number(id)};`;
+
+  const result = await query(selection);
+  return result.rows;
+}
+
 async function __getAggregatedCohort(cohort, options = {}) {
   // console.log("__getAggregatedCohort: cohort", cohort);
 
   const {
     includeRuns = false,
     includeScenarios = true,
+    includeScenarioPartnering = true,
     includeUsers = true,
     includeProgress = true
   } = options;
@@ -358,6 +375,16 @@ async function __getAggregatedCohort(cohort, options = {}) {
   const scenarios = includeScenarios
     ? await getCohortScenariosIdList(cohort.id)
     : [];
+  const scenarioPartnering = includeScenarioPartnering
+    ? await getCohortScenarioPartnering(cohort.id)
+    : [];
+  const partnering = scenarioPartnering.reduce(
+    (accum, partnering) => ({
+      ...accum,
+      [partnering.scenario_id]: partnering.partnering_id
+    }),
+    {}
+  );
   const cohortUsers = includeUsers
     ? await getCohortUsers(cohort.id, options)
     : [];
@@ -389,6 +416,7 @@ async function __getAggregatedCohort(cohort, options = {}) {
     ...cohort,
     ...cohortUsers,
     chat,
+    partnering,
     runs,
     scenarios
   };
@@ -597,6 +625,19 @@ async function setCohortScenarios(id, scenarioIds) {
     }
 
     return scenarioIds;
+  });
+}
+
+async function setCohortScenarioPartnering(id, scenario_id, partnering_id) {
+  return await withClientTransaction(async client => {
+    const result = await client.query(sql`
+      UPDATE cohort_scenario
+      SET partnering_id = ${Number(partnering_id)}
+      WHERE cohort_id = ${Number(id)}
+      AND scenario_id = ${Number(scenario_id)}
+      RETURNING *;
+    `);
+    return result.rows[0].partnering_id === partnering_id;
   });
 }
 
@@ -847,6 +888,8 @@ exports.setCohort = setCohort;
 exports.softDeleteCohort = softDeleteCohort;
 exports.getCohortProgress = getCohortProgress;
 exports.setCohortScenarios = setCohortScenarios;
+exports.getCohortScenarioPartnering = getCohortScenarioPartnering;
+exports.setCohortScenarioPartnering = setCohortScenarioPartnering;
 exports.getCohortRunResponses = getCohortRunResponses;
 exports.linkCohortToRun = linkCohortToRun;
 exports.getCohortUserRoles = getCohortUserRoles;

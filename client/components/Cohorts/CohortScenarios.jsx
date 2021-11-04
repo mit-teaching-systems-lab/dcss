@@ -9,11 +9,13 @@ import {
   joinChat,
   setChat
 } from '@actions/chat';
+import { getPartnering } from '@actions/partnering';
 import { setRun } from '@actions/run';
 import {
   getCohort,
   getCohortScenarios,
-  setCohortScenarios
+  setCohortScenarios,
+  setCohortScenarioPartnering
 } from '@actions/cohort';
 import { getRuns } from '@actions/run';
 import { getUsers } from '@actions/users';
@@ -29,8 +31,10 @@ import {
   Card,
   Container,
   Divider,
+  Dropdown,
   Grid,
   Icon,
+  Popup,
   Text
 } from '@components/UI';
 import Identity from '@utils/Identity';
@@ -39,6 +43,16 @@ import Moment from '@utils/Moment';
 import Storage from '@utils/Storage';
 
 import './Cohort.css';
+
+const createPartneringTitleAndDescription = partnering => {
+  const firstIndexOf = partnering.description.indexOf('.');
+  const title = partnering.description.slice(0, firstIndexOf);
+  const description = partnering.description.slice(firstIndexOf + 2);
+  return {
+    title,
+    description
+  };
+};
 
 export class CohortScenarios extends React.Component {
   constructor(props) {
@@ -65,6 +79,7 @@ export class CohortScenarios extends React.Component {
   async componentDidMount() {
     await this.props.getCohort(this.props.id);
     await this.props.getCohortScenarios(this.props.id);
+    await this.props.getPartnering();
     await this.props.getRuns();
 
     if (this.props.authority.isFacilitator) {
@@ -414,228 +429,231 @@ export class CohortScenarios extends React.Component {
               const canShowJoinAsPersonaButtons =
                 isMultiParticipantScenario && !existingChat && !existingRun;
 
+              const partneringOptions = this.props.partnering.map(
+                partnering => {
+                  const { title: text } = createPartneringTitleAndDescription(
+                    partnering
+                  );
+                  return {
+                    key: Identity.key(partnering),
+                    value: partnering.id,
+                    text
+                  };
+                }
+              );
+
+              const selectedPartnering = this.props.partneringById[
+                cohort.partnering[scenario.id]
+              ];
+
+              const partneringControls =
+                isFacilitator && isMultiParticipantScenario ? (
+                  <Dropdown
+                    fluid
+                    inline
+                    options={partneringOptions}
+                    defaultValue={selectedPartnering.id}
+                    onChange={(_event, { value }) => {
+                      (async () => {
+                        await this.props.setCohortScenarioPartnering({
+                          ...cohort,
+                          partnering: {
+                            ...cohort.partnering,
+                            [scenario.id]: value
+                          }
+                        });
+                        await this.props.getCohort(cohort.id);
+                      })();
+                    }}
+                  />
+                ) : null;
+
+              const {
+                description: partneringDescripton
+              } = createPartneringTitleAndDescription(selectedPartnering);
+
               return (
-                <Card
-                  className="c__scenario-card"
-                  key={key}
-                  style={scenarioCursor}
-                >
-                  <Card.Content>
-                    <Card.Header aria-label={cardHeaderAriaLabel}>
-                      <Icon
-                        className="primary"
-                        name={cardHeaderIconClassName}
-                      />
-                      {scenario.title}
-                    </Card.Header>
-                    {!isFacilitator ? (
-                      <Card.Meta>{runStartedMaybeFinished}</Card.Meta>
-                    ) : null}
-                    <Card.Description>
-                      <Text.Truncate lines={2}>
-                        {scenario.description}
-                      </Text.Truncate>
-                      {canShowJoinAsPersonaButtons ? (
-                        <Fragment>
-                          <Text>
-                            This is a multi-participant scenario, with{' '}
-                            <strong>{scenario.personas.length}</strong> roles:
-                          </Text>
+                <Fragment key={`fragment-${key}`}>
+                  <Card
+                    className="c__scenario-card"
+                    key={key}
+                    style={scenarioCursor}
+                  >
+                    <Card.Content>
+                      <Card.Header aria-label={cardHeaderAriaLabel}>
+                        <Icon
+                          className="primary"
+                          name={cardHeaderIconClassName}
+                        />
+                        {scenario.title}
+                      </Card.Header>
+                      {!isFacilitator ? (
+                        <Card.Meta>{runStartedMaybeFinished}</Card.Meta>
+                      ) : null}
+                      <Card.Description>
+                        <Text.Truncate lines={2}>
+                          {scenario.description}
+                        </Text.Truncate>
+                        {canShowJoinAsPersonaButtons ? (
+                          <Fragment>
+                            <Divider />
+                            <Text>
+                              This is a multi-participant scenario, with{' '}
+                              <strong>{scenario.personas.length}</strong> roles.{' '}
+                              {selectedPartnering.instruction}
+                            </Text>
 
-                          <div className="c__join-as-role-card">
-                            <JoinAsPersona
-                              cohort={cohort}
-                              scenario={scenario}
-                              user={user}
-                              onClick={async data => {
-                                const { persona, isOpen, scenario } = data;
+                            <div className="c__join-as-role-card">
+                              <JoinAsPersona
+                                cohort={cohort}
+                                scenario={scenario}
+                                user={user}
+                                onClick={async data => {
+                                  const { persona, isOpen, scenario } = data;
 
-                                const chat = await createChat(
-                                  scenario,
-                                  cohort,
-                                  isOpen
-                                );
+                                  const chat = await createChat(
+                                    scenario,
+                                    cohort,
+                                    isOpen
+                                  );
 
-                                const joined = await joinChat(chat.id, persona);
+                                  const joined = await joinChat(
+                                    chat.id,
+                                    persona
+                                  );
 
-                                // This might not be necessary
-                                await fetchChats({ chat });
+                                  // This might not be necessary
+                                  await fetchChats({ chat });
 
-                                if (joined) {
+                                  if (joined) {
+                                    this.setState({
+                                      room: {
+                                        isOpen: true,
+                                        lobby: {
+                                          isOpen: true,
+                                          chat
+                                        },
+                                        scenario
+                                      }
+                                    });
+                                  }
+                                }}
+                              />
+                            </div>
+                          </Fragment>
+                        ) : null}
+                      </Card.Description>
+                      <Card.Meta>
+                        {runScenarioDisplay ? (
+                          <Button
+                            compact
+                            data-testid="run-cohort-as-participant"
+                            size={gotoMyRoomButtonSize}
+                            onClick={() => {
+                              if (isMultiParticipantScenario) {
+                                if (created_at && !ended_at) {
+                                  location.href = url;
+                                } else {
+                                  this.setState({
+                                    room: {
+                                      isOpen: true,
+                                      lobby: null,
+                                      scenario
+                                    }
+                                  });
+                                }
+                              } else {
+                                location.href = url;
+                              }
+                            }}
+                          >
+                            <Icon className="primary" name="play" />
+                            {runScenarioDisplay}
+                          </Button>
+                        ) : null}
+                        {isMultiParticipantScenario && existingChat ? (
+                          <Fragment>
+                            {!existingChat.is_open ? (
+                              <Button
+                                compact
+                                data-testid="see-my-room-lobby"
+                                size={gotoMyRoomButtonSize}
+                                onClick={() => {
                                   this.setState({
                                     room: {
                                       isOpen: true,
                                       lobby: {
                                         isOpen: true,
-                                        chat
+                                        chat: existingChat
                                       },
                                       scenario
                                     }
                                   });
-                                }
-                              }}
-                            />
-                            {/*scenario.personas.map(persona => {
-                              return (
-                                <Fragment key={Identity.key(persona)}>
-                                  <div>
-                                    <JoinAsButton
-                                      className="c__join-persona-button"
-                                      cohort={cohort}
-                                      persona={persona}
-                                      scenario={scenario}
-                                    />
-                                  </div>
-                                  <div>
-                                    <p>
-                                      <strong>{persona.name}</strong>
-                                    </p>
-                                    <p>{persona.description}</p>
-                                  </div>
-                                </Fragment>
-                              );
-                            })*/}
-                            {/*
-
-                            <p tabIndex="0">
-                              Is your room open to anyone in your cohort?
-                            </p>
-                            <Form>
-                            <Form.Field>
-                                <div className="ui checked radio checkbox">
-                                  <input
-                                    tabIndex="0"
-                                    type="radio"
-                                    name="isOpenToCohort"
-                                    id="yes"
-                                    value="yes"
-                                    checked={this.state.isOpenToCohort === true}
-                                    onChange={onRoomAccessChange}
-                                  />
-                                  <label htmlFor="yes">
-                                    Yes, let anyone in my cohort join.
-                                  </label>
-                                </div>
-                              </Form.Field>
-
-                              <Form.Field>
-                                <div className="ui checked radio checkbox">
-                                  <input
-                                    tabIndex="0"
-                                    type="radio"
-                                    name="isOpenToCohort"
-                                    id="no"
-                                    value="no"
-                                    checked={this.state.isOpenToCohort === false}
-                                    onChange={onRoomAccessChange}
-                                  />
-                                  <label htmlFor="no">
-                                    No, I will invite participants.
-                                  </label>
-                                </div>
-                              </Form.Field>
-                            </Form>
-                            */}
-                          </div>
-                        </Fragment>
-                      ) : null}
-                    </Card.Description>
-                    <Card.Meta>
-                      {runScenarioDisplay ? (
-                        <Button
-                          compact
-                          data-testid="run-cohort-as-participant"
-                          size={gotoMyRoomButtonSize}
-                          onClick={() => {
-                            if (isMultiParticipantScenario) {
-                              if (created_at && !ended_at) {
-                                location.href = url;
-                              } else {
-                                this.setState({
-                                  room: {
-                                    isOpen: true,
-                                    lobby: null,
-                                    scenario
-                                  }
-                                });
-                              }
-                            } else {
-                              location.href = url;
-                            }
-                          }}
-                        >
-                          <Icon className="primary" name="play" />
-                          {runScenarioDisplay}
-                        </Button>
-                      ) : null}
-                      {isMultiParticipantScenario && existingChat ? (
-                        <Fragment>
-                          {!existingChat.is_open ? (
+                                }}
+                              >
+                                <Icon className="primary" name="group" />
+                                Invite participants to my room
+                                {/*Go to my room&apos;s lobby*/}
+                              </Button>
+                            ) : null}
                             <Button
                               compact
-                              data-testid="see-my-room-lobby"
+                              data-testid="close-my-room"
                               size={gotoMyRoomButtonSize}
-                              onClick={() => {
-                                this.setState({
-                                  room: {
-                                    isOpen: true,
-                                    lobby: {
-                                      isOpen: true,
-                                      chat: existingChat
-                                    },
-                                    scenario
-                                  }
-                                });
-                              }}
-                            >
-                              <Icon className="primary" name="group" />
-                              Invite participants to my room
-                              {/*Go to my room&apos;s lobby*/}
-                            </Button>
-                          ) : null}
-                          <Button
-                            compact
-                            data-testid="close-my-room"
-                            size={gotoMyRoomButtonSize}
-                            onClick={async () => {
-                              const time = new Date().toISOString();
-                              await this.props.setChat(existingChat.id, {
-                                deleted_at: time,
-                                ended_at: time
-                              });
-                              if (run) {
-                                await this.props.setRun(run.id, {
+                              onClick={async () => {
+                                const time = new Date().toISOString();
+                                await this.props.setChat(existingChat.id, {
+                                  deleted_at: time,
                                   ended_at: time
                                 });
-                              }
-                              await this.props.getChatsByCohortId(cohort.id);
-                              await this.props.getRuns();
-                            }}
-                          >
-                            <Icon className="primary" name="close" />
-                            Close my room
-                          </Button>
-                        </Fragment>
-                      ) : null}
-                    </Card.Meta>
-                  </Card.Content>
-                  <div className="c__scenario-extra">
-                    <Gate
-                      requiredPermission="view_all_data"
-                      isAuthorized={isFacilitator}
-                    >
-                      <Button
-                        primary
-                        size="large"
-                        data-testid="view-cohort-responses"
-                        name={scenario.title}
-                        onClick={onAddTabClick}
+                                if (run) {
+                                  await this.props.setRun(run.id, {
+                                    ended_at: time
+                                  });
+                                }
+                                await this.props.getChatsByCohortId(cohort.id);
+                                await this.props.getRuns();
+                              }}
+                            >
+                              <Icon className="primary" name="close" />
+                              Close my room
+                            </Button>
+                          </Fragment>
+                        ) : null}
+                      </Card.Meta>
+                    </Card.Content>
+                    <div className="c__scenario-extra">
+                      <Gate
+                        requiredPermission="view_all_data"
+                        isAuthorized={isFacilitator}
                       >
-                        View responses
-                      </Button>
-                    </Gate>
-                  </div>
-                </Card>
+                        <Button
+                          primary
+                          size="large"
+                          data-testid="view-cohort-responses"
+                          name={scenario.title}
+                          onClick={onAddTabClick}
+                        >
+                          View responses
+                        </Button>
+                      </Gate>
+                    </div>
+                    {partneringControls ? (
+                      <Popup
+                        inverted
+                        position="top left"
+                        size="tiny"
+                        content="Facilitators control how participants create scenario chat rooms."
+                        trigger={
+                          <Card.Content extra>
+                            {partneringControls}
+                            {partneringDescripton}
+                          </Card.Content>
+                        }
+                      />
+                    ) : null}
+                  </Card>
+                </Fragment>
               );
             })}
           </Sortable>
@@ -670,6 +688,7 @@ CohortScenarios.propTypes = {
   cohort: PropTypes.shape({
     id: PropTypes.any,
     name: PropTypes.string,
+    partnering: PropTypes.object,
     roles: PropTypes.array,
     runs: PropTypes.array,
     scenarios: PropTypes.array,
@@ -682,6 +701,10 @@ CohortScenarios.propTypes = {
   getCohort: PropTypes.func,
   getCohortScenarios: PropTypes.func,
   setCohortScenarios: PropTypes.func,
+  setCohortScenarioPartnering: PropTypes.func,
+  partnering: PropTypes.array,
+  partneringById: PropTypes.object,
+  getPartnering: PropTypes.func,
   onClick: PropTypes.func,
   scenarios: PropTypes.array,
   getRuns: PropTypes.func,
@@ -694,18 +717,38 @@ CohortScenarios.propTypes = {
 };
 
 const mapStateToProps = (state, ownProps) => {
-  const { chats, cohort, cohorts, user, usersById } = state;
+  const {
+    chats,
+    cohort,
+    cohorts,
+    partnering,
+    partneringById,
+    user,
+    usersById
+  } = state;
   const scenarios = state.scenarios.filter(
     ({ deleted_at, status }) => deleted_at === null && status !== 1
   );
   const runs = state.runs.filter(run => run.cohort_id === ownProps.id);
-  return { chats, cohort, cohorts, scenarios, runs, user, usersById };
+  return {
+    chats,
+    cohort,
+    cohorts,
+    partnering,
+    partneringById,
+    scenarios,
+    runs,
+    user,
+    usersById
+  };
 };
 
 const mapDispatchToProps = dispatch => ({
   getCohort: id => dispatch(getCohort(id)),
   getCohortScenarios: id => dispatch(getCohortScenarios(id)),
   setCohortScenarios: params => dispatch(setCohortScenarios(params)),
+  setCohortScenarioPartnering: params =>
+    dispatch(setCohortScenarioPartnering(params)),
   getRuns: () => dispatch(getRuns()),
   getUsers: () => dispatch(getUsers()),
   createChat: (...params) => dispatch(createChat(...params)),
@@ -713,6 +756,7 @@ const mapDispatchToProps = dispatch => ({
   setChat: (id, params) => dispatch(setChat(id, params)),
   getChatsByCohortId: id => dispatch(getChatsByCohortId(id)),
   getChatUsersByChatId: id => dispatch(getChatUsersByChatId(id)),
+  getPartnering: () => dispatch(getPartnering()),
   setRun: (id, params) => dispatch(setRun(id, params))
 });
 

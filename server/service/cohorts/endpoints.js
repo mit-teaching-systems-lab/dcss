@@ -1,8 +1,15 @@
+const {
+  // Use for restricting access to cohort-specific interactions
+  requireCohortUserRole
+} = require('./middleware');
 const { asyncMiddleware } = require('../../util/api');
 const db = require('./db');
 const chatsdb = require('../chats/db');
 const sessiondb = require('../session/db');
 const scenariosdb = require('../scenarios/db');
+
+const requiredSiteRoles = ['super_admin', 'admin', 'researcher', 'facilitator'];
+const requiredCohortRoles = ['owner', 'facilitator'];
 
 async function createCohort(req, res) {
   const scenario_id = null;
@@ -26,6 +33,22 @@ async function createCohort(req, res) {
 async function getCohort(req, res) {
   const id = Number(req.params.id);
   const cohort = await db.getCohort(id);
+
+  const { user } = req.session;
+
+  let isUserSuperOwnerOrFacilitator = user.is_super;
+
+  if (!isUserSuperOwnerOrFacilitator) {
+    const cohortUser = cohort.usersById[user.id];
+
+    isUserSuperOwnerOrFacilitator =
+      cohortUser.is_owner || cohortUser.roles.includes('facilitator');
+  }
+
+  if (!isUserSuperOwnerOrFacilitator) {
+    cohort.runs = cohort.runs.filter(run => run.user_id === user.id);
+  }
+
   res.json({ cohort });
 }
 
@@ -158,6 +181,21 @@ async function setCohortScenarios(req, res) {
   res.json({ scenarios });
 }
 
+async function getCohortScenarioPartnering(req, res) {
+  const id = Number(req.params.id);
+  const partnering = await db.getCohortScenarioPartnering(id);
+  res.json({ partnering });
+}
+
+async function setCohortScenarioPartnering(req, res) {
+  const id = Number(req.params.id);
+  const { partnering } = req.body;
+  for (const { scenario_id, partnering_id } of partnering) {
+    await db.setCohortScenarioPartnering(id, scenario_id, partnering_id);
+  }
+  res.json({ partnering });
+}
+
 async function getCohortData(req, res) {
   const { id, scenario_id } = req.params;
   const prompts = await scenariosdb.getScenarioPrompts(scenario_id);
@@ -256,6 +294,7 @@ exports.createCohort = asyncMiddleware(createCohort);
 exports.copyCohort = asyncMiddleware(copyCohort);
 exports.getCohort = asyncMiddleware(getCohort);
 exports.getCohortScenarios = asyncMiddleware(getCohortScenarios);
+exports.getCohortScenarioPartnering = asyncMiddleware(getCohortScenarioPartnering);
 exports.getCohorts = asyncMiddleware(getCohorts);
 exports.getCohortsCount = asyncMiddleware(getCohortsCount);
 exports.getCohortsSlice = asyncMiddleware(getCohortsSlice);
@@ -267,6 +306,7 @@ exports.quitCohort = asyncMiddleware(quitCohort);
 exports.doneCohort = asyncMiddleware(doneCohort);
 exports.setCohort = asyncMiddleware(setCohort);
 exports.setCohortScenarios = asyncMiddleware(setCohortScenarios);
+exports.setCohortScenarioPartnering = asyncMiddleware(setCohortScenarioPartnering);
 exports.getCohortData = asyncMiddleware(getCohortData);
 exports.getCohortParticipantData = asyncMiddleware(getCohortParticipantData);
 exports.addCohortUserRole = asyncMiddleware(addCohortUserRole);

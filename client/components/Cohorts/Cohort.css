@@ -98,8 +98,8 @@
 .c__participant-list,
 .c__scenario-list {
   padding: 0;
-  height: 390px;
-  overflow-y: scroll;
+  /* height: 390px;
+  overflow-y: scroll; */
 }
 
 .c__scenario-list > div {
@@ -276,6 +276,10 @@
 
 .c__scenario-cards--selected .ui.card {
   border: 2px solid #753656 !important;
+}
+
+.c__scenario-cards--extra .ui.dropdown .menu>* {
+  white-space: unset !important;
 }
 
 .c__wizard-share-link {

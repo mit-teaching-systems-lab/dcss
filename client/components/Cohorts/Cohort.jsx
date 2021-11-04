@@ -20,6 +20,7 @@ import { getChatsByCohortId } from '@actions/chat';
 import {
   copyCohort,
   getCohort,
+  getCohortScenarios,
   linkUserToCohort,
   setCohort
 } from '@actions/cohort';
@@ -81,6 +82,42 @@ export class Cohort extends React.Component {
     this.onClick = this.onClick.bind(this);
     this.onDataTableClick = this.onDataTableClick.bind(this);
     this.onTabClick = this.onTabClick.bind(this);
+
+    this.hasUnmounted = false;
+    this.interval = null;
+  }
+
+  async fetchCohort() {
+    if (this.hasUnmounted) {
+      return;
+    }
+
+    await this.props.getCohort(this.props.id);
+
+    const hasScenariosLoaded = this.props.cohort.scenarios.every(
+      id => this.props.scenariosById[id]
+    );
+
+    if (!hasScenariosLoaded) {
+      await this.props.getCohortScenarios(this.props.id);
+      await this.props.getChatsByCohortId(this.props.id);
+    }
+
+    /* istanbul ignore else */
+    if (!this.state.isReady) {
+      this.setState({
+        isReady: true
+      });
+    }
+  }
+
+  refresh() {
+    this.interval = setInterval(async () => {
+      /* istanbul ignore else */
+      if (!this.state.search && document.visibilityState === 'visible') {
+        await this.fetchCohort();
+      }
+    }, 5000);
   }
 
   async componentDidMount() {
@@ -119,10 +156,14 @@ export class Cohort extends React.Component {
         await this.props.linkUserToCohort(cohort.id, 'participant');
       }
 
-      this.setState({
-        isReady: true
-      });
+      await this.fetchCohort();
+      this.refresh();
     }
+  }
+
+  componentWillUnmount() {
+    this.hasUnmounted = true;
+    clearInterval(this.interval);
   }
 
   onClick(event, props = {}) {
@@ -524,6 +565,7 @@ Cohort.propTypes = {
   }),
   getChatsByCohortId: PropTypes.func,
   getCohort: PropTypes.func,
+  getCohortScenarios: PropTypes.func,
   getUser: PropTypes.func,
   getUsers: PropTypes.func,
   history: PropTypes.shape({
@@ -541,6 +583,7 @@ Cohort.propTypes = {
   }).isRequired,
   onChange: PropTypes.func,
   setCohort: PropTypes.func,
+  scenariosById: PropTypes.object,
   runs: PropTypes.array,
   users: PropTypes.array,
   user: PropTypes.object
@@ -548,7 +591,7 @@ Cohort.propTypes = {
 
 const mapStateToProps = (state, ownProps) => {
   const id = Identity.fromHashOrId(ownProps.match.params.id || ownProps.id);
-  const { chats, user } = state;
+  const { chats, scenariosById, user } = state;
 
   const cohort = state.cohort && state.cohort.id === id ? state.cohort : null;
 
@@ -573,12 +616,13 @@ const mapStateToProps = (state, ownProps) => {
     authority.isParticipant = true;
   }
 
-  return { authority, chats, cohort, id, user };
+  return { authority, chats, cohort, id, scenariosById, user };
 };
 
 const mapDispatchToProps = dispatch => ({
   copyCohort: id => dispatch(copyCohort(id)),
   getCohort: id => dispatch(getCohort(id)),
+  getCohortScenarios: id => dispatch(getCohortScenarios(id)),
   setCohort: (id, params) => dispatch(setCohort(id, params)),
   getUser: () => dispatch(getUser()),
   getUsers: () => dispatch(getUsers()),

@@ -247,6 +247,22 @@ const Routes = ({ isLoggedIn, user }) => {
 
       <InterceptAnonymizableRoute
         exact
+        path="/cohort/:id/scenarios"
+        isLoggedIn={isLoggedIn}
+      >
+        <Route render={routeRenderCohort} />
+      </InterceptAnonymizableRoute>
+
+      <InterceptAnonymizableRoute
+        exact
+        path="/cohort/:id/progress"
+        isLoggedIn={isLoggedIn}
+      >
+        <Route render={routeRenderCohort} />
+      </InterceptAnonymizableRoute>
+
+      <InterceptAnonymizableRoute
+        exact
         path="/cohort/:id"
         isLoggedIn={isLoggedIn}
       >
