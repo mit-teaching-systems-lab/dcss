@@ -109,9 +109,9 @@ export let setCohortScenarioPartnering = cohort => async dispatch => {
   try {
     const partnering = [];
 
-    for (const [scenario_id, partnering_id] of Object.entries(
-      cohort.partnering
-    )) {
+    for (const [sid, pid] of Object.entries(cohort.partnering)) {
+      const scenario_id = Number(sid);
+      const partnering_id = Number(pid);
       partnering.push({ scenario_id, partnering_id });
     }
 

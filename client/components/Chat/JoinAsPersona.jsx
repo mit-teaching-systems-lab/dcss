@@ -1,9 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { joinChat } from '@actions/chat';
-import { getUser } from '@actions/user';
 import JoinAsButton from '@components/Chat/JoinAsButton.jsx';
 import { Form } from '@components/UI';
 import Identity from '@utils/Identity';
@@ -41,11 +38,12 @@ class JoinAsPersona extends Component {
       <Fragment>
         {cohort.partnering[scenario.id] === Partnering.BOTH ? (
           <Fragment>
-            <p tabIndex="0">Is your room open to anyone in your cohort?</p>
+            <p tabIndex="0">How do you want to partner?</p>
             <Form>
               <Form.Field>
                 <div className="ui checked radio checkbox">
                   <input
+                    data-testid="roomaccess"
                     tabIndex="0"
                     type="radio"
                     name="isOpen"
@@ -54,15 +52,14 @@ class JoinAsPersona extends Component {
                     checked={isOpen === true}
                     onChange={onRoomAccessChange}
                   />
-                  <label htmlFor="yes">
-                    Yes, let anyone in my cohort join.
-                  </label>
+                  <label htmlFor="yes">Let anyone in my cohort join.</label>
                 </div>
               </Form.Field>
 
               <Form.Field>
                 <div className="ui checked radio checkbox">
                   <input
+                    data-testid="roomaccess"
                     tabIndex="0"
                     type="radio"
                     name="isOpen"
@@ -71,7 +68,7 @@ class JoinAsPersona extends Component {
                     checked={isOpen === false}
                     onChange={onRoomAccessChange}
                   />
-                  <label htmlFor="no">No, I will invite participants.</label>
+                  <label htmlFor="no">I will invite participants.</label>
                 </div>
               </Form.Field>
             </Form>
@@ -107,19 +104,7 @@ class JoinAsPersona extends Component {
 JoinAsPersona.propTypes = {
   onClick: PropTypes.func,
   cohort: PropTypes.object,
-  history: PropTypes.shape({ push: PropTypes.func.isRequired }),
-  joinChat: PropTypes.func,
-  match: PropTypes.shape({
-    params: PropTypes.shape({
-      cohortId: PropTypes.node,
-      personaId: PropTypes.node,
-      scenarioId: PropTypes.node
-    }).isRequired,
-    url: PropTypes.string
-  }),
   scenario: PropTypes.object,
-  getRun: PropTypes.func,
-  setRun: PropTypes.func,
   socket: PropTypes.object,
   user: PropTypes.object
 };
@@ -129,14 +114,7 @@ const mapStateToProps = (_state, ownProps) => {
   return { cohort, scenario, user };
 };
 
-const mapDispatchToProps = dispatch => ({
-  joinChat: (...params) => dispatch(joinChat(...params)),
-  getUser: params => dispatch(getUser(params))
-});
-
-export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(JoinAsPersona)
-);
+export default connect(
+  mapStateToProps,
+  null
+)(JoinAsPersona);

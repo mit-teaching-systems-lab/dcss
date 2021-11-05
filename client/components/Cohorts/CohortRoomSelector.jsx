@@ -403,7 +403,7 @@ export class CohortRoomSelector extends React.Component {
       const chat = this.props.chatsById[this.state.lobby.chat.id];
       host = chat.usersById[user.id];
 
-      const personaIds = scenario.personas.map(({id}) => id);
+      const personaIds = scenario.personas.map(({ id }) => id);
       const numberOfRolesToFill = personaIds.length;
       let pendingOrAccepted = 0;
 

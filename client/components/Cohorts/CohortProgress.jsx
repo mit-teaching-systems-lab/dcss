@@ -72,6 +72,7 @@ export class CohortProgress extends React.Component {
       participants: []
     };
 
+    this.hasUnmounted = false;
     this.onParticipantSearchChange = this.onParticipantSearchChange.bind(this);
   }
 
@@ -101,6 +102,10 @@ export class CohortProgress extends React.Component {
 
   async componentDidMount() {
     await this.fetchCohort();
+  }
+
+  componentWillUnmount() {
+    this.hasUnmounted = true;
   }
 
   onParticipantSearchChange(event, { value }) {

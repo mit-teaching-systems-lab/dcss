@@ -93,8 +93,8 @@ class ChatMessages extends Component {
       typing: null
     };
 
+    this.hasUnmounted = false;
     this.wasPreviouslyMinimized = false;
-    this.isComponentMounted = false;
     this.onMessageDelete = this.onMessageDelete.bind(this);
     this.onMessageReceived = this.onMessageReceived.bind(this);
     this.onMessageUpdated = this.onMessageUpdated.bind(this);
@@ -124,7 +124,6 @@ class ChatMessages extends Component {
       );
     }
 
-    this.isComponentMounted = true;
     this.props.socket.on(CHAT_MESSAGE_CREATED, this.onMessageReceived);
     this.props.socket.on(CHAT_MESSAGE_UPDATED, this.onMessageUpdated);
     this.props.socket.on(USER_TYPING_UPDATE, this.onTypingUpdate);
@@ -145,7 +144,7 @@ class ChatMessages extends Component {
     }
 
     /* istanbul ignore else */
-    if (this.isComponentMounted) {
+    if (!this.hasUnmounted) {
       this.setState({
         isReady: true,
         messages
@@ -154,8 +153,8 @@ class ChatMessages extends Component {
   }
 
   componentWillUnmount() {
+    this.hasUnmounted = true;
     const { agent } = this.props;
-    this.isComponentMounted = false;
     this.props.socket.off(CHAT_MESSAGE_CREATED, this.onMessageReceived);
     this.props.socket.off(CHAT_MESSAGE_UPDATED, this.onMessageUpdated);
     this.props.socket.off(USER_TYPING_UPDATE, this.onTypingUpdate);
@@ -172,7 +171,7 @@ class ChatMessages extends Component {
   }
 
   async onMessageReceived(data) {
-    if (!this.isComponentMounted) {
+    if (this.hasUnmounted) {
       return;
     }
 
@@ -190,7 +189,7 @@ class ChatMessages extends Component {
         };
 
         /* istanbul ignore else */
-        if (this.isComponentMounted) {
+        if (!this.hasUnmounted) {
           this.setState({
             hasNewMessages: false,
             messages
@@ -207,7 +206,7 @@ class ChatMessages extends Component {
       messages.push(data);
 
       /* istanbul ignore else */
-      if (this.isComponentMounted) {
+      if (!this.hasUnmounted) {
         this.setState({
           hasNewMessages: true,
           messages
@@ -221,7 +220,7 @@ class ChatMessages extends Component {
   }
 
   async onMessageUpdated(data) {
-    if (!this.isComponentMounted) {
+    if (this.hasUnmounted) {
       return;
     }
 
@@ -237,7 +236,7 @@ class ChatMessages extends Component {
       });
 
       /* istanbul ignore else */
-      if (this.isComponentMounted) {
+      if (!this.hasUnmounted) {
         this.setState({
           messages
         });
@@ -254,6 +253,10 @@ class ChatMessages extends Component {
   }
 
   onTypingUpdate({ user, isTyping }) {
+    if (this.hasUnmounted) {
+      return;
+    }
+
     if (user.id === this.props.user.id) {
       return;
     }

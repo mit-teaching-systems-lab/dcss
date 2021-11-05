@@ -643,7 +643,7 @@ export class CohortScenarios extends React.Component {
                         inverted
                         position="top left"
                         size="tiny"
-                        content="Facilitators control how participants create scenario chat rooms."
+                        content="How do participants find chat partners for this scenario?"
                         trigger={
                           <Card.Content extra>
                             {partneringControls}
