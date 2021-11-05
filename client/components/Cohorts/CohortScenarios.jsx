@@ -641,7 +641,7 @@ export class CohortScenarios extends React.Component {
                     {partneringControls ? (
                       <Popup
                         inverted
-                        position="top left"
+                        position="bottom left"
                         size="tiny"
                         content="How do participants find chat partners for this scenario?"
                         trigger={
