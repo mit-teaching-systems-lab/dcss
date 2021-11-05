@@ -20,7 +20,7 @@
     "prettier": "prettier --write \"**/*.{js,jsx,css}\"",
     "storybook": "start-storybook -p 6006",
     "test": "jest",
-    "watch": "jest --watchAll --bail=1",
+    "watch": "jest --bail --watchAll",
     "watch:coverage": "jest --watchAll --coverage"
   },
   "devDependencies": {
