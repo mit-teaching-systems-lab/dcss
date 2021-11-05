@@ -479,7 +479,8 @@ beforeEach(() => {
           }
         }
       }
-    }
+    },
+    partnering: { 99: 1 }
   };
   cohort.scenarios = [1, 2, 3];
   scenarios = [s1, s2, s3];

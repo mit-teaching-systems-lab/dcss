@@ -453,7 +453,8 @@ beforeEach(() => {
           }
         }
       }
-    }
+    },
+    partnering: { 99: 1 }
   };
   user = {
     username: 'super',

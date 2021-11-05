@@ -661,7 +661,8 @@ beforeEach(() => {
           }
         }
       }
-    }
+    },
+    partnering: { 99: 1 }
   };
 
   pending = {
@@ -1219,7 +1220,7 @@ test('Has code, invite not present, accept', async done => {
 
   await waitFor(() => expect(inviteActions.setInvite).toHaveBeenCalled());
 
-  expect(window.location.href).toMatchInlineSnapshot(`"foo"`);
+  expect(window.location.href).toMatchInlineSnapshot();
 
   done();
 });
@@ -1281,7 +1282,7 @@ test('Has code, invite is present, pending', async done => {
 
   await waitFor(() => expect(inviteActions.setInvite).toHaveBeenCalled());
 
-  expect(window.location.href).toMatchInlineSnapshot(`""`);
+  expect(window.location.href).toMatchInlineSnapshot();
 
   done();
 });
@@ -1313,7 +1314,7 @@ test('Has code, invite is present, cancel', async done => {
 
   await waitFor(() => expect(inviteActions.setInvite).toHaveBeenCalled());
 
-  expect(window.location.href).toMatchInlineSnapshot(`""`);
+  expect(window.location.href).toMatchInlineSnapshot();
 
   done();
 });
@@ -1345,7 +1346,7 @@ test('Has code, invite is present, decline', async done => {
 
   await waitFor(() => expect(inviteActions.setInvite).toHaveBeenCalled());
 
-  expect(window.location.href).toMatchInlineSnapshot(`""`);
+  expect(window.location.href).toMatchInlineSnapshot();
 
   done();
 });
@@ -1377,7 +1378,7 @@ test('Has code, invite is present, unknown', async done => {
 
   await waitFor(() => expect(inviteActions.setInvite).toHaveBeenCalled());
 
-  expect(window.location.href).toMatchInlineSnapshot(`""`);
+  expect(window.location.href).toMatchInlineSnapshot();
 
   done();
 });

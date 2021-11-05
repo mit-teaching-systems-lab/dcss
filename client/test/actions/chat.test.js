@@ -2118,3 +2118,75 @@ describe('GET_CHAT_USERS_SHARED_RESPONSES_ERROR', () => {
     });
   });
 });
+
+describe('GET_CHAT_INVITES_SUCCESS', () => {
+  describe('getChatInvites', () => {
+    let invites = [];
+
+    test('Receives chat invites', async () => {
+      fetchImplementation(fetch, 200, { invites });
+      const returnValue = await store.dispatch(actions.getChatInvites(1));
+      expect(fetch.mock.calls.length).toBe(1);
+      expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+        Array [
+          "/api/chats/1/invites",
+        ]
+      `);
+      expect(returnValue).toEqual(invites);
+
+      await mockStore.dispatch(actions.getChatInvites(1));
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "invites": Array [],
+            "type": "GET_CHAT_INVITES_SUCCESS",
+          },
+        ]
+      `);
+    });
+
+    test('Receives undefined', async () => {
+      fetchImplementation(fetch, 200, { chats: undefined });
+      const returnValue = await store.dispatch(actions.getChatInvites(1));
+      expect(fetch.mock.calls.length).toBe(1);
+      expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+        Array [
+          "/api/chats/1/invites",
+        ]
+      `);
+      expect(returnValue).toMatchInlineSnapshot(`undefined`);
+
+      await mockStore.dispatch(actions.getChatInvites(1));
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "invites": undefined,
+            "type": "GET_CHAT_INVITES_SUCCESS",
+          },
+        ]
+      `);
+    });
+  });
+});
+
+describe('GET_CHAT_INVITES_ERROR', () => {
+  describe('getChats', () => {
+    test('Receives error', async () => {
+      fetchImplementation(fetch, 200, { error });
+      const returnValue = await store.dispatch(actions.getChatInvites(1));
+      expect(fetch.mock.calls.length).toBe(1);
+      expect(returnValue).toEqual(null);
+      await mockStore.dispatch(actions.getChats());
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "error": Object {
+              "error": [Error: something unexpected happened on the server],
+            },
+            "type": "GET_CHATS_ERROR",
+          },
+        ]
+      `);
+    });
+  });
+});

@@ -722,7 +722,8 @@ beforeEach(() => {
           }
         }
       }
-    }
+    },
+    partnering: { 99: 1 }
   };
 
   invites = [

@@ -112,6 +112,9 @@ exports[`Facilitator has an option to open scenarios selector 2`] = `
               <p>
                 This is the description of 'Some Other Scenario'…
               </p>
+              <div
+                class="ui divider"
+              />
               <span
                 class="ui medium text"
               >
@@ -119,23 +122,73 @@ exports[`Facilitator has an option to open scenarios selector 2`] = `
                 <strong>
                   3
                 </strong>
-                 roles:
+                 roles. Choose one of the following partnering options, then click on the role you will play in the scenario.
               </span>
               <div
                 class="c__join-as-role-card"
               >
+                <p
+                  tabindex="0"
+                >
+                  How do you want to partner?
+                </p>
+                <form
+                  class="ui form"
+                >
+                  <div
+                    class="field"
+                  >
+                    <div
+                      class="ui checked radio checkbox"
+                    >
+                      <input
+                        data-testid="roomaccess"
+                        id="yes"
+                        name="isOpen"
+                        tabindex="0"
+                        type="radio"
+                        value="yes"
+                      />
+                      <label
+                        for="yes"
+                      >
+                        Let anyone in my cohort join.
+                      </label>
+                    </div>
+                  </div>
+                  <div
+                    class="field"
+                  >
+                    <div
+                      class="ui checked radio checkbox"
+                    >
+                      <input
+                        checked=""
+                        data-testid="roomaccess"
+                        id="no"
+                        name="isOpen"
+                        tabindex="0"
+                        type="radio"
+                        value="no"
+                      />
+                      <label
+                        for="no"
+                      >
+                        I will invite participants.
+                      </label>
+                    </div>
+                  </div>
+                </form>
                 <div>
-                  <a
+                  <button
                     class="ui small fluid button c__join-persona-button"
-                    data-testid="join-scenario-as"
-                    href="/chat/join/1765cf2e64/as/6e4213d8d3/cohort/6e4213d8d3"
-                    role="button"
+                    data-testid="join-closed-scenario-as"
                   >
                     Join as 
                     <strong>
                       Participant
                     </strong>
-                  </a>
+                  </button>
                 </div>
                 <div>
                   <p>
@@ -148,17 +201,15 @@ exports[`Facilitator has an option to open scenarios selector 2`] = `
                   </p>
                 </div>
                 <div>
-                  <a
+                  <button
                     class="ui small fluid button c__join-persona-button"
-                    data-testid="join-scenario-as"
-                    href="/chat/join/1765cf2e64/as/6c4adee67a/cohort/6e4213d8d3"
-                    role="button"
+                    data-testid="join-closed-scenario-as"
                   >
                     Join as 
                     <strong>
                       Teacher
                     </strong>
-                  </a>
+                  </button>
                 </div>
                 <div>
                   <p>
@@ -171,17 +222,15 @@ exports[`Facilitator has an option to open scenarios selector 2`] = `
                   </p>
                 </div>
                 <div>
-                  <a
+                  <button
                     class="ui small fluid button c__join-persona-button"
-                    data-testid="join-scenario-as"
-                    href="/chat/join/1765cf2e64/as/cc5d157543/cohort/6e4213d8d3"
-                    role="button"
+                    data-testid="join-closed-scenario-as"
                   >
                     Join as 
                     <strong>
                       Student
                     </strong>
-                  </a>
+                  </button>
                 </div>
                 <div>
                   <p>
@@ -194,24 +243,10 @@ exports[`Facilitator has an option to open scenarios selector 2`] = `
                   </p>
                 </div>
               </div>
-              <div
-                class="ui divider"
-              />
             </div>
             <div
               class="meta"
-            >
-              <button
-                class="ui medium compact button"
-                data-testid="run-cohort-as-participant"
-              >
-                <i
-                  aria-hidden="true"
-                  class="play icon primary"
-                />
-                Create or join a room to re-run scenario
-              </button>
-            </div>
+            />
           </div>
           <div
             class="c__scenario-extra"
@@ -223,6 +258,73 @@ exports[`Facilitator has an option to open scenarios selector 2`] = `
             >
               View responses
             </button>
+          </div>
+          <div
+            class="extra content"
+          >
+            <div
+              aria-expanded="false"
+              class="ui fluid inline dropdown"
+              role="listbox"
+              tabindex="0"
+            >
+              <div
+                aria-atomic="true"
+                aria-live="polite"
+                class="divider text"
+                role="alert"
+              >
+                Allow participants to create open or closed chat rooms
+              </div>
+              <i
+                aria-hidden="true"
+                class="dropdown icon"
+              />
+              <div
+                class="menu transition"
+              >
+                <div
+                  aria-checked="true"
+                  aria-selected="true"
+                  class="active selected item"
+                  role="option"
+                  style="pointer-events: all;"
+                >
+                  <span
+                    class="text"
+                  >
+                    Allow participants to create open or closed chat rooms
+                  </span>
+                </div>
+                <div
+                  aria-checked="false"
+                  aria-selected="false"
+                  class="item"
+                  role="option"
+                  style="pointer-events: all;"
+                >
+                  <span
+                    class="text"
+                  >
+                    Allow participants to create only closed chat rooms
+                  </span>
+                </div>
+                <div
+                  aria-checked="false"
+                  aria-selected="false"
+                  class="item"
+                  role="option"
+                  style="pointer-events: all;"
+                >
+                  <span
+                    class="text"
+                  >
+                    Allow participants to create only open chat rooms
+                  </span>
+                </div>
+              </div>
+            </div>
+            Participants will be able to create rooms and send invites to specific members of the cohort, or create rooms that are open to anyone in the cohort to join.
           </div>
         </div>
       </div>
@@ -296,6 +398,9 @@ exports[`Facilitator has an option to open scenarios selector 3`] = `
               <p>
                 This is the description of 'Some Other Scenario'…
               </p>
+              <div
+                class="ui divider"
+              />
               <span
                 class="ui medium text"
               >
@@ -303,23 +408,73 @@ exports[`Facilitator has an option to open scenarios selector 3`] = `
                 <strong>
                   3
                 </strong>
-                 roles:
+                 roles. Choose one of the following partnering options, then click on the role you will play in the scenario.
               </span>
               <div
                 class="c__join-as-role-card"
               >
+                <p
+                  tabindex="0"
+                >
+                  How do you want to partner?
+                </p>
+                <form
+                  class="ui form"
+                >
+                  <div
+                    class="field"
+                  >
+                    <div
+                      class="ui checked radio checkbox"
+                    >
+                      <input
+                        data-testid="roomaccess"
+                        id="yes"
+                        name="isOpen"
+                        tabindex="0"
+                        type="radio"
+                        value="yes"
+                      />
+                      <label
+                        for="yes"
+                      >
+                        Let anyone in my cohort join.
+                      </label>
+                    </div>
+                  </div>
+                  <div
+                    class="field"
+                  >
+                    <div
+                      class="ui checked radio checkbox"
+                    >
+                      <input
+                        checked=""
+                        data-testid="roomaccess"
+                        id="no"
+                        name="isOpen"
+                        tabindex="0"
+                        type="radio"
+                        value="no"
+                      />
+                      <label
+                        for="no"
+                      >
+                        I will invite participants.
+                      </label>
+                    </div>
+                  </div>
+                </form>
                 <div>
-                  <a
+                  <button
                     class="ui small fluid button c__join-persona-button"
-                    data-testid="join-scenario-as"
-                    href="/chat/join/1765cf2e64/as/6e4213d8d3/cohort/6e4213d8d3"
-                    role="button"
+                    data-testid="join-closed-scenario-as"
                   >
                     Join as 
                     <strong>
                       Participant
                     </strong>
-                  </a>
+                  </button>
                 </div>
                 <div>
                   <p>
@@ -332,17 +487,15 @@ exports[`Facilitator has an option to open scenarios selector 3`] = `
                   </p>
                 </div>
                 <div>
-                  <a
+                  <button
                     class="ui small fluid button c__join-persona-button"
-                    data-testid="join-scenario-as"
-                    href="/chat/join/1765cf2e64/as/6c4adee67a/cohort/6e4213d8d3"
-                    role="button"
+                    data-testid="join-closed-scenario-as"
                   >
                     Join as 
                     <strong>
                       Teacher
                     </strong>
-                  </a>
+                  </button>
                 </div>
                 <div>
                   <p>
@@ -355,17 +508,15 @@ exports[`Facilitator has an option to open scenarios selector 3`] = `
                   </p>
                 </div>
                 <div>
-                  <a
+                  <button
                     class="ui small fluid button c__join-persona-button"
-                    data-testid="join-scenario-as"
-                    href="/chat/join/1765cf2e64/as/cc5d157543/cohort/6e4213d8d3"
-                    role="button"
+                    data-testid="join-closed-scenario-as"
                   >
                     Join as 
                     <strong>
                       Student
                     </strong>
-                  </a>
+                  </button>
                 </div>
                 <div>
                   <p>
@@ -378,24 +529,10 @@ exports[`Facilitator has an option to open scenarios selector 3`] = `
                   </p>
                 </div>
               </div>
-              <div
-                class="ui divider"
-              />
             </div>
             <div
               class="meta"
-            >
-              <button
-                class="ui medium compact button"
-                data-testid="run-cohort-as-participant"
-              >
-                <i
-                  aria-hidden="true"
-                  class="play icon primary"
-                />
-                Create or join a room to re-run scenario
-              </button>
-            </div>
+            />
           </div>
           <div
             class="c__scenario-extra"
@@ -407,6 +544,73 @@ exports[`Facilitator has an option to open scenarios selector 3`] = `
             >
               View responses
             </button>
+          </div>
+          <div
+            class="extra content"
+          >
+            <div
+              aria-expanded="false"
+              class="ui fluid inline dropdown"
+              role="listbox"
+              tabindex="0"
+            >
+              <div
+                aria-atomic="true"
+                aria-live="polite"
+                class="divider text"
+                role="alert"
+              >
+                Allow participants to create open or closed chat rooms
+              </div>
+              <i
+                aria-hidden="true"
+                class="dropdown icon"
+              />
+              <div
+                class="menu transition"
+              >
+                <div
+                  aria-checked="true"
+                  aria-selected="true"
+                  class="active selected item"
+                  role="option"
+                  style="pointer-events: all;"
+                >
+                  <span
+                    class="text"
+                  >
+                    Allow participants to create open or closed chat rooms
+                  </span>
+                </div>
+                <div
+                  aria-checked="false"
+                  aria-selected="false"
+                  class="item"
+                  role="option"
+                  style="pointer-events: all;"
+                >
+                  <span
+                    class="text"
+                  >
+                    Allow participants to create only closed chat rooms
+                  </span>
+                </div>
+                <div
+                  aria-checked="false"
+                  aria-selected="false"
+                  class="item"
+                  role="option"
+                  style="pointer-events: all;"
+                >
+                  <span
+                    class="text"
+                  >
+                    Allow participants to create only open chat rooms
+                  </span>
+                </div>
+              </div>
+            </div>
+            Participants will be able to create rooms and send invites to specific members of the cohort, or create rooms that are open to anyone in the cohort to join.
           </div>
         </div>
       </div>
@@ -480,6 +684,9 @@ exports[`Facilitator has an option to open scenarios selector 4`] = `
               <p>
                 This is the description of 'Some Other Scenario'…
               </p>
+              <div
+                class="ui divider"
+              />
               <span
                 class="ui medium text"
               >
@@ -487,23 +694,73 @@ exports[`Facilitator has an option to open scenarios selector 4`] = `
                 <strong>
                   3
                 </strong>
-                 roles:
+                 roles. Choose one of the following partnering options, then click on the role you will play in the scenario.
               </span>
               <div
                 class="c__join-as-role-card"
               >
+                <p
+                  tabindex="0"
+                >
+                  How do you want to partner?
+                </p>
+                <form
+                  class="ui form"
+                >
+                  <div
+                    class="field"
+                  >
+                    <div
+                      class="ui checked radio checkbox"
+                    >
+                      <input
+                        data-testid="roomaccess"
+                        id="yes"
+                        name="isOpen"
+                        tabindex="0"
+                        type="radio"
+                        value="yes"
+                      />
+                      <label
+                        for="yes"
+                      >
+                        Let anyone in my cohort join.
+                      </label>
+                    </div>
+                  </div>
+                  <div
+                    class="field"
+                  >
+                    <div
+                      class="ui checked radio checkbox"
+                    >
+                      <input
+                        checked=""
+                        data-testid="roomaccess"
+                        id="no"
+                        name="isOpen"
+                        tabindex="0"
+                        type="radio"
+                        value="no"
+                      />
+                      <label
+                        for="no"
+                      >
+                        I will invite participants.
+                      </label>
+                    </div>
+                  </div>
+                </form>
                 <div>
-                  <a
+                  <button
                     class="ui small fluid button c__join-persona-button"
-                    data-testid="join-scenario-as"
-                    href="/chat/join/1765cf2e64/as/6e4213d8d3/cohort/6e4213d8d3"
-                    role="button"
+                    data-testid="join-closed-scenario-as"
                   >
                     Join as 
                     <strong>
                       Participant
                     </strong>
-                  </a>
+                  </button>
                 </div>
                 <div>
                   <p>
@@ -516,17 +773,15 @@ exports[`Facilitator has an option to open scenarios selector 4`] = `
                   </p>
                 </div>
                 <div>
-                  <a
+                  <button
                     class="ui small fluid button c__join-persona-button"
-                    data-testid="join-scenario-as"
-                    href="/chat/join/1765cf2e64/as/6c4adee67a/cohort/6e4213d8d3"
-                    role="button"
+                    data-testid="join-closed-scenario-as"
                   >
                     Join as 
                     <strong>
                       Teacher
                     </strong>
-                  </a>
+                  </button>
                 </div>
                 <div>
                   <p>
@@ -539,17 +794,15 @@ exports[`Facilitator has an option to open scenarios selector 4`] = `
                   </p>
                 </div>
                 <div>
-                  <a
+                  <button
                     class="ui small fluid button c__join-persona-button"
-                    data-testid="join-scenario-as"
-                    href="/chat/join/1765cf2e64/as/cc5d157543/cohort/6e4213d8d3"
-                    role="button"
+                    data-testid="join-closed-scenario-as"
                   >
                     Join as 
                     <strong>
                       Student
                     </strong>
-                  </a>
+                  </button>
                 </div>
                 <div>
                   <p>
@@ -562,24 +815,10 @@ exports[`Facilitator has an option to open scenarios selector 4`] = `
                   </p>
                 </div>
               </div>
-              <div
-                class="ui divider"
-              />
             </div>
             <div
               class="meta"
-            >
-              <button
-                class="ui medium compact button"
-                data-testid="run-cohort-as-participant"
-              >
-                <i
-                  aria-hidden="true"
-                  class="play icon primary"
-                />
-                Create or join a room to re-run scenario
-              </button>
-            </div>
+            />
           </div>
           <div
             class="c__scenario-extra"
@@ -591,6 +830,73 @@ exports[`Facilitator has an option to open scenarios selector 4`] = `
             >
               View responses
             </button>
+          </div>
+          <div
+            class="extra content"
+          >
+            <div
+              aria-expanded="false"
+              class="ui fluid inline dropdown"
+              role="listbox"
+              tabindex="0"
+            >
+              <div
+                aria-atomic="true"
+                aria-live="polite"
+                class="divider text"
+                role="alert"
+              >
+                Allow participants to create open or closed chat rooms
+              </div>
+              <i
+                aria-hidden="true"
+                class="dropdown icon"
+              />
+              <div
+                class="menu transition"
+              >
+                <div
+                  aria-checked="true"
+                  aria-selected="true"
+                  class="active selected item"
+                  role="option"
+                  style="pointer-events: all;"
+                >
+                  <span
+                    class="text"
+                  >
+                    Allow participants to create open or closed chat rooms
+                  </span>
+                </div>
+                <div
+                  aria-checked="false"
+                  aria-selected="false"
+                  class="item"
+                  role="option"
+                  style="pointer-events: all;"
+                >
+                  <span
+                    class="text"
+                  >
+                    Allow participants to create only closed chat rooms
+                  </span>
+                </div>
+                <div
+                  aria-checked="false"
+                  aria-selected="false"
+                  class="item"
+                  role="option"
+                  style="pointer-events: all;"
+                >
+                  <span
+                    class="text"
+                  >
+                    Allow participants to create only open chat rooms
+                  </span>
+                </div>
+              </div>
+            </div>
+            Participants will be able to create rooms and send invites to specific members of the cohort, or create rooms that are open to anyone in the cohort to join.
           </div>
         </div>
       </div>
@@ -923,6 +1229,9 @@ exports[`Open Edit scenarios 2`] = `
               <p>
                 This is the description of 'Some Other Scenario'…
               </p>
+              <div
+                class="ui divider"
+              />
               <span
                 class="ui medium text"
               >
@@ -930,23 +1239,73 @@ exports[`Open Edit scenarios 2`] = `
                 <strong>
                   3
                 </strong>
-                 roles:
+                 roles. Choose one of the following partnering options, then click on the role you will play in the scenario.
               </span>
               <div
                 class="c__join-as-role-card"
               >
+                <p
+                  tabindex="0"
+                >
+                  How do you want to partner?
+                </p>
+                <form
+                  class="ui form"
+                >
+                  <div
+                    class="field"
+                  >
+                    <div
+                      class="ui checked radio checkbox"
+                    >
+                      <input
+                        data-testid="roomaccess"
+                        id="yes"
+                        name="isOpen"
+                        tabindex="0"
+                        type="radio"
+                        value="yes"
+                      />
+                      <label
+                        for="yes"
+                      >
+                        Let anyone in my cohort join.
+                      </label>
+                    </div>
+                  </div>
+                  <div
+                    class="field"
+                  >
+                    <div
+                      class="ui checked radio checkbox"
+                    >
+                      <input
+                        checked=""
+                        data-testid="roomaccess"
+                        id="no"
+                        name="isOpen"
+                        tabindex="0"
+                        type="radio"
+                        value="no"
+                      />
+                      <label
+                        for="no"
+                      >
+                        I will invite participants.
+                      </label>
+                    </div>
+                  </div>
+                </form>
                 <div>
-                  <a
+                  <button
                     class="ui small fluid button c__join-persona-button"
-                    data-testid="join-scenario-as"
-                    href="/chat/join/1765cf2e64/as/6e4213d8d3/cohort/6e4213d8d3"
-                    role="button"
+                    data-testid="join-closed-scenario-as"
                   >
                     Join as 
                     <strong>
                       Participant
                     </strong>
-                  </a>
+                  </button>
                 </div>
                 <div>
                   <p>
@@ -959,17 +1318,15 @@ exports[`Open Edit scenarios 2`] = `
                   </p>
                 </div>
                 <div>
-                  <a
+                  <button
                     class="ui small fluid button c__join-persona-button"
-                    data-testid="join-scenario-as"
-                    href="/chat/join/1765cf2e64/as/6c4adee67a/cohort/6e4213d8d3"
-                    role="button"
+                    data-testid="join-closed-scenario-as"
                   >
                     Join as 
                     <strong>
                       Teacher
                     </strong>
-                  </a>
+                  </button>
                 </div>
                 <div>
                   <p>
@@ -982,17 +1339,15 @@ exports[`Open Edit scenarios 2`] = `
                   </p>
                 </div>
                 <div>
-                  <a
+                  <button
                     class="ui small fluid button c__join-persona-button"
-                    data-testid="join-scenario-as"
-                    href="/chat/join/1765cf2e64/as/cc5d157543/cohort/6e4213d8d3"
-                    role="button"
+                    data-testid="join-closed-scenario-as"
                   >
                     Join as 
                     <strong>
                       Student
                     </strong>
-                  </a>
+                  </button>
                 </div>
                 <div>
                   <p>
@@ -1005,24 +1360,10 @@ exports[`Open Edit scenarios 2`] = `
                   </p>
                 </div>
               </div>
-              <div
-                class="ui divider"
-              />
             </div>
             <div
               class="meta"
-            >
-              <button
-                class="ui medium compact button"
-                data-testid="run-cohort-as-participant"
-              >
-                <i
-                  aria-hidden="true"
-                  class="play icon primary"
-                />
-                Create or join a room to re-run scenario
-              </button>
-            </div>
+            />
           </div>
           <div
             class="c__scenario-extra"
@@ -1034,6 +1375,73 @@ exports[`Open Edit scenarios 2`] = `
             >
               View responses
             </button>
+          </div>
+          <div
+            class="extra content"
+          >
+            <div
+              aria-expanded="false"
+              class="ui fluid inline dropdown"
+              role="listbox"
+              tabindex="0"
+            >
+              <div
+                aria-atomic="true"
+                aria-live="polite"
+                class="divider text"
+                role="alert"
+              >
+                Allow participants to create open or closed chat rooms
+              </div>
+              <i
+                aria-hidden="true"
+                class="dropdown icon"
+              />
+              <div
+                class="menu transition"
+              >
+                <div
+                  aria-checked="true"
+                  aria-selected="true"
+                  class="active selected item"
+                  role="option"
+                  style="pointer-events: all;"
+                >
+                  <span
+                    class="text"
+                  >
+                    Allow participants to create open or closed chat rooms
+                  </span>
+                </div>
+                <div
+                  aria-checked="false"
+                  aria-selected="false"
+                  class="item"
+                  role="option"
+                  style="pointer-events: all;"
+                >
+                  <span
+                    class="text"
+                  >
+                    Allow participants to create only closed chat rooms
+                  </span>
+                </div>
+                <div
+                  aria-checked="false"
+                  aria-selected="false"
+                  class="item"
+                  role="option"
+                  style="pointer-events: all;"
+                >
+                  <span
+                    class="text"
+                  >
+                    Allow participants to create only open chat rooms
+                  </span>
+                </div>
+              </div>
+            </div>
+            Participants will be able to create rooms and send invites to specific members of the cohort, or create rooms that are open to anyone in the cohort to join.
           </div>
         </div>
       </div>
@@ -1107,6 +1515,9 @@ exports[`Open Edit scenarios 3`] = `
               <p>
                 This is the description of 'Some Other Scenario'…
               </p>
+              <div
+                class="ui divider"
+              />
               <span
                 class="ui medium text"
               >
@@ -1114,23 +1525,73 @@ exports[`Open Edit scenarios 3`] = `
                 <strong>
                   3
                 </strong>
-                 roles:
+                 roles. Choose one of the following partnering options, then click on the role you will play in the scenario.
               </span>
               <div
                 class="c__join-as-role-card"
               >
+                <p
+                  tabindex="0"
+                >
+                  How do you want to partner?
+                </p>
+                <form
+                  class="ui form"
+                >
+                  <div
+                    class="field"
+                  >
+                    <div
+                      class="ui checked radio checkbox"
+                    >
+                      <input
+                        data-testid="roomaccess"
+                        id="yes"
+                        name="isOpen"
+                        tabindex="0"
+                        type="radio"
+                        value="yes"
+                      />
+                      <label
+                        for="yes"
+                      >
+                        Let anyone in my cohort join.
+                      </label>
+                    </div>
+                  </div>
+                  <div
+                    class="field"
+                  >
+                    <div
+                      class="ui checked radio checkbox"
+                    >
+                      <input
+                        checked=""
+                        data-testid="roomaccess"
+                        id="no"
+                        name="isOpen"
+                        tabindex="0"
+                        type="radio"
+                        value="no"
+                      />
+                      <label
+                        for="no"
+                      >
+                        I will invite participants.
+                      </label>
+                    </div>
+                  </div>
+                </form>
                 <div>
-                  <a
+                  <button
                     class="ui small fluid button c__join-persona-button"
-                    data-testid="join-scenario-as"
-                    href="/chat/join/1765cf2e64/as/6e4213d8d3/cohort/6e4213d8d3"
-                    role="button"
+                    data-testid="join-closed-scenario-as"
                   >
                     Join as 
                     <strong>
                       Participant
                     </strong>
-                  </a>
+                  </button>
                 </div>
                 <div>
                   <p>
@@ -1143,17 +1604,15 @@ exports[`Open Edit scenarios 3`] = `
                   </p>
                 </div>
                 <div>
-                  <a
+                  <button
                     class="ui small fluid button c__join-persona-button"
-                    data-testid="join-scenario-as"
-                    href="/chat/join/1765cf2e64/as/6c4adee67a/cohort/6e4213d8d3"
-                    role="button"
+                    data-testid="join-closed-scenario-as"
                   >
                     Join as 
                     <strong>
                       Teacher
                     </strong>
-                  </a>
+                  </button>
                 </div>
                 <div>
                   <p>
@@ -1166,17 +1625,15 @@ exports[`Open Edit scenarios 3`] = `
                   </p>
                 </div>
                 <div>
-                  <a
+                  <button
                     class="ui small fluid button c__join-persona-button"
-                    data-testid="join-scenario-as"
-                    href="/chat/join/1765cf2e64/as/cc5d157543/cohort/6e4213d8d3"
-                    role="button"
+                    data-testid="join-closed-scenario-as"
                   >
                     Join as 
                     <strong>
                       Student
                     </strong>
-                  </a>
+                  </button>
                 </div>
                 <div>
                   <p>
@@ -1189,24 +1646,10 @@ exports[`Open Edit scenarios 3`] = `
                   </p>
                 </div>
               </div>
-              <div
-                class="ui divider"
-              />
             </div>
             <div
               class="meta"
-            >
-              <button
-                class="ui medium compact button"
-                data-testid="run-cohort-as-participant"
-              >
-                <i
-                  aria-hidden="true"
-                  class="play icon primary"
-                />
-                Create or join a room to re-run scenario
-              </button>
-            </div>
+            />
           </div>
           <div
             class="c__scenario-extra"
@@ -1218,6 +1661,73 @@ exports[`Open Edit scenarios 3`] = `
             >
               View responses
             </button>
+          </div>
+          <div
+            class="extra content"
+          >
+            <div
+              aria-expanded="false"
+              class="ui fluid inline dropdown"
+              role="listbox"
+              tabindex="0"
+            >
+              <div
+                aria-atomic="true"
+                aria-live="polite"
+                class="divider text"
+                role="alert"
+              >
+                Allow participants to create open or closed chat rooms
+              </div>
+              <i
+                aria-hidden="true"
+                class="dropdown icon"
+              />
+              <div
+                class="menu transition"
+              >
+                <div
+                  aria-checked="true"
+                  aria-selected="true"
+                  class="active selected item"
+                  role="option"
+                  style="pointer-events: all;"
+                >
+                  <span
+                    class="text"
+                  >
+                    Allow participants to create open or closed chat rooms
+                  </span>
+                </div>
+                <div
+                  aria-checked="false"
+                  aria-selected="false"
+                  class="item"
+                  role="option"
+                  style="pointer-events: all;"
+                >
+                  <span
+                    class="text"
+                  >
+                    Allow participants to create only closed chat rooms
+                  </span>
+                </div>
+                <div
+                  aria-checked="false"
+                  aria-selected="false"
+                  class="item"
+                  role="option"
+                  style="pointer-events: all;"
+                >
+                  <span
+                    class="text"
+                  >
+                    Allow participants to create only open chat rooms
+                  </span>
+                </div>
+              </div>
+            </div>
+            Participants will be able to create rooms and send invites to specific members of the cohort, or create rooms that are open to anyone in the cohort to join.
           </div>
         </div>
       </div>
@@ -1291,6 +1801,9 @@ exports[`Open Edit scenarios 4`] = `
               <p>
                 This is the description of 'Some Other Scenario'…
               </p>
+              <div
+                class="ui divider"
+              />
               <span
                 class="ui medium text"
               >
@@ -1298,23 +1811,73 @@ exports[`Open Edit scenarios 4`] = `
                 <strong>
                   3
                 </strong>
-                 roles:
+                 roles. Choose one of the following partnering options, then click on the role you will play in the scenario.
               </span>
               <div
                 class="c__join-as-role-card"
               >
+                <p
+                  tabindex="0"
+                >
+                  How do you want to partner?
+                </p>
+                <form
+                  class="ui form"
+                >
+                  <div
+                    class="field"
+                  >
+                    <div
+                      class="ui checked radio checkbox"
+                    >
+                      <input
+                        data-testid="roomaccess"
+                        id="yes"
+                        name="isOpen"
+                        tabindex="0"
+                        type="radio"
+                        value="yes"
+                      />
+                      <label
+                        for="yes"
+                      >
+                        Let anyone in my cohort join.
+                      </label>
+                    </div>
+                  </div>
+                  <div
+                    class="field"
+                  >
+                    <div
+                      class="ui checked radio checkbox"
+                    >
+                      <input
+                        checked=""
+                        data-testid="roomaccess"
+                        id="no"
+                        name="isOpen"
+                        tabindex="0"
+                        type="radio"
+                        value="no"
+                      />
+                      <label
+                        for="no"
+                      >
+                        I will invite participants.
+                      </label>
+                    </div>
+                  </div>
+                </form>
                 <div>
-                  <a
+                  <button
                     class="ui small fluid button c__join-persona-button"
-                    data-testid="join-scenario-as"
-                    href="/chat/join/1765cf2e64/as/6e4213d8d3/cohort/6e4213d8d3"
-                    role="button"
+                    data-testid="join-closed-scenario-as"
                   >
                     Join as 
                     <strong>
                       Participant
                     </strong>
-                  </a>
+                  </button>
                 </div>
                 <div>
                   <p>
@@ -1327,17 +1890,15 @@ exports[`Open Edit scenarios 4`] = `
                   </p>
                 </div>
                 <div>
-                  <a
+                  <button
                     class="ui small fluid button c__join-persona-button"
-                    data-testid="join-scenario-as"
-                    href="/chat/join/1765cf2e64/as/6c4adee67a/cohort/6e4213d8d3"
-                    role="button"
+                    data-testid="join-closed-scenario-as"
                   >
                     Join as 
                     <strong>
                       Teacher
                     </strong>
-                  </a>
+                  </button>
                 </div>
                 <div>
                   <p>
@@ -1350,17 +1911,15 @@ exports[`Open Edit scenarios 4`] = `
                   </p>
                 </div>
                 <div>
-                  <a
+                  <button
                     class="ui small fluid button c__join-persona-button"
-                    data-testid="join-scenario-as"
-                    href="/chat/join/1765cf2e64/as/cc5d157543/cohort/6e4213d8d3"
-                    role="button"
+                    data-testid="join-closed-scenario-as"
                   >
                     Join as 
                     <strong>
                       Student
                     </strong>
-                  </a>
+                  </button>
                 </div>
                 <div>
                   <p>
@@ -1373,24 +1932,10 @@ exports[`Open Edit scenarios 4`] = `
                   </p>
                 </div>
               </div>
-              <div
-                class="ui divider"
-              />
             </div>
             <div
               class="meta"
-            >
-              <button
-                class="ui medium compact button"
-                data-testid="run-cohort-as-participant"
-              >
-                <i
-                  aria-hidden="true"
-                  class="play icon primary"
-                />
-                Create or join a room to re-run scenario
-              </button>
-            </div>
+            />
           </div>
           <div
             class="c__scenario-extra"
@@ -1402,6 +1947,73 @@ exports[`Open Edit scenarios 4`] = `
             >
               View responses
             </button>
+          </div>
+          <div
+            class="extra content"
+          >
+            <div
+              aria-expanded="false"
+              class="ui fluid inline dropdown"
+              role="listbox"
+              tabindex="0"
+            >
+              <div
+                aria-atomic="true"
+                aria-live="polite"
+                class="divider text"
+                role="alert"
+              >
+                Allow participants to create open or closed chat rooms
+              </div>
+              <i
+                aria-hidden="true"
+                class="dropdown icon"
+              />
+              <div
+                class="menu transition"
+              >
+                <div
+                  aria-checked="true"
+                  aria-selected="true"
+                  class="active selected item"
+                  role="option"
+                  style="pointer-events: all;"
+                >
+                  <span
+                    class="text"
+                  >
+                    Allow participants to create open or closed chat rooms
+                  </span>
+                </div>
+                <div
+                  aria-checked="false"
+                  aria-selected="false"
+                  class="item"
+                  role="option"
+                  style="pointer-events: all;"
+                >
+                  <span
+                    class="text"
+                  >
+                    Allow participants to create only closed chat rooms
+                  </span>
+                </div>
+                <div
+                  aria-checked="false"
+                  aria-selected="false"
+                  class="item"
+                  role="option"
+                  style="pointer-events: all;"
+                >
+                  <span
+                    class="text"
+                  >
+                    Allow participants to create only open chat rooms
+                  </span>
+                </div>
+              </div>
+            </div>
+            Participants will be able to create rooms and send invites to specific members of the cohort, or create rooms that are open to anyone in the cohort to join.
           </div>
         </div>
       </div>
@@ -1499,6 +2111,9 @@ exports[`Participant does not have an option to open scenarios selector 2`] = `
           <p>
             This is the description of 'Some Other Scenario'…
           </p>
+          <div
+            class="ui divider"
+          />
           <span
             class="ui medium text"
           >
@@ -1506,23 +2121,73 @@ exports[`Participant does not have an option to open scenarios selector 2`] = `
             <strong>
               3
             </strong>
-             roles:
+             roles. Choose one of the following partnering options, then click on the role you will play in the scenario.
           </span>
           <div
             class="c__join-as-role-card"
           >
+            <p
+              tabindex="0"
+            >
+              How do you want to partner?
+            </p>
+            <form
+              class="ui form"
+            >
+              <div
+                class="field"
+              >
+                <div
+                  class="ui checked radio checkbox"
+                >
+                  <input
+                    data-testid="roomaccess"
+                    id="yes"
+                    name="isOpen"
+                    tabindex="0"
+                    type="radio"
+                    value="yes"
+                  />
+                  <label
+                    for="yes"
+                  >
+                    Let anyone in my cohort join.
+                  </label>
+                </div>
+              </div>
+              <div
+                class="field"
+              >
+                <div
+                  class="ui checked radio checkbox"
+                >
+                  <input
+                    checked=""
+                    data-testid="roomaccess"
+                    id="no"
+                    name="isOpen"
+                    tabindex="0"
+                    type="radio"
+                    value="no"
+                  />
+                  <label
+                    for="no"
+                  >
+                    I will invite participants.
+                  </label>
+                </div>
+              </div>
+            </form>
             <div>
-              <a
+              <button
                 class="ui small fluid button c__join-persona-button"
-                data-testid="join-scenario-as"
-                href="/chat/join/1765cf2e64/as/6e4213d8d3/cohort/6e4213d8d3"
-                role="button"
+                data-testid="join-closed-scenario-as"
               >
                 Join as 
                 <strong>
                   Participant
                 </strong>
-              </a>
+              </button>
             </div>
             <div>
               <p>
@@ -1535,17 +2200,15 @@ exports[`Participant does not have an option to open scenarios selector 2`] = `
               </p>
             </div>
             <div>
-              <a
+              <button
                 class="ui small fluid button c__join-persona-button"
-                data-testid="join-scenario-as"
-                href="/chat/join/1765cf2e64/as/6c4adee67a/cohort/6e4213d8d3"
-                role="button"
+                data-testid="join-closed-scenario-as"
               >
                 Join as 
                 <strong>
                   Teacher
                 </strong>
-              </a>
+              </button>
             </div>
             <div>
               <p>
@@ -1558,17 +2221,15 @@ exports[`Participant does not have an option to open scenarios selector 2`] = `
               </p>
             </div>
             <div>
-              <a
+              <button
                 class="ui small fluid button c__join-persona-button"
-                data-testid="join-scenario-as"
-                href="/chat/join/1765cf2e64/as/cc5d157543/cohort/6e4213d8d3"
-                role="button"
+                data-testid="join-closed-scenario-as"
               >
                 Join as 
                 <strong>
                   Student
                 </strong>
-              </a>
+              </button>
             </div>
             <div>
               <p>
@@ -1581,24 +2242,10 @@ exports[`Participant does not have an option to open scenarios selector 2`] = `
               </p>
             </div>
           </div>
-          <div
-            class="ui divider"
-          />
         </div>
         <div
           class="meta"
-        >
-          <button
-            class="ui medium compact button"
-            data-testid="run-cohort-as-participant"
-          >
-            <i
-              aria-hidden="true"
-              class="play icon primary"
-            />
-            Create or join a room to re-run scenario
-          </button>
-        </div>
+        />
       </div>
       <div
         class="c__scenario-extra"
@@ -1706,6 +2353,9 @@ exports[`Render 1 1 2`] = `
               <p>
                 This is the description of 'Some Other Scenario'…
               </p>
+              <div
+                class="ui divider"
+              />
               <span
                 class="ui medium text"
               >
@@ -1713,23 +2363,73 @@ exports[`Render 1 1 2`] = `
                 <strong>
                   3
                 </strong>
-                 roles:
+                 roles. Choose one of the following partnering options, then click on the role you will play in the scenario.
               </span>
               <div
                 class="c__join-as-role-card"
               >
+                <p
+                  tabindex="0"
+                >
+                  How do you want to partner?
+                </p>
+                <form
+                  class="ui form"
+                >
+                  <div
+                    class="field"
+                  >
+                    <div
+                      class="ui checked radio checkbox"
+                    >
+                      <input
+                        data-testid="roomaccess"
+                        id="yes"
+                        name="isOpen"
+                        tabindex="0"
+                        type="radio"
+                        value="yes"
+                      />
+                      <label
+                        for="yes"
+                      >
+                        Let anyone in my cohort join.
+                      </label>
+                    </div>
+                  </div>
+                  <div
+                    class="field"
+                  >
+                    <div
+                      class="ui checked radio checkbox"
+                    >
+                      <input
+                        checked=""
+                        data-testid="roomaccess"
+                        id="no"
+                        name="isOpen"
+                        tabindex="0"
+                        type="radio"
+                        value="no"
+                      />
+                      <label
+                        for="no"
+                      >
+                        I will invite participants.
+                      </label>
+                    </div>
+                  </div>
+                </form>
                 <div>
-                  <a
+                  <button
                     class="ui small fluid button c__join-persona-button"
-                    data-testid="join-scenario-as"
-                    href="/chat/join/1765cf2e64/as/6e4213d8d3/cohort/6e4213d8d3"
-                    role="button"
+                    data-testid="join-closed-scenario-as"
                   >
                     Join as 
                     <strong>
                       Participant
                     </strong>
-                  </a>
+                  </button>
                 </div>
                 <div>
                   <p>
@@ -1742,17 +2442,15 @@ exports[`Render 1 1 2`] = `
                   </p>
                 </div>
                 <div>
-                  <a
+                  <button
                     class="ui small fluid button c__join-persona-button"
-                    data-testid="join-scenario-as"
-                    href="/chat/join/1765cf2e64/as/6c4adee67a/cohort/6e4213d8d3"
-                    role="button"
+                    data-testid="join-closed-scenario-as"
                   >
                     Join as 
                     <strong>
                       Teacher
                     </strong>
-                  </a>
+                  </button>
                 </div>
                 <div>
                   <p>
@@ -1765,17 +2463,15 @@ exports[`Render 1 1 2`] = `
                   </p>
                 </div>
                 <div>
-                  <a
+                  <button
                     class="ui small fluid button c__join-persona-button"
-                    data-testid="join-scenario-as"
-                    href="/chat/join/1765cf2e64/as/cc5d157543/cohort/6e4213d8d3"
-                    role="button"
+                    data-testid="join-closed-scenario-as"
                   >
                     Join as 
                     <strong>
                       Student
                     </strong>
-                  </a>
+                  </button>
                 </div>
                 <div>
                   <p>
@@ -1788,24 +2484,10 @@ exports[`Render 1 1 2`] = `
                   </p>
                 </div>
               </div>
-              <div
-                class="ui divider"
-              />
             </div>
             <div
               class="meta"
-            >
-              <button
-                class="ui medium compact button"
-                data-testid="run-cohort-as-participant"
-              >
-                <i
-                  aria-hidden="true"
-                  class="play icon primary"
-                />
-                Create or join a room to run scenario
-              </button>
-            </div>
+            />
           </div>
           <div
             class="c__scenario-extra"
@@ -1817,6 +2499,73 @@ exports[`Render 1 1 2`] = `
             >
               View responses
             </button>
+          </div>
+          <div
+            class="extra content"
+          >
+            <div
+              aria-expanded="false"
+              class="ui fluid inline dropdown"
+              role="listbox"
+              tabindex="0"
+            >
+              <div
+                aria-atomic="true"
+                aria-live="polite"
+                class="divider text"
+                role="alert"
+              >
+                Allow participants to create open or closed chat rooms
+              </div>
+              <i
+                aria-hidden="true"
+                class="dropdown icon"
+              />
+              <div
+                class="menu transition"
+              >
+                <div
+                  aria-checked="true"
+                  aria-selected="true"
+                  class="active selected item"
+                  role="option"
+                  style="pointer-events: all;"
+                >
+                  <span
+                    class="text"
+                  >
+                    Allow participants to create open or closed chat rooms
+                  </span>
+                </div>
+                <div
+                  aria-checked="false"
+                  aria-selected="false"
+                  class="item"
+                  role="option"
+                  style="pointer-events: all;"
+                >
+                  <span
+                    class="text"
+                  >
+                    Allow participants to create only closed chat rooms
+                  </span>
+                </div>
+                <div
+                  aria-checked="false"
+                  aria-selected="false"
+                  class="item"
+                  role="option"
+                  style="pointer-events: all;"
+                >
+                  <span
+                    class="text"
+                  >
+                    Allow participants to create only open chat rooms
+                  </span>
+                </div>
+              </div>
+            </div>
+            Participants will be able to create rooms and send invites to specific members of the cohort, or create rooms that are open to anyone in the cohort to join.
           </div>
         </div>
       </div>
@@ -1915,6 +2664,9 @@ exports[`Render 2 1 2`] = `
               <p>
                 This is the description of 'Some Other Scenario'…
               </p>
+              <div
+                class="ui divider"
+              />
               <span
                 class="ui medium text"
               >
@@ -1922,23 +2674,73 @@ exports[`Render 2 1 2`] = `
                 <strong>
                   3
                 </strong>
-                 roles:
+                 roles. Choose one of the following partnering options, then click on the role you will play in the scenario.
               </span>
               <div
                 class="c__join-as-role-card"
               >
+                <p
+                  tabindex="0"
+                >
+                  How do you want to partner?
+                </p>
+                <form
+                  class="ui form"
+                >
+                  <div
+                    class="field"
+                  >
+                    <div
+                      class="ui checked radio checkbox"
+                    >
+                      <input
+                        data-testid="roomaccess"
+                        id="yes"
+                        name="isOpen"
+                        tabindex="0"
+                        type="radio"
+                        value="yes"
+                      />
+                      <label
+                        for="yes"
+                      >
+                        Let anyone in my cohort join.
+                      </label>
+                    </div>
+                  </div>
+                  <div
+                    class="field"
+                  >
+                    <div
+                      class="ui checked radio checkbox"
+                    >
+                      <input
+                        checked=""
+                        data-testid="roomaccess"
+                        id="no"
+                        name="isOpen"
+                        tabindex="0"
+                        type="radio"
+                        value="no"
+                      />
+                      <label
+                        for="no"
+                      >
+                        I will invite participants.
+                      </label>
+                    </div>
+                  </div>
+                </form>
                 <div>
-                  <a
+                  <button
                     class="ui small fluid button c__join-persona-button"
-                    data-testid="join-scenario-as"
-                    href="/chat/join/1765cf2e64/as/6e4213d8d3/cohort/6e4213d8d3"
-                    role="button"
+                    data-testid="join-closed-scenario-as"
                   >
                     Join as 
                     <strong>
                       Participant
                     </strong>
-                  </a>
+                  </button>
                 </div>
                 <div>
                   <p>
@@ -1951,17 +2753,15 @@ exports[`Render 2 1 2`] = `
                   </p>
                 </div>
                 <div>
-                  <a
+                  <button
                     class="ui small fluid button c__join-persona-button"
-                    data-testid="join-scenario-as"
-                    href="/chat/join/1765cf2e64/as/6c4adee67a/cohort/6e4213d8d3"
-                    role="button"
+                    data-testid="join-closed-scenario-as"
                   >
                     Join as 
                     <strong>
                       Teacher
                     </strong>
-                  </a>
+                  </button>
                 </div>
                 <div>
                   <p>
@@ -1974,17 +2774,15 @@ exports[`Render 2 1 2`] = `
                   </p>
                 </div>
                 <div>
-                  <a
+                  <button
                     class="ui small fluid button c__join-persona-button"
-                    data-testid="join-scenario-as"
-                    href="/chat/join/1765cf2e64/as/cc5d157543/cohort/6e4213d8d3"
-                    role="button"
+                    data-testid="join-closed-scenario-as"
                   >
                     Join as 
                     <strong>
                       Student
                     </strong>
-                  </a>
+                  </button>
                 </div>
                 <div>
                   <p>
@@ -1997,24 +2795,10 @@ exports[`Render 2 1 2`] = `
                   </p>
                 </div>
               </div>
-              <div
-                class="ui divider"
-              />
             </div>
             <div
               class="meta"
-            >
-              <button
-                class="ui medium compact button"
-                data-testid="run-cohort-as-participant"
-              >
-                <i
-                  aria-hidden="true"
-                  class="play icon primary"
-                />
-                Create or join a room to re-run scenario
-              </button>
-            </div>
+            />
           </div>
           <div
             class="c__scenario-extra"
@@ -2026,6 +2810,73 @@ exports[`Render 2 1 2`] = `
             >
               View responses
             </button>
+          </div>
+          <div
+            class="extra content"
+          >
+            <div
+              aria-expanded="false"
+              class="ui fluid inline dropdown"
+              role="listbox"
+              tabindex="0"
+            >
+              <div
+                aria-atomic="true"
+                aria-live="polite"
+                class="divider text"
+                role="alert"
+              >
+                Allow participants to create open or closed chat rooms
+              </div>
+              <i
+                aria-hidden="true"
+                class="dropdown icon"
+              />
+              <div
+                class="menu transition"
+              >
+                <div
+                  aria-checked="true"
+                  aria-selected="true"
+                  class="active selected item"
+                  role="option"
+                  style="pointer-events: all;"
+                >
+                  <span
+                    class="text"
+                  >
+                    Allow participants to create open or closed chat rooms
+                  </span>
+                </div>
+                <div
+                  aria-checked="false"
+                  aria-selected="false"
+                  class="item"
+                  role="option"
+                  style="pointer-events: all;"
+                >
+                  <span
+                    class="text"
+                  >
+                    Allow participants to create only closed chat rooms
+                  </span>
+                </div>
+                <div
+                  aria-checked="false"
+                  aria-selected="false"
+                  class="item"
+                  role="option"
+                  style="pointer-events: all;"
+                >
+                  <span
+                    class="text"
+                  >
+                    Allow participants to create only open chat rooms
+                  </span>
+                </div>
+              </div>
+            </div>
+            Participants will be able to create rooms and send invites to specific members of the cohort, or create rooms that are open to anyone in the cohort to join.
           </div>
         </div>
       </div>
@@ -2124,6 +2975,9 @@ exports[`Run as participant 2`] = `
               <p>
                 This is the description of 'Some Other Scenario'…
               </p>
+              <div
+                class="ui divider"
+              />
               <span
                 class="ui medium text"
               >
@@ -2131,23 +2985,73 @@ exports[`Run as participant 2`] = `
                 <strong>
                   3
                 </strong>
-                 roles:
+                 roles. Choose one of the following partnering options, then click on the role you will play in the scenario.
               </span>
               <div
                 class="c__join-as-role-card"
               >
+                <p
+                  tabindex="0"
+                >
+                  How do you want to partner?
+                </p>
+                <form
+                  class="ui form"
+                >
+                  <div
+                    class="field"
+                  >
+                    <div
+                      class="ui checked radio checkbox"
+                    >
+                      <input
+                        data-testid="roomaccess"
+                        id="yes"
+                        name="isOpen"
+                        tabindex="0"
+                        type="radio"
+                        value="yes"
+                      />
+                      <label
+                        for="yes"
+                      >
+                        Let anyone in my cohort join.
+                      </label>
+                    </div>
+                  </div>
+                  <div
+                    class="field"
+                  >
+                    <div
+                      class="ui checked radio checkbox"
+                    >
+                      <input
+                        checked=""
+                        data-testid="roomaccess"
+                        id="no"
+                        name="isOpen"
+                        tabindex="0"
+                        type="radio"
+                        value="no"
+                      />
+                      <label
+                        for="no"
+                      >
+                        I will invite participants.
+                      </label>
+                    </div>
+                  </div>
+                </form>
                 <div>
-                  <a
+                  <button
                     class="ui small fluid button c__join-persona-button"
-                    data-testid="join-scenario-as"
-                    href="/chat/join/1765cf2e64/as/6e4213d8d3/cohort/6e4213d8d3"
-                    role="button"
+                    data-testid="join-closed-scenario-as"
                   >
                     Join as 
                     <strong>
                       Participant
                     </strong>
-                  </a>
+                  </button>
                 </div>
                 <div>
                   <p>
@@ -2160,17 +3064,15 @@ exports[`Run as participant 2`] = `
                   </p>
                 </div>
                 <div>
-                  <a
+                  <button
                     class="ui small fluid button c__join-persona-button"
-                    data-testid="join-scenario-as"
-                    href="/chat/join/1765cf2e64/as/6c4adee67a/cohort/6e4213d8d3"
-                    role="button"
+                    data-testid="join-closed-scenario-as"
                   >
                     Join as 
                     <strong>
                       Teacher
                     </strong>
-                  </a>
+                  </button>
                 </div>
                 <div>
                   <p>
@@ -2183,17 +3085,15 @@ exports[`Run as participant 2`] = `
                   </p>
                 </div>
                 <div>
-                  <a
+                  <button
                     class="ui small fluid button c__join-persona-button"
-                    data-testid="join-scenario-as"
-                    href="/chat/join/1765cf2e64/as/cc5d157543/cohort/6e4213d8d3"
-                    role="button"
+                    data-testid="join-closed-scenario-as"
                   >
                     Join as 
                     <strong>
                       Student
                     </strong>
-                  </a>
+                  </button>
                 </div>
                 <div>
                   <p>
@@ -2206,24 +3106,10 @@ exports[`Run as participant 2`] = `
                   </p>
                 </div>
               </div>
-              <div
-                class="ui divider"
-              />
             </div>
             <div
               class="meta"
-            >
-              <button
-                class="ui medium compact button"
-                data-testid="run-cohort-as-participant"
-              >
-                <i
-                  aria-hidden="true"
-                  class="play icon primary"
-                />
-                Create or join a room to re-run scenario
-              </button>
-            </div>
+            />
           </div>
           <div
             class="c__scenario-extra"
@@ -2235,6 +3121,73 @@ exports[`Run as participant 2`] = `
             >
               View responses
             </button>
+          </div>
+          <div
+            class="extra content"
+          >
+            <div
+              aria-expanded="false"
+              class="ui fluid inline dropdown"
+              role="listbox"
+              tabindex="0"
+            >
+              <div
+                aria-atomic="true"
+                aria-live="polite"
+                class="divider text"
+                role="alert"
+              >
+                Allow participants to create open or closed chat rooms
+              </div>
+              <i
+                aria-hidden="true"
+                class="dropdown icon"
+              />
+              <div
+                class="menu transition"
+              >
+                <div
+                  aria-checked="true"
+                  aria-selected="true"
+                  class="active selected item"
+                  role="option"
+                  style="pointer-events: all;"
+                >
+                  <span
+                    class="text"
+                  >
+                    Allow participants to create open or closed chat rooms
+                  </span>
+                </div>
+                <div
+                  aria-checked="false"
+                  aria-selected="false"
+                  class="item"
+                  role="option"
+                  style="pointer-events: all;"
+                >
+                  <span
+                    class="text"
+                  >
+                    Allow participants to create only closed chat rooms
+                  </span>
+                </div>
+                <div
+                  aria-checked="false"
+                  aria-selected="false"
+                  class="item"
+                  role="option"
+                  style="pointer-events: all;"
+                >
+                  <span
+                    class="text"
+                  >
+                    Allow participants to create only open chat rooms
+                  </span>
+                </div>
+              </div>
+            </div>
+            Participants will be able to create rooms and send invites to specific members of the cohort, or create rooms that are open to anyone in the cohort to join.
           </div>
         </div>
       </div>
@@ -2308,6 +3261,9 @@ exports[`Run as participant 4`] = `
               <p>
                 This is the description of 'Some Other Scenario'…
               </p>
+              <div
+                class="ui divider"
+              />
               <span
                 class="ui medium text"
               >
@@ -2315,23 +3271,73 @@ exports[`Run as participant 4`] = `
                 <strong>
                   3
                 </strong>
-                 roles:
+                 roles. Choose one of the following partnering options, then click on the role you will play in the scenario.
               </span>
               <div
                 class="c__join-as-role-card"
               >
+                <p
+                  tabindex="0"
+                >
+                  How do you want to partner?
+                </p>
+                <form
+                  class="ui form"
+                >
+                  <div
+                    class="field"
+                  >
+                    <div
+                      class="ui checked radio checkbox"
+                    >
+                      <input
+                        data-testid="roomaccess"
+                        id="yes"
+                        name="isOpen"
+                        tabindex="0"
+                        type="radio"
+                        value="yes"
+                      />
+                      <label
+                        for="yes"
+                      >
+                        Let anyone in my cohort join.
+                      </label>
+                    </div>
+                  </div>
+                  <div
+                    class="field"
+                  >
+                    <div
+                      class="ui checked radio checkbox"
+                    >
+                      <input
+                        checked=""
+                        data-testid="roomaccess"
+                        id="no"
+                        name="isOpen"
+                        tabindex="0"
+                        type="radio"
+                        value="no"
+                      />
+                      <label
+                        for="no"
+                      >
+                        I will invite participants.
+                      </label>
+                    </div>
+                  </div>
+                </form>
                 <div>
-                  <a
+                  <button
                     class="ui small fluid button c__join-persona-button"
-                    data-testid="join-scenario-as"
-                    href="/chat/join/1765cf2e64/as/6e4213d8d3/cohort/6e4213d8d3"
-                    role="button"
+                    data-testid="join-closed-scenario-as"
                   >
                     Join as 
                     <strong>
                       Participant
                     </strong>
-                  </a>
+                  </button>
                 </div>
                 <div>
                   <p>
@@ -2344,17 +3350,15 @@ exports[`Run as participant 4`] = `
                   </p>
                 </div>
                 <div>
-                  <a
+                  <button
                     class="ui small fluid button c__join-persona-button"
-                    data-testid="join-scenario-as"
-                    href="/chat/join/1765cf2e64/as/6c4adee67a/cohort/6e4213d8d3"
-                    role="button"
+                    data-testid="join-closed-scenario-as"
                   >
                     Join as 
                     <strong>
                       Teacher
                     </strong>
-                  </a>
+                  </button>
                 </div>
                 <div>
                   <p>
@@ -2367,17 +3371,15 @@ exports[`Run as participant 4`] = `
                   </p>
                 </div>
                 <div>
-                  <a
+                  <button
                     class="ui small fluid button c__join-persona-button"
-                    data-testid="join-scenario-as"
-                    href="/chat/join/1765cf2e64/as/cc5d157543/cohort/6e4213d8d3"
-                    role="button"
+                    data-testid="join-closed-scenario-as"
                   >
                     Join as 
                     <strong>
                       Student
                     </strong>
-                  </a>
+                  </button>
                 </div>
                 <div>
                   <p>
@@ -2390,24 +3392,10 @@ exports[`Run as participant 4`] = `
                   </p>
                 </div>
               </div>
-              <div
-                class="ui divider"
-              />
             </div>
             <div
               class="meta"
-            >
-              <button
-                class="ui medium compact button"
-                data-testid="run-cohort-as-participant"
-              >
-                <i
-                  aria-hidden="true"
-                  class="play icon primary"
-                />
-                Create or join a room to re-run scenario
-              </button>
-            </div>
+            />
           </div>
           <div
             class="c__scenario-extra"
@@ -2419,6 +3407,73 @@ exports[`Run as participant 4`] = `
             >
               View responses
             </button>
+          </div>
+          <div
+            class="extra content"
+          >
+            <div
+              aria-expanded="false"
+              class="ui fluid inline dropdown"
+              role="listbox"
+              tabindex="0"
+            >
+              <div
+                aria-atomic="true"
+                aria-live="polite"
+                class="divider text"
+                role="alert"
+              >
+                Allow participants to create open or closed chat rooms
+              </div>
+              <i
+                aria-hidden="true"
+                class="dropdown icon"
+              />
+              <div
+                class="menu transition"
+              >
+                <div
+                  aria-checked="true"
+                  aria-selected="true"
+                  class="active selected item"
+                  role="option"
+                  style="pointer-events: all;"
+                >
+                  <span
+                    class="text"
+                  >
+                    Allow participants to create open or closed chat rooms
+                  </span>
+                </div>
+                <div
+                  aria-checked="false"
+                  aria-selected="false"
+                  class="item"
+                  role="option"
+                  style="pointer-events: all;"
+                >
+                  <span
+                    class="text"
+                  >
+                    Allow participants to create only closed chat rooms
+                  </span>
+                </div>
+                <div
+                  aria-checked="false"
+                  aria-selected="false"
+                  class="item"
+                  role="option"
+                  style="pointer-events: all;"
+                >
+                  <span
+                    class="text"
+                  >
+                    Allow participants to create only open chat rooms
+                  </span>
+                </div>
+              </div>
+            </div>
+            Participants will be able to create rooms and send invites to specific members of the cohort, or create rooms that are open to anyone in the cohort to join.
           </div>
         </div>
       </div>
@@ -2517,6 +3572,9 @@ exports[`Scenarios have multi-participant/single-participant icons 2`] = `
               <p>
                 This is the description of 'Some Other Scenario'…
               </p>
+              <div
+                class="ui divider"
+              />
               <span
                 class="ui medium text"
               >
@@ -2524,23 +3582,73 @@ exports[`Scenarios have multi-participant/single-participant icons 2`] = `
                 <strong>
                   3
                 </strong>
-                 roles:
+                 roles. Choose one of the following partnering options, then click on the role you will play in the scenario.
               </span>
               <div
                 class="c__join-as-role-card"
               >
+                <p
+                  tabindex="0"
+                >
+                  How do you want to partner?
+                </p>
+                <form
+                  class="ui form"
+                >
+                  <div
+                    class="field"
+                  >
+                    <div
+                      class="ui checked radio checkbox"
+                    >
+                      <input
+                        data-testid="roomaccess"
+                        id="yes"
+                        name="isOpen"
+                        tabindex="0"
+                        type="radio"
+                        value="yes"
+                      />
+                      <label
+                        for="yes"
+                      >
+                        Let anyone in my cohort join.
+                      </label>
+                    </div>
+                  </div>
+                  <div
+                    class="field"
+                  >
+                    <div
+                      class="ui checked radio checkbox"
+                    >
+                      <input
+                        checked=""
+                        data-testid="roomaccess"
+                        id="no"
+                        name="isOpen"
+                        tabindex="0"
+                        type="radio"
+                        value="no"
+                      />
+                      <label
+                        for="no"
+                      >
+                        I will invite participants.
+                      </label>
+                    </div>
+                  </div>
+                </form>
                 <div>
-                  <a
+                  <button
                     class="ui small fluid button c__join-persona-button"
-                    data-testid="join-scenario-as"
-                    href="/chat/join/1765cf2e64/as/6e4213d8d3/cohort/6e4213d8d3"
-                    role="button"
+                    data-testid="join-closed-scenario-as"
                   >
                     Join as 
                     <strong>
                       Participant
                     </strong>
-                  </a>
+                  </button>
                 </div>
                 <div>
                   <p>
@@ -2553,17 +3661,15 @@ exports[`Scenarios have multi-participant/single-participant icons 2`] = `
                   </p>
                 </div>
                 <div>
-                  <a
+                  <button
                     class="ui small fluid button c__join-persona-button"
-                    data-testid="join-scenario-as"
-                    href="/chat/join/1765cf2e64/as/6c4adee67a/cohort/6e4213d8d3"
-                    role="button"
+                    data-testid="join-closed-scenario-as"
                   >
                     Join as 
                     <strong>
                       Teacher
                     </strong>
-                  </a>
+                  </button>
                 </div>
                 <div>
                   <p>
@@ -2576,17 +3682,15 @@ exports[`Scenarios have multi-participant/single-participant icons 2`] = `
                   </p>
                 </div>
                 <div>
-                  <a
+                  <button
                     class="ui small fluid button c__join-persona-button"
-                    data-testid="join-scenario-as"
-                    href="/chat/join/1765cf2e64/as/cc5d157543/cohort/6e4213d8d3"
-                    role="button"
+                    data-testid="join-closed-scenario-as"
                   >
                     Join as 
                     <strong>
                       Student
                     </strong>
-                  </a>
+                  </button>
                 </div>
                 <div>
                   <p>
@@ -2599,24 +3703,10 @@ exports[`Scenarios have multi-participant/single-participant icons 2`] = `
                   </p>
                 </div>
               </div>
-              <div
-                class="ui divider"
-              />
             </div>
             <div
               class="meta"
-            >
-              <button
-                class="ui medium compact button"
-                data-testid="run-cohort-as-participant"
-              >
-                <i
-                  aria-hidden="true"
-                  class="play icon primary"
-                />
-                Create or join a room to re-run scenario
-              </button>
-            </div>
+            />
           </div>
           <div
             class="c__scenario-extra"
@@ -2628,6 +3718,73 @@ exports[`Scenarios have multi-participant/single-participant icons 2`] = `
             >
               View responses
             </button>
+          </div>
+          <div
+            class="extra content"
+          >
+            <div
+              aria-expanded="false"
+              class="ui fluid inline dropdown"
+              role="listbox"
+              tabindex="0"
+            >
+              <div
+                aria-atomic="true"
+                aria-live="polite"
+                class="divider text"
+                role="alert"
+              >
+                Allow participants to create open or closed chat rooms
+              </div>
+              <i
+                aria-hidden="true"
+                class="dropdown icon"
+              />
+              <div
+                class="menu transition"
+              >
+                <div
+                  aria-checked="true"
+                  aria-selected="true"
+                  class="active selected item"
+                  role="option"
+                  style="pointer-events: all;"
+                >
+                  <span
+                    class="text"
+                  >
+                    Allow participants to create open or closed chat rooms
+                  </span>
+                </div>
+                <div
+                  aria-checked="false"
+                  aria-selected="false"
+                  class="item"
+                  role="option"
+                  style="pointer-events: all;"
+                >
+                  <span
+                    class="text"
+                  >
+                    Allow participants to create only closed chat rooms
+                  </span>
+                </div>
+                <div
+                  aria-checked="false"
+                  aria-selected="false"
+                  class="item"
+                  role="option"
+                  style="pointer-events: all;"
+                >
+                  <span
+                    class="text"
+                  >
+                    Allow participants to create only open chat rooms
+                  </span>
+                </div>
+              </div>
+            </div>
+            Participants will be able to create rooms and send invites to specific members of the cohort, or create rooms that are open to anyone in the cohort to join.
           </div>
         </div>
       </div>
@@ -2701,6 +3858,9 @@ exports[`Scenarios have multi-participant/single-participant icons 3`] = `
               <p>
                 This is the description of 'Some Other Scenario'…
               </p>
+              <div
+                class="ui divider"
+              />
               <span
                 class="ui medium text"
               >
@@ -2708,23 +3868,73 @@ exports[`Scenarios have multi-participant/single-participant icons 3`] = `
                 <strong>
                   3
                 </strong>
-                 roles:
+                 roles. Choose one of the following partnering options, then click on the role you will play in the scenario.
               </span>
               <div
                 class="c__join-as-role-card"
               >
+                <p
+                  tabindex="0"
+                >
+                  How do you want to partner?
+                </p>
+                <form
+                  class="ui form"
+                >
+                  <div
+                    class="field"
+                  >
+                    <div
+                      class="ui checked radio checkbox"
+                    >
+                      <input
+                        data-testid="roomaccess"
+                        id="yes"
+                        name="isOpen"
+                        tabindex="0"
+                        type="radio"
+                        value="yes"
+                      />
+                      <label
+                        for="yes"
+                      >
+                        Let anyone in my cohort join.
+                      </label>
+                    </div>
+                  </div>
+                  <div
+                    class="field"
+                  >
+                    <div
+                      class="ui checked radio checkbox"
+                    >
+                      <input
+                        checked=""
+                        data-testid="roomaccess"
+                        id="no"
+                        name="isOpen"
+                        tabindex="0"
+                        type="radio"
+                        value="no"
+                      />
+                      <label
+                        for="no"
+                      >
+                        I will invite participants.
+                      </label>
+                    </div>
+                  </div>
+                </form>
                 <div>
-                  <a
+                  <button
                     class="ui small fluid button c__join-persona-button"
-                    data-testid="join-scenario-as"
-                    href="/chat/join/1765cf2e64/as/6e4213d8d3/cohort/6e4213d8d3"
-                    role="button"
+                    data-testid="join-closed-scenario-as"
                   >
                     Join as 
                     <strong>
                       Participant
                     </strong>
-                  </a>
+                  </button>
                 </div>
                 <div>
                   <p>
@@ -2737,17 +3947,15 @@ exports[`Scenarios have multi-participant/single-participant icons 3`] = `
                   </p>
                 </div>
                 <div>
-                  <a
+                  <button
                     class="ui small fluid button c__join-persona-button"
-                    data-testid="join-scenario-as"
-                    href="/chat/join/1765cf2e64/as/6c4adee67a/cohort/6e4213d8d3"
-                    role="button"
+                    data-testid="join-closed-scenario-as"
                   >
                     Join as 
                     <strong>
                       Teacher
                     </strong>
-                  </a>
+                  </button>
                 </div>
                 <div>
                   <p>
@@ -2760,17 +3968,15 @@ exports[`Scenarios have multi-participant/single-participant icons 3`] = `
                   </p>
                 </div>
                 <div>
-                  <a
+                  <button
                     class="ui small fluid button c__join-persona-button"
-                    data-testid="join-scenario-as"
-                    href="/chat/join/1765cf2e64/as/cc5d157543/cohort/6e4213d8d3"
-                    role="button"
+                    data-testid="join-closed-scenario-as"
                   >
                     Join as 
                     <strong>
                       Student
                     </strong>
-                  </a>
+                  </button>
                 </div>
                 <div>
                   <p>
@@ -2783,24 +3989,10 @@ exports[`Scenarios have multi-participant/single-participant icons 3`] = `
                   </p>
                 </div>
               </div>
-              <div
-                class="ui divider"
-              />
             </div>
             <div
               class="meta"
-            >
-              <button
-                class="ui medium compact button"
-                data-testid="run-cohort-as-participant"
-              >
-                <i
-                  aria-hidden="true"
-                  class="play icon primary"
-                />
-                Create or join a room to re-run scenario
-              </button>
-            </div>
+            />
           </div>
           <div
             class="c__scenario-extra"
@@ -2812,6 +4004,73 @@ exports[`Scenarios have multi-participant/single-participant icons 3`] = `
             >
               View responses
             </button>
+          </div>
+          <div
+            class="extra content"
+          >
+            <div
+              aria-expanded="false"
+              class="ui fluid inline dropdown"
+              role="listbox"
+              tabindex="0"
+            >
+              <div
+                aria-atomic="true"
+                aria-live="polite"
+                class="divider text"
+                role="alert"
+              >
+                Allow participants to create open or closed chat rooms
+              </div>
+              <i
+                aria-hidden="true"
+                class="dropdown icon"
+              />
+              <div
+                class="menu transition"
+              >
+                <div
+                  aria-checked="true"
+                  aria-selected="true"
+                  class="active selected item"
+                  role="option"
+                  style="pointer-events: all;"
+                >
+                  <span
+                    class="text"
+                  >
+                    Allow participants to create open or closed chat rooms
+                  </span>
+                </div>
+                <div
+                  aria-checked="false"
+                  aria-selected="false"
+                  class="item"
+                  role="option"
+                  style="pointer-events: all;"
+                >
+                  <span
+                    class="text"
+                  >
+                    Allow participants to create only closed chat rooms
+                  </span>
+                </div>
+                <div
+                  aria-checked="false"
+                  aria-selected="false"
+                  class="item"
+                  role="option"
+                  style="pointer-events: all;"
+                >
+                  <span
+                    class="text"
+                  >
+                    Allow participants to create only open chat rooms
+                  </span>
+                </div>
+              </div>
+            </div>
+            Participants will be able to create rooms and send invites to specific members of the cohort, or create rooms that are open to anyone in the cohort to join.
           </div>
         </div>
       </div>
@@ -2885,6 +4144,9 @@ exports[`Scenarios have multi-participant/single-participant icons 4`] = `
               <p>
                 This is the description of 'Some Other Scenario'…
               </p>
+              <div
+                class="ui divider"
+              />
               <span
                 class="ui medium text"
               >
@@ -2892,23 +4154,73 @@ exports[`Scenarios have multi-participant/single-participant icons 4`] = `
                 <strong>
                   3
                 </strong>
-                 roles:
+                 roles. Choose one of the following partnering options, then click on the role you will play in the scenario.
               </span>
               <div
                 class="c__join-as-role-card"
               >
+                <p
+                  tabindex="0"
+                >
+                  How do you want to partner?
+                </p>
+                <form
+                  class="ui form"
+                >
+                  <div
+                    class="field"
+                  >
+                    <div
+                      class="ui checked radio checkbox"
+                    >
+                      <input
+                        data-testid="roomaccess"
+                        id="yes"
+                        name="isOpen"
+                        tabindex="0"
+                        type="radio"
+                        value="yes"
+                      />
+                      <label
+                        for="yes"
+                      >
+                        Let anyone in my cohort join.
+                      </label>
+                    </div>
+                  </div>
+                  <div
+                    class="field"
+                  >
+                    <div
+                      class="ui checked radio checkbox"
+                    >
+                      <input
+                        checked=""
+                        data-testid="roomaccess"
+                        id="no"
+                        name="isOpen"
+                        tabindex="0"
+                        type="radio"
+                        value="no"
+                      />
+                      <label
+                        for="no"
+                      >
+                        I will invite participants.
+                      </label>
+                    </div>
+                  </div>
+                </form>
                 <div>
-                  <a
+                  <button
                     class="ui small fluid button c__join-persona-button"
-                    data-testid="join-scenario-as"
-                    href="/chat/join/1765cf2e64/as/6e4213d8d3/cohort/6e4213d8d3"
-                    role="button"
+                    data-testid="join-closed-scenario-as"
                   >
                     Join as 
                     <strong>
                       Participant
                     </strong>
-                  </a>
+                  </button>
                 </div>
                 <div>
                   <p>
@@ -2921,17 +4233,15 @@ exports[`Scenarios have multi-participant/single-participant icons 4`] = `
                   </p>
                 </div>
                 <div>
-                  <a
+                  <button
                     class="ui small fluid button c__join-persona-button"
-                    data-testid="join-scenario-as"
-                    href="/chat/join/1765cf2e64/as/6c4adee67a/cohort/6e4213d8d3"
-                    role="button"
+                    data-testid="join-closed-scenario-as"
                   >
                     Join as 
                     <strong>
                       Teacher
                     </strong>
-                  </a>
+                  </button>
                 </div>
                 <div>
                   <p>
@@ -2944,17 +4254,15 @@ exports[`Scenarios have multi-participant/single-participant icons 4`] = `
                   </p>
                 </div>
                 <div>
-                  <a
+                  <button
                     class="ui small fluid button c__join-persona-button"
-                    data-testid="join-scenario-as"
-                    href="/chat/join/1765cf2e64/as/cc5d157543/cohort/6e4213d8d3"
-                    role="button"
+                    data-testid="join-closed-scenario-as"
                   >
                     Join as 
                     <strong>
                       Student
                     </strong>
-                  </a>
+                  </button>
                 </div>
                 <div>
                   <p>
@@ -2967,24 +4275,10 @@ exports[`Scenarios have multi-participant/single-participant icons 4`] = `
                   </p>
                 </div>
               </div>
-              <div
-                class="ui divider"
-              />
             </div>
             <div
               class="meta"
-            >
-              <button
-                class="ui medium compact button"
-                data-testid="run-cohort-as-participant"
-              >
-                <i
-                  aria-hidden="true"
-                  class="play icon primary"
-                />
-                Create or join a room to re-run scenario
-              </button>
-            </div>
+            />
           </div>
           <div
             class="c__scenario-extra"
@@ -2996,6 +4290,73 @@ exports[`Scenarios have multi-participant/single-participant icons 4`] = `
             >
               View responses
             </button>
+          </div>
+          <div
+            class="extra content"
+          >
+            <div
+              aria-expanded="false"
+              class="ui fluid inline dropdown"
+              role="listbox"
+              tabindex="0"
+            >
+              <div
+                aria-atomic="true"
+                aria-live="polite"
+                class="divider text"
+                role="alert"
+              >
+                Allow participants to create open or closed chat rooms
+              </div>
+              <i
+                aria-hidden="true"
+                class="dropdown icon"
+              />
+              <div
+                class="menu transition"
+              >
+                <div
+                  aria-checked="true"
+                  aria-selected="true"
+                  class="active selected item"
+                  role="option"
+                  style="pointer-events: all;"
+                >
+                  <span
+                    class="text"
+                  >
+                    Allow participants to create open or closed chat rooms
+                  </span>
+                </div>
+                <div
+                  aria-checked="false"
+                  aria-selected="false"
+                  class="item"
+                  role="option"
+                  style="pointer-events: all;"
+                >
+                  <span
+                    class="text"
+                  >
+                    Allow participants to create only closed chat rooms
+                  </span>
+                </div>
+                <div
+                  aria-checked="false"
+                  aria-selected="false"
+                  class="item"
+                  role="option"
+                  style="pointer-events: all;"
+                >
+                  <span
+                    class="text"
+                  >
+                    Allow participants to create only open chat rooms
+                  </span>
+                </div>
+              </div>
+            </div>
+            Participants will be able to create rooms and send invites to specific members of the cohort, or create rooms that are open to anyone in the cohort to join.
           </div>
         </div>
       </div>

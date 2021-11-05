@@ -640,7 +640,8 @@ beforeEach(() => {
               }
             }
           }
-        }
+        },
+        partnering: { 99: 1 }
       }
     ];
     dispatch({ type: GET_COHORTS_SUCCESS, cohorts });

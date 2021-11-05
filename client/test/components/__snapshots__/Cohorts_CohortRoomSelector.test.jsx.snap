@@ -3930,10 +3930,10 @@ exports[`Create a room for this scenario, user will invite, proceed 4`] = `
                 </p>
                 <ol>
                   <li>
-                    Search and select participants that you want to invite, and assign their roles as you go.
+                    Choose your role.
                   </li>
                   <li>
-                    Choose your role.
+                    Search and select participants that you want to invite, and assign their roles as you go.
                   </li>
                   <li>
                     Once all of the available roles are filled, click the
@@ -3984,117 +3984,6 @@ exports[`Create a room for this scenario, user will invite, proceed 4`] = `
                 ):
               </strong>
             </p>
-            <div
-              class=\\"ui active visible focus fluid search grid__menu-search l__search-input primary\\"
-            >
-              <div
-                class=\\"ui icon input\\"
-              >
-                <input
-                  autocomplete=\\"off\\"
-                  class=\\"prompt\\"
-                  tabindex=\\"0\\"
-                  type=\\"text\\"
-                  value=\\" \\"
-                />
-                <i
-                  aria-hidden=\\"true\\"
-                  class=\\"search icon\\"
-                />
-              </div>
-              <div
-                class=\\"results transition visible\\"
-              >
-                <div
-                  class=\\"result\\"
-                  searchable=\\"  Facilitator User  facilitator  facilitator  facilitator@email.com  participant facilitator researcher owner  \\"
-                >
-                  <span
-                    aria-label=\\"Facilitator User (facilitator)\\"
-                    class=\\"ui medium text\\"
-                    title=\\"Facilitator User (facilitator)\\"
-                  >
-                    Facilitator User
-                  </span>
-                  
-                   
-                  <i
-                    aria-hidden=\\"true\\"
-                    class=\\"small icon chalkboard teacher\\"
-                    style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                    title=\\"Facilitator\\"
-                  />
-                  <span
-                    class=\\"l__hidden\\"
-                  >
-                    (Select to invite)
-                  </span>
-                </div>
-                <div
-                  class=\\"result\\"
-                  searchable=\\"  Researcher User  researcher  researcher  researcher@email.com  participant researcher  \\"
-                >
-                  <span
-                    aria-label=\\"Researcher User (researcher)\\"
-                    class=\\"ui medium text\\"
-                    title=\\"Researcher User (researcher)\\"
-                  >
-                    Researcher User
-                  </span>
-                  
-                   
-                  <i
-                    aria-hidden=\\"true\\"
-                    class=\\"small icon user graduate\\"
-                    style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                    title=\\"Researcher\\"
-                  />
-                  <span
-                    class=\\"l__hidden\\"
-                  >
-                    (Select to invite)
-                  </span>
-                </div>
-                <div
-                  class=\\"result\\"
-                  searchable=\\"  Participant User  participant  participant  participant@email.com  participant  \\"
-                >
-                  <span
-                    aria-label=\\"Participant User (participant)\\"
-                    class=\\"ui medium text\\"
-                    title=\\"Participant User (participant)\\"
-                  >
-                    Participant User
-                  </span>
-                  
-                   
-                  <span
-                    class=\\"l__hidden\\"
-                  >
-                    (Select to invite)
-                  </span>
-                </div>
-                <div
-                  class=\\"result\\"
-                  searchable=\\"  anonymous  anonymous  participant  \\"
-                >
-                  <span
-                    aria-label=\\"anonymous\\"
-                    class=\\"ui medium text\\"
-                    title=\\"anonymous\\"
-                  >
-                    anonymous
-                  </span>
-                  
-                   
-                  <span
-                    class=\\"l__hidden\\"
-                  >
-                    (Select to invite)
-                  </span>
-                </div>
-              </div>
-            </div>
           </div>
           <div
             class=\\"row\\"
@@ -4122,12 +4011,19 @@ exports[`Create a room for this scenario, user will invite, proceed 4`] = `
                       >
                         <div
                           aria-expanded=\\"false\\"
-                          class=\\"ui selection dropdown\\"
+                          class=\\"ui search selection dropdown\\"
                           id=\\"999\\"
                           name=\\"0\\"
-                          role=\\"listbox\\"
-                          tabindex=\\"0\\"
+                          role=\\"combobox\\"
                         >
+                          <input
+                            aria-autocomplete=\\"list\\"
+                            autocomplete=\\"off\\"
+                            class=\\"search\\"
+                            tabindex=\\"0\\"
+                            type=\\"text\\"
+                            value=\\"\\"
+                          />
                           <div
                             aria-atomic=\\"true\\"
                             aria-live=\\"polite\\"
@@ -4142,6 +4038,7 @@ exports[`Create a room for this scenario, user will invite, proceed 4`] = `
                           />
                           <div
                             class=\\"menu transition\\"
+                            role=\\"listbox\\"
                           >
                             <div
                               aria-checked=\\"false\\"
@@ -4198,7 +4095,9 @@ exports[`Create a room for this scenario, user will invite, proceed 4`] = `
                       <div
                         class=\\"content\\"
                       >
-                        <span>
+                        <span
+                          tabindex=\\"0\\"
+                        >
                           <span
                             aria-label=\\"Super User (super)\\"
                             class=\\"ui medium text\\"
@@ -4215,6 +4114,123 @@ exports[`Create a room for this scenario, user will invite, proceed 4`] = `
                             title=\\"Super\\"
                           />
                         </span>
+                      </div>
+                    </div>
+                    <div
+                      class=\\"item\\"
+                      role=\\"listitem\\"
+                    >
+                      <div
+                        class=\\"ui active visible focus fluid search grid__menu-search l__search-input primary\\"
+                      >
+                        <div
+                          class=\\"ui icon input\\"
+                        >
+                          <input
+                            autocomplete=\\"off\\"
+                            class=\\"prompt\\"
+                            placeholder=\\"Search for participants\\"
+                            tabindex=\\"0\\"
+                            type=\\"text\\"
+                            value=\\" \\"
+                          />
+                          <i
+                            aria-hidden=\\"true\\"
+                            class=\\"search icon\\"
+                          />
+                        </div>
+                        <div
+                          class=\\"results transition visible\\"
+                        >
+                          <div
+                            class=\\"result\\"
+                            searchable=\\"  Facilitator User  facilitator  facilitator  facilitator@email.com  participant facilitator researcher owner  \\"
+                          >
+                            <span
+                              aria-label=\\"Facilitator User (facilitator)\\"
+                              class=\\"ui medium text\\"
+                              title=\\"Facilitator User (facilitator)\\"
+                            >
+                              Facilitator User
+                            </span>
+                            
+                             
+                            <i
+                              aria-hidden=\\"true\\"
+                              class=\\"small icon chalkboard teacher\\"
+                              style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                              title=\\"Facilitator\\"
+                            />
+                            <span
+                              class=\\"l__hidden\\"
+                            >
+                              (Select to invite)
+                            </span>
+                          </div>
+                          <div
+                            class=\\"result\\"
+                            searchable=\\"  Researcher User  researcher  researcher  researcher@email.com  participant researcher  \\"
+                          >
+                            <span
+                              aria-label=\\"Researcher User (researcher)\\"
+                              class=\\"ui medium text\\"
+                              title=\\"Researcher User (researcher)\\"
+                            >
+                              Researcher User
+                            </span>
+                            
+                             
+                            <i
+                              aria-hidden=\\"true\\"
+                              class=\\"small icon user graduate\\"
+                              style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                              title=\\"Researcher\\"
+                            />
+                            <span
+                              class=\\"l__hidden\\"
+                            >
+                              (Select to invite)
+                            </span>
+                          </div>
+                          <div
+                            class=\\"result\\"
+                            searchable=\\"  Participant User  participant  participant  participant@email.com  participant  \\"
+                          >
+                            <span
+                              aria-label=\\"Participant User (participant)\\"
+                              class=\\"ui medium text\\"
+                              title=\\"Participant User (participant)\\"
+                            >
+                              Participant User
+                            </span>
+                            
+                             
+                            <span
+                              class=\\"l__hidden\\"
+                            >
+                              (Select to invite)
+                            </span>
+                          </div>
+                          <div
+                            class=\\"result\\"
+                            searchable=\\"  anonymous  anonymous  participant  \\"
+                          >
+                            <span
+                              aria-label=\\"anonymous\\"
+                              class=\\"ui medium text\\"
+                              title=\\"anonymous\\"
+                            >
+                              anonymous
+                            </span>
+                            
+                             
+                            <span
+                              class=\\"l__hidden\\"
+                            >
+                              (Select to invite)
+                            </span>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -4327,7 +4343,9 @@ exports[`Create a room for this scenario, user will invite, proceed 4`] = `
           class=\\"ui fluid buttons\\"
         >
           <button
-            class=\\"ui primary button\\"
+            class=\\"ui primary disabled button\\"
+            disabled=\\"\\"
+            tabindex=\\"-1\\"
           >
             Join room
           </button>
@@ -4414,10 +4432,10 @@ exports[`Create a room for this scenario, user will invite, proceed 5`] = `
                 </p>
                 <ol>
                   <li>
-                    Search and select participants that you want to invite, and assign their roles as you go.
+                    Choose your role.
                   </li>
                   <li>
-                    Choose your role.
+                    Search and select participants that you want to invite, and assign their roles as you go.
                   </li>
                   <li>
                     Once all of the available roles are filled, click the
@@ -4468,117 +4486,6 @@ exports[`Create a room for this scenario, user will invite, proceed 5`] = `
                 ):
               </strong>
             </p>
-            <div
-              class=\\"ui active visible focus fluid search grid__menu-search l__search-input primary\\"
-            >
-              <div
-                class=\\"ui icon input\\"
-              >
-                <input
-                  autocomplete=\\"off\\"
-                  class=\\"prompt\\"
-                  tabindex=\\"0\\"
-                  type=\\"text\\"
-                  value=\\" \\"
-                />
-                <i
-                  aria-hidden=\\"true\\"
-                  class=\\"search icon\\"
-                />
-              </div>
-              <div
-                class=\\"results transition visible\\"
-              >
-                <div
-                  class=\\"result\\"
-                  searchable=\\"  Facilitator User  facilitator  facilitator  facilitator@email.com  participant facilitator researcher owner  \\"
-                >
-                  <span
-                    aria-label=\\"Facilitator User (facilitator)\\"
-                    class=\\"ui medium text\\"
-                    title=\\"Facilitator User (facilitator)\\"
-                  >
-                    Facilitator User
-                  </span>
-                  
-                   
-                  <i
-                    aria-hidden=\\"true\\"
-                    class=\\"small icon chalkboard teacher\\"
-                    style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                    title=\\"Facilitator\\"
-                  />
-                  <span
-                    class=\\"l__hidden\\"
-                  >
-                    (Select to invite)
-                  </span>
-                </div>
-                <div
-                  class=\\"result\\"
-                  searchable=\\"  Researcher User  researcher  researcher  researcher@email.com  participant researcher  \\"
-                >
-                  <span
-                    aria-label=\\"Researcher User (researcher)\\"
-                    class=\\"ui medium text\\"
-                    title=\\"Researcher User (researcher)\\"
-                  >
-                    Researcher User
-                  </span>
-                  
-                   
-                  <i
-                    aria-hidden=\\"true\\"
-                    class=\\"small icon user graduate\\"
-                    style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                    title=\\"Researcher\\"
-                  />
-                  <span
-                    class=\\"l__hidden\\"
-                  >
-                    (Select to invite)
-                  </span>
-                </div>
-                <div
-                  class=\\"result\\"
-                  searchable=\\"  Participant User  participant  participant  participant@email.com  participant  \\"
-                >
-                  <span
-                    aria-label=\\"Participant User (participant)\\"
-                    class=\\"ui medium text\\"
-                    title=\\"Participant User (participant)\\"
-                  >
-                    Participant User
-                  </span>
-                  
-                   
-                  <span
-                    class=\\"l__hidden\\"
-                  >
-                    (Select to invite)
-                  </span>
-                </div>
-                <div
-                  class=\\"result\\"
-                  searchable=\\"  anonymous  anonymous  participant  \\"
-                >
-                  <span
-                    aria-label=\\"anonymous\\"
-                    class=\\"ui medium text\\"
-                    title=\\"anonymous\\"
-                  >
-                    anonymous
-                  </span>
-                  
-                   
-                  <span
-                    class=\\"l__hidden\\"
-                  >
-                    (Select to invite)
-                  </span>
-                </div>
-              </div>
-            </div>
           </div>
           <div
             class=\\"row\\"
@@ -4606,12 +4513,19 @@ exports[`Create a room for this scenario, user will invite, proceed 5`] = `
                       >
                         <div
                           aria-expanded=\\"false\\"
-                          class=\\"ui selection dropdown\\"
+                          class=\\"ui search selection dropdown\\"
                           id=\\"999\\"
                           name=\\"0\\"
-                          role=\\"listbox\\"
-                          tabindex=\\"0\\"
+                          role=\\"combobox\\"
                         >
+                          <input
+                            aria-autocomplete=\\"list\\"
+                            autocomplete=\\"off\\"
+                            class=\\"search\\"
+                            tabindex=\\"0\\"
+                            type=\\"text\\"
+                            value=\\"\\"
+                          />
                           <div
                             aria-atomic=\\"true\\"
                             aria-live=\\"polite\\"
@@ -4626,6 +4540,7 @@ exports[`Create a room for this scenario, user will invite, proceed 5`] = `
                           />
                           <div
                             class=\\"menu transition\\"
+                            role=\\"listbox\\"
                           >
                             <div
                               aria-checked=\\"false\\"
@@ -4682,7 +4597,9 @@ exports[`Create a room for this scenario, user will invite, proceed 5`] = `
                       <div
                         class=\\"content\\"
                       >
-                        <span>
+                        <span
+                          tabindex=\\"0\\"
+                        >
                           <span
                             aria-label=\\"Super User (super)\\"
                             class=\\"ui medium text\\"
@@ -4699,6 +4616,123 @@ exports[`Create a room for this scenario, user will invite, proceed 5`] = `
                             title=\\"Super\\"
                           />
                         </span>
+                      </div>
+                    </div>
+                    <div
+                      class=\\"item\\"
+                      role=\\"listitem\\"
+                    >
+                      <div
+                        class=\\"ui active visible focus fluid search grid__menu-search l__search-input primary\\"
+                      >
+                        <div
+                          class=\\"ui icon input\\"
+                        >
+                          <input
+                            autocomplete=\\"off\\"
+                            class=\\"prompt\\"
+                            placeholder=\\"Search for participants\\"
+                            tabindex=\\"0\\"
+                            type=\\"text\\"
+                            value=\\" \\"
+                          />
+                          <i
+                            aria-hidden=\\"true\\"
+                            class=\\"search icon\\"
+                          />
+                        </div>
+                        <div
+                          class=\\"results transition visible\\"
+                        >
+                          <div
+                            class=\\"result\\"
+                            searchable=\\"  Facilitator User  facilitator  facilitator  facilitator@email.com  participant facilitator researcher owner  \\"
+                          >
+                            <span
+                              aria-label=\\"Facilitator User (facilitator)\\"
+                              class=\\"ui medium text\\"
+                              title=\\"Facilitator User (facilitator)\\"
+                            >
+                              Facilitator User
+                            </span>
+                            
+                             
+                            <i
+                              aria-hidden=\\"true\\"
+                              class=\\"small icon chalkboard teacher\\"
+                              style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                              title=\\"Facilitator\\"
+                            />
+                            <span
+                              class=\\"l__hidden\\"
+                            >
+                              (Select to invite)
+                            </span>
+                          </div>
+                          <div
+                            class=\\"result\\"
+                            searchable=\\"  Researcher User  researcher  researcher  researcher@email.com  participant researcher  \\"
+                          >
+                            <span
+                              aria-label=\\"Researcher User (researcher)\\"
+                              class=\\"ui medium text\\"
+                              title=\\"Researcher User (researcher)\\"
+                            >
+                              Researcher User
+                            </span>
+                            
+                             
+                            <i
+                              aria-hidden=\\"true\\"
+                              class=\\"small icon user graduate\\"
+                              style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                              title=\\"Researcher\\"
+                            />
+                            <span
+                              class=\\"l__hidden\\"
+                            >
+                              (Select to invite)
+                            </span>
+                          </div>
+                          <div
+                            class=\\"result\\"
+                            searchable=\\"  Participant User  participant  participant  participant@email.com  participant  \\"
+                          >
+                            <span
+                              aria-label=\\"Participant User (participant)\\"
+                              class=\\"ui medium text\\"
+                              title=\\"Participant User (participant)\\"
+                            >
+                              Participant User
+                            </span>
+                            
+                             
+                            <span
+                              class=\\"l__hidden\\"
+                            >
+                              (Select to invite)
+                            </span>
+                          </div>
+                          <div
+                            class=\\"result\\"
+                            searchable=\\"  anonymous  anonymous  participant  \\"
+                          >
+                            <span
+                              aria-label=\\"anonymous\\"
+                              class=\\"ui medium text\\"
+                              title=\\"anonymous\\"
+                            >
+                              anonymous
+                            </span>
+                            
+                             
+                            <span
+                              class=\\"l__hidden\\"
+                            >
+                              (Select to invite)
+                            </span>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -4811,7 +4845,9 @@ exports[`Create a room for this scenario, user will invite, proceed 5`] = `
           class=\\"ui fluid buttons\\"
         >
           <button
-            class=\\"ui primary button\\"
+            class=\\"ui primary disabled button\\"
+            disabled=\\"\\"
+            tabindex=\\"-1\\"
           >
             Join room
           </button>

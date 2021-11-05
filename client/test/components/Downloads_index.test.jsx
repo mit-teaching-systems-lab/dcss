@@ -460,7 +460,8 @@ beforeEach(() => {
               }
             }
           }
-        }
+        },
+        partnering: { 99: 1 }
       }
     ];
     dispatch({ type: GET_COHORTS_SUCCESS, cohorts });
@@ -811,7 +812,7 @@ test('Render 1 1', async done => {
     (await screen.findAllByRole('button', {
       name: /download a csv file containing responses to only "some other scenario"/i
     })).length
-  ).toBe(2);
+  ).toBe(1);
 
   expect(asFragment()).toMatchSnapshot();
 

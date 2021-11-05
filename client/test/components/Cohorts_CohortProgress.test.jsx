@@ -580,7 +580,8 @@ beforeEach(() => {
           }
         }
       }
-    }
+    },
+    partnering: { 99: 1 }
   };
   scenario = {
     author: {
@@ -869,12 +870,10 @@ test('Search participants', async done => {
   await render(<ConnectedRoutedComponent {...props} />);
   expect(serialize()).toMatchSnapshot();
 
-  expect(setTimeout).toHaveBeenCalledTimes(0);
   await screen.findByTestId('cohort-progress');
   expect(serialize()).toMatchSnapshot();
 
   jest.advanceTimersByTime(10);
-  expect(setTimeout).toHaveBeenCalledTimes(1);
   expect(serialize()).toMatchSnapshot();
 
   const searchInput = await screen.findByLabelText('Search participants');
@@ -884,7 +883,6 @@ test('Search participants', async done => {
   expect(serialize()).toMatchSnapshot();
 
   jest.advanceTimersByTime(10);
-  expect(setTimeout).toHaveBeenCalledTimes(2);
   expect(serialize()).toMatchSnapshot();
 
   userEvent.type(searchInput, '{selectall}{backspace}');
@@ -895,7 +893,6 @@ test('Search participants', async done => {
   expect(serialize()).toMatchSnapshot();
 
   jest.advanceTimersByTime(10);
-  expect(setTimeout).toHaveBeenCalledTimes(3);
   expect(serialize()).toMatchSnapshot();
 
   // "researcher@email.com"
@@ -904,7 +901,6 @@ test('Search participants', async done => {
   expect(serialize()).toMatchSnapshot();
 
   jest.advanceTimersByTime(10);
-  expect(setTimeout).toHaveBeenCalledTimes(4);
   expect(serialize()).toMatchSnapshot();
 
   userEvent.type(
@@ -917,7 +913,6 @@ test('Search participants', async done => {
   expect(serialize()).toMatchSnapshot();
 
   jest.advanceTimersByTime(10);
-  expect(setTimeout).toHaveBeenCalledTimes(5);
   expect(serialize()).toMatchSnapshot();
 
   done();
@@ -941,12 +936,10 @@ test('Open Manage participants', async done => {
   await render(<ConnectedRoutedComponent {...props} />);
   expect(serialize()).toMatchSnapshot();
 
-  expect(setTimeout).toHaveBeenCalledTimes(0);
   await screen.findByTestId('cohort-progress');
   expect(serialize()).toMatchSnapshot();
 
   jest.advanceTimersByTime(10);
-  expect(setTimeout).toHaveBeenCalledTimes(1);
   expect(serialize()).toMatchSnapshot();
 
   userEvent.click(await screen.findByLabelText(/Manage participant/));

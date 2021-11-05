@@ -88,16 +88,14 @@ jest.mock('@utils/Storage', () => {
 
 import {
   CREATE_CHAT_INVITE_SUCCESS,
+  GET_CHAT_INVITES_SUCCESS,
   GET_CHAT_USERS_SUCCESS,
   GET_CHAT_SUCCESS,
-  GET_INVITES_SUCCESS,
   GET_USERS_SUCCESS
 } from '../../actions/types';
 import * as chatActions from '../../actions/chat';
-import * as inviteActions from '../../actions/invite';
 import * as usersActions from '../../actions/users';
 jest.mock('../../actions/chat');
-jest.mock('../../actions/invite');
 jest.mock('../../actions/users');
 
 let user;
@@ -684,25 +682,26 @@ beforeEach(() => {
           }
         }
       }
-    }
+    },
+    partnering: { 99: 1 }
   };
 
-  invites = [
-    {
-      id: 1,
-      sender_id: 999,
-      receiver_id: 555,
-      status_id: 1,
-      props: {
-        chat_id: 8,
-        persona_id: null
-      },
-      code: 'b7f21ab4-aa95-4f48-aee8-19f7176bc595',
-      created_at: '2021-02-04T19:24:39.039Z',
-      updated_at: null,
-      expire_at: null
-    }
-  ];
+  // invites = [
+  //   {
+  //     id: 1,
+  //     sender_id: 999,
+  //     receiver_id: 555,
+  //     status_id: 1,
+  //     props: {
+  //       chat_id: 8,
+  //       persona_id: null
+  //     },
+  //     code: 'b7f21ab4-aa95-4f48-aee8-19f7176bc595',
+  //     created_at: '2021-02-04T19:24:39.039Z',
+  //     updated_at: null,
+  //     expire_at: null
+  //   }
+  // ];
 
   scenario = {
     author: {
@@ -831,10 +830,10 @@ beforeEach(() => {
     }
   ];
 
-  invitesById = invites.reduce((accum, invite) => {
-    accum[invite.id] = invite;
-    return accum;
-  }, {});
+  // invitesById = invites.reduce((accum, invite) => {
+  //   accum[invite.id] = invite;
+  //   return accum;
+  // }, {});
 
   chatActions.createChatInvite.mockImplementation(() => async dispatch => {
     dispatch({ type: GET_CHAT_SUCCESS, chat });
@@ -866,10 +865,10 @@ beforeEach(() => {
     return chat;
   });
 
-  inviteActions.getInvites.mockImplementation(() => async dispatch => {
-    dispatch({ type: GET_INVITES_SUCCESS, invites });
-    return invites;
-  });
+  // inviteActions.getInvites.mockImplementation(() => async dispatch => {
+  //   dispatch({ type: GET_INVITES_SUCCESS, invites });
+  //   return invites;
+  // });
 
   usersActions.getUsers.mockImplementation(() => async dispatch => {
     dispatch({ type: GET_USERS_SUCCESS, users });

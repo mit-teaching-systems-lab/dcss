@@ -34,91 +34,20 @@ async function waitForPopper() {
 
 /** @GENERATED: BEGIN **/
 
-import Emitter from 'events';
-
-import withSocket, * as SOCKET_EVENT_TYPES from '@hoc/withSocket';
-jest.mock('@hoc/withSocket', () => {
-  const socket = {
-    disconnect: jest.fn(),
-    emit: jest.fn(),
-    on: jest.fn(),
-    off: jest.fn()
-  };
-
-  globalThis.mockSocket = socket;
-
-  return {
-    __esModule: true,
-    ...jest.requireActual('@hoc/withSocket'),
-    default: function(Component) {
-      Component.defaultProps = {
-        ...Component.defaultProps,
-        socket
-      };
-      return Component;
-    }
+jest.mock('@components/Chat/JoinAsButton.jsx', () => {
+  return props => {
+    const onClick = () => props.onClick({}, props);
+    return (
+      <button onClick={onClick}>MOCK ROLE {props.persona.name} BUTTON</button>
+    );
   };
 });
 
-jest.mock('@utils/Moment', () => {
-  return {
-    __esModule: true,
-    default: function(time) {
-      return {
-        calendar() {
-          return 'HH:mm A';
-        },
-        format() {
-          return 'HH:mm A';
-        }
-      };
-    }
-  };
-});
-
-import Storage from '@utils/Storage';
-jest.mock('@utils/Storage', () => {
-  return {
-    ...jest.requireActual('@utils/Storage'),
-    get: jest.fn(),
-    set: jest.fn(),
-    merge: jest.fn()
-  };
-});
-
-import {
-  CREATE_CHAT_INVITE_SUCCESS,
-  GET_CHAT_USERS_SUCCESS,
-  GET_CHAT_SUCCESS,
-  GET_INVITES_SUCCESS,
-  GET_USERS_SUCCESS
-} from '../../actions/types';
-import * as chatActions from '../../actions/chat';
-import * as inviteActions from '../../actions/invite';
-import * as usersActions from '../../actions/users';
-jest.mock('../../actions/chat');
-jest.mock('../../actions/invite');
-jest.mock('../../actions/users');
-
-let user;
-let superUser;
-let facilitatorUser;
-let researcherUser;
-let participantUser;
-let anonymousUser;
-let chat;
-let chats;
-let chatsById;
 let cohort;
-let invites;
-let invitesById;
 let scenario;
-let users;
-let usersById;
+let onClick;
 
-const expectDateString = expect.stringMatching(/[0-9]{4}-[0-9]{2}-[0-9]{2}.*/i);
-
-import LobbyUserWaiting from '../../components/Lobby/LobbyUserWaiting.jsx';
+import JoinAsPersona from '../../components/Chat/JoinAsPersona.jsx';
 /** @GENERATED: END **/
 
 /** @TEMPLATE: BEGIN **/
@@ -151,166 +80,6 @@ beforeEach(() => {
   /** @TEMPLATE: END **/
 
   /** @GENERATED: BEGIN **/
-
-  user = superUser = {
-    username: 'super',
-    personalname: 'Super User',
-    email: 'super@email.com',
-    id: 999,
-    roles: ['participant', 'super_admin'],
-    is_anonymous: false,
-    is_super: true
-  };
-
-  facilitatorUser = {
-    username: 'facilitator',
-    personalname: 'Facilitator User',
-    email: 'facilitator@email.com',
-    id: 555,
-    roles: ['participant', 'facilitator', 'researcher', 'owner'],
-    is_anonymous: false,
-    is_super: false,
-    is_owner: true,
-    progress: {
-      completed: [],
-      latestByScenarioId: {
-        1: {
-          description: '',
-          is_run: true,
-          is_complete: false,
-          scenario_id: 99,
-          event_id: 1905,
-          created_at: 1602454306144,
-          generic: 'arrived at a slide.',
-          name: 'slide-arrival',
-          url: 'http://localhost:3000/cohort/1/run/99/slide/1'
-        }
-      }
-    }
-  };
-  researcherUser = {
-    username: 'researcher',
-    personalname: 'Researcher User',
-    email: 'researcher@email.com',
-    id: 444,
-    roles: ['participant', 'researcher'],
-    is_anonymous: false,
-    is_super: false,
-    progress: {
-      completed: [],
-      latestByScenarioId: {
-        1: {
-          description: '',
-          is_run: true,
-          is_complete: false,
-          scenario_id: 99,
-          event_id: 1904,
-          created_at: 1602454306144,
-          generic: 'arrived at a slide.',
-          name: 'slide-arrival',
-          url: 'http://localhost:3000/cohort/1/run/99/slide/1'
-        }
-      }
-    }
-  };
-  participantUser = {
-    username: 'participant',
-    personalname: 'Participant User',
-    email: 'participant@email.com',
-    id: 333,
-    roles: ['participant'],
-    is_anonymous: false,
-    is_super: false,
-    progress: {
-      completed: [],
-      latestByScenarioId: {
-        1: {
-          description: '',
-          is_run: false,
-          is_complete: false,
-          scenario_id: 99,
-          event_id: 1903,
-          created_at: 1602454306144,
-          generic:
-            'requested to join {scenario} as {persona}, and is waiting to be matched.',
-          persona: { id: 1, name: 'Teacher' },
-          name: 'slide-arrival',
-          url: 'http://localhost:3000/cohort/1/run/99/slide/1'
-        }
-      }
-    }
-  };
-  anonymousUser = {
-    username: 'anonymous',
-    personalname: '',
-    email: '',
-    id: 222,
-    roles: ['participant'],
-    is_anonymous: true,
-    is_super: false,
-    progress: {
-      completed: [],
-      latestByScenarioId: {
-        1: {
-          description: '',
-          is_run: false,
-          is_complete: false,
-          scenario_id: 99,
-          event_id: 1902,
-          created_at: 1602454306144,
-          generic:
-            '{participant} canceled their request to join {scenario} as {persona}.',
-          persona: { id: 2, name: 'Student' },
-          name: 'slide-arrival',
-          url: 'http://localhost:3000/cohort/1/run/99/slide/1'
-        }
-      }
-    }
-  };
-
-  users = [
-    superUser,
-    facilitatorUser,
-    researcherUser,
-    participantUser,
-    anonymousUser
-  ];
-
-  for (let user of users) {
-    user.persona_id = null;
-    user.is_present = true;
-    user.is_muted = false;
-  }
-
-  usersById = users.reduce(
-    (accum, user) => ({
-      ...accum,
-      [user.id]: user
-    }),
-    {}
-  );
-
-  chat = {
-    id: 1,
-    scenario_id: 42,
-    cohort_id: null,
-    host_id: 999,
-    created_at: '2020-12-08T21:51:33.659Z',
-    updated_at: null,
-    deleted_at: null,
-    ended_at: null,
-    users: [superUser],
-    usersById: {
-      [superUser.id]: superUser
-    }
-  };
-
-  chats = [chat];
-
-  chatsById = chats.reduce((accum, chat) => {
-    accum[chat.id] = chat;
-    return accum;
-  }, {});
 
   cohort = {
     id: 1,
@@ -687,24 +456,6 @@ beforeEach(() => {
     },
     partnering: { 99: 1 }
   };
-
-  invites = [
-    {
-      id: 1,
-      sender_id: 999,
-      receiver_id: 555,
-      status_id: 1,
-      props: {
-        chat_id: 8,
-        persona_id: null
-      },
-      code: 'b7f21ab4-aa95-4f48-aee8-19f7176bc595',
-      created_at: '2021-02-04T19:24:39.039Z',
-      updated_at: null,
-      expire_at: null
-    }
-  ];
-
   scenario = {
     author: {
       id: 999,
@@ -716,39 +467,43 @@ beforeEach(() => {
       is_super: true
     },
     categories: [],
-    consent: { id: 69, prose: '' },
-    description: "This is the description of 'Some Other Scenario'",
+    consent: { id: 57, prose: '' },
+    description: "This is the description of 'A Multiplayer Scenario'",
     finish: {
-      id: 11,
+      id: 1,
       title: '',
-      components: [{ html: '<h2>Bye!</h2>', type: 'Text' }],
+      components: [
+        { html: '<h2>Thanks for participating!</h2>', type: 'Text' }
+      ],
       is_finish: true
     },
     lock: {
-      scenario_id: 99,
+      scenario_id: 42,
       user_id: 999,
       created_at: '2020-02-31T23:54:19.934Z',
       ended_at: null
     },
     slides: [
       {
-        id: 11,
+        id: 1,
         title: '',
-        components: [{ html: '<h2>Bye!</h2>', type: 'Text' }],
+        components: [
+          { html: '<h2>Thanks for participating!</h2>', type: 'Text' }
+        ],
         is_finish: true
       },
       {
-        id: 22,
+        id: 2,
         title: '',
         components: [
           {
-            id: 'b7e7a3f1-eb4e-4afa-8569-838fd5ec854f',
-            html: '<p>HTML!</p>',
+            id: 'b7e7a3f1-eb4e-4afa-8569-eb6677358c9e',
+            html: '<p>paragraph</p>',
             type: 'Text'
           },
           {
             agent: null,
-            id: 'aede9380-c7a3-4ef7-add7-eb6677358c9e',
+            id: 'aede9380-c7a3-4ef7-add7-838fd5ec854f',
             type: 'TextResponse',
             header: 'TextResponse-1',
             prompt: '',
@@ -768,7 +523,7 @@ beforeEach(() => {
       }
     ],
     status: 1,
-    title: 'Some Other Scenario',
+    title: 'Multiplayer Scenario 2',
     users: [
       {
         id: 999,
@@ -781,11 +536,11 @@ beforeEach(() => {
         is_reviewer: false
       }
     ],
-    id: 99,
-    created_at: '2020-07-31T17:50:28.089Z',
+    id: 42,
+    created_at: '2020-08-31T17:50:28.089Z',
     updated_at: null,
     deleted_at: null,
-    labels: ['a'],
+    labels: ['a', 'b'],
     personas: [
       {
         id: 1,
@@ -802,83 +557,7 @@ beforeEach(() => {
       }
     ]
   };
-
-  scenario.personas = [
-    {
-      id: 2,
-      name: 'Teacher',
-      description:
-        'A non-specific teacher, participating in a multi person scenario.',
-      color: '#3f59a9',
-      created_at: '2020-12-01T15:49:04.962Z',
-      updated_at: null,
-      deleted_at: null,
-      author_id: 3,
-      is_read_only: true,
-      is_shared: true
-    },
-    {
-      id: 3,
-      name: 'Student',
-      description:
-        'A non-specific student, participating in a multi person scenario.',
-      color: '#e59235',
-      created_at: '2020-12-01T15:49:04.962Z',
-      updated_at: null,
-      deleted_at: null,
-      author_id: 3,
-      is_read_only: true,
-      is_shared: true
-    }
-  ];
-
-  invitesById = invites.reduce((accum, invite) => {
-    accum[invite.id] = invite;
-    return accum;
-  }, {});
-
-  chatActions.getChat.mockImplementation(() => async dispatch => {
-    dispatch({ type: GET_CHAT_SUCCESS, chat });
-    return chat;
-  });
-
-  chatActions.getChatByIdentifiers.mockImplementation(() => async dispatch => {
-    dispatch({ type: GET_CHAT_SUCCESS, chat });
-    return chat;
-  });
-
-  chatActions.getLinkedChatUsersByChatId.mockImplementation(
-    () => async dispatch => {
-      users = users.map(user => ({
-        ...user,
-        persona_id: null
-      }));
-      dispatch({ type: GET_CHAT_USERS_SUCCESS, users });
-      return users;
-    }
-  );
-
-  chatActions.getChatUsersByChatId.mockImplementation(() => async dispatch => {
-    users = users.map(user => ({
-      ...user,
-      persona_id: null
-    }));
-    dispatch({ type: GET_CHAT_USERS_SUCCESS, users });
-    return users;
-  });
-
-  inviteActions.getInvites.mockImplementation(() => async dispatch => {
-    dispatch({ type: GET_INVITES_SUCCESS, invites });
-    return invites;
-  });
-
-  usersActions.getUsers.mockImplementation(() => async dispatch => {
-    dispatch({ type: GET_USERS_SUCCESS, users });
-    return users;
-  });
-
-  Storage.get.mockImplementation((key, defaultValue) => defaultValue);
-  Storage.merge.mockImplementation((key, defaultValue) => defaultValue);
+  onClick = jest.fn();
 
   /** @GENERATED: END **/
 
@@ -901,50 +580,24 @@ afterEach(() => {
   /** @TEMPLATE: END **/
 });
 
-test('LobbyUserWaiting', () => {
-  expect(LobbyUserWaiting).toBeDefined();
+test('JoinAsPersona', () => {
+  expect(JoinAsPersona).toBeDefined();
 });
 
 /** @GENERATED: BEGIN **/
 test('Render 1 1', async done => {
-  const Component = LobbyUserWaiting;
+  const Component = JoinAsPersona;
   const props = {
     ...commonProps,
-    chat,
-    cohort
+    cohort,
+    scenario,
+    onClick
   };
 
   const state = {
     ...commonState
   };
 
-  state.chat = chat;
-  state.scenario = scenario;
-  state.user = user;
-  const ConnectedRoutedComponent = reduxer(Component, props, state);
-
-  await render(<ConnectedRoutedComponent {...props} />);
-  expect(serialize()).toMatchSnapshot();
-
-  done();
-});
-/** @GENERATED: END **/
-
-/** @GENERATED: BEGIN **/
-test('Render 2 1', async done => {
-  const Component = LobbyUserWaiting;
-  const props = {
-    ...commonProps,
-    chat
-  };
-
-  const state = {
-    ...commonState
-  };
-
-  state.chat = chat;
-  state.scenario = scenario;
-  state.user = user;
   const ConnectedRoutedComponent = reduxer(Component, props, state);
 
   await render(<ConnectedRoutedComponent {...props} />);
@@ -956,243 +609,366 @@ test('Render 2 1', async done => {
 
 /* INJECTION STARTS HERE */
 
-test('Fallbacks for state.chat, state.scenario, state.cohort (missing)', async done => {
-  const Component = LobbyUserWaiting;
+test('Join as persona when partnering is set to "BOTH"', async done => {
+  const Component = JoinAsPersona;
 
   const props = {
     ...commonProps,
-    chat,
-    cohort,
-    scenario,
-    user
+    cohort: {
+      id: 1,
+      partnering: {
+        99: 1
+      }
+    },
+    scenario: {
+      id: 99,
+      personas: [
+        { id: 1, name: 'A', description: 'Some description of "A"' },
+        { id: 2, name: 'B', description: 'Some description of "B"' }
+      ]
+    },
+    onClick: jest.fn()
   };
 
   const state = {
-    ...commonState,
-    chat: null,
-    cohort: null,
-    scenario: null,
-    user,
-    users,
-    usersById
+    ...commonState
+  };
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  const { asFragment } = await render(<ConnectedRoutedComponent {...props} />);
+  expect(asFragment()).toMatchSnapshot();
+
+  const radios = screen.getAllByTestId('roomaccess');
+  const buttons = screen.getAllByRole('button');
+
+  expect(radios.length).toBe(2);
+  expect(buttons.length).toBe(2);
+
+  userEvent.click(buttons[0]);
+  expect(props.onClick).toHaveBeenCalledTimes(1);
+  expect(asFragment()).toMatchSnapshot();
+
+  userEvent.click(buttons[1]);
+  expect(props.onClick).toHaveBeenCalledTimes(2);
+  expect(asFragment()).toMatchSnapshot();
+
+  const first = props.onClick.mock.calls[0][1];
+  const second = props.onClick.mock.calls[1][1];
+
+  {
+    const { className, onClick, ...relevant } = first;
+
+    expect(relevant).toMatchInlineSnapshot(`
+      Object {
+        "cohort": Object {
+          "id": 1,
+          "partnering": Object {
+            "99": 1,
+          },
+        },
+        "isOpen": false,
+        "persona": Object {
+          "description": "Some description of \\"A\\"",
+          "id": 1,
+          "name": "A",
+        },
+        "scenario": Object {
+          "id": 99,
+          "personas": Array [
+            Object {
+              "description": "Some description of \\"A\\"",
+              "id": 1,
+              "name": "A",
+            },
+            Object {
+              "description": "Some description of \\"B\\"",
+              "id": 2,
+              "name": "B",
+            },
+          ],
+        },
+      }
+    `);
+  }
+
+  {
+    const { className, onClick, ...relevant } = second;
+
+    expect(relevant).toMatchInlineSnapshot(`
+      Object {
+        "cohort": Object {
+          "id": 1,
+          "partnering": Object {
+            "99": 1,
+          },
+        },
+        "isOpen": false,
+        "persona": Object {
+          "description": "Some description of \\"B\\"",
+          "id": 2,
+          "name": "B",
+        },
+        "scenario": Object {
+          "id": 99,
+          "personas": Array [
+            Object {
+              "description": "Some description of \\"A\\"",
+              "id": 1,
+              "name": "A",
+            },
+            Object {
+              "description": "Some description of \\"B\\"",
+              "id": 2,
+              "name": "B",
+            },
+          ],
+        },
+      }
+    `);
+  }
+
+  userEvent.click(radios[0]);
+  expect(asFragment()).toMatchSnapshot();
+
+  userEvent.click(radios[1]);
+  expect(asFragment()).toMatchSnapshot();
+
+  done();
+});
+
+test('Join as persona when partnering is set to "CLOSED"', async done => {
+  const Component = JoinAsPersona;
+
+  const props = {
+    ...commonProps,
+    cohort: {
+      id: 1,
+      partnering: {
+        99: 2
+      }
+    },
+    scenario: {
+      id: 99,
+      personas: [
+        { id: 1, name: 'A', description: 'Some description of "A"' },
+        { id: 2, name: 'B', description: 'Some description of "B"' }
+      ]
+    },
+    onClick: jest.fn()
+  };
+
+  const state = {
+    ...commonState
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
 
   await render(<ConnectedRoutedComponent {...props} />);
   expect(serialize()).toMatchSnapshot();
+
+  const radios = screen.queryAllByTestId('roomaccess');
+  const buttons = await screen.findAllByRole('button');
+
+  expect(radios.length).toBe(0);
+  expect(buttons.length).toBe(2);
+
+  userEvent.click(buttons[0]);
+  expect(props.onClick).toHaveBeenCalledTimes(1);
+  userEvent.click(buttons[1]);
+  expect(props.onClick).toHaveBeenCalledTimes(2);
+
+  const first = props.onClick.mock.calls[0][1];
+  const second = props.onClick.mock.calls[1][1];
+
+  {
+    const { className, onClick, ...relevant } = first;
+
+    expect(relevant).toMatchInlineSnapshot(`
+      Object {
+        "cohort": Object {
+          "id": 1,
+          "partnering": Object {
+            "99": 2,
+          },
+        },
+        "isOpen": false,
+        "persona": Object {
+          "description": "Some description of \\"A\\"",
+          "id": 1,
+          "name": "A",
+        },
+        "scenario": Object {
+          "id": 99,
+          "personas": Array [
+            Object {
+              "description": "Some description of \\"A\\"",
+              "id": 1,
+              "name": "A",
+            },
+            Object {
+              "description": "Some description of \\"B\\"",
+              "id": 2,
+              "name": "B",
+            },
+          ],
+        },
+      }
+    `);
+  }
+
+  {
+    const { className, onClick, ...relevant } = second;
+
+    expect(relevant).toMatchInlineSnapshot(`
+      Object {
+        "cohort": Object {
+          "id": 1,
+          "partnering": Object {
+            "99": 2,
+          },
+        },
+        "isOpen": false,
+        "persona": Object {
+          "description": "Some description of \\"B\\"",
+          "id": 2,
+          "name": "B",
+        },
+        "scenario": Object {
+          "id": 99,
+          "personas": Array [
+            Object {
+              "description": "Some description of \\"A\\"",
+              "id": 1,
+              "name": "A",
+            },
+            Object {
+              "description": "Some description of \\"B\\"",
+              "id": 2,
+              "name": "B",
+            },
+          ],
+        },
+      }
+    `);
+  }
   done();
 });
 
-test('Fallbacks for state.chat, state.scenario, state.cohort (unloaded)', async done => {
-  const Component = LobbyUserWaiting;
+test('Join as persona when partnering is set to "OPEN"', async done => {
+  const Component = JoinAsPersona;
 
   const props = {
     ...commonProps,
-    chat,
-    cohort,
-    scenario,
-    user
+    cohort: {
+      id: 1,
+      partnering: {
+        99: 2
+      }
+    },
+    scenario: {
+      id: 99,
+      personas: [
+        { id: 1, name: 'A', description: 'Some description of "A"' },
+        { id: 2, name: 'B', description: 'Some description of "B"' }
+      ]
+    },
+    onClick: jest.fn()
   };
 
   const state = {
-    ...commonState,
-    chat: { id: null },
-    cohort: { id: null },
-    scenario: { id: null },
-    user,
-    users,
-    usersById
+    ...commonState
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
 
   await render(<ConnectedRoutedComponent {...props} />);
   expect(serialize()).toMatchSnapshot();
+
+  const radios = screen.queryAllByTestId('roomaccess');
+  const buttons = await screen.findAllByRole('button');
+
+  expect(radios.length).toBe(0);
+  expect(buttons.length).toBe(2);
+
+  userEvent.click(buttons[0]);
+  expect(props.onClick).toHaveBeenCalledTimes(1);
+  userEvent.click(buttons[1]);
+  expect(props.onClick).toHaveBeenCalledTimes(2);
+
+  const first = props.onClick.mock.calls[0][1];
+  const second = props.onClick.mock.calls[1][1];
+
+  {
+    const { className, onClick, ...relevant } = first;
+
+    expect(relevant).toMatchInlineSnapshot(`
+      Object {
+        "cohort": Object {
+          "id": 1,
+          "partnering": Object {
+            "99": 2,
+          },
+        },
+        "isOpen": false,
+        "persona": Object {
+          "description": "Some description of \\"A\\"",
+          "id": 1,
+          "name": "A",
+        },
+        "scenario": Object {
+          "id": 99,
+          "personas": Array [
+            Object {
+              "description": "Some description of \\"A\\"",
+              "id": 1,
+              "name": "A",
+            },
+            Object {
+              "description": "Some description of \\"B\\"",
+              "id": 2,
+              "name": "B",
+            },
+          ],
+        },
+      }
+    `);
+  }
+
+  {
+    const { className, onClick, ...relevant } = second;
+
+    expect(relevant).toMatchInlineSnapshot(`
+      Object {
+        "cohort": Object {
+          "id": 1,
+          "partnering": Object {
+            "99": 2,
+          },
+        },
+        "isOpen": false,
+        "persona": Object {
+          "description": "Some description of \\"B\\"",
+          "id": 2,
+          "name": "B",
+        },
+        "scenario": Object {
+          "id": 99,
+          "personas": Array [
+            Object {
+              "description": "Some description of \\"A\\"",
+              "id": 1,
+              "name": "A",
+            },
+            Object {
+              "description": "Some description of \\"B\\"",
+              "id": 2,
+              "name": "B",
+            },
+          ],
+        },
+      }
+    `);
+  }
   done();
-});
-
-describe('With cohort', () => {
-  test('Has users that are assigned personas', async done => {
-    const Component = LobbyUserWaiting;
-
-    // Make sure there are no users in the chat yet
-    chat = {
-      ...chat,
-      users: [],
-      usersById: {}
-    };
-
-    const props = {
-      ...commonProps,
-      chat,
-      cohort,
-      scenario,
-      user
-    };
-
-    const state = {
-      ...commonState,
-      chat,
-      cohort,
-      scenario,
-      user
-    };
-
-    chatActions.getChat.mockImplementation(() => async dispatch => {
-      dispatch({ type: GET_CHAT_SUCCESS, chat });
-      return chat;
-    });
-
-    chatActions.getChatUsersByChatId.mockImplementation(
-      () => async dispatch => {
-        users[1].persona_id = 2;
-
-        dispatch({ type: GET_CHAT_USERS_SUCCESS, users });
-        return users;
-      }
-    );
-
-    const ConnectedRoutedComponent = reduxer(Component, props, state);
-
-    await render(<ConnectedRoutedComponent {...props} />);
-    expect(serialize()).toMatchSnapshot();
-
-    done();
-  });
-
-  test('Has users that are no longer present', async done => {
-    const Component = LobbyUserWaiting;
-
-    // Make sure there are no users in the chat yet
-    chat = {
-      ...chat,
-      users: [],
-      usersById: {}
-    };
-
-    const props = {
-      ...commonProps,
-      chat,
-      cohort,
-      scenario,
-      user
-    };
-
-    const state = {
-      ...commonState,
-      chat,
-      cohort,
-      scenario,
-      user
-    };
-
-    chatActions.getChat.mockImplementation(() => async dispatch => {
-      dispatch({ type: GET_CHAT_SUCCESS, chat });
-      return chat;
-    });
-
-    chatActions.getChatUsersByChatId.mockImplementation(
-      () => async dispatch => {
-        users[1].is_present = false;
-        users[2].is_present = false;
-
-        dispatch({ type: GET_CHAT_USERS_SUCCESS, users });
-        return users;
-      }
-    );
-
-    const ConnectedRoutedComponent = reduxer(Component, props, state);
-
-    await render(<ConnectedRoutedComponent {...props} />);
-    expect(serialize()).toMatchSnapshot();
-
-    done();
-  });
-});
-
-describe('Without cohort', () => {
-  test('Has users that are assigned personas', async done => {
-    const Component = LobbyUserWaiting;
-
-    // Make sure there are no users in the chat yet
-    chat = {
-      ...chat,
-      users: [],
-      usersById: {}
-    };
-
-    const props = {
-      ...commonProps,
-      chat,
-      cohort,
-      scenario,
-      user
-    };
-
-    const state = {
-      ...commonState,
-      chat,
-      cohort,
-      scenario,
-      user
-    };
-
-    chatActions.getChat.mockImplementation(() => async dispatch => {
-      dispatch({ type: GET_CHAT_SUCCESS, chat });
-      return chat;
-    });
-
-    chatActions.getLinkedChatUsersByChatId.mockImplementation(
-      () => async dispatch => {
-        users[1].persona_id = 2;
-
-        dispatch({ type: GET_CHAT_USERS_SUCCESS, users });
-        return users;
-      }
-    );
-
-    const ConnectedRoutedComponent = reduxer(Component, props, state);
-
-    await render(<ConnectedRoutedComponent {...props} />);
-    expect(serialize()).toMatchSnapshot();
-    done();
-  });
-
-  test('Has users that are no longer present', async done => {
-    const Component = LobbyUserWaiting;
-
-    users[1].is_present = false;
-    users[2].is_present = false;
-
-    // Make sure there are no users in the chat yet
-    chat = {
-      ...chat,
-      users,
-      usersById
-    };
-
-    const props = {
-      ...commonProps,
-      chat,
-      cohort,
-      scenario,
-      user
-    };
-
-    const state = {
-      ...commonState,
-      chat,
-      cohort,
-      scenario,
-      user
-    };
-
-    const ConnectedRoutedComponent = reduxer(Component, props, state);
-
-    await render(<ConnectedRoutedComponent {...props} />);
-    expect(serialize()).toMatchSnapshot();
-
-    done();
-  });
 });

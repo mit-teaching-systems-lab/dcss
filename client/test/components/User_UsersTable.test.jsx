@@ -471,7 +471,8 @@ test('Render 1 1', async done => {
             }
           }
         }
-      }
+      },
+      partnering: { 99: 1 }
     },
     columns: {},
     grantableRoles: {},

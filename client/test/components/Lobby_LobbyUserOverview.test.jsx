@@ -86,8 +86,13 @@ jest.mock('@utils/Storage', () => {
   };
 });
 
-import { GET_COHORT_CHATS_OVERVIEW_SUCCESS } from '../../actions/types';
+import {
+  GET_COHORT_CHATS_OVERVIEW_SUCCESS,
+  GET_CHAT_INVITES_SUCCESS
+} from '../../actions/types';
+import * as chatActions from '../../actions/chat';
 import * as cohortActions from '../../actions/cohort';
+jest.mock('../../actions/chat');
 jest.mock('../../actions/cohort');
 
 let user;
@@ -674,7 +679,8 @@ beforeEach(() => {
           }
         }
       }
-    }
+    },
+    partnering: { 99: 1 }
   };
 
   invites = [
@@ -825,6 +831,11 @@ beforeEach(() => {
     accum[invite.id] = invite;
     return accum;
   }, {});
+
+  chatActions.getChatInvites.mockImplementation(() => async dispatch => {
+    dispatch({ type: GET_CHAT_INVITES_SUCCESS, invites });
+    return invites;
+  });
 
   cohortActions.getCohortChatsOverview.mockImplementation(
     () => async dispatch => {

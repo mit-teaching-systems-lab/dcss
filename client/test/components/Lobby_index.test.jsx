@@ -89,6 +89,7 @@ jest.mock('@utils/Storage', () => {
 import {
   CREATE_CHAT_INVITE_SUCCESS,
   GET_CHAT_SUCCESS,
+  GET_CHAT_INVITES_SUCCESS,
   GET_CHAT_USERS_SUCCESS,
   GET_COHORT_SUCCESS,
   GET_COHORT_CHATS_OVERVIEW_SUCCESS,
@@ -694,7 +695,8 @@ beforeEach(() => {
           }
         }
       }
-    }
+    },
+    partnering: { 99: 1 }
   };
   cohort.chat = null;
 
@@ -854,6 +856,11 @@ beforeEach(() => {
     return chat;
   });
 
+  chatActions.getChatInvites.mockImplementation(() => async dispatch => {
+    dispatch({ type: GET_CHAT_INVITES_SUCCESS, invites });
+    return invites;
+  });
+
   chatActions.getChatByIdentifiers.mockImplementation(() => async dispatch => {
     dispatch({ type: GET_CHAT_SUCCESS, chat });
     return chat;
@@ -998,16 +1005,10 @@ test('Lobby visited by a non-facilitator user', async done => {
               "latestByScenarioId": Object {
                 "1": Object {
                   "created_at": 1602454306144,
-                  "description": "",
                   "event_id": 1903,
-                  "generic": "requested to join {scenario} as {persona}, and is waiting to be matched.",
+                  "generic": "arrived at a slide.",
                   "is_complete": false,
-                  "is_run": false,
                   "name": "slide-arrival",
-                  "persona": Object {
-                    "id": 1,
-                    "name": "Teacher",
-                  },
                   "scenario_id": 99,
                   "url": "http://localhost:3000/cohort/1/run/99/slide/1",
                 },
@@ -1102,16 +1103,10 @@ test('Lobby visited in a cohort', async done => {
               "latestByScenarioId": Object {
                 "1": Object {
                   "created_at": 1602454306144,
-                  "description": "",
                   "event_id": 1903,
-                  "generic": "requested to join {scenario} as {persona}, and is waiting to be matched.",
+                  "generic": "arrived at a slide.",
                   "is_complete": false,
-                  "is_run": false,
                   "name": "slide-arrival",
-                  "persona": Object {
-                    "id": 1,
-                    "name": "Teacher",
-                  },
                   "scenario_id": 99,
                   "url": "http://localhost:3000/cohort/1/run/99/slide/1",
                 },
@@ -1207,16 +1202,10 @@ test('Lobby visited in a cohort, asCard: true', async done => {
               "latestByScenarioId": Object {
                 "1": Object {
                   "created_at": 1602454306144,
-                  "description": "",
                   "event_id": 1903,
-                  "generic": "requested to join {scenario} as {persona}, and is waiting to be matched.",
+                  "generic": "arrived at a slide.",
                   "is_complete": false,
-                  "is_run": false,
                   "name": "slide-arrival",
-                  "persona": Object {
-                    "id": 1,
-                    "name": "Teacher",
-                  },
                   "scenario_id": 99,
                   "url": "http://localhost:3000/cohort/1/run/99/slide/1",
                 },
@@ -1311,16 +1300,10 @@ test('Lobby visited in a run', async done => {
               "latestByScenarioId": Object {
                 "1": Object {
                   "created_at": 1602454306144,
-                  "description": "",
                   "event_id": 1903,
-                  "generic": "requested to join {scenario} as {persona}, and is waiting to be matched.",
+                  "generic": "arrived at a slide.",
                   "is_complete": false,
-                  "is_run": false,
                   "name": "slide-arrival",
-                  "persona": Object {
-                    "id": 1,
-                    "name": "Teacher",
-                  },
                   "scenario_id": 99,
                   "url": "http://localhost:3000/cohort/1/run/99/slide/1",
                 },
@@ -1416,16 +1399,10 @@ test('Lobby visited in a run, asCard: true', async done => {
               "latestByScenarioId": Object {
                 "1": Object {
                   "created_at": 1602454306144,
-                  "description": "",
                   "event_id": 1903,
-                  "generic": "requested to join {scenario} as {persona}, and is waiting to be matched.",
+                  "generic": "arrived at a slide.",
                   "is_complete": false,
-                  "is_run": false,
                   "name": "slide-arrival",
-                  "persona": Object {
-                    "id": 1,
-                    "name": "Teacher",
-                  },
                   "scenario_id": 99,
                   "url": "http://localhost:3000/cohort/1/run/99/slide/1",
                 },
@@ -1542,470 +1519,7 @@ test('Fallback: chat, scenario, cohort are not yet loaded, use provided props', 
   expect(chatActions.getChatByIdentifiers.mock.calls).toMatchInlineSnapshot(`
     Array [
       Array [
-        Object {
-          "author": Object {
-            "email": "super@email.com",
-            "id": 999,
-            "is_anonymous": false,
-            "is_super": true,
-            "personalname": "Super User",
-            "roles": Array [
-              "participant",
-              "super_admin",
-              "facilitator",
-              "researcher",
-            ],
-            "username": "super",
-          },
-          "categories": Array [],
-          "consent": Object {
-            "id": 69,
-            "prose": "",
-          },
-          "created_at": "2020-07-31T17:50:28.089Z",
-          "deleted_at": null,
-          "description": "This is the description of 'Some Other Scenario'",
-          "finish": Object {
-            "components": Array [
-              Object {
-                "html": "<h2>Bye!</h2>",
-                "type": "Text",
-              },
-            ],
-            "id": 11,
-            "is_finish": true,
-            "title": "",
-          },
-          "id": 99,
-          "labels": Array [
-            "a",
-          ],
-          "lock": Object {
-            "created_at": "2020-02-31T23:54:19.934Z",
-            "ended_at": null,
-            "scenario_id": 99,
-            "user_id": 999,
-          },
-          "personas": Array [
-            Object {
-              "author_id": 3,
-              "color": "#3f59a9",
-              "created_at": "2020-12-01T15:49:04.962Z",
-              "deleted_at": null,
-              "description": "A non-specific teacher, participating in a multi person scenario.",
-              "id": 2,
-              "is_read_only": true,
-              "is_shared": true,
-              "name": "Teacher",
-              "updated_at": null,
-            },
-            Object {
-              "author_id": 3,
-              "color": "#e59235",
-              "created_at": "2020-12-01T15:49:04.962Z",
-              "deleted_at": null,
-              "description": "A non-specific student, participating in a multi person scenario.",
-              "id": 3,
-              "is_read_only": true,
-              "is_shared": true,
-              "name": "Student",
-              "updated_at": null,
-            },
-          ],
-          "slides": Array [
-            Object {
-              "components": Array [
-                Object {
-                  "html": "<h2>Bye!</h2>",
-                  "type": "Text",
-                },
-              ],
-              "id": 11,
-              "is_finish": true,
-              "title": "",
-            },
-            Object {
-              "components": Array [
-                Object {
-                  "html": "<p>HTML!</p>",
-                  "id": "b7e7a3f1-eb4e-4afa-8569-838fd5ec854f",
-                  "type": "Text",
-                },
-                Object {
-                  "agent": null,
-                  "header": "TextResponse-1",
-                  "id": "aede9380-c7a3-4ef7-add7-eb6677358c9e",
-                  "placeholder": "",
-                  "prompt": "",
-                  "recallId": "",
-                  "required": true,
-                  "responseId": "be99fe9b-fa0d-4ab7-8541-1bfd1ef0bf11",
-                  "timeout": 0,
-                  "type": "TextResponse",
-                },
-                Object {
-                  "html": "<p>?</p>",
-                  "id": "f96ac6de-ac6b-4e06-bd97-d97e12fe72c1",
-                  "type": "Text",
-                },
-              ],
-              "id": 22,
-              "is_finish": false,
-              "title": "",
-            },
-          ],
-          "status": 1,
-          "title": "Some Other Scenario",
-          "updated_at": null,
-          "users": Array [
-            Object {
-              "email": "super@email.com",
-              "id": 999,
-              "is_author": true,
-              "is_reviewer": false,
-              "is_super": true,
-              "personalname": "Super User",
-              "roles": Array [
-                "super",
-              ],
-              "username": "super",
-            },
-          ],
-        },
-        Object {
-          "chat": null,
-          "created_at": "2020-08-31T14:01:08.656Z",
-          "id": 1,
-          "is_archived": false,
-          "name": "A New Cohort That Exists Within Inline Props",
-          "roles": Array [
-            "super",
-            "facilitator",
-          ],
-          "runs": Array [
-            Object {
-              "cohort_id": 1,
-              "consent_acknowledged_by_user": true,
-              "consent_granted_by_user": true,
-              "consent_id": 8,
-              "created_at": "2020-03-28T19:44:03.069Z",
-              "ended_at": "2020-03-31T17:01:43.128Z",
-              "id": 11,
-              "referrer_params": null,
-              "run_id": 11,
-              "scenario_id": 99,
-              "updated_at": "2020-03-31T17:01:43.139Z",
-              "user_id": 333,
-            },
-          ],
-          "scenarios": Array [
-            99,
-          ],
-          "users": Array [
-            Object {
-              "email": "super@email.com",
-              "id": 999,
-              "is_anonymous": false,
-              "is_super": true,
-              "personalname": "Super User",
-              "progress": Object {
-                "completed": Array [
-                  1,
-                ],
-                "latestByScenarioId": Object {
-                  "1": Object {
-                    "created_at": 1602454306144,
-                    "description": "",
-                    "event_id": 1909,
-                    "generic": "arrived at a slide.",
-                    "is_complete": true,
-                    "is_run": true,
-                    "name": "slide-arrival",
-                    "url": "http://localhost:3000/cohort/1/run/99/slide/1",
-                  },
-                },
-              },
-              "roles": Array [
-                "participant",
-                "super_admin",
-              ],
-              "username": "super",
-            },
-            Object {
-              "email": "facilitator@email.com",
-              "id": 555,
-              "is_anonymous": false,
-              "is_owner": true,
-              "is_super": false,
-              "personalname": "Facilitator User",
-              "progress": Object {
-                "completed": Array [],
-                "latestByScenarioId": Object {
-                  "1": Object {
-                    "created_at": 1602454306144,
-                    "description": "",
-                    "event_id": 1905,
-                    "generic": "arrived at a slide.",
-                    "is_complete": false,
-                    "is_run": true,
-                    "name": "slide-arrival",
-                    "scenario_id": 99,
-                    "url": "http://localhost:3000/cohort/1/run/99/slide/1",
-                  },
-                },
-              },
-              "roles": Array [
-                "participant",
-                "facilitator",
-                "researcher",
-                "owner",
-              ],
-              "username": "facilitator",
-            },
-            Object {
-              "email": "researcher@email.com",
-              "id": 444,
-              "is_anonymous": false,
-              "is_super": false,
-              "personalname": "Researcher User",
-              "progress": Object {
-                "completed": Array [],
-                "latestByScenarioId": Object {
-                  "1": Object {
-                    "created_at": 1602454306144,
-                    "description": "",
-                    "event_id": 1904,
-                    "generic": "arrived at a slide.",
-                    "is_complete": false,
-                    "is_run": true,
-                    "name": "slide-arrival",
-                    "scenario_id": 99,
-                    "url": "http://localhost:3000/cohort/1/run/99/slide/1",
-                  },
-                },
-              },
-              "roles": Array [
-                "participant",
-                "researcher",
-              ],
-              "username": "researcher",
-            },
-            Object {
-              "email": "participant@email.com",
-              "id": 333,
-              "is_anonymous": false,
-              "is_super": false,
-              "personalname": "Participant User",
-              "progress": Object {
-                "completed": Array [],
-                "latestByScenarioId": Object {
-                  "1": Object {
-                    "created_at": 1602454306144,
-                    "description": "",
-                    "event_id": 1903,
-                    "generic": "requested to join {scenario} as {persona}, and is waiting to be matched.",
-                    "is_complete": false,
-                    "is_run": false,
-                    "name": "slide-arrival",
-                    "persona": Object {
-                      "id": 1,
-                      "name": "Teacher",
-                    },
-                    "scenario_id": 99,
-                    "url": "http://localhost:3000/cohort/1/run/99/slide/1",
-                  },
-                },
-              },
-              "roles": Array [
-                "participant",
-              ],
-              "username": "participant",
-            },
-            Object {
-              "email": "",
-              "id": 222,
-              "is_anonymous": true,
-              "is_super": false,
-              "personalname": "",
-              "progress": Object {
-                "completed": Array [],
-                "latestByScenarioId": Object {
-                  "1": Object {
-                    "created_at": 1602454306144,
-                    "description": "",
-                    "event_id": 1902,
-                    "generic": "{participant} canceled their request to join {scenario} as {persona}.",
-                    "is_complete": false,
-                    "is_run": false,
-                    "name": "slide-arrival",
-                    "persona": Object {
-                      "id": 2,
-                      "name": "Student",
-                    },
-                    "scenario_id": 99,
-                    "url": "http://localhost:3000/cohort/1/run/99/slide/1",
-                  },
-                },
-              },
-              "roles": Array [
-                "participant",
-              ],
-              "username": "anonymous",
-            },
-          ],
-          "usersById": Object {
-            "222": Object {
-              "email": "",
-              "id": 222,
-              "is_anonymous": true,
-              "is_super": false,
-              "personalname": "",
-              "progress": Object {
-                "completed": Array [],
-                "latestByScenarioId": Object {
-                  "1": Object {
-                    "created_at": 1602454306144,
-                    "description": "",
-                    "event_id": 1902,
-                    "generic": "{participant} canceled their request to join {scenario} as {persona}.",
-                    "is_complete": false,
-                    "is_run": false,
-                    "name": "slide-arrival",
-                    "persona": Object {
-                      "id": 2,
-                      "name": "Student",
-                    },
-                    "scenario_id": 99,
-                    "url": "http://localhost:3000/cohort/1/run/99/slide/1",
-                  },
-                },
-              },
-              "roles": Array [
-                "participant",
-              ],
-              "username": "anonymous",
-            },
-            "333": Object {
-              "email": "participant@email.com",
-              "id": 333,
-              "is_anonymous": false,
-              "is_super": false,
-              "personalname": "Participant User",
-              "progress": Object {
-                "completed": Array [],
-                "latestByScenarioId": Object {
-                  "1": Object {
-                    "created_at": 1602454306144,
-                    "description": "",
-                    "event_id": 1903,
-                    "generic": "requested to join {scenario} as {persona}, and is waiting to be matched.",
-                    "is_complete": false,
-                    "is_run": false,
-                    "name": "slide-arrival",
-                    "persona": Object {
-                      "id": 1,
-                      "name": "Teacher",
-                    },
-                    "scenario_id": 99,
-                    "url": "http://localhost:3000/cohort/1/run/99/slide/1",
-                  },
-                },
-              },
-              "roles": Array [
-                "participant",
-              ],
-              "username": "participant",
-            },
-            "444": Object {
-              "email": "researcher@email.com",
-              "id": 444,
-              "is_anonymous": false,
-              "is_super": false,
-              "personalname": "Researcher User",
-              "progress": Object {
-                "completed": Array [],
-                "latestByScenarioId": Object {
-                  "1": Object {
-                    "created_at": 1602454306144,
-                    "description": "",
-                    "event_id": 1904,
-                    "generic": "arrived at a slide.",
-                    "is_complete": false,
-                    "is_run": true,
-                    "name": "slide-arrival",
-                    "scenario_id": 99,
-                    "url": "http://localhost:3000/cohort/1/run/99/slide/1",
-                  },
-                },
-              },
-              "roles": Array [
-                "participant",
-                "researcher",
-              ],
-              "username": "researcher",
-            },
-            "555": Object {
-              "email": "facilitator@email.com",
-              "id": 555,
-              "is_anonymous": false,
-              "is_owner": true,
-              "is_super": false,
-              "personalname": "Facilitator User",
-              "progress": Object {
-                "completed": Array [],
-                "latestByScenarioId": Object {
-                  "1": Object {
-                    "created_at": 1602454306144,
-                    "description": "",
-                    "event_id": 1905,
-                    "generic": "arrived at a slide.",
-                    "is_complete": false,
-                    "is_run": true,
-                    "name": "slide-arrival",
-                    "scenario_id": 99,
-                    "url": "http://localhost:3000/cohort/1/run/99/slide/1",
-                  },
-                },
-              },
-              "roles": Array [
-                "participant",
-                "facilitator",
-                "researcher",
-                "owner",
-              ],
-              "username": "facilitator",
-            },
-            "999": Object {
-              "email": "super@email.com",
-              "id": 999,
-              "is_anonymous": false,
-              "is_super": true,
-              "personalname": "Super User",
-              "progress": Object {
-                "completed": Array [
-                  1,
-                ],
-                "latestByScenarioId": Object {
-                  "1": Object {
-                    "created_at": 1602454306144,
-                    "description": "",
-                    "event_id": 1909,
-                    "generic": "arrived at a slide.",
-                    "is_complete": true,
-                    "is_run": true,
-                    "name": "slide-arrival",
-                    "url": "http://localhost:3000/cohort/1/run/99/slide/1",
-                  },
-                },
-              },
-              "roles": Array [
-                "participant",
-                "super_admin",
-              ],
-              "username": "super",
-            },
-          },
-        },
+        1,
       ],
     ]
   `);

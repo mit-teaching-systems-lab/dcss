@@ -2981,3 +2981,192 @@ describe('GET_COHORT_CHATS_OVERVIEW_ERROR', () => {
     });
   });
 });
+
+describe('SET_COHORT_SCENARIO_PARTNERING_SUCCESS', () => {
+  describe('setCohortScenarioPartnering', () => {
+    let partnering = [
+      {
+        scenario_id: 1,
+        partnering_id: 1
+      },
+      {
+        scenario_id: 198,
+        partnering_id: 2
+      }
+    ];
+
+    test('Receives partnering', async () => {
+      fetchImplementation(fetch, 200, { partnering });
+
+      let cohort = {
+        id: 1,
+        partnering: partnering.reduce(
+          (accum, { scenario_id, partnering_id }) => ({
+            ...accum,
+            [scenario_id]: partnering_id
+          }),
+          {}
+        )
+      };
+
+      const returnValue = await store.dispatch(
+        actions.setCohortScenarioPartnering(cohort)
+      );
+      expect(fetch.mock.calls.length).toBe(1);
+      expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+        Array [
+          "/api/cohorts/1/partnering",
+          Object {
+            "body": "{\\"partnering\\":[{\\"scenario_id\\":1,\\"partnering_id\\":1},{\\"scenario_id\\":198,\\"partnering_id\\":2}]}",
+            "headers": Object {
+              "Content-Type": "application/json",
+            },
+            "method": "PUT",
+          },
+        ]
+      `);
+
+      expect(returnValue).toEqual(partnering);
+
+      await mockStore.dispatch(actions.setCohortScenarioPartnering(cohort));
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "partnering": Array [
+              Object {
+                "partnering_id": 1,
+                "scenario_id": 1,
+              },
+              Object {
+                "partnering_id": 2,
+                "scenario_id": 198,
+              },
+            ],
+            "type": "SET_COHORT_SCENARIO_PARTNERING_SUCCESS",
+          },
+        ]
+      `);
+    });
+
+    test('Receives undefined', async () => {
+      fetchImplementation(fetch, 200, { partnering: undefined });
+
+      let cohort = {
+        id: 1,
+        partnering: partnering.reduce(
+          (accum, { scenario_id, partnering_id }) => ({
+            ...accum,
+            [scenario_id]: partnering_id
+          }),
+          {}
+        )
+      };
+
+      const returnValue = await store.dispatch(
+        actions.setCohortScenarioPartnering(cohort)
+      );
+      expect(fetch.mock.calls.length).toBe(1);
+      expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+        Array [
+          "/api/cohorts/1/partnering",
+          Object {
+            "body": "{\\"partnering\\":[{\\"scenario_id\\":1,\\"partnering_id\\":1},{\\"scenario_id\\":198,\\"partnering_id\\":2}]}",
+            "headers": Object {
+              "Content-Type": "application/json",
+            },
+            "method": "PUT",
+          },
+        ]
+      `);
+      expect(returnValue).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "partnering_id": 1,
+            "scenario_id": 1,
+          },
+          Object {
+            "partnering_id": 2,
+            "scenario_id": 198,
+          },
+        ]
+      `);
+
+      await mockStore.dispatch(actions.setCohortScenarioPartnering(cohort));
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "partnering": Array [
+              Object {
+                "partnering_id": 1,
+                "scenario_id": 1,
+              },
+              Object {
+                "partnering_id": 2,
+                "scenario_id": 198,
+              },
+            ],
+            "type": "SET_COHORT_SCENARIO_PARTNERING_SUCCESS",
+          },
+        ]
+      `);
+    });
+  });
+});
+
+describe('SET_COHORT_SCENARIO_PARTNERING_ERROR', () => {
+  describe('setCohortScenarioPartnering', () => {
+    let partnering = [
+      {
+        scenario_id: 1,
+        partnering_id: 1
+      },
+      {
+        scenario_id: 198,
+        partnering_id: 2
+      }
+    ];
+
+    test('Receives an error', async () => {
+      fetchImplementation(fetch, 200, { error });
+      let cohort = {
+        id: 1,
+        partnering: partnering.reduce(
+          (accum, { scenario_id, partnering_id }) => ({
+            ...accum,
+            [scenario_id]: partnering_id
+          }),
+          {}
+        )
+      };
+      const returnValue = await store.dispatch(
+        actions.setCohortScenarioPartnering(cohort)
+      );
+      expect(fetch.mock.calls.length).toBe(1);
+      expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+        Array [
+          "/api/cohorts/1/partnering",
+          Object {
+            "body": "{\\"partnering\\":[{\\"scenario_id\\":1,\\"partnering_id\\":1},{\\"scenario_id\\":198,\\"partnering_id\\":2}]}",
+            "headers": Object {
+              "Content-Type": "application/json",
+            },
+            "method": "PUT",
+          },
+        ]
+      `);
+      expect(returnValue).toEqual(null);
+
+      await mockStore.dispatch(actions.setCohortScenarioPartnering(cohort));
+      expect(mockStore.getActions()).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "error": Object {
+              "error": [Error: something unexpected happened on the server],
+            },
+            "type": "SET_COHORT_SCENARIO_PARTNERING_ERROR",
+          },
+        ]
+      `);
+    });
+  });
+});

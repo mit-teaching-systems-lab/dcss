@@ -1,0 +1,551 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Join as persona when partnering is set to "BOTH" 1`] = `
+<DocumentFragment>
+  <p
+    tabindex="0"
+  >
+    How do you want to partner?
+  </p>
+  <form
+    class="ui form"
+  >
+    <div
+      class="field"
+    >
+      <div
+        class="ui checked radio checkbox"
+      >
+        <input
+          data-testid="roomaccess"
+          id="yes"
+          name="isOpen"
+          tabindex="0"
+          type="radio"
+          value="yes"
+        />
+        <label
+          for="yes"
+        >
+          Let anyone in my cohort join.
+        </label>
+      </div>
+    </div>
+    <div
+      class="field"
+    >
+      <div
+        class="ui checked radio checkbox"
+      >
+        <input
+          checked=""
+          data-testid="roomaccess"
+          id="no"
+          name="isOpen"
+          tabindex="0"
+          type="radio"
+          value="no"
+        />
+        <label
+          for="no"
+        >
+          I will invite participants.
+        </label>
+      </div>
+    </div>
+  </form>
+  <div>
+    <button>
+      MOCK ROLE A BUTTON
+    </button>
+  </div>
+  <div>
+    <p>
+      <strong>
+        A
+      </strong>
+    </p>
+    <p>
+      Some description of "A"
+    </p>
+  </div>
+  <div>
+    <button>
+      MOCK ROLE B BUTTON
+    </button>
+  </div>
+  <div>
+    <p>
+      <strong>
+        B
+      </strong>
+    </p>
+    <p>
+      Some description of "B"
+    </p>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Join as persona when partnering is set to "BOTH" 2`] = `
+<DocumentFragment>
+  <p
+    tabindex="0"
+  >
+    How do you want to partner?
+  </p>
+  <form
+    class="ui form"
+  >
+    <div
+      class="field"
+    >
+      <div
+        class="ui checked radio checkbox"
+      >
+        <input
+          data-testid="roomaccess"
+          id="yes"
+          name="isOpen"
+          tabindex="0"
+          type="radio"
+          value="yes"
+        />
+        <label
+          for="yes"
+        >
+          Let anyone in my cohort join.
+        </label>
+      </div>
+    </div>
+    <div
+      class="field"
+    >
+      <div
+        class="ui checked radio checkbox"
+      >
+        <input
+          checked=""
+          data-testid="roomaccess"
+          id="no"
+          name="isOpen"
+          tabindex="0"
+          type="radio"
+          value="no"
+        />
+        <label
+          for="no"
+        >
+          I will invite participants.
+        </label>
+      </div>
+    </div>
+  </form>
+  <div>
+    <button>
+      MOCK ROLE A BUTTON
+    </button>
+  </div>
+  <div>
+    <p>
+      <strong>
+        A
+      </strong>
+    </p>
+    <p>
+      Some description of "A"
+    </p>
+  </div>
+  <div>
+    <button>
+      MOCK ROLE B BUTTON
+    </button>
+  </div>
+  <div>
+    <p>
+      <strong>
+        B
+      </strong>
+    </p>
+    <p>
+      Some description of "B"
+    </p>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Join as persona when partnering is set to "BOTH" 3`] = `
+<DocumentFragment>
+  <p
+    tabindex="0"
+  >
+    How do you want to partner?
+  </p>
+  <form
+    class="ui form"
+  >
+    <div
+      class="field"
+    >
+      <div
+        class="ui checked radio checkbox"
+      >
+        <input
+          data-testid="roomaccess"
+          id="yes"
+          name="isOpen"
+          tabindex="0"
+          type="radio"
+          value="yes"
+        />
+        <label
+          for="yes"
+        >
+          Let anyone in my cohort join.
+        </label>
+      </div>
+    </div>
+    <div
+      class="field"
+    >
+      <div
+        class="ui checked radio checkbox"
+      >
+        <input
+          checked=""
+          data-testid="roomaccess"
+          id="no"
+          name="isOpen"
+          tabindex="0"
+          type="radio"
+          value="no"
+        />
+        <label
+          for="no"
+        >
+          I will invite participants.
+        </label>
+      </div>
+    </div>
+  </form>
+  <div>
+    <button>
+      MOCK ROLE A BUTTON
+    </button>
+  </div>
+  <div>
+    <p>
+      <strong>
+        A
+      </strong>
+    </p>
+    <p>
+      Some description of "A"
+    </p>
+  </div>
+  <div>
+    <button>
+      MOCK ROLE B BUTTON
+    </button>
+  </div>
+  <div>
+    <p>
+      <strong>
+        B
+      </strong>
+    </p>
+    <p>
+      Some description of "B"
+    </p>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Join as persona when partnering is set to "BOTH" 6`] = `
+<DocumentFragment>
+  <p
+    tabindex="0"
+  >
+    How do you want to partner?
+  </p>
+  <form
+    class="ui form"
+  >
+    <div
+      class="field"
+    >
+      <div
+        class="ui checked radio checkbox"
+      >
+        <input
+          data-testid="roomaccess"
+          id="yes"
+          name="isOpen"
+          tabindex="0"
+          type="radio"
+          value="yes"
+        />
+        <label
+          for="yes"
+        >
+          Let anyone in my cohort join.
+        </label>
+      </div>
+    </div>
+    <div
+      class="field"
+    >
+      <div
+        class="ui checked radio checkbox"
+      >
+        <input
+          checked=""
+          data-testid="roomaccess"
+          id="no"
+          name="isOpen"
+          tabindex="0"
+          type="radio"
+          value="no"
+        />
+        <label
+          for="no"
+        >
+          I will invite participants.
+        </label>
+      </div>
+    </div>
+  </form>
+  <div>
+    <button>
+      MOCK ROLE A BUTTON
+    </button>
+  </div>
+  <div>
+    <p>
+      <strong>
+        A
+      </strong>
+    </p>
+    <p>
+      Some description of "A"
+    </p>
+  </div>
+  <div>
+    <button>
+      MOCK ROLE B BUTTON
+    </button>
+  </div>
+  <div>
+    <p>
+      <strong>
+        B
+      </strong>
+    </p>
+    <p>
+      Some description of "B"
+    </p>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Join as persona when partnering is set to "BOTH" 7`] = `
+<DocumentFragment>
+  <p
+    tabindex="0"
+  >
+    How do you want to partner?
+  </p>
+  <form
+    class="ui form"
+  >
+    <div
+      class="field"
+    >
+      <div
+        class="ui checked radio checkbox"
+      >
+        <input
+          data-testid="roomaccess"
+          id="yes"
+          name="isOpen"
+          tabindex="0"
+          type="radio"
+          value="yes"
+        />
+        <label
+          for="yes"
+        >
+          Let anyone in my cohort join.
+        </label>
+      </div>
+    </div>
+    <div
+      class="field"
+    >
+      <div
+        class="ui checked radio checkbox"
+      >
+        <input
+          checked=""
+          data-testid="roomaccess"
+          id="no"
+          name="isOpen"
+          tabindex="0"
+          type="radio"
+          value="no"
+        />
+        <label
+          for="no"
+        >
+          I will invite participants.
+        </label>
+      </div>
+    </div>
+  </form>
+  <div>
+    <button>
+      MOCK ROLE A BUTTON
+    </button>
+  </div>
+  <div>
+    <p>
+      <strong>
+        A
+      </strong>
+    </p>
+    <p>
+      Some description of "A"
+    </p>
+  </div>
+  <div>
+    <button>
+      MOCK ROLE B BUTTON
+    </button>
+  </div>
+  <div>
+    <p>
+      <strong>
+        B
+      </strong>
+    </p>
+    <p>
+      Some description of "B"
+    </p>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Join as persona when partnering is set to "CLOSED" 1`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <div>
+      <button>
+        MOCK ROLE 
+        A
+         BUTTON
+      </button>
+    </div>
+    <div>
+      <p>
+        <strong>
+          A
+        </strong>
+      </p>
+      <p>
+        Some description of \\"A\\"
+      </p>
+    </div>
+    <div>
+      <button>
+        MOCK ROLE 
+        B
+         BUTTON
+      </button>
+    </div>
+    <div>
+      <p>
+        <strong>
+          B
+        </strong>
+      </p>
+      <p>
+        Some description of \\"B\\"
+      </p>
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`Join as persona when partnering is set to "OPEN" 1`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <div>
+      <button>
+        MOCK ROLE 
+        A
+         BUTTON
+      </button>
+    </div>
+    <div>
+      <p>
+        <strong>
+          A
+        </strong>
+      </p>
+      <p>
+        Some description of \\"A\\"
+      </p>
+    </div>
+    <div>
+      <button>
+        MOCK ROLE 
+        B
+         BUTTON
+      </button>
+    </div>
+    <div>
+      <p>
+        <strong>
+          B
+        </strong>
+      </p>
+      <p>
+        Some description of \\"B\\"
+      </p>
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`Render 1 1 1`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <div>
+      <button>
+        MOCK ROLE 
+        Participant
+         BUTTON
+      </button>
+    </div>
+    <div>
+      <p>
+        <strong>
+          Participant
+        </strong>
+      </p>
+      <p>
+        The default user participating in a single person scenario.
+      </p>
+    </div>
+  </div>
+</body>"
+`;

@@ -446,7 +446,8 @@ beforeEach(() => {
           }
         }
       }
-    }
+    },
+    partnering: { 99: 1 }
   };
   persona = {
     id: 2,
@@ -617,6 +618,31 @@ test('Render 2 1', async done => {
   const Component = JoinAsButton;
   const props = {
     ...commonProps,
+    className: '',
+    cohort,
+    persona,
+    scenario
+  };
+
+  const state = {
+    ...commonState
+  };
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  await render(<ConnectedRoutedComponent {...props} />);
+  expect(serialize()).toMatchSnapshot();
+
+  done();
+});
+/** @GENERATED: END **/
+
+/** @GENERATED: BEGIN **/
+test('Render 3 1', async done => {
+  const Component = JoinAsButton;
+  const props = {
+    ...commonProps,
+    isOpen: true,
     className: '',
     cohort,
     persona,

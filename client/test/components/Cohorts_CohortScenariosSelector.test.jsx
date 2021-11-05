@@ -761,7 +761,8 @@ beforeEach(() => {
             }
           }
         }
-      }
+      },
+      partnering: { 99: 1 }
     };
     dispatch({ type: GET_COHORT_SUCCESS, cohort });
     return cohort;
@@ -1296,53 +1297,9 @@ test('Save selected scenarios', async done => {
   userEvent.click(screen.getByText('Save'));
 
   expect(cohortActions.setCohortScenarios).toHaveBeenCalledTimes(1);
-  expect(cohortActions.setCohortScenarios.mock.calls[0]).toMatchInlineSnapshot(`
-    Array [
-      Object {
-        "created_at": "2020-02-31T14:01:02.656Z",
-        "deleted_at": null,
-        "id": 2,
-        "is_archived": false,
-        "name": "A New Cohort That Exists In Bootstrap State For Testing",
-        "roles": Array [
-          "super",
-          "facilitator",
-        ],
-        "runs": Array [],
-        "scenarios": Array [
-          42,
-          99,
-        ],
-        "updated_at": "2021-01-15T14:01:02.656Z",
-        "users": Array [
-          Object {
-            "email": "super@email.com",
-            "id": 999,
-            "is_anonymous": false,
-            "is_super": true,
-            "roles": Array [
-              "super",
-              "facilitator",
-            ],
-            "username": "super",
-          },
-        ],
-        "usersById": Object {
-          "999": Object {
-            "email": "super@email.com",
-            "id": 999,
-            "is_anonymous": false,
-            "is_super": true,
-            "roles": Array [
-              "super",
-              "facilitator",
-            ],
-            "username": "super",
-          },
-        },
-      },
-    ]
-  `);
+  expect(
+    cohortActions.setCohortScenarios.mock.calls[0]
+  ).toMatchInlineSnapshot();
 
   done();
 });

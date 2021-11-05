@@ -446,7 +446,8 @@ beforeEach(() => {
           }
         }
       }
-    }
+    },
+    partnering: { 99: 1 }
   };
 
   cohortActions.setCohort.mockImplementation((id, params) => async dispatch => {
