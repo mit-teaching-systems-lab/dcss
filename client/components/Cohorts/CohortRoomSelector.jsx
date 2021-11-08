@@ -10,7 +10,6 @@ import {
   joinChat,
   setChat
 } from '@actions/chat';
-import Chat from '@components/Chat';
 import Lobby from '@components/Lobby';
 import {
   Button,
@@ -33,7 +32,6 @@ import withSocket, {
   RUN_CHAT_LINK
 } from '@hoc/withSocket';
 import Identity from '@utils/Identity';
-import Layout from '@utils/Layout';
 import Payload from '@utils/Payload';
 import Storage from '@utils/Storage';
 import './Cohort.css';

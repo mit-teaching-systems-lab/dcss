@@ -1032,6 +1032,10 @@ const mapStateToProps = (state, ownProps) => {
     )
     : {};
 
+
+  console.log("chat?", chat);
+
+
   return {
     chat,
     cohort,
