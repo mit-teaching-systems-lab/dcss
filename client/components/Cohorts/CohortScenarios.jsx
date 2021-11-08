@@ -39,6 +39,7 @@ import {
 import Identity from '@utils/Identity';
 import Layout from '@utils/Layout';
 import Moment from '@utils/Moment';
+import Partnering from '@utils/Partnering';
 import Storage from '@utils/Storage';
 
 import './Cohort.css';
@@ -442,7 +443,7 @@ export class CohortScenarios extends React.Component {
               );
 
               const selectedPartnering = this.props.partneringById[
-                cohort.partnering[scenario.id]
+                cohort.partnering[scenario.id] || Partnering.BOTH
               ];
 
               const partneringControls =
