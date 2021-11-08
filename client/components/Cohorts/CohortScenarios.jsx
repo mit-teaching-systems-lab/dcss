@@ -533,8 +533,13 @@ export class CohortScenarios extends React.Component {
                                     persona
                                   );
 
+
                                   // This might not be necessary
                                   await fetchChats({ chat });
+
+
+                                  console.log("chat to open in lobby", chat);
+
 
                                   // Finally, if the join was successful...
                                   if (joined) {
