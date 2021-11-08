@@ -13,47 +13,6 @@ import Identity from '@utils/Identity';
 import Invites from '@utils/Invites';
 import Moment from '@utils/Moment';
 
-// export const INVITE_STATUS_PENDING = 1;
-// export const INVITE_STATUS_CANCEL = 2;
-// export const INVITE_STATUS_DECLINE = 3;
-// export const INVITE_STATUS_ACCEPT = 4;
-
-// export const INVITE_STATUS_PENDING_NAME = 'pending';
-// export const INVITE_STATUS_CANCEL_NAME = 'canceled';
-// export const INVITE_STATUS_DECLINE_NAME = 'declined';
-// export const INVITE_STATUS_ACCEPT_NAME = 'accepted';
-
-// const INVITE_STATUS_MAP = {
-//   pending: 1,
-//   canceled: 2,
-//   declined: 3,
-//   accepted: 4
-// };
-
-// const INVITE_STATUS_CANCELED_MESSAGE = 'This invitation has been canceled.';
-// const INVITE_STATUS_DECLINED_MESSAGE = 'This invitation has been declined.';
-// const INVITE_STATUS_ACCEPTED_MESSAGE = 'This invitation has been accepted.';
-
-// const INVITE_STATUS_MESSAGES_MAP = {
-//   '1': {
-//     received:
-//       'This invitation is pending. You may Accept, Decline or leave it unchanged.',
-//     sent: 'This invitation is pending. You may Cancel it or leave it unchanged'
-//   },
-//   '2': {
-//     received: INVITE_STATUS_CANCELED_MESSAGE,
-//     sent: INVITE_STATUS_CANCELED_MESSAGE
-//   },
-//   '3': {
-//     received: INVITE_STATUS_DECLINED_MESSAGE,
-//     sent: INVITE_STATUS_DECLINED_MESSAGE
-//   },
-//   '4': {
-//     received: INVITE_STATUS_ACCEPTED_MESSAGE,
-//     sent: INVITE_STATUS_ACCEPTED_MESSAGE
-//   }
-// };
-
 const Invite = Comment;
 
 export const makeAcceptedInviteRedirectPath = invite => {
@@ -61,8 +20,17 @@ export const makeAcceptedInviteRedirectPath = invite => {
     ? `/cohort/${Identity.toHash(invite.cohort_id)}`
     : '';
   const redirectRunPart = `/run/${invite.scenario_id}`;
+  let redirectChatPart = `/code/${invite.code}`;
+
+  if (invite.chat_id) {
+    const chatIdHash = Identity.toHash(invite.chat_id);
+    if (chatIdHash) {
+      redirectChatPart = `/chat/${chatIdHash}`;
+    }
+  }
   // const redirectChatPart = `/chat/${Identity.toHash(invite.chat_id)}`;
-  const redirectChatPart = `/code/${invite.code}`;
+  // const redirectChatPart = `/code/${invite.code}`;
+
   const redirectSlidePart = `/slide/0`;
   return [
     redirectCohortPart,
@@ -137,6 +105,8 @@ class UserInvitesList extends Component {
   }
 
   onInviteChange(event, { value: invite }) {
+    console.log("onInviteChange?", invite);
+
     if (invite.status === 'accepted') {
       const acceptUrl = `/invite/${Invites.INVITE_STATUS_ACCEPT}/${invite.code}`;
       const redirect = makeAcceptedInviteRedirectPath(invite);

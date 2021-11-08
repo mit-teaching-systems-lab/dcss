@@ -6,7 +6,6 @@ import { getInvites, setInvite } from '@actions/invite';
 import { getUsers } from '@actions/users';
 import Loading from '@components/Loading';
 import Username from '@components/User/Username';
-import { SCENARIO_IS_PUBLIC } from '@components/Scenario/constants';
 import {
   checkNotificationRules,
   createHTML,

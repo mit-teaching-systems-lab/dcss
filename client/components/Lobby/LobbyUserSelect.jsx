@@ -13,7 +13,7 @@ import {
   joinChat
 } from '@actions/chat';
 import { getInvites, setInvite } from '@actions/invite';
-
+import { makeCohortScenarioChatJoinPath } from '@components/Cohorts/CohortRoomSelector';
 import LobbyConfirmationDialog from '@components/Lobby/LobbyConfirmationDialog';
 import {
   Button,
@@ -72,6 +72,14 @@ class LobbyUserSelect extends Component {
     this.state = {
       isReady: false,
       confirmation: {
+        // This is used AFTER the invites are sent, to inform the
+        // user that invites were sent. isAffirmed will be set
+        // to "false" when the user clicks "Yes" to send invites.
+        // isOpen will remain "true". This will cause the affirmation
+        // display to be shown, which prompts the user to acknowledge
+        // that the invites have been sent. Once acknowledged,
+        // isAffirmed is set to "true" and isOpen is set to "false".
+        isAffirmed: true,
         isOpen: false
         /*
         props: {
@@ -359,8 +367,8 @@ class LobbyUserSelect extends Component {
 
           const listContentStyle = Layout.isForMobile()
             ? {
-                marginBottom: '0.5em'
-              }
+              marginBottom: '0.5em'
+            }
             : {};
           const nameAndButtonContent = (
             <List.Content
@@ -392,7 +400,7 @@ class LobbyUserSelect extends Component {
         <List.Item>{searchWidget}</List.Item>
       </List>
     ) : /* istanbul ignore next */
-    null;
+      null;
   }
 
   onResultSelect(event, { result }) {
@@ -443,6 +451,8 @@ class LobbyUserSelect extends Component {
       );
 
       const confirmation = {
+        // See explanation in constructor's state declaration
+        isAffirmed: true,
         isOpen: false
       };
 
@@ -575,13 +585,17 @@ class LobbyUserSelect extends Component {
       });
 
       const sent = [];
-      const { chat, user } = this.props;
+      const { chat, cohort, scenario, user } = this.props;
+      let invitationsSent = 0;
+      let rolesSet = 0;
 
       for (let selection of this.state.selected) {
+        rolesSet++;
         if (selection.user.id === user.id) {
           await this.props.joinChat(chat.id, selection.persona);
         } else {
           await this.props.createChatInvite(chat.id, selection);
+          invitationsSent++;
         }
 
         sent.push(selection.user.id);
@@ -595,9 +609,52 @@ class LobbyUserSelect extends Component {
       await this.props.getInvites();
       await this.getChatUsers();
 
+      const invitationsSentPlural = pluralize('invitation', invitationsSent);
+      const rolesSetPlural = pluralize('role', rolesSet);
+
       this.setState({
+        // See explanation in constructor's state declaration
         confirmation: {
-          isOpen: false
+          isAffirmed: false,
+          isOpen: true,
+          props: {
+            header: 'Success',
+            content: (
+              <Grid padded className="l__invite l__confirmation">
+                <Grid.Row>
+                  <Grid.Column>
+                    You sent {invitationsSent} {invitationsSentPlural}, and set{' '}
+                    {rolesSet} {rolesSetPlural} (including your own).
+                  </Grid.Column>
+                </Grid.Row>
+              </Grid>
+            ),
+            buttons: {
+              primary: {
+                content: 'Join room',
+                disabled: false,
+                onClick: () => {
+                  location.href = makeCohortScenarioChatJoinPath(
+                    cohort,
+                    scenario,
+                    chat
+                  );
+                }
+              },
+              secondary: {
+                content: 'Back to invites',
+                disabled: false,
+                onClick: () => {
+                  this.setState({
+                    confirmation: {
+                      isAffirmed: true,
+                      isOpen: false
+                    }
+                  });
+                }
+              }
+            }
+          }
         }
       });
 
@@ -606,7 +663,9 @@ class LobbyUserSelect extends Component {
 
     const secondaryOnClick = () => {
       this.setState({
+        // See explanation in constructor's state declaration
         confirmation: {
+          isAffirmed: true,
           isOpen: false
         }
       });
@@ -615,6 +674,8 @@ class LobbyUserSelect extends Component {
     this.setState({
       confirmation: {
         key: Identity.key(sent),
+        // See explanation in constructor's state declaration
+        isAffirmed: true,
         isOpen: true,
         props: {
           header,
@@ -713,11 +774,11 @@ class LobbyUserSelect extends Component {
     let remainingMessage = `${remainingCount} ${pluralRemaining} unassigned.`;
     let remainingTextProps = Layout.isForMobile()
       ? {
-          style: {
-            display: 'block',
-            marginBottom: '0.5em'
-          }
+        style: {
+          display: 'block',
+          marginBottom: '0.5em'
         }
+      }
       : {};
 
     if (remainingCount === 0) {
@@ -769,11 +830,11 @@ class LobbyUserSelect extends Component {
 
     const sendInvitesButtonConditionalProps = Layout.isNotForMobile()
       ? {
-          floated: 'right'
-        }
+        floated: 'right'
+      }
       : {
-          fluid: true
-        };
+        fluid: true
+      };
 
     const sendInvitesButtonProps = {
       ...sendInvitesButtonConditionalProps,
@@ -961,12 +1022,12 @@ const mapStateToProps = (state, ownProps) => {
 
   const personasInUseById = chat
     ? chat.users.reduce(
-        (accum, user) => ({
-          ...accum,
-          [user.persona_id]: user
-        }),
-        {}
-      )
+      (accum, user) => ({
+        ...accum,
+        [user.persona_id]: user
+      }),
+      {}
+    )
     : {};
 
   return {
