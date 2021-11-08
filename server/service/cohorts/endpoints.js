@@ -16,17 +16,17 @@ async function createCohort(req, res) {
   const is_open = false;
   const user_id = req.session.user.id;
   const { name } = req.body;
-  const cohortCreated = await db.createCohort(name, user_id);
-  const chatCreated = await chatsdb.createChat(
-    user_id,
-    scenario_id,
-    cohortCreated.id,
-    is_open
-  );
-  const chat = await chatsdb.joinChat(chatCreated.id, user_id);
-  const cohort = await db.setCohort(cohortCreated.id, {
-    chat_id: chatCreated.id
-  });
+  const cohort = await db.createCohort(name, user_id);
+  // const chatCreated = await chatsdb.createChat(
+  //   user_id,
+  //   scenario_id,
+  //   cohortCreated.id,
+  //   is_open
+  // );
+  // const chat = await chatsdb.joinChat(chatCreated.id, user_id);
+  // const cohort = await db.setCohort(cohortCreated.id, {
+  //   chat_id: chatCreated.id
+  // });
   res.json({ cohort });
 }
 
