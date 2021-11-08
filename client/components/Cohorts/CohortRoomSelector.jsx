@@ -94,9 +94,9 @@ export class CohortRoomSelector extends React.Component {
     const { cohort } = this.props;
 
     /* istanbul ignore else */
-    if (!cohort.chat.usersById[this.props.user.id]) {
-      await this.props.joinChat(cohort.chat.id, null);
-    }
+    // if (!cohort.chat.usersById[this.props.user.id]) {
+    //   await this.props.joinChat(cohort.chat.id, null);
+    // }
 
     const { lobby } = this.state;
 
@@ -434,6 +434,10 @@ export class CohortRoomSelector extends React.Component {
         allRolesArePendingOrAccepted = true;
       }
     }
+
+    console.log("chat", chat);
+    console.log("this.props.chat", this.props.chat);
+    console.log("this.props.lobby.chat", this.props.lobby.chat);
 
     if (user.id === chat.host_id) {
       host = chat.usersById[user.id];
