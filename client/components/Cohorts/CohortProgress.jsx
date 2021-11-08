@@ -827,7 +827,11 @@ export class CohortProgress extends React.Component {
                                       <strong>
                                         <Username user={other} />
                                       </strong>{' '}
-                                      as <strong>{persona.name}</strong>{' '}
+                                      {persona ? (
+                                        <Fragment>
+                                          as <strong>{persona.name}</strong>{' '}
+                                        </Fragment>
+                                      ) : null}
                                     </Fragment>
                                   );
                                 })}
