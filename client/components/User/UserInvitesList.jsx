@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { getInvites, setInvite } from '@actions/invite';
+import { setInvite } from '@actions/invite';
 import { getScenariosByStatus } from '@actions/scenario';
 import { SCENARIO_IS_PUBLIC } from '@components/Scenario/constants';
 import { Button, Comment, Text } from '@components/UI';
@@ -284,7 +284,6 @@ class UserInvitesList extends Component {
 
 UserInvitesList.propTypes = {
   cohortsById: PropTypes.object,
-  getInvites: PropTypes.func,
   getScenariosByStatus: PropTypes.func,
   history: PropTypes.shape({
     push: PropTypes.func.isRequired
@@ -327,7 +326,6 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  getInvites: () => dispatch(getInvites()),
   setInvite: (id, params) => dispatch(setInvite(id, params)),
   getScenariosByStatus: status => dispatch(getScenariosByStatus(status))
 });
