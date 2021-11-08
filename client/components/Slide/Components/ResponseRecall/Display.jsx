@@ -98,6 +98,8 @@ class Display extends Component {
     await this.refresh();
 
     if (
+      this.props.chat &&
+      this.props.chat.id &&
       this.props.recallSharedWithRoles &&
       this.props.recallSharedWithRoles.length
     ) {
