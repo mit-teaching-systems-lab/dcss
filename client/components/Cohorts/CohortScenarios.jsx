@@ -59,10 +59,10 @@ export class CohortScenarios extends React.Component {
 
     this.state = {
       isReady: false,
-      edit: {
+      scenarioSelector: {
         isOpen: false
       },
-      room: {
+      roomSelector: {
         isOpen: false,
         scenario: null,
         lobby: null
@@ -125,11 +125,11 @@ export class CohortScenarios extends React.Component {
   }
 
   onEditScenariosClick() {
-    const edit = {
-      isOpen: !this.state.edit.isOpen
+    const scenarioSelector = {
+      isOpen: !this.state.scenarioSelector.isOpen
     };
     this.setState({
-      edit
+      scenarioSelector
     });
   }
 
@@ -175,13 +175,13 @@ export class CohortScenarios extends React.Component {
       </p>
     );
 
-    const editScenariosButton = isFacilitator ? (
+    const scenarioSelectorButton = isFacilitator ? (
       <Button onClick={onEditScenariosClick}>Add or remove scenarios</Button>
     ) : null;
 
     const onCohortScenariosSelectorClose = () => {
       this.setState({
-        edit: {
+        scenarioSelector: {
           isOpen: false
         }
       });
@@ -202,7 +202,7 @@ export class CohortScenarios extends React.Component {
 
     const onCohortRoomSelectorClose = () => {
       this.setState({
-        room: {
+        roomSelector: {
           isOpen: false,
           scenario: null,
           lobby: null
@@ -227,14 +227,14 @@ export class CohortScenarios extends React.Component {
           <Grid.Row>
             <Grid.Column width={8}>{scenariosInCohortHeader}</Grid.Column>
             <Grid.Column textAlign="right" width={8}>
-              {isFacilitator ? editScenariosButton : null}
+              {isFacilitator ? scenarioSelectorButton : null}
             </Grid.Column>
           </Grid.Row>
           {/*
           isFacilitator ? (
             <Grid.Row className="c__grid-element-unpadded">
               <Grid.Column>
-                {editScenariosButton}
+                {scenarioSelectorButton}
               </Grid.Column>
             </Grid.Row>
             ) : null
@@ -345,7 +345,7 @@ export class CohortScenarios extends React.Component {
               // const multiCardHeaderProps = {
               //   onClick: () => {
               //     this.setState({
-              //       room: {
+              //       roomSelector: {
               //         isOpen: true
               //       }
               //     });
@@ -510,12 +510,23 @@ export class CohortScenarios extends React.Component {
                                 onClick={async data => {
                                   const { persona, isOpen, scenario } = data;
 
+                                  // This will create a chat for the scenario
+                                  // that is either open or closed. It returns
+                                  // the newly created chat object from the
+                                  // server, which is also synced to the local
+                                  // data store.
                                   const chat = await createChat(
                                     scenario,
                                     cohort,
                                     isOpen
                                   );
 
+                                  // Using the newly created chat object,
+                                  // join the user to the chat with a
+                                  // specific persona/role. This returns the
+                                  // chat object if the join was successful
+                                  // ()or null if it was not), which is also
+                                  // synced to the local data store.
                                   const joined = await joinChat(
                                     chat.id,
                                     persona
@@ -524,10 +535,20 @@ export class CohortScenarios extends React.Component {
                                   // This might not be necessary
                                   await fetchChats({ chat });
 
+                                  // Finally, if the join was successful...
                                   if (joined) {
                                     this.setState({
-                                      room: {
+                                      // Setting room.isOpen to true,
+                                      // with a specific "scenario",
+                                      // pop open the "room selector".
+                                      roomSelector: {
                                         isOpen: true,
+                                        // Here we tell the "room selector"
+                                        // to open in "lobby view", where
+                                        // partners are selected, roles are
+                                        // assigned and invites are sent, for
+                                        // the specified chat object (which is the
+                                        // one that was just created and joined)
                                         lobby: {
                                           isOpen: true,
                                           chat
@@ -554,7 +575,7 @@ export class CohortScenarios extends React.Component {
                                   location.href = url;
                                 } else {
                                   this.setState({
-                                    room: {
+                                    roomSelector: {
                                       isOpen: true,
                                       lobby: null,
                                       scenario
@@ -579,7 +600,7 @@ export class CohortScenarios extends React.Component {
                                 size={gotoMyRoomButtonSize}
                                 onClick={() => {
                                   this.setState({
-                                    room: {
+                                    roomSelector: {
                                       isOpen: true,
                                       lobby: {
                                         isOpen: true,
@@ -662,15 +683,15 @@ export class CohortScenarios extends React.Component {
           </p>
         )}
 
-        {this.state.edit.isOpen ? (
+        {this.state.scenarioSelector.isOpen ? (
           <CohortScenariosSelector {...cohortScenariosSelectorProps} />
         ) : null}
 
-        {this.state.room.isOpen ? (
+        {this.state.roomSelector.isOpen ? (
           <CohortRoomSelector
             {...cohortScenarioRoomProps}
-            lobby={this.state.room.lobby}
-            scenario={this.state.room.scenario}
+            lobby={this.state.roomSelector.lobby}
+            scenario={this.state.roomSelector.scenario}
           />
         ) : null}
 
