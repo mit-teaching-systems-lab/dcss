@@ -70,6 +70,13 @@ export let getRuns = () => async dispatch => {
 };
 
 export let setRun = (id, data) => async dispatch => {
+  if (!id) {
+    const error = {
+      message: 'Update run terminated: missing run id.'
+    };
+    dispatch({ type: SET_RUN_ERROR, error });
+    return;
+  }
   dispatch({ type: SET_RUN, run: { id, ...data } });
   try {
     const body = JSON.stringify(data);

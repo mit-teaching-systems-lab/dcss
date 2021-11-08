@@ -9,7 +9,7 @@ import {
 } from '@actions/chat';
 import { linkRunToCohort } from '@actions/cohort';
 import { getUser } from '@actions/user';
-import { getRun, setRun } from '@actions/run';
+import { getRun } from '@actions/run';
 import { getScenario } from '@actions/scenario';
 import { Button, Header, Icon, Modal } from '@components/UI';
 import withSocket, {
@@ -196,7 +196,6 @@ JoinAs.propTypes = {
   scenario: PropTypes.object,
   scenarioId: PropTypes.node,
   getRun: PropTypes.func,
-  setRun: PropTypes.func,
   socket: PropTypes.object,
   user: PropTypes.object
 };
@@ -246,7 +245,6 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => ({
   getLinkedChatUsersByChatId: id => dispatch(getLinkedChatUsersByChatId(id)),
   getRun: (...params) => dispatch(getRun(...params)),
-  setRun: (...params) => dispatch(setRun(...params)),
   joinChat: (...params) => dispatch(joinChat(...params)),
   linkRunToChat: (...params) => dispatch(linkRunToChat(...params)),
   linkRunToCohort: (...params) => dispatch(linkRunToCohort(...params)),

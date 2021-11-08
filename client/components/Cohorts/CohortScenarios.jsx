@@ -9,15 +9,14 @@ import {
   joinChat,
   setChat
 } from '@actions/chat';
-import { getPartnering } from '@actions/partnering';
-import { setRun } from '@actions/run';
 import {
   getCohort,
   getCohortScenarios,
   setCohortScenarios,
   setCohortScenarioPartnering
 } from '@actions/cohort';
-import { getRuns } from '@actions/run';
+import { getPartnering } from '@actions/partnering';
+import { getRuns, setRun } from '@actions/run';
 import { getUsers } from '@actions/users';
 import JoinAsPersona from '@components/Chat/JoinAsPersona';
 import CohortScenariosSelector from '@components/Cohorts/CohortScenariosSelector';
