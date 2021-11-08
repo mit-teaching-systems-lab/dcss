@@ -536,7 +536,7 @@ const mapStateToProps = (state, ownProps) => {
   const { params } = ownProps.match || { params: {} };
   const { chatsById, cohort, invites, responses, run, user } = state;
   const cohortId = Identity.fromHashOrId(ownProps.cohortId || params.cohortId);
-  const scenarioId = Identity.fromHashOrId(
+  let scenarioId = Identity.fromHashOrId(
     ownProps.scenarioId || params.scenarioId
   );
 
@@ -560,6 +560,11 @@ const mapStateToProps = (state, ownProps) => {
     null;
 
   const chat = chatsById[chatId] || stateChat || null;
+
+  if (!scenarioId) {
+    scenarioId = chat.scenario_id;
+  }
+
   const scenario = state.scenariosById[scenarioId];
   return {
     activeRunSlideIndex: Number(

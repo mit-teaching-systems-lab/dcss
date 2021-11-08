@@ -151,6 +151,8 @@ class LobbyUserSelect extends Component {
       }
     }
 
+    console.log("selected?", selected);
+
     Storage.merge(this.storageKey, { selected });
 
     this.setState({
