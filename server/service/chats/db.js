@@ -573,6 +573,7 @@ exports.getChatsByCohortId = async cohort_id => {
     SELECT *
     FROM chat
     WHERE cohort_id = ${cohort_id}
+    AND ended_at IS NULL
     ORDER BY id ASC
   `);
 
