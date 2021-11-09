@@ -4,7 +4,8 @@ const { sql } = require('../../util/sqlHelpers');
 const db = require('./db');
 const authdb = require('../session/db');
 const cohortdb = require('../cohorts/db');
-const notificationdb = require('../notifications/db');
+// Previously:
+// const notificationdb = require('../notifications/db');
 const scenariodb = require('../scenarios/db');
 
 exports.makeChatInviteNotification = async invite => {
@@ -20,21 +21,24 @@ exports.makeChatInviteNotification = async invite => {
 
     chat.scenario_id = result.rows.length ? result.rows[0].scenario_id : null;
   }
+  const hostname = host.personalname || host.username;
 
   const scenario = chat.scenario_id
     ? await scenariodb.getScenarioById(chat.scenario_id)
     : null;
+
   const cohort = chat.cohort_id
     ? await cohortdb.getCohortById(chat.cohort_id)
     : null;
 
-  const hostname = host.personalname || host.username;
   const persona = scenario
     ? scenario.personas.find(persona => persona.id === invite.persona_id)
     : null;
 
   const asRole = persona ? `, as <strong>${persona.name}</strong>` : '';
-  const inScenario = scenario ? `the scenario <strong>${scenario.title}</strong>${asRole}` : '';
+  const inScenario = scenario
+    ? `the scenario <strong>${scenario.title}</strong>${asRole}`
+    : '';
   const place = cohort
     ? `${inScenario}, which is part of the cohort <strong>${cohort.name}</strong>`
     : inScenario;

@@ -342,7 +342,6 @@ async function getChatInvites(req, res) {
   res.json({ invites });
 }
 
-
 exports.joinChat = asyncMiddleware(joinChat);
 exports.getChats = asyncMiddleware(getChats);
 exports.getChatsByUserId = asyncMiddleware(getChatsByUserId);
