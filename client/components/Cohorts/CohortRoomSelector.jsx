@@ -94,6 +94,10 @@ export class CohortRoomSelector extends React.Component {
     const { cohort } = this.props;
 
     /* istanbul ignore else */
+
+    console.log("CohortRoomSelector componentDidMount", this.props);
+
+
     // if (!cohort.chat.usersById[this.props.user.id]) {
     //   await this.props.joinChat(cohort.chat.id, null);
     // }
