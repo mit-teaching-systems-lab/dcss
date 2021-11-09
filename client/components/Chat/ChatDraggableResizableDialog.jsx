@@ -187,7 +187,6 @@ class ChatDraggableResizableDialog extends Component {
     }
 
     const adjustPositionIfNecessary = node => {
-      // console.log("?");
       let styles = {};
 
       if (node) {
@@ -218,7 +217,7 @@ class ChatDraggableResizableDialog extends Component {
       }
     };
     // <ResizeDetector onResize={() => console.log("resuze")} />
-    // console.log("position?", position);
+    // console.log("position: ", position);
     return (
       <Ref innerRef={adjustPositionIfNecessary}>
         {Layout.isNotForMobile() ? (

@@ -151,8 +151,7 @@ class LobbyUserSelect extends Component {
       }
     }
 
-    console.log("selected?", selected);
-
+    // console.log("selected:", selected);
     Storage.merge(this.storageKey, { selected });
 
     this.setState({
@@ -1032,10 +1031,7 @@ const mapStateToProps = (state, ownProps) => {
     )
     : {};
 
-
-  console.log("chat?", chat);
-
-
+  // console.log("state.chat || ownProps.chat:", chat);
   return {
     chat,
     cohort,

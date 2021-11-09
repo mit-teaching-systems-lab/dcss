@@ -93,11 +93,13 @@ export class CohortRoomSelector extends React.Component {
   async componentDidMount() {
     const { cohort } = this.props;
 
+    // console.log("CohortRoomSelector componentDidMount", this.props);
+
+    //
+    // This was previously used to ensure that the user was joined to the
+    // cohort's own chat room. The problem we encountered was that this
+    // would overwrite the state store with the wrong chat.
     /* istanbul ignore else */
-
-    console.log("CohortRoomSelector componentDidMount", this.props);
-
-
     // if (!cohort.chat.usersById[this.props.user.id]) {
     //   await this.props.joinChat(cohort.chat.id, null);
     // }
@@ -439,9 +441,13 @@ export class CohortRoomSelector extends React.Component {
       }
     }
 
-    console.log("chat", chat);
-    console.log("this.props.chat", this.props.chat);
-    console.log("this.props.lobby.chat", this.props.lobby.chat);
+    if (this.props.chat && this.props.lobby.chat && this.props.chat.id !== this.props.lobby.chat.id) {
+      console.log("chat:", chat);
+      console.log("this.props.chat:", this.props.chat);
+      console.log("this.props.lobby.chat:", this.props.lobby.chat);
+    } else {
+      console.log("Operating on correct chat object.");
+    }
 
     if (user.id === chat.host_id) {
       host = chat.usersById[user.id];

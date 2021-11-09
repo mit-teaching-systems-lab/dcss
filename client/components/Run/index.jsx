@@ -565,9 +565,9 @@ const mapStateToProps = (state, ownProps) => {
     scenarioId = chat.scenario_id;
   }
 
-  console.log("chat", chat);
-  console.log("scenarioId", scenarioId);
-  console.log("state.scenariosById", state.scenariosById);
+  // console.log("chat:", chat);
+  // console.log("scenarioId:", scenarioId);
+  // console.log("state.scenariosById:", state.scenariosById);
 
   const scenario = state.scenariosById[scenarioId];
   return {
