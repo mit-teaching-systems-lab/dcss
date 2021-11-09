@@ -20,17 +20,7 @@ export const makeAcceptedInviteRedirectPath = invite => {
     ? `/cohort/${Identity.toHash(invite.cohort_id)}`
     : '';
   const redirectRunPart = `/run/${invite.scenario_id}`;
-  let redirectChatPart = `/code/${invite.code}`;
-
-  if (invite.chat_id) {
-    const chatIdHash = Identity.toHash(invite.chat_id);
-    if (chatIdHash) {
-      redirectChatPart = `/chat/${chatIdHash}`;
-    }
-  }
-  // const redirectChatPart = `/chat/${Identity.toHash(invite.chat_id)}`;
-  // const redirectChatPart = `/code/${invite.code}`;
-
+  const redirectChatPart = `/code/${invite.code}`;
   const redirectSlidePart = `/slide/0`;
   return [
     redirectCohortPart,
