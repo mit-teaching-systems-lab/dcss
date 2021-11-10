@@ -112,7 +112,7 @@ class ContentSlide extends React.Component {
 
     this.state = {
       isReady: false,
-      confirmation: {
+      runWillEndConfirmation: {
         isOpen: false
       },
       // Provides a reference to compare
@@ -420,9 +420,9 @@ class ContentSlide extends React.Component {
       ? centeredOrMarginOverrideCardClass
       : centeredCardClass;
 
-    const onEndScenarioConfirm = async () => {
+    const onRunEndConfirm = async () => {
       const time = new Date().toISOString();
-      const { chat, run } = this.props;
+      const { chat, run, user } = this.props;
       const url = this.isCohortScenarioRun
         ? `/cohort/${Identity.toHash(this.props.cohort.id)}`
         : `/scenarios`;
@@ -430,9 +430,14 @@ class ContentSlide extends React.Component {
       // Ensure that any pending responses are captured.
       await this.props.onSubmit();
 
+      // This is used by Run to determine who ended the run
+      Storage.set(`run/${run.id}/ender`, {
+        ...user
+      });
+
       // Close the chat for everyone
       if (this.isMultiparticipant) {
-        this.props.setChat(chat.id, {
+        await this.props.setChat(chat.id, {
           deleted_at: time,
           ended_at: time
         });
@@ -441,18 +446,20 @@ class ContentSlide extends React.Component {
       // Close this run (which will prompt other participants to
       // either end or continue alone)
       if (run) {
-        this.props.setRun(run.id, {
+        await this.props.setRun(run.id, {
           ended_at: time
         });
       }
 
       // Redirect to either cohort or scenarios lists
-      this.props.history.push(url);
+      // Previously:
+      // this.props.history.push(url);
+      location.href = url;
     };
 
-    const onEndScenarioClose = () => {
+    const onRunEndClose = () => {
       this.setState({
-        confirmation: {
+        runWillEndConfirmation: {
           isOpen: false
         }
       });
@@ -489,7 +496,7 @@ class ContentSlide extends React.Component {
                         tabIndex={0}
                         onClick={() => {
                           this.setState({
-                            confirmation: {
+                            runWillEndConfirmation: {
                               isOpen: true
                             }
                           });
@@ -562,7 +569,7 @@ class ContentSlide extends React.Component {
             </Card.Content>
           ) : null}
         </Card>
-        {this.state.confirmation.isOpen ? (
+        {this.state.runWillEndConfirmation.isOpen ? (
           <Modal.Accessible open>
             <Modal
               closeIcon
@@ -570,7 +577,7 @@ class ContentSlide extends React.Component {
               aria-modal="true"
               role="dialog"
               size="small"
-              onClose={onEndScenarioClose}
+              onClose={onRunEndClose}
             >
               <Header icon="group" content="End this scenario?" />
               <Modal.Content>
@@ -588,15 +595,11 @@ class ContentSlide extends React.Component {
               </Modal.Content>
               <Modal.Actions>
                 <Button.Group fluid>
-                  <Button
-                    primary
-                    aria-label="Yes"
-                    onClick={onEndScenarioConfirm}
-                  >
+                  <Button primary aria-label="Yes" onClick={onRunEndConfirm}>
                     Yes
                   </Button>
                   <Button.Or />
-                  <Button aria-label="No" onClick={onEndScenarioClose}>
+                  <Button aria-label="No" onClick={onRunEndClose}>
                     No
                   </Button>
                 </Button.Group>

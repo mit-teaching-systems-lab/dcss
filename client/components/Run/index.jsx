@@ -39,7 +39,7 @@ class Run extends Component {
     this.state = {
       isReady: false,
       baseurl: url.replace(/\/slide\/\d.*$/g, ''),
-      confirm: {
+      runHasEndedConfirmation: {
         isOpen: false
       },
       lobby: {
@@ -268,11 +268,20 @@ class Run extends Component {
       return;
     }
 
+    const ender = Storage.get(`run/${this.props.run.id}/ender`, { id: null });
+
+    // If this is not the user that initiated ending the run,
+    // then allow them  to choose to continue alone.
     this.setState({
-      confirm: {
-        isOpen: true
+      runHasEndedConfirmation: {
+        isOpen: true,
+        isEnder: ender.id === this.props.user.id
       }
     });
+
+    if (ender.id) {
+      Storage.delete(`run/${this.props.run.id}/ender`);
+    }
   }
 
   onResponseChange(event, data) {
@@ -331,7 +340,7 @@ class Run extends Component {
       scenario,
       user
     } = this.props;
-    const { isReady, baseurl, confirm, lobby } = this.state;
+    const { isReady, baseurl, runHasEndedConfirmation, lobby } = this.state;
 
     if (!isReady || !this.props.run) {
       return null;
@@ -395,15 +404,13 @@ class Run extends Component {
       );
     }
 
-    if (confirm.isOpen) {
+    if (runHasEndedConfirmation.isOpen) {
       const whereAmIGoing = this.isCohortScenarioRun
         ? 'your cohort'
         : 'the main scenario list';
 
       const cohortIdHash = Identity.toHash(this.props.cohort.id);
-      const onConfirmEnd = () => {
-        // clearTimeout(timeout);
-
+      const onRunEndConfirm = () => {
         this.props.setRun(this.props.run.id, {
           ended_at: new Date().toISOString()
         });
@@ -413,17 +420,37 @@ class Run extends Component {
           : `/scenarios`;
       };
 
-      const onConfirmContinueClose = () => {
+      const onRunContinueClose = () => {
         this.setState({
-          confirm: {
+          runHasEndedConfirmation: {
             isOpen: false
           }
         });
       };
 
-      // const timeout = setTimeout(() => {
-      // onConfirmEnd();
-      // }, 10000);
+      const headerContent = runHasEndedConfirmation.isEnder
+        ? 'You ended this scenario run'
+        : 'This scenario run was ended';
+
+      const modalContent = runHasEndedConfirmation.isEnder ? (
+        <p>
+          You&quot;ve ended this scenario and will now return to {whereAmIGoing}.{' '}
+        </p>
+      ) : (
+        <Fragment>
+          <p>
+            This scenario run has been ended by a participant. Please click
+            &apos;Exit this scenario&quot; to return to {whereAmIGoing}.{' '}
+          </p>
+
+          <p>
+            Alternatively, you may continue, however you may not be able to
+            complete all of the tasks and requirements of this scenario. Click
+            &quot;Continue alone&quot; to stay and attempt to complete the
+            scenario on your own.
+          </p>
+        </Fragment>
+      );
 
       runViewContents = (
         <Modal.Accessible open>
@@ -433,49 +460,47 @@ class Run extends Component {
             aria-modal="true"
             role="dialog"
             size="small"
-            onClose={onConfirmEnd}
+            onClose={onRunEndConfirm}
           >
-            <Header
-              icon="trash alternate outline"
-              content="This scenario run was closed"
-            />
-            <Modal.Content>
-              <p>
-                This scenario run was closed by the host (the person that
-                created it). Please click &quot;Exit this scenario&quot; to
-                return to {whereAmIGoing}.{' '}
-              </p>
-
-              <p>
-                Alternatively, you may continue, however you may not be able to
-                complete all of the tasks and requirements of this scenario.
-                Click &quot;Continue alone&quot; to stay and attempt to complete
-                the scenario on your own.
-              </p>
-            </Modal.Content>
+            <Header icon="trash alternate outline" content={headerContent} />
+            <Modal.Content>{modalContent}</Modal.Content>
             <Modal.Actions>
               <Button.Group fluid widths={2}>
-                <Button
-                  primary
-                  aria-label="Exit this scenario"
-                  onClick={() => {
-                    onConfirmEnd();
-                  }}
-                >
-                  Exit this scenario
-                </Button>
-                <Button.Or />
-                <Button
-                  aria-label="Continue alone"
-                  onClick={() => {
-                    onConfirmContinueClose();
-                  }}
-                >
-                  Continue alone
-                </Button>
+                {!runHasEndedConfirmation.isEnder ? (
+                  <Fragment>
+                    <Button
+                      primary
+                      aria-label="Exit this scenario"
+                      onClick={() => {
+                        onRunEndConfirm();
+                      }}
+                    >
+                      Exit this scenario
+                    </Button>
+                    <Button.Or />
+                    <Button
+                      aria-label="Continue alone"
+                      onClick={() => {
+                        onRunContinueClose();
+                      }}
+                    >
+                      Continue alone
+                    </Button>
+                  </Fragment>
+                ) : (
+                  <Button
+                    primary
+                    aria-label={`Return to ${whereAmIGoing}`}
+                    onClick={() => {
+                      onRunEndConfirm();
+                    }}
+                  >
+                    Return to {whereAmIGoing}
+                  </Button>
+                )}
               </Button.Group>
             </Modal.Actions>
-            <div data-testid="run-confirm-ended" />
+            <div data-testid="run-has-ended-confirmation" />
           </Modal>
         </Modal.Accessible>
       );
