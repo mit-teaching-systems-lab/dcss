@@ -452,9 +452,7 @@ class ContentSlide extends React.Component {
       }
 
       // Redirect to either cohort or scenarios lists
-      // Previously:
-      // this.props.history.push(url);
-      location.href = url;
+      this.props.history.push(url);
     };
 
     const onRunEndClose = () => {
