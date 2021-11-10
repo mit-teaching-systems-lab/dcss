@@ -64,7 +64,7 @@ class LobbyUserSelect extends Component {
     const user = this.props.user;
     const { instruction, selected } = Storage.get(this.storageKey, {
       instruction: {
-        isOpen: true
+        isOpen: false
       },
       selected: [{ user, persona: { id: null } }]
     });
@@ -368,8 +368,8 @@ class LobbyUserSelect extends Component {
 
           const listContentStyle = Layout.isForMobile()
             ? {
-              marginBottom: '0.5em'
-            }
+                marginBottom: '0.5em'
+              }
             : {};
           const nameAndButtonContent = (
             <List.Content
@@ -401,7 +401,7 @@ class LobbyUserSelect extends Component {
         <List.Item>{searchWidget}</List.Item>
       </List>
     ) : /* istanbul ignore next */
-      null;
+    null;
   }
 
   onResultSelect(event, { result }) {
@@ -775,11 +775,11 @@ class LobbyUserSelect extends Component {
     let remainingMessage = `${remainingCount} ${pluralRemaining} unassigned.`;
     let remainingTextProps = Layout.isForMobile()
       ? {
-        style: {
-          display: 'block',
-          marginBottom: '0.5em'
+          style: {
+            display: 'block',
+            marginBottom: '0.5em'
+          }
         }
-      }
       : {};
 
     if (remainingCount === 0) {
@@ -794,9 +794,11 @@ class LobbyUserSelect extends Component {
       };
     }
 
+    const lastRenderTime = Moment(Date.now()).calendar();
     const tally = (
       <Text {...remainingTextProps}>
-        {selected.length} {pluralSelected}, {remainingMessage}
+        {selected.length} {pluralSelected}, {remainingMessage} (list updated{' '}
+        {lastRenderTime})
       </Text>
     );
 
@@ -825,17 +827,17 @@ class LobbyUserSelect extends Component {
         disabled={disabled}
         onClick={onSendInviteClick}
       >
-        Send invites
+        Set roles & send invites
       </Button>
     );
 
     const sendInvitesButtonConditionalProps = Layout.isNotForMobile()
       ? {
-        floated: 'right'
-      }
+          floated: 'right'
+        }
       : {
-        fluid: true
-      };
+          fluid: true
+        };
 
     const sendInvitesButtonProps = {
       ...sendInvitesButtonConditionalProps,
@@ -876,7 +878,6 @@ class LobbyUserSelect extends Component {
     };
 
     const searchWidget = <Search {...searchProps} />;
-    const lastRenderTime = Moment(Date.now()).calendar();
 
     return chat.is_open ? null : (
       <Fragment>
@@ -894,10 +895,9 @@ class LobbyUserSelect extends Component {
                     the available roles.
                   </p>
                   <ol>
-                    <li>Choose your role.</li>
                     <li>
-                      Search and select participants that you want to invite,
-                      and assign their roles as you go.
+                      Search and select partners that you want to invite, and
+                      assign roles as you go.
                     </li>
                     <li>
                       Once all of the available roles are filled, click the{' '}
@@ -922,8 +922,7 @@ class LobbyUserSelect extends Component {
           <Grid.Row>
             <p>
               <strong>
-                Search and select participants that you want to invite (list
-                updated {lastRenderTime}):
+                Search and select participants that you want to invite:
               </strong>
             </p>
             {/*searchWidget*/}
@@ -1023,12 +1022,12 @@ const mapStateToProps = (state, ownProps) => {
 
   const personasInUseById = chat
     ? chat.users.reduce(
-      (accum, user) => ({
-        ...accum,
-        [user.persona_id]: user
-      }),
-      {}
-    )
+        (accum, user) => ({
+          ...accum,
+          [user.persona_id]: user
+        }),
+        {}
+      )
     : {};
 
   // console.log("state.chat || ownProps.chat:", chat);
