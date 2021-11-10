@@ -10,9 +10,9 @@ const composeEnhancers =
 
 const middleware = [thunk];
 
-// if (process.env.NODE_ENV !== 'production' && !process.env.JEST_WORKER_ID) {
-// }
-middleware.push(logger);
+if (process.env.NODE_ENV !== 'production' && !process.env.JEST_WORKER_ID) {
+  middleware.push(logger);
+}
 
 // Previously, this was written as:
 // import rootReducer from '@client/reducers';
