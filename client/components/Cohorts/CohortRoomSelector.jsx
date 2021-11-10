@@ -441,13 +441,13 @@ export class CohortRoomSelector extends React.Component {
       }
     }
 
-    if (this.props.chat && this.props.lobby.chat && this.props.chat.id !== this.props.lobby.chat.id) {
-      console.log("chat:", chat);
-      console.log("this.props.chat:", this.props.chat);
-      console.log("this.props.lobby.chat:", this.props.lobby.chat);
-    } else {
-      console.log("Operating on correct chat object.");
-    }
+    // if (this.props.chat && this.props.lobby.chat && this.props.chat.id !== this.props.lobby.chat.id) {
+    //   console.log("chat:", chat);
+    //   console.log("this.props.chat:", this.props.chat);
+    //   console.log("this.props.lobby.chat:", this.props.lobby.chat);
+    // } else {
+    //   console.log("Operating on correct chat object.");
+    // }
 
     if (user.id === chat.host_id) {
       host = chat.usersById[user.id];
