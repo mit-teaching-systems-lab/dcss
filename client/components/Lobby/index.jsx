@@ -240,10 +240,10 @@ class Lobby extends Component {
                     {...lobbyUserSelectOrWaitingProps}
                     onSelect={this.props.onRoleSelect}
                   />
-                  <LobbyUserWaiting {...lobbyUserSelectOrWaitingProps} />
-                  {this.isCohortScenarioRun ? (
+                  {/* <LobbyUserWaiting {...lobbyUserSelectOrWaitingProps} /> */}
+                  {/* {this.isCohortScenarioRun ? (
                     <LobbyUserOverview {...lobbyUserOverviewProps} />
-                  ) : null}
+                  ) : null} */}
                 </Card.Content>
                 <Card.Content extra>
                   <Button.Group fluid>
@@ -256,10 +256,10 @@ class Lobby extends Component {
         ) : (
           <Fragment>
             <LobbyUserSelect {...lobbyUserSelectOrWaitingProps} />
-            <LobbyUserWaiting {...lobbyUserSelectOrWaitingProps} />
-            {this.isCohortScenarioRun ? (
+            {/* <LobbyUserWaiting {...lobbyUserSelectOrWaitingProps} /> */}
+            {/*this.isCohortScenarioRun ? (
               <LobbyUserOverview {...lobbyUserOverviewProps} />
-            ) : null}
+            ) : null*/}
           </Fragment>
         )}
         <div data-testid="lobby-main" />
