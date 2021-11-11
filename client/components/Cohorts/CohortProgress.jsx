@@ -324,15 +324,15 @@ export class CohortProgress extends React.Component {
     const personaAssignmentSelectDropdownOptions = this.state.assignment
       .scenario
       ? this.state.assignment.scenario.personas.reduce((accum, persona) => {
-          return [
-            ...accum,
-            {
-              key: persona.id,
-              text: persona.name,
-              value: persona.id
-            }
-          ];
-        }, [])
+        return [
+          ...accum,
+          {
+            key: persona.id,
+            text: persona.name,
+            value: persona.id
+          }
+        ];
+      }, [])
       : [];
 
     if (personaAssignmentSelectDropdownOptions.length) {
@@ -373,9 +373,9 @@ export class CohortProgress extends React.Component {
 
     const pluralizedAssignmentButton = this.state.assignment.participants.length
       ? pluralize(
-          'Assign selected participant',
-          this.state.assignment.participants.length
-        )
+        'Assign selected participant',
+        this.state.assignment.participants.length
+      )
       : 'Select participants below';
 
     const personaAssignButton = this.state.assignment.persona ? (
@@ -448,33 +448,33 @@ export class CohortProgress extends React.Component {
 
     const assignmentParticipantsExplanation = this.state.assignment.participants
       .length ? (
-      <Fragment>
-        <p>
+        <Fragment>
+          <p>
           Are you sure you want to send the following {pluralizedParticipant} to{' '}
-          <strong>{this.state.assignment.scenario.title}</strong> as{' '}
-          <strong>{this.state.assignment.persona.name}</strong>?
-        </p>
-        <p>
+            <strong>{this.state.assignment.scenario.title}</strong> as{' '}
+            <strong>{this.state.assignment.persona.name}</strong>?
+          </p>
+          <p>
           If you click <strong>Yes</strong>, {pluralizeThisOrThese} selected{' '}
-          {pluralizedParticipant} will be automatically redirected to await{' '}
-          {pluralizedAMatchingParticipant} to complete the scenario.
-        </p>
-        <List className="cp__list" relaxed="very">
-          {this.state.assignment.participants.map(id => {
-            const participant = this.props.cohort.usersById[id];
-            return (
-              <List.Item key={Identity.key(participant)}>
-                <List.Content>
-                  <List.Header>
-                    <Username user={participant} />
-                  </List.Header>
-                </List.Content>
-              </List.Item>
-            );
-          })}
-        </List>
-      </Fragment>
-    ) : null;
+            {pluralizedParticipant} will be automatically redirected to await{' '}
+            {pluralizedAMatchingParticipant} to complete the scenario.
+          </p>
+          <List className="cp__list" relaxed="very">
+            {this.state.assignment.participants.map(id => {
+              const participant = this.props.cohort.usersById[id];
+              return (
+                <List.Item key={Identity.key(participant)}>
+                  <List.Content>
+                    <List.Header>
+                      <Username user={participant} />
+                    </List.Header>
+                  </List.Content>
+                </List.Item>
+              );
+            })}
+          </List>
+        </Fragment>
+      ) : null;
 
     return (
       <Container fluid className="c__section-container">
@@ -598,7 +598,7 @@ export class CohortProgress extends React.Component {
                 completedOrCurrentScenario = `Current scenario`;
 
                 lastUrlVisited = lastEvent.url || null;
-                lastSlideViewed = lastUrlVisited
+                lastSlideViewed = lastUrlVisited && lastUrlVisited.includes('/slide')
                   ? lastUrlVisited.slice(lastUrlVisited.indexOf('/slide') + 7)
                   : null;
 
@@ -661,10 +661,10 @@ export class CohortProgress extends React.Component {
               participant && participant.id !== this.props.user.id;
             const participantActiveChats = lastScenarioViewed
               ? (this.props.chats || []).filter(
-                  chat =>
-                    chat.usersById[participant.id] &&
+                chat =>
+                  chat.usersById[participant.id] &&
                     chat.scenario_id === lastScenarioViewed.id
-                )
+              )
               : [];
 
             return (
@@ -932,13 +932,11 @@ export class CohortProgress extends React.Component {
                 content={cancelParticipantsPoolHeader}
               />
               <Modal.Content>
-                {cancelParticipantsPoolExplanation}
-
-                {!cancelables.length ? (
-                  <p>
-                    There are no role assignments to cancel.
-                  </p>
-                ) : null}
+                {!cancelables.length && !this.state.cancel.participant ? (
+                  <p>There are no role assignments to cancel.</p>
+                ) : (
+                  cancelParticipantsPoolExplanation
+                )}
                 {!this.state.cancel.participant && cancelables.length ? (
                   <Table celled basic="very">
                     <Table.Header>
