@@ -472,6 +472,13 @@ export class CohortScenarios extends React.Component {
                 description: partneringDescripton
               } = createPartneringTitleAndDescription(selectedPartnering);
 
+              // Subtract 1 for user's own role
+              const otherRolesCount = scenario.personas.length - 1;
+              const partnerPluralized = pluralize('partner', otherRolesCount);
+              const partnerPluralizedArticle = otherRolesCount === 1
+                ? `a ${partnerPluralized}`
+                : partnerPluralized;
+
               return (
                 <Fragment key={`fragment-${key}`}>
                   <Card
@@ -533,13 +540,8 @@ export class CohortScenarios extends React.Component {
                                     persona
                                   );
 
-
                                   // This might not be necessary
                                   await fetchChats({ chat });
-
-
-                                  console.log("chat to open in lobby", chat);
-
 
                                   // Finally, if the join was successful...
                                   if (joined) {
@@ -618,7 +620,7 @@ export class CohortScenarios extends React.Component {
                                 }}
                               >
                                 <Icon className="primary" name="group" />
-                                Invite participants to my room
+                                Invite {partnerPluralizedArticle} to my room
                                 {/*Go to my room&apos;s lobby*/}
                               </Button>
                             ) : null}

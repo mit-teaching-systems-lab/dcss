@@ -198,7 +198,7 @@ export class CohortProgress extends React.Component {
 
     const searchInputAriaLabel = 'Search participants';
     const manageButtonAriaLabel = 'Manage participant access';
-    const cancelButtonAriaLabel = 'Cancel all participant join requests';
+    const cancelButtonAriaLabel = 'Cancel all role assignments';
 
     const searchParticipantsInCohort = (
       <Input
@@ -683,32 +683,6 @@ export class CohortProgress extends React.Component {
                     {pluralize('scenario', cohortScenarios.length)} completed
                   </p>
                   {lastAccessedDisplay}
-
-                  {isInAssignmentState && participantNotUser ? (
-                    <Checkbox
-                      className="c__assignment-checkbox"
-                      label="Select for assignment"
-                      checked={isChecked}
-                      onChange={(e, { checked }) => {
-                        const assignment = this.state.assignment;
-                        const participants = assignment.participants.slice();
-                        if (checked) {
-                          participants.push(participant.id);
-                        } else {
-                          participants.splice(
-                            participants.indexOf(participant.id),
-                            1
-                          );
-                        }
-                        this.setState({
-                          assignment: {
-                            ...assignment,
-                            participants
-                          }
-                        });
-                      }}
-                    />
-                  ) : null}
                 </Card.Content>
                 <Card.Content className="c__scenario-content">
                   <Card.Description className="c__participant-completion">
@@ -861,6 +835,33 @@ export class CohortProgress extends React.Component {
                     View responses
                   </Button>
                 </Card.Content>
+
+                {isInAssignmentState && participantNotUser ? (
+                  <Card.Content extra>
+                    <Checkbox
+                      label="Select for assignment"
+                      checked={isChecked}
+                      onChange={(e, { checked }) => {
+                        const assignment = this.state.assignment;
+                        const participants = assignment.participants.slice();
+                        if (checked) {
+                          participants.push(participant.id);
+                        } else {
+                          participants.splice(
+                            participants.indexOf(participant.id),
+                            1
+                          );
+                        }
+                        this.setState({
+                          assignment: {
+                            ...assignment,
+                            participants
+                          }
+                        });
+                      }}
+                    />
+                  </Card.Content>
+                ) : null}
               </Card>
             );
           })}
@@ -933,7 +934,12 @@ export class CohortProgress extends React.Component {
               <Modal.Content>
                 {cancelParticipantsPoolExplanation}
 
-                {!this.state.cancel.participant ? (
+                {!cancelables.length ? (
+                  <p>
+                    There are no role assignments to cancel.
+                  </p>
+                ) : null}
+                {!this.state.cancel.participant && cancelables.length ? (
                   <Table celled basic="very">
                     <Table.Header>
                       <Table.Row>
