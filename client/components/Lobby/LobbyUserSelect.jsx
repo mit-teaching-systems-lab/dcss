@@ -20,8 +20,10 @@ import {
   Card,
   Dropdown,
   Grid,
+  Header,
   List,
   Message,
+  Modal,
   Popup,
   Search,
   Text
@@ -35,11 +37,12 @@ import Storage from '@utils/Storage';
 
 import './Lobby.css';
 
+const greyTextStyle = { color: 'rgba(0,0,0,.4)' };
 const resultRenderer = user => (
   <Fragment>
-    {user.content}
-    <Text grey className="l__hidden" size="small">
-      (Select to invite)
+    {user.content} {user.additional}
+    <Text style={greyTextStyle} className="l__hidden" size="small">
+      {user.additional ? '(Unavailable)' : '(Select to invite)'}
     </Text>
   </Fragment>
 );
@@ -96,7 +99,10 @@ class LobbyUserSelect extends Component {
       results: [],
       selected,
       sent: [],
-      search: ''
+      search: '',
+      unavailable: {
+        isOpen: false
+      }
     };
 
     this.onRemoveInviteeClick = this.onRemoveInviteeClick.bind(this);
@@ -206,6 +212,7 @@ class LobbyUserSelect extends Component {
 
   onSelectedPersonaChange(event, { name: index, value: id }) {
     const selected = this.state.selected.slice();
+
     selected[index] = {
       ...selected[index],
       persona: {
@@ -232,6 +239,7 @@ class LobbyUserSelect extends Component {
       user,
       usersById
     } = this.props;
+
     const host = chat.usersById[chat.host_id];
     const selected = this.state.selected.reduce((accum, selection) => {
       const userInChat = chat.usersById[selection.user.id];
@@ -368,8 +376,8 @@ class LobbyUserSelect extends Component {
 
           const listContentStyle = Layout.isForMobile()
             ? {
-                marginBottom: '0.5em'
-              }
+              marginBottom: '0.5em'
+            }
             : {};
           const nameAndButtonContent = (
             <List.Content
@@ -401,10 +409,21 @@ class LobbyUserSelect extends Component {
         <List.Item>{searchWidget}</List.Item>
       </List>
     ) : /* istanbul ignore next */
-    null;
+      null;
   }
 
   onResultSelect(event, { result }) {
+    if (result.additional) {
+      event.preventDefault();
+      this.setState({
+        unavailable: {
+          isOpen: true,
+          result
+        }
+      });
+      return;
+    }
+
     const rolesCount = this.props.scenario.personas.length;
     const selectedCount = this.state.selected.length;
     const selection = {
@@ -710,21 +729,41 @@ class LobbyUserSelect extends Component {
       return;
     }
 
+    const { chats } = this.props;
     const { selected } = this.state;
     const selectionIds = selected.map(selection => selection.user.id);
-
     const escapedre = new RegExp(escapeRegExp(search), 'gim');
-    const results = this.props.users.filter(user => {
+    const results = this.props.users.reduce((accum, user) => {
+      user.additional = null;
+
       if (selectionIds.includes(user.id)) {
-        return false;
+        return accum;
       }
 
       if (escapedre.test(user.searchable)) {
-        return true;
+        const otherChat = chats.find(chat => chat.host_id === user.id);
+        const otherScenario = otherChat
+          ? this.props.scenariosById[otherChat.scenario_id]
+          : null;
+        const otherChatUser = otherChat ? otherChat.usersById[user.id] : null;
+        const personas = otherScenario ? otherScenario.personas : null;
+        const otherPersona =
+          personas && otherChatUser
+            ? personas.find(persona => persona.id === otherChatUser.persona_id)
+            : null;
+        if (otherScenario && otherPersona) {
+          user.additional = (
+            <Text style={greyTextStyle}>
+              (currently in <strong>{otherScenario.title}</strong> as{' '}
+              <strong>{otherPersona.name}</strong>)
+            </Text>
+          );
+        }
+        accum.push(user);
       }
 
-      return false;
-    });
+      return accum;
+    }, []);
 
     this.setState({
       results,
@@ -735,7 +774,7 @@ class LobbyUserSelect extends Component {
   render() {
     const { onResultSelect, onSearchChange, onSendInviteClick } = this;
     const { chat, scenario, users } = this.props;
-    const { confirmation, isReady, search, selected } = this.state;
+    const { confirmation, isReady, search, selected, unavailable } = this.state;
 
     if (!isReady || !scenario || !chat) {
       return null;
@@ -775,11 +814,11 @@ class LobbyUserSelect extends Component {
     let remainingMessage = `${remainingCount} ${pluralRemaining} unassigned.`;
     let remainingTextProps = Layout.isForMobile()
       ? {
-          style: {
-            display: 'block',
-            marginBottom: '0.5em'
-          }
+        style: {
+          display: 'block',
+          marginBottom: '0.5em'
         }
+      }
       : {};
 
     if (remainingCount === 0) {
@@ -833,11 +872,11 @@ class LobbyUserSelect extends Component {
 
     const sendInvitesButtonConditionalProps = Layout.isNotForMobile()
       ? {
-          floated: 'right'
-        }
+        floated: 'right'
+      }
       : {
-          fluid: true
-        };
+        fluid: true
+      };
 
     const sendInvitesButtonProps = {
       ...sendInvitesButtonConditionalProps,
@@ -946,6 +985,34 @@ class LobbyUserSelect extends Component {
           <LobbyConfirmationDialog {...confirmation.props} />
         ) : null}
 
+        {unavailable.isOpen ? (
+          <Modal.Accessible open={true}>
+            <Modal role="dialog" aria-modal="true" size="small" open={true}>
+              <Header
+                icon="exclamation triangle"
+                aria-label="User is unavailable"
+                content="User is unavailable"
+              />
+              <Modal.Actions style={{ borderTop: '0px' }}>
+                <Button.Group size="large" fluid>
+                  <Button
+                    onClick={() => {
+                      this.setState({
+                        unavailable: {
+                          isOpen: false,
+                          result: null
+                        }
+                      });
+                    }}
+                  >
+                    Ok
+                  </Button>
+                </Button.Group>
+              </Modal.Actions>
+            </Modal>
+          </Modal.Accessible>
+        ) : null}
+
         <div data-testid="lobby-user-select" />
       </Fragment>
     );
@@ -954,31 +1021,40 @@ class LobbyUserSelect extends Component {
 
 LobbyUserSelect.propTypes = {
   chat: PropTypes.object,
+  chats: PropTypes.array,
   cohort: PropTypes.object,
   createChatInvite: PropTypes.func,
   getChatUsersByChatId: PropTypes.func,
   getLinkedChatUsersByChatId: PropTypes.func,
   invites: PropTypes.array,
   getInvites: PropTypes.func,
+  getPersonas: PropTypes.func,
   setInvite: PropTypes.func,
   joinChat: PropTypes.func,
   onSelect: PropTypes.func,
   onSetRolesAndInvites: PropTypes.func,
-  personasInUseById: PropTypes.object,
+  // personasInUseById: PropTypes.object,
   selection: PropTypes.object,
   scenario: PropTypes.object,
+  scenariosById: PropTypes.object,
   user: PropTypes.object,
   users: PropTypes.array,
   usersById: PropTypes.object
 };
 
 const mapStateToProps = (state, ownProps) => {
-  const { invites, user } = state;
+  const { invites, scenariosById, user } = state;
 
   const chat = state.chat && state.chat.id ? state.chat : ownProps.chat || null;
 
   const cohort =
     state.cohort && state.cohort.id ? state.cohort : ownProps.cohort || null;
+
+  let chats = state.chats.filter(chat => !chat.ended_at && chat.scenario_id);
+
+  if (cohort && cohort.id) {
+    chats = chats.filter(chat => chat.cohort_id === cohort.id);
+  }
 
   const scenario =
     state.scenario && state.scenario.id
@@ -1001,7 +1077,9 @@ const mapStateToProps = (state, ownProps) => {
       ${username.replace(/-|_/g, ' ')}
       ${email}
       ${roles.join(' ')}
-    `.replace(/(\r?\n)|\s{1,}/gm, ' ');
+    `
+      .replace(/(\r?\n)|\s{1,}|null/gm, ' ')
+      .trim();
     const entry = {
       id,
       key,
@@ -1020,23 +1098,25 @@ const mapStateToProps = (state, ownProps) => {
     {}
   );
 
-  const personasInUseById = chat
-    ? chat.users.reduce(
-        (accum, user) => ({
-          ...accum,
-          [user.persona_id]: user
-        }),
-        {}
-      )
-    : {};
+  // const personasInUseById = chat
+  //   ? chat.users.reduce(
+  //       (accum, user) => ({
+  //         ...accum,
+  //         [user.persona_id]: user
+  //       }),
+  //       {}
+  //     )
+  //   : {};
 
   // console.log("state.chat || ownProps.chat:", chat);
   return {
     chat,
+    chats,
     cohort,
     invites,
-    personasInUseById,
+    // personasInUseById,
     scenario,
+    scenariosById,
     user,
     users,
     usersById
