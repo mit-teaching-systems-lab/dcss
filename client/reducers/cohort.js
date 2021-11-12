@@ -5,13 +5,21 @@ import {
   GET_COHORTS_SUCCESS,
   SET_COHORT_SUCCESS,
   SET_COHORT_SCENARIOS_SUCCESS,
-  SET_COHORT_USER_ROLE_SUCCESS
+  SET_COHORT_USER_ROLE_SUCCESS,
+  UNLOAD_COHORT_SUCCESS
 } from '../actions/types';
 
 import { cohortInitialState } from './initial-states';
 
 export const cohort = (state = cohortInitialState, action) => {
   const { cohort, type, users, usersById } = action;
+
+  if (type === UNLOAD_COHORT_SUCCESS) {
+    return {
+      __proto__: null,
+      ...cohortInitialState
+    };
+  }
 
   if (
     type === CREATE_COHORT_SUCCESS ||
@@ -21,6 +29,7 @@ export const cohort = (state = cohortInitialState, action) => {
     type === GET_COHORT_PARTICIPANTS_SUCCESS
   ) {
     return {
+      __proto__: null,
       ...state,
       ...cohort
     };
@@ -29,12 +38,14 @@ export const cohort = (state = cohortInitialState, action) => {
   if (type === SET_COHORT_USER_ROLE_SUCCESS) {
     if (users || usersById) {
       return {
+        __proto__: null,
         ...state,
         users,
         usersById
       };
     } else {
       return {
+        __proto__: null,
         ...state
       };
     }
@@ -105,6 +116,7 @@ export const cohortsById = (state = {}, action) => {
       }, {});
 
       return {
+        __proto__: null,
         ...state,
         ...cohortsById
       };
@@ -114,10 +126,12 @@ export const cohortsById = (state = {}, action) => {
     case GET_COHORT_SUCCESS: {
       if (!cohort || !cohort.id) {
         return {
+          __proto__: null,
           ...state
         };
       }
       return {
+        __proto__: null,
         ...state,
         [cohort.id]: {
           ...(state[cohort.id] || {}),

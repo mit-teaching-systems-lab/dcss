@@ -19,6 +19,7 @@ export const chat = (state = chatInitialState, action) => {
         return accum;
       }, {});
       return {
+        __proto__: null,
         ...state,
         users,
         usersById
@@ -27,6 +28,7 @@ export const chat = (state = chatInitialState, action) => {
     case GET_CHAT_SUCCESS:
     case LINK_RUN_TO_CHAT_SUCCESS: {
       return {
+        __proto__: null,
         ...state,
         ...chat
       };
@@ -94,6 +96,7 @@ export const chatsById = (state = {}, action) => {
         return accum;
       }, {});
       return {
+        __proto__: null,
         ...state,
         ...chatsById
       };
@@ -102,10 +105,12 @@ export const chatsById = (state = {}, action) => {
     case LINK_RUN_TO_CHAT_SUCCESS: {
       if (!chat || !chat.id) {
         return {
+          __proto__: null,
           ...state
         };
       }
       return {
+        __proto__: null,
         ...state,
         [chat.id]: {
           ...(state[chat.id] || {}),

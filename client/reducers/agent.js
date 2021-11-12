@@ -11,6 +11,7 @@ export const agent = (state = agentInitialState, action) => {
     case GET_AGENT_SUCCESS:
     case SET_AGENT_SUCCESS: {
       return {
+        __proto__: null,
         ...state,
         ...agent
       };
@@ -28,6 +29,7 @@ export const agents = (state = [], action) => {
       const index = state.findIndex(({ id }) => id === agent.id);
       if (index !== -1) {
         state[index] = {
+          __proto__: null,
           ...state[index],
           ...agent
         };
@@ -68,8 +70,10 @@ export const agentsById = (state = {}, action) => {
     case GET_AGENT_SUCCESS:
     case SET_AGENT_SUCCESS: {
       return {
+        __proto__: null,
         ...state,
         [agent.id]: {
+          __proto__: null,
           ...agent
         }
       };
@@ -80,6 +84,7 @@ export const agentsById = (state = {}, action) => {
         return accum;
       }, {});
       return {
+        __proto__: null,
         ...state,
         ...agentsById
       };

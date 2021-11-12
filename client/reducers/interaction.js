@@ -80,6 +80,7 @@ export const interactionsById = (state = {}, action) => {
     case GET_INTERACTION_SUCCESS:
     case SET_INTERACTION_SUCCESS: {
       return {
+        __proto__: null,
         ...state,
         [interaction.id]: {
           ...interaction
@@ -95,6 +96,7 @@ export const interactionsById = (state = {}, action) => {
         {}
       );
       return {
+        __proto__: null,
         ...state,
         ...interactionsById
       };
