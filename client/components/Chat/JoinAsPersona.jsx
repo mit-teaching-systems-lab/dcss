@@ -2,15 +2,22 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import JoinAsButton from '@components/Chat/JoinAsButton.jsx';
-import { Form } from '@components/UI';
+import ScenarioPersonaEditor from '@components/ScenarioEditor/ScenarioPersonaEditor';
+import { Button, Form, Icon, Text } from '@components/UI';
 import Identity from '@utils/Identity';
 import Partnering from '@utils/Partnering';
+
+import '@components/ScenarioEditor/ScenarioPersonas.css';
 
 class JoinAsPersona extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isOpen: false
+      isOpen: false,
+      personaEditor: {
+        isOpen: false,
+        persona: null
+      }
     };
     this.onRoomAccessChange = this.onRoomAccessChange.bind(this);
   }
@@ -25,6 +32,7 @@ class JoinAsPersona extends Component {
 
   render() {
     const { cohort, onClick, scenario } = this.props;
+    const { personaEditor } = this.state;
     const { onRoomAccessChange } = this;
 
     // Check if facilitator set this scenario to BOTH, CLOSED or OPEN
@@ -33,6 +41,23 @@ class JoinAsPersona extends Component {
     const isOpen = isUserChoice
       ? this.state.isOpen
       : partnering === Partnering.OPEN;
+
+    // TODO: make available to facilitator?
+    const owner = cohort.users.find(({ is_owner }) => is_owner);
+    const isUserAllowedToEditCohort = owner.id === this.props.user.id;
+    const scenarioPersonaEditorProps = personaEditor.isOpen
+      ? {
+        persona: personaEditor.persona,
+        onCancel: () => {
+          this.setState({
+            personaEditor: {
+              isOpen: false,
+              persona: null
+            }
+          });
+        }
+      }
+      : null;
 
     return (
       <Fragment>
@@ -75,6 +100,27 @@ class JoinAsPersona extends Component {
           </Fragment>
         ) : null}
         {scenario.personas.map(persona => {
+          const editPersonaButton = isUserAllowedToEditCohort ? (
+            <Button
+              aria-label="Edit persona"
+              className="sc__button sc__hidden-on-mobile"
+              floated="right"
+              size="tiny"
+              data-testid="open-persona-editor"
+              onClick={() => {
+                this.setState({
+                  personaEditor: {
+                    isOpen: true,
+                    persona
+                  }
+                });
+              }}
+            >
+              <Icon name="edit outline" className="primary" />
+              <span className="sc__card-action-labels">Edit</span>
+            </Button>
+          ) : null;
+
           return (
             <Fragment key={Identity.key(persona)}>
               <div>
@@ -88,14 +134,21 @@ class JoinAsPersona extends Component {
                 />
               </div>
               <div>
-                <p>
+                {/* <p>
                   <strong>{persona.name}</strong>
-                </p>
-                <p>{persona.description}</p>
+                </p> */}
+                {persona.description !== persona.name ? (
+                  <Text>{persona.description}</Text>
+                ) : null}
+                {/* {editPersonaButton} */}
               </div>
             </Fragment>
           );
         })}
+
+        {personaEditor.isOpen ? (
+          <ScenarioPersonaEditor {...scenarioPersonaEditorProps} />
+        ) : null}
       </Fragment>
     );
   }
