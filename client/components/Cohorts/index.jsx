@@ -19,11 +19,9 @@ import {
   Title
 } from '@components/UI';
 import {
-  getCohorts,
   getCohortsCount,
   getCohortsSlice,
-  getCohort,
-  createCohort
+  unloadCohort
 } from '@actions/cohort';
 import { setFilterScenariosInUse } from '@actions/filters';
 import { getScenariosByStatus } from '@actions/scenario';
@@ -74,6 +72,7 @@ export class Cohorts extends React.Component {
 
   async componentDidMount() {
     await this.props.getUser();
+    await this.props.unloadCohort();
     await this.props.getScenariosByStatus(SCENARIO_IS_PUBLIC);
 
     if (!this.props.user.id) {
@@ -508,8 +507,6 @@ Cohorts.propTypes = {
   }).isRequired,
   cohorts: PropTypes.array,
   cohort: PropTypes.object,
-  createCohort: PropTypes.func,
-  getCohorts: PropTypes.func,
   getCohortsCount: PropTypes.func,
   getCohortsSlice: PropTypes.func,
   getCohort: PropTypes.func,
@@ -525,6 +522,7 @@ Cohorts.propTypes = {
     }).isRequired
   }).isRequired,
   getUser: PropTypes.func,
+  unloadCohort: PropTypes.func,
   user: PropTypes.object,
   setFilterScenariosInUse: PropTypes.func
 };
@@ -551,14 +549,12 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  createCohort: params => dispatch(createCohort(params)),
-  getCohorts: () => dispatch(getCohorts()),
   getCohortsCount: () => dispatch(getCohortsCount()),
   getCohortsSlice: (...params) => dispatch(getCohortsSlice(...params)),
-  getCohort: id => dispatch(getCohort(id)),
   getScenariosByStatus: status => dispatch(getScenariosByStatus(status)),
   getUser: () => dispatch(getUser()),
-  setFilterScenariosInUse: params => dispatch(setFilterScenariosInUse(params))
+  setFilterScenariosInUse: params => dispatch(setFilterScenariosInUse(params)),
+  unloadCohort: () => dispatch(unloadCohort())
 });
 
 export default withRouter(

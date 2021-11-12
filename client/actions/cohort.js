@@ -23,7 +23,9 @@ import {
   SET_COHORT_SCENARIO_PARTNERING_SUCCESS,
   SET_COHORT_SUCCESS,
   SET_COHORT_USER_ROLE_ERROR,
-  SET_COHORT_USER_ROLE_SUCCESS
+  SET_COHORT_USER_ROLE_SUCCESS,
+  UNLOAD_COHORT_ERROR,
+  UNLOAD_COHORT_SUCCESS
 } from './types';
 import store from '@client/store';
 import { cohortInitialState } from '@reducers/initial-states';
@@ -453,3 +455,15 @@ export let deleteCohortUserRole = (
     return null;
   }
 };
+
+// This is used to "unload" whatever cohort is currently
+// active in the state store.
+export let unloadCohort = () => async dispatch => {
+  try {
+    dispatch({ type: UNLOAD_COHORT_SUCCESS });
+    return true;
+  } catch (error) {
+    dispatch({ type: UNLOAD_COHORT_ERROR, error });
+    return false;
+  }
+}

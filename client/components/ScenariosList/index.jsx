@@ -19,13 +19,13 @@ import {
 import escapeRegExp from 'lodash.escaperegexp';
 import copy from 'copy-text-to-clipboard';
 import changeCase from 'change-case';
+import { unloadCohort } from '@actions/cohort';
 import {
   deleteScenario,
   getScenariosCount,
   getScenariosSlice
 } from '@actions/scenario';
-import { getLabelsByOccurrence } from '@actions/tags';
-import { setLabelsInUse } from '@actions/tags';
+import { getLabelsByOccurrence, setLabelsInUse } from '@actions/tags';
 import Boundary from '@components/Boundary';
 import Gate from '@components/Gate';
 import Loading from '@components/Loading';
@@ -137,6 +137,7 @@ class ScenariosList extends Component {
     const { search } = this.state;
     const count = await this.props.getScenariosCount({ refresh: true });
 
+    await this.props.unloadCohort();
     await this.props.getLabelsByOccurrence();
 
     if (count <= this.props.scenarios.length) {
@@ -621,6 +622,7 @@ ScenariosList.propTypes = {
   scenarios: PropTypes.array,
   setLabelsInUse: PropTypes.func,
   tags: PropTypes.object,
+  unloadCohort: PropTypes.func,
   user: PropTypes.object
 };
 
@@ -640,7 +642,8 @@ const mapDispatchToProps = dispatch => ({
   getScenariosCount: params => dispatch(getScenariosCount(params)),
   getScenariosSlice: (...params) => dispatch(getScenariosSlice(...params)),
   getLabelsByOccurrence: () => dispatch(getLabelsByOccurrence()),
-  setLabelsInUse: params => dispatch(setLabelsInUse(params))
+  setLabelsInUse: params => dispatch(setLabelsInUse(params)),
+  unloadCohort: () => dispatch(unloadCohort())
 });
 
 export default withRouter(
