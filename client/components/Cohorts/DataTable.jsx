@@ -20,7 +20,7 @@ import DataTableChatTranscript from '@components/Cohorts/DataTableChatTranscript
 import DataTableMenu from '@components/Cohorts/DataTableMenu';
 import Loading from '@components/Loading';
 import { SCENARIO_IS_PUBLIC } from '@components/Scenario/constants';
-import { Icon, Message, Table } from '@components/UI';
+import { Icon, Message, Table, Text } from '@components/UI';
 import CSV from '@utils/csv';
 import { makeHeader } from '@utils/data-table';
 import Identity from '@utils/Identity';
@@ -38,10 +38,13 @@ function reduceResponses(key, responses) {
       is_skip
     } = response;
 
+    const transcriptOrValue =
+      transcript || (value.trim() !== content.trim() ? value : '');
+
     response.content = content;
     response.content += (is_skip
       ? '(skipped)'
-      : ` ${transcript || (content === '' ? value : '')}`
+      : ` ${transcriptOrValue}`
     ).trim();
 
     if (response.type === 'ChatPrompt') {
@@ -80,7 +83,33 @@ function reduceResponses(key, responses) {
       accum[identity][response.run_id] = {};
     }
 
-    accum[identity][response.run_id][response.response_id] = response;
+    if (response.type === 'AnnotationPrompt') {
+      const content = '(annotations attached)';
+      const value = null;
+      const captured = JSON.parse(response.value);
+      const annotations = captured.reduce((accum, capture) => {
+        const annotation = {
+          question: capture.annotation.question,
+          answer: capture.annotation.value,
+          header: capture.component.header,
+          prompt: capture.component.prompt,
+          response:
+            capture.response.transcript ||
+            capture.response.response.transcript ||
+            capture.response.response.value
+        };
+        return accum.concat([annotation]);
+      }, []);
+
+      accum[identity][response.run_id][response.response_id] = {
+        ...response,
+        annotations,
+        content,
+        value
+      };
+    } else {
+      accum[identity][response.run_id][response.response_id] = response;
+    }
 
     return accum;
   }, {});
@@ -295,6 +324,7 @@ export class DataTable extends React.Component {
       ].join(',');
 
       let csv = `${subjectAndPrompts}\n`;
+      let annotations = [];
 
       rows.forEach(row => {
         const prepared = row.map(data => {
@@ -307,8 +337,35 @@ export class DataTable extends React.Component {
           }
 
           const response = data || {};
+          const isAnnotationContent = (
+            (response && response.type) ||
+            ''
+          ).startsWith('Annotation');
           const isAudioContent = Media.isAudioFile(response.value);
           let { content = '' } = response;
+
+          if (isAnnotationContent && response.annotations.length) {
+            const prompt = prompts.find(
+              prompt => prompt.responseId === response.response_id
+            );
+            annotations.push(
+              ...response.annotations.reduce((accum, annotation) => {
+                accum.push({
+                  run_id: response.run_id,
+                  scenario_id: response.scenario_id,
+                  created_at: response.created_at,
+                  user_id: response.user_id,
+                  annotation_header: prompt.header,
+                  header: annotation.header,
+                  prompt: annotation.prompt,
+                  response: annotation.response,
+                  question: annotation.question,
+                  answer: annotation.answer
+                });
+                return accum;
+              }, [])
+            );
+          }
 
           if (isAudioContent) {
             content += ` (${location.origin}/api/media/${response.value})`;
@@ -334,6 +391,28 @@ export class DataTable extends React.Component {
       });
 
       files.push([`${Identity.key({ prefix, subject })}.csv`, csv]);
+
+      console.log('annotations?', annotations);
+
+      if (annotations && annotations.length) {
+        const fields = [
+          'run_id',
+          'scenario_id',
+          'created_at',
+          'user_id',
+          'annotation_header',
+          'header',
+          'prompt',
+          'response',
+          'question',
+          'answer'
+        ];
+
+        const parser = new Parser({ fields });
+        const csv = parser.parse(annotations);
+
+        files.push(['annotations.csv', csv]);
+      }
 
       if (transcript && transcript.length) {
         const fields = [
@@ -558,9 +637,22 @@ export class DataTable extends React.Component {
                         : null;
                     const key = `${tableKeyBase}-row-${index}`;
 
+                    // Start after the id and scenario name
+                    const annotationsFromRun = cells
+                      .slice(2)
+                      .reduce((accum, cell, index) => {
+                        if (cell.annotations && cell.annotations.length) {
+                          const prompt = prompts[index];
+                          const { annotations } = cell;
+                          accum.push({ prompt, annotations });
+                        }
+                        return accum;
+                      }, []);
+
                     accum.push(
                       <DataTableRow
                         key={key}
+                        annotationsFromRun={annotationsFromRun}
                         messagesFromRun={messagesFromRun}
                         isScenarioDataTable={isScenarioDataTable}
                         leftColVisible={leftColVisible}
@@ -601,6 +693,7 @@ export class DataTable extends React.Component {
 const DataTableRow = props => {
   const {
     cells: allCells,
+    annotationsFromRun,
     messagesFromRun,
     isScenarioDataTable,
     leftColVisible,
@@ -612,7 +705,11 @@ const DataTableRow = props => {
     ? { className: 'dt__left-col-hidden' }
     : {};
 
-  // eslint-disable-next-line react/prop-types
+  const hasAnnotationsFromRun =
+    annotationsFromRun && annotationsFromRun.length > 0;
+
+  console.log(annotationsFromRun);
+
   const hasMessagesFromRun = messagesFromRun && messagesFromRun.length > 0;
 
   if (hasMessagesFromRun) {
@@ -648,8 +745,11 @@ const DataTableRow = props => {
         {rowCells.map((response = {}, cellIndex) => {
           const cellKey = `${rowKey}-cell-${cellIndex}`;
           const modalKey = `${rowKey}-modal-${cellIndex}`;
+          const isAnnotationContent = (response.type || '').startsWith(
+            'Annotation'
+          );
           const isAudioContent = Media.isAudioFile(response.value);
-          const { content = '' } = response;
+          let { content = '' } = response;
 
           // microphone
           const display = isAudioContent ? (
@@ -696,7 +796,9 @@ const DataTableRow = props => {
             ...props,
             rows: [cells]
           };
-          return (
+          return isAnnotationContent ? (
+            trigger
+          ) : (
             <DataModal
               {...dataModalProps}
               index={cellIndex}
@@ -709,6 +811,52 @@ const DataTableRow = props => {
         })}
       </Table.Row>
 
+      {hasAnnotationsFromRun ? (
+        <Table.Row>
+          <Table.Cell
+            colSpan={rowCells.length}
+            name="cell"
+            style={{
+              cursor: 'pointer'
+            }}
+            verticalAlign="top"
+          >
+            {annotationsFromRun.map(({ prompt, annotations }) => {
+              return (
+                <Table key={Identity.key(annotations)}>
+                  <Table.Header>
+                    <Table.Row>
+                      <Table.HeaderCell colSpan="5">
+                        {prompt.header}
+                      </Table.HeaderCell>
+                    </Table.Row>
+                    <Table.Row>
+                      <Table.HeaderCell>Header</Table.HeaderCell>
+                      <Table.HeaderCell>Prompt</Table.HeaderCell>
+                      <Table.HeaderCell>Response</Table.HeaderCell>
+                      <Table.HeaderCell>Question</Table.HeaderCell>
+                      <Table.HeaderCell>Answer</Table.HeaderCell>
+                    </Table.Row>
+                  </Table.Header>
+                  <Table.Body>
+                    {annotations.map(annotation => {
+                      return (
+                        <Table.Row key={Identity.key(annotation)}>
+                          <Table.Cell>{annotation.header}</Table.Cell>
+                          <Table.Cell>{annotation.prompt}</Table.Cell>
+                          <Table.Cell>{annotation.response}</Table.Cell>
+                          <Table.Cell>{annotation.question}</Table.Cell>
+                          <Table.Cell>{annotation.answer}</Table.Cell>
+                        </Table.Row>
+                      );
+                    })}
+                  </Table.Body>
+                </Table>
+              );
+            })}
+          </Table.Cell>
+        </Table.Row>
+      ) : null}
       {hasMessagesFromRun ? (
         <Table.Row>
           {rowCells.reduce((accum, rowCell, rowCellIndex) => {
@@ -761,6 +909,7 @@ const DataTableRow = props => {
 };
 
 DataTableRow.propTypes = {
+  annotationsFromRun: PropTypes.array,
   messagesFromRun: PropTypes.array,
   isScenarioDataTable: PropTypes.bool,
   leftColVisible: PropTypes.bool,

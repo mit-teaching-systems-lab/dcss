@@ -130,6 +130,7 @@ class Downloads extends Component {
       );
 
       const records = responses.flat();
+      const annotations = [];
 
       if (records.length) {
         records.forEach(record => {
@@ -138,14 +139,20 @@ class Downloads extends Component {
             response_id,
             content = '',
             transcript = '',
+            type,
             value = ''
           } = record;
           const prompt = prompts.find(
             prompt => prompt.responseId === response_id
           );
+          const transcriptOrValue =
+            transcript || (value.trim() !== content.trim() ? value : '');
           record.header = makeHeader(prompt, prompts);
           record.content = content;
-          record.content += is_skip ? '(skipped)' : ` ${transcript || value}`;
+          record.content += (is_skip
+            ? '(skipped)'
+            : ` ${transcriptOrValue}`
+          ).trim();
 
           if (Media.isAudioFile(value)) {
             record.content += ` (${location.origin}/api/media/${value})`;
@@ -157,6 +164,28 @@ class Downloads extends Component {
 
           if (!participants.includes(record.user_id)) {
             participants.push(record.user_id);
+          }
+
+          if (type === 'AnnotationPrompt') {
+            record.content = '(annotations attached)';
+            const captured = JSON.parse(record.value);
+            annotations.push(
+              ...captured.map(capture => {
+                return {
+                  run_id: capture.response.run_id,
+                  created_at: capture.response.created_at,
+                  user_id: capture.response.user_id,
+                  annotation_header: record.header,
+                  header: capture.component.header,
+                  prompt: capture.component.prompt,
+                  response:
+                    capture.response.response.transcript ||
+                    capture.response.response.value,
+                  question: capture.annotation.question,
+                  answer: capture.annotation.value
+                };
+              })
+            );
           }
         });
 
@@ -180,6 +209,26 @@ class Downloads extends Component {
         const csv = parser.parse(records);
 
         files.push([`${file}.csv`, csv]);
+
+        if (annotations.length) {
+          const fields = [
+            'run_id',
+            'scenario_id',
+            'created_at',
+            'user_id',
+            'annotation_header',
+            'header',
+            'prompt',
+            'response',
+            'question',
+            'answer'
+          ];
+
+          const parser = new Parser({ fields });
+          const csv = parser.parse(annotations);
+
+          files.push(['annotations.csv', csv]);
+        }
       }
     }
 
