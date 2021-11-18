@@ -773,7 +773,7 @@ class LobbyUserSelect extends Component {
 
   render() {
     const { onResultSelect, onSearchChange, onSendInviteClick } = this;
-    const { chat, scenario, users } = this.props;
+    const { chat, cohort, scenario, users } = this.props;
     const { confirmation, isReady, search, selected, unavailable } = this.state;
 
     if (!isReady || !scenario || !chat) {
@@ -901,16 +901,24 @@ class LobbyUserSelect extends Component {
 
     const autoFocus = !hasAllRolesSelectedAndUnassigned && !this.isScenarioRun;
 
+    const partnerPluralized = pluralize('partner', otherRoleCount);
+    const articlePartnerPluralized =
+      otherRoleCount === 1 ? `a ${partnerPluralized}` : partnerPluralized;
+    const placeholder = cohort
+      ? `Search cohort for ${articlePartnerPluralized}`
+      : `Search for ${articlePartnerPluralized}`;
+
     const searchProps = {
       autoFocus,
       fluid: true,
       className: 'grid__menu-search l__search-input primary',
+      'data-testid': 'lobby-user-select-search-input',
       noResultsMessage: 'No users found',
       onFocus: onSearchChange,
       onMouseDown: onSearchChange,
       onResultSelect: onResultSelect,
       onSearchChange: onSearchChange,
-      placeholder: 'Search for participants',
+      placeholder,
       resultRenderer: resultRenderer,
       results: results,
       value: search || ' '
@@ -961,7 +969,8 @@ class LobbyUserSelect extends Component {
           <Grid.Row>
             <p>
               <strong>
-                Search and select participants that you want to invite:
+                Search and select {articlePartnerPluralized} that you want to
+                invite:
               </strong>
             </p>
             {/*searchWidget*/}

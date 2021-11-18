@@ -586,7 +586,7 @@ const mapStateToProps = (state, ownProps) => {
 
   const chat = chatsById[chatId] || stateChat || null;
 
-  if (!scenarioId) {
+  if (!scenarioId && chat) {
     scenarioId = chat.scenario_id;
   }
 

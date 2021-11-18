@@ -392,8 +392,6 @@ export class DataTable extends React.Component {
 
       files.push([`${Identity.key({ prefix, subject })}.csv`, csv]);
 
-      console.log('annotations?', annotations);
-
       if (annotations && annotations.length) {
         const fields = [
           'run_id',
@@ -707,8 +705,6 @@ const DataTableRow = props => {
 
   const hasAnnotationsFromRun =
     annotationsFromRun && annotationsFromRun.length > 0;
-
-  console.log(annotationsFromRun);
 
   const hasMessagesFromRun = messagesFromRun && messagesFromRun.length > 0;
 
