@@ -307,9 +307,13 @@ async function copyScenario(req, res) {
     // but any recallIds that refer to old responseIds must be mapped to
     // the copy's responseId
     const slidesNeedRecallIdUpdate = [];
+    // When copying a scenario, Annotation prompts need to have their
+    // prompts list updated to whatever the new prompt id is for
+    // the associated response prompt.
+    const slidesNeedPromptIdUpdate = [];
     // Additionally, multipath ids need to be remapped.
     const slidesNeedPathSlideIdUpdate = [];
-    const responseIdMap = {};
+    const responsePromptIdMap = {};
     const slideIdMap = {};
     const slides = [];
     // 1. Find all response components and assign each one a new responseId,
@@ -340,13 +344,23 @@ async function copyScenario(req, res) {
         if (component.responseId) {
           // Save the original responseId, so we can use
           // it for mapping to recallId in a second pass.
-          responseIdMap[component.responseId] = uuid();
-          component.responseId = responseIdMap[component.responseId];
+          responsePromptIdMap[component.responseId] = uuid();
+          component.responseId = responsePromptIdMap[component.responseId];
 
           // If we encounter a MultiPathPrompt component...
           if (component.paths) {
             // Add the slide to an update list.
             slidesNeedPathSlideIdUpdate.push(slide);
+          }
+
+          // If we encounter an AnnotationPrompt component...
+          if (
+            component.prompts &&
+            Array.isArray(component.prompts) &&
+            !slidesNeedPromptIdUpdate.includes(slide)
+          ) {
+            // Add the slide to an update list.
+            slidesNeedPromptIdUpdate.push(slide);
           }
         }
 
@@ -366,11 +380,22 @@ async function copyScenario(req, res) {
     // 2. If any slide has been flagged for recallId remapping, update them.
     for (const slide of slidesNeedRecallIdUpdate) {
       for (const component of slide.components) {
-        component.recallId = responseIdMap[component.recallId];
+        component.recallId = responsePromptIdMap[component.recallId];
       }
     }
 
-    // 3. If any slide contains a multipath component, the paths need to be updated.
+    // 3. If any slide has been flagged for recallId remapping, update them.
+    for (const slide of slidesNeedPromptIdUpdate) {
+      for (const component of slide.components) {
+        if (component.prompts && Array.isArray(component.prompts)) {
+          component.prompts = component.prompts.map(
+            oldResponsePromptId => responsePromptIdMap[oldResponsePromptId]
+          );
+        }
+      }
+    }
+
+    // 4. If any slide contains a multipath component, the paths need to be updated.
     for (const slide of slidesNeedPathSlideIdUpdate) {
       if (!slide.is_finish) {
         for (const component of slide.components) {
