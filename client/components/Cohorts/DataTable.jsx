@@ -39,7 +39,8 @@ function reduceResponses(key, responses) {
     } = response;
 
     const transcriptOrValue =
-      transcript || (value.trim() !== content.trim() ? value : '');
+      transcript ||
+      ((value || '').trim() !== (content || '').trim() ? value : '');
 
     response.content = content;
     response.content += (is_skip

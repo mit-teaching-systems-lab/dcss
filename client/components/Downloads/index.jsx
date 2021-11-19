@@ -146,7 +146,8 @@ class Downloads extends Component {
             prompt => prompt.responseId === response_id
           );
           const transcriptOrValue =
-            transcript || (value.trim() !== content.trim() ? value : '');
+            transcript ||
+            ((value || '').trim() !== (content || '').trim() ? value : '');
           record.header = makeHeader(prompt, prompts);
           record.content = content;
           record.content += (is_skip
