@@ -588,10 +588,7 @@ export class CohortProgress extends React.Component {
                 ? Moment(lastAccessedAt).fromNow()
                 : null;
 
-              if (
-                hasCompletedAllScenarios &&
-                progress.completed.includes(lastEvent.scenario_id)
-              ) {
+              if (progress.completed.includes(lastEvent.scenario_id)) {
                 completedOrCurrentScenario = `Last Completed scenario`;
                 mustShowLastActivityAndSlide = false;
               } else {
