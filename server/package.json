@@ -42,6 +42,7 @@
     "test:endpoints:setup": "db-migrate --env init db:drop teachermoments-test; yarn db-init:test"
   },
   "dependencies": {
+    "@aws-sdk/client-rekognition": "^3.41.0",
     "@sendgrid/mail": "^7.3.0",
     "@socket.io/redis-adapter": "^7.0.0",
     "aws-sdk": "^2.518.0",

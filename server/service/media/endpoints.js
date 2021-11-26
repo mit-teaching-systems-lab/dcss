@@ -8,10 +8,8 @@ const runsdb = require('../runs/db');
 
 const { asyncMiddleware } = require('../../util/api');
 const { transferToS3, requestFromS3 } = require('./s3');
-const {
-  requestRecognitionAsync,
-  requestTranscriptionAsync
-} = require('./watson');
+const { requestTranscriptionAsync } = require('./watson');
+const { requestRecognitionAsync } = require('./rekognition');
 
 async function updateResponseIfExists(value, identifiers) {
   const previous = await runsdb.getLastResponseOrderedById(identifiers);
