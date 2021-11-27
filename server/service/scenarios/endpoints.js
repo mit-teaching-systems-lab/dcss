@@ -384,7 +384,7 @@ async function copyScenario(req, res) {
       }
     }
 
-    // 3. If any slide has been flagged for recallId remapping, update them.
+    // 3. If any slide has been flagged for prompt id remapping, update them.
     for (const slide of slidesNeedPromptIdUpdate) {
       for (const component of slide.components) {
         if (component.prompts && Array.isArray(component.prompts)) {
