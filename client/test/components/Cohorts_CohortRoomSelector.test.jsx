@@ -1452,9 +1452,7 @@ test('Create a room for this scenario, user will invite, proceed', async done =>
 
   userEvent.click(joinButton);
 
-  expect(window.location.href).toMatchInlineSnapshot(
-    `"/cohort/6e4213d8d3/run/1765cf2e64/chat/6e4213d8d3/slide/0"`
-  );
+  expect(window.location.href).toMatchInlineSnapshot(`""`);
 
   done();
 });

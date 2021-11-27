@@ -1026,12 +1026,129 @@ exports[`Close provided 3`] = `
 
 exports[`Cohort does not match 1`] = `
 "<body
-  class=\\"\\"
+  class=\\"dimmable dimmed\\"
 >
   <div
     id=\\"root\\"
   />
   <div />
+  <div
+    class=\\"ui top aligned page modals dimmer transition visible active\\"
+    style=\\"display: flex;\\"
+  >
+    <div
+      aria-modal=\\"true\\"
+      class=\\"ui fullscreen modal transition visible active\\"
+      role=\\"dialog\\"
+    >
+      <i
+        aria-hidden=\\"true\\"
+        class=\\"close icon\\"
+      />
+      <div
+        class=\\"ui header\\"
+        tabindex=\\"0\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"group icon\\"
+        />
+        <div
+          class=\\"content\\"
+        >
+          Create or join a room for Some Other Scenario
+        </div>
+      </div>
+      <div
+        class=\\"scrolling content\\"
+        style=\\"height: calc(100vh - 10rem);\\"
+      >
+        <button
+          class=\\"ui large button\\"
+          tabindex=\\"0\\"
+        >
+          <i
+            class=\\"icons\\"
+          >
+            <i
+              aria-hidden=\\"true\\"
+              class=\\"group icon primary\\"
+            />
+            <i
+              aria-hidden=\\"true\\"
+              class=\\"plus top right corner icon\\"
+            />
+          </i>
+          Create a room for this scenario
+        </button>
+        <div
+          class=\\"ui padded grid\\"
+        >
+          <div
+            class=\\"row\\"
+          >
+            <div
+              class=\\"column c__grid-element-unpadded\\"
+            >
+              <p>
+                This scenario requires multiple particpants in order to complete. Runs of the scenario are completed in
+                 
+                <strong>
+                  Rooms
+                </strong>
+                . 
+                <strong>
+                  Rooms
+                </strong>
+                 shown here are open for you to join.
+              </p>
+              <p>
+                If there are no rooms here, and you can click
+                 
+                <strong>
+                  Create a room for this scenario
+                </strong>
+                 to host your own room. You will be able to invite other participants directly, or allow all members of this cohort to join freely.
+              </p>
+              <p
+                tabindex=\\"0\\"
+              >
+                There 
+                are
+                 
+                <strong>
+                  0
+                </strong>
+                 open 
+                rooms
+                 
+                available.
+              </p>
+              <div
+                class=\\"ui stackable three cards\\"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class=\\"actions c__action-btns__scenario-selector\\"
+      >
+        <div
+          class=\\"ui fluid buttons\\"
+        >
+          <button
+            class=\\"ui button\\"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+      <div
+        data-testid=\\"cohort-chat-selector\\"
+      />
+    </div>
+  </div>
 </body>"
 `;
 
@@ -3913,65 +4030,36 @@ exports[`Create a room for this scenario, user will invite, proceed 4`] = `
             <div
               class=\\"column\\"
             >
-              <div
-                class=\\"ui message\\"
-                data-testid=\\"lobby-user-select-instructions\\"
-              >
-                <i
-                  aria-hidden=\\"true\\"
-                  class=\\"close icon\\"
-                />
-                <p>
-                  This scenario has 
-                  <strong>
-                    2
-                  </strong>
-                   roles. As host, you will participate in the scenario by filling one of the available roles.
-                </p>
-                <ol>
-                  <li>
-                    Choose your role.
-                  </li>
-                  <li>
-                    Search and select participants that you want to invite, and assign their roles as you go.
-                  </li>
-                  <li>
-                    Once all of the available roles are filled, click the
-                     
-                    <button
-                      class=\\"ui mini compact disabled button primary\\"
-                      disabled=\\"\\"
-                      tabindex=\\"-1\\"
-                    >
-                      Send invites
-                    </button>
-                     button to invite your selected participants.
-                  </li>
-                </ol>
-                <p>
-                  There 
-                  are
-                   
-                  <strong>
-                    4
-                  </strong>
-                   other 
-                  participants
-                   
-                  available to fill the other 
-                  <strong>
-                    1
-                  </strong>
-                   
-                  role
-                  . 
-                  You must select at least 
-                  <strong>
-                    1
-                  </strong>
-                   other participant and assign them a role to continue.
-                </p>
-              </div>
+              <p>
+                This scenario has 
+                <strong>
+                  2
+                </strong>
+                 roles. As host, you will participate in the scenario by filling one of the available roles.
+              </p>
+              <p>
+                There 
+                are
+                 
+                <strong>
+                  4
+                </strong>
+                 other 
+                participants
+                 
+                available to fill the other 
+                <strong>
+                  1
+                </strong>
+                 
+                role
+                . 
+                You must select at least 
+                <strong>
+                  1
+                </strong>
+                 other participant and assign them a role to continue.
+              </p>
             </div>
           </div>
           <div
@@ -3979,9 +4067,7 @@ exports[`Create a room for this scenario, user will invite, proceed 4`] = `
           >
             <p>
               <strong>
-                Search and select participants that you want to invite (list updated 
-                HH:mm A
-                ):
+                Search and select participants that you want to invite:
               </strong>
             </p>
           </div>
@@ -4144,7 +4230,7 @@ exports[`Create a room for this scenario, user will invite, proceed 4`] = `
                         >
                           <div
                             class=\\"result\\"
-                            searchable=\\"  Facilitator User  facilitator  facilitator  facilitator@email.com  participant facilitator researcher owner  \\"
+                            searchable=\\"Facilitator User  facilitator  facilitator  facilitator@email.com  participant facilitator researcher owner\\"
                           >
                             <span
                               aria-label=\\"Facilitator User (facilitator)\\"
@@ -4161,15 +4247,17 @@ exports[`Create a room for this scenario, user will invite, proceed 4`] = `
                               style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
                               title=\\"Facilitator\\"
                             />
+                             
                             <span
                               class=\\"l__hidden\\"
+                              style=\\"color: rgba(0, 0, 0, 0.4);\\"
                             >
                               (Select to invite)
                             </span>
                           </div>
                           <div
                             class=\\"result\\"
-                            searchable=\\"  Researcher User  researcher  researcher  researcher@email.com  participant researcher  \\"
+                            searchable=\\"Researcher User  researcher  researcher  researcher@email.com  participant researcher\\"
                           >
                             <span
                               aria-label=\\"Researcher User (researcher)\\"
@@ -4186,15 +4274,17 @@ exports[`Create a room for this scenario, user will invite, proceed 4`] = `
                               style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
                               title=\\"Researcher\\"
                             />
+                             
                             <span
                               class=\\"l__hidden\\"
+                              style=\\"color: rgba(0, 0, 0, 0.4);\\"
                             >
                               (Select to invite)
                             </span>
                           </div>
                           <div
                             class=\\"result\\"
-                            searchable=\\"  Participant User  participant  participant  participant@email.com  participant  \\"
+                            searchable=\\"Participant User  participant  participant  participant@email.com  participant\\"
                           >
                             <span
                               aria-label=\\"Participant User (participant)\\"
@@ -4205,15 +4295,17 @@ exports[`Create a room for this scenario, user will invite, proceed 4`] = `
                             </span>
                             
                              
+                             
                             <span
                               class=\\"l__hidden\\"
+                              style=\\"color: rgba(0, 0, 0, 0.4);\\"
                             >
                               (Select to invite)
                             </span>
                           </div>
                           <div
                             class=\\"result\\"
-                            searchable=\\"  anonymous  anonymous  participant  \\"
+                            searchable=\\"anonymous  anonymous  participant\\"
                           >
                             <span
                               aria-label=\\"anonymous\\"
@@ -4224,8 +4316,10 @@ exports[`Create a room for this scenario, user will invite, proceed 4`] = `
                             </span>
                             
                              
+                             
                             <span
                               class=\\"l__hidden\\"
+                              style=\\"color: rgba(0, 0, 0, 0.4);\\"
                             >
                               (Select to invite)
                             </span>
@@ -4246,6 +4340,10 @@ exports[`Create a room for this scenario, user will invite, proceed 4`] = `
                     participant
                     , 
                     1 role unassigned.
+                     (list updated
+                     
+                    HH:mm A
+                    )
                   </span>
                   <button
                     class=\\"ui green disabled right floated button\\"
@@ -4262,76 +4360,6 @@ exports[`Create a room for this scenario, user will invite, proceed 4`] = `
         <div
           data-testid=\\"lobby-user-select\\"
         />
-        <div
-          class=\\"ui padded grid l__waiting not-modal\\"
-        >
-          <div
-            class=\\"row\\"
-          >
-            <div
-              class=\\"column\\"
-            >
-              <p>
-                Who is in 
-                <strong>
-                  this scenario
-                </strong>
-                 room?
-              </p>
-            </div>
-          </div>
-          <div
-            class=\\"row\\"
-          >
-            <div
-              class=\\"column\\"
-            >
-              <div
-                class=\\"ui fluid card\\"
-              >
-                <div
-                  class=\\"content\\"
-                >
-                  <div
-                    class=\\"ui divided selection list\\"
-                    data-testid=\\"lobby-user-waiting-invitees\\"
-                    role=\\"list\\"
-                  >
-                    <div
-                      class=\\"item\\"
-                      role=\\"listitem\\"
-                    >
-                      <div
-                        class=\\"content\\"
-                      >
-                        <span
-                          aria-label=\\"Super User (super)\\"
-                          class=\\"ui medium text\\"
-                          title=\\"Super User (super)\\"
-                        >
-                          Super User
-                        </span>
-                        
-                         
-                        <i
-                          aria-hidden=\\"true\\"
-                          class=\\"small icon chess queen\\"
-                          style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                          title=\\"Super\\"
-                        />
-                         
-                        as 
-                        <strong>
-                          Teacher
-                        </strong>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
         <div
           data-testid=\\"lobby-main\\"
         />
@@ -4415,65 +4443,36 @@ exports[`Create a room for this scenario, user will invite, proceed 5`] = `
             <div
               class=\\"column\\"
             >
-              <div
-                class=\\"ui message\\"
-                data-testid=\\"lobby-user-select-instructions\\"
-              >
-                <i
-                  aria-hidden=\\"true\\"
-                  class=\\"close icon\\"
-                />
-                <p>
-                  This scenario has 
-                  <strong>
-                    2
-                  </strong>
-                   roles. As host, you will participate in the scenario by filling one of the available roles.
-                </p>
-                <ol>
-                  <li>
-                    Choose your role.
-                  </li>
-                  <li>
-                    Search and select participants that you want to invite, and assign their roles as you go.
-                  </li>
-                  <li>
-                    Once all of the available roles are filled, click the
-                     
-                    <button
-                      class=\\"ui mini compact disabled button primary\\"
-                      disabled=\\"\\"
-                      tabindex=\\"-1\\"
-                    >
-                      Send invites
-                    </button>
-                     button to invite your selected participants.
-                  </li>
-                </ol>
-                <p>
-                  There 
-                  are
-                   
-                  <strong>
-                    4
-                  </strong>
-                   other 
-                  participants
-                   
-                  available to fill the other 
-                  <strong>
-                    1
-                  </strong>
-                   
-                  role
-                  . 
-                  You must select at least 
-                  <strong>
-                    1
-                  </strong>
-                   other participant and assign them a role to continue.
-                </p>
-              </div>
+              <p>
+                This scenario has 
+                <strong>
+                  2
+                </strong>
+                 roles. As host, you will participate in the scenario by filling one of the available roles.
+              </p>
+              <p>
+                There 
+                are
+                 
+                <strong>
+                  4
+                </strong>
+                 other 
+                participants
+                 
+                available to fill the other 
+                <strong>
+                  1
+                </strong>
+                 
+                role
+                . 
+                You must select at least 
+                <strong>
+                  1
+                </strong>
+                 other participant and assign them a role to continue.
+              </p>
             </div>
           </div>
           <div
@@ -4481,9 +4480,7 @@ exports[`Create a room for this scenario, user will invite, proceed 5`] = `
           >
             <p>
               <strong>
-                Search and select participants that you want to invite (list updated 
-                HH:mm A
-                ):
+                Search and select participants that you want to invite:
               </strong>
             </p>
           </div>
@@ -4646,7 +4643,7 @@ exports[`Create a room for this scenario, user will invite, proceed 5`] = `
                         >
                           <div
                             class=\\"result\\"
-                            searchable=\\"  Facilitator User  facilitator  facilitator  facilitator@email.com  participant facilitator researcher owner  \\"
+                            searchable=\\"Facilitator User  facilitator  facilitator  facilitator@email.com  participant facilitator researcher owner\\"
                           >
                             <span
                               aria-label=\\"Facilitator User (facilitator)\\"
@@ -4663,15 +4660,17 @@ exports[`Create a room for this scenario, user will invite, proceed 5`] = `
                               style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
                               title=\\"Facilitator\\"
                             />
+                             
                             <span
                               class=\\"l__hidden\\"
+                              style=\\"color: rgba(0, 0, 0, 0.4);\\"
                             >
                               (Select to invite)
                             </span>
                           </div>
                           <div
                             class=\\"result\\"
-                            searchable=\\"  Researcher User  researcher  researcher  researcher@email.com  participant researcher  \\"
+                            searchable=\\"Researcher User  researcher  researcher  researcher@email.com  participant researcher\\"
                           >
                             <span
                               aria-label=\\"Researcher User (researcher)\\"
@@ -4688,15 +4687,17 @@ exports[`Create a room for this scenario, user will invite, proceed 5`] = `
                               style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
                               title=\\"Researcher\\"
                             />
+                             
                             <span
                               class=\\"l__hidden\\"
+                              style=\\"color: rgba(0, 0, 0, 0.4);\\"
                             >
                               (Select to invite)
                             </span>
                           </div>
                           <div
                             class=\\"result\\"
-                            searchable=\\"  Participant User  participant  participant  participant@email.com  participant  \\"
+                            searchable=\\"Participant User  participant  participant  participant@email.com  participant\\"
                           >
                             <span
                               aria-label=\\"Participant User (participant)\\"
@@ -4707,15 +4708,17 @@ exports[`Create a room for this scenario, user will invite, proceed 5`] = `
                             </span>
                             
                              
+                             
                             <span
                               class=\\"l__hidden\\"
+                              style=\\"color: rgba(0, 0, 0, 0.4);\\"
                             >
                               (Select to invite)
                             </span>
                           </div>
                           <div
                             class=\\"result\\"
-                            searchable=\\"  anonymous  anonymous  participant  \\"
+                            searchable=\\"anonymous  anonymous  participant\\"
                           >
                             <span
                               aria-label=\\"anonymous\\"
@@ -4726,8 +4729,10 @@ exports[`Create a room for this scenario, user will invite, proceed 5`] = `
                             </span>
                             
                              
+                             
                             <span
                               class=\\"l__hidden\\"
+                              style=\\"color: rgba(0, 0, 0, 0.4);\\"
                             >
                               (Select to invite)
                             </span>
@@ -4748,6 +4753,10 @@ exports[`Create a room for this scenario, user will invite, proceed 5`] = `
                     participant
                     , 
                     1 role unassigned.
+                     (list updated
+                     
+                    HH:mm A
+                    )
                   </span>
                   <button
                     class=\\"ui green disabled right floated button\\"
@@ -4764,76 +4773,6 @@ exports[`Create a room for this scenario, user will invite, proceed 5`] = `
         <div
           data-testid=\\"lobby-user-select\\"
         />
-        <div
-          class=\\"ui padded grid l__waiting not-modal\\"
-        >
-          <div
-            class=\\"row\\"
-          >
-            <div
-              class=\\"column\\"
-            >
-              <p>
-                Who is in 
-                <strong>
-                  this scenario
-                </strong>
-                 room?
-              </p>
-            </div>
-          </div>
-          <div
-            class=\\"row\\"
-          >
-            <div
-              class=\\"column\\"
-            >
-              <div
-                class=\\"ui fluid card\\"
-              >
-                <div
-                  class=\\"content\\"
-                >
-                  <div
-                    class=\\"ui divided selection list\\"
-                    data-testid=\\"lobby-user-waiting-invitees\\"
-                    role=\\"list\\"
-                  >
-                    <div
-                      class=\\"item\\"
-                      role=\\"listitem\\"
-                    >
-                      <div
-                        class=\\"content\\"
-                      >
-                        <span
-                          aria-label=\\"Super User (super)\\"
-                          class=\\"ui medium text\\"
-                          title=\\"Super User (super)\\"
-                        >
-                          Super User
-                        </span>
-                        
-                         
-                        <i
-                          aria-hidden=\\"true\\"
-                          class=\\"small icon chess queen\\"
-                          style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                          title=\\"Super\\"
-                        />
-                         
-                        as 
-                        <strong>
-                          Teacher
-                        </strong>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
         <div
           data-testid=\\"lobby-main\\"
         />
@@ -6081,12 +6020,129 @@ exports[`Has no chats in state 2`] = `
 
 exports[`Scenario is missing personas 1`] = `
 "<body
-  class=\\"\\"
+  class=\\"dimmable dimmed\\"
 >
   <div
     id=\\"root\\"
   />
   <div />
+  <div
+    class=\\"ui top aligned page modals dimmer transition visible active\\"
+    style=\\"display: flex;\\"
+  >
+    <div
+      aria-modal=\\"true\\"
+      class=\\"ui fullscreen modal transition visible active\\"
+      role=\\"dialog\\"
+    >
+      <i
+        aria-hidden=\\"true\\"
+        class=\\"close icon\\"
+      />
+      <div
+        class=\\"ui header\\"
+        tabindex=\\"0\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"group icon\\"
+        />
+        <div
+          class=\\"content\\"
+        >
+          Create or join a room for Some Other Scenario
+        </div>
+      </div>
+      <div
+        class=\\"scrolling content\\"
+        style=\\"height: calc(100vh - 10rem);\\"
+      >
+        <button
+          class=\\"ui large button\\"
+          tabindex=\\"0\\"
+        >
+          <i
+            class=\\"icons\\"
+          >
+            <i
+              aria-hidden=\\"true\\"
+              class=\\"group icon primary\\"
+            />
+            <i
+              aria-hidden=\\"true\\"
+              class=\\"plus top right corner icon\\"
+            />
+          </i>
+          Create a room for this scenario
+        </button>
+        <div
+          class=\\"ui padded grid\\"
+        >
+          <div
+            class=\\"row\\"
+          >
+            <div
+              class=\\"column c__grid-element-unpadded\\"
+            >
+              <p>
+                This scenario requires multiple particpants in order to complete. Runs of the scenario are completed in
+                 
+                <strong>
+                  Rooms
+                </strong>
+                . 
+                <strong>
+                  Rooms
+                </strong>
+                 shown here are open for you to join.
+              </p>
+              <p>
+                If there are no rooms here, and you can click
+                 
+                <strong>
+                  Create a room for this scenario
+                </strong>
+                 to host your own room. You will be able to invite other participants directly, or allow all members of this cohort to join freely.
+              </p>
+              <p
+                tabindex=\\"0\\"
+              >
+                There 
+                are
+                 
+                <strong>
+                  0
+                </strong>
+                 open 
+                rooms
+                 
+                available.
+              </p>
+              <div
+                class=\\"ui stackable three cards\\"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class=\\"actions c__action-btns__scenario-selector\\"
+      >
+        <div
+          class=\\"ui fluid buttons\\"
+        >
+          <button
+            class=\\"ui button\\"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+      <div
+        data-testid=\\"cohort-chat-selector\\"
+      />
+    </div>
+  </div>
 </body>"
 `;
 
@@ -6220,16 +6276,389 @@ exports[`Scenario is missing personas 2`] = `
 
 exports[`User is not host, host does have role 1`] = `
 "<body
-  class=\\"\\"
+  class=\\"dimmable dimmed\\"
 >
   <div
     id=\\"root\\"
   />
   <div />
+  <div
+    class=\\"ui top aligned page modals dimmer transition visible active\\"
+    style=\\"display: flex;\\"
+  >
+    <div
+      aria-modal=\\"true\\"
+      class=\\"ui fullscreen modal transition visible active\\"
+      role=\\"dialog\\"
+    >
+      <i
+        aria-hidden=\\"true\\"
+        class=\\"close icon\\"
+      />
+      <div
+        class=\\"ui header\\"
+        tabindex=\\"0\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"group icon\\"
+        />
+        <div
+          class=\\"content\\"
+        >
+          Create or join a room for Some Other Scenario
+        </div>
+      </div>
+      <div
+        class=\\"scrolling content\\"
+        style=\\"height: calc(100vh - 10rem);\\"
+      >
+        <button
+          class=\\"ui large button\\"
+          tabindex=\\"0\\"
+        >
+          <i
+            class=\\"icons\\"
+          >
+            <i
+              aria-hidden=\\"true\\"
+              class=\\"group icon primary\\"
+            />
+            <i
+              aria-hidden=\\"true\\"
+              class=\\"plus top right corner icon\\"
+            />
+          </i>
+          Create a room for this scenario
+        </button>
+        <div
+          class=\\"ui padded grid\\"
+        >
+          <div
+            class=\\"row\\"
+          >
+            <div
+              class=\\"column c__grid-element-unpadded\\"
+            >
+              <p>
+                This scenario requires multiple particpants in order to complete. Runs of the scenario are completed in
+                 
+                <strong>
+                  Rooms
+                </strong>
+                . 
+                <strong>
+                  Rooms
+                </strong>
+                 shown here are open for you to join.
+              </p>
+              <p>
+                If there are no rooms here, and you can click
+                 
+                <strong>
+                  Create a room for this scenario
+                </strong>
+                 to host your own room. You will be able to invite other participants directly, or allow all members of this cohort to join freely.
+              </p>
+              <p
+                tabindex=\\"0\\"
+              >
+                There 
+                is
+                 
+                <strong>
+                  1
+                </strong>
+                 open 
+                room
+                 
+                available.
+              </p>
+              <div
+                class=\\"ui stackable three cards\\"
+              >
+                <div
+                  class=\\"ui card\\"
+                >
+                  <div
+                    class=\\"content c__chat-card\\"
+                  >
+                    <div
+                      class=\\"header\\"
+                    >
+                      <span
+                        aria-label=\\"Super User (super)\\"
+                        class=\\"ui medium text\\"
+                        title=\\"Super User (super)\\"
+                      >
+                        Super User
+                      </span>
+                      's
+                       
+                      <i
+                        aria-hidden=\\"true\\"
+                        class=\\"small icon chess queen\\"
+                        style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                        title=\\"Super\\"
+                      />
+                       room
+                    </div>
+                    <div
+                      class=\\"description c__chat-card__meta\\"
+                    >
+                      <p>
+                        Click on one of those roles to join the scenario room:
+                      </p>
+                      <div
+                        class=\\"ui labels\\"
+                      >
+                        <button
+                          class=\\"ui button ui label fluid\\"
+                        >
+                          <span
+                            class=\\"ui medium text\\"
+                          >
+                            Student
+                          </span>
+                          <br />
+                          <span
+                            class=\\"ui small text\\"
+                          >
+                            A non-specific student, participating in a multi person scenario.
+                          </span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class=\\"extra content\\"
+                  >
+                    <button
+                      class=\\"ui fluid button primary\\"
+                    >
+                      Join room
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class=\\"actions c__action-btns__scenario-selector\\"
+      >
+        <div
+          class=\\"ui fluid buttons\\"
+        >
+          <button
+            class=\\"ui button\\"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+      <div
+        data-testid=\\"cohort-chat-selector\\"
+      />
+    </div>
+  </div>
 </body>"
 `;
 
 exports[`User is not host, host does have role 2`] = `
+"<body
+  class=\\"dimmable dimmed\\"
+>
+  <div
+    id=\\"root\\"
+  />
+  <div />
+  <div
+    class=\\"ui top aligned page modals dimmer transition visible active\\"
+    style=\\"display: flex;\\"
+  >
+    <div
+      aria-modal=\\"true\\"
+      class=\\"ui fullscreen modal transition visible active\\"
+      role=\\"dialog\\"
+    >
+      <i
+        aria-hidden=\\"true\\"
+        class=\\"close icon\\"
+      />
+      <div
+        class=\\"ui header\\"
+        tabindex=\\"0\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"group icon\\"
+        />
+        <div
+          class=\\"content\\"
+        >
+          Create or join a room for Some Other Scenario
+        </div>
+      </div>
+      <div
+        class=\\"scrolling content\\"
+        style=\\"height: calc(100vh - 10rem);\\"
+      >
+        <button
+          class=\\"ui large button\\"
+          tabindex=\\"0\\"
+        >
+          <i
+            class=\\"icons\\"
+          >
+            <i
+              aria-hidden=\\"true\\"
+              class=\\"group icon primary\\"
+            />
+            <i
+              aria-hidden=\\"true\\"
+              class=\\"plus top right corner icon\\"
+            />
+          </i>
+          Create a room for this scenario
+        </button>
+        <div
+          class=\\"ui padded grid\\"
+        >
+          <div
+            class=\\"row\\"
+          >
+            <div
+              class=\\"column c__grid-element-unpadded\\"
+            >
+              <p>
+                This scenario requires multiple particpants in order to complete. Runs of the scenario are completed in
+                 
+                <strong>
+                  Rooms
+                </strong>
+                . 
+                <strong>
+                  Rooms
+                </strong>
+                 shown here are open for you to join.
+              </p>
+              <p>
+                If there are no rooms here, and you can click
+                 
+                <strong>
+                  Create a room for this scenario
+                </strong>
+                 to host your own room. You will be able to invite other participants directly, or allow all members of this cohort to join freely.
+              </p>
+              <p
+                tabindex=\\"0\\"
+              >
+                There 
+                is
+                 
+                <strong>
+                  1
+                </strong>
+                 open 
+                room
+                 
+                available.
+              </p>
+              <div
+                class=\\"ui stackable three cards\\"
+              >
+                <div
+                  class=\\"ui card\\"
+                >
+                  <div
+                    class=\\"content c__chat-card\\"
+                  >
+                    <div
+                      class=\\"header\\"
+                    >
+                      <span
+                        aria-label=\\"Super User (super)\\"
+                        class=\\"ui medium text\\"
+                        title=\\"Super User (super)\\"
+                      >
+                        Super User
+                      </span>
+                      's
+                       
+                      <i
+                        aria-hidden=\\"true\\"
+                        class=\\"small icon chess queen\\"
+                        style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                        title=\\"Super\\"
+                      />
+                       room
+                    </div>
+                    <div
+                      class=\\"description c__chat-card__meta\\"
+                    >
+                      <p>
+                        Click on one of those roles to join the scenario room:
+                      </p>
+                      <div
+                        class=\\"ui labels\\"
+                      >
+                        <button
+                          class=\\"ui button ui label fluid\\"
+                        >
+                          <span
+                            class=\\"ui medium text\\"
+                          >
+                            Student
+                          </span>
+                          <br />
+                          <span
+                            class=\\"ui small text\\"
+                          >
+                            A non-specific student, participating in a multi person scenario.
+                          </span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class=\\"extra content\\"
+                  >
+                    <button
+                      class=\\"ui fluid button primary\\"
+                    >
+                      Join room
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class=\\"actions c__action-btns__scenario-selector\\"
+      >
+        <div
+          class=\\"ui fluid buttons\\"
+        >
+          <button
+            class=\\"ui button\\"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+      <div
+        data-testid=\\"cohort-chat-selector\\"
+      />
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`User is not host, host does have role, no roles remain 1`] = `
 "<body
   class=\\"dimmable dimmed\\"
 >
@@ -6354,17 +6783,6 @@ exports[`User is not host, host does have role 2`] = `
       />
     </div>
   </div>
-</body>"
-`;
-
-exports[`User is not host, host does have role, no roles remain 1`] = `
-"<body
-  class=\\"\\"
->
-  <div
-    id=\\"root\\"
-  />
-  <div />
 </body>"
 `;
 
@@ -6498,12 +6916,129 @@ exports[`User is not host, host does have role, no roles remain 2`] = `
 
 exports[`User is not host, host does not have role 1`] = `
 "<body
-  class=\\"\\"
+  class=\\"dimmable dimmed\\"
 >
   <div
     id=\\"root\\"
   />
   <div />
+  <div
+    class=\\"ui top aligned page modals dimmer transition visible active\\"
+    style=\\"display: flex;\\"
+  >
+    <div
+      aria-modal=\\"true\\"
+      class=\\"ui fullscreen modal transition visible active\\"
+      role=\\"dialog\\"
+    >
+      <i
+        aria-hidden=\\"true\\"
+        class=\\"close icon\\"
+      />
+      <div
+        class=\\"ui header\\"
+        tabindex=\\"0\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"group icon\\"
+        />
+        <div
+          class=\\"content\\"
+        >
+          Create or join a room for Some Other Scenario
+        </div>
+      </div>
+      <div
+        class=\\"scrolling content\\"
+        style=\\"height: calc(100vh - 10rem);\\"
+      >
+        <button
+          class=\\"ui large button\\"
+          tabindex=\\"0\\"
+        >
+          <i
+            class=\\"icons\\"
+          >
+            <i
+              aria-hidden=\\"true\\"
+              class=\\"group icon primary\\"
+            />
+            <i
+              aria-hidden=\\"true\\"
+              class=\\"plus top right corner icon\\"
+            />
+          </i>
+          Create a room for this scenario
+        </button>
+        <div
+          class=\\"ui padded grid\\"
+        >
+          <div
+            class=\\"row\\"
+          >
+            <div
+              class=\\"column c__grid-element-unpadded\\"
+            >
+              <p>
+                This scenario requires multiple particpants in order to complete. Runs of the scenario are completed in
+                 
+                <strong>
+                  Rooms
+                </strong>
+                . 
+                <strong>
+                  Rooms
+                </strong>
+                 shown here are open for you to join.
+              </p>
+              <p>
+                If there are no rooms here, and you can click
+                 
+                <strong>
+                  Create a room for this scenario
+                </strong>
+                 to host your own room. You will be able to invite other participants directly, or allow all members of this cohort to join freely.
+              </p>
+              <p
+                tabindex=\\"0\\"
+              >
+                There 
+                are
+                 
+                <strong>
+                  0
+                </strong>
+                 open 
+                rooms
+                 
+                available.
+              </p>
+              <div
+                class=\\"ui stackable three cards\\"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class=\\"actions c__action-btns__scenario-selector\\"
+      >
+        <div
+          class=\\"ui fluid buttons\\"
+        >
+          <button
+            class=\\"ui button\\"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+      <div
+        data-testid=\\"cohort-chat-selector\\"
+      />
+    </div>
+  </div>
 </body>"
 `;
 

@@ -2,7 +2,7 @@
 import React from 'react';
 jest.mock('react', () => ({
   ...jest.requireActual('react'),
-  useLayoutEffect: jest.requireActual('react').useEffect
+  useLayoutEffect: jest.requireActual('react').useEffect,
 }));
 
 import {
@@ -11,7 +11,7 @@ import {
   reduxer,
   serialize,
   snapshotter,
-  state
+  state,
 } from '../bootstrap';
 import { unmountComponentAtNode } from 'react-dom';
 
@@ -21,7 +21,7 @@ import {
   prettyDOM,
   render,
   screen,
-  waitFor
+  waitFor,
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
@@ -43,7 +43,7 @@ import {
   GET_SCENARIOS_SUCCESS,
   GET_SCENARIOS_COUNT_SUCCESS,
   GET_USER_SUCCESS,
-  GET_USERS_SUCCESS
+  GET_USERS_SUCCESS,
 } from '../../actions/types';
 import * as cohortActions from '../../actions/cohort';
 import * as partneringActions from '../../actions/partnering';
@@ -67,7 +67,7 @@ import { notify } from '@components/Notification';
 jest.mock('@components/Notification', () => {
   return {
     ...jest.requireActual('@components/Notification'),
-    notify: jest.fn()
+    notify: jest.fn(),
   };
 });
 
@@ -75,12 +75,12 @@ import Layout from '@utils/Layout';
 jest.mock('@utils/Layout', () => {
   return {
     ...jest.requireActual('@utils/Layout'),
-    isForMobile: jest.fn(() => false)
+    isForMobile: jest.fn(() => false),
   };
 });
 
 jest.mock('@components/Gate', () => {
-  return function({ children }) {
+  return function ({ children }) {
     return children;
   };
 });
@@ -94,7 +94,7 @@ const scenario = {
     email: 'super@email.com',
     is_anonymous: false,
     roles: ['participant', 'super_admin', 'facilitator', 'researcher'],
-    is_super: true
+    is_super: true,
   },
   categories: [],
   consent: { id: 57, prose: '' },
@@ -103,22 +103,22 @@ const scenario = {
     id: 1,
     title: '',
     components: [{ html: '<h2>Thanks for participating!</h2>', type: 'Text' }],
-    is_finish: true
+    is_finish: true,
   },
   lock: {
     scenario_id: 42,
     user_id: 999,
     created_at: '2020-02-31T23:54:19.934Z',
-    ended_at: null
+    ended_at: null,
   },
   slides: [
     {
       id: 1,
       title: '',
       components: [
-        { html: '<h2>Thanks for participating!</h2>', type: 'Text' }
+        { html: '<h2>Thanks for participating!</h2>', type: 'Text' },
       ],
-      is_finish: true
+      is_finish: true,
     },
     {
       id: 2,
@@ -127,7 +127,7 @@ const scenario = {
         {
           id: 'b7e7a3f1-eb4e-4afa-8569-eb6677358c9e',
           html: '<p>paragraph</p>',
-          type: 'Text'
+          type: 'Text',
         },
         {
           agent: null,
@@ -139,16 +139,16 @@ const scenario = {
           recallId: '',
           required: true,
           responseId: 'be99fe9b-fa0d-4ab7-8541-1bfd1ef0bf11',
-          placeholder: ''
+          placeholder: '',
         },
         {
           id: 'f96ac6de-ac6b-4e06-bd97-d97e12fe72c1',
           html: '<p>?</p>',
-          type: 'Text'
-        }
+          type: 'Text',
+        },
       ],
-      is_finish: false
-    }
+      is_finish: false,
+    },
   ],
   status: 1,
   title: 'Multiplayer Scenario 2',
@@ -161,8 +161,8 @@ const scenario = {
       roles: ['super'],
       is_super: true,
       is_author: true,
-      is_reviewer: false
-    }
+      is_reviewer: false,
+    },
   ],
   id: 42,
   created_at: '2020-08-31T17:50:28.089Z',
@@ -181,9 +181,9 @@ const scenario = {
       deleted_at: null,
       author_id: 3,
       is_read_only: true,
-      is_shared: true
-    }
-  ]
+      is_shared: true,
+    },
+  ],
 };
 const scenario2 = {
   author: {
@@ -193,7 +193,7 @@ const scenario2 = {
     email: 'super@email.com',
     is_anonymous: false,
     roles: ['participant', 'super_admin', 'facilitator', 'researcher'],
-    is_super: true
+    is_super: true,
   },
   categories: [],
   consent: { id: 69, prose: '' },
@@ -202,20 +202,20 @@ const scenario2 = {
     id: 11,
     title: '',
     components: [{ html: '<h2>Bye!</h2>', type: 'Text' }],
-    is_finish: true
+    is_finish: true,
   },
   lock: {
     scenario_id: 99,
     user_id: 999,
     created_at: '2020-02-31T23:54:19.934Z',
-    ended_at: null
+    ended_at: null,
   },
   slides: [
     {
       id: 11,
       title: '',
       components: [{ html: '<h2>Bye!</h2>', type: 'Text' }],
-      is_finish: true
+      is_finish: true,
     },
     {
       id: 22,
@@ -224,7 +224,7 @@ const scenario2 = {
         {
           id: 'b7e7a3f1-eb4e-4afa-8569-838fd5ec854f',
           html: '<p>HTML!</p>',
-          type: 'Text'
+          type: 'Text',
         },
         {
           agent: null,
@@ -236,16 +236,16 @@ const scenario2 = {
           recallId: '',
           required: true,
           responseId: 'be99fe9b-fa0d-4ab7-8541-1bfd1ef0bf11',
-          placeholder: ''
+          placeholder: '',
         },
         {
           id: 'f96ac6de-ac6b-4e06-bd97-d97e12fe72c1',
           html: '<p>?</p>',
-          type: 'Text'
-        }
+          type: 'Text',
+        },
       ],
-      is_finish: false
-    }
+      is_finish: false,
+    },
   ],
   status: 1,
   title: 'Some Other Scenario',
@@ -258,8 +258,8 @@ const scenario2 = {
       roles: ['super'],
       is_super: true,
       is_author: true,
-      is_reviewer: false
-    }
+      is_reviewer: false,
+    },
   ],
   id: 99,
   created_at: '2020-07-31T17:50:28.089Z',
@@ -278,9 +278,9 @@ const scenario2 = {
       deleted_at: null,
       author_id: 3,
       is_read_only: true,
-      is_shared: true
-    }
-  ]
+      is_shared: true,
+    },
+  ],
 };
 
 scenario.status = 2;
@@ -297,7 +297,7 @@ const personas = [
     deleted_at: null,
     author_id: 3,
     is_read_only: true,
-    is_shared: true
+    is_shared: true,
   },
   {
     id: 2,
@@ -310,7 +310,7 @@ const personas = [
     deleted_at: null,
     author_id: 3,
     is_read_only: true,
-    is_shared: true
+    is_shared: true,
   },
   {
     id: 3,
@@ -323,8 +323,8 @@ const personas = [
     deleted_at: null,
     author_id: 3,
     is_read_only: true,
-    is_shared: true
-  }
+    is_shared: true,
+  },
 ];
 
 scenario2.personas = personas;
@@ -381,8 +381,8 @@ beforeEach(() => {
         consent_granted_by_user: true,
         referrer_params: null,
         cohort_id: 1,
-        run_id: 11
-      }
+        run_id: 11,
+      },
     ],
     scenarios: [99],
     users: [
@@ -405,10 +405,10 @@ beforeEach(() => {
               created_at: 1602454306144,
               generic: 'arrived at a slide.',
               name: 'slide-arrival',
-              url: 'http://localhost:3000/cohort/1/run/99/slide/1'
-            }
-          }
-        }
+              url: 'http://localhost:3000/cohort/1/run/99/slide/1',
+            },
+          },
+        },
       },
       {
         username: 'facilitator',
@@ -431,10 +431,10 @@ beforeEach(() => {
               created_at: 1602454306144,
               generic: 'arrived at a slide.',
               name: 'slide-arrival',
-              url: 'http://localhost:3000/cohort/1/run/99/slide/1'
-            }
-          }
-        }
+              url: 'http://localhost:3000/cohort/1/run/99/slide/1',
+            },
+          },
+        },
       },
       {
         username: 'researcher',
@@ -456,10 +456,10 @@ beforeEach(() => {
               created_at: 1602454306144,
               generic: 'arrived at a slide.',
               name: 'slide-arrival',
-              url: 'http://localhost:3000/cohort/1/run/99/slide/1'
-            }
-          }
-        }
+              url: 'http://localhost:3000/cohort/1/run/99/slide/1',
+            },
+          },
+        },
       },
       {
         username: 'participant',
@@ -483,10 +483,10 @@ beforeEach(() => {
                 'requested to join {scenario} as {persona}, and is waiting to be matched.',
               persona: { id: 1, name: 'Teacher' },
               name: 'slide-arrival',
-              url: 'http://localhost:3000/cohort/1/run/99/slide/1'
-            }
-          }
-        }
+              url: 'http://localhost:3000/cohort/1/run/99/slide/1',
+            },
+          },
+        },
       },
       {
         username: 'anonymous',
@@ -510,11 +510,11 @@ beforeEach(() => {
                 '{participant} canceled their request to join {scenario} as {persona}.',
               persona: { id: 2, name: 'Student' },
               name: 'slide-arrival',
-              url: 'http://localhost:3000/cohort/1/run/99/slide/1'
-            }
-          }
-        }
-      }
+              url: 'http://localhost:3000/cohort/1/run/99/slide/1',
+            },
+          },
+        },
+      },
     ],
     roles: ['super', 'facilitator'],
     usersById: {
@@ -537,10 +537,10 @@ beforeEach(() => {
               created_at: 1602454306144,
               generic: 'arrived at a slide.',
               name: 'slide-arrival',
-              url: 'http://localhost:3000/cohort/1/run/99/slide/1'
-            }
-          }
-        }
+              url: 'http://localhost:3000/cohort/1/run/99/slide/1',
+            },
+          },
+        },
       },
       555: {
         username: 'facilitator',
@@ -563,10 +563,10 @@ beforeEach(() => {
               created_at: 1602454306144,
               generic: 'arrived at a slide.',
               name: 'slide-arrival',
-              url: 'http://localhost:3000/cohort/1/run/99/slide/1'
-            }
-          }
-        }
+              url: 'http://localhost:3000/cohort/1/run/99/slide/1',
+            },
+          },
+        },
       },
       444: {
         username: 'researcher',
@@ -588,10 +588,10 @@ beforeEach(() => {
               created_at: 1602454306144,
               generic: 'arrived at a slide.',
               name: 'slide-arrival',
-              url: 'http://localhost:3000/cohort/1/run/99/slide/1'
-            }
-          }
-        }
+              url: 'http://localhost:3000/cohort/1/run/99/slide/1',
+            },
+          },
+        },
       },
       333: {
         username: 'participant',
@@ -615,10 +615,10 @@ beforeEach(() => {
                 'requested to join {scenario} as {persona}, and is waiting to be matched.',
               persona: { id: 1, name: 'Teacher' },
               name: 'slide-arrival',
-              url: 'http://localhost:3000/cohort/1/run/99/slide/1'
-            }
-          }
-        }
+              url: 'http://localhost:3000/cohort/1/run/99/slide/1',
+            },
+          },
+        },
       },
       222: {
         username: 'anonymous',
@@ -642,11 +642,11 @@ beforeEach(() => {
                 '{participant} canceled their request to join {scenario} as {persona}.',
               persona: { id: 2, name: 'Student' },
               name: 'slide-arrival',
-              url: 'http://localhost:3000/cohort/1/run/99/slide/1'
-            }
-          }
-        }
-      }
+              url: 'http://localhost:3000/cohort/1/run/99/slide/1',
+            },
+          },
+        },
+      },
     },
     chat: {
       id: 1,
@@ -677,10 +677,10 @@ beforeEach(() => {
                 created_at: 1602454306144,
                 generic: 'arrived at a slide.',
                 name: 'slide-arrival',
-                url: 'http://localhost:3000/cohort/1/run/99/slide/1'
-              }
-            }
-          }
+                url: 'http://localhost:3000/cohort/1/run/99/slide/1',
+              },
+            },
+          },
         },
         {
           id: 4,
@@ -693,8 +693,8 @@ beforeEach(() => {
           is_super: false,
           updated_at: '2020-12-10T17:50:19.074Z',
           is_muted: false,
-          is_present: true
-        }
+          is_present: true,
+        },
       ],
       usersById: {
         4: {
@@ -708,7 +708,7 @@ beforeEach(() => {
           is_super: false,
           updated_at: '2020-12-10T17:50:19.074Z',
           is_muted: false,
-          is_present: true
+          is_present: true,
         },
         999: {
           username: 'super',
@@ -729,14 +729,14 @@ beforeEach(() => {
                 created_at: 1602454306144,
                 generic: 'arrived at a slide.',
                 name: 'slide-arrival',
-                url: 'http://localhost:3000/cohort/1/run/99/slide/1'
-              }
-            }
-          }
-        }
-      }
+                url: 'http://localhost:3000/cohort/1/run/99/slide/1',
+              },
+            },
+          },
+        },
+      },
     },
-    partnering: { 99: 1 }
+    partnering: { 99: 1 },
   };
 
   Layout.isForMobile = jest.fn();
@@ -744,7 +744,7 @@ beforeEach(() => {
   Layout.isForMobile.mockImplementation(() => false);
 
   scenarioActions.getScenariosByStatus.mockImplementation(
-    () => async dispatch => {
+    () => async (dispatch) => {
       const scenarios = [
         {
           author: {
@@ -754,7 +754,7 @@ beforeEach(() => {
             email: 'super@email.com',
             is_anonymous: false,
             roles: ['participant', 'super_admin', 'facilitator', 'researcher'],
-            is_super: true
+            is_super: true,
           },
           categories: [],
           consent: { id: 57, prose: '' },
@@ -763,24 +763,24 @@ beforeEach(() => {
             id: 1,
             title: '',
             components: [
-              { html: '<h2>Thanks for participating!</h2>', type: 'Text' }
+              { html: '<h2>Thanks for participating!</h2>', type: 'Text' },
             ],
-            is_finish: true
+            is_finish: true,
           },
           lock: {
             scenario_id: 42,
             user_id: 999,
             created_at: '2020-02-31T23:54:19.934Z',
-            ended_at: null
+            ended_at: null,
           },
           slides: [
             {
               id: 1,
               title: '',
               components: [
-                { html: '<h2>Thanks for participating!</h2>', type: 'Text' }
+                { html: '<h2>Thanks for participating!</h2>', type: 'Text' },
               ],
-              is_finish: true
+              is_finish: true,
             },
             {
               id: 2,
@@ -789,7 +789,7 @@ beforeEach(() => {
                 {
                   id: 'b7e7a3f1-eb4e-4afa-8569-eb6677358c9e',
                   html: '<p>paragraph</p>',
-                  type: 'Text'
+                  type: 'Text',
                 },
                 {
                   agent: null,
@@ -801,16 +801,16 @@ beforeEach(() => {
                   recallId: '',
                   required: true,
                   responseId: 'be99fe9b-fa0d-4ab7-8541-1bfd1ef0bf11',
-                  placeholder: ''
+                  placeholder: '',
                 },
                 {
                   id: 'f96ac6de-ac6b-4e06-bd97-d97e12fe72c1',
                   html: '<p>?</p>',
-                  type: 'Text'
-                }
+                  type: 'Text',
+                },
               ],
-              is_finish: false
-            }
+              is_finish: false,
+            },
           ],
           status: 1,
           title: 'Multiplayer Scenario 2',
@@ -823,8 +823,8 @@ beforeEach(() => {
               roles: ['super'],
               is_super: true,
               is_author: true,
-              is_reviewer: false
-            }
+              is_reviewer: false,
+            },
           ],
           id: 42,
           created_at: '2020-08-31T17:50:28.089Z',
@@ -843,9 +843,9 @@ beforeEach(() => {
               deleted_at: null,
               author_id: 3,
               is_read_only: true,
-              is_shared: true
-            }
-          ]
+              is_shared: true,
+            },
+          ],
         },
         {
           author: {
@@ -855,7 +855,7 @@ beforeEach(() => {
             email: 'super@email.com',
             is_anonymous: false,
             roles: ['participant', 'super_admin', 'facilitator', 'researcher'],
-            is_super: true
+            is_super: true,
           },
           categories: [],
           consent: { id: 69, prose: '' },
@@ -864,20 +864,20 @@ beforeEach(() => {
             id: 11,
             title: '',
             components: [{ html: '<h2>Bye!</h2>', type: 'Text' }],
-            is_finish: true
+            is_finish: true,
           },
           lock: {
             scenario_id: 99,
             user_id: 999,
             created_at: '2020-02-31T23:54:19.934Z',
-            ended_at: null
+            ended_at: null,
           },
           slides: [
             {
               id: 11,
               title: '',
               components: [{ html: '<h2>Bye!</h2>', type: 'Text' }],
-              is_finish: true
+              is_finish: true,
             },
             {
               id: 22,
@@ -886,7 +886,7 @@ beforeEach(() => {
                 {
                   id: 'b7e7a3f1-eb4e-4afa-8569-838fd5ec854f',
                   html: '<p>HTML!</p>',
-                  type: 'Text'
+                  type: 'Text',
                 },
                 {
                   agent: null,
@@ -898,16 +898,16 @@ beforeEach(() => {
                   recallId: '',
                   required: true,
                   responseId: 'be99fe9b-fa0d-4ab7-8541-1bfd1ef0bf11',
-                  placeholder: ''
+                  placeholder: '',
                 },
                 {
                   id: 'f96ac6de-ac6b-4e06-bd97-d97e12fe72c1',
                   html: '<p>?</p>',
-                  type: 'Text'
-                }
+                  type: 'Text',
+                },
               ],
-              is_finish: false
-            }
+              is_finish: false,
+            },
           ],
           status: 1,
           title: 'Some Other Scenario',
@@ -920,8 +920,8 @@ beforeEach(() => {
               roles: ['super'],
               is_super: true,
               is_author: true,
-              is_reviewer: false
-            }
+              is_reviewer: false,
+            },
           ],
           id: 99,
           created_at: '2020-07-31T17:50:28.089Z',
@@ -940,45 +940,45 @@ beforeEach(() => {
               deleted_at: null,
               author_id: 3,
               is_read_only: true,
-              is_shared: true
-            }
-          ]
-        }
+              is_shared: true,
+            },
+          ],
+        },
       ];
       dispatch({ type: GET_SCENARIOS_SUCCESS, scenarios });
       return scenarios;
     }
   );
 
-  partneringActions.getPartnering.mockImplementation(() => async dispatch => {
+  partneringActions.getPartnering.mockImplementation(() => async (dispatch) => {
     const partnering = [
       {
         id: 1,
         description:
           'Allow participants to create open or closed chat rooms. Participants will be able to create rooms and send invites to specific members of the cohort, or create rooms that are open to anyone in the cohort to join.',
         instruction:
-          'Choose one of the following partnering options, then click on the role you will play in the scenario.'
+          'Choose one of the following partnering options, then click on the role you will play in the scenario.',
       },
       {
         id: 2,
         description:
           'Allow participants to create only closed chat rooms. Participants create a room by first selecting their own role, then sending invites to one or more selected partners with assigned roles. Automatic partnering is disabled.',
         instruction:
-          'Choose the role you will play in the scenario; you will then be prompted to select one or more partners, assign their roles and send invites for them to join you.'
+          'Choose the role you will play in the scenario; you will then be prompted to select one or more partners, assign their roles and send invites for them to join you.',
       },
       {
         id: 3,
         description:
           "Allow participants to create only open chat rooms. Participants create a room by selecting a role, while other members of the cohort are free to choose any role. Once the scenario's role are filled, participants will be automatically partnered. Invitation partnering is disabled.",
         instruction:
-          'Choose the role you will play in the scenario; another participant will be partnered with you automatically.'
-      }
+          'Choose the role you will play in the scenario; another participant will be partnered with you automatically.',
+      },
     ];
     dispatch({ type: GET_PARTNERING_SUCCESS, partnering });
     return partnering;
   });
 
-  runActions.getRuns.mockImplementation(() => async dispatch => {
+  runActions.getRuns.mockImplementation(() => async (dispatch) => {
     const runs = [
       {
         id: 11,
@@ -992,32 +992,34 @@ beforeEach(() => {
         consent_granted_by_user: true,
         referrer_params: null,
         cohort_id: 1,
-        run_id: 11
-      }
+        run_id: 11,
+      },
     ];
     dispatch({ type: GET_RUNS_SUCCESS, runs });
     return runs;
   });
 
-  cohortActions.getCohortScenarios.mockImplementation(() => async dispatch => {
-    const scenarios = [scenario, scenario2];
-    dispatch({ type: GET_COHORT_SCENARIOS_SUCCESS, scenarios });
-    return scenarios;
-  });
+  cohortActions.getCohortScenarios.mockImplementation(
+    () => async (dispatch) => {
+      const scenarios = [scenario, scenario2];
+      dispatch({ type: GET_COHORT_SCENARIOS_SUCCESS, scenarios });
+      return scenarios;
+    }
+  );
 
-  cohortActions.getCohort.mockImplementation(() => async dispatch => {
+  cohortActions.getCohort.mockImplementation(() => async (dispatch) => {
     dispatch({ type: GET_COHORT_SUCCESS, cohort });
     return cohort;
   });
 
   cohortActions.setCohortScenarios.mockImplementation(
-    cohort => async dispatch => {
+    (cohort) => async (dispatch) => {
       dispatch({ type: SET_COHORT_SUCCESS, cohort });
       return cohort;
     }
   );
 
-  userActions.getUser.mockImplementation(() => async dispatch => {
+  userActions.getUser.mockImplementation(() => async (dispatch) => {
     const user = {
       username: 'facilitator',
       personalname: 'Facilitator User',
@@ -1039,16 +1041,16 @@ beforeEach(() => {
             created_at: 1602454306144,
             generic: 'arrived at a slide.',
             name: 'slide-arrival',
-            url: 'http://localhost:3000/cohort/1/run/99/slide/1'
-          }
-        }
-      }
+            url: 'http://localhost:3000/cohort/1/run/99/slide/1',
+          },
+        },
+      },
     };
     dispatch({ type: GET_USER_SUCCESS, user });
     return user;
   });
 
-  usersActions.getUsers.mockImplementation(() => async dispatch => {
+  usersActions.getUsers.mockImplementation(() => async (dispatch) => {
     const users = [
       {
         username: 'super',
@@ -1069,10 +1071,10 @@ beforeEach(() => {
               created_at: 1602454306144,
               generic: 'arrived at a slide.',
               name: 'slide-arrival',
-              url: 'http://localhost:3000/cohort/1/run/99/slide/1'
-            }
-          }
-        }
+              url: 'http://localhost:3000/cohort/1/run/99/slide/1',
+            },
+          },
+        },
       },
       {
         username: 'facilitator',
@@ -1095,10 +1097,10 @@ beforeEach(() => {
               created_at: 1602454306144,
               generic: 'arrived at a slide.',
               name: 'slide-arrival',
-              url: 'http://localhost:3000/cohort/1/run/99/slide/1'
-            }
-          }
-        }
+              url: 'http://localhost:3000/cohort/1/run/99/slide/1',
+            },
+          },
+        },
       },
       {
         username: 'researcher',
@@ -1120,10 +1122,10 @@ beforeEach(() => {
               created_at: 1602454306144,
               generic: 'arrived at a slide.',
               name: 'slide-arrival',
-              url: 'http://localhost:3000/cohort/1/run/99/slide/1'
-            }
-          }
-        }
+              url: 'http://localhost:3000/cohort/1/run/99/slide/1',
+            },
+          },
+        },
       },
       {
         username: 'participant',
@@ -1147,10 +1149,10 @@ beforeEach(() => {
                 'requested to join {scenario} as {persona}, and is waiting to be matched.',
               persona: { id: 1, name: 'Teacher' },
               name: 'slide-arrival',
-              url: 'http://localhost:3000/cohort/1/run/99/slide/1'
-            }
-          }
-        }
+              url: 'http://localhost:3000/cohort/1/run/99/slide/1',
+            },
+          },
+        },
       },
       {
         username: 'anonymous',
@@ -1174,11 +1176,11 @@ beforeEach(() => {
                 '{participant} canceled their request to join {scenario} as {persona}.',
               persona: { id: 2, name: 'Student' },
               name: 'slide-arrival',
-              url: 'http://localhost:3000/cohort/1/run/99/slide/1'
-            }
-          }
-        }
-      }
+              url: 'http://localhost:3000/cohort/1/run/99/slide/1',
+            },
+          },
+        },
+      },
     ];
     dispatch({ type: GET_USERS_SUCCESS, users });
     return users;
@@ -1210,15 +1212,15 @@ test('CohortScenarios', () => {
 });
 
 /** @GENERATED: BEGIN **/
-test('Render 1 1', async done => {
+test('Render 1 1', async (done) => {
   const Component = CohortScenarios;
   const props = {
     ...commonProps,
-    authority: { isFacilitator: true, isParticipant: true }
+    authority: { isFacilitator: true, isParticipant: true },
   };
 
   const state = {
-    ...commonState
+    ...commonState,
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
@@ -1233,16 +1235,16 @@ test('Render 1 1', async done => {
 /** @GENERATED: END **/
 
 /** @GENERATED: BEGIN **/
-test('Render 2 1', async done => {
+test('Render 2 1', async (done) => {
   const Component = CohortScenarios;
   const props = {
     ...commonProps,
     id: 1,
-    authority: { isFacilitator: true, isParticipant: true }
+    authority: { isFacilitator: true, isParticipant: true },
   };
 
   const state = {
-    ...commonState
+    ...commonState,
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
@@ -1258,26 +1260,28 @@ test('Render 2 1', async done => {
 
 /* INJECTION STARTS HERE */
 
-test('No scenarios returned from request', async done => {
+test('No scenarios returned from request', async (done) => {
   const Component = CohortScenarios;
 
-  cohortActions.getCohortScenarios.mockImplementation(() => async dispatch => {
-    const scenarios = [];
-    dispatch({ type: GET_COHORT_SCENARIOS_SUCCESS, scenarios });
-    return scenarios;
-  });
+  cohortActions.getCohortScenarios.mockImplementation(
+    () => async (dispatch) => {
+      const scenarios = [];
+      dispatch({ type: GET_COHORT_SCENARIOS_SUCCESS, scenarios });
+      return scenarios;
+    }
+  );
 
   const props = {
     ...commonProps,
     id: 1,
     authority: {
       isFacilitator: true,
-      isParticipant: true
-    }
+      isParticipant: true,
+    },
   };
 
   const state = {
-    ...commonState
+    ...commonState,
   };
 
   state.scenariosById = state.scenarios.reduce((accum, scenario) => {
@@ -1293,22 +1297,24 @@ test('No scenarios returned from request', async done => {
   expect(asFragment()).toMatchSnapshot();
 
   const button = await screen.findByRole('button', {
-    name: /add or remove scenarios/i
+    name: /add or remove scenarios/i,
   });
   expect(asFragment()).toMatchSnapshot();
   done();
 });
 
-test('No scenarios in cohort', async done => {
+test('No scenarios in cohort', async (done) => {
   const Component = CohortScenarios;
 
-  cohortActions.getCohortScenarios.mockImplementation(() => async dispatch => {
-    const scenarios = [];
-    dispatch({ type: GET_COHORT_SCENARIOS_SUCCESS, scenarios });
-    return scenarios;
-  });
+  cohortActions.getCohortScenarios.mockImplementation(
+    () => async (dispatch) => {
+      const scenarios = [];
+      dispatch({ type: GET_COHORT_SCENARIOS_SUCCESS, scenarios });
+      return scenarios;
+    }
+  );
 
-  cohortActions.getCohort.mockImplementation(() => async dispatch => {
+  cohortActions.getCohort.mockImplementation(() => async (dispatch) => {
     cohort.scenarios = [];
     dispatch({ type: GET_COHORT_SUCCESS, cohort });
     return cohort;
@@ -1319,12 +1325,12 @@ test('No scenarios in cohort', async done => {
     id: 1,
     authority: {
       isFacilitator: true,
-      isParticipant: true
-    }
+      isParticipant: true,
+    },
   };
 
   const state = {
-    ...commonState
+    ...commonState,
   };
 
   state.scenariosById = state.scenarios.reduce((accum, scenario) => {
@@ -1340,13 +1346,13 @@ test('No scenarios in cohort', async done => {
   expect(asFragment()).toMatchSnapshot();
 
   const button = await screen.findByRole('button', {
-    name: /add or remove scenarios/i
+    name: /add or remove scenarios/i,
   });
   expect(asFragment()).toMatchSnapshot();
   done();
 });
 
-test('Facilitator has an option to open scenarios selector', async done => {
+test('Facilitator has an option to open scenarios selector', async (done) => {
   const Component = CohortScenarios;
 
   const props = {
@@ -1354,12 +1360,12 @@ test('Facilitator has an option to open scenarios selector', async done => {
     id: 1,
     authority: {
       isFacilitator: true,
-      isParticipant: true
-    }
+      isParticipant: true,
+    },
   };
 
   const state = {
-    ...commonState
+    ...commonState,
   };
 
   state.scenariosById = state.scenarios.reduce((accum, scenario) => {
@@ -1375,7 +1381,7 @@ test('Facilitator has an option to open scenarios selector', async done => {
   expect(asFragment()).toMatchSnapshot();
 
   const button = await screen.findByRole('button', {
-    name: /add or remove scenarios/i
+    name: /add or remove scenarios/i,
   });
   expect(asFragment()).toMatchSnapshot();
 
@@ -1385,7 +1391,7 @@ test('Facilitator has an option to open scenarios selector', async done => {
   done();
 });
 
-test('Scenarios have multi-participant/single-participant icons', async done => {
+test('Scenarios have multi-participant/single-participant icons', async (done) => {
   const Component = CohortScenarios;
 
   const props = {
@@ -1393,12 +1399,12 @@ test('Scenarios have multi-participant/single-participant icons', async done => 
     id: 1,
     authority: {
       isFacilitator: true,
-      isParticipant: true
-    }
+      isParticipant: true,
+    },
   };
 
   const state = {
-    ...commonState
+    ...commonState,
   };
 
   state.scenariosById = state.scenarios.reduce((accum, scenario) => {
@@ -1414,7 +1420,7 @@ test('Scenarios have multi-participant/single-participant icons', async done => 
   expect(asFragment()).toMatchSnapshot();
 
   const button = await screen.findByRole('button', {
-    name: /add or remove scenarios/i
+    name: /add or remove scenarios/i,
   });
   expect(asFragment()).toMatchSnapshot();
 
@@ -1424,7 +1430,7 @@ test('Scenarios have multi-participant/single-participant icons', async done => 
   done();
 });
 
-test('Participant does not have an option to open scenarios selector', async done => {
+test('Participant does not have an option to open scenarios selector', async (done) => {
   const Component = CohortScenarios;
 
   const props = {
@@ -1432,12 +1438,12 @@ test('Participant does not have an option to open scenarios selector', async don
     id: 1,
     authority: {
       isFacilitator: false,
-      isParticipant: true
-    }
+      isParticipant: true,
+    },
   };
 
   const state = {
-    ...commonState
+    ...commonState,
   };
 
   state.scenariosById = state.scenarios.reduce((accum, scenario) => {
@@ -1453,7 +1459,7 @@ test('Participant does not have an option to open scenarios selector', async don
   expect(asFragment()).toMatchSnapshot();
 
   const buttons = await screen.queryAllByRole('button', {
-    name: /Add or remove scenarios/i
+    name: /Add or remove scenarios/i,
   });
 
   expect(buttons.length).toBe(0);
@@ -1461,7 +1467,7 @@ test('Participant does not have an option to open scenarios selector', async don
   done();
 });
 
-test('Run as participant', async done => {
+test('Run as participant', async (done) => {
   const Component = CohortScenarios;
 
   const props = {
@@ -1469,12 +1475,12 @@ test('Run as participant', async done => {
     id: 1,
     authority: {
       isFacilitator: true,
-      isParticipant: true
-    }
+      isParticipant: true,
+    },
   };
 
   const state = {
-    ...commonState
+    ...commonState,
     // chats: [
 
     //   {
@@ -1498,7 +1504,7 @@ test('Run as participant', async done => {
   delete window.location;
   // eslint-disable-next-line
   window.location = {
-    href: ''
+    href: '',
   };
 
   // This no longer displays unless all of the follow is true:
@@ -1516,7 +1522,7 @@ test('Run as participant', async done => {
   done();
 });
 
-test('Click to see all response', async done => {
+test('Click to see all response', async (done) => {
   const Component = CohortScenarios;
 
   const props = {
@@ -1524,13 +1530,13 @@ test('Click to see all response', async done => {
     id: 1,
     authority: {
       isFacilitator: true,
-      isParticipant: true
+      isParticipant: true,
     },
-    onClick: jest.fn()
+    onClick: jest.fn(),
   };
 
   const state = {
-    ...commonState
+    ...commonState,
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
@@ -1695,7 +1701,7 @@ test('Click to see all response', async done => {
   done();
 });
 
-test('Open Edit scenarios', async done => {
+test('Open Edit scenarios', async (done) => {
   const Component = CohortScenarios;
 
   const props = {
@@ -1703,13 +1709,13 @@ test('Open Edit scenarios', async done => {
     id: 1,
     authority: {
       isFacilitator: true,
-      isParticipant: true
+      isParticipant: true,
     },
-    onClick: jest.fn()
+    onClick: jest.fn(),
   };
 
   const state = {
-    ...commonState
+    ...commonState,
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
@@ -1732,3 +1738,4 @@ test('Open Edit scenarios', async done => {
 
   done();
 });
+

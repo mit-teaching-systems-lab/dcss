@@ -22,7 +22,6 @@ import withSocket, {
   RUN_RESPONSE_UPDATED
 } from '@hoc/withSocket';
 import '../AudioPrompt/AudioPrompt.css';
-import Identity from '@utils/Identity';
 import Layout from '@utils/Layout';
 import Media, { IS_AUDIO_RECORDING_SUPPORTED } from '@utils/Media';
 import Storage from '@utils/Storage';

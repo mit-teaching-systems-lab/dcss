@@ -100,10 +100,10 @@ exports[`All users have not completed 1`] = `
               Manage participant access
             </button>
             <button
-              aria-label=\\"Cancel all participant join requests\\"
+              aria-label=\\"Cancel all role assignments\\"
               class=\\"ui tiny button\\"
             >
-              Cancel all participant join requests
+              Cancel all role assignments
             </button>
             <div
               aria-expanded=\\"false\\"
@@ -867,10 +867,10 @@ exports[`Cancel all waiting participant match requests 1`] = `
               Manage participant access
             </button>
             <button
-              aria-label=\\"Cancel all participant join requests\\"
+              aria-label=\\"Cancel all role assignments\\"
               class=\\"ui tiny button\\"
             >
-              Cancel all participant join requests
+              Cancel all role assignments
             </button>
             <div
               aria-expanded=\\"false\\"
@@ -1662,10 +1662,10 @@ exports[`Open Manage participants 2`] = `
               Manage participant access
             </button>
             <button
-              aria-label=\\"Cancel all participant join requests\\"
+              aria-label=\\"Cancel all role assignments\\"
               class=\\"ui tiny button\\"
             >
-              Cancel all participant join requests
+              Cancel all role assignments
             </button>
             <div
               aria-expanded=\\"false\\"
@@ -2395,10 +2395,10 @@ exports[`Open Manage participants 3`] = `
               Manage participant access
             </button>
             <button
-              aria-label=\\"Cancel all participant join requests\\"
+              aria-label=\\"Cancel all role assignments\\"
               class=\\"ui tiny button\\"
             >
-              Cancel all participant join requests
+              Cancel all role assignments
             </button>
             <div
               aria-expanded=\\"false\\"
@@ -3131,10 +3131,10 @@ exports[`Open Manage participants 4`] = `
               Manage participant access
             </button>
             <button
-              aria-label=\\"Cancel all participant join requests\\"
+              aria-label=\\"Cancel all role assignments\\"
               class=\\"ui tiny button\\"
             >
-              Cancel all participant join requests
+              Cancel all role assignments
             </button>
             <div
               aria-expanded=\\"false\\"
@@ -4347,10 +4347,10 @@ exports[`Open Manage participants 5`] = `
               Manage participant access
             </button>
             <button
-              aria-label=\\"Cancel all participant join requests\\"
+              aria-label=\\"Cancel all role assignments\\"
               class=\\"ui tiny button\\"
             >
-              Cancel all participant join requests
+              Cancel all role assignments
             </button>
             <div
               aria-expanded=\\"false\\"
@@ -5140,10 +5140,10 @@ exports[`Search participants 2`] = `
               Manage participant access
             </button>
             <button
-              aria-label=\\"Cancel all participant join requests\\"
+              aria-label=\\"Cancel all role assignments\\"
               class=\\"ui tiny button\\"
             >
-              Cancel all participant join requests
+              Cancel all role assignments
             </button>
             <div
               aria-expanded=\\"false\\"
@@ -5873,10 +5873,10 @@ exports[`Search participants 3`] = `
               Manage participant access
             </button>
             <button
-              aria-label=\\"Cancel all participant join requests\\"
+              aria-label=\\"Cancel all role assignments\\"
               class=\\"ui tiny button\\"
             >
-              Cancel all participant join requests
+              Cancel all role assignments
             </button>
             <div
               aria-expanded=\\"false\\"
@@ -6606,10 +6606,10 @@ exports[`Search participants 4`] = `
               Manage participant access
             </button>
             <button
-              aria-label=\\"Cancel all participant join requests\\"
+              aria-label=\\"Cancel all role assignments\\"
               class=\\"ui tiny button\\"
             >
-              Cancel all participant join requests
+              Cancel all role assignments
             </button>
             <div
               aria-expanded=\\"false\\"
@@ -6982,10 +6982,10 @@ exports[`Search participants 5`] = `
               Manage participant access
             </button>
             <button
-              aria-label=\\"Cancel all participant join requests\\"
+              aria-label=\\"Cancel all role assignments\\"
               class=\\"ui tiny button\\"
             >
-              Cancel all participant join requests
+              Cancel all role assignments
             </button>
             <div
               aria-expanded=\\"false\\"
@@ -7358,10 +7358,10 @@ exports[`Search participants 6`] = `
               Manage participant access
             </button>
             <button
-              aria-label=\\"Cancel all participant join requests\\"
+              aria-label=\\"Cancel all role assignments\\"
               class=\\"ui tiny button\\"
             >
-              Cancel all participant join requests
+              Cancel all role assignments
             </button>
             <div
               aria-expanded=\\"false\\"
@@ -8091,10 +8091,10 @@ exports[`Search participants 7`] = `
               Manage participant access
             </button>
             <button
-              aria-label=\\"Cancel all participant join requests\\"
+              aria-label=\\"Cancel all role assignments\\"
               class=\\"ui tiny button\\"
             >
-              Cancel all participant join requests
+              Cancel all role assignments
             </button>
             <div
               aria-expanded=\\"false\\"
@@ -8339,10 +8339,10 @@ exports[`Search participants 8`] = `
               Manage participant access
             </button>
             <button
-              aria-label=\\"Cancel all participant join requests\\"
+              aria-label=\\"Cancel all role assignments\\"
               class=\\"ui tiny button\\"
             >
-              Cancel all participant join requests
+              Cancel all role assignments
             </button>
             <div
               aria-expanded=\\"false\\"
@@ -8587,10 +8587,10 @@ exports[`Search participants 9`] = `
               Manage participant access
             </button>
             <button
-              aria-label=\\"Cancel all participant join requests\\"
+              aria-label=\\"Cancel all role assignments\\"
               class=\\"ui tiny button\\"
             >
-              Cancel all participant join requests
+              Cancel all role assignments
             </button>
             <div
               aria-expanded=\\"false\\"
@@ -8835,10 +8835,10 @@ exports[`Search participants 10`] = `
               Manage participant access
             </button>
             <button
-              aria-label=\\"Cancel all participant join requests\\"
+              aria-label=\\"Cancel all role assignments\\"
               class=\\"ui tiny button\\"
             >
-              Cancel all participant join requests
+              Cancel all role assignments
             </button>
             <div
               aria-expanded=\\"false\\"
@@ -9083,10 +9083,10 @@ exports[`Search participants 11`] = `
               Manage participant access
             </button>
             <button
-              aria-label=\\"Cancel all participant join requests\\"
+              aria-label=\\"Cancel all role assignments\\"
               class=\\"ui tiny button\\"
             >
-              Cancel all participant join requests
+              Cancel all role assignments
             </button>
             <div
               aria-expanded=\\"false\\"
@@ -9816,10 +9816,10 @@ exports[`Search participants 12`] = `
               Manage participant access
             </button>
             <button
-              aria-label=\\"Cancel all participant join requests\\"
+              aria-label=\\"Cancel all role assignments\\"
               class=\\"ui tiny button\\"
             >
-              Cancel all participant join requests
+              Cancel all role assignments
             </button>
             <div
               aria-expanded=\\"false\\"
@@ -10549,10 +10549,10 @@ exports[`Search participants 13`] = `
               Manage participant access
             </button>
             <button
-              aria-label=\\"Cancel all participant join requests\\"
+              aria-label=\\"Cancel all role assignments\\"
               class=\\"ui tiny button\\"
             >
-              Cancel all participant join requests
+              Cancel all role assignments
             </button>
             <div
               aria-expanded=\\"false\\"
