@@ -58,6 +58,12 @@ router.put('/:scenario_id', [
   setScenario
 ]);
 
+router.get('/:scenario_id/copy', [
+  requireUserRole(requiredRoles),
+  lookupScenario(),
+  copyScenario
+]);
+
 router.post('/:scenario_id/copy', [
   requireUserRole(requiredRoles),
   lookupScenario(),

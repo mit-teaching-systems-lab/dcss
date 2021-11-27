@@ -408,14 +408,12 @@ async function copyScenario(req, res) {
       }
     }
 
-    const ids = [];
-
+    // const ids = [];
     for (let { id, components } of slides) {
       await slidesdb.setSlide(id, { components });
-      ids.push(id);
+      // ids.push(id);
     }
-
-    await slidesdb.setSlideOrder(scenario.id, ids);
+    // await slidesdb.setSlideOrder(scenario.id, ids);
 
     await db.setScenarioCategories(scenario.id, categories);
     await db.setScenarioLabels(scenario.id, labels);
