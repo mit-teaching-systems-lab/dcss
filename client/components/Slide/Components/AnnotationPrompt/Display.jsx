@@ -200,9 +200,11 @@ class Display extends Component {
     });
 
     if (!missingAnnotation) {
+      // "isFulfilled" is used by the interceptor when the component is loaded
+      // with persisted data! DO NOT SET THIS TO TRUE!!!
+      data.isFulfilled = false;
       // This is necessary to "release" the hold made by required
       // response prompts.
-      data.isFulfilled = false;
       data.isFulfillmentOverride = true;
       this.props.onResponseChange(event, data);
     } else {
