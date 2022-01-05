@@ -180,8 +180,8 @@ class Downloads extends Component {
                   header: capture.component.header,
                   prompt: capture.component.prompt,
                   response:
-                    capture.response.response.transcript ||
-                    capture.response.response.value,
+                    capture?.response?.response?.transcript ||
+                    capture?.response?.response?.value,
                   question: capture.annotation.question,
                   answer: capture.annotation.value
                 };

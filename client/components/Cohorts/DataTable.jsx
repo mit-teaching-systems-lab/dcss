@@ -95,9 +95,9 @@ function reduceResponses(key, responses) {
           header: capture.component.header,
           prompt: capture.component.prompt,
           response:
-            capture.response.transcript ||
-            capture.response.response.transcript ||
-            capture.response.response.value
+            capture?.response?.transcript ||
+            capture?.response?.response?.transcript ||
+            capture?.response?.response?.value
         };
         return accum.concat([annotation]);
       }, []);
