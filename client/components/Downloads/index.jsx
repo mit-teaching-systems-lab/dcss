@@ -237,7 +237,10 @@ class Downloads extends Component {
       ? await this.props.getChatTranscriptsByCohortId(cohort.id)
       : await this.props.getChatTranscriptsByScenarioId(scenario.id);
 
-    const hasChatMessages = transcripts.some(({ is_joinpart }) => !is_joinpart);
+    const filteredTranscripts = transcripts.filter(
+      ({ is_joinpart }) => !is_joinpart
+    );
+    const hasChatMessages = filteredTranscripts.length > 0;
 
     if (hasChatMessages) {
       const fields = [
@@ -252,11 +255,14 @@ class Downloads extends Component {
         'is_quotable',
         'is_joinpart',
         'response_id',
-        'recipient_id'
+        'recipient_id',
+        'role_persona_id',
+        'role_persona_name',
+        'role_persona_description'
       ];
 
       const parser = new Parser({ fields });
-      const csv = parser.parse(transcripts);
+      const csv = parser.parse(filteredTranscripts);
 
       files.push(['chat-messages.csv', csv]);
     }

@@ -426,7 +426,10 @@ export class DataTable extends React.Component {
           'is_quotable',
           'is_joinpart',
           'response_id',
-          'recipient_id'
+          'recipient_id',
+          'role_persona_id',
+          'role_persona_name',
+          'role_persona_description'
         ];
 
         const parser = new Parser({ fields });

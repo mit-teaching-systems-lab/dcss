@@ -671,7 +671,7 @@ exports.getChatTranscriptsByChatId = async chat_id => {
       ORDER BY chat_id ASC
     )
     SELECT DISTINCT ON (cma.id) *
-    FROM chat_message_archive cma
+    FROM chat_message_archives cma
     JOIN ci ON ci.chat_id = cma.chat_id
   `);
 
@@ -692,7 +692,7 @@ exports.getChatTranscriptsByCohortId = async cohort_id => {
       ORDER BY rc.chat_id ASC
     )
     SELECT DISTINCT ON (cma.id) *
-    FROM chat_message_archive cma
+    FROM chat_message_archives cma
     JOIN ci ON ci.chat_id = cma.chat_id
 
   `);
@@ -716,7 +716,7 @@ exports.getChatTranscriptsByScenarioId = async scenario_id => {
       ) r ON rc.run_id = r.id
     )
     SELECT DISTINCT ON (cma.id) *
-    FROM chat_message_archive cma
+    FROM chat_message_archives cma
     JOIN rs ON rs.chat_id = cma.chat_id;
   `);
 
@@ -736,7 +736,7 @@ exports.getChatTranscriptsByRunId = async run_id => {
       ORDER BY chat_id ASC
     )
     SELECT DISTINCT ON (cma.id) *
-    FROM chat_message_archive cma
+    FROM chat_message_archives cma
     JOIN ci ON ci.chat_id = cma.chat_id
   `);
 
