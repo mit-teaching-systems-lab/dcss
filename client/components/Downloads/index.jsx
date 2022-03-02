@@ -172,6 +172,10 @@ class Downloads extends Component {
             const captured = JSON.parse(record.value);
             annotations.push(
               ...captured.map(capture => {
+                const capturedValue = capture?.response?.response?.value;
+                const file = Media.isAudioFile(capturedValue)
+                  ? `${location.origin}/api/media/${capturedValue}`
+                  : '';
                 return {
                   run_id: capture.response.run_id,
                   created_at: capture.response.created_at,
@@ -180,8 +184,8 @@ class Downloads extends Component {
                   header: capture.component.header,
                   prompt: capture.component.prompt,
                   response:
-                    capture?.response?.response?.transcript ||
-                    capture?.response?.response?.value,
+                    capture?.response?.response?.transcript || capturedValue,
+                  file,
                   question: capture.annotation.question,
                   answer: capture.annotation.value
                 };
@@ -221,6 +225,7 @@ class Downloads extends Component {
             'header',
             'prompt',
             'response',
+            'file',
             'question',
             'answer'
           ];
