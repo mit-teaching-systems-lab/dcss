@@ -416,6 +416,8 @@ export class DataTable extends React.Component {
       if (transcript && transcript.length) {
         const fields = [
           'id',
+          'scenario_id',
+          'run_id',
           'chat_id',
           'user_id',
           'textContent',

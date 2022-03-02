@@ -245,6 +245,8 @@ class Downloads extends Component {
     if (hasChatMessages) {
       const fields = [
         'id',
+        'scenario_id',
+        'run_id',
         'chat_id',
         'user_id',
         'textContent',

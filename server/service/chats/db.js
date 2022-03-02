@@ -663,6 +663,18 @@ const isRelevant = record => {
 };
 
 exports.getChatTranscriptsByChatId = async chat_id => {
+  // Previously:
+  // const result = await query(sql`
+  //   WITH ci AS (
+  //     SELECT chat_id, run_id
+  //     FROM run_chat
+  //     WHERE chat_id = ${chat_id}
+  //     ORDER BY chat_id ASC
+  //   )
+  //   SELECT DISTINCT ON (cma.id) *
+  //   FROM chat_message_archives cma
+  //   JOIN ci ON ci.chat_id = cma.chat_id
+  // `);
   const result = await query(sql`
     WITH ci AS (
       SELECT chat_id, run_id
@@ -670,9 +682,26 @@ exports.getChatTranscriptsByChatId = async chat_id => {
       WHERE chat_id = ${chat_id}
       ORDER BY chat_id ASC
     )
-    SELECT DISTINCT ON (cma.id) *
+    SELECT DISTINCT ON (cma.id)
+      cma.id,
+      ci.run_id,
+      r.scenario_id,
+      cma.chat_id,
+      cma.user_id,
+      cma.content,
+      cma.created_at,
+      cma.updated_at,
+      cma.deleted_at,
+      cma.is_quotable,
+      cma.is_joinpart,
+      cma.response_id,
+      cma.recipient_id,
+      cma.role_persona_id,
+      cma.role_persona_name,
+      cma.role_persona_description
     FROM chat_message_archives cma
     JOIN ci ON ci.chat_id = cma.chat_id
+    JOIN run r ON r.id = ci.run_id;
   `);
 
   const records = result.rowCount
@@ -683,6 +712,20 @@ exports.getChatTranscriptsByChatId = async chat_id => {
 };
 
 exports.getChatTranscriptsByCohortId = async cohort_id => {
+  // Previously:
+  // const result = await query(sql`
+  //   WITH ci AS (
+  //     SELECT rc.chat_id, rc.run_id
+  //     FROM cohort_run cr
+  //     JOIN run_chat rc ON rc.run_id = cr.run_id
+  //     WHERE cr.cohort_id = ${cohort_id}
+  //     ORDER BY rc.chat_id ASC
+  //   )
+  //   SELECT DISTINCT ON (cma.id) *
+  //   FROM chat_message_archives cma
+  //   JOIN ci ON ci.chat_id = cma.chat_id
+
+  // `);
   const result = await query(sql`
     WITH ci AS (
       SELECT rc.chat_id, rc.run_id
@@ -691,10 +734,26 @@ exports.getChatTranscriptsByCohortId = async cohort_id => {
       WHERE cr.cohort_id = ${cohort_id}
       ORDER BY rc.chat_id ASC
     )
-    SELECT DISTINCT ON (cma.id) *
+    SELECT DISTINCT ON (cma.id)
+      cma.id,
+      ci.run_id,
+      r.scenario_id,
+      cma.chat_id,
+      cma.user_id,
+      cma.content,
+      cma.created_at,
+      cma.updated_at,
+      cma.deleted_at,
+      cma.is_quotable,
+      cma.is_joinpart,
+      cma.response_id,
+      cma.recipient_id,
+      cma.role_persona_id,
+      cma.role_persona_name,
+      cma.role_persona_description
     FROM chat_message_archives cma
     JOIN ci ON ci.chat_id = cma.chat_id
-
+    JOIN run r ON r.id = ci.run_id
   `);
 
   const records = result.rowCount
@@ -705,6 +764,21 @@ exports.getChatTranscriptsByCohortId = async cohort_id => {
 };
 
 exports.getChatTranscriptsByScenarioId = async scenario_id => {
+  // Previously:
+  // const result = await query(sql`
+  //   WITH rs AS (
+  //     SELECT chat_id, run_id
+  //     FROM run_chat rc
+  //     JOIN (
+  //       SELECT id
+  //       FROM run
+  //       WHERE scenario_id = ${scenario_id}
+  //     ) r ON rc.run_id = r.id
+  //   )
+  //   SELECT DISTINCT ON (cma.id) *
+  //   FROM chat_message_archives cma
+  //   JOIN rs ON rs.chat_id = cma.chat_id;
+  // `);
   const result = await query(sql`
     WITH rs AS (
       SELECT chat_id, run_id
@@ -715,9 +789,26 @@ exports.getChatTranscriptsByScenarioId = async scenario_id => {
         WHERE scenario_id = ${scenario_id}
       ) r ON rc.run_id = r.id
     )
-    SELECT DISTINCT ON (cma.id) *
+    SELECT DISTINCT ON (cma.id)
+      cma.id,
+      rs.run_id,
+      r.scenario_id,
+      cma.chat_id,
+      cma.user_id,
+      cma.content,
+      cma.created_at,
+      cma.updated_at,
+      cma.deleted_at,
+      cma.is_quotable,
+      cma.is_joinpart,
+      cma.response_id,
+      cma.recipient_id,
+      cma.role_persona_id,
+      cma.role_persona_name,
+      cma.role_persona_description
     FROM chat_message_archives cma
-    JOIN rs ON rs.chat_id = cma.chat_id;
+    JOIN rs ON rs.chat_id = cma.chat_id
+    JOIN run r ON r.id = rs.run_id;
   `);
 
   const records = result.rowCount
@@ -728,6 +819,18 @@ exports.getChatTranscriptsByScenarioId = async scenario_id => {
 };
 
 exports.getChatTranscriptsByRunId = async run_id => {
+  // Previously:
+  // const result = await query(sql`
+  //   WITH ci AS (
+  //     SELECT DISTINCT chat_id, run_id
+  //     FROM run_chat
+  //     WHERE run_id = ${run_id}
+  //     ORDER BY chat_id ASC
+  //   )
+  //   SELECT DISTINCT ON (cma.id) *
+  //   FROM chat_message_archives cma
+  //   JOIN ci ON ci.chat_id = cma.chat_id
+  // `);
   const result = await query(sql`
     WITH ci AS (
       SELECT DISTINCT chat_id, run_id
@@ -735,9 +838,26 @@ exports.getChatTranscriptsByRunId = async run_id => {
       WHERE run_id = ${run_id}
       ORDER BY chat_id ASC
     )
-    SELECT DISTINCT ON (cma.id) *
+    SELECT DISTINCT ON (cma.id)
+      cma.id,
+      ci.run_id,
+      r.scenario_id,
+      cma.chat_id,
+      cma.user_id,
+      cma.content,
+      cma.created_at,
+      cma.updated_at,
+      cma.deleted_at,
+      cma.is_quotable,
+      cma.is_joinpart,
+      cma.response_id,
+      cma.recipient_id,
+      cma.role_persona_id,
+      cma.role_persona_name,
+      cma.role_persona_description
     FROM chat_message_archives cma
     JOIN ci ON ci.chat_id = cma.chat_id
+    JOIN run r ON r.id = ci.run_id;
   `);
 
   const records = result.rowCount
