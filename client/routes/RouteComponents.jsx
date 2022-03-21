@@ -14,7 +14,7 @@ import Storage from '@utils/Storage';
  * doesn't update when navigating to exact same component.
  */
 
-export const UserDashboard = (props = {}) => {
+export const UserDashboard = () => {
   return <Dashboard />;
 };
 
