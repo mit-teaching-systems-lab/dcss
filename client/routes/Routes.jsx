@@ -21,6 +21,7 @@ import ResetRoutePromptModal from '@components/Login/ResetRoutePromptModal';
 import Run from '@components/Run';
 import {
   CopyScenario,
+  UserDashboard,
   Logout,
   InterceptAnonymizableRoute,
   NewScenario,
@@ -94,7 +95,7 @@ const Routes = ({ isLoggedIn, user }) => {
 
   return (
     <Switch>
-      <Route exact path="/" component={ScenariosListAll} />
+      <Route exact path="/" component={UserDashboard} />
 
       <InterceptAnonymizableRoute
         path="/invite/:status/:code"
