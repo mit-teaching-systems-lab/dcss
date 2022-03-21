@@ -6,12 +6,17 @@ import Editor from '@components/Editor';
 import Login from '@components/Login';
 import LoginRoutePromptModal from '@components/Login/LoginRoutePromptModal';
 import ScenariosList from '@components/ScenariosList';
+import Dashboard from '@components/Dashboard';
 
 import Storage from '@utils/Storage';
 /**
  * Special case components for solving routing issues. Component state
  * doesn't update when navigating to exact same component.
  */
+
+export const UserDashboard = (props = {}) => {
+  return <Dashboard />;
+};
 
 export const NewScenario = (props = {}) => {
   return <Editor {...props} isNewScenario={true} />;
