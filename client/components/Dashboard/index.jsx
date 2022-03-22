@@ -5,8 +5,8 @@ import './Dashboard.css';
 const SideNav = () => {
   return (
     <aside className="dashboard-sidenav">
-      <section>
-        <p>Your tools</p>
+      <section className="dashboard-sidenav__section">
+        <p className="dashboard-sidenav__subtitle">Your tools</p>
         <ul>
           <li>
             <a href="#recent-scenarios">Recent scenarios</a>
@@ -16,8 +16,8 @@ const SideNav = () => {
           </li>
         </ul>
       </section>
-      <section>
-        <p>Knowledge Center</p>
+      <section className="dashboard-sidenav__section">
+        <p className="dashboard-sidenav__subtitle">Knowledge Center</p>
         <ul>
           <li>
             <a href="#learn-by-example">Learn by example</a>
@@ -125,7 +125,7 @@ const GetInTouch = () => {
 
 const Dashboard = () => {
   return (
-    <>
+    <div className="dashboard">
       <h1>Your Teacher Moments</h1>
       <div className="dashboard-container">
         <SideNav />
@@ -137,7 +137,7 @@ const Dashboard = () => {
           <GetInTouch />
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
