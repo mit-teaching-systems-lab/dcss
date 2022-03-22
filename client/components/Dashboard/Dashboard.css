@@ -1,0 +1,18 @@
+.dashboard-container {
+  display: grid;
+  grid-gap: 3rem;
+}
+
+.dashboard-sidenav {
+  display: none;
+}
+
+@media only screen and (min-width: 50em) {
+  .dashboard-sidenav {
+    display: block;
+  }
+
+  .dashboard-container {
+    grid-template-columns: 1fr 3fr;
+  }
+}
