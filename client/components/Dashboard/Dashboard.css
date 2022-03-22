@@ -1,3 +1,20 @@
+.dashboard {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 3rem;
+  max-width: 80rem;
+}
+
+.dashboard ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.dashboard h1 {
+  border-bottom: 1px solid #c1c1b0;
+}
+
 .dashboard-container {
   display: grid;
   grid-gap: 3rem;
@@ -9,10 +26,28 @@
 
 @media only screen and (min-width: 50em) {
   .dashboard-sidenav {
-    display: block;
+    align-self: start;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 1rem;
   }
 
   .dashboard-container {
     grid-template-columns: 1fr 3fr;
   }
+}
+
+.dashboard-sidenav__subtitle {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.dashboard-sidenav li:not(:last-of-type) {
+  margin-bottom: 0.5rem;
+}
+
+.dashboard-sidenav li a {
+  color: var(--color-primary);
+  font-weight: bold;
 }
