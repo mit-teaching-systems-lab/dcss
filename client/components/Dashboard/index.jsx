@@ -1,9 +1,10 @@
 import React from 'react';
 import { Button, Icon } from '@components/UI';
+import './Dashboard.css';
 
 const SideNav = () => {
   return (
-    <aside>
+    <aside className="dashboard-sidenav">
       <section>
         <p>Your tools</p>
         <ul>
@@ -126,9 +127,9 @@ const Dashboard = () => {
   return (
     <>
       <h1>Your Teacher Moments</h1>
-      <div>
+      <div className="dashboard-container">
         <SideNav />
-        <div>
+        <div className="dashboard-main">
           <RecentCohorts />
           <RecentScenarios />
           <LearnByExample />
