@@ -34,6 +34,32 @@ const SideNav = () => {
   );
 };
 
+const RecentCohortCard = () => {
+  return <p>Use cohort card from CohortCard.jsx</p>;
+};
+
+const RecentScenarioCard = () => {
+  return <p>Use scenario card from ScenarioCard.jsx</p>;
+};
+
+const AuthoringPermissionsNote = () => {
+  return (
+    <div className="dashboard-cta">
+      <p>
+        Cohorts and scenario creation is only available to authors. Get in touch
+        with the Teacher Moments team by filling out our request form to become
+        an author.
+      </p>
+      <a
+        className="dashboard-card__link"
+        href="https://forms.gle/qVDNxiD1yqrtDwMQ6"
+      >
+        Fill out request form →
+      </a>
+    </div>
+  );
+};
+
 const RecentCohorts = () => {
   return (
     <section id="recent-cohorts">
@@ -55,6 +81,16 @@ const RecentCohorts = () => {
           View all cohorts
         </Button>
       </div>
+      <div className="dashboard-empty">
+        <p>
+          No cohorts created. <a href="#">Create a new cohort.</a>
+        </p>
+      </div>
+      <ul className="dashboard-grid">
+        <li>
+          <RecentCohortCard />
+        </li>
+      </ul>
     </section>
   );
 };
@@ -80,6 +116,16 @@ const RecentScenarios = () => {
           View all scenarios
         </Button>
       </div>
+      <div className="dashboard-empty">
+        <p>
+          No scenarios created. <a href="#">Create a new scenario.</a>
+        </p>
+      </div>
+      <ul className="dashboard-grid">
+        <li>
+          <RecentScenarioCard />
+        </li>
+      </ul>
     </section>
   );
 };
@@ -152,7 +198,10 @@ const QuickStartGuide = () => {
               What are digital clinical simulations?
             </p>
             <p>An overview of Teacher Moments and ELK</p>
-            <a className="dashboard-card__link" href="#">
+            <a
+              className="dashboard-card__link"
+              href="https://docs.google.com/presentation/d/1671Hfy4dIOjfPRrEr_-MWh_XRB7uZ2ACPiS8v1HWng4/edit#slide=id.gf16183f65e_0_54"
+            >
               Go to guide →
             </a>
           </Card>
@@ -161,7 +210,10 @@ const QuickStartGuide = () => {
           <Card className="dashboard-card">
             <p className="dashboard-card__title">Authoring a scenario</p>
             <p>How to develop a basic scenario in Teacher Moments</p>
-            <a className="dashboard-card__link" href="#">
+            <a
+              className="dashboard-card__link"
+              href="https://docs.google.com/presentation/d/1GgTQMwtcYWYHzWjzQYdEtN3RiUCn8aF7NPn-6Eb7N6c/edit#slide=id.p"
+            >
               Go to guide →
             </a>
           </Card>
@@ -172,7 +224,10 @@ const QuickStartGuide = () => {
               Authoring the Different Components
             </p>
             <p>How to incorporate different components on slides</p>
-            <a className="dashboard-card__link" href="#">
+            <a
+              className="dashboard-card__link"
+              href="https://docs.google.com/presentation/d/1ySgJiD-jiKY68pQhvctL9qwc1ikwtAcFcFPXWUh0OY4/edit?usp=sharing"
+            >
               Go to guide →
             </a>
           </Card>
@@ -181,7 +236,10 @@ const QuickStartGuide = () => {
           <Card className="dashboard-card">
             <p className="dashboard-card__title">Authoring in more details</p>
             <p>A more detailed look at authoring scenarios for one player</p>
-            <a className="dashboard-card__link" href="#">
+            <a
+              className="dashboard-card__link"
+              href="https://docs.google.com/presentation/d/1UH8YRz1pvZE4hPkLXUmMaahbziVGsfpSXCQ3P-QgeeM/edit#slide=id.gf8c678fc5f_0_54"
+            >
               Go to guide →
             </a>
           </Card>
@@ -192,7 +250,10 @@ const QuickStartGuide = () => {
             <p>
               How to use responses from your cohort to facilitate discussion
             </p>
-            <a className="dashboard-card__link" href="#">
+            <a
+              className="dashboard-card__link"
+              href="https://docs.google.com/presentation/d/1sKfDO0J6t4uxYWM-Bi1r_UJifPFOG1u_1U2hHEVsuzc/edit?usp=sharing"
+            >
               Go to guide →
             </a>
           </Card>
@@ -201,12 +262,24 @@ const QuickStartGuide = () => {
           <Card className="dashboard-card">
             <p className="dashboard-card__title">Creating a cohort</p>
             <p>How to manage your classroom and discussions with cohorts.</p>
-            <a className="dashboard-card__link" href="#">
+            <a
+              className="dashboard-card__link"
+              href="https://docs.google.com/presentation/d/1QM32ZAxT-NtRM7aInkqB7DKRweOWyQwluqgd79m352I/edit#slide=id.gf325c6b0ac_0_108"
+            >
               Go to guide →
             </a>
           </Card>
         </li>
       </ol>
+      <div className="dashboard-cta">
+        <p>
+          Learn more about deeper features like branching and multiplayer
+          scenarios in our resource center.
+        </p>
+        <a className="dashboard-card__link" href="#">
+          Go to resource center →
+        </a>
+      </div>
     </section>
   );
 };
@@ -216,9 +289,13 @@ const GetInTouch = () => {
     <section id="get-in-touch">
       <div className="dashboard-subheader">
         <h2>Get in touch</h2>
+      </div>
+      <div className="dashboard-cta">
         <p>
-          Get in touch with the Teaching Systems Lab to learn more about events
-          and synchronous learning.
+          Email us at{' '}
+          <a href="mailto:teachermoments@mit.edu">teachermoments.mit.edu</a> for
+          any questions using Teacher Moments or to join our regular community
+          events for synchronous learning.
         </p>
       </div>
     </section>
@@ -232,6 +309,9 @@ const Dashboard = () => {
       <div className="dashboard-container">
         <SideNav />
         <div className="dashboard-main">
+          {/*Show this when a user is not an author*/}
+          <AuthoringPermissionsNote />
+
           <RecentCohorts />
           <RecentScenarios />
           <LearnByExample />
