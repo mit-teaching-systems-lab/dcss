@@ -1,3 +1,9 @@
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
 .dashboard {
   margin-left: auto;
   margin-right: auto;
@@ -5,7 +11,8 @@
   max-width: 80rem;
 }
 
-.dashboard ul {
+.dashboard ul,
+.dashboard ol {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -50,4 +57,54 @@
 .dashboard-sidenav li a {
   color: var(--color-primary);
   font-weight: bold;
+}
+
+.dashboard-main {
+  display: grid;
+  grid-gap: 5rem;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-gap: 1.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(min(15rem, 100%), 1fr));
+}
+
+.dashboard-grid--numbered {
+  counter-reset: list;
+}
+
+.dashboard-grid--numbered li {
+  counter-increment: list;
+}
+
+.dashboard-grid--numbered .dashboard-card::before {
+  align-self: start;
+  background-color: #f5f5f5;
+  border-radius: 5px;
+  content: counter(list);
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+}
+
+.dashboard-card {
+  font-size: 1.1rem;
+  height: 100%;
+  padding: 1.5rem !important;
+}
+
+.dashboard-card__link {
+  font-weight: bold;
+  margin-top: auto;
+}
+
+.dashboard-card__title {
+  font-weight: bold;
+}
+
+.dashboard-subheader {
+  border-bottom: 1px solid #c1c1b0;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
 }
