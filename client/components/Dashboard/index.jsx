@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, Card, Icon } from '@components/UI';
+import { Link } from 'react-router-dom';
 import './Dashboard.css';
 
 const SideNav = () => {
@@ -130,6 +131,27 @@ const RecentScenarios = () => {
   );
 };
 
+const CardActions = () => {
+  return (
+    <div className="dashboard-button-group">
+      <Button tabIndex="0" aria-label="Run scenario" size="tiny" icon as={Link}>
+        <Icon name="play" className="primary" />
+        <span>Run</span>
+      </Button>
+      <Button
+        tabIndex="0"
+        size="tiny"
+        icon
+        as={Link}
+        aria-label="Copy scenario"
+      >
+        <Icon name="copy outline" className="primary" />
+        <span>Copy</span>
+      </Button>
+    </div>
+  );
+};
+
 const LearnByExample = () => {
   return (
     <section id="learn-by-example">
@@ -148,6 +170,7 @@ const LearnByExample = () => {
               Tackles complex equity issues with a relatively simple structure,
               using just a few different authoring tools.
             </p>
+            <CardActions />
           </Card>
         </li>
         <li>
@@ -157,6 +180,7 @@ const LearnByExample = () => {
               Uses video to simulate an authentic conversation about inequitable
               participation in computer science education.
             </p>
+            <CardActions />
           </Card>
         </li>
         <li>
@@ -166,6 +190,7 @@ const LearnByExample = () => {
               Analyzes participants’ responses and offers suggestions and
               reflection questions to learners who need them in real time.
             </p>
+            <CardActions />
           </Card>
         </li>
         <li>
@@ -177,6 +202,7 @@ const LearnByExample = () => {
               Showcases the “choose your own adventure” capabilities of the
               platform; participants go down different paths.
             </p>
+            <CardActions />
           </Card>
         </li>
       </ul>
