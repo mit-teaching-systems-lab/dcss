@@ -319,7 +319,7 @@ const GetInTouch = () => {
       <div className="dashboard-cta">
         <p>
           Email us at{' '}
-          <a href="mailto:teachermoments@mit.edu">teachermoments.mit.edu</a> for
+          <a href="mailto:teachermoments@mit.edu">teachermoments@mit.edu</a> for
           any questions using Teacher Moments or to join our regular community
           events for synchronous learning.
         </p>
