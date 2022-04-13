@@ -28,8 +28,8 @@
   background-position: center center;
   background-repeat: no-repeat;
   text-indent: -999em;
-  min-width: 130px;
-  background-position-x: center;
+  min-width: 148px;
+  background-position-x: left;
 }
 
 .navigation__dropdown {

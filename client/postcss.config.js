@@ -1,6 +1,6 @@
 const postcssEnvFunction = require('postcss-env-function');
 const DCSS_BRAND_LOGO =
-  process.env.DCSS_BRAND_LOGO || '/images/MIT-TSL-Logo-Icons.png';
+  process.env.DCSS_BRAND_LOGO || '/images/MIT-TSL-2022.svg';
 module.exports = {
   plugins: [
     postcssEnvFunction({
