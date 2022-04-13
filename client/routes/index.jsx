@@ -107,27 +107,29 @@ class App extends Component {
     }
     const { isLoggedIn } = this.props;
     const applicationComponents = (
-      <Fragment>
-        <Navigation />
-        <Routes isLoggedIn={isLoggedIn} />
-        <Notification />
-      </Fragment>
+      <Router history={history}>
+        <BackButtonHistory>
+          <Navigation />
+          <Routes isLoggedIn={isLoggedIn} />
+          <Notification />
+        </BackButtonHistory>
+      </Router>
     );
+
+    console.log(location);
+
+    const shouldShowBrandedLandingPage =
+      BrandedLandingPage.hasValidURL && location.pathname === '/';
+
     // If logged in, always display Application
     // If not logged in, and a branded landing page url is set, display that
     // If not logged in, and there is no branded landing page, display Application
-    return (
-      <Router history={history}>
-        <BackButtonHistory>
-          {isLoggedIn ? (
-            applicationComponents
-          ) : BrandedLandingPage.hasValidURL ? (
-            <BrandedLandingPage />
-          ) : (
-            applicationComponents
-          )}
-        </BackButtonHistory>
-      </Router>
+    return isLoggedIn ? (
+      applicationComponents
+    ) : shouldShowBrandedLandingPage ? (
+      <BrandedLandingPage />
+    ) : (
+      applicationComponents
     );
   }
 }
