@@ -28,7 +28,10 @@ class BackButtonHistory extends React.Component {
 }
 
 BackButtonHistory.propTypes = {
-  children: PropTypes.array,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ]).isRequired,
   history: PropTypes.object.isRequired,
   location: PropTypes.object.isRequired
 };

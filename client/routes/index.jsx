@@ -1,10 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
 import interval from 'interval-promise';
 import { getInvites } from '@actions/invite';
 import { getPermissions, getSession } from '@actions/session';
+import BrandedLandingPage from '@components/BrandedLandingPage';
 import Notification from '@components/Notification';
 import withSocket, {
   CREATE_USER_CHANNEL,
@@ -104,13 +105,27 @@ class App extends Component {
     if (!this.state.isReady) {
       return null;
     }
-
+    const { isLoggedIn } = this.props;
+    const applicationComponents = (
+      <Fragment>
+        <Navigation />
+        <Routes isLoggedIn={isLoggedIn} />
+        <Notification />
+      </Fragment>
+    );
+    // If logged in, always display Application
+    // If not logged in, and a branded landing page url is set, display that
+    // If not logged in, and there is no branded landing page, display Application
     return (
       <Router history={history}>
         <BackButtonHistory>
-          <Navigation />
-          <Routes isLoggedIn={this.props.isLoggedIn} />
-          <Notification />
+          {isLoggedIn ? (
+            applicationComponents
+          ) : BrandedLandingPage.hasValidURL ? (
+            <BrandedLandingPage />
+          ) : (
+            applicationComponents
+          )}
         </BackButtonHistory>
       </Router>
     );
