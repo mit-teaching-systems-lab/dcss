@@ -1,7 +1,12 @@
-import React from 'react';
-import { Button, Card, Icon } from '@components/UI';
-import { Link } from 'react-router-dom';
 import './Dashboard.css';
+
+import { Button, Card, Icon } from '@components/UI';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { Link } from 'react-router-dom';
+import RecentCohorts from './RecentCohorts';
+import { getRecentCohorts } from '../../actions/cohort';
 
 const SideNav = () => {
   return (
@@ -35,10 +40,6 @@ const SideNav = () => {
   );
 };
 
-const RecentCohortCard = () => {
-  return <p>Use cohort card from CohortCard.jsx</p>;
-};
-
 const RecentScenarioCard = () => {
   return <p>Use scenario card from ScenarioCard.jsx</p>;
 };
@@ -58,41 +59,6 @@ const AuthoringPermissionsNote = () => {
         Fill out request form →
       </a>
     </div>
-  );
-};
-
-const RecentCohorts = () => {
-  return (
-    <section id="recent-cohorts">
-      <div className="dashboard-subheader">
-        <h2>Your most recent cohorts</h2>
-        <Button
-          icon
-          primary
-          labelPosition="left"
-          name="Create a new cohort"
-          size="small"
-          href="/"
-          as="a"
-        >
-          <Icon name="add" />
-          Create a new cohort
-        </Button>
-        <Button size="small" href="/">
-          View all cohorts
-        </Button>
-      </div>
-      <div className="dashboard-empty">
-        <p>
-          No cohorts created. <a href="#">Create a new cohort.</a>
-        </p>
-      </div>
-      <ul className="dashboard-grid">
-        <li>
-          <RecentCohortCard />
-        </li>
-      </ul>
-    </section>
   );
 };
 

@@ -1,11 +1,11 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
-import { Label } from '@components/UI';
-import { setFilterScenariosInUse } from '@actions/filters';
 import History from '@utils/History';
 import Identity from '@utils/Identity';
+import { Label } from '@components/UI';
+import PropTypes from 'prop-types';
+import React from 'react';
+import { connect } from 'react-redux';
+import { setFilterScenariosInUse } from '@actions/filters';
+import { withRouter } from 'react-router-dom';
 
 class CohortScenarioLabels extends React.Component {
   constructor(props) {
