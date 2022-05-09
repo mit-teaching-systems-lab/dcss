@@ -1,13 +1,7 @@
 import './Dashboard.css';
 
 import { Button, Icon } from '@components/UI';
-import {
-  Container,
-  Divider,
-  Header,
-  List,
-  Segment
-} from '@components/UI';
+import { Container, Divider, Header, List, Segment } from '@components/UI';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
