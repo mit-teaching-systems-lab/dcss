@@ -1,4 +1,3 @@
-import cloneDeep from 'lodash.clonedeep';
 import {
   COPY_SCENARIO_ERROR,
   COPY_SCENARIO_SUCCESS,
@@ -6,6 +5,8 @@ import {
   DELETE_SCENARIO_SUCCESS,
   DELETE_SLIDE_ERROR,
   DELETE_SLIDE_SUCCESS,
+  GET_RECENT_SCENARIOS_ERROR,
+  GET_RECENT_SCENARIOS_SUCCESS,
   GET_SCENARIOS_COUNT_ERROR,
   GET_SCENARIOS_COUNT_SUCCESS,
   GET_SCENARIOS_ERROR,
@@ -22,9 +23,10 @@ import {
   UNLOCK_SCENARIO_ERROR,
   UNLOCK_SCENARIO_SUCCESS
 } from './types';
-import store from '@client/store';
 
+import cloneDeep from 'lodash.clonedeep';
 import { scenarioInitialState } from '@reducers/initial-states';
+import store from '@client/store';
 
 export let getScenario = (id, options) => async dispatch => {
   let url = `/api/scenarios/${id}`;
@@ -289,6 +291,30 @@ export let getScenariosSlice = (
     return scenarios;
   } catch (error) {
     dispatch({ type: GET_SCENARIOS_ERROR, error });
+    return null;
+  }
+};
+
+export let getRecentScenarios = (
+  orderBy = 'updated_at',
+  limit = 4
+) => async dispatch => {
+  try {
+    const url = `/api/scenarios/recent/${orderBy}/${limit}`;
+    const res = await (await fetch(url)).json();
+
+    if (res.error) {
+      throw res;
+    }
+    const { scenarios = [] } = res;
+
+    dispatch({
+      type: GET_RECENT_SCENARIOS_SUCCESS,
+      recentScenarios: scenarios
+    });
+    return scenarios;
+  } catch (error) {
+    dispatch({ type: GET_RECENT_SCENARIOS_ERROR, error });
     return null;
   }
 };

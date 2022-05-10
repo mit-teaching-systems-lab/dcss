@@ -1,11 +1,12 @@
 import {
   DELETE_SCENARIO_SUCCESS,
-  UNLOCK_SCENARIO_SUCCESS,
   GET_COHORT_SCENARIOS_SUCCESS,
-  GET_SCENARIO_SUCCESS,
+  GET_RECENT_SCENARIOS_SUCCESS,
   GET_SCENARIOS_SUCCESS,
+  GET_SCENARIO_SUCCESS,
   SET_SCENARIO,
-  SET_SCENARIOS
+  SET_SCENARIOS,
+  UNLOCK_SCENARIO_SUCCESS
 } from '@actions/types';
 
 export const scenarios = (state = [], action) => {
@@ -95,5 +96,28 @@ export const scenariosById = (state = {}, action) => {
     }
     default:
       return state;
+  }
+};
+
+export const recentScenarios = (state = [], action) => {
+  const { recentScenarios, scenario, type } = action;
+
+  if (type == GET_RECENT_SCENARIOS_SUCCESS) {
+    return recentScenarios;
+  } else if (type == GET_SCENARIO_SUCCESS) {
+    const index = state.findIndex(({ id }) => id === scenario.id);
+
+    if (index !== -1) {
+      state[index] = {
+        ...state[index],
+        ...scenario
+      };
+
+      return [...state];
+    }
+
+    return state;
+  } else {
+    return state;
   }
 };
