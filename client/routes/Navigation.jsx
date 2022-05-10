@@ -1,13 +1,14 @@
-import React, { Component, Fragment } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { NavLink, withRouter } from 'react-router-dom';
-import { endScenarioLock } from '@actions/scenario';
 import { Dropdown, Menu } from '@components/UI';
+import { NavLink, withRouter } from 'react-router-dom';
+import React, { Component, Fragment } from 'react';
+
 import Gate from '@components/Gate';
+import Layout from '@utils/Layout';
+import PropTypes from 'prop-types';
 import UserInvites from '@components/User/UserInvites';
 import UserMenu from '@components/User/UserMenu';
-import Layout from '@utils/Layout';
+import { connect } from 'react-redux';
+import { endScenarioLock } from '@actions/scenario';
 
 const restrictedNav = [
   {
@@ -87,6 +88,12 @@ class Navigation extends Component {
 
     const menuItemAuthorized = isLoggedIn ? menuItemsRequireLogin : null;
 
+    const menuItemDashboard = (
+      <Menu.Item.Tabbable aria-label="Dashboard" to="/dashboard" as={NavLink}>
+        Dashboard
+      </Menu.Item.Tabbable>
+    )
+
     // This is used as the dropdown trigger, in the top menu
     const menuItemScenarios = (
       <Menu.Item.Tabbable
@@ -141,6 +148,7 @@ class Navigation extends Component {
               trigger={menuItemGoTo}
             >
               <Dropdown.Menu>
+                {menuItemDashboard}
                 {menuItemScenarios}
                 {menuItemAuthorized}
               </Dropdown.Menu>
@@ -153,6 +161,7 @@ class Navigation extends Component {
         ) : (
           <Fragment>
             {menuItemBrandLogo}
+            {menuItemDashboard}
             {menuItemScenarios}
             {menuItemAuthorized}
             <Menu.Menu position="right">
