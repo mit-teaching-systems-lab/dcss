@@ -5,6 +5,7 @@ import { Button, Card, Icon } from '@components/UI';
 import { Link } from 'react-router-dom';
 import React from 'react';
 import RecentCohorts from './RecentCohorts';
+import RecentScenarios from './RecentScenarios';
 
 const SideNav = () => {
   return (
@@ -38,10 +39,6 @@ const SideNav = () => {
   );
 };
 
-const RecentScenarioCard = () => {
-  return <p>Use scenario card from ScenarioCard.jsx</p>;
-};
-
 const AuthoringPermissionsNote = () => {
   return (
     <div className="dashboard-cta">
@@ -60,45 +57,10 @@ const AuthoringPermissionsNote = () => {
   );
 };
 
-const RecentScenarios = () => {
-  return (
-    <section id="recent-scenarios">
-      <div className="dashboard-subheader">
-        <h2>Your most recent scenarios</h2>
-        <Button
-          icon
-          primary
-          labelPosition="left"
-          name="Create a new cohort"
-          size="small"
-          href="/"
-          as="a"
-        >
-          <Icon name="add" />
-          Create a new scenario
-        </Button>
-        <Button size="small" href="/scenarios">
-          View all scenarios
-        </Button>
-      </div>
-      <div className="dashboard-empty">
-        <p>
-          No scenarios created. <a href="#">Create a new scenario.</a>
-        </p>
-      </div>
-      <ul className="dashboard-grid">
-        <li>
-          <RecentScenarioCard />
-        </li>
-      </ul>
-    </section>
-  );
-};
-
 const CardActions = () => {
   return (
     <div className="dashboard-button-group">
-      <Button tabIndex="0" aria-label="Run scenario" size="tiny" icon as={Link}>
+      <Button tabIndex="0" aria-label="Run scenario" size="tiny" icon>
         <Icon name="play" className="primary" />
         <span>Run</span>
       </Button>

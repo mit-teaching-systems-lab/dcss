@@ -336,6 +336,24 @@ async function getScenariosSlice(direction, offset, limit) {
   return scenarios;
 }
 
+async function getRecentScenarios(user, orderBy = 'updated_at', limit = 4) {
+  const results = await query(`
+    SELECT id
+    FROM scenario
+    WHERE author_id = ${user.id}
+    ORDER BY ${orderBy} DESC
+    LIMIT ${limit}
+  `);
+
+  const scenarios = [];
+
+  for (const row of results.rows) {
+    scenarios.push(await getScenario(row.id));
+  }
+
+  return scenarios;
+}
+
 async function getScenariosCount() {
   const results = await query(sql`
     SELECT COUNT(id) FROM scenario
@@ -668,6 +686,7 @@ exports.getScenarios = getScenarios;
 exports.getScenariosByStatus = getScenariosByStatus;
 exports.getScenariosCount = getScenariosCount;
 exports.getScenariosSlice = getScenariosSlice;
+exports.getRecentScenarios = getRecentScenarios;
 
 // Scenario Snapshot/History
 exports.createScenarioSnapshot = createScenarioSnapshot;
