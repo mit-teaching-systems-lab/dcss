@@ -1,6 +1,7 @@
 import './Dashboard.css';
 
 import { Button, Icon } from '@components/UI';
+import { Container, Divider, Header, List, Segment } from '@components/UI';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -10,23 +11,23 @@ import { getRecentScenarios } from '@actions/scenario';
 const ScenarioContent = ({ scenarios = [] }) => {
   if (scenarios.length) {
     return (
-      <ul className="dashboard-grid">
+      <List className="dashboard-grid">
         {scenarios.map((scenario, index) => {
           return (
-            <li key={`scenario-card-${scenario.id}-${index}`}>
+            <List.Item key={`scenario-card-${scenario.id}-${index}`}>
               <ScenarioCard scenario={scenario} />
-            </li>
+            </List.Item>
           );
         })}
-      </ul>
+      </List>
     );
   } else {
     return (
-      <div className="dashboard-empty">
+      <Segment secondary padded className="dashboard-empty">
         <p>
           No scenarios created. <a href="#">Create a new scenario.</a>
         </p>
-      </div>
+      </Segment>
     );
   }
 };
@@ -40,9 +41,9 @@ const RecentScenarios = () => {
   }, [dispatch]);
 
   return (
-    <section id="recent-scenarios">
-      <div className="dashboard-subheader">
-        <h2>Your most recent scenarios</h2>
+    <Container fluid id="recent-scenarios">
+      <Header className="dashboard-subheader">
+        <Header as="h2">Your most recent scenarios</Header>
         <Button
           icon
           primary
@@ -58,9 +59,10 @@ const RecentScenarios = () => {
         <Button size="small" href="/scenarios">
           View all scenarios
         </Button>
-      </div>
+      </Header>
+      <Divider />
       <ScenarioContent scenarios={scenarios} />
-    </section>
+    </Container>
   );
 };
 
