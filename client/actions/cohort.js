@@ -1,6 +1,10 @@
 import {
   CREATE_COHORT_ERROR,
   CREATE_COHORT_SUCCESS,
+  GET_COHORTS_COUNT_ERROR,
+  GET_COHORTS_COUNT_SUCCESS,
+  GET_COHORTS_ERROR,
+  GET_COHORTS_SUCCESS,
   GET_COHORT_CHATS_OVERVIEW_ERROR,
   GET_COHORT_CHATS_OVERVIEW_SUCCESS,
   GET_COHORT_ERROR,
@@ -10,10 +14,8 @@ import {
   GET_COHORT_SCENARIOS_ERROR,
   GET_COHORT_SCENARIOS_SUCCESS,
   GET_COHORT_SUCCESS,
-  GET_COHORTS_COUNT_ERROR,
-  GET_COHORTS_COUNT_SUCCESS,
-  GET_COHORTS_ERROR,
-  GET_COHORTS_SUCCESS,
+  GET_RECENT_COHORTS_ERROR,
+  GET_RECENT_COHORTS_SUCCESS,
   LINK_RUN_TO_COHORT_ERROR,
   LINK_RUN_TO_COHORT_SUCCESS,
   SET_COHORT_ERROR,
@@ -27,8 +29,9 @@ import {
   UNLOAD_COHORT_ERROR,
   UNLOAD_COHORT_SUCCESS
 } from './types';
-import store from '@client/store';
+
 import { cohortInitialState } from '@reducers/initial-states';
+import store from '@client/store';
 
 export let createCohort = ({ name }) => async dispatch => {
   try {
@@ -282,6 +285,27 @@ export let getCohortsSlice = (
   }
 };
 
+export let getRecentCohorts = (
+  orderBy = 'updated_at',
+  limit = 2
+) => async dispatch => {
+  try {
+    const url = `/api/cohorts/recent/${orderBy}/${limit}`;
+    const res = await (await fetch(url)).json();
+
+    if (res.error) {
+      throw res;
+    }
+    const { cohorts = [] } = res;
+
+    dispatch({ type: GET_RECENT_COHORTS_SUCCESS, recentCohorts: cohorts });
+    return cohorts;
+  } catch (error) {
+    dispatch({ type: GET_RECENT_COHORTS_ERROR, error });
+    return null;
+  }
+};
+
 export let getCohorts = () => async (dispatch, getState) => {
   const state = getState();
   const count = await store.dispatch(getCohortsCount());
@@ -466,4 +490,4 @@ export let unloadCohort = () => async dispatch => {
     dispatch({ type: UNLOAD_COHORT_ERROR, error });
     return false;
   }
-}
+};

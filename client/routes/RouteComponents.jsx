@@ -1,21 +1,20 @@
-import React from 'react';
-import { Route } from 'react-router-dom';
-import PropTypes from 'prop-types';
-
+import Dashboard from '@components/Dashboard';
 import Editor from '@components/Editor';
 import Login from '@components/Login';
 import LoginRoutePromptModal from '@components/Login/LoginRoutePromptModal';
+import PropTypes from 'prop-types';
+import React from 'react';
+import { Route } from 'react-router-dom';
 import ScenariosList from '@components/ScenariosList';
-import Dashboard from '@components/Dashboard';
-
 import Storage from '@utils/Storage';
+
 /**
  * Special case components for solving routing issues. Component state
  * doesn't update when navigating to exact same component.
  */
 
-export const UserDashboard = () => {
-  return <Dashboard />;
+export const UserDashboard = props => {
+  return <Dashboard {...props} />;
 };
 
 export const NewScenario = (props = {}) => {
