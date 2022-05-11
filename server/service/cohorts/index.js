@@ -30,6 +30,7 @@ const {
   getCohortsCount,
   getCohortsSlice,
   getCohortData,
+  getRecentCohorts,
   getCohortParticipantData,
   setCohort,
   setCohortScenarios,
@@ -56,6 +57,7 @@ router.post('/', [
 router.get('/', [requireUser, getCohorts]);
 router.get('/count', [requireUser, getCohortsCount]);
 router.get('/slice/:direction/:offset/:limit', [requireUser, getCohortsSlice]);
+router.get('/recent/:orderBy/:limit', [requireUser, getRecentCohorts])
 
 // These are used for ACCESS CONTROL of other users.
 router.post('/:id/roles/delete', [
