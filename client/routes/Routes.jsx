@@ -1,40 +1,40 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { Route, Switch } from 'react-router-dom';
-
-import Admin from '@components/Admin';
-import Chat from '@components/Chat';
-import JoinAs from '@components/Chat/JoinAs';
-import Cohort from '@components/Cohorts/Cohort';
-import Cohorts from '@components/Cohorts';
-import Gate from '@components/Gate';
-import CreateAccount from '@components/CreateAccount';
-import CreateAnonymousAccount from '@components/CreateAccount/CreateAnonymousAccount';
-import Downloads from '@components/Downloads';
-import Editor from '@components/Editor';
-import ForOhFor from '@components/ForOhFor';
-import History from '@components/History';
-import Login from '@components/Login';
-import LoginRoutePromptModal from '@components/Login/LoginRoutePromptModal';
-import ResetRoutePromptModal from '@components/Login/ResetRoutePromptModal';
-import Run from '@components/Run';
 import {
   CopyScenario,
-  UserDashboard,
-  Logout,
   InterceptAnonymizableRoute,
+  Logout,
   NewScenario,
   RedirectRouteForActiveSession,
   RedirectRouteForInactiveSession,
   ScenariosListAll,
   ScenariosListAuthor,
   ScenariosListCommunity,
-  ScenariosListOfficial
+  ScenariosListOfficial,
+  UserDashboard
 } from './RouteComponents';
-import UserSettings from '@components/User/UserSettings';
-import UserInvites from '@components/User/UserInvites';
+import { Route, Switch } from 'react-router-dom';
+
+import Admin from '@components/Admin';
+import Chat from '@components/Chat';
+import Cohort from '@components/Cohorts/Cohort';
+import Cohorts from '@components/Cohorts';
+import CreateAccount from '@components/CreateAccount';
+import CreateAnonymousAccount from '@components/CreateAccount/CreateAnonymousAccount';
+import Downloads from '@components/Downloads';
+import Editor from '@components/Editor';
+import ForOhFor from '@components/ForOhFor';
+import Gate from '@components/Gate';
+import History from '@components/History';
+import JoinAs from '@components/Chat/JoinAs';
+import Login from '@components/Login';
+import LoginRoutePromptModal from '@components/Login/LoginRoutePromptModal';
+import PropTypes from 'prop-types';
 import QueryString from '@utils/QueryString';
+import React from 'react';
+import ResetRoutePromptModal from '@components/Login/ResetRoutePromptModal';
+import Run from '@components/Run';
+import UserInvites from '@components/User/UserInvites';
+import UserSettings from '@components/User/UserSettings';
+import { connect } from 'react-redux';
 
 const makeEditorProps = (props = {}) => ({
   ...props,
@@ -96,6 +96,7 @@ const Routes = ({ isLoggedIn, user }) => {
   return (
     <Switch>
       <Route exact path="/" component={UserDashboard} />
+      <Route exact path="/dashboard" component={UserDashboard} />
 
       <InterceptAnonymizableRoute
         path="/invite/:status/:code"
