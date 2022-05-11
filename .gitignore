@@ -9,3 +9,4 @@ yarn-error.log
 *.xlsx
 *.xls
 !test/load/payload/*.csv
+config/dev-heroku-secrets
