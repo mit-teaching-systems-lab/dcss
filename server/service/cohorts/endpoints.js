@@ -93,6 +93,20 @@ async function getCohortsSlice(req, res) {
   }
 }
 
+async function getRecentCohorts(req, res) {
+  const user = req.session.user;
+  const { orderBy, limit } = req.params;
+  try {
+    const cohorts = await db.getRecentCohorts(user, orderBy, limit);
+    res.send({ cohorts });
+  } catch (apiError) {
+    const error = new Error('Error while getting recent cohorts.');
+    error.status = 500;
+    error.stack = apiError.stack;
+    throw error;
+  }
+}
+
 async function getCohortChatsOverview(req, res) {
   const chats = await db.getCohortChatsOverview(Number(req.params.id));
   res.send({ chats });
@@ -310,6 +324,7 @@ exports.setCohort = asyncMiddleware(setCohort);
 exports.setCohortScenarios = asyncMiddleware(setCohortScenarios);
 exports.setCohortScenarioPartnering = asyncMiddleware(setCohortScenarioPartnering);
 exports.getCohortData = asyncMiddleware(getCohortData);
+exports.getRecentCohorts = asyncMiddleware(getRecentCohorts);
 exports.getCohortParticipantData = asyncMiddleware(getCohortParticipantData);
 exports.addCohortUserRole = asyncMiddleware(addCohortUserRole);
 exports.deleteCohortUserRole = asyncMiddleware(deleteCohortUserRole);

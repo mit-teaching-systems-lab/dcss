@@ -1,10 +1,5 @@
-import React, { Fragment } from 'react';
-import { connect } from 'react-redux';
-import { NavLink, withRouter } from 'react-router-dom';
-import PropTypes from 'prop-types';
-import copy from 'copy-text-to-clipboard';
-import escapeRegExp from 'lodash.escaperegexp';
-import pluralize from 'pluralize';
+import '../ScenariosList/ScenariosList.css';
+
 import {
   Button,
   Card,
@@ -18,26 +13,33 @@ import {
   Segment,
   Title
 } from '@components/UI';
+import { NavLink, withRouter } from 'react-router-dom';
+import React, { Fragment } from 'react';
 import {
   getCohortsCount,
   getCohortsSlice,
   unloadCohort
 } from '@actions/cohort';
-import { setFilterScenariosInUse } from '@actions/filters';
-import { getScenariosByStatus } from '@actions/scenario';
-import { getUser } from '@actions/user';
-import Gate from '@components/Gate';
-import Loading from '@components/Loading';
-import Layout from '@utils/Layout';
-import { notify } from '@components/Notification';
-import { SCENARIO_IS_PUBLIC } from '@components/Scenario/constants';
+
 import CohortCard from './CohortCard';
-import CohortScenarioLabelsFilter from './CohortScenarioLabelsFilter';
 import CohortCreateWizard from './CohortCreateWizard';
+import CohortScenarioLabelsFilter from './CohortScenarioLabelsFilter';
+import Gate from '@components/Gate';
 import History from '@utils/History';
 import Identity from '@utils/Identity';
+import Layout from '@utils/Layout';
+import Loading from '@components/Loading';
+import PropTypes from 'prop-types';
 import QueryString from '@utils/QueryString';
-import '../ScenariosList/ScenariosList.css';
+import { SCENARIO_IS_PUBLIC } from '@components/Scenario/constants';
+import { connect } from 'react-redux';
+import copy from 'copy-text-to-clipboard';
+import escapeRegExp from 'lodash.escaperegexp';
+import { getScenariosByStatus } from '@actions/scenario';
+import { getUser } from '@actions/user';
+import { notify } from '@components/Notification';
+import pluralize from 'pluralize';
+import { setFilterScenariosInUse } from '@actions/filters';
 
 export class Cohorts extends React.Component {
   constructor(props) {
@@ -357,7 +359,7 @@ export class Cohorts extends React.Component {
     const cards = isSliceAvailable
       ? cohortsSlice.map(({ id }) => (
           <CohortCard key={Identity.key({ id })} id={id} />
-        ))
+      ))
       : null;
 
     const loadingProps = {

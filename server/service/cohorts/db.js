@@ -502,7 +502,7 @@ async function getCohort(id) {
 //
 //
 
-async function __getCohorts(user, direction = 'DESC', offset, limit) {
+async function __getCohorts({ user, orderBy = 'created_at', direction = 'DESC', offset = 0, limit }) {
   const orderDirection = direction.toUpperCase();
   let composedQuery;
 
@@ -516,7 +516,7 @@ async function __getCohorts(user, direction = 'DESC', offset, limit) {
     composedQuery = `
       SELECT *
       FROM cohort
-      ORDER BY created_at ${orderDirection}
+      ORDER BY ${orderBy} ${orderDirection}
     `;
   } else {
     // All other users will only see cohorts for which they
@@ -534,7 +534,7 @@ async function __getCohorts(user, direction = 'DESC', offset, limit) {
       ON cohort.id = cur.cohort_id
       WHERE cur.user_id = ${user.id}
       AND cohort.deleted_at IS NULL
-      ORDER BY cohort.created_at ${orderDirection}
+      ORDER BY cohort.${orderBy} ${orderDirection}
     `;
   }
 
@@ -556,7 +556,7 @@ async function getCohorts(user) {
     includeUsers: true,
     includeProgress: false
   };
-  const records = await __getCohorts(user);
+  const records = await __getCohorts({ user });
   const cohorts = [];
   for (const record of records) {
     cohorts.push(await __getAggregatedCohort(record, options));
@@ -571,7 +571,22 @@ async function getCohortsSlice(user, direction, offset, limit) {
     includeUsers: true,
     includeProgress: false
   };
-  const records = await __getCohorts(user, direction, offset, limit);
+  const records = await __getCohorts({ user, direction, offset, limit });
+  const cohorts = [];
+  for (const record of records) {
+    cohorts.push(await __getAggregatedCohort(record, options));
+  }
+  return cohorts;
+}
+
+async function getRecentCohorts(user, orderBy = 'updated_at', limit = 2) {
+  const options = {
+    includeRuns: false,
+    includeScenarios: true,
+    includeUsers: true,
+    includeProgress: false
+  };
+  const records = await __getCohorts({ user, orderBy, limit });
   const cohorts = [];
   for (const record of records) {
     cohorts.push(await __getAggregatedCohort(record, options));
@@ -580,7 +595,7 @@ async function getCohortsSlice(user, direction, offset, limit) {
 }
 
 async function getCohortsCount(user) {
-  const records = await __getCohorts(user);
+  const records = await __getCohorts({ user });
   return records.length;
 }
 
@@ -884,6 +899,7 @@ exports.__getCohorts = __getCohorts;
 exports.getCohorts = getCohorts;
 exports.getCohortsCount = getCohortsCount;
 exports.getCohortsSlice = getCohortsSlice;
+exports.getRecentCohorts = getRecentCohorts;
 exports.setCohort = setCohort;
 exports.softDeleteCohort = softDeleteCohort;
 exports.getCohortProgress = getCohortProgress;

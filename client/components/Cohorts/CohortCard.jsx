@@ -1,14 +1,15 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
-import PropTypes from 'prop-types';
-import { NavLink } from 'react-router-dom';
-import Moment from '@utils/Moment';
 import { Button, Card } from '@components/UI';
-import { setCohort } from '@actions/cohort';
+
 import CohortScenarioLabels from '@components/Cohorts/CohortScenarioLabels';
 import Identity from '@utils/Identity';
+import Moment from '@utils/Moment';
+import { NavLink } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import React from 'react';
+import { connect } from 'react-redux';
 import { rolesToHumanReadableString } from '@utils/Roles';
+import { setCohort } from '@actions/cohort';
+import { withRouter } from 'react-router-dom';
 
 export const CohortCard = props => {
   const { cohort, roles, user } = props;
@@ -73,9 +74,11 @@ CohortCard.propTypes = {
 };
 
 const mapStateToProps = (state, ownProps) => {
-  const { cohorts, cohortsById, filters, user } = state;
+  const { cohorts, cohortsById, filters, recentCohorts, user } = state;
   const cohort =
-    cohortsById[ownProps.id] || cohorts.find(({ id }) => id === ownProps.id);
+    cohortsById[ownProps.id] ||
+    recentCohorts.find(({ id }) => id === ownProps.id) ||
+    cohorts.find(({ id }) => id === ownProps.id);
 
   let roles = ownProps.roles;
 

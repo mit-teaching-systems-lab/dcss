@@ -1,10 +1,11 @@
 import {
   CREATE_COHORT_SUCCESS,
+  GET_COHORTS_SUCCESS,
   GET_COHORT_PARTICIPANTS_SUCCESS,
   GET_COHORT_SUCCESS,
-  GET_COHORTS_SUCCESS,
-  SET_COHORT_SUCCESS,
+  GET_RECENT_COHORTS_SUCCESS,
   SET_COHORT_SCENARIOS_SUCCESS,
+  SET_COHORT_SUCCESS,
   SET_COHORT_USER_ROLE_SUCCESS,
   UNLOAD_COHORT_SUCCESS
 } from '../actions/types';
@@ -141,5 +142,15 @@ export const cohortsById = (state = {}, action) => {
     }
     default:
       return state;
+  }
+};
+
+export const recentCohorts = (state = [], action) => {
+  const { recentCohorts, type } = action;
+
+  if (type == GET_RECENT_COHORTS_SUCCESS) {
+    return recentCohorts;
+  } else {
+    return state;
   }
 };
