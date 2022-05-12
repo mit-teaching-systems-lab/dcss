@@ -4,6 +4,7 @@ import {
   GET_RECENT_SCENARIOS_SUCCESS,
   GET_SCENARIOS_SUCCESS,
   GET_SCENARIO_SUCCESS,
+  RESTORE_SCENARIO_SUCCESS,
   SET_SCENARIO,
   SET_SCENARIOS,
   UNLOCK_SCENARIO_SUCCESS
@@ -39,7 +40,8 @@ export const scenarios = (state = [], action) => {
     case SET_SCENARIO:
     case GET_SCENARIO_SUCCESS:
     case DELETE_SCENARIO_SUCCESS:
-    case UNLOCK_SCENARIO_SUCCESS: {
+    case UNLOCK_SCENARIO_SUCCESS:
+    case RESTORE_SCENARIO_SUCCESS: {
       if (!scenario || !scenario.id) {
         return [...state];
       }
@@ -102,22 +104,27 @@ export const scenariosById = (state = {}, action) => {
 export const recentScenarios = (state = [], action) => {
   const { recentScenarios, scenario, type } = action;
 
-  if (type == GET_RECENT_SCENARIOS_SUCCESS) {
-    return recentScenarios;
-  } else if (type == GET_SCENARIO_SUCCESS) {
-    const index = state.findIndex(({ id }) => id === scenario.id);
-
-    if (index !== -1) {
-      state[index] = {
-        ...state[index],
-        ...scenario
-      };
-
-      return [...state];
+  switch (type) {
+    case GET_RECENT_SCENARIOS_SUCCESS: {
+      return recentScenarios;
     }
+    case RESTORE_SCENARIO_SUCCESS:
+    case GET_SCENARIO_SUCCESS: {
+      const index = state.findIndex(({ id }) => id === scenario.id);
 
-    return state;
-  } else {
-    return state;
+      if (index !== -1) {
+        state[index] = {
+          ...state[index],
+          ...scenario
+        };
+
+        return [...state];
+      }
+
+      return state;
+    }
+    default: {
+      return state;
+    }
   }
 };

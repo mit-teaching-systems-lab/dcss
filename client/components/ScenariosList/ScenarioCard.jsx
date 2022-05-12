@@ -12,7 +12,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import ScenarioCardActions from './ScenarioCardActions';
 import ScenarioLabels from './ScenarioLabels';
-import { getScenario } from '@actions/scenario';
+import { restoreScenario } from '@actions/scenario';
 
 const ScenarioCard = props => {
   const { onClick, showActions = true, scenario } = props;
@@ -72,21 +72,7 @@ const ScenarioCard = props => {
     ? `${title} is a multi-participant scenario.`
     : `${title} is a solo scenario.`;
 
-  const onRestoreClick = async (event, { name }) => {
-    if (name === 'restore') {
-      scenario.deleted_at = null;
-
-      await (await fetch(`/api/scenarios/${scenario.id}`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(scenario)
-      })).json();
-
-      dispatch(getScenario(scenario.id));
-    }
-  };
+  const onRestoreClick = () => dispatch(restoreScenario(scenario));
 
   return deleted_at ? (
     <Gate isAuthorized={isAuthorized}>
