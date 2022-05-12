@@ -2,39 +2,30 @@ import './Dashboard.css';
 
 import { Button, Icon } from '@components/UI';
 import { Container, Divider, Header, List, Segment } from '@components/UI';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import ScenarioCard from '@components/ScenariosList/ScenarioCard';
+import ScenarioDetailModal from '@components/ScenariosList/ScenarioDetailModal';
 import { getRecentScenarios } from '@actions/scenario';
-
-const ScenarioContent = ({ scenarios = [] }) => {
-  if (scenarios.length) {
-    return (
-      <List className="dashboard-grid">
-        {scenarios.map((scenario, index) => {
-          return (
-            <List.Item key={`scenario-card-${scenario.id}-${index}`}>
-              <ScenarioCard scenario={scenario} />
-            </List.Item>
-          );
-        })}
-      </List>
-    );
-  } else {
-    return (
-      <Segment secondary padded className="dashboard-empty">
-        <p>
-          No scenarios created. <a href="#">Create a new scenario.</a>
-        </p>
-      </Segment>
-    );
-  }
-};
 
 const RecentScenarios = () => {
   const dispatch = useDispatch();
   const scenarios = useSelector(state => state.recentScenarios);
+  const [selected, setSelected] = useState(null);
+  const [open, setOpen] = useState(false);
+
+  const scenarioCardClickHandler = scenario => {
+    return () => {
+      setSelected(scenario);
+      setOpen(true);
+    };
+  };
+
+  const onScenarioModalClose = () => {
+    setSelected(null);
+    setOpen(false);
+  };
 
   useEffect(() => {
     dispatch(getRecentScenarios());
@@ -61,7 +52,34 @@ const RecentScenarios = () => {
         </Button>
       </Header>
       <Divider />
-      <ScenarioContent scenarios={scenarios} />
+      {scenarios.length ? (
+        <List className="dashboard-grid">
+          {scenarios.map((scenario, index) => {
+            return (
+              <List.Item key={`scenario-card-${scenario.id}-${index}`}>
+                <ScenarioCard
+                  scenario={scenario}
+                  onClick={scenarioCardClickHandler(scenario)}
+                />
+              </List.Item>
+            );
+          })}
+        </List>
+      ) : (
+        <Segment secondary padded className="dashboard-empty">
+          <p>
+            No scenarios created.{' '}
+            <a href="/editor/new">Create a new scenario.</a>
+          </p>
+        </Segment>
+      )}
+      {selected ? (
+        <ScenarioDetailModal
+          open={open}
+          onClose={onScenarioModalClose}
+          scenario={selected}
+        />
+      ) : null}
     </Container>
   );
 };
