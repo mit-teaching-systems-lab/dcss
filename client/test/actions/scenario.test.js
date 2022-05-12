@@ -904,7 +904,7 @@ describe('GET_SCENARIOS_SUCCESS', () => {
     });
   });
 
-  fdescribe('getRecentScenarios', () => {
+  describe('getRecentScenarios', () => {
     test('isLoggedIn == true', async () => {
       store = createMockConnectedStore({
         scenarios,
