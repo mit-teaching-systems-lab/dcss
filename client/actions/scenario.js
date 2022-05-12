@@ -17,6 +17,8 @@ import {
   GET_SCENARIO_SUCCESS,
   GET_SLIDES_ERROR,
   GET_SLIDES_SUCCESS,
+  RESTORE_SCENARIO_ERROR,
+  RESTORE_SCENARIO_SUCCESS,
   SET_SCENARIO,
   SET_SCENARIOS,
   SET_SLIDES,
@@ -409,6 +411,30 @@ export let deleteScenario = scenario_id => async dispatch => {
   } catch (error) {
     dispatch({ type: DELETE_SCENARIO_ERROR, error });
     return null;
+  }
+};
+
+export let restoreScenario = deletedScenario => async dispatch => {
+  deletedScenario.deleted_at = null;
+
+  try {
+    const res = await (await fetch(`/api/scenarios/${deletedScenario.id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(deletedScenario)
+    })).json();
+
+    if (res.error) {
+      throw res;
+    }
+
+    const { scenario } = res;
+
+    dispatch({ type: RESTORE_SCENARIO_SUCCESS, scenario });
+  } catch (error) {
+    dispatch({ type: RESTORE_SCENARIO_ERROR, error });
   }
 };
 
