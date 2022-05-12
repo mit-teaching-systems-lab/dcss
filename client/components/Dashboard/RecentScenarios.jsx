@@ -48,9 +48,9 @@ const RecentScenarios = () => {
           icon
           primary
           labelPosition="left"
-          name="Create a new cohort"
+          name="Create a new scenario"
           size="small"
-          href="/"
+          href="/editor/new"
           as="a"
         >
           <Icon name="add" />
