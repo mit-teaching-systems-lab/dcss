@@ -338,11 +338,15 @@ async function getScenariosSlice(direction, offset, limit) {
 
 async function getRecentScenarios(user, orderBy = 'updated_at', limit = 4) {
   const results = await query(`
-    SELECT id
-    FROM scenario
-    WHERE author_id = ${user.id}
-    AND deleted_at IS NULL
-    ORDER BY ${orderBy} DESC
+    SELECT s.id
+    FROM scenario s
+    INNER JOIN scenario_user_role sur
+    ON s.id = sur.scenario_id
+    WHERE s.deleted_at IS NULL
+    AND sur.user_id = ${user.id}
+    AND sur.role IN ('owner', 'author')
+    AND sur.ended_at IS NULL
+    ORDER BY s.${orderBy} DESC
     LIMIT ${limit}
   `);
 
