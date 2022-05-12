@@ -341,6 +341,7 @@ async function getRecentScenarios(user, orderBy = 'updated_at', limit = 4) {
     SELECT id
     FROM scenario
     WHERE author_id = ${user.id}
+    AND deleted_at IS NULL
     ORDER BY ${orderBy} DESC
     LIMIT ${limit}
   `);
