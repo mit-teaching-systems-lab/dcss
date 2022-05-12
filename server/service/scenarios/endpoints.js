@@ -77,7 +77,6 @@ async function getScenariosSlice(req, res) {
 async function getRecentScenarios(req, res) {
   const user = req.session.user;
   const { orderBy, limit } = req.params;
-  debugger;
   try {
     const scenarios = await db.getRecentScenarios(user, orderBy, limit);
     res.send({ scenarios });
