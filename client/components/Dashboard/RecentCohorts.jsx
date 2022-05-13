@@ -35,8 +35,14 @@ const CohortContent = ({ cohorts }) => {
 };
 
 const RecentCohorts = () => {
-  const dispatch = useDispatch();
+  const user = useSelector(state => state.user);
   const cohorts = useSelector(state => state.recentCohorts);
+
+  if (user.roles.every(r => r == 'participant') && cohorts.length === 0) {
+    return null;
+  }
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getRecentCohorts());
