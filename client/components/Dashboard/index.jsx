@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import React from 'react';
 import RecentCohorts from './RecentCohorts';
 import RecentScenarios from './RecentScenarios';
+import RequestPermissionsLink from './RequestPermissionsLink';
 import { isParticipantOnly } from '../../util/Roles';
 import { useSelector } from 'react-redux';
 
@@ -49,12 +50,7 @@ const AuthoringPermissionsNote = () => {
         with the Teacher Moments team by filling out our request form to become
         an author.
       </p>
-      <a
-        className="dashboard-card__link"
-        href="https://forms.gle/qVDNxiD1yqrtDwMQ6"
-      >
-        Fill out request form →
-      </a>
+      <RequestPermissionsLink>Fill out request form →</RequestPermissionsLink>
     </Container>
   );
 };
