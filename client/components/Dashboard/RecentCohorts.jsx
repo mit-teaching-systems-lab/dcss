@@ -1,13 +1,7 @@
 import './Dashboard.css';
 
 import { Button, Icon } from '@components/UI';
-import {
-  Container,
-  Divider,
-  Header,
-  List,
-  Segment
-} from '@components/UI';
+import { Container, Divider, Header, List, Segment } from '@components/UI';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -41,8 +35,14 @@ const CohortContent = ({ cohorts }) => {
 };
 
 const RecentCohorts = () => {
-  const dispatch = useDispatch();
+  const user = useSelector(state => state.user);
   const cohorts = useSelector(state => state.recentCohorts);
+
+  if (user.roles.every(r => r == 'participant') && cohorts.length === 0) {
+    return null;
+  }
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getRecentCohorts());
