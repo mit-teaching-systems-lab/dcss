@@ -9,6 +9,7 @@ import CohortCard from '../Cohorts/CohortCard';
 import { SCENARIO_IS_PUBLIC } from '@components/Scenario/constants';
 import { getRecentCohorts } from '@actions/cohort';
 import { getScenariosByStatus } from '@actions/scenario';
+import { isParticipantOnly } from '@utils/Roles';
 
 const CohortContent = ({ cohorts }) => {
   if (cohorts.length) {
@@ -38,7 +39,7 @@ const RecentCohorts = () => {
   const user = useSelector(state => state.user);
   const cohorts = useSelector(state => state.recentCohorts);
 
-  if (user.roles.every(r => r == 'participant') && cohorts.length === 0) {
+  if (isParticipantOnly(user)) {
     return null;
   }
 
