@@ -74,6 +74,20 @@ async function getScenariosSlice(req, res) {
   }
 }
 
+async function getRecentScenarios(req, res) {
+  const user = req.session.user;
+  const { orderBy, limit } = req.params;
+  try {
+    const scenarios = await db.getRecentScenarios(user, orderBy, limit);
+    res.send({ scenarios });
+  } catch (apiError) {
+    const error = new Error('Error while getting recent scenarios.');
+    error.status = 500;
+    error.stack = apiError.stack;
+    throw error;
+  }
+}
+
 async function createScenario(req, res) {
   const { author, title, description, categories } = req.body;
   const author_id = (author && author.id) || req.session.user.id;
@@ -535,6 +549,7 @@ exports.getScenarios = asyncMiddleware(getScenarios);
 exports.getScenariosByStatus = asyncMiddleware(getScenariosByStatus);
 exports.getScenariosCount = asyncMiddleware(getScenariosCount);
 exports.getScenariosSlice = asyncMiddleware(getScenariosSlice);
+exports.getRecentScenarios = asyncMiddleware(getRecentScenarios);
 exports.createScenario = asyncMiddleware(createScenario);
 exports.setScenario = asyncMiddleware(setScenario);
 exports.deleteScenario = asyncMiddleware(deleteScenario);

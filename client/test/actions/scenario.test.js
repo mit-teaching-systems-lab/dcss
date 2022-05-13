@@ -1,15 +1,17 @@
-import { v4 as uuid } from 'uuid';
-import assert from 'assert';
+import * as actions from '../../actions/scenario';
+import * as types from '../../actions/types';
+
 import {
-  createMockStore,
   createMockConnectedStore,
+  createMockStore,
   fetchImplementation,
   makeById,
   state
 } from '../bootstrap';
 
-import * as actions from '../../actions/scenario';
-import * as types from '../../actions/types';
+import assert from 'assert';
+import { v4 as uuid } from 'uuid';
+
 jest.mock('../../util/Storage');
 
 const error = new Error('something unexpected happened on the server');
@@ -899,6 +901,37 @@ describe('GET_SCENARIOS_SUCCESS', () => {
 
       expect(fetch.mock.calls.length).toEqual(1);
       expect(returnValue).toEqual(scenarios);
+    });
+  });
+
+  describe('getRecentScenarios', () => {
+    test('isLoggedIn == true', async () => {
+      store = createMockConnectedStore({
+        scenarios,
+        session: {
+          isLoggedIn: true
+        }
+      });
+      const recentScenarios = scenarios.slice(-4);
+      
+      fetch.mockImplementation(async () => {
+        return {
+          status: 200,
+          async json() {
+            return { recentScenarios };
+          }
+        };
+      });
+
+      const returnValue = await store.dispatch(actions.getRecentScenarios());
+      expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+        Array [
+          "/api/scenarios/recent/updated_at/4",
+        ]
+      `);
+
+      expect(fetch.mock.calls.length).toEqual(1);
+      expect(returnValue).toEqual(recentScenarios);
     });
   });
 

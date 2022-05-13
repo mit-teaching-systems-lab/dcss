@@ -11,9 +11,9 @@ import { invites, invitesById } from './invite';
 import { logs, logsById } from './logs';
 import { partnering, partneringById } from './partnering';
 import { persona, personas, personasById } from './persona';
+import { recentScenarios, scenarios, scenariosById } from './scenarios';
 import { response, responses, responsesById } from './response';
 import { run, runs, runsById } from './run';
-import { scenarios, scenariosById } from './scenarios';
 import { users, usersById } from './users';
 
 import { combineReducers } from 'redux';
@@ -61,6 +61,7 @@ export default combineReducers({
   scenario,
   scenarios,
   scenariosById,
+  recentScenarios,
   session,
   tags,
   user,
