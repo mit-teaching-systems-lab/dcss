@@ -25,3 +25,7 @@ export const rolesToHumanReadableString = (type, roles) => {
 
   return `You are ${returnValue}.`;
 };
+
+export const isParticipantOnly = ({ roles }) => {
+  return roles.every(r => r === 'participant');
+};

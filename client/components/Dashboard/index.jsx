@@ -1,11 +1,13 @@
 import './Dashboard.css';
 
-import { Button, Card, Icon } from '@components/UI';
+import { Button, Card, Container, Icon } from '@components/UI';
 
 import { Link } from 'react-router-dom';
 import React from 'react';
 import RecentCohorts from './RecentCohorts';
 import RecentScenarios from './RecentScenarios';
+import { isParticipantOnly } from '../../util/Roles';
+import { useSelector } from 'react-redux';
 
 const SideNav = () => {
   return (
@@ -41,7 +43,7 @@ const SideNav = () => {
 
 const AuthoringPermissionsNote = () => {
   return (
-    <div className="dashboard-cta">
+    <Container fluid className="dashboard-cta">
       <p>
         Cohorts and scenario creation is only available to authors. Get in touch
         with the Teacher Moments team by filling out our request form to become
@@ -53,7 +55,7 @@ const AuthoringPermissionsNote = () => {
       >
         Fill out request form →
       </a>
-    </div>
+    </Container>
   );
 };
 
@@ -255,14 +257,15 @@ const GetInTouch = () => {
 };
 
 const Dashboard = () => {
+  const user = useSelector(state => state.user);
+
   return (
     <div className="dashboard">
       <h1>Your Dashboard</h1>
       <div className="dashboard-container">
         <SideNav />
         <div className="dashboard-main">
-          {/*Show this when a user is not an author*/}
-          <AuthoringPermissionsNote />
+          {isParticipantOnly(user) && <AuthoringPermissionsNote />}
 
           <RecentCohorts />
           <RecentScenarios />
