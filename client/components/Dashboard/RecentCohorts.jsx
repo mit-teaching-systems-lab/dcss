@@ -2,10 +2,11 @@ import './Dashboard.css';
 
 import { Button, Icon } from '@components/UI';
 import { Container, Header, List, Segment } from '@components/UI';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import CohortCard from '../Cohorts/CohortCard';
+import CohortCreateWizard from '@components/Cohorts/CohortCreateWizard';
 import RequestPermissionsLink from './RequestPermissionsLink';
 import { SCENARIO_IS_PUBLIC } from '@components/Scenario/constants';
 import { getRecentCohorts } from '@actions/cohort';
@@ -14,6 +15,16 @@ import { isParticipantOnly } from '@utils/Roles';
 
 const RecentCohorts = () => {
   const dispatch = useDispatch();
+  const [open, setIsOpen] = useState(false);
+
+  const openCohortWizard = e => {
+    e.preventDefault();
+    setIsOpen(true);
+  };
+
+  const closeCohortWizard = () => {
+    setIsOpen(false);
+  };
 
   useEffect(() => {
     dispatch(getRecentCohorts());
@@ -41,8 +52,7 @@ const RecentCohorts = () => {
             labelPosition="left"
             name="Create a new cohort"
             size="small"
-            href="/"
-            as="a"
+            onClick={openCohortWizard}
           >
             <Icon name="add" />
             Create a new cohort
@@ -71,10 +81,15 @@ const RecentCohorts = () => {
         <Segment secondary padded className="dashboard-empty">
           <p>
             No cohorts created.{' '}
-            {canCreateCohorts && <a href="#">Create a new cohort.</a>}
+            {canCreateCohorts && (
+              <a href="#" onClick={openCohortWizard}>
+                Create a new cohort.
+              </a>
+            )}
           </p>
         </Segment>
       )}
+      {open ? <CohortCreateWizard onCancel={closeCohortWizard} /> : null}
     </Container>
   );
 };
