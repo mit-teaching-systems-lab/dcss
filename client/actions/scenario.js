@@ -5,6 +5,8 @@ import {
   DELETE_SCENARIO_SUCCESS,
   DELETE_SLIDE_ERROR,
   DELETE_SLIDE_SUCCESS,
+  GET_EXAMPLE_SCENARIOS_ERROR,
+  GET_EXAMPLE_SCENARIOS_SUCCESS,
   GET_RECENT_SCENARIOS_ERROR,
   GET_RECENT_SCENARIOS_SUCCESS,
   GET_SCENARIOS_COUNT_ERROR,
@@ -320,6 +322,27 @@ export let getRecentScenarios = (
     return null;
   }
 };
+
+export let getExampleScenarios = () => async dispatch => {
+  try {
+    const url = '/api/scenarios/examples';
+    const res = await (await fetch(url)).json();
+
+    if (res.error) {
+      throw res;
+    }
+    const { scenarios = [] } = res;
+
+    dispatch({
+      type: GET_EXAMPLE_SCENARIOS_SUCCESS,
+      exampleScenarios: scenarios
+    });
+    return scenarios;
+  } catch (error) {
+    dispatch({ type: GET_EXAMPLE_SCENARIOS_ERROR, error });
+    return null;
+  }
+}
 
 export let getSlides = id => async dispatch => {
   try {

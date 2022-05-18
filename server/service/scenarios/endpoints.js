@@ -88,6 +88,18 @@ async function getRecentScenarios(req, res) {
   }
 }
 
+async function getExampleScenarios(req, res) {
+  try {
+    const scenarios = await db.getExampleScenarios();
+    res.send({ scenarios });
+  } catch (apiError) {
+    const error = new Error('Error while getting example scenarios.');
+    error.status = 500;
+    error.stack = apiError.stack;
+    throw error;
+  }
+}
+
 async function createScenario(req, res) {
   const { author, title, description, categories } = req.body;
   const author_id = (author && author.id) || req.session.user.id;
@@ -131,7 +143,8 @@ async function setScenario(req, res) {
     labels,
     personas,
     status,
-    title
+    title,
+    is_example
   } = req.body;
   const scenario_id = Number(req.params.scenario_id);
   let author_id = user.id;
@@ -146,7 +159,8 @@ async function setScenario(req, res) {
       deleted_at,
       description,
       status,
-      title
+      title,
+      is_example
     });
 
     await db.setScenarioCategories(scenario_id, categories);
@@ -558,3 +572,4 @@ exports.copyScenario = asyncMiddleware(copyScenario);
 exports.getScenarioByRun = asyncMiddleware(getScenarioByRun);
 exports.setScenarioUserRole = asyncMiddleware(setScenarioUserRole);
 exports.endScenarioUserRole = asyncMiddleware(endScenarioUserRole);
+exports.getExampleScenarios = asyncMiddleware(getExampleScenarios);
