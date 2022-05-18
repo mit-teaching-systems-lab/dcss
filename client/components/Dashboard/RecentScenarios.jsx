@@ -77,12 +77,7 @@ const RecentScenarios = () => {
         </List>
       ) : (
         <Segment secondary padded className="dashboard-empty">
-          <p>
-            No scenarios created.{' '}
-            {canCreateScenarios && (
-              <a href="/editor/new">Create a new scenario.</a>
-            )}
-          </p>
+          <p>No scenarios created.</p>
         </Segment>
       )}
       {selected ? (

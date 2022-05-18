@@ -79,14 +79,7 @@ const RecentCohorts = () => {
         </List>
       ) : (
         <Segment secondary padded className="dashboard-empty">
-          <p>
-            No cohorts created.{' '}
-            {canCreateCohorts && (
-              <a href="#" onClick={openCohortWizard}>
-                Create a new cohort.
-              </a>
-            )}
-          </p>
+          <p>No cohorts created.</p>
         </Segment>
       )}
       {open ? <CohortCreateWizard onCancel={closeCohortWizard} /> : null}
