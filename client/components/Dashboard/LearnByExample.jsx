@@ -1,4 +1,4 @@
-import { Card, Text } from '@components/UI';
+import { Card, Container, Divider, Header, Text } from '@components/UI';
 import {
   CopyScenarioButton,
   RunScenarioButton
@@ -17,31 +17,38 @@ const LearnByExample = () => {
   }, [dispatch]);
 
   return (
-    <section id="learn-by-example">
-      <div className="dashboard-subheader">
-        <h2>Learn by example</h2>
-        <p>
-          Run or copy example scenarios created by the team to learn all the
-          features of Teacher Moments.
-        </p>
-      </div>
-      <ul className="dashboard-grid">
+    <Container fluid id="learn-by-example">
+      <Header as="h2">Learn by example</Header>
+      <Header.Subheader className="dashboard-subheader">
+        Run or copy example scenarios created by the team to learn all the
+        features of Teacher Moments.
+      </Header.Subheader>
+      <Card.Group itemsPerRow="2" className="dashboard-card-group">
         {examples.map(scenario => {
           return (
-            <li key={`example-scenario-${scenario.idz}`}>
-              <Card className="dashboard-card">
-                <p className="dashboard-card__title">{scenario.title}</p>
-                <Text.Truncate lines={3}>{scenario.description}</Text.Truncate>
-                <div className="dashboard-button-group">
+            <Card
+              raised
+              key={`example-scenario-${scenario.id}`}
+              className="dashboard-card"
+            >
+              <Card.Content>
+                <Card.Header as="h2">{scenario.title}</Card.Header>
+                <Card.Description>
+                  <Text.Truncate lines={3}>
+                    {scenario.description}
+                  </Text.Truncate>
+                </Card.Description>
+                <Divider />
+                <Card.Content extra className="dashboard-button-group">
                   <RunScenarioButton id={scenario.id} activeRunSlideIndex={0} />
                   <CopyScenarioButton id={scenario.id} />
-                </div>
-              </Card>
-            </li>
+                </Card.Content>
+              </Card.Content>
+            </Card>
           );
         })}
-      </ul>
-    </section>
+      </Card.Group>
+    </Container>
   );
 };
 

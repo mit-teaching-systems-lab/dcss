@@ -93,11 +93,16 @@
   padding: 0.5rem;
 }
 
-.dashboard-card {
+.dashboard-grid .dashboard-card {
   font-size: 1.1rem;
   height: 100%;
-  padding: 1.5rem !important;
   width: 100% !important;
+  padding: 1.5rem !important;
+}
+
+.dashboard-card-group .ui.card.dashboard-card {
+  padding: .5rem !important;
+  font-size: 1.1rem !important;
 }
 
 .dashboard-card__link {
