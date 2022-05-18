@@ -102,7 +102,7 @@ export const scenariosById = (state = {}, action) => {
   }
 };
 
-const updateScenarioInList = (state, scenario) => {
+const updateExistingScenarioInState = (state, scenario) => {
   const index = state.findIndex(({ id }) => id === scenario.id);
 
   if (index !== -1) {
@@ -126,7 +126,7 @@ export const recentScenarios = (state = [], action) => {
     }
     case RESTORE_SCENARIO_SUCCESS:
     case GET_SCENARIO_SUCCESS: {
-      return updateScenarioInList(state, scenario);
+      return updateExistingScenarioInState(state, scenario);
     }
     default: {
       return state;
@@ -143,7 +143,7 @@ export const exampleScenarios = (state = [], action) => {
     }
     case RESTORE_SCENARIO_SUCCESS:
     case GET_SCENARIO_SUCCESS: {
-      return updateScenarioInList(state, scenario);
+      return updateExistingScenarioInState(state, scenario);
     }
     default: {
       return state;
