@@ -1,8 +1,8 @@
 import './Dashboard.css';
 
-import { Button, Card, Container, Icon } from '@components/UI';
+import { Card, Container } from '@components/UI';
 
-import { Link } from 'react-router-dom';
+import LearnByExample from './LearnByExample';
 import React from 'react';
 import RecentCohorts from './RecentCohorts';
 import RecentScenarios from './RecentScenarios';
@@ -52,85 +52,6 @@ const AuthoringPermissionsNote = () => {
       </p>
       <RequestPermissionsLink>Fill out request form →</RequestPermissionsLink>
     </Container>
-  );
-};
-
-const CardActions = () => {
-  return (
-    <div className="dashboard-button-group">
-      <Button tabIndex="0" aria-label="Run scenario" size="tiny" icon>
-        <Icon name="play" className="primary" />
-        <span>Run</span>
-      </Button>
-      <Button
-        tabIndex="0"
-        size="tiny"
-        icon
-        as={Link}
-        aria-label="Copy scenario"
-      >
-        <Icon name="copy outline" className="primary" />
-        <span>Copy</span>
-      </Button>
-    </div>
-  );
-};
-
-const LearnByExample = () => {
-  return (
-    <section id="learn-by-example">
-      <div className="dashboard-subheader">
-        <h2>Learn by example</h2>
-        <p>
-          Run or copy example scenarios created by the team to learn all the
-          features of Teacher Moments.
-        </p>
-      </div>
-      <ul className="dashboard-grid">
-        <li>
-          <Card className="dashboard-card">
-            <p className="dashboard-card__title">Robotic Fire Engine</p>
-            <p>
-              Tackles complex equity issues with a relatively simple structure,
-              using just a few different authoring tools.
-            </p>
-            <CardActions />
-          </Card>
-        </li>
-        <li>
-          <Card className="dashboard-card">
-            <p className="dashboard-card__title">Roster Justice</p>
-            <p>
-              Uses video to simulate an authentic conversation about inequitable
-              participation in computer science education.
-            </p>
-            <CardActions />
-          </Card>
-        </li>
-        <li>
-          <Card className="dashboard-card">
-            <p className="dashboard-card__title">Jeremy’s Journal</p>
-            <p>
-              Analyzes participants’ responses and offers suggestions and
-              reflection questions to learners who need them in real time.
-            </p>
-            <CardActions />
-          </Card>
-        </li>
-        <li>
-          <Card className="dashboard-card">
-            <p className="dashboard-card__title">
-              Discussion Leader - Genetic Modifications in Humans
-            </p>
-            <p>
-              Showcases the “choose your own adventure” capabilities of the
-              platform; participants go down different paths.
-            </p>
-            <CardActions />
-          </Card>
-        </li>
-      </ul>
-    </section>
   );
 };
 

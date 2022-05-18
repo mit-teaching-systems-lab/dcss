@@ -1,14 +1,63 @@
-import React, { Component, Fragment } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+import './ScenariosList.css';
+
 import { Button, Icon } from '@components/UI';
-import { deleteScenario } from '@actions/scenario';
+import React, { Component, Fragment } from 'react';
+
 import Gate from '@client/components/Gate';
 import Identity from '@utils/Identity';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import Storage from '@utils/Storage';
-import './ScenariosList.css';
+import { connect } from 'react-redux';
+import { deleteScenario } from '@actions/scenario';
+import { withRouter } from 'react-router-dom';
+
+const labelClassName = 'sc__card-action-labels';
+
+const RunScenarioButton = ({ id, activeRunSlideIndex }) => {
+  return (
+    <Button
+      tabIndex="0"
+      aria-label="Run scenario"
+      className="sc__button"
+      size="tiny"
+      icon
+      as={Link}
+      to={`/run/${Identity.toHash(id)}/slide/${activeRunSlideIndex}`}
+    >
+      <Icon name="play" className="primary" />
+      <span className={labelClassName}>Run</span>
+    </Button>
+  );
+};
+
+RunScenarioButton.propTypes = {
+  id: PropTypes.number,
+  activeRunSlideIndex: PropTypes.number
+};
+
+const CopyScenarioButton = ({ id }) => {
+  return (
+    <Gate requiredPermission="create_scenario">
+      <Button
+        tabIndex="0"
+        size="tiny"
+        icon
+        as={Link}
+        to={`/editor/copy/${id}`}
+        aria-label="Copy scenario"
+        className="sc__button sc__hidden-on-mobile"
+      >
+        <Icon name="copy outline" className="primary" />
+        <span className={labelClassName}>Copy</span>
+      </Button>
+    </Gate>
+  );
+};
+
+CopyScenarioButton.propTypes = {
+  id: PropTypes.number
+};
 
 class ScenarioCardActions extends Component {
   render() {
@@ -39,24 +88,13 @@ class ScenarioCardActions extends Component {
       Storage.set(`editor/${scenario.id}`, editor);
     }
 
-    const className = 'sc__card-action-labels';
-
     return (
       <Button.Group fluid>
-        <Button
-          tabIndex="0"
-          aria-label="Run scenario"
-          className="sc__button"
-          size="tiny"
-          icon
-          as={Link}
-          to={`/run/${Identity.toHash(scenario.id)}/slide/${
-            run.activeRunSlideIndex
-          }`}
-        >
-          <Icon name="play" className="primary" />
-          <span className={className}>Run</span>
-        </Button>
+        <RunScenarioButton
+          id={scenario.id}
+          activeRunSlideIndex={run.activeRunSlideIndex}
+          labelClassName={labelClassName}
+        />
         {isLoggedIn && (
           <Fragment>
             <Gate isAuthorized={isAuthorizedToEdit}>
@@ -70,7 +108,7 @@ class ScenarioCardActions extends Component {
                 className="sc__button sc__hidden-on-mobile"
               >
                 <Icon name="edit outline" className="primary" />
-                <span className={className}>Edit</span>
+                <span className={labelClassName}>Edit</span>
               </Button>
             </Gate>
             <Gate isAuthorized={isAuthorizedToReview}>
@@ -84,7 +122,7 @@ class ScenarioCardActions extends Component {
                 className="sc__button sc__hidden-on-mobile"
               >
                 <Icon className="book reader icon primary" />
-                <span className={className}>Review</span>
+                <span className={labelClassName}>Review</span>
               </Button>
             </Gate>
             {/*
@@ -110,20 +148,7 @@ class ScenarioCardActions extends Component {
               </Button>
             </Gate>
             */}
-            <Gate requiredPermission="create_scenario">
-              <Button
-                tabIndex="0"
-                size="tiny"
-                icon
-                as={Link}
-                to={`/editor/copy/${scenario.id}`}
-                aria-label="Copy scenario"
-                className="sc__button sc__hidden-on-mobile"
-              >
-                <Icon name="copy outline" className="primary" />
-                <span className={className}>Copy</span>
-              </Button>
-            </Gate>
+            <CopyScenarioButton id={scenario.id} />
           </Fragment>
         )}
       </Button.Group>
@@ -150,6 +175,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => ({
   deleteScenario: id => dispatch(deleteScenario(id))
 });
+
+export { CopyScenarioButton, RunScenarioButton };
 
 export default withRouter(
   connect(

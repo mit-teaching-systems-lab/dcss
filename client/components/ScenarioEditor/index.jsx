@@ -1,9 +1,8 @@
-import React, { Component, Fragment } from 'react';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-import Identity from '@utils/Identity';
+import './scenarioEditor.css';
+
 import {
   Button,
+  Checkbox,
   Container,
   Form,
   Grid,
@@ -11,24 +10,25 @@ import {
   Popup,
   Ref
 } from '@components/UI';
+import React, { Component, Fragment } from 'react';
+import { getScenario, setScenario } from '@actions/scenario';
 
-import Gate from '@components/Gate';
-import EditorMenu from '@components/EditorMenu';
-import { makeDefaultDescription } from '@components/Editor/scenario';
-import Loading from '@components/Loading';
-import { notify } from '@components/Notification';
 import DropdownCategories from './DropdownCategories';
 import DropdownLabels from './DropdownLabels';
 import DropdownOwner from './DropdownOwner';
+import EditorMenu from '@components/EditorMenu';
+import Gate from '@components/Gate';
+import Identity from '@utils/Identity';
+import Loading from '@components/Loading';
+import PropTypes from 'prop-types';
+import RichTextEditor from '@components/RichTextEditor';
 import ScenarioAuthors from './ScenarioAuthors';
 import ScenarioPersonas from './ScenarioPersonas';
-import RichTextEditor from '@components/RichTextEditor';
-
-import { getScenario, setScenario } from '@actions/scenario';
+import { connect } from 'react-redux';
 import { getCategories } from '@actions/tags';
 import { getUsersByPermission } from '@actions/users';
-
-import './scenarioEditor.css';
+import { makeDefaultDescription } from '@components/Editor/scenario';
+import { notify } from '@components/Notification';
 
 function createSectionDef(label) {
   return {
@@ -115,10 +115,12 @@ class ScenarioEditor extends Component {
     window.addEventListener('beforeunload', this.onBeforeUnload);
   }
 
-  async onChange(event, { name, value }) {
+  async onChange(event, data) {
+    const { name, value, checked } = data;
+
     const { scenario } = await this.props.setScenario({
       ...this.props.scenario,
-      [name]: value
+      [name]: value || checked
     });
 
     // Only auto-save after scenario has been created.
@@ -236,6 +238,7 @@ class ScenarioEditor extends Component {
       scrollIntoView
     } = this;
     const {
+      user,
       scenarioId,
       scenario,
       scenario: { author, categories, consent, finish, title }
@@ -270,6 +273,17 @@ class ScenarioEditor extends Component {
           />
         </Form.Field>
       </Ref>
+    );
+
+    const makeExampleCheckbox = (
+      <Form.Field>
+        <Checkbox
+          label="Make this an example scenario"
+          name="is_example"
+          checked={scenario.is_example}
+          onChange={onChange}
+        />
+      </Form.Field>
     );
 
     const descriptionDefaultValue =
@@ -432,6 +446,8 @@ class ScenarioEditor extends Component {
                     {...popupProps}
                   />
 
+                  {user.is_super && makeExampleCheckbox}
+
                   {dropdowns}
 
                   {isNotNewScenario ? (
@@ -490,7 +506,8 @@ ScenarioEditor.propTypes = {
     lock: PropTypes.object,
     status: PropTypes.number,
     title: PropTypes.string,
-    users: PropTypes.array
+    users: PropTypes.array,
+    is_example: PropTypes.bool
   }),
   setScenario: PropTypes.func.isRequired,
   submitCB: PropTypes.func.isRequired,
