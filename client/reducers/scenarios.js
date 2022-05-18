@@ -1,6 +1,7 @@
 import {
   DELETE_SCENARIO_SUCCESS,
   GET_COHORT_SCENARIOS_SUCCESS,
+  GET_EXAMPLE_SCENARIOS_SUCCESS,
   GET_RECENT_SCENARIOS_SUCCESS,
   GET_SCENARIOS_SUCCESS,
   GET_SCENARIO_SUCCESS,
@@ -101,6 +102,21 @@ export const scenariosById = (state = {}, action) => {
   }
 };
 
+const updateScenarioInList = (state, scenario) => {
+  const index = state.findIndex(({ id }) => id === scenario.id);
+
+  if (index !== -1) {
+    state[index] = {
+      ...state[index],
+      ...scenario
+    };
+
+    return [...state];
+  }
+
+  return state;
+};
+
 export const recentScenarios = (state = [], action) => {
   const { recentScenarios, scenario, type } = action;
 
@@ -110,18 +126,24 @@ export const recentScenarios = (state = [], action) => {
     }
     case RESTORE_SCENARIO_SUCCESS:
     case GET_SCENARIO_SUCCESS: {
-      const index = state.findIndex(({ id }) => id === scenario.id);
-
-      if (index !== -1) {
-        state[index] = {
-          ...state[index],
-          ...scenario
-        };
-
-        return [...state];
-      }
-
+      return updateScenarioInList(state, scenario);
+    }
+    default: {
       return state;
+    }
+  }
+};
+
+export const exampleScenarios = (state = [], action) => {
+  const { exampleScenarios, scenario, type } = action;
+
+  switch (type) {
+    case GET_EXAMPLE_SCENARIOS_SUCCESS: {
+      return exampleScenarios;
+    }
+    case RESTORE_SCENARIO_SUCCESS:
+    case GET_SCENARIO_SUCCESS: {
+      return updateScenarioInList(state, scenario);
     }
     default: {
       return state;

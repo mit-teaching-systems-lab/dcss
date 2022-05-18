@@ -2,6 +2,12 @@ import { agent, agents, agentsById } from './agent';
 import { chat, chats, chatsById } from './chat';
 import { cohort, cohorts, cohortsById, recentCohorts } from './cohort';
 import {
+  exampleScenarios,
+  recentScenarios,
+  scenarios,
+  scenariosById
+} from './scenarios';
+import {
   interaction,
   interactions,
   interactionsById,
@@ -11,7 +17,6 @@ import { invites, invitesById } from './invite';
 import { logs, logsById } from './logs';
 import { partnering, partneringById } from './partnering';
 import { persona, personas, personasById } from './persona';
-import { recentScenarios, scenarios, scenariosById } from './scenarios';
 import { response, responses, responsesById } from './response';
 import { run, runs, runsById } from './run';
 import { users, usersById } from './users';
@@ -62,6 +67,7 @@ export default combineReducers({
   scenarios,
   scenariosById,
   recentScenarios,
+  exampleScenarios,
   session,
   tags,
   user,
