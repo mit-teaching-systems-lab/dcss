@@ -117,13 +117,11 @@ const QuickStartGuide = () => {
         </li>
         <li>
           <Card className="dashboard-card">
-            <p className="dashboard-card__title">Teaching with simulations</p>
-            <p>
-              How to use responses from your cohort to facilitate discussion
-            </p>
+            <p className="dashboard-card__title">Creating a cohort</p>
+            <p>How to manage your classroom and discussions with cohorts.</p>
             <a
               className="dashboard-card__link"
-              href="https://docs.google.com/presentation/d/1sKfDO0J6t4uxYWM-Bi1r_UJifPFOG1u_1U2hHEVsuzc/edit?usp=sharing"
+              href="https://docs.google.com/presentation/d/1QM32ZAxT-NtRM7aInkqB7DKRweOWyQwluqgd79m352I/edit#slide=id.gf325c6b0ac_0_108"
             >
               Go to guide →
             </a>
@@ -131,11 +129,13 @@ const QuickStartGuide = () => {
         </li>
         <li>
           <Card className="dashboard-card">
-            <p className="dashboard-card__title">Creating a cohort</p>
-            <p>How to manage your classroom and discussions with cohorts.</p>
+            <p className="dashboard-card__title">Teaching with simulations</p>
+            <p>
+              How to use responses from your cohort to facilitate discussion
+            </p>
             <a
               className="dashboard-card__link"
-              href="https://docs.google.com/presentation/d/1QM32ZAxT-NtRM7aInkqB7DKRweOWyQwluqgd79m352I/edit#slide=id.gf325c6b0ac_0_108"
+              href="https://docs.google.com/presentation/d/1sKfDO0J6t4uxYWM-Bi1r_UJifPFOG1u_1U2hHEVsuzc/edit?usp=sharing"
             >
               Go to guide →
             </a>
