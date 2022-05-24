@@ -28,6 +28,8 @@ const RecentScenarios = () => {
     setOpen(false);
   };
 
+  const user = useSelector(state => state.user);
+
   const permissions = useSelector(state => state.session.permissions);
   const canCreateScenarios = permissions.includes('create_scenario');
 
@@ -56,7 +58,11 @@ const RecentScenarios = () => {
         <Button size="small" href="/scenarios">
           View all scenarios
         </Button>
-        {!canCreateScenarios && (
+        {canCreateScenarios ? (
+          <Button size="small" href={`/scenarios/author/${user.username}/`}>
+            View my scenarios
+          </Button>
+        ) : (
           <RequestPermissionsLink>
             I want to create scenarios →
           </RequestPermissionsLink>
