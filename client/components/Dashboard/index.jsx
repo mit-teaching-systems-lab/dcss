@@ -66,7 +66,7 @@ const QuickStartGuide = () => {
         <li>
           <Card className="dashboard-card">
             <p className="dashboard-card__title">
-              What are digital clinical simulations?
+              What Are Digital Clinical Simulations?
             </p>
             <p>An overview of Teacher Moments and ELK</p>
             <a
@@ -79,7 +79,7 @@ const QuickStartGuide = () => {
         </li>
         <li>
           <Card className="dashboard-card">
-            <p className="dashboard-card__title">Authoring a scenario</p>
+            <p className="dashboard-card__title">Authoring a Scenario</p>
             <p>How to develop a basic scenario in Teacher Moments</p>
             <a
               className="dashboard-card__link"
@@ -105,7 +105,7 @@ const QuickStartGuide = () => {
         </li>
         <li>
           <Card className="dashboard-card">
-            <p className="dashboard-card__title">Authoring in more details</p>
+            <p className="dashboard-card__title">Authoring in More Detail</p>
             <p>A more detailed look at authoring scenarios for one player</p>
             <a
               className="dashboard-card__link"
@@ -117,7 +117,7 @@ const QuickStartGuide = () => {
         </li>
         <li>
           <Card className="dashboard-card">
-            <p className="dashboard-card__title">Creating a cohort</p>
+            <p className="dashboard-card__title">Creating a Cohort</p>
             <p>How to manage your classroom and discussions with cohorts.</p>
             <a
               className="dashboard-card__link"
@@ -129,7 +129,7 @@ const QuickStartGuide = () => {
         </li>
         <li>
           <Card className="dashboard-card">
-            <p className="dashboard-card__title">Teaching with simulations</p>
+            <p className="dashboard-card__title">Teaching with Simulations</p>
             <p>
               How to use responses from your cohort to facilitate discussion
             </p>
