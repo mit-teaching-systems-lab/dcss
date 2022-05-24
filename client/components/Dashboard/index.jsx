@@ -152,7 +152,10 @@ const QuickStartGuide = () => {
           Learn more about deeper features like branching and multiplayer
           scenarios in our resource center.
         </p>
-        <a className="dashboard-card__link" href="#">
+        <a
+          className="dashboard-card__link"
+          href="https://drive.google.com/drive/folders/1A3MxYpjPXSPndW3wMwAUXonZh6kFKYmG?usp=sharing"
+        >
           Go to resource center →
         </a>
       </Segment>
