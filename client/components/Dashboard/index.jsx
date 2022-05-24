@@ -118,7 +118,7 @@ const QuickStartGuide = () => {
         <li>
           <Card className="dashboard-card">
             <p className="dashboard-card__title">Creating a Cohort</p>
-            <p>How to manage your classroom and discussions with cohorts.</p>
+            <p>How to manage your classroom and discussions with cohorts</p>
             <a
               className="dashboard-card__link"
               href="https://docs.google.com/presentation/d/1QM32ZAxT-NtRM7aInkqB7DKRweOWyQwluqgd79m352I/edit#slide=id.gf325c6b0ac_0_108"
