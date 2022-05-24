@@ -58,7 +58,7 @@ const RecentCohorts = () => {
             Create a new cohort
           </Button>
         )}
-        <Button size="small" href="/">
+        <Button size="small" href="/cohorts">
           View all cohorts
         </Button>
         {!canCreateCohorts && (
