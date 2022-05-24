@@ -65,9 +65,7 @@ const QuickStartGuide = () => {
       <ol className="dashboard-grid dashboard-grid--numbered">
         <li>
           <Card className="dashboard-card">
-            <p className="dashboard-card__title">
-              What Are Digital Clinical Simulations?
-            </p>
+            <p className="dashboard-card__title">What Is Teacher Moments?</p>
             <p>An overview of Teacher Moments and ELK</p>
             <a
               className="dashboard-card__link"
