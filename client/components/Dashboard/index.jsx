@@ -185,7 +185,7 @@ const Dashboard = () => {
           {isParticipantOnly(user) && <AuthoringPermissionsNote />}
 
           <RecentCohorts />
-          <RecentScenarios />
+          {!isParticipantOnly(user) && <RecentScenarios />}
           <LearnByExample />
           <QuickStartGuide />
           <GetInTouch />
