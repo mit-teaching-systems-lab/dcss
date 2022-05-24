@@ -114,6 +114,7 @@
     "react-resize-aware": "^3.1.0",
     "react-rnd": "^10.2.4",
     "react-router-dom": "^5.0.1",
+    "react-router-hash-link": "^2.4.3",
     "react-semantic-toasts": "^0.6.5",
     "react-semantic-ui-range": "^0.7.0",
     "react-simple-timefield": "^3.2.3",

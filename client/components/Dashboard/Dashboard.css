@@ -40,9 +40,6 @@
     align-self: start;
     background-color: #f6f6ee;
     border-radius: 5px;
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
     padding: 1rem;
     position: sticky;
     top: 1rem;
@@ -55,14 +52,9 @@
 
 .dashboard-sidenav__subtitle {
   font-size: 1.25rem;
-  margin-bottom: 0.5rem;
 }
 
-.dashboard-sidenav li:not(:last-of-type) {
-  margin-bottom: 0.5rem;
-}
-
-.dashboard-sidenav li a {
+.dashboard-sidenav .item a {
   color: var(--color-primary);
   font-weight: bold;
 }
