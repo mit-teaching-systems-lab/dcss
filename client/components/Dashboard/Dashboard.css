@@ -13,8 +13,7 @@
 }
 
 .dashboard ul,
-.dashboard ol {
-  list-style: none;
+.dashboard .ui.ordered.list {
   margin: 0;
   padding: 0;
 }
@@ -75,22 +74,18 @@
   grid-template-columns: repeat(auto-fill, minmax(min(20rem, 100%), 1fr));
 }
 
-.dashboard-grid--numbered {
-  counter-reset: list;
-}
-
-.dashboard-grid--numbered li {
-  counter-increment: list;
-}
-
 .dashboard-grid--numbered .dashboard-card::before {
   align-self: start;
   background-color: #f5f5f5;
   border-radius: 5px;
-  content: counter(list);
+  content: counter(ordered);
   font-weight: bold;
   margin-bottom: 0.5rem;
   padding: 0.5rem;
+}
+
+.ui.ordered.list.dashboard-grid--numbered .item:before {
+  content: "";
 }
 
 .dashboard-grid .dashboard-card {
