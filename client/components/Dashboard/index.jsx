@@ -193,8 +193,8 @@ const Dashboard = () => {
         <div className="dashboard-main">
           {isParticipantOnly(user) && <AuthoringPermissionsNote />}
 
-          <RecentScenarios />
           <RecentCohorts />
+          {!isParticipantOnly(user) && <RecentScenarios />}
           <LearnByExample />
           <QuickStartGuide />
           <GetInTouch />
