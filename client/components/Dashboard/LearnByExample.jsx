@@ -20,8 +20,8 @@ const LearnByExample = () => {
     <Container fluid id="learn-by-example">
       <Header as="h2">Learn by example</Header>
       <Header.Subheader className="dashboard-subheader">
-        Run or copy example scenarios created by the team to learn all the
-        features of Teacher Moments.
+        Run or copy examples created by the team to explore the features of
+        Teacher Moments.
       </Header.Subheader>
       <Card.Group itemsPerRow="2" className="dashboard-card-group">
         {examples.map(scenario => {
