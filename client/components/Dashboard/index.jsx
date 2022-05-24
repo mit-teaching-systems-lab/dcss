@@ -1,6 +1,13 @@
 import './Dashboard.css';
 
-import { Card, Container } from '@components/UI';
+import {
+  Card,
+  Container,
+  Divider,
+  Header,
+  List,
+  Segment
+} from '@components/UI';
 
 import LearnByExample from './LearnByExample';
 import React from 'react';
@@ -57,17 +64,15 @@ const AuthoringPermissionsNote = () => {
 
 const QuickStartGuide = () => {
   return (
-    <section id="quick-start-guide">
-      <div className="dashboard-subheader">
-        <h2>Quick start guide</h2>
-        <p>Onboard onto Teacher Moments using with step-by-step decks.</p>
-      </div>
-      <ol className="dashboard-grid dashboard-grid--numbered">
-        <li>
+    <Container fluid id="quick-start-guide">
+      <Header as="h2">Quick start guide</Header>
+      <Header.Subheader className="dashboard-subheader">
+        Learn to author and use Teacher Moments scenarios.
+      </Header.Subheader>
+      <List ordered className="dashboard-grid dashboard-grid--numbered">
+        <List.Item>
           <Card className="dashboard-card">
-            <p className="dashboard-card__title">
-              What are digital clinical simulations?
-            </p>
+            <p className="dashboard-card__title">What Is Teacher Moments?</p>
             <p>An overview of Teacher Moments and ELK</p>
             <a
               className="dashboard-card__link"
@@ -76,10 +81,10 @@ const QuickStartGuide = () => {
               Go to guide →
             </a>
           </Card>
-        </li>
-        <li>
+        </List.Item>
+        <List.Item>
           <Card className="dashboard-card">
-            <p className="dashboard-card__title">Authoring a scenario</p>
+            <p className="dashboard-card__title">Authoring a Scenario</p>
             <p>How to develop a basic scenario in Teacher Moments</p>
             <a
               className="dashboard-card__link"
@@ -88,8 +93,8 @@ const QuickStartGuide = () => {
               Go to guide →
             </a>
           </Card>
-        </li>
-        <li>
+        </List.Item>
+        <List.Item>
           <Card className="dashboard-card">
             <p className="dashboard-card__title">
               Authoring the Different Components
@@ -102,10 +107,10 @@ const QuickStartGuide = () => {
               Go to guide →
             </a>
           </Card>
-        </li>
-        <li>
+        </List.Item>
+        <List.Item>
           <Card className="dashboard-card">
-            <p className="dashboard-card__title">Authoring in more details</p>
+            <p className="dashboard-card__title">Authoring in More Detail</p>
             <p>A more detailed look at authoring scenarios for one player</p>
             <a
               className="dashboard-card__link"
@@ -114,10 +119,22 @@ const QuickStartGuide = () => {
               Go to guide →
             </a>
           </Card>
-        </li>
-        <li>
+        </List.Item>
+        <List.Item>
           <Card className="dashboard-card">
-            <p className="dashboard-card__title">Teaching with simulations</p>
+            <p className="dashboard-card__title">Creating a Cohort</p>
+            <p>How to manage your classroom and discussions with cohorts</p>
+            <a
+              className="dashboard-card__link"
+              href="https://docs.google.com/presentation/d/1QM32ZAxT-NtRM7aInkqB7DKRweOWyQwluqgd79m352I/edit#slide=id.gf325c6b0ac_0_108"
+            >
+              Go to guide →
+            </a>
+          </Card>
+        </List.Item>
+        <List.Item>
+          <Card className="dashboard-card">
+            <p className="dashboard-card__title">Teaching with Simulations</p>
             <p>
               How to use responses from your cohort to facilitate discussion
             </p>
@@ -128,48 +145,38 @@ const QuickStartGuide = () => {
               Go to guide →
             </a>
           </Card>
-        </li>
-        <li>
-          <Card className="dashboard-card">
-            <p className="dashboard-card__title">Creating a cohort</p>
-            <p>How to manage your classroom and discussions with cohorts.</p>
-            <a
-              className="dashboard-card__link"
-              href="https://docs.google.com/presentation/d/1QM32ZAxT-NtRM7aInkqB7DKRweOWyQwluqgd79m352I/edit#slide=id.gf325c6b0ac_0_108"
-            >
-              Go to guide →
-            </a>
-          </Card>
-        </li>
-      </ol>
-      <div className="dashboard-cta">
+        </List.Item>
+      </List>
+      <Segment padded secondary className="dashboard-cta">
         <p>
           Learn more about deeper features like branching and multiplayer
           scenarios in our resource center.
         </p>
-        <a className="dashboard-card__link" href="#">
+        <a
+          className="dashboard-card__link"
+          href="https://drive.google.com/drive/folders/1A3MxYpjPXSPndW3wMwAUXonZh6kFKYmG?usp=sharing"
+        >
           Go to resource center →
         </a>
-      </div>
-    </section>
+      </Segment>
+    </Container>
   );
 };
 
 const GetInTouch = () => {
   return (
-    <section id="get-in-touch">
-      <div className="dashboard-subheader">
-        <h2>Get in touch</h2>
-      </div>
-      <div className="dashboard-cta">
+    <Container fluid id="get-in-touch">
+      <Header as="h2">Get in touch</Header>
+      <Divider />
+      <Segment secondary padded className="dashboard-cta">
         <p>
           Email us at{' '}
           <a href="mailto:teachermoments@mit.edu">teachermoments@mit.edu</a> for
           any questions using Teacher Moments or to join our regular community
           events for synchronous learning.
         </p>
-      </div>
-    </section>
+      </Segment>
+    </Container>
   );
 };
 
@@ -184,8 +191,8 @@ const Dashboard = () => {
         <div className="dashboard-main">
           {isParticipantOnly(user) && <AuthoringPermissionsNote />}
 
-          <RecentCohorts />
           <RecentScenarios />
+          <RecentCohorts />
           <LearnByExample />
           <QuickStartGuide />
           <GetInTouch />
