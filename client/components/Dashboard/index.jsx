@@ -60,7 +60,7 @@ const QuickStartGuide = () => {
     <section id="quick-start-guide">
       <div className="dashboard-subheader">
         <h2>Quick start guide</h2>
-        <p>Onboard onto Teacher Moments using with step-by-step decks.</p>
+        <p>Learn to author and use Teacher Moments scenarios.</p>
       </div>
       <ol className="dashboard-grid dashboard-grid--numbered">
         <li>
