@@ -6,9 +6,11 @@ import {
   Divider,
   Header,
   List,
+  Menu,
   Segment
 } from '@components/UI';
 
+import { HashLink } from 'react-router-hash-link';
 import LearnByExample from './LearnByExample';
 import React from 'react';
 import RecentCohorts from './RecentCohorts';
@@ -19,33 +21,33 @@ import { useSelector } from 'react-redux';
 
 const SideNav = () => {
   return (
-    <aside className="dashboard-sidenav">
-      <section className="dashboard-sidenav__section">
-        <p className="dashboard-sidenav__subtitle">Your tools</p>
-        <ul>
-          <li>
-            <a href="#recent-scenarios">Recent scenarios</a>
-          </li>
-          <li>
-            <a href="#recent-cohorts">Recent cohorts</a>
-          </li>
-        </ul>
-      </section>
-      <section className="dashboard-sidenav__section">
-        <p className="dashboard-sidenav__subtitle">Knowledge Center</p>
-        <ul>
-          <li>
-            <a href="#learn-by-example">Learn by example</a>
-          </li>
-          <li>
-            <a href="#quick-start-guide">Quick start guide</a>
-          </li>
-          <li>
-            <a href="#get-in-touch">Get in touch</a>
-          </li>
-        </ul>
-      </section>
-    </aside>
+    <Container fluid className="dashboard-sidenav">
+      <Menu text vertical className="dashboard-sidenav__section">
+        <Menu.Item header className="dashboard-sidenav__subtitle">
+          Your tools
+        </Menu.Item>
+        <Menu.Item>
+          <HashLink to="#recent-scenarios">Recent scenarios</HashLink>
+        </Menu.Item>
+        <Menu.Item>
+          <HashLink to="#recent-cohorts">Recent cohorts</HashLink>
+        </Menu.Item>
+      </Menu>
+      <Menu text vertical className="dashboard-sidenav__section">
+        <Menu.Item header className="dashboard-sidenav__subtitle">
+          Knowledge Center
+        </Menu.Item>
+        <Menu.Item>
+          <HashLink to="#learn-by-example">Learn by example</HashLink>
+        </Menu.Item>
+        <Menu.Item>
+          <HashLink to="#quick-start-guide">Quick start guide</HashLink>
+        </Menu.Item>
+        <Menu.Item>
+          <HashLink to="#get-in-touch">Get in touch</HashLink>
+        </Menu.Item>
+      </Menu>
+    </Container>
   );
 };
 
