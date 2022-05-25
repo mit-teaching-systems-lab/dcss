@@ -125,7 +125,8 @@ export const recentScenarios = (state = [], action) => {
       return recentScenarios;
     }
     case RESTORE_SCENARIO_SUCCESS:
-    case GET_SCENARIO_SUCCESS: {
+    case GET_SCENARIO_SUCCESS:
+    case SET_SCENARIO: {
       return updateExistingScenarioInState(state, scenario);
     }
     default: {
@@ -142,7 +143,8 @@ export const exampleScenarios = (state = [], action) => {
       return exampleScenarios;
     }
     case RESTORE_SCENARIO_SUCCESS:
-    case GET_SCENARIO_SUCCESS: {
+    case GET_SCENARIO_SUCCESS:
+    case SET_SCENARIO: {
       return updateExistingScenarioInState(state, scenario);
     }
     default: {
