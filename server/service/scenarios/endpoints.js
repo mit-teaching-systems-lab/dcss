@@ -144,7 +144,8 @@ async function setScenario(req, res) {
     personas,
     status,
     title,
-    is_example
+    is_example,
+    example_description
   } = req.body;
   const scenario_id = Number(req.params.scenario_id);
   let author_id = user.id;
@@ -160,7 +161,8 @@ async function setScenario(req, res) {
       description,
       status,
       title,
-      is_example
+      is_example,
+      example_description
     });
 
     await db.setScenarioCategories(scenario_id, categories);

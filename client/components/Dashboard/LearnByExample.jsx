@@ -35,7 +35,7 @@ const LearnByExample = () => {
                 <Card.Header as="h2">{scenario.title}</Card.Header>
                 <Card.Description>
                   <Text.Truncate lines={3}>
-                    {scenario.description}
+                    {scenario.example_description || scenario.description}
                   </Text.Truncate>
                 </Card.Description>
                 <Divider />

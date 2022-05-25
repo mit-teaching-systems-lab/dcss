@@ -448,6 +448,23 @@ class ScenarioEditor extends Component {
 
                   {user.is_super && makeExampleCheckbox}
 
+                  {user.is_super && scenario.is_example && (
+                    <Form.Field>
+                      <label htmlFor="example_description">
+                        Example Description
+                      </label>
+                      <Form.TextArea
+                        autoComplete="off"
+                        id="example_description"
+                        name="example_description"
+                        rows={2}
+                        placeholder="What does this scenario demonstrate about Teacher Moments?"
+                        value={scenario.example_description || ''}
+                        onChange={onChange}
+                      />
+                    </Form.Field>
+                  )}
+
                   {dropdowns}
 
                   {isNotNewScenario ? (
@@ -507,7 +524,8 @@ ScenarioEditor.propTypes = {
     status: PropTypes.number,
     title: PropTypes.string,
     users: PropTypes.array,
-    is_example: PropTypes.bool
+    is_example: PropTypes.bool,
+    example_description: PropTypes.string
   }),
   setScenario: PropTypes.func.isRequired,
   submitCB: PropTypes.func.isRequired,
