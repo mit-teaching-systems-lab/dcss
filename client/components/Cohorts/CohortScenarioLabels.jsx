@@ -51,6 +51,8 @@ class CohortScenarioLabels extends React.Component {
 
       if (filters.scenariosInUse.includes(value)) {
         labelProps.className = 'primary';
+      } else {
+        labelProps.basic = 'true';
       }
 
       accum.push(

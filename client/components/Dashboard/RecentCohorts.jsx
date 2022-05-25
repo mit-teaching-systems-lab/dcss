@@ -1,17 +1,43 @@
 import './Dashboard.css';
 
-import { Button, Icon } from '@components/UI';
+import { Button, Icon, Label } from '@components/UI';
 import { Container, Header, List, Segment } from '@components/UI';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import CohortCard from '../Cohorts/CohortCard';
 import CohortCreateWizard from '@components/Cohorts/CohortCreateWizard';
+import Identity from '@utils/Identity';
+import PropTypes from 'prop-types';
 import RequestPermissionsLink from './RequestPermissionsLink';
 import { SCENARIO_IS_PUBLIC } from '@components/Scenario/constants';
 import { getRecentCohorts } from '@actions/cohort';
 import { getScenariosByStatus } from '@actions/scenario';
 import { isParticipantOnly } from '@utils/Roles';
+
+const NonClickableCohortScenarios = ({ cohort }) => {
+  const scenariosById = useSelector(state => state.scenariosById);
+
+  const labels = cohort.scenarios.reduce((collection, id) => {
+    const scenario = scenariosById[id];
+
+    if (scenario) {
+      collection.push(
+        <Label basic size="small" key={Identity.key({ scenario, cohort })}>
+          {scenario.title}
+        </Label>
+      );
+    }
+
+    return collection;
+  }, []);
+
+  return <Label.Group>{labels}</Label.Group>;
+};
+
+NonClickableCohortScenarios.propTypes = {
+  cohort: PropTypes.object
+};
 
 const RecentCohorts = () => {
   const dispatch = useDispatch();
@@ -72,7 +98,9 @@ const RecentCohorts = () => {
           {cohorts.map(cohort => {
             return (
               <List.Item key={cohort.id}>
-                <CohortCard id={cohort.id} />
+                <CohortCard id={cohort.id}>
+                  <NonClickableCohortScenarios cohort={cohort} />
+                </CohortCard>
               </List.Item>
             );
           })}
