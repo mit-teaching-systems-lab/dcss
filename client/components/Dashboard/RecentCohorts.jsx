@@ -11,9 +11,7 @@ import Identity from '@utils/Identity';
 import PropTypes from 'prop-types';
 import RequestPermissionsLink from './RequestPermissionsLink';
 import { SCENARIO_IS_PUBLIC } from '@components/Scenario/constants';
-import { getRecentCohorts } from '@actions/cohort';
 import { getScenariosByStatus } from '@actions/scenario';
-import { isParticipantOnly } from '@utils/Roles';
 
 const NonClickableCohortScenarios = ({ cohort }) => {
   const scenariosById = useSelector(state => state.scenariosById);
@@ -39,7 +37,7 @@ NonClickableCohortScenarios.propTypes = {
   cohort: PropTypes.object
 };
 
-const RecentCohorts = () => {
+const RecentCohorts = ({ cohorts }) => {
   const dispatch = useDispatch();
   const [open, setIsOpen] = useState(false);
 
@@ -53,18 +51,10 @@ const RecentCohorts = () => {
   };
 
   useEffect(() => {
-    dispatch(getRecentCohorts());
     dispatch(getScenariosByStatus(SCENARIO_IS_PUBLIC));
   }, [dispatch]);
 
-  const user = useSelector(state => state.user);
-  const cohorts = useSelector(state => state.recentCohorts);
   const permissions = useSelector(state => state.session.permissions);
-
-  if (isParticipantOnly(user) && cohorts.length == 0) {
-    return null;
-  }
-
   const canCreateCohorts = permissions.includes('create_cohort');
 
   return (
@@ -113,6 +103,10 @@ const RecentCohorts = () => {
       {open ? <CohortCreateWizard onCancel={closeCohortWizard} /> : null}
     </Container>
   );
+};
+
+RecentCohorts.propTypes = {
+  cohorts: PropTypes.array
 };
 
 export default RecentCohorts;
