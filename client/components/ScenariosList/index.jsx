@@ -336,7 +336,7 @@ class ScenariosList extends Component {
       case 'community': {
         scenarios.push(
           ...sourceScenarios.filter(({ categories }) =>
-            categories.includes(category)
+            categories.includes(changeCase.titleCase(category))
           )
         );
         displayHeading = `${changeCase.titleCase(category)} Scenarios`;
