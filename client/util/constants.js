@@ -15,3 +15,7 @@ export const IS_ANDROID = os.toLowerCase().includes('android');
 
 // Capability
 export const IS_AUDIO_RECORDING_SUPPORTED = IS_CHROME || IS_FIREFOX;
+
+// Branding
+export const BRAND_NAME =
+  process.env.DCSS_BRAND_NAME_TITLE || 'Teacher Moments';

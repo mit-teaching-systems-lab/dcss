@@ -1,7 +1,6 @@
 import './Dashboard.css';
 
 import {
-  Card,
   Container,
   Divider,
   Header,
@@ -12,6 +11,7 @@ import {
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
+import { BRAND_NAME } from '@utils/constants';
 import { HashLink } from 'react-router-hash-link';
 import LearnByExample from './LearnByExample';
 import PropTypes from 'prop-types';
@@ -71,8 +71,8 @@ const AuthoringPermissionsNote = () => {
     <Container fluid className="dashboard-cta">
       <p>
         Cohorts and scenario creation is only available to authors. Get in touch
-        with the Teacher Moments team by filling out our request form to become
-        an author.
+        with the {BRAND_NAME} team by filling out our request form to become an
+        author.
       </p>
       <RequestPermissionsLink>Fill out request form →</RequestPermissionsLink>
     </Container>
@@ -84,7 +84,7 @@ const QuickStartGuide = () => {
     <Container fluid id="quick-start-guide">
       <Header as="h2">Quick start guide</Header>
       <Header.Subheader className="dashboard-subheader">
-        Learn to author and use Teacher Moments scenarios.
+        Learn to author and use {BRAND_NAME} scenarios.
       </Header.Subheader>
       <List ordered className="dashboard-list">
         <List.Item>
@@ -92,9 +92,9 @@ const QuickStartGuide = () => {
             className="dashboard-list__title"
             href="https://docs.google.com/presentation/d/1671Hfy4dIOjfPRrEr_-MWh_XRB7uZ2ACPiS8v1HWng4/edit#slide=id.gf16183f65e_0_54"
           >
-            What Is Teacher Moments?
+            What Is {BRAND_NAME}?
           </a>
-          <p>An overview of Teacher Moments and ELK</p>
+          <p>An overview of {BRAND_NAME} and ELK</p>
         </List.Item>
         <List.Item>
           <a
@@ -103,7 +103,7 @@ const QuickStartGuide = () => {
           >
             Authoring a Scenario
           </a>
-          <p>How to develop a basic scenario in Teacher Moments</p>
+          <p>How to develop a basic scenario in {BRAND_NAME}</p>
         </List.Item>
         <List.Item>
           <a
@@ -164,7 +164,7 @@ const GetInTouch = () => {
         <p>
           Email us at{' '}
           <a href="mailto:teachermoments@mit.edu">teachermoments@mit.edu</a> for
-          any questions using Teacher Moments or to join our regular community
+          any questions using {BRAND_NAME} or to join our regular community
           events for synchronous learning.
         </p>
       </Segment>
