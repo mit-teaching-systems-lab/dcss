@@ -1,14 +1,16 @@
-import React from 'react';
-import { Button, Card } from '@components/UI';
-import PropTypes from 'prop-types';
 import './ScenariosList.css';
+
+import { Button, Card, Text } from '@components/UI';
+
+import PropTypes from 'prop-types';
+import React from 'react';
 
 const DeletedCard = ({ id, title, description, onClick }) => {
   return (
     <Card className="sc sc__margin-height deleted" key={id}>
       <Card.Content>
         <Card.Header>{title}</Card.Header>
-        <Card.Description>{description}</Card.Description>
+        <Text.Truncate lines={3}>{description}</Text.Truncate>
       </Card.Content>
       <Card.Content extra>
         <Button.Group className="sc__edit-buttons">
