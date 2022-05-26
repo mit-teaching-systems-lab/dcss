@@ -71,93 +71,68 @@ const QuickStartGuide = () => {
       <Header.Subheader className="dashboard-subheader">
         Learn to author and use Teacher Moments scenarios.
       </Header.Subheader>
-      <List ordered className="dashboard-grid dashboard-grid--numbered">
+      <List ordered className="dashboard-list">
         <List.Item>
-          <Card className="dashboard-card">
-            <p className="dashboard-card__title">What Is Teacher Moments?</p>
-            <p>An overview of Teacher Moments and ELK</p>
-            <a
-              className="dashboard-card__link"
-              href="https://docs.google.com/presentation/d/1671Hfy4dIOjfPRrEr_-MWh_XRB7uZ2ACPiS8v1HWng4/edit#slide=id.gf16183f65e_0_54"
-            >
-              Go to guide →
-            </a>
-          </Card>
+          <a
+            className="dashboard-list__title"
+            href="https://docs.google.com/presentation/d/1671Hfy4dIOjfPRrEr_-MWh_XRB7uZ2ACPiS8v1HWng4/edit#slide=id.gf16183f65e_0_54"
+          >
+            What Is Teacher Moments?
+          </a>
+          <p>An overview of Teacher Moments and ELK</p>
         </List.Item>
         <List.Item>
-          <Card className="dashboard-card">
-            <p className="dashboard-card__title">Authoring a Scenario</p>
-            <p>How to develop a basic scenario in Teacher Moments</p>
-            <a
-              className="dashboard-card__link"
-              href="https://docs.google.com/presentation/d/1GgTQMwtcYWYHzWjzQYdEtN3RiUCn8aF7NPn-6Eb7N6c/edit#slide=id.p"
-            >
-              Go to guide →
-            </a>
-          </Card>
+          <a
+            className="dashboard-list__title"
+            href="https://docs.google.com/presentation/d/1GgTQMwtcYWYHzWjzQYdEtN3RiUCn8aF7NPn-6Eb7N6c/edit#slide=id.p"
+          >
+            Authoring a Scenario
+          </a>
+          <p>How to develop a basic scenario in Teacher Moments</p>
         </List.Item>
         <List.Item>
-          <Card className="dashboard-card">
-            <p className="dashboard-card__title">
-              Authoring the Different Components
-            </p>
-            <p>How to incorporate different components on slides</p>
-            <a
-              className="dashboard-card__link"
-              href="https://docs.google.com/presentation/d/1ySgJiD-jiKY68pQhvctL9qwc1ikwtAcFcFPXWUh0OY4/edit?usp=sharing"
-            >
-              Go to guide →
-            </a>
-          </Card>
+          <a
+            className="dashboard-list__title"
+            href="https://docs.google.com/presentation/d/1ySgJiD-jiKY68pQhvctL9qwc1ikwtAcFcFPXWUh0OY4/edit?usp=sharing"
+          >
+            Authoring the Different Components
+          </a>
+          <p>How to incorporate different components on slides</p>
         </List.Item>
         <List.Item>
-          <Card className="dashboard-card">
-            <p className="dashboard-card__title">Authoring in More Detail</p>
-            <p>A more detailed look at authoring scenarios for one player</p>
-            <a
-              className="dashboard-card__link"
-              href="https://docs.google.com/presentation/d/1UH8YRz1pvZE4hPkLXUmMaahbziVGsfpSXCQ3P-QgeeM/edit#slide=id.gf8c678fc5f_0_54"
-            >
-              Go to guide →
-            </a>
-          </Card>
+          <a
+            className="dashboard-list__title"
+            href="https://docs.google.com/presentation/d/1UH8YRz1pvZE4hPkLXUmMaahbziVGsfpSXCQ3P-QgeeM/edit#slide=id.gf8c678fc5f_0_54"
+          >
+            Authoring in More Detail
+          </a>
+          <p>A more detailed look at authoring scenarios for one player</p>
         </List.Item>
         <List.Item>
-          <Card className="dashboard-card">
-            <p className="dashboard-card__title">Creating a Cohort</p>
-            <p>How to manage your classroom and discussions with cohorts</p>
-            <a
-              className="dashboard-card__link"
-              href="https://docs.google.com/presentation/d/1QM32ZAxT-NtRM7aInkqB7DKRweOWyQwluqgd79m352I/edit#slide=id.gf325c6b0ac_0_108"
-            >
-              Go to guide →
-            </a>
-          </Card>
+          <a
+            className="dashboard-list__title"
+            href="https://docs.google.com/presentation/d/1QM32ZAxT-NtRM7aInkqB7DKRweOWyQwluqgd79m352I/edit#slide=id.gf325c6b0ac_0_108"
+          >
+            Creating a Cohort
+          </a>
+          <p>How to manage your classroom and discussions with cohorts</p>
         </List.Item>
         <List.Item>
-          <Card className="dashboard-card">
-            <p className="dashboard-card__title">Teaching with Simulations</p>
-            <p>
-              How to use responses from your cohort to facilitate discussion
-            </p>
-            <a
-              className="dashboard-card__link"
-              href="https://docs.google.com/presentation/d/1sKfDO0J6t4uxYWM-Bi1r_UJifPFOG1u_1U2hHEVsuzc/edit?usp=sharing"
-            >
-              Go to guide →
-            </a>
-          </Card>
+          <a
+            className="dashboard-list__title"
+            href="https://docs.google.com/presentation/d/1sKfDO0J6t4uxYWM-Bi1r_UJifPFOG1u_1U2hHEVsuzc/edit?usp=sharing"
+          >
+            Teaching with Simulations
+          </a>
+          <p>How to use responses from your cohort to facilitate discussion</p>
         </List.Item>
       </List>
-      <Segment padded secondary className="dashboard-cta">
+      <Segment padded className="dashboard-cta">
         <p>
           Learn more about deeper features like branching and multiplayer
           scenarios in our resource center.
         </p>
-        <a
-          className="dashboard-card__link"
-          href="https://drive.google.com/drive/folders/1A3MxYpjPXSPndW3wMwAUXonZh6kFKYmG?usp=sharing"
-        >
+        <a href="https://drive.google.com/drive/folders/1A3MxYpjPXSPndW3wMwAUXonZh6kFKYmG?usp=sharing">
           Go to resource center →
         </a>
       </Segment>
@@ -170,7 +145,7 @@ const GetInTouch = () => {
     <Container fluid id="get-in-touch">
       <Header as="h2">Get in touch</Header>
       <Divider />
-      <Segment secondary padded className="dashboard-cta">
+      <Segment padded className="dashboard-cta">
         <p>
           Email us at{' '}
           <a href="mailto:teachermoments@mit.edu">teachermoments@mit.edu</a> for

@@ -4,6 +4,8 @@
   height: 100vh;
   --color-gray: #f2f2f2;
   --color-primary: #853D61;
+  --dark-green: #174650;
+  --green-beige: #F6F6EE;
 }
 
 /*.ui.primary.buttons,
