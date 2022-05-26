@@ -1,7 +1,5 @@
-import React, { Component, Fragment } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { NavLink, withRouter } from 'react-router-dom';
+import './ScenariosList.css';
+
 import {
   Button,
   Card,
@@ -16,27 +14,31 @@ import {
   Segment,
   Title
 } from '@components/UI';
-import escapeRegExp from 'lodash.escaperegexp';
-import copy from 'copy-text-to-clipboard';
-import changeCase from 'change-case';
-import { unloadCohort } from '@actions/cohort';
+import { NavLink, withRouter } from 'react-router-dom';
+import React, { Component, Fragment } from 'react';
 import {
   deleteScenario,
   getScenariosCount,
   getScenariosSlice
 } from '@actions/scenario';
 import { getLabelsByOccurrence, setLabelsInUse } from '@actions/tags';
+
 import Boundary from '@components/Boundary';
 import Gate from '@components/Gate';
+import History from '@utils/History';
+import Layout from '@utils/Layout';
 import Loading from '@components/Loading';
-import { notify } from '@components/Notification';
+import PropTypes from 'prop-types';
+import QueryString from '@utils/QueryString';
 import ScenarioCard from './ScenarioCard';
 import ScenarioDetailModal from './ScenarioDetailModal';
 import ScenarioLabelsFilter from './ScenarioLabelsFilter';
-import History from '@utils/History';
-import Layout from '@utils/Layout';
-import QueryString from '@utils/QueryString';
-import './ScenariosList.css';
+import changeCase from 'change-case';
+import { connect } from 'react-redux';
+import copy from 'copy-text-to-clipboard';
+import escapeRegExp from 'lodash.escaperegexp';
+import { notify } from '@components/Notification';
+import { unloadCohort } from '@actions/cohort';
 
 /* eslint-disable */
 const SCENARIO_STATUS_DRAFT = 1;
@@ -334,7 +336,7 @@ class ScenariosList extends Component {
       case 'community': {
         scenarios.push(
           ...sourceScenarios.filter(({ categories }) =>
-            categories.includes(changeCase.titleCase(category))
+            categories.includes(category)
           )
         );
         displayHeading = `${changeCase.titleCase(category)} Scenarios`;
