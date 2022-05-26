@@ -9,30 +9,40 @@ import {
   Menu,
   Segment
 } from '@components/UI';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { HashLink } from 'react-router-hash-link';
 import LearnByExample from './LearnByExample';
-import React from 'react';
+import PropTypes from 'prop-types';
 import RecentCohorts from './RecentCohorts';
 import RecentScenarios from './RecentScenarios';
 import RequestPermissionsLink from './RequestPermissionsLink';
+import { getRecentCohorts } from '@actions/cohort';
 import { isParticipantOnly } from '../../util/Roles';
-import { useSelector } from 'react-redux';
 
-const SideNav = () => {
+const SideNav = ({ showCohorts, showScenarios }) => {
+  const showToolsHeading = showCohorts || showScenarios;
+
   return (
     <Container fluid className="dashboard-sidenav">
-      <Menu text vertical className="dashboard-sidenav__section">
-        <Menu.Item header className="dashboard-sidenav__subtitle">
-          Your tools
-        </Menu.Item>
-        <Menu.Item>
-          <HashLink to="#recent-scenarios">Recent scenarios</HashLink>
-        </Menu.Item>
-        <Menu.Item>
-          <HashLink to="#recent-cohorts">Recent cohorts</HashLink>
-        </Menu.Item>
-      </Menu>
+      {showToolsHeading && (
+        <Menu text vertical className="dashboard-sidenav__section">
+          <Menu.Item header className="dashboard-sidenav__subtitle">
+            Your tools
+          </Menu.Item>
+          {showScenarios && (
+            <Menu.Item>
+              <HashLink to="#recent-scenarios">Recent scenarios</HashLink>
+            </Menu.Item>
+          )}
+          {showCohorts && (
+            <Menu.Item>
+              <HashLink to="#recent-cohorts">Recent cohorts</HashLink>
+            </Menu.Item>
+          )}
+        </Menu>
+      )}
       <Menu text vertical className="dashboard-sidenav__section">
         <Menu.Item header className="dashboard-sidenav__subtitle">
           Knowledge Center
@@ -49,6 +59,11 @@ const SideNav = () => {
       </Menu>
     </Container>
   );
+};
+
+SideNav.propTypes = {
+  showCohorts: PropTypes.bool,
+  showScenarios: PropTypes.bool
 };
 
 const AuthoringPermissionsNote = () => {
@@ -158,18 +173,29 @@ const GetInTouch = () => {
 };
 
 const Dashboard = () => {
+  const dispatch = useDispatch();
   const user = useSelector(state => state.user);
+  const participantOnly = isParticipantOnly(user);
+  const showScenarios = !participantOnly;
+
+  useEffect(() => {
+    dispatch(getRecentCohorts());
+  }, [dispatch]);
+
+  const cohorts = useSelector(state => state.recentCohorts);
+
+  const showCohorts = cohorts.length > 0 || !participantOnly;
 
   return (
     <div className="dashboard">
       <h1>Your Dashboard</h1>
       <div className="dashboard-container">
-        <SideNav />
+        <SideNav showScenarios={showScenarios} showCohorts={showCohorts} />
         <div className="dashboard-main">
-          {isParticipantOnly(user) && <AuthoringPermissionsNote />}
+          {participantOnly && <AuthoringPermissionsNote />}
 
-          <RecentCohorts />
-          {!isParticipantOnly(user) && <RecentScenarios />}
+          <RecentCohorts cohorts={cohorts} />
+          {showScenarios && <RecentScenarios />}
           <LearnByExample />
           <QuickStartGuide />
           <GetInTouch />
