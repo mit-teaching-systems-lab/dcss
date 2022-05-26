@@ -6,6 +6,7 @@ import {
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
+import { BRAND_NAME } from '@utils/constants';
 import { getExampleScenarios } from '@actions/scenario';
 
 const LearnByExample = () => {
@@ -21,7 +22,7 @@ const LearnByExample = () => {
       <Header as="h2">Learn by example</Header>
       <Header.Subheader className="dashboard-subheader">
         {`Run or copy examples created by the team to explore the features of 
-        ${process.env.DCSS_BRAND_NAME_TITLE}.`}
+        ${BRAND_NAME}`}
       </Header.Subheader>
       <Card.Group itemsPerRow="2" className="dashboard-card-group">
         {examples.map(scenario => {
