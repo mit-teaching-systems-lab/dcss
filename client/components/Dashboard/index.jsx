@@ -11,6 +11,7 @@ import {
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
+import { BRAND_NAME } from '@utils/constants';
 import { HashLink } from 'react-router-hash-link';
 import LearnByExample from './LearnByExample';
 import PropTypes from 'prop-types';
@@ -19,8 +20,6 @@ import RecentScenarios from './RecentScenarios';
 import RequestPermissionsLink from './RequestPermissionsLink';
 import { getRecentCohorts } from '@actions/cohort';
 import { isParticipantOnly } from '../../util/Roles';
-
-const BRAND_NAME = process.env.DCSS_BRAND_NAME_TITLE;
 
 const SideNav = ({ showCohorts, showScenarios }) => {
   const showToolsHeading = showCohorts || showScenarios;
