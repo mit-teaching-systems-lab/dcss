@@ -23,6 +23,7 @@ import {
 
 import CohortCard from './CohortCard';
 import CohortCreateWizard from './CohortCreateWizard';
+import CohortScenarioLabels from './CohortScenarioLabels';
 import CohortScenarioLabelsFilter from './CohortScenarioLabelsFilter';
 import Gate from '@components/Gate';
 import History from '@utils/History';
@@ -356,11 +357,18 @@ export class Cohorts extends React.Component {
     );
 
     const isSliceAvailable = cohortsSlice.length > 0;
-    const cards = isSliceAvailable
-      ? cohortsSlice.map(({ id }) => (
-          <CohortCard key={Identity.key({ id })} id={id} />
-      ))
-      : null;
+
+    let cards = null;
+
+    if (isSliceAvailable) {
+      cards = cohortsSlice.map(cohort => {
+        return (
+          <CohortCard key={Identity.key({ id: cohort.id })} id={cohort.id}>
+            <CohortScenarioLabels cohort={cohort} />
+          </CohortCard>
+        );
+      });
+    }
 
     const loadingProps = {
       card: { cols: itemsPerRow, rows: rowsPerPage, style: { height: '20rem' } }

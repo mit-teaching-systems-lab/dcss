@@ -1,6 +1,5 @@
 import { Button, Card } from '@components/UI';
 
-import CohortScenarioLabels from '@components/Cohorts/CohortScenarioLabels';
 import Identity from '@utils/Identity';
 import Moment from '@utils/Moment';
 import { NavLink } from 'react-router-dom';
@@ -54,9 +53,7 @@ export const CohortCard = props => {
         <Card.Meta title={`Created ${updatedCalendar}`}>
           Updated {updatedfromNow}
         </Card.Meta>
-        <Card.Description>
-          <CohortScenarioLabels cohort={cohort} />
-        </Card.Description>
+        <Card.Description>{props.children}</Card.Description>
       </Card.Content>
       {roles ? <Card.Content extra>{yourRoles}</Card.Content> : null}
       {restoreCohort}
@@ -70,7 +67,11 @@ CohortCard.propTypes = {
   history: PropTypes.object,
   roles: PropTypes.array,
   setCohort: PropTypes.func,
-  user: PropTypes.object
+  user: PropTypes.object,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ])
 };
 
 const mapStateToProps = (state, ownProps) => {
