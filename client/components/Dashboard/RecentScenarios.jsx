@@ -1,13 +1,39 @@
 import './Dashboard.css';
 
-import { Button, Icon } from '@components/UI';
+import { Button, Icon, Label } from '@components/UI';
 import { Container, Header, List, Segment } from '@components/UI';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
+import Identity from '@utils/Identity';
+import PropTypes from 'prop-types';
 import ScenarioCard from '@components/ScenariosList/ScenarioCard';
 import ScenarioDetailModal from '@components/ScenariosList/ScenarioDetailModal';
 import { getRecentScenarios } from '@actions/scenario';
+
+const NonClickableScenarioLabels = ({ scenario }) => {
+  const { labels } = scenario;
+
+  return (
+    <Label.Group>
+      {labels.map(value => {
+        const key = Identity.key({ value, scenario });
+
+        return (
+          <Label size="small" value={value} key={key}>
+            {value}
+          </Label>
+        );
+      })}
+    </Label.Group>
+  );
+};
+
+NonClickableScenarioLabels.propTypes = {
+  scenario: PropTypes.shape({
+    labels: PropTypes.array
+  })
+};
 
 const CreateScenarioButton = () => {
   return (
@@ -73,7 +99,9 @@ const RecentScenarios = () => {
                 <ScenarioCard
                   scenario={scenario}
                   onClick={scenarioCardClickHandler(scenario)}
-                />
+                >
+                  <NonClickableScenarioLabels scenario={scenario} />
+                </ScenarioCard>
               </List.Item>
             );
           })}
