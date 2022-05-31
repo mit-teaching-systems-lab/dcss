@@ -78,7 +78,9 @@ const RecentCohorts = ({ cohorts }) => {
             Create a new cohort
           </Button>
         )}
-        <a href="/cohorts">View all cohorts</a>
+        <Button as="a" href="/cohorts">
+          View all cohorts
+        </Button>
         {!canCreateCohorts && (
           <RequestPermissionsLink>
             I want to create a cohort →
