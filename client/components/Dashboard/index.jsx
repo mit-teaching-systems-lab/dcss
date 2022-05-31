@@ -38,7 +38,7 @@ const SideNav = ({ showCohorts, showScenarios }) => {
         </Menu>
       )}
       <Menu text vertical className="dashboard-sidenav__section">
-        <Menu.Item className="dashboard-sidenav__subtitle">
+        <Menu.Item header className="dashboard-sidenav__subtitle">
           Knowledge Center
         </Menu.Item>
         <Menu.Item>
