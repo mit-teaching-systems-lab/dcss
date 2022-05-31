@@ -108,7 +108,7 @@ const QuickStartGuide = () => {
         <List.Item>
           <a
             className="dashboard-list__title"
-            href="https://docs.google.com/presentation/d/1ySgJiD-jiKY68pQhvctL9qwc1ikwtAcFcFPXWUh0OY4/edit?usp=sharing"
+            href="https://drive.google.com/file/d/1fw3E_XsEe5a-nhRVTbeQp2Na-MAgiB0w/view?usp=sharing"
           >
             Authoring the Different Components
           </a>
@@ -117,7 +117,7 @@ const QuickStartGuide = () => {
         <List.Item>
           <a
             className="dashboard-list__title"
-            href="https://docs.google.com/presentation/d/1UH8YRz1pvZE4hPkLXUmMaahbziVGsfpSXCQ3P-QgeeM/edit#slide=id.gf8c678fc5f_0_54"
+            href="https://docs.google.com/presentation/d/1ckqn2zyAiq-MU4hTGubZOUg5B--seK47qKjpdHWVjjs/edit?usp=sharing"
           >
             Authoring in More Detail
           </a>
@@ -194,8 +194,8 @@ const Dashboard = () => {
         <div className="dashboard-main">
           {participantOnly && <AuthoringPermissionsNote />}
 
-          <RecentCohorts cohorts={cohorts} />
           {showScenarios && <RecentScenarios />}
+          <RecentCohorts cohorts={cohorts} />
           <LearnByExample />
           <QuickStartGuide />
           <GetInTouch />

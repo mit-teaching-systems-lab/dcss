@@ -5,7 +5,6 @@ import { Container, Header, List, Segment } from '@components/UI';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import RequestPermissionsLink from './RequestPermissionsLink';
 import ScenarioCard from '@components/ScenariosList/ScenarioCard';
 import ScenarioDetailModal from '@components/ScenariosList/ScenarioDetailModal';
 import { getRecentScenarios } from '@actions/scenario';
@@ -27,33 +26,10 @@ const CreateScenarioButton = () => {
   );
 };
 
-const ScenarioButtonGroup = () => {
-  const user = useSelector(state => state.user);
-  const permissions = useSelector(state => state.session.permissions);
-  const canCreateScenarios = permissions.includes('create_scenario');
-
-  return (
-    <Header.Subheader className="dashboard-subheader">
-      {canCreateScenarios && <CreateScenarioButton />}
-      <Button secondary size="small" href="/scenarios">
-        View all scenarios
-      </Button>
-      {canCreateScenarios ? (
-        <Button size="small" href={`/scenarios/author/${user.username}/`}>
-          View my scenarios
-        </Button>
-      ) : (
-        <RequestPermissionsLink>
-          I want to create scenarios →
-        </RequestPermissionsLink>
-      )}
-    </Header.Subheader>
-  );
-};
-
 const RecentScenarios = () => {
   const dispatch = useDispatch();
   const scenarios = useSelector(state => state.recentScenarios);
+  const user = useSelector(state => state.user);
   const [selected, setSelected] = useState(null);
   const [open, setOpen] = useState(false);
 
@@ -76,7 +52,19 @@ const RecentScenarios = () => {
   return (
     <Container fluid id="recent-scenarios">
       <Header as="h2">Your most recent scenarios</Header>
-      <ScenarioButtonGroup />
+      <Header.Subheader className="dashboard-subheader">
+        <CreateScenarioButton />
+        <Button
+          secondary
+          size="small"
+          href={`/scenarios/author/${user.username}/`}
+        >
+          View my scenarios
+        </Button>
+        <Button size="small" href="/scenarios">
+          View all scenarios
+        </Button>
+      </Header.Subheader>
       {scenarios.length ? (
         <List className="dashboard-grid">
           {scenarios.map((scenario, index) => {
