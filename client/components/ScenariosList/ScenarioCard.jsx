@@ -11,7 +11,6 @@ import Moment from '@utils/Moment';
 import PropTypes from 'prop-types';
 import React from 'react';
 import ScenarioCardActions from './ScenarioCardActions';
-import ScenarioLabels from './ScenarioLabels';
 import { restoreScenario } from '@actions/scenario';
 
 const ScenarioCard = props => {
@@ -118,9 +117,7 @@ const ScenarioCard = props => {
             {description}
           </Text.Truncate>
         </Card.Description>
-        <Card.Meta className="sc__footer">
-          <ScenarioLabels scenario={scenario} />
-        </Card.Meta>
+        <Card.Meta className="sc__footer">{props.children}</Card.Meta>
       </Card.Content>
       {showActions ? (
         <Card.Content extra tabIndex="0">
@@ -138,7 +135,11 @@ ScenarioCard.propTypes = {
   location: PropTypes.object,
   onClick: PropTypes.func,
   scenario: PropTypes.object,
-  showActions: PropTypes.bool
+  showActions: PropTypes.bool,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ])
 };
 
 export default ScenarioCard;

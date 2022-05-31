@@ -32,6 +32,7 @@ import PropTypes from 'prop-types';
 import QueryString from '@utils/QueryString';
 import ScenarioCard from './ScenarioCard';
 import ScenarioDetailModal from './ScenarioDetailModal';
+import ScenarioLabels from './ScenarioLabels';
 import ScenarioLabelsFilter from './ScenarioLabelsFilter';
 import changeCase from 'change-case';
 import { connect } from 'react-redux';
@@ -380,7 +381,9 @@ class ScenariosList extends Component {
           scenario={scenario}
           isLoggedIn={isLoggedIn}
           onClick={() => onScenarioCardClick(scenario)}
-        />
+        >
+          <ScenarioLabels scenario={scenario} />
+        </ScenarioCard>
       );
     });
 
