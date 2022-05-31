@@ -1,7 +1,14 @@
 import './Dashboard.css';
 
-import { Button, Icon, Label } from '@components/UI';
-import { Container, Header, List, Segment } from '@components/UI';
+import {
+  Button,
+  Card,
+  Container,
+  Divider,
+  Header,
+  Label,
+  Segment
+} from '@components/UI';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -59,22 +66,19 @@ const RecentCohorts = ({ cohorts }) => {
 
   return (
     <Container fluid id="recent-cohorts">
-      <Header as="h2">Your most recent cohorts</Header>
-      <Header.Subheader className="dashboard-subheader">
+      <div className="dashboard-section-header">
+        <Header as="h2">Your most recent cohorts</Header>
         {canCreateCohorts && (
           <Button
-            icon
             primary
-            labelPosition="left"
             name="Create a new cohort"
             size="small"
             onClick={openCohortWizard}
           >
-            <Icon name="add" />
             Create a new cohort
           </Button>
         )}
-        <Button size="small" href="/cohorts">
+        <Button as="a" href="/cohorts">
           View all cohorts
         </Button>
         {!canCreateCohorts && (
@@ -82,19 +86,18 @@ const RecentCohorts = ({ cohorts }) => {
             I want to create a cohort →
           </RequestPermissionsLink>
         )}
-      </Header.Subheader>
+      </div>
+      <Divider />
       {cohorts.length ? (
-        <List className="dashboard-grid">
+        <Card.Group itemsPerRow="2" stackable>
           {cohorts.map(cohort => {
             return (
-              <List.Item key={cohort.id}>
-                <CohortCard id={cohort.id}>
-                  <NonClickableCohortScenarios cohort={cohort} />
-                </CohortCard>
-              </List.Item>
+              <CohortCard raised id={cohort.id} key={cohort.id}>
+                <NonClickableCohortScenarios cohort={cohort} />
+              </CohortCard>
             );
           })}
-        </List>
+        </Card.Group>
       ) : (
         <Segment secondary padded className="dashboard-empty">
           <p>No cohorts created.</p>
