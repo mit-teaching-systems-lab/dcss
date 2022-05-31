@@ -117,7 +117,7 @@ const QuickStartGuide = () => {
         <List.Item>
           <a
             className="dashboard-list__title"
-            href="https://docs.google.com/presentation/d/1UH8YRz1pvZE4hPkLXUmMaahbziVGsfpSXCQ3P-QgeeM/edit#slide=id.gf8c678fc5f_0_54"
+            href="https://docs.google.com/presentation/d/1ckqn2zyAiq-MU4hTGubZOUg5B--seK47qKjpdHWVjjs/edit?usp=sharing"
           >
             Authoring in More Detail
           </a>
