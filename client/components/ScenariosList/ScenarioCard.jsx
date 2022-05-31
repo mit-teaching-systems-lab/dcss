@@ -22,7 +22,10 @@ const ScenarioCard = props => {
   const { categories = [], id, description, deleted_at, title } = scenario;
   // eslint-disable-next-line no-unused-vars
   const officialCheckmark = categories.includes('official') ? (
-    <Icon name="check" aria-label="Official" className="primary" />
+    <span className="scmt__float-left">
+      <Icon className="primary" name="check" />
+      Official
+    </span>
   ) : null;
 
   const isAuthorized =
@@ -94,12 +97,7 @@ const ScenarioCard = props => {
     >
       <Card.Content>
         <Card.Meta className="sc__meta-top">
-          {categories.includes('Official') ? (
-            <span className="scmt__float-left">
-              <Icon className="primary" name="check" />
-              Official
-            </span>
-          ) : null}
+          {officialCheckmark}
           <Icon className="primary" name={status.icon} />
           {status.type}
         </Card.Meta>
