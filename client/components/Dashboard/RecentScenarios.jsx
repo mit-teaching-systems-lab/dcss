@@ -84,14 +84,10 @@ const RecentScenarios = () => {
       <div className="dashboard-section-header">
         <Header as="h2">Your most recent scenarios</Header>
         <CreateScenarioButton />
-        <Button
-          secondary
-          size="small"
-          href={`/scenarios/author/${user.username}/`}
-        >
+        <Button size="small" href={`/scenarios/author/${user.username}/`}>
           View my scenarios
         </Button>
-        <Button as="a" href="/scenarios">
+        <Button size="small" href="/scenarios">
           View all scenarios
         </Button>
       </div>
