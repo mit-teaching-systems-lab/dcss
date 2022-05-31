@@ -194,8 +194,8 @@ const Dashboard = () => {
         <div className="dashboard-main">
           {participantOnly && <AuthoringPermissionsNote />}
 
-          <RecentCohorts cohorts={cohorts} />
           {showScenarios && <RecentScenarios />}
+          <RecentCohorts cohorts={cohorts} />
           <LearnByExample />
           <QuickStartGuide />
           <GetInTouch />
