@@ -24,6 +24,7 @@ const LearnByExample = () => {
         {`Run or copy examples created by the team to explore the features of 
         ${BRAND_NAME}`}
       </Header.Subheader>
+      <Divider />
       <Card.Group itemsPerRow="2" className="dashboard-card-group">
         {examples.map(scenario => {
           return (

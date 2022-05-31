@@ -11,7 +11,7 @@ import { setCohort } from '@actions/cohort';
 import { withRouter } from 'react-router-dom';
 
 export const CohortCard = props => {
-  const { cohort, roles, user } = props;
+  const { cohort, roles, user, raised } = props;
   const { id, created_at, deleted_at, updated_at, name, is_archived } = cohort;
   const yourRoles = rolesToHumanReadableString('cohort', roles);
   const updatedfromNow = Moment(updated_at || created_at).fromNow();
@@ -44,7 +44,7 @@ export const CohortCard = props => {
     ) : null;
 
   return (
-    <Card className={cardClassName} key={id}>
+    <Card className={cardClassName} key={id} raised={raised}>
       <Card.Content className="sc">
         <Card.Meta className="c-card__status">{cohortStatus}</Card.Meta>
         <Card.Header>
@@ -71,7 +71,8 @@ CohortCard.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node
-  ])
+  ]),
+  raised: PropTypes.bool
 };
 
 const mapStateToProps = (state, ownProps) => {

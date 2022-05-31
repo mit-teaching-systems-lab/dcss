@@ -1,7 +1,14 @@
 import './Dashboard.css';
 
-import { Button, Icon, Label } from '@components/UI';
-import { Container, Header, List, Segment } from '@components/UI';
+import {
+  Button,
+  Card,
+  Container,
+  Divider,
+  Header,
+  Label,
+  Segment
+} from '@components/UI';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -38,15 +45,12 @@ NonClickableScenarioLabels.propTypes = {
 const CreateScenarioButton = () => {
   return (
     <Button
-      icon
       primary
-      labelPosition="left"
       name="Create a new scenario"
       size="small"
       href="/editor/new"
       as="a"
     >
-      <Icon name="add" />
       Create a new scenario
     </Button>
   );
@@ -77,35 +81,30 @@ const RecentScenarios = () => {
 
   return (
     <Container fluid id="recent-scenarios">
-      <Header as="h2">Your most recent scenarios</Header>
-      <Header.Subheader className="dashboard-subheader">
+      <div className="dashboard-section-header">
+        <Header as="h2">Your most recent scenarios</Header>
         <CreateScenarioButton />
-        <Button
-          secondary
-          size="small"
-          href={`/scenarios/author/${user.username}/`}
-        >
+        <Button size="small" href={`/scenarios/author/${user.username}/`}>
           View my scenarios
         </Button>
-        <Button size="small" href="/scenarios">
-          View all scenarios
-        </Button>
-      </Header.Subheader>
+        <a href="/scenarios">View all scenarios</a>
+      </div>
+      <Divider />
       {scenarios.length ? (
-        <List className="dashboard-grid">
+        <Card.Group itemsPerRow="2" stackable>
           {scenarios.map((scenario, index) => {
             return (
-              <List.Item key={`scenario-card-${scenario.id}-${index}`}>
-                <ScenarioCard
-                  scenario={scenario}
-                  onClick={scenarioCardClickHandler(scenario)}
-                >
-                  <NonClickableScenarioLabels scenario={scenario} />
-                </ScenarioCard>
-              </List.Item>
+              <ScenarioCard
+                key={`scenario-card-${scenario.id}-${index}`}
+                raised
+                scenario={scenario}
+                onClick={scenarioCardClickHandler(scenario)}
+              >
+                <NonClickableScenarioLabels scenario={scenario} />
+              </ScenarioCard>
             );
           })}
-        </List>
+        </Card.Group>
       ) : (
         <Segment secondary padded className="dashboard-empty">
           <p>No scenarios created.</p>

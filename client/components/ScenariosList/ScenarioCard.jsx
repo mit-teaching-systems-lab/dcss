@@ -14,7 +14,7 @@ import ScenarioCardActions from './ScenarioCardActions';
 import { restoreScenario } from '@actions/scenario';
 
 const ScenarioCard = props => {
-  const { onClick, showActions = true, scenario } = props;
+  const { onClick, showActions = true, scenario, raised } = props;
   const dispatch = useDispatch();
   const user = useSelector(state => state.user);
 
@@ -93,6 +93,7 @@ const ScenarioCard = props => {
       key={id}
       aria-labelledby={ariaLabelledby}
       aria-describedby={ariaDescribedby}
+      raised={raised}
     >
       <Card.Content>
         <Card.Meta className="sc__meta-top">
@@ -139,7 +140,8 @@ ScenarioCard.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node
-  ])
+  ]),
+  raised: PropTypes.bool
 };
 
 export default ScenarioCard;
