@@ -321,13 +321,20 @@ export class DataTable extends React.Component {
       const subjectAndPrompts = [
         `"${firstColumnHeader}"`,
         `"${secondColumnHeader}"`,
-        ...prompts.map(prompt => `"${CSV.escape(makeHeader(prompt, prompts))}"`)
+        ...prompts.map(
+          prompt => `"${CSV.escape(makeHeader(prompt, prompts))}"`
+        ),
+        `"consent_granted_by_user"`
       ].join(',');
 
       let csv = `${subjectAndPrompts}\n`;
       let annotations = [];
 
       rows.forEach(row => {
+        const consentGrantedByUser = row.some(
+          item => item && item.consent_granted_by_user
+        );
+
         const prepared = row.map(data => {
           if (typeof data === 'number') {
             return data;
@@ -388,7 +395,7 @@ export class DataTable extends React.Component {
 
           return `"${formatted}"`;
         });
-        csv += `${prepared.join(',')}\n`;
+        csv += `${prepared.join(',')},${consentGrantedByUser}\n`;
       });
 
       files.push([`${Identity.key({ prefix, subject })}.csv`, csv]);
