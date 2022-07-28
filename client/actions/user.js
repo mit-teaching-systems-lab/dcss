@@ -105,6 +105,10 @@ export let resetPassword = params => async () => {
         params.email,
         SESSION_SECRET
       ).toString();
+      params.username = Crypto.AES.encrypt(
+        params.username,
+        SESSION_SECRET
+      ).toString();
       params.origin = location.origin;
       const body = JSON.stringify(params);
       const res = await (await fetch('/api/session/reset', {

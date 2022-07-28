@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { NavLink, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { Button, Form, Grid, Header, Modal } from '@components/UI';
+import { Button, Form, Grid, Header, Modal, Text } from '@components/UI';
 import { getUser, resetPassword } from '@actions/user';
 import { logOut } from '@actions/session';
 import './LoginRoutePromptModal.css';
@@ -14,7 +14,12 @@ class ResetRoutePromptModal extends Component {
     this.state = {
       isReady: false,
       isSending: false,
-      email: ''
+      error: {
+        field: '',
+        message: ''
+      },
+      email: '',
+      username: ''
     };
 
     this.onChange = this.onChange.bind(this);
@@ -43,26 +48,47 @@ class ResetRoutePromptModal extends Component {
   }
 
   onSubmit() {
-    if (!confirm('Are you sure you want to reset your password?')) {
-      this.props.history.push('/login');
-      return;
+    let isSending = true;
+
+    const { error, email, username } = this.state;
+
+    error.field = '';
+    error.message = '';
+
+    if (!email) {
+      isSending = false;
+      error.field = 'email';
+      error.message = 'An e-mail address is required.';
     }
 
-    (async () => {
-      const { email } = this.state;
-      const result = await this.props.resetPassword({ email });
-      if (result) {
+    if (!username) {
+      isSending = false;
+      error.field = 'username';
+      error.message = 'A username is required.';
+    }
+
+    if (isSending) {
+      if (!confirm('Are you sure you want to reset your password?')) {
         this.props.history.push('/login');
+        return;
       }
-    })();
+
+      (async () => {
+        const result = await this.props.resetPassword({ email, username });
+        if (result) {
+          this.props.history.push('/login');
+        }
+      })();
+    }
 
     this.setState({
-      isSending: true
+      isSending,
+      error
     });
   }
 
   render() {
-    const { isReady, isSending } = this.state;
+    const { isReady, isSending, error } = this.state;
 
     if (!isReady) {
       return null;
@@ -98,8 +124,34 @@ class ResetRoutePromptModal extends Component {
                   <b>Be sure to check your spam folder!</b>
                 </p>
                 <Form onSubmit={onSubmit}>
-                  <Form.Field>
-                    <label htmlFor="email">Email</label>
+                  <Form.Field required>
+                    <label htmlFor="username">
+                      Username:{' '}
+                      {error.field === 'username' ? (
+                        <Text right error>
+                          {error.message}
+                        </Text>
+                      ) : null}
+                    </label>
+                    <Form.Input
+                      autoComplete="username"
+                      id="username"
+                      name="username"
+                      type="username"
+                      onBlur={onBlurOrFocus}
+                      onFocus={onBlurOrFocus}
+                      onChange={onChange}
+                    />
+                  </Form.Field>
+                  <Form.Field required>
+                    <label htmlFor="email">
+                      E-mail:{' '}
+                      {error.field === 'email' ? (
+                        <Text right error>
+                          {error.message}
+                        </Text>
+                      ) : null}
+                    </label>
                     <Form.Input
                       autoComplete="email"
                       id="email"

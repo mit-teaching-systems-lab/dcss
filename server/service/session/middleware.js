@@ -208,8 +208,9 @@ async function resetUserPasswordAsync(req, res) {
 
   const origin = `${req.body.origin}/settings`;
   const email = decrypt(req.body.email);
+  const username = decrypt(req.body.username);
+  const user = await db.getUserByProps({ username });
 
-  const user = await db.getUserByProps({ email });
   let reset = true;
   let reason = 'Success';
 
@@ -223,7 +224,7 @@ async function resetUserPasswordAsync(req, res) {
     //    address, don't actually require an email address, nor
     //    does it indicate the identity of any given user.
     await db.updateUserWhere(
-      { email },
+      { email, username },
       {
         single_use_password: true,
         password
@@ -246,6 +247,8 @@ async function resetUserPasswordAsync(req, res) {
 You are receiving this email because a request was made to reset your ${brandTitle} password.
 The following password may only be used once. After you've logged in, go to Settings and update your password.
 \n\n
+Username: ${username}\n\n
+\n\n
 Single-use password: ${password}\n\n
 
 Click here to update your account settings: ${origin}
@@ -257,6 +260,9 @@ Massachusetts Institute of Technology NE49
 Cambridge, MA 02139
 `;
     const html = `<p>You are receiving this email because a request was made to reset your ${brandTitle} password. The following password may only be used once. After you've logged in, go to Settings and update your password.</p>
+<p>
+Username: <code>${username}</code>
+</p>
 <p>
 Single-use password: <code>${password}</code>
 </p>
