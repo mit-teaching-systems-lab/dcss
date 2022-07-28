@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
@@ -16,6 +16,8 @@ import BackButtonHistory from './BackButtonHistory';
 import Navigation from './Navigation';
 import Routes from './Routes';
 import Layout from '@utils/Layout';
+import { BRAND_NAME } from '@utils/constants';
+import { detectIncognito } from 'detect-incognito';
 
 // TODO: switch to this Router import when ready to migrate
 // import { Router } from 'react-router-dom';
@@ -30,6 +32,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      isPrivate: false,
       isReady: false
     };
     this.heartBeat = this.heartBeat.bind(this);
@@ -41,26 +44,32 @@ class App extends Component {
   async componentDidMount() {
     window.addEventListener('load', this.onLoad);
 
+    const { isPrivate } = await detectIncognito();
+
     let { isReady } = this.state;
 
-    if (!isReady) {
-      await this.props.getSession();
-      // After getSession() is resolved,
-      // this.props.user.id will be set if
-      // there is a valid, active session.
-      if (this.props.user.id) {
-        await this.props.getPermissions();
-        await this.props.getInvites();
+    if (!isPrivate) {
+      if (!isReady) {
+        await this.props.getSession();
+        // After getSession() is resolved,
+        // this.props.user.id will be set if
+        // there is a valid, active session.
+        if (this.props.user.id) {
+          await this.props.getPermissions();
+          await this.props.getInvites();
 
-        interval(async (count, stop) => {
-          if (document.visibilityState === 'visible') {
-            this.heartBeat();
-          }
-          this.heartBeat.cancel = stop;
-        }, 60000);
+          interval(async (count, stop) => {
+            if (document.visibilityState === 'visible') {
+              this.heartBeat();
+            }
+            this.heartBeat.cancel = stop;
+          }, 60000);
 
-        this.heartBeat();
+          this.heartBeat();
+        }
+        isReady = true;
       }
+    } else {
       isReady = true;
     }
 
@@ -72,6 +81,7 @@ class App extends Component {
     });
 
     this.setState({
+      isPrivate,
       isReady
     });
   }
@@ -105,6 +115,13 @@ class App extends Component {
     if (!this.state.isReady) {
       return null;
     }
+
+    if (this.state.isPrivate) {
+      return (
+        <h1>{BRAND_NAME} is not compatible with private or incognito mode. </h1>
+      );
+    }
+
     const { isLoggedIn } = this.props;
     const applicationComponents = (
       <Router history={history}>
@@ -115,8 +132,6 @@ class App extends Component {
         </BackButtonHistory>
       </Router>
     );
-
-    console.log(location);
 
     const shouldShowBrandedLandingPage =
       BrandedLandingPage.hasValidURL && location.pathname === '/';

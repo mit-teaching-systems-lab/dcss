@@ -59,6 +59,7 @@
     "deep-diff": "^1.0.2",
     "deep-object-diff": "^1.1.0",
     "detect-browser": "^4.8.0",
+    "detect-incognito": "^1.0.0",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.5",
     "enzyme-to-json": "^3.6.1",

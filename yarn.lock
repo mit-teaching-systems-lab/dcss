@@ -8250,6 +8250,11 @@ detect-file@^1.0.0:
   resolved "https://registry.yarnpkg.com/detect-file/-/detect-file-1.0.0.tgz#f0d66d03672a825cb1b73bdb3fe62310c8e552b7"
   integrity sha1-8NZtA2cqglyxtzvbP+YjEMjlUrc=
 
+detect-incognito@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/detect-incognito/-/detect-incognito-1.0.0.tgz#24f8f1957ddc246ef7f602653a2d015c55a84657"
+  integrity sha512-o/58BwX8VdQJFICJlgwLchBw/0js1tWDYe/ygOZhyuMw5pviIkOseH+IYPeR8iceU36KPJyDDm93iRhnH9mIEg==
+
 detect-newline@^3.0.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/detect-newline/-/detect-newline-3.1.0.tgz#576f5dfc63ae1a192ff192d8ad3af6308991b651"
