@@ -4,7 +4,7 @@
   "description": "Digital Clinical Simulation Software (DCSS, pronounced 'Decks')",
   "private": true,
   "engines": {
-    "node": "12.x"
+    "node": "20.11.0"
   },
   "repository": {
     "type": "git",
