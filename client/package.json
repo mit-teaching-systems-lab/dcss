@@ -138,6 +138,7 @@
     "style-loader": "^1.0.0",
     "suneditor": "2.41.3",
     "terser-webpack-plugin": "^3.0.2",
+    "uglifyjs-webpack-plugin": "^2.2.0",
     "url-loader": "^2.1.0",
     "uuid": "^7.0.3",
     "webpack": "^4.39.2",
