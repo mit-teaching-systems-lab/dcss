@@ -1,5 +1,6 @@
 const path = require('path');
 const { DefinePlugin, HotModuleReplacementPlugin } = require('webpack');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 // const CompressionPlugin = require('compression-webpack-plugin');
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
 // .BundleAnalyzerPlugin;
@@ -26,6 +27,9 @@ module.exports = {
   entry: ['babel-polyfill', './index.js'],
   devtool: 'inline-source-map',
   mode,
+  optimization: {
+    minimizer: [new UglifyJsPlugin()]
+  },
   module: {
     rules: [
       {
