@@ -163,9 +163,9 @@ async function getAgentResponses(agent_id, run_id, recipient_id) {
   const result = await query(sql`
     SELECT *
     FROM agent_response
-    WHERE agent_id = 32
-    AND run_id = 813
-    AND recipient_id = 2
+    WHERE agent_id = ${agent_id}
+    AND run_id = ${run_id}
+    AND recipient_id = ${recipient_id}
     ORDER BY created_at ASC;
   `);
 
