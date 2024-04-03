@@ -26,7 +26,9 @@ const statusRouter = require('./service/status');
 const tagsRouter = require('./service/tags');
 const tracesRouter = require('./service/traces');
 
-const { logRequestAndResponse } = require('./service/logs/middleware');
+// (RW 4/3/2024) Disabling this as it may be contributing to certain slow response times
+// for large queries.
+// const { logRequestAndResponse } = require('./service/logs/middleware');
 const { getDbConfig } = require('./util/dbConfig');
 const { errorHandler } = require('./util/api');
 
@@ -45,11 +47,16 @@ app.use(
       pool: new Pool(poolConfig),
       tableName: 'session'
     }),
-    cookie: { maxAge: 30 * 24 * 60 * 60 * 1000 } // 30 days
+    cookie: {
+      httpOnly: false,
+      maxAge: 30 * 24 * 60 * 60 * 1000 // 30 days
+    }
   })
 );
 
-app.use(logRequestAndResponse);
+// (RW 4/3/2024) Disabling this as it may be contributing to certain slow response times
+// for large queries.
+// app.use(logRequestAndResponse);
 
 app.use('/agents', agentsRouter);
 app.use('/chats', chatsRouter);
