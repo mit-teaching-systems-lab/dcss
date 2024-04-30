@@ -187,7 +187,7 @@ const REDIS_CONFIG = getRedisConfig();
 
 class SocketManager {
   static isValidToken(remoteToken) {
-    const tokens = Object.values(cache.clients).map(client => client.token);
+    const tokens = Object.values(cache.clients).map(client => client.auth.token);
     if (process.env.NODE_ENV !== 'production') {
       return [...tokens, DEVELOPER_TOKEN].includes(remoteToken);
     }
