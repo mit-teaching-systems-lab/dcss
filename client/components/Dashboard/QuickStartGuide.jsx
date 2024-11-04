@@ -76,6 +76,14 @@ const QuickStartGuide = () => {
           Go to resource center →
         </a>
       </Segment>
+      <Segment padded className="dashboard-cta">
+        <p>
+          Learn more about accessibility on MIT webpages...
+        </p>
+        <a href="https://accessibility.mit.edu">
+          Go to MIT Captioning and Accessibility →
+        </a>
+      </Segment>
     </Container>
   );
 };
