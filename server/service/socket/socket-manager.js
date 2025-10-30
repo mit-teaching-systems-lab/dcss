@@ -206,11 +206,13 @@ class SocketManager {
       const subClient = pubClient.duplicate();
       // console.log('pubClient', pubClient);
       // console.log('subClient', subClient);
-      const redisAdapter = createAdapter(pubClient, subClient);
-      redisAdapter.on('error', (err) => {
-        console.log('REDIS ADAPTER ERROR', err.code);
+      pubClient.on('error', (err) => {
+        console.log('REDIS ADAPTER ERROR:pubClient', err.code);
       })
-      this.io.adapter(redisAdapter);
+      subClient.on('error', (err) => {
+        console.log('REDIS ADAPTER ERROR:subClient', err.code);
+      })
+      this.io.adapter(createAdapter(pubClient, subClient));
     }
 
     this.io.on('connection', socket => {
