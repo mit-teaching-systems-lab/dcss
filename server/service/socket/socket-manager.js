@@ -212,7 +212,9 @@ class SocketManager {
       subClient.on('error', (err) => {
         console.log('REDIS ADAPTER ERROR:subClient', err.code);
       })
-      this.io.adapter(createAdapter(pubClient, subClient));
+      const adapter = createAdapter(pubClient, subClient);
+      console.log(adapter);
+      this.io.adapter(adapter);
     }
 
     this.io.on('connection', socket => {
