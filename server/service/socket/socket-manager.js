@@ -217,8 +217,13 @@ class SocketManager {
 
       this.io.adapter(adapter);
 
-      this.io.adapter.on('error', (err) => {
+      this.io.of("/").adapter.on('error', (err) => {
         console.log('REDIS ADAPTER ERROR:adapter', err.code);
+      })
+
+      console.log(this.io);
+      this.io.on('error', (err) => {
+        console.log('REDIS ADAPTER ERROR:io', err.code)
       })
     }
 
