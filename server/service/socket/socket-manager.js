@@ -152,10 +152,10 @@ const makeRemoteSafeAuthPayload = data => {
 
   const role = user.role
     ? {
-        id: user.role.id,
-        name: user.role.name,
-        description: user.role.description
-      }
+      id: user.role.id,
+      name: user.role.name,
+      description: user.role.description
+    }
     : null;
 
   const auth = {
@@ -206,7 +206,11 @@ class SocketManager {
       const subClient = pubClient.duplicate();
       // console.log('pubClient', pubClient);
       // console.log('subClient', subClient);
-      this.io.adapter(createAdapter(pubClient, subClient));
+      const redisAdapter = createAdapter(pubClient, subClient);
+      redisAdapter.on('error', (err) => {
+        console.log('REDIS ADAPTER ERROR', err.code);
+      })
+      this.io.adapter(redisAdapter);
     }
 
     this.io.on('connection', socket => {
