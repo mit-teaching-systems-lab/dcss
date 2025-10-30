@@ -208,13 +208,18 @@ class SocketManager {
       // console.log('subClient', subClient);
       pubClient.on('error', (err) => {
         console.log('REDIS ADAPTER ERROR:pubClient', err.code);
-      })
+      });
       subClient.on('error', (err) => {
         console.log('REDIS ADAPTER ERROR:subClient', err.code);
-      })
+      });
+
       const adapter = createAdapter(pubClient, subClient);
-      console.log(adapter);
+
       this.io.adapter(adapter);
+
+      this.io.adapter.on('error', (err) => {
+        console.log('REDIS ADAPTER ERROR:adapter', err.code);
+      })
     }
 
     this.io.on('connection', socket => {
