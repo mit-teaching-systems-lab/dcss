@@ -17,7 +17,7 @@ import Navigation from './Navigation';
 import Routes from './Routes';
 import Layout from '@utils/Layout';
 import { BRAND_NAME } from '@utils/constants';
-import { detectIncognito } from 'detect-incognito';
+import { detectIncognito } from 'detectincognitojs';
 
 // TODO: switch to this Router import when ready to migrate
 // import { Router } from 'react-router-dom';
@@ -44,7 +44,14 @@ class App extends Component {
   async componentDidMount() {
     window.addEventListener('load', this.onLoad);
 
-    const { isPrivate } = await detectIncognito();
+    let isPrivate = false;
+
+    try {
+      const detection = await detectIncognito();
+      isPrivate = detection.isPrivate;
+    } catch (error) {
+      isPrivate = false;
+    }
 
     let { isReady } = this.state;
 
