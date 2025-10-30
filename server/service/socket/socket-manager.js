@@ -187,7 +187,9 @@ const REDIS_CONFIG = getRedisConfig();
 
 class SocketManager {
   static isValidToken(remoteToken) {
-    const tokens = Object.values(cache.clients).map(client => client.auth.token);
+    const tokens = Object.values(cache.clients).map(
+      client => client.auth.token
+    );
     if (process.env.NODE_ENV !== 'production') {
       return [...tokens, DEVELOPER_TOKEN].includes(remoteToken);
     }
@@ -206,10 +208,10 @@ class SocketManager {
       const subClient = pubClient.duplicate();
       // console.log('pubClient', pubClient);
       // console.log('subClient', subClient);
-      pubClient.on('error', (err) => {
+      pubClient.on('error', err => {
         console.log('REDIS ADAPTER ERROR:pubClient', err.code);
       });
-      subClient.on('error', (err) => {
+      subClient.on('error', err => {
         console.log('REDIS ADAPTER ERROR:subClient', err.code);
       });
 
@@ -217,14 +219,13 @@ class SocketManager {
 
       this.io.adapter(adapter);
 
-      this.io.of("/").adapter.on('error', (err) => {
+      this.io.of('/').adapter.on('error', err => {
         console.log('REDIS ADAPTER ERROR:adapter', err.code);
-      })
+      });
 
-      console.log(this.io);
-      this.io.on('error', (err) => {
-        console.log('REDIS ADAPTER ERROR:io', err.code)
-      })
+      this.io.on('error', err => {
+        console.log('REDIS ADAPTER ERROR:io', err.code);
+      });
     }
 
     this.io.on('connection', socket => {
